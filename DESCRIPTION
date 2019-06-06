@@ -1,0 +1,25 @@
+Package: finbif
+Title: Finnish Biodiversity Information Facility R Interface
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "William",
+           family = "Morris",
+           role = c("aut", "cre"),
+           email = "willi@mmorris.email")
+Description: An R interface to the FinBIF (Finnish Biodiversity Information 
+    Facility) API (api.laji.fi).
+License: MIT + file LICENSE
+URL: https://bitbucket.org/luomus/finbif
+BugReports: https://bitbucket.org/luomus/finbif/issues
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    httr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat
