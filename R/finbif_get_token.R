@@ -17,8 +17,8 @@ finbif_get_token <- function(email) {
 
   if (!is.null(finbif_access_token)) {
     message(
-      "An access token has already been set. If you want to set receive a \n",
-      "new token, first remove the current token with \n",
+      "An access token has already been set. If you want to receive a new \n",
+      "token, first remove the current token with \n",
       "Sys.unsetenv(\"FINBIF_ACCESS_TOKEN\")"
     )
     return(invisible(NULL))
