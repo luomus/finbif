@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.5
 jobs:
   build:
     working_directory: ~/main
@@ -37,3 +39,5 @@ jobs:
       - store_artifacts:
           path: /root/main/artifacts/
           destination: artifacts
+      - codecov/upload:
+          file: /root/main/artifacts/finbif-coverage.html
