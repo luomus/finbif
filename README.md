@@ -3,7 +3,7 @@
 
 [![Netlify
 Status](https://api.netlify.com/api/v1/badges/5fdd166e-0155-4992-9009-82434fefe4f4/deploy-status)](https://app.netlify.com/sites/finbif/deploys)
-[![CircleCI](https://circleci.com/bb/luomus/finbif.svg?style=svg)](https://circleci.com/bb/luomus/finbif)
+[![CircleCI](https://circleci.com/bb/luomus/finbif.svg?style=shield)](https://circleci.com/bb/luomus/finbif)
 
 ## Installation
 
