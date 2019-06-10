@@ -1,11 +1,5 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # finbif
-
-<!-- badges: start -->
-
-<!-- badges: end -->
 
 ## Installation
 
