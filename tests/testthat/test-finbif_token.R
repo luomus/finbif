@@ -5,7 +5,7 @@ test_that("Access token is a string", {
   if (identical(token, "")) {
     expect_null(finbif_token())
   } else {
-    expect_s3_class(finbif_token(), "character")
+    expect_type(finbif_token(), "character")
   }
 })
 
