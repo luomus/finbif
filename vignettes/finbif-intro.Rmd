@@ -13,7 +13,39 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+The Finnish Biodiversity Information Facility (FinBIF) aggregates Finnish
+biodiversity data from multiple sources in single open access portal for 
+researchers, citizen scientists, industry and goverment. The `finbif` R
+package provides access to the FinBIF api directly from within R.
 
+## Installation
+
+You can install the development version of finbif from
+[Bitbucket](https://bitbucket.org) with:
+```{r install, eval=FALSE}
+install.packages("remotes")
+remotes::install_bitbucket("luomus/finbif")
+```
+
+## Using finbif
+
+First load the finbif R package.
 ```{r setup}
 library(finbif)
 ```
+
+To use the FinBIF API you must first request and set an personal access token.
+You can request an API token to be sent to your email address with the function
+`finbif_get_token`.
+```{r request-token, eval=FALSE}
+finbif_get_token("your@email.com")
+```
+
+Copy the access token that was sent to your email and set it as the environment
+variable `FINBIF_ACCESS_TOKEN`.
+```{r set-token, eval=FALSE}
+Sys.setenv(
+  FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"
+)
+```
+
