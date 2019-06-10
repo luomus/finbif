@@ -2,3 +2,6 @@
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^bitbucket-pipelines.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
