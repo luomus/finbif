@@ -10,6 +10,7 @@
 #' @importFrom httr accept_json content http_type modify_url POST user_agent
 #' @importFrom httr status_code
 #' @importFrom jsonlite fromJSON
+#' @export
 
 finbif_get_token <- function(email) {
   finbif_access_token <- finbif_token()
