@@ -17,6 +17,7 @@ jobs:
           command: |
             R -e "devtools::install_deps(dependencies = TRUE)"
             R -e "install.packages('goodpractice', dependencies = TRUE)"
+            R -e "install.packages('DT', dependencies = TRUE)"
       - run:
           no_output_timeout: 30m
           command: |
