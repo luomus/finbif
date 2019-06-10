@@ -9,3 +9,7 @@ You can install the development version of finbif from
 ``` r
 remotes::install_bitbucket("luomus/finbif")
 ```
+
+## Documentation
+
+Read the online documentation [here](https://finbif.netlify.com).
