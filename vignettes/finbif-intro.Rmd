@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 The Finnish Biodiversity Information Facility (FinBIF) aggregates Finnish
 biodiversity data from multiple sources in single open access portal for 
-researchers, citizen scientists, industry and goverment. The `finbif` R
+researchers, citizen scientists, industry and government. The `finbif` R
 package provides access to the FinBIF api directly from within R.
 
 ## Installation

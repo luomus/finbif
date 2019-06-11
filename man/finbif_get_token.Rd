@@ -12,7 +12,7 @@ token.}
 }
 \value{
 If an access token has already been set then \code{NULL} (invisibly) if
-not then, invisbly, a \code{finbif_api} object.
+not then, invisibly, a \code{finbif_api} object.
 }
 \description{
 Have a personal access token for use with the FinBIF API sent to a specified

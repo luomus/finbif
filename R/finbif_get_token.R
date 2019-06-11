@@ -6,7 +6,7 @@
 #' @param email Character. The email address to which to send the API access
 #'   token.
 #' @return If an access token has already been set then `NULL` (invisibly) if
-#'   not then, invisbly, a `finbif_api` object.
+#'   not then, invisibly, a `finbif_api` object.
 #' @importFrom httr accept_json content http_type modify_url POST user_agent
 #' @importFrom httr status_code
 #' @importFrom jsonlite fromJSON
