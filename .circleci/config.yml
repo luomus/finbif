@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  codecov: codecov/codecov@1.0.5
 jobs:
   build:
     working_directory: ~/main
@@ -34,10 +32,9 @@ jobs:
             mkdir /root/main/artifacts
             R -e "devtools::install()"
             R -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))"
-            R -e "cv <- covr::package_coverage(); print(cv); covr::report(x = cv, file = '/root/main/artifacts/finbif-coverage.html', browse=FALSE)"
+            R -e "covr::codecov()"
             R CMD Rd2pdf --force --output='/root/main/artifacts/finbif-manual.pdf' .
       - store_artifacts:
           path: /root/main/artifacts/
           destination: artifacts
-      - codecov/upload:
-          file: /root/main/artifacts/finbif-coverage.html
+
