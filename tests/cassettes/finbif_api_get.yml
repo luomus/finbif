@@ -1,0 +1,35 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/list?page=1&pageSize=1&selected=unit.unitId&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-xss-protection: 1; mode=block
+      x-frame-options: SAMEORIGIN
+      strict-transport-security: max-age=0; includeSubDomains
+      x-download-options: noopen
+      x-content-type-options: nosniff
+      date: Wed, 12 Jun 2019 11:00:38 GMT
+      server: Apache-Coyote/1.1
+      content-type: application/json;charset=utf-8
+      via: 1.1 dw.laji.fi
+      transfer-encoding: chunked
+      vary: Accept-Encoding
+      content-encoding: gzip
+    body:
+      encoding: ASCII-8BIT
+      string: eyJjdXJyZW50UGFnZSI6MSwibmV4dFBhZ2UiOjIsImxhc3RQYWdlIjozMjAxODQ0NSwicGFnZVNpemUiOjEsInRvdGFsIjozMjAxODQ0NSwicmVzdWx0cyI6W3sidW5pdCI6eyJ1bml0SWQiOiJodHRwOi8vdHVuLmZpL0pYLjEwMDg0MTgjMTA3In19XX0=
+  recorded_at: 2019-06-12 11:00:38 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
