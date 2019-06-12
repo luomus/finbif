@@ -83,7 +83,7 @@
 
     
     
-<p>The Finnish Biodiversity Information Facility (FinBIF) aggregates Finnish biodiversity data from multiple sources in single open access portal for researchers, citizen scientists, industry and goverment. The <code>finbif</code> R package provides access to the FinBIF api directly from within R.</p>
+<p>The Finnish Biodiversity Information Facility (FinBIF) aggregates Finnish biodiversity data from multiple sources in single open access portal for researchers, citizen scientists, industry and government. The <code>finbif</code> R package provides access to the FinBIF api directly from within R.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -97,7 +97,7 @@
 <p>First load the finbif R package.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(finbif)</a></code></pre></div>
 <p>To use the FinBIF API you must first request and set an personal access token. You can request an API token to be sent to your email address with the function <code>finbif_get_token</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/finbif_get_token.html">finbif_get_token</a></span>(<span class="st">"your@email.com"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/finbif_request_token.html">finbif_request_token</a></span>(<span class="st">"your@email.com"</span>)</a></code></pre></div>
 <p>Copy the access token that was sent to your email and set it as the environment variable <code>FINBIF_ACCESS_TOKEN</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.setenv">Sys.setenv</a></span>(</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="dt">FINBIF_ACCESS_TOKEN =</span> <span class="st">"xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"</span></a>
