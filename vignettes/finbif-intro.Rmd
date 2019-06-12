@@ -38,7 +38,7 @@ To use the FinBIF API you must first request and set an personal access token.
 You can request an API token to be sent to your email address with the function
 `finbif_get_token`.
 ```{r request-token, eval=FALSE}
-finbif_get_token("your@email.com")
+finbif_request_token("your@email.com")
 ```
 
 Copy the access token that was sent to your email and set it as the environment

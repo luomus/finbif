@@ -1,7 +1,7 @@
 #' Get a FinBIF personal access token
 #'
 #' Have a personal access token for use with the FinBIF API sent to a specified
-#' email address
+#' email address.
 #'
 #' @param email Character. The email address to which to send the API access
 #'   token.
@@ -12,7 +12,7 @@
 #' @importFrom jsonlite fromJSON
 #' @export
 
-finbif_get_token <- function(email) {
+finbif_request_token <- function(email) {
   finbif_access_token <- finbif_token()
 
   if (!is.null(finbif_access_token)) {
