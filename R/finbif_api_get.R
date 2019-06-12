@@ -50,6 +50,6 @@ finbif_api_get <- function(path, query) {
       path = path,
       response = resp
     ),
-    class("finbif_api")
+    class = "finbif_api"
   )
 }

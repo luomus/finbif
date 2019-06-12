@@ -62,7 +62,7 @@ finbif_request_token <- function(email) {
       path = path,
       response = resp
     ),
-    class("finbif_api")
+    class = "finbif_api"
   )
 
   invisible(ans)
