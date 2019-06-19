@@ -4,15 +4,19 @@
 \alias{finbif_records}
 \title{Get FinBIF records}
 \usage{
-finbif_records(fields, filters = NULL)
+finbif_records(filters = NULL, fields, n = 10, page = 1)
 }
 \arguments{
+\item{filters}{List of named character vectors. Filters to apply to records.}
+
 \item{fields}{Character vector. Columns to return.}
 
-\item{filters}{List of named character vectors. Filters to apply to records.}
+\item{n}{Integer. How many records to download per page.}
+
+\item{page}{Integer. Which page of records to download.}
 }
 \value{
-Data.frame.
+A \code{finbif_api} object.
 }
 \description{
 Download filtered records from FinBIF.

@@ -111,24 +111,32 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>finbif_records</span>(<span class='no'>fields</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>finbif_records</span>(<span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>filters</th>
+      <td><p>List of named character vectors. Filters to apply to records.</p></td>
+    </tr>
+    <tr>
       <th>fields</th>
       <td><p>Character vector. Columns to return.</p></td>
     </tr>
     <tr>
-      <th>filters</th>
-      <td><p>List of named character vectors. Filters to apply to records.</p></td>
+      <th>n</th>
+      <td><p>Integer. How many records to download per page.</p></td>
+    </tr>
+    <tr>
+      <th>page</th>
+      <td><p>Integer. Which page of records to download.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Data.frame.</p>
+    <p>A <code>finbif_api</code> object.</p>
     
 
   </div>
