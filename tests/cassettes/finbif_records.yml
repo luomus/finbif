@@ -1,0 +1,35 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/list?page=1&pageSize=1&selected=unit.linkings.taxon.scientificName%2Cunit.linkings.taxon.id%2Cunit.linkings.taxon.taxonRank%2Cunit.unitId%2Cunit.individualId%2Cgathering.gatheringId%2Cdocument.collectionId%2Cdocument.sourceId%2Cgathering.observerUserIds%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cgathering.interpretations.coordinateAccuracy%2Cgathering.conversions.wgs84.latMin%2Cgathering.conversions.wgs84.latMax%2Cgathering.conversions.wgs84.lonMin%2Cgathering.conversions.wgs84.lonMax%2Cgathering.conversions.wgs84WKT%2Cunit.interpretations.individualCount%2Cunit.lifeStage%2Cunit.sex%2Cunit.nativeOccurrence%2Cunit.breedingSite%2Cdocument.quality.issue.issue%2Cdocument.quality.reliabilityOfCollection%2Cgathering.quality.issue.issue%2Cgathering.quality.timeIssue.issue%2Cgathering.quality.locationIssue.issue%2Cunit.quality.issue.issue%2Cunit.quality.taxon.reliability%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.quality.reliable&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-xss-protection: 1; mode=block
+      x-frame-options: SAMEORIGIN
+      strict-transport-security: max-age=0; includeSubDomains
+      x-download-options: noopen
+      x-content-type-options: nosniff
+      date: Wed, 19 Jun 2019 11:56:26 GMT
+      server: Apache-Coyote/1.1
+      content-type: application/json;charset=utf-8
+      via: 1.1 dw.laji.fi
+      transfer-encoding: chunked
+      vary: Accept-Encoding
+      content-encoding: gzip
+    body:
+      encoding: ASCII-8BIT
+      string: eyJjdXJyZW50UGFnZSI6MSwibmV4dFBhZ2UiOjIsImxhc3RQYWdlIjozMjA0ODk0MCwicGFnZVNpemUiOjEsInRvdGFsIjozMjA0ODk0MCwicmVzdWx0cyI6W3sidW5pdCI6eyJpbnRlcnByZXRhdGlvbnMiOnsiaW5kaXZpZHVhbENvdW50IjoxfSwicXVhbGl0eSI6eyJkb2N1bWVudEdhdGhlcmluZ1VuaXRRdWFsaXR5SXNzdWVzIjpmYWxzZSwicmVsaWFibGUiOmZhbHNlLCJ0YXhvbiI6eyJyZWxpYWJpbGl0eSI6Ik5FVVRSQUwifX0sImxpZmVTdGFnZSI6IkFEVUxUIiwidW5pdElkIjoiaHR0cDovL3R1bi5maS9KWC4xMDA5ODE3IzQiLCJsaW5raW5ncyI6eyJ0YXhvbiI6eyJ0YXhvblJhbmsiOiJodHRwOi8vdHVuLmZpL01YLnNwZWNpZXMiLCJzY2llbnRpZmljTmFtZSI6IlZhbmVzc2EgYXRhbGFudGEiLCJpZCI6Imh0dHA6Ly90dW4uZmkvTVguNjA5MTAifX19LCJnYXRoZXJpbmciOnsiZXZlbnREYXRlIjp7ImJlZ2luIjoiMjAxOS0wNi0xOSIsImVuZCI6IjIwMTktMDYtMTkifSwiaW50ZXJwcmV0YXRpb25zIjp7ImNvb3JkaW5hdGVBY2N1cmFjeSI6MX0sImNvbnZlcnNpb25zIjp7Indnczg0Ijp7ImxhdE1pbiI6NjUuMDA5MDM4LCJsYXRNYXgiOjY1LjAwOTAzOCwibG9uTWluIjoyNS40NzM1NywibG9uTWF4IjoyNS40NzM1N30sIndnczg0Q2VudGVyUG9pbnQiOnsibGF0Ijo2NS4wMDkwMzgsImxvbiI6MjUuNDczNTd9LCJ3Z3M4NFdLVCI6IlBPSU5UKDI1LjQ3MzU3IDY1LjAwOTAzOCkifSwib2JzZXJ2ZXJVc2VySWRzIjpbImh0dHA6Ly90dW4uZmkvTUEuMjU5Il0sImdhdGhlcmluZ0lkIjoiaHR0cDovL3R1bi5maS9KWC4xMDA5ODE3IzIifSwiZG9jdW1lbnQiOnsicXVhbGl0eSI6eyJyZWxpYWJpbGl0eU9mQ29sbGVjdGlvbiI6Mn0sInNvdXJjZUlkIjoiaHR0cDovL3R1bi5maS9LRS4zODkiLCJjb2xsZWN0aW9uSWQiOiJodHRwOi8vdHVuLmZpL0hSLjE3NDcifX1dfQ==
+  recorded_at: 2019-06-19 11:56:26 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
