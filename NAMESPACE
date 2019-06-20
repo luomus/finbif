@@ -2,6 +2,7 @@
 
 S3method(as.data.frame,finbif_api)
 S3method(print,finbif_api)
+export(finbif_check_taxa)
 export(finbif_records)
 export(finbif_request_token)
 export(finbif_taxa)
