@@ -15,11 +15,12 @@ finbif_check_taxa <- function(taxa) {
     names(out[[i]]) <- taxa[[i]]
     for (j in seq_along(taxa[[i]])) {
       resp <- finbif_taxa(taxa[[i]][[j]])
-      rank_ <- tolower(gsub("MX.", "", resp$content[[1]]$taxonRank))
-      if (!length(resp$content) || !identical(rank, rank_)) {
-        out[[i]][[j]] <-  NA_character_
+      if (length(resp$content)) {
+        rank_ <- tolower(gsub("MX.", "", resp$content[[1]]$taxonRank))
+        out[[i]][[j]] <-
+          if (identical(rank, rank_)) resp$content[[1]]$id else NA_character_
       } else {
-        out[[i]][[j]] <- resp$content[[1]]$id
+        out[[i]][[j]] <- NA_character_
       }
     }
   }
