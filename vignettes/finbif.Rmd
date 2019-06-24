@@ -42,10 +42,11 @@ finbif_request_token("your@email.com")
 ```
 
 Copy the access token that was sent to your email and set it as the environment
-variable `FINBIF_ACCESS_TOKEN`.
+variable `FINBIF_ACCESS_TOKEN` either for the current session,
 ```{r set-token, eval=FALSE}
 Sys.setenv(
   FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"
 )
 ```
+, or by adding it to a `Renviron` startup file (see [here](https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/) for details). 
 
