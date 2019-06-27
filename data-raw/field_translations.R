@@ -222,7 +222,6 @@ field_translations <- read.csv(text = "
   unit.media.squareThumbnailURL, record_thumbnail_square, FALSE, FALSE, uri, FALSE
   unit.media.thumbnailURL, record_thumbnail, FALSE, FALSE, uri, FALSE
   unit.mediaCount, record_media_count, FALSE, FALSE, integer, TRUE
-  unit.nativeOccurrence, is_native, TRUE, FALSE, logical, TRUE
   unit.notes, record_notes, FALSE, FALSE, character, TRUE
   unit.quality.documentGatheringUnitQualityIssues, any_issues, TRUE, TRUE, logical, TRUE
   unit.quality.issue.issue, record_issue, TRUE, TRUE, factor, TRUE
@@ -244,4 +243,4 @@ field_translations <- read.csv(text = "
   unit.unitId, record_id, TRUE, FALSE, uri, TRUE
 ", stringsAsFactors = FALSE, strip.white = TRUE)
 
-usethis::use_data("field_translations")
+usethis::use_data(field_translations, internal = TRUE, overwrite = TRUE)
