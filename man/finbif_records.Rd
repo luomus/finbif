@@ -11,9 +11,9 @@ finbif_records(filters = NULL, fields, n = 10, page = 1)
 
 \item{fields}{Character vector. Columns to return.}
 
-\item{n}{Integer. How many records to download per page.}
+\item{n}{Integer. How many records to download.}
 
-\item{page}{Integer. Which page of records to download.}
+\item{page}{Integer. Which page of records to start downloading from.}
 }
 \value{
 A \code{finbif_api} object.

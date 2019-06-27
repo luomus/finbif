@@ -5,6 +5,6 @@ test_that("returns valid data", {
     resp_list <- finbif_records(n = 1)
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_s3_class(resp_list, "finbif_api")
+  expect_s3_class(resp_list[[1]], "finbif_api")
 
 })
