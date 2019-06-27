@@ -14,7 +14,7 @@ finbif_records <- function(filters = NULL, fields, n = 10, page = 1) {
   max_queries  <- 10L
   max_size <- 100L
   nmax <- max_queries * max_size
-  if (n > nmax) stop("Cannot download more than ", nmax, "records")
+  if (n > nmax) stop("Cannot download more than ", nmax, " records")
   if (missing(fields)) fields <-
     row.names(field_translations[field_translations[["default_field"]], ])
   fields <- paste(fields, collapse = ",")
@@ -29,12 +29,12 @@ finbif_records <- function(filters = NULL, fields, n = 10, page = 1) {
   )
   resp <- list()
   i <- 1L
-  message("Downloading Page ", query$page)
+  message("Downloading page ", query$page)
   resp[[i]] <- finbif_api_get(path, query)
   n_tot <- resp[[1]]$content$total
   while (max_size * i < n) {
     Sys.sleep(1)
-    message("Downloading Page ", resp[[i]]$content$nextPage)
+    message("Downloading page ", resp[[i]]$content$nextPage)
     i <- i + 1L
     query$page <- query$page + 1L
     query$pageSize <- if (max_size * i > n) n %% max_size
