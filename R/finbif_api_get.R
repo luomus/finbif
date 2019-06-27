@@ -35,10 +35,9 @@ finbif_api_get <- function(path, query) {
   if (status_code(resp) != 200) {
     stop(
       sprintf(
-        "API request failed [%s]\n%s\n<%s>",
+        "API request failed [%s]\n%s>",
         httr::status_code(resp),
-        parsed$message,
-        parsed$documentation_url
+        parsed$message
       ),
       call. = FALSE
     )
