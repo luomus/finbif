@@ -2,12 +2,15 @@
 % Please edit documentation in R/finbif_api.R
 \name{as.data.frame.finbif_api}
 \alias{as.data.frame.finbif_api}
-\title{Coerce \code{finbif_api} object to a \code{data.frame}}
+\alias{as.data.frame.finbif_api_list}
+\title{Coerce \code{finbif_api*} object to a \code{data.frame}}
 \usage{
 \method{as.data.frame}{finbif_api}(x, ...)
+
+\method{as.data.frame}{finbif_api_list}(x, ...)
 }
 \arguments{
-\item{x}{A \code{finbif_api} object.}
+\item{x}{A \code{finbif_api*} object.}
 
 \item{...}{Additional arguments. Not used.}
 }
