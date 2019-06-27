@@ -40,5 +40,5 @@ finbif_records <- function(filters = NULL, fields, n = 10, page = 1) {
     query$pageSize <- if (max_size * i > n) n %% max_size
     resp[[i]] <- finbif_api_get(path, query)
   }
-  resp
+  structure(resp, class = "finbif_api_list")
 }
