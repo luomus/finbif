@@ -11,9 +11,8 @@
 
 finbif_records <- function(filters = NULL, fields, n = 10, page = 1) {
   path <- "v0/warehouse/query/list"
-  if (missing(fields)) fields <- field_translations[
-      field_translations[["default_field"]], "finbif_api_field"
-  ]
+  if (missing(fields)) fields <-
+    row.names(field_translations[field_translations[["default_field"]], ])
   fields <- paste(fields, collapse = ",")
   filters <- lapply(filters, paste, collapse = ",")
   query <- list(

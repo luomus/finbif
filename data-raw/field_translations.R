@@ -241,6 +241,6 @@ field_translations <- read.csv(text = "
   unit.taxonVerbatim, taxon_verbatim, FALSE, FALSE, character, TRUE
   unit.typeSpecimen, type_specimen, FALSE, FALSE, logical, TRUE
   unit.unitId, record_id, TRUE, FALSE, uri, TRUE
-", stringsAsFactors = FALSE, strip.white = TRUE)
+", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L)
 
 usethis::use_data(field_translations, internal = TRUE, overwrite = TRUE)
