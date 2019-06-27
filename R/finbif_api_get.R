@@ -32,7 +32,7 @@ finbif_api_get <- function(path, query) {
     httr::content(resp, "text"), simplifyVector = FALSE
   )
 
-  if (status_code(resp) != 200) {
+  if (httr::status_code(resp) != 200) {
     stop(
       sprintf(
         "API request failed [%s]\n%s>",
