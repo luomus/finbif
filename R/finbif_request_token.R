@@ -34,21 +34,16 @@ finbif_request_token <- function(email) {
     encode = "json"
   )
 
-  if (httr::http_type(resp) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
-
   parsed <- jsonlite::fromJSON(
     httr::content(resp, "text"), simplifyVector = FALSE
   )
 
-  if (status_code(resp) != 200) {
+  if (httr::status_code(resp) != 200) {
     stop(
       sprintf(
-        "API request failed [%s]\n%s\n<%s>",
+        "API request failed [%s]\n%s",
         httr::status_code(resp),
-        parsed$message,
-        parsed$documentation_url
+        parsed$error$message
       ),
       call. = FALSE
     )
