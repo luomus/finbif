@@ -25,4 +25,16 @@ vcr::use_cassette("finbif_api_get", {
       "API request failed"
     )
   })
+
+  test_that("not receiving JSON returns error message", {
+    expect_error(
+      finbif_api_get(
+        path = "v0/warehouse/query/list",
+        query = list(
+          format = "xml", page = 1, pageSize = 1, selected = "unit.unitId"
+        )
+      ),
+      "API did not return json"
+    )
+  })
 }, preserve_exact_body_bytes = TRUE)

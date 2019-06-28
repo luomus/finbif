@@ -21,7 +21,7 @@ http_interactions:
       strict-transport-security: max-age=0; includeSubDomains
       x-download-options: noopen
       x-content-type-options: nosniff
-      date: Fri, 28 Jun 2019 08:03:03 GMT
+      date: Fri, 28 Jun 2019 08:28:05 GMT
       server: Apache-Coyote/1.1
       content-type: application/json;charset=utf-8
       via: 1.1 dw.laji.fi
@@ -30,8 +30,8 @@ http_interactions:
       content-encoding: gzip
     body:
       encoding: ASCII-8BIT
-      string: eyJjdXJyZW50UGFnZSI6MSwibmV4dFBhZ2UiOjIsImxhc3RQYWdlIjozMjEwMTM4NSwicGFnZVNpemUiOjEsInRvdGFsIjozMjEwMTM4NSwicmVzdWx0cyI6W3sidW5pdCI6eyJ1bml0SWQiOiJodHRwOi8vdHVuLmZpL0pYLjEwMTE3OTIjNCJ9fV19
-  recorded_at: 2019-06-28 08:03:03 GMT
+      string: eyJjdXJyZW50UGFnZSI6MSwibmV4dFBhZ2UiOjIsImxhc3RQYWdlIjozMjEwMTM5MywicGFnZVNpemUiOjEsInRvdGFsIjozMjEwMTM5MywicmVzdWx0cyI6W3sidW5pdCI6eyJ1bml0SWQiOiJodHRwOi8vdHVuLmZpL0pYLjEwMTE3OTUjNCJ9fV19
+  recorded_at: 2019-06-28 08:28:07 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
@@ -55,7 +55,7 @@ http_interactions:
       strict-transport-security: max-age=0; includeSubDomains
       x-download-options: noopen
       x-content-type-options: nosniff
-      date: Fri, 28 Jun 2019 08:03:03 GMT
+      date: Fri, 28 Jun 2019 08:28:07 GMT
       server: Apache-Coyote/1.1
       content-type: application/json;charset=utf-8
       via: 1.1 dw.laji.fi
@@ -65,5 +65,39 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX2ZpZWxkIn0=
-  recorded_at: 2019-06-28 08:03:03 GMT
+  recorded_at: 2019-06-28 08:28:07 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/list?format=xml&page=1&pageSize=1&selected=unit.unitId&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-xss-protection: 1; mode=block
+      x-frame-options: SAMEORIGIN
+      strict-transport-security: max-age=0; includeSubDomains
+      x-download-options: noopen
+      x-content-type-options: nosniff
+      date: Fri, 28 Jun 2019 08:28:07 GMT
+      server: Apache-Coyote/1.1
+      content-type: application/xml;charset=utf-8
+      via: 1.1 dw.laji.fi
+      transfer-encoding: chunked
+      vary: Accept-Encoding
+      content-encoding: gzip
+    body:
+      encoding: ASCII-8BIT
+      string: PHJlc3BvbnNlPjxjdXJyZW50UGFnZT4xPC9jdXJyZW50UGFnZT48bmV4dFBhZ2U+MjwvbmV4dFBhZ2U+PGxhc3RQYWdlPjMyMTAxMzkzPC9sYXN0UGFnZT48cGFnZVNpemU+MTwvcGFnZVNpemU+PHRvdGFsPjMyMTAxMzkzPC90b3RhbD48cmVzdWx0cz48dW5pdD48dW5pdElkPmh0dHA6Ly90dW4uZmkvSlguMTAxMTc5NSM0PC91bml0SWQ+PC91bml0PjwvcmVzdWx0cz48L3Jlc3BvbnNlPg==
+  recorded_at: 2019-06-28 08:28:07 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
