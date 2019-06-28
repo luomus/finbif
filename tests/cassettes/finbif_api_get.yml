@@ -21,7 +21,7 @@ http_interactions:
       strict-transport-security: max-age=0; includeSubDomains
       x-download-options: noopen
       x-content-type-options: nosniff
-      date: Wed, 12 Jun 2019 11:00:38 GMT
+      date: Fri, 28 Jun 2019 08:03:03 GMT
       server: Apache-Coyote/1.1
       content-type: application/json;charset=utf-8
       via: 1.1 dw.laji.fi
@@ -30,6 +30,40 @@ http_interactions:
       content-encoding: gzip
     body:
       encoding: ASCII-8BIT
-      string: eyJjdXJyZW50UGFnZSI6MSwibmV4dFBhZ2UiOjIsImxhc3RQYWdlIjozMjAxODQ0NSwicGFnZVNpemUiOjEsInRvdGFsIjozMjAxODQ0NSwicmVzdWx0cyI6W3sidW5pdCI6eyJ1bml0SWQiOiJodHRwOi8vdHVuLmZpL0pYLjEwMDg0MTgjMTA3In19XX0=
-  recorded_at: 2019-06-12 11:00:38 GMT
+      string: eyJjdXJyZW50UGFnZSI6MSwibmV4dFBhZ2UiOjIsImxhc3RQYWdlIjozMjEwMTM4NSwicGFnZVNpemUiOjEsInRvdGFsIjozMjEwMTM4NSwicmVzdWx0cyI6W3sidW5pdCI6eyJ1bml0SWQiOiJodHRwOi8vdHVuLmZpL0pYLjEwMTE3OTIjNCJ9fV19
+  recorded_at: 2019-06-28 08:03:03 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/list?page=1&pageSize=1&selected=not_a_field&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json
+  response:
+    status:
+      status_code: 400
+      category: Client error
+      reason: Bad Request
+      message: 'Client error: (400) Bad Request'
+    headers:
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-xss-protection: 1; mode=block
+      x-frame-options: SAMEORIGIN
+      strict-transport-security: max-age=0; includeSubDomains
+      x-download-options: noopen
+      x-content-type-options: nosniff
+      date: Fri, 28 Jun 2019 08:03:03 GMT
+      server: Apache-Coyote/1.1
+      content-type: application/json;charset=utf-8
+      via: 1.1 dw.laji.fi
+      transfer-encoding: chunked
+      vary: Accept-Encoding
+      content-encoding: gzip
+    body:
+      encoding: ASCII-8BIT
+      string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX2ZpZWxkIn0=
+  recorded_at: 2019-06-28 08:03:03 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
