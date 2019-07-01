@@ -6,6 +6,8 @@
 \alias{finbif-package}
 \title{finbif: Finnish Biodiversity Information Facility R Interface}
 \description{
+\if{html}{\figure{logo.png}{options: align='right'}}
+
 An R interface to the FinBIF (Finnish Biodiversity Information 
     Facility) API (api.laji.fi).
 }

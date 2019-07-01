@@ -19,7 +19,6 @@ researchers, citizen scientists, industry and government. The `finbif` R
 package provides access to the FinBIF api directly from within R.
 
 ## Installation
-
 You can install the development version of finbif from
 [Bitbucket](https://bitbucket.org) with:
 ```{r install, eval=FALSE}
@@ -27,8 +26,7 @@ install.packages("remotes")
 remotes::install_bitbucket("luomus/finbif")
 ```
 
-## Using finbif
-
+## Getting a FinBIF access token
 First load the finbif R package.
 ```{r setup}
 library(finbif)
@@ -47,6 +45,21 @@ variable `FINBIF_ACCESS_TOKEN` either for the current session,
 Sys.setenv(
   FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"
 )
+# Note: the above is not a real access token. Do not try using it.
 ```
-, or by adding it to a `Renviron` startup file (see [here](https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/) for details). 
+, or by adding it to a `Renviron` startup file (see
+ [here](https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/)
+ for details). 
+
+## Usage
+Check to see if a taxon exists in the FinBIF database.
+```{r taxon-check}
+finbif_check_taxa(list(species = "Ursus arctos"))
+```
+
+Download occurrence data from finbif.
+```{r occurrence}
+c_cygnus <- finbif_occurrence(list(species = "Cygnus cygnus"), n = 100)
+str(c_cygnus)
+```
 

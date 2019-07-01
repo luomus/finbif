@@ -10,19 +10,52 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# finbif
+# finbif <img src="man/figures/logo.png" align="right" alt="" width="120">
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)  [![CircleCI](https://circleci.com/bb/luomus/finbif.svg?style=shield&circle-token=0c7c2580ef1ca3246d3da8ba60064aeaf9c8eecd)](https://circleci.com/bb/luomus/finbif) [![codecov](https://codecov.io/bb/luomus/finbif/branch/master/graph/badge.svg?token=erk5D6H4i2)](https://codecov.io/bb/luomus/finbif) [![Netlify Status](https://api.netlify.com/api/v1/badges/5fdd166e-0155-4992-9009-82434fefe4f4/deploy-status)](https://app.netlify.com/sites/finbif/deploys)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5fdd166e-0155-4992-9009-82434fefe4f4/deploy-status)](https://app.netlify.com/sites/finbif/deploys) [![CircleCI](https://circleci.com/bb/luomus/finbif.svg?style=shield&circle-token=0c7c2580ef1ca3246d3da8ba60064aeaf9c8eecd)](https://circleci.com/bb/luomus/finbif) [![codecov](https://codecov.io/bb/luomus/finbif/branch/master/graph/badge.svg?token=erk5D6H4i2)](https://codecov.io/bb/luomus/finbif) [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-
+An R interface to the FinBIF (Finnish Biodiversity Information Facility) API 
+(api.laji.fi).
 
 ## Installation
-
-You can install the development version of finbif from [Bitbucket](https://bitbucket.org) with:
-
-``` r
+You can install the development version of finbif from
+[Bitbucket](https://bitbucket.org) with:
+```{r install, eval=FALSE}
+install.packages("remotes")
 remotes::install_bitbucket("luomus/finbif")
 ```
 
 ## Documentation
-
 Read the online documentation [here](https://finbif.netlify.com).
+
+## Getting a FinBIF access token
+First load the finbif R package.
+```{r setup}
+library(finbif)
+```
+
+To use the FinBIF API you must first request and set an personal access token.
+You can request an API token to be sent to your email address with the function
+`finbif_get_token`.
+```{r request-token, eval=FALSE}
+finbif_request_token("your@email.com")
+```
+
+Copy the access token that was sent to your email and set it as the environment
+variable `FINBIF_ACCESS_TOKEN` either for the current session,
+```{r set-token, eval=FALSE}
+Sys.setenv(
+  FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"
+)
+# Note: the above is not a real access token. Do not try using it.
+```
+, or by adding it to a `Renviron` startup file (see
+ [here](https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/)
+ for details). 
+
+## Usage
+Download occurrence data from finbif.
+```{r occurrence}
+c_cygnus <- finbif_occurrence(list(species = "Cygnus cygnus"), n = 100)
+str(c_cygnus)
+```
+
