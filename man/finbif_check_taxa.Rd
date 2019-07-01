@@ -9,7 +9,7 @@ finbif_check_taxa(taxa)
 \arguments{
 \item{taxa}{Named list of vectors. Each vector should have the name of a
 taxonomic rank (genus, species, etc.,). The elements of the vectors should
-be the taxa tp check and be of type character.}
+be the taxa to check and be of type character.}
 }
 \value{
 A list.
