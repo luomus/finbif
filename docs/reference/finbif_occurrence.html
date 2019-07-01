@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • finbif</title>
+<title>Download FinBIF occurrence records — finbif_occurrence • finbif</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Download FinBIF occurrence records — finbif_occurrence" />
+
+<meta property="og:description" content="Download filtered occurence data from FinBIF as a data.frame." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -95,72 +98,62 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Download FinBIF occurrence records</h1>
+    
+    <div class="hidden name"><code>finbif_occurrence.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Download filtered occurence data from FinBIF as a <code>data.frame</code>.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="as.data.frame.finbif_api.html">as.data.frame(<i>&lt;finbif_api&gt;</i>)</a></code> <code><a href="as.data.frame.finbif_api.html">as.data.frame(<i>&lt;finbif_api_list&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Coerce <code>finbif_api*</code> object to a <code>data.frame</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_check_taxa.html">finbif_check_taxa()</a></code> </p>
-        </td>
-        <td><p>Check FinBIF taxa</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_occurrence.html">finbif_occurrence()</a></code> </p>
-        </td>
-        <td><p>Download FinBIF occurrence records</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_records.html">finbif_records()</a></code> </p>
-        </td>
-        <td><p>Get FinBIF records</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_request_token.html">finbif_request_token()</a></code> </p>
-        </td>
-        <td><p>Get a FinBIF personal access token</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_taxa.html">finbif_taxa()</a></code> </p>
-        </td>
-        <td><p>Search the FinBIF taxa</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>finbif_occurrence</span>(<span class='no'>taxa</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>taxa</th>
+      <td><p>Named list of vectors. Each vector should have the name of a
+taxonomic rank (genus, species, etc.,). The elements of the vectors should
+be the taxa to check and be of type character.</p></td>
+    </tr>
+    <tr>
+      <th>filters</th>
+      <td><p>List of named character vectors. Filters to apply to records.</p></td>
+    </tr>
+    <tr>
+      <th>fields</th>
+      <td><p>Character vector. Columns to return.</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>Integer. How many records to download.</p></td>
+    </tr>
+    <tr>
+      <th>page</th>
+      <td><p>Integer. Which page of records to start downloading from.</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A <code>data.frame</code>.</p>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
   </div>
 </div>
 
