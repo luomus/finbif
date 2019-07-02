@@ -1,7 +1,7 @@
 field_translations <- read.csv(text = "
   finbif_api_field, translated_field, default_field, quality_field, type, unique
   unit.linkings.taxon.scientificName, scientific_name, TRUE, FALSE, character, TRUE
-  unit.linkings.taxon.taxonRank, taxon_rank, TRUE, FALSE, factor, TRUE
+  unit.linkings.taxon.taxonRank, taxon_rank, TRUE, FALSE, uri, TRUE
   unit.interpretations.individualCount, abundance, TRUE, FALSE, integer, TRUE
   unit.abundanceString, abundance_string, FALSE, FALSE, character, TRUE
   gathering.interpretations.countryDisplayname, country, TRUE, FALSE, character, TRUE
@@ -225,10 +225,10 @@ field_translations <- read.csv(text = "
   gathering.media.squareThumbnailURL, event_thumbnail_square, FALSE, FALSE, uri, FALSE
   gathering.media.thumbnailURL, event_thumbnail, FALSE, FALSE, uri, FALSE
   gathering.mediaCount, event_media_count, FALSE, FALSE, character, TRUE
-  gathering.municipality, municipality, FALSE, FALSE, character, TRUE
+  gathering.municipality, municipality_verbatum, FALSE, FALSE, character, TRUE
+  gathering.province, province_verbatum2, FALSE, FALSE, character, TRUE
   gathering.notes, event_notes, FALSE, FALSE, character, TRUE
   gathering.observerUserIds, observer_user_ids, FALSE, FALSE, uri, FALSE
-  gathering.province, province, FALSE, FALSE, character, TRUE
   gathering.quality.issue.issue, event_issue, TRUE, TRUE, factor, TRUE
   gathering.quality.issue.message, event_issue_message, FALSE, TRUE, character, TRUE
   gathering.quality.issue.source, event_issue_source, FALSE, TRUE, factor, TRUE
