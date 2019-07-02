@@ -24,5 +24,5 @@ finbif_check_taxa <- function(taxa) {
       }
     }
   }
-  out
+  structure(out, class = c("list", "finbif_taxa"))
 }

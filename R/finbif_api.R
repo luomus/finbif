@@ -25,6 +25,8 @@ as.data.frame.finbif_api_list <- function(x, ...) {
   reduce_merge(df)
 }
 
+reduce_merge <- function(df) Reduce(function(x, y) merge(x, y, all = TRUE), df)
+
 #' @importFrom utils str
 #' @export
 print.finbif_api <- function(x, ...) {
@@ -40,4 +42,23 @@ print.finbif_api_list <- function(x, ...) {
   invisible(x)
 }
 
-reduce_merge <- function(df) Reduce(function(x, y) merge(x, y, all = TRUE), df)
+#' @export
+print.finbif_taxa <- function(x, ...) {
+  ranks <- names(x)
+  padl <- max(nchar(ranks)) + 1L
+  padr <- max(nchar(names(unlist(unname(x)))))
+  unlist
+  for (i in seq_along(x)) {
+    rank <- ranks[[i]]
+    for (j in seq_along(x[[i]])) {
+      taxon <- x[[i]][j]
+      cat(
+        sprintf(paste0("[%-", padl, "s"), paste0(rank, ":")),
+        sprintf(paste0("%-", padr, "s]"), names(taxon)),
+        ifelse(is.na(taxon), "Not found", sprintf("ID: %s\n", taxon))
+      )
+    }
+  }
+  invisible(x)
+}
+
