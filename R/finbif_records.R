@@ -32,6 +32,7 @@ finbif_records <- function(filters = NULL, fields, n = 10, page = 1) {
   message("Downloading page ", query[["page"]])
   resp[[i]] <- finbif_api_get(path, query)
   n_tot <- resp[[1]][["content"]][["total"]]
+  n <- min(n, n_tot)
   while (max_size * i < n) {
     Sys.sleep(1)
     message("Downloading page ", resp[[i]][["content"]][["nextPage"]])
