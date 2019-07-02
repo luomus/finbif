@@ -59,7 +59,5 @@ finbif_check_taxa(list(species = "Ursus arctos"))
 
 Download occurrence data from finbif.
 ```{r occurrence}
-c_cygnus <- finbif_occurrence(list(species = "Cygnus cygnus"), n = 100)
-str(c_cygnus)
+finbif_occurrence(list(species = "Cygnus cygnus"), n = 100)
 ```
-

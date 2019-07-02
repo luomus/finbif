@@ -21,10 +21,18 @@ test_that(
       preserve_exact_body_bytes = TRUE
     )
 
+    vcr::use_cassette(
+      "finbif_occurrence", {
+        resp <- finbif_occurrence(list(species = "Parus major"))
+      },
+      preserve_exact_body_bytes = TRUE
+    )
+
     expect_output(print(resp_list_n101[[1]]), "FinBIF")
     expect_output(resp_list_n1_2 <- print(resp_list_n1), "FinBIF")
     expect_identical(resp_list_n1_2, resp_list_n1)
     expect_s3_class(as.data.frame(resp_list_n101), "data.frame")
     expect_output(print(resp_list_sp_true), "species: Parus major")
+    expect_output(print(resp), "Records downloaded:")
   }
 )

@@ -61,3 +61,39 @@ print.finbif_taxa <- function(x, ...) {
   }
   invisible(x)
 }
+
+#' @export
+print.finbif_occ <- function(x, ...) {
+  nrec_dnld <- attr(x, "nrec_dnld")
+  nrec_avl  <- attr(x, "nrec_avl")
+  ncols     <- ncol(x)
+  nrows     <- nrow(x)
+  dsply_nr  <- min(10, nrows)
+  dsply_nc  <- min(8, ncols)
+  cat(
+    "Records downloaded: ", nrec_dnld, "\n",
+    "Records available: ", nrec_avl, "\n",
+    "A data.frame [", nrows, " x ", ncols, "]\n",
+    sep = ""
+  )
+  df <- x[seq_len(dsply_nr), seq_len(dsply_nc)]
+  for (i in names(df)) {
+    type <- field_translations[
+      field_translations[["translated_field"]] == i, "type"
+    ]
+    if (type == "uri") {
+      df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/[A-Z]{2}\\.", "", df[[i]])
+    }
+  }
+  print.data.frame(df)
+  cat(
+    "...with ",
+    nrows - dsply_nr,
+    " more records and ",
+    ncols - dsply_nc,
+    " more fields:\n",
+    paste0(names(x)[-seq_len(dsply_nc)], c(rep(", ", 6), ",\n")),
+    sep = ""
+  )
+  invisible(x)
+}
