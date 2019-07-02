@@ -29,16 +29,16 @@ finbif_records <- function(filters = NULL, fields, n = 10, page = 1) {
   )
   resp <- list()
   i <- 1L
-  message("Downloading page ", query$page)
+  message("Downloading page ", query[["page"]])
   resp[[i]] <- finbif_api_get(path, query)
-  n_tot <- resp[[1]]$content$total
+  n_tot <- resp[[1]][["content"]][["total"]]
   while (max_size * i < n) {
     Sys.sleep(1)
-    message("Downloading page ", resp[[i]]$content$nextPage)
+    message("Downloading page ", resp[[i]][["content"]][["nextPage"]])
     i <- i + 1L
-    query$page <- query$page + 1L
-    query$pageSize <- if (max_size * i > n) n %% max_size
+    query[["page"]] <- query[["page"]] + 1L
+    query[["pageSize"]] <- if (max_size * i > n) n %% max_size
     resp[[i]] <- finbif_api_get(path, query)
   }
-  structure(resp, class = "finbif_api_list")
+  structure(resp, class = "finbif_api_list", nrecords = n_tot)
 }

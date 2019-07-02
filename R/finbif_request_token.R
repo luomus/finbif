@@ -43,7 +43,7 @@ finbif_request_token <- function(email) {
       sprintf(
         "API request failed [%s]\n%s",
         httr::status_code(resp),
-        parsed$error$message
+        parsed[["error"]][["message"]]
       ),
       call. = FALSE
     )

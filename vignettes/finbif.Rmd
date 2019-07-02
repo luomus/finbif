@@ -35,13 +35,13 @@ library(finbif)
 To use the FinBIF API you must first request and set an personal access token.
 You can request an API token to be sent to your email address with the function
 `finbif_get_token`.
-```{r request-token, eval=FALSE}
+```{r request-token, eval = FALSE}
 finbif_request_token("your@email.com")
 ```
 
 Copy the access token that was sent to your email and set it as the environment
 variable `FINBIF_ACCESS_TOKEN` either for the current session,
-```{r set-token, eval=FALSE}
+```{r set-token, eval = FALSE}
 Sys.setenv(
   FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"
 )

@@ -8,7 +8,7 @@
 #' @export
 as.data.frame.finbif_api <- function(x, ...) {
   df <- lapply(
-    x$content$results,
+    x[["content"]][["results"]],
     function(x) {
       dfx <- as.data.frame(x, stringsAsFactors = FALSE)
       colnames(dfx) <- names(unlist(x))
@@ -31,14 +31,14 @@ reduce_merge <- function(df) Reduce(function(x, y) merge(x, y, all = TRUE), df)
 #' @export
 print.finbif_api <- function(x, ...) {
   cat("<FinBIF ", x$path, ">\n", sep = "")
-  utils::str(x$content)
+  utils::str(x[["content"]])
   invisible(x)
 }
 
 #' @export
 print.finbif_api_list <- function(x, ...) {
-  cat("<FinBIF ", x[[1]]$path, ">\n", sep = "")
-  utils::str(x[[1]]$content)
+  cat("<FinBIF ", x[[1]][["path"]], ">\n", sep = "")
+  utils::str(x[[1]][["content"]])
   invisible(x)
 }
 
@@ -61,4 +61,3 @@ print.finbif_taxa <- function(x, ...) {
   }
   invisible(x)
 }
-
