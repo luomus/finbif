@@ -62,10 +62,10 @@ for details).
 Download occurrence data from finbif.
 
 ``` r
-finbif_occurrence(list(species = "Cygnus cygnus"), n = 100)
+finbif_occurrence("Cygnus cygnus", n = 100)
 #> Downloading page 1
 #> Records downloaded: 100
-#> Records available: 54579
+#> Records available: 54581
 #> A data.frame [100 x 27]
 #>    scientific_name taxon_rank abundance country            province
 #> 1    Cygnus cygnus    species         1   Suomi Varsinais-Suomi (V)

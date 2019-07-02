@@ -4,12 +4,10 @@
 \alias{finbif_occurrence}
 \title{Download FinBIF occurrence records}
 \usage{
-finbif_occurrence(taxa, filters = NULL, fields, n = 10, page = 1)
+finbif_occurrence(..., filters = NULL, fields, n = 10, page = 1)
 }
 \arguments{
-\item{taxa}{Named list of vectors. Each vector should have the name of a
-taxonomic rank (genus, species, etc.,). The elements of the vectors should
-be the taxa to check and be of type character.}
+\item{...}{Character vectors or list of character vectors. Taxa to download.}
 
 \item{filters}{List of named character vectors. Filters to apply to records.}
 

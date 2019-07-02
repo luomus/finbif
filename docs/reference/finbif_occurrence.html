@@ -113,16 +113,14 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>finbif_occurrence</span>(<span class='no'>taxa</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>finbif_occurrence</span>(<span class='no'>...</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>taxa</th>
-      <td><p>Named list of vectors. Each vector should have the name of a
-taxonomic rank (genus, species, etc.,). The elements of the vectors should
-be the taxa to check and be of type character.</p></td>
+      <th>...</th>
+      <td><p>Character vectors or list of character vectors. Taxa to download.</p></td>
     </tr>
     <tr>
       <th>filters</th>

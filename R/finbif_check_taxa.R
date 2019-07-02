@@ -17,7 +17,7 @@ finbif_check_taxa <- function(taxa) {
       resp <- finbif_taxa(taxa[[i]][[j]])
       if (length(resp[["content"]])) {
         rank_ <- tolower(gsub("MX.", "", resp[["content"]][[1]][["taxonRank"]]))
-        if (identical(rank, rank_)) {
+        if (identical(rank, rank_) || identical(rank, character())) {
           out[[i]][[j]] <- resp[["content"]][[1]][["id"]]
         } else {
           out[[i]][[j]] <- NA_character_

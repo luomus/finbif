@@ -32,7 +32,7 @@ First load the finbif R package.
 library(finbif)
 ```
 
-To use the FinBIF API you must first request and set an personal access token.
+To use the FinBIF API you must first request and set a personal access token.
 You can request an API token to be sent to your email address with the function
 `finbif_get_token`.
 ```{r request-token, eval = FALSE}
@@ -57,7 +57,7 @@ Check to see if a taxon exists in the FinBIF database.
 finbif_check_taxa(list(species = "Ursus arctos"))
 ```
 
-Download occurrence data from finbif.
+Download occurrence data from the FinBIF database.
 ```{r occurrence}
-finbif_occurrence(list(species = "Cygnus cygnus"), n = 100)
+finbif_occurrence("Cygnus cygnus", n = 100)
 ```

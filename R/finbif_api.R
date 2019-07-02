@@ -45,8 +45,8 @@ print.finbif_api_list <- function(x, ...) {
 #' @export
 print.finbif_taxa <- function(x, ...) {
   ranks <- names(x)
-  padl <- max(nchar(ranks)) + 1L
-  padr <- max(nchar(names(unlist(unname(x)))))
+  padl  <- if (is.null(ranks)) 0L else max(nchar(ranks)) + 1L
+  padr  <- max(nchar(names(unlist(unname(x)))))
   unlist
   for (i in seq_along(x)) {
     rank <- ranks[[i]]
