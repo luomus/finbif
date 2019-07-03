@@ -27,3 +27,6 @@ Suggests:
     testthat (>= 2.1.0),
     usethis,
     vcr
+X-schema.org-applicationCategory: Biodiversity
+X-schema.org-keywords: FinBIF, specimens, API, web-services, occurrences, species, taxonomy
+X-schema.org-isPartOf: https://species.fi

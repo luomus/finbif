@@ -6,3 +6,4 @@
 ^pkgdown$
 ^\.circleci$
 ^data-raw$
+^codemeta\.json$
