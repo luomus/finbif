@@ -10,7 +10,7 @@ Description: An R interface to the FinBIF (Finnish Biodiversity Information
     Facility) API (api.laji.fi).
 License: MIT + file LICENSE
 URL: https://bitbucket.org/luomus/finbif, https://github.com/wkmor1/finbif, https://finbif.netlify.com
-BugReports: https://github.com/wkmor1/finbif/issues, https://bitbucket.org/luomus/finbif/issues
+BugReports: https://github.com/wkmor1/finbif/issues
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

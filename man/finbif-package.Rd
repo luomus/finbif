@@ -17,7 +17,7 @@ Useful links:
   \item \url{https://bitbucket.org/luomus/finbif}
   \item \url{https://github.com/wkmor1/finbif}
   \item \url{https://finbif.netlify.com}
-  \item Report bugs at \url{https://github.com/wkmor1/finbif/issues, https://bitbucket.org/luomus/finbif/issues}
+  \item Report bugs at \url{https://github.com/wkmor1/finbif/issues}
 }
 
 }

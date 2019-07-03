@@ -8,7 +8,7 @@
   "description": "An R interface to the FinBIF (Finnish Biodiversity Information \n    Facility) API (api.laji.fi).",
   "name": "finbif: Finnish Biodiversity Information Facility R Interface",
   "codeRepository": "https://github.com/wkmor1/finbif",
-  "issueTracker": "https://github.com/wkmor1/finbif/issues, https://bitbucket.org/luomus/finbif/issues",
+  "issueTracker": "https://github.com/wkmor1/finbif/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.0.0.9000",
   "programmingLanguage": {
@@ -133,7 +133,7 @@
     }
   ],
   "releaseNotes": "https://github.com/wkmor1/finbif/blob/master/NEWS.md",
-  "fileSize": "52.435KB",
+  "fileSize": "52.774KB",
   "contIntegration": [
     "https://circleci.com/bb/luomus/finbif",
     "https://codecov.io/bb/luomus/finbif"
