@@ -29,6 +29,7 @@
 #' @export
 
 finbif_check_taxa <- function(taxa) {
+  taxa <- as.list(taxa)
   out <- taxa
   for (i in seq_along(taxa)) {
     rank <- tolower(names(taxa)[[i]])
