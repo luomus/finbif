@@ -1,1 +1,30 @@
 destination: docs
+reference:
+  - title: "The finbif package"
+    desc: >
+      Package overview
+    contents:
+      - finbif
+  - title: "Access token"
+    desc: >
+      Getting an access token
+    contents:
+      - finbif_request_token
+  - title: "Taxonomy"
+    desc: >
+      Getting information on taxa
+    contents:
+      - finbif_taxa
+      - finbif_check_taxa
+  - title: "Records"
+    desc: >
+      Getting records from finbif
+    contents:
+      - finbif_records
+      - finbif_occurrence
+  - title: "Methods"
+    desc: >
+      Working with finbif objects
+    contents:
+      - as.data.frame.finbif_api
+
