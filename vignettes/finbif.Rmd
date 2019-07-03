@@ -25,6 +25,10 @@ You can install the development version of finbif from
 install.packages("remotes")
 remotes::install_bitbucket("luomus/finbif")
 ```
+or,
+```{r install_gh, eval = FALSE}
+remotes::install_github("wkmor1/finbif")
+```
 
 ## Getting a FinBIF access token
 First load the finbif R package.

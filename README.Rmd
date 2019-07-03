@@ -19,9 +19,13 @@ An R interface to the FinBIF (Finnish Biodiversity Information Facility) API
 ## Installation
 You can install the development version of finbif from
 [Bitbucket](https://bitbucket.org) with:
-```{r install, eval = FALSE}
+```{r install_bb, eval = FALSE}
 install.packages("remotes")
 remotes::install_bitbucket("luomus/finbif")
+```
+or,
+```{r install_gh, eval = FALSE}
+remotes::install_github("wkmor1/finbif")
 ```
 
 ## Documentation

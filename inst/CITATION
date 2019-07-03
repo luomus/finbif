@@ -1,0 +1,19 @@
+year <- format(Sys.Date(), "%Y")
+note <- sprintf("R package version %s", meta$Version)
+
+citHeader("To cite finbif in publications use:")
+
+citEntry(
+  entry    = "Manual",
+  textVersion = NULL,
+  title    = "Introduction to the finbif package",
+  author   = person(
+    given  = "William",
+    family = "Morris",
+    role   = c("aut", "cre"),
+    email  = "willi@mmorris.email"
+  ),
+  year     = year,
+  note     = note,
+  url      = "https:://finbif.netlify.com"
+)

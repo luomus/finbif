@@ -22,6 +22,12 @@ install.packages("remotes")
 remotes::install_bitbucket("luomus/finbif")
 ```
 
+or,
+
+``` r
+remotes::install_github("wkmor1/finbif")
+```
+
 ## Documentation
 
 Read the online documentation [here](https://finbif.netlify.com).
@@ -34,7 +40,7 @@ First load the finbif R package.
 library(finbif)
 ```
 
-To use the FinBIF API you must first request and set an personal access
+To use the FinBIF API you must first request and set a personal access
 token. You can request an API token to be sent to your email address
 with the function `finbif_get_token`.
 
@@ -65,7 +71,7 @@ Download occurrence data from finbif.
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Downloading page 1
 #> Records downloaded: 100
-#> Records available: 54581
+#> Records available: 54585
 #> A data.frame [100 x 27]
 #>    scientific_name taxon_rank abundance country            province
 #> 1    Cygnus cygnus    species         1   Suomi Varsinais-Suomi (V)

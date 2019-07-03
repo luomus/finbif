@@ -7,8 +7,8 @@
   "identifier": "finbif",
   "description": "An R interface to the FinBIF (Finnish Biodiversity Information \n    Facility) API (api.laji.fi).",
   "name": "finbif: Finnish Biodiversity Information Facility R Interface",
-  "codeRepository": null,
-  "issueTracker": "https://bitbucket.org/luomus/finbif/issues",
+  "codeRepository": "https://github.com/wkmor1/finbif",
+  "issueTracker": "https://github.com/wkmor1/finbif/issues, https://bitbucket.org/luomus/finbif/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.0.0.9000",
   "programmingLanguage": {
@@ -133,7 +133,7 @@
     }
   ],
   "releaseNotes": "https://github.com/wkmor1/finbif/blob/master/NEWS.md",
-  "fileSize": "52.117KB",
+  "fileSize": "52.435KB",
   "contIntegration": [
     "https://circleci.com/bb/luomus/finbif",
     "https://codecov.io/bb/luomus/finbif"
@@ -142,5 +142,24 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["FinBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy"],
-  "relatedLink": null
+  "relatedLink": [
+    "https://bitbucket.org/luomus/finbif",
+    "https://finbif.netlify.com"
+  ],
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2019",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "William",
+          "familyName": "Morris",
+          "email": "willi@mmorris.email"
+        }
+      ],
+      "name": "Introduction to the finbif package",
+      "url": "https:://finbif.netlify.com"
+    }
+  ]
 }

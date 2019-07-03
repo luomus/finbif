@@ -15,7 +15,9 @@ An R interface to the FinBIF (Finnish Biodiversity Information
 Useful links:
 \itemize{
   \item \url{https://bitbucket.org/luomus/finbif}
-  \item Report bugs at \url{https://bitbucket.org/luomus/finbif/issues}
+  \item \url{https://github.com/wkmor1/finbif}
+  \item \url{https://finbif.netlify.com}
+  \item Report bugs at \url{https://github.com/wkmor1/finbif/issues, https://bitbucket.org/luomus/finbif/issues}
 }
 
 }
