@@ -7,7 +7,7 @@
   "identifier": "finbif",
   "description": "An R interface to the FinBIF (Finnish Biodiversity Information \n    Facility) API (api.laji.fi).",
   "name": "finbif: Finnish Biodiversity Information Facility R Interface",
-  "codeRepository": "https://bitbucket.org/luomus/finbif",
+  "codeRepository": null,
   "issueTracker": "https://bitbucket.org/luomus/finbif/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.0.0.9000",
@@ -133,7 +133,7 @@
     }
   ],
   "releaseNotes": "https://github.com/wkmor1/finbif/blob/master/NEWS.md",
-  "fileSize": "52.105KB",
+  "fileSize": "52.117KB",
   "contIntegration": [
     "https://circleci.com/bb/luomus/finbif",
     "https://codecov.io/bb/luomus/finbif"
@@ -141,5 +141,6 @@
   "developmentStatus": "https://www.repostatus.org/#wip",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
-  "keywords": ["FinBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy"]
+  "keywords": ["FinBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy"],
+  "relatedLink": null
 }
