@@ -14,9 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 The Finnish Biodiversity Information Facility (FinBIF) aggregates Finnish
-biodiversity data from multiple sources in single open access portal for 
+biodiversity data from multiple sources in a single open access portal for 
 researchers, citizen scientists, industry and government. The `finbif` R
-package provides access to the FinBIF api directly from within R.
+package provides access to the FinBIF API directly from within R.
 
 ## Installation
 You can install the development version of finbif from
@@ -30,12 +30,12 @@ or,
 remotes::install_github("wkmor1/finbif")
 ```
 
-## Getting a FinBIF access token
-First load the finbif R package.
+## Load the finbif package
 ```{r setup}
 library(finbif)
 ```
 
+## Getting a FinBIF access token
 To use the FinBIF API you must first request and set a personal access token.
 You can request an API token to be sent to your email address with the function
 `finbif_get_token`.
@@ -55,11 +55,25 @@ Sys.setenv(
  [here](https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/)
  for details). 
 
-## Usage
-Check to see if a taxon exists in the FinBIF database.
+## Using the finbif package
+
+### Working with taxa
+
+You can check to see if a taxon exists in the FinBIF database.
 ```{r taxon-check}
-finbif_check_taxa(list(species = "Ursus arctos"))
+finbif_check_taxa("Ursus arctos")
 ```
+
+If the taxon is the FinBIF database its unique ID is returned. When a taxon is
+not in the FinBIF database it is reported as "not found" and for that taxa the
+list element is `NA`.
+```{r taxon-not-found}
+(taxa <- finbif_check_taxa(c("Ursus arctos", "Moomin")))
+taxa[1]
+taxa[2]
+```
+
+### Getting occurrence data
 
 Download occurrence data from the FinBIF database.
 ```{r occurrence}
