@@ -45,16 +45,19 @@ print.finbif_api_list <- function(x, ...) {
 #' @export
 print.finbif_taxa <- function(x, ...) {
   ranks <- names(x)
+  nms   <- names(unlist(unname(x)))
   padl  <- if (is.null(ranks)) 0L else max(nchar(ranks)) + 1L
-  padr  <- max(nchar(names(unlist(unname(x)))))
+  padr  <- if (is.null(nms)) 0L else max(nchar(nms))
   unlist
   for (i in seq_along(x)) {
     rank <- ranks[[i]]
     for (j in seq_along(x[[i]])) {
       taxon <- x[[i]][j]
+      nm <- names(taxon)
+      nm <- ifelse(is.null(nm), "", nm)
       cat(
         sprintf(paste0("[%-", padl, "s"), paste0(rank, ":")),
-        sprintf(paste0("%-", padr, "s]"), names(taxon)),
+        sprintf(paste0("%-", padr, "s]"), nm),
         ifelse(is.na(taxon), "Not found", sprintf("ID: %s\n", taxon))
       )
     }
