@@ -7,13 +7,35 @@
 finbif_check_taxa(taxa)
 }
 \arguments{
-\item{taxa}{Named list of vectors. Each vector should have the name of a
-taxonomic rank (genus, species, etc.,). The elements of the vectors should
-be the taxa to check and be of type character.}
+\item{taxa}{Character (or list of named character) vector(s). If a list each
+vector can have the name of a taxonomic rank (genus, species, etc.,).
+The elements of the vectors should be the taxa to check.}
 }
 \value{
-A list.
+An object of class \code{finbif_taxa}. A list with the same form as
+\code{taxa}.
 }
 \description{
 Check that taxa are in the FinBIF database.
+}
+\examples{
+\dontrun{
+
+# Check a scientific name
+finbif_check_taxa("Cygnus cygnus")
+
+# Check a common name
+finbif_check_taxa("Whooper swan")
+
+# Check a genus
+finbif_check_taxa("Cygnus")
+
+# Check a list of taxa
+finbif_check_taxa(
+  list(
+    species = c("Cygnus cygnus", "Ursus arctos"),
+    genus   = "Betula"
+  )
+)
+}
 }

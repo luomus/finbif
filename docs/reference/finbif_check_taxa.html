@@ -132,17 +132,37 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>taxa</th>
-      <td><p>Named list of vectors. Each vector should have the name of a
-taxonomic rank (genus, species, etc.,). The elements of the vectors should
-be the taxa to check and be of type character.</p></td>
+      <td><p>Character (or list of named character) vector(s). If a list each
+vector can have the name of a taxonomic rank (genus, species, etc.,).
+The elements of the vectors should be the taxa to check.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list.</p>
+    <p>An object of class <code>finbif_taxa</code>. A list with the same form as
+<code>taxa</code>.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># Check a scientific name</span>
+<span class='fu'>finbif_check_taxa</span>(<span class='st'>"Cygnus cygnus"</span>)
+
+<span class='co'># Check a common name</span>
+<span class='fu'>finbif_check_taxa</span>(<span class='st'>"Whooper swan"</span>)
+
+<span class='co'># Check a genus</span>
+<span class='fu'>finbif_check_taxa</span>(<span class='st'>"Cygnus"</span>)
+
+<span class='co'># Check a list of taxa</span>
+<span class='fu'>finbif_check_taxa</span>(
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+    <span class='kw'>species</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Cygnus cygnus"</span>, <span class='st'>"Ursus arctos"</span>),
+    <span class='kw'>genus</span>   <span class='kw'>=</span> <span class='st'>"Betula"</span>
+  )
+)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -150,7 +170,9 @@ be the taxa to check and be of type character.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

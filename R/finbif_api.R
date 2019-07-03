@@ -1,10 +1,19 @@
+# as.data.frame methods --------------------------------------------------------
+
 #' Coerce `finbif_api*` object to a `data.frame`
 #'
 #' Converts the result of a FinBIF query to a `data.frame`.
 #'
 #' @param x A `finbif_api*` object.
 #' @param ... Additional arguments. Not used.
-#' @return `data.frame`
+#' @return A `data.frame`.
+#' @examples \dontrun{
+#'
+#' # Download the latest records from FinBIF and
+#' # convert to a `data.frame`
+#' resp <- finbif_records()
+#' df <- as.data.frame(resp)
+#' }
 #' @export
 as.data.frame.finbif_api <- function(x, ...) {
   df <- lapply(
@@ -25,8 +34,9 @@ as.data.frame.finbif_api_list <- function(x, ...) {
   reduce_merge(df)
 }
 
-reduce_merge <- function(df) Reduce(function(x, y) merge(x, y, all = TRUE), df)
+# print methods ----------------------------------------------------------------
 
+#' @noRd
 #' @importFrom utils str
 #' @export
 print.finbif_api <- function(x, ...) {
@@ -35,6 +45,7 @@ print.finbif_api <- function(x, ...) {
   invisible(x)
 }
 
+#' @noRd
 #' @export
 print.finbif_api_list <- function(x, ...) {
   cat("<FinBIF ", x[[1]][["path"]], ">\n", sep = "")
@@ -42,6 +53,7 @@ print.finbif_api_list <- function(x, ...) {
   invisible(x)
 }
 
+#' @noRd
 #' @export
 print.finbif_taxa <- function(x, ...) {
   ranks <- names(x)
@@ -65,6 +77,7 @@ print.finbif_taxa <- function(x, ...) {
   invisible(x)
 }
 
+#' @noRd
 #' @export
 print.finbif_occ <- function(x, ...) {
   nrec_dnld <- attr(x, "nrec_dnld")
@@ -100,3 +113,7 @@ print.finbif_occ <- function(x, ...) {
   )
   invisible(x)
 }
+
+# Utils ------------------------------------------------------------------------
+#' @noRd
+reduce_merge <- function(df) Reduce(function(x, y) merge(x, y, all = TRUE), df)

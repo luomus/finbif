@@ -7,7 +7,8 @@
 finbif_occurrence(..., filters = NULL, fields, n = 10, page = 1)
 }
 \arguments{
-\item{...}{Character vectors or list of character vectors. Taxa to download.}
+\item{...}{Character vectors or list of character vectors. Taxa of records
+to download.}
 
 \item{filters}{List of named character vectors. Filters to apply to records.}
 
@@ -21,5 +22,25 @@ finbif_occurrence(..., filters = NULL, fields, n = 10, page = 1)
 A \code{data.frame}.
 }
 \description{
-Download filtered occurence data from FinBIF as a \code{data.frame}.
+Download filtered occurrence data from FinBIF as a \code{data.frame}.
+}
+\examples{
+\dontrun{
+
+# Get recent occurrence data for taxon
+finbif_occurrence("Cygnus cygnus")
+
+# Specify the number of records
+finbif_occurrence("Cygnus cygnus", n = 100)
+
+# Get multiple taxa
+finbif_occurrence("Cygnus cygnus", "Ursus arctos")
+
+# Filter the record
+finbif_occurrence(
+  species = "Cygnus cygnus",
+  filters = list(coordinateAccuracyMax = 100))
+)
+
+}
 }

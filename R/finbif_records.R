@@ -1,12 +1,17 @@
 #' Get FinBIF records
 #'
-#' Download filtered records from FinBIF.
+#' Download records from FinBIF.
 #'
 #' @param filters List of named character vectors. Filters to apply to records.
 #' @param fields Character vector. Columns to return.
 #' @param n Integer. How many records to download.
 #' @param page Integer. Which page of records to start downloading from.
 #' @return A `finbif_api` object.
+#' @examples \dontrun{
+#'
+#' # Get the last 100 records from FinBIF
+#' finbif_records(n = 100)
+#' }
 #' @export
 
 finbif_records <- function(filters = NULL, fields, n = 10, page = 1) {

@@ -12,9 +12,17 @@ token.}
 }
 \value{
 If an access token has already been set then \code{NULL} (invisibly) if
-not then, invisibly, a \code{finbif_api} object.
+not then, invisibly, a \code{finbif_api} object containing the response from
+the FinBIF server.
 }
 \description{
 Have a personal access token for use with the FinBIF API sent to a specified
 email address.
+}
+\examples{
+\dontrun{
+
+# Request a token for example@email.com
+finbif_request_token("example@email.com")
+}
 }

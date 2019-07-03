@@ -1,3 +1,4 @@
+#' @noRd
 #' @importFrom httr accept_json content http_type modify_url GET user_agent
 #' @importFrom httr status_code
 #' @importFrom jsonlite fromJSON

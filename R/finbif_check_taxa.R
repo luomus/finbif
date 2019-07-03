@@ -2,10 +2,30 @@
 #'
 #' Check that taxa are in the FinBIF database.
 #'
-#' @param taxa Named list of vectors. Each vector should have the name of a
-#'   taxonomic rank (genus, species, etc.,). The elements of the vectors should
-#'   be the taxa to check and be of type character.
-#' @return A list.
+#' @param taxa  Character (or list of named character) vector(s). If a list each
+#'   vector can have the name of a taxonomic rank (genus, species, etc.,).
+#'   The elements of the vectors should be the taxa to check.
+#' @return An object of class `finbif_taxa`. A list with the same form as
+#'   `taxa`.
+#' @examples \dontrun{
+#'
+#' # Check a scientific name
+#' finbif_check_taxa("Cygnus cygnus")
+#'
+#' # Check a common name
+#' finbif_check_taxa("Whooper swan")
+#'
+#' # Check a genus
+#' finbif_check_taxa("Cygnus")
+#'
+#' # Check a list of taxa
+#' finbif_check_taxa(
+#'   list(
+#'     species = c("Cygnus cygnus", "Ursus arctos"),
+#'     genus   = "Betula"
+#'   )
+#' )
+#' }
 #' @export
 
 finbif_check_taxa <- function(taxa) {

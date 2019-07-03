@@ -7,6 +7,14 @@
 #' @param type Character. Type of match to make. Must be one of `exact`,
 #'   `partial` or `likely`.
 #' @return A `finbif_api` object.
+#' @examples \dontrun{
+#'
+#' # Search for a taxon
+#' finbif_taxa("Ursus arctos")
+#'
+#' # Use partial matching
+#' finbif_taxa("Ursus", n = 10, "partial")
+#' }
 #' @export
 
 finbif_taxa <- function(name, n = 1, type = c("exact", "partial", "likely")) {

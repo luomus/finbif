@@ -20,3 +20,13 @@ A \code{finbif_api} object.
 \description{
 Search the FinBIF database for taxon.
 }
+\examples{
+\dontrun{
+
+# Search for a taxon
+finbif_taxa("Ursus arctos")
+
+# Use partial matching
+finbif_taxa("Ursus", n = 10, "partial")
+}
+}

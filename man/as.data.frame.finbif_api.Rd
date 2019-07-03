@@ -15,8 +15,17 @@
 \item{...}{Additional arguments. Not used.}
 }
 \value{
-\code{data.frame}
+A \code{data.frame}.
 }
 \description{
 Converts the result of a FinBIF query to a \code{data.frame}.
+}
+\examples{
+\dontrun{
+
+# Download the latest records from FinBIF and
+# convert to a `data.frame`
+resp <- finbif_records()
+df <- as.data.frame(resp)
+}
 }

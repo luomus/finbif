@@ -19,5 +19,12 @@ finbif_records(filters = NULL, fields, n = 10, page = 1)
 A \code{finbif_api} object.
 }
 \description{
-Download filtered records from FinBIF.
+Download records from FinBIF.
+}
+\examples{
+\dontrun{
+
+# Get the last 100 records from FinBIF
+finbif_records(n = 100)
+}
 }
