@@ -83,6 +83,7 @@ print.finbif_taxa <- function(x, ...) {
 }
 
 #' @noRd
+#' @importFrom utils head
 #' @export
 print.finbif_occ <- function(x, ...) {
   nrec_dnld <- attr(x, "nrec_dnld")
@@ -90,14 +91,19 @@ print.finbif_occ <- function(x, ...) {
   ncols     <- ncol(x)
   nrows     <- nrow(x)
   dsply_nr  <- min(10, nrows)
-  dsply_nc  <- min(8, ncols)
+  dsply_nc  <- min(5, ncols)
   cat(
     "Records downloaded: ", nrec_dnld, "\n",
     "Records available: ", nrec_avl, "\n",
     "A data.frame [", nrows, " x ", ncols, "]\n",
     sep = ""
   )
-  df <- x[seq_len(dsply_nr), seq_len(dsply_nc)]
+  dsply_cols <- c(
+    "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_start"
+  )
+  dsply_cols <- which(names(x) %in% dsply_cols)
+  dsply_cols <- utils::head(union(dsply_cols, seq_len(dsply_nc)), dsply_nc)
+  df <- x[seq_len(dsply_nr), dsply_cols]
   for (i in names(df)) {
     type <- field_translations[
       field_translations[["translated_field"]] == i, "type"
@@ -113,7 +119,7 @@ print.finbif_occ <- function(x, ...) {
     " more records and ",
     ncols - dsply_nc,
     " more fields:\n",
-    paste0(names(x)[-seq_len(dsply_nc)], c(rep(", ", 6), ",\n")),
+    paste0(names(x)[-dsply_cols], c(rep(", ", 4), ",\n")),
     sep = ""
   )
   invisible(x)
