@@ -115,64 +115,87 @@
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co"># Note: the above is not a real access token. Do not try using it.</span></a></code></pre></div>
 <p>, or by adding it to a <code>Renviron</code> startup file (see <a href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/">here</a> for details).</p>
 </div>
-<div id="using-the-finbif-package" class="section level2">
+<div id="working-with-taxa" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-the-finbif-package" class="anchor"></a>Using the finbif package</h2>
-<div id="working-with-taxa" class="section level3">
-<h3 class="hasAnchor">
-<a href="#working-with-taxa" class="anchor"></a>Working with taxa</h3>
+<a href="#working-with-taxa" class="anchor"></a>Working with taxa</h2>
 <p>You can check to see if a taxon exists in the FinBIF database.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span>(<span class="st">"Ursus arctos"</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [: Ursus arctos] ID: MX.47348</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [Ursus arctos] ID: MX.47348</span></a></code></pre></div>
 <p>If the taxon is the FinBIF database its unique ID is returned. When a taxon is not in the FinBIF database it is reported as “not found” and for that taxa the list element is <code>NA</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">(taxa &lt;-<span class="st"> </span><span class="kw"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Ursus arctos"</span>, <span class="st">"Moomin"</span>)))</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; [: Ursus arctos] ID: MX.47348</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; [: Moomin      ] Not found</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">taxa[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; [[1]]</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; Ursus arctos </span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;   "MX.47348"</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8">taxa[<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; [[1]]</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; Moomin </span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;     NA</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; [Ursus arctos] ID: MX.47348</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; [Moomin      ] Not found</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">taxa[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; Ursus arctos </span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;   "MX.47348"</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">taxa[[<span class="dv">2</span>]]</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; Moomin </span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;     NA</span></a></code></pre></div>
+<p>You can also specify the taxonomic rank when searching FinBIF and the search will be limited to the specified rank.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">species =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Ursus arctos"</span>, <span class="st">"Ursus"</span>), <span class="dt">genus =</span> <span class="st">"Ursus"</span>))</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [species: Ursus arctos] ID: MX.47348</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; [species: Ursus       ] Not found</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [genus:   Ursus       ] ID: MX.51311</span></a></code></pre></div>
+<p>The function <code>finbif_taxa</code> can be used for a more general search for taxa in the FinBIF database. Searches can be <code>exact</code>, <code>partial</code> or <code>likely</code> (fuzzy matching). Information for a single taxon is returned when using exact or fuzzy matching, but multiple taxa, up to a limit, <code>n</code>, may be returned when using partial matching.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">birch_search &lt;-<span class="st"> </span><span class="kw"><a href="../reference/finbif_taxa.html">finbif_taxa</a></span>(<span class="st">"Betula pendula"</span>, <span class="dv">2</span>, <span class="st">"partial"</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(birch_search<span class="op">$</span>content, <span class="dt">max.level =</span> <span class="dv">2</span>, <span class="dt">list.len =</span> <span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; List of 2</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt;  $ :List of 11</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;   ..$ matchingName  : chr "Betula pendula var. pendula"</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;   ..$ nameType      : chr "MX.scientificName"</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt;   ..$ id            : chr "MX.37994"</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt;   ..$ scientificName: chr "Betula pendula var. pendula"</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt;   ..$ taxonRank     : chr "MX.variety"</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt;   ..$ cursiveName   : logi TRUE</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt;   ..$ finnish       : logi TRUE</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt;   ..$ species       : logi TRUE</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt;   .. [list output truncated]</span></a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt;  $ :List of 12</span></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt;   ..$ matchingName            : chr "Betula pendula var. carelica"</span></a>
+<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt;   ..$ nameType                : chr "MX.scientificName"</span></a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt;   ..$ id                      : chr "MX.37997"</span></a>
+<a class="sourceLine" id="cb9-18" data-line-number="18"><span class="co">#&gt;   ..$ scientificName          : chr "Betula pendula var. carelica"</span></a>
+<a class="sourceLine" id="cb9-19" data-line-number="19"><span class="co">#&gt;   ..$ scientificNameAuthorship: chr "(Merckl.) Hämet-Ahti"</span></a>
+<a class="sourceLine" id="cb9-20" data-line-number="20"><span class="co">#&gt;   ..$ taxonRank               : chr "MX.variety"</span></a>
+<a class="sourceLine" id="cb9-21" data-line-number="21"><span class="co">#&gt;   ..$ cursiveName             : logi TRUE</span></a>
+<a class="sourceLine" id="cb9-22" data-line-number="22"><span class="co">#&gt;   ..$ finnish                 : logi TRUE</span></a>
+<a class="sourceLine" id="cb9-23" data-line-number="23"><span class="co">#&gt;   .. [list output truncated]</span></a></code></pre></div>
 </div>
-<div id="getting-occurrence-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#getting-occurrence-data" class="anchor"></a>Getting occurrence data</h3>
+<div id="getting-occurrence-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-occurrence-data" class="anchor"></a>Getting occurrence data</h2>
 <p>Download occurrence data from the FinBIF database.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>, <span class="dt">n =</span> <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Downloading page 1</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; Records downloaded: 100</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; Records available: 54586</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; A data.frame [100 x 27]</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt;    scientific_name taxon_rank abundance country            province</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 1    Cygnus cygnus    species         1   Suomi Varsinais-Suomi (V)</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 2    Cygnus cygnus    species         1   Suomi     Etelä-Savo (ES)</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 3    Cygnus cygnus    species         1   Suomi     Etelä-Savo (ES)</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 4    Cygnus cygnus    species         1   Suomi      Satakunta (St)</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 5    Cygnus cygnus    species         1   Suomi   Pohjois-Häme (PH)</span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 6    Cygnus cygnus    species         1   Suomi Varsinais-Suomi (V)</span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; 7    Cygnus cygnus    species         1   Suomi      Satakunta (St)</span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; 8    Cygnus cygnus    species         1   Suomi      Satakunta (St)</span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; 9    Cygnus cygnus    species         1   Suomi  Etelä-Karjala (EK)</span></a>
-<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; 10   Cygnus cygnus    species         1   Suomi      Satakunta (St)</span></a>
-<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt;    municipality lat_wgs84 lon_wgs84</span></a>
-<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt; 1    Taivassalo  60.56745  21.57191</span></a>
-<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">#&gt; 2    Ruokolahti  61.32290  28.56811</span></a>
-<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">#&gt; 3    Ruokolahti  61.32294  28.56868</span></a>
-<a class="sourceLine" id="cb8-21" data-line-number="21"><span class="co">#&gt; 4         Rauma  61.07692  21.49222</span></a>
-<a class="sourceLine" id="cb8-22" data-line-number="22"><span class="co">#&gt; 5     Jyväskylä  62.25243  25.70933</span></a>
-<a class="sourceLine" id="cb8-23" data-line-number="23"><span class="co">#&gt; 6  Uusikaupunki  60.83907  21.25772</span></a>
-<a class="sourceLine" id="cb8-24" data-line-number="24"><span class="co">#&gt; 7         Rauma  61.12486  21.54164</span></a>
-<a class="sourceLine" id="cb8-25" data-line-number="25"><span class="co">#&gt; 8    Hämeenkyrö  61.63413  22.90005</span></a>
-<a class="sourceLine" id="cb8-26" data-line-number="26"><span class="co">#&gt; 9         Kotka  60.46200  26.94900</span></a>
-<a class="sourceLine" id="cb8-27" data-line-number="27"><span class="co">#&gt; 10    Honkajoki  61.99900  22.16100</span></a>
-<a class="sourceLine" id="cb8-28" data-line-number="28"><span class="co">#&gt; ...with 90 more records and 19 more fields:</span></a>
-<a class="sourceLine" id="cb8-29" data-line-number="29"><span class="co">#&gt; wkt_wgs84, line_length_m, area_m2, date_start, date_end, hour_start, hour_end,</span></a>
-<a class="sourceLine" id="cb8-30" data-line-number="30"><span class="co">#&gt; minutes_start, minutes_end, record_id, event_id, collection_id, is_breeding_site, any_issues,</span></a>
-<a class="sourceLine" id="cb8-31" data-line-number="31"><span class="co">#&gt; record_reliable, taxon_reliability, sex, document_reliablity, coordinate_accuracy,</span></a></code></pre></div>
-</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>, <span class="dt">n =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; Downloading page 1</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; Records downloaded: 100</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; Records available: 54588</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; A data.frame [100 x 27]</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;    scientific_name taxon_rank abundance country            province</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; 1    Cygnus cygnus    species         1   Suomi Varsinais-Suomi (V)</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; 2    Cygnus cygnus    species         1   Suomi     Etelä-Savo (ES)</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; 3    Cygnus cygnus    species         1   Suomi     Etelä-Savo (ES)</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 4    Cygnus cygnus    species         1   Suomi      Satakunta (St)</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; 5    Cygnus cygnus    species         1   Suomi   Pohjois-Häme (PH)</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; 6    Cygnus cygnus    species         1   Suomi Varsinais-Suomi (V)</span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt; 7    Cygnus cygnus    species         1   Suomi      Satakunta (St)</span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt; 8    Cygnus cygnus    species         1   Suomi      Satakunta (St)</span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt; 9    Cygnus cygnus    species         1   Suomi  Etelä-Karjala (EK)</span></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt; 10   Cygnus cygnus    species         1   Suomi      Satakunta (St)</span></a>
+<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt;    municipality lat_wgs84 lon_wgs84</span></a>
+<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt; 1    Taivassalo  60.56745  21.57191</span></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt; 2    Ruokolahti  61.32290  28.56811</span></a>
+<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt; 3    Ruokolahti  61.32294  28.56868</span></a>
+<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt; 4         Rauma  61.07692  21.49222</span></a>
+<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; 5     Jyväskylä  62.25243  25.70933</span></a>
+<a class="sourceLine" id="cb10-23" data-line-number="23"><span class="co">#&gt; 6  Uusikaupunki  60.83907  21.25772</span></a>
+<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="co">#&gt; 7         Rauma  61.12486  21.54164</span></a>
+<a class="sourceLine" id="cb10-25" data-line-number="25"><span class="co">#&gt; 8    Hämeenkyrö  61.63413  22.90005</span></a>
+<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">#&gt; 9         Kotka  60.46200  26.94900</span></a>
+<a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co">#&gt; 10    Honkajoki  61.99900  22.16100</span></a>
+<a class="sourceLine" id="cb10-28" data-line-number="28"><span class="co">#&gt; ...with 90 more records and 19 more fields:</span></a>
+<a class="sourceLine" id="cb10-29" data-line-number="29"><span class="co">#&gt; wkt_wgs84, line_length_m, area_m2, date_start, date_end, hour_start, hour_end,</span></a>
+<a class="sourceLine" id="cb10-30" data-line-number="30"><span class="co">#&gt; minutes_start, minutes_end, record_id, event_id, collection_id, is_breeding_site, any_issues,</span></a>
+<a class="sourceLine" id="cb10-31" data-line-number="31"><span class="co">#&gt; record_reliable, taxon_reliability, sex, document_reliablity, coordinate_accuracy,</span></a></code></pre></div>
 </div>
   </div>
 
@@ -184,7 +207,8 @@
 <li><a href="#installation">Installation</a></li>
       <li><a href="#load-the-finbif-package">Load the finbif package</a></li>
       <li><a href="#getting-a-finbif-access-token">Getting a FinBIF access token</a></li>
-      <li><a href="#using-the-finbif-package">Using the finbif package</a></li>
+      <li><a href="#working-with-taxa">Working with taxa</a></li>
+      <li><a href="#getting-occurrence-data">Getting occurrence data</a></li>
       </ul>
 </div>
       </div>

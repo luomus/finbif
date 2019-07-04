@@ -55,10 +55,7 @@ Sys.setenv(
  [here](https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/)
  for details). 
 
-## Using the finbif package
-
-### Working with taxa
-
+## Working with taxa
 You can check to see if a taxon exists in the FinBIF database.
 ```{r taxon-check}
 finbif_check_taxa("Ursus arctos")
@@ -69,12 +66,27 @@ not in the FinBIF database it is reported as "not found" and for that taxa the
 list element is `NA`.
 ```{r taxon-not-found}
 (taxa <- finbif_check_taxa(c("Ursus arctos", "Moomin")))
-taxa[1]
-taxa[2]
+taxa[[1]]
+taxa[[2]]
 ```
 
-### Getting occurrence data
+You can also specify the taxonomic rank when searching FinBIF and the search 
+will be limited to the specified rank.
+```{r taxon-rank}
+finbif_check_taxa(list(species = c("Ursus arctos", "Ursus"), genus = "Ursus"))
+```
 
+The function `finbif_taxa` can be used for a more general search for taxa in the
+FinBIF database. Searches can be `exact`, `partial` or `likely` (fuzzy 
+matching). Information for a single taxon is returned when using exact or fuzzy
+matching, but multiple taxa, up to a limit, `n`, may be returned when using 
+partial matching. 
+```{r taxon-search}
+birch_search <- finbif_taxa("Betula pendula", 2, "partial")
+str(birch_search$content, max.level = 2, list.len = 8)
+```
+
+## Getting occurrence data
 Download occurrence data from the FinBIF database.
 ```{r occurrence}
 finbif_occurrence("Cygnus cygnus", n = 100)
