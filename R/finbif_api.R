@@ -69,7 +69,9 @@ print.finbif_taxa <- function(x, ...) {
       nm <- ifelse(is.null(nm), "", nm)
       cat(
         sprintf(
-          paste0("[%-", padl, "s"), ifelse(is.null(rank), "", paste0(rank, ": "))
+          paste0(
+            "[%-", padl, "s"), ifelse(is.null(rank), "", paste0(rank, ": ")
+          )
         ),
         sprintf(paste0("%-", padr, "s] "), nm),
         ifelse(is.na(taxon), "Not found\n", sprintf("ID: %s\n", taxon)),
