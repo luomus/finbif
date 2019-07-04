@@ -71,32 +71,23 @@ Download occurrence data from finbif.
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Downloading page 1
 #> Records downloaded: 100
-#> Records available: 54585
+#> Records available: 54588
 #> A data.frame [100 x 27]
-#>    scientific_name taxon_rank abundance country            province
-#> 1    Cygnus cygnus    species         1   Suomi Varsinais-Suomi (V)
-#> 2    Cygnus cygnus    species         1   Suomi     Etelä-Savo (ES)
-#> 3    Cygnus cygnus    species         1   Suomi     Etelä-Savo (ES)
-#> 4    Cygnus cygnus    species         1   Suomi      Satakunta (St)
-#> 5    Cygnus cygnus    species         1   Suomi   Pohjois-Häme (PH)
-#> 6    Cygnus cygnus    species         1   Suomi Varsinais-Suomi (V)
-#> 7    Cygnus cygnus    species         1   Suomi      Satakunta (St)
-#> 8    Cygnus cygnus    species         1   Suomi      Satakunta (St)
-#> 9    Cygnus cygnus    species         1   Suomi  Etelä-Karjala (EK)
-#> 10   Cygnus cygnus    species         1   Suomi      Satakunta (St)
-#>    municipality lat_wgs84 lon_wgs84
-#> 1    Taivassalo  60.56745  21.57191
-#> 2    Ruokolahti  61.32290  28.56811
-#> 3    Ruokolahti  61.32294  28.56868
-#> 4         Rauma  61.07692  21.49222
-#> 5     Jyväskylä  62.25243  25.70933
-#> 6  Uusikaupunki  60.83907  21.25772
-#> 7         Rauma  61.12486  21.54164
-#> 8    Hämeenkyrö  61.63413  22.90005
-#> 9         Kotka  60.46200  26.94900
-#> 10    Honkajoki  61.99900  22.16100
-#> ...with 90 more records and 19 more fields:
-#> wkt_wgs84, line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
-#> minutes_start, minutes_end, record_id, event_id, collection_id, is_breeding_site, any_issues,
-#> record_reliable, taxon_reliability, sex, document_reliablity, coordinate_accuracy,
+#>    scientific_name abundance lat_wgs84 lon_wgs84 date_start
+#> 1    Cygnus cygnus         1  60.56745  21.57191 2019-06-30
+#> 2    Cygnus cygnus         1  61.32290  28.56811 2019-05-09
+#> 3    Cygnus cygnus         1  61.32294  28.56868 2019-05-10
+#> 4    Cygnus cygnus         1  61.07692  21.49222 2019-05-16
+#> 5    Cygnus cygnus         1  62.25243  25.70933 2019-05-16
+#> 6    Cygnus cygnus         1  60.83907  21.25772 2019-05-16
+#> 7    Cygnus cygnus         1  61.12486  21.54164 2019-05-21
+#> 8    Cygnus cygnus         1  61.63413  22.90005 2019-05-19
+#> 9    Cygnus cygnus         1  60.46200  26.94900 2019-05-11
+#> 10   Cygnus cygnus         1  61.99900  22.16100 2019-05-11
+#> ...with 90 more records and 22 more fields:
+#> taxon_rank, country, province, municipality, wkt_wgs84,
+#> line_length_m, area_m2, date_end, hour_start, hour_end,
+#> minutes_start, minutes_end, record_id, event_id, collection_id,
+#> is_breeding_site, any_issues, record_reliable, taxon_reliability, sex,
+#> document_reliablity, coordinate_accuracy,
 ```

@@ -18,19 +18,19 @@ biodiversity data from multiple sources in a single open access portal for
 researchers, citizen scientists, industry and government. The `finbif` R
 package provides access to the FinBIF API directly from within R.
 
-## Installation
+## Installing the finbif package
 You can install the development version of finbif from
 [Bitbucket](https://bitbucket.org) with:
 ```{r install, eval=FALSE}
 install.packages("remotes")
 remotes::install_bitbucket("luomus/finbif")
 ```
-or,
+or from [GitHub](https://github.com),
 ```{r install_gh, eval = FALSE}
 remotes::install_github("wkmor1/finbif")
 ```
 
-## Load the finbif package
+## Loading the finbif package
 ```{r setup}
 library(finbif)
 ```
@@ -87,7 +87,18 @@ str(birch_search$content, max.level = 2, list.len = 8)
 ```
 
 ## Getting occurrence data
-Download occurrence data from the FinBIF database.
+You can download occurrence data from the FinBIF database as a `data.frame` with 
+the `finbif_occurrence` function.
 ```{r occurrence}
 finbif_occurrence("Cygnus cygnus", n = 100)
+```
+
+You can search for multiple taxa at once and filter the records with the 
+`filter` argument.
+```{r occurrence2}
+finbif_occurrence(
+  "Cygnus cygnus", 
+  "Cygnus olor",
+  filters = list(coordinateAccuracyMax = 100)
+)
 ```
