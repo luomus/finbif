@@ -58,7 +58,7 @@ print.finbif_api_list <- function(x, ...) {
 print.finbif_taxa <- function(x, ...) {
   ranks <- names(x)
   nms   <- names(unlist(unname(x)))
-  padl  <- if (is.null(ranks)) 0L else max(nchar(ranks)) + 1L
+  padl  <- if (is.null(ranks)) 0L else max(nchar(ranks)) + 2L
   padr  <- if (is.null(nms)) 0L else max(nchar(nms))
   unlist
   for (i in seq_along(x)) {
@@ -68,9 +68,12 @@ print.finbif_taxa <- function(x, ...) {
       nm <- names(taxon)
       nm <- ifelse(is.null(nm), "", nm)
       cat(
-        sprintf(paste0("[%-", padl, "s"), paste0(rank, ":")),
-        sprintf(paste0("%-", padr, "s]"), nm),
-        ifelse(is.na(taxon), "Not found\n", sprintf("ID: %s\n", taxon))
+        sprintf(
+          paste0("[%-", padl, "s"), ifelse(is.null(rank), "", paste0(rank, ": "))
+        ),
+        sprintf(paste0("%-", padr, "s] "), nm),
+        ifelse(is.na(taxon), "Not found\n", sprintf("ID: %s\n", taxon)),
+        sep = ""
       )
     }
   }
@@ -115,5 +118,6 @@ print.finbif_occ <- function(x, ...) {
 }
 
 # Utils ------------------------------------------------------------------------
+
 #' @noRd
 reduce_merge <- function(df) Reduce(function(x, y) merge(x, y, all = TRUE), df)
