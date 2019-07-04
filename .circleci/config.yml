@@ -19,7 +19,7 @@ jobs:
             R -e "install.packages('goodpractice', dependencies = TRUE)"
             R -e "install.packages('DT', dependencies = TRUE)"
             R -e "install.packages('vcr', dependencies = TRUE)"
-            R -e "tinytex::tlmgr_install('tools'); tinytex::tlmgr_update()"
+            R -e " tinytex::tlmgr_update(); tinytex::tlmgr_install('tools')"
       - run:
           no_output_timeout: 30m
           command: |
