@@ -9,7 +9,8 @@ finbif_taxa(name, n = 1, type = c("exact", "partial", "likely"))
 \arguments{
 \item{name}{Character. The name of a taxon to search for.}
 
-\item{n}{Integer. Maximum number of matches to return.}
+\item{n}{Integer. Maximum number of matches to return. For types "exact" and
+"likely" a maximum of one taxon will be returned.}
 
 \item{type}{Character. Type of match to make. Must be one of \code{exact},
 \code{partial} or \code{likely}.}

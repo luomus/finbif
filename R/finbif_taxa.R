@@ -3,7 +3,8 @@
 #' Search the FinBIF database for taxon.
 #'
 #' @param name Character. The name of a taxon to search for.
-#' @param n Integer. Maximum number of matches to return.
+#' @param n Integer. Maximum number of matches to return. For types "exact" and
+#'   "likely" a maximum of one taxon will be returned.
 #' @param type Character. Type of match to make. Must be one of `exact`,
 #'   `partial` or `likely`.
 #' @return A `finbif_api` object.
