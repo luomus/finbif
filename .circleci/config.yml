@@ -19,7 +19,7 @@ jobs:
             R -e "install.packages('goodpractice', dependencies = TRUE)"
             R -e "install.packages('DT', dependencies = TRUE)"
             R -e "install.packages('vcr', dependencies = TRUE)"
-            R -e "tinytex::tlmgr_update(); tinytex::tlmgr_install(c('graphics', 'graphics-def', 'hyperref', 'ifxetex', 'oberdiek', 'tools', 'url', 'xkeyval'))"
+            R -e "tinytex::tlmgr_update(); tinytex::tlmgr_install(c('graphics', 'graphics-def', 'hyperref', 'ifxetex', 'inconsolata', 'oberdiek', 'tools', 'url', 'xkeyval'))"
       - run:
           no_output_timeout: 30m
           command: |
