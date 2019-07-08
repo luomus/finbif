@@ -25,6 +25,7 @@ test_that(
       "finbif_occurrence", {
         resp1 <- finbif_occurrence(taxa = "Parus major")
         resp2 <- finbif_occurrence(species = "Parus major")
+        resp3 <- finbif_occurrence(species = "Parus major", check_taxa = FALSE)
       },
       preserve_exact_body_bytes = TRUE
     )

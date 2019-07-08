@@ -5,6 +5,9 @@
 #' @param ... Character vectors or list of character vectors. Taxa of records
 #'   to download.
 #' @inheritParams finbif_records
+#' @param check_taxa Logical. Check first that taxa are in the FinBIF database.
+#'   If true only records that match known taxa (have a valid taxon ID) are
+#'   returned.
 #' @return A `data.frame`.
 #' @examples \dontrun{
 #'
@@ -27,18 +30,29 @@
 #' @importFrom utils hasName
 #' @export
 
-finbif_occurrence <- function(..., filters = NULL, fields, n = 10, page = 1) {
+finbif_occurrence <- function(..., filters = NULL, fields, n = 10, page = 1,
+  check_taxa = TRUE) {
+
   taxa <- list(...)
-  taxa <- if (...length() > 1L || !utils::hasName(taxa, "taxa")) {
-    finbif_check_taxa(taxa)
+
+  if (check_taxa) {
+    taxa <- if (...length() > 1L || !utils::hasName(taxa, "taxa")) {
+      finbif_check_taxa(taxa)
+    } else {
+      finbif_check_taxa(...)
+    }
+    taxa <- list(taxonId = paste(unlist(taxa), collapse = ","))
   } else {
-    finbif_check_taxa(...)
+    taxa <- list(target = paste(unlist(taxa), collapse = ","))
   }
-  taxa <- list(taxonId = paste(unlist(taxa), collapse = ","))
+
   filters <- c(taxa, filters)
+
   records <- finbif_records(filters, fields, n, page)
+
   df <- as.data.frame(records)
   df <- df[intersect(row.names(field_translations), names(df))]
+
   structure(
     df,
     names     = field_translations[names(df), "translated_field"],

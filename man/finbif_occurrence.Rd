@@ -4,7 +4,8 @@
 \alias{finbif_occurrence}
 \title{Download FinBIF occurrence records}
 \usage{
-finbif_occurrence(..., filters = NULL, fields, n = 10, page = 1)
+finbif_occurrence(..., filters = NULL, fields, n = 10, page = 1,
+  check_taxa = TRUE)
 }
 \arguments{
 \item{...}{Character vectors or list of character vectors. Taxa of records
@@ -17,6 +18,10 @@ to download.}
 \item{n}{Integer. How many records to download.}
 
 \item{page}{Integer. Which page of records to start downloading from.}
+
+\item{check_taxa}{Logical. Check first that taxa are in the FinBIF database.
+If true only records that match known taxa (have a valid taxon ID) are
+returned.}
 }
 \value{
 A \code{data.frame}.
