@@ -4,7 +4,7 @@
 \alias{finbif_records}
 \title{Get FinBIF records}
 \usage{
-finbif_records(filters = NULL, fields, n = 10, page = 1)
+finbif_records(filters, fields, n = 10, page = 1)
 }
 \arguments{
 \item{filters}{List of named character vectors. Filters to apply to records.}

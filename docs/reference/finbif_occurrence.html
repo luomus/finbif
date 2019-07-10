@@ -125,7 +125,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>finbif_occurrence</span>(<span class='no'>...</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>finbif_occurrence</span>(<span class='no'>...</span>, <span class='no'>filters</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +151,12 @@ to download.</p></td>
     <tr>
       <th>page</th>
       <td><p>Integer. Which page of records to start downloading from.</p></td>
+    </tr>
+    <tr>
+      <th>check_taxa</th>
+      <td><p>Logical. Check first that taxa are in the FinBIF database.
+If true only records that match known taxa (have a valid taxon ID) are
+returned.</p></td>
     </tr>
     </table>
     

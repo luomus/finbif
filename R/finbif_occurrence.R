@@ -30,7 +30,7 @@
 #' @importFrom utils hasName
 #' @export
 
-finbif_occurrence <- function(..., filters = NULL, fields, n = 10, page = 1,
+finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
   check_taxa = TRUE) {
 
   taxa <- list(...)
@@ -41,11 +41,12 @@ finbif_occurrence <- function(..., filters = NULL, fields, n = 10, page = 1,
     } else {
       finbif_check_taxa(...)
     }
-    taxa <- list(taxonId = paste(unlist(taxa), collapse = ","))
+    taxa <- list(taxon_id = paste(unlist(taxa), collapse = ","))
   } else {
-    taxa <- list(target = paste(unlist(taxa), collapse = ","))
+    taxa <- list(taxon_name = paste(unlist(taxa), collapse = ","))
   }
 
+  if (missing(filters)) filters <- NULL
   filters <- c(taxa, filters)
 
   records <- finbif_records(filters, fields, n, page)

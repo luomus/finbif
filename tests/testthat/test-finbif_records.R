@@ -6,6 +6,8 @@ test_that(
       "finbif_records", {
         resp_list_n1 <- finbif_records(n = 1)
         resp_list_n101 <- finbif_records(n = 101)
+        resp_list_filters <- finbif_records(filters = c(finnish = TRUE))
+        resp_list_fields <- finbif_records(fields = "record_id")
       },
       preserve_exact_body_bytes = TRUE
     )
@@ -13,6 +15,13 @@ test_that(
     expect_s3_class(resp_list_n1[[1]], "finbif_api")
     expect_s3_class(resp_list_n101[[1]], "finbif_api")
     expect_s3_class(resp_list_n101[[2]], "finbif_api")
+    expect_s3_class(resp_list_fields[[1]], "finbif_api")
+    expect_s3_class(resp_list_filters[[1]], "finbif_api")
     expect_error(finbif_records(n = 1e99), "Cannot download more than")
+    expect_error(
+      finbif_records(filters = c(not_a_filter = TRUE)), "Invalid filter name"
+    )
+    expect_error(finbif_records(fields = "not_a_field"), "Invalid field name")
+
   }
 )

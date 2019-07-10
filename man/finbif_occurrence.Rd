@@ -4,7 +4,7 @@
 \alias{finbif_occurrence}
 \title{Download FinBIF occurrence records}
 \usage{
-finbif_occurrence(..., filters = NULL, fields, n = 10, page = 1,
+finbif_occurrence(..., filters, fields, n = 10, page = 1,
   check_taxa = TRUE)
 }
 \arguments{
