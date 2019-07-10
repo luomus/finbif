@@ -125,7 +125,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>finbif_records</span>(<span class='no'>filters</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>finbif_records</span>(<span class='no'>filters</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,11 +146,15 @@
       <th>page</th>
       <td><p>Integer. Which page of records to start downloading from.</p></td>
     </tr>
+    <tr>
+      <th>count_only</th>
+      <td><p>Logical. Only return the number of records available.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>finbif_api</code> object.</p>
+    <p>A <code>finbif_api</code> or <code>finbif_api_list</code> object.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

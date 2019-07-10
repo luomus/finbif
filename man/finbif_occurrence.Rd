@@ -5,7 +5,7 @@
 \title{Download FinBIF occurrence records}
 \usage{
 finbif_occurrence(..., filters, fields, n = 10, page = 1,
-  check_taxa = TRUE)
+  count_only = FALSE, check_taxa = TRUE)
 }
 \arguments{
 \item{...}{Character vectors or list of character vectors. Taxa of records
@@ -19,12 +19,14 @@ to download.}
 
 \item{page}{Integer. Which page of records to start downloading from.}
 
+\item{count_only}{Logical. Only return the number of records available.}
+
 \item{check_taxa}{Logical. Check first that taxa are in the FinBIF database.
 If true only records that match known taxa (have a valid taxon ID) are
 returned.}
 }
 \value{
-A \code{data.frame}.
+A \code{data.frame}. If \code{count_only =  TRUE} an integer.
 }
 \description{
 Download filtered occurrence data from FinBIF as a \code{data.frame}.

@@ -8,6 +8,7 @@ test_that(
         resp_list_n101 <- finbif_records(n = 101)
         resp_list_filters <- finbif_records(filters = c(finnish = TRUE))
         resp_list_fields <- finbif_records(fields = "record_id")
+        resp_count <- finbif_records(count_only = TRUE)
       },
       preserve_exact_body_bytes = TRUE
     )
@@ -28,6 +29,7 @@ test_that(
         resp1 <- finbif_occurrence(taxa = "Parus major")
         resp2 <- finbif_occurrence(species = "Parus major")
         resp3 <- finbif_occurrence(species = "Parus major", check_taxa = FALSE)
+        resp4 <- finbif_occurrence(taxa = "Parus major", count_only = TRUE)
       },
       preserve_exact_body_bytes = TRUE
     )

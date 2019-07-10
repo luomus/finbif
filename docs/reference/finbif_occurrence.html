@@ -126,7 +126,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>finbif_occurrence</span>(<span class='no'>...</span>, <span class='no'>filters</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,6 +153,10 @@ to download.</p></td>
       <td><p>Integer. Which page of records to start downloading from.</p></td>
     </tr>
     <tr>
+      <th>count_only</th>
+      <td><p>Logical. Only return the number of records available.</p></td>
+    </tr>
+    <tr>
       <th>check_taxa</th>
       <td><p>Logical. Check first that taxa are in the FinBIF database.
 If true only records that match known taxa (have a valid taxon ID) are
@@ -162,7 +166,7 @@ returned.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>data.frame</code>.</p>
+    <p>A <code>data.frame</code>. If <code>count_only =  TRUE</code> an integer.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

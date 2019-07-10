@@ -6,7 +6,8 @@
 #' @param fields Character vector. Columns to return.
 #' @param n Integer. How many records to download.
 #' @param page Integer. Which page of records to start downloading from.
-#' @return A `finbif_api` object.
+#' @param count_only Logical. Only return the number of records available.
+#' @return A `finbif_api` or `finbif_api_list` object.
 #' @examples \dontrun{
 #'
 #' # Get the last 100 records from FinBIF
@@ -14,8 +15,10 @@
 #' }
 #' @export
 
-finbif_records <- function(filters, fields, n = 10, page = 1) {
-  path <- "v0/warehouse/query/list"
+finbif_records <- function(filters, fields, n = 10, page = 1,
+  count_only = FALSE) {
+
+  path <- "v0/warehouse/query/"
 
   max_queries  <- 10L
   max_size <- 100L
@@ -23,9 +26,9 @@ finbif_records <- function(filters, fields, n = 10, page = 1) {
   if (n > nmax) stop("Cannot download more than ", nmax, " records")
 
   if (missing(filters)) {
-    filters <- NULL
+    query <- list()
   } else {
-    filters <- translate_filters(as.list(filters))
+    query <- translate_filters(as.list(filters))
   }
 
   if (missing(fields)) {
@@ -36,16 +39,20 @@ finbif_records <- function(filters, fields, n = 10, page = 1) {
     fields <- translate_fields(fields)
   }
 
-  fields <- paste(fields, collapse = ",")
+  query[["selected"]] <- paste(fields, collapse = ",")
 
-  query <- c(
-    list(
-      page     = page,
-      pageSize = min(n, max_size),
-      selected = fields
-    ),
-    filters
-  )
+  if (count_only) {
+
+    path <- paste0(path, "count")
+    return(finbif_api_get(path, query))
+
+  } else {
+
+    path <- paste0(path, "list")
+    query[["page"]] <- page
+    query[["pageSize"]] <- min(n, max_size)
+
+  }
 
   resp <- list()
   i <- 1L

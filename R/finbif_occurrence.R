@@ -8,7 +8,7 @@
 #' @param check_taxa Logical. Check first that taxa are in the FinBIF database.
 #'   If true only records that match known taxa (have a valid taxon ID) are
 #'   returned.
-#' @return A `data.frame`.
+#' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
 #' # Get recent occurrence data for taxon
@@ -31,7 +31,7 @@
 #' @export
 
 finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
-  check_taxa = TRUE) {
+  count_only = FALSE, check_taxa = TRUE) {
 
   taxa <- list(...)
 
@@ -49,7 +49,9 @@ finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
   if (missing(filters)) filters <- NULL
   filters <- c(taxa, filters)
 
-  records <- finbif_records(filters, fields, n, page)
+  records <- finbif_records(filters, fields, n, page, count_only)
+
+  if (count_only) return(records[["content"]][["total"]])
 
   df <- as.data.frame(records)
   df <- df[intersect(row.names(field_translations), names(df))]

@@ -4,7 +4,7 @@
 \alias{finbif_records}
 \title{Get FinBIF records}
 \usage{
-finbif_records(filters, fields, n = 10, page = 1)
+finbif_records(filters, fields, n = 10, page = 1, count_only = FALSE)
 }
 \arguments{
 \item{filters}{List of named character vectors. Filters to apply to records.}
@@ -14,9 +14,11 @@ finbif_records(filters, fields, n = 10, page = 1)
 \item{n}{Integer. How many records to download.}
 
 \item{page}{Integer. Which page of records to start downloading from.}
+
+\item{count_only}{Logical. Only return the number of records available.}
 }
 \value{
-A \code{finbif_api} object.
+A \code{finbif_api} or \code{finbif_api_list} object.
 }
 \description{
 Download records from FinBIF.
