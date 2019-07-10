@@ -39,5 +39,6 @@ test_that(
     expect_s3_class(as.data.frame(resp_list_n101), "data.frame")
     expect_output(print(resp_list_sp_true), "species: Parus major")
     expect_output(print(resp1), "Records downloaded:")
+    expect_output(print(resp1[c("scientific_name", "taxon_rank")]), "A data")
   }
 )
