@@ -90,17 +90,21 @@ print.finbif_occ <- function(x, ...) {
   nrec_avl  <- attr(x, "nrec_avl")
   ncols     <- ncol(x)
   nrows     <- nrow(x)
-  dsply_nr  <- min(10, nrows)
-  dsply_nc  <- min(5, ncols)
+  dsply_nr  <- min(10L, nrows)
+  dsply_nc  <- min(5L, ncols)
+
   if (length(nrec_dnld)) cat("Records downloaded: ", nrec_dnld, "\n", sep = "")
   if (length(nrec_avl)) cat("Records available: ", nrec_avl, "\n", sep = "")
   cat("A data.frame [", nrows, " x ", ncols, "]\n", sep = "")
+
   dsply_cols <- c(
     "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_start"
   )
   dsply_cols <- which(names(x) %in% dsply_cols)
   dsply_cols <- utils::head(union(dsply_cols, seq_len(dsply_nc)), dsply_nc)
+
   df <- x[seq_len(dsply_nr), dsply_cols, drop = FALSE]
+
   for (i in names(df)) {
     type <- field_translations[
       field_translations[["translated_field"]] == i, "type"
@@ -109,17 +113,27 @@ print.finbif_occ <- function(x, ...) {
       df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/[A-Z]{2}\\.", "", df[[i]])
     }
   }
+
   print.data.frame(df)
+
   extra_rows <- nrows - dsply_nr
   extra_cols <- ncols - dsply_nc
-  if (extra_rows == 0 && extra_cols == 0) return(invisible(x))
-  cat("...with ", nrows - dsply_nr, " more records", sep = "")
-  if (extra_cols == 0) {
+
+  if (extra_rows == 0L && extra_cols == 0L) return(invisible(x))
+  cat(
+    "...with ", extra_rows, " more record", ifelse(extra_rows == 1L, "", "s"),
+    sep = ""
+  )
+
+  if (extra_cols == 0L) {
     cat("\n")
     return(invisible(x))
   }
-  cat(" and ", ncols - dsply_nc, " more fields:\n", sep = "")
 
+  cat(
+    " and ", extra_cols, " more field", ifelse(extra_cols == 1L, "", "s"),
+    ":\n", sep = ""
+  )
 
   i <- 1L
   extra_names <- names(x)[-dsply_cols]
