@@ -46,7 +46,7 @@ finbif_occurrence("Cygnus cygnus", "Ursus arctos")
 # Filter the record
 finbif_occurrence(
   species = "Cygnus cygnus",
-  filters = list(coordinateAccuracyMax = 100))
+  filters = list(coordinate_accuracy_max = 100))
 )
 
 }
