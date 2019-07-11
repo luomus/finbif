@@ -21,7 +21,7 @@ filter_translations <- read.csv(text = "
   biogeographicalProvinceId, province, uri
   area, locality, character
   birdAssociationAreaId, bird_assoc_area, uri
-  namedPlaceId, location, uri
+  namedPlaceId, place_name_id, uri
   formId, form_id, uri
   time, date_range_ymd, date
   yearMonth, date_range_ym, date
