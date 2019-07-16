@@ -87,3 +87,13 @@ filter_translations <- read.csv(text = "
   gatheringFact, event_fact, character
   documentFact, document_fact, character
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L)
+
+filters <- names(
+  finbif:::finbif_api_get("v0/warehouse/filters", list())$content
+)
+
+stopifnot(
+  identical(
+    sort(row.names(filter_translations)), sort(filters)
+  )
+)
