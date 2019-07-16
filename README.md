@@ -92,3 +92,9 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 #> record_reliable, taxon_reliability, sex,
 #> document_reliablity, coordinate_accuracy
 ```
+
+-----
+
+Please note that the ‘finbif’ project is released with a [Contributor
+Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
+you agree to abide by its terms.
