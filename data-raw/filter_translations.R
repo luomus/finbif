@@ -1,7 +1,7 @@
 filter_translations <- read.csv(text = "
   finbif_api_filter, translated_filter, type
   taxonId, taxon_id, uri
-  useIdentificationAnnotations, original_id, logical
+  useIdentificationAnnotations, quality_controlled_det, logical
   includeSubTaxa, subtaxa, logical
   target, taxon_name, character
   includeNonValidTaxa, invalid_taxa, logical
