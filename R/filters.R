@@ -1,0 +1,113 @@
+#' Filtering FinBIF records
+#'
+#' Filters available for FinBIF records and occurrence data.
+#'
+#' @section Taxa:
+#' Filters related to taxa include:
+#'
+#' - `taxon_id` Character.
+#'   A FinBIF taxon ID. The functions [finbif_check_taxa()] and [finbif_taxa()]
+#'   can be used to search for taxon IDs.
+#' - `taxon_name` Character.
+#'    Filter based on taxon name (scientific or common) rather than ID. If the
+#'    specified taxa are not found in the FinBIF taxanomy then matches are
+#'    attempted with the occurrence record names as orginally supplied verbatim.
+#' - `quality_controlled_det` Logical.
+#'    If `TRUE` use quality controlled taxonomic determinations, or `FALSE`
+#'    use the orgininally recorded taxonomic determinations.
+#' - `subtaxa` Logical. `TRUE`
+#' - `invalid_taxa` Logical.
+#' - `informal_group` Character.
+#' - `informal_group_reported` Character.
+#' - `administrative_status` Character.
+#' - `redlist_status` Character.
+#' - `primary_habitat` Character.
+#' - `primary_secondary_habitat` Character.
+#' - `finnish`. Logical.
+#' - `invasive`. Logical
+#' - `taxon_rank`. Character.
+#'
+#' @section Location:
+#' Filters related to location of record include:
+#'
+#' - `country` Character.
+#' - `municipality` Character.
+#' - `province` Character.
+#' - `locality` Character.
+#' - `bird_assoc_area` Character.
+#' - `place_name_id` Character.
+#' - `coordinates_area` Coordinates.
+#' - `coordinates_center` Coordinates.
+#' - `coordinates_cell_*k` Coordinates.
+#' - `coordinates_cell_*k_center` Coordinates.
+#' - `coordinate_source` Character.
+#'
+#' @section Time:
+#' Filters related to time of record include:
+#'
+#' - `date_range_ymd` Date.
+#' - `date_range_ym` Date.
+#' - `date_range_d` Date.
+#' - `date_range_md` Date.
+#' - `last_import_date_min` Date.
+#' - `last_import_date_max` Date.
+#' - `first_import_date_min` Date.
+#' - `first_import_date_max` Date.
+#'
+#' @section Quality:
+#' Filters related to quality of record:
+#'
+#' - `collection_reliability` Integer.
+#' - `coordinate_accuracy_max` Integer.
+#' - `quality_issues`. Character.
+#' - `reliable` Logical.
+#' - `taxon_reliability` Character.
+#'
+#' @section Misc:
+#' Other filters:
+#'
+#' - `occurrence_type`, Character.
+#' - `not_occurrence_type` Character.
+#' - `form_id` Character.
+#' - `keywords` Character.
+#' - `collection` Character.
+#' - `not_collection` Character.
+#' - `subcollections` Logical.
+#' - `source` Character.
+#' - `record_basis` Character.
+#' - `super_record_basis` Character.
+#' - `life_stage` Character.
+#' - `sex` Character.
+#' - `invasive_control` Character.
+#' - `invasive_controlled` Logical.
+#' - `event_id` Character.
+#' - `document_id` Character.
+#' - `record_id` Character.
+#' - `individual_id` Character.
+#' - `abundance_min` Integer.
+#' - `abundance_max` Integer.
+#' - `type_specimen` Logical.
+#' - `is_native` Logical.
+#' - `wild_status` Character.
+#' - `is_breeding_location` Logical.
+#' - `has_document_media` Logical.
+#' - `has_event_media` Logical.
+#' - `has_record_media` Logical.
+#' - `has_media` Logical.
+#' - `editor_id` Character.
+#' - `observer_id` Character.
+#' - `editor_or_observer_id` Character.
+#' - `event_observer_name` Character.
+#' - `event_observer_id` Character.
+#' - `secure_reason` Character.
+#' - `secure_level` Character.
+#' - `secure` Logical.
+#' - `annotated` Logical.
+#' - `unidentified` Logical.
+#' - `taxon_census` Character.
+#' - `record_fact` List.
+#' - `event_fact` List.
+#' - `document_fact` List.
+#'
+#' @name filters
+NULL
