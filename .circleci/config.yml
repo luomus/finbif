@@ -17,6 +17,7 @@ jobs:
           command: |
             R -e "devtools::install_deps(dependencies = TRUE)"
             R -e "install.packages('goodpractice', dependencies = TRUE)"
+            R -e "install.packages('lintr', dependencies = TRUE)"
             R -e "install.packages('DT', dependencies = TRUE)"
             R -e "install.packages('vcr', dependencies = TRUE)"
             R -e "tinytex::tlmgr_update(); tinytex::tlmgr_install(c('amsfonts', 'graphics', 'graphics-def', 'hyperref', 'ifxetex', 'inconsolata', 'oberdiek', 'tools', 'url', 'xkeyval'))"
@@ -35,6 +36,7 @@ jobs:
             R -e "devtools::install()"
             R -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))"
             R -e "covr::codecov()"
+            R -e "lintr::lint_package()"
             R CMD Rd2pdf --force --output='/root/main/artifacts/finbif-manual.pdf' .
       - store_artifacts:
           path: /root/main/artifacts/
