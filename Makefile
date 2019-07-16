@@ -5,25 +5,28 @@ RSCRIPT = Rscript --no-init-file
 
 all: check clean
 
-install: build
-	R CMD INSTALL . && rm *.tar.gz
-
-check: build
+check: codemeta
 	cd ..;\
 	R CMD check $(PKGNAME)_$(PKGVERS).tar.gz --as-cran
-
-build: codemeta
-	cd ..;\
-	R CMD build $(PKGSRC)
 
 codemeta: pkgdown
 	${RSCRIPT} -e "codemetar::write_codemeta()"
 
-pkgdown: readme doc
+pkgdown: readme
 	${RSCRIPT} -e "pkgdown::build_site()"
 
-readme:
+readme: vignettes
 	${RSCRIPT} -e "rmarkdown::render('README.Rmd')" && rm README.html
+
+vignettes: install
+  ${RSCRIPT} -e "devtools::build_vignettes()"
+
+install: build
+	R CMD INSTALL .
+
+build: doc
+	cd ..;\
+	R CMD build $(PKGSRC)
 
 doc: sysdata
 	${RSCRIPT} -e "devtools::document()"
