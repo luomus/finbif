@@ -9,3 +9,4 @@
 ^codemeta\.json$
 Makefile
 ^CODE_OF_CONDUCT\.md$
+^CONTRIBUTING\.md$
