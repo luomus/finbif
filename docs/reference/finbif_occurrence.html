@@ -170,24 +170,23 @@ returned.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"># NOT RUN {
-# Get recent occurrence data for taxon
-finbif_occurrence("Cygnus cygnus")
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># Get recent occurrence data for taxon</span>
+<span class='fu'>finbif_occurrence</span>(<span class='st'>"Cygnus cygnus"</span>)
 
-# Specify the number of records
-finbif_occurrence("Cygnus cygnus", n = 100)
+<span class='co'># Specify the number of records</span>
+<span class='fu'>finbif_occurrence</span>(<span class='st'>"Cygnus cygnus"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>100</span>)
 
-# Get multiple taxa
-finbif_occurrence("Cygnus cygnus", "Ursus arctos")
+<span class='co'># Get multiple taxa</span>
+<span class='fu'>finbif_occurrence</span>(<span class='st'>"Cygnus cygnus"</span>, <span class='st'>"Ursus arctos"</span>)
 
-# Filter the record
-finbif_occurrence(
-  species = "Cygnus cygnus",
-  filters = list(coordinateAccuracyMax = 100))
+<span class='co'># Filter the record</span>
+<span class='fu'>finbif_occurrence</span>(
+  <span class='kw'>species</span> <span class='kw'>=</span> <span class='st'>"Cygnus cygnus"</span>,
+  <span class='kw'>filters</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>coordinate_accuracy_max</span> <span class='kw'>=</span> <span class='fl'>100</span>)
 )
 
-# }
-</pre>
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
