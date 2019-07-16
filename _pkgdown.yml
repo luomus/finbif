@@ -20,6 +20,7 @@ reference:
     desc: >
       Getting records from finbif
     contents:
+      - filters
       - finbif_records
       - finbif_occurrence
   - title: "Methods"
