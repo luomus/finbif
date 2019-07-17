@@ -36,6 +36,7 @@ jobs:
             R -e "devtools::install()"
             R -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert=TRUE, value=TRUE))"
             R -e "covr::codecov()"
+            unset CI
             R -e "lintr::lint_package()"
             R CMD Rd2pdf --force --output='/root/main/artifacts/finbif-manual.pdf' .
       - store_artifacts:
