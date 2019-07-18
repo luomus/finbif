@@ -5,19 +5,30 @@
 #' @section Taxa:
 #' Filters related to taxa include:
 #'
-#' - `taxon_id` Character.
-#'   A FinBIF taxon ID. The functions [finbif_check_taxa()] and [finbif_taxa()]
+#' - `taxon_id` Character vector.
+#'   FinBIF taxon IDs. The functions [finbif_check_taxa()] and [finbif_taxa()]
 #'   can be used to search for taxon IDs.
-#' - `taxon_name` Character.
-#'    Filter based on taxon name (scientific or common) rather than ID. If the
-#'    specified taxa are not found in the FinBIF taxanomy then matches are
-#'    attempted with the occurrence record names as orginally supplied verbatim.
+#' - `taxon_name` Character vector.
+#'   Filter based on taxon names (scientific or common) rather than IDs. If the
+#'   specified taxa are not found in the FinBIF taxanomy then matches are
+#'   attempted with the occurrence record names as originally supplied verbatim.
 #' - `quality_controlled_det` Logical.
-#'    If `TRUE` use quality controlled taxonomic determinations, or `FALSE`
-#'    use the orgininally recorded taxonomic determinations.
-#' - `subtaxa` Logical. `TRUE`
+#'   If `TRUE` (default) use quality controlled taxonomic determinations. Or, if
+#'   `FALSE` use the originally recorded taxonomic determinations.
+#' - `subtaxa` Logical.
+#'   If `TRUE` (default) return records of all taxa belonging to the specified
+#'   taxon. Or, if `FALSE` only return records for exact matches to the
+#'   specified taxon (e.g., if a genus is specified do not return records of the
+#'   species belonging to genus only return records with individuals identified
+#'   as that genus only).
 #' - `invalid_taxa` Logical.
-#' - `informal_group` Character.
+#'   If `TRUE` (default) return records that have taxa found in the FinBIF
+#'   taxonomic database. Or, if `FALSE` limit records to only those with taxa
+#'   found in the FinBIF database.
+#' - `informal_group` Character vector.
+#'   Filter by informal taxonomic groups. Use the function
+#'   [finbif_informal_groups()] to see the informal taxonomic groups available
+#'   in FinBIF.
 #' - `informal_group_reported` Character.
 #' - `administrative_status` Character.
 #' - `redlist_status` Character.

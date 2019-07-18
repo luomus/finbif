@@ -130,19 +130,28 @@
 
     
     <p>Filters related to taxa include:</p><ul>
-<li><p><code>taxon_id</code> Character.
-A FinBIF taxon ID. The functions <code><a href='finbif_check_taxa.html'>finbif_check_taxa()</a></code> and <code><a href='finbif_taxa.html'>finbif_taxa()</a></code>
+<li><p><code>taxon_id</code> Character vector.
+FinBIF taxon IDs. The functions <code><a href='finbif_check_taxa.html'>finbif_check_taxa()</a></code> and <code><a href='finbif_taxa.html'>finbif_taxa()</a></code>
 can be used to search for taxon IDs.</p></li>
-<li><p><code>taxon_name</code> Character.
-Filter based on taxon name (scientific or common) rather than ID. If the
+<li><p><code>taxon_name</code> Character vector.
+Filter based on taxon names (scientific or common) rather than IDs. If the
 specified taxa are not found in the FinBIF taxanomy then matches are
-attempted with the occurrence record names as orginally supplied verbatim.</p></li>
+attempted with the occurrence record names as originally supplied verbatim.</p></li>
 <li><p><code>quality_controlled_det</code> Logical.
-If <code>TRUE</code> use quality controlled taxonomic determinations, or <code>FALSE</code>
-use the orgininally recorded taxonomic determinations.</p></li>
-<li><p><code>subtaxa</code> Logical. <code>TRUE</code></p></li>
-<li><p><code>invalid_taxa</code> Logical.</p></li>
-<li><p><code>informal_group</code> Character.</p></li>
+If <code>TRUE</code> (default) use quality controlled taxonomic determinations. Or, if
+<code>FALSE</code> use the originally recorded taxonomic determinations.</p></li>
+<li><p><code>subtaxa</code> Logical.
+If <code>TRUE</code> (default) return records of all taxa belonging to the specified
+taxon. Or, if <code>FALSE</code> only return records for exact matches to the
+specified taxon (e.g., if a genus is specified do not return records of the
+species belonging to genus only return records with individuals identified
+as that genus only).</p></li>
+<li><p><code>invalid_taxa</code> Logical.
+If <code>TRUE</code> (default) return records that have taxa found in the FinBIF
+taxonomic database. Or, if <code>FALSE</code> limit records to only those with taxa
+found in the FinBIF database.</p></li>
+<li><p><code>informal_group</code> Character.
+Anformal taxonomic group.</p></li>
 <li><p><code>informal_group_reported</code> Character.</p></li>
 <li><p><code>administrative_status</code> Character.</p></li>
 <li><p><code>redlist_status</code> Character.</p></li>

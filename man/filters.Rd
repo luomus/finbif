@@ -10,19 +10,30 @@ Filters available for FinBIF records and occurrence data.
 
 Filters related to taxa include:
 \itemize{
-\item \code{taxon_id} Character.
-A FinBIF taxon ID. The functions \code{\link[=finbif_check_taxa]{finbif_check_taxa()}} and \code{\link[=finbif_taxa]{finbif_taxa()}}
+\item \code{taxon_id} Character vector.
+FinBIF taxon IDs. The functions \code{\link[=finbif_check_taxa]{finbif_check_taxa()}} and \code{\link[=finbif_taxa]{finbif_taxa()}}
 can be used to search for taxon IDs.
-\item \code{taxon_name} Character.
-Filter based on taxon name (scientific or common) rather than ID. If the
+\item \code{taxon_name} Character vector.
+Filter based on taxon names (scientific or common) rather than IDs. If the
 specified taxa are not found in the FinBIF taxanomy then matches are
-attempted with the occurrence record names as orginally supplied verbatim.
+attempted with the occurrence record names as originally supplied verbatim.
 \item \code{quality_controlled_det} Logical.
-If \code{TRUE} use quality controlled taxonomic determinations, or \code{FALSE}
-use the orgininally recorded taxonomic determinations.
-\item \code{subtaxa} Logical. \code{TRUE}
+If \code{TRUE} (default) use quality controlled taxonomic determinations. Or, if
+\code{FALSE} use the originally recorded taxonomic determinations.
+\item \code{subtaxa} Logical.
+If \code{TRUE} (default) return records of all taxa belonging to the specified
+taxon. Or, if \code{FALSE} only return records for exact matches to the
+specified taxon (e.g., if a genus is specified do not return records of the
+species belonging to genus only return records with individuals identified
+as that genus only).
 \item \code{invalid_taxa} Logical.
-\item \code{informal_group} Character.
+If \code{TRUE} (default) return records that have taxa found in the FinBIF
+taxonomic database. Or, if \code{FALSE} limit records to only those with taxa
+found in the FinBIF database.
+\item \code{informal_group} Character vector.
+Filter by informal taxonomic groups. Use the function
+\code{\link[=finbif_informal_groups]{finbif_informal_groups()}} to see the informal taxonomic groups available
+in FinBIF.
 \item \code{informal_group_reported} Character.
 \item \code{administrative_status} Character.
 \item \code{redlist_status} Character.
