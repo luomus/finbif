@@ -1,0 +1,35 @@
+#' FinBIF informal groups
+#'
+#' Display the informal taxanomic groups used in the FinBIF database.
+#'
+#' @param group Character. Optional, if supplied only display this group and
+#'  its subgroups.
+#' @param limit Integer. The maximum number informal groups to display.
+#' @param quiet Logical. Return informal group names without displaying them.
+#' @return A character vector (invisibly).
+#' @examples \dontrun{
+#'
+#' # Display the informal taxonomic groups used by FinBIF
+#' finbif_informal_groups()
+#' }
+#' @export
+finbif_informal_groups <- function(group, limit = 50, quiet = FALSE) {
+  df <- informal_groups
+  if (!missing(group)) {
+    stopifnot(group %in% df[["name"]])
+    begin <- which(df[["name"]] == group)
+    lvl <- regexpr("\\w", df[["tree"]])
+    end <- which(lvl == lvl[begin] & seq_along(lvl) > begin)[1L] - 1L
+    df  <- df[seq.int(begin, end), ]
+  }
+  n <- nrow(df)
+  limit <- min(limit, n)
+  if (!quiet) {
+    cat(df[["tree"]][seq_len(limit)], sep = "\n")
+    extra <- n - limit
+    if (extra > 0) {
+      cat("...", extra, " more group", ifelse(extra == 1, "", "s"), "\n")
+    }
+  }
+  invisible(df[["name"]])
+}
