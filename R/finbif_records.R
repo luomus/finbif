@@ -90,4 +90,3 @@ translate_fields <- function(fields) {
   if (anyNA(ind)) stop("Invalid field name")
   row.names(field_translations)[ind]
 }
-
