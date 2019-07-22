@@ -1,0 +1,50 @@
+---
+title: "Filtering FinBIF records"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Filtering FinBIF records}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+When getting records from FinBIF there are many options for filtering the data
+before it is downloaded saving bandwith and local post-processing time. For the
+full list of filtering options see `?filters`.
+
+Loading `finbif`.
+```{r setup}
+library(finbif)
+```
+
+## Informal taxonomic groups
+You can filter occurrence records based on informal taxonomic groups such as
+`Birds` or `Mammals`.
+```{r informal-groups}
+finbif_occurrence(filters = list(informal_group = c("Birds", "Mammals")))
+```
+
+See `finbif_informal_groups()` for the full list of groups you can filter by. 
+You can use the same function to see the subgroups that make up a higher
+level informal group:
+```{r informal-subgroups}
+finbif_informal_groups("macrofungi")
+```
+
+## Administrative status
+Many records in the FinBIF database include taxa that have one or another
+administrative statuses. See `finbif_admin_status()` for a list of
+administrative statuses and short-codes.
+```{r admin-status}
+# Search for birds on the EU invasive species list
+finbif_occurrence(
+  filters = list(informal_group = "Birds", administrative_status = "EU_INVSV")
+)
+```
+
