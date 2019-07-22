@@ -71,7 +71,7 @@ Download occurrence data from finbif.
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Downloading page 1
 #> Records downloaded: 100
-#> Records available: 54592
+#> Records available: 54644
 #> A data.frame [100 x 27]
 #>    scientific_name abundance lat_wgs84 lon_wgs84 date_start
 #> 1    Cygnus cygnus         1  60.56745  21.57191 2019-06-30

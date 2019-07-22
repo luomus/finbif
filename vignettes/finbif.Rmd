@@ -76,7 +76,7 @@ will be limited to the specified rank.
 finbif_check_taxa(list(species = c("Ursus arctos", "Ursus"), genus = "Ursus"))
 ```
 
-The function `finbif_taxa` can be used for a more general search for taxa in the
+The function `finbif_taxa()` can be used for a more general search for taxa in the
 FinBIF database. Searches can be `exact`, `partial` or `likely` (fuzzy 
 matching). Information for a single taxon is returned when using exact or fuzzy
 matching, but multiple taxa, up to a limit, `n`, may be returned when using 
@@ -88,7 +88,7 @@ str(birch_search$content, max.level = 2, list.len = 8)
 
 ## Getting occurrence data
 You can download occurrence data from the FinBIF database as a `data.frame` with 
-the `finbif_occurrence` function.
+the `finbif_occurrence()` function.
 ```{r occurrence}
 finbif_occurrence("Cygnus cygnus", n = 100)
 ```
@@ -102,3 +102,6 @@ finbif_occurrence(
   filters = list(coordinate_accuracy_max = 100)
 )
 ```
+
+See `?filters` and `vignette("filtering")` for more details on filtering FinBIF
+records.

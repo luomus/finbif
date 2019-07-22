@@ -136,7 +136,7 @@
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [species: Ursus arctos] ID: MX.47348</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; [species: Ursus       ] Not found</span></a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [genus:   Ursus       ] ID: MX.51311</span></a></code></pre></div>
-<p>The function <code>finbif_taxa</code> can be used for a more general search for taxa in the FinBIF database. Searches can be <code>exact</code>, <code>partial</code> or <code>likely</code> (fuzzy matching). Information for a single taxon is returned when using exact or fuzzy matching, but multiple taxa, up to a limit, <code>n</code>, may be returned when using partial matching.</p>
+<p>The function <code><a href="../reference/finbif_taxa.html">finbif_taxa()</a></code> can be used for a more general search for taxa in the FinBIF database. Searches can be <code>exact</code>, <code>partial</code> or <code>likely</code> (fuzzy matching). Information for a single taxon is returned when using exact or fuzzy matching, but multiple taxa, up to a limit, <code>n</code>, may be returned when using partial matching.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">birch_search &lt;-<span class="st"> </span><span class="kw"><a href="../reference/finbif_taxa.html">finbif_taxa</a></span>(<span class="st">"Betula pendula"</span>, <span class="dv">2</span>, <span class="st">"partial"</span>)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(birch_search<span class="op">$</span>content, <span class="dt">max.level =</span> <span class="dv">2</span>, <span class="dt">list.len =</span> <span class="dv">8</span>)</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; List of 2</span></a>
@@ -164,11 +164,11 @@
 <div id="getting-occurrence-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-occurrence-data" class="anchor"></a>Getting occurrence data</h2>
-<p>You can download occurrence data from the FinBIF database as a <code>data.frame</code> with the <code>finbif_occurrence</code> function.</p>
+<p>You can download occurrence data from the FinBIF database as a <code>data.frame</code> with the <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> function.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>, <span class="dt">n =</span> <span class="dv">100</span>)</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; Downloading page 1</span></a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; Records downloaded: 100</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; Records available: 54592</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; Records available: 54644</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; A data.frame [100 x 27]</span></a>
 <a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;    scientific_name abundance lat_wgs84 lon_wgs84 date_start</span></a>
 <a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; 1    Cygnus cygnus         1  60.56745  21.57191 2019-06-30</span></a>
@@ -196,26 +196,27 @@
 <a class="sourceLine" id="cb11-5" data-line-number="5">)</a>
 <a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt; Downloading page 1</span></a>
 <a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; Records downloaded: 10</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; Records available: 11086</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; A data.frame [10 x 24]</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; Records available: 11100</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; A data.frame [10 x 25]</span></a>
 <a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt;    scientific_name abundance lat_wgs84 lon_wgs84 date_start</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 1    Cygnus cygnus         1  60.56745  21.57191 2019-06-30</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; 2      Cygnus olor         1  60.42794  22.20052 2019-06-09</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; 3    Cygnus cygnus         2  62.31663  27.28051 2019-06-14</span></a>
-<a class="sourceLine" id="cb11-14" data-line-number="14"><span class="co">#&gt; 4      Cygnus olor         2  60.42794  22.20052 2019-06-15</span></a>
-<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="co">#&gt; 5      Cygnus olor         2  60.42794  22.20052 2019-06-15</span></a>
-<a class="sourceLine" id="cb11-16" data-line-number="16"><span class="co">#&gt; 6    Cygnus cygnus         3  62.31663  27.28051 2019-06-28</span></a>
-<a class="sourceLine" id="cb11-17" data-line-number="17"><span class="co">#&gt; 7      Cygnus olor         9  60.23923  21.94513 2019-06-13</span></a>
-<a class="sourceLine" id="cb11-18" data-line-number="18"><span class="co">#&gt; 8      Cygnus olor        10  60.56745  21.57191 2019-06-30</span></a>
-<a class="sourceLine" id="cb11-19" data-line-number="19"><span class="co">#&gt; 9      Cygnus olor        14  60.56765  21.57192 2019-06-10</span></a>
-<a class="sourceLine" id="cb11-20" data-line-number="20"><span class="co">#&gt; 10     Cygnus olor        25  60.56745  21.57191 2019-06-30</span></a>
-<a class="sourceLine" id="cb11-21" data-line-number="21"><span class="co">#&gt; ...with 0 more records and 19 more fields:</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 1      Cygnus olor         2  60.42794  22.20052 2019-07-13</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; 2      Cygnus olor         2  60.42794  22.20052 2019-07-13</span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; 3      Cygnus olor         2  60.42794  22.20052 2019-07-14</span></a>
+<a class="sourceLine" id="cb11-14" data-line-number="14"><span class="co">#&gt; 4      Cygnus olor         2  60.42794  22.20052 2019-07-14</span></a>
+<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="co">#&gt; 5    Cygnus cygnus         4  61.12772  21.54009 2019-07-14</span></a>
+<a class="sourceLine" id="cb11-16" data-line-number="16"><span class="co">#&gt; 6      Cygnus olor         4  60.56783  21.57229 2019-07-19</span></a>
+<a class="sourceLine" id="cb11-17" data-line-number="17"><span class="co">#&gt; 7      Cygnus olor        10  60.56745  21.57191 2019-06-30</span></a>
+<a class="sourceLine" id="cb11-18" data-line-number="18"><span class="co">#&gt; 8      Cygnus olor        10  60.56783  21.57229 2019-07-19</span></a>
+<a class="sourceLine" id="cb11-19" data-line-number="19"><span class="co">#&gt; 9      Cygnus olor        11  60.56783  21.57249 2019-07-11</span></a>
+<a class="sourceLine" id="cb11-20" data-line-number="20"><span class="co">#&gt; 10     Cygnus olor        13  60.56783  21.57249 2019-07-11</span></a>
+<a class="sourceLine" id="cb11-21" data-line-number="21"><span class="co">#&gt; ...with 0 more records and 20 more fields:</span></a>
 <a class="sourceLine" id="cb11-22" data-line-number="22"><span class="co">#&gt; taxon_rank, country, province, municipality, wkt_wgs84,</span></a>
-<a class="sourceLine" id="cb11-23" data-line-number="23"><span class="co">#&gt; line_length_m, area_m2, date_end, hour_start,</span></a>
-<a class="sourceLine" id="cb11-24" data-line-number="24"><span class="co">#&gt; minutes_start, record_id, event_id, collection_id,</span></a>
-<a class="sourceLine" id="cb11-25" data-line-number="25"><span class="co">#&gt; is_breeding_site, any_issues, record_reliable,</span></a>
+<a class="sourceLine" id="cb11-23" data-line-number="23"><span class="co">#&gt; line_length_m, area_m2, date_end, hour_start, hour_end,</span></a>
+<a class="sourceLine" id="cb11-24" data-line-number="24"><span class="co">#&gt; minutes_start, minutes_end, record_id, event_id,</span></a>
+<a class="sourceLine" id="cb11-25" data-line-number="25"><span class="co">#&gt; collection_id, any_issues, record_reliable,</span></a>
 <a class="sourceLine" id="cb11-26" data-line-number="26"><span class="co">#&gt; taxon_reliability, document_reliablity,</span></a>
 <a class="sourceLine" id="cb11-27" data-line-number="27"><span class="co">#&gt; coordinate_accuracy</span></a></code></pre></div>
+<p>See <code><a href="../reference/filters.html">?filters</a></code> and <code>vignette("filtering")</code> for more details on filtering FinBIF records.</p>
 </div>
   </div>
 
