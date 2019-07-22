@@ -21,15 +21,16 @@ attempted with the occurrence record names as originally supplied verbatim.
 If \code{TRUE} (default) use quality controlled taxonomic determinations. Or, if
 \code{FALSE} use the originally recorded taxonomic determinations.
 \item \code{subtaxa} Logical.
-If \code{TRUE} (default) return records of all taxa belonging to the specified
-taxon. Or, if \code{FALSE} only return records for exact matches to the
-specified taxon (e.g., if a genus is specified do not return records of the
-species belonging to genus only return records with individuals identified
-as that genus only).
+If \code{TRUE} (default) return records of all taxa belonging to specified
+taxa. Or, if \code{FALSE} only return records for exact matches to the
+specified taxa (e.g., if a genus is specified, do not return records of the
+species belonging to the genus, return records of individuals identified as
+that genus only and not identified to a lower taxonomic level).
 \item \code{invalid_taxa} Logical.
-If \code{TRUE} (default) return records that have taxa found in the FinBIF
-taxonomic database. Or, if \code{FALSE} limit records to only those with taxa
-found in the FinBIF database.
+If \code{TRUE} (default) return records for taxa not found in the FinBIF
+taxonomic database as well as taxa that are in the FinBIF database.
+Or, if \code{FALSE} limit records to only those of taxa found in the FinBIF
+database.
 \item \code{informal_group} Character vector.
 Filter by informal taxonomic groups. Only including informal groups linked
 to the recorded taxa in the FinBIF database. Use the function

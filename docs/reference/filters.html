@@ -141,15 +141,16 @@ attempted with the occurrence record names as originally supplied verbatim.</p><
 If <code>TRUE</code> (default) use quality controlled taxonomic determinations. Or, if
 <code>FALSE</code> use the originally recorded taxonomic determinations.</p></li>
 <li><p><code>subtaxa</code> Logical.
-If <code>TRUE</code> (default) return records of all taxa belonging to the specified
-taxon. Or, if <code>FALSE</code> only return records for exact matches to the
-specified taxon (e.g., if a genus is specified do not return records of the
-species belonging to genus only return records with individuals identified
-as that genus only).</p></li>
+If <code>TRUE</code> (default) return records of all taxa belonging to specified
+taxa. Or, if <code>FALSE</code> only return records for exact matches to the
+specified taxa (e.g., if a genus is specified, do not return records of the
+species belonging to the genus, return records of individuals identified as
+that genus only and not identified to a lower taxonomic level).</p></li>
 <li><p><code>invalid_taxa</code> Logical.
-If <code>TRUE</code> (default) return records that have taxa found in the FinBIF
-taxonomic database. Or, if <code>FALSE</code> limit records to only those with taxa
-found in the FinBIF database.</p></li>
+If <code>TRUE</code> (default) return records for taxa not found in the FinBIF
+taxonomic database as well as taxa that are in the FinBIF database.
+Or, if <code>FALSE</code> limit records to only those of taxa found in the FinBIF
+database.</p></li>
 <li><p><code>informal_group</code> Character vector.
 Filter by informal taxonomic groups. Only including informal groups linked
 to the recorded taxa in the FinBIF database. Use the function
