@@ -7,6 +7,12 @@ test_that(
         resp_list_n1 <- finbif_records(n = 1)
         resp_list_n101 <- finbif_records(n = 101)
         resp_list_filters <- finbif_records(filters = c(finnish = TRUE))
+        resp_list_informal_group <- finbif_records(
+          filters = c(informal_group = "Birds")
+        )
+        resp_list_admin_status <- finbif_records(
+          filters = c(administrative_status = "GMEB")
+        )
         resp_list_fields <- finbif_records(fields = "record_id")
         resp_count <- finbif_records(count_only = TRUE)
       },

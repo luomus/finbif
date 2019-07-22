@@ -81,8 +81,31 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
 translate_filters <- function(filters) {
   ind <- match(names(filters), filter_translations[["translated_filter"]])
   if (anyNA(ind)) stop("Invalid filter name")
+  filters[["informal_group"]] <- translate_informal_groups(
+    filters[["informal_group"]]
+  )
+  filters[["informal_group_reported"]] <- translate_informal_groups(
+    filters[["informal_group_reported"]]
+  )
+  filters[["administrative_status"]] <- translate_admin_status(
+    filters[["administrative_status"]]
+  )
   names(filters) <- row.names(filter_translations)[ind]
   lapply(filters, paste, collapse = ",")
+}
+
+translate_informal_groups <- function(groups) {
+  if (is.null(groups)) return(NULL)
+  ind <- match(groups, informal_groups[["name"]])
+  if (anyNA(ind)) stop("Invalid informal group")
+  row.names(informal_groups)[ind]
+}
+
+translate_admin_status <- function(statuses) {
+  if (is.null(statuses)) return(NULL)
+  ind <- match(statuses, admin_status_translations[["translated_status_code"]])
+  if (anyNA(ind)) stop("Invalid administrative status")
+  row.names(admin_status_translations)[ind]
 }
 
 translate_fields <- function(fields) {
