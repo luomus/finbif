@@ -135,7 +135,7 @@ FinBIF taxon IDs. The functions <code><a href='finbif_check_taxa.html'>finbif_ch
 can be used to search for taxon IDs.</p></li>
 <li><p><code>taxon_name</code> Character vector.
 Filter based on taxon names (scientific or common) rather than IDs. If the
-specified taxa are not found in the FinBIF taxanomy then matches are
+specified taxa are not found in the FinBIF taxonomy then matches are
 attempted with the occurrence record names as originally supplied verbatim.</p></li>
 <li><p><code>quality_controlled_det</code> Logical.
 If <code>TRUE</code> (default) use quality controlled taxonomic determinations. Or, if
@@ -151,11 +151,18 @@ If <code>TRUE</code> (default) return records that have taxa found in the FinBIF
 taxonomic database. Or, if <code>FALSE</code> limit records to only those with taxa
 found in the FinBIF database.</p></li>
 <li><p><code>informal_group</code> Character vector.
-Filter by informal taxonomic groups. Use the function
+Filter by informal taxonomic groups. Only including informal groups linked
+to the recorded taxa in the FinBIF database. Use the function
 <code><a href='finbif_informal_groups.html'>finbif_informal_groups()</a></code> to see the informal taxonomic groups available
 in FinBIF.</p></li>
-<li><p><code>informal_group_reported</code> Character.</p></li>
-<li><p><code>administrative_status</code> Character.</p></li>
+<li><p><code>informal_group_reported</code> Character. Filter by informal taxonomic groups
+including groups reported directly with the record and those linked
+to the recorded taxa in the FinBIF database. Use the function
+<code><a href='finbif_informal_groups.html'>finbif_informal_groups()</a></code> to see the informal taxonomic groups available
+in FinBIF.</p></li>
+<li><p><code>administrative_status</code> Character. Filter by administrative status. Use the
+function <code><a href='finbif_admin_status.html'>finbif_admin_status()</a></code> to see administrative statuses for taxa in
+the FinBIF database.</p></li>
 <li><p><code>redlist_status</code> Character.</p></li>
 <li><p><code>primary_habitat</code> Character.</p></li>
 <li><p><code>primary_secondary_habitat</code> Character.</p></li>

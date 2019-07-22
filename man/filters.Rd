@@ -31,11 +31,18 @@ If \code{TRUE} (default) return records that have taxa found in the FinBIF
 taxonomic database. Or, if \code{FALSE} limit records to only those with taxa
 found in the FinBIF database.
 \item \code{informal_group} Character vector.
-Filter by informal taxonomic groups. Use the function
+Filter by informal taxonomic groups. Only including informal groups linked
+to the recorded taxa in the FinBIF database. Use the function
 \code{\link[=finbif_informal_groups]{finbif_informal_groups()}} to see the informal taxonomic groups available
 in FinBIF.
-\item \code{informal_group_reported} Character.
-\item \code{administrative_status} Character.
+\item \code{informal_group_reported} Character. Filter by informal taxonomic groups
+including groups reported directly with the record and those linked
+to the recorded taxa in the FinBIF database. Use the function
+\code{\link[=finbif_informal_groups]{finbif_informal_groups()}} to see the informal taxonomic groups available
+in FinBIF.
+\item \code{administrative_status} Character. Filter by administrative status. Use the
+function \code{\link[=finbif_admin_status]{finbif_admin_status()}} to see administrative statuses for taxa in
+the FinBIF database.
 \item \code{redlist_status} Character.
 \item \code{primary_habitat} Character.
 \item \code{primary_secondary_habitat} Character.

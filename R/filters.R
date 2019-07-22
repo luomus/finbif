@@ -26,11 +26,18 @@
 #'   taxonomic database. Or, if `FALSE` limit records to only those with taxa
 #'   found in the FinBIF database.
 #' - `informal_group` Character vector.
-#'   Filter by informal taxonomic groups. Use the function
+#'   Filter by informal taxonomic groups. Only including informal groups linked
+#'   to the recorded taxa in the FinBIF database. Use the function
 #'   [finbif_informal_groups()] to see the informal taxonomic groups available
 #'   in FinBIF.
-#' - `informal_group_reported` Character.
-#' - `administrative_status` Character.
+#' - `informal_group_reported` Character. Filter by informal taxonomic groups
+#'   including groups reported directly with the record and those linked
+#'   to the recorded taxa in the FinBIF database. Use the function
+#'   [finbif_informal_groups()] to see the informal taxonomic groups available
+#'   in FinBIF.
+#' - `administrative_status` Character. Filter by administrative status. Use the
+#'   function [finbif_admin_status()] to see administrative statuses for taxa in
+#'   the FinBIF database.
 #' - `redlist_status` Character.
 #' - `primary_habitat` Character.
 #' - `primary_secondary_habitat` Character.
