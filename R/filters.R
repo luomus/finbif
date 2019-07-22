@@ -10,7 +10,7 @@
 #'   can be used to search for taxon IDs.
 #' - `taxon_name` Character vector.
 #'   Filter based on taxon names (scientific or common) rather than IDs. If the
-#'   specified taxa are not found in the FinBIF taxanomy then matches are
+#'   specified taxa are not found in the FinBIF taxonomy then matches are
 #'   attempted with the occurrence record names as originally supplied verbatim.
 #' - `quality_controlled_det` Logical.
 #'   If `TRUE` (default) use quality controlled taxonomic determinations. Or, if

@@ -18,7 +18,7 @@ its subgroups.}
 A character vector (invisibly).
 }
 \description{
-Display the informal taxanomic groups used in the FinBIF database.
+Display the informal taxonomic groups used in the FinBIF database.
 }
 \examples{
 \dontrun{

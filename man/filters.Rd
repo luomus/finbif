@@ -15,7 +15,7 @@ FinBIF taxon IDs. The functions \code{\link[=finbif_check_taxa]{finbif_check_tax
 can be used to search for taxon IDs.
 \item \code{taxon_name} Character vector.
 Filter based on taxon names (scientific or common) rather than IDs. If the
-specified taxa are not found in the FinBIF taxanomy then matches are
+specified taxa are not found in the FinBIF taxonomy then matches are
 attempted with the occurrence record names as originally supplied verbatim.
 \item \code{quality_controlled_det} Logical.
 If \code{TRUE} (default) use quality controlled taxonomic determinations. Or, if

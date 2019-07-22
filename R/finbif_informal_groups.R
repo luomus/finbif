@@ -1,6 +1,6 @@
 #' FinBIF informal groups
 #'
-#' Display the informal taxanomic groups used in the FinBIF database.
+#' Display the informal taxonomic groups used in the FinBIF database.
 #'
 #' @param group Character. Optional, if supplied only display this group and
 #'  its subgroups.
