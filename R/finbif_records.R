@@ -96,6 +96,7 @@ translate_filters <- function(filters) {
 
 translate_informal_groups <- function(groups) {
   if (is.null(groups)) return(NULL)
+  groups <- to_sentence_case(groups)
   ind <- match(groups, informal_groups[["name"]])
   if (anyNA(ind)) stop("Invalid informal group")
   row.names(informal_groups)[ind]
