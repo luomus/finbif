@@ -17,6 +17,7 @@ reference:
       - finbif_taxa
       - finbif_check_taxa
       - finbif_informal_groups
+      - finbif_admin_status
   - title: "Records"
     desc: >
       Getting records from finbif
