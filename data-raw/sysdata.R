@@ -6,7 +6,7 @@ usethis::use_data(
   field_translations,
   filter_translations,
   admin_status_translations,
-  redlist_status,
+  redlist_status_translations,
   informal_groups,
   internal = TRUE,
   overwrite = TRUE
