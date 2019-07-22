@@ -22,8 +22,10 @@ Imports:
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Suggests:
+    data.tree,
     knitr,
     rmarkdown,
+    stats,
     testthat (>= 2.1.0),
     usethis,
     vcr
