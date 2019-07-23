@@ -11,7 +11,6 @@
 #' @export
 finbif_admin_status <- function() {
   df <- admin_status_translations
-  nrows <- nrow(admin_status_translations)
   df <- df[order(df[["translated_status"]]), ]
-  structure(df, row.names = seq_len(nrows), names = c("status", "code"))
+  structure(df, row.names = seq_len(nrow(df)), names = c("status", "code"))
 }
