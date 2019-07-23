@@ -44,7 +44,9 @@ in FinBIF.
 \item \code{administrative_status} Character. Filter by administrative status. Use the
 function \code{\link[=finbif_admin_status]{finbif_admin_status()}} to see administrative statuses for taxa in
 the FinBIF database.
-\item \code{redlist_status} Character.
+\item \code{red_list_status} Character. Filter by IUCN red list status. Use the
+function \code{\link[=finbif_red_list]{finbif_red_list()}} to see red list statuses for taxa in
+the FinBIF database.
 \item \code{primary_habitat} Character.
 \item \code{primary_secondary_habitat} Character.
 \item \code{finnish}. Logical.

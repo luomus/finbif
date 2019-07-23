@@ -13,6 +13,9 @@ test_that(
         resp_list_admin_status <- finbif_records(
           filters = c(administrative_status = "GMEB")
         )
+        resp_list_admin_status <- finbif_records(
+          filters = c(red_list_status = "LC")
+        )
         resp_list_fields <- finbif_records(fields = "record_id")
         resp_count <- finbif_records(count_only = TRUE)
       },

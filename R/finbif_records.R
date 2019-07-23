@@ -90,6 +90,9 @@ translate_filters <- function(filters) {
   filters[["administrative_status"]] <- translate_admin_status(
     filters[["administrative_status"]]
   )
+  filters[["red_list_status"]] <- translate_redlist_status(
+    filters[["red_list_status"]]
+  )
   names(filters) <- row.names(filter_translations)[ind]
   lapply(filters, paste, collapse = ",")
 }
@@ -107,6 +110,15 @@ translate_admin_status <- function(statuses) {
   ind <- match(statuses, admin_status_translations[["translated_status_code"]])
   if (anyNA(ind)) stop("Invalid administrative status")
   row.names(admin_status_translations)[ind]
+}
+
+translate_redlist_status <- function(statuses) {
+  if (is.null(statuses)) return(NULL)
+  ind <- match(
+    statuses, redlist_status_translations[["translated_status_code"]]
+  )
+  if (anyNA(ind)) stop("Invalid red list status")
+  row.names(redlist_status_translations)[ind]
 }
 
 translate_fields <- function(fields) {

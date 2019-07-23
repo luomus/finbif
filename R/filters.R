@@ -39,7 +39,9 @@
 #' - `administrative_status` Character. Filter by administrative status. Use the
 #'   function [finbif_admin_status()] to see administrative statuses for taxa in
 #'   the FinBIF database.
-#' - `redlist_status` Character.
+#' - `red_list_status` Character. Filter by IUCN red list status. Use the
+#'   function [finbif_red_list()] to see red list statuses for taxa in
+#'   the FinBIF database.
 #' - `primary_habitat` Character.
 #' - `primary_secondary_habitat` Character.
 #' - `finnish`. Logical.

@@ -8,7 +8,7 @@ filter_translations <- read.csv(text = "
   informalTaxonGroupId, informal_group, uri
   informalTaxonGroupIdIncludingReported, informal_group_reported, uri
   administrativeStatusId, administrative_status, uri
-  redListStatusId, redlist_status, uri
+  redListStatusId, red_list_status, uri
   typeOfOccurrenceId, occurrence_type, uri
   typeOfOccurrenceIdNot, not_occurrence_type, uri
   primaryHabitat, primary_habitat, factor

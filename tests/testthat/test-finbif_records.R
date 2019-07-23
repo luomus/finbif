@@ -13,6 +13,9 @@ test_that(
         resp_list_admin_status <- finbif_records(
           filters = c(administrative_status = "GMEB")
         )
+        resp_list_admin_status <- finbif_records(
+          filters = c(red_list_status = "LC")
+        )
         resp_list_fields <- finbif_records(fields = "record_id")
         resp_count <- finbif_records(count_only = TRUE)
       },
@@ -38,6 +41,10 @@ test_that(
     expect_error(
       finbif_records(filters = c(administrative_status = "not a status")),
       "Invalid administrative status"
+    )
+    expect_error(
+      finbif_records(filters = c(red_list_status = "not a status")),
+      "Invalid red list status"
     )
     expect_error(finbif_records(fields = "not_a_field"), "Invalid field name")
 
