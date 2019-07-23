@@ -34,17 +34,17 @@ admin_status_translations <- read.csv(text = '
 
 redlist_status_translations <- read.csv(text = '
   finbif_api_status, translated_status, translated_status_code
-  MX.iucnEX, "Extinct", EX
-  MX.iucnEW, "Extinct in the Wild", EW
-  MX.iucnRE, "Regionally Extinct", RE
-  MX.iucnCR, "Critically Endangered", CR
-  MX.iucnEN, "Endangered", EN
-  MX.iucnVU, "Vulnerable", VU
-  MX.iucnNT, "Near Threatened", NT
-  MX.iucnLC, "Least Concern", LC
-  MX.iucnDD, "Data Deficient", DD
-  MX.iucnNA, "Not Applicable", NA
-  MX.iucnNE, "Not Evaluated" NE
+  MX.iucnEX, "Extinct", "EX"
+  MX.iucnEW, "Extinct in the Wild", "EW"
+  MX.iucnRE, "Regionally Extinct", "RE"
+  MX.iucnCR, "Critically Endangered", "CR"
+  MX.iucnEN, "Endangered", "EN"
+  MX.iucnVU, "Vulnerable", "VU"
+  MX.iucnNT, "Near Threatened", "NT"
+  MX.iucnLC, "Least Concern", "LC"
+  MX.iucnDD, "Data Deficient", "DD"
+  MX.iucnNA, "Not Applicable", "NA"
+  MX.iucnNE, "Not Evaluated", "NE"
 ', stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L)
 
 metadata_ranges <- finbif:::finbif_api_get("v0/metadata/ranges", list())$content
