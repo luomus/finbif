@@ -7,16 +7,19 @@
 #' @param n Integer. How many records to download.
 #' @param page Integer. Which page of records to start downloading from.
 #' @param count_only Logical. Only return the number of records available.
+#' @param quiet Logical. Suppress the progress indicator for multipage
+#'   downloads.
 #' @return A `finbif_api` or `finbif_api_list` object.
 #' @examples \dontrun{
 #'
 #' # Get the last 100 records from FinBIF
 #' finbif_records(n = 100)
 #' }
+#' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
 
 finbif_records <- function(filters, fields, n = 10, page = 1,
-  count_only = FALSE) {
+  count_only = FALSE, quiet = FALSE) {
 
   path <- "v0/warehouse/query/"
 
@@ -57,16 +60,21 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
   resp <- list()
   i <- 1L
 
-  message("Downloading page ", query[["page"]])
   resp[[i]] <- finbif_api_get(path, query)
 
-  n_tot <- resp[[1]][["content"]][["total"]]
+  n_tot <- resp[[1L]][["content"]][["total"]]
   n <- min(n, n_tot)
 
-  while (max_size * i < n) {
-    Sys.sleep(1)
+  max_pb <- floor(n / max_size)
+  if (max_pb && !quiet) {
+    pb <- utils::txtProgressBar(0L, max_pb, style = 3L)
+    on.exit(close(pb))
+  }
 
-    message("Downloading page ", resp[[i]][["content"]][["nextPage"]])
+  while (max_size * i < n) {
+
+    Sys.sleep(1L)
+    utils::setTxtProgressBar(pb, i)
     i <- i + 1L
     query[["page"]] <- query[["page"]] + 1L
     query[["pageSize"]] <- if (max_size * i > n) n %% max_size

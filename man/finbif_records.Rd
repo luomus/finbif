@@ -4,7 +4,8 @@
 \alias{finbif_records}
 \title{Get FinBIF records}
 \usage{
-finbif_records(filters, fields, n = 10, page = 1, count_only = FALSE)
+finbif_records(filters, fields, n = 10, page = 1, count_only = FALSE,
+  quiet = FALSE)
 }
 \arguments{
 \item{filters}{List of named character vectors. Filters to apply to records.}
@@ -16,6 +17,9 @@ finbif_records(filters, fields, n = 10, page = 1, count_only = FALSE)
 \item{page}{Integer. Which page of records to start downloading from.}
 
 \item{count_only}{Logical. Only return the number of records available.}
+
+\item{quiet}{Logical. Suppress the progress indicator for multipage
+downloads.}
 }
 \value{
 A \code{finbif_api} or \code{finbif_api_list} object.
