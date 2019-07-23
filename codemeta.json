@@ -147,6 +147,11 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
     }
   ],
   "releaseNotes": "https://github.com/wkmor1/finbif/blob/master/NEWS.md",

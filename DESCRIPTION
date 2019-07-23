@@ -19,7 +19,8 @@ LazyData: true
 Depends: R (>= 2.10)
 Imports: 
     httr,
-    jsonlite
+    jsonlite,
+    utils
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Suggests:
