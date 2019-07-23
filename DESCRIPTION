@@ -14,6 +14,7 @@ BugReports: https://github.com/wkmor1/finbif/issues
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 Depends: R (>= 2.10)
 Imports: 
