@@ -5,7 +5,7 @@ test_that(
     vcr::use_cassette(
       "finbif_records", {
         resp_list_n1 <- finbif_records(n = 1)
-        resp_list_n101 <- finbif_records(n = 101)
+        resp_list_n301 <- finbif_records(n = 301)
         resp_list_filters <- finbif_records(filters = c(finnish = TRUE))
         resp_list_informal_group <- finbif_records(
           filters = c(informal_group = "Birds")
@@ -42,10 +42,10 @@ test_that(
       },
       preserve_exact_body_bytes = TRUE
     )
-    expect_output(print(resp_list_n101[[1]]), "FinBIF")
+    expect_output(print(resp_list_n301[[1]]), "FinBIF")
     expect_output(resp_list_n1_2 <- print(resp_list_n1), "FinBIF")
     expect_identical(resp_list_n1_2, resp_list_n1)
-    expect_s3_class(as.data.frame(resp_list_n101), "data.frame")
+    expect_s3_class(as.data.frame(resp_list_n301), "data.frame")
     expect_output(print(resp_list_sp_true), "species: Parus major")
     expect_output(print(resp1), "Records downloaded:")
     expect_output(

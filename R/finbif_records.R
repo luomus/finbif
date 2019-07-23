@@ -20,8 +20,8 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
 
   path <- "v0/warehouse/query/"
 
-  max_queries  <- 10L
-  max_size <- 100L
+  max_queries  <- 600L
+  max_size <- 300L
   nmax <- max_queries * max_size
   if (n > nmax) stop("Cannot download more than ", nmax, " records")
 
