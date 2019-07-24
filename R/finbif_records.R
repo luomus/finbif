@@ -15,7 +15,7 @@
 #' # Get the last 100 records from FinBIF
 #' finbif_records(n = 100)
 #' }
-#' @importFrom utils txtProgressBar setTxtProgressBar
+#' @importFrom utils txtProgressBar setTxtProgressBar tail
 #' @export
 
 finbif_records <- function(filters, fields, n = 10, page = 1,
@@ -77,8 +77,12 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
     utils::setTxtProgressBar(pb, i)
     i <- i + 1L
     query[["page"]] <- query[["page"]] + 1L
-    query[["pageSize"]] <- if (max_size * i > n) n %% max_size
     resp[[i]] <- finbif_api_get(path, query)
+
+    if (max_size * i > n)  {
+      excess_records <- utils::tail(seq_len(n), -n %% -max_size)
+      resp[[i]][["content"]][["results"]][excess_records] <- NULL
+    }
 
   }
 

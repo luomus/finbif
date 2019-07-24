@@ -18,3 +18,16 @@ test_that(
     expect_type(resp4, "integer")
   }
 )
+
+test_that(
+  "returns the expected number of records", {
+    vcr::use_cassette(
+      "finbif_occurrence500", {
+        resp500 <- finbif_occurrence(n = 500)
+      },
+      preserve_exact_body_bytes = TRUE
+    )
+    expect_identical(500L, nrow(resp500))
+
+  }
+)
