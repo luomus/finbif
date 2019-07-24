@@ -39,6 +39,9 @@ test_that(
         resp2 <- finbif_occurrence(species = "Parus major")
         resp3 <- finbif_occurrence(species = "Parus major", check_taxa = FALSE)
         resp4 <- finbif_occurrence(taxa = "Parus major", count_only = TRUE)
+        resp5 <- finbif_occurrence(
+          "Parus major", fields = c("record_id", "observers_name")
+        )
       },
       preserve_exact_body_bytes = TRUE
     )
@@ -52,5 +55,6 @@ test_that(
       print(resp1[c(1:10, 1), c("scientific_name", "taxon_rank")]), "A data"
     )
     expect_output(print(resp1[c("scientific_name", "taxon_rank")]), "A data")
+    expect_type(resp5[["observers_name"]], "list")
   }
 )

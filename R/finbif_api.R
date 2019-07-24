@@ -20,8 +20,18 @@ as.data.frame.finbif_api <- function(x, ...) {
     x[["content"]][["results"]],
     function(x) {
       dfx <- as.data.frame(x, stringsAsFactors = FALSE)
-      colnames(dfx) <- names(unlist(x))
-      dfx
+      nms <- names(unlist(x))
+      colnames(dfx) <- nms
+      unms <- unique(nms)
+      ans <- dfx[unms]
+      for (nm in unms) {
+        if (!field_translations[nm, "unique"]) {
+          el <- unlist(dfx[nms == nm])
+          ans[[nm]] <- NULL
+          ans[[nm]][[1L]] <- unname(el)
+        }
+      }
+      ans
     }
   )
   reduce_merge(df)
