@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • finbif</title>
+<title>Caching FinBIF downloads — caching • finbif</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -37,7 +37,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Caching FinBIF downloads — caching" />
+
+<meta property="og:description" content="Working with cached data from FinBIF." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -57,7 +59,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -122,159 +124,57 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Caching FinBIF downloads</h1>
+    <small class="dont-index">Source: <a href='https://github.com/wkmor1/finbif/blob/master/R/caching.R'><code>R/caching.R</code></a></small>
+    <div class="hidden name"><code>caching.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Working with cached data from FinBIF.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+        
+    <h2 class="hasAnchor" id="turning-caching-off"><a class="anchor" href="#turning-caching-off"></a>Turning caching off</h2>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-the-finbif-package" class="hasAnchor"><a href="#section-the-finbif-package" class="anchor"></a>The finbif package</h2>
-          <p class="section-desc"><p>Package overview</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="finbif-package.html">finbif-package</a></code> </p>
-        </td>
-        <td><p>finbif: Finnish Biodiversity Information Facility R Interface</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-access-token" class="hasAnchor"><a href="#section-access-token" class="anchor"></a>Access token</h2>
-          <p class="section-desc"><p>Getting an access token</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="finbif_request_token.html">finbif_request_token()</a></code> </p>
-        </td>
-        <td><p>Get a FinBIF personal access token</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-taxonomy" class="hasAnchor"><a href="#section-taxonomy" class="anchor"></a>Taxonomy</h2>
-          <p class="section-desc"><p>Getting information on taxa</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="finbif_taxa.html">finbif_taxa()</a></code> </p>
-        </td>
-        <td><p>Search the FinBIF taxa</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_check_taxa.html">finbif_check_taxa()</a></code> </p>
-        </td>
-        <td><p>Check FinBIF taxa</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_informal_groups.html">finbif_informal_groups()</a></code> </p>
-        </td>
-        <td><p>FinBIF informal groups</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_admin_status.html">finbif_admin_status()</a></code> </p>
-        </td>
-        <td><p>FinBIF administrative status</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_red_list.html">finbif_red_list()</a></code> </p>
-        </td>
-        <td><p>IUCN red list</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-records" class="hasAnchor"><a href="#section-records" class="anchor"></a>Records</h2>
-          <p class="section-desc"><p>Getting records from finbif</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="filters.html">filters</a></code> </p>
-        </td>
-        <td><p>Filtering FinBIF records</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_records.html">finbif_records()</a></code> </p>
-        </td>
-        <td><p>Get FinBIF records</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_occurrence.html">finbif_occurrence()</a></code> </p>
-        </td>
-        <td><p>Download FinBIF occurrence records</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-methods" class="hasAnchor"><a href="#section-methods" class="anchor"></a>Methods</h2>
-          <p class="section-desc"><p>Working with finbif objects</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="as.data.frame.finbif_api.html">as.data.frame(<i>&lt;finbif_api&gt;</i>)</a></code> <code><a href="as.data.frame.finbif_api.html">as.data.frame(<i>&lt;finbif_api_list&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Coerce <code>finbif_api*</code> object to a <code>data.frame</code></p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-cache" class="hasAnchor"><a href="#section-cache" class="anchor"></a>Cache</h2>
-          <p class="section-desc"><p>Caching finbif downloads</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="caching.html">caching</a></code> </p>
-        </td>
-        <td><p>Caching FinBIF downloads</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="finbif_clear_cache.html">finbif_clear_cache()</a></code> </p>
-        </td>
-        <td><p>Clear cache</p></td>
-      </tr>
-    </tbody>
-    </table>
+    
+    <p>By default, local filesystem caching of most FinBIF API requests is turned
+on. Any request made using the same arguments will only request data from
+FinBIF in the first instance and subsequent requests will use the local
+cache while it exists. This will increase the speed of repeated requests and
+save bandwidth and computation for the FinBIF server. Caching can be turned
+off temporarily by setting the <code>cache = FALSE</code> in the requesting function.</p>
+<p>Setting <code><a href='https://www.rdocumentation.org/packages/base/topics/options'>options(finbif_use_cache = FALSE)</a></code> will turn off caching for the
+current session.</p>
+    
+    <h2 class="hasAnchor" id="setting-the-cache-directory"><a class="anchor" href="#setting-the-cache-directory"></a>Setting the cache directory</h2>
+
+    
+    <p>By default cached requests are stored in <code><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir()</a></code>. This can be changed by
+setting the file path for the current session with
+<code><a href='https://www.rdocumentation.org/packages/base/topics/options'>options(finbif_cache_path = "path/to/cache")</a></code>.</p>
+    
+    <h2 class="hasAnchor" id="clearing-the-cache"><a class="anchor" href="#clearing-the-cache"></a>Clearing the cache</h2>
+
+    
+    <p>The cache files can be removed using <code><a href='finbif_clear_cache.html'>finbif_clear_cache()</a></code>.</p>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-the-finbif-package">The finbif package</a></li>
-      <li><a href="#section-access-token">Access token</a></li>
-      <li><a href="#section-taxonomy">Taxonomy</a></li>
-      <li><a href="#section-records">Records</a></li>
-      <li><a href="#section-methods">Methods</a></li>
-      <li><a href="#section-cache">Cache</a></li>
-    </ul>
+      
+      <li><a href="#turning-caching-off">Turning caching off</a></li>
+
+      <li><a href="#setting-the-cache-directory">Setting the cache directory</a></li>
+
+      <li><a href="#clearing-the-cache">Clearing the cache</a></li>
+          </ul>
+
   </div>
 </div>
 

@@ -138,7 +138,8 @@
     </div>
 
     <pre class="usage"><span class='fu'>finbif_occurrence</span>(<span class='no'>...</span>, <span class='no'>filters</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,6 +168,15 @@ to download.</p></td>
     <tr>
       <th>count_only</th>
       <td><p>Logical. Only return the number of records available.</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>Logical. Suppress the progress indicator for multipage
+downloads.</p></td>
+    </tr>
+    <tr>
+      <th>cache</th>
+      <td><p>Logical. Use cached data.</p></td>
     </tr>
     <tr>
       <th>check_taxa</th>

@@ -105,3 +105,8 @@ finbif_occurrence(
 
 See `?filters` and `vignette("filtering")` for more details on filtering FinBIF
 records.
+
+## Caching
+By default `finbif` uses local filesystem caching for repeated API request. This
+can be turned on or off on a per request or session basis. See `?caching` for
+details.

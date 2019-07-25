@@ -31,4 +31,9 @@ reference:
       Working with finbif objects
     contents:
       - as.data.frame.finbif_api
-
+  - title: "Cache"
+    desc: >
+      Caching finbif downloads
+    contents:
+      - caching
+      - finbif_clear_cache
