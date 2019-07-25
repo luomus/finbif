@@ -89,7 +89,7 @@ filter_translations <- read.csv(text = "
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L)
 
 filters <- names(
-  finbif:::finbif_api_get("v0/warehouse/filters", list())$content
+  finbif:::finbif_api_get("v0/warehouse/filters", list(), FALSE)$content
 )
 
 stopifnot(

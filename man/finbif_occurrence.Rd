@@ -5,7 +5,8 @@
 \title{Download FinBIF occurrence records}
 \usage{
 finbif_occurrence(..., filters, fields, n = 10, page = 1,
-  count_only = FALSE, check_taxa = TRUE)
+  count_only = FALSE, quiet = FALSE, cache = TRUE,
+  check_taxa = TRUE)
 }
 \arguments{
 \item{...}{Character vectors or list of character vectors. Taxa of records
@@ -20,6 +21,11 @@ to download.}
 \item{page}{Integer. Which page of records to start downloading from.}
 
 \item{count_only}{Logical. Only return the number of records available.}
+
+\item{quiet}{Logical. Suppress the progress indicator for multipage
+downloads.}
+
+\item{cache}{Logical. Use cached data.}
 
 \item{check_taxa}{Logical. Check first that taxa are in the FinBIF database.
 If true only records that match known taxa (have a valid taxon ID) are

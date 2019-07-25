@@ -4,7 +4,7 @@
 #' @importFrom httr status_code
 #' @importFrom jsonlite fromJSON
 
-finbif_api_get <- function(path, query) {
+finbif_api_get <- function(path, query, cache) {
   finbif_access_token <- finbif_token()
 
   if (is.null(finbif_access_token)) {
@@ -19,11 +19,11 @@ finbif_api_get <- function(path, query) {
 
   url <- "https://api.laji.fi"
 
-  if (getOption("finbif_use_cache")) {
+  if (getOption("finbif_use_cache") && cache) {
     hash <- digest::digest(list(path, query))
     fcp <- getOption("finbif_cache_path")
     fcp <- if (is.null(fcp)) tempdir()
-    cache_file <- file.path(fcp, hash)
+    cache_file <- file.path(fcp, paste0("finbif_cache_file_", hash))
     if (file.exists(cache_file)) return(readRDS(cache_file))
     on.exit(if (!is.null(ans)) saveRDS(ans, cache_file))
   }

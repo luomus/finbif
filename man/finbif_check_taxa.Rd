@@ -4,12 +4,14 @@
 \alias{finbif_check_taxa}
 \title{Check FinBIF taxa}
 \usage{
-finbif_check_taxa(taxa)
+finbif_check_taxa(taxa, cache = TRUE)
 }
 \arguments{
 \item{taxa}{Character (or list of named character) vector(s). If a list each
 vector can have the name of a taxonomic rank (genus, species, etc.,).
 The elements of the vectors should be the taxa to check.}
+
+\item{cache}{Logical. Use cached data.}
 }
 \value{
 An object of class \code{finbif_taxa}. A list with the same form as

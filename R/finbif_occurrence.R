@@ -31,15 +31,15 @@
 #' @export
 
 finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
-  count_only = FALSE, check_taxa = TRUE) {
+  count_only = FALSE, quiet = FALSE, cache = TRUE, check_taxa = TRUE) {
 
   taxa <- list(...)
 
   if (check_taxa) {
     taxa <- if (...length() > 1L || !utils::hasName(taxa, "taxa")) {
-      finbif_check_taxa(taxa)
+      finbif_check_taxa(taxa, cache = cache)
     } else {
-      finbif_check_taxa(...)
+      finbif_check_taxa(..., cache = cache)
     }
     taxa <- list(taxon_id = paste(unlist(taxa), collapse = ","))
   } else {
@@ -49,7 +49,7 @@ finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
   if (missing(filters)) filters <- NULL
   filters <- c(taxa, filters)
 
-  records <- finbif_records(filters, fields, n, page, count_only)
+  records <- finbif_records(filters, fields, n, page, count_only, quiet, cache)
 
   if (count_only) return(records[["content"]][["total"]])
 

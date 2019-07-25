@@ -5,7 +5,7 @@
 \title{Get FinBIF records}
 \usage{
 finbif_records(filters, fields, n = 10, page = 1, count_only = FALSE,
-  quiet = FALSE)
+  quiet = FALSE, cache = TRUE)
 }
 \arguments{
 \item{filters}{List of named character vectors. Filters to apply to records.}
@@ -20,6 +20,8 @@ finbif_records(filters, fields, n = 10, page = 1, count_only = FALSE,
 
 \item{quiet}{Logical. Suppress the progress indicator for multipage
 downloads.}
+
+\item{cache}{Logical. Use cached data.}
 }
 \value{
 A \code{finbif_api} or \code{finbif_api_list} object.

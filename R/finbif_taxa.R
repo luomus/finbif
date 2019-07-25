@@ -7,6 +7,7 @@
 #'   "likely" a maximum of one taxon will be returned.
 #' @param type Character. Type of match to make. Must be one of `exact`,
 #'   `partial` or `likely`.
+#' @param cache Logical. Use cached data.
 #' @return A `finbif_api` object.
 #' @examples \dontrun{
 #'
@@ -18,7 +19,9 @@
 #' }
 #' @export
 
-finbif_taxa <- function(name, n = 1, type = c("exact", "partial", "likely")) {
+finbif_taxa <- function(name, n = 1, type = c("exact", "partial", "likely"),
+  cache = TRUE) {
+
   path <- "v0/taxa/search"
   type <- match.arg(type)
   query <- list(
@@ -26,5 +29,5 @@ finbif_taxa <- function(name, n = 1, type = c("exact", "partial", "likely")) {
     matchType = type,
     limit = n
   )
-  finbif_api_get(path, query)
+  finbif_api_get(path, query, cache)
 }

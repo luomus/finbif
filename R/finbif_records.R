@@ -9,6 +9,7 @@
 #' @param count_only Logical. Only return the number of records available.
 #' @param quiet Logical. Suppress the progress indicator for multipage
 #'   downloads.
+#' @param cache Logical. Use cached data.
 #' @return A `finbif_api` or `finbif_api_list` object.
 #' @examples \dontrun{
 #'
@@ -19,7 +20,7 @@
 #' @export
 
 finbif_records <- function(filters, fields, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE) {
+  count_only = FALSE, quiet = FALSE, cache = TRUE) {
 
   path <- "v0/warehouse/query/"
 
@@ -47,7 +48,7 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
   if (count_only) {
 
     path <- paste0(path, "count")
-    return(finbif_api_get(path, query))
+    return(finbif_api_get(path, query, cache))
 
   } else {
 
@@ -60,7 +61,7 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
   resp <- list()
   i <- 1L
 
-  resp[[i]] <- finbif_api_get(path, query)
+  resp[[i]] <- finbif_api_get(path, query, cache)
 
   n_tot <- resp[[1L]][["content"]][["total"]]
   n <- min(n, n_tot)
@@ -77,7 +78,7 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
     utils::setTxtProgressBar(pb, i)
     i <- i + 1L
     query[["page"]] <- query[["page"]] + 1L
-    resp[[i]] <- finbif_api_get(path, query)
+    resp[[i]] <- finbif_api_get(path, query, cache)
 
     if (max_size * i > n)  {
       excess_records <- utils::tail(seq_len(n), -n %% -max_size)

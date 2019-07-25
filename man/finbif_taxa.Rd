@@ -4,7 +4,8 @@
 \alias{finbif_taxa}
 \title{Search the FinBIF taxa}
 \usage{
-finbif_taxa(name, n = 1, type = c("exact", "partial", "likely"))
+finbif_taxa(name, n = 1, type = c("exact", "partial", "likely"),
+  cache = TRUE)
 }
 \arguments{
 \item{name}{Character. The name of a taxon to search for.}
@@ -14,6 +15,8 @@ finbif_taxa(name, n = 1, type = c("exact", "partial", "likely"))
 
 \item{type}{Character. Type of match to make. Must be one of \code{exact},
 \code{partial} or \code{likely}.}
+
+\item{cache}{Logical. Use cached data.}
 }
 \value{
 A \code{finbif_api} object.
