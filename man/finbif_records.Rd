@@ -10,7 +10,9 @@ finbif_records(filters, fields, n = 10, page = 1, count_only = FALSE,
 \arguments{
 \item{filters}{List of named character vectors. Filters to apply to records.}
 
-\item{fields}{Character vector. Columns to return.}
+\item{fields}{Character vector. Columns to return. If not specified a default
+set of commonly used fields will be used. Use \code{"default_fields"} as a
+shortcut for this set.}
 
 \item{n}{Integer. How many records to download.}
 

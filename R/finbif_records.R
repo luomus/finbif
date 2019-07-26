@@ -3,7 +3,9 @@
 #' Download records from FinBIF.
 #'
 #' @param filters List of named character vectors. Filters to apply to records.
-#' @param fields Character vector. Columns to return.
+#' @param fields Character vector. Columns to return. If not specified a default
+#'   set of commonly used fields will be used. Use `"default_fields"` as a
+#'   shortcut for this set.
 #' @param n Integer. How many records to download.
 #' @param page Integer. Which page of records to start downloading from.
 #' @param count_only Logical. Only return the number of records available.
@@ -35,12 +37,17 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
     query <- translate_filters(as.list(filters))
   }
 
+  default_fields <- field_translations[field_translations[["default_field"]], ]
+
   if (missing(fields)) {
-    fields <- row.names(
-      field_translations[field_translations[["default_field"]], ]
-    )
+    fields <- row.names(default_fields)
   } else {
-    fields <- translate_fields(fields)
+    fields <- ifelse(
+      fields == "default_fields",
+      list(default_fields[["translated_field"]]),
+      fields
+    )
+    fields <- translate_fields(unlist(fields))
   }
 
   query[["selected"]] <- paste(fields, collapse = ",")
