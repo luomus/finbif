@@ -18,7 +18,7 @@ When getting records from FinBIF there are many options for filtering the data
 before it is downloaded saving bandwidth and local post-processing time. For the
 full list of filtering options see `?filters`.
 
-Loading `finbif`.
+## Loading finbif
 ```{r setup}
 library(finbif)
 ```
