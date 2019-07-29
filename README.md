@@ -27,7 +27,7 @@ remotes::install_bitbucket("luomus/finbif")
 or from [GitHub](https://github.com),
 
 ``` r
-remotes::install_github("wkmor1/finbif")
+remotes::install_github("luomus/finbif")
 ```
 
 ## Documentation
