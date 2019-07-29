@@ -15,5 +15,5 @@ citEntry(
   ),
   year     = year,
   note     = note,
-  url      = "https:://finbif.netlify.com"
+  url      = "https://finbif.netlify.com"
 )
