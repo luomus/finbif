@@ -12,3 +12,4 @@ Makefile
 ^CONTRIBUTING\.md$
 ^doc$
 ^Meta$
+^appveyor\.yml$

@@ -5,6 +5,8 @@
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![CircleCI](https://circleci.com/bb/luomus/finbif.svg?style=shield&circle-token=0c7c2580ef1ca3246d3da8ba60064aeaf9c8eecd)](https://circleci.com/bb/luomus/finbif)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/bitbucket/wkmorris/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/wkmorris/finbif/branch/master)
 [![codecov](https://codecov.io/bb/luomus/finbif/branch/master/graph/badge.svg?token=erk5D6H4i2)](https://codecov.io/bb/luomus/finbif)
 [![Netlify
 Status](https://api.netlify.com/api/v1/badges/5fdd166e-0155-4992-9009-82434fefe4f4/deploy-status)](https://app.netlify.com/sites/finbif/deploys)
