@@ -18,7 +18,7 @@
 #' # Get the last 100 records from FinBIF
 #' finbif_records(n = 100)
 #' }
-#' @importFrom utils txtProgressBar setTxtProgressBar tail
+#' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
 
 finbif_records <- function(filters, fields, n = 10, page = 1,
@@ -69,28 +69,35 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
   i <- 1L
 
   resp[[i]] <- finbif_api_get(path, query, cache)
+  query[["page"]] <- query[["page"]] + 1L
 
   n_tot <- resp[[1L]][["content"]][["total"]]
   n <- min(n, n_tot)
+  n_pages <- n %/% query[["pageSize"]]
+  multipage <- n > max_size
 
-  max_pb <- floor(n / max_size)
-  if (max_pb && !quiet) {
-    pb <- utils::txtProgressBar(0L, max_pb, style = 3L)
+  if (multipage && !quiet) {
+    pb <- utils::txtProgressBar(0L, floor(n / max_size), style = 3L)
     on.exit(close(pb))
   }
 
-  while (max_size * i < n) {
+  while (multipage) {
 
     Sys.sleep(1L)
     utils::setTxtProgressBar(pb, i)
     i <- i + 1L
-    query[["page"]] <- query[["page"]] + 1L
-    resp[[i]] <- finbif_api_get(path, query, cache)
 
-    if (max_size * i > n)  {
-      excess_records <- utils::tail(seq_len(n), -n %% -max_size)
-      resp[[i]][["content"]][["results"]][excess_records] <- NULL
+    if (query[["page"]] > n_pages) {
+      excess_records <- n %% query[["pageSize"]]
+      last_record <- query[["pageSize"]] * n_pages
+      if (last_record == n) break
+      query[["pageSize"]] <- get_next_lowest_factor(last_record, excess_records)
+      query[["page"]] <- last_record / query[["pageSize"]] + 1L
+      n_pages <- n %/% query[["pageSize"]]
     }
+
+    resp[[i]] <- finbif_api_get(path, query, cache)
+    query[["page"]] <- query[["page"]] + 1L
 
   }
 
