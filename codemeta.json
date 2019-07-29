@@ -169,16 +169,14 @@
   "releaseNotes": "https://github.com/luomus/finbif/blob/master/NEWS.md",
   "contIntegration": [
     "https://circleci.com/bb/luomus/finbif",
-    "https://codecov.io/bb/luomus/finbif"
+    "https://codecov.io/bb/luomus/finbif",
+    "https://ci.appveyor.com/project/wkmorris/finbif"
   ],
   "developmentStatus": "https://www.repostatus.org/#wip",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["FinBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy"],
-  "relatedLink": [
-    "https://bitbucket.org/luomus/finbif",
-    "https://finbif.netlify.com"
-  ],
+  "relatedLink": "https://luomus.github.io/finbif",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -192,7 +190,7 @@
         }
       ],
       "name": "Introduction to the finbif package",
-      "url": "https://finbif.netlify.com"
+      "url": "https://luomus.github.io/finbif/articles/finbif.html"
     }
   ],
   "readme": "https://github.com/luomus/finbif/blob/master/README.md"

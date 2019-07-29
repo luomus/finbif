@@ -32,7 +32,7 @@ remotes::install_github("luomus/finbif")
 
 ## Documentation
 
-Read the online documentation [here](https://finbif.netlify.com).
+Read the online documentation [here](https://luomus.github.io/finbif).
 
 ## Getting a FinBIF access token
 
