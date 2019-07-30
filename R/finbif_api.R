@@ -116,7 +116,7 @@ print.finbif_occ <- function(x, ...) {
   cat("A data.frame [", nrows, " x ", ncols, "]\n", sep = "")
 
   dsply_cols <- c(
-    "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_start"
+    "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time"
   )
   dsply_cols <- which(names(x) %in% dsply_cols)
   dsply_cols <- utils::head(union(dsply_cols, seq_len(dsply_nc)), dsply_nc)

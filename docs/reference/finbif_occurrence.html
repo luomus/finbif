@@ -139,7 +139,7 @@
 
     <pre class="usage"><span class='fu'>finbif_occurrence</span>(<span class='no'>...</span>, <span class='no'>filters</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>date_time</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -185,6 +185,11 @@ downloads.</p></td>
       <td><p>Logical. Check first that taxa are in the FinBIF database.
 If true only records that match known taxa (have a valid taxon ID) are
 returned.</p></td>
+    </tr>
+    <tr>
+      <th>date_time</th>
+      <td><p>Logical. Convert raw date and time fields into date_time and
+duration.</p></td>
     </tr>
     </table>
     

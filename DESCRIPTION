@@ -21,6 +21,8 @@ Imports:
     digest,
     httr,
     jsonlite,
+    lubridate,
+    lutz,
     urltools,
     utils
 Roxygen: list(markdown = TRUE)

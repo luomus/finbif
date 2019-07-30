@@ -42,6 +42,13 @@ test_that(
         resp5 <- finbif_occurrence(
           "Parus major", fields = c("record_id", "observers_name")
         )
+        resp6 <- finbif_occurrence(
+          "Parus major", fields = c("record_id", "date_start")
+        )
+        resp7 <- finbif_occurrence(
+          "Parus major",
+          fields = c("record_id", "date_start", "lat_wgs84", "lon_wgs84")
+        )
       },
       preserve_exact_body_bytes = TRUE
     )

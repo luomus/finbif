@@ -8,6 +8,8 @@
 #' @param check_taxa Logical. Check first that taxa are in the FinBIF database.
 #'   If true only records that match known taxa (have a valid taxon ID) are
 #'   returned.
+#' @param date_time Logical. Convert raw date and time fields into date_time and
+#'   duration.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -28,10 +30,15 @@
 #'
 #' }
 #' @importFrom utils hasName
+#' @importFrom lubridate as_datetime as.duration force_tzs hour interval minute
+#' @importFrom lubridate ymd
+#' @importFrom lutz tz_lookup_coords
 #' @export
 
 finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE, cache = TRUE, check_taxa = TRUE) {
+  count_only = FALSE, quiet = FALSE, cache = TRUE, check_taxa = TRUE,
+  date_time = TRUE
+  ) {
 
   taxa <- list(...)
 
@@ -57,16 +64,66 @@ finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
   url  <- attr(df, "url", TRUE)
   time <-  attr(df, "time", TRUE)
 
-  df   <- df[intersect(row.names(field_translations), names(df))]
+  df <- df[intersect(row.names(field_translations), names(df))]
+  names(df) <- field_translations[names(df), "translated_field"]
+
+  if (date_time) {
+    df$date_time <- get_date_time(
+      df, "date_start", "hour_start", "minute_start", "lat_wgs84", "lon_wgs84"
+    )
+    df$duration <- get_duration(
+      df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
+      "lat_wgs84"
+    )
+  }
 
   structure(
     df,
-    names     = field_translations[names(df), "translated_field"],
     class     = c("finbif_occ", "data.frame"),
     nrec_dnld = attr(records, "nrec_dnld", TRUE),
     nrec_avl  = attr(records, "nrec_avl", TRUE),
     url       = url,
     time      = time
   )
+
+}
+
+get_date_time <- function(df, date, hour, minute, lat, lon) {
+
+  if (is.null(df[[date]])) return(NULL)
+
+  date_time <- lubridate::ymd(df[[date]])
+  date_time <- lubridate::as_datetime(date_time)
+
+  if (!is.null(df[[hour]])) {
+    lubridate::hour(date_time) <-
+      ifelse(is.na(df[[hour]]), lubridate::hour(date_time), df[[hour]])
+  }
+
+  if (!is.null(df[[minute]])) {
+    lubridate::minute(date_time) <-
+      ifelse(is.na(df[[minute]]), lubridate::minute(date_time), df[[minute]])
+  }
+
+  if (is.null(df[[lat]]) || is.null(df[[lon]])) return(NULL)
+
+  lubridate::force_tzs(
+    date_time,
+    tzones = lutz::tz_lookup_coords(df[[lat]], df[[lon]], "fast", FALSE)
+  )
+
+}
+
+get_duration <- function(df, date_time, date, hour, minute, lat, lon) {
+
+  if (is.null(df[[date_time]])) return(NULL)
+  if (is.null(df[["date_end"]]) || is.null(df[["hour_end"]])) return(NULL)
+
+  date_time_end <- get_date_time(
+    df, "date_end", "hour_end", "minute_end", "lat_wgs84", "lon_wgs84"
+  )
+
+  ans <- lubridate::interval(df[[date_time]], date_time_end)
+  lubridate::as.duration(ans)
 
 }

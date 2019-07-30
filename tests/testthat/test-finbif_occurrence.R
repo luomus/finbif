@@ -11,6 +11,13 @@ test_that(
         resp5 <- finbif_occurrence(
           "Parus major", fields = c("record_id", "observers_name")
         )
+        resp6 <- finbif_occurrence(
+          "Parus major", fields = c("record_id", "date_start")
+        )
+        resp7 <- finbif_occurrence(
+          "Parus major",
+          fields = c("record_id", "date_start", "lat_wgs84", "lon_wgs84")
+        )
       },
       preserve_exact_body_bytes = TRUE
     )
@@ -18,6 +25,11 @@ test_that(
     expect_s3_class(resp1, "data.frame")
     expect_s3_class(resp2, "data.frame")
     expect_s3_class(resp3, "data.frame")
+    expect_type(resp4, "integer")
+    expect_s3_class(resp5, "finbif_occ")
+    expect_s3_class(resp6, "finbif_occ")
+    expect_s3_class(resp7, "finbif_occ")
+    expect_s3_class(resp7[["date_time"]], "POSIXct")
     expect_type(resp4, "integer")
   }
 )

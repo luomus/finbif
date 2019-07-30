@@ -6,7 +6,7 @@
 \usage{
 finbif_occurrence(..., filters, fields, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE,
-  check_taxa = TRUE)
+  check_taxa = TRUE, date_time = TRUE)
 }
 \arguments{
 \item{...}{Character vectors or list of character vectors. Taxa of records
@@ -32,6 +32,9 @@ downloads.}
 \item{check_taxa}{Logical. Check first that taxa are in the FinBIF database.
 If true only records that match known taxa (have a valid taxon ID) are
 returned.}
+
+\item{date_time}{Logical. Convert raw date and time fields into date_time and
+duration.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

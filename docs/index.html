@@ -134,26 +134,26 @@
 <p>Download occurrence data from finbif.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>, <span class="dt">n =</span> <span class="dv">100</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Records downloaded: 100</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; Records available: 54750</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; A data.frame [100 x 27]</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;    scientific_name abundance lat_wgs84 lon_wgs84 date_start</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 1    Cygnus cygnus         1  60.56745  21.57191 2019-06-30</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 2    Cygnus cygnus         1  61.32290  28.56811 2019-05-09</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 3    Cygnus cygnus         1  61.32294  28.56868 2019-05-10</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 4    Cygnus cygnus         1  61.07692  21.49222 2019-05-16</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 5    Cygnus cygnus         1  62.25243  25.70933 2019-05-16</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 6    Cygnus cygnus         1  60.83907  21.25772 2019-05-16</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 7    Cygnus cygnus         1  61.12486  21.54164 2019-05-21</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; 8    Cygnus cygnus         1  61.63413  22.90005 2019-05-19</span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 9    Cygnus cygnus         1  60.46200  26.94900 2019-05-11</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; 10   Cygnus cygnus         1  61.99900  22.16100 2019-05-11</span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; ...with 90 more records and 22 more fields:</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; Records available: 54751</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; A data.frame [100 x 29]</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;    scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 1    Cygnus cygnus         1  60.56745  21.57191 2019-06-29 21:00:00</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 2    Cygnus cygnus         1  61.32290  28.56811 2019-05-09 08:30:00</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 3    Cygnus cygnus         1  61.32294  28.56868 2019-05-10 04:45:00</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 4    Cygnus cygnus         1  61.07692  21.49222 2019-05-16 08:25:00</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 5    Cygnus cygnus         1  62.25243  25.70933 2019-05-15 21:00:00</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 6    Cygnus cygnus         1  60.83907  21.25772 2019-05-16 20:00:00</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 7    Cygnus cygnus         1  61.12486  21.54164 2019-05-21 06:30:00</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; 8    Cygnus cygnus         1  61.63413  22.90005 2019-05-18 21:00:00</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 9    Cygnus cygnus         1  60.46200  26.94900 2019-05-10 21:00:00</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; 10   Cygnus cygnus         1  61.99900  22.16100 2019-05-10 21:00:00</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; ...with 90 more records and 24 more fields:</span></a>
 <a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; taxon_rank, country, province, municipality, wkt_wgs84,</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; line_length_m, area_m2, date_end, hour_start, hour_end,</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; minute_start, minute_end, record_id, event_id,</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; line_length_m, area_m2, date_start, date_end, hour_start,</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; hour_end, minute_start, minute_end, record_id, event_id,</span></a>
 <a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt; collection_id, is_breeding_site, any_issues,</span></a>
 <a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; record_reliable, taxon_reliability, sex,</span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; document_reliablity, coordinate_accuracy</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; document_reliablity, coordinate_accuracy, duration</span></a></code></pre></div>
 <hr>
 </div>
 <div id="contributing" class="section level2">
