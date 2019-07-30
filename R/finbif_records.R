@@ -32,9 +32,31 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
   if (n > nmax) stop("Cannot download more than ", nmax, " records")
 
   if (missing(filters)) {
+
     query <- list()
+
   } else {
-    query <- translate_filters(as.list(filters))
+
+    filters <- as.list(filters)
+    filters[["informal_group"]] <- translate(
+      to_sentence_case(filters[["informal_group"]]), informal_groups, "name"
+    )
+    filters[["informal_group_reported"]] <- translate(
+      to_sentence_case(filters[["informal_group_reported"]]), informal_groups,
+      "name"
+    )
+    filters[["administrative_status"]] <- translate(
+      filters[["administrative_status"]], admin_status_translations,
+      "translated_status_code"
+    )
+    filters[["red_list_status"]] <- translate(
+      filters[["red_list_status"]], redlist_status_translations,
+      "translated_status_code"
+    )
+    names(filters) <-
+      translate(names(filters), filter_translations, "translated_filter")
+    query <- lapply(filters, paste, collapse = ",")
+
   }
 
   default_fields <- field_translations[field_translations[["default_field"]], ]
@@ -47,7 +69,8 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
       list(default_fields[["translated_field"]]),
       fields
     )
-    fields <- translate_fields(unlist(fields))
+    fields <- unlist(fields)
+    fields <- translate(fields, field_translations, "translated_field")
   }
 
   query[["selected"]] <- paste(fields, collapse = ",")
@@ -105,51 +128,9 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
 
 }
 
-translate_filters <- function(filters) {
-  ind <- match(names(filters), filter_translations[["translated_filter"]])
-  if (anyNA(ind)) stop("Invalid filter name")
-  filters[["informal_group"]] <- translate_informal_groups(
-    filters[["informal_group"]]
-  )
-  filters[["informal_group_reported"]] <- translate_informal_groups(
-    filters[["informal_group_reported"]]
-  )
-  filters[["administrative_status"]] <- translate_admin_status(
-    filters[["administrative_status"]]
-  )
-  filters[["red_list_status"]] <- translate_redlist_status(
-    filters[["red_list_status"]]
-  )
-  names(filters) <- row.names(filter_translations)[ind]
-  lapply(filters, paste, collapse = ",")
-}
-
-translate_informal_groups <- function(groups) {
-  if (is.null(groups)) return(NULL)
-  groups <- to_sentence_case(groups)
-  ind <- match(groups, informal_groups[["name"]])
-  if (anyNA(ind)) stop("Invalid informal group")
-  row.names(informal_groups)[ind]
-}
-
-translate_admin_status <- function(statuses) {
-  if (is.null(statuses)) return(NULL)
-  ind <- match(statuses, admin_status_translations[["translated_status_code"]])
-  if (anyNA(ind)) stop("Invalid administrative status")
-  row.names(admin_status_translations)[ind]
-}
-
-translate_redlist_status <- function(statuses) {
-  if (is.null(statuses)) return(NULL)
-  ind <- match(
-    statuses, redlist_status_translations[["translated_status_code"]]
-  )
-  if (anyNA(ind)) stop("Invalid red list status")
-  row.names(redlist_status_translations)[ind]
-}
-
-translate_fields <- function(fields) {
-  ind <- match(fields, field_translations[["translated_field"]])
-  if (anyNA(ind)) stop("Invalid field name")
-  row.names(field_translations)[ind]
+translate <- function(x, y, z) {
+  if (is.null(x)) return(NULL)
+  ind <- match(x, y[[z]])
+  if (anyNA(ind)) stop("Invalid name in ", deparse(substitute(x)))
+  row.names(y)[ind]
 }

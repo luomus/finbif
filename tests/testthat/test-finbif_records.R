@@ -31,22 +31,18 @@ test_that(
     expect_s3_class(resp_list_admin_status[[1]], "finbif_api")
     expect_s3_class(resp_count, "finbif_api")
     expect_error(finbif_records(n = 1e99), "Cannot download more than")
+    expect_error(finbif_records(filters = c(not_a_filter = TRUE)), "Invalid")
     expect_error(
-      finbif_records(filters = c(not_a_filter = TRUE)), "Invalid filter name"
-    )
-    expect_error(
-      finbif_records(filters = c(informal_group = "Birbs")),
-      "Invalid informal group"
+      finbif_records(filters = c(informal_group = "Birbs")), "Invalid"
     )
     expect_error(
       finbif_records(filters = c(administrative_status = "not a status")),
-      "Invalid administrative status"
+      "Invalid"
     )
     expect_error(
-      finbif_records(filters = c(red_list_status = "not a status")),
-      "Invalid red list status"
+      finbif_records(filters = c(red_list_status = "not a status")), "Invalid"
     )
-    expect_error(finbif_records(fields = "not_a_field"), "Invalid field name")
+    expect_error(finbif_records(fields = "not_a_field"), "Invalid")
 
   }
 )
