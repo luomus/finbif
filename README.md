@@ -72,7 +72,7 @@ Download occurrence data from finbif.
 ``` r
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
-#> Records available: 54652
+#> Records available: 54750
 #> A data.frame [100 x 27]
 #>    scientific_name abundance lat_wgs84 lon_wgs84 date_start
 #> 1    Cygnus cygnus         1  60.56745  21.57191 2019-06-30
@@ -88,7 +88,7 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 #> ...with 90 more records and 22 more fields:
 #> taxon_rank, country, province, municipality, wkt_wgs84,
 #> line_length_m, area_m2, date_end, hour_start, hour_end,
-#> minutes_start, minutes_end, record_id, event_id,
+#> minute_start, minute_end, record_id, event_id,
 #> collection_id, is_breeding_site, any_issues,
 #> record_reliable, taxon_reliability, sex,
 #> document_reliablity, coordinate_accuracy

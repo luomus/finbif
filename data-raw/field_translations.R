@@ -16,8 +16,8 @@ field_translations <- read.csv(text = "
   gathering.eventDate.end, date_end, TRUE, FALSE, date, TRUE
   gathering.hourBegin, hour_start, TRUE, FALSE, integer, TRUE
   gathering.hourEnd, hour_end, TRUE, FALSE, integer, TRUE
-  gathering.minutesBegin, minutes_start, TRUE, FALSE, integer, TRUE
-  gathering.minutesEnd, minutes_end, TRUE, FALSE, integer, TRUE
+  gathering.minutesBegin, minute_start, TRUE, FALSE, integer, TRUE
+  gathering.minutesEnd, minute_end, TRUE, FALSE, integer, TRUE
   unit.unitId, record_id, TRUE, FALSE, uri, TRUE
   gathering.gatheringId, event_id, TRUE, FALSE, uri, TRUE
   document.collectionId, collection_id, TRUE, FALSE, uri, TRUE
