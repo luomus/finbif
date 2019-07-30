@@ -3,6 +3,7 @@
 #' @importFrom httr accept_json content http_type modify_url GET user_agent
 #' @importFrom httr status_code
 #' @importFrom jsonlite fromJSON
+#' @importFrom urltools param_remove
 
 finbif_api_get <- function(path, query, cache) {
   finbif_access_token <- finbif_token()
@@ -34,6 +35,10 @@ finbif_api_get <- function(path, query, cache) {
     httr::accept_json(),
     query = c(query, list(access_token = finbif_access_token))
   )
+
+  notoken <- urltools::param_remove(resp[["url"]], "access_token")
+
+  resp[["request"]][["url"]] <- resp[["url"]] <- notoken
 
   if (httr::http_type(resp) != "application/json") {
     ans <- NULL
