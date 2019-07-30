@@ -35,7 +35,7 @@ jobs:
             mkdir /root/main/artifacts
             R -e "devtools::install()"
             R -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert = TRUE, value = TRUE))"
-            R -e "covr::codecov(line_exclusions = list('R/finbif_request_token.R' = 33:69))"
+            R -e "try(covr::codecov(line_exclusions = list('R/finbif_request_token.R' = 33:69), quiet = FALSE), silent = TRUE)"
             unset CI
             R -e "lintr::lint_package()"
             R CMD Rd2pdf --force --output="/root/main/artifacts/finbif-manual.pdf" .
