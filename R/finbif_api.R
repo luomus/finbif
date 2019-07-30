@@ -34,14 +34,22 @@ as.data.frame.finbif_api <- function(x, ...) {
       ans
     }
   )
-  reduce_merge(df)
+  structure(
+    reduce_merge(df),
+    url = x[["response"]][["url"]],
+    time = x[["response"]][["date"]]
+  )
 }
 
 #' @rdname as.data.frame.finbif_api
 #' @export
 as.data.frame.finbif_api_list <- function(x, ...) {
   df <- lapply(x, as.data.frame)
-  reduce_merge(df)
+  structure(
+    reduce_merge(df),
+    url =  do.call(c, lapply(df, attr, "url", TRUE)),
+    time =  do.call(c, lapply(df, attr, "time", TRUE))
+  )
 }
 
 # print methods ----------------------------------------------------------------

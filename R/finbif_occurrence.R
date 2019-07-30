@@ -53,14 +53,20 @@ finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
 
   if (count_only) return(records[["content"]][["total"]])
 
-  df <- as.data.frame(records)
-  df <- df[intersect(row.names(field_translations), names(df))]
+  df   <- as.data.frame(records)
+  url  <- attr(df, "url", TRUE)
+  time <-  attr(df, "time", TRUE)
+
+  df   <- df[intersect(row.names(field_translations), names(df))]
 
   structure(
     df,
     names     = field_translations[names(df), "translated_field"],
     class     = c("finbif_occ", "data.frame"),
     nrec_dnld = attr(records, "nrec_dnld", TRUE),
-    nrec_avl  = attr(records, "nrec_avl", TRUE)
+    nrec_avl  = attr(records, "nrec_avl", TRUE),
+    url       = url,
+    time      = time
   )
+
 }
