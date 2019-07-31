@@ -14,7 +14,7 @@ matrix:
   - r: oldrel
   - r: release
     after_success:
-    -  R -e "covr::codecov(line_exclusions = list('R/finbif_request_token.R' = 33:69)"
+    -  R -e "covr::codecov(line_exclusions = list('R/finbif_request_token.R' = 33:69))"
     -  R -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert = TRUE, value = TRUE))"
   - r: devel
   - r: release
