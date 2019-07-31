@@ -11,19 +11,14 @@ knitr::opts_chunk$set(
 )
 ```
 # finbif <img src="man/figures/logo.png" align="right" alt="" width="120">
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)  [![CircleCI](https://circleci.com/bb/luomus/finbif.svg?style=shield&circle-token=0c7c2580ef1ca3246d3da8ba60064aeaf9c8eecd)](https://circleci.com/bb/luomus/finbif) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/bitbucket/luomus/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/master) [![codecov](https://codecov.io/bb/luomus/finbif/branch/master/graph/badge.svg?token=erk5D6H4i2)](https://codecov.io/bb/luomus/finbif) [![Netlify Status](https://api.netlify.com/api/v1/badges/5fdd166e-0155-4992-9009-82434fefe4f4/deploy-status)](https://app.netlify.com/sites/finbif/deploys)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)  [![Build Status](https://travis-ci.org/luomus/finbif.svg?branch=master)](https://travis-ci.org/luomus/finbif) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/master) [![codecov](https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/master)
 
-An R interface to the FinBIF (Finnish Biodiversity Information Facility) API 
+An R interface to the FinBIF (Finnish Biodiversity Information Facility) API
 (api.laji.fi).
 
 ## Installation
 You can install the development version of finbif from
-[Bitbucket](https://bitbucket.org) with:
-```{r install, eval=FALSE}
-install.packages("remotes")
-remotes::install_bitbucket("luomus/finbif")
-```
-or from [GitHub](https://github.com),
+[GitHub](https://github.com),
 ```{r install_gh, eval = FALSE}
 remotes::install_github("luomus/finbif")
 ```
@@ -65,8 +60,9 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 ----
 
 ## Contributing
-Development is a community effort, and we encourage participation. Please read 
+Development is a community effort, and we encourage participation. Please read
 [the contribution guide](CONTRIBUTING.md) for details.
 
-Please note that the 'finbif' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to 
-abide by its terms. 
+Please note that the 'finbif' project is released with a 
+[Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this
+project, you agree to abide by its terms.

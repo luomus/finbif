@@ -20,12 +20,7 @@ package provides access to the FinBIF API directly from within R.
 
 ## Installing the finbif package
 You can install the development version of finbif from
-[Bitbucket](https://bitbucket.org) with:
-```{r install, eval=FALSE}
-install.packages("remotes")
-remotes::install_bitbucket("luomus/finbif")
-```
-or from [GitHub](https://github.com),
+[GitHub](https://github.com),
 ```{r install_gh, eval = FALSE}
 remotes::install_github("luomus/finbif")
 ```

@@ -103,11 +103,8 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the development version of finbif from <a href="https://bitbucket.org">Bitbucket</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"remotes"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_bitbucket">install_bitbucket</a></span>(<span class="st">"luomus/finbif"</span>)</a></code></pre></div>
-<p>or from <a href="https://github.com">GitHub</a>,</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"luomus/finbif"</span>)</a></code></pre></div>
+<p>You can install the development version of finbif from <a href="https://github.com">GitHub</a>,</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"luomus/finbif"</span>)</a></code></pre></div>
 </div>
 <div id="documentation" class="section level2">
 <h2 class="hasAnchor">
@@ -118,42 +115,42 @@
 <h2 class="hasAnchor">
 <a href="#getting-a-finbif-access-token" class="anchor"></a>Getting a FinBIF access token</h2>
 <p>First load the finbif R package.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(finbif)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(finbif)</a></code></pre></div>
 <p>To use the FinBIF API you must first request and set a personal access token. You can request an API token to be sent to your email address with the function <code>finbif_get_token</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/finbif_request_token.html">finbif_request_token</a></span>(<span class="st">"your@email.com"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="reference/finbif_request_token.html">finbif_request_token</a></span>(<span class="st">"your@email.com"</span>)</a></code></pre></div>
 <p>Copy the access token that was sent to your email and set it as the environment variable <code>FINBIF_ACCESS_TOKEN</code> either for the current session,</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.setenv">Sys.setenv</a></span>(</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="dt">FINBIF_ACCESS_TOKEN =</span> <span class="st">"xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co"># Note: the above is not a real access token. Do not try using it.</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.setenv">Sys.setenv</a></span>(</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="dt">FINBIF_ACCESS_TOKEN =</span> <span class="st">"xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># Note: the above is not a real access token. Do not try using it.</span></a></code></pre></div>
 <p>, or by adding it to a <code>Renviron</code> startup file (see <a href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/">here</a> for details).</p>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>Download occurrence data from finbif.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>, <span class="dt">n =</span> <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Records downloaded: 100</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; Records available: 54751</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; A data.frame [100 x 29]</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;    scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 1    Cygnus cygnus         1  60.56745  21.57191 2019-06-29 21:00:00</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 2    Cygnus cygnus         1  61.32290  28.56811 2019-05-09 08:30:00</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 3    Cygnus cygnus         1  61.32294  28.56868 2019-05-10 04:45:00</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 4    Cygnus cygnus         1  61.07692  21.49222 2019-05-16 08:25:00</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 5    Cygnus cygnus         1  62.25243  25.70933 2019-05-15 21:00:00</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 6    Cygnus cygnus         1  60.83907  21.25772 2019-05-16 20:00:00</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 7    Cygnus cygnus         1  61.12486  21.54164 2019-05-21 06:30:00</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; 8    Cygnus cygnus         1  61.63413  22.90005 2019-05-18 21:00:00</span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 9    Cygnus cygnus         1  60.46200  26.94900 2019-05-10 21:00:00</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; 10   Cygnus cygnus         1  61.99900  22.16100 2019-05-10 21:00:00</span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; ...with 90 more records and 24 more fields:</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; taxon_rank, country, province, municipality, wkt_wgs84,</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; line_length_m, area_m2, date_start, date_end, hour_start,</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; hour_end, minute_start, minute_end, record_id, event_id,</span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt; collection_id, is_breeding_site, any_issues,</span></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; record_reliable, taxon_reliability, sex,</span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; document_reliablity, coordinate_accuracy, duration</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>, <span class="dt">n =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Records downloaded: 100</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; Records available: 54754</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; A data.frame [100 x 29]</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;    scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 1    Cygnus cygnus         1  60.56745  21.57191 2019-06-29 21:00:00</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 2    Cygnus cygnus         1  61.32290  28.56811 2019-05-09 08:30:00</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 3    Cygnus cygnus         1  61.32294  28.56868 2019-05-10 04:45:00</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 4    Cygnus cygnus         1  61.07692  21.49222 2019-05-16 08:25:00</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 5    Cygnus cygnus         1  62.25243  25.70933 2019-05-15 21:00:00</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 6    Cygnus cygnus         1  60.83907  21.25772 2019-05-16 20:00:00</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; 7    Cygnus cygnus         1  61.12486  21.54164 2019-05-21 06:30:00</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; 8    Cygnus cygnus         1  61.63413  22.90005 2019-05-18 21:00:00</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; 9    Cygnus cygnus         1  60.46200  26.94900 2019-05-10 21:00:00</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; 10   Cygnus cygnus         1  61.99900  22.16100 2019-05-10 21:00:00</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; ...with 90 more records and 24 more fields:</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; taxon_rank, country, province, municipality, wkt_wgs84,</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; line_length_m, area_m2, date_start, date_end, hour_start,</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; hour_end, minute_start, minute_end, record_id, event_id,</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; collection_id, is_breeding_site, any_issues,</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; record_reliable, taxon_reliability, sex,</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; document_reliablity, coordinate_accuracy, duration</span></a></code></pre></div>
 <hr>
 </div>
 <div id="contributing" class="section level2">
@@ -200,10 +197,9 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></li>
-<li><a href="https://circleci.com/bb/luomus/finbif"><img src="https://circleci.com/bb/luomus/finbif.svg?style=shield&amp;circle-token=0c7c2580ef1ca3246d3da8ba60064aeaf9c8eecd" alt="CircleCI"></a></li>
-<li><a href="https://ci.appveyor.com/project/luomus/finbif/branch/master"><img src="https://ci.appveyor.com/api/projects/status/bitbucket/luomus/finbif?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
-<li><a href="https://codecov.io/bb/luomus/finbif"><img src="https://codecov.io/bb/luomus/finbif/branch/master/graph/badge.svg?token=erk5D6H4i2" alt="codecov"></a></li>
-<li><a href="https://app.netlify.com/sites/finbif/deploys"><img src="https://api.netlify.com/api/v1/badges/5fdd166e-0155-4992-9009-82434fefe4f4/deploy-status" alt="Netlify Status"></a></li>
+<li><a href="https://travis-ci.org/luomus/finbif"><img src="https://travis-ci.org/luomus/finbif.svg?branch=master" alt="Build Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/luomus/finbif/branch/master"><img src="https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
+<li><a href="https://codecov.io/github/luomus/finbif/branch/master"><img src="https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg" alt="codecov"></a></li>
 </ul>
 </div>
 </div>

@@ -4,12 +4,11 @@
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![CircleCI](https://circleci.com/bb/luomus/finbif.svg?style=shield&circle-token=0c7c2580ef1ca3246d3da8ba60064aeaf9c8eecd)](https://circleci.com/bb/luomus/finbif)
+[![Build
+Status](https://travis-ci.org/luomus/finbif.svg?branch=master)](https://travis-ci.org/luomus/finbif)
 [![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/bitbucket/luomus/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/master)
-[![codecov](https://codecov.io/bb/luomus/finbif/branch/master/graph/badge.svg?token=erk5D6H4i2)](https://codecov.io/bb/luomus/finbif)
-[![Netlify
-Status](https://api.netlify.com/api/v1/badges/5fdd166e-0155-4992-9009-82434fefe4f4/deploy-status)](https://app.netlify.com/sites/finbif/deploys)
+status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/master)
+[![codecov](https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/master)
 
 An R interface to the FinBIF (Finnish Biodiversity Information Facility)
 API (api.laji.fi).
@@ -17,14 +16,7 @@ API (api.laji.fi).
 ## Installation
 
 You can install the development version of finbif from
-[Bitbucket](https://bitbucket.org) with:
-
-``` r
-install.packages("remotes")
-remotes::install_bitbucket("luomus/finbif")
-```
-
-or from [GitHub](https://github.com),
+[GitHub](https://github.com),
 
 ``` r
 remotes::install_github("luomus/finbif")
@@ -72,7 +64,7 @@ Download occurrence data from finbif.
 ``` r
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
-#> Records available: 54751
+#> Records available: 54754
 #> A data.frame [100 x 29]
 #>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
 #> 1    Cygnus cygnus         1  60.56745  21.57191 2019-06-29 21:00:00
