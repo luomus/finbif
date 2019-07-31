@@ -5,7 +5,7 @@
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Build
-Status](https://travis-ci.org/luomus/finbif.svg?branch=master)](https://travis-ci.org/luomus/finbif)
+Status](https://travis-ci.com/luomus/finbif.svg?branch=master)](https://travis-ci.com/luomus/finbif)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/master)
 [![codecov](https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/master)
