@@ -13,7 +13,7 @@ test_that(
         resp_list_admin_status <- finbif_records(
           filters = c(administrative_status = "GMEB")
         )
-        resp_list_admin_status <- finbif_records(
+        resp_list_red_list_status <- finbif_records(
           filters = c(red_list_status = "LC")
         )
         resp_list_fields <- finbif_records(fields = "record_id")
@@ -29,6 +29,7 @@ test_that(
     expect_s3_class(resp_list_filters[[1]], "finbif_api")
     expect_s3_class(resp_list_informal_group[[1]], "finbif_api")
     expect_s3_class(resp_list_admin_status[[1]], "finbif_api")
+    expect_s3_class(resp_list_red_list_status[[1]], "finbif_api")
     expect_s3_class(resp_count, "finbif_api")
     expect_error(finbif_records(n = 1e99), "Cannot download more than")
     expect_error(finbif_records(filters = c(not_a_filter = TRUE)), "Invalid")
