@@ -82,7 +82,7 @@ to see the qualifiers available. To specify qualifiers use a named list of
 character vectors where the names are habitat types or subtypes and the elements
 of the character vectors are the qualifier codes.
 ```{r habitat-type-specific}
-head(finbif_habitat_qualifiers())
+finbif_habitat_qualifiers()[4:6, ]
 
 # Search records of taxa for which forests with sun-exposure and broadleaved
 # deciduous trees are their primary habitat type

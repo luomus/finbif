@@ -112,7 +112,7 @@
 <p>You can filter occurrence records based on informal taxonomic groups such as <code>Birds</code> or <code>Mammals</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="dt">filters =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">informal_group =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Birds"</span>, <span class="st">"Mammals"</span>)))</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Records downloaded: 10</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Records available: 17330858</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Records available: 17330859</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; A data.frame [10 x 23]</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;        scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; 1  Cyanistes caeruleus         1  61.10229  21.55724 2019-07-31 04:40:00</span></a>
@@ -219,7 +219,7 @@
 <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co"># habitat type</span></a>
 <a class="sourceLine" id="cb6-12" data-line-number="12"><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="dt">filters =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">primary_secondary_habitat =</span> <span class="st">"M"</span>))</a>
 <a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; Records downloaded: 10</span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; Records available: 18720796</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; Records available: 18720797</span></a>
 <a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; A data.frame [10 x 28]</span></a>
 <a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt;         scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></a>
 <a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; 1        Acronicta alni         1  62.31141  27.90039 2019-07-30 21:00:00</span></a>
@@ -239,45 +239,35 @@
 <a class="sourceLine" id="cb6-31" data-line-number="31"><span class="co">#&gt; life_stage, any_issues, record_reliable, taxon_reliability,</span></a>
 <a class="sourceLine" id="cb6-32" data-line-number="32"><span class="co">#&gt; document_reliablity, coordinate_accuracy, duration</span></a></code></pre></div>
 <p>You may further refine habitat based searching using a specific habitat type qualifier such as “sun-exposed” or “shady”. Use <code><a href="../reference/finbif_habitat_types.html">finbif_habitat_qualifiers()</a></code> to see the qualifiers available. To specify qualifiers use a named list of character vectors where the names are habitat types or subtypes and the elements of the character vectors are the qualifier codes.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw"><a href="../reference/finbif_habitat_types.html">finbif_habitat_qualifiers</a></span>())</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt;                                                                                habitat_type</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; 1 Old-growth forests (including sporadic old trees and younger forests with decaying trees)</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; 2                                                     Esker forests, also semi-open forests</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; 3                           Burnt forest areas and other young stages of natural succession</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; 4                                                       Broadleaved deciduous trees present</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 5                                                                               Sun-exposed</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 6                                                                                     Shady</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;   code</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 1    V</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; 2    H</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; 3    P</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt; 4    J</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt; 5   PA</span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt; 6   VA</span></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co"># Search records of taxa for which forests with sun-exposure and broadleaved</span></a>
-<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="co"># deciduous trees are their primary habitat type</span></a>
-<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="dt">filters =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">primary_habitat =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">M =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"PA"</span>, <span class="st">"J"</span>))))</a>
-<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="co">#&gt; Records downloaded: 10</span></a>
-<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="co">#&gt; Records available: 103</span></a>
-<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="co">#&gt; A data.frame [10 x 24]</span></a>
-<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="co">#&gt;     scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></a>
-<a class="sourceLine" id="cb7-24" data-line-number="24"><span class="co">#&gt; 1  Pammene fasciana         1  59.96020  20.99521 2017-09-19 21:00:00</span></a>
-<a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co">#&gt; 2  Pammene fasciana         1  60.00217  23.43591 2019-06-21 21:00:00</span></a>
-<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="co">#&gt; 3  Pammene fasciana         1  60.36807  26.17233 2017-06-28 21:00:00</span></a>
-<a class="sourceLine" id="cb7-27" data-line-number="27"><span class="co">#&gt; 4  Pammene fasciana         1  60.35244  19.83238 2017-07-29 21:00:00</span></a>
-<a class="sourceLine" id="cb7-28" data-line-number="28"><span class="co">#&gt; 5  Pammene fasciana         1  60.35244  19.83238 2017-07-30 21:00:00</span></a>
-<a class="sourceLine" id="cb7-29" data-line-number="29"><span class="co">#&gt; 6  Pammene fasciana         1  60.35244  19.83238 2017-08-01 21:00:00</span></a>
-<a class="sourceLine" id="cb7-30" data-line-number="30"><span class="co">#&gt; 7  Pammene fasciana         1  60.35244  19.83238 2017-08-02 21:00:00</span></a>
-<a class="sourceLine" id="cb7-31" data-line-number="31"><span class="co">#&gt; 8  Pammene fasciana         1  60.21166  24.90204 2017-07-30 21:00:00</span></a>
-<a class="sourceLine" id="cb7-32" data-line-number="32"><span class="co">#&gt; 9  Pammene fasciana         2  60.35244  19.83238 2017-08-02 21:00:00</span></a>
-<a class="sourceLine" id="cb7-33" data-line-number="33"><span class="co">#&gt; 10 Pammene fasciana         3  60.00217  23.43591 2019-05-07 21:00:00</span></a>
-<a class="sourceLine" id="cb7-34" data-line-number="34"><span class="co">#&gt; ...with 0 more records and 19 more fields:</span></a>
-<a class="sourceLine" id="cb7-35" data-line-number="35"><span class="co">#&gt; taxon_rank, country, province, municipality, wkt_wgs84, area_m2,</span></a>
-<a class="sourceLine" id="cb7-36" data-line-number="36"><span class="co">#&gt; date_start, date_end, record_id, event_id, collection_id,</span></a>
-<a class="sourceLine" id="cb7-37" data-line-number="37"><span class="co">#&gt; female_abundance, male_abundance, life_stage, any_issues,</span></a>
-<a class="sourceLine" id="cb7-38" data-line-number="38"><span class="co">#&gt; record_reliable, taxon_reliability, document_reliablity,</span></a>
-<a class="sourceLine" id="cb7-39" data-line-number="39"><span class="co">#&gt; coordinate_accuracy</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="../reference/finbif_habitat_types.html">finbif_habitat_qualifiers</a></span>()[<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>, ]</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt;                          habitat_type code</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; 4 Broadleaved deciduous trees present    J</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; 5                         Sun-exposed   PA</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; 6                               Shady   VA</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co"># Search records of taxa for which forests with sun-exposure and broadleaved</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co"># deciduous trees are their primary habitat type</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="dt">filters =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">primary_habitat =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">M =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"PA"</span>, <span class="st">"J"</span>))))</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; Records downloaded: 10</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; Records available: 103</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; A data.frame [10 x 24]</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;     scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt; 1  Pammene fasciana         1  59.96020  20.99521 2017-09-19 21:00:00</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt; 2  Pammene fasciana         1  60.00217  23.43591 2019-06-21 21:00:00</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt; 3  Pammene fasciana         1  60.36807  26.17233 2017-06-28 21:00:00</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt; 4  Pammene fasciana         1  60.35244  19.83238 2017-07-29 21:00:00</span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="co">#&gt; 5  Pammene fasciana         1  60.35244  19.83238 2017-07-30 21:00:00</span></a>
+<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="co">#&gt; 6  Pammene fasciana         1  60.35244  19.83238 2017-08-01 21:00:00</span></a>
+<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="co">#&gt; 7  Pammene fasciana         1  60.35244  19.83238 2017-08-02 21:00:00</span></a>
+<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="co">#&gt; 8  Pammene fasciana         1  60.21166  24.90204 2017-07-30 21:00:00</span></a>
+<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="co">#&gt; 9  Pammene fasciana         2  60.35244  19.83238 2017-08-02 21:00:00</span></a>
+<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="co">#&gt; 10 Pammene fasciana         3  60.00217  23.43591 2019-05-07 21:00:00</span></a>
+<a class="sourceLine" id="cb7-24" data-line-number="24"><span class="co">#&gt; ...with 0 more records and 19 more fields:</span></a>
+<a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co">#&gt; taxon_rank, country, province, municipality, wkt_wgs84, area_m2,</span></a>
+<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="co">#&gt; date_start, date_end, record_id, event_id, collection_id,</span></a>
+<a class="sourceLine" id="cb7-27" data-line-number="27"><span class="co">#&gt; female_abundance, male_abundance, life_stage, any_issues,</span></a>
+<a class="sourceLine" id="cb7-28" data-line-number="28"><span class="co">#&gt; record_reliable, taxon_reliability, document_reliablity,</span></a>
+<a class="sourceLine" id="cb7-29" data-line-number="29"><span class="co">#&gt; coordinate_accuracy</span></a></code></pre></div>
 </div>
   </div>
 
