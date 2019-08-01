@@ -4,12 +4,12 @@
 #' database.
 #'
 #' @return A data.frame.
-#' @examples
+#' @examples \dontrun{
 #'
 #' # Display the administrative statuses used by FinBIF
 #' finbif_habitat_types()
 #' finbif_habitat_qualifiers()
-#'
+#' }
 #' @export
 finbif_habitat_types <- function() {
   df <- habitat_types[["habitat_types"]]

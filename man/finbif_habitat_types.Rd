@@ -17,9 +17,10 @@ Display the habitat types and specific habitat types used in the FinBIF
 database.
 }
 \examples{
+\dontrun{
 
 # Display the administrative statuses used by FinBIF
 finbif_habitat_types()
 finbif_habitat_qualifiers()
-
+}
 }
