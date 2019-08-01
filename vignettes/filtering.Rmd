@@ -58,3 +58,33 @@ finbif_occurrence(
   filters = list(informal_group = "Mammals", red_list_status = "NT")
 )
 ```
+
+## Habitat type
+Many taxa are associated with one or more primary or secondary habitat types
+(e.g., forest) or subtypes (e.g., herb-rich alpine birch forests). Use
+`finbif_habitat_types()` to see the habitat types in FinBIF. You can filter
+occurrence records based on primary (or primary/secondary) habitat type or
+subtype codes. Note that filtering based on habitat is on taxa not on the
+location (i.e., filtering records with `primary_habitat = "M"` will only return
+records of taxa considered to primarily inhabit forests, yet the locations of
+those records may encompass habitats other than forests).
+```{r habitat-type}
+head(finbif_habitat_types())
+
+# Search records of taxa for which forests are their primary or secondary
+# habitat type
+finbif_occurrence(filters = c(primary_secondary_habitat = "M"))
+```
+
+You may further refine habitat based searching using a specific habitat type
+qualifier such as "sun-exposed" or "shady". Use `finbif_habitat_qualifiers()`
+to see the qualifiers available. To specify qualifiers use a named list of
+character vectors where the names are habitat types or subtypes and the elements
+of the character vectors are the qualifier codes.
+```{r habitat-type-specific}
+head(finbif_habitat_qualifiers())
+
+# Search records of taxa for which forests with sun-exposure and broadleaved
+# deciduous trees are their primary habitat type
+finbif_occurrence(filters = list(primary_habitat = list(M = c("PA", "J"))))
+```

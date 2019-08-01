@@ -1,24 +1,26 @@
 metadata_ranges <-
   finbif:::finbif_api_get("v0/metadata/ranges", list(), FALSE)$content
 
-habitat_types <- matrix(
-  unlist(metadata_ranges$MKV.habitatEnum), ncol = 2, byrow = TRUE
+habitat_types <- metadata_ranges[
+  c("MKV.habitatEnum", "MKV.habitatSpecificTypeEnum")
+]
+habitat_types <- lapply(habitat_types, unlist)
+habitat_types <- lapply(habitat_types, matrix, ncol = 2L, byrow = TRUE)
+
+habitat_types <- lapply(
+  habitat_types,
+  function(x) {
+    df <- data.frame(
+      stringr::str_split_fixed(x[, 2L], " ", 3L)[, c(3L, 1L)],
+      row.names = x[, 1L],
+      stringsAsFactors = FALSE
+    )
+    df <- stats::setNames(df, c("habitat_type", "code"))
+    df$habitat_type <- gsub("ä", "a", df$habitat_type)
+    df$habitat_type <- finbif:::to_sentence_case(df$habitat_type)
+    df$code <- toupper(df$code)
+    df
+  }
 )
 
-habitat_types <- data.frame(
-  stringr::str_split_fixed(habitat_types[, 2], " ", 3)[, c(3, 1)],
-  row.names = habitat_types[, 1],
-  stringsAsFactors = FALSE
-)
-
-colnames(habitat_types) <- c("habitat_type", "code")
-
-habitat_types$habitat_type <- gsub("ä", "a", habitat_types$habitat_type)
-
-habitat_types$habitat_type <- finbif:::to_sentence_case(
-  habitat_types$habitat_type
-)
-
-habitat_types$code <- toupper(habitat_types$code)
-
-# Also need specific type
+names(habitat_types) <- c("habitat_types", "specific_habitat_types")

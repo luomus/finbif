@@ -19,6 +19,8 @@ reference:
       - finbif_informal_groups
       - finbif_admin_status
       - finbif_red_list
+      - finbif_habitat_types
+      - finbif_habitat_qualifiers
   - title: "Records"
     desc: >
       Getting records from finbif

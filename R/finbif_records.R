@@ -31,33 +31,7 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
   nmax <- max_queries * max_size
   if (n > nmax) stop("Cannot download more than ", nmax, " records")
 
-  if (missing(filters)) {
-
-    query <- list()
-
-  } else {
-
-    filters <- as.list(filters)
-    filters[["informal_group"]] <- translate(
-      to_sentence_case(filters[["informal_group"]]), informal_groups, "name"
-    )
-    filters[["informal_group_reported"]] <- translate(
-      to_sentence_case(filters[["informal_group_reported"]]), informal_groups,
-      "name"
-    )
-    filters[["administrative_status"]] <- translate(
-      filters[["administrative_status"]], admin_status_translations,
-      "translated_status_code"
-    )
-    filters[["red_list_status"]] <- translate(
-      filters[["red_list_status"]], redlist_status_translations,
-      "translated_status_code"
-    )
-    names(filters) <-
-      translate(names(filters), filter_translations, "translated_filter")
-    query <- lapply(filters, paste, collapse = ",")
-
-  }
+  query <- if (missing(filters)) list() else translate_filters(filters)
 
   default_fields <- field_translations[field_translations[["default_field"]], ]
 
@@ -88,21 +62,20 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
 
   }
 
-  resp <- list()
-  i <- 1L
-
-  resp[[i]] <- finbif_api_get(path, query, cache)
-  query[["page"]] <- query[["page"]] + 1L
+  resp <- list(finbif_api_get(path, query, cache))
 
   n_tot <- resp[[1L]][["content"]][["total"]]
   n <- min(n, n_tot)
-  n_pages <- n %/% query[["pageSize"]]
   multipage <- n > max_size
 
   if (multipage && !quiet) {
     pb <- utils::txtProgressBar(0L, floor(n / max_size), style = 3L)
     on.exit(close(pb))
   }
+
+  i <- 1L
+  query[["page"]] <- query[["page"]] + 1L
+  n_pages <- n %/% query[["pageSize"]]
 
   while (multipage) {
 
@@ -126,6 +99,59 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
 
   structure(resp, class = "finbif_api_list", nrec_dnld = n, nrec_avl = n_tot)
 
+}
+
+translate_filters <- function(filters) {
+
+  filters <- as.list(filters)
+
+  filters[["informal_group"]] <- translate(
+    to_sentence_case(filters[["informal_group"]]), informal_groups, "name"
+  )
+
+  filters[["informal_group_reported"]] <- translate(
+    to_sentence_case(filters[["informal_group_reported"]]), informal_groups,
+    "name"
+  )
+
+  filters[["administrative_status"]] <- translate(
+    filters[["administrative_status"]], admin_status_translations,
+    "translated_status_code"
+  )
+
+  filters[["red_list_status"]] <- translate(
+    filters[["red_list_status"]], redlist_status_translations,
+    "translated_status_code"
+  )
+
+  filters[["primary_habitat"]] <-
+    translate_habitat(filters[["primary_habitat"]])
+
+  filters[["primary_secondary_habitat"]] <-
+    translate_habitat(filters[["primary_secondary_habitat"]])
+
+  names(filters) <-
+    translate(names(filters), filter_translations, "translated_filter")
+
+  lapply(filters, paste, collapse = ",")
+
+}
+
+translate_habitat <- function(habitat) {
+  if (is.list(habitat)) {
+    names(habitat) <-
+      translate(names(habitat), habitat_types$habitat_types, "code")
+    habitat <-
+      lapply(habitat, translate, habitat_types$specific_habitat_types, "code")
+    habitat <- lapply(habitat, paste, collapse = ",")
+    sprintf(
+      "%s%s",
+      names(habitat),
+      ifelse(habitat == "", habitat, sprintf("[%s]", habitat))
+    )
+  } else {
+    translate(habitat, habitat_types$habitat_types,"code")
+  }
 }
 
 translate <- function(x, y, z) {

@@ -16,34 +16,43 @@
 #'   If `TRUE` (default) use quality controlled taxonomic determinations. Or, if
 #'   `FALSE` use the originally recorded taxonomic determinations.
 #' - `subtaxa` Logical.
-#'   If `TRUE` (default) return records of all taxa belonging to specified
-#'   taxa. Or, if `FALSE` only return records for exact matches to the
-#'   specified taxa (e.g., if a genus is specified, do not return records of the
-#'   species belonging to the genus, return records of individuals identified as
-#'   that genus only and not identified to a lower taxonomic level).
+#'   If `TRUE` (default) return records of all taxa belonging to specified taxa.
+#'   Or, if `FALSE` only return records for exact matches to the specified taxa
+#'   (e.g., if a genus is specified, do not return records of the species
+#'   belonging to the genus, return records of individuals identified as that
+#'   genus only and not identified to a lower taxonomic level).
 #' - `invalid_taxa` Logical.
 #'   If `TRUE` (default) return records for taxa not found in the FinBIF
-#'   taxonomic database as well as taxa that are in the FinBIF database.
-#'   Or, if `FALSE` limit records to only those of taxa found in the FinBIF
-#'   database.
+#'   taxonomic database as well as taxa that are in the FinBIF database. Or, if
+#'   `FALSE` limit records to only those of taxa found in the FinBIF database.
 #' - `informal_group` Character vector.
 #'   Filter by informal taxonomic groups. Only including informal groups linked
 #'   to the recorded taxa in the FinBIF database. Use the function
 #'   [finbif_informal_groups()] to see the informal taxonomic groups available
 #'   in FinBIF.
-#' - `informal_group_reported` Character. Filter by informal taxonomic groups
-#'   including groups reported directly with the record and those linked
+#' - `informal_group_reported` Character vector. Filter by informal taxonomic
+#'   groups including groups reported directly with the record and those linked
 #'   to the recorded taxa in the FinBIF database. Use the function
 #'   [finbif_informal_groups()] to see the informal taxonomic groups available
 #'   in FinBIF.
-#' - `administrative_status` Character. Filter by administrative status. Use the
-#'   function [finbif_admin_status()] to see administrative statuses for taxa in
-#'   the FinBIF database.
-#' - `red_list_status` Character. Filter by IUCN red list status. Use the
-#'   function [finbif_red_list()] to see red list statuses for taxa in
-#'   the FinBIF database.
-#' - `primary_habitat` Character.
-#' - `primary_secondary_habitat` Character.
+#' - `administrative_status` Character vector. Filter by administrative status
+#'   code. Use the function [finbif_admin_status()] to see administrative
+#'   statuses and codes.
+#' - `red_list_status` Character vector. Filter by IUCN red list status code.
+#'   Use the function [finbif_red_list()] to see red list statuses and codes.
+#' - `primary_habitat` Character or named list of character vectors. Filter by
+#'   primary habitat code. Use the function [finbif_habitat_types()] to see
+#'   habitat (sub)types and codes for taxa in the FinBIF database. Habitat
+#'   type/subtypes can be refined further by indicating habitat qualifiers with
+#'   a named list of character vectors where the names are habitat (sub)type
+#'   codes and the elements of the character vector are the habitat qualifier
+#'   codes. Use the function [finbif_habitat_qualifiers()] to see habitat
+#'   qualifiers and codes. The records returned will be of taxa whose primary
+#'   habitat is considered to be the (sub)habitat/habitat
+#'   qualifier combination supplied.
+#' - `primary_secondary_habitat` Character or named list of character vectors.
+#'   As above, except the records returned will be of taxa whose primary or
+#'   secondary habitat is considered to be the combination supplied.
 #' - `finnish`. Logical.
 #' - `invasive`. Logical
 #' - `taxon_rank`. Character.
