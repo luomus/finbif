@@ -6,18 +6,18 @@ Authors@R:
            family = "Morris",
            role = c("aut", "cre"),
            email = "willi@mmorris.email")
-Description: An R interface to the FinBIF (Finnish Biodiversity Information 
+Description: An R interface to the FinBIF (Finnish Biodiversity Information
     Facility) API (api.laji.fi).
 License: MIT + file LICENSE
 URL: https://github.com/luomus/finbif, https://luomus.github.io/finbif
 BugReports: https://github.com/luomus/finbif/issues
-VignetteBuilder: 
+VignetteBuilder:
     knitr
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Depends: R (>= 2.10)
-Imports: 
+Imports:
     digest,
     httr,
     jsonlite,

@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right'}}
 
-An R interface to the FinBIF (Finnish Biodiversity Information 
+An R interface to the FinBIF (Finnish Biodiversity Information
     Facility) API (api.laji.fi).
 }
 \seealso{

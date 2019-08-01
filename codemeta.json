@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "finbif",
-  "description": "An R interface to the FinBIF (Finnish Biodiversity Information \n    Facility) API (api.laji.fi).",
+  "description": "An R interface to the FinBIF (Finnish Biodiversity Information\n    Facility) API (api.laji.fi).",
   "name": "finbif: Finnish Biodiversity Information Facility R Interface",
   "codeRepository": "https://github.com/luomus/finbif",
   "issueTracker": "https://github.com/luomus/finbif/issues",
