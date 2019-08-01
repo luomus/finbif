@@ -65,5 +65,7 @@ test_that(
     )
     expect_output(print(resp1[c("scientific_name", "taxon_rank")]), "A data")
     expect_type(resp5[["observers_name"]], "list")
+    expect_s3_class(reduce_merge(NULL), "data.frame")
   }
+
 )
