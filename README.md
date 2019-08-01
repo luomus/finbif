@@ -79,11 +79,10 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 #> 10   Cygnus cygnus         1  61.99900  22.16100 2019-05-10 21:00:00
 #> ...with 90 more records and 24 more fields:
 #> taxon_rank, country, province, municipality, wkt_wgs84,
-#> line_length_m, area_m2, date_start, date_end, hour_start,
-#> hour_end, minute_start, minute_end, record_id, event_id,
-#> collection_id, is_breeding_site, any_issues,
-#> record_reliable, taxon_reliability, sex,
-#> document_reliablity, coordinate_accuracy, duration
+#> line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
+#> minute_start, minute_end, record_id, event_id, collection_id,
+#> is_breeding_site, any_issues, record_reliable, taxon_reliability,
+#> sex, document_reliablity, coordinate_accuracy, duration
 ```
 
 -----

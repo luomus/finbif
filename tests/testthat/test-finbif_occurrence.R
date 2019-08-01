@@ -18,6 +18,7 @@ test_that(
           "Parus major",
           fields = c("record_id", "date_start", "lat_wgs84", "lon_wgs84")
         )
+        resp8 <- finbif_occurrence("Rangifer tarandus fennicus")
       },
       preserve_exact_body_bytes = TRUE
     )

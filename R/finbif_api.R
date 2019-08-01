@@ -123,6 +123,13 @@ print.finbif_occ <- function(x, ...) {
 
   df <- x[seq_len(dsply_nr), dsply_cols, drop = FALSE]
 
+  sn <- df[["scientific_name"]]
+  snlng <- nchar(sn) > 20L
+  if (any(snlng)) {
+    df[["scientific_name"]] <-
+      ifelse(snlng, sprintf("%s\u2026", substr(sn, 1L, 19L)), sn)
+  }
+
   for (i in names(df)) {
     type <- field_translations[
       field_translations[["translated_field"]] == i, "type"
@@ -161,7 +168,7 @@ print.finbif_occ <- function(x, ...) {
   for (i in seq_along(extra_names)[-1L]) {
     nchars_ <- nchar(extra_names[[i]]) + 2L
     nchars  <- nchars + nchars_
-    if (nchars > 60L) {
+    if (nchars > 70L) {
       cat(",\n")
       nchars <- nchars_
     } else {
