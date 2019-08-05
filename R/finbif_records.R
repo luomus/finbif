@@ -143,9 +143,10 @@ translate_filters <- function(filters) {
 translate_habitat <- function(habitat) {
   if (is.list(habitat)) {
     names(habitat) <-
-      translate(names(habitat), habitat_types$habitat_types, "code")
-    habitat <-
-      lapply(habitat, translate, habitat_types$specific_habitat_types, "code")
+      translate(names(habitat), habitat_types[["habitat_types"]], "code")
+    habitat <- lapply(
+      habitat, translate, habitat_types[["specific_habitat_types"]], "code"
+    )
     habitat <- lapply(habitat, paste, collapse = ",")
     sprintf(
       "%s%s",
@@ -153,7 +154,7 @@ translate_habitat <- function(habitat) {
       ifelse(habitat == "", habitat, sprintf("[%s]", habitat))
     )
   } else {
-    translate(habitat, habitat_types$habitat_types,"code")
+    translate(habitat, habitat_types[["habitat_types"]], "code")
   }
 }
 
