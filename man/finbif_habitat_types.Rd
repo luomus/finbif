@@ -19,7 +19,7 @@ database.
 \examples{
 \dontrun{
 
-# Display the administrative statuses used by FinBIF
+# Display the habitat types used by FinBIF
 finbif_habitat_types()
 finbif_habitat_qualifiers()
 }
