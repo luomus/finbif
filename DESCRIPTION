@@ -1,7 +1,7 @@
 Package: finbif
 Title: Finnish Biodiversity Information Facility R Interface
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R:
     person(given = "William",
            family = "Morris",
            role = c("aut", "cre"),
@@ -28,6 +28,7 @@ Imports:
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Suggests:
+    codemetar,
     data.tree,
     knitr,
     rmarkdown,
