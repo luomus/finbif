@@ -4,6 +4,7 @@ source("data-raw/status_translations.R")
 source("data-raw/informal_groups.R")
 source("data-raw/habitat_types.R")
 source("data-raw/taxon_ranks.R")
+source("data-raw/countries.R")
 usethis::use_data(
   field_translations,
   filter_translations,
@@ -12,6 +13,7 @@ usethis::use_data(
   informal_groups,
   habitat_types,
   taxon_ranks,
+  countries,
   internal = TRUE,
   overwrite = TRUE
 )

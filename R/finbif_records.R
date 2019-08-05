@@ -133,6 +133,9 @@ translate_filters <- function(filters) {
   filters[["taxon_rank"]] <-
     translate(filters[["taxon_rank"]], taxon_ranks, "rank")
 
+  filters[["country"]] <-
+    translate(filters[["country"]], countries, colnames(countries))
+
   names(filters) <-
     translate(names(filters), filter_translations, "translated_filter")
 
@@ -158,9 +161,13 @@ translate_habitat <- function(habitat) {
   }
 }
 
-translate <- function(x, y, z) {
+translate <- function(x, translation, col) {
   if (is.null(x)) return(NULL)
-  ind <- match(x, y[[z]])
-  if (anyNA(ind)) stop("Invalid name in ", deparse(substitute(x)))
-  row.names(y)[ind]
+  ind <- rep(NA_integer_, length(x))
+  for (i in col) {
+    ind_ <- match(x, translation[[i]])
+    ind <- ifelse(is.na(ind_), ind, ind_)
+  }
+  if (anyNA(ind)) stop("Invalid name in ", deparse(substitute(translation)))
+  row.names(translation)[ind]
 }

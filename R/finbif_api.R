@@ -181,11 +181,3 @@ print.finbif_occ <- function(x, ...) {
 
   invisible(x)
 }
-
-# Utils ------------------------------------------------------------------------
-
-#' @noRd
-reduce_merge <- function(df) {
-  df <- Reduce(function(x, y) merge(x, y, all = TRUE), df)
-  if (is.null(df)) data.frame() else df
-}

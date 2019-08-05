@@ -29,6 +29,7 @@ reference:
       - filters
       - finbif_records
       - finbif_occurrence
+      - finbif_countries
   - title: "Methods"
     desc: >
       Working with finbif objects

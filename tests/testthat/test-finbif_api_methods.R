@@ -22,6 +22,7 @@ test_that(
         resp_list_taxon_rank <- finbif_records(
           filters = c(taxon_rank = "species")
         )
+        resp_list_country <- finbif_records(filters = c(country = "Finland"))
         resp_list_fields <- finbif_records(fields = "record_id")
         resp_count <- finbif_records(count_only = TRUE)
       },

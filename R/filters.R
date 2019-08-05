@@ -67,7 +67,8 @@
 #' @section Location:
 #' Filters related to location of record include:
 #'
-#' - `country` Character.
+#' - `country` Character vector. Filter by country. Use `finbif_countries()` to
+#'   see country names and ISO codes (2 and 3 character) used in FinBIF.
 #' - `municipality` Character.
 #' - `province` Character.
 #' - `locality` Character.

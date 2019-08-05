@@ -75,7 +75,8 @@ lower taxonomic levels.
 
 Filters related to location of record include:
 \itemize{
-\item \code{country} Character.
+\item \code{country} Character vector. Filter by country. Use \code{finbif_countries()} to
+see country names and ISO codes (2 and 3 character) used in FinBIF.
 \item \code{municipality} Character.
 \item \code{province} Character.
 \item \code{locality} Character.
