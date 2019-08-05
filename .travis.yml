@@ -7,7 +7,6 @@ cache:
 
 r_packages:
   - goodpractice
-  - vcr
 
 matrix:
   include:
