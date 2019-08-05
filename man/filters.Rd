@@ -64,7 +64,10 @@ return records of taxa that are native and non-native to Finland.
 \item \code{invasive}. Logical. If \code{TRUE}, limit records to invasive taxa. Or if
 \code{FALSE} limit to non-invasice taxa. If unspecified (default) return records
 of invasive and non-invasive taxa.
-\item \code{taxon_rank}. Character.
+\item \code{taxon_rank}. Character vector. Filter by taxonomic rank. Use
+\code{finbif_taxon_rank()} to see the taxonomic ranks available. Records
+returned will be limited to the specified ranks and not include records of
+lower taxonomic levels.
 }
 }
 

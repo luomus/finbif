@@ -196,7 +196,10 @@ return records of taxa that are native and non-native to Finland.</p></li>
 <li><p><code>invasive</code>. Logical. If <code>TRUE</code>, limit records to invasive taxa. Or if
 <code>FALSE</code> limit to non-invasice taxa. If unspecified (default) return records
 of invasive and non-invasive taxa.</p></li>
-<li><p><code>taxon_rank</code>. Character.</p></li>
+<li><p><code>taxon_rank</code>. Character vector. Filter by taxonomic rank. Use
+<code>finbif_taxon_rank()</code> to see the taxonomic ranks available. Records
+returned will be limited to the specified ranks and not include records of
+lower taxonomic levels.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="location"><a class="anchor" href="#location"></a>Location</h2>

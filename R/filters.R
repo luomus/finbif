@@ -59,7 +59,10 @@
 #' - `invasive`. Logical. If `TRUE`, limit records to invasive taxa. Or if
 #'   `FALSE` limit to non-invasice taxa. If unspecified (default) return records
 #'   of invasive and non-invasive taxa.
-#' - `taxon_rank`. Character.
+#' - `taxon_rank`. Character vector. Filter by taxonomic rank. Use
+#'   `finbif_taxon_rank()` to see the taxonomic ranks available. Records
+#'   returned will be limited to the specified ranks and not include records of
+#'   lower taxonomic levels.
 #'
 #' @section Location:
 #' Filters related to location of record include:

@@ -130,6 +130,9 @@ translate_filters <- function(filters) {
   filters[["primary_secondary_habitat"]] <-
     translate_habitat(filters[["primary_secondary_habitat"]])
 
+  filters[["taxon_rank"]] <-
+    translate(filters[["taxon_rank"]], taxon_ranks, "rank")
+
   names(filters) <-
     translate(names(filters), filter_translations, "translated_filter")
 

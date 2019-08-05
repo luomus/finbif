@@ -21,6 +21,7 @@ reference:
       - finbif_red_list
       - finbif_habitat_types
       - finbif_habitat_qualifiers
+      - finbif_taxon_ranks
   - title: "Records"
     desc: >
       Getting records from finbif

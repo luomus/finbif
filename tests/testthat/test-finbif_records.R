@@ -19,6 +19,9 @@ test_that(
         resp_list_habitat <- finbif_records(
           filters = list(primary_habitat = list(M = c("V", "H")))
         )
+        resp_list_taxon_rank <- finbif_records(
+          filters = c(taxon_rank = "species")
+        )
         resp_list_fields <- finbif_records(fields = "record_id")
         resp_count <- finbif_records(count_only = TRUE)
       },
@@ -34,6 +37,7 @@ test_that(
     expect_s3_class(resp_list_admin_status[[1]], "finbif_api")
     expect_s3_class(resp_list_red_list_status[[1]], "finbif_api")
     expect_s3_class(resp_list_habitat[[1]], "finbif_api")
+    expect_s3_class(resp_list_taxon_rank[[1]], "finbif_api")
     expect_s3_class(resp_count, "finbif_api")
     expect_error(finbif_records(n = 1e99), "Cannot download more than")
     expect_error(finbif_records(filters = c(not_a_filter = TRUE)), "Invalid")

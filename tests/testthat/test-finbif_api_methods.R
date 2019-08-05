@@ -13,8 +13,14 @@ test_that(
         resp_list_admin_status <- finbif_records(
           filters = c(administrative_status = "GMEB")
         )
-        resp_list_admin_status <- finbif_records(
+        resp_list_red_list_status <- finbif_records(
           filters = c(red_list_status = "LC")
+        )
+        resp_list_habitat <- finbif_records(
+          filters = list(primary_habitat = list(M = c("V", "H")))
+        )
+        resp_list_taxon_rank <- finbif_records(
+          filters = c(taxon_rank = "species")
         )
         resp_list_fields <- finbif_records(fields = "record_id")
         resp_count <- finbif_records(count_only = TRUE)
