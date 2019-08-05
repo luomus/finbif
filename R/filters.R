@@ -48,13 +48,17 @@
 #'   codes and the elements of the character vector are the habitat qualifier
 #'   codes. Use the function [finbif_habitat_qualifiers()] to see habitat
 #'   qualifiers and codes. The records returned will be of taxa whose primary
-#'   habitat is considered to be the (sub)habitat/habitat
-#'   qualifier combination supplied.
+#'   habitat is considered to be the (sub)habitat/habitat qualifier combination
+#'   supplied.
 #' - `primary_secondary_habitat` Character or named list of character vectors.
 #'   As above, except the records returned will be of taxa whose primary or
 #'   secondary habitat is considered to be the combination supplied.
-#' - `finnish`. Logical.
-#' - `invasive`. Logical
+#' - `finnish`. Logical. If `TRUE`, limit records to taxa native to Finland. Or
+#'   if `FALSE` limit to taxa not native to Finland. If unspecified (default)
+#'   return records of taxa that are native and non-native to Finland.
+#' - `invasive`. Logical. If `TRUE`, limit records to invasive taxa. Or if
+#'   `FALSE` limit to non-invasice taxa. If unspecified (default) return records
+#'   of invasive and non-invasive taxa.
 #' - `taxon_rank`. Character.
 #'
 #' @section Location:

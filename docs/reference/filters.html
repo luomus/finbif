@@ -185,13 +185,17 @@ a named list of character vectors where the names are habitat (sub)type
 codes and the elements of the character vector are the habitat qualifier
 codes. Use the function <code><a href='finbif_habitat_types.html'>finbif_habitat_qualifiers()</a></code> to see habitat
 qualifiers and codes. The records returned will be of taxa whose primary
-habitat is considered to be the (sub)habitat/habitat
-qualifier combination supplied.</p></li>
+habitat is considered to be the (sub)habitat/habitat qualifier combination
+supplied.</p></li>
 <li><p><code>primary_secondary_habitat</code> Character or named list of character vectors.
 As above, except the records returned will be of taxa whose primary or
 secondary habitat is considered to be the combination supplied.</p></li>
-<li><p><code>finnish</code>. Logical.</p></li>
-<li><p><code>invasive</code>. Logical</p></li>
+<li><p><code>finnish</code>. Logical. If <code>TRUE</code>, limit records to taxa native to Finland. Or
+if <code>FALSE</code> limit to taxa not native to Finland. If unspecified (default)
+return records of taxa that are native and non-native to Finland.</p></li>
+<li><p><code>invasive</code>. Logical. If <code>TRUE</code>, limit records to invasive taxa. Or if
+<code>FALSE</code> limit to non-invasice taxa. If unspecified (default) return records
+of invasive and non-invasive taxa.</p></li>
 <li><p><code>taxon_rank</code>. Character.</p></li>
 </ul>
     
