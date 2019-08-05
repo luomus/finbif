@@ -2,7 +2,7 @@
 #'
 #' Display taxonomic ranks used in the FinBIF database.
 #'
-#' @return A data.frame.
+#' @return A character vector.
 #' @examples \dontrun{
 #'
 #' # Display the taxonomic ranks used by FinBIF

@@ -7,7 +7,7 @@
 finbif_taxon_ranks()
 }
 \value{
-A data.frame.
+A character vector.
 }
 \description{
 Display taxonomic ranks used in the FinBIF database.
