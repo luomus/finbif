@@ -32,6 +32,7 @@ Suggests:
     data.tree,
     knitr,
     rmarkdown,
+    sf,
     stats,
     testthat (>= 2.1.0),
     usethis,

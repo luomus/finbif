@@ -6,7 +6,7 @@
 \usage{
 finbif_occurrence(..., filters, fields, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE,
-  check_taxa = TRUE, date_time = TRUE)
+  check_taxa = TRUE, date_time = TRUE, method = "fast")
 }
 \arguments{
 \item{...}{Character vectors or list of character vectors. Taxa of records
@@ -35,6 +35,10 @@ returned.}
 
 \item{date_time}{Logical. Convert raw date and time fields into date_time and
 duration.}
+
+\item{method}{Character. Passed to \code{lutz::tz_lookup_coords()} when
+\code{date_time = TRUE}. Default is \code{"fast"}. Use \code{method = "accurate"}
+(requires package \code{sf}) for greater accuracy.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.
@@ -54,7 +58,7 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 # Get multiple taxa
 finbif_occurrence("Cygnus cygnus", "Ursus arctos")
 
-# Filter the record
+# Filter the records
 finbif_occurrence(
   species = "Cygnus cygnus",
   filters = list(coordinate_accuracy_max = 100)

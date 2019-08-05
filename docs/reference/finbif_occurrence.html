@@ -139,7 +139,7 @@
 
     <pre class="usage"><span class='fu'>finbif_occurrence</span>(<span class='no'>...</span>, <span class='no'>filters</span>, <span class='no'>fields</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>date_time</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>date_time</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"fast"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,6 +191,12 @@ returned.</p></td>
       <td><p>Logical. Convert raw date and time fields into date_time and
 duration.</p></td>
     </tr>
+    <tr>
+      <th>method</th>
+      <td><p>Character. Passed to <code><a href='https://andyteucher.ca/lutz/reference/tz_lookup_coords.html'>lutz::tz_lookup_coords()</a></code> when
+<code>date_time = TRUE</code>. Default is <code>"fast"</code>. Use <code>method = "accurate"</code>
+(requires package <code>sf</code>) for greater accuracy.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -209,7 +215,7 @@ duration.</p></td>
 <span class='co'># Get multiple taxa</span>
 <span class='fu'>finbif_occurrence</span>(<span class='st'>"Cygnus cygnus"</span>, <span class='st'>"Ursus arctos"</span>)
 
-<span class='co'># Filter the record</span>
+<span class='co'># Filter the records</span>
 <span class='fu'>finbif_occurrence</span>(
   <span class='kw'>species</span> <span class='kw'>=</span> <span class='st'>"Cygnus cygnus"</span>,
   <span class='kw'>filters</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>coordinate_accuracy_max</span> <span class='kw'>=</span> <span class='fl'>100</span>)

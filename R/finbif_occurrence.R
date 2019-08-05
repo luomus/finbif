@@ -10,6 +10,9 @@
 #'   returned.
 #' @param date_time Logical. Convert raw date and time fields into date_time and
 #'   duration.
+#' @param method Character. Passed to `lutz::tz_lookup_coords()` when
+#'   `date_time = TRUE`. Default is `"fast"`. Use `method = "accurate"`
+#'   (requires package `sf`) for greater accuracy.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -22,7 +25,7 @@
 #' # Get multiple taxa
 #' finbif_occurrence("Cygnus cygnus", "Ursus arctos")
 #'
-#' # Filter the record
+#' # Filter the records
 #' finbif_occurrence(
 #'   species = "Cygnus cygnus",
 #'   filters = list(coordinate_accuracy_max = 100)
@@ -37,7 +40,7 @@
 
 finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE, check_taxa = TRUE,
-  date_time = TRUE
+  date_time = TRUE, method = "fast"
   ) {
 
   taxa <- list(...)
@@ -69,11 +72,12 @@ finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
 
   if (date_time) {
     df$date_time <- get_date_time(
-      df, "date_start", "hour_start", "minute_start", "lat_wgs84", "lon_wgs84"
+      df, "date_start", "hour_start", "minute_start", "lat_wgs84", "lon_wgs84",
+      method
     )
     df$duration <- get_duration(
       df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
-      "lat_wgs84"
+      "lat_wgs84", method
     )
   }
 
@@ -88,7 +92,7 @@ finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
 
 }
 
-get_date_time <- function(df, date, hour, minute, lat, lon) {
+get_date_time <- function(df, date, hour, minute, lat, lon, method) {
 
   if (is.null(df[[date]])) return(NULL)
 
@@ -109,18 +113,18 @@ get_date_time <- function(df, date, hour, minute, lat, lon) {
 
   lubridate::force_tzs(
     date_time,
-    tzones = lutz::tz_lookup_coords(df[[lat]], df[[lon]], "fast", FALSE)
+    tzones = lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
   )
 
 }
 
-get_duration <- function(df, date_time, date, hour, minute, lat, lon) {
+get_duration <- function(df, date_time, date, hour, minute, lat, lon, method) {
 
   if (is.null(df[[date_time]])) return(NULL)
   if (is.null(df[["date_end"]]) || is.null(df[["hour_end"]])) return(NULL)
 
   date_time_end <- get_date_time(
-    df, "date_end", "hour_end", "minute_end", "lat_wgs84", "lon_wgs84"
+    df, "date_end", "hour_end", "minute_end", "lat_wgs84", "lon_wgs84", method
   )
 
   ans <- lubridate::interval(df[[date_time]], date_time_end)
