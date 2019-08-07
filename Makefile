@@ -24,6 +24,11 @@ pkgdown: vignettes readme
 	${RSCRIPT} -e "pkgdown::build_site()"
 
 vignettes: install
+	cd inst/vign;\
+	${RSCRIPT} -e "knitr::knit('finbif.Rmd'); knitr::knit('filtering.Rmd')";\
+	cp finbif.md ../../vignettes/finbif.Rmd;\
+	cp filtering.md ../../vignettes/filtering.Rmd;\
+	cd ../..;\
 	${RSCRIPT} -e "devtools::build_vignettes()"
 
 doc: sysdata
