@@ -13,15 +13,12 @@ install: build
 	cd ..;\
 	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
 
-check: pkgdown codemeta
+check: vignettes readme codemeta
 	cd ..;\
 	R CMD check $(PKGNAME)_$(PKGVERS).tar.gz --as-cran
 
 readme: install
 	${RSCRIPT} -e "rmarkdown::render('README.Rmd')" && rm README.html
-
-pkgdown: vignettes readme
-	${RSCRIPT} -e "pkgdown::build_site()"
 
 vignettes: install
 	cd inst/vign;\
