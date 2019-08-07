@@ -23,6 +23,11 @@ matrix:
     after_success:
     -  R -e "covr::codecov(line_exclusions = list('R/finbif_request_token.R' = 33:69))"
     -  R -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert = TRUE, value = TRUE))"
+    before_deploy: Rscript -e 'remotes::install_cran("pkgdown")'
+    deploy:
+      provider: script
+      script: Rscript -e 'pkgdown::deploy_site_github(verbose = TRUE)'
+      skip_cleanup: true
   - r: devel
   - r: release
     os: osx
