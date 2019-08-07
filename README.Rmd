@@ -53,7 +53,7 @@ Sys.setenv(
 
 ## Usage
 Download occurrence data from finbif.
-```{r occurrence}
+```{r occurrence, eval = FALSE}
 finbif_occurrence("Cygnus cygnus", n = 100)
 ```
 
