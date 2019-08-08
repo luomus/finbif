@@ -20,4 +20,4 @@ countries <- countries[
   order(countries["name.en"]),
   c("name.en", "name.fi", "countryCodeISOalpha2", "countryCodeISOalpha3")
 ]
-names(countries) <- c("name_fi", "name_en", "alpha2", "alpha3")
+names(countries) <- c("name_en", "name_fi", "alpha2", "alpha3")
