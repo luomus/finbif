@@ -12,6 +12,6 @@
 finbif_countries <- function() {
   structure(
     countries, row.names = seq_len(nrow(countries)),
-    names = c("finnish_name", "english_name", "alpha_2", "alpah_3")
+    names = c("english_name", "finnish_name", "alpha_2", "alpah_3")
   )
 }
