@@ -30,6 +30,8 @@ reference:
       - finbif_records
       - finbif_occurrence
       - finbif_countries
+      - finbif_provinces
+      - finbif_municipalities
   - title: "Methods"
     desc: >
       Working with finbif objects

@@ -69,8 +69,10 @@
 #'
 #' - `country` Character vector. Filter by country. Use `finbif_countries()` to
 #'   see country names and ISO codes (2 and 3 character) used in FinBIF.
-#' - `municipality` Character.
-#' - `province` Character.
+#' - `province` Character vector. Filter by province. Use `finbif_provinces()`
+#'   to see province names and codes.
+#' - `municipality` Character vector. Filter by country. Use
+#'   `finbif_municipalities()` to see municipality names.
 #' - `locality` Character.
 #' - `bird_assoc_area` Character.
 #' - `place_name_id` Character.

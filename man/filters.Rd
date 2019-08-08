@@ -77,8 +77,10 @@ Filters related to location of record include:
 \itemize{
 \item \code{country} Character vector. Filter by country. Use \code{finbif_countries()} to
 see country names and ISO codes (2 and 3 character) used in FinBIF.
-\item \code{municipality} Character.
-\item \code{province} Character.
+\item \code{province} Character vector. Filter by province. Use \code{finbif_provinces()}
+to see province names and codes.
+\item \code{municipality} Character vector. Filter by country. Use
+\code{finbif_municipalities()} to see municipality names.
 \item \code{locality} Character.
 \item \code{bird_assoc_area} Character.
 \item \code{place_name_id} Character.

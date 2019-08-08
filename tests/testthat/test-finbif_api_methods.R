@@ -7,22 +7,22 @@ test_that(
         resp_list_n1 <- finbif_records(n = 1)
         resp_list_n301 <- finbif_records(n = 301)
         resp_list_filters <- finbif_records(filters = c(finnish = TRUE))
-        resp_list_informal_group <- finbif_records(
-          filters = c(informal_group = "Birds")
-        )
-        resp_list_admin_status <- finbif_records(
-          filters = c(administrative_status = "GMEB")
-        )
-        resp_list_red_list_status <- finbif_records(
-          filters = c(red_list_status = "LC")
-        )
+        resp_list_informal_group <-
+          finbif_records(filters = c(informal_group = "Birds"))
+        resp_list_admin_status <-
+          finbif_records(filters = c(administrative_status = "GMEB"))
+        resp_list_red_list_status <-
+          finbif_records(filters = c(red_list_status = "LC"))
         resp_list_habitat <- finbif_records(
           filters = list(primary_habitat = list(M = c("V", "H")))
         )
-        resp_list_taxon_rank <- finbif_records(
-          filters = c(taxon_rank = "species")
-        )
+        resp_list_taxon_rank <-
+          finbif_records(filters = c(taxon_rank = "species"))
         resp_list_country <- finbif_records(filters = c(country = "Finland"))
+        resp_list_province <-
+          finbif_records(filters = c(province = "Southwest Finland"))
+        resp_list_municipality <-
+          finbif_records(filters = c(municipality = "Helsinki"))
         resp_list_fields <- finbif_records(fields = "record_id")
         resp_count <- finbif_records(count_only = TRUE)
       },

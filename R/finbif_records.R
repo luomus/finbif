@@ -136,6 +136,15 @@ translate_filters <- function(filters) {
   filters[["country"]] <-
     translate(filters[["country"]], countries, colnames(countries))
 
+  filters[["province"]] <- translate(
+    filters[["province"]], provinces, setdiff(colnames(provinces), "country")
+  )
+
+  filters[["municipality"]] <- translate(
+    filters[["municipality"]], municipalities,
+    setdiff(colnames(municipalities), "country")
+  )
+
   names(filters) <-
     translate(names(filters), filter_translations, "translated_filter")
 
