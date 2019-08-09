@@ -6,9 +6,8 @@ municipalities <- finbif:::finbif_api_get(
 )
 stopifnot(n > municipalities[["content"]][["total"]])
 municipalities <- municipalities[["content"]][["results"]]
-municipalities <- lapply(
-  municipalities, as.data.frame, stringsAsFactors = FALSE
-)
+municipalities <-
+  lapply(municipalities, as.data.frame, stringsAsFactors = FALSE)
 municipalities <- finbif:::reduce_merge(municipalities)
 municipalities[["country"]] <-
   finbif:::countries[municipalities[["isPartOf"]], "name_en"]

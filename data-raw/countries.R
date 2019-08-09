@@ -10,10 +10,12 @@ countries <- merge(
   countries, ISOcodes::ISO_3166_1, by.x = "countryCodeISOalpha2",
   by.y = "Alpha_2", all.x = TRUE
 )
-countries$name.en <- ifelse(
-  is.na(countries$Common_name),
-  ifelse(is.na(countries$Name), countries$name.en, countries$Name),
-  countries$Common_name
+countries[["name.en"]] <- ifelse(
+  is.na(countries[["Common_name"]]),
+  ifelse(
+    is.na(countries[["Name"]]), countries[["name.en"]], countries[["Name"]]
+  ),
+  countries[["Common_name"]]
 )
 row.names(countries) <- countries[["id"]]
 countries <- countries[

@@ -21,4 +21,3 @@ provinces <- provinces[
   c("name.en", "name.fi", "provinceCodeAlpha.fi", "country")
   ]
 names(provinces) <- c("name_en", "name_fi", "alpha", "country")
-
