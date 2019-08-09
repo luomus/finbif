@@ -57,7 +57,7 @@
 #'   if `FALSE` limit to taxa not native to Finland. If unspecified (default)
 #'   return records of taxa that are native and non-native to Finland.
 #' - `invasive`. Logical. If `TRUE`, limit records to invasive taxa. Or if
-#'   `FALSE` limit to non-invasice taxa. If unspecified (default) return records
+#'   `FALSE` limit to non-invasive taxa. If unspecified (default) return records
 #'   of invasive and non-invasive taxa.
 #' - `taxon_rank`. Character vector. Filter by taxonomic rank. Use
 #'   `finbif_taxon_rank()` to see the taxonomic ranks available. Records
