@@ -1,5 +1,5 @@
 informal_groups <- finbif:::finbif_api_get(
-  "v0/informal-taxon-groups/tree", list(pageSize = 1000), FALSE
+  "informal-taxon-groups/tree", list(pageSize = 1000), FALSE
 )
 informal_groups <- data.tree::as.Node(informal_groups[["content"]][["results"]])
 informal_groups <-

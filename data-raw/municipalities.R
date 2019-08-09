@@ -1,6 +1,6 @@
 n <- 1000L
 municipalities <- finbif:::finbif_api_get(
-  "v0/areas",
+  "areas",
   list(type = "municipality", lang = "multi", page = 1L, pageSize = n),
   FALSE
 )

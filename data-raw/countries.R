@@ -1,5 +1,5 @@
 countries <- finbif:::finbif_api_get(
-  "v0/areas",
+  "areas",
   list(type = "country", lang = "multi", page = 1L, pageSize = 1000L),
   FALSE
 )

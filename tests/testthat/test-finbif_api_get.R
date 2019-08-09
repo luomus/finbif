@@ -14,7 +14,7 @@ vcr::use_cassette(
     test_that(
       "returns valid data", {
         resp_list1 <- finbif_api_get(
-          path = "v0/warehouse/query/list",
+          path = "warehouse/query/list",
           query = list(page = 1, pageSize = 1, selected = "unit.unitId"),
           cache = TRUE
         )
@@ -26,7 +26,7 @@ vcr::use_cassette(
       "with wrong field returns an error message", {
         expect_error(
           finbif_api_get(
-            path = "v0/warehouse/query/list",
+            path = "warehouse/query/list",
             query = list(page = 1, pageSize = 1, selected = "not_a_field"),
             cache = TRUE
           ),
@@ -39,7 +39,7 @@ vcr::use_cassette(
       "not receiving JSON returns error message", {
         expect_error(
           finbif_api_get(
-            path = "v0/warehouse/query/list",
+            path = "warehouse/query/list",
             query = list(
               format = "xml", page = 1, pageSize = 1, selected = "unit.unitId"
             ),

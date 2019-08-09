@@ -48,7 +48,7 @@ redlist_status_translations <- read.csv(text = "
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'")
 
 metadata_ranges <-
-  finbif:::finbif_api_get("v0/metadata/ranges", list(), FALSE)[["content"]]
+  finbif:::finbif_api_get("metadata/ranges", list(), FALSE)[["content"]]
 
 admin_status <-
   sapply(metadata_ranges[["MX.adminStatusEnum"]], getElement, "id")

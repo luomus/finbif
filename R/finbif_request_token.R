@@ -8,8 +8,7 @@
 #' @return If an access token has already been set then `NULL` (invisibly) if
 #'   not then, invisibly, a `finbif_api` object containing the response from
 #'   the FinBIF server.
-#' @importFrom httr accept_json content http_type modify_url POST user_agent
-#' @importFrom httr status_code
+#' @importFrom httr accept_json content http_type POST user_agent status_code
 #' @importFrom jsonlite fromJSON
 #' @examples \dontrun{
 #'
@@ -30,26 +29,26 @@ finbif_request_token <- function(email) {
     return(invisible(NULL))
   }
 
-  url <- "https://api.laji.fi"
-  path <- "v0/api-users"
+  url     <- getOption("finbif_api_url")
+  version <- getOption("finbif_api_version")
+  path    <- "api-users"
   resp <- httr::POST(
-    httr::modify_url(url, path = path),
+    sprintf("https://%s/%s/%s", url, version, path),
     httr::user_agent("https://bitbucket.org/luomus/finbif"),
     httr::accept_json(),
     body = list(email = email),
     encode = "json"
   )
 
-  parsed <- jsonlite::fromJSON(
-    httr::content(resp, "text"), simplifyVector = FALSE
-  )
+  parsed <-
+    jsonlite::fromJSON(httr::content(resp, "text"), simplifyVector = FALSE)
 
   if (httr::status_code(resp) != 200) {
     stop(
       sprintf(
         "API request failed [%s]\n%s",
         httr::status_code(resp),
-        parsed[["error"]][["message"]]
+        parsed[["message"]]
       ),
       call. = FALSE
     )
@@ -58,11 +57,7 @@ finbif_request_token <- function(email) {
   }
 
   ans <- structure(
-    list(
-      content = parsed,
-      path = path,
-      response = resp
-    ),
+    list(content = parsed, path = path, response = resp),
     class = "finbif_api"
   )
 

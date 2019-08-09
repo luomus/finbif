@@ -1,7 +1,6 @@
 #' @noRd
 #' @importFrom digest digest
-#' @importFrom httr accept_json content http_type modify_url GET user_agent
-#' @importFrom httr status_code
+#' @importFrom httr accept_json content GET http_type user_agent status_code
 #' @importFrom jsonlite fromJSON
 #' @importFrom urltools param_remove
 
@@ -18,10 +17,11 @@ finbif_api_get <- function(path, query, cache) {
     )
   }
 
-  url <- "https://api.laji.fi"
+  url <- getOption("finbif_api_url")
+  version <- getOption("finbif_api_version")
 
   if (getOption("finbif_use_cache") && cache) {
-    hash <- digest::digest(list(path, query))
+    hash <- digest::digest(list(url, version, path, query))
     fcp <- getOption("finbif_cache_path")
     fcp <- if (is.null(fcp)) tempdir()
     cache_file <- file.path(fcp, paste0("finbif_cache_file_", hash))
@@ -30,7 +30,7 @@ finbif_api_get <- function(path, query, cache) {
   }
 
   resp <- httr::GET(
-    httr::modify_url(url, path = path),
+    sprintf("https://%s/%s/%s", url, version, path),
     httr::user_agent("https://bitbucket.org/luomus/finbif"),
     httr::accept_json(),
     query = c(query, list(access_token = finbif_access_token))
@@ -45,9 +45,8 @@ finbif_api_get <- function(path, query, cache) {
     stop("API did not return json", call. = FALSE)
   }
 
-  parsed <- jsonlite::fromJSON(
-    httr::content(resp, "text"), simplifyVector = FALSE
-  )
+  parsed <-
+    jsonlite::fromJSON(httr::content(resp, "text"), simplifyVector = FALSE)
 
   if (httr::status_code(resp) != 200) {
     ans <- NULL
@@ -62,12 +61,7 @@ finbif_api_get <- function(path, query, cache) {
   }
 
   ans <- structure(
-    list(
-      content = parsed,
-      path = path,
-      response = resp
-    ),
-    class = "finbif_api"
+    list(content = parsed, path = path, response = resp), class = "finbif_api"
   )
 
   ans

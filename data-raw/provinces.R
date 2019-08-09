@@ -1,6 +1,6 @@
 n <- 1000L
 provinces <- finbif:::finbif_api_get(
-  "v0/areas",
+  "areas",
   list(
     type = "biogeographicalProvince", lang = "multi", page = 1L, pageSize = n
   ),

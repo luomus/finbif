@@ -24,7 +24,7 @@
 finbif_records <- function(filters, fields, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE) {
 
-  path <- "v0/warehouse/query/"
+  path <- "warehouse/query/"
 
   max_queries  <- 600L
   max_size <- 300L

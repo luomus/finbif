@@ -21,13 +21,8 @@
 
 finbif_taxa <- function(name, n = 1, type = c("exact", "partial", "likely"),
   cache = TRUE) {
-
-  path <- "v0/taxa/search"
+  path <- "taxa/search"
   type <- match.arg(type)
-  query <- list(
-    query = name,
-    matchType = type,
-    limit = n
-  )
+  query <- list(query = name, matchType = type, limit = n)
   finbif_api_get(path, query, cache)
 }
