@@ -24,6 +24,8 @@ as.data.frame.finbif_api <- function(x, ...) {
       colnames(dfx) <- nms
       unms <- unique(nms)
       ans <- dfx[unms]
+
+      # Some fields return values that are not atomic (e.g., multiple observers)
       for (nm in unms) {
         if (!field_translations[nm, "unique"]) {
           el <- unlist(dfx[nms == nm])
@@ -31,6 +33,7 @@ as.data.frame.finbif_api <- function(x, ...) {
           ans[[nm]][[1L]] <- unname(el)
         }
       }
+
       ans
     }
   )
@@ -78,7 +81,6 @@ print.finbif_taxa <- function(x, ...) {
   nms   <- names(unlist(unname(x)))
   padl  <- if (is.null(ranks)) 0L else max(nchar(ranks)) + 2L
   padr  <- if (is.null(nms)) 0L else max(nchar(nms))
-  unlist
   for (i in seq_along(x)) {
     rank <- ranks[[i]]
     for (j in seq_along(x[[i]])) {
@@ -115,14 +117,14 @@ print.finbif_occ <- function(x, ...) {
   if (length(nrec_avl)) cat("Records available: ", nrec_avl, "\n", sep = "")
   cat("A data.frame [", nrows, " x ", ncols, "]\n", sep = "")
 
-  dsply_cols <- c(
-    "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time"
-  )
+  dsply_cols <-
+    c("scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time")
   dsply_cols <- which(names(x) %in% dsply_cols)
   dsply_cols <- utils::head(union(dsply_cols, seq_len(dsply_nc)), dsply_nc)
 
   df <- x[seq_len(dsply_nr), dsply_cols, drop = FALSE]
 
+  # Some scientific names are very long
   sn <- df[["scientific_name"]]
   snlng <- nchar(sn) > 20L
   if (any(snlng)) {
@@ -130,6 +132,9 @@ print.finbif_occ <- function(x, ...) {
       ifelse(snlng, sprintf("%s\u2026", substr(sn, 1L, 19L)), sn)
   }
 
+
+  # Some fields have data in the form of URIs where the protocol and domain
+  # don't convey useful information
   for (i in names(df)) {
     type <- field_translations[
       field_translations[["translated_field"]] == i, "type"
@@ -160,6 +165,7 @@ print.finbif_occ <- function(x, ...) {
     ":\n", sep = ""
   )
 
+  # Can't tell in advance what the field names will be
   i <- 1L
   extra_names <- names(x)[-dsply_cols]
   cat(extra_names[[i]])
