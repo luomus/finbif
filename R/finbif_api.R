@@ -58,7 +58,7 @@ as.data.frame.finbif_api_list <- function(x, ...) {
 #' @importFrom utils str
 #' @export
 print.finbif_api <- function(x, ...) {
-  cat("<FinBIF ", x$path, ">\n", sep = "")
+  cat("<FinBIF ", x[["path"]], ">\n", sep = "")
   utils::str(x[["content"]])
   invisible(x)
 }
