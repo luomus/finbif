@@ -36,4 +36,3 @@ finbif_municipalities <- function() {
     names = c("english_name", "finnish_name", "country")
   )
 }
-
