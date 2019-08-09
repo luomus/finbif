@@ -1,3 +1,5 @@
+# records ----------------------------------------------------------------------
+
 #' Get FinBIF records
 #'
 #' Download records from FinBIF.
@@ -24,30 +26,61 @@
 finbif_records <- function(filters, fields, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE) {
 
-  path <- "warehouse/query/"
-
   max_queries  <- 600L
   max_size <- 300L
   nmax <- max_queries * max_size
   if (n > nmax) stop("Cannot download more than ", nmax, " records")
 
-  query <- if (missing(filters)) list() else translate_filters(filters)
+  # filters ====================================================================
+
+  if (missing(filters)) {
+
+    query <- list()
+
+  } else {
+
+    filters <- as.list(filters)
+    translated_filter_names <- translate(names(filters), filter_translations)
+
+    for (filter in names(filters)) {
+      should_translate <- filter_translations[["translated_filter"]] == filter
+      should_translate <-
+        filter_translations[should_translate, "translated_values"]
+      if (should_translate)
+        filters[[filter]] <- translate(filters[[filter]], get(filter))
+    }
+
+    names(filters) <- translated_filter_names
+
+    query <- lapply(filters, paste, collapse = ",")
+
+  }
+
+  # fields =====================================================================
 
   default_fields <- field_translations[field_translations[["default_field"]], ]
 
   if (missing(fields)) {
+
     fields <- row.names(default_fields)
+
   } else {
+
     fields <- ifelse(
       fields == "default_fields",
       list(default_fields[["translated_field"]]),
       fields
     )
     fields <- unlist(fields)
-    fields <- translate(fields, field_translations, "translated_field")
+    fields <- translate(fields, field_translations)
+
   }
 
   query[["selected"]] <- paste(fields, collapse = ",")
+
+  # request ====================================================================
+
+  path <- "warehouse/query/"
 
   if (count_only) {
 
@@ -101,82 +134,31 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
 
 }
 
-translate_filters <- function(filters) {
+# translation ------------------------------------------------------------------
 
-  filters <- as.list(filters)
-
-  filters[["informal_group"]] <- translate(
-    to_sentence_case(filters[["informal_group"]]), informal_groups, "name"
-  )
-
-  filters[["informal_group_reported"]] <- translate(
-    to_sentence_case(filters[["informal_group_reported"]]), informal_groups,
-    "name"
-  )
-
-  filters[["administrative_status"]] <- translate(
-    filters[["administrative_status"]], admin_status_translations,
-    "translated_status_code"
-  )
-
-  filters[["red_list_status"]] <- translate(
-    filters[["red_list_status"]], redlist_status_translations,
-    "translated_status_code"
-  )
-
-  filters[["primary_habitat"]] <-
-    translate_habitat(filters[["primary_habitat"]])
-
-  filters[["primary_secondary_habitat"]] <-
-    translate_habitat(filters[["primary_secondary_habitat"]])
-
-  filters[["taxon_rank"]] <-
-    translate(filters[["taxon_rank"]], taxon_ranks, "rank")
-
-  filters[["country"]] <-
-    translate(filters[["country"]], countries, colnames(countries))
-
-  filters[["province"]] <- translate(
-    filters[["province"]], provinces, setdiff(colnames(provinces), "country")
-  )
-
-  filters[["municipality"]] <- translate(
-    filters[["municipality"]], municipalities,
-    setdiff(colnames(municipalities), "country")
-  )
-
-  names(filters) <-
-    translate(names(filters), filter_translations, "translated_filter")
-
-  lapply(filters, paste, collapse = ",")
-
-}
-
-translate_habitat <- function(habitat) {
-  if (is.list(habitat)) {
-    names(habitat) <-
-      translate(names(habitat), habitat_types[["habitat_types"]], "code")
-    habitat <- lapply(
-      habitat, translate, habitat_types[["specific_habitat_types"]], "code"
-    )
-    habitat <- lapply(habitat, paste, collapse = ",")
-    sprintf(
-      "%s%s",
-      names(habitat),
-      ifelse(habitat == "", habitat, sprintf("[%s]", habitat))
-    )
-  } else {
-    translate(habitat, habitat_types[["habitat_types"]], "code")
-  }
-}
-
-translate <- function(x, translation, col) {
+translate <- function(x, translation) {
   if (is.null(x)) return(NULL)
-  ind <- rep(NA_integer_, length(x))
-  for (i in col) {
-    ind_ <- match(x, translation[[i]])
-    ind <- ifelse(is.na(ind_), ind, ind_)
+
+  # Some filters have multi-level values to translate (e.g., primary_habitat)
+  if (is.list(x)) {
+
+    names(x) <- translate(names(x), translation[[1L]])
+    x <- lapply(x, translate, translation[[2L]])
+    x <- lapply(x, paste, collapse = ",")
+    sprintf("%s%s", names(x), ifelse(x == "", x, sprintf("[%s]", x)))
+
+  } else {
+
+    ind <- rep(NA_integer_, length(x))
+    for (i in translation) {
+      if (inherits(i, "translation")) {
+        ind_ <- match(tolower(x), tolower(i))
+        ind <- ifelse(is.na(ind_), ind, ind_)
+      }
+    }
+
+    if (anyNA(ind)) stop("Invalid name in ", deparse(substitute(translation)))
+    row.names(translation)[ind]
+
   }
-  if (anyNA(ind)) stop("Invalid name in ", deparse(substitute(translation)))
-  row.names(translation)[ind]
 }

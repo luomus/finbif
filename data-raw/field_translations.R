@@ -242,3 +242,5 @@ field_translations <- read.csv(text = "
   gathering.taxonCensus.type, taxon_census_type, FALSE, FALSE, factor, TRUE
   gathering.team, team, FALSE, FALSE, character, FALSE
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L)
+
+class(field_translations[["translated_field"]]) <- "translation"

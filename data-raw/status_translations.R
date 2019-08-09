@@ -1,4 +1,4 @@
-admin_status_translations <- read.csv(text = "
+administrative_status <- read.csv(text = "
   finbif_api_status, translated_status, translated_status_code
   MX.finlex160_1997_appendix4, 'Finlex 160 1997 appendix 4', FNLX160_97_4
   MX.finlex160_1997_appendix4_specialInterest, 'Finlex 160 1997 appendix 4 special interest', FNLX160_97_4SI
@@ -32,7 +32,9 @@ admin_status_translations <- read.csv(text = "
   MX.finnishEnvironmentInstitute20072010forestSpecies, 'Finnish environment institute 2007-2010 forest species', FEI_FS
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'")
 
-redlist_status_translations <- read.csv(text = "
+class(administrative_status[["translated_status_code"]]) <- "translation"
+
+red_list_status <- read.csv(text = "
   finbif_api_status, translated_status, translated_status_code
   MX.iucnEX, 'Extinct', 'EX'
   MX.iucnEW, 'Extinct in the Wild', 'EW'
@@ -47,6 +49,9 @@ redlist_status_translations <- read.csv(text = "
   MX.iucnNE, 'Not Evaluated', 'NE'
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'")
 
+class(red_list_status[["translated_status_code"]]) <- "translation"
+class(red_list_status[["translated_status"]]) <- "translation"
+
 metadata_ranges <-
   finbif:::finbif_api_get("metadata/ranges", list(), FALSE)[["content"]]
 
@@ -54,11 +59,11 @@ admin_status <-
   sapply(metadata_ranges[["MX.adminStatusEnum"]], getElement, "id")
 
 stopifnot(
-  identical(sort(row.names(admin_status_translations)), sort(admin_status))
+  identical(sort(row.names(administrative_status)), sort(admin_status))
 )
 
 redlist_status <- sapply(metadata_ranges[["MX.iucnStatuses"]], getElement, "id")
 
 stopifnot(
-  identical(sort(row.names(redlist_status_translations)), sort(redlist_status))
+  identical(sort(row.names(red_list_status)), sort(redlist_status))
 )

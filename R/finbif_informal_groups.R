@@ -14,7 +14,7 @@
 #' }
 #' @export
 finbif_informal_groups <- function(group, limit = 50, quiet = FALSE) {
-  df <- informal_groups
+  df <- informal_group
   if (!missing(group)) {
     group <- to_sentence_case(group)
     stopifnot(group %in% df[["name"]])

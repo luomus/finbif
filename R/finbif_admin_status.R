@@ -10,7 +10,7 @@
 #' }
 #' @export
 finbif_admin_status <- function() {
-  df <- admin_status_translations
+  df <- administrative_status
   df <- df[order(df[["translated_status"]]), ]
   structure(df, row.names = seq_len(nrow(df)), names = c("status", "code"))
 }

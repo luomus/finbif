@@ -9,4 +9,4 @@
 #' finbif_taxon_ranks()
 #' }
 #' @export
-finbif_taxon_ranks <- function() taxon_ranks[["rank"]]
+finbif_taxon_ranks <- function() taxon_rank[["rank"]]

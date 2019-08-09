@@ -1,10 +1,11 @@
 metadata_ranges <-
   finbif:::finbif_api_get("metadata/ranges", list(), FALSE)[["content"]]
 
-taxon_ranks <- metadata_ranges[["MX.taxonRankEnum"]]
-taxon_ranks <- matrix(unlist(taxon_ranks), ncol = 2L, byrow = TRUE)
-taxon_ranks <- as.data.frame(
-  tolower(taxon_ranks[, -1L]), row.names = taxon_ranks[, 1L],
+taxon_rank <- metadata_ranges[["MX.taxonRankEnum"]]
+taxon_rank <- matrix(unlist(taxon_rank), ncol = 2L, byrow = TRUE)
+taxon_rank <- as.data.frame(
+  tolower(taxon_rank[, -1L]), row.names = taxon_rank[, 1L],
   stringsAsFactors = FALSE
 )
-taxon_ranks <- stats::setNames(taxon_ranks, "rank")
+taxon_rank <- stats::setNames(taxon_rank, "rank")
+class(taxon_rank[["rank"]]) <- "translation"

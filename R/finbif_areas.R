@@ -14,7 +14,7 @@
 #' @export
 finbif_countries <- function() {
   structure(
-    countries, row.names = seq_len(nrow(countries)),
+    country, row.names = seq_len(nrow(country)),
     names = c("english_name", "finnish_name", "alpha_2", "alpha_3")
   )
 }
@@ -23,7 +23,7 @@ finbif_countries <- function() {
 #' @export
 finbif_provinces <- function() {
   structure(
-    provinces, row.names = seq_len(nrow(provinces)),
+    province, row.names = seq_len(nrow(province)),
     names = c("english_name", "finnish_name", "alpha", "country")
   )
 }
@@ -32,7 +32,7 @@ finbif_provinces <- function() {
 #' @export
 finbif_municipalities <- function() {
   structure(
-    countries, row.names = seq_len(nrow(countries)),
+    municipality, row.names = seq_len(nrow(municipality)),
     names = c("english_name", "finnish_name", "country")
   )
 }

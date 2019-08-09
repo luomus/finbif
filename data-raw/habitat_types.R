@@ -1,13 +1,13 @@
 metadata_ranges <-
   finbif:::finbif_api_get("metadata/ranges", list(), FALSE)[["content"]]
 
-habitat_types <-
+primary_habitat <-
   metadata_ranges[c("MKV.habitatEnum", "MKV.habitatSpecificTypeEnum")]
-habitat_types <- lapply(habitat_types, unlist)
-habitat_types <- lapply(habitat_types, matrix, ncol = 2L, byrow = TRUE)
+primary_habitat <- lapply(primary_habitat, unlist)
+primary_habitat <- lapply(primary_habitat, matrix, ncol = 2L, byrow = TRUE)
 
-habitat_types <- lapply(
-  habitat_types,
+primary_habitat <- lapply(
+  primary_habitat,
   function(x) {
     df <- data.frame(
       stringr::str_split_fixed(x[, 2L], " ", 3L)[, c(3L, 1L)],
@@ -18,8 +18,10 @@ habitat_types <- lapply(
     df[["habitat_type"]] <- gsub("ä", "a", df[["habitat_type"]])
     df[["habitat_type"]] <- finbif:::to_sentence_case(df[["habitat_type"]])
     df[["code"]] <- toupper(df[["code"]])
+    class(df[["code"]]) <- "translation"
     df
   }
 )
 
-names(habitat_types) <- c("habitat_types", "specific_habitat_types")
+names(primary_habitat) <- c("habitat_types", "specific_habitat_types")
+primary_secondary_habitat <- primary_habitat

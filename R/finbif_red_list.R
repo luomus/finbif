@@ -10,7 +10,7 @@
 #' }
 #' @export
 finbif_red_list <- function() {
-  df <- redlist_status_translations
+  df <- red_list_status
   df <- df[order(df[["translated_status"]]), ]
   structure(df, row.names = seq_len(nrow(df)), names = c("status", "code"))
 }

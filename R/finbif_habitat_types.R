@@ -12,13 +12,13 @@
 #' }
 #' @export
 finbif_habitat_types <- function() {
-  df <- habitat_types[["habitat_types"]]
+  df <- primary_habitat[["habitat_types"]]
   structure(df, row.names = seq_len(nrow(df)))
 }
 
 #' @rdname finbif_habitat_types
 #' @export
 finbif_habitat_qualifiers <- function() {
-  df <- habitat_types[["specific_habitat_types"]]
+  df <- primary_habitat[["specific_habitat_types"]]
   structure(df, row.names = seq_len(nrow(df)))
 }
