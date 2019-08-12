@@ -13,19 +13,20 @@ install: build
 	cd ..;\
 	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
 
-check: vignettes readme codemeta
+check: vignettes README.md codemeta
 	cd ..;\
 	R CMD check $(PKGNAME)_$(PKGVERS).tar.gz --as-cran
 
-readme: install
-	${RSCRIPT} -e "rmarkdown::render('README.Rmd')" && rm README.html
+README.md: README.Rmd install
+	${RSCRIPT} -e "knitr::knit('$<')"
 
 vignettes: install
 	cd inst/vign;\
-	${RSCRIPT} -e "knitr::knit('finbif.Rmd'); knitr::knit('filtering.Rmd')";\
-	cp finbif.md ../../vignettes/finbif.Rmd;\
-	cp filtering.md ../../vignettes/filtering.Rmd;\
-	cd ../..;\
+	${RSCRIPT} -e "for (i in list.files('.', '.Rmd$$')) knitr::knit(i)";\
+	cp *.md ../../vignettes;\
+	cd ../../vignettes;\
+	for f in *.md; do mv -- "$$f" "$$(basename "$$f" .md).Rmd"; done;\
+	cd ../;\
 	${RSCRIPT} -e "devtools::build_vignettes()"
 
 doc: sysdata
