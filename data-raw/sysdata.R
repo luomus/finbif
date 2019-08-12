@@ -8,8 +8,8 @@ source("data-raw/countries.R")
 source("data-raw/provinces.R")
 source("data-raw/municipalities.R")
 usethis::use_data(
-  field_translations,
-  filter_translations,
+  field_names,
+  filter_names,
   administrative_status,
   red_list_status,
   informal_group,

@@ -44,13 +44,11 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
     } else {
 
       filters <- as.list(filters)
-      translated_filter_names <-
-        translate(names(filters), "filter_translations")
+      translated_filter_names <- translate(names(filters), "filter_names")
 
       for (filter in names(filters)) {
-        should_translate <- filter_translations[["translated_filter"]] == filter
-        should_translate <-
-          filter_translations[should_translate, "translated_values"]
+        should_translate <- filter_names[["translated_filter"]] == filter
+        should_translate <- filter_names[should_translate, "translated_values"]
         # the filter might not exist
         if (should_translate && length(should_translate))
           filters[[filter]] <- translate(filters[[filter]], filter)
@@ -64,8 +62,7 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
 
     # fields ===================================================================
 
-    default_fields <-
-      field_translations[field_translations[["default_field"]], ]
+    default_fields <- field_names[field_names[["default_field"]], ]
 
     if (missing(fields)) {
 
@@ -79,7 +76,7 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
         fields
       )
       fields <- unlist(fields)
-      fields <- translate(fields, "field_translations")
+      fields <- translate(fields, "field_names")
 
     }
 
@@ -165,7 +162,8 @@ translate <- function(x, translation, pos = -1) {
       }
     }
 
-    if (anyNA(ind)) deferrable_error(paste("Invalid name in", translation))
+    if (anyNA(ind))
+      deferrable_error(paste("Invalid name in", gsub("_", " ", translation)))
     row.names(trsltn)[ind]
 
   }

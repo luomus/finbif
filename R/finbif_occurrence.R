@@ -67,8 +67,8 @@ finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
   url  <- attr(df, "url", TRUE)
   time <-  attr(df, "time", TRUE)
 
-  df <- df[intersect(row.names(field_translations), names(df))]
-  names(df) <- field_translations[names(df), "translated_field"]
+  df <- df[intersect(row.names(field_names), names(df))]
+  names(df) <- field_names[names(df), "translated_field"]
 
   if (date_time) {
     df$date_time <- get_date_time(

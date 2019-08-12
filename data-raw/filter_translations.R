@@ -1,4 +1,4 @@
-filter_translations <- read.csv(text = "
+filter_names <- read.csv(text = "
   finbif_api_filter, translated_filter, type, translated_values
   taxonId, taxon_id, uri, FALSE
   useIdentificationAnnotations, quality_controlled_det, logical, FALSE
@@ -88,10 +88,10 @@ filter_translations <- read.csv(text = "
   documentFact, document_fact, character, FALSE
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L)
 
-class(filter_translations[["translated_filter"]]) <- "translation"
+class(filter_names[["translated_filter"]]) <- "translation"
 
 filters <- names(
   finbif:::finbif_api_get("warehouse/filters", list(), FALSE)[["content"]]
 )
 
-stopifnot(identical(sort(row.names(filter_translations)), sort(filters)))
+stopifnot(identical(sort(row.names(filter_names)), sort(filters)))

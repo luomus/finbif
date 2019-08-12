@@ -27,7 +27,7 @@ as.data.frame.finbif_api <- function(x, ...) {
 
       # Some fields return values that are not atomic (e.g., multiple observers)
       for (nm in unms) {
-        if (!field_translations[nm, "unique"]) {
+        if (!field_names[nm, "unique"]) {
           el <- unlist(dfx[nms == nm])
           ans[[nm]] <- NULL
           ans[[nm]][[1L]] <- unname(el)
@@ -136,8 +136,8 @@ print.finbif_occ <- function(x, ...) {
   # Some fields have data in the form of URIs where the protocol and domain
   # don't convey useful information
   for (i in names(df)) {
-    type <- field_translations[
-      field_translations[["translated_field"]] == i, "type"
+    type <- field_names[
+      field_names[["translated_field"]] == i, "type"
     ]
     if (type == "uri") {
       df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/[A-Z]{2}\\.", "", df[[i]])
