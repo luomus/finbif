@@ -137,7 +137,6 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
 # translation ------------------------------------------------------------------
 
 translate <- function(x, translation) {
-  if (is.null(x)) return(NULL)
 
   # Some filters have multi-level values to translate (e.g., primary_habitat)
   if (is.list(x)) {
