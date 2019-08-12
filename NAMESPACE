@@ -2,6 +2,7 @@
 
 S3method(as.data.frame,finbif_api)
 S3method(as.data.frame,finbif_api_list)
+S3method(conditionMessage,deferred_errors)
 S3method(print,finbif_api)
 S3method(print,finbif_api_list)
 S3method(print,finbif_occ)

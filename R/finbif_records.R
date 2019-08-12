@@ -29,54 +29,63 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
   max_queries  <- 600L
   max_size <- 300L
   nmax <- max_queries * max_size
-  if (n > nmax) stop("Cannot download more than ", nmax, " records")
 
-  # filters ====================================================================
+  defer_errors({
 
-  if (missing(filters)) {
+    if (n > nmax)
+      deferrable_error(paste("Cannot download more than", nmax, "records"))
 
-    query <- list()
+    # filters ==================================================================
 
-  } else {
+    if (missing(filters)) {
 
-    filters <- as.list(filters)
-    translated_filter_names <- translate(names(filters), filter_translations)
+      query <- list()
 
-    for (filter in names(filters)) {
-      should_translate <- filter_translations[["translated_filter"]] == filter
-      should_translate <-
-        filter_translations[should_translate, "translated_values"]
-      if (should_translate)
-        filters[[filter]] <- translate(filters[[filter]], get(filter))
+    } else {
+
+      filters <- as.list(filters)
+      translated_filter_names <-
+        translate(names(filters), "filter_translations")
+
+      for (filter in names(filters)) {
+        should_translate <- filter_translations[["translated_filter"]] == filter
+        should_translate <-
+          filter_translations[should_translate, "translated_values"]
+        # the filter might not exist
+        if (should_translate && length(should_translate))
+          filters[[filter]] <- translate(filters[[filter]], filter)
+      }
+
+      names(filters) <- translated_filter_names
+
+      query <- lapply(filters, paste, collapse = ",")
+
     }
 
-    names(filters) <- translated_filter_names
+    # fields ===================================================================
 
-    query <- lapply(filters, paste, collapse = ",")
+    default_fields <-
+      field_translations[field_translations[["default_field"]], ]
 
-  }
+    if (missing(fields)) {
 
-  # fields =====================================================================
+      fields <- row.names(default_fields)
 
-  default_fields <- field_translations[field_translations[["default_field"]], ]
+    } else {
 
-  if (missing(fields)) {
+      fields <- ifelse(
+        fields == "default_fields",
+        list(default_fields[["translated_field"]]),
+        fields
+      )
+      fields <- unlist(fields)
+      fields <- translate(fields, "field_translations")
 
-    fields <- row.names(default_fields)
+    }
 
-  } else {
+    query[["selected"]] <- paste(fields, collapse = ",")
 
-    fields <- ifelse(
-      fields == "default_fields",
-      list(default_fields[["translated_field"]]),
-      fields
-    )
-    fields <- unlist(fields)
-    fields <- translate(fields, field_translations)
-
-  }
-
-  query[["selected"]] <- paste(fields, collapse = ",")
+  })
 
   # request ====================================================================
 
@@ -136,28 +145,28 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
 
 # translation ------------------------------------------------------------------
 
-translate <- function(x, translation) {
-
+translate <- function(x, translation, pos = -1) {
+  trsltn <- get(translation, pos)
   # Some filters have multi-level values to translate (e.g., primary_habitat)
   if (is.list(x)) {
 
-    names(x) <- translate(names(x), translation[[1L]])
-    x <- lapply(x, translate, translation[[2L]])
+    names(x) <- translate(names(x), names(trsltn)[[1L]], trsltn)
+    x <- lapply(x, translate, names(trsltn)[[2L]], trsltn)
     x <- lapply(x, paste, collapse = ",")
     sprintf("%s%s", names(x), ifelse(x == "", x, sprintf("[%s]", x)))
 
   } else {
 
     ind <- rep(NA_integer_, length(x))
-    for (i in translation) {
+    for (i in trsltn) {
       if (inherits(i, "translation")) {
         ind_ <- match(tolower(x), tolower(i))
         ind <- ifelse(is.na(ind_), ind, ind_)
       }
     }
 
-    if (anyNA(ind)) stop("Invalid name in ", deparse(substitute(translation)))
-    row.names(translation)[ind]
+    if (anyNA(ind)) deferrable_error(paste("Invalid name in", translation))
+    row.names(trsltn)[ind]
 
   }
 }

@@ -1,12 +1,75 @@
+# misc -------------------------------------------------------------------------
 #' @noRd
 reduce_merge <- function(df) {
   df <- Reduce(function(x, y) merge(x, y, all = TRUE), df)
   if (is.null(df)) data.frame() else df
 }
 
+#' @noRd
 to_sentence_case <- function(string) {
   paste0(substring(toupper(string), 1L, 1L), substring(tolower(string), 2L))
 }
 
+#' @noRd
 get_next_lowest_factor <-
   function(x, y) ifelse(x %% y, get_next_lowest_factor(x, y - 1L), y)
+
+# errors -----------------------------------------------------------------------
+# modified from https://github.com/reside-ic/defer/blob/master/R/defer.R
+#' @noRd
+deferrable_error <- function(message) {
+  withRestarts({
+    calls <- sys.calls()
+    call <- calls[[max(length(calls) - 1L, 1L)]]
+    stop(error(message, "deferrable_error", call = call, calls = calls))
+  },
+  continue_deferrable_error = function(...) NULL)
+}
+
+#' @noRd
+defer_errors <- function(expr, handler = stop) {
+  errors <- list()
+
+  calls <- sys.calls()
+  value <- withCallingHandlers(
+    expr,
+    deferrable_error = function(e) {
+      if (identical(calls[], e[["calls"]][seq_along(calls)])) {
+        e[["calls"]] <- e[["calls"]][-seq_len(length(calls) + 1L)]
+      }
+      errors <<- c(errors, list(e))
+      invokeRestart("continue_deferrable_error")
+    }
+  )
+
+  deferred_errors(errors, handler, calls, value)
+}
+
+#' @noRd
+deferred_errors <- function(errors, handler, calls, value = NULL) {
+  if (length(errors)) {
+    err <- list(errors = errors, value = value)
+    class(err) <- c("deferred_errors", "error", "condition")
+    handler(err)
+  } else {
+    value
+  }
+}
+
+#' @noRd
+error <- function(message, class, ...) {
+  structure(
+    list(message = message, ...), class = c(class, "error", "condition")
+  )
+}
+
+#' @export
+#' @noRd
+conditionMessage.deferred_errors <- function(c) {
+  errors <- vapply(c[["errors"]], "[[", character(1), "message")
+  n <- length(errors)
+  sprintf(
+    "%d %s occured:\n%s", n, ngettext(n, "error", "errors"),
+    paste0("  - ", errors, collapse = "\n")
+  )
+}

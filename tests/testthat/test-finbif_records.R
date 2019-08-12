@@ -43,19 +43,16 @@ test_that(
     expect_s3_class(resp_list_province[[1]], "finbif_api")
     expect_s3_class(resp_list_municipality[[1]], "finbif_api")
     expect_s3_class(resp_count, "finbif_api")
-    expect_error(finbif_records(n = 1e99), "Cannot download more than")
-    expect_error(finbif_records(filters = c(not_a_filter = TRUE)), "Invalid")
-    expect_error(
-      finbif_records(filters = c(informal_group = "Birbs")), "Invalid"
+    expect_condition(finbif_records(n = 1e99))
+    expect_condition(finbif_records(filters = c(not_a_filter = TRUE)))
+    expect_condition(finbif_records(filters = c(informal_group = "Birbs")))
+    expect_condition(
+      finbif_records(filters = c(administrative_status = "not a status"))
     )
-    expect_error(
-      finbif_records(filters = c(administrative_status = "not a status")),
-      "Invalid"
+    expect_condition(
+      finbif_records(filters = c(red_list_status = "not a status"))
     )
-    expect_error(
-      finbif_records(filters = c(red_list_status = "not a status")), "Invalid"
-    )
-    expect_error(finbif_records(fields = "not_a_field"), "Invalid")
+    expect_condition(finbif_records(fields = "not_a_field"))
 
   }
 )
