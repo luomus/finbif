@@ -20,7 +20,7 @@ filter_names <- read.csv(text = "
   finnishMunicipalityId, municipality, uri, TRUE
   biogeographicalProvinceId, province, uri, TRUE
   area, locality, character, FALSE
-  birdAssociationAreaId, bird_assoc_area, uri, FALSE
+  birdAssociationAreaId, bird_assoc_area, uri, TRUE
   namedPlaceId, place_name_id, uri, FALSE
   formId, form_id, uri, FALSE
   time, date_range_ymd, date, FALSE

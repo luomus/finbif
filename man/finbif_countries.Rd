@@ -4,6 +4,7 @@
 \alias{finbif_countries}
 \alias{finbif_provinces}
 \alias{finbif_municipalities}
+\alias{finbif_bird_assoc_areas}
 \title{Countries, Provinces, and Municipalities}
 \usage{
 finbif_countries()
@@ -11,6 +12,8 @@ finbif_countries()
 finbif_provinces()
 
 finbif_municipalities()
+
+finbif_bird_assoc_areas()
 }
 \value{
 A data.frame.

@@ -36,3 +36,13 @@ finbif_municipalities <- function() {
     names = c("english_name", "finnish_name", "country")
   )
 }
+
+#' @rdname finbif_countries
+#' @export
+finbif_bird_assoc_areas <- function() {
+  structure(
+    bird_assoc_area, row.names = seq_len(nrow(bird_assoc_area)),
+    names = c("name", "code")
+  )
+}
+

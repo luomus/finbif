@@ -7,6 +7,7 @@ source("data-raw/taxon_ranks.R")
 source("data-raw/countries.R")
 source("data-raw/provinces.R")
 source("data-raw/municipalities.R")
+source("data-raw/bird_association_area.R")
 usethis::use_data(
   field_names,
   filter_names,
@@ -20,6 +21,7 @@ usethis::use_data(
   country,
   province,
   municipality,
+  bird_assoc_area,
   internal = TRUE,
   overwrite = TRUE
 )

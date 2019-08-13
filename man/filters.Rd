@@ -85,7 +85,8 @@ see country names and ISO codes (2 and 3 character) used in FinBIF.
 to see province names and codes.
 \item \code{municipality} Character vector. Filter by country. Use
 \code{finbif_municipalities()} to see municipality names.
-\item \code{bird_assoc_area} Character.
+\item \code{bird_assoc_area} Character. Filter by BirdLife Finland association area.
+Use \code{finbif_bird_assoc_area()} to see association names and codes.
 \item \code{place_name_id} Character.
 \item \code{coordinates_area} Coordinates.
 \item \code{coordinates_center} Coordinates.
