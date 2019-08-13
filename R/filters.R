@@ -67,13 +67,16 @@
 #' @section Location:
 #' Filters related to location of record include:
 #'
+#' - `locality` Character vector. Filter by name of locality. Will first try to
+#'   match strings to the countries, provinces, and municipalities (see below)
+#'   in FinBIF if none of these locality types match exactly then will return
+#'   records with verbatim locality matches in the original records.
 #' - `country` Character vector. Filter by country. Use `finbif_countries()` to
 #'   see country names and ISO codes (2 and 3 character) used in FinBIF.
 #' - `province` Character vector. Filter by province. Use `finbif_provinces()`
 #'   to see province names and codes.
 #' - `municipality` Character vector. Filter by country. Use
 #'   `finbif_municipalities()` to see municipality names.
-#' - `locality` Character.
 #' - `bird_assoc_area` Character.
 #' - `place_name_id` Character.
 #' - `coordinates_area` Coordinates.
