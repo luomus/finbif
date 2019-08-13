@@ -162,8 +162,12 @@ translate <- function(x, translation, pos = -1) {
       }
     }
 
-    if (anyNA(ind))
-      deferrable_error(paste("Invalid name in", gsub("_", " ", translation)))
+    if (anyNA(ind)) for (err in x[is.na(ind)])
+      deferrable_error(
+        paste0(
+          "Invalid name in ", gsub("_", " ", translation), ": ", err
+        )
+      )
     row.names(trsltn)[ind]
 
   }
