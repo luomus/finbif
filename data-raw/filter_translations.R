@@ -88,10 +88,12 @@ filter_names <- read.csv(text = "
   documentFact, document_fact, character, FALSE
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L)
 
-class(filter_names[["translated_filter"]]) <- "translation"
-
 filters <- names(
   finbif:::finbif_api_get("warehouse/filters", list(), FALSE)[["content"]]
 )
 
 stopifnot(identical(sort(row.names(filter_names)), sort(filters)))
+
+filter_names <- filter_names[-match("namedPlaceId", rownames(filter_names)), ]
+
+class(filter_names[["translated_filter"]]) <- "translation"

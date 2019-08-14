@@ -79,7 +79,6 @@
 #'   `finbif_municipalities()` to see municipality names.
 #' - `bird_assoc_area` Character. Filter by BirdLife Finland association area.
 #'   Use `finbif_bird_assoc_area()` to see association names and codes.
-#' - `place_name_id` Character.
 #' - `coordinates_area` Coordinates.
 #' - `coordinates_center` Coordinates.
 #' - `coordinates_cell_*k` Coordinates.
