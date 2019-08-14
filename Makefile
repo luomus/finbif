@@ -13,7 +13,7 @@ install: build
 	cd ..;\
 	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
 
-check: vignettes README.md codemeta
+check: vignettes README.md codemeta.json
 	cd ..;\
 	R CMD check $(PKGNAME)_$(PKGVERS).tar.gz --as-cran
 
@@ -29,13 +29,13 @@ vignettes: install
 	cd ../;\
 	${RSCRIPT} -e "devtools::build_vignettes()"
 
-doc: sysdata
+doc: R/sysdata.rda
 	${RSCRIPT} -e "devtools::document()"
 
-sysdata:
+R/sysdata.rda: $(wildcard data.raw/*.R)
 	${RSCRIPT} data-raw/sysdata.R
 
-codemeta:
+codemeta.json: DESCRIPTION
 	${RSCRIPT} -e "codemetar::write_codemeta()"
 
 clean:
