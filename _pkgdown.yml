@@ -32,6 +32,7 @@ reference:
       - finbif_countries
       - finbif_provinces
       - finbif_municipalities
+      - finbif_bird_assoc_areas
   - title: "Methods"
     desc: >
       Working with finbif objects
