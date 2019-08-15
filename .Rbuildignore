@@ -12,3 +12,4 @@ Makefile
 ^doc$
 ^Meta$
 ^appveyor\.yml$
+^\.github$
