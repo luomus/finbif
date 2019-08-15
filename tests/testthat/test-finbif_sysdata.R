@@ -1,0 +1,29 @@
+context("Checking FinBIF internal data functions")
+
+test_that(
+  "return valid data", {
+
+    expect_s3_class(finbif_admin_status(), "data.frame")
+
+    expect_s3_class(finbif_red_list(), "data.frame")
+
+    expect_s3_class(finbif_habitat_types(), "data.frame")
+
+    expect_s3_class(finbif_habitat_qualifiers(), "data.frame")
+
+    expect_s3_class(finbif_countries(), "data.frame")
+
+    expect_s3_class(finbif_provinces(), "data.frame")
+
+    expect_s3_class(finbif_municipalities(), "data.frame")
+
+    expect_s3_class(finbif_bird_assoc_areas(), "data.frame")
+
+    expect_type(finbif_informal_groups(), "character")
+
+    expect_type(finbif_informal_groups("Algae"), "character")
+
+    expect_type(finbif_taxon_ranks(), "character")
+
+  }
+)

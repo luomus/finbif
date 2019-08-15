@@ -1,49 +1,74 @@
-context("Downloading FinBIF occurrence data")
+context("Querying FinBIF occurrence data")
 
-test_that(
-  "returns valid data", {
-    vcr::use_cassette(
-      "finbif_occurrence", {
-        resp1 <- finbif_occurrence(taxa = "Parus major")
-        resp2 <- finbif_occurrence(species = "Parus major")
-        resp3 <- finbif_occurrence(species = "Parus major", check_taxa = FALSE)
-        resp4 <- finbif_occurrence(taxa = "Parus major", count_only = TRUE)
-        resp5 <- finbif_occurrence(
-          "Parus major", fields = c("record_id", "observers_name")
+vcr::use_cassette(
+  "finbif_occurrence", {
+
+    test_that(
+      "can return valid data", {
+
+        expect_s3_class(
+          finbif_occurrence(
+            species = "Rangifer tarandus fennicus", check_taxa = FALSE,
+            fields = "record_id"
+          ),
+          "finbif_occ"
         )
-        resp6 <- finbif_occurrence(
-          "Parus major", fields = c("record_id", "date_start")
+
+        expect_s3_class(
+          finbif_occurrence(
+            "Rangifer tarandus fennicus", fields = c("record_id", "date_start")
+          ),
+          "finbif_occ"
         )
-        resp7 <- finbif_occurrence(
-          "Parus major",
-          fields = c("record_id", "date_start", "lat_wgs84", "lon_wgs84")
+
+        expect_s3_class(
+          finbif_occurrence(
+            "Rangifer tarandus fennicus",
+            fields = c("record_id", "date_start", "lat_wgs84", "lon_wgs84")
+          ),
+          "finbif_occ"
         )
-        resp8 <- finbif_occurrence("Rangifer tarandus fennicus")
-      },
-      preserve_exact_body_bytes = TRUE
+
+      }
+
     )
 
-    expect_s3_class(resp1, "data.frame")
-    expect_s3_class(resp2, "data.frame")
-    expect_s3_class(resp3, "data.frame")
-    expect_type(resp4, "integer")
-    expect_s3_class(resp5, "finbif_occ")
-    expect_s3_class(resp6, "finbif_occ")
-    expect_s3_class(resp7, "finbif_occ")
-    expect_s3_class(resp7[["date_time"]], "POSIXct")
-    expect_type(resp4, "integer")
-  }
-)
+    test_that(
+      "can return a count", {
 
-test_that(
-  "returns the expected number of records", {
-    vcr::use_cassette(
-      "finbif_occurrence500", {
-        resp500 <- finbif_occurrence(n = 500)
-      },
-      preserve_exact_body_bytes = TRUE
+        expect_type(
+          finbif_occurrence(
+            taxa = "Rangifer tarandus fennicus", count_only = TRUE
+          ),
+          "integer"
+        )
+
+      }
+
     )
-    expect_identical(500L, nrow(resp500))
 
-  }
+    test_that(
+      "returns data that prints valid output", {
+
+        fungi <- finbif_occurrence(
+          filters = c(informal_group = "Fungi and lichens"),
+          fields = c("record_id", "informal_groups", "default_fields"),
+          n = 500L
+        )
+
+        expect_output(print(fungi), "Records downloaded:")
+
+        expect_output(
+          print(fungi[c("scientific_name", "taxon_rank")]), "A data"
+        )
+
+        expect_output(
+          print(fungi[1:10, c("scientific_name", "taxon_rank")]), "A data"
+        )
+
+      }
+    )
+
+  },
+  preserve_exact_body_bytes = TRUE
 )

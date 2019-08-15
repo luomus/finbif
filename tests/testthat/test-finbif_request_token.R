@@ -1,9 +1,11 @@
-context("FinBIF api token request")
+context("Checking FinBIF API token request")
 
 test_that(
-  "requesting a token when one is set is reported", {
+  "reports that token has been set", {
+
     expect_message(
       finbif_request_token(), "An access token has already been set"
     )
+
   }
 )

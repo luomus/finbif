@@ -1,15 +1,16 @@
 context("Downloading FinBIF taxon info")
 
-test_that(
-  "returns valid data", {
-    vcr::use_cassette(
-      "finbif_taxa", {
-        resp_list <- finbif_taxa("Parus major")
-      },
-      preserve_exact_body_bytes = TRUE
+vcr::use_cassette(
+  "finbif_taxa", {
+
+    test_that(
+      "returns valid data", {
+
+        expect_s3_class(finbif_taxa("Parus major"), "finbif_api")
+
+      }
     )
 
-    expect_s3_class(resp_list, "finbif_api")
-
-  }
+  },
+  preserve_exact_body_bytes = TRUE
 )
