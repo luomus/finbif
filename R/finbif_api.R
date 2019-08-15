@@ -20,7 +20,7 @@ as.data.frame.finbif_api <- function(x, ...) {
     x[["content"]][["results"]],
     function(x) {
       dfx <- as.data.frame(x, stringsAsFactors = FALSE)
-      nms <- names(unlist(x))
+      nms <- gsub("\\d*$", "", names(unlist(x)))
       colnames(dfx) <- nms
       unms <- unique(nms)
       ans <- dfx[unms]
