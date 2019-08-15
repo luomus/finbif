@@ -110,12 +110,8 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method) {
   }
 
   if (is.null(df[[lat]]) || is.null(df[[lon]])) return(NULL)
-
-  lubridate::force_tzs(
-    date_time,
-    tzones = lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
-  )
-
+  tz <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
+  lubridate::force_tzs(date_time, tzones = ifelse(is.na(tz), "", tz))
 }
 
 get_duration <- function(df, date_time, date, hour, minute, lat, lon, method) {
