@@ -6,7 +6,7 @@ field_names <- read.csv(text = "
   unit.abundanceString, abundance_string, FALSE, FALSE, character, TRUE
   gathering.interpretations.countryDisplayname, country, TRUE, FALSE, character, TRUE
   gathering.interpretations.biogeographicalProvinceDisplayname, province, TRUE, FALSE, character, TRUE
-  gathering.interpretations.municipalityDisplayname, municipality, TRUE, FALSE, string, TRUE
+  gathering.interpretations.municipalityDisplayname, municipality, TRUE, FALSE, character, TRUE
   gathering.conversions.wgs84CenterPoint.lat, lat_wgs84, TRUE, FALSE, double, TRUE
   gathering.conversions.wgs84CenterPoint.lon, lon_wgs84, TRUE, FALSE, double, TRUE
   gathering.conversions.wgs84WKT, wkt_wgs84, TRUE, FALSE, integer, TRUE
@@ -53,7 +53,7 @@ field_names <- read.csv(text = "
   unit.linkings.originalTaxon.cursiveName, orig_taxon_cursive, FALSE, FALSE, character, TRUE
   unit.linkings.originalTaxon.finnish, orig_taxon_finnish, FALSE, FALSE, logical, TRUE
   unit.linkings.originalTaxon.id, orig_taxon_id, FALSE, FALSE, uri, TRUE
-  unit.linkings.originalTaxon.informalTaxonGroups, orig_informal_groups, FALSE, FALSE, list, FALSE
+  unit.linkings.originalTaxon.informalTaxonGroups, orig_informal_groups, FALSE, FALSE, character, FALSE
   unit.linkings.originalTaxon.qname, orig_qname, FALSE, FALSE, uri, TRUE
   unit.linkings.originalTaxon.scientificName, orig_taxon_scientific_name, FALSE, FALSE, character, TRUE
   unit.linkings.originalTaxon.scientificNameAuthorship, orig_scientific_name_author, FALSE, FALSE, character, TRUE
@@ -64,7 +64,7 @@ field_names <- read.csv(text = "
   unit.linkings.taxon.cursiveName, taxon_name_cursive, FALSE, FALSE, character, TRUE
   unit.linkings.taxon.finnish, taxon_finnish, FALSE, FALSE, logical, TRUE
   unit.linkings.taxon.id, taxon_id, FALSE, FALSE, uri, TRUE
-  unit.linkings.taxon.informalTaxonGroups, informal_groups, FALSE, FALSE, list, FALSE
+  unit.linkings.taxon.informalTaxonGroups, informal_groups, FALSE, FALSE, character, FALSE
   unit.linkings.taxon.qname, qname, FALSE, FALSE, uri, TRUE
   unit.linkings.taxon.scientificNameAuthorship, scientific_name_author, FALSE, FALSE, character, TRUE
   unit.linkings.taxon.scientificNameDisplayName, scientific_display_name, FALSE, FALSE, character, TRUE
