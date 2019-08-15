@@ -32,7 +32,7 @@ vignettes: install
 doc: R/sysdata.rda
 	${RSCRIPT} -e "devtools::document()"
 
-R/sysdata.rda: $(wildcard data.raw/*.R)
+R/sysdata.rda: $(wildcard data-raw/*.R)
 	${RSCRIPT} data-raw/sysdata.R
 
 codemeta.json: DESCRIPTION
