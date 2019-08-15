@@ -58,9 +58,9 @@ supplied.
 \item \code{primary_secondary_habitat} Character or named list of character vectors.
 As above, except the records returned will be of taxa whose primary or
 secondary habitat is considered to be the combination supplied.
-\item \code{finnish}. Logical. If \code{TRUE}, limit records to taxa native to Finland. Or
-if \code{FALSE} limit to taxa not native to Finland. If unspecified (default)
-return records of taxa that are native and non-native to Finland.
+\item \code{finnish}. Logical. If \code{TRUE}, limit records to taxa known to occur in
+Finland. Or if \code{FALSE} limit to taxa not thought to occur in Finland.
+If unspecified (default) return records of all taxa.
 \item \code{invasive}. Logical. If \code{TRUE}, limit records to invasive taxa. Or if
 \code{FALSE} limit to non-invasive taxa. If unspecified (default) return records
 of invasive and non-invasive taxa.

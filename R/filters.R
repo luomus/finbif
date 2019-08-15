@@ -53,9 +53,9 @@
 #' - `primary_secondary_habitat` Character or named list of character vectors.
 #'   As above, except the records returned will be of taxa whose primary or
 #'   secondary habitat is considered to be the combination supplied.
-#' - `finnish`. Logical. If `TRUE`, limit records to taxa native to Finland. Or
-#'   if `FALSE` limit to taxa not native to Finland. If unspecified (default)
-#'   return records of taxa that are native and non-native to Finland.
+#' - `finnish`. Logical. If `TRUE`, limit records to taxa known to occur in
+#'   Finland. Or if `FALSE` limit to taxa not thought to occur in Finland.
+#'   If unspecified (default) return records of all taxa.
 #' - `invasive`. Logical. If `TRUE`, limit records to invasive taxa. Or if
 #'   `FALSE` limit to non-invasive taxa. If unspecified (default) return records
 #'   of invasive and non-invasive taxa.
