@@ -1,5 +1,5 @@
-field_names <- read.csv(text = "
-  finbif_api_field, translated_field, default_field, quality_field, type, unique
+var_names <- read.csv(text = "
+  finbif_api_var, translated_var, default_var, quality_var, type, unique
   unit.linkings.taxon.scientificName, scientific_name, TRUE, FALSE, character, TRUE
   unit.linkings.taxon.taxonRank, taxon_rank, TRUE, FALSE, uri, TRUE
   unit.interpretations.individualCount, abundance, TRUE, FALSE, integer, TRUE
@@ -243,4 +243,4 @@ field_names <- read.csv(text = "
   gathering.team, team, FALSE, FALSE, character, FALSE
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L)
 
-class(field_names[["translated_field"]]) <- "translation"
+class(var_names[["translated_var"]]) <- "translation"

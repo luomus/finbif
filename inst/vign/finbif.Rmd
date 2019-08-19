@@ -96,7 +96,7 @@ You can search for multiple taxa at once and filter the records with the
 finbif_occurrence(
   "Cygnus cygnus", 
   "Cygnus olor",
-  filters = list(coordinate_accuracy_max = 100)
+  filter = list(coordinate_accuracy_max = 100)
 )
 ```
 

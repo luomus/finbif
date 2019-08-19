@@ -8,8 +8,8 @@
 #' @param check_taxa Logical. Check first that taxa are in the FinBIF database.
 #'   If true only records that match known taxa (have a valid taxon ID) are
 #'   returned.
-#' @param date_time Logical. Convert raw date and time fields into date_time and
-#'   duration.
+#' @param date_time Logical. Convert raw date and time variables into date_time
+#'   and duration.
 #' @param method Character. Passed to `lutz::tz_lookup_coords()` when
 #'   `date_time = TRUE`. Default is `"fast"`. Use `method = "accurate"`
 #'   (requires package `sf`) for greater accuracy.
@@ -28,7 +28,7 @@
 #' # Filter the records
 #' finbif_occurrence(
 #'   species = "Cygnus cygnus",
-#'   filters = list(coordinate_accuracy_max = 100)
+#'   filter = list(coordinate_accuracy_max = 100)
 #' )
 #'
 #' }
@@ -38,7 +38,7 @@
 #' @importFrom lutz tz_lookup_coords
 #' @export
 
-finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
+finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE, check_taxa = TRUE,
   date_time = TRUE, method = "fast"
   ) {
@@ -56,10 +56,10 @@ finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
     taxa <- list(taxon_name = paste(unlist(taxa), collapse = ","))
   }
 
-  if (missing(filters)) filters <- NULL
-  filters <- c(taxa, filters)
+  if (missing(filter)) filter <- NULL
+  filter <- c(taxa, filter)
 
-  records <- finbif_records(filters, fields, n, page, count_only, quiet, cache)
+  records <- finbif_records(filter, select, n, page, count_only, quiet, cache)
 
   if (count_only) return(records[["content"]][["total"]])
 
@@ -67,8 +67,8 @@ finbif_occurrence <- function(..., filters, fields, n = 10, page = 1,
   url  <- attr(df, "url", TRUE)
   time <-  attr(df, "time", TRUE)
 
-  df <- df[intersect(row.names(field_names), names(df))]
-  names(df) <- field_names[names(df), "translated_field"]
+  df <- df[intersect(row.names(var_names), names(df))]
+  names(df) <- var_names[names(df), "translated_var"]
 
   if (date_time) {
     df$date_time <- get_date_time(

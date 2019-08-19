@@ -9,14 +9,14 @@ vcr::use_cassette(
         expect_s3_class(
           finbif_occurrence(
             species = "Rangifer tarandus fennicus", check_taxa = FALSE,
-            fields = "record_id"
+            select = "record_id"
           ),
           "finbif_occ"
         )
 
         expect_s3_class(
           finbif_occurrence(
-            "Rangifer tarandus fennicus", fields = c("record_id", "date_start")
+            "Rangifer tarandus fennicus", select = c("record_id", "date_start")
           ),
           "finbif_occ"
         )
@@ -24,7 +24,7 @@ vcr::use_cassette(
         expect_s3_class(
           finbif_occurrence(
             "Rangifer tarandus fennicus",
-            fields = c("record_id", "date_start", "lat_wgs84", "lon_wgs84")
+            select = c("record_id", "date_start", "lat_wgs84", "lon_wgs84")
           ),
           "finbif_occ"
         )
@@ -51,8 +51,8 @@ vcr::use_cassette(
       "returns data that prints valid output", {
 
         fungi <- finbif_occurrence(
-          filters = c(informal_group = "Fungi and lichens"),
-          fields = c("record_id", "informal_groups", "default_fields"),
+          filter = c(informal_group = "Fungi and lichens"),
+          select = c("record_id", "informal_groups", "default_vars"),
           n = 500L
         )
 

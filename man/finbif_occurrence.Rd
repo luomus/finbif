@@ -4,7 +4,7 @@
 \alias{finbif_occurrence}
 \title{Download FinBIF occurrence records}
 \usage{
-finbif_occurrence(..., filters, fields, n = 10, page = 1,
+finbif_occurrence(..., filter, select, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE,
   check_taxa = TRUE, date_time = TRUE, method = "fast")
 }
@@ -12,11 +12,11 @@ finbif_occurrence(..., filters, fields, n = 10, page = 1,
 \item{...}{Character vectors or list of character vectors. Taxa of records
 to download.}
 
-\item{filters}{List of named character vectors. Filters to apply to records.}
+\item{filter}{List of named character vectors. Filters to apply to records.}
 
-\item{fields}{Character vector. Columns to return. If not specified a default
-set of commonly used fields will be used. Use \code{"default_fields"} as a
-shortcut for this set.}
+\item{select}{Character vector. Variables to return. If not specified a
+default set of commonly used variables will be used. Use \code{"default_vars"}
+as ashortcut for this set.}
 
 \item{n}{Integer. How many records to download.}
 
@@ -33,8 +33,8 @@ downloads.}
 If true only records that match known taxa (have a valid taxon ID) are
 returned.}
 
-\item{date_time}{Logical. Convert raw date and time fields into date_time and
-duration.}
+\item{date_time}{Logical. Convert raw date and time variables into date_time
+and duration.}
 
 \item{method}{Character. Passed to \code{lutz::tz_lookup_coords()} when
 \code{date_time = TRUE}. Default is \code{"fast"}. Use \code{method = "accurate"}
@@ -61,7 +61,7 @@ finbif_occurrence("Cygnus cygnus", "Ursus arctos")
 # Filter the records
 finbif_occurrence(
   species = "Cygnus cygnus",
-  filters = list(coordinate_accuracy_max = 100)
+  filter = list(coordinate_accuracy_max = 100)
 )
 
 }

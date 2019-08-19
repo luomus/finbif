@@ -17,12 +17,12 @@ vcr::use_cassette(
   "finbif_api_get", {
 
     test_that(
-      "with wrong field returns an error message", {
+      "with wrong var returns an error message", {
 
         expect_error(
           finbif_api_get(
             path = "warehouse/query/list",
-            query = list(page = 1, pageSize = 1, selected = "not_a_field"),
+            query = list(page = 1, pageSize = 1, selected = "not_a_var"),
             cache = TRUE
           ),
           "API request failed"

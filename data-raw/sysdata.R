@@ -1,4 +1,4 @@
-source("data-raw/field_translations.R")
+source("data-raw/var_translations.R")
 source("data-raw/filter_translations.R")
 source("data-raw/status_translations.R")
 source("data-raw/informal_groups.R")
@@ -9,7 +9,7 @@ source("data-raw/provinces.R")
 source("data-raw/municipalities.R")
 source("data-raw/bird_association_area.R")
 usethis::use_data(
-  field_names,
+  var_names,
   filter_names,
   administrative_status,
   red_list_status,

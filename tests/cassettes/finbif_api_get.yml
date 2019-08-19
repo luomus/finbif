@@ -1,41 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/list?page=1&pageSize=1&selected=unit.unitId&access_token=<finbif_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept: application/json
-  response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
-    headers:
-      access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-xss-protection: 1; mode=block
-      x-frame-options: SAMEORIGIN
-      strict-transport-security: max-age=0; includeSubDomains
-      x-download-options: noopen
-      x-content-type-options: nosniff
-      date: Thu, 25 Jul 2019 06:56:18 GMT
-      server: Apache-Coyote/1.1
-      content-type: application/json;charset=utf-8
-      via: 1.1 dw.laji.fi
-      transfer-encoding: chunked
-      vary: Accept-Encoding
-      content-encoding: gzip
-    body:
-      encoding: ASCII-8BIT
-      string: eyJjdXJyZW50UGFnZSI6MSwibmV4dFBhZ2UiOjIsImxhc3RQYWdlIjozMjE3ODUwNSwicGFnZVNpemUiOjEsInRvdGFsIjozMjE3ODUwNSwicmVzdWx0cyI6W3sidW5pdCI6eyJ1bml0SWQiOiJodHRwOi8vdHVuLmZpL0pYLjEwMTc3MDAjNzAifX1dfQ==
-  recorded_at: 2019-07-25 06:56:23 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
-- request:
-    method: get
-    uri: https://api.laji.fi/v0/warehouse/query/list?page=1&pageSize=1&selected=not_a_field&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -55,7 +21,7 @@ http_interactions:
       strict-transport-security: max-age=0; includeSubDomains
       x-download-options: noopen
       x-content-type-options: nosniff
-      date: Thu, 25 Jul 2019 06:56:21 GMT
+      date: Mon, 19 Aug 2019 13:15:23 GMT
       server: Apache-Coyote/1.1
       content-type: application/json;charset=utf-8
       via: 1.1 dw.laji.fi
@@ -64,9 +30,9 @@ http_interactions:
       content-encoding: gzip
     body:
       encoding: ASCII-8BIT
-      string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX2ZpZWxkIn0=
-  recorded_at: 2019-07-25 06:56:23 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX3ZhciJ9
+  recorded_at: 2019-08-19 13:15:30 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.4.0
 - request:
     method: get
     uri: https://api.laji.fi/v0/warehouse/query/list?format=xml&page=1&pageSize=1&selected=unit.unitId&access_token=<finbif_token>
@@ -89,7 +55,7 @@ http_interactions:
       strict-transport-security: max-age=0; includeSubDomains
       x-download-options: noopen
       x-content-type-options: nosniff
-      date: Thu, 25 Jul 2019 06:56:22 GMT
+      date: Mon, 19 Aug 2019 13:15:29 GMT
       server: Apache-Coyote/1.1
       content-type: application/xml;charset=utf-8
       via: 1.1 dw.laji.fi
@@ -98,6 +64,6 @@ http_interactions:
       content-encoding: gzip
     body:
       encoding: ASCII-8BIT
-      string: PHJlc3BvbnNlPjxjdXJyZW50UGFnZT4xPC9jdXJyZW50UGFnZT48bmV4dFBhZ2U+MjwvbmV4dFBhZ2U+PGxhc3RQYWdlPjMyMTc4NTA1PC9sYXN0UGFnZT48cGFnZVNpemU+MTwvcGFnZVNpemU+PHRvdGFsPjMyMTc4NTA1PC90b3RhbD48cmVzdWx0cz48dW5pdD48dW5pdElkPmh0dHA6Ly90dW4uZmkvSlguMTAxNzcwMCM3MDwvdW5pdElkPjwvdW5pdD48L3Jlc3VsdHM+PC9yZXNwb25zZT4=
-  recorded_at: 2019-07-25 06:56:23 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      string: PHJlc3BvbnNlPjxjdXJyZW50UGFnZT4xPC9jdXJyZW50UGFnZT48bmV4dFBhZ2U+MjwvbmV4dFBhZ2U+PGxhc3RQYWdlPjMyMjYwOTIzPC9sYXN0UGFnZT48cGFnZVNpemU+MTwvcGFnZVNpemU+PHRvdGFsPjMyMjYwOTIzPC90b3RhbD48cmVzdWx0cz48dW5pdD48dW5pdElkPmh0dHA6Ly90dW4uZmkvSlguMTAyMjU2NiM0PC91bml0SWQ+PC91bml0PjwvcmVzdWx0cz48L3Jlc3BvbnNlPg==
+  recorded_at: 2019-08-19 13:15:30 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.4.0

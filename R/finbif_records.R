@@ -4,10 +4,10 @@
 #'
 #' Download records from FinBIF.
 #'
-#' @param filters List of named character vectors. Filters to apply to records.
-#' @param fields Character vector. Columns to return. If not specified a default
-#'   set of commonly used fields will be used. Use `"default_fields"` as a
-#'   shortcut for this set.
+#' @param filter List of named character vectors. Filters to apply to records.
+#' @param select Character vector. Variables to return. If not specified a
+#'   default set of commonly used variables will be used. Use `"default_vars"`
+#'   as ashortcut for this set.
 #' @param n Integer. How many records to download.
 #' @param page Integer. Which page of records to start downloading from.
 #' @param count_only Logical. Only return the number of records available.
@@ -23,7 +23,7 @@
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
 
-finbif_records <- function(filters, fields, n = 10, page = 1,
+finbif_records <- function(filter, select, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE) {
 
   max_queries  <- 600L
@@ -37,50 +37,50 @@ finbif_records <- function(filters, fields, n = 10, page = 1,
 
     # filters ==================================================================
 
-    if (missing(filters)) {
+    if (missing(filter)) {
 
       query <- list()
 
     } else {
 
-      filters <- as.list(filters)
-      translated_filter_names <- translate(names(filters), "filter_names")
+      filter <- as.list(filter)
+      translated_filter_names <- translate(names(filter), "filter_names")
 
-      for (filter in names(filters)) {
-        should_translate <- filter_names[["translated_filter"]] == filter
+      for (f in names(filter)) {
+        should_translate <- filter_names[["translated_filter"]] == f
         should_translate <- filter_names[should_translate, "translated_values"]
         # the filter might not exist
         if (should_translate && length(should_translate))
-          filters[[filter]] <- translate(filters[[filter]], filter)
+          filter[[f]] <- translate(filter[[f]], f)
       }
 
-      names(filters) <- translated_filter_names
+      names(filter) <- translated_filter_names
 
-      query <- lapply(filters, paste, collapse = ",")
+      query <- lapply(filter, paste, collapse = ",")
 
     }
 
-    # fields ===================================================================
+    # vars =====================================================================
 
-    default_fields <- field_names[field_names[["default_field"]], ]
+    default_vars <- var_names[var_names[["default_var"]], ]
 
-    if (missing(fields)) {
+    if (missing(select)) {
 
-      fields <- row.names(default_fields)
+      select <- row.names(default_vars)
 
     } else {
 
-      fields <- ifelse(
-        fields == "default_fields",
-        list(default_fields[["translated_field"]]),
-        fields
+      select <- ifelse(
+        select == "default_vars",
+        list(default_vars[["translated_var"]]),
+        select
       )
-      fields <- unlist(fields)
-      fields <- translate(fields, "field_names")
+      select <- unlist(select)
+      select <- translate(select, "var_names")
 
     }
 
-    query[["selected"]] <- paste(fields, collapse = ",")
+    query[["selected"]] <- paste(select, collapse = ",")
 
   })
 

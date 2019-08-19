@@ -25,9 +25,9 @@ as.data.frame.finbif_api <- function(x, ...) {
       unms <- unique(nms)
       ans <- dfx[unms]
 
-      # Some fields return values that are not atomic (e.g., multiple observers)
+      # Some vars return values that are not atomic (e.g., multiple observers)
       for (nm in unms) {
-        if (!field_names[nm, "unique"]) {
+        if (!var_names[nm, "unique"]) {
           el <- unlist(dfx[nms == nm])
           ans[[nm]] <- NULL
           ans[[nm]][[1L]] <- unname(el)
@@ -133,12 +133,10 @@ print.finbif_occ <- function(x, ...) {
   }
 
 
-  # Some fields have data in the form of URIs where the protocol and domain
-  # don't convey useful information
+  # Some vars have data in the form of URIs where the protocol and domain don't
+  # convey useful information
   for (i in names(df)) {
-    type <- field_names[
-      field_names[["translated_field"]] == i, "type"
-    ]
+    type <- var_names[var_names[["translated_var"]] == i, "type"]
     if (type == "uri") {
       df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/[A-Z]{2}\\.", "", df[[i]])
     }
@@ -161,11 +159,11 @@ print.finbif_occ <- function(x, ...) {
   }
 
   cat(
-    " and ", extra_cols, " more field", ifelse(extra_cols == 1L, "", "s"),
+    " and ", extra_cols, " more variable", ifelse(extra_cols == 1L, "", "s"),
     ":\n", sep = ""
   )
 
-  # Can't tell in advance what the field names will be
+  # Can't tell in advance what the var names will be
   i <- 1L
   extra_names <- names(x)[-dsply_cols]
   cat(extra_names[[i]])
