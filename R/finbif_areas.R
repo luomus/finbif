@@ -1,7 +1,6 @@
-#' Countries, Provinces, and Municipalities
+#' Countries, provinces, ,unicipalities and other locations
 #'
-#' Display country, province or municipality names and codes used in the FinBIF
-#' database.
+#' Display country, province, etc., names and codes used in the FinBIF database.
 #'
 #' @return A data.frame.
 #' @examples \dontrun{

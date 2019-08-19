@@ -5,7 +5,7 @@
 \alias{finbif_provinces}
 \alias{finbif_municipalities}
 \alias{finbif_bird_assoc_areas}
-\title{Countries, Provinces, and Municipalities}
+\title{Countries, provinces, ,unicipalities and other locations}
 \usage{
 finbif_countries()
 
@@ -19,8 +19,7 @@ finbif_bird_assoc_areas()
 A data.frame.
 }
 \description{
-Display country, province or municipality names and codes used in the FinBIF
-database.
+Display country, province, etc., names and codes used in the FinBIF database.
 }
 \examples{
 \dontrun{
