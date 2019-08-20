@@ -7,7 +7,7 @@
 #' @param filter List of named character vectors. Filters to apply to records.
 #' @param select Character vector. Variables to return. If not specified a
 #'   default set of commonly used variables will be used. Use `"default_vars"`
-#'   as ashortcut for this set.
+#'   as a shortcut for this set.
 #' @param n Integer. How many records to download.
 #' @param page Integer. Which page of records to start downloading from.
 #' @param count_only Logical. Only return the number of records available.

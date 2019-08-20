@@ -5,7 +5,7 @@
 \alias{finbif_provinces}
 \alias{finbif_municipalities}
 \alias{finbif_bird_assoc_areas}
-\title{Countries, provinces, ,unicipalities and other locations}
+\title{Countries, provinces, municipalities and other locations}
 \usage{
 finbif_countries()
 

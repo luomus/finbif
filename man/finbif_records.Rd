@@ -12,7 +12,7 @@ finbif_records(filter, select, n = 10, page = 1, count_only = FALSE,
 
 \item{select}{Character vector. Variables to return. If not specified a
 default set of commonly used variables will be used. Use \code{"default_vars"}
-as ashortcut for this set.}
+as a shortcut for this set.}
 
 \item{n}{Integer. How many records to download.}
 

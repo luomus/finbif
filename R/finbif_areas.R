@@ -1,4 +1,4 @@
-#' Countries, provinces, ,unicipalities and other locations
+#' Countries, provinces, municipalities and other locations
 #'
 #' Display country, province, etc., names and codes used in the FinBIF database.
 #'
