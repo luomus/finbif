@@ -44,4 +44,3 @@ finbif_bird_assoc_areas <- function() {
     names = c("name", "code")
   )
 }
-
