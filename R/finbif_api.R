@@ -36,9 +36,20 @@ as.data.frame.finbif_api <- function(x, ...) {
 
       ans
     }
+
   )
+  # Sometimes there are duplicate rows
+  df <- lapply(
+    seq_along(df),
+    function(x) {
+      df[[x]][["ind"]] <- x
+      df[[x]]
+    }
+  )
+  df <- reduce_merge(df)
+  df[["ind"]] <- NULL
   structure(
-    reduce_merge(df),
+    df,
     url = x[["response"]][["url"]],
     time = x[["response"]][["date"]]
   )
@@ -48,8 +59,19 @@ as.data.frame.finbif_api <- function(x, ...) {
 #' @export
 as.data.frame.finbif_api_list <- function(x, ...) {
   df <- lapply(x, as.data.frame)
+  # Sometimes there are duplicate rows
+  df <- lapply(
+    seq_along(df),
+    function(x) {
+      # Sometimes no data are returned and df has zero rows
+      df[[x]][["ind"]] <- if (length(df[[x]])) paste(x, row.names(df[[x]]))
+      df[[x]]
+    }
+  )
+  df <- reduce_merge(df)
+  df[["ind"]] <- NULL
   structure(
-    reduce_merge(df),
+    df,
     url =  do.call(c, lapply(df, attr, "url", TRUE)),
     time =  do.call(c, lapply(df, attr, "time", TRUE))
   )

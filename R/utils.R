@@ -2,6 +2,7 @@
 #' @noRd
 reduce_merge <- function(df) {
   df <- Reduce(function(x, y) merge(x, y, all = TRUE), df)
+  # sometimes need 0 row dfs
   if (is.null(df)) data.frame() else df
 }
 
