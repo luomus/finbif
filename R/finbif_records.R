@@ -44,17 +44,15 @@ finbif_records <- function(filter, select, n = 10, page = 1,
     } else {
 
       filter <- as.list(filter)
-      translated_filter_names <- translate(names(filter), "filter_names")
+      finbif_filter_names <- translate(names(filter), "filter_names")
 
-      for (f in names(filter)) {
-        should_translate <- filter_names[["translated_filter"]] == f
-        should_translate <- filter_names[should_translate, "translated_values"]
+      for (i in seq_along(filter)) {
         # the filter might not exist
-        if (should_translate && length(should_translate))
-          filter[[f]] <- translate(filter[[f]], f)
+        if (all(filter_names[finbif_filter_names[[i]], "translated_values"]))
+          filter[[i]] <- translate(filter[[i]], names(filter)[[i]])
       }
 
-      names(filter) <- translated_filter_names
+      names(filter) <- finbif_filter_names
 
       query <- lapply(filter, paste, collapse = ",")
 
