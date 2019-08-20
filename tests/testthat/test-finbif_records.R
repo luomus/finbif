@@ -20,7 +20,13 @@ vcr::use_cassette(
     test_that(
       "with count only returns valid data", {
 
-        expect_s3_class(finbif_records(count_only = TRUE), "finbif_api")
+        expect_s3_class(
+          finbif_records(
+            filter = list(coordinates_cell_100k = c(67, 32)),
+            count_only = TRUE
+          ),
+          "finbif_api"
+        )
 
       }
     )

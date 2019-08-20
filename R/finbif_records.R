@@ -50,6 +50,8 @@ finbif_records <- function(filter, select, n = 10, page = 1,
         # the filter might not exist
         if (all(filter_names[finbif_filter_names[[i]], "translated_values"]))
           filter[[i]] <- translate(filter[[i]], names(filter)[[i]])
+        if (grepl("^coordinates_", names(filter)[[i]]))
+          filter[[i]] <- do.call(finbif_coords, as.list(filter[[i]]))
       }
 
       names(filter) <- finbif_filter_names

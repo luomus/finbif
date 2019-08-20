@@ -87,7 +87,21 @@ to see province names and codes.
 \code{finbif_municipalities()} to see municipality names.
 \item \code{bird_assoc_area} Character. Filter by BirdLife Finland association area.
 Use \code{finbif_bird_assoc_area()} to see association names and codes.
-\item \code{coordinates_area} Coordinates.
+\item \code{coordinates_area} Coordinates. A vector or list of coordinate data. Must
+be length 3 to 4 (e.g.,
+\code{list(lat = c(60.4, 61), lon = c(22, 22.5), system = "wgs84", ratio = 1)}.
+The first element is minimum and maximum latitude and the second minimum
+and maximum longitude (or can be minimums only). The third element is the
+coordinate system; either one of \code{"wgs84"}, \code{"euref"} or \code{"kkj"}. The
+optional fourth element is a positive value less than \code{1}. When \code{1}, the
+coverage area of the returned records will be completely within the box
+bound by the coordinates values. Values less than \code{1} requires the returned
+record's coverage to overlap with the bounding box in that proportion. When
+using the system "\code{kkj}" the coordinates will be coerced to integers with
+units inferred from the number of integer digits (7 digits equals km's, 6
+equals 10km's, etc.,). If coordinate maximums are not specified they will be
+assumed to be one unit above the minimums (e.g., \code{c(666, 333, "kkj")} is
+equivalent to \code{list(c(6660000, 6670000), c(3330000, 3340000), "kkj")}).
 \item \code{coordinates_center} Coordinates.
 \item \code{coordinates_cell_*k} Coordinates.
 \item \code{coordinates_cell_*k_center} Coordinates.
