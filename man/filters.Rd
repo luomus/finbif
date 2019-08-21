@@ -87,8 +87,8 @@ to see province names and codes.
 \code{finbif_municipalities()} to see municipality names.
 \item \code{bird_assoc_area} Character. Filter by BirdLife Finland association area.
 Use \code{finbif_bird_assoc_area()} to see association names and codes.
-\item \code{coordinates_area} Coordinates. A vector or list of coordinate data. Must
-be length 3 to 4 (e.g.,
+\item \code{coordinates_area} Coordinates. A character vector or list of coordinate
+data. Must be length 3 to 4 (e.g.,
 \code{list(lat = c(60.4, 61), lon = c(22, 22.5), system = "wgs84", ratio = 1)}.
 The first element is minimum and maximum latitude and the second minimum
 and maximum longitude (or can be minimums only). The third element is the
@@ -99,13 +99,24 @@ bound by the coordinates values. Values less than \code{1} requires the returned
 record's coverage to overlap with the bounding box in that proportion. When
 using the system "\code{kkj}" the coordinates will be coerced to integers with
 units inferred from the number of integer digits (7 digits equals km's, 6
-equals 10km's, etc.,). If coordinate maximums are not specified they will be
-assumed to be one unit above the minimums (e.g., \code{c(666, 333, "kkj")} is
+equals 10km's, etc.,). If coordinate maximums are not specified they will
+be assumed to be one unit above the minimums (e.g., \code{c(666, 333, "kkj")} is
 equivalent to \code{list(c(6660000, 6670000), c(3330000, 3340000), "kkj")}).
-\item \code{coordinates_center} Coordinates.
-\item \code{coordinates_cell_*k} Coordinates.
-\item \code{coordinates_cell_*k_center} Coordinates.
-\item \code{coordinate_source} Character.
+\item \code{coordinates_center} Coordinates. A character vector or list of coordinate
+data. Must be of length 3. The first two elements are latitude and
+longitude and third is the coordinate system (currently only \code{"wgs84"} is
+implemented). Records returned will be those for which the center point
+exactly matches that which is specified.
+\item \code{coordinates_cell_*k} Coordinates. A vector of coordinate data (lat, long).
+Filter by grid cell at scale \code{*}. Where \code{*} is 1, 10, 50 or 100. The
+coordinates specify the southeast corner of the cell. Coordinates system is
+uniform \code{"kkj"} (also known as "ykj").
+\item \code{coordinates_cell_*k_center} Coordinates. As above, except coordinates
+indicate center of grid cell.
+\item \code{coordinate_source} Character. Filter by source of coordinates. Currently
+accepted values are \code{"reported_value"} (coordinates were recorded at time
+of observation) and \code{"finnish_municipality"} (coordinates were derived and
+observer only recorded municipality).
 }
 }
 
