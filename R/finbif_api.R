@@ -16,9 +16,13 @@
 #' }
 #' @export
 as.data.frame.finbif_api <- function(x, ...) {
+
   df <- lapply(
+
     x[["content"]][["results"]],
+
     function(x) {
+
       dfx <- as.data.frame(x, stringsAsFactors = FALSE)
       nms <- gsub("\\d*$", "", names(unlist(x)))
       colnames(dfx) <- nms
@@ -35,9 +39,11 @@ as.data.frame.finbif_api <- function(x, ...) {
       }
 
       ans
+
     }
 
   )
+
   # Sometimes there are duplicate rows
   df <- lapply(
     seq_along(df),
@@ -48,18 +54,22 @@ as.data.frame.finbif_api <- function(x, ...) {
   )
   df <- reduce_merge(df)
   df[["ind"]] <- NULL
+
   structure(
     df,
     url = x[["response"]][["url"]],
     time = x[["response"]][["date"]]
   )
+
 }
 
 #' @rdname as.data.frame.finbif_api
 #' @export
 as.data.frame.finbif_api_list <- function(x, ...) {
+
   df <- lapply(x, as.data.frame)
   # Sometimes there are duplicate rows
+
   df <- lapply(
     seq_along(df),
     function(x) {
@@ -68,13 +78,16 @@ as.data.frame.finbif_api_list <- function(x, ...) {
       df[[x]]
     }
   )
+
+  # Attributes would be lost after merging
+  url  <- do.call(c, lapply(df, attr, "url", TRUE))
+  time <- do.call(c, lapply(df, attr, "time", TRUE))
+
   df <- reduce_merge(df)
   df[["ind"]] <- NULL
-  structure(
-    df,
-    url =  do.call(c, lapply(df, attr, "url", TRUE)),
-    time =  do.call(c, lapply(df, attr, "time", TRUE))
-  )
+
+  structure(df, url = url, time = time)
+
 }
 
 # print methods ----------------------------------------------------------------
