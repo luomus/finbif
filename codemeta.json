@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "finbif",
-  "description": "An R interface to the FinBIF (Finnish Biodiversity Information\n    Facility) API (api.laji.fi).",
+  "description": "An R programming language interface to the FinBIF (Finnish\n    Biodiversity Information Facility) API (api.laji.fi). FinBIF aggregates\n    Finnish biodiversity data from multiple sources in a single open access\n    portal for researchers, citizen scientists, industry and government. FinBIF\n    allows users of biodiversity information to find, access, combine and\n    visualise data on Finnish plants, animals and microorganisms. The finbif R\n    package makes the publically available data in FinBIF accessible from within\n    R. Biodiversity information is available on taxonomy and taxon occurrence.\n    Occurrence data can be filtered by taxon, time, location and other\n    variables. The data accessed are conveniently preformatted for subsequent\n    analyses.",
   "name": "finbif: Finnish Biodiversity Information Facility R Interface",
   "codeRepository": "https://github.com/luomus/finbif",
   "issueTracker": "https://github.com/luomus/finbif/issues",
