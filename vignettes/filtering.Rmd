@@ -171,7 +171,26 @@ finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 ```
 
 ```
-#> Error in names(filter) <- translated_filter_names: 'names' attribute [2] must be the same length as the vector [1]
+#> Records downloaded: 10
+#> Records available: 18765097
+#> A data.frame [10 x 25]
+#>         scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1   Capreolus capreolus         1  60.82651  21.34383 2019-08-21 02:30:00
+#> 2         Vulpes vulpes         1  60.82976  21.26560 2019-08-21 02:30:00
+#> 3         Lepus timidus         1  60.81778  21.33762 2019-08-21 02:30:00
+#> 4     Epione repandaria         1  62.22834  25.75544 2019-08-20 21:00:00
+#> 5   Ennomos autumnarius         1  62.22834  25.75544 2019-08-20 21:00:00
+#> 6      Enargia paleacea         1  62.22834  25.75544 2019-08-20 21:00:00
+#> 7        Xanthia togata         1  62.22834  25.75544 2019-08-20 21:00:00
+#> 8     Cirrhia icteritia         1  62.22834  25.75544 2019-08-20 21:00:00
+#> 9  Yponomeuta evonymel…         1  62.22834  25.75544 2019-08-20 21:00:00
+#> 10 Argyresthia goedart…         2  62.22834  25.75544 2019-08-20 21:00:00
+#> ...with 0 more records and 20 more variables:
+#> taxon_rank, country, province, municipality, wkt_wgs84,
+#> line_length_m, area_m2, date_start, date_end, hour_start,
+#> minute_start, record_id, event_id, collection_id, life_stage,
+#> any_issues, record_reliable, taxon_reliability, document_reliablity,
+#> coordinate_accuracy
 ```
 
 You may further refine habitat based searching using a specific habitat type

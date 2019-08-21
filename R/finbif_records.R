@@ -155,6 +155,8 @@ translate <- function(x, translation, pos = -1) {
   } else {
 
     ind <- rep(NA_integer_, length(x))
+    # multilevel filters have data.frames a level below
+    if (!is.data.frame(trsltn)) trsltn <- trsltn[[1]]
     for (i in trsltn) {
       if (inherits(i, "translation")) {
         ind_ <- match(tolower(x), tolower(i))
