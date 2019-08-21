@@ -28,24 +28,28 @@ finbif_occurrence(filter = list(informal_group = c("Birds", "Mammals")))
 
 ```
 #> Records downloaded: 10
-#> Records available: 17365487
-#> A data.frame [10 x 22]
+#> Records available: 17369283
+#> A data.frame [10 x 39]
 #>         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  Oryctolagus cunicul…         1  60.21616  24.70341 2019-08-18 21:00:00
-#> 2     Fringilla coelebs         1  60.15298  25.01297 2019-08-17 21:00:00
-#> 3    Actitis hypoleucos         1  60.42676  22.20634 2019-08-18 21:00:00
-#> 4       Curruca curruca         1  60.42794  22.20052 2019-08-18 21:00:00
-#> 5     Fringilla coelebs         1  60.42794  22.20052 2019-08-18 21:00:00
-#> 6      Anthus trivialis         2  60.15298  25.01297 2019-08-17 21:00:00
-#> 7          Corvus corax         2  60.42676  22.20634 2019-08-18 21:00:00
-#> 8      Columba palumbus         3  60.42794  22.20052 2019-08-18 21:00:00
-#> 9       Hirundo rustica        10  60.42794  22.20052 2019-08-18 21:00:00
-#> 10     Delichon urbicum        50  60.42794  22.20052 2019-08-18 21:00:00
-#> ...with 0 more records and 17 more variables:
+#> 1  Nyctereutes procyon…         1  59.92781  23.80708 2019-08-19 21:00:00
+#> 2   Capreolus capreolus         1  60.82651  21.34383 2019-08-21 02:30:00
+#> 3       Lepus europaeus         1  60.80257  21.38201 2019-08-21 02:30:00
+#> 4      Sciurus vulgaris         1  60.79812  21.35765 2019-08-21 02:30:00
+#> 5         Vulpes vulpes         1  60.82976  21.26560 2019-08-21 02:30:00
+#> 6         Lepus timidus         1  60.81778  21.33762 2019-08-21 02:30:00
+#> 7         Vulpes vulpes         1  60.42812  22.23448 2019-08-20 21:00:00
+#> 8    Erithacus rubecula         1  60.42820  22.24195 2019-08-20 21:00:00
+#> 9         Vulpes vulpes         1  60.10824  23.52158 2019-08-20 21:00:00
+#> 10      Hirundo rustica        24  63.80152  22.89729 2019-08-20 21:00:00
+#> ...with 0 more records and 34 more variables:
 #> taxon_rank, country, province, municipality, wkt_wgs84,
-#> line_length_m, area_m2, date_start, date_end, record_id, event_id,
-#> collection_id, any_issues, record_reliable, taxon_reliability,
-#> document_reliablity, coordinate_accuracy
+#> line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
+#> minute_start, minute_end, record_id, event_id, collection_id,
+#> is_breeding_site, female_abundance, male_abundance, individual_id,
+#> pair_abundance, life_stage, any_issues, record_issue,
+#> record_reliable, taxon_reliability, sex, document_issue,
+#> document_reliablity, coordinate_accuracy, event_issue,
+#> location_issue, time_issue, duration
 ```
 
 See `finbif_informal_groups()` for the full list of groups you can filter by. 
@@ -87,7 +91,7 @@ finbif_occurrence(
 ```
 #> Records downloaded: 10
 #> Records available: 425
-#> A data.frame [10 x 24]
+#> A data.frame [10 x 39]
 #>         scientific_name abundance lat_wgs84 lon_wgs84           date_time
 #> 1  Alopochen aegyptiaca         2  51.90871  4.532580 2018-10-20 09:10:00
 #> 2  Alopochen aegyptiaca         2  53.37130  6.143095 2017-10-22 06:00:00
@@ -99,11 +103,15 @@ finbif_occurrence(
 #> 8  Alopochen aegyptiaca        20  53.32081  6.192341 2017-10-23 09:15:00
 #> 9  Alopochen aegyptiaca        30  52.33990  5.069133 2018-10-22 07:45:00
 #> 10 Alopochen aegyptiaca        36  51.74641  4.535283 2018-10-21 10:00:00
-#> ...with 0 more records and 19 more variables:
-#> taxon_rank, country, municipality, wkt_wgs84, date_start, date_end,
-#> hour_start, hour_end, minute_start, minute_end, record_id, event_id,
-#> collection_id, any_issues, record_reliable, taxon_reliability,
-#> document_reliablity, coordinate_accuracy, duration
+#> ...with 0 more records and 34 more variables:
+#> taxon_rank, country, province, municipality, wkt_wgs84,
+#> line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
+#> minute_start, minute_end, record_id, event_id, collection_id,
+#> is_breeding_site, female_abundance, male_abundance, individual_id,
+#> pair_abundance, life_stage, any_issues, record_issue,
+#> record_reliable, taxon_reliability, sex, document_issue,
+#> document_reliablity, coordinate_accuracy, event_issue,
+#> location_issue, time_issue, duration
 ```
 
 ## IUCN red list
@@ -121,7 +129,7 @@ finbif_occurrence(
 ```
 #> Records downloaded: 10
 #> Records available: 568
-#> A data.frame [10 x 21]
+#> A data.frame [10 x 39]
 #>         scientific_name abundance lat_wgs84 lon_wgs84           date_time
 #> 1  Rangifer tarandus f…         1  63.26554  25.36645 2019-06-27 21:00:00
 #> 2  Rangifer tarandus f…         1  64.32293  26.69975 2019-05-26 21:00:00
@@ -133,11 +141,15 @@ finbif_occurrence(
 #> 8  Rangifer tarandus f…         4  63.03293  24.32905 2019-06-12 21:00:00
 #> 9  Rangifer tarandus f…         4  60.07458  22.76416 2019-04-10 21:00:00
 #> 10 Rangifer tarandus f…         7  63.13690  22.92677 2019-03-06 22:00:00
-#> ...with 0 more records and 16 more variables:
-#> taxon_rank, country, province, municipality, wkt_wgs84, area_m2,
-#> date_start, date_end, record_id, event_id, collection_id, any_issues,
-#> record_reliable, taxon_reliability, document_reliablity,
-#> coordinate_accuracy
+#> ...with 0 more records and 34 more variables:
+#> taxon_rank, country, province, municipality, wkt_wgs84,
+#> line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
+#> minute_start, minute_end, record_id, event_id, collection_id,
+#> is_breeding_site, female_abundance, male_abundance, individual_id,
+#> pair_abundance, life_stage, any_issues, record_issue,
+#> record_reliable, taxon_reliability, sex, document_issue,
+#> document_reliablity, coordinate_accuracy, event_issue,
+#> location_issue, time_issue, duration
 ```
 
 ## Habitat type
@@ -172,25 +184,28 @@ finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 
 ```
 #> Records downloaded: 10
-#> Records available: 18765097
-#> A data.frame [10 x 25]
+#> Records available: 18765850
+#> A data.frame [10 x 39]
 #>         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1   Capreolus capreolus         1  60.82651  21.34383 2019-08-21 02:30:00
-#> 2         Vulpes vulpes         1  60.82976  21.26560 2019-08-21 02:30:00
-#> 3         Lepus timidus         1  60.81778  21.33762 2019-08-21 02:30:00
-#> 4     Epione repandaria         1  62.22834  25.75544 2019-08-20 21:00:00
-#> 5   Ennomos autumnarius         1  62.22834  25.75544 2019-08-20 21:00:00
-#> 6      Enargia paleacea         1  62.22834  25.75544 2019-08-20 21:00:00
-#> 7        Xanthia togata         1  62.22834  25.75544 2019-08-20 21:00:00
-#> 8     Cirrhia icteritia         1  62.22834  25.75544 2019-08-20 21:00:00
-#> 9  Yponomeuta evonymel…         1  62.22834  25.75544 2019-08-20 21:00:00
-#> 10 Argyresthia goedart…         2  62.22834  25.75544 2019-08-20 21:00:00
-#> ...with 0 more records and 20 more variables:
+#> 1  Flammulaster limula…         1  60.11448  23.52739 2019-08-20 21:00:00
+#> 2  Thelephora terrestr…         1  60.11713  23.52985 2019-08-20 21:00:00
+#> 3  Leccinum aurantiacum         1  60.11448  23.52739 2019-08-20 21:00:00
+#> 4    Suillus variegatus         1  66.93058  25.86167 2019-08-20 21:00:00
+#> 5     Amanita porphyria         1  66.93150  25.86181 2019-08-20 21:00:00
+#> 6      Vanessa atalanta         1  60.15817  24.70673 2019-08-20 21:00:00
+#> 7        Boletus edulis         2  60.11448  23.52739 2019-08-20 21:00:00
+#> 8  Dolichovespula norw…         2  63.78110  22.91454 2019-08-20 21:00:00
+#> 9      Stropharia alcis         3  66.93129  25.86180 2019-08-20 21:00:00
+#> 10       Aglais urticae         3  60.19753  24.69233 2019-08-20 21:00:00
+#> ...with 0 more records and 34 more variables:
 #> taxon_rank, country, province, municipality, wkt_wgs84,
-#> line_length_m, area_m2, date_start, date_end, hour_start,
-#> minute_start, record_id, event_id, collection_id, life_stage,
-#> any_issues, record_reliable, taxon_reliability, document_reliablity,
-#> coordinate_accuracy
+#> line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
+#> minute_start, minute_end, record_id, event_id, collection_id,
+#> is_breeding_site, female_abundance, male_abundance, individual_id,
+#> pair_abundance, life_stage, any_issues, record_issue,
+#> record_reliable, taxon_reliability, sex, document_issue,
+#> document_reliablity, coordinate_accuracy, event_issue,
+#> location_issue, time_issue, duration
 ```
 
 You may further refine habitat based searching using a specific habitat type
@@ -219,7 +234,7 @@ finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J"))))
 ```
 #> Records downloaded: 10
 #> Records available: 103
-#> A data.frame [10 x 24]
+#> A data.frame [10 x 39]
 #>     scientific_name abundance lat_wgs84 lon_wgs84           date_time
 #> 1  Pammene fasciana         1  59.96020  20.99521 2017-09-19 21:00:00
 #> 2  Pammene fasciana         1  60.00217  23.43591 2019-06-21 21:00:00
@@ -231,10 +246,13 @@ finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J"))))
 #> 8  Pammene fasciana         1  60.21166  24.90204 2017-07-30 21:00:00
 #> 9  Pammene fasciana         2  60.35244  19.83238 2017-08-02 21:00:00
 #> 10 Pammene fasciana         3  60.00217  23.43591 2019-05-07 21:00:00
-#> ...with 0 more records and 19 more variables:
-#> taxon_rank, country, province, municipality, wkt_wgs84, area_m2,
-#> date_start, date_end, record_id, event_id, collection_id,
-#> female_abundance, male_abundance, life_stage, any_issues,
-#> record_reliable, taxon_reliability, document_reliablity,
-#> coordinate_accuracy
+#> ...with 0 more records and 34 more variables:
+#> taxon_rank, country, province, municipality, wkt_wgs84,
+#> line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
+#> minute_start, minute_end, record_id, event_id, collection_id,
+#> is_breeding_site, female_abundance, male_abundance, individual_id,
+#> pair_abundance, life_stage, any_issues, record_issue,
+#> record_reliable, taxon_reliability, sex, document_issue,
+#> document_reliablity, coordinate_accuracy, event_issue,
+#> location_issue, time_issue, duration
 ```

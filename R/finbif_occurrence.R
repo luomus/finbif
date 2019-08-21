@@ -67,7 +67,10 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   url  <- attr(df, "url", TRUE)
   time <-  attr(df, "time", TRUE)
 
-  df <- df[intersect(row.names(var_names), names(df))]
+  select <- attr(records, "select")
+  missing_vars <- setdiff(select, names(df))
+  for (i in missing_vars) df[[i]] <- NA
+  df <- df[select]
   names(df) <- var_names[names(df), "translated_var"]
 
   if (date_time) {

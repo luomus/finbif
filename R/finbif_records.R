@@ -136,7 +136,10 @@ finbif_records <- function(filter, select, n = 10, page = 1,
 
   }
 
-  structure(resp, class = "finbif_api_list", nrec_dnld = n, nrec_avl = n_tot)
+  structure(
+    resp, class = "finbif_api_list", nrec_dnld = n, nrec_avl = n_tot,
+    select = unique(select)
+  )
 
 }
 
