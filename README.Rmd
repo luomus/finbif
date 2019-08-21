@@ -9,9 +9,17 @@ knitr::opts_chunk$set(
 # finbif <img src="man/figures/logo.png" align="right" alt="" width="120">
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)  [![Build Status](https://travis-ci.com/luomus/finbif.svg?branch=master)](https://travis-ci.com/luomus/finbif) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/master) [![codecov](https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/master)
 
-An R interface to the FinBIF (Finnish Biodiversity Information Facility) API
-(api.laji.fi).
-
+An R programming language interface to the FinBIF (Finnish Biodiversity
+Information Facility) API (api.laji.fi). FinBIF aggregates Finnish biodiversity
+data from multiple sources in a single open access portal for researchers,
+citizen scientists, industry and government. FinBIF allows users of biodiversity
+information to find, access, combine and visualise data on Finnish plants,
+animals and microorganisms. The finbif R package makes the publically available
+data in FinBIF accessible from within R. Biodiversity information is available
+on taxonomy and taxon occurrence. Occurrence data can be filtered by taxon,
+time, location and other variables. The data accessed are conveniently
+preformatted for subsequent analyses.
+    
 ## Installation
 You can install the development version of finbif from
 [GitHub](https://github.com),
