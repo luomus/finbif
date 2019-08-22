@@ -133,7 +133,7 @@ the `finbif_occurrence()` function.
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
 #> Records available: 54828
-#> A data.frame [100 x 39]
+#> A data.frame [100 x 30]
 #>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
 #> 1    Cygnus cygnus         1  60.50999  23.70616 2019-08-17 21:00:00
 #> 2    Cygnus cygnus         1  60.56745  21.57191 2019-06-29 21:00:00
@@ -145,13 +145,11 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 #> 8    Cygnus cygnus         1  62.25243  25.70933 2019-05-15 21:00:00
 #> 9    Cygnus cygnus         1  60.83907  21.25772 2019-05-16 20:00:00
 #> 10   Cygnus cygnus         1  61.12486  21.54164 2019-05-21 06:30:00
-#> ...with 90 more records and 34 more variables:
-#> taxon_rank, country, province, municipality, wkt_wgs84,
-#> line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
-#> minute_start, minute_end, record_id, event_id, collection_id,
-#> is_breeding_site, female_abundance, male_abundance, individual_id,
-#> pair_abundance, life_stage, any_issues, record_issue,
-#> record_reliable, taxon_reliability, sex, document_issue,
+#> ...with 90 more records and 25 more variables:
+#> taxon_rank, country, province, municipality, date_start, date_end,
+#> hour_start, hour_end, minute_start, minute_end, record_id,
+#> individual_id, event_id, collection_id, any_issues, record_issue,
+#> record_reliable, taxon_reliability, document_issue,
 #> document_reliablity, coordinate_accuracy, event_issue,
 #> location_issue, time_issue, duration
 ```
@@ -167,7 +165,7 @@ finbif_occurrence(
 )
 #> Records downloaded: 10
 #> Records available: 11175
-#> A data.frame [10 x 39]
+#> A data.frame [10 x 30]
 #>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
 #> 1    Cygnus cygnus         1  60.50999  23.70616 2019-08-17 21:00:00
 #> 2      Cygnus olor         2  60.42794  22.20052 2019-08-03 21:00:00
@@ -179,13 +177,11 @@ finbif_occurrence(
 #> 8    Cygnus cygnus         3  60.83577  21.25200 2019-08-17 21:00:00
 #> 9      Cygnus olor         4  60.56783  21.57229 2019-07-18 21:00:00
 #> 10     Cygnus olor        10  60.56783  21.57229 2019-07-18 21:00:00
-#> ...with 0 more records and 34 more variables:
-#> taxon_rank, country, province, municipality, wkt_wgs84,
-#> line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
-#> minute_start, minute_end, record_id, event_id, collection_id,
-#> is_breeding_site, female_abundance, male_abundance, individual_id,
-#> pair_abundance, life_stage, any_issues, record_issue,
-#> record_reliable, taxon_reliability, sex, document_issue,
+#> ...with 0 more records and 25 more variables:
+#> taxon_rank, country, province, municipality, date_start, date_end,
+#> hour_start, hour_end, minute_start, minute_end, record_id,
+#> individual_id, event_id, collection_id, any_issues, record_issue,
+#> record_reliable, taxon_reliability, document_issue,
 #> document_reliablity, coordinate_accuracy, event_issue,
 #> location_issue, time_issue, duration
 ```
