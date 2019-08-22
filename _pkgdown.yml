@@ -14,25 +14,37 @@ reference:
     desc: >
       Getting information on taxa
     contents:
-      - finbif_taxa
       - finbif_check_taxa
-      - finbif_informal_groups
-      - finbif_admin_status
-      - finbif_red_list
-      - finbif_habitat_types
-      - finbif_habitat_qualifiers
+      - finbif_taxa
       - finbif_taxon_ranks
+      - finbif_informal_groups
   - title: "Records"
     desc: >
       Getting records from finbif
     contents:
       - filters
-      - finbif_records
       - finbif_occurrence
-      - finbif_countries
-      - finbif_provinces
-      - finbif_municipalities
+      - finbif_records
+  - title: "Locations"
+    desc: >
+      Getting information on regions and locations
+    contents:
       - finbif_bird_assoc_areas
+      - finbif_countries
+      - finbif_municipalities
+      - finbif_provinces
+  - title: "Status"
+    desc: >
+      Getting information on administrative and red list status
+    contents:
+      - finbif_admin_status
+      - finbif_red_list
+  - title: "Habitat"
+    desc: >
+      Getting information on habitat type
+    contents:
+      - finbif_habitat_types
+      - finbif_habitat_qualifiers
   - title: "Methods"
     desc: >
       Working with finbif objects
