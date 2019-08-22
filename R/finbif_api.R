@@ -14,6 +14,7 @@
 #' resp <- finbif_records()
 #' df <- as.data.frame(resp)
 #' }
+#' @importFrom methods as
 #' @export
 as.data.frame.finbif_api <- function(x, ...) {
 
@@ -44,7 +45,7 @@ as.data.frame.finbif_api <- function(x, ...) {
 
   )
 
-  # Sometimes there are duplicate rows
+  # Sometimes there are, and are supposed to be, duplicate rows
   df <- lapply(
     seq_along(df),
     function(x) {
@@ -54,6 +55,15 @@ as.data.frame.finbif_api <- function(x, ...) {
   )
   df <- reduce_merge(df)
   df[["ind"]] <- NULL
+
+  # If list column is missing data for a record it may be NULL
+  for (col in names(df))
+   if (!var_names[col, "unique"])
+     df[[col]] <- ifelse(
+       vapply(df[[col]], is.null, logical(1)),
+       list(methods::as(NA, var_names[col, "type"])),
+       as.list(df[[col]])
+     )
 
   structure(
     df,
@@ -171,8 +181,8 @@ print.finbif_occ <- function(x, ...) {
   # Some vars have data in the form of URIs where the protocol and domain don't
   # convey useful information
   for (i in names(df)) {
-    type <- var_names[var_names[["translated_var"]] == i, "type"]
-    if (type == "uri") {
+    class <- var_names[var_names[["translated_var"]] == i, "class"]
+    if (class == "uri") {
       df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/[A-Z]{2}\\.", "", df[[i]])
     }
   }

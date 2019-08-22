@@ -32,6 +32,7 @@
 #' )
 #'
 #' }
+#' @importFrom methods as
 #' @importFrom utils hasName
 #' @importFrom lubridate as_datetime as.duration force_tzs hour interval minute
 #' @importFrom lubridate ymd
@@ -73,6 +74,17 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   missing_vars <- setdiff(select, names(df))
   for (i in missing_vars) df[[i]] <- NA
   df <- df[select]
+
+  # When any two datasets are requested depending on the data they contain
+  # they may not have the same column classes. This will make them hard to
+  # combine even if they apparently have the same columns.
+  for (col in names(df)) {
+    if (!is.list(df[[col]])) {
+      df[[col]] <- methods::as(df[[col]], var_names[col, "type"])
+      if (!var_names[col, "unique"]) df[[col]] <- methods::as(df[[col]], "list")
+    }
+  }
+
   names(df) <- var_names[names(df), "translated_var"]
 
   if (date_time) {

@@ -32,6 +32,7 @@ Imports:
     jsonlite,
     lubridate,
     lutz,
+    methods,
     urltools,
     utils
 Roxygen: list(markdown = TRUE)

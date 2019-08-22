@@ -222,6 +222,11 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "methods",
+      "name": "methods"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "urltools",
       "name": "urltools",
       "provider": {

@@ -16,7 +16,8 @@ vcr::use_cassette(
 
         expect_s3_class(
           finbif_occurrence(
-            "Rangifer tarandus fennicus", select = c("record_id", "date_start")
+            "Rangifer tarandus fennicus",
+            select = c("record_id", "date_start", "record_fact")
           ),
           "finbif_occ"
         )
