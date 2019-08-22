@@ -1,9 +1,13 @@
 ---
 title: "Filtering FinBIF records"
-output: rmarkdown::html_vignette
+author: "William K Morris"
+date: "2019-08-22"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
 vignette: >
-  %\VignetteIndexEntry{Filtering FinBIF records}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{2. Filtering FinBIF records}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -24,23 +28,20 @@ You can filter occurrence records based on informal taxonomic groups such as
 
 ```r
 finbif_occurrence(filter = list(informal_group = c("Birds", "Mammals")))
-```
-
-```
 #> Records downloaded: 10
-#> Records available: 17369283
+#> Records available: 17370549
 #> A data.frame [10 x 39]
-#>         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  Nyctereutes procyon…         1  59.92781  23.80708 2019-08-19 21:00:00
-#> 2   Capreolus capreolus         1  60.82651  21.34383 2019-08-21 02:30:00
-#> 3       Lepus europaeus         1  60.80257  21.38201 2019-08-21 02:30:00
-#> 4      Sciurus vulgaris         1  60.79812  21.35765 2019-08-21 02:30:00
-#> 5         Vulpes vulpes         1  60.82976  21.26560 2019-08-21 02:30:00
-#> 6         Lepus timidus         1  60.81778  21.33762 2019-08-21 02:30:00
-#> 7         Vulpes vulpes         1  60.42812  22.23448 2019-08-20 21:00:00
-#> 8    Erithacus rubecula         1  60.42820  22.24195 2019-08-20 21:00:00
-#> 9         Vulpes vulpes         1  60.10824  23.52158 2019-08-20 21:00:00
-#> 10      Hirundo rustica        24  63.80152  22.89729 2019-08-20 21:00:00
+#>        scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1  Capreolus capreolus         1  60.82651  21.34383 2019-08-21 02:30:00
+#> 2      Lepus europaeus         1  60.80257  21.38201 2019-08-21 02:30:00
+#> 3     Sciurus vulgaris         1  60.79812  21.35765 2019-08-21 02:30:00
+#> 4        Vulpes vulpes         1  60.82976  21.26560 2019-08-21 02:30:00
+#> 5        Lepus timidus         1  60.81778  21.33762 2019-08-21 02:30:00
+#> 6        Vulpes vulpes         1  60.42812  22.23448 2019-08-20 21:00:00
+#> 7   Erithacus rubecula         1  60.42820  22.24195 2019-08-20 21:00:00
+#> 8        Vulpes vulpes         1  60.10824  23.52158 2019-08-20 21:00:00
+#> 9      Lepus europaeus         1  60.19687  23.54792 2019-08-20 21:00:00
+#> 10     Hirundo rustica        24  63.80152  22.89729 2019-08-20 21:00:00
 #> ...with 0 more records and 34 more variables:
 #> taxon_rank, country, province, municipality, wkt_wgs84,
 #> line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
@@ -58,9 +59,6 @@ level informal group:
 
 ```r
 finbif_informal_groups("macrofungi")
-```
-
-```
 #>  ¦--Macrofungi                                                
 #>  ¦   ¦--Agaricoid fungi                                       
 #>  ¦   ¦--Aphyllophoroid fungi                                  
@@ -86,9 +84,6 @@ administrative statuses and short-codes.
 finbif_occurrence(
   filter = list(informal_group = "Birds", administrative_status = "EU_INVSV")
 )
-```
-
-```
 #> Records downloaded: 10
 #> Records available: 425
 #> A data.frame [10 x 39]
@@ -124,9 +119,6 @@ short-codes.
 finbif_occurrence(
   filter = list(informal_group = "Mammals", red_list_status = "NT")
 )
-```
-
-```
 #> Records downloaded: 10
 #> Records available: 568
 #> A data.frame [10 x 39]
@@ -164,9 +156,6 @@ those records may encompass habitats other than forests).
 
 ```r
 head(finbif_habitat_types())
-```
-
-```
 #>                                habitat_type code
 #> 1                                   Forests    M
 #> 2                             Heath forests   MK
@@ -174,29 +163,24 @@ head(finbif_habitat_types())
 #> 4         Mesic and herb-rich heath forests  MKT
 #> 5 Herb-rich forests (also spruce-dominated)   ML
 #> 6           Dry and mesic herb-rich forests  MLT
-```
 
-```r
 # Search records of taxa for which forests are their primary or secondary
 # habitat type
 finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
-```
-
-```
 #> Records downloaded: 10
-#> Records available: 18765850
+#> Records available: 18766733
 #> A data.frame [10 x 39]
 #>         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  Flammulaster limula…         1  60.11448  23.52739 2019-08-20 21:00:00
-#> 2  Thelephora terrestr…         1  60.11713  23.52985 2019-08-20 21:00:00
-#> 3  Leccinum aurantiacum         1  60.11448  23.52739 2019-08-20 21:00:00
-#> 4    Suillus variegatus         1  66.93058  25.86167 2019-08-20 21:00:00
-#> 5     Amanita porphyria         1  66.93150  25.86181 2019-08-20 21:00:00
-#> 6      Vanessa atalanta         1  60.15817  24.70673 2019-08-20 21:00:00
-#> 7        Boletus edulis         2  60.11448  23.52739 2019-08-20 21:00:00
-#> 8  Dolichovespula norw…         2  63.78110  22.91454 2019-08-20 21:00:00
-#> 9      Stropharia alcis         3  66.93129  25.86180 2019-08-20 21:00:00
-#> 10       Aglais urticae         3  60.19753  24.69233 2019-08-20 21:00:00
+#> 1   Capreolus capreolus         1  60.82651  21.34383 2019-08-21 02:30:00
+#> 2         Vulpes vulpes         1  60.82976  21.26560 2019-08-21 02:30:00
+#> 3         Lepus timidus         1  60.81778  21.33762 2019-08-21 02:30:00
+#> 4      Cosmia trapezina         1  62.22834  25.75544 2019-08-21 21:00:00
+#> 5    Dysstroma citratum         1  62.22834  25.75544 2019-08-21 21:00:00
+#> 6     Cirrhia icteritia         1  62.22834  25.75544 2019-08-21 21:00:00
+#> 7  Eudonia truncicolel…         1  62.22834  25.75544 2019-08-21 21:00:00
+#> 8   Apotomis betuletana         1  62.22834  25.75544 2019-08-21 21:00:00
+#> 9  Eupithecia pusillata         1  62.22834  25.75544 2019-08-21 21:00:00
+#> 10      Stigmella sorbi         2  62.22834  25.75544 2019-08-21 21:00:00
 #> ...with 0 more records and 34 more variables:
 #> taxon_rank, country, province, municipality, wkt_wgs84,
 #> line_length_m, area_m2, date_start, date_end, hour_start, hour_end,
@@ -216,22 +200,14 @@ of the character vectors are the qualifier codes.
 
 ```r
 finbif_habitat_qualifiers()[4:6, ]
-```
-
-```
 #>                          habitat_type code
 #> 4 Broadleaved deciduous trees present    J
 #> 5                         Sun-exposed   PA
 #> 6                               Shady   VA
-```
 
-```r
 # Search records of taxa for which forests with sun-exposure and broadleaved
 # deciduous trees are their primary habitat type
 finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J"))))
-```
-
-```
 #> Records downloaded: 10
 #> Records available: 103
 #> A data.frame [10 x 39]

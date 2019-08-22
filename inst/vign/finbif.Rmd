@@ -1,15 +1,20 @@
 ---
 title: "Introduction to the finbif package"
-output: rmarkdown::html_vignette
+author: "William K Morris"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
 vignette: >
-  %\VignetteIndexEntry{Introduction to the finbif package}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{1. Introduction to the finbif package}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, eval=TRUE, echo=FALSE}
 knitr::opts_chunk$set(
   comment = "#>",
+  collapse = TRUE,
   warning = FALSE,
   message = FALSE,
   cache.path = "cache/"

@@ -1,9 +1,13 @@
 ---
 title: "Introduction to the finbif package"
-output: rmarkdown::html_vignette
+author: "William K Morris"
+date: "2019-08-22"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
 vignette: >
-  %\VignetteIndexEntry{Introduction to the finbif package}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{1. Introduction to the finbif package}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -60,9 +64,6 @@ You can check to see if a taxon exists in the FinBIF database.
 
 ```r
 finbif_check_taxa("Ursus arctos")
-```
-
-```
 #> [Ursus arctos] ID: MX.47348
 ```
 
@@ -72,27 +73,12 @@ list element is `NA`.
 
 ```r
 (taxa <- finbif_check_taxa(c("Ursus arctos", "Moomin")))
-```
-
-```
 #> [Ursus arctos] ID: MX.47348
 #> [Moomin      ] Not found
-```
-
-```r
 taxa[[1]]
-```
-
-```
 #> Ursus arctos 
 #>   "MX.47348"
-```
-
-```r
 taxa[[2]]
-```
-
-```
 #> Moomin 
 #>     NA
 ```
@@ -102,9 +88,6 @@ will be limited to the specified rank.
 
 ```r
 finbif_check_taxa(list(species = c("Ursus arctos", "Ursus"), genus = "Ursus"))
-```
-
-```
 #> [species: Ursus arctos] ID: MX.47348
 #> [species: Ursus       ] Not found
 #> [genus:   Ursus       ] ID: MX.51311
@@ -119,9 +102,6 @@ partial matching.
 ```r
 birch_search <- finbif_taxa("Betula pendula", 2, "partial")
 str(birch_search$content, max.level = 2, list.len = 8)
-```
-
-```
 #> List of 2
 #>  $ :List of 11
 #>   ..$ matchingName  : chr "Betula pendula var. pendula"
@@ -151,9 +131,6 @@ the `finbif_occurrence()` function.
 
 ```r
 finbif_occurrence("Cygnus cygnus", n = 100)
-```
-
-```
 #> Records downloaded: 100
 #> Records available: 54828
 #> A data.frame [100 x 39]
@@ -188,9 +165,6 @@ finbif_occurrence(
   "Cygnus olor",
   filter = list(coordinate_accuracy_max = 100)
 )
-```
-
-```
 #> Records downloaded: 10
 #> Records available: 11175
 #> A data.frame [10 x 39]
