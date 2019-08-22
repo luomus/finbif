@@ -44,17 +44,19 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   ) {
 
   taxa <- list(...)
+  ntaxa <- length(taxa)
 
-  if (check_taxa) {
-    taxa <- if (...length() > 1L || !utils::hasName(taxa, "taxa")) {
-      finbif_check_taxa(taxa, cache = cache)
+  if (ntaxa)
+    if (check_taxa) {
+      taxa <- if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
+        finbif_check_taxa(taxa, cache = cache)
+      } else {
+        finbif_check_taxa(..., cache = cache)
+      }
+      taxa <- list(taxon_id = paste(unlist(taxa), collapse = ","))
     } else {
-      finbif_check_taxa(..., cache = cache)
+      taxa <- list(taxon_name = paste(unlist(taxa), collapse = ","))
     }
-    taxa <- list(taxon_id = paste(unlist(taxa), collapse = ","))
-  } else {
-    taxa <- list(taxon_name = paste(unlist(taxa), collapse = ","))
-  }
 
   if (missing(filter)) filter <- NULL
   filter <- c(taxa, filter)
