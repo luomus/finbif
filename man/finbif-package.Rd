@@ -14,7 +14,7 @@ An R programming language interface to the FinBIF (Finnish
     portal for researchers, citizen scientists, industry and government. FinBIF
     allows users of biodiversity information to find, access, combine and
     visualise data on Finnish plants, animals and microorganisms. The finbif R
-    package makes the publically available data in FinBIF accessible from within
+    package makes the publicly available data in FinBIF accessible from within
     R. Biodiversity information is available on taxonomy and taxon occurrence.
     Occurrence data can be filtered by taxon, time, location and other
     variables. The data accessed are conveniently preformatted for subsequent

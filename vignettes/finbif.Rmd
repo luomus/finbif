@@ -16,9 +16,9 @@ The Finnish Biodiversity Information Facility (FinBIF) aggregates Finnish
 biodiversity data from multiple sources in a single open access portal for
 researchers, citizen scientists, industry and government. The `finbif` R
 package provides access to the FinBIF API directly from within R. FinBIF allows
-users of biodiversityinformation to find, access, combine and visualise data on
+users of biodiversity information to find, access, combine and visualise data on
 Finnish plants, animals and microorganisms. The finbif R package makes the
-publically available data in FinBIF accessible from within R. Biodiversity
+publicly available data in FinBIF accessible from within R. Biodiversity
 information is available on taxonomy and taxon occurrence. Occurrence data can
 be filtered by taxon, time, location and other variables. The data accessed are
 conveniently preformatted for subsequent analyses.
