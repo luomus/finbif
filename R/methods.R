@@ -1,22 +1,22 @@
 # as.data.frame methods --------------------------------------------------------
 
-#' Coerce `finbif_api*` object to a `data.frame`
+#' Coerce a `finbif_records*` object to a `data.frame`
 #'
 #' Converts the result of a FinBIF query to a `data.frame`.
 #'
-#' @param x A `finbif_api*` object.
+#' @param x A `finbif_records*` object.
 #' @param ... Additional arguments. Not used.
 #' @return A `data.frame`.
 #' @examples \dontrun{
 #'
-#' # Download the latest records from FinBIF and
-#' # convert to a `data.frame`
+#' # Download the latest records from FinBIF
+#' # and convert to a `data.frame`
 #' resp <- finbif_records()
 #' df <- as.data.frame(resp)
 #' }
 #' @importFrom methods as
 #' @export
-as.data.frame.finbif_api <- function(x, ...) {
+as.data.frame.finbif_records <- function(x, ...) {
 
   df <- lapply(
 
@@ -73,9 +73,9 @@ as.data.frame.finbif_api <- function(x, ...) {
 
 }
 
-#' @rdname as.data.frame.finbif_api
+#' @rdname as.data.frame.finbif_records
 #' @export
-as.data.frame.finbif_api_list <- function(x, ...) {
+as.data.frame.finbif_records_list <- function(x, ...) {
 
   df <- lapply(x, as.data.frame)
   # Sometimes there are duplicate rows

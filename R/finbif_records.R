@@ -101,7 +101,12 @@ finbif_records <- function(filter, select, n = 10, page = 1,
 
   }
 
-  resp <- list(finbif_api_get(path, query, cache))
+  resp <- list(
+    structure(
+      finbif_api_get(path, query, cache),
+      class = c("finbif_records", "finbif_api")
+    )
+  )
 
   n_tot <- resp[[1L]][["content"]][["total"]]
   n <- min(n, n_tot)
@@ -131,14 +136,17 @@ finbif_records <- function(filter, select, n = 10, page = 1,
       n_pages <- n %/% query[["pageSize"]]
     }
 
-    resp[[i]] <- finbif_api_get(path, query, cache)
+    resp[[i]] <- structure(
+      finbif_api_get(path, query, cache),
+      class = c("finbif_records", "finbif_api")
+    )
     query[["page"]] <- query[["page"]] + 1L
 
   }
 
   structure(
-    resp, class = "finbif_api_list", nrec_dnld = n, nrec_avl = n_tot,
-    select = unique(select)
+    resp, class = c("finbif_records_list", "finbif_api_list"), nrec_dnld = n,
+    nrec_avl = n_tot, select = unique(select)
   )
 
 }
