@@ -9,9 +9,15 @@ vignette: >
 
 
 The Finnish Biodiversity Information Facility (FinBIF) aggregates Finnish
-biodiversity data from multiple sources in a single open access portal for 
+biodiversity data from multiple sources in a single open access portal for
 researchers, citizen scientists, industry and government. The `finbif` R
-package provides access to the FinBIF API directly from within R.
+package provides access to the FinBIF API directly from within R. FinBIF allows
+users of biodiversityinformation to find, access, combine and visualise data on
+Finnish plants, animals and microorganisms. The finbif R package makes the
+publically available data in FinBIF accessible from within R. Biodiversity
+information is available on taxonomy and taxon occurrence. Occurrence data can
+be filtered by taxon, time, location and other variables. The data accessed are
+conveniently preformatted for subsequent analyses.
 
 ## Installing the finbif package
 You can install the development version of finbif from
@@ -46,8 +52,8 @@ Sys.setenv(
 # Note: the above is not a real access token. Do not try using it.
 ```
 , or by adding it to a `Renviron` startup file (see
- [here](https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/)
- for details). 
+[here](https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/)
+for details).
 
 ## Working with taxa
 You can check to see if a taxon exists in the FinBIF database.
@@ -91,7 +97,7 @@ taxa[[2]]
 #>     NA
 ```
 
-You can also specify the taxonomic rank when searching FinBIF and the search 
+You can also specify the taxonomic rank when searching FinBIF and the search
 will be limited to the specified rank.
 
 ```r
@@ -104,11 +110,11 @@ finbif_check_taxa(list(species = c("Ursus arctos", "Ursus"), genus = "Ursus"))
 #> [genus:   Ursus       ] ID: MX.51311
 ```
 
-The function `finbif_taxa()` can be used for a more general search for taxa in the
-FinBIF database. Searches can be `exact`, `partial` or `likely` (fuzzy 
+The function `finbif_taxa()` can be used for a more general search for taxa in 
+the FinBIF database. Searches can be `exact`, `partial` or `likely` (fuzzy
 matching). Information for a single taxon is returned when using exact or fuzzy
-matching, but multiple taxa, up to a limit, `n`, may be returned when using 
-partial matching. 
+matching, but multiple taxa, up to a limit, `n`, may be returned when using
+partial matching.
 
 ```r
 birch_search <- finbif_taxa("Betula pendula", 2, "partial")
@@ -140,7 +146,7 @@ str(birch_search$content, max.level = 2, list.len = 8)
 ```
 
 ## Getting occurrence data
-You can download occurrence data from the FinBIF database as a `data.frame` with 
+You can download occurrence data from the FinBIF database as a `data.frame` with
 the `finbif_occurrence()` function.
 
 ```r
@@ -173,7 +179,7 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 #> location_issue, time_issue, duration
 ```
 
-You can search for multiple taxa at once and filter the records with the 
+You can search for multiple taxa at once and filter the records with the
 `filter` argument.
 
 ```r
