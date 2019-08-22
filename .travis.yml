@@ -12,6 +12,8 @@ addons:
       - libgdal-dev
       - libgeos-dev
       - libproj-dev
+  homebrew:
+    packages: udunits
 
 r_packages:
   - goodpractice
