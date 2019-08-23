@@ -49,7 +49,7 @@ reference:
     desc: >
       Working with finbif objects
     contents:
-      - as.data.frame.finbif_api
+      - as.data.frame.finbif_records
   - title: "Cache"
     desc: >
       Caching finbif downloads
