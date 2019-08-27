@@ -68,11 +68,13 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
 
   df   <- as.data.frame(records)
   url  <- attr(df, "url", TRUE)
-  time <-  attr(df, "time", TRUE)
+  time <- attr(df, "time", TRUE)
 
   select <- attr(records, "select")
   missing_vars <- setdiff(select, names(df))
-  for (i in missing_vars) df[[i]] <- NA
+
+  # Sometimes no data are returned.
+  for (i in missing_vars) df[[i]] <- if (nrow(df)) NA else logical(0L)
   df <- df[select]
 
   # When any two datasets are requested depending on the data they contain
