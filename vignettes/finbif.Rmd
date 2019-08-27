@@ -1,7 +1,6 @@
 ---
 title: "Introduction to the finbif package"
 author: "William K Morris"
-date: "2019-08-22"
 output: 
   rmarkdown::html_vignette:
     toc: true

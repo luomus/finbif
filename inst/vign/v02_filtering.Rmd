@@ -1,7 +1,6 @@
 ---
 title: "Filtering FinBIF records"
 author: "William K Morris"
-date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette:
     toc: true
