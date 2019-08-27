@@ -6,7 +6,8 @@
 \usage{
 finbif_occurrence(..., filter, select, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE,
-  check_taxa = TRUE, date_time = TRUE, method = "fast")
+  check_taxa = TRUE, on_check_fail = c("warn", "error", "quiet"),
+  date_time = TRUE, method = "fast")
 }
 \arguments{
 \item{...}{Character vectors or list of character vectors. Taxa of records
@@ -32,6 +33,9 @@ downloads.}
 \item{check_taxa}{Logical. Check first that taxa are in the FinBIF database.
 If true only records that match known taxa (have a valid taxon ID) are
 returned.}
+
+\item{on_check_fail}{Character. What to do if a taxon is found not valid.
+One \code{"warn"} (default), \code{"error"} or \code{"continue"}.}
 
 \item{date_time}{Logical. Convert raw date and time variables into date_time
 and duration.}

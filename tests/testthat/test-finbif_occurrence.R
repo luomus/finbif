@@ -16,8 +16,9 @@ vcr::use_cassette(
 
         expect_s3_class(
           finbif_occurrence(
-            "Rangifer tarandus fennicus",
-            select = c("record_id", "date_start", "record_fact")
+            "Rangifer tarandus fennicus", "not a valid taxon",
+            select = c("record_id", "date_start", "record_fact"),
+            on_check_fail = "quiet"
           ),
           "finbif_occ"
         )
@@ -72,6 +73,23 @@ vcr::use_cassette(
       }
     )
 
-    },
+    test_that(
+      "warns when taxa invalid", {
+
+        expect_warning(finbif_occurrence("not a valid taxa"))
+
+      }
+    )
+
+  },
   preserve_exact_body_bytes = TRUE
 )
+
+test_that(
+  "returns errors appropriately", {
+
+    expect_error(finbif_occurrence("not a valid taxa", on_check_fail = "error"))
+
+  }
+)
+

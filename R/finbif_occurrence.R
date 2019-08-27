@@ -8,6 +8,8 @@
 #' @param check_taxa Logical. Check first that taxa are in the FinBIF database.
 #'   If true only records that match known taxa (have a valid taxon ID) are
 #'   returned.
+#' @param on_check_fail Character. What to do if a taxon is found not valid.
+#'   One `"warn"` (default), `"error"` or `"continue"`.
 #' @param date_time Logical. Convert raw date and time variables into date_time
 #'   and duration.
 #' @param method Character. Passed to `lutz::tz_lookup_coords()` when
@@ -41,23 +43,41 @@
 
 finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE, check_taxa = TRUE,
-  date_time = TRUE, method = "fast"
+  on_check_fail = c("warn", "error", "quiet"), date_time = TRUE,
+  method = "fast"
   ) {
 
   taxa <- list(...)
   ntaxa <- length(taxa)
+  on_check_fail <- match.arg(on_check_fail)
 
   if (ntaxa)
     if (check_taxa) {
+
       taxa <- if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
-        finbif_check_taxa(taxa, cache = cache)
+        unlist(finbif_check_taxa(taxa, cache = cache))
       } else {
-        finbif_check_taxa(..., cache = cache)
+        unlist(finbif_check_taxa(..., cache = cache))
       }
-      taxa <- list(taxon_id = paste(unlist(taxa), collapse = ","))
+
+      if (anyNA(taxa)) {
+        msg  <- paste(
+          "Can not find taxa:",
+          paste(sub("\\.", " - ", names(taxa[is.na(taxa)])), collapse = ", ")
+        )
+        switch(
+          on_check_fail, warn = warning(msg), error = stop(msg), quiet = NULL
+        )
+      }
+
+      taxa <- list(taxon_id = paste(taxa[!is.na(taxa)], collapse = ","))
+
     } else {
-      taxa <- list(taxon_name = paste(unlist(taxa), collapse = ","))
+
+      taxa <- list(taxon_name = paste(taxa, collapse = ","))
+
     }
+
 
   if (missing(filter)) filter <- NULL
   filter <- c(taxa, filter)
