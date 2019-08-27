@@ -49,7 +49,7 @@ vcr::use_cassette(
     )
 
     test_that(
-      "returns data that prints valid output", {
+      "returns data that prints/plots valid output", {
 
         fungi <- finbif_occurrence(
           filter = c(informal_group = "Fungi and lichens"),
@@ -67,9 +67,11 @@ vcr::use_cassette(
           print(fungi[1:10, c("scientific_name", "taxon_rank")]), "A data"
         )
 
+        expect_doppelganger("occurrence plot", plot(fungi))
+
       }
     )
 
-  },
+    },
   preserve_exact_body_bytes = TRUE
 )

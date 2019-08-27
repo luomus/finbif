@@ -1,4 +1,5 @@
 library("vcr")
+library("vdiffr")
 invisible(vcr::vcr_configure(
   dir = "../cassettes",
   filter_sensitive_data = list(

@@ -230,3 +230,21 @@ print.finbif_occ <- function(x, ...) {
 
   invisible(x)
 }
+
+# plot methods ----------------------------------------------------------------
+
+#' @noRd
+#' @importFrom graphics grid plot.default
+#' @export
+plot.finbif_occ <- function(
+  x, ..., xlab = "Longitude", ylab = "Latitude",
+  panel.first = grid(lwd = 2),
+  asp = 1 / cos(mean(range(x["lat_wgs84"])) * pi / 180),
+  pch = 19, cex = .5, las = 1
+) {
+  stopifnot(exists("lon_wgs84", x) && exists("lat_wgs84", x))
+  graphics::plot.default(
+    x[c("lon_wgs84", "lat_wgs84")], ..., xlab = xlab, ylab = ylab,
+    panel.first = panel.first, asp = asp, cex = .5, las = 1, pch = pch
+  )
+}

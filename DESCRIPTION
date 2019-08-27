@@ -29,6 +29,7 @@ Depends: R (>= 3.5.0)
 Imports:
     digest,
     httr,
+    graphics,
     jsonlite,
     lubridate,
     lutz,
@@ -47,7 +48,8 @@ Suggests:
     stats,
     testthat (>= 2.1.0),
     usethis,
-    vcr
+    vcr,
+    vdiffr
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: FinBIF, specimens, API, web-services, occurrences, species, taxonomy
 X-schema.org-isPartOf: https://species.fi
