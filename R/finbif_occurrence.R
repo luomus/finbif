@@ -12,9 +12,10 @@
 #'   One `"warn"` (default), `"error"` or `"continue"`.
 #' @param date_time Logical. Convert raw date and time variables into date_time
 #'   and duration.
-#' @param method Character. Passed to `lutz::tz_lookup_coords()` when
-#'   `date_time = TRUE`. Default is `"fast"`. Use `method = "accurate"`
-#'   (requires package `sf`) for greater accuracy.
+#' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
+#'   `date_time = TRUE`. Default is `"fast"`. Use
+#'   `date_time_method = "accurate"` (requires package `sf`) for greater
+#'    accuracy.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -44,7 +45,7 @@
 finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE, check_taxa = TRUE,
   on_check_fail = c("warn", "error", "quiet"), date_time = TRUE,
-  method = "fast"
+  date_time_method = "fast"
   ) {
 
   taxa <- list(...)
@@ -112,11 +113,11 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   if (date_time) {
     df$date_time <- get_date_time(
       df, "date_start", "hour_start", "minute_start", "lat_wgs84", "lon_wgs84",
-      method
+      date_time_method
     )
     df$duration <- get_duration(
       df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
-      "lat_wgs84", method
+      "lat_wgs84", date_time_method
     )
   }
 
