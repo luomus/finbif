@@ -6,9 +6,8 @@ vcr::use_cassette(
     test_that(
       "returns valid data", {
 
-        records <- finbif_records(
-          filter = list(primary_habitat = list(M = c("V", "H"))), n = 301
-        )
+        records <-
+          finbif_records(filter = list(primary_habitat = list(M = c("V", "H"))))
 
         expect_output(print(records), "FinBIF")
 

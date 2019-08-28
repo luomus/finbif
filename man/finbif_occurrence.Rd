@@ -41,8 +41,8 @@ One \code{"warn"} (default), \code{"error"} or \code{"continue"}.}
 and duration.}
 
 \item{date_time_method}{Character. Passed to \code{lutz::tz_lookup_coords()} when
-\code{date_time = TRUE}. Default is \code{"fast"}.
-Use \code{date_time_method = "accurate"} (requires package \code{sf}) for greater
+\code{date_time = TRUE}. Default is \code{"fast"}. Use
+\code{date_time_method = "accurate"} (requires package \code{sf}) for greater
 accuracy.}
 }
 \value{

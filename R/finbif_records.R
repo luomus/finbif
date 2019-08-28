@@ -26,7 +26,7 @@
 finbif_records <- function(filter, select, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE) {
 
-  max_queries  <- 600L
+  max_queries  <- 2000L
   max_size <- 300L
   nmax <- max_queries * max_size
 
@@ -121,9 +121,12 @@ finbif_records <- function(filter, select, n = 10, page = 1,
   query[["page"]] <- query[["page"]] + 1L
   n_pages <- n %/% query[["pageSize"]]
 
+  # Pausing between requests is important if many request will be made
+  sleep <- ifelse(n_pages > 10, 0L, 1L)
+
   while (multipage) {
 
-    Sys.sleep(1L)
+    Sys.sleep(sleep)
     utils::setTxtProgressBar(pb, i)
     i <- i + 1L
 

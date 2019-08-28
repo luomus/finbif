@@ -55,7 +55,7 @@ vcr::use_cassette(
         fungi <- finbif_occurrence(
           filter = c(informal_group = "Fungi and lichens"),
           select = c("record_id", "informal_groups", "default_vars"),
-          n = 500L
+          n = 1100L
         )
 
         expect_output(print(fungi), "Records downloaded:")
