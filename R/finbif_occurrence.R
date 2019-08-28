@@ -62,7 +62,7 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
 
       if (anyNA(taxa)) {
         msg  <- paste(
-          "Can not find taxa:",
+          "Cannot find taxa:",
           paste(sub("\\.", " - ", names(taxa[is.na(taxa)])), collapse = ", ")
         )
         switch(
