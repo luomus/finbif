@@ -68,7 +68,10 @@ vcr::use_cassette(
           print(fungi[1:10, c("scientific_name", "taxon_rank")]), "A data"
         )
 
-        expect_doppelganger("occurrence plot", plot(fungi))
+        expect_doppelganger(
+          paste0("occurrence plot ", if (is_dev_api()) "dev"),
+          plot(fungi)
+        )
 
       }
     )

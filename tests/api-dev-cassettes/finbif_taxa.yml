@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/taxa/search?query=Parus%20major&matchType=exact&limit=1&access_token=<finbif_dev_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-xss-protection: 1; mode=block
+      x-frame-options: SAMEORIGIN
+      strict-transport-security: max-age=0; includeSubDomains
+      x-download-options: noopen
+      x-content-type-options: nosniff
+      content-type: application/json; charset=utf-8
+      content-length: '405'
+      etag: W/"195-QcRoJ7HmS+95Ciey79NRKpxyD0Q"
+      vary: Accept-Encoding
+      date: Thu, 29 Aug 2019 07:23:37 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: W3sibWF0Y2hpbmdOYW1lIjoiUGFydXMgbWFqb3IiLCJuYW1lVHlwZSI6Ik1YLnNjaWVudGlmaWNOYW1lIiwiaWQiOiJNWC4zNDU2NyIsInNjaWVudGlmaWNOYW1lIjoiUGFydXMgbWFqb3IiLCJzY2llbnRpZmljTmFtZUF1dGhvcnNoaXAiOiJMaW5uYWV1cywgMTc1OCIsInRheG9uUmFuayI6Ik1YLnNwZWNpZXMiLCJjdXJzaXZlTmFtZSI6dHJ1ZSwiZmlubmlzaCI6dHJ1ZSwic3BlY2llcyI6dHJ1ZSwidmVybmFjdWxhck5hbWUiOnsic3YiOiJ0YWxnb3hlIiwiZW4iOiJHcmVhdCBUaXQiLCJmaSI6InRhbGl0aWFpbmVuIn0sImluZm9ybWFsR3JvdXBzIjpbeyJpZCI6Ik1WTC4xIiwibmFtZSI6eyJzdiI6IkbDpWdsYXIiLCJlbiI6IkJpcmRzIiwiZmkiOiJMaW5udXQifX1dLCJ0eXBlIjoiZXhhY3RNYXRjaGVzIn1d
+  recorded_at: 2019-08-29 07:23:37 GMT
+  recorded_with: vcr/0.3.0, webmockr/0.4.0
