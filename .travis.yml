@@ -13,7 +13,9 @@ addons:
       - libgeos-dev
       - libproj-dev
   homebrew:
-    packages: udunits
+    packages:
+      - udunits
+      - cairo
 
 r_packages:
   - goodpractice
