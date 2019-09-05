@@ -183,7 +183,7 @@
 #' @section Misc:
 #' Other filters:
 #'
-#' - `keywords` Character.
+#' - `keywords` Character vector. Filter by keywords.
 #' - `collection` Character.
 #' - `not_collection` Character.
 #' - `subcollections` Logical.

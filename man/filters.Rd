@@ -200,7 +200,7 @@ Filter by reliability of taxon identification. Can be one or more of
 
 Other filters:
 \itemize{
-\item \code{keywords} Character.
+\item \code{keywords} Character vector. Filter by keywords.
 \item \code{collection} Character.
 \item \code{not_collection} Character.
 \item \code{subcollections} Logical.
