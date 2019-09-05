@@ -35,39 +35,42 @@ Filter by informal taxonomic groups. Only including informal groups linked
 to the recorded taxa in the FinBIF database. Use the function
 \code{\link[=finbif_informal_groups]{finbif_informal_groups()}} to see the informal taxonomic groups available
 in FinBIF.
-\item \code{informal_group_reported} Character vector. Filter by informal taxonomic
-groups including groups reported directly with the record and those linked
-to the recorded taxa in the FinBIF database. Use the function
-\code{\link[=finbif_informal_groups]{finbif_informal_groups()}} to see the informal taxonomic groups available
-in FinBIF.
-\item \code{administrative_status} Character vector. Filter by administrative status
-code. Use the function \code{\link[=finbif_admin_status]{finbif_admin_status()}} to see administrative
-statuses and codes.
-\item \code{red_list_status} Character vector. Filter by IUCN red list status code.
-Use the function \code{\link[=finbif_red_list]{finbif_red_list()}} to see red list statuses and codes.
-\item \code{primary_habitat} Character or named list of character vectors. Filter by
-primary habitat code. Use the function \code{\link[=finbif_habitat_types]{finbif_habitat_types()}} to see
-habitat (sub)types and codes for taxa in the FinBIF database. Habitat
-type/subtypes can be refined further by indicating habitat qualifiers with
-a named list of character vectors where the names are habitat (sub)type
-codes and the elements of the character vector are the habitat qualifier
-codes. Use the function \code{\link[=finbif_habitat_qualifiers]{finbif_habitat_qualifiers()}} to see habitat
-qualifiers and codes. The records returned will be of taxa whose primary
-habitat is considered to be the (sub)habitat/habitat qualifier combination
-supplied.
+\item \code{informal_group_reported} Character vector.
+Filter by informal taxonomic groups including groups reported directly with
+the record and those linked to the recorded taxa in the FinBIF database.
+Use the function \code{\link[=finbif_informal_groups]{finbif_informal_groups()}} to see the informal taxonomic
+groups available in FinBIF.
+\item \code{administrative_status} Character vector.
+Filter by administrative status code. Use the function
+\code{\link[=finbif_admin_status]{finbif_admin_status()}} to see administrative statuses and codes.
+\item \code{red_list_status} Character vector.
+Filter by IUCN red list status code. Use the function \code{\link[=finbif_red_list]{finbif_red_list()}}
+to see red list statuses and codes.
+\item \code{primary_habitat} Character vector or named list of character vectors.
+Filter by primary habitat code. Use the function \code{\link[=finbif_habitat_types]{finbif_habitat_types()}}
+to see habitat (sub)types and codes for taxa in the FinBIF database.
+Habitat type/subtypes can be refined further by indicating habitat
+qualifiers with a named list of character vectors where the names are
+habitat (sub)type codes and the elements of the character vector are the
+habitat qualifier codes. Use the function \code{\link[=finbif_habitat_qualifiers]{finbif_habitat_qualifiers()}} to
+see habitat qualifiers and codes. The records returned will be of taxa
+whose primary habitat is considered to be the (sub)habitat/habitat
+qualifier combination supplied.
 \item \code{primary_secondary_habitat} Character or named list of character vectors.
 As above, except the records returned will be of taxa whose primary or
 secondary habitat is considered to be the combination supplied.
-\item \code{finnish}. Logical. If \code{TRUE}, limit records to taxa known to occur in
-Finland. Or if \code{FALSE} limit to taxa not thought to occur in Finland.
-If unspecified (default) return records of all taxa.
-\item \code{invasive}. Logical. If \code{TRUE}, limit records to invasive taxa. Or if
-\code{FALSE} limit to non-invasive taxa. If unspecified (default) return records
-of invasive and non-invasive taxa.
-\item \code{taxon_rank}. Character vector. Filter by taxonomic rank. Use
-\code{finbif_taxon_rank()} to see the taxonomic ranks available. Records
-returned will be limited to the specified ranks and not include records of
-lower taxonomic levels.
+\item \code{finnish}. Logical.
+If \code{TRUE}, limit records to taxa known to occur in Finland. Or if \code{FALSE}
+limit to taxa not thought to occur in Finland. If unspecified (default)
+return records of all taxa.
+\item \code{invasive}. Logical.
+If \code{TRUE}, limit records to invasive taxa. Or if \code{FALSE} limit to
+non-invasive taxa. If unspecified (default) return records of invasive and
+non-invasive taxa.
+\item \code{taxon_rank}. Character vector.
+Filter by taxonomic rank. Use \code{finbif_taxon_rank()} to see the taxonomic
+ranks available. Records returned will be limited to the specified ranks
+and not include records of lower taxonomic levels.
 }
 }
 
@@ -75,20 +78,24 @@ lower taxonomic levels.
 
 Filters related to location of record include:
 \itemize{
-\item \code{locality} Character vector. Filter by name of locality. Will first try to
-match strings to the countries, provinces, and municipalities (see below)
-in FinBIF if none of these locality types match exactly then will return
-records with verbatim locality matches in the original records.
-\item \code{country} Character vector. Filter by country. Use \code{finbif_countries()} to
-see country names and ISO codes (2 and 3 character) used in FinBIF.
-\item \code{province} Character vector. Filter by province. Use \code{finbif_provinces()}
-to see province names and codes.
-\item \code{municipality} Character vector. Filter by country. Use
-\code{finbif_municipalities()} to see municipality names.
-\item \code{bird_assoc_area} Character. Filter by BirdLife Finland association area.
-Use \code{finbif_bird_assoc_area()} to see association names and codes.
-\item \code{coordinates_area} Coordinates. A character vector or list of coordinate
-data. Must be length 3 to 4 (e.g.,
+\item \code{locality} Character vector.
+Filter by name of locality. Will first try to match strings to the
+countries, provinces, and municipalities (see below) in FinBIF if none of
+these locality types match exactly then will return records with verbatim
+locality matches in the original records.
+\item \code{country} Character vector.
+Filter by country. Use \code{finbif_countries()} to see country names and ISO
+codes (2 and 3 character) used in FinBIF.
+\item \code{province} Character vector.
+Filter by province. Use \code{finbif_provinces()} to see province names and
+codes.
+\item \code{municipality} Character vector.
+Filter by country. Use \code{finbif_municipalities()} to see municipality names.
+\item \code{bird_assoc_area} Character vector.
+Filter by BirdLife Finland association area. Use \code{finbif_bird_assoc_area()}
+to see association names and codes.
+\item \code{coordinates_area} Coordinates.
+A character vector or list of coordinate data. Must be length 3 to 4 (e.g.,
 \code{list(lat = c(60.4, 61), lon = c(22, 22.5), system = "wgs84", ratio = 1)}.
 The first element is minimum and maximum latitude and the second minimum
 and maximum longitude (or can be minimums only). The third element is the
@@ -102,21 +109,22 @@ units inferred from the number of integer digits (7 digits equals km's, 6
 equals 10km's, etc.,). If coordinate maximums are not specified they will
 be assumed to be one unit above the minimums (e.g., \code{c(666, 333, "kkj")} is
 equivalent to \code{list(c(6660000, 6670000), c(3330000, 3340000), "kkj")}).
-\item \code{coordinates_center} Coordinates. A character vector or list of coordinate
-data. Must be of length 3. The first two elements are latitude and
-longitude and third is the coordinate system (currently only \code{"wgs84"} is
-implemented). Records returned will be those for which the center point
-exactly matches that which is specified.
-\item \code{coordinates_cell_*k} Coordinates. A vector of coordinate data (lat, long).
-Filter by grid cell at scale \code{*}. Where \code{*} is 1, 10, 50 or 100. The
-coordinates specify the southeast corner of the cell. Coordinates system is
-uniform \code{"kkj"} (also known as "ykj").
-\item \code{coordinates_cell_*k_center} Coordinates. As above, except coordinates
-indicate center of grid cell.
-\item \code{coordinate_source} Character. Filter by source of coordinates. Currently
-accepted values are \code{"reported_value"} (coordinates were recorded at time
-of observation) and \code{"finnish_municipality"} (coordinates were derived and
-observer only recorded municipality).
+\item \code{coordinates_center} Coordinates.
+A character vector or list of coordinate data. Must be of length 3. The
+first two elements are latitude and longitude and third is the coordinate
+system (currently only \code{"wgs84"} is implemented). Records returned will be
+those for which the center point exactly matches that which is specified.
+\item \code{coordinates_cell_*k} Coordinates.
+A vector of coordinate data (lat, long). Filter by grid cell at scale \code{*}.
+Where \code{*} is 1, 10, 50 or 100. The coordinates specify the southeast corner
+of the cell. Coordinates system is uniform \code{"kkj"} (also known as "ykj").
+\item \code{coordinates_cell_*k_center} Coordinates.
+As above, except coordinates indicate center of grid cell.
+\item \code{coordinate_source} Character.
+Filter by source of coordinates. Currently accepted values are
+\code{"reported_value"} (coordinates were recorded at time of observation) and
+\code{"finnish_municipality"} (coordinates were derived and observer only
+recorded municipality).
 }
 }
 
@@ -124,10 +132,11 @@ observer only recorded municipality).
 
 Filters related to time of record include:
 \itemize{
-\item \code{date_range_ymd} Dates. An \link[lubridate:Interval-class]{Interval} object
-or a vector of one to two \link[base:Dates]{Date} objects (start and end
-dates) or objects that are coercible to the \link[base:Dates]{Date} class
-by \link[lubridate]{as_date}. When supplying dates as strings, the day or
+\item \code{date_range_ymd} Dates.
+An \link[lubridate:Interval-class]{Interval} object or a vector of one to
+two \link[base:Dates]{Date} objects (start and end dates) or objects that
+are coercible to the \link[base:Dates]{Date} class by
+\link[lubridate]{as_date}. When supplying dates as strings, the day or
 month-and-day can be omitted (e.g.,\code{"2001-04"} or \code{"2001"}). Note however,
 that when omitting day, only "\code{-}" is allowed to separate year and month,
 and months must in two-digit/leading zero form. If the start or end dates
@@ -137,20 +146,19 @@ of the month or year (e.g., \code{c(2001, 2003)} is equivalent to
 date string then all records that fall within that month or year will be
 returned (e.g., \code{c("2001-01")} is equivalent to
 \code{c("2001-01-01", "2001-01-31")}).
-\item \code{date_range_ym} As above, but days (if supplied) will be ignored.
-\item \code{date_range_d} Integer vector. Filter by day of the year (e.g., \code{1} to
-\code{366}). If start or end date is omitted then it is interpreted as the
-first or last or end day of the year.
-\item \code{date_range_md} Character vector. Filter by month and day of the year
-(e.g., \code{01-01} to \code{12-31}). If start or end date is omitted then it is
-interpreted as the first or last or end day of the year.
-\item \code{last_import_date_min} Date. Filter by date record was imported.
-A \link[base:Dates]{Date} object or object that is coercible to the
-\link[base:Dates]{Date} class.
-by \link[lubridate]{as_date}
-\item \code{last_import_date_max} As above.
-\item \code{first_import_date_min} As above.
-\item \code{first_import_date_max} As above.
+\item \code{date_range_ym} Dates.
+As above, but days (if supplied) will be ignored.
+\item \code{date_range_d} Integer vector.
+Filter by day of the year (e.g., \code{1} to \code{366}). If start or end date is
+omitted then it is interpreted as the first or last or end day of the year.
+\item \code{date_range_md} Character vector.
+Filter by month and day of the year (e.g., \code{01-01} to \code{12-31}). If start or
+end date is omitted then it is interpreted as the first or last or end day
+of the year.
+\item \code{{first|last}_import_date_{min|max}} Date.
+Filter by date record was imported. A \link[base:Dates]{Date} object or
+object that is coercible to the \link[base:Dates]{Date} class by
+\link[lubridate]{as_date}.
 }
 }
 
@@ -159,10 +167,25 @@ by \link[lubridate]{as_date}
 Filters related to quality of record:
 \itemize{
 \item \code{collection_reliability} Integer.
+Filter by collection reliability rating, from low reliability (1) to highly
+reliable (5).
 \item \code{coordinate_accuracy_max} Integer.
+Filter by maximum accuracy of coordinates (i.e.,
+\code{coordinate_accuracy_max = 100} will return records that are accurate to
+100m).
 \item \code{quality_issues}. Character.
+Filter by the presence of record quality issues. One of \code{"without_issues"},
+\code{"with_issues"} or \code{"both"}. Issues include any quality issues with the
+record, the event, or the document. The default is \code{"without_issues"}
+unless filtering by record, event or document ID or record annotation
+status.
 \item \code{reliable} Logical.
-\item \code{taxon_reliability} Character.
+Filter by reliability of record. The \code{"collection_reliability"} is 4-5 or
+the record has been "confirmed" and has no quality issues (record, event or
+document).
+\item \code{taxon_reliability} Character vector.
+Filter by reliability of taxon identification. Can be one or more of
+\code{"reliable"}, \code{"likely"}, \code{"neutral"}, \code{"unlikely"} or \code{"unreliable"}.
 }
 }
 
