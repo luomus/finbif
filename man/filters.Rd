@@ -159,9 +159,9 @@ As above, but days (if supplied) will be ignored.
 Filter by day of the year (e.g., \code{1} to \code{366}). If start or end date is
 omitted then it is interpreted as the first or last or end day of the year.
 \item \code{date_range_md} Character vector.
-Filter by month and day of the year (e.g., \code{01-01} to \code{12-31}). If start or
-end date is omitted then it is interpreted as the first or last or end day
-of the year.
+Filter by month and day of the year (e.g., \code{"01-01"} to \code{"12-31"}). If
+start or end date is omitted then it is interpreted as the first or last or
+end day of the year.
 \item \code{{first|last}_import_date_{min|max}} Date.
 Filter by date record was imported. A \link[base:Dates]{Date} object or
 object that is coercible to the \link[base:Dates]{Date} class by

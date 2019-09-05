@@ -148,9 +148,9 @@
 #'   Filter by day of the year (e.g., `1` to `366`). If start or end date is
 #'   omitted then it is interpreted as the first or last or end day of the year.
 #' - `date_range_md` Character vector.
-#'   Filter by month and day of the year (e.g., `01-01` to `12-31`). If start or
-#'   end date is omitted then it is interpreted as the first or last or end day
-#'   of the year.
+#'   Filter by month and day of the year (e.g., `"01-01"` to `"12-31"`). If
+#'   start or end date is omitted then it is interpreted as the first or last or
+#'   end day of the year.
 #' - `{first|last}_import_date_{min|max}` Date.
 #'   Filter by date record was imported. A \link[base:Dates]{Date} object or
 #'   object that is coercible to the \link[base:Dates]{Date} class by
