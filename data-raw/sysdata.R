@@ -8,6 +8,7 @@ source("data-raw/countries.R")
 source("data-raw/provinces.R")
 source("data-raw/municipalities.R")
 source("data-raw/bird_association_area.R")
+source("data-raw/finnish_occurrence.R")
 source("data-raw/misc.R")
 usethis::use_data(
   var_names,
@@ -23,6 +24,8 @@ usethis::use_data(
   province,
   municipality,
   bird_assoc_area,
+  finnish_occurrence_status,
+  finnish_occurrence_status_neg,
   quality_issues,
   taxon_reliability,
   internal = TRUE,

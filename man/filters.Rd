@@ -59,8 +59,15 @@ qualifier combination supplied.
 \item \code{primary_secondary_habitat} Character or named list of character vectors.
 As above, except the records returned will be of taxa whose primary or
 secondary habitat is considered to be the combination supplied.
+\item \code{finnish_occurrence_status}, Character vector.
+Filter by Finnish occurrence status of taxa. Use
+\code{\link[=finbif_finnish_occurrence]{finbif_finnish_occurrence()}} to see the possible occurrence statuses of
+taxa.
+\item \code{finnish_occurrence_status_neg}, Character vector.
+Negation of the above. Selecting a status will filter out rather than
+include records with the selected status.
 \item \code{finnish}. Logical.
-If \code{TRUE}, limit records to taxa known to occur in Finland. Or if \code{FALSE}
+If \code{TRUE}, limit records to taxa thought to occur in Finland. Or if \code{FALSE}
 limit to taxa not thought to occur in Finland. If unspecified (default)
 return records of all taxa.
 \item \code{invasive}. Logical.
@@ -193,8 +200,6 @@ Filter by reliability of taxon identification. Can be one or more of
 
 Other filters:
 \itemize{
-\item \code{occurrence_type}, Character.
-\item \code{not_occurrence_type} Character.
 \item \code{form_id} Character.
 \item \code{keywords} Character.
 \item \code{collection} Character.

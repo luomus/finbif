@@ -19,6 +19,8 @@ test_that(
 
     expect_s3_class(finbif_bird_assoc_areas(), "data.frame")
 
+    expect_s3_class(finbif_finnish_occurrence(), "data.frame")
+
     expect_type(finbif_informal_groups(), "character")
 
     expect_type(finbif_informal_groups("Algae"), "character")

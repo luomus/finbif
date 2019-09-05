@@ -54,8 +54,15 @@
 #' - `primary_secondary_habitat` Character or named list of character vectors.
 #'   As above, except the records returned will be of taxa whose primary or
 #'   secondary habitat is considered to be the combination supplied.
+#' - `finnish_occurrence_status`, Character vector.
+#'   Filter by Finnish occurrence status of taxa. Use
+#'   [finbif_finnish_occurrence()] to see the possible occurrence statuses of
+#'   taxa.
+#' - `finnish_occurrence_status_neg`, Character vector.
+#'   Negation of the above. Selecting a status will filter out rather than
+#'   include records with the selected status.
 #' - `finnish`. Logical.
-#'   If `TRUE`, limit records to taxa known to occur in Finland. Or if `FALSE`
+#'   If `TRUE`, limit records to taxa thought to occur in Finland. Or if `FALSE`
 #'   limit to taxa not thought to occur in Finland. If unspecified (default)
 #'   return records of all taxa.
 #' - `invasive`. Logical.
@@ -176,8 +183,6 @@
 #' @section Misc:
 #' Other filters:
 #'
-#' - `occurrence_type`, Character.
-#' - `not_occurrence_type` Character.
 #' - `form_id` Character.
 #' - `keywords` Character.
 #' - `collection` Character.
