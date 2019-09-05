@@ -47,8 +47,11 @@ finbif_records <- function(filter, select, n = 10, page = 1,
       finbif_filter_names <- translate(names(filter), "filter_names")
 
       for (i in seq_along(filter)) {
+
         # the filter might not exist
-        if (all(filter_names[finbif_filter_names[[i]], "translated_values"]))
+        if (is.na(finbif_filter_names[[i]]) ) next
+
+        if (filter_names[finbif_filter_names[[i]], "translated_values"])
           filter[[i]] <- translate(filter[[i]], names(filter)[[i]])
 
         if (
