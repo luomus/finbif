@@ -7,7 +7,8 @@
 finbif_occurrence(..., filter, select, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE,
   check_taxa = TRUE, on_check_fail = c("warn", "error", "quiet"),
-  date_time = TRUE, date_time_method = "fast")
+  date_time = TRUE, date_time_method = "fast",
+  tzone = Sys.timezone())
 }
 \arguments{
 \item{...}{Character vectors or list of character vectors. Taxa of records
@@ -34,16 +35,19 @@ downloads.}
 If true only records that match known taxa (have a valid taxon ID) are
 returned.}
 
-\item{on_check_fail}{Character. What to do if a taxon is found not valid.
-One \code{"warn"} (default), \code{"error"} or \code{"continue"}.}
+\item{on_check_fail}{Character. What to do if a taxon is found not valid. One
+of \code{"warn"} (default), \code{"error"} or \code{"continue"}.}
 
-\item{date_time}{Logical. Convert raw date and time variables into date_time
+\item{date_time}{Logical. Convert raw date and time variables into date-time
 and duration.}
 
 \item{date_time_method}{Character. Passed to \code{lutz::tz_lookup_coords()} when
 \code{date_time = TRUE}. Default is \code{"fast"}. Use
 \code{date_time_method = "accurate"} (requires package \code{sf}) for greater
 accuracy.}
+
+\item{tzone}{Character. If \code{date_time = TRUE} the timezone of outputted
+date-time. Defaults to system timezone.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.
