@@ -200,7 +200,6 @@ Filter by reliability of taxon identification. Can be one or more of
 
 Other filters:
 \itemize{
-\item \code{form_id} Character.
 \item \code{keywords} Character.
 \item \code{collection} Character.
 \item \code{not_collection} Character.

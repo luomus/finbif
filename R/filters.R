@@ -183,7 +183,6 @@
 #' @section Misc:
 #' Other filters:
 #'
-#' - `form_id` Character.
 #' - `keywords` Character.
 #' - `collection` Character.
 #' - `not_collection` Character.
