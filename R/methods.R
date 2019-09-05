@@ -183,7 +183,7 @@ print.finbif_occ <- function(x, ...) {
   for (i in names(df)) {
     class <- var_names[var_names[["translated_var"]] == i, "class"]
     if (class == "uri") {
-      df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/[A-Z]{2}\\.", "", df[[i]])
+      df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/", "", df[[i]])
     }
   }
 
