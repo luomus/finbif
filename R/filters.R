@@ -56,8 +56,8 @@
 #'   secondary habitat is considered to be the combination supplied.
 #' - `finnish_occurrence_status`, Character vector.
 #'   Filter by Finnish occurrence status of taxa. Use
-#'   [finbif_finnish_occurrence()] to see the possible occurrence statuses of
-#'   taxa.
+#'   [finbif_finnish_occurrence_status()] to see the possible occurrence
+#'   statuses of taxa.
 #' - `finnish_occurrence_status_neg`, Character vector.
 #'   Negation of the above. Selecting a status will filter out rather than
 #'   include records with the selected status.

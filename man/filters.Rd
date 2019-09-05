@@ -61,8 +61,8 @@ As above, except the records returned will be of taxa whose primary or
 secondary habitat is considered to be the combination supplied.
 \item \code{finnish_occurrence_status}, Character vector.
 Filter by Finnish occurrence status of taxa. Use
-\code{\link[=finbif_finnish_occurrence]{finbif_finnish_occurrence()}} to see the possible occurrence statuses of
-taxa.
+\code{\link[=finbif_finnish_occurrence_status]{finbif_finnish_occurrence_status()}} to see the possible occurrence
+statuses of taxa.
 \item \code{finnish_occurrence_status_neg}, Character vector.
 Negation of the above. Selecting a status will filter out rather than
 include records with the selected status.

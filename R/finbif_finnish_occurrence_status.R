@@ -10,7 +10,7 @@
 #' finbif_finnish_occurrence()
 #' }
 #' @export
-finbif_finnish_occurrence <- function() {
+finbif_finnish_occurrence_status <- function() {
   structure(
     finnish_occurrence_status,
     row.names = seq_len(nrow(finnish_occurrence_status)),
