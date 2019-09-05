@@ -60,6 +60,11 @@ finbif_records <- function(filter, select, n = 10, page = 1,
           filter[[i]] <- do.call(
             finbif_dates, c(list(names(filter)[[i]]), as.list(filter[[i]]))
           )
+
+        filter[[i]] <- paste(
+          filter[[i]], collapse = filter_names[finbif_filter_names[[i]], "sep"]
+        )
+
       }
 
       names(filter) <- finbif_filter_names
