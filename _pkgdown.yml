@@ -10,6 +10,11 @@ reference:
       Getting an access token
     contents:
       - finbif_request_token
+  - title: "Collections"
+    desc: >
+      Getting information on collections
+    contents:
+      - finbif_collections
   - title: "Taxonomy"
     desc: >
       Getting information on taxa
