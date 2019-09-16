@@ -218,7 +218,6 @@ Other filters:
 \item \code{abundance_min} Integer.
 \item \code{abundance_max} Integer.
 \item \code{type_specimen} Logical.
-\item \code{is_native} Logical.
 \item \code{wild_status} Character.
 \item \code{is_breeding_location} Logical.
 \item \code{has_document_media} Logical.

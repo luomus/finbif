@@ -61,7 +61,6 @@ ykj50kmCenter,                         coordinates_cell_50k_center,   coords,   
 ykj100kmCenter,                        coordinates_cell_100k_center,  coords,    FALSE,             ","
 sourceOfCoordinates,                   coordinate_source,             factor,    FALSE,             ","
 typeSpecimen,                          type_specimen,                 logical,   FALSE,             ","
-nativeOccurrence,                      is_native,                     logical,   FALSE,             ","
 wild,                                  wild_status,                   factor,    FALSE,             ","
 breedingSite,                          is_breeding_location,          logical,   FALSE,             ","
 hasDocumentMedia,                      has_document_media,            logical,   FALSE,             ","

@@ -201,7 +201,6 @@
 #' - `abundance_min` Integer.
 #' - `abundance_max` Integer.
 #' - `type_specimen` Logical.
-#' - `is_native` Logical.
 #' - `wild_status` Character.
 #' - `is_breeding_location` Logical.
 #' - `has_document_media` Logical.
