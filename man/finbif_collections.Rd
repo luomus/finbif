@@ -4,22 +4,29 @@
 \alias{finbif_collections}
 \title{FinBIF collections}
 \usage{
-finbif_collections(subcollections = FALSE)
+finbif_collections(subcollections = FALSE, supercollections = TRUE,
+  nmin = 0)
 }
 \arguments{
-\item{subcollections}{Logical. Display subcollections as well the main
+\item{subcollections}{Logical. Return subcollection metadata of higher level
 collections.}
+
+\item{supercollections}{Logical. Return lowest level collection metadata.}
+
+\item{nmin}{Integer. Filter collections by number of records. Only return
+information on collections with greater than value specified. If \code{NA} then
+return information on all collections.}
 }
 \value{
 A data.frame.
 }
 \description{
-Display information on the collections in the FinBIF database.
+Get information on collections in the FinBIF database.
 }
 \examples{
 \dontrun{
 
-# Display the informal taxonomic groups used by FinBIF
-finbif_collections()
+# Get collection metadata
+collecitons <- finbif_collections()
 }
 }
