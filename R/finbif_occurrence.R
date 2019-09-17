@@ -112,11 +112,11 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   names(df) <- var_names[names(df), "translated_var"]
 
   if (date_time) {
-    df$date_time <- get_date_time(
+    df[["date_time"]] <- get_date_time(
       df, "date_start", "hour_start", "minute_start", "lat_wgs84", "lon_wgs84",
       date_time_method, tzone
     )
-    df$duration <- get_duration(
+    df[["duration"]] <- get_duration(
       df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
       "lat_wgs84", date_time_method, tzone
     )
