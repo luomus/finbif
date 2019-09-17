@@ -13,6 +13,20 @@ vcr::use_cassette(
 
         expect_output(print(records[[1]]), "FinBIF")
 
+        expect_s3_class(
+          finbif_records(c(collection = "HR.42")), "finbif_records_list"
+        )
+
+        expect_s3_class(
+          finbif_records(
+            list(
+              collection =
+                finbif_collections(taxonomic_coverage == "Coleoptera")
+            )
+          ),
+          "finbif_records_list"
+        )
+
       }
     )
 

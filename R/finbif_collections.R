@@ -8,6 +8,9 @@
 #' @param nmin Integer. Filter collections by number of records. Only return
 #'   information on collections with greater than value specified. If `NA` then
 #'   return information on all collections.
+#' @param filter Logical. Expression indicating elements or rows to keep:
+#'   missing values are taken as false.
+#' @param select Expression. Indicates columns to select from the data frame.
 #' @return A data.frame.
 #' @examples \dontrun{
 #'
@@ -17,7 +20,7 @@
 #' @importFrom utils hasName
 #' @export
 finbif_collections <- function(
-  subcollections = FALSE, supercollections = TRUE, nmin = 0
+  filter, select, subcollections = TRUE, supercollections = FALSE, nmin = 0
 ) {
 
   collections <- merge(
@@ -35,8 +38,6 @@ finbif_collections <- function(
   )
 
   row.names(collections) <- collections[["id"]]
-
-  collections <- collections[, -1L]
 
   parent_collections <- row.names(collections)[collections[["has_children"]]]
 
@@ -57,7 +58,34 @@ finbif_collections <- function(
   if (!supercollections)
     collections <- collections[!collections[["has_children"]], ]
 
-  collections
+  if (missing(filter)) {
+    rows <- rep_len(TRUE, nrow(collections))
+  } else {
+    call <- substitute(filter)
+    rows <- eval(call, collections, parent.frame())
+    if (!is.logical(rows))
+       deferrable_error("'Collections filter must be logical")
+    rows <- rows & !is.na(rows)
+  }
+
+  if (missing(select)) {
+    cols <- c(
+      "collection_name_en", "abbreviation", "description_en", "online_url_en",
+      "has_children", "is_part_of", "data_quality", "methods",
+      "collection_type", "taxonomic_coverage", "geographic_coverage",
+      "temporal_coverage", "secure_level", "count"
+    )
+  } else {
+    col_ind <- as.list(seq_along(collections))
+    names(col_ind) <- names(collections)
+    cols <- eval(substitute(select), col_ind, parent.frame())
+    if (is.na(cols) || is.null(cols)) cols <- TRUE
+  }
+
+  structure(
+    collections[rows, cols, drop = FALSE],
+    class = c("finbif_collections", "data.frame")
+  )
 
 }
 

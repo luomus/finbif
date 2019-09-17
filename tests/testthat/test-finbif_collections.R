@@ -6,14 +6,25 @@ vcr::use_cassette(
     test_that(
       "returns valid data", {
 
-        expect_s3_class(finbif_collections(), "data.frame")
-        expect_s3_class(finbif_collections(TRUE), "data.frame")
-        expect_s3_class(finbif_collections(TRUE, FALSE), "data.frame")
-        expect_s3_class(finbif_collections(nmin = NA), "data.frame")
+        expect_s3_class(
+          finbif_collections(taxonomic_coverage == "Coleoptera"), "data.frame"
+        )
+        expect_s3_class(
+          finbif_collections(subcollections = FALSE, supercollections = TRUE),
+          "data.frame"
+        )
+        expect_s3_class(
+          finbif_collections(select = NA, nmin = NA), "data.frame"
+        )
 
       }
     )
 
   },
   preserve_exact_body_bytes = TRUE
+)
+
+
+test_that(
+  "returns errors appropriately", expect_condition(finbif_collections(1:50))
 )

@@ -201,9 +201,16 @@ Filter by reliability of taxon identification. Can be one or more of
 Other filters:
 \itemize{
 \item \code{keywords} Character vector. Filter by keywords.
-\item \code{collection} Character.
-\item \code{not_collection} Character.
-\item \code{subcollections} Logical.
+\item \code{collection} Character vector or \code{finbif_collections} data.frame.
+Filter by collection. If a character vector can refer to collection ID,
+collection name (in English, Finnish, or Swedish) or abbreviated name.
+Use \code{finbif_collections()} to see list of collections and metadata. Can
+also use the results of a call to \code{finbif_collections()} directly to
+filter records.
+\item \code{subcollections} Logical. If \code{TRUE} (default) include the subcollections of
+of the collections specified. If \code{FALSE} do not include subcollections.
+\item \code{not_collection} As for \code{collection}, but result will be the negation of
+the specified collections.
 \item \code{source} Character.
 \item \code{record_basis} Character.
 \item \code{super_record_basis} Character.

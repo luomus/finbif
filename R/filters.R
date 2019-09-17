@@ -184,9 +184,16 @@
 #' Other filters:
 #'
 #' - `keywords` Character vector. Filter by keywords.
-#' - `collection` Character.
-#' - `not_collection` Character.
-#' - `subcollections` Logical.
+#' - `collection` Character vector or `finbif_collections` data.frame.
+#'   Filter by collection. If a character vector can refer to collection ID,
+#'   collection name (in English, Finnish, or Swedish) or abbreviated name.
+#'   Use `finbif_collections()` to see list of collections and metadata. Can
+#'   also use the results of a call to `finbif_collections()` directly to
+#'   filter records.
+#' - `subcollections` Logical. If `TRUE` (default) include the subcollections of
+#'   of the collections specified. If `FALSE` do not include subcollections.
+#' - `not_collection` As for `collection`, but result will be the negation of
+#'   the specified collections.
 #' - `source` Character.
 #' - `record_basis` Character.
 #' - `super_record_basis` Character.

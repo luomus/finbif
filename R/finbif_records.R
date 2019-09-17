@@ -23,8 +23,10 @@
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
 
-finbif_records <- function(filter, select, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE, cache = TRUE) {
+finbif_records <- function(
+  filter, select, n = 10, page = 1, count_only = FALSE, quiet = FALSE,
+  cache = TRUE
+) {
 
   max_queries  <- 2000L
   max_size <- 300L
@@ -53,6 +55,33 @@ finbif_records <- function(filter, select, n = 10, page = 1,
 
         if (filter_names[finbif_filter_names[[i]], "translated_values"])
           filter[[i]] <- translate(filter[[i]], names(filter)[[i]])
+
+        if (grepl("^(not_){0,1}collection$", names(filter)[[i]])) {
+
+          if (inherits(filter[[i]], "finbif_collections")) {
+
+            filter[[i]] <- row.names(filter[[i]])
+
+          } else {
+
+            env <- list()
+
+            env[[names(filter)[[i]]]] <- finbif_collections(
+              select = NA, supercollections = TRUE, nmin = NA
+            )
+
+            for (
+              cl in c(
+                "id", "collection_name_en", "collection_name_fi",
+                "collection_name_fi", "collection_name_sv", "abbreviation"
+              )
+            )
+              class(env[[names(filter)[[i]]]][[cl]]) <- "translation"
+
+            filter[[i]] <- translate(filter[[i]], names(filter)[[i]], env)
+
+          }
+        }
 
         if (
           identical(filter_names[finbif_filter_names[[i]], "class"], "coords")
@@ -186,7 +215,7 @@ translate <- function(x, translation, pos = -1) {
 
     ind <- rep(NA_integer_, length(x))
     # multilevel filters have data.frames a level below
-    if (!is.data.frame(trsltn)) trsltn <- trsltn[[1]]
+    if (!is.data.frame(trsltn)) trsltn <- trsltn[[1L]]
     for (i in trsltn) {
       if (inherits(i, "translation")) {
         ind_ <- match(tolower(x), tolower(i))
@@ -196,9 +225,7 @@ translate <- function(x, translation, pos = -1) {
 
     if (anyNA(ind)) for (err in x[is.na(ind)])
       deferrable_error(
-        paste0(
-          "Invalid name in ", gsub("_", " ", translation), ": ", err
-        )
+        paste0("Invalid name in ", gsub("_", " ", translation), ": ", err)
       )
     row.names(trsltn)[ind]
 

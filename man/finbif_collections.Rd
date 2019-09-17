@@ -4,10 +4,15 @@
 \alias{finbif_collections}
 \title{FinBIF collections}
 \usage{
-finbif_collections(subcollections = FALSE, supercollections = TRUE,
-  nmin = 0)
+finbif_collections(filter, select, subcollections = TRUE,
+  supercollections = FALSE, nmin = 0)
 }
 \arguments{
+\item{filter}{Logical. Expression indicating elements or rows to keep:
+missing values are taken as false.}
+
+\item{select}{Expression. Indicates columns to select from the data frame.}
+
 \item{subcollections}{Logical. Return subcollection metadata of higher level
 collections.}
 
