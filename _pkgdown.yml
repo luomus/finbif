@@ -63,7 +63,7 @@ reference:
     contents:
       - caching
       - finbif_clear_cache
-  - title: "Misc""
+  - title: "Misc"
     desc: >
       Miscellaneous functions
     contents:
