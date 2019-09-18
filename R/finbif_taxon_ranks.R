@@ -9,4 +9,4 @@
 #' finbif_taxon_ranks()
 #' }
 #' @export
-finbif_taxon_ranks <- function() taxon_rank[["rank"]]
+finbif_taxon_ranks <- function() unclass(taxon_rank[["rank"]])
