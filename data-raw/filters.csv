@@ -35,7 +35,7 @@ sourceId,                              source,                        uri,      
 recordBasis,                           record_basis,                  factor,    TRUE,              ","
 superRecordBasis,                      superrecord_basis,             factor,    TRUE,              ","
 lifeStage,                             life_stage,                    factor,    TRUE,             ","
-sex,                                   sex,                           factor,    FALSE,             ","
+sex,                                   sex,                           factor,    TRUE,             ","
 invasiveControl,                       invasive_control,              factor,    FALSE,             ","
 invasiveControlled,                    invasive_controlled,           logical,   FALSE,             ","
 gatheringId,                           event_id,                      uri,       FALSE,             ","

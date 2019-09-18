@@ -227,7 +227,12 @@ Filter by superset of record basis. One or more of \code{"human_observation"},
 \item \code{life_stage} Character vector.
 Filter by organism life stage. Use \code{finbif_life_stages()} to see list of
 organism life stages.
-\item \code{sex} Character.
+\item \code{sex} Character vector.
+Filter by organism sex and sex-related category name or code. Use
+\code{finbif_sex_categories()} to see list of organism sexes and sex-related
+categories and codes. If \code{"male"} or \code{"female"} is specified then records returned
+will be those with sex specified as male or female respectively and those
+records where the corresponding \code{{male|female}_abundance > 1}.
 \item \code{invasive_control} Character.
 \item \code{invasive_controlled} Logical.
 \item \code{event_id} Character.
