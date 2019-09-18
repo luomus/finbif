@@ -12,9 +12,10 @@ reference:
       - finbif_request_token
   - title: "Collections"
     desc: >
-      Getting information on collections
+      Getting information on collections and data sources
     contents:
       - finbif_collections
+      - finbif_sources
   - title: "Taxonomy"
     desc: >
       Getting information on taxa

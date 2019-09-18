@@ -89,7 +89,8 @@
 #'   Filter by province. Use `finbif_provinces()` to see province names and
 #'   codes.
 #' - `municipality` Character vector.
-#'   Filter by country. Use `finbif_municipalities()` to see municipality names.
+#'   Filter by municipality. Use `finbif_municipalities()` to see municipality
+#'   names.
 #' - `bird_assoc_area` Character vector.
 #'   Filter by BirdLife Finland association area. Use `finbif_bird_assoc_area()`
 #'   to see association names and codes.
@@ -183,18 +184,23 @@
 #' @section Misc:
 #' Other filters:
 #'
-#' - `keywords` Character vector. Filter by keywords.
+#' - `keywords` Character vector.
+#'   Filter by keywords.
 #' - `collection` Character vector or `finbif_collections` data.frame.
 #'   Filter by collection. If a character vector can refer to collection ID,
 #'   collection name (in English, Finnish, or Swedish) or abbreviated name.
 #'   Use `finbif_collections()` to see list of collections and metadata. Can
 #'   also use the results of a call to `finbif_collections()` directly to
 #'   filter records.
-#' - `subcollections` Logical. If `TRUE` (default) include the subcollections of
-#'   of the collections specified. If `FALSE` do not include subcollections.
-#' - `not_collection` As for `collection`, but result will be the negation of
-#'   the specified collections.
-#' - `source` Character.
+#' - `subcollections` Logical.
+#'   If `TRUE` (default) include the subcollections of the collections
+#'   specified. If `FALSE` do not include subcollections.
+#' - `not_collection`  Character vector or `finbif_collections` data.frame.
+#'   As for `collection`, but result will be the negation of the specified
+#'   collections.
+#' - `source` Character vector.
+#'   Filter by information system data source. Use `finbif_sources()` to see
+#'   data source IDs names and descriptions.
 #' - `record_basis` Character.
 #' - `super_record_basis` Character.
 #' - `life_stage` Character.

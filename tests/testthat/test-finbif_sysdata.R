@@ -21,6 +21,8 @@ test_that(
 
     expect_s3_class(finbif_finnish_occurrence_status(), "data.frame")
 
+    expect_s3_class(finbif_sources(), "data.frame")
+
     expect_type(finbif_informal_groups(), "character")
 
     expect_type(finbif_informal_groups("Algae"), "character")

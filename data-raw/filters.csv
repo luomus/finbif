@@ -31,7 +31,7 @@ collectionId,                          collection,                    uri,      
 includeSubCollections,                 subcollections,                logical,   FALSE,             ","
 collectionIdNot,                       not_collection,                uri,       FALSE,             ","
 reliabilityOfCollection,               collection_reliability,        integer,   FALSE,             ","
-sourceId,                              source,                        uri,       FALSE,             ","
+sourceId,                              source,                        uri,       TRUE,              ","
 recordBasis,                           record_basis,                  factor,    FALSE,             ","
 superRecordBasis,                      super_record_basis,            factor,    FALSE,             ","
 lifeStage,                             life_stage,                    factor,    FALSE,             ","

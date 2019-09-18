@@ -97,7 +97,8 @@ codes (2 and 3 character) used in FinBIF.
 Filter by province. Use \code{finbif_provinces()} to see province names and
 codes.
 \item \code{municipality} Character vector.
-Filter by country. Use \code{finbif_municipalities()} to see municipality names.
+Filter by municipality. Use \code{finbif_municipalities()} to see municipality
+names.
 \item \code{bird_assoc_area} Character vector.
 Filter by BirdLife Finland association area. Use \code{finbif_bird_assoc_area()}
 to see association names and codes.
@@ -200,18 +201,23 @@ Filter by reliability of taxon identification. Can be one or more of
 
 Other filters:
 \itemize{
-\item \code{keywords} Character vector. Filter by keywords.
+\item \code{keywords} Character vector.
+Filter by keywords.
 \item \code{collection} Character vector or \code{finbif_collections} data.frame.
 Filter by collection. If a character vector can refer to collection ID,
 collection name (in English, Finnish, or Swedish) or abbreviated name.
 Use \code{finbif_collections()} to see list of collections and metadata. Can
 also use the results of a call to \code{finbif_collections()} directly to
 filter records.
-\item \code{subcollections} Logical. If \code{TRUE} (default) include the subcollections of
-of the collections specified. If \code{FALSE} do not include subcollections.
-\item \code{not_collection} As for \code{collection}, but result will be the negation of
-the specified collections.
-\item \code{source} Character.
+\item \code{subcollections} Logical.
+If \code{TRUE} (default) include the subcollections of the collections
+specified. If \code{FALSE} do not include subcollections.
+\item \code{not_collection}  Character vector or \code{finbif_collections} data.frame.
+As for \code{collection}, but result will be the negation of the specified
+collections.
+\item \code{source} Character vector.
+Filter by information system data source. Use \code{finbif_sources()} to see
+data source IDs names and descriptions.
 \item \code{record_basis} Character.
 \item \code{super_record_basis} Character.
 \item \code{life_stage} Character.
