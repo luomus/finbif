@@ -29,7 +29,7 @@ finbif_records <- function(
 ) {
 
   max_queries  <- 2000L
-  max_size <- 300L
+  max_size <- 1000L
   nmax <- max_queries * max_size
 
   defer_errors({
