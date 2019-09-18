@@ -63,3 +63,8 @@ reference:
     contents:
       - caching
       - finbif_clear_cache
+  - title: "Misc""
+    desc: >
+      Miscellaneous functions
+    contents:
+      - finbif_record_basis

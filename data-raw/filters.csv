@@ -32,7 +32,7 @@ includeSubCollections,                 subcollections,                logical,  
 collectionIdNot,                       not_collection,                uri,       FALSE,             ","
 reliabilityOfCollection,               collection_reliability,        integer,   FALSE,             ","
 sourceId,                              source,                        uri,       TRUE,              ","
-recordBasis,                           record_basis,                  factor,    FALSE,             ","
+recordBasis,                           record_basis,                  factor,    TRUE,              ","
 superRecordBasis,                      superrecord_basis,             factor,    TRUE,              ","
 lifeStage,                             life_stage,                    factor,    FALSE,             ","
 sex,                                   sex,                           factor,    FALSE,             ","
