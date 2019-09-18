@@ -30,6 +30,7 @@ usethis::use_data(
   source,
   quality_issues,
   taxon_reliability,
+  superrecord_basis,
   internal = TRUE,
   overwrite = TRUE
 )

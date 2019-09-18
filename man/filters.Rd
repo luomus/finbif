@@ -218,8 +218,14 @@ collections.
 \item \code{source} Character vector.
 Filter by information system data source. Use \code{finbif_sources()} to see
 data source IDs names and descriptions.
-\item \code{record_basis} Character.
-\item \code{super_record_basis} Character.
+\item \code{record_basis} Character vector.
+Filter by basis of record. One or more of
+\code{"human_observation_{unspecified|seen|heard|photo|indirect|handled|video|recorded_audio}"},
+\code{"machine_observation_{unspecified|video|audio|geologger|satelite_transmitter}"},
+or \code{"{preserved|living|fossil|subfossil|microbial}_specimen"},
+\item \code{superrecord_basis} Character vector.
+Filter by superset of record basis. One or more of \code{"human_observation"},
+\code{"machine_observation"}, or \code{"specimen"}.
 \item \code{life_stage} Character.
 \item \code{sex} Character.
 \item \code{invasive_control} Character.

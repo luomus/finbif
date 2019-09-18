@@ -201,8 +201,14 @@
 #' - `source` Character vector.
 #'   Filter by information system data source. Use `finbif_sources()` to see
 #'   data source IDs names and descriptions.
-#' - `record_basis` Character.
-#' - `super_record_basis` Character.
+#' - `record_basis` Character vector.
+#'   Filter by basis of record. One or more of
+#'   `"human_observation_{unspecified|seen|heard|photo|indirect|handled|video|recorded_audio}"`,
+#'   `"machine_observation_{unspecified|video|audio|geologger|satelite_transmitter}"`,
+#'    or `"{preserved|living|fossil|subfossil|microbial}_specimen"`,
+#' - `superrecord_basis` Character vector.
+#'   Filter by superset of record basis. One or more of `"human_observation"`,
+#'   `"machine_observation"`, or `"specimen"`.
 #' - `life_stage` Character.
 #' - `sex` Character.
 #' - `invasive_control` Character.

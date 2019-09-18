@@ -93,7 +93,7 @@ unit.reportedInformalTaxonGroup,                               reported_informal
 unit.reportedTaxonConfidence,                                  reported_taxon_confidence,                  FALSE,        FALSE,        character,  factor,     TRUE
 unit.reportedTaxonId,                                          reported_taxon_id,                          FALSE,        FALSE,        character,  uri,        TRUE
 unit.sex,                                                      sex,                                        FALSE,        FALSE,        character,  factor,     TRUE
-unit.superRecordBasis,                                         super_record_basis,                         FALSE,        FALSE,        character,  factor,     TRUE
+unit.superRecordBasis,                                         superrecord_basis,                          FALSE,        FALSE,        character,  factor,     TRUE
 unit.taxonVerbatim,                                            taxon_verbatim,                             FALSE,        FALSE,        character,  character,  TRUE
 unit.typeSpecimen,                                             type_specimen,                              FALSE,        FALSE,        logical,    logical,    TRUE
 document.conservationReasonSecured,                            conservation_reason_secured,                FALSE,        FALSE,        logical,    logical,    TRUE

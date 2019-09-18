@@ -33,7 +33,7 @@ collectionIdNot,                       not_collection,                uri,      
 reliabilityOfCollection,               collection_reliability,        integer,   FALSE,             ","
 sourceId,                              source,                        uri,       TRUE,              ","
 recordBasis,                           record_basis,                  factor,    FALSE,             ","
-superRecordBasis,                      super_record_basis,            factor,    FALSE,             ","
+superRecordBasis,                      superrecord_basis,             factor,    TRUE,              ","
 lifeStage,                             life_stage,                    factor,    FALSE,             ","
 sex,                                   sex,                           factor,    FALSE,             ","
 invasiveControl,                       invasive_control,              factor,    FALSE,             ","
