@@ -25,6 +25,8 @@ test_that(
 
     expect_s3_class(finbif_record_basis(), "data.frame")
 
+    expect_type(finbif_life_stages(), "character")
+
     expect_type(finbif_informal_groups(), "character")
 
     expect_type(finbif_informal_groups("Algae"), "character")

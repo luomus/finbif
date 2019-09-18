@@ -34,7 +34,7 @@ reliabilityOfCollection,               collection_reliability,        integer,  
 sourceId,                              source,                        uri,       TRUE,              ","
 recordBasis,                           record_basis,                  factor,    TRUE,              ","
 superRecordBasis,                      superrecord_basis,             factor,    TRUE,              ","
-lifeStage,                             life_stage,                    factor,    FALSE,             ","
+lifeStage,                             life_stage,                    factor,    TRUE,             ","
 sex,                                   sex,                           factor,    FALSE,             ","
 invasiveControl,                       invasive_control,              factor,    FALSE,             ","
 invasiveControlled,                    invasive_controlled,           logical,   FALSE,             ","

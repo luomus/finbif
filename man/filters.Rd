@@ -224,7 +224,9 @@ record bases.
 \item \code{superrecord_basis} Character vector.
 Filter by superset of record basis. One or more of \code{"human_observation"},
 \code{"machine_observation"}, or \code{"specimen"}.
-\item \code{life_stage} Character.
+\item \code{life_stage} Character vector.
+Filter by organism life stage. Use \code{finbif_life_stages()} to see list of
+organism life stages.
 \item \code{sex} Character.
 \item \code{invasive_control} Character.
 \item \code{invasive_controlled} Logical.

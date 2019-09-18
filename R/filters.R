@@ -207,7 +207,9 @@
 #' - `superrecord_basis` Character vector.
 #'   Filter by superset of record basis. One or more of `"human_observation"`,
 #'   `"machine_observation"`, or `"specimen"`.
-#' - `life_stage` Character.
+#' - `life_stage` Character vector.
+#'   Filter by organism life stage. Use `finbif_life_stages()` to see list of
+#'   organism life stages.
 #' - `sex` Character.
 #' - `invasive_control` Character.
 #' - `invasive_controlled` Logical.
