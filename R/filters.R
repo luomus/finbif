@@ -213,11 +213,9 @@
 #' - `sex` Character vector.
 #'   Filter by organism sex and sex-related category name or code. Use
 #'   `finbif_sex_categories()` to see list of organism sexes and sex-related
-#'   categories and codes. If `"male"` or `"female"` is specified then records returned
-#'   will be those with sex specified as male or female respectively and those
-#'   records where the corresponding `{male|female}_abundance > 1`.
-#' - `invasive_control` Character.
-#' - `invasive_controlled` Logical.
+#'   categories and codes. If `"male"` or `"female"` is specified then records
+#'   returned will be those with sex specified as male or female respectively
+#'   and those records where the corresponding `{male|female}_abundance > 1`.
 #' - `event_id` Character.
 #' - `document_id` Character.
 #' - `record_id` Character.

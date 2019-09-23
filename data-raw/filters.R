@@ -9,6 +9,7 @@ filters <- names(
 
 stopifnot(identical(sort(row.names(filter_names)), sort(filters)))
 
+# Some filter have been deprecated
 filter_names <- filter_names[-match("namedPlaceId", rownames(filter_names)), ]
 
 class(filter_names[["translated_filter"]]) <- "translation"
