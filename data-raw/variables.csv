@@ -96,6 +96,8 @@ unit.sex,                                                      sex,             
 unit.superRecordBasis,                                         superrecord_basis,                          FALSE,        FALSE,        character,  factor,     TRUE
 unit.taxonVerbatim,                                            taxon_verbatim,                             FALSE,        FALSE,        character,  character,  TRUE
 unit.typeSpecimen,                                             type_specimen,                              FALSE,        FALSE,        logical,    logical,    TRUE
+unit.unitOrder,                                                record_order,                               FALSE,        FALSE,        integer,    integer,    TRUE
+unit.wild,                                                     wild_status,                                FALSE,        FALSE,        character,  factor,     TRUE
 document.conservationReasonSecured,                            conservation_reason_secured,                FALSE,        FALSE,        logical,    logical,    TRUE
 document.createdDate,                                          date_created,                               FALSE,        FALSE,        character,  date,       TRUE
 document.customReasonSecured,                                  custom_reason_secured,                      FALSE,        FALSE,        logical,    logical,    TRUE
@@ -109,6 +111,7 @@ document.facts.value,                                          document_fact_val
 document.firstLoadDate,                                        first_load_date,                            FALSE,        FALSE,        character,  date,       TRUE
 document.formId,                                               form_id,                                    FALSE,        FALSE,        character,  uri,        TRUE
 document.keywords,                                             keywords,                                   FALSE,        FALSE,        character,  character,  FALSE
+document.licenseId,                                            license,                                    FALSE,        FALSE,        character,  uri,        FALSE
 document.linkings.editors.fullName,                            editor_name,                                FALSE,        FALSE,        character,  character,  FALSE
 document.linkings.editors.id,                                  editor_id,                                  FALSE,        FALSE,        character,  uri,        FALSE
 document.linkings.editors.userId,                              editor_user_id,                             FALSE,        FALSE,        character,  character,  FALSE
@@ -199,6 +202,7 @@ gathering.facts.decimalValue,                                  event_fact_decima
 gathering.facts.fact,                                          event_fact,                                 FALSE,        FALSE,        character,  character,  FALSE
 gathering.facts.integerValue,                                  event_fact_integer,                         FALSE,        FALSE,        integer,    integer,    FALSE
 gathering.facts.value,                                         event_fact_value,                           FALSE,        FALSE,        character,  character,  FALSE
+gathering.gatheringOrder,                                      event_order,                                FALSE,        FALSE,        integer,    integer,    FALSE
 gathering.higherGeography,                                     higher_geography,                           FALSE,        FALSE,        character,  character,  TRUE
 gathering.interpretations.biogeographicalProvince,             province_id,                                FALSE,        FALSE,        character,  uri,        TRUE
 gathering.interpretations.biogeographicalProvinces,            province_ids,                               FALSE,        FALSE,        character,  uri,        FALSE
