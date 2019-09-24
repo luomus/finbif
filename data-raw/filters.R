@@ -9,7 +9,10 @@ filters <- names(
 
 stopifnot(identical(sort(row.names(filter_names)), sort(filters)))
 
-# Some filter have been deprecated
-filter_names <- filter_names[-match("namedPlaceId", rownames(filter_names)), ]
+# Some filter have been deprecated or are not available in the public API
+unused_filters <-
+  c("namedPlaceId", "editorId", "editorOrObserverId", "observerId")
+
+filter_names <- filter_names[-match(unused_filters, rownames(filter_names)), ]
 
 class(filter_names[["translated_filter"]]) <- "translation"

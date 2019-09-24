@@ -234,23 +234,40 @@ categories and codes. If \code{"male"} or \code{"female"} is specified then reco
 returned will be those with sex specified as male or female respectively
 and those records where the corresponding \code{{male|female}_abundance > 1}.
 \item \code{event_id} Character.
+Filter by event (list of records, etc.)ID.
 \item \code{document_id} Character.
+Filter by the document (collection of events) ID of occurrences.
 \item \code{record_id} Character.
 \item \code{individual_id} Character.
+Filter by individual (an individual organism) ID.
 \item \code{abundance_min} Integer.
+Filter by the minimum number of individual organisms in the record.
 \item \code{abundance_max} Integer.
+Filter by the maximum number of individual organisms in the record.
 \item \code{type_specimen} Logical.
+Filter by whether or not the record is a type specimen.
 \item \code{wild_status} Character.
+Filter by "wildness" status of records. One or more of \code{"wild"},
+\code{"non_wild"} or \code{"unknown"}. Default is \code{c("wild", "unknown")}.
 \item \code{is_breeding_location} Logical.
+Filter by whether or not the occurrence is recorded at a known breeding
+location.
 \item \code{has_document_media} Logical.
+Filter by whether there is media (images, video, audio, etc.) associated
+with the records' document.
 \item \code{has_event_media} Logical.
+Filter by whether there is media (images, video, audio, etc.) associated
+with the records' event.
 \item \code{has_record_media} Logical.
+Filter by whether there is media (images, video, audio, etc.) associated
+with the record.
 \item \code{has_media} Logical.
-\item \code{editor_id} Character.
-\item \code{observer_id} Character.
-\item \code{editor_or_observer_id} Character.
+Filter by whether there is any media (images, video, audio, etc.)
+associated with the record, its document or its event.
 \item \code{event_observer_name} Character.
-\item \code{event_observer_id} Character.
+Filter by observer name.
+\item \code{event_observer_id} Integer.
+Filter by observer ID.
 \item \code{secure_reason} Character.
 \item \code{secure_level} Character.
 \item \code{secure} Logical.
