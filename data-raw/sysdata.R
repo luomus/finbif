@@ -13,6 +13,7 @@ source("data-raw/sources.R")
 source("data-raw/record_basis.R")
 source("data-raw/life_stage.R")
 source("data-raw/sex.R")
+source("data-raw/restriction.R")
 source("data-raw/misc.R")
 usethis::use_data(
   var_names,
@@ -35,6 +36,8 @@ usethis::use_data(
   superrecord_basis,
   life_stage,
   sex,
+  restriction_reason,
+  restriction_level,
   quality_issues,
   taxon_reliability,
   internal = TRUE,

@@ -268,9 +268,17 @@ associated with the record, its document or its event.
 Filter by observer name.
 \item \code{event_observer_id} Integer.
 Filter by observer ID.
-\item \code{secure_reason} Character.
-\item \code{secure_level} Character.
-\item \code{secure} Logical.
+\item \code{restriction_reason} Character vector.
+Filter by reason data has security restrictions. See
+\code{finbif_restriction_reasons()} for a list of reasons data may have security
+restrictions.
+\item \code{restriction_level} Character vector.
+Filter by data restriction level. See
+\code{finbif_restriction_levels()} for a list of the levels of data
+restrictions.
+\item \code{restricted} Logical.
+Filter records by whether any data restrictions are in place (\code{TRUE}) or
+not (\code{FALSE}).
 \item \code{annotated} Logical.
 \item \code{unidentified} Logical.
 \item \code{taxon_census} Character.

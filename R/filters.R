@@ -251,9 +251,17 @@
 #'   Filter by observer name.
 #' - `event_observer_id` Integer.
 #'   Filter by observer ID.
-#' - `secure_reason` Character.
-#' - `secure_level` Character.
-#' - `secure` Logical.
+#' - `restriction_reason` Character vector.
+#'   Filter by reason data has security restrictions. See
+#'   `finbif_restriction_reasons()` for a list of reasons data may have security
+#'   restrictions.
+#' - `restriction_level` Character vector.
+#'   Filter by data restriction level. See
+#'   `finbif_restriction_levels()` for a list of the levels of data
+#'   restrictions.
+#' - `restricted` Logical.
+#'   Filter records by whether any data restrictions are in place (`TRUE`) or
+#'   not (`FALSE`).
 #' - `annotated` Logical.
 #' - `unidentified` Logical.
 #' - `taxon_census` Character.

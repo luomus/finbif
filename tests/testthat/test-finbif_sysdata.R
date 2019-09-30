@@ -27,6 +27,10 @@ test_that(
 
     expect_s3_class(finbif_sex_categories(), "data.frame")
 
+    expect_s3_class(finbif_restriction_reasons(), "data.frame")
+
+    expect_s3_class(finbif_restriction_levels(), "data.frame")
+
     expect_type(finbif_life_stages(), "character")
 
     expect_type(finbif_informal_groups(), "character")
