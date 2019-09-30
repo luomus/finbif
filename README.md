@@ -53,7 +53,7 @@ Sys.setenv(
  for details). 
 
 ## Usage
-Download occurrence data from finbif.
+Download occurrence data from FinBIF.
 
 ```r
 finbif_occurrence("Cygnus cygnus", n = 100)
