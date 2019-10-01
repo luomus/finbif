@@ -2,7 +2,6 @@
 #' @importFrom digest digest
 #' @importFrom httr accept_json content GET http_type user_agent status_code
 #' @importFrom jsonlite fromJSON
-#' @importFrom urltools param_remove
 
 finbif_api_get <- function(path, query, cache) {
   finbif_access_token <- finbif_token()
@@ -36,7 +35,8 @@ finbif_api_get <- function(path, query, cache) {
     query = c(query, list(access_token = finbif_access_token))
   )
 
-  notoken <- urltools::param_remove(resp[["url"]], "access_token")
+  notoken <-
+    sub(sprintf("&access_token=%s", finbif_access_token), "", resp[["url"]])
 
   resp[["request"]][["url"]] <- resp[["url"]] <- notoken
 
