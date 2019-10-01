@@ -280,11 +280,19 @@ restrictions.
 Filter records by whether any data restrictions are in place (\code{TRUE}) or
 not (\code{FALSE}).
 \item \code{annotated} Logical.
+Filter records that do (\code{TRUE}) or do not (\code{FALSE}) have annotations.
 \item \code{unidentified} Logical.
-\item \code{taxon_census} Character.
-\item \code{record_fact} List.
-\item \code{event_fact} List.
-\item \code{document_fact} List.
+Filter by whether the record has been identified to species level and
+linked to the FinBIF taxon database (\code{FALSE}) or has not been identified to
+species level reliably and linked to the taxon database (\code{TRUE}).
+\item \code{taxon_census} Character vector.
+Return records belonging to surveys or censuses of a given taxon or
+taxonomic group. Specify the taxonomic group with a FinBIF taxon ID. Use
+\code{finbif_check_taxa()} to find taxon IDs.
+\item \code{{record|event|document}_fact} Character vector.
+Filter by record, event or document facts. Facts are key-value pairs of the
+form \code{"<fact>=<value>"}. Value can be omitted in which case all records
+with any value recorded for the specified fact will be returned.
 }
 }
 

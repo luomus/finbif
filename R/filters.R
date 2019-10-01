@@ -263,11 +263,19 @@
 #'   Filter records by whether any data restrictions are in place (`TRUE`) or
 #'   not (`FALSE`).
 #' - `annotated` Logical.
+#'   Filter records that do (`TRUE`) or do not (`FALSE`) have annotations.
 #' - `unidentified` Logical.
-#' - `taxon_census` Character.
-#' - `record_fact` List.
-#' - `event_fact` List.
-#' - `document_fact` List.
+#'   Filter by whether the record has been identified to species level and
+#'   linked to the FinBIF taxon database (`FALSE`) or has not been identified to
+#'   species level reliably and linked to the taxon database (`TRUE`).
+#' - `taxon_census` Character vector.
+#'   Return records belonging to surveys or censuses of a given taxon or
+#'   taxonomic group. Specify the taxonomic group with a FinBIF taxon ID. Use
+#'   `finbif_check_taxa()` to find taxon IDs.
+#' - `{record|event|document}_fact` Character vector.
+#'   Filter by record, event or document facts. Facts are key-value pairs of the
+#'   form `"<fact>=<value>"`. Value can be omitted in which case all records
+#'   with any value recorded for the specified fact will be returned.
 #'
 #' @name filters
 NULL
