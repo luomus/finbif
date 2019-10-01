@@ -32,6 +32,7 @@ reference:
       - filters
       - finbif_occurrence
       - finbif_records
+      - variables
   - title: "Locations"
     desc: >
       Getting information on regions and locations
