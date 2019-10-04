@@ -7,8 +7,14 @@
 #'
 #' - `scientific_name` Character.
 #'   Scientific name of taxon.
-#' - `taxon_rank`
-#' - `abundance`
+#' - `taxon_rank` Character.
+#'   Taxonomic rank of the taxon (in the form of a URI).
+#' - `abundance` Integer.
+#'   Number of individuals recorded or inferred from the record. Note that many
+#'   records with `abundance = 1` only indicate the record is of one individual
+#'   and may not necessarily imply that this was the abundance at that specified
+#'   place and time (e.g., a preserved museum specimen consisting of a single
+#'   individual).
 #' - `abundance_string`
 #' - `country`
 #' - `province`

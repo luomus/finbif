@@ -12,8 +12,14 @@ Other variables:
 \itemize{
 \item \code{scientific_name} Character.
 Scientific name of taxon.
-\item \code{taxon_rank}
-\item \code{abundance}
+\item \code{taxon_rank} Character.
+Taxonomic rank of the taxon (in the form of a URI).
+\item \code{abundance} Integer.
+Number of individuals recorded or inferred from the record. Note that many
+records with \code{abundance = 1} only indicate the record is of one individual
+and may not necessarily imply that this was the abundance at that specified
+place and time (e.g., a preserved museum specimen consisting of a single
+individual).
 \item \code{abundance_string}
 \item \code{country}
 \item \code{province}
