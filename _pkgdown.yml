@@ -64,6 +64,12 @@ reference:
     contents:
       - caching
       - finbif_clear_cache
+  - title: "Mapping Utilities"
+    desc: >
+      Functions for mapping FinBIF data
+    contents:
+      - hist_xy
+      - breaks_xy
   - title: "Misc"
     desc: >
       Miscellaneous functions
