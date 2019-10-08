@@ -149,7 +149,8 @@ finbif_records <- function(
   resp <- list(
     structure(
       finbif_api_get(path, query, cache),
-      class = c("finbif_records", "finbif_api")
+      class = c("finbif_records", "finbif_api"),
+      select = unique(select)
     )
   )
 
@@ -186,7 +187,8 @@ finbif_records <- function(
 
     resp[[i]] <- structure(
       finbif_api_get(path, query, cache),
-      class = c("finbif_records", "finbif_api")
+      class = c("finbif_records", "finbif_api"),
+      select = unique(select)
     )
     query[["page"]] <- query[["page"]] + 1L
 
