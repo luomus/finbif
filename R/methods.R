@@ -18,58 +18,32 @@
 #' @export
 as.data.frame.finbif_records <- function(x, ...) {
 
-  df <- lapply(
+  cols <- attr(x, "select")
+  url  <- x[["response"]][["url"]]
+  time <- x[["response"]][["date"]]
 
-    x[["content"]][["results"]],
+  x <- x[["content"]][["results"]]
 
-    function(x) {
-
-      dfx <- as.data.frame(x, stringsAsFactors = FALSE)
-      nms <- gsub("\\d*$", "", names(unlist(x)))
-      colnames(dfx) <- nms
-      unms <- unique(nms)
-      ans <- dfx[unms]
-
-      # Some vars return values that are not atomic (e.g., multiple observers)
-      for (nm in unms) {
-        if (!var_names[nm, "unique"]) {
-          el <- unlist(dfx[nms == nm])
-          ans[[nm]] <- NULL
-          ans[[nm]][[1L]] <- unname(el)
-        }
-      }
-
-      ans
-
-    }
-
-  )
-
-  # Sometimes there are, and are supposed to be, duplicate rows
-  df <- lapply(
-    seq_along(df),
-    function(x) {
-      df[[x]][["ind"]] <- x
-      df[[x]]
+  lst <- lapply(
+    cols,
+    function(col) {
+      type <- var_names[col, "type"]
+      type_na <- methods::as(NA, type)
+      uniq <- var_names[col, "unique"]
+      el_names <- strsplit(col, "\\.")[[1L]]
+      if (uniq) return(vapply(x, get_el_recurse, type_na, el_names, type))
+      ans <- lapply(x, get_el_recurse, el_names, type)
+      lapply(ans, unlist)
     }
   )
-  df <- reduce_merge(df)
-  df[["ind"]] <- NULL
 
-  # If list column is missing data for a record it may be NULL
-  for (col in names(df))
-   if (!var_names[col, "unique"])
-     df[[col]] <- ifelse(
-       vapply(df[[col]], is.null, logical(1)),
-       list(methods::as(NA, var_names[col, "type"])),
-       as.list(df[[col]])
-     )
+  names(lst) <- cols
+  cols_split <- split(cols, var_names[cols, "unique"])
+  df <- as.data.frame(lst[cols_split[["TRUE"]]], stringsAsFactors = FALSE)
 
-  structure(
-    df,
-    url = x[["response"]][["url"]],
-    time = x[["response"]][["date"]]
-  )
+  df[cols_split[["FALSE"]]] <- lst[cols_split[["FALSE"]]]
+
+  structure(df[cols], url = url, time = time)
 
 }
 
@@ -78,23 +52,11 @@ as.data.frame.finbif_records <- function(x, ...) {
 as.data.frame.finbif_records_list <- function(x, ...) {
 
   df <- lapply(x, as.data.frame)
-  # Sometimes there are duplicate rows
 
-  df <- lapply(
-    seq_along(df),
-    function(x) {
-      # Sometimes no data are returned and df has zero rows
-      df[[x]][["ind"]] <- if (length(df[[x]])) paste(x, row.names(df[[x]]))
-      df[[x]]
-    }
-  )
-
-  # Attributes would be lost after merging
   url  <- do.call(c, lapply(df, attr, "url", TRUE))
   time <- do.call(c, lapply(df, attr, "time", TRUE))
 
-  df <- reduce_merge(df)
-  df[["ind"]] <- NULL
+  df <- do.call(rbind, df)
 
   structure(df, url = url, time = time)
 

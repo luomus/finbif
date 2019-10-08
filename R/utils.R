@@ -15,6 +15,14 @@ to_sentence_case <- function(string) {
 get_next_lowest_factor <-
   function(x, y) ifelse(x %% y, get_next_lowest_factor(x, y - 1L), y)
 
+#' @noRd
+#' @importFrom methods as
+get_el_recurse <- function(obj, nms, type) {
+  if (length(nms) < 1) return(if(is.null(obj)) methods::as(NA, type) else obj)
+  obj <- getElement(obj, nms[[1L]])
+  get_el_recurse(obj, nms[-1L], type)
+}
+
 # errors -----------------------------------------------------------------------
 # modified from https://github.com/reside-ic/defer/blob/master/R/defer.R
 #' @noRd

@@ -92,22 +92,12 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   url  <- attr(df, "url", TRUE)
   time <- attr(df, "time", TRUE)
 
-  select <- attr(records, "select")
-  missing_vars <- setdiff(select, names(df))
-
-  # Sometimes no data are returned.
-  for (i in missing_vars) df[[i]] <- if (nrow(df)) NA else logical(0L)
-  df <- df[select]
-
-  # When any two datasets are requested depending on the data they contain
+  # When any two datasets are requested, depending on the data they contain,
   # they may not have the same column classes. This will make them hard to
   # combine even if they apparently have the same columns.
-  for (col in names(df)) {
-    if (!is.list(df[[col]])) {
+  for (col in names(df))
+    if (!is.list(df[[col]]))
       df[[col]] <- methods::as(df[[col]], var_names[col, "type"])
-      if (!var_names[col, "unique"]) df[[col]] <- methods::as(df[[col]], "list")
-    }
-  }
 
   names(df) <- var_names[names(df), "translated_var"]
 
