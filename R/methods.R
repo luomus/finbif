@@ -144,9 +144,9 @@ print.finbif_occ <- function(x, ...) {
   # convey useful information
   for (i in names(df)) {
     class <- var_names[var_names[["translated_var"]] == i, "class"]
-    if (class == "uri") {
+    # Variables may not necessarily be in the var_names object
+    if (length(class) && class == "uri")
       df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/", "", df[[i]])
-    }
   }
 
   print.data.frame(df)
