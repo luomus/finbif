@@ -38,8 +38,10 @@ finbif_collections <- function(
   )
 
   row.names(collections) <- collections[["id"]]
-
-  parent_collections <- row.names(collections)[collections[["has_children"]]]
+  # Sometimes collections dont have a "has_children" field
+  ind <- collections[["has_children"]]
+  ind <- ind & !is.na(ind)
+  parent_collections <- row.names(collections)[ind]
 
   for (collection in parent_collections)
     collections[collection, "count"] <- sum(
