@@ -173,7 +173,7 @@ finbif_records <- function(
   while (multipage) {
 
     Sys.sleep(sleep)
-    utils::setTxtProgressBar(pb, i)
+    if (!quiet) utils::setTxtProgressBar(pb, i)
     i <- i + 1L
 
     if (query[["page"]] > n_pages) {
