@@ -21,7 +21,6 @@ Taxonomic rank of the taxon (in the form of a URI).
 \item \code{orig_taxon_finnish}
 \item \code{orig_taxon_id}
 \item \code{orig_informal_groups}
-\item \code{orig_qname}
 \item \code{orig_taxon_scientific_name}
 \item \code{orig_scientific_name_author}
 \item \code{orig_scientific_display_name}
@@ -32,7 +31,6 @@ Taxonomic rank of the taxon (in the form of a URI).
 \item \code{taxon_finnish}
 \item \code{taxon_id}
 \item \code{informal_groups}
-\item \code{qname}
 \item \code{scientific_name_author}
 \item \code{scientific_display_name}
 \item \code{vernacular_name}
@@ -71,15 +69,6 @@ Variables related to the location of record include:
 \item \code{lat_wgs84}
 \item \code{lon_wgs84}
 \item \code{wkt_wgs84}
-\item \code{bird_assoc_area}
-\item \code{bird_assoc_area_id}
-\item \code{location_collection_id}
-\item \code{location_id}
-\item \code{location_municipality}
-\item \code{location_municipality_id}
-\item \code{location_name}
-\item \code{location_lat_kkj}
-\item \code{location_lon_kkj}
 \item \code{location_id}
 \item \code{line_length_m}
 \item \code{area_m2}
@@ -271,9 +260,9 @@ Variables related to record identifiers include:
 Other variables:
 \itemize{
 \item \code{annotation_count}
-\item \code{annotation_person}
+\item \code{annotation_person_id}
 \item \code{annotation_person_name}
-\item \code{annotation_system}
+\item \code{annotation_system_id}
 \item \code{annotation_system_name}
 \item \code{annotation_class}
 \item \code{annotation_created}
@@ -318,6 +307,36 @@ Other variables:
 \item \code{taxon_cenus_id}
 \item \code{taxon_census_type}
 \item \code{team}
+\item \code{document_annotation_person_id}
+\item \code{document_annotation_person_name}
+\item \code{document_annotation_system_id}
+\item \code{document_annotation_system_name}
+\item \code{document_annotation_class}
+\item \code{document_annotation_created}
+\item \code{document_annotation_id}
+\item \code{document_annotation_invasive_control_effectiveness}
+\item \code{document_annotation_notes}
+\item \code{document_annotation_opinion}
+\item \code{document_annotation_root_id}
+\item \code{document_annotation_target_id}
+\item \code{document_annotation_type}
+\item \code{annotations_root_id}
+\item \code{annotations_target_id}
+\item \code{keywords}
+\item \code{sample_count}
+\item \code{sample_collection_id}
+\item \code{sample_fact_decimal}
+\item \code{sample_fact_content}
+\item \code{sample_fact_integer}
+\item \code{sample_fact_value}
+\item \code{sample_keywords}
+\item \code{sample_multiple}
+\item \code{sample_notes}
+\item \code{sample_quality}
+\item \code{sample_id}
+\item \code{sample_order}
+\item \code{sample_status}
+\item \code{samples_type}
 }
 }
 
