@@ -100,6 +100,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "ows4R",
+      "name": "ows4R",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ows4R"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
       "provider": {

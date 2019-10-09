@@ -43,3 +43,6 @@ usethis::use_data(
   internal = TRUE,
   overwrite = TRUE
 )
+
+# exported data
+source("data-raw/finland_map.R")

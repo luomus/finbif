@@ -68,6 +68,7 @@ reference:
     desc: >
       Functions for mapping FinBIF data
     contents:
+      - finland_map
       - hist_xy
       - breaks_xy
   - title: "Misc"

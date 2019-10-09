@@ -43,6 +43,7 @@ Suggests:
     ISOcodes,
     knitr,
     rmarkdown,
+    ows4R,
     sf,
     stats,
     testthat (>= 2.1.0),
