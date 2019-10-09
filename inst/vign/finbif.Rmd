@@ -146,7 +146,7 @@ with(
     image(density,
           asp    = 2.4,
           breaks = 2^seq(0, 12), # breakpoints for the gridcell colours
-          col = hcl.colors(12, rev = TRUE),
+          col    = hcl.colors(12, rev = TRUE),
           xlab   = "Longitude",
           ylab   = "Latitude",
           panel.first = grid())
