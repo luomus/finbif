@@ -131,19 +131,19 @@ the `finbif_occurrence()` function.
 ```r
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
-#> Records available: 54828
+#> Records available: 55488
 #> A data.frame [100 x 30]
 #>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1    Cygnus cygnus         1  60.50999  23.70616 2019-08-17 21:00:00
-#> 2    Cygnus cygnus         1  60.56745  21.57191 2019-06-29 21:00:00
-#> 3    Cygnus cygnus         1  61.32291  28.56818 2019-08-10 06:23:00
-#> 4    Cygnus cygnus         1  62.56744  26.35088 2019-08-06 21:00:00
-#> 5    Cygnus cygnus         1  61.32290  28.56811 2019-05-09 08:30:00
-#> 6    Cygnus cygnus         1  61.32294  28.56868 2019-05-10 04:45:00
-#> 7    Cygnus cygnus         1  61.07692  21.49222 2019-05-16 08:25:00
-#> 8    Cygnus cygnus         1  62.25243  25.70933 2019-05-15 21:00:00
-#> 9    Cygnus cygnus         1  60.83907  21.25772 2019-05-16 20:00:00
-#> 10   Cygnus cygnus         1  61.12486  21.54164 2019-05-21 06:30:00
+#> 1    Cygnus cygnus         1  61.07692  21.49222 2019-10-09 05:50:00
+#> 2    Cygnus cygnus         3  62.30263  24.52289 2019-10-09 04:45:00
+#> 3    Cygnus cygnus         2  60.95615  21.68894 2019-10-08 06:07:00
+#> 4    Cygnus cygnus         2  60.98465  21.70309 2019-10-08 05:59:00
+#> 5    Cygnus cygnus         9  62.22049  24.59103 2019-10-08 04:54:00
+#> 6    Cygnus cygnus         5  60.95401  26.09615 2019-09-29 21:00:00
+#> 7    Cygnus cygnus         1  60.45848  22.37712 2019-09-28 21:00:00
+#> 8    Cygnus cygnus         3  61.32291  28.56818 2019-09-29 00:00:00
+#> 9    Cygnus cygnus         2  60.56745  21.57187 2019-09-28 21:00:00
+#> 10   Cygnus cygnus         3  61.32291  28.56818 2019-09-27 07:46:00
 #> ...with 90 more records and 25 more variables:
 #> taxon_rank, country, province, municipality, date_start, date_end,
 #> hour_start, hour_end, minute_start, minute_end, record_id,
@@ -163,19 +163,19 @@ finbif_occurrence(
   filter = list(coordinate_accuracy_max = 100)
 )
 #> Records downloaded: 10
-#> Records available: 11175
+#> Records available: 11273
 #> A data.frame [10 x 30]
 #>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1    Cygnus cygnus         1  60.50999  23.70616 2019-08-17 21:00:00
-#> 2      Cygnus olor         2  60.42794  22.20052 2019-08-03 21:00:00
-#> 3      Cygnus olor         2  60.42794  22.20052 2019-08-03 21:00:00
-#> 4    Cygnus cygnus         2  60.83577  21.25200 2019-08-06 21:00:00
-#> 5      Cygnus olor         2  60.42794  22.20052 2019-08-12 21:00:00
-#> 6      Cygnus olor         2  60.42794  22.20052 2019-08-12 21:00:00
-#> 7    Cygnus cygnus         2  60.91596  22.09577 2019-08-17 10:30:00
-#> 8    Cygnus cygnus         3  60.83577  21.25200 2019-08-17 21:00:00
-#> 9      Cygnus olor         4  60.56783  21.57229 2019-07-18 21:00:00
-#> 10     Cygnus olor        10  60.56783  21.57229 2019-07-18 21:00:00
+#> 1      Cygnus olor         6  61.07692  21.49222 2019-10-09 05:50:00
+#> 2    Cygnus cygnus         1  61.07692  21.49222 2019-10-09 05:50:00
+#> 3    Cygnus cygnus         2  60.95615  21.68894 2019-10-08 06:07:00
+#> 4    Cygnus cygnus         2  60.98465  21.70309 2019-10-08 05:59:00
+#> 5      Cygnus olor         2  60.42794  22.20052 2019-09-30 21:00:00
+#> 6      Cygnus olor         4  60.42794  22.20052 2019-09-30 21:00:00
+#> 7    Cygnus cygnus         5  60.95401  26.09615 2019-09-29 21:00:00
+#> 8    Cygnus cygnus         1  60.45848  22.37712 2019-09-28 21:00:00
+#> 9      Cygnus olor         5  60.56745  21.57187 2019-09-28 21:00:00
+#> 10   Cygnus cygnus         2  60.56745  21.57187 2019-09-28 21:00:00
 #> ...with 0 more records and 25 more variables:
 #> taxon_rank, country, province, municipality, date_start, date_end,
 #> hour_start, hour_end, minute_start, minute_end, record_id,
@@ -187,6 +187,60 @@ finbif_occurrence(
 
 See `?filters` and `vignette("filtering")` for more details on filtering FinBIF
 records.
+
+## Plotting occurrence data
+The `finbif` package has a number of inbuilt functions for plotting (see e.g.,
+`breaks_xy()` and `hist_xy()`). There is also an inbuilt dataset that can be
+used to plot the border of Finland (`?finland_map`). Together these utilities
+can be used to plot occurrences after they have been downloaded from FinBIF. For
+example, the following can be used to plot the density of Eurasian Jay
+occurrences from Finland.
+
+```r
+# Download all the occurrences of Eurasian Jay in Finland
+# that have coordinates accurate to at least 100m
+jays <- finbif_occurrence(
+  taxa   = "Eurasian Jay",
+  filter = c(
+    coordinate_accuracy_max = 100,
+    country                 = "Finland"
+  ),
+  n      = 2e4,
+  quiet  = TRUE
+)
+
+# Compute the density of occurrences in 1/4 degree cells and plot as a heatmap
+with(
+  data = c(jays, finland_map),
+  expr = {
+    par(mar = c(5, 5, 1, 1), las = 1)
+    # compute a 2d histogram from the occurrences
+    breaks  <- breaks_xy(bbox, .25) # breakpoints every 1/4 of a degree
+    density <- hist_xy(xy = list(lon_wgs84, lat_wgs84), breaks)
+    # plot the histogram as a heatmap
+    image(density,
+          asp    = 2.4,
+          breaks = 2^seq(0, 12), # breakpoints for the gridcell colours
+          col = hcl.colors(12, rev = TRUE),
+          xlab   = "Longitude",
+          ylab   = "Latitude",
+          panel.first = grid())
+    legend("topright",
+           inset  = c(0, .01),
+           legend = expression(2^12, "", "", 2^6, "", "", 2^0),
+           fill   = hcl.colors(7),
+           border = NA,
+           bty    = "n",
+           adj    = c(0, 0.25), 
+           x.intersp = .2,
+           y.intersp = .5)
+    # add the Finnish border
+    polygon(x = vertices, lwd = .2)
+  }
+)
+```
+
+![](./plot-occurrences-1.png)
 
 ## Caching
 By default `finbif` uses local filesystem caching for repeated API request. This
