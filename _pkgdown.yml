@@ -78,5 +78,5 @@ reference:
       - finbif_record_basis
       - finbif_restriction_levels
       - finbif_restriction_reasons
-      - finbif_life_stage
+      - finbif_life_stages
       - finbif_sex_categories
