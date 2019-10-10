@@ -105,7 +105,7 @@ finbif_occurrence(
 ```
 
 ## IUCN red list
-Filtering can be done by [IUCN red list](https://www.iucnredlist.org) 
+Filtering can be done by [IUCN red list](https://punainenkirja.laji.fi/) 
 category. See `finbif_red_list()` for the IUCN red list categories and their 
 short-codes.
 
