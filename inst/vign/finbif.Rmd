@@ -120,7 +120,7 @@ used to plot the border of Finland (`?finland_map`). Together these utilities
 can be used to plot occurrences after they have been downloaded from FinBIF. For
 example, the following can be used to plot the density of Eurasian Jay
 occurrences from Finland.
-```{r plot-occurrences, fig.cap = "", fig.width = 5, fig.height = 7, cache = TRUE}
+```{r jays, cache = TRUE}
 # Download all the occurrences of Eurasian Jay in Finland
 # that have coordinates accurate to at least 100m
 jays <- finbif_occurrence(
@@ -132,7 +132,9 @@ jays <- finbif_occurrence(
   n      = 2e4,
   quiet  = TRUE
 )
+```
 
+```{r plot-occurrences, fig.cap = "", fig.width = 5, fig.height = 7, cache = TRUE}
 # Compute the density of occurrences in 1/4 degree cells and plot as a heatmap
 with(
   data = c(jays, finland_map),

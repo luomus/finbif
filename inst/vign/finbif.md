@@ -208,7 +208,10 @@ jays <- finbif_occurrence(
   n      = 2e4,
   quiet  = TRUE
 )
+```
 
+
+```r
 # Compute the density of occurrences in 1/4 degree cells and plot as a heatmap
 with(
   data = c(jays, finland_map),
