@@ -159,6 +159,7 @@ finbif_records <- function(
   multipage <- n > max_size
 
   if (multipage && !quiet) {
+    pb_head("Fetching data")
     pb <- utils::txtProgressBar(0L, floor(n / max_size), style = 3L)
     on.exit(close(pb))
   }

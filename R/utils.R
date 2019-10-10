@@ -23,6 +23,11 @@ get_el_recurse <- function(obj, nms, type) {
   get_el_recurse(obj, nms[-1L], type)
 }
 
+pb_head <- function(msg) {
+  gap <- nchar(msg) + 15L
+  message("  |=== ", msg, " ", rep("=", max(0L, getOption("width") - gap)), "|")
+}
+
 # errors -----------------------------------------------------------------------
 # modified from https://github.com/reside-ic/defer/blob/master/R/defer.R
 #' @noRd

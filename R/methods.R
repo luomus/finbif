@@ -6,6 +6,8 @@
 #'
 #' @param x A `finbif_records*` object.
 #' @param ... Additional arguments. Not used.
+#' @param quiet Logical. If `TRUE` (default) suppress progress indicator of
+#'   conversion.
 #' @return A `data.frame`.
 #' @examples \dontrun{
 #'
@@ -15,6 +17,7 @@
 #' df <- as.data.frame(resp)
 #' }
 #' @importFrom methods as
+#' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
 as.data.frame.finbif_records <- function(x, ...) {
 
@@ -49,9 +52,21 @@ as.data.frame.finbif_records <- function(x, ...) {
 
 #' @rdname as.data.frame.finbif_records
 #' @export
-as.data.frame.finbif_records_list <- function(x, ...) {
+as.data.frame.finbif_records_list <- function(x, ..., quiet = FALSE) {
 
-  df <- lapply(x, as.data.frame)
+  n <- length(x)
+  if (!quiet) {
+    pb <- utils::txtProgressBar(0L, n, style = 3L)
+    on.exit(close(pb))
+  }
+
+  df <- lapply(
+    seq_len(n),
+    function(i) {
+      if (!quiet) utils::setTxtProgressBar(pb, i)
+      as.data.frame(x[[i]])
+    }
+  )
 
   url  <- do.call(c, lapply(df, attr, "url", TRUE))
   time <- do.call(c, lapply(df, attr, "time", TRUE))

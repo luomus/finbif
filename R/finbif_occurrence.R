@@ -88,7 +88,9 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
 
   if (count_only) return(records[["content"]][["total"]])
 
-  df   <- as.data.frame(records)
+  if (!quiet) pb_head("Processing data")
+
+  df   <- as.data.frame(records, quiet = quiet)
   url  <- attr(df, "url", TRUE)
   time <- attr(df, "time", TRUE)
 

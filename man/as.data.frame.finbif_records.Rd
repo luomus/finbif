@@ -7,12 +7,15 @@
 \usage{
 \method{as.data.frame}{finbif_records}(x, ...)
 
-\method{as.data.frame}{finbif_records_list}(x, ...)
+\method{as.data.frame}{finbif_records_list}(x, ..., quiet = FALSE)
 }
 \arguments{
 \item{x}{A \code{finbif_records*} object.}
 
 \item{...}{Additional arguments. Not used.}
+
+\item{quiet}{Logical. If \code{TRUE} (default) suppress progress indicator of
+conversion.}
 }
 \value{
 A \code{data.frame}.
