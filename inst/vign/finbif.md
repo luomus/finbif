@@ -1,12 +1,12 @@
 ---
 title: "Introduction to the finbif package"
-author: "William K Morris"
+author: "William K. Morris"
 output: 
-  rmarkdown::html_vignette:
+  rmarkdown::html_document:
     toc: true
 vignette: >
   %\VignetteIndexEntry{1. Introduction to the finbif package}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -240,7 +240,7 @@ with(
 )
 ```
 
-![](plot-occurrences-1.png)
+![](figure/plot-occurrences-1.png)
 
 ## Caching
 By default `finbif` uses local filesystem caching for repeated API request. This

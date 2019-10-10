@@ -1,12 +1,12 @@
 ---
 title: "Filtering FinBIF records"
-author: "William K Morris"
+author: "William K. Morris"
 output: 
-  rmarkdown::html_vignette:
+  rmarkdown::html_document:
     toc: true
 vignette: >
   %\VignetteIndexEntry{2. Filtering FinBIF records}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
 

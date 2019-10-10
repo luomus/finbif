@@ -1,23 +1,22 @@
 ---
 title: "Introduction to the finbif package"
-author: "William K Morris"
+author: "William K. Morris"
 output: 
-  rmarkdown::html_vignette:
+  rmarkdown::html_document:
     toc: true
 vignette: >
   %\VignetteIndexEntry{1. Introduction to the finbif package}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, eval=TRUE, echo=FALSE}
+```{r, eval = TRUE, echo = FALSE}
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
   warning = FALSE,
   message = FALSE,
-  cache.path = "cache/",
-  fig.path = ""
+  cache.path = "cache/"
 )
 ```
 The Finnish Biodiversity Information Facility (FinBIF) aggregates Finnish

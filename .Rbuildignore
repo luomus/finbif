@@ -13,3 +13,4 @@ Makefile
 ^Meta$
 ^appveyor\.yml$
 ^\.github$
+vignettes/figure
