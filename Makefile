@@ -13,9 +13,12 @@ install: build
 	cd ..;\
 	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
 
-check: vignettes README.md codemeta.json
+check: pkgdown codemeta.json
 	cd ..;\
 	R CMD check $(PKGNAME)_$(PKGVERS).tar.gz --as-cran
+
+pkgdown: vignettes README.md
+	${RSCRIPT} -e "pkgdown::build_site()"
 
 README.md: README.Rmd install
 	${RSCRIPT} -e "knitr::knit('$<')"

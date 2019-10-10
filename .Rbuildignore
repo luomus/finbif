@@ -10,6 +10,7 @@ Makefile
 ^CODE_OF_CONDUCT\.md$
 ^CONTRIBUTING\.md$
 ^doc$
+^docs$
 ^Meta$
 ^appveyor\.yml$
 ^\.github$
