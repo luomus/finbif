@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   cache.path = "cache/",
-  fig.path = "./"
+  fig.path = ""
 )
 ```
 The Finnish Biodiversity Information Facility (FinBIF) aggregates Finnish

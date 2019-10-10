@@ -131,7 +131,7 @@ the `finbif_occurrence()` function.
 ```r
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
-#> Records available: 55488
+#> Records available: 55642
 #> A data.frame [100 x 30]
 #>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
 #> 1    Cygnus cygnus         1  61.07692  21.49222 2019-10-09 05:50:00
@@ -240,7 +240,7 @@ with(
 )
 ```
 
-![](./plot-occurrences-1.png)
+![](plot-occurrences-1.png)
 
 ## Caching
 By default `finbif` uses local filesystem caching for repeated API request. This
