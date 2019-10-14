@@ -13,4 +13,3 @@ finbif_sex_categories <- function() {
   sex <- sex[order(sex[["category"]]), ]
   structure(sex, row.names = seq_len(nrow(sex)))
 }
-
