@@ -50,36 +50,10 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   date_time_method = "fast", tzone = Sys.timezone()
   ) {
 
-  taxa <- list(...)
-  ntaxa <- length(taxa)
-  on_check_fail <- match.arg(on_check_fail)
-
-  if (ntaxa)
-    if (check_taxa) {
-
-      taxa <- if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
-        unlist(finbif_check_taxa(taxa, cache = cache))
-      } else {
-        unlist(finbif_check_taxa(..., cache = cache))
-      }
-
-      if (anyNA(taxa)) {
-        msg  <- paste(
-          "Cannot find taxa:",
-          paste(sub("\\.", " - ", names(taxa[is.na(taxa)])), collapse = ", ")
-        )
-        switch(
-          on_check_fail, warn = warning(msg), error = stop(msg), quiet = NULL
-        )
-      }
-
-      taxa <- list(taxon_id = paste(taxa[!is.na(taxa)], collapse = ","))
-
-    } else {
-
-      taxa <- list(taxon_name = paste(taxa, collapse = ","))
-
-    }
+  taxa <- select_taxa(
+    ..., quiet = quiet, cache = cache, check_taxa = check_taxa,
+    on_check_fail = match.arg(on_check_fail)
+  )
 
   if (missing(filter)) filter <- NULL
   filter <- c(taxa, filter)
@@ -123,6 +97,38 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
     time      = time
   )
 
+}
+
+select_taxa <- function(..., quiet, cache, check_taxa, on_check_fail) {
+  taxa <- list(...)
+  ntaxa <- length(taxa)
+  if (ntaxa)
+    if (check_taxa) {
+
+      taxa <- if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
+        unlist(finbif_check_taxa(taxa, cache = cache))
+      } else {
+        unlist(finbif_check_taxa(..., cache = cache))
+      }
+
+      if (anyNA(taxa)) {
+        msg  <- paste(
+          "Cannot find taxa:",
+          paste(sub("\\.", " - ", names(taxa[is.na(taxa)])), collapse = ", ")
+        )
+        switch(
+          on_check_fail, warn = warning(msg), error = stop(msg), quiet = NULL
+        )
+      }
+
+      taxa <- list(taxon_id = paste(taxa[!is.na(taxa)], collapse = ","))
+
+    } else {
+
+      taxa <- list(taxon_name = paste(taxa, collapse = ","))
+
+    }
+  taxa
 }
 
 get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
