@@ -1,38 +1,69 @@
 #' FinBIF record variables
 #'
-#' FinBIF record variables that can be selected in finbif occurrence search.
+#' FinBIF record variables that can be selected in a finbif occurrence search.
+#'
+#' @section Identifiers:
+#' All identifiers are returned in the form of a URI. Identifiers include:
+#'
+#' - `record_id`
+#'   Record ID. The ID of a record of organism's occurrence at a time and
+#'   place.
+#' - `individual_id`
+#'   ID of an individual organism (e.g., a ringed bird that has been captured
+#'   multiple times will have a single `individual_id` and multiple `record_id`s
+#'   corresponding to each capture).
+#' - `event_id`
+#'   Event ID. An event can contain one or more records (e.g., a survey of
+#'   plants at a particular location and time.)
+#' - `document_id`
+#'   Document ID. A set of events that share common metadata.
+#' - `form_id`
+#'   Form ID. The form used to create the document, event, record data.
+#' - `collection_id`
+#'   Collection ID. All documents, events, and records belong to a collection (
+#'   e.g., a museum collection, or the datasets collected by a specific
+#'   institution). Collections themselves can be part of a larger
+#'   (super)collection (e.g., all the collections at specific museum). Only the
+#'   lowest level collection ID for a record is returned. Use
+#'   `finbif_collections()` to explore the hierarchy of collections.
+#' - `source_id`
+#'   Source ID. The source of the collection's data.
 #'
 #' @section Taxa:
 #' Variables related to taxonomy of records include:
 #'
+#' - `taxon_id` Character.
+#'   The taxon ID in the form of a URI.
+#' - `orig_taxon_id` Character.
+#'   The taxon ID (above) before (if any) annotation.
+#' - `annotated_taxon_id` Charactio
+#'   The new taxon ID if the record has had it's taxonomy annotated.
+#' - `reported_taxon_id`
+#'   The taxon ID reported by the original data provider (may not exist).
 #' - `scientific_name` Character.
 #'   Scientific name of taxon.
+#' - `orig_scientific_name`
+#' - `scientific_display_name`
+#' - `orig_scientific_display_name`
+#' - `vernacular_name`
+#' - `orig_name_vernacular.
+#' - `taxon_name_cursive`
+#' - `orig_taxon_cursive`
+#' - `taxon_verbatim`
+#' - `scientific_name_author`
+#' - `orig_scientific_name_author`
+#' - `author_verabtum`
 #' - `taxon_rank` Character.
 #'   Taxonomic rank of the taxon (in the form of a URI).
-#' - `author`
-#' - `is_unidentifiable`
-#' - `orig_taxon_checklist`
-#' - `orig_taxon_cursive`
-#' - `orig_taxon_finnish`
-#' - `orig_taxon_id`
-#' - `orig_informal_groups`
-#' - `orig_taxon_scientific_name`
-#' - `orig_scientific_name_author`
-#' - `orig_scientific_display_name`
 #' - `orig_taxon_rank`
-#' - `orig_name_vernacular`
-#' - `taxon_checklist`
-#' - `taxon_name_cursive`
-#' - `taxon_finnish`
-#' - `taxon_id`
 #' - `informal_groups`
-#' - `scientific_name_author`
-#' - `scientific_display_name`
-#' - `vernacular_name`
-#' - `annotated_taxon_id`
-#' - `taxon_verbatim`
+#' - `orig_informal_groups`
 #' - `reported_informal_group`
-#' - `reported_taxon_id`
+#' - `taxon_checklist`
+#' - `orig_taxon_checklist`
+#' - `taxon_finnish`
+#' - `orig_taxon_finnish`
+#' - `is_unidentifiable`
 #'
 #' @section Abundance, sex & life history:
 #' Variables related to abundance, sex and life history include:
@@ -52,73 +83,35 @@
 #' @section Location:
 #' Variables related to the location of record include:
 #'
-#' - `country`
-#' - `province`
-#' - `municipality`
-#' - `lat_wgs84`
-#' - `lon_wgs84`
-#' - `wkt_wgs84`
-#' - `location_id`
-#' - `line_length_m`
-#' - `area_m2`
-#' - `lat_max_euref`
-#' - `lat_min_euref`
-#' - `lon_max_euref`
-#' - `lon_min_euref`
-#' - `wkt_euref`
-#' - `lat_max_wgs84`
-#' - `lat_min_wgs84`
-#' - `lon_max_wgs84`
-#' - `lon_min_wgs84`
-#' - `lat_005_wgs84`
-#' - `lon_005_wgs84`
-#' - `lat_01_wgs84`
-#' - `lon_01_wgs84`
-#' - `lat_05_wgs84`
-#' - `lon_05_wgs84`
-#' - `lat_1_wgs84`
-#' - `lon_1_wgs84`
-#' - `lat_max_kkj`
-#' - `lat_min_kkj`
-#' - `lon_max_kkj`
-#' - `lon_min_kkj`
-#' - `lat_100_kkj`
-#' - `lon_100_kkj`
-#' - `lat_100_center_kkj`
-#' - `lon_100_center_kkj`
-#' - `lat_10_kkj`
-#' - `lon_10_kkj`
-#' - `lat_10_center_kkj`
-#' - `lon_10_center_kkj`
-#' - `lat_1_kkj`
-#' - `lon_1_kkj`
-#' - `lat_1_center_kkj`
-#' - `lon_1_center_kkj`
-#' - `lat_50_kkj`
-#' - `lon_50_kkj`
-#' - `lat_50_center_kkj`
-#' - `lon_50_center_kkj`
-#' - `wkt_kkj`
+#' - `{lat|lon}_wgs84`
+#' - `{lat|lon}_{min|max}_{euref|kkj|wgs84}`
+#' - `{lat|lon}_{005|01|05|1}_wgs84`
+#' - `{lat|lon}_{1|10|50|100}_kkj`
+#' - `{lat|lon}_{1|10|50|100}_center_kkj`
+#' - `wkt_{euref|kkj|wgs84}`
 #' - `coordinates_verbatim`
+#' - `coordinate_accuracy`
+#' - `coordinates_source`
+#' - `country`
+#' - `country_id`
+#' - `country_source`
 #' - `country_verbatim`
-#' - `higher_geography`
+#' - `province`
 #' - `province_id`
 #' - `province_ids`
-#' - `coordinate_accuracy`
-#' - `country_id`
-#' - `municipalities_ids`
-#' - `municipality_id`
 #' - `province_source`
-#' - `coordinates_source`
-#' - `country_source`
-#' - `municipality_source`
-#' - `observers_name`
-#' - `observers_id`
-#' - `observers_user_id`
-#' - `locality`
-#' - `municipality_verbatum`
 #' - `province_verbatum`
 #' - `province_verbatim2`
+#' - `municipality`
+#' - `municipality_id`
+#' - `municipality_ids`
+#' - `municipality_source`
+#' - `municipality_verbatum`
+#' - `locality`
+#' - `location_id`
+#' - `higher_geography`
+#' - `line_length_m`
+#' - `area_m2`
 #' - `is_breeding_location`
 #'
 #' @section Time:
@@ -130,16 +123,16 @@
 #' - `hour_end`
 #' - `minute_start`
 #' - `minute_end`
+#' - `ordinal_day_start`
+#' - `ordinal_day_end`
+#' - `season_start`
+#' - `season_end`
 #' - `formatted_date_time`
 #' - `century`
 #' - `decade`
 #' - `year`
 #' - `month`
 #' - `day`
-#' - `ordinal_day_start`
-#' - `ordinal_day_end`
-#' - `season_start`
-#' - `season_end`
 #' - `date_created`
 #' - `first_load_date`
 #' - `modified_date`
@@ -159,93 +152,46 @@
 #' Variables related to the quality of records include:
 #'
 #' - `any_issues`
-#' - `record_issue`
-#' - `record_issue_message`
-#' - `record_issue_source`
 #' - `record_reliable`
-#' - `taxon_issue_message`
-#' - `taxon_reliability`
-#' - `taxon_issue_source`
-#' - `event_issue`
-#' - `event_issue_message`
-#' - `event_issue_source`
-#' - `location_issue`
-#' - `location_issue_message`
-#' - `location_issue_source`
-#' - `time_issue`
-#' - `time_issue_message`
-#' - `time_issue_source`
-#' - `document_issue`
-#' - `document_issue_message`
-#' - `document_issue_source`
 #' - `document_reliablity`
+#' - `taxon_reliability`
+#' - `taxon_reliability_message`
+#' - `taxon_reliability_source`
 #' - `reported_taxon_confidence`
+#' - `{document|time|location|event|record}_issue`
+#' - `{document|time|location|event|record}_issue_message`
+#' - `{document|time|location|event|record}_issue_source`
 #'
 #' @section Media:
 #' Variables related to media (images, audio, etc.,) associated with records
 #' include:
 #'
-#' - `record_media_author`
-#' - `record_media_caption`
-#' - `record_media_copyright`
-#' - `record_media_url`
-#' - `record_media_license_abbr`
-#' - `record_media_license_id`
-#' - `record_media_type`
-#' - `record_thumbnail_square`
-#' - `record_thumbnail`
-#' - `record_media_count`
-#' - `document_media_author`
-#' - `document_media_caption`
-#' - `document_media_copyright`
-#' - `document_media_url`
-#' - `document_media_license_abbr`
-#' - `document_media_license_id`
-#' - `document_media_type`
-#' - `document_thumbnail_square`
-#' - `document_thumbnail`
-#' - `document_media_count`
-#' - `event_media_author`
-#' - `event_media_caption`
-#' - `event_media_copyright`
-#' - `event_media_url`
-#' - `event_media_license_abbr`
-#' - `event_media_license_id`
-#' - `event_media_type`
-#' - `event_thumbnail_square`
-#' - `event_thumbnail`
-#' - `event_media_count`
-#'
-#' @section Identifiers:
-#' Variables related to record identifiers include:
-#'
-#' - `record_id`
-#' - `individual_id`
-#' - `event_id`
-#' - `document_id`
-#' - `form_id`
-#' - `collection_id`
-#' - `source_id`
+#' - `{document|event|record}_media_count`
+#' - `{document|event|record}_media_author`
+#' - `{document|event|record}_media_caption`
+#' - `{document|event|record}_media_copyright`
+#' - `{document|event|record}_media_url`
+#' - `{document|event|record}_media_license_abbr`
+#' - `{document|event|record}_media_license_id`
+#' - `{document|event|record}_media_type`
+#' - `{document|event|record}_thumbnail_square`
+#' - `{document|event|record}_thumbnail`
 #'
 #' @section Misc:
 #' Other variables:
-#' - `annotation_count`
-#' - `annotation_person_id`
-#' - `annotation_person_name`
-#' - `annotation_system_id`
-#' - `annotation_system_name`
-#' - `annotation_class`
-#' - `annotation_created`
-#' - `annotation_id`
-#' - `annotation_invasive_control_effectiveness`
-#' - `annotation_notes`
-#' - `annotation_opinion`
-#' - `annotation_type`
+#' - `observers_name`
+#' - `observers_id`
+#' - `observers_user_id`
+#' - `observer_user_ids`
+#' - `editor_name`
+#' - `editor_id`
+#' - `editor_user_id`
 #' - `determiner`
-#' - `record_fact_decimal`
-#' - `record_fact`
-#' - `record_fact_integer`
-#' - `record_fact_value`
+#' - `team`
+#' - `{document|event|record}_fact_decimal`
+#' - `{document|event|record}_fact_content`
+#' - `{document|event|record}_fact_integer`
+#' - `{document|event|record}_fact_value`
 #' - `invasive_control_effectiveness`
 #' - `invasive_control`
 #' - `record_notes`
@@ -256,42 +202,28 @@
 #' - `record_order`
 #' - `wild_status`
 #' - `editor_user_ids`
-#' - `document_fact_decimal`
-#' - `document_fact_content`
-#' - `document_fact_integer`
-#' - `document_fact_value`
 #' - `keywords`
 #' - `license`
-#' - `editor_name`
-#' - `editor_id`
-#' - `editor_user_id`
 #' - `document_notes`
 #' - `partial`
-#' - `event_fact_decimal`
-#' - `event_fact`
-#' - `event_fact_integer`
-#' - `event_fact_value`
 #' - `event_order`
 #' - `event_notes`
-#' - `observer_user_ids`
 #' - `taxon_cenus_id`
 #' - `taxon_census_type`
-#' - `team`
-#' - `document_annotation_person_id`
-#' - `document_annotation_person_name`
-#' - `document_annotation_system_id`
-#' - `document_annotation_system_name`
-#' - `document_annotation_class`
-#' - `document_annotation_created`
-#' - `document_annotation_id`
-#' - `document_annotation_invasive_control_effectiveness`
-#' - `document_annotation_notes`
-#' - `document_annotation_opinion`
-#' - `document_annotation_root_id`
-#' - `document_annotation_target_id`
-#' - `document_annotation_type`
-#' - `annotations_root_id`
-#' - `annotations_target_id`
+#' - `record_annotation_count`
+#' - `{document|record}_annotation_person_id`
+#' - `{document|record}_annotation_person_name`
+#' - `{document|record}_annotation_system_id`
+#' - `{document|record}_annotation_system_name`
+#' - `{document|record}_annotation_class`
+#' - `{document|record}_annotation_created`
+#' - `{document|record}_annotation_id`
+#' - `{document|record}_annotation_invasive_control_effectiveness`
+#' - `{document|record}_annotation_notes`
+#' - `{document|record}_annotation_opinion`
+#' - `{document|record}_annotation_root_id`
+#' - `{document|record}_annotation_target_id`
+#' - `{document|record}_annotation_type`
 #' - `keywords`
 #' - `sample_count`
 #' - `sample_collection_id`

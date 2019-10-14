@@ -4,40 +4,74 @@
 \alias{variables}
 \title{FinBIF record variables}
 \description{
-FinBIF record variables that can be selected in finbif occurrence search.
+FinBIF record variables that can be selected in a finbif occurrence search.
 }
+\section{Identifiers}{
+
+All identifiers are returned in the form of a URI. Identifiers include:
+\itemize{
+\item \code{record_id}
+Record ID. The ID of a record of organism's occurrence at a time and
+place.
+\item \code{individual_id}
+ID of an individual organism (e.g., a ringed bird that has been captured
+multiple times will have a single \code{individual_id} and multiple \code{record_id}s
+corresponding to each capture).
+\item \code{event_id}
+Event ID. An event can contain one or more records (e.g., a survey of
+plants at a particular location and time.)
+\item \code{document_id}
+Document ID. A set of events that share common metadata.
+\item \code{form_id}
+Form ID. The form used to create the document, event, record data.
+\item \code{collection_id}
+Collection ID. All documents, events, and records belong to a collection (
+e.g., a museum collection, or the datasets collected by a specific
+institution). Collections themselves can be part of a larger
+(super)collection (e.g., all the collections at specific museum). Only the
+lowest level collection ID for a record is returned. Use
+\code{finbif_collections()} to explore the hierarchy of collections.
+\item \code{source_id}
+Source ID. The source of the collection's data.
+}
+}
+
 \section{Taxa}{
 
 Variables related to taxonomy of records include:
 \itemize{
+\item \code{taxon_id} Character.
+The taxon ID in the form of a URI.
+\item \code{orig_taxon_id} Character.
+The taxon ID (above) before (if any) annotation.
+\item \code{annotated_taxon_id} Charactio
+The new taxon ID if the record has had it's taxonomy annotated.
+\item \code{reported_taxon_id}
+The taxon ID reported by the original data provider (may not exist).
 \item \code{scientific_name} Character.
 Scientific name of taxon.
+\item \code{orig_scientific_name}
+\item \code{scientific_display_name}
+\item \code{orig_scientific_display_name}
+\item \code{vernacular_name}
+\item `orig_name_vernacular.
+\item \code{taxon_name_cursive}
+\item \code{orig_taxon_cursive}
+\item \code{taxon_verbatim}
+\item \code{scientific_name_author}
+\item \code{orig_scientific_name_author}
+\item \code{author_verabtum}
 \item \code{taxon_rank} Character.
 Taxonomic rank of the taxon (in the form of a URI).
-\item \code{author}
-\item \code{is_unidentifiable}
-\item \code{orig_taxon_checklist}
-\item \code{orig_taxon_cursive}
-\item \code{orig_taxon_finnish}
-\item \code{orig_taxon_id}
-\item \code{orig_informal_groups}
-\item \code{orig_taxon_scientific_name}
-\item \code{orig_scientific_name_author}
-\item \code{orig_scientific_display_name}
 \item \code{orig_taxon_rank}
-\item \code{orig_name_vernacular}
-\item \code{taxon_checklist}
-\item \code{taxon_name_cursive}
-\item \code{taxon_finnish}
-\item \code{taxon_id}
 \item \code{informal_groups}
-\item \code{scientific_name_author}
-\item \code{scientific_display_name}
-\item \code{vernacular_name}
-\item \code{annotated_taxon_id}
-\item \code{taxon_verbatim}
+\item \code{orig_informal_groups}
 \item \code{reported_informal_group}
-\item \code{reported_taxon_id}
+\item \code{taxon_checklist}
+\item \code{orig_taxon_checklist}
+\item \code{taxon_finnish}
+\item \code{orig_taxon_finnish}
+\item \code{is_unidentifiable}
 }
 }
 
@@ -63,73 +97,35 @@ individual).
 
 Variables related to the location of record include:
 \itemize{
-\item \code{country}
-\item \code{province}
-\item \code{municipality}
-\item \code{lat_wgs84}
-\item \code{lon_wgs84}
-\item \code{wkt_wgs84}
-\item \code{location_id}
-\item \code{line_length_m}
-\item \code{area_m2}
-\item \code{lat_max_euref}
-\item \code{lat_min_euref}
-\item \code{lon_max_euref}
-\item \code{lon_min_euref}
-\item \code{wkt_euref}
-\item \code{lat_max_wgs84}
-\item \code{lat_min_wgs84}
-\item \code{lon_max_wgs84}
-\item \code{lon_min_wgs84}
-\item \code{lat_005_wgs84}
-\item \code{lon_005_wgs84}
-\item \code{lat_01_wgs84}
-\item \code{lon_01_wgs84}
-\item \code{lat_05_wgs84}
-\item \code{lon_05_wgs84}
-\item \code{lat_1_wgs84}
-\item \code{lon_1_wgs84}
-\item \code{lat_max_kkj}
-\item \code{lat_min_kkj}
-\item \code{lon_max_kkj}
-\item \code{lon_min_kkj}
-\item \code{lat_100_kkj}
-\item \code{lon_100_kkj}
-\item \code{lat_100_center_kkj}
-\item \code{lon_100_center_kkj}
-\item \code{lat_10_kkj}
-\item \code{lon_10_kkj}
-\item \code{lat_10_center_kkj}
-\item \code{lon_10_center_kkj}
-\item \code{lat_1_kkj}
-\item \code{lon_1_kkj}
-\item \code{lat_1_center_kkj}
-\item \code{lon_1_center_kkj}
-\item \code{lat_50_kkj}
-\item \code{lon_50_kkj}
-\item \code{lat_50_center_kkj}
-\item \code{lon_50_center_kkj}
-\item \code{wkt_kkj}
+\item \code{{lat|lon}_wgs84}
+\item \code{{lat|lon}_{min|max}_{euref|kkj|wgs84}}
+\item \code{{lat|lon}_{005|01|05|1}_wgs84}
+\item \code{{lat|lon}_{1|10|50|100}_kkj}
+\item \code{{lat|lon}_{1|10|50|100}_center_kkj}
+\item \code{wkt_{euref|kkj|wgs84}}
 \item \code{coordinates_verbatim}
+\item \code{coordinate_accuracy}
+\item \code{coordinates_source}
+\item \code{country}
+\item \code{country_id}
+\item \code{country_source}
 \item \code{country_verbatim}
-\item \code{higher_geography}
+\item \code{province}
 \item \code{province_id}
 \item \code{province_ids}
-\item \code{coordinate_accuracy}
-\item \code{country_id}
-\item \code{municipalities_ids}
-\item \code{municipality_id}
 \item \code{province_source}
-\item \code{coordinates_source}
-\item \code{country_source}
-\item \code{municipality_source}
-\item \code{observers_name}
-\item \code{observers_id}
-\item \code{observers_user_id}
-\item \code{locality}
-\item \code{municipality_verbatum}
 \item \code{province_verbatum}
 \item \code{province_verbatim2}
+\item \code{municipality}
+\item \code{municipality_id}
+\item \code{municipality_ids}
+\item \code{municipality_source}
+\item \code{municipality_verbatum}
+\item \code{locality}
+\item \code{location_id}
+\item \code{higher_geography}
+\item \code{line_length_m}
+\item \code{area_m2}
 \item \code{is_breeding_location}
 }
 }
@@ -144,16 +140,16 @@ Variables related to time of record include:
 \item \code{hour_end}
 \item \code{minute_start}
 \item \code{minute_end}
+\item \code{ordinal_day_start}
+\item \code{ordinal_day_end}
+\item \code{season_start}
+\item \code{season_end}
 \item \code{formatted_date_time}
 \item \code{century}
 \item \code{decade}
 \item \code{year}
 \item \code{month}
 \item \code{day}
-\item \code{ordinal_day_start}
-\item \code{ordinal_day_end}
-\item \code{season_start}
-\item \code{season_end}
 \item \code{date_created}
 \item \code{first_load_date}
 \item \code{modified_date}
@@ -179,27 +175,15 @@ Variables related to restricted records include:
 Variables related to the quality of records include:
 \itemize{
 \item \code{any_issues}
-\item \code{record_issue}
-\item \code{record_issue_message}
-\item \code{record_issue_source}
 \item \code{record_reliable}
-\item \code{taxon_issue_message}
-\item \code{taxon_reliability}
-\item \code{taxon_issue_source}
-\item \code{event_issue}
-\item \code{event_issue_message}
-\item \code{event_issue_source}
-\item \code{location_issue}
-\item \code{location_issue_message}
-\item \code{location_issue_source}
-\item \code{time_issue}
-\item \code{time_issue_message}
-\item \code{time_issue_source}
-\item \code{document_issue}
-\item \code{document_issue_message}
-\item \code{document_issue_source}
 \item \code{document_reliablity}
+\item \code{taxon_reliability}
+\item \code{taxon_reliability_message}
+\item \code{taxon_reliability_source}
 \item \code{reported_taxon_confidence}
+\item \code{{document|time|location|event|record}_issue}
+\item \code{{document|time|location|event|record}_issue_message}
+\item \code{{document|time|location|event|record}_issue_source}
 }
 }
 
@@ -208,50 +192,16 @@ Variables related to the quality of records include:
 Variables related to media (images, audio, etc.,) associated with records
 include:
 \itemize{
-\item \code{record_media_author}
-\item \code{record_media_caption}
-\item \code{record_media_copyright}
-\item \code{record_media_url}
-\item \code{record_media_license_abbr}
-\item \code{record_media_license_id}
-\item \code{record_media_type}
-\item \code{record_thumbnail_square}
-\item \code{record_thumbnail}
-\item \code{record_media_count}
-\item \code{document_media_author}
-\item \code{document_media_caption}
-\item \code{document_media_copyright}
-\item \code{document_media_url}
-\item \code{document_media_license_abbr}
-\item \code{document_media_license_id}
-\item \code{document_media_type}
-\item \code{document_thumbnail_square}
-\item \code{document_thumbnail}
-\item \code{document_media_count}
-\item \code{event_media_author}
-\item \code{event_media_caption}
-\item \code{event_media_copyright}
-\item \code{event_media_url}
-\item \code{event_media_license_abbr}
-\item \code{event_media_license_id}
-\item \code{event_media_type}
-\item \code{event_thumbnail_square}
-\item \code{event_thumbnail}
-\item \code{event_media_count}
-}
-}
-
-\section{Identifiers}{
-
-Variables related to record identifiers include:
-\itemize{
-\item \code{record_id}
-\item \code{individual_id}
-\item \code{event_id}
-\item \code{document_id}
-\item \code{form_id}
-\item \code{collection_id}
-\item \code{source_id}
+\item \code{{document|event|record}_media_count}
+\item \code{{document|event|record}_media_author}
+\item \code{{document|event|record}_media_caption}
+\item \code{{document|event|record}_media_copyright}
+\item \code{{document|event|record}_media_url}
+\item \code{{document|event|record}_media_license_abbr}
+\item \code{{document|event|record}_media_license_id}
+\item \code{{document|event|record}_media_type}
+\item \code{{document|event|record}_thumbnail_square}
+\item \code{{document|event|record}_thumbnail}
 }
 }
 
@@ -259,23 +209,19 @@ Variables related to record identifiers include:
 
 Other variables:
 \itemize{
-\item \code{annotation_count}
-\item \code{annotation_person_id}
-\item \code{annotation_person_name}
-\item \code{annotation_system_id}
-\item \code{annotation_system_name}
-\item \code{annotation_class}
-\item \code{annotation_created}
-\item \code{annotation_id}
-\item \code{annotation_invasive_control_effectiveness}
-\item \code{annotation_notes}
-\item \code{annotation_opinion}
-\item \code{annotation_type}
+\item \code{observers_name}
+\item \code{observers_id}
+\item \code{observers_user_id}
+\item \code{observer_user_ids}
+\item \code{editor_name}
+\item \code{editor_id}
+\item \code{editor_user_id}
 \item \code{determiner}
-\item \code{record_fact_decimal}
-\item \code{record_fact}
-\item \code{record_fact_integer}
-\item \code{record_fact_value}
+\item \code{team}
+\item \code{{document|event|record}_fact_decimal}
+\item \code{{document|event|record}_fact_content}
+\item \code{{document|event|record}_fact_integer}
+\item \code{{document|event|record}_fact_value}
 \item \code{invasive_control_effectiveness}
 \item \code{invasive_control}
 \item \code{record_notes}
@@ -286,42 +232,28 @@ Other variables:
 \item \code{record_order}
 \item \code{wild_status}
 \item \code{editor_user_ids}
-\item \code{document_fact_decimal}
-\item \code{document_fact_content}
-\item \code{document_fact_integer}
-\item \code{document_fact_value}
 \item \code{keywords}
 \item \code{license}
-\item \code{editor_name}
-\item \code{editor_id}
-\item \code{editor_user_id}
 \item \code{document_notes}
 \item \code{partial}
-\item \code{event_fact_decimal}
-\item \code{event_fact}
-\item \code{event_fact_integer}
-\item \code{event_fact_value}
 \item \code{event_order}
 \item \code{event_notes}
-\item \code{observer_user_ids}
 \item \code{taxon_cenus_id}
 \item \code{taxon_census_type}
-\item \code{team}
-\item \code{document_annotation_person_id}
-\item \code{document_annotation_person_name}
-\item \code{document_annotation_system_id}
-\item \code{document_annotation_system_name}
-\item \code{document_annotation_class}
-\item \code{document_annotation_created}
-\item \code{document_annotation_id}
-\item \code{document_annotation_invasive_control_effectiveness}
-\item \code{document_annotation_notes}
-\item \code{document_annotation_opinion}
-\item \code{document_annotation_root_id}
-\item \code{document_annotation_target_id}
-\item \code{document_annotation_type}
-\item \code{annotations_root_id}
-\item \code{annotations_target_id}
+\item \code{record_annotation_count}
+\item \code{{document|record}_annotation_person_id}
+\item \code{{document|record}_annotation_person_name}
+\item \code{{document|record}_annotation_system_id}
+\item \code{{document|record}_annotation_system_name}
+\item \code{{document|record}_annotation_class}
+\item \code{{document|record}_annotation_created}
+\item \code{{document|record}_annotation_id}
+\item \code{{document|record}_annotation_invasive_control_effectiveness}
+\item \code{{document|record}_annotation_notes}
+\item \code{{document|record}_annotation_opinion}
+\item \code{{document|record}_annotation_root_id}
+\item \code{{document|record}_annotation_target_id}
+\item \code{{document|record}_annotation_type}
 \item \code{keywords}
 \item \code{sample_count}
 \item \code{sample_collection_id}
