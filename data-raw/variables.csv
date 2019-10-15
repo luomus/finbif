@@ -92,7 +92,7 @@ unit.reportedTaxonConfidence,                                  reported_taxon_co
 unit.reportedTaxonId,                                          reported_taxon_id,                                  FALSE,        FALSE,        character,  uri,        TRUE
 unit.sex,                                                      sex,                                                FALSE,        FALSE,        character,  factor,     TRUE
 unit.superRecordBasis,                                         superrecord_basis,                                  FALSE,        FALSE,        character,  factor,     TRUE
-unit.taxonVerbatim,                                            taxon_verbatim,                                     FALSE,        FALSE,        character,  character,  TRUE
+unit.taxonVerbatim,                                            reported_name,                                     FALSE,        FALSE,        character,  character,  TRUE
 unit.typeSpecimen,                                             type_specimen,                                      FALSE,        FALSE,        logical,    logical,    TRUE
 unit.unitOrder,                                                record_order,                                       FALSE,        FALSE,        integer,    integer,    TRUE
 unit.wild,                                                     wild_status,                                        FALSE,        FALSE,        character,  factor,     TRUE
@@ -188,7 +188,7 @@ gathering.coordinatesVerbatim,                                 coordinates_verba
 gathering.country,                                             country_verbatim,                                   FALSE,        FALSE,        character,  character,  TRUE
 gathering.displayDateTime,                                     formatted_date_time,                                FALSE,        FALSE,        character,  character,  TRUE
 gathering.facts.decimalValue,                                  event_fact_decimal,                                 FALSE,        FALSE,        double,     double,     FALSE
-gathering.facts.fact,                                          event_fact,                                         FALSE,        FALSE,        character,  character,  FALSE
+gathering.facts.fact,                                          event_fact_content,                                 FALSE,        FALSE,        character,  character,  FALSE
 gathering.facts.integerValue,                                  event_fact_integer,                                 FALSE,        FALSE,        integer,    integer,    FALSE
 gathering.facts.value,                                         event_fact_value,                                   FALSE,        FALSE,        character,  character,  FALSE
 gathering.gatheringOrder,                                      event_order,                                        FALSE,        FALSE,        integer,    integer,    FALSE
@@ -248,7 +248,7 @@ document.annotations.targetID,                                 document_annotati
 document.annotations.type,                                     document_annotation_type,                           FALSE,        FALSE,        character,  character,  FALSE
 unit.annotations.rootID,                                       record_annotation_root_id,                          FALSE,        FALSE,        character,  uri,        FALSE
 unit.annotations.targetID,                                     record_annotation_target_id,                        FALSE,        FALSE,        character,  uri,        FALSE
-unit.keywords,                                                 keywords,                                           FALSE,        FALSE,        character,  character,  FALSE
+unit.keywords,                                                 record_keywords,                                           FALSE,        FALSE,        character,  character,  FALSE
 unit.sampleCount,                                              sample_count,                                       FALSE,        FALSE,        integer,    integer,    FALSE
 unit.samples.collectionId,                                     sample_collection_id,                               FALSE,        FALSE,        character,  uri,        FALSE
 unit.samples.facts.decimalValue,                               sample_fact_decimal,                                FALSE,        FALSE,        double,     double,     FALSE

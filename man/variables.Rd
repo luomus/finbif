@@ -11,7 +11,7 @@ FinBIF record variables that can be selected in a finbif occurrence search.
 All identifiers are returned in the form of a URI. Identifiers include:
 \itemize{
 \item \code{record_id} Character.
-Record ID. The ID of a record of organism's occurrence at a time and
+The ID of a record of organism's occurrence at a time and
 place.
 \item \code{individual_id} Character.
 ID of an individual organism (e.g., a ringed bird that has been captured
@@ -265,7 +265,6 @@ Other variables:
 \item \code{record_order}
 \item \code{wild_status}
 \item \code{editor_user_ids}
-\item \code{keywords}
 \item \code{license}
 \item \code{document_notes}
 \item \code{partial}
@@ -287,21 +286,20 @@ Other variables:
 \item \code{{document|record}_annotation_root_id}
 \item \code{{document|record}_annotation_target_id}
 \item \code{{document|record}_annotation_type}
-\item \code{keywords}
+\item \code{{document|record|sample}_keywords}
 \item \code{sample_count}
 \item \code{sample_collection_id}
 \item \code{sample_fact_decimal}
 \item \code{sample_fact_content}
 \item \code{sample_fact_integer}
 \item \code{sample_fact_value}
-\item \code{sample_keywords}
 \item \code{sample_multiple}
 \item \code{sample_notes}
 \item \code{sample_quality}
 \item \code{sample_id}
 \item \code{sample_order}
 \item \code{sample_status}
-\item \code{samples_type}
+\item \code{sample_type}
 }
 }
 

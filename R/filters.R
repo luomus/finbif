@@ -114,11 +114,11 @@
 #'   first two elements are latitude and longitude and third is the coordinate
 #'   system (currently only `"wgs84"` is implemented). Records returned will be
 #'   those for which the center point exactly matches that which is specified.
-#' - `coordinates_cell_*k` Coordinates.
+#' - `coordinates_cell_{1k|10k|50k|100k}` Coordinates.
 #'   A vector of coordinate data (lat, long). Filter by grid cell at scale `*`.
 #'   Where `*` is 1, 10, 50 or 100. The coordinates specify the southeast corner
 #'   of the cell. Coordinates system is uniform `"kkj"` (also known as "ykj").
-#' - `coordinates_cell_*k_center` Coordinates.
+#' - `coordinates_cell_{1k|10k|50k|100k}_center` Coordinates.
 #'   As above, except coordinates indicate center of grid cell.
 #' - `coordinate_source` Character.
 #'   Filter by source of coordinates. Currently accepted values are

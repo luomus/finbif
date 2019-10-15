@@ -122,11 +122,11 @@ A character vector or list of coordinate data. Must be of length 3. The
 first two elements are latitude and longitude and third is the coordinate
 system (currently only \code{"wgs84"} is implemented). Records returned will be
 those for which the center point exactly matches that which is specified.
-\item \code{coordinates_cell_*k} Coordinates.
+\item \code{coordinates_cell_{1k|10k|50k|100k}} Coordinates.
 A vector of coordinate data (lat, long). Filter by grid cell at scale \code{*}.
 Where \code{*} is 1, 10, 50 or 100. The coordinates specify the southeast corner
 of the cell. Coordinates system is uniform \code{"kkj"} (also known as "ykj").
-\item \code{coordinates_cell_*k_center} Coordinates.
+\item \code{coordinates_cell_{1k|10k|50k|100k}_center} Coordinates.
 As above, except coordinates indicate center of grid cell.
 \item \code{coordinate_source} Character.
 Filter by source of coordinates. Currently accepted values are

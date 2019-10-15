@@ -1,3 +1,4 @@
+source("data-raw/utils.R")
 var_names <- read.csv(
   "data-raw/variables.csv", stringsAsFactors = FALSE, strip.white = TRUE,
   row.names = 1L
@@ -10,5 +11,10 @@ vars <- vars[[which(vapply(vars, getElement, "", "name") == "selected")]]
 vars <- unlist(vars[["items"]][["enum"]])
 
 stopifnot(identical(sort(row.names(var_names)), sort(vars)))
+stopifnot(
+  identical(
+    sort(documented_vars("R/variables.R")), sort(var_names[["translated_var"]])
+  )
+)
 
 class(var_names[["translated_var"]]) <- "translation"

@@ -1,3 +1,4 @@
+source("data-raw/utils.R")
 filter_names <- read.csv(
   "data-raw/filters.csv", stringsAsFactors = FALSE, strip.white = TRUE,
   row.names = 1L
@@ -8,6 +9,12 @@ filters <- names(
 )
 
 stopifnot(identical(sort(row.names(filter_names)), sort(filters)))
+stopifnot(
+  identical(
+    sort(documented_vars("R/filters.R")),
+    sort(filter_names[filter_names[["doc"]], "translated_filter"])
+  )
+)
 
 # Some filter have been deprecated or are not available in the public API
 unused_filters <-

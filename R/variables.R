@@ -6,7 +6,7 @@
 #' All identifiers are returned in the form of a URI. Identifiers include:
 #'
 #' - `record_id` Character.
-#'   Record ID. The ID of a record of organism's occurrence at a time and
+#'   The ID of a record of organism's occurrence at a time and
 #'   place.
 #' - `individual_id` Character.
 #'   ID of an individual organism (e.g., a ringed bird that has been captured
@@ -235,7 +235,6 @@
 #' - `record_order`
 #' - `wild_status`
 #' - `editor_user_ids`
-#' - `keywords`
 #' - `license`
 #' - `document_notes`
 #' - `partial`
@@ -257,21 +256,20 @@
 #' - `{document|record}_annotation_root_id`
 #' - `{document|record}_annotation_target_id`
 #' - `{document|record}_annotation_type`
-#' - `keywords`
+#' - `{document|record|sample}_keywords`
 #' - `sample_count`
 #' - `sample_collection_id`
 #' - `sample_fact_decimal`
 #' - `sample_fact_content`
 #' - `sample_fact_integer`
 #' - `sample_fact_value`
-#' - `sample_keywords`
 #' - `sample_multiple`
 #' - `sample_notes`
 #' - `sample_quality`
 #' - `sample_id`
 #' - `sample_order`
 #' - `sample_status`
-#' - `samples_type`
+#' - `sample_type`
 #'
 #' @name variables
 NULL

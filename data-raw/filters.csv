@@ -1,86 +1,86 @@
-finbif_api_filter,                     translated_filter,             class,     translated_values, sep
-taxonId,                               taxon_id,                      uri,       FALSE,             ","
-useIdentificationAnnotations,          quality_controlled_det,        logical,   FALSE,             ","
-includeSubTaxa,                        subtaxa,                       logical,   FALSE,             ","
-target,                                taxon_name,                    character, FALSE,             ","
-includeNonValidTaxa,                   invalid_taxa,                  logical,   FALSE,             ","
-informalTaxonGroupId,                  informal_group,                uri,       TRUE,              ","
-informalTaxonGroupIdIncludingReported, informal_group_reported,       uri,       TRUE,              ","
-administrativeStatusId,                administrative_status,         uri,       TRUE,              ","
-redListStatusId,                       red_list_status,               uri,       TRUE,              ","
-typeOfOccurrenceId,                    finnish_occurrence_status,     uri,       TRUE,              ","
-typeOfOccurrenceIdNot,                 finnish_occurrence_status_neg, uri,       TRUE,              ","
-primaryHabitat,                        primary_habitat,               factor,    TRUE,              ";"
-anyHabitat,                            primary_secondary_habitat,     factor,    TRUE,              ";"
-finnish,                               finnish,                       logical,   FALSE,             ","
-invasive,                              invasive,                      logical,   FALSE,             ","
-taxonRankId,                           taxon_rank,                    uri,       TRUE,              ","
-countryId,                             country,                       uri,       TRUE,              ","
-finnishMunicipalityId,                 municipality,                  uri,       TRUE,              ","
-biogeographicalProvinceId,             province,                      uri,       TRUE,              ","
-area,                                  locality,                      character, FALSE,             ","
-birdAssociationAreaId,                 bird_assoc_area,               uri,       TRUE,              ","
-namedPlaceId,                          place_name_id,                 uri,       FALSE,             ","
-formId,                                form_id,                       uri,       FALSE,             ","
-time,                                  date_range_ymd,                date,      FALSE,             ","
-yearMonth,                             date_range_ym,                 date,      FALSE,             ","
-dayOfYear,                             date_range_d,                  date,      FALSE,             ","
-season,                                date_range_md,                 date,      FALSE,             ","
-keyword,                               keywords,                      character, FALSE,             ","
-collectionId,                          collection,                    uri,       FALSE,             ","
-includeSubCollections,                 subcollections,                logical,   FALSE,             ","
-collectionIdNot,                       not_collection,                uri,       FALSE,             ","
-reliabilityOfCollection,               collection_reliability,        integer,   FALSE,             ","
-sourceId,                              source,                        uri,       TRUE,              ","
-recordBasis,                           record_basis,                  factor,    TRUE,              ","
-superRecordBasis,                      superrecord_basis,             factor,    TRUE,              ","
-lifeStage,                             life_stage,                    factor,    TRUE,             ","
-sex,                                   sex,                           factor,    TRUE,             ","
-invasiveControl,                       invasive_control,              factor,    FALSE,             ","
-invasiveControlled,                    invasive_controlled,           logical,   FALSE,             ","
-gatheringId,                           event_id,                      uri,       FALSE,             ","
-documentId,                            document_id,                   uri,       FALSE,             ","
-unitId,                                record_id,                     uri,       FALSE,             ","
-individualId,                          individual_id,                 uri,       FALSE,             ","
-individualCountMin,                    abundance_min,                 integer,   FALSE,             ","
-individualCountMax,                    abundance_max,                 integer,   FALSE,             ","
-loadedSameOrAfter,                     last_import_date_min,          date,      FALSE,             ","
-loadedSameOrBefore,                    last_import_date_max,          date,      FALSE,             ","
-firstLoadedSameOrAfter,                first_import_date_min,         date,      FALSE,             ","
-firstLoadedSameOrBefore,               first_import_date_max,         date,      FALSE,             ","
-coordinates,                           coordinates_area,              coords,    FALSE,             ","
-coordinateAccuracyMax,                 coordinate_accuracy_max,       integer,   FALSE,             ","
-wgs84CenterPoint,                      coordinates_center,            coords,    FALSE,             ","
-ykj1km,                                coordinates_cell_1k,           coords,    FALSE,             ","
-ykj10km,                               coordinates_cell_10k,          coords,    FALSE,             ","
-ykj50km,                               coordinates_cell_50k,          coords,    FALSE,             ","
-ykj100km,                              coordinates_cell_100k,         coords,    FALSE,             ","
-ykj1kmCenter,                          coordinates_cell_1k_center,    coords,    FALSE,             ","
-ykj10kmCenter,                         coordinates_cell_10k_center,   coords,    FALSE,             ","
-ykj50kmCenter,                         coordinates_cell_50k_center,   coords,    FALSE,             ","
-ykj100kmCenter,                        coordinates_cell_100k_center,  coords,    FALSE,             ","
-sourceOfCoordinates,                   coordinate_source,             factor,    FALSE,             ","
-typeSpecimen,                          type_specimen,                 logical,   FALSE,             ","
-wild,                                  wild_status,                   factor,    FALSE,             ","
-breedingSite,                          is_breeding_location,          logical,   FALSE,             ","
-hasDocumentMedia,                      has_document_media,            logical,   FALSE,             ","
-hasGatheringMedia,                     has_event_media,               logical,   FALSE,             ","
-hasUnitMedia,                          has_record_media,              logical,   FALSE,             ","
-hasMedia,                              has_media,                     logical,   FALSE,             ","
-editorId,                              editor_id,                     uri,       FALSE,             ","
-observerId,                            observer_id,                   uri,       FALSE,             ","
-editorOrObserverId,                    editor_or_observer_id,         uri,       FALSE,             ","
-teamMember,                            event_observer_name,           character, FALSE,             ","
-teamMemberId,                          event_observer_id,             character, FALSE,             ","
-secureReason,                          restriction_reason,            factor,    FALSE,             ","
-secureLevel,                           restriction_level,             factor,    FALSE,             ","
-secured,                               restricted,                    logical,   FALSE,             ","
-annotated,                             annotated,                     logical,   FALSE,             ","
-qualityIssues,                         quality_issues,                factor,    TRUE,              ","
-reliable,                              reliable,                      logical,   FALSE,             ","
-taxonReliability,                      taxon_reliability,             factor,    TRUE,              ","
-unidentified,                          unidentified,                  logical,   FALSE,             ","
-taxonCensus,                           taxon_census,                  uri,       FALSE,             ","
-unitFact,                              record_fact,                   character, FALSE,             ","
-gatheringFact,                         event_fact,                    character, FALSE,             ","
-documentFact,                          document_fact,                 character, FALSE,             ","
+finbif_api_filter,                     translated_filter,             class,     translated_values, sep, doc
+taxonId,                               taxon_id,                      uri,       FALSE,             ",", TRUE
+useIdentificationAnnotations,          quality_controlled_det,        logical,   FALSE,             ",", TRUE
+includeSubTaxa,                        subtaxa,                       logical,   FALSE,             ",", TRUE
+target,                                taxon_name,                    character, FALSE,             ",", TRUE
+includeNonValidTaxa,                   invalid_taxa,                  logical,   FALSE,             ",", TRUE
+informalTaxonGroupId,                  informal_group,                uri,       TRUE,              ",", TRUE
+informalTaxonGroupIdIncludingReported, informal_group_reported,       uri,       TRUE,              ",", TRUE
+administrativeStatusId,                administrative_status,         uri,       TRUE,              ",", TRUE
+redListStatusId,                       red_list_status,               uri,       TRUE,              ",", TRUE
+typeOfOccurrenceId,                    finnish_occurrence_status,     uri,       TRUE,              ",", TRUE
+typeOfOccurrenceIdNot,                 finnish_occurrence_status_neg, uri,       TRUE,              ",", TRUE
+primaryHabitat,                        primary_habitat,               factor,    TRUE,              ";", TRUE
+anyHabitat,                            primary_secondary_habitat,     factor,    TRUE,              ";", TRUE
+finnish,                               finnish,                       logical,   FALSE,             ",", TRUE
+invasive,                              invasive,                      logical,   FALSE,             ",", TRUE
+taxonRankId,                           taxon_rank,                    uri,       TRUE,              ",", TRUE
+countryId,                             country,                       uri,       TRUE,              ",", TRUE
+finnishMunicipalityId,                 municipality,                  uri,       TRUE,              ",", TRUE
+biogeographicalProvinceId,             province,                      uri,       TRUE,              ",", TRUE
+area,                                  locality,                      character, FALSE,             ",", TRUE
+birdAssociationAreaId,                 bird_assoc_area,               uri,       TRUE,              ",", TRUE
+namedPlaceId,                          place_name_id,                 uri,       FALSE,             ",", FALSE
+formId,                                form_id,                       uri,       FALSE,             ",", FALSE
+time,                                  date_range_ymd,                date,      FALSE,             ",", TRUE
+yearMonth,                             date_range_ym,                 date,      FALSE,             ",", TRUE
+dayOfYear,                             date_range_d,                  date,      FALSE,             ",", TRUE
+season,                                date_range_md,                 date,      FALSE,             ",", TRUE
+keyword,                               keywords,                      character, FALSE,             ",", TRUE
+collectionId,                          collection,                    uri,       FALSE,             ",", TRUE
+includeSubCollections,                 subcollections,                logical,   FALSE,             ",", TRUE
+collectionIdNot,                       not_collection,                uri,       FALSE,             ",", TRUE
+reliabilityOfCollection,               collection_reliability,        integer,   FALSE,             ",", TRUE
+sourceId,                              source,                        uri,       TRUE,              ",", TRUE
+recordBasis,                           record_basis,                  factor,    TRUE,              ",", TRUE
+superRecordBasis,                      superrecord_basis,             factor,    TRUE,              ",", TRUE
+lifeStage,                             life_stage,                    factor,    TRUE,              ",", TRUE
+sex,                                   sex,                           factor,    TRUE,              ",", TRUE
+invasiveControl,                       invasive_control,              factor,    FALSE,             ",", FALSE
+invasiveControlled,                    invasive_controlled,           logical,   FALSE,             ",", FALSE
+gatheringId,                           event_id,                      uri,       FALSE,             ",", TRUE
+documentId,                            document_id,                   uri,       FALSE,             ",", TRUE
+unitId,                                record_id,                     uri,       FALSE,             ",", TRUE
+individualId,                          individual_id,                 uri,       FALSE,             ",", TRUE
+individualCountMin,                    abundance_min,                 integer,   FALSE,             ",", TRUE
+individualCountMax,                    abundance_max,                 integer,   FALSE,             ",", TRUE
+loadedSameOrAfter,                     last_import_date_min,          date,      FALSE,             ",", TRUE
+loadedSameOrBefore,                    last_import_date_max,          date,      FALSE,             ",", TRUE
+firstLoadedSameOrAfter,                first_import_date_min,         date,      FALSE,             ",", TRUE
+firstLoadedSameOrBefore,               first_import_date_max,         date,      FALSE,             ",", TRUE
+coordinates,                           coordinates_area,              coords,    FALSE,             ",", TRUE
+coordinateAccuracyMax,                 coordinate_accuracy_max,       integer,   FALSE,             ",", TRUE
+wgs84CenterPoint,                      coordinates_center,            coords,    FALSE,             ",", TRUE
+ykj1km,                                coordinates_cell_1k,           coords,    FALSE,             ",", TRUE
+ykj10km,                               coordinates_cell_10k,          coords,    FALSE,             ",", TRUE
+ykj50km,                               coordinates_cell_50k,          coords,    FALSE,             ",", TRUE
+ykj100km,                              coordinates_cell_100k,         coords,    FALSE,             ",", TRUE
+ykj1kmCenter,                          coordinates_cell_1k_center,    coords,    FALSE,             ",", TRUE
+ykj10kmCenter,                         coordinates_cell_10k_center,   coords,    FALSE,             ",", TRUE
+ykj50kmCenter,                         coordinates_cell_50k_center,   coords,    FALSE,             ",", TRUE
+ykj100kmCenter,                        coordinates_cell_100k_center,  coords,    FALSE,             ",", TRUE
+sourceOfCoordinates,                   coordinate_source,             factor,    FALSE,             ",", TRUE
+typeSpecimen,                          type_specimen,                 logical,   FALSE,             ",", TRUE
+wild,                                  wild_status,                   factor,    FALSE,             ",", TRUE
+breedingSite,                          is_breeding_location,          logical,   FALSE,             ",", TRUE
+hasDocumentMedia,                      has_document_media,            logical,   FALSE,             ",", TRUE
+hasGatheringMedia,                     has_event_media,               logical,   FALSE,             ",", TRUE
+hasUnitMedia,                          has_record_media,              logical,   FALSE,             ",", TRUE
+hasMedia,                              has_media,                     logical,   FALSE,             ",", TRUE
+editorId,                              editor_id,                     uri,       FALSE,             ",", FALSE
+observerId,                            observer_id,                   uri,       FALSE,             ",", FALSE
+editorOrObserverId,                    editor_or_observer_id,         uri,       FALSE,             ",", FALSE
+teamMember,                            event_observer_name,           character, FALSE,             ",", TRUE
+teamMemberId,                          event_observer_id,             character, FALSE,             ",", TRUE
+secureReason,                          restriction_reason,            factor,    FALSE,             ",", TRUE
+secureLevel,                           restriction_level,             factor,    FALSE,             ",", TRUE
+secured,                               restricted,                    logical,   FALSE,             ",", TRUE
+annotated,                             annotated,                     logical,   FALSE,             ",", TRUE
+qualityIssues,                         quality_issues,                factor,    TRUE,              ",", TRUE
+reliable,                              reliable,                      logical,   FALSE,             ",", TRUE
+taxonReliability,                      taxon_reliability,             factor,    TRUE,              ",", TRUE
+unidentified,                          unidentified,                  logical,   FALSE,             ",", TRUE
+taxonCensus,                           taxon_census,                  uri,       FALSE,             ",", TRUE
+unitFact,                              record_fact,                   character, FALSE,             ",", TRUE
+gatheringFact,                         event_fact,                    character, FALSE,             ",", TRUE
+documentFact,                          document_fact,                 character, FALSE,             ",", TRUE
