@@ -95,9 +95,9 @@ The checklist (as a URI) that that taxon was found in before (if any)
 annotation.
 \item \code{taxon_finnish} Logical.
 Is the taxon considered Finnish. The definition of a Finnish taxon differs
-by taxonomic group.
+by taxonomic group?
 \item \code{orig_taxon_finnish} Logical.
-Was the taxon considered Finnish before (if any) annotation.
+Was the taxon considered Finnish before (if any) annotation?
 \item \code{is_unidentifiable} Logical.
 Is the record unable to be identified?
 }

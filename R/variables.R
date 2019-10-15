@@ -87,9 +87,9 @@
 #'   annotation.
 #' - `taxon_finnish` Logical.
 #'   Is the taxon considered Finnish. The definition of a Finnish taxon differs
-#'   by taxonomic group.
+#'   by taxonomic group?
 #' - `orig_taxon_finnish` Logical.
-#'   Was the taxon considered Finnish before (if any) annotation.
+#'   Was the taxon considered Finnish before (if any) annotation?
 #' - `is_unidentifiable` Logical.
 #'   Is the record unable to be identified?
 #'
