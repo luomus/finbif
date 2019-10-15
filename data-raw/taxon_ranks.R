@@ -4,7 +4,7 @@ metadata_ranges <-
 taxon_rank <- metadata_ranges[["MX.taxonRankEnum"]]
 taxon_rank <- matrix(unlist(taxon_rank), ncol = 2L, byrow = TRUE)
 taxon_rank <- as.data.frame(
-  tolower(taxon_rank[, -1L]), row.names = taxon_rank[, 1L],
+  tolower(unique(taxon_rank[, -1L])), row.names = unique(taxon_rank[, 1L]),
   stringsAsFactors = FALSE
 )
 taxon_rank <- stats::setNames(taxon_rank, "rank")
