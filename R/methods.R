@@ -170,6 +170,14 @@ print.finbif_occ <- function(x, ...) {
   extra_cols <- ncols - dsply_nc
 
   if (extra_rows == 0L && extra_cols == 0L) return(invisible(x))
+
+  print_extras(x, extra_rows, extra_cols, dsply_cols)
+
+  invisible(x)
+}
+
+#' @noRd
+print_extras <- function(x, extra_rows, extra_cols, dsply_cols) {
   cat(
     "...with ", extra_rows, " more record", ifelse(extra_rows == 1L, "", "s"),
     sep = ""
@@ -177,7 +185,7 @@ print.finbif_occ <- function(x, ...) {
 
   if (extra_cols == 0L) {
     cat("\n")
-    return(invisible(x))
+    return(NULL)
   }
 
   cat(
@@ -204,8 +212,7 @@ print.finbif_occ <- function(x, ...) {
   }
 
   cat("\n")
-
-  invisible(x)
+  NULL
 }
 
 # plot methods ----------------------------------------------------------------
