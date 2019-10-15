@@ -63,7 +63,7 @@ defer_errors <- function(expr, handler = stop) {
 deferred_errors <- function(errors, handler, calls, value = NULL) {
   if (length(errors)) {
     err <- list(errors = errors, value = value)
-    class(err) <- c("deferred_errors", "error", "condition")
+    class(err) <- c("dfrd_errors", "error", "condition")
     handler(err)
   } else {
     value
@@ -79,7 +79,7 @@ error <- function(message, class, ...) {
 
 #' @export
 #' @noRd
-conditionMessage.deferred_errors <- function(c) {
+conditionMessage.dfrd_errors <- function(c) {
   errors <- vapply(c[["errors"]], "[[", character(1), "message")
   n <- length(errors)
   sprintf(
