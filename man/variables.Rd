@@ -10,28 +10,28 @@ FinBIF record variables that can be selected in a finbif occurrence search.
 
 All identifiers are returned in the form of a URI. Identifiers include:
 \itemize{
-\item \code{record_id}
+\item \code{record_id} Character.
 Record ID. The ID of a record of organism's occurrence at a time and
 place.
-\item \code{individual_id}
+\item \code{individual_id} Character.
 ID of an individual organism (e.g., a ringed bird that has been captured
 multiple times will have a single \code{individual_id} and multiple \code{record_id}s
 corresponding to each capture).
-\item \code{event_id}
+\item \code{event_id} Character.
 Event ID. An event can contain one or more records (e.g., a survey of
 plants at a particular location and time.)
-\item \code{document_id}
+\item \code{document_id} Character.
 Document ID. A set of events that share common metadata.
-\item \code{form_id}
+\item \code{form_id} Character.
 Form ID. The form used to create the document, event, record data.
-\item \code{collection_id}
+\item \code{collection_id} Character.
 Collection ID. All documents, events, and records belong to a collection (
 e.g., a museum collection, or the datasets collected by a specific
 institution). Collections themselves can be part of a larger
 (super)collection (e.g., all the collections at specific museum). Only the
 lowest level collection ID for a record is returned. Use
 \code{finbif_collections()} to explore the hierarchy of collections.
-\item \code{source_id}
+\item \code{source_id} Character.
 Source ID. The source of the collection's data.
 }
 }
@@ -43,35 +43,63 @@ Variables related to taxonomy of records include:
 \item \code{taxon_id} Character.
 The taxon ID in the form of a URI.
 \item \code{orig_taxon_id} Character.
-The taxon ID (above) before (if any) annotation.
-\item \code{annotated_taxon_id} Charactio
+The taxon ID before (if any) annotation.
+\item \code{annotated_taxon_id} Character.
 The new taxon ID if the record has had it's taxonomy annotated.
-\item \code{reported_taxon_id}
-The taxon ID reported by the original data provider (may not exist).
+\item \code{reported_taxon_id} Character.
+The taxon ID as originally reported by the record creator.
 \item \code{scientific_name} Character.
 Scientific name of taxon.
-\item \code{orig_scientific_name}
-\item \code{scientific_display_name}
-\item \code{orig_scientific_display_name}
-\item \code{vernacular_name}
-\item `orig_name_vernacular.
-\item \code{taxon_name_cursive}
-\item \code{orig_taxon_cursive}
-\item \code{taxon_verbatim}
-\item \code{scientific_name_author}
-\item \code{orig_scientific_name_author}
-\item \code{author_verabtum}
+\item \code{orig_scientific_name} Character.
+The scientific name before (if any) annotation.
+\item \code{scientific_display_name} Character.
+Scientific name of taxon formatted for display (e.g., taxa with genus only
+will be formatted as \emph{Genus sp.}).
+\item \code{orig_scientific_display_name} Character.
+Scientific display name before (if any) annotation.
+\item \code{common_name} Character.
+Common name of taxon.
+\item \code{orig_common_name} Character.
+Common name before (if any) annotation.
+\item \code{reported_name} Character.
+The name of the taxon as originally reported by the record creator.
+\item \code{scientific_name_italicised} Logical.
+Is the scientific name normally italicised (i.e., is the taxonomic rank
+genus or below.)
+\item \code{orig_scientific_name_italicised} Logical.
+Is the original scientific name normally italicised.
+\item \code{scientific_name_author} Character.
+The authority for the taxon scientific name.
+\item \code{orig_scientific_name_author} Character.
+The authority for the taxon scientific name before (if any) annotation.
+\item \code{reported_author} Character.
+The authority of the taxon as originally reported by the record creator.
 \item \code{taxon_rank} Character.
-Taxonomic rank of the taxon (in the form of a URI).
-\item \code{orig_taxon_rank}
-\item \code{informal_groups}
-\item \code{orig_informal_groups}
-\item \code{reported_informal_group}
-\item \code{taxon_checklist}
-\item \code{orig_taxon_checklist}
-\item \code{taxon_finnish}
-\item \code{orig_taxon_finnish}
-\item \code{is_unidentifiable}
+The taxonomic rank of the taxon (in the form of a URI).
+\item \code{orig_taxon_rank} Character.
+The taxonomic rank of the taxon (in the form of a URI) before (if any)
+annotation.
+\item \code{informal_groups} Character vector.
+The informal taxonomic groups that the taxon belongs to (e.g., birds) in
+the form of URIs.
+\item \code{orig_informal_groups} Character vector.
+The informal taxonomic groups that the taxon belonged to before (if any)
+annotation.
+\item \code{reported_informal_groups} Character vector.
+The informal taxonomic groups that the taxon belongs to as reported by the
+record creator.
+\item \code{taxon_checklist} Character.
+The checklist (as a URI) that that taxon is found in.
+\item \code{orig_taxon_checklist} Character.
+The checklist (as a URI) that that taxon was found in before (if any)
+annotation.
+\item \code{taxon_finnish} Logical.
+Is the taxon considered Finnish. The definition of a Finnish taxon differs
+by taxonomic group.
+\item \code{orig_taxon_finnish} Logical.
+Was the taxon considered Finnish before (if any) annotation.
+\item \code{is_unidentifiable} Logical.
+Is the record unable to be identified?
 }
 }
 
@@ -85,17 +113,22 @@ records with \code{abundance = 1} only indicate the record is of one individual
 and may not necessarily imply that this was the abundance at that specified
 place and time (e.g., a preserved museum specimen consisting of a single
 individual).
-\item \code{{female|male}_abundance}
-\item \code{pair_abundance}
-\item \code{abundance_verbatum}
-\item \code{life_stage}
-\item \code{sex}
+\item \code{{female|male}_abundance} Integer.
+Number of female or male individuals recorded.
+\item \code{pair_abundance} Integer.
+Number of mating pairs recorded.
+\item \code{abundance_verbatim} Character.
+The abundance as reported by the record creator.
+\item \code{life_stage} Character.
+Life stage of individual(s) recorded.
+\item \code{sex} Character.
+Sex of individual(s) recorded.
 }
 }
 
 \section{Location}{
 
-Variables related to the location of record include:
+Variables related to the location of records include:
 \itemize{
 \item \code{{lat|lon}_wgs84}
 \item \code{{lat|lon}_{min|max}_{euref|kkj|wgs84}}
@@ -114,13 +147,13 @@ Variables related to the location of record include:
 \item \code{province_id}
 \item \code{province_ids}
 \item \code{province_source}
-\item \code{province_verbatum}
+\item \code{province_verbatim}
 \item \code{province_verbatim2}
 \item \code{municipality}
 \item \code{municipality_id}
 \item \code{municipality_ids}
 \item \code{municipality_source}
-\item \code{municipality_verbatum}
+\item \code{municipality_verbatim}
 \item \code{locality}
 \item \code{location_id}
 \item \code{higher_geography}

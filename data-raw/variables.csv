@@ -2,7 +2,7 @@ finbif_api_var,                                                translated_var,  
 unit.linkings.taxon.scientificName,                            scientific_name,                                    TRUE,         FALSE,        character,  character,  TRUE
 unit.linkings.taxon.taxonRank,                                 taxon_rank,                                         TRUE,         FALSE,        character,  uri,        TRUE
 unit.interpretations.individualCount,                          abundance,                                          TRUE,         FALSE,        integer,    integer,    TRUE
-unit.abundanceString,                                          abundance_verbatum,                                 FALSE,        FALSE,        character,  character,  TRUE
+unit.abundanceString,                                          abundance_verbatim,                                 FALSE,        FALSE,        character,  character,  TRUE
 gathering.interpretations.countryDisplayname,                  country,                                            TRUE,         FALSE,        character,  character,  TRUE
 gathering.interpretations.biogeographicalProvinceDisplayname,  province,                                           TRUE,         FALSE,        character,  character,  TRUE
 gathering.interpretations.municipalityDisplayname,             municipality,                                       TRUE,         FALSE,        character,  character,  TRUE
@@ -33,7 +33,7 @@ unit.annotations.invasiveControlEffectiveness,                 record_annotation
 unit.annotations.notes,                                        record_annotation_notes,                            FALSE,        FALSE,        character,  character,  FALSE
 unit.annotations.opinion,                                      record_annotation_opinion,                          FALSE,        FALSE,        character,  character,  FALSE
 unit.annotations.type,                                         record_annotation_type,                             FALSE,        FALSE,        character,  factor,     FALSE
-unit.author,                                                   author_verbatum,                                    FALSE,        FALSE,        character,  character,  TRUE
+unit.author,                                                   reported_author,                                    FALSE,        FALSE,        character,  character,  TRUE
 unit.breedingSite,                                             is_breeding_location,                               FALSE,        FALSE,        logical,    logical,    TRUE
 unit.det,                                                      determiner,                                         FALSE,        FALSE,        character,  character,  TRUE
 unit.facts.decimalValue,                                       record_fact_decimal,                                FALSE,        FALSE,        double,     double,     FALSE
@@ -49,7 +49,7 @@ unit.invasiveControlEffectiveness,                             invasive_control_
 unit.invasiveControlled,                                       invasive_control,                                   FALSE,        FALSE,        logical,    logical,    TRUE
 unit.lifeStage,                                                life_stage,                                         FALSE,        FALSE,        character,  factor,     TRUE
 unit.linkings.originalTaxon.checklist,                         orig_taxon_checklist,                               FALSE,        FALSE,        character,  uri,        TRUE
-unit.linkings.originalTaxon.cursiveName,                       orig_taxon_cursive,                                 FALSE,        FALSE,        character,  character,  TRUE
+unit.linkings.originalTaxon.cursiveName,                       orig_scientific_name_italicised,                    FALSE,        FALSE,        logical,    logical,    TRUE
 unit.linkings.originalTaxon.finnish,                           orig_taxon_finnish,                                 FALSE,        FALSE,        logical,    logical,    TRUE
 unit.linkings.originalTaxon.id,                                orig_taxon_id,                                      FALSE,        FALSE,        character,  uri,        TRUE
 unit.linkings.originalTaxon.informalTaxonGroups,               orig_informal_groups,                               FALSE,        FALSE,        character,  character,  FALSE
@@ -57,15 +57,15 @@ unit.linkings.originalTaxon.scientificName,                    orig_scientific_n
 unit.linkings.originalTaxon.scientificNameAuthorship,          orig_scientific_name_author,                        FALSE,        FALSE,        character,  character,  TRUE
 unit.linkings.originalTaxon.scientificNameDisplayName,         orig_scientific_display_name,                       FALSE,        FALSE,        character,  character,  TRUE
 unit.linkings.originalTaxon.taxonRank,                         orig_taxon_rank,                                    FALSE,        FALSE,        character,  factor,     TRUE
-unit.linkings.originalTaxon.vernacularName,                    orig_name_vernacular,                               FALSE,        FALSE,        character,  character,  TRUE
+unit.linkings.originalTaxon.vernacularName,                    orig_common_name,                                   FALSE,        FALSE,        character,  character,  TRUE
 unit.linkings.taxon.checklist,                                 taxon_checklist,                                    FALSE,        FALSE,        character,  uri,        TRUE
-unit.linkings.taxon.cursiveName,                               taxon_name_cursive,                                 FALSE,        FALSE,        character,  character,  TRUE
+unit.linkings.taxon.cursiveName,                               scientific_name_italicised,                         FALSE,        FALSE,        logical,    logical,    TRUE
 unit.linkings.taxon.finnish,                                   taxon_finnish,                                      FALSE,        FALSE,        logical,    logical,    TRUE
 unit.linkings.taxon.id,                                        taxon_id,                                           FALSE,        FALSE,        character,  uri,        TRUE
 unit.linkings.taxon.informalTaxonGroups,                       informal_groups,                                    FALSE,        FALSE,        character,  character,  FALSE
 unit.linkings.taxon.scientificNameAuthorship,                  scientific_name_author,                             FALSE,        FALSE,        character,  character,  TRUE
 unit.linkings.taxon.scientificNameDisplayName,                 scientific_display_name,                            FALSE,        FALSE,        character,  character,  TRUE
-unit.linkings.taxon.vernacularName,                            vernacular_name,                                    FALSE,        FALSE,        character,  character,  TRUE
+unit.linkings.taxon.vernacularName,                            common_name,                                        FALSE,        FALSE,        character,  character,  TRUE
 unit.media.author,                                             record_media_author,                                FALSE,        FALSE,        character,  character,  FALSE
 unit.media.caption,                                            record_media_caption,                               FALSE,        FALSE,        character,  character,  FALSE
 unit.media.copyrightOwner,                                     record_media_copyright,                             FALSE,        FALSE,        character,  character,  FALSE
@@ -87,7 +87,7 @@ unit.quality.taxon.reliability,                                taxon_reliability
 unit.quality.taxon.source,                                     taxon_reliability_source,                           FALSE,        TRUE,         character,  factor,     TRUE
 unit.recordBasis,                                              record_basis,                                       FALSE,        FALSE,        character,  factor,     TRUE
 unit.referencePublication,                                     reference_publication,                              FALSE,        FALSE,        character,  uri,        TRUE
-unit.reportedInformalTaxonGroup,                               reported_informal_group,                            FALSE,        FALSE,        character,  uri,        TRUE
+unit.reportedInformalTaxonGroup,                               reported_informal_groups,                           FALSE,        FALSE,        character,  uri,        FALSE
 unit.reportedTaxonConfidence,                                  reported_taxon_confidence,                          FALSE,        FALSE,        character,  factor,     TRUE
 unit.reportedTaxonId,                                          reported_taxon_id,                                  FALSE,        FALSE,        character,  uri,        TRUE
 unit.sex,                                                      sex,                                                FALSE,        FALSE,        character,  factor,     TRUE
@@ -217,8 +217,8 @@ gathering.media.mediaType,                                     event_media_type,
 gathering.media.squareThumbnailURL,                            event_thumbnail_square,                             FALSE,        FALSE,        character,  uri,        FALSE
 gathering.media.thumbnailURL,                                  event_thumbnail,                                    FALSE,        FALSE,        character,  uri,        FALSE
 gathering.mediaCount,                                          event_media_count,                                  FALSE,        FALSE,        character,  character,  TRUE
-gathering.municipality,                                        municipality_verbatum,                              FALSE,        FALSE,        character,  character,  TRUE
-gathering.province,                                            province_verbatum2,                                 FALSE,        FALSE,        character,  character,  TRUE
+gathering.municipality,                                        municipality_verbatim,                              FALSE,        FALSE,        character,  character,  TRUE
+gathering.province,                                            province_verbatim2,                                 FALSE,        FALSE,        character,  character,  TRUE
 gathering.notes,                                               event_notes,                                        FALSE,        FALSE,        character,  character,  TRUE
 gathering.observerUserIds,                                     observer_user_ids,                                  FALSE,        FALSE,        character,  uri,        FALSE
 gathering.quality.issue.issue,                                 event_issue,                                        TRUE,         TRUE,         character,  factor,     TRUE

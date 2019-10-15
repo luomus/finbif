@@ -5,28 +5,28 @@
 #' @section Identifiers:
 #' All identifiers are returned in the form of a URI. Identifiers include:
 #'
-#' - `record_id`
+#' - `record_id` Character.
 #'   Record ID. The ID of a record of organism's occurrence at a time and
 #'   place.
-#' - `individual_id`
+#' - `individual_id` Character.
 #'   ID of an individual organism (e.g., a ringed bird that has been captured
 #'   multiple times will have a single `individual_id` and multiple `record_id`s
 #'   corresponding to each capture).
-#' - `event_id`
+#' - `event_id` Character.
 #'   Event ID. An event can contain one or more records (e.g., a survey of
 #'   plants at a particular location and time.)
-#' - `document_id`
+#' - `document_id` Character.
 #'   Document ID. A set of events that share common metadata.
-#' - `form_id`
+#' - `form_id` Character.
 #'   Form ID. The form used to create the document, event, record data.
-#' - `collection_id`
+#' - `collection_id` Character.
 #'   Collection ID. All documents, events, and records belong to a collection (
 #'   e.g., a museum collection, or the datasets collected by a specific
 #'   institution). Collections themselves can be part of a larger
 #'   (super)collection (e.g., all the collections at specific museum). Only the
 #'   lowest level collection ID for a record is returned. Use
 #'   `finbif_collections()` to explore the hierarchy of collections.
-#' - `source_id`
+#' - `source_id` Character.
 #'   Source ID. The source of the collection's data.
 #'
 #' @section Taxa:
@@ -35,35 +35,63 @@
 #' - `taxon_id` Character.
 #'   The taxon ID in the form of a URI.
 #' - `orig_taxon_id` Character.
-#'   The taxon ID (above) before (if any) annotation.
-#' - `annotated_taxon_id` Charactio
+#'   The taxon ID before (if any) annotation.
+#' - `annotated_taxon_id` Character.
 #'   The new taxon ID if the record has had it's taxonomy annotated.
-#' - `reported_taxon_id`
-#'   The taxon ID reported by the original data provider (may not exist).
+#' - `reported_taxon_id` Character.
+#'   The taxon ID as originally reported by the record creator.
 #' - `scientific_name` Character.
 #'   Scientific name of taxon.
-#' - `orig_scientific_name`
-#' - `scientific_display_name`
-#' - `orig_scientific_display_name`
-#' - `vernacular_name`
-#' - `orig_name_vernacular.
-#' - `taxon_name_cursive`
-#' - `orig_taxon_cursive`
-#' - `taxon_verbatim`
-#' - `scientific_name_author`
-#' - `orig_scientific_name_author`
-#' - `author_verabtum`
+#' - `orig_scientific_name` Character.
+#'   The scientific name before (if any) annotation.
+#' - `scientific_display_name` Character.
+#'   Scientific name of taxon formatted for display (e.g., taxa with genus only
+#'   will be formatted as _Genus sp._).
+#' - `orig_scientific_display_name` Character.
+#'   Scientific display name before (if any) annotation.
+#' - `common_name` Character.
+#'   Common name of taxon.
+#' - `orig_common_name` Character.
+#'   Common name before (if any) annotation.
+#' - `reported_name` Character.
+#'   The name of the taxon as originally reported by the record creator.
+#' - `scientific_name_italicised` Logical.
+#'   Is the scientific name normally italicised (i.e., is the taxonomic rank
+#'   genus or below.)
+#' - `orig_scientific_name_italicised` Logical.
+#'   Is the original scientific name normally italicised.
+#' - `scientific_name_author` Character.
+#'   The authority for the taxon scientific name.
+#' - `orig_scientific_name_author` Character.
+#'   The authority for the taxon scientific name before (if any) annotation.
+#' - `reported_author` Character.
+#'   The authority of the taxon as originally reported by the record creator.
 #' - `taxon_rank` Character.
-#'   Taxonomic rank of the taxon (in the form of a URI).
-#' - `orig_taxon_rank`
-#' - `informal_groups`
-#' - `orig_informal_groups`
-#' - `reported_informal_group`
-#' - `taxon_checklist`
-#' - `orig_taxon_checklist`
-#' - `taxon_finnish`
-#' - `orig_taxon_finnish`
-#' - `is_unidentifiable`
+#'   The taxonomic rank of the taxon (in the form of a URI).
+#' - `orig_taxon_rank` Character.
+#'   The taxonomic rank of the taxon (in the form of a URI) before (if any)
+#'   annotation.
+#' - `informal_groups` Character vector.
+#'   The informal taxonomic groups that the taxon belongs to (e.g., birds) in
+#'   the form of URIs.
+#' - `orig_informal_groups` Character vector.
+#'   The informal taxonomic groups that the taxon belonged to before (if any)
+#'   annotation.
+#' - `reported_informal_groups` Character vector.
+#'   The informal taxonomic groups that the taxon belongs to as reported by the
+#'   record creator.
+#' - `taxon_checklist` Character.
+#'   The checklist (as a URI) that that taxon is found in.
+#' - `orig_taxon_checklist` Character.
+#'   The checklist (as a URI) that that taxon was found in before (if any)
+#'   annotation.
+#' - `taxon_finnish` Logical.
+#'   Is the taxon considered Finnish. The definition of a Finnish taxon differs
+#'   by taxonomic group.
+#' - `orig_taxon_finnish` Logical.
+#'   Was the taxon considered Finnish before (if any) annotation.
+#' - `is_unidentifiable` Logical.
+#'   Is the record unable to be identified?
 #'
 #' @section Abundance, sex & life history:
 #' Variables related to abundance, sex and life history include:
@@ -74,14 +102,19 @@
 #'   and may not necessarily imply that this was the abundance at that specified
 #'   place and time (e.g., a preserved museum specimen consisting of a single
 #'   individual).
-#' - `{female|male}_abundance`
-#' - `pair_abundance`
-#' - `abundance_verbatum`
-#' - `life_stage`
-#' - `sex`
+#' - `{female|male}_abundance` Integer.
+#'   Number of female or male individuals recorded.
+#' - `pair_abundance` Integer.
+#'   Number of mating pairs recorded.
+#' - `abundance_verbatim` Character.
+#'   The abundance as reported by the record creator.
+#' - `life_stage` Character.
+#'   Life stage of individual(s) recorded.
+#' - `sex` Character.
+#'   Sex of individual(s) recorded.
 #'
 #' @section Location:
-#' Variables related to the location of record include:
+#' Variables related to the location of records include:
 #'
 #' - `{lat|lon}_wgs84`
 #' - `{lat|lon}_{min|max}_{euref|kkj|wgs84}`
@@ -100,13 +133,13 @@
 #' - `province_id`
 #' - `province_ids`
 #' - `province_source`
-#' - `province_verbatum`
+#' - `province_verbatim`
 #' - `province_verbatim2`
 #' - `municipality`
 #' - `municipality_id`
 #' - `municipality_ids`
 #' - `municipality_source`
-#' - `municipality_verbatum`
+#' - `municipality_verbatim`
 #' - `locality`
 #' - `location_id`
 #' - `higher_geography`
