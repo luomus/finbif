@@ -62,6 +62,9 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
 
   if (count_only) return(records[["content"]][["total"]])
 
+  # Don't need a processing progress bar if only one page of records
+  if (length(records) < 2L) quiet <- TRUE
+
   if (!quiet) pb_head("Processing data")
 
   df   <- as.data.frame(records, quiet = quiet)
