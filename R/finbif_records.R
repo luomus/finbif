@@ -45,63 +45,7 @@ finbif_records <- function(
 
     } else {
 
-      filter <- as.list(filter)
-      finbif_filter_names <- translate(names(filter), "filter_names")
-
-      for (i in seq_along(filter)) {
-
-        # the filter might not exist
-        if (is.na(finbif_filter_names[[i]])) next
-
-        if (filter_names[finbif_filter_names[[i]], "translated_values"])
-          filter[[i]] <- translate(filter[[i]], names(filter)[[i]])
-
-        if (grepl("^(not_){0,1}collection$", names(filter)[[i]])) {
-
-          if (inherits(filter[[i]], "finbif_collections")) {
-
-            filter[[i]] <- row.names(filter[[i]])
-
-          } else {
-
-            env <- list()
-
-            env[[names(filter)[[i]]]] <- finbif_collections(
-              select = NA, supercollections = TRUE, nmin = NA
-            )
-
-            for (
-              cl in c(
-                "id", "collection_name_en", "collection_name_fi",
-                "collection_name_fi", "collection_name_sv", "abbreviation"
-              )
-            )
-              class(env[[names(filter)[[i]]]][[cl]]) <- "translation"
-
-            filter[[i]] <- translate(filter[[i]], names(filter)[[i]], env)
-
-          }
-        }
-
-        if (
-          identical(filter_names[finbif_filter_names[[i]], "class"], "coords")
-        )
-          filter[[i]] <- do.call(finbif_coords, as.list(filter[[i]]))
-
-        if (identical(filter_names[finbif_filter_names[[i]], "class"], "date"))
-          filter[[i]] <- do.call(
-            finbif_dates, c(list(names(filter)[[i]]), as.list(filter[[i]]))
-          )
-
-        filter[[i]] <- paste(
-          filter[[i]], collapse = filter_names[finbif_filter_names[[i]], "sep"]
-        )
-
-      }
-
-      names(filter) <- finbif_filter_names
-
-      query <- lapply(filter, paste, collapse = ",")
+      query <- lapply(parse_filters(filter), paste, collapse = ",")
 
     }
 
@@ -199,6 +143,70 @@ finbif_records <- function(
     resp, class = c("finbif_records_list", "finbif_api_list"), nrec_dnld = n,
     nrec_avl = n_tot, select = unique(select)
   )
+
+}
+
+# parsing filters --------------------------------------------------------------
+
+parse_filters <- function(filter) {
+
+  filter <- as.list(filter)
+  finbif_filter_names <- translate(names(filter), "filter_names")
+
+  for (i in seq_along(filter)) {
+
+    # the filter might not exist
+    if (is.na(finbif_filter_names[[i]])) next
+
+    if (filter_names[finbif_filter_names[[i]], "translated_values"])
+      filter[[i]] <- translate(filter[[i]], names(filter)[[i]])
+
+    if (grepl("^(not_){0,1}collection$", names(filter)[[i]])) {
+
+      if (inherits(filter[[i]], "finbif_collections")) {
+
+        filter[[i]] <- row.names(filter[[i]])
+
+      } else {
+
+        env <- list()
+
+        env[[names(filter)[[i]]]] <- finbif_collections(
+          select = NA, supercollections = TRUE, nmin = NA
+        )
+
+        for (
+          cl in c(
+            "id", "collection_name_en", "collection_name_fi",
+            "collection_name_fi", "collection_name_sv", "abbreviation"
+          )
+        )
+          class(env[[names(filter)[[i]]]][[cl]]) <- "translation"
+
+        filter[[i]] <- translate(filter[[i]], names(filter)[[i]], env)
+
+      }
+    }
+
+    if (
+      identical(filter_names[finbif_filter_names[[i]], "class"], "coords")
+    )
+      filter[[i]] <- do.call(finbif_coords, as.list(filter[[i]]))
+
+    if (identical(filter_names[finbif_filter_names[[i]], "class"], "date"))
+      filter[[i]] <- do.call(
+        finbif_dates, c(list(names(filter)[[i]]), as.list(filter[[i]]))
+      )
+
+    filter[[i]] <- paste(
+      filter[[i]], collapse = filter_names[finbif_filter_names[[i]], "sep"]
+    )
+
+  }
+
+  names(filter) <- finbif_filter_names
+
+  filter
 
 }
 
