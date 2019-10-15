@@ -50,6 +50,12 @@ date_range_ymd <- function(x, y, format = "%Y-%m-%d") {
     return(paste(c(x, y), collapse = "/"))
   }
 
+  date_range_ymd2(x, y, format)
+
+}
+
+#' @noRd
+date_range_ymd2 <- function(x, y, format) {
   if (inherits(x, "y")) {
     x <- paste0(x, "-01")
     return(date_range_ymd(x, y, format))
