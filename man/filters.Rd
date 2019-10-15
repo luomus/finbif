@@ -42,17 +42,17 @@ Use the function \code{\link[=finbif_informal_groups]{finbif_informal_groups()}}
 groups available in FinBIF.
 \item \code{administrative_status} Character vector.
 Filter by administrative status code. Use the function
-\code{\link[=finbif_admin_status]{finbif_admin_status()}} to see administrative statuses and codes.
+\code{\link[=finbif_metadata]{finbif_metadata()}} to see administrative statuses and codes.
 \item \code{red_list_status} Character vector.
-Filter by IUCN red list status code. Use the function \code{\link[=finbif_red_list]{finbif_red_list()}}
+Filter by IUCN red list status code. Use the function \code{\link[=finbif_metadata]{finbif_metadata()}}
 to see red list statuses and codes.
 \item \code{primary_habitat} Character vector or named list of character vectors.
-Filter by primary habitat code. Use the function \code{\link[=finbif_habitat_types]{finbif_habitat_types()}}
+Filter by primary habitat code. Use the function \code{\link[=finbif_metadata]{finbif_metadata()}}
 to see habitat (sub)types and codes for taxa in the FinBIF database.
 Habitat type/subtypes can be refined further by indicating habitat
 qualifiers with a named list of character vectors where the names are
 habitat (sub)type codes and the elements of the character vector are the
-habitat qualifier codes. Use the function \code{\link[=finbif_habitat_qualifiers]{finbif_habitat_qualifiers()}} to
+habitat qualifier codes. Use the function \code{\link[=finbif_metadata]{finbif_metadata()}} to
 see habitat qualifiers and codes. The records returned will be of taxa
 whose primary habitat is considered to be the (sub)habitat/habitat
 qualifier combination supplied.
@@ -61,7 +61,7 @@ As above, except the records returned will be of taxa whose primary or
 secondary habitat is considered to be the combination supplied.
 \item \code{finnish_occurrence_status}, Character vector.
 Filter by Finnish occurrence status of taxa. Use
-\code{\link[=finbif_finnish_occurrence_status]{finbif_finnish_occurrence_status()}} to see the possible occurrence
+\code{\link[=finbif_metadata]{finbif_metadata()}} to see the possible occurrence
 statuses of taxa.
 \item \code{finnish_occurrence_status_neg}, Character vector.
 Negation of the above. Selecting a status will filter out rather than

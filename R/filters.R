@@ -37,17 +37,17 @@
 #'   groups available in FinBIF.
 #' - `administrative_status` Character vector.
 #'   Filter by administrative status code. Use the function
-#'   [finbif_admin_status()] to see administrative statuses and codes.
+#'   [finbif_metadata()] to see administrative statuses and codes.
 #' - `red_list_status` Character vector.
-#'   Filter by IUCN red list status code. Use the function [finbif_red_list()]
+#'   Filter by IUCN red list status code. Use the function [finbif_metadata()]
 #'   to see red list statuses and codes.
 #' - `primary_habitat` Character vector or named list of character vectors.
-#'   Filter by primary habitat code. Use the function [finbif_habitat_types()]
+#'   Filter by primary habitat code. Use the function [finbif_metadata()]
 #'   to see habitat (sub)types and codes for taxa in the FinBIF database.
 #'   Habitat type/subtypes can be refined further by indicating habitat
 #'   qualifiers with a named list of character vectors where the names are
 #'   habitat (sub)type codes and the elements of the character vector are the
-#'   habitat qualifier codes. Use the function [finbif_habitat_qualifiers()] to
+#'   habitat qualifier codes. Use the function [finbif_metadata()] to
 #'   see habitat qualifiers and codes. The records returned will be of taxa
 #'   whose primary habitat is considered to be the (sub)habitat/habitat
 #'   qualifier combination supplied.
@@ -56,7 +56,7 @@
 #'   secondary habitat is considered to be the combination supplied.
 #' - `finnish_occurrence_status`, Character vector.
 #'   Filter by Finnish occurrence status of taxa. Use
-#'   [finbif_finnish_occurrence_status()] to see the possible occurrence
+#'   [finbif_metadata()] to see the possible occurrence
 #'   statuses of taxa.
 #' - `finnish_occurrence_status_neg`, Character vector.
 #'   Negation of the above. Selecting a status will filter out rather than

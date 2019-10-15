@@ -10,49 +10,27 @@ reference:
       Getting an access token
     contents:
       - finbif_request_token
-  - title: "Collections"
+  - title: "Metadata"
     desc: >
-      Getting information on collections and data sources
+      Exploring metadata
     contents:
+      - finbif_metadata
       - finbif_collections
-      - finbif_sources
+      - finbif_informal_groups
   - title: "Taxonomy"
     desc: >
       Getting information on taxa
     contents:
       - finbif_check_taxa
       - finbif_taxa
-      - finbif_taxon_ranks
-      - finbif_informal_groups
-      - finbif_finnish_occurrence_status
   - title: "Records"
     desc: >
       Getting records from finbif
     contents:
-      - filters
       - finbif_occurrence
       - finbif_records
+      - filters
       - variables
-  - title: "Locations"
-    desc: >
-      Getting information on regions and locations
-    contents:
-      - finbif_bird_assoc_areas
-      - finbif_countries
-      - finbif_municipalities
-      - finbif_provinces
-  - title: "Status"
-    desc: >
-      Getting information on administrative and red list status
-    contents:
-      - finbif_admin_status
-      - finbif_red_list
-  - title: "Habitat"
-    desc: >
-      Getting information on habitat type
-    contents:
-      - finbif_habitat_types
-      - finbif_habitat_qualifiers
   - title: "Methods"
     desc: >
       Working with finbif objects
@@ -71,12 +49,3 @@ reference:
       - finland_map
       - hist_xy
       - breaks_xy
-  - title: "Misc"
-    desc: >
-      Miscellaneous functions
-    contents:
-      - finbif_record_basis
-      - finbif_restriction_levels
-      - finbif_restriction_reasons
-      - finbif_life_stages
-      - finbif_sex_categories
