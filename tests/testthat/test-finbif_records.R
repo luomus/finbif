@@ -14,7 +14,8 @@ vcr::use_cassette(
         expect_output(print(records[[1]]), "FinBIF")
 
         expect_s3_class(
-          finbif_records(c(collection = "HR.42")), "finbif_records_list"
+          finbif_records(c(collection = "HR.42"), order_by = "-date_start"),
+          "finbif_records_list"
         )
 
         expect_s3_class(

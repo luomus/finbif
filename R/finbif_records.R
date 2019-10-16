@@ -8,6 +8,12 @@
 #' @param select Character vector. Variables to return. If not specified a
 #'   default set of commonly used variables will be used. Use `"default_vars"`
 #'   as a shortcut for this set.
+#' @param order_by Character vector. Variables to order records by before they
+#'   are returned. Most, though not all, variables can be used to order records
+#'   before they are returned. Ordering is ascending by default. To return in
+#'   descending order append a `-` to the front of the variable (e.g.,
+#'   `"-date_start"`). Default order is `"-date_start"` > `"-load_data"` >
+#'   `"reported_name"`.
 #' @param n Integer. How many records to download.
 #' @param page Integer. Which page of records to start downloading from.
 #' @param count_only Logical. Only return the number of records available.
@@ -24,7 +30,7 @@
 #' @export
 
 finbif_records <- function(
-  filter, select, n = 10, page = 1, count_only = FALSE, quiet = FALSE,
+  filter, select, order_by, n = 10, page = 1, count_only = FALSE, quiet = FALSE,
   cache = TRUE
 ) {
 
@@ -37,7 +43,7 @@ finbif_records <- function(
     if (n > nmax)
       deferrable_error(paste("Cannot download more than", nmax, "records"))
 
-    # filters ==================================================================
+    # filter ===================================================================
 
     if (missing(filter)) {
 
@@ -49,7 +55,7 @@ finbif_records <- function(
 
     }
 
-    # vars =====================================================================
+    # select ===================================================================
 
     default_vars <- var_names[var_names[["default_var"]], ]
 
@@ -71,6 +77,22 @@ finbif_records <- function(
 
     query[["selected"]] <- paste(select, collapse = ",")
 
+    # order ====================================================================
+
+    if (missing(order_by)) {
+
+      query[["orderBy"]] <- NULL
+
+    } else {
+
+      desc_order <- grepl("^-", order_by)
+      order_by <- sub("^-", "", order_by)
+      order_by <- translate(order_by, "var_names")
+      order_by[desc_order] <- paste(order_by, "DESC")
+      query[["orderBy"]] <- paste(order_by, collapse = ",")
+
+    }
+
   })
 
   # request ====================================================================
@@ -82,13 +104,11 @@ finbif_records <- function(
     path <- paste0(path, "count")
     return(finbif_api_get(path, query, cache))
 
-  } else {
-
-    path <- paste0(path, "list")
-    query[["page"]] <- page
-    query[["pageSize"]] <- min(n, max_size)
-
   }
+
+  path <- paste0(path, "list")
+  query[["page"]] <- page
+  query[["pageSize"]] <- min(n, max_size)
 
   resp <- list(
     structure(

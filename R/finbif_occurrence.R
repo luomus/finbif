@@ -44,7 +44,7 @@
 #' @importFrom lutz tz_lookup_coords
 #' @export
 
-finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
+finbif_occurrence <- function(..., filter, select, order_by, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE, check_taxa = TRUE,
   on_check_fail = c("warn", "error", "quiet"), date_time = TRUE,
   date_time_method = "fast", tzone = Sys.timezone()
@@ -58,7 +58,8 @@ finbif_occurrence <- function(..., filter, select, n = 10, page = 1,
   if (missing(filter)) filter <- NULL
   filter <- c(taxa, filter)
 
-  records <- finbif_records(filter, select, n, page, count_only, quiet, cache)
+  records <-
+    finbif_records(filter, select, order_by, n, page, count_only, quiet, cache)
 
   if (count_only) return(records[["content"]][["total"]])
 
