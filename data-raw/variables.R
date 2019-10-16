@@ -7,13 +7,30 @@ var_names <- read.csv(
 vars <- httr::GET("https://api.laji.fi/explorer/swagger.json")
 vars <- jsonlite::fromJSON(httr::content(vars, "text"), simplifyVector = FALSE)
 vars <- vars[["paths"]][["/warehouse/query/list"]][["get"]][["parameters"]]
-vars <- vars[[which(vapply(vars, getElement, "", "name") == "selected")]]
-vars <- unlist(vars[["items"]][["enum"]])
 
-stopifnot(identical(sort(row.names(var_names)), sort(vars)))
+select_vars <- vars[[which(vapply(vars, getElement, "", "name") == "selected")]]
+select_vars <- unlist(select_vars[["items"]][["enum"]])
+order_vars  <- vars[[which(vapply(vars, getElement, "", "name") == "orderBy")]]
+order_vars <- unlist(order_vars[["items"]][["enum"]])
+
 stopifnot(
   identical(
-    sort(documented_vars("R/variables.R")), sort(var_names[["translated_var"]])
+    sort(row.names(var_names[var_names[["select"]], ])),
+    sort(select_vars)
+  )
+)
+
+stopifnot(
+  identical(
+    sort(row.names(var_names[var_names[["order"]], ])),
+    sort(order_vars)
+  )
+)
+
+stopifnot(
+  identical(
+    sort(var_names[var_names[["doc"]], "translated_var"]),
+    sort(documented_vars("R/variables.R"))
   )
 )
 
