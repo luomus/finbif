@@ -8,11 +8,17 @@ filters <- names(
   finbif:::finbif_api_get("warehouse/filters", list(), FALSE)[["content"]]
 )
 
-stopifnot(identical(sort(row.names(filter_names)), sort(filters)))
 stopifnot(
   identical(
-    sort(documented_vars("R/filters.R")),
-    sort(filter_names[filter_names[["doc"]], "translated_filter"])
+    sort(filters),
+    sort(row.names(filter_names))
+  )
+)
+
+stopifnot(
+  identical(
+    sort(filter_names[filter_names[["doc"]], "translated_filter"]),
+    sort(documented_vars("R/filters.R"))
   )
 )
 

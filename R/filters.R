@@ -276,6 +276,8 @@
 #'   Filter by record, event or document facts. Facts are key-value pairs of the
 #'   form `"<fact>=<value>"`. Value can be omitted in which case all records
 #'   with any value recorded for the specified fact will be returned.
+#' - `has_sample` Logical.
+#'   Record includes a sample or samples (e.g., a DNA sample or preparation)
 #'
 #' @name filters
 NULL

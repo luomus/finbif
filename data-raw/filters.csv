@@ -84,3 +84,4 @@ taxonCensus,                           taxon_census,                  uri,      
 unitFact,                              record_fact,                   character, FALSE,             ",", TRUE
 gatheringFact,                         event_fact,                    character, FALSE,             ",", TRUE
 documentFact,                          document_fact,                 character, FALSE,             ",", TRUE
+hasSample,                             has_sample,                    logical,   FALSE,             ",", TRUE
