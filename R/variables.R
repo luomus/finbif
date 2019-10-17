@@ -116,9 +116,17 @@
 #' @section Location:
 #' Variables related to the location of records include:
 #'
-#' - `{lat|lon}_wgs84`
-#' - `{lat|lon}_{min|max}_{euref|kkj|wgs84}`
-#' - `{lat|lon}_{005|01|05|1}_wgs84`
+#' - `{lat|lon}_wgs84` Numeric.
+#'   Coordinates (in [WGS84](https://spatialreference.org/ref/epsg/wgs-84/)
+#'   coordinate system) of the central point of a bounding box encompassing the
+#'   record's geographic coverage.
+#' - `{lat|lon}_{min|max}_{euref|kkj|wgs84}`. Numeric.
+#'   Vertices of a bounding box encompassing the record's geographic coverage.
+#'   Coordinates are available in
+#'   [KKJ](https://spatialreference.org/ref/epsg/2393/)
+#'   [EUREF](https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/), or
+#'   [WGS84](https://spatialreference.org/ref/epsg/wgs-84/).
+#' - `{lat|lon}_{005|01|05|1}_wgs84` Numeric.
 #' - `{lat|lon}_{1|10|50|100}_kkj`
 #' - `{lat|lon}_{1|10|50|100}_center_kkj`
 #' - `wkt_{euref|kkj|wgs84}`

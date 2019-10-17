@@ -130,9 +130,17 @@ Sex of individual(s) recorded.
 
 Variables related to the location of records include:
 \itemize{
-\item \code{{lat|lon}_wgs84}
-\item \code{{lat|lon}_{min|max}_{euref|kkj|wgs84}}
-\item \code{{lat|lon}_{005|01|05|1}_wgs84}
+\item \code{{lat|lon}_wgs84} Numeric.
+Coordinates (in \href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84}
+coordinate system) of the central point of a bounding box encompassing the
+record's geographic coverage.
+\item \code{{lat|lon}_{min|max}_{euref|kkj|wgs84}}. Numeric.
+Vertices of a bounding box encompassing the record's geographic coverage.
+Coordinates are available in
+\href{https://spatialreference.org/ref/epsg/2393/}{KKJ}
+\href{https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/}{EUREF}, or
+\href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84}.
+\item \code{{lat|lon}_{005|01|05|1}_wgs84} Numeric.
 \item \code{{lat|lon}_{1|10|50|100}_kkj}
 \item \code{{lat|lon}_{1|10|50|100}_center_kkj}
 \item \code{wkt_{euref|kkj|wgs84}}
