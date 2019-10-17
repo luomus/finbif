@@ -234,7 +234,7 @@ categories and codes. If \code{"male"} or \code{"female"} is specified then reco
 returned will be those with sex specified as male or female respectively
 and those records where the corresponding \code{{male|female}_abundance > 1}.
 \item \code{event_id} Character.
-Filter by event (list of records, etc.)ID.
+Filter by event (list of records, etc.) ID.
 \item \code{document_id} Character.
 Filter by the document (collection of events) ID of occurrences.
 \item \code{record_id} Character.

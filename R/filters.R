@@ -217,7 +217,7 @@
 #'   returned will be those with sex specified as male or female respectively
 #'   and those records where the corresponding `{male|female}_abundance > 1`.
 #' - `event_id` Character.
-#'   Filter by event (list of records, etc.)ID.
+#'   Filter by event (list of records, etc.) ID.
 #' - `document_id` Character.
 #'   Filter by the document (collection of events) ID of occurrences.
 #' - `record_id` Character.
