@@ -120,44 +120,8 @@ finbif_records <- function(
 
   n_tot <- resp[[1L]][["content"]][["total"]]
   n <- min(n, n_tot)
-  multipage <- n > max_size
 
-  if (multipage && !quiet) {
-    pb_head("Fetching data")
-    pb <- utils::txtProgressBar(0L, floor(n / max_size), style = 3L)
-    on.exit(close(pb))
-  }
-
-  i <- 1L
-  query[["page"]] <- query[["page"]] + 1L
-  n_pages <- n %/% query[["pageSize"]]
-
-  # Pausing between requests is important if many request will be made
-  sleep <- ifelse(n_pages > 10, 0L, 1L)
-
-  while (multipage) {
-
-    Sys.sleep(sleep)
-    if (!quiet) utils::setTxtProgressBar(pb, i)
-    i <- i + 1L
-
-    if (query[["page"]] > n_pages) {
-      excess_records <- n %% query[["pageSize"]]
-      last_record <- query[["pageSize"]] * n_pages
-      if (last_record == n) break
-      query[["pageSize"]] <- get_next_lowest_factor(last_record, excess_records)
-      query[["page"]] <- last_record / query[["pageSize"]] + 1L
-      n_pages <- n %/% query[["pageSize"]]
-    }
-
-    resp[[i]] <- structure(
-      finbif_api_get(path, query, cache),
-      class = c("finbif_records", "finbif_api"),
-      select = unique(select)
-    )
-    query[["page"]] <- query[["page"]] + 1L
-
-  }
+  resp <- get_extra_pages(resp, n, max_size, quiet, path, query, cache, select)
 
   structure(
     resp, class = c("finbif_records_list", "finbif_api_list"), nrec_dnld = n,
@@ -165,6 +129,56 @@ finbif_records <- function(
   )
 
 }
+
+# record pagination ------------------------------------------------------------
+
+get_extra_pages <-
+  function(resp, n, max_size, quiet, path, query, cache, select) {
+
+    multipage <- n > max_size
+
+    if (multipage && !quiet) {
+      pb_head("Fetching data")
+      pb <- utils::txtProgressBar(0L, floor(n / max_size), style = 3L)
+      on.exit(close(pb))
+    }
+
+    i <- 1L
+    query[["page"]] <- query[["page"]] + 1L
+    n_pages <- n %/% query[["pageSize"]]
+
+    # Pausing between requests is important if many request will be made
+    sleep <- ifelse(n_pages > 10, 0L, 1L)
+
+    while (multipage) {
+
+      Sys.sleep(sleep)
+      if (!quiet) utils::setTxtProgressBar(pb, i)
+      i <- i + 1L
+
+      if (query[["page"]] > n_pages) {
+        excess_records <- n %% query[["pageSize"]]
+        last_record <- query[["pageSize"]] * n_pages
+        if (last_record == n) break
+        query[["pageSize"]] <-
+          get_next_lowest_factor(last_record, excess_records)
+        query[["page"]] <- last_record / query[["pageSize"]] + 1L
+        n_pages <- n %/% query[["pageSize"]]
+      }
+
+      resp[[i]] <- structure(
+        finbif_api_get(path, query, cache),
+        class = c("finbif_records", "finbif_api"),
+        select = unique(select)
+      )
+
+      query[["page"]] <- query[["page"]] + 1L
+
+    }
+
+    resp
+
+  }
 
 # parsing filters --------------------------------------------------------------
 
