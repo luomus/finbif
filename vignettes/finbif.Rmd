@@ -66,9 +66,9 @@ finbif_check_taxa("Ursus arctos")
 #> [Ursus arctos] ID: MX.47348
 ```
 
-If the taxon is the FinBIF database its unique ID is returned. When a taxon is
-not in the FinBIF database it is reported as "not found" and for that taxa the
-list element is `NA`.
+If the taxon is in the FinBIF database its unique ID is returned. When a taxon
+is not in the FinBIF database it is reported as "not found" and for that taxa
+the list element is `NA`.
 
 ```r
 (taxa <- finbif_check_taxa(c("Ursus arctos", "Moomin")))
