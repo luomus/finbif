@@ -8,7 +8,7 @@ gathering.interpretations.biogeographicalProvinceDisplayname, province,         
 gathering.interpretations.municipalityDisplayname,            municipality,                                       TRUE,        FALSE,       character, character, TRUE,   TRUE,   TRUE,  TRUE
 gathering.conversions.wgs84CenterPoint.lat,                   lat_wgs84,                                          TRUE,        FALSE,       double,    double,    TRUE,   TRUE,   TRUE,  TRUE
 gathering.conversions.wgs84CenterPoint.lon,                   lon_wgs84,                                          TRUE,        FALSE,       double,    double,    TRUE,   TRUE,   TRUE,  TRUE
-gathering.conversions.wgs84WKT,                               wkt_wgs84,                                          FALSE,       FALSE,       integer,   integer,   TRUE,   TRUE,   FALSE, TRUE
+gathering.conversions.wgs84WKT,                               wkt_wgs84,                                          FALSE,       FALSE,       character, character, TRUE,   TRUE,   FALSE, TRUE
 gathering.conversions.linelengthInMeters,                     line_length_m,                                      FALSE,       FALSE,       integer,   integer,   TRUE,   TRUE,   FALSE, TRUE
 gathering.conversions.boundingBoxAreaInSquareMeters,          area_m2,                                            FALSE,       FALSE,       integer,   integer,   TRUE,   TRUE,   TRUE,  TRUE
 gathering.eventDate.begin,                                    date_start,                                         TRUE,        FALSE,       character, date,      TRUE,   TRUE,   TRUE,  TRUE
