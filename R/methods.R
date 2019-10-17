@@ -32,16 +32,16 @@ as.data.frame.finbif_records <- function(x, ...) {
     function(col) {
       type <- var_names[col, "type"]
       type_na <- methods::as(NA, type)
-      uniq <- var_names[col, "unique"]
+      single <- var_names[col, "single"]
       el_names <- strsplit(col, "\\.")[[1L]]
-      if (uniq) return(vapply(x, get_el_recurse, type_na, el_names, type))
+      if (single) return(vapply(x, get_el_recurse, type_na, el_names, type))
       ans <- lapply(x, get_el_recurse, el_names, type)
       lapply(ans, unlist)
     }
   )
 
   names(lst) <- cols
-  cols_split <- split(cols, var_names[cols, "unique"])
+  cols_split <- split(cols, var_names[cols, "single"])
   df <- as.data.frame(lst[cols_split[["TRUE"]]], stringsAsFactors = FALSE)
 
   df[cols_split[["FALSE"]]] <- lst[cols_split[["FALSE"]]]

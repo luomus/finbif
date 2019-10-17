@@ -1,4 +1,4 @@
-finbif_api_var,                                               translated_var,                                     default_var, quality_var, type,      class,     unique, select, order, doc
+finbif_api_var,                                               translated_var,                                     default_var, quality_var, type,      class,     single, select, order, doc
 unit.linkings.taxon.scientificName,                           scientific_name,                                    TRUE,        FALSE,       character, character, TRUE,   TRUE,   TRUE,  TRUE
 unit.linkings.taxon.taxonRank,                                taxon_rank,                                         TRUE,        FALSE,       character, uri,       TRUE,   TRUE,   TRUE,  TRUE
 unit.interpretations.individualCount,                         abundance,                                          TRUE,        FALSE,       integer,   integer,   TRUE,   TRUE,   TRUE,  TRUE
