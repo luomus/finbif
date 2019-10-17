@@ -71,7 +71,11 @@ finbif_records <- function(
         select
       )
       select <- unlist(select)
-      select <- translate(select, "var_names")
+      select_vars <- var_names[var_names[["select"]], ]
+      for (var in names(var_names))
+        class(select_vars[[var]]) <- class(var_names[[var]])
+      select <-
+        translate(select, "select_vars", list(select_vars = select_vars))
 
     }
 
@@ -87,7 +91,11 @@ finbif_records <- function(
 
       desc_order <- grepl("^-", order_by)
       order_by <- sub("^-", "", order_by)
-      order_by <- translate(order_by, "var_names")
+      order_vars <- var_names[var_names[["order"]], ]
+      for (var in names(var_names))
+        class(order_vars[[var]]) <- class(var_names[[var]])
+      order_by <-
+        translate(order_by, "order_vars", list(order_vars = order_vars))
       order_by[desc_order] <- paste(order_by, "DESC")
       query[["orderBy"]] <- paste(order_by, collapse = ",")
 
