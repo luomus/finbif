@@ -163,14 +163,14 @@ get_duration <-
   function(df, date_time, date, hour, minute, lat, lon, method, tzone) {
 
     if (is.null(df[[date_time]])) return(NULL)
-    if (is.null(df[["date_end"]]) || is.null(df[["hour_end"]])) return(NULL)
 
-    date_time_end <- get_date_time(
-      df, "date_end", "hour_end", "minute_end", "lat_wgs84", "lon_wgs84",
-      method, tzone
-    )
+    date_time_end <-
+      get_date_time(df, date, hour, minute, lat, lon, method, tzone)
+
+    if (is.null(date_time_end)) return(NULL)
 
     ans <- lubridate::interval(df[[date_time]], date_time_end)
+    ans <- ifelse(is.na(df[[minute]]) | is.na(df[[hour]]), NA, ans)
     lubridate::as.duration(ans)
 
   }
