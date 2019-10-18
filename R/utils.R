@@ -23,9 +23,15 @@ get_el_recurse <- function(obj, nms, type) {
   get_el_recurse(obj, nms[-1L], type)
 }
 
+#' @noRd
 pb_head <- function(msg) {
   gap <- nchar(msg) + 15L
   message("  |=== ", msg, " ", rep("=", max(0L, getOption("width") - gap)), "|")
+}
+
+#' @noRd
+truncate_string <- function(x, sl = 20L) {
+  ifelse(nchar(x) > sl, sprintf("%s\u2026", substr(x, 1L, sl - 1L)), x)
 }
 
 # errors -----------------------------------------------------------------------

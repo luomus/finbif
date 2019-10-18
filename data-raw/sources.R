@@ -6,8 +6,15 @@ source <- source[["content"]][["results"]]
 source <- lapply(source, as.data.frame, stringsAsFactors = FALSE)
 source <- finbif:::reduce_merge(source)
 row.names(source) <- source[["id"]]
-
 names(source) <- sub("\\.", "_", names(source))
+
+source[which(source[["description_en"]] == ""), "description_en"] <-
+  NA_character_
+source[which(source[["description_fi"]] == ""), "description_fi"] <-
+  NA_character_
+source[which(source[["description_sv"]] == ""), "description_sv"] <-
+  NA_character_
+
 class(source[["id"]]) <- "translation"
 class(source[["name_en"]]) <- "translation"
 class(source[["name_fi"]]) <- "translation"

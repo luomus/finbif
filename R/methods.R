@@ -125,6 +125,20 @@ print.finbif_taxa <- function(x, ...) {
 }
 
 #' @noRd
+#' @export
+print.finbif_metadata_df <- function(x, ..., right = FALSE) {
+  df <- x
+  sl <- max(9L, getOption("width") / ncol(df))
+  for (col in names(df)) {
+    if (is.character(df[[col]])) {
+      df[[col]] <- truncate_string(df[[col]], max(sl, nchar(col)))
+    }
+  }
+  print.data.frame(df, ..., right = right)
+  invisible(x)
+}
+
+#' @noRd
 #' @importFrom utils head
 #' @export
 print.finbif_occ <- function(x, ...) {
@@ -147,12 +161,7 @@ print.finbif_occ <- function(x, ...) {
   df <- x[seq_len(dsply_nr), dsply_cols, drop = FALSE]
 
   # Some scientific names are very long
-  sn <- df[["scientific_name"]]
-  snlng <- nchar(sn) > 20L
-  if (any(snlng)) {
-    df[["scientific_name"]] <-
-      ifelse(snlng, sprintf("%s\u2026", substr(sn, 1L, 19L)), sn)
-  }
+  df[["scientific_name"]] <- truncate_string(df[["scientific_name"]])
 
 
   # Some vars have data in the form of URIs where the protocol and domain don't

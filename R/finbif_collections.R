@@ -86,7 +86,7 @@ finbif_collections <- function(
 
   structure(
     collections[rows, cols, drop = FALSE],
-    class = c("finbif_collections", "data.frame")
+    class = c("finbif_collections", "finbif_metadata_df", "data.frame")
   )
 
 }

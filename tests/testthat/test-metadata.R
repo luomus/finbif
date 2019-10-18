@@ -44,6 +44,10 @@ test_that(
   }
 )
 
+test_that(
+  "print method works",
+  expect_output(print(finbif_metadata("taxon_ranks")), "rank")
+)
 
 test_that(
   "returns errors appropriately", expect_error(finbif_metadata("notmetdata"))
