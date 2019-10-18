@@ -72,13 +72,6 @@ finbif_occurrence <- function(..., filter, select, order_by, n = 10, page = 1,
   url  <- attr(df, "url", TRUE)
   time <- attr(df, "time", TRUE)
 
-  # When any two datasets are requested, depending on the data they contain,
-  # they may not have the same column classes. This will make them hard to
-  # combine even if they apparently have the same columns.
-  for (col in names(df))
-    if (!is.list(df[[col]]))
-      df[[col]] <- methods::as(df[[col]], var_names[col, "type"])
-
   names(df) <- var_names[names(df), "translated_var"]
 
   if (date_time) {
