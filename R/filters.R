@@ -70,7 +70,7 @@
 #'   non-invasive taxa. If unspecified (default) return records of invasive and
 #'   non-invasive taxa.
 #' - `taxon_rank`. Character vector.
-#'   Filter by taxonomic rank. Use `finbif_taxon_rank()` to see the taxonomic
+#'   Filter by taxonomic rank. Use `finbif_metadata()` to see the taxonomic
 #'   ranks available. Records returned will be limited to the specified ranks
 #'   and not include records of lower taxonomic levels.
 #'
@@ -83,16 +83,16 @@
 #'   these locality types match exactly then will return records with verbatim
 #'   locality matches in the original records.
 #' - `country` Character vector.
-#'   Filter by country. Use `finbif_countries()` to see country names and ISO
+#'   Filter by country. Use `finbif_metadata()` to see country names and ISO
 #'   codes (2 and 3 character) used in FinBIF.
 #' - `province` Character vector.
-#'   Filter by province. Use `finbif_provinces()` to see province names and
+#'   Filter by province. Use `finbif_metadata()` to see province names and
 #'   codes.
 #' - `municipality` Character vector.
-#'   Filter by municipality. Use `finbif_municipalities()` to see municipality
+#'   Filter by municipality. Use `finbif_metadata()` to see municipality
 #'   names.
 #' - `bird_assoc_area` Character vector.
-#'   Filter by BirdLife Finland association area. Use `finbif_bird_assoc_area()`
+#'   Filter by BirdLife Finland association area. Use `finbif_metadata()`
 #'   to see association names and codes.
 #' - `coordinates_area` Coordinates.
 #'   A character vector or list of coordinate data. Must be length 3 to 4 (e.g.,
@@ -186,7 +186,7 @@
 #'
 #' - `keywords` Character vector.
 #'   Filter by keywords.
-#' - `collection` Character vector or `finbif_collections` data.frame.
+#' - `collection` Character vector or `finbif_collections()` data.frame.
 #'   Filter by collection. If a character vector can refer to collection ID,
 #'   collection name (in English, Finnish, or Swedish) or abbreviated name.
 #'   Use `finbif_collections()` to see list of collections and metadata. Can
@@ -195,24 +195,24 @@
 #' - `subcollections` Logical.
 #'   If `TRUE` (default) include the subcollections of the collections
 #'   specified. If `FALSE` do not include subcollections.
-#' - `not_collection`  Character vector or `finbif_collections` data.frame.
+#' - `not_collection`  Character vector or `finbif_collections()` data.frame.
 #'   As for `collection`, but result will be the negation of the specified
 #'   collections.
 #' - `source` Character vector.
-#'   Filter by information system data source. Use `finbif_sources()` to see
+#'   Filter by information system data source. Use `finbif_metadata()` to see
 #'   data source IDs names and descriptions.
 #' - `record_basis` Character vector.
-#'   Filter by basis of record. Use `finbif_record_basis()` to see list of
+#'   Filter by basis of record. Use `finbif_metadata()` to see list of
 #'   record bases.
 #' - `superrecord_basis` Character vector.
 #'   Filter by superset of record basis. One or more of `"human_observation"`,
 #'   `"machine_observation"`, or `"specimen"`.
 #' - `life_stage` Character vector.
-#'   Filter by organism life stage. Use `finbif_life_stages()` to see list of
+#'   Filter by organism life stage. Use `finbif_metadata()` to see list of
 #'   organism life stages.
 #' - `sex` Character vector.
 #'   Filter by organism sex and sex-related category name or code. Use
-#'   `finbif_sex_categories()` to see list of organism sexes and sex-related
+#'   `finbif_metadata()` to see list of organism sexes and sex-related
 #'   categories and codes. If `"male"` or `"female"` is specified then records
 #'   returned will be those with sex specified as male or female respectively
 #'   and those records where the corresponding `{male|female}_abundance > 1`.
@@ -253,11 +253,11 @@
 #'   Filter by observer ID.
 #' - `restriction_reason` Character vector.
 #'   Filter by reason data has security restrictions. See
-#'   `finbif_restriction_reasons()` for a list of reasons data may have security
+#'   `finbif_metadata()` for a list of reasons data may have security
 #'   restrictions.
 #' - `restriction_level` Character vector.
 #'   Filter by data restriction level. See
-#'   `finbif_restriction_levels()` for a list of the levels of data
+#'   `finbif_metadata()` for a list of the levels of data
 #'   restrictions.
 #' - `restricted` Logical.
 #'   Filter records by whether any data restrictions are in place (`TRUE`) or

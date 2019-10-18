@@ -75,7 +75,7 @@ If \code{TRUE}, limit records to invasive taxa. Or if \code{FALSE} limit to
 non-invasive taxa. If unspecified (default) return records of invasive and
 non-invasive taxa.
 \item \code{taxon_rank}. Character vector.
-Filter by taxonomic rank. Use \code{finbif_taxon_rank()} to see the taxonomic
+Filter by taxonomic rank. Use \code{finbif_metadata()} to see the taxonomic
 ranks available. Records returned will be limited to the specified ranks
 and not include records of lower taxonomic levels.
 }
@@ -91,16 +91,16 @@ countries, provinces, and municipalities (see below) in FinBIF if none of
 these locality types match exactly then will return records with verbatim
 locality matches in the original records.
 \item \code{country} Character vector.
-Filter by country. Use \code{finbif_countries()} to see country names and ISO
+Filter by country. Use \code{finbif_metadata()} to see country names and ISO
 codes (2 and 3 character) used in FinBIF.
 \item \code{province} Character vector.
-Filter by province. Use \code{finbif_provinces()} to see province names and
+Filter by province. Use \code{finbif_metadata()} to see province names and
 codes.
 \item \code{municipality} Character vector.
-Filter by municipality. Use \code{finbif_municipalities()} to see municipality
+Filter by municipality. Use \code{finbif_metadata()} to see municipality
 names.
 \item \code{bird_assoc_area} Character vector.
-Filter by BirdLife Finland association area. Use \code{finbif_bird_assoc_area()}
+Filter by BirdLife Finland association area. Use \code{finbif_metadata()}
 to see association names and codes.
 \item \code{coordinates_area} Coordinates.
 A character vector or list of coordinate data. Must be length 3 to 4 (e.g.,
@@ -203,7 +203,7 @@ Other filters:
 \itemize{
 \item \code{keywords} Character vector.
 Filter by keywords.
-\item \code{collection} Character vector or \code{finbif_collections} data.frame.
+\item \code{collection} Character vector or \code{finbif_collections()} data.frame.
 Filter by collection. If a character vector can refer to collection ID,
 collection name (in English, Finnish, or Swedish) or abbreviated name.
 Use \code{finbif_collections()} to see list of collections and metadata. Can
@@ -212,24 +212,24 @@ filter records.
 \item \code{subcollections} Logical.
 If \code{TRUE} (default) include the subcollections of the collections
 specified. If \code{FALSE} do not include subcollections.
-\item \code{not_collection}  Character vector or \code{finbif_collections} data.frame.
+\item \code{not_collection}  Character vector or \code{finbif_collections()} data.frame.
 As for \code{collection}, but result will be the negation of the specified
 collections.
 \item \code{source} Character vector.
-Filter by information system data source. Use \code{finbif_sources()} to see
+Filter by information system data source. Use \code{finbif_metadata()} to see
 data source IDs names and descriptions.
 \item \code{record_basis} Character vector.
-Filter by basis of record. Use \code{finbif_record_basis()} to see list of
+Filter by basis of record. Use \code{finbif_metadata()} to see list of
 record bases.
 \item \code{superrecord_basis} Character vector.
 Filter by superset of record basis. One or more of \code{"human_observation"},
 \code{"machine_observation"}, or \code{"specimen"}.
 \item \code{life_stage} Character vector.
-Filter by organism life stage. Use \code{finbif_life_stages()} to see list of
+Filter by organism life stage. Use \code{finbif_metadata()} to see list of
 organism life stages.
 \item \code{sex} Character vector.
 Filter by organism sex and sex-related category name or code. Use
-\code{finbif_sex_categories()} to see list of organism sexes and sex-related
+\code{finbif_metadata()} to see list of organism sexes and sex-related
 categories and codes. If \code{"male"} or \code{"female"} is specified then records
 returned will be those with sex specified as male or female respectively
 and those records where the corresponding \code{{male|female}_abundance > 1}.
@@ -270,11 +270,11 @@ Filter by observer name.
 Filter by observer ID.
 \item \code{restriction_reason} Character vector.
 Filter by reason data has security restrictions. See
-\code{finbif_restriction_reasons()} for a list of reasons data may have security
+\code{finbif_metadata()} for a list of reasons data may have security
 restrictions.
 \item \code{restriction_level} Character vector.
 Filter by data restriction level. See
-\code{finbif_restriction_levels()} for a list of the levels of data
+\code{finbif_metadata()} for a list of the levels of data
 restrictions.
 \item \code{restricted} Logical.
 Filter records by whether any data restrictions are in place (\code{TRUE}) or
