@@ -20,11 +20,11 @@
 #' - `form_id` Character.
 #'   Form ID. The form used to create the document, event, record data.
 #' - `collection_id` Character.
-#'   Collection ID. All documents, events, and records belong to a collection (
-#'   e.g., a museum collection, or the datasets collected by a specific
+#'   Collection ID. All documents, events, and records belong to a collection
+#'   (e.g., a museum collection, or the datasets collected by a specific
 #'   institution). Collections themselves can be part of a larger
-#'   (super)collection (e.g., all the collections at specific museum). Only the
-#'   lowest level collection ID for a record is returned. Use
+#'   (super)collection (e.g., all the collections at a specific museum). Only
+#'   the lowest level collection ID for a record is returned. Use
 #'   `finbif_collections()` to explore the hierarchy of collections.
 #' - `source_id` Character.
 #'   Source ID. The source of the collection's data.
