@@ -153,8 +153,17 @@ print.finbif_occ <- function(x, ...) {
   if (length(nrec_avl)) cat("Records available: ", nrec_avl, "\n", sep = "")
   cat("A data.frame [", nrows, " x ", ncols, "]\n", sep = "")
 
-  dsply_cols <-
+  dwc <- attr(x, "dwc")
+  if (is.null(dwc)) dwc <- FALSE # Once [ methods are done wont need this
+
+    dsply_cols <- if (dwc) {
+    c(
+      "scientificName", "individualCount", "decimalLatitude",
+      "decimalLongitude", "eventDateTime"
+    )
+  } else {
     c("scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time")
+  }
   dsply_cols <- which(names(x) %in% dsply_cols)
   dsply_cols <- utils::head(union(dsply_cols, seq_len(dsply_nc)), dsply_nc)
 
@@ -163,11 +172,15 @@ print.finbif_occ <- function(x, ...) {
   # Some scientific names are very long
   if (utils::hasName(df, "scientific_name"))
     df[["scientific_name"]] <- truncate_string(df[["scientific_name"]])
+  if (utils::hasName(df, "scientificName"))
+    df[["scientificName"]] <- truncate_string(df[["scientificName"]])
 
   # Some vars have data in the form of URIs where the protocol and domain don't
   # convey useful information
   for (i in names(df)) {
-    class <- var_names[var_names[["translated_var"]] == i, "class"]
+    class <- var_names[
+      var_names[[ifelse(dwc, "dwc", "translated_var")]] == i, "class"
+    ]
     # Variables may not necessarily be in the var_names object
     if (length(class) && class == "uri")
       df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/", "", df[[i]])

@@ -73,6 +73,10 @@ vcr::use_cassette(
           plot(fungi)
         )
 
+        expect_output(
+          print(finbif_occurrence(dwc = TRUE)), "Records downloaded:"
+        )
+
       }
     )
 

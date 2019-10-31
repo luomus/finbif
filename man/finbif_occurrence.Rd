@@ -8,7 +8,7 @@ finbif_occurrence(..., filter, select, order_by, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE,
   check_taxa = TRUE, on_check_fail = c("warn", "error", "quiet"),
   date_time = TRUE, date_time_method = "fast",
-  tzone = Sys.timezone())
+  tzone = Sys.timezone(), dwc = FALSE)
 }
 \arguments{
 \item{...}{Character vectors or list of character vectors. Taxa of records
@@ -55,6 +55,8 @@ accuracy.}
 
 \item{tzone}{Character. If \code{date_time = TRUE} the timezone of outputted
 date-time. Defaults to system timezone.}
+
+\item{dwc}{Logical. Return Darwin Core (or Darwin Core style) variable names.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

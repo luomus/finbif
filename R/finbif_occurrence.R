@@ -18,6 +18,7 @@
 #'   accuracy.
 #' @param tzone Character. If `date_time = TRUE` the timezone of outputted
 #'   date-time. Defaults to system timezone.
+#' @param dwc Logical. Return Darwin Core (or Darwin Core style) variable names.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -47,7 +48,7 @@
 finbif_occurrence <- function(..., filter, select, order_by, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = TRUE, check_taxa = TRUE,
   on_check_fail = c("warn", "error", "quiet"), date_time = TRUE,
-  date_time_method = "fast", tzone = Sys.timezone()
+  date_time_method = "fast", tzone = Sys.timezone(), dwc = FALSE
   ) {
 
   taxa <- select_taxa(
@@ -72,17 +73,29 @@ finbif_occurrence <- function(..., filter, select, order_by, n = 10, page = 1,
   url  <- attr(df, "url", TRUE)
   time <- attr(df, "time", TRUE)
 
-  names(df) <- var_names[names(df), "translated_var"]
+  names(df) <- var_names[names(df), ifelse(dwc, "dwc", "translated_var")]
 
   if (date_time) {
-    df[["date_time"]] <- get_date_time(
-      df, "date_start", "hour_start", "minute_start", "lat_wgs84", "lon_wgs84",
-      date_time_method, tzone
-    )
-    df[["duration"]] <- get_duration(
-      df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
-      "lat_wgs84", date_time_method, tzone
-    )
+    if (dwc) {
+      df[["eventDateTime"]] <- get_date_time(
+        df, "eventDateStart", "hourStart", "minuteStart",
+        "decimalLatitude", "decimalLongitude", date_time_method, tzone
+      )
+      df[["samplingEffort"]] <- get_duration(
+        df, "eventDateTime", "eventDateStart", "hourStart",
+        "minuteStart", "decimalLatitude", "decimalLongitude",
+        date_time_method, tzone
+      )
+    } else {
+      df[["date_time"]] <- get_date_time(
+        df, "date_start", "hour_start", "minute_start", "lat_wgs84",
+        "lon_wgs84", date_time_method, tzone
+      )
+      df[["duration"]] <- get_duration(
+        df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
+        "lon_wgs84", date_time_method, tzone
+      )
+    }
   }
 
   structure(
@@ -91,7 +104,8 @@ finbif_occurrence <- function(..., filter, select, order_by, n = 10, page = 1,
     nrec_dnld = attr(records, "nrec_dnld", TRUE),
     nrec_avl  = attr(records, "nrec_avl", TRUE),
     url       = url,
-    time      = time
+    time      = time,
+    dwc       = dwc
   )
 
 }
