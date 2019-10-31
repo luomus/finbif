@@ -35,3 +35,4 @@ stopifnot(
 )
 
 class(var_names[["translated_var"]]) <- "translation"
+class(var_names[["dwc"]]) <- "translation"
