@@ -139,7 +139,7 @@ print.finbif_metadata_df <- function(x, ..., right = FALSE) {
 }
 
 #' @noRd
-#' @importFrom utils head
+#' @importFrom utils hasName head
 #' @export
 print.finbif_occ <- function(x, ...) {
   nrec_dnld <- attr(x, "nrec_dnld")
@@ -161,8 +161,8 @@ print.finbif_occ <- function(x, ...) {
   df <- x[seq_len(dsply_nr), dsply_cols, drop = FALSE]
 
   # Some scientific names are very long
-  df[["scientific_name"]] <- truncate_string(df[["scientific_name"]])
-
+  if (utils::hasName(df, "scientific_name"))
+    df[["scientific_name"]] <- truncate_string(df[["scientific_name"]])
 
   # Some vars have data in the form of URIs where the protocol and domain don't
   # convey useful information
