@@ -77,6 +77,27 @@ as.data.frame.finbif_records_list <- function(x, ..., quiet = FALSE) {
 
 }
 
+# accessor methods -------------------------------------------------------------
+
+#' @noRd
+#' @export
+`[.finbif_occ` <- function(x, i, j, drop = TRUE) {
+  if (missing(j)) {
+    cols <- i
+    rows <- seq_len(nrow(x))
+  } else {
+    cols <- j
+    rows <- i
+  }
+  ans <- NextMethod("[")
+  ans <- structure(ans, class = class(x))
+  attr <- attributes(x)
+  attr[["row.names"]] <- as.integer(rows)
+  mostattributes(ans) <- attr
+  names(ans) <- if (is.character(cols)) cols else names(x)[cols]
+  ans
+}
+
 # print methods ----------------------------------------------------------------
 
 #' @noRd
@@ -154,9 +175,8 @@ print.finbif_occ <- function(x, ...) {
   cat("A data.frame [", nrows, " x ", ncols, "]\n", sep = "")
 
   dwc <- attr(x, "dwc")
-  if (is.null(dwc)) dwc <- FALSE # Once [ methods are done wont need this
 
-    dsply_cols <- if (dwc) {
+  dsply_cols <- if (dwc) {
     c(
       "scientificName", "individualCount", "decimalLatitude",
       "decimalLongitude", "eventDateTime"
