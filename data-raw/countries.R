@@ -1,3 +1,4 @@
+source("data-raw/utils.R")
 country <- finbif:::finbif_api_get(
   "areas",
   list(type = "country", lang = "multi", page = 1L, pageSize = 1000L),
@@ -5,7 +6,7 @@ country <- finbif:::finbif_api_get(
 )
 country <- country[["content"]][["results"]]
 country <- lapply(country, as.data.frame, stringsAsFactors = FALSE)
-country <- finbif:::reduce_merge(country)
+country <- reduce_merge(country)
 country <- merge(
   country, ISOcodes::ISO_3166_1, by.x = "countryCodeISOalpha2",
   by.y = "Alpha_2", all.x = TRUE

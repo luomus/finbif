@@ -14,3 +14,9 @@ expand_string <- function(x) {
   x <- expand.grid(x)
   do.call(function(...) paste(..., sep = "_"), x)
 }
+
+reduce_merge <- function(df) {
+  df <- Reduce(function(x, y) merge(x, y, all = TRUE, sort = FALSE), df)
+  # sometimes need 0 row dfs
+  if (is.null(df)) data.frame() else df
+}

@@ -1,9 +1,10 @@
+source("data-raw/utils.R")
 metadata_ranges <-
   finbif:::finbif_api_get("metadata/ranges", list(), FALSE)[["content"]]
 record_basis <- lapply(
   metadata_ranges[["MY.recordBases"]],  as.data.frame, stringsAsFactors = FALSE
 )
-record_basis <- finbif:::reduce_merge(record_basis)
+record_basis <- reduce_merge(record_basis)
 row.names(record_basis) <- record_basis[["id"]]
 record_basis[["id"]] <- NULL
 names(record_basis) <- "description"

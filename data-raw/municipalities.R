@@ -1,3 +1,4 @@
+source("data-raw/utils.R")
 n <- 1000L
 municipality <- finbif:::finbif_api_get(
   "areas", list(type = "municipality", lang = "multi", page = 1L, pageSize = n),
@@ -7,7 +8,7 @@ stopifnot(n > municipality[["content"]][["total"]])
 municipality <- municipality[["content"]][["results"]]
 municipality <-
   lapply(municipality, as.data.frame, stringsAsFactors = FALSE)
-municipality <- finbif:::reduce_merge(municipality)
+municipality <- reduce_merge(municipality)
 municipality[["country"]] <-
   finbif:::country[municipality[["isPartOf"]], "name_en"]
 municipality[["name.en"]] <- ifelse(

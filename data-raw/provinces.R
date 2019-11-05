@@ -1,3 +1,4 @@
+source("data-raw/utils.R")
 n <- 1000L
 province <- finbif:::finbif_api_get(
   "areas",
@@ -9,7 +10,7 @@ province <- finbif:::finbif_api_get(
 stopifnot(n > province[["content"]][["total"]])
 province <- province[["content"]][["results"]]
 province <- lapply(province, as.data.frame, stringsAsFactors = FALSE)
-province <- finbif:::reduce_merge(province)
+province <- reduce_merge(province)
 province[["country"]] <- finbif:::country[province[["isPartOf"]], "name_en"]
 province[["name.en"]] <- ifelse(
   nchar(province[["name.en"]]), province[["name.en"]], province[["name.fi"]]
