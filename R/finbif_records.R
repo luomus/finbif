@@ -217,12 +217,7 @@ parse_filters <- function(filter) {
           select = NA, supercollections = TRUE, nmin = NA
         )
 
-        for (
-          cl in c(
-            "id", "collection_name_en", "collection_name_fi",
-            "collection_name_fi", "collection_name_sv", "abbreviation"
-          )
-        )
+        for (cl in c("id", "collection_name", "abbreviation"))
           class(env[[names(filter)[[i]]]][[cl]]) <- "translation"
 
         filter[[i]] <- translate(filter[[i]], names(filter)[[i]], env)

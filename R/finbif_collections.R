@@ -2,15 +2,16 @@
 #'
 #' Get information on collections in the FinBIF database.
 #'
+#' @param filter Logical. Expression indicating elements or rows to keep:
+#'   missing values are taken as false.
+#' @param select Expression. Indicates columns to select from the data frame.#'
 #' @param subcollections Logical. Return subcollection metadata of higher level
 #'   collections.
 #' @param supercollections Logical. Return lowest level collection metadata.
+#' @param lang Character. Language of data return one of "en", "fi", or "sv".
 #' @param nmin Integer. Filter collections by number of records. Only return
 #'   information on collections with greater than value specified. If `NA` then
 #'   return information on all collections.
-#' @param filter Logical. Expression indicating elements or rows to keep:
-#'   missing values are taken as false.
-#' @param select Expression. Indicates columns to select from the data frame.
 #' @return A data.frame.
 #' @examples \dontrun{
 #'
@@ -20,22 +21,31 @@
 #' @importFrom utils hasName
 #' @export
 finbif_collections <- function(
-  filter, select, subcollections = TRUE, supercollections = FALSE, nmin = 0
+  filter, select, subcollections = TRUE, supercollections = FALSE,
+  lang = c("en", "fi", "sv"), nmin = 0
 ) {
 
-  collections <- merge(
-    get_collections(list(lang = "multi"), "collections"),
-    get_collections(
-      list(
-        aggregateBy = "document.collectionId", onlyCount = FALSE,
-        pessimisticDateRangeHandling = TRUE
-      ),
-      "warehouse/query/aggregate"
-    ),
-    by.x = "id",
-    by.y = "document_collection_id",
-    all.x = TRUE
+  lang <- match.arg(lang)
+
+  swagger <- httr::GET("https://api.laji.fi/explorer/swagger.json")
+  swagger <-
+    jsonlite::fromJSON(httr::content(swagger, "text"), simplifyVector = FALSE)
+  col_md_nms <- names(swagger[["definitions"]][["Collection"]][["properties"]])
+  col_md <- get_collections(list(lang = lang), "collections", col_md_nms, "id")
+
+  col_count_nms <- names(
+    swagger[["definitions"]][["DwQuery_AggregateRow"]][["properties"]]
   )
+  col_count <- get_collections(
+    list(
+      aggregateBy = "document.collectionId", onlyCount = FALSE,
+      pessimisticDateRangeHandling = TRUE
+    ),
+    "warehouse/query/aggregate", col_count_nms, "aggregateBy"
+  )
+
+  collections <-
+    merge(col_md, col_count, by.x = "id", by.y = "aggregate_by", all.x = TRUE)
 
   row.names(collections) <- collections[["id"]]
   # Sometimes collections dont have a "has_children" field
@@ -72,7 +82,7 @@ finbif_collections <- function(
 
   if (missing(select)) {
     cols <- c(
-      "collection_name_en", "abbreviation", "description_en", "online_url_en",
+      "collection_name", "abbreviation", "description", "online_url",
       "has_children", "is_part_of", "data_quality", "methods",
       "collection_type", "taxonomic_coverage", "geographic_coverage",
       "temporal_coverage", "secure_level", "count"
@@ -91,7 +101,7 @@ finbif_collections <- function(
 
 }
 
-get_collections <- function(qry, path) {
+get_collections <- function(qry, path, nms, id) {
   qry <- c(qry, list(page = 0L, pageSize = 1000L))
   collections <- list()
   total <- 1L
@@ -108,20 +118,39 @@ get_collections <- function(qry, path) {
   collections <- do.call(c, collections)
 
   collections <- lapply(
-    collections,
-    function(x) {
-      nm <- "downloadRequestHandler"
-      if (utils::hasName(x, nm)) names(x[[nm]]) <- nm
-      as.data.frame(x, stringsAsFactors = FALSE)
+    seq_along(nms),
+    function(i) {
+      lapply(
+        collections,
+        function(x) {
+          ans <- getElement(x, nms[i])
+          if (is.null(ans)) NA else ans
+        }
+      )
     }
   )
 
-  collections <- reduce_merge(collections)
+  names(collections) <- nms
 
-  collections[[1L]] <- gsub("^http:\\/\\/tun\\.fi\\/", "", collections[[1L]])
+  lth_of_els <- lapply(collections, function(x) max(unlist(lapply(x, length))))
+  nms <- split(nms, lth_of_els > 1L)
+
+  list_cols <- collections[nms[["TRUE"]]]
+
+  collections <- lapply(collections[nms[["FALSE"]]], unlist)
+
+  collections <- as.data.frame(
+    collections, col.names = nms[["FALSE"]], stringsAsFactors = FALSE
+  )
+
+  collections[nms[["TRUE"]]] <- list_cols
+
+  collections[[id]] <-
+    gsub("^http:\\/\\/tun\\.fi\\/", "", collections[[id]])
 
   names(collections) <- sub("\\.", "_", names(collections))
   names(collections) <-
     gsub("([a-z])([A-Z])", "\\1_\\L\\2", names(collections), perl = TRUE)
   collections
+
 }

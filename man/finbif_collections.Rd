@@ -5,18 +5,20 @@
 \title{FinBIF collections}
 \usage{
 finbif_collections(filter, select, subcollections = TRUE,
-  supercollections = FALSE, nmin = 0)
+  supercollections = FALSE, lang = c("en", "fi", "sv"), nmin = 0)
 }
 \arguments{
 \item{filter}{Logical. Expression indicating elements or rows to keep:
 missing values are taken as false.}
 
-\item{select}{Expression. Indicates columns to select from the data frame.}
+\item{select}{Expression. Indicates columns to select from the data frame.#'}
 
 \item{subcollections}{Logical. Return subcollection metadata of higher level
 collections.}
 
 \item{supercollections}{Logical. Return lowest level collection metadata.}
+
+\item{lang}{Character. Language of data return one of "en", "fi", or "sv".}
 
 \item{nmin}{Integer. Filter collections by number of records. Only return
 information on collections with greater than value specified. If \code{NA} then
