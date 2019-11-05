@@ -211,8 +211,6 @@ print.finbif_occ <- function(x, ...) {
   extra_rows <- nrows - dsply_nr
   extra_cols <- ncols - dsply_nc
 
-  if (extra_rows == 0L && extra_cols == 0L) return(invisible(x))
-
   print_extras(x, extra_rows, extra_cols, dsply_cols)
 
   invisible(x)
@@ -220,6 +218,9 @@ print.finbif_occ <- function(x, ...) {
 
 #' @noRd
 print_extras <- function(x, extra_rows, extra_cols, dsply_cols) {
+
+  if (extra_rows == 0L && extra_cols == 0L) return(NULL)
+
   cat(
     "...with ", extra_rows, " more record", ifelse(extra_rows == 1L, "", "s"),
     sep = ""
