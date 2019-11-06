@@ -123,37 +123,34 @@
 #' - `{lat|lon}_{min|max}_{euref|kkj|wgs84}`. Numeric.
 #'   Vertices of a bounding box encompassing the record's geographic coverage.
 #'   Coordinates are available in
-#'   [KKJ](https://spatialreference.org/ref/epsg/2393/)
-#'   [EUREF](https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/), or
+#'   [EUREF](https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/),
+#'   [KKJ](https://spatialreference.org/ref/epsg/2393/), or
 #'   [WGS84](https://spatialreference.org/ref/epsg/wgs-84/).
-#' - `{lat|lon}_{005|01|05|1}_wgs84` Numeric.
-#' - `{lat|lon}_{1|10|50|100}_kkj`
-#' - `{lat|lon}_{1|10|50|100}_center_kkj`
-#' - `wkt_{euref|kkj|wgs84}`
-#' - `coordinates_verbatim`
-#' - `coordinate_accuracy`
+#' - `coordinates_uncertainty` Integer.
+#'   The horizontal distance (in meters) from the record's given coordinates
+#'   describing the smallest circle containing the whole of the record's
+#'   location.
 #' - `coordinates_source`
-#' - `country`
-#' - `country_id`
-#' - `country_source`
-#' - `country_verbatim`
-#' - `province`
-#' - `province_id`
-#' - `province_ids`
-#' - `province_source`
-#' - `province_verbatim`
-#' - `province_verbatim2`
-#' - `municipality`
-#' - `municipality_id`
-#' - `municipality_ids`
-#' - `municipality_source`
-#' - `municipality_verbatim`
-#' - `locality`
-#' - `location_id`
-#' - `higher_geography`
-#' - `line_length_m`
+#' - `footprint_{euref|kkj|wgs84}` Character.
+#'   Well-Known Text (WKT) representation of the geographic shape defining the
+#'   location of the record in either EUREF, KKJ or WGS84 coordinate systems.
+#' - `country` Character.
+#'   The country of the record's location.
+#' - `province` Character.
+#'   The administrative area directly below the level of country. For data from
+#'   Finland FinBIF uses the concept of
+#'   [Biogeographical Province](https://laji.fi/en/theme/emk). See link for
+#'   details.
+#' - `municipality`. Character.
+#'   Administrative level below province.
+#' - `higher_geography` Character.
+#'   Geographic place name that is at higher level than country.
+#' - `line_length_m` Integer.
+#'   The length of linear locations (e.g., line transect surveys).
 #' - `area_m2`
-#' - `is_breeding_location`
+#'   The size of record's location.
+#' - `is_breeding_location` Logical.
+#'   Whether or not the occurrence is recorded at a known breeding location.
 #'
 #' @section Time:
 #' Variables related to time of record include:
@@ -220,21 +217,8 @@
 #'
 #' @section Misc:
 #' Other variables:
-#' - `observers_name`
-#' - `observers_id`
-#' - `observers_user_id`
-#' - `observer_user_ids`
-#' - `editor_name`
-#' - `editor_id`
-#' - `editor_user_id`
+#' - `observers_ids`
 #' - `determiner`
-#' - `team`
-#' - `{document|event|record}_fact_decimal`
-#' - `{document|event|record}_fact_content`
-#' - `{document|event|record}_fact_integer`
-#' - `{document|event|record}_fact_value`
-#' - `invasive_control_effectiveness`
-#' - `invasive_control`
 #' - `record_notes`
 #' - `record_basis`
 #' - `reference_publication`
@@ -242,7 +226,6 @@
 #' - `type_specimen`
 #' - `record_order`
 #' - `wild_status`
-#' - `editor_user_ids`
 #' - `license`
 #' - `document_notes`
 #' - `partial`
@@ -251,33 +234,8 @@
 #' - `taxon_cenus_id`
 #' - `taxon_census_type`
 #' - `record_annotation_count`
-#' - `{document|record}_annotation_person_id`
-#' - `{document|record}_annotation_person_name`
-#' - `{document|record}_annotation_system_id`
-#' - `{document|record}_annotation_system_name`
-#' - `{document|record}_annotation_class`
-#' - `{document|record}_annotation_created`
-#' - `{document|record}_annotation_id`
-#' - `{document|record}_annotation_invasive_control_effectiveness`
-#' - `{document|record}_annotation_notes`
-#' - `{document|record}_annotation_opinion`
-#' - `{document|record}_annotation_root_id`
-#' - `{document|record}_annotation_target_id`
-#' - `{document|record}_annotation_type`
-#' - `{document|record|sample}_keywords`
+#' - `{document|record}_keywords`
 #' - `sample_count`
-#' - `sample_collection_id`
-#' - `sample_fact_decimal`
-#' - `sample_fact_content`
-#' - `sample_fact_integer`
-#' - `sample_fact_value`
-#' - `sample_multiple`
-#' - `sample_notes`
-#' - `sample_quality`
-#' - `sample_id`
-#' - `sample_order`
-#' - `sample_status`
-#' - `sample_type`
 #'
 #' @name variables
 NULL

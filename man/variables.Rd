@@ -137,37 +137,34 @@ record's geographic coverage.
 \item \code{{lat|lon}_{min|max}_{euref|kkj|wgs84}}. Numeric.
 Vertices of a bounding box encompassing the record's geographic coverage.
 Coordinates are available in
-\href{https://spatialreference.org/ref/epsg/2393/}{KKJ}
-\href{https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/}{EUREF}, or
+\href{https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/}{EUREF},
+\href{https://spatialreference.org/ref/epsg/2393/}{KKJ}, or
 \href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84}.
-\item \code{{lat|lon}_{005|01|05|1}_wgs84} Numeric.
-\item \code{{lat|lon}_{1|10|50|100}_kkj}
-\item \code{{lat|lon}_{1|10|50|100}_center_kkj}
-\item \code{wkt_{euref|kkj|wgs84}}
-\item \code{coordinates_verbatim}
-\item \code{coordinate_accuracy}
+\item \code{coordinates_uncertainty} Integer.
+The horizontal distance (in meters) from the record's given coordinates
+describing the smallest circle containing the whole of the record's
+location.
 \item \code{coordinates_source}
-\item \code{country}
-\item \code{country_id}
-\item \code{country_source}
-\item \code{country_verbatim}
-\item \code{province}
-\item \code{province_id}
-\item \code{province_ids}
-\item \code{province_source}
-\item \code{province_verbatim}
-\item \code{province_verbatim2}
-\item \code{municipality}
-\item \code{municipality_id}
-\item \code{municipality_ids}
-\item \code{municipality_source}
-\item \code{municipality_verbatim}
-\item \code{locality}
-\item \code{location_id}
-\item \code{higher_geography}
-\item \code{line_length_m}
+\item \code{footprint_{euref|kkj|wgs84}} Character.
+Well-Known Text (WKT) representation of the geographic shape defining the
+location of the record in either EUREF, KKJ or WGS84 coordinate systems.
+\item \code{country} Character.
+The country of the record's location.
+\item \code{province} Character.
+The administrative area directly below the level of country. For data from
+Finland FinBIF uses the concept of
+\href{https://laji.fi/en/theme/emk}{Biogeographical Province}. See link for
+details.
+\item \code{municipality}. Character.
+Administrative level below province.
+\item \code{higher_geography} Character.
+Geographic place name that is at higher level than country.
+\item \code{line_length_m} Integer.
+The length of linear locations (e.g., line transect surveys).
 \item \code{area_m2}
-\item \code{is_breeding_location}
+The size of record's location.
+\item \code{is_breeding_location} Logical.
+Whether or not the occurrence is recorded at a known breeding location.
 }
 }
 
@@ -250,21 +247,8 @@ include:
 
 Other variables:
 \itemize{
-\item \code{observers_name}
-\item \code{observers_id}
-\item \code{observers_user_id}
-\item \code{observer_user_ids}
-\item \code{editor_name}
-\item \code{editor_id}
-\item \code{editor_user_id}
+\item \code{observers_ids}
 \item \code{determiner}
-\item \code{team}
-\item \code{{document|event|record}_fact_decimal}
-\item \code{{document|event|record}_fact_content}
-\item \code{{document|event|record}_fact_integer}
-\item \code{{document|event|record}_fact_value}
-\item \code{invasive_control_effectiveness}
-\item \code{invasive_control}
 \item \code{record_notes}
 \item \code{record_basis}
 \item \code{reference_publication}
@@ -272,7 +256,6 @@ Other variables:
 \item \code{type_specimen}
 \item \code{record_order}
 \item \code{wild_status}
-\item \code{editor_user_ids}
 \item \code{license}
 \item \code{document_notes}
 \item \code{partial}
@@ -281,33 +264,8 @@ Other variables:
 \item \code{taxon_cenus_id}
 \item \code{taxon_census_type}
 \item \code{record_annotation_count}
-\item \code{{document|record}_annotation_person_id}
-\item \code{{document|record}_annotation_person_name}
-\item \code{{document|record}_annotation_system_id}
-\item \code{{document|record}_annotation_system_name}
-\item \code{{document|record}_annotation_class}
-\item \code{{document|record}_annotation_created}
-\item \code{{document|record}_annotation_id}
-\item \code{{document|record}_annotation_invasive_control_effectiveness}
-\item \code{{document|record}_annotation_notes}
-\item \code{{document|record}_annotation_opinion}
-\item \code{{document|record}_annotation_root_id}
-\item \code{{document|record}_annotation_target_id}
-\item \code{{document|record}_annotation_type}
-\item \code{{document|record|sample}_keywords}
+\item \code{{document|record}_keywords}
 \item \code{sample_count}
-\item \code{sample_collection_id}
-\item \code{sample_fact_decimal}
-\item \code{sample_fact_content}
-\item \code{sample_fact_integer}
-\item \code{sample_fact_value}
-\item \code{sample_multiple}
-\item \code{sample_notes}
-\item \code{sample_quality}
-\item \code{sample_id}
-\item \code{sample_order}
-\item \code{sample_status}
-\item \code{sample_type}
 }
 }
 
