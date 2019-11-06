@@ -160,28 +160,28 @@ You can search for multiple taxa at once and filter the records with the
 finbif_occurrence(
   "Cygnus cygnus", 
   "Cygnus olor",
-  filter = list(coordinate_accuracy_max = 100)
+  filter = list(coordinates_uncertainty_max = 100)
 )
 #> Records downloaded: 10
-#> Records available: 11273
+#> Records available: 11297
 #> A data.frame [10 x 30]
 #>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1      Cygnus olor         6  61.07692  21.49222 2019-10-09 05:50:00
-#> 2    Cygnus cygnus         1  61.07692  21.49222 2019-10-09 05:50:00
-#> 3    Cygnus cygnus         2  60.95615  21.68894 2019-10-08 06:07:00
-#> 4    Cygnus cygnus         2  60.98465  21.70309 2019-10-08 05:59:00
-#> 5      Cygnus olor         2  60.42794  22.20052 2019-09-30 21:00:00
-#> 6      Cygnus olor         4  60.42794  22.20052 2019-09-30 21:00:00
-#> 7    Cygnus cygnus         5  60.95401  26.09615 2019-09-29 21:00:00
-#> 8    Cygnus cygnus         1  60.45848  22.37712 2019-09-28 21:00:00
-#> 9      Cygnus olor         5  60.56745  21.57187 2019-09-28 21:00:00
-#> 10   Cygnus cygnus         2  60.56745  21.57187 2019-09-28 21:00:00
+#> 1    Cygnus cygnus       260  60.95257  26.48997 2019-11-04 22:00:00
+#> 2    Cygnus cygnus       114  60.88855  26.12326 2019-11-04 22:00:00
+#> 3    Cygnus cygnus        14  60.95321  26.09083 2019-11-03 22:00:00
+#> 4    Cygnus cygnus         6  60.95231  26.09553 2019-11-03 22:00:00
+#> 5    Cygnus cygnus         1  61.10238  21.54661 2019-11-02 13:30:00
+#> 6    Cygnus cygnus         1  61.10237  21.54661 2019-10-31 14:20:00
+#> 7    Cygnus cygnus         1  61.10965  21.53318 2019-10-27 06:25:00
+#> 8    Cygnus cygnus        12  62.25014  25.74540 2019-10-26 21:00:00
+#> 9      Cygnus olor         1  60.45875  22.37761 2019-10-25 21:00:00
+#> 10   Cygnus cygnus         1  60.45875  22.37761 2019-10-25 21:00:00
 #> ...with 0 more records and 25 more variables:
 #> taxon_rank, country, province, municipality, date_start, date_end,
 #> hour_start, hour_end, minute_start, minute_end, record_id,
 #> individual_id, event_id, collection_id, any_issues, record_issue,
 #> record_reliable, taxon_reliability, document_issue,
-#> document_reliablity, coordinate_accuracy, event_issue,
+#> document_reliablity, coordinates_uncertainty, event_issue,
 #> location_issue, time_issue, duration
 ```
 
@@ -202,7 +202,7 @@ occurrences from Finland.
 jays <- finbif_occurrence(
   taxa   = "Eurasian Jay",
   filter = c(
-    coordinate_accuracy_max = 100,
+    coordinates_uncertainty_max = 100,
     country                 = "Finland"
   ),
   n      = 2e4,

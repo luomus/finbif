@@ -94,7 +94,7 @@
 #' - `bird_assoc_area` Character vector.
 #'   Filter by BirdLife Finland association area. Use `finbif_metadata()`
 #'   to see association names and codes.
-#' - `coordinates_area` Coordinates.
+#' - `coordinates` Coordinates.
 #'   A character vector or list of coordinate data. Must be length 3 to 4 (e.g.,
 #'   `list(lat = c(60.4, 61), lon = c(22, 22.5), system = "wgs84", ratio = 1)`.
 #'   The first element is minimum and maximum latitude and the second minimum
@@ -120,7 +120,7 @@
 #'   of the cell. Coordinates system is uniform `"kkj"` (also known as "ykj").
 #' - `coordinates_cell_{1k|10k|50k|100k}_center` Coordinates.
 #'   As above, except coordinates indicate center of grid cell.
-#' - `coordinate_source` Character.
+#' - `coordinates_source` Character.
 #'   Filter by source of coordinates. Currently accepted values are
 #'   `"reported_value"` (coordinates were recorded at time of observation) and
 #'   `"finnish_municipality"` (coordinates were derived and observer only
@@ -163,9 +163,9 @@
 #' - `collection_reliability` Integer.
 #'   Filter by collection reliability rating, from low reliability (1) to highly
 #'   reliable (5).
-#' - `coordinate_accuracy_max` Integer.
-#'   Filter by maximum accuracy of coordinates (i.e.,
-#'   `coordinate_accuracy_max = 100` will return records that are accurate to
+#' - `coordinates_uncertainty_max` Integer.
+#'   Filter by maximum uncertainty of coordinates (i.e.,
+#'   `coordinates_uncertainty_max = 100` will return records that are accurate to
 #'   100m).
 #' - `quality_issues`. Character.
 #'   Filter by the presence of record quality issues. One of `"without_issues"`,

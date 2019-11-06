@@ -48,8 +48,8 @@ loadedSameOrAfter,                     last_import_date_min,          date,     
 loadedSameOrBefore,                    last_import_date_max,          date,      FALSE,             ",", TRUE
 firstLoadedSameOrAfter,                first_import_date_min,         date,      FALSE,             ",", TRUE
 firstLoadedSameOrBefore,               first_import_date_max,         date,      FALSE,             ",", TRUE
-coordinates,                           coordinates_area,              coords,    FALSE,             ",", TRUE
-coordinateAccuracyMax,                 coordinate_accuracy_max,       integer,   FALSE,             ",", TRUE
+coordinates,                           coordinates,                   coords,    FALSE,             ",", TRUE
+coordinateAccuracyMax,                 coordinates_uncertainty_max,   integer,   FALSE,             ",", TRUE
 wgs84CenterPoint,                      coordinates_center,            coords,    FALSE,             ",", TRUE
 ykj1km,                                coordinates_cell_1k,           coords,    FALSE,             ",", TRUE
 ykj10km,                               coordinates_cell_10k,          coords,    FALSE,             ",", TRUE
@@ -59,7 +59,7 @@ ykj1kmCenter,                          coordinates_cell_1k_center,    coords,   
 ykj10kmCenter,                         coordinates_cell_10k_center,   coords,    FALSE,             ",", TRUE
 ykj50kmCenter,                         coordinates_cell_50k_center,   coords,    FALSE,             ",", TRUE
 ykj100kmCenter,                        coordinates_cell_100k_center,  coords,    FALSE,             ",", TRUE
-sourceOfCoordinates,                   coordinate_source,             factor,    FALSE,             ",", TRUE
+sourceOfCoordinates,                   coordinates_source,            factor,    FALSE,             ",", TRUE
 typeSpecimen,                          type_specimen,                 logical,   FALSE,             ",", TRUE
 wild,                                  wild_status,                   factor,    FALSE,             ",", TRUE
 breedingSite,                          is_breeding_location,          logical,   FALSE,             ",", TRUE

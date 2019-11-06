@@ -102,7 +102,7 @@ names.
 \item \code{bird_assoc_area} Character vector.
 Filter by BirdLife Finland association area. Use \code{finbif_metadata()}
 to see association names and codes.
-\item \code{coordinates_area} Coordinates.
+\item \code{coordinates} Coordinates.
 A character vector or list of coordinate data. Must be length 3 to 4 (e.g.,
 \code{list(lat = c(60.4, 61), lon = c(22, 22.5), system = "wgs84", ratio = 1)}.
 The first element is minimum and maximum latitude and the second minimum
@@ -128,7 +128,7 @@ Where \code{*} is 1, 10, 50 or 100. The coordinates specify the southeast corner
 of the cell. Coordinates system is uniform \code{"kkj"} (also known as "ykj").
 \item \code{coordinates_cell_{1k|10k|50k|100k}_center} Coordinates.
 As above, except coordinates indicate center of grid cell.
-\item \code{coordinate_source} Character.
+\item \code{coordinates_source} Character.
 Filter by source of coordinates. Currently accepted values are
 \code{"reported_value"} (coordinates were recorded at time of observation) and
 \code{"finnish_municipality"} (coordinates were derived and observer only
@@ -177,9 +177,9 @@ Filters related to quality of record:
 \item \code{collection_reliability} Integer.
 Filter by collection reliability rating, from low reliability (1) to highly
 reliable (5).
-\item \code{coordinate_accuracy_max} Integer.
-Filter by maximum accuracy of coordinates (i.e.,
-\code{coordinate_accuracy_max = 100} will return records that are accurate to
+\item \code{coordinates_uncertainty_max} Integer.
+Filter by maximum uncertainty of coordinates (i.e.,
+\code{coordinates_uncertainty_max = 100} will return records that are accurate to
 100m).
 \item \code{quality_issues}. Character.
 Filter by the presence of record quality issues. One of \code{"without_issues"},
