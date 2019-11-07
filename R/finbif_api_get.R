@@ -32,8 +32,10 @@ finbif_api_get <- function(path, query, cache) {
   resp <- httr::GET(
     sprintf("https://%s/%s/%s", url, version, path),
     httr::user_agent(
-      paste0("https://github.com/luomus/finbif#",
-      utils::packageVersion("finbif"))
+      paste0(
+        "https://github.com/luomus/finbif#",
+        utils::packageVersion("finbif")
+      )
     ),
     httr::accept_json(),
     query = c(query, list(access_token = finbif_access_token))
