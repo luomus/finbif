@@ -42,10 +42,11 @@ as.data.frame.finbif_records <- function(x, ...) {
 
   names(lst) <- cols
   cols_split <- split(cols, var_names[cols, "single"])
+  cols_split[["TRUE"]] <- c("ind", cols_split[["TRUE"]])
+  lst <- c(list(ind = seq_along(x)), lst)
   df <- as.data.frame(lst[cols_split[["TRUE"]]], stringsAsFactors = FALSE)
-
   df[cols_split[["FALSE"]]] <- lst[cols_split[["FALSE"]]]
-
+  df[["ind"]] <- NULL
   structure(df[cols], url = url, time = time)
 
 }
