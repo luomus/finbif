@@ -203,7 +203,7 @@ parse_filters <- function(filter) {
     if (filter_names[finbif_filter_names[[i]], "translated_values"])
       filter[[i]] <- translate(filter[[i]], names(filter)[[i]])
 
-    if (grepl("^(not_){0,1}collection$", names(filter)[[i]])) {
+    if (grepl("^(not_){0,1}collection$", names(filter)[[i]])) { # nolint
 
       if (inherits(filter[[i]], "finbif_collections")) {
 

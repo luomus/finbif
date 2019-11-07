@@ -265,7 +265,7 @@ print_extras <- function(x, extra_rows, extra_cols, dsply_cols) {
 #' @export
 plot.finbif_occ <- function(
   x, ..., xlab = "Longitude", ylab = "Latitude",
-  panel.first = grid(lwd = 2),
+  panel.first = grid(lwd = 2), # nolint
   asp = 1 / cos(mean(range(x["lat_wgs84"])) * pi / 180),
   pch = 19, cex = .5, las = 1
 ) {

@@ -165,8 +165,8 @@
 #'   reliable (5).
 #' - `coordinates_uncertainty_max` Integer.
 #'   Filter by maximum uncertainty of coordinates (i.e.,
-#'   `coordinates_uncertainty_max = 100` will return records that are accurate to
-#'   100m).
+#'   `coordinates_uncertainty_max = 100` will return records that are accurate
+#'   to 100m).
 #' - `quality_issues`. Character.
 #'   Filter by the presence of record quality issues. One of `"without_issues"`,
 #'   `"with_issues"` or `"both"`. Issues include any quality issues with the

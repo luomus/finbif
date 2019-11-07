@@ -1,4 +1,4 @@
-.onLoad <- function(libname, pkgname) {
+.onLoad <- function(libname, pkgname) { # nolint
   op <- options()
   op_finbif <- list(
     # There are (or will be) multiple versions and locations of the FinBIF API
