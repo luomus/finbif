@@ -2,6 +2,7 @@
 #' @importFrom digest digest
 #' @importFrom httr accept_json content GET http_type user_agent status_code
 #' @importFrom jsonlite fromJSON
+#' @importFrom utils packageVersion
 
 finbif_api_get <- function(path, query, cache) {
   finbif_access_token <- finbif_token()
@@ -31,7 +32,8 @@ finbif_api_get <- function(path, query, cache) {
   resp <- httr::GET(
     sprintf("https://%s/%s/%s", url, version, path),
     httr::user_agent(
-      paste0("https://github.com/luomus/finbif#", packageVersion("finbif"))
+      paste0("https://github.com/luomus/finbif#",
+      utils::packageVersion("finbif"))
     ),
     httr::accept_json(),
     query = c(query, list(access_token = finbif_access_token))
