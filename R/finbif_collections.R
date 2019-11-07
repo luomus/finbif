@@ -8,7 +8,7 @@
 #' @param subcollections Logical. Return subcollection metadata of higher level
 #'   collections.
 #' @param supercollections Logical. Return lowest level collection metadata.
-#' @param lang Character. Language of data return one of "en", "fi", or "sv".
+#' @param lang Character. Language of data returned. One of "en", "fi", or "sv".
 #' @param nmin Integer. Filter collections by number of records. Only return
 #'   information on collections with greater than value specified. If `NA` then
 #'   return information on all collections.

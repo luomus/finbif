@@ -18,7 +18,7 @@ collections.}
 
 \item{supercollections}{Logical. Return lowest level collection metadata.}
 
-\item{lang}{Character. Language of data return one of "en", "fi", or "sv".}
+\item{lang}{Character. Language of data returned. One of "en", "fi", or "sv".}
 
 \item{nmin}{Integer. Filter collections by number of records. Only return
 information on collections with greater than value specified. If \code{NA} then
