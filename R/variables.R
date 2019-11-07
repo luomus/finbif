@@ -222,16 +222,29 @@
 #' @section Data quality:
 #' Variables related to the quality of records include:
 #'
-#' - `any_issues`
-#' - `record_reliable`
-#' - `document_reliablity`
-#' - `taxon_reliability`
+#' - `any_issues` Logical.
+#'   Are there any data quality issues associated with the record it's event or
+#'   document.
+#' - `record_reliable` Logical.
+#' - `collection_reliability` Integer.
+#'   A numeric rating of relability from 1 (low reliability) to 5 (high
+#'   reliability) for the collection the record comes from.
+#' - `taxon_reliability` Character.
+#'   Reliability of the record taxonomic identification.
 #' - `taxon_reliability_message`
+#'   Remarks associated with `taxon_reliability`.
 #' - `taxon_reliability_source`
+#'   Source of the `taxon_reliability` rating.
 #' - `reported_taxon_confidence`
-#' - `{document|time|location|event|record}_issue`
-#' - `{document|time|location|event|record}_issue_message`
+#'    Reliability of the record taxonomic identification as reported by the
+#'    original data author.
+#' - `{document|time|location|event|record}_issue` Character.
+#'   Issues with record associated with its document, time, location, event, or
+#'   the record itself.
+#' - `{document|time|location|event|record}_issue_message` Character.
+#'   Details about the issue.
 #' - `{document|time|location|event|record}_issue_source`
+#'   Source determining the issue.
 #'
 #' @section Media:
 #' Variables related to media (images, audio, etc.,) associated with records

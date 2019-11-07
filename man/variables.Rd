@@ -245,16 +245,29 @@ Has the record been restricted for other reasons.
 
 Variables related to the quality of records include:
 \itemize{
-\item \code{any_issues}
-\item \code{record_reliable}
-\item \code{document_reliablity}
-\item \code{taxon_reliability}
+\item \code{any_issues} Logical.
+Are there any data quality issues associated with the record it's event or
+document.
+\item \code{record_reliable} Logical.
+\item \code{collection_reliability} Integer.
+A numeric rating of relability from 1 (low reliability) to 5 (high
+reliability) for the collection the record comes from.
+\item \code{taxon_reliability} Character.
+Reliability of the record taxonomic identification.
 \item \code{taxon_reliability_message}
+Remarks associated with \code{taxon_reliability}.
 \item \code{taxon_reliability_source}
+Source of the \code{taxon_reliability} rating.
 \item \code{reported_taxon_confidence}
-\item \code{{document|time|location|event|record}_issue}
-\item \code{{document|time|location|event|record}_issue_message}
+Reliability of the record taxonomic identification as reported by the
+original data author.
+\item \code{{document|time|location|event|record}_issue} Character.
+Issues with record associated with its document, time, location, event, or
+the record itself.
+\item \code{{document|time|location|event|record}_issue_message} Character.
+Details about the issue.
 \item \code{{document|time|location|event|record}_issue_source}
+Source determining the issue.
 }
 }
 
