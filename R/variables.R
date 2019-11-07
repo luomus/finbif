@@ -155,26 +155,53 @@
 #' @section Time:
 #' Variables related to time of record include:
 #'
-#' - `date_start`
-#' - `date_end`
-#' - `hour_start`
-#' - `hour_end`
-#' - `minute_start`
-#' - `minute_end`
-#' - `ordinal_day_start`
-#' - `ordinal_day_end`
-#' - `season_start`
-#' - `season_end`
-#' - `formatted_date_time`
-#' - `century`
-#' - `decade`
-#' - `year`
-#' - `month`
-#' - `day`
-#' - `date_created`
-#' - `first_load_date`
-#' - `modified_date`
-#' - `load_date`
+#' - `date_start` Character.
+#'   The date the recording event began.
+#' - `date_end` Character.
+#'   The date the recording event ended.
+#' - `hour_start` Integer.
+#'   The hour (24 hour time) of the day the recording event began.
+#' - `hour_end` Integer.
+#'   The hour (24 hour time) of the day the recording event ended.
+#' - `minute_start` Integer.
+#'   The minute of the hour the recording event began.
+#' - `minute_end` Integer.
+#'   The minute of the hour the recording event started.
+#' - `ordinal_day_start` Integer.
+#'   The ordinal day of the year the recording event began.
+#' - `ordinal_day_end` Integer.
+#'   The ordinal day of the year the recording event ended
+#' - `season_start` Integer.
+#'   The day of the year the recording event began. A four digit number
+#'   indicating the day of the year in MMDD (%m%d) format.
+#' - `season_end` Integer.
+#'   The day of the year the recording event ended. A four digit number
+#'   indicating the day of the year in MMDD (%m%d) format.
+#' - `century` Integer.
+#'   The century during which the recording event occurred (`NA` if the event
+#'   spans multiple centuries).
+#' - `decade` Integer.
+#'   The decade during which the  recording event occurred (`NA` if the event
+#'   spans multiple decades).
+#' - `year` Integer.
+#'   The year during which the recording event occurred (`NA` if the event spans
+#'   multiple years).
+#' - `month` Integer.
+#'   The month of the year during which the recording event occurred (`NA` if
+#'   the event spans multiple months).
+#' - `day` Integer.
+#'   The day of the month during which the recording event occurred (`NA` if the
+#'   event spans multiple days).
+#' - `formatted_date_time` Character.
+#'   Date and time of the recording event formatted for display.
+#' - `date_created` Character.
+#'   The date the original data was created.
+#' - `first_load_date` Character.
+#'   The date the record was first loaded into the FinBIF database.
+#' - `modified_date` Character.
+#'   The most recent date the original data was modified.
+#' - `load_date` Character.
+#'   The most recent date the record was loaded into the FinBIF database.
 #'
 #' @section Data restrictions:
 #' Variables related to restricted records include:

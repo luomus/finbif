@@ -172,26 +172,53 @@ Whether or not the occurrence is recorded at a known breeding location.
 
 Variables related to time of record include:
 \itemize{
-\item \code{date_start}
-\item \code{date_end}
-\item \code{hour_start}
-\item \code{hour_end}
-\item \code{minute_start}
-\item \code{minute_end}
-\item \code{ordinal_day_start}
-\item \code{ordinal_day_end}
-\item \code{season_start}
-\item \code{season_end}
-\item \code{formatted_date_time}
-\item \code{century}
-\item \code{decade}
-\item \code{year}
-\item \code{month}
-\item \code{day}
-\item \code{date_created}
-\item \code{first_load_date}
-\item \code{modified_date}
-\item \code{load_date}
+\item \code{date_start} Character.
+The date the recording event began.
+\item \code{date_end} Character.
+The date the recording event ended.
+\item \code{hour_start} Integer.
+The hour (24 hour time) of the day the recording event began.
+\item \code{hour_end} Integer.
+The hour (24 hour time) of the day the recording event ended.
+\item \code{minute_start} Integer.
+The minute of the hour the recording event began.
+\item \code{minute_end} Integer.
+The minute of the hour the recording event started.
+\item \code{ordinal_day_start} Integer.
+The ordinal day of the year the recording event began.
+\item \code{ordinal_day_end} Integer.
+The ordinal day of the year the recording event ended
+\item \code{season_start} Integer.
+The day of the year the recording event began. A four digit number
+indicating the day of the year in MMDD (%m%d) format.
+\item \code{season_end} Integer.
+The day of the year the recording event ended. A four digit number
+indicating the day of the year in MMDD (%m%d) format.
+\item \code{century} Integer.
+The century during which the recording event occurred (\code{NA} if the event
+spans multiple centuries).
+\item \code{decade} Integer.
+The decade during which the  recording event occurred (\code{NA} if the event
+spans multiple decades).
+\item \code{year} Integer.
+The year during which the recording event occurred (\code{NA} if the event spans
+multiple years).
+\item \code{month} Integer.
+The month of the year during which the recording event occurred (\code{NA} if
+the event spans multiple months).
+\item \code{day} Integer.
+The day of the month during which the recording event occurred (\code{NA} if the
+event spans multiple days).
+\item \code{formatted_date_time} Character.
+Date and time of the recording event formatted for display.
+\item \code{date_created} Character.
+The date the original data was created.
+\item \code{first_load_date} Character.
+The date the record was first loaded into the FinBIF database.
+\item \code{modified_date} Character.
+The most recent date the original data was modified.
+\item \code{load_date} Character.
+The most recent date the record was loaded into the FinBIF database.
 }
 }
 
