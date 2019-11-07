@@ -52,7 +52,7 @@ as.data.frame.finbif_records <- function(x, ...) {
 
 #' @rdname as.data.frame.finbif_records
 #' @export
-as.data.frame.finbif_records_list <- function(x, ..., quiet = FALSE) {
+as.data.frame.finbif_records_list <- function(x, ..., quiet = TRUE) {
 
   n <- length(x)
   if (!quiet) {

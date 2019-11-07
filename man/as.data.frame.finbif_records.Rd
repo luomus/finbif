@@ -7,7 +7,7 @@
 \usage{
 \method{as.data.frame}{finbif_records}(x, ...)
 
-\method{as.data.frame}{finbif_records_list}(x, ..., quiet = FALSE)
+\method{as.data.frame}{finbif_records_list}(x, ..., quiet = TRUE)
 }
 \arguments{
 \item{x}{A \code{finbif_records*} object.}
