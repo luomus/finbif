@@ -179,8 +179,8 @@ Filter by collection reliability rating, from low reliability (1) to highly
 reliable (5).
 \item \code{coordinates_uncertainty_max} Integer.
 Filter by maximum uncertainty of coordinates (i.e.,
-\code{coordinates_uncertainty_max = 100} will return records that are accurate to
-100m).
+\code{coordinates_uncertainty_max = 100} will return records that are accurate
+to 100m).
 \item \code{quality_issues}. Character.
 Filter by the presence of record quality issues. One of \code{"without_issues"},
 \code{"with_issues"} or \code{"both"}. Issues include any quality issues with the
