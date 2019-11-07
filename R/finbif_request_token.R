@@ -34,7 +34,12 @@ finbif_request_token <- function(email) {
   path    <- "api-users"
   resp <- httr::POST(
     sprintf("https://%s/%s/%s", url, version, path),
-    httr::user_agent("https://bitbucket.org/luomus/finbif"),
+    httr::user_agent(
+      paste0(
+        "https://github.com/luomus/finbif#",
+        utils::packageVersion("finbif")
+      )
+    ),
     httr::accept_json(),
     body = list(email = email),
     encode = "json"
