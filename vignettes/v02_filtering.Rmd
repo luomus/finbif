@@ -73,7 +73,7 @@ finbif_informal_groups("macrofungi")
 
 ## Administrative status
 Many records in the FinBIF database include taxa that have one or another
-administrative statuses. See `finbif_admin_status()` for a list of
+administrative statuses. See `finbif_metadata("admin_status")` for a list of
 administrative statuses and short-codes.
 
 ```r
@@ -106,8 +106,8 @@ finbif_occurrence(
 
 ## IUCN red list
 Filtering can be done by [IUCN red list](https://punainenkirja.laji.fi/) 
-category. See `finbif_red_list()` for the IUCN red list categories and their 
-short-codes.
+category. See `finbif_metadata("red_list")` for the IUCN red list categories and
+their short-codes.
 
 ```r
 # Search for near threatened mammals
@@ -140,84 +140,85 @@ finbif_occurrence(
 ## Habitat type
 Many taxa are associated with one or more primary or secondary habitat types
 (e.g., forest) or subtypes (e.g., herb-rich alpine birch forests). Use
-`finbif_habitat_types()` to see the habitat types in FinBIF. You can filter
-occurrence records based on primary (or primary/secondary) habitat type or
-subtype codes. Note that filtering based on habitat is on taxa not on the
+`finbif_metadata("habitat_types")` to see the habitat types in FinBIF. You can
+filter occurrence records based on primary (or primary/secondary) habitat type
+or subtype codes. Note that filtering based on habitat is on taxa not on the
 location (i.e., filtering records with `primary_habitat = "M"` will only return
 records of taxa considered to primarily inhabit forests, yet the locations of
 those records may encompass habitats other than forests).
 
 ```r
-head(finbif_habitat_types())
-#>                                habitat_type code
-#> 1                                   Forests    M
-#> 2                             Heath forests   MK
-#> 3 Sub-xeric, xeric and barren heath forests  MKK
-#> 4         Mesic and herb-rich heath forests  MKT
-#> 5 Herb-rich forests (also spruce-dominated)   ML
-#> 6           Dry and mesic herb-rich forests  MLT
+head(finbif_metadata("habitat_types"))
+#>   habitat_name                          habitat_code
+#> 1 Forests                               M           
+#> 2 Heath forests                         MK          
+#> 3 Sub-xeric, xeric and barren heath fo… MKK         
+#> 4 Mesic and herb-rich heath forests     MKT         
+#> 5 Herb-rich forests (also spruce-domin… ML          
+#> 6 Dry and mesic herb-rich forests       MLT
 
 # Search records of taxa for which forests are their primary or secondary
 # habitat type
 finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 #> Records downloaded: 10
-#> Records available: 18766779
+#> Records available: 19243360
 #> A data.frame [10 x 30]
-#>         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  Eudonia truncicolel…         1  62.92172  27.63335 2019-08-21 21:00:00
-#> 2  Batrachedra praeang…         1  62.92172  27.63335 2019-08-21 21:00:00
-#> 3      Acleris holmiana         1  62.92172  27.63335 2019-08-21 21:00:00
-#> 4    Dysstroma citratum         1  62.92172  27.63335 2019-08-21 21:00:00
-#> 5     Eulithis populata         1  62.92172  27.63335 2019-08-21 21:00:00
-#> 6        Diarsia dahlii         1  62.92172  27.63335 2019-08-21 21:00:00
-#> 7      Apamea lateritia         1  62.92172  27.63335 2019-08-21 21:00:00
-#> 8  Argyresthia goedart…         1  62.92172  27.63335 2019-08-21 21:00:00
-#> 9      Sciurus vulgaris         1  60.43755  22.24938 2019-08-21 21:00:00
-#> 10 Caryocolum pullatel…         4  62.92172  27.63335 2019-08-21 21:00:00
+#>        scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1            Pica pica         2  65.70064  24.64242 2019-11-06 05:58:00
+#> 2     Poecile montanus         1  65.70064  24.64242 2019-11-06 05:58:00
+#> 3  Emberiza citrinella         5  65.70064  24.64242 2019-11-06 05:58:00
+#> 4  Capreolus capreolus         1  65.70064  24.64242 2019-11-06 05:58:00
+#> 5    Pyrrhula pyrrhula        15  65.70064  24.64242 2019-11-06 05:58:00
+#> 6  Cyanistes caeruleus        24  65.70064  24.64242 2019-11-06 05:58:00
+#> 7          Parus major        18  65.70064  24.64242 2019-11-06 05:58:00
+#> 8  Bombycilla garrulus         2  65.70064  24.64242 2019-11-06 05:58:00
+#> 9     Acanthis flammea        12  65.70064  24.64242 2019-11-06 05:58:00
+#> 10       Corvus corone         9  65.70064  24.64242 2019-11-06 05:58:00
 #> ...with 0 more records and 25 more variables:
 #> taxon_rank, country, province, municipality, date_start, date_end,
 #> hour_start, hour_end, minute_start, minute_end, record_id,
 #> individual_id, event_id, collection_id, any_issues, record_issue,
 #> record_reliable, taxon_reliability, document_issue,
-#> document_reliablity, coordinate_accuracy, event_issue,
+#> document_reliablity, coordinates_uncertainty, event_issue,
 #> location_issue, time_issue, duration
 ```
 
 You may further refine habitat based searching using a specific habitat type
-qualifier such as "sun-exposed" or "shady". Use `finbif_habitat_qualifiers()`
-to see the qualifiers available. To specify qualifiers use a named list of
-character vectors where the names are habitat types or subtypes and the elements
-of the character vectors are the qualifier codes.
+qualifier such as "sun-exposed" or "shady". Use
+`finbif_metadata("habitat_qualifiers")` to see the qualifiers available. To 
+specify qualifiers use a named list of character vectors where the names are
+habitat types or subtypes and the elements of the character vectors are the
+qualifier codes.
 
 ```r
-finbif_habitat_qualifiers()[4:6, ]
-#>                          habitat_type code
-#> 4 Broadleaved deciduous trees present    J
-#> 5                         Sun-exposed   PA
-#> 6                               Shady   VA
+finbif_metadata("habitat_qualifiers")[4:6, ]
+#>   qualifier_name                      qualifier_code
+#> 4 Broadleaved deciduous trees present J             
+#> 5 Sun-exposed                         PA            
+#> 6 Shady                               VA
 
 # Search records of taxa for which forests with sun-exposure and broadleaved
 # deciduous trees are their primary habitat type
 finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J"))))
 #> Records downloaded: 10
-#> Records available: 103
+#> Records available: 105
 #> A data.frame [10 x 30]
 #>     scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  Pammene fasciana         1  59.96020  20.99521 2017-09-19 21:00:00
-#> 2  Pammene fasciana         1  60.00217  23.43591 2019-06-21 21:00:00
-#> 3  Pammene fasciana         1  60.36807  26.17233 2017-06-28 21:00:00
-#> 4  Pammene fasciana         1  60.35244  19.83238 2017-07-29 21:00:00
-#> 5  Pammene fasciana         1  60.35244  19.83238 2017-07-30 21:00:00
-#> 6  Pammene fasciana         1  60.35244  19.83238 2017-08-01 21:00:00
-#> 7  Pammene fasciana         1  60.35244  19.83238 2017-08-02 21:00:00
+#> 1  Pammene fasciana         1  60.00217  23.43591 2019-06-21 21:00:00
+#> 2  Pammene fasciana         1  60.50396  27.72823 2019-05-29 21:00:00
+#> 3  Pammene fasciana         3  60.00217  23.43591 2019-05-07 21:00:00
+#> 4  Pammene fasciana         1  59.96020  20.99521 2017-09-19 21:00:00
+#> 5  Pammene fasciana         2  60.35244  19.83238 2017-08-02 21:00:00
+#> 6  Pammene fasciana         1  60.35244  19.83238 2017-08-02 21:00:00
+#> 7  Pammene fasciana         1  60.35244  19.83238 2017-08-01 21:00:00
 #> 8  Pammene fasciana         1  60.21166  24.90204 2017-07-30 21:00:00
-#> 9  Pammene fasciana         2  60.35244  19.83238 2017-08-02 21:00:00
-#> 10 Pammene fasciana         3  60.00217  23.43591 2019-05-07 21:00:00
+#> 9  Pammene fasciana         1  60.35244  19.83238 2017-07-30 21:00:00
+#> 10 Pammene fasciana         1  60.35244  19.83238 2017-07-29 21:00:00
 #> ...with 0 more records and 25 more variables:
 #> taxon_rank, country, province, municipality, date_start, date_end,
 #> hour_start, hour_end, minute_start, minute_end, record_id,
 #> individual_id, event_id, collection_id, any_issues, record_issue,
 #> record_reliable, taxon_reliability, document_issue,
-#> document_reliablity, coordinate_accuracy, event_issue,
+#> document_reliablity, coordinates_uncertainty, event_issue,
 #> location_issue, time_issue, duration
 ```
