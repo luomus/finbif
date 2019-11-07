@@ -15,14 +15,15 @@ order_vars <- unlist(order_vars[["items"]][["enum"]])
 
 stopifnot(
   identical(
-    sort(row.names(var_names[var_names[["select"]], ])),
-    sort(select_vars)
+    sort(row.names(var_names[var_names[["select"]], ])), sort(select_vars)
   )
 )
 
 stopifnot(
   identical(
-    sort(row.names(var_names[var_names[["order"]], ])),
+    sort(
+      c(row.names(var_names[var_names[["order"]], ]), "RANDOM", "RANDOM:seed")
+    ),
     sort(order_vars)
   )
 )

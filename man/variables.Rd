@@ -226,12 +226,18 @@ The most recent date the record was loaded into the FinBIF database.
 
 Variables related to restricted records include:
 \itemize{
-\item \code{restricted}
-\item \code{restriction_level}
-\item \code{restriction_reasons}
-\item \code{conservation_reason_restricted}
-\item \code{custom_reason_restricted}
-\item \code{data_quarantine_period_reason_restricted}
+\item \code{restriction} Logical.
+Has the record been restricted in some way (e.g., geospatially aggregated).
+\item \code{restriction_level} Character.
+What level of restriction has been applied to the record.
+\item \code{restriction_reasons} List.
+List of reasons restriction has been applied.
+\item \code{restriction_reasons_conservation} Logical.
+Has the record been restricted for reasons of conservation.
+\item \code{restriction_reasons_embargo} Logical.
+Has the record been restricted due to a temporary data embargo.
+\item \code{restriction_reasons_custom} Logical.
+Has the record been restricted for other reasons.
 }
 }
 
