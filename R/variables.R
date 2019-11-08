@@ -6,8 +6,7 @@
 #' All identifiers are returned in the form of a URI. Identifiers include:
 #'
 #' - `record_id` Character.
-#'   The ID of a record of organism's occurrence at a time and
-#'   place.
+#'   The ID of a record of organism's occurrence at a time and place.
 #' - `individual_id` Character.
 #'   ID of an individual organism (e.g., a ringed bird that has been captured
 #'   multiple times will have a single `individual_id` and multiple `record_id`s
@@ -50,7 +49,7 @@
 #' - `orig_scientific_display_name` Character.
 #'   Scientific display name before (if any) annotation.
 #' - `common_name` Character.
-#'   Common name of taxon.
+#'   Common (vernacular) name of taxon.
 #' - `orig_common_name` Character.
 #'   Common name before (if any) annotation.
 #' - `reported_name` Character.
@@ -71,13 +70,13 @@
 #' - `orig_taxon_rank` Character.
 #'   The taxonomic rank of the taxon (in the form of a URI) before (if any)
 #'   annotation.
-#' - `informal_groups` Character vector.
+#' - `informal_groups` List.
 #'   The informal taxonomic groups that the taxon belongs to (e.g., birds) in
 #'   the form of URIs.
-#' - `orig_informal_groups` Character vector.
+#' - `orig_informal_groups` List.
 #'   The informal taxonomic groups that the taxon belonged to before (if any)
 #'   annotation.
-#' - `reported_informal_groups` Character vector.
+#' - `reported_informal_groups` List.
 #'   The informal taxonomic groups that the taxon belongs to as reported by the
 #'   record creator.
 #' - `taxon_checklist` Character.
@@ -147,8 +146,8 @@
 #'   Geographic place name that is at higher level than country.
 #' - `line_length_m` Integer.
 #'   The length of linear locations (e.g., line transect surveys).
-#' - `area_m2`
-#'   The size of record's location.
+#' - `area_m2` Integer.
+#'   The size of record's location in meters squared.
 #' - `is_breeding_location` Logical.
 #'   Whether or not the occurrence is recorded at a known breeding location.
 #'
@@ -226,8 +225,10 @@
 #'   Are there any data quality issues associated with the record it's event or
 #'   document.
 #' - `record_reliable` Logical.
+#'   The `"collection_reliability"` is 4-5 or the record has been "confirmed"
+#'   and has no quality issues (record, event or document).
 #' - `collection_reliability` Integer.
-#'   A numeric rating of relability from 1 (low reliability) to 5 (high
+#'   A numeric rating of reliability from 1 (low reliability) to 5 (high
 #'   reliability) for the collection the record comes from.
 #' - `taxon_reliability` Character.
 #'   Reliability of the record taxonomic identification.
@@ -246,42 +247,34 @@
 #' - `{document|time|location|event|record}_issue_source`
 #'   Source determining the issue.
 #'
-#' @section Media:
-#' Variables related to media (images, audio, etc.,) associated with records
-#' include:
-#'
-#' - `{document|event|record}_media_count`
-#' - `{document|event|record}_media_author`
-#' - `{document|event|record}_media_caption`
-#' - `{document|event|record}_media_copyright`
-#' - `{document|event|record}_media_url`
-#' - `{document|event|record}_media_license_abbr`
-#' - `{document|event|record}_media_license_id`
-#' - `{document|event|record}_media_type`
-#' - `{document|event|record}_thumbnail_square`
-#' - `{document|event|record}_thumbnail`
-#'
 #' @section Misc:
 #' Other variables:
-#' - `observers_ids`
-#' - `determiner`
-#' - `record_notes`
-#' - `record_basis`
-#' - `reference_publication`
-#' - `superrecord_basis`
-#' - `type_specimen`
-#' - `record_order`
-#' - `wild_status`
-#' - `license`
-#' - `document_notes`
-#' - `partial`
-#' - `event_order`
-#' - `event_notes`
-#' - `taxon_cenus_id`
-#' - `taxon_census_type`
-#' - `record_annotation_count`
-#' - `{document|record}_keywords`
-#' - `sample_count`
+#' - `observers_ids` List.
+#'   List of observer identifiers for the record.
+#' - `determiner` Character.
+#'   Person who determined the taxonomic identification of the record.
+#' - `record_basis` Character.
+#'   The type of or method used to obtain the record.
+#' - `superrecord_basis` Character.
+#'   Higher level type of or method used to obtain the record.
+#' - `type_specimen` Logical.
+#'   Whether or not the record is of a type specimen.
+#' - `is_wild` Logical.
+#'   Whether or not the record is of a "wild" organism.
+#' - `license` Character.
+#'   The licene of the data associated with the record.
+#' - `{document|event|record}_notes` Character.
+#'   Notes associated with the document, event or record itself.
+#' - `{document|record}_keywords` List.
+#'   List of keywords associated with the document or record.
+#' - `record_annotation_count` Integer.
+#'   How many annotations are associated with the record.
+#' - `sample_count` Integer.
+#'   How many material samples (DNA extractions, etc., ...) are associated with
+#'   the record.
+#' - `{document|event|record}_media_count` Integer.
+#'   How many media items (images, audio, video, etc., ...) are associated with
+#'   the record's document, event or the record itself.
 #'
 #' @name variables
 NULL

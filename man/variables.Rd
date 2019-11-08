@@ -11,8 +11,7 @@ FinBIF record variables that can be selected in a finbif occurrence search.
 All identifiers are returned in the form of a URI. Identifiers include:
 \itemize{
 \item \code{record_id} Character.
-The ID of a record of organism's occurrence at a time and
-place.
+The ID of a record of organism's occurrence at a time and place.
 \item \code{individual_id} Character.
 ID of an individual organism (e.g., a ringed bird that has been captured
 multiple times will have a single \code{individual_id} and multiple \code{record_id}s
@@ -58,7 +57,7 @@ will be formatted as \emph{Genus sp.}).
 \item \code{orig_scientific_display_name} Character.
 Scientific display name before (if any) annotation.
 \item \code{common_name} Character.
-Common name of taxon.
+Common (vernacular) name of taxon.
 \item \code{orig_common_name} Character.
 Common name before (if any) annotation.
 \item \code{reported_name} Character.
@@ -79,13 +78,13 @@ The taxonomic rank of the taxon (in the form of a URI).
 \item \code{orig_taxon_rank} Character.
 The taxonomic rank of the taxon (in the form of a URI) before (if any)
 annotation.
-\item \code{informal_groups} Character vector.
+\item \code{informal_groups} List.
 The informal taxonomic groups that the taxon belongs to (e.g., birds) in
 the form of URIs.
-\item \code{orig_informal_groups} Character vector.
+\item \code{orig_informal_groups} List.
 The informal taxonomic groups that the taxon belonged to before (if any)
 annotation.
-\item \code{reported_informal_groups} Character vector.
+\item \code{reported_informal_groups} List.
 The informal taxonomic groups that the taxon belongs to as reported by the
 record creator.
 \item \code{taxon_checklist} Character.
@@ -161,8 +160,8 @@ Administrative level below province.
 Geographic place name that is at higher level than country.
 \item \code{line_length_m} Integer.
 The length of linear locations (e.g., line transect surveys).
-\item \code{area_m2}
-The size of record's location.
+\item \code{area_m2} Integer.
+The size of record's location in meters squared.
 \item \code{is_breeding_location} Logical.
 Whether or not the occurrence is recorded at a known breeding location.
 }
@@ -249,8 +248,10 @@ Variables related to the quality of records include:
 Are there any data quality issues associated with the record it's event or
 document.
 \item \code{record_reliable} Logical.
+The \code{"collection_reliability"} is 4-5 or the record has been "confirmed"
+and has no quality issues (record, event or document).
 \item \code{collection_reliability} Integer.
-A numeric rating of relability from 1 (low reliability) to 5 (high
+A numeric rating of reliability from 1 (low reliability) to 5 (high
 reliability) for the collection the record comes from.
 \item \code{taxon_reliability} Character.
 Reliability of the record taxonomic identification.
@@ -271,47 +272,36 @@ Source determining the issue.
 }
 }
 
-\section{Media}{
-
-Variables related to media (images, audio, etc.,) associated with records
-include:
-\itemize{
-\item \code{{document|event|record}_media_count}
-\item \code{{document|event|record}_media_author}
-\item \code{{document|event|record}_media_caption}
-\item \code{{document|event|record}_media_copyright}
-\item \code{{document|event|record}_media_url}
-\item \code{{document|event|record}_media_license_abbr}
-\item \code{{document|event|record}_media_license_id}
-\item \code{{document|event|record}_media_type}
-\item \code{{document|event|record}_thumbnail_square}
-\item \code{{document|event|record}_thumbnail}
-}
-}
-
 \section{Misc}{
 
 Other variables:
 \itemize{
-\item \code{observers_ids}
-\item \code{determiner}
-\item \code{record_notes}
-\item \code{record_basis}
-\item \code{reference_publication}
-\item \code{superrecord_basis}
-\item \code{type_specimen}
-\item \code{record_order}
-\item \code{wild_status}
-\item \code{license}
-\item \code{document_notes}
-\item \code{partial}
-\item \code{event_order}
-\item \code{event_notes}
-\item \code{taxon_cenus_id}
-\item \code{taxon_census_type}
-\item \code{record_annotation_count}
-\item \code{{document|record}_keywords}
-\item \code{sample_count}
+\item \code{observers_ids} List.
+List of observer identifiers for the record.
+\item \code{determiner} Character.
+Person who determined the taxonomic identification of the record.
+\item \code{record_basis} Character.
+The type of or method used to obtain the record.
+\item \code{superrecord_basis} Character.
+Higher level type of or method used to obtain the record.
+\item \code{type_specimen} Logical.
+Whether or not the record is of a type specimen.
+\item \code{is_wild} Logical.
+Whether or not the record is of a "wild" organism.
+\item \code{license} Character.
+The licene of the data associated with the record.
+\item \code{{document|event|record}_notes} Character.
+Notes associated with the document, event or record itself.
+\item \code{{document|record}_keywords} List.
+List of keywords associated with the document or record.
+\item \code{record_annotation_count} Integer.
+How many annotations are associated with the record.
+\item \code{sample_count} Integer.
+How many material samples (DNA extractions, etc., ...) are associated with
+the record.
+\item \code{{document|event|record}_media_count} Integer.
+How many media items (images, audio, video, etc., ...) are associated with
+the record's document, event or the record itself.
 }
 }
 

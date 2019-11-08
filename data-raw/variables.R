@@ -1,7 +1,7 @@
 source("data-raw/utils.R")
 var_names <- read.csv(
   "data-raw/variables.csv", stringsAsFactors = FALSE, strip.white = TRUE,
-  row.names = 1L
+  row.names = 1L, comment.char = "#"
 )
 
 vars <- httr::GET("https://api.laji.fi/explorer/swagger.json")
@@ -11,7 +11,7 @@ vars <- vars[["paths"]][["/warehouse/query/list"]][["get"]][["parameters"]]
 select_vars <- vars[[which(vapply(vars, getElement, "", "name") == "selected")]]
 select_vars <- unlist(select_vars[["items"]][["enum"]])
 order_vars  <- vars[[which(vapply(vars, getElement, "", "name") == "orderBy")]]
-order_vars <- unlist(order_vars[["items"]][["enum"]])
+order_vars  <- unlist(order_vars[["items"]][["enum"]])
 
 stopifnot(
   identical(
@@ -22,7 +22,10 @@ stopifnot(
 stopifnot(
   identical(
     sort(
-      c(row.names(var_names[var_names[["order"]], ]), "RANDOM", "RANDOM:seed")
+      c(
+        row.names(var_names[var_names[["order"]], ])
+       #,"RANDOM", "RANDOM:seed"
+      )
     ),
     sort(order_vars)
   )
