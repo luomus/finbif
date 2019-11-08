@@ -1,3 +1,7 @@
+## Resubmission
+
+* Fixed invalid URIs, CONTRIBUTING.md and CODE_OF_CONDUCT.md in README.md
+
 ## Test environments
 
 * local: Linux5.0.0-32-generic

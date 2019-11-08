@@ -63,8 +63,8 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 
 ## Contributing
 Development is a community effort, and we encourage participation. Please read
-[the contribution guide](CONTRIBUTING.md) for details.
+[the contribution guide](https://github.com/luomus/finbif/blob/master/CONTRIBUTING.md) for details.
 
 Please note that the 'finbif' project is released with a 
-[Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this
+[Contributor Code of Conduct](https://github.com/luomus/finbif/blob/master/CODE_OF_CONDUCT.md). By contributing to this
 project, you agree to abide by its terms.
