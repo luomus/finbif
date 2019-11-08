@@ -6,7 +6,7 @@
 ^\.travis\.yml$
 ^data-raw$
 ^codemeta\.json$
-Makefile
+^Makefile$
 ^CODE_OF_CONDUCT\.md$
 ^CONTRIBUTING\.md$
 ^doc$
@@ -14,4 +14,5 @@ Makefile
 ^Meta$
 ^appveyor\.yml$
 ^\.github$
-vignettes/figure
+^vignettes/figure$
+^cran-comments\.md$
