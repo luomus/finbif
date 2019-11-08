@@ -6,6 +6,8 @@ vcr::use_cassette(
     test_that(
       "returns valid data when taxa exist", {
 
+        skip_on_cran()
+
         sp_true <- finbif_check_taxa(list(species = "Parus major"))
 
         expect_type(sp_true, "list")
@@ -17,6 +19,8 @@ vcr::use_cassette(
 
     test_that(
       "returns valid data when taxa don't exist", {
+
+        skip_on_cran()
 
         expect_type(finbif_check_taxa(list(species = "Parus najor")), "list")
 

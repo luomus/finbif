@@ -6,6 +6,8 @@ vcr::use_cassette(
     test_that(
       "returns valid data", {
 
+        skip_on_cran()
+
         records <-
           finbif_records(filter = list(primary_habitat = list(M = c("V", "H"))))
 
@@ -33,6 +35,8 @@ vcr::use_cassette(
 
     test_that(
       "with count only returns valid data", {
+
+        skip_on_cran()
 
         expect_s3_class(
           finbif_records(

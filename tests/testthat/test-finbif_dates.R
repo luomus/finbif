@@ -6,6 +6,8 @@ vcr::use_cassette(
     test_that(
       "return valid data", {
 
+        skip_on_cran()
+
         records <-
           finbif_records(filter = list(date_range_ymd = c("2001", "2008")))
 

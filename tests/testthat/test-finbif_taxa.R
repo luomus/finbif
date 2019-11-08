@@ -6,6 +6,8 @@ vcr::use_cassette(
     test_that(
       "returns valid data", {
 
+        skip_on_cran()
+
         expect_s3_class(finbif_taxa("Parus major"), "finbif_api")
 
       }

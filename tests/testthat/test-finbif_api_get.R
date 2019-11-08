@@ -19,6 +19,8 @@ vcr::use_cassette(
     test_that(
       "with wrong var returns an error message", {
 
+        skip_on_cran()
+
         expect_error(
           finbif_api_get(
             path = "warehouse/query/list",
@@ -33,6 +35,8 @@ vcr::use_cassette(
 
     test_that(
       "that doesn't receive JSON returns an error message", {
+
+        skip_on_cran()
 
         expect_error(
           finbif_api_get(

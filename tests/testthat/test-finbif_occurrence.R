@@ -6,6 +6,8 @@ vcr::use_cassette(
     test_that(
       "can return valid data", {
 
+        skip_on_cran()
+
         expect_s3_class(
           finbif_occurrence(
             species = "Rangifer tarandus fennicus", check_taxa = FALSE,
@@ -38,6 +40,8 @@ vcr::use_cassette(
     test_that(
       "can return a count", {
 
+        skip_on_cran()
+
         expect_type(
           finbif_occurrence(
             taxa = "Rangifer tarandus fennicus", count_only = TRUE
@@ -51,6 +55,8 @@ vcr::use_cassette(
 
     test_that(
       "returns data that prints/plots valid output", {
+
+        skip_on_cran()
 
         fungi <- finbif_occurrence(
           filter = c(informal_group = "Fungi and lichens"),
@@ -82,6 +88,8 @@ vcr::use_cassette(
 
     test_that(
       "warns when taxa invalid", {
+
+        skip_on_cran()
 
         expect_warning(finbif_occurrence("not a valid taxa"))
 
