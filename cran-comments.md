@@ -1,6 +1,10 @@
 ## Resubmission
 
-* Fixed invalid URIs, CONTRIBUTING.md and CODE_OF_CONDUCT.md in README.md
+* Removed redundant references to 'R' in DESCRIPTION.
+* Fixed link in description field. Now in "<https://...>" form.
+* Software names now in single quotes.
+* 'cph' added to Authors@R
+* Removed redundant '-' in LICENSE file
 
 ## Test environments
 

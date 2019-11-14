@@ -8,14 +8,14 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right'}}
 
-An R programming language interface to the FinBIF (Finnish
-    Biodiversity Information Facility) API (api.laji.fi). FinBIF aggregates
-    Finnish biodiversity data from multiple sources in a single open access
-    portal for researchers, citizen scientists, industry and government. FinBIF
-    allows users of biodiversity information to find, access, combine and
-    visualise data on Finnish plants, animals and microorganisms. The finbif R
-    package makes the publicly available data in FinBIF accessible from within
-    R. Biodiversity information is available on taxonomy and taxon occurrence.
+A programmatic interface to the Finnish Biodiversity Information
+    Facility ('FinBIF') API (<https://api.laji.fi>). 'FinBIF' aggregates Finnish
+    biodiversity data from multiple sources in a single open access portal for
+    researchers, citizen scientists, industry and government. 'FinBIF' allows
+    users of biodiversity information to find, access, combine and visualise
+    data on Finnish plants, animals and microorganisms. The 'finbif' package
+    makes the publicly available data in 'FinBIF' accessible from within R.
+    Biodiversity information is available on taxonomy and taxon occurrence.
     Occurrence data can be filtered by taxon, time, location and other
     variables. The data accessed are conveniently preformatted for subsequent
     analyses.
@@ -31,6 +31,11 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: William Morris \email{willi@mmorris.email}
+
+Other contributors:
+\itemize{
+  \item LUOMUS - Finnish Museum of Natural History [copyright holder]
+}
 
 }
 \keyword{internal}
