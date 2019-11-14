@@ -262,7 +262,7 @@
 #' - `is_wild` Logical.
 #'   Whether or not the record is of a "wild" organism.
 #' - `license` Character.
-#'   The licene of the data associated with the record.
+#'   The license of the data associated with the record.
 #' - `{document|event|record}_notes` Character.
 #'   Notes associated with the document, event or record itself.
 #' - `{document|record}_keywords` List.

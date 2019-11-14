@@ -289,7 +289,7 @@ Whether or not the record is of a type specimen.
 \item \code{is_wild} Logical.
 Whether or not the record is of a "wild" organism.
 \item \code{license} Character.
-The licene of the data associated with the record.
+The license of the data associated with the record.
 \item \code{{document|event|record}_notes} Character.
 Notes associated with the document, event or record itself.
 \item \code{{document|record}_keywords} List.
