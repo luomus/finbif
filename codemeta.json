@@ -274,8 +274,8 @@
   "developmentStatus": "https://www.repostatus.org/#wip",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
-  "keywords": ["FinBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy"],
-  "relatedLink": "https://luomus.github.io/finbif",
+  "keywords": ["FinBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "biodiversity-information", "taxon", "finbif-access", "biodiversity-informatics", "rstats"],
+  "relatedLink": ["https://luomus.github.io/finbif", "https://CRAN.R-project.org/package=finbif"],
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -292,5 +292,11 @@
       "url": "https://luomus.github.io/finbif/articles/finbif.html"
     }
   ],
-  "readme": "https://github.com/luomus/finbif/blob/master/README.md"
+  "readme": "https://github.com/luomus/finbif/blob/master/README.md",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  }
 }
