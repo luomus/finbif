@@ -25,7 +25,7 @@ matrix:
   - r: oldrel
   - r: release
     after_success:
-    -  R -e "covr::codecov(line_exclusions = list('R/finbif_request_token.R' = 32:69))"
+    -  R -e "covr::codecov(line_exclusions = list('R/finbif_request_token.R' = 32:69), branch = Sys.getenv('TRAVIS_BRANCH'))"
     -  R -e "goodpractice::gp(checks = grep('(rcmdcheck|covr)', goodpractice::all_checks(), invert = TRUE, value = TRUE))"
     before_deploy: Rscript -e 'remotes::install_cran("pkgdown")'
     deploy:

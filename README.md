@@ -1,6 +1,10 @@
 
 # finbif <img src="man/figures/logo.png" align="right" alt="" width="120">
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![CRAN status](https://www.r-pkg.org/badges/version-last-release/finbif)](https://cran.r-project.org/package=finbif) [![Build Status](https://travis-ci.com/luomus/finbif.svg?branch=master)](https://travis-ci.com/luomus/finbif) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/master) [![codecov](https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/master)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![CRAN status](https://www.r-pkg.org/badges/version-last-release/finbif)](https://cran.r-project.org/package=finbif) 
+
+
+master |[![Build Status](https://travis-ci.com/luomus/finbif.svg?branch=master)](https://travis-ci.com/luomus/finbif/branches) |[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/master) |[![codecov](https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/master)
+dev |[![Build Status](https://travis-ci.com/luomus/finbif.svg?branch=dev)](https://travis-ci.com/luomus/finbif/branches) |[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=dev&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/dev) |[![codecov](https://codecov.io/gh/luomus/finbif/branch/dev/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/dev)
 
 An R programming language interface to the FinBIF (Finnish Biodiversity
 Information Facility) API (api.laji.fi). FinBIF aggregates Finnish biodiversity
@@ -14,11 +18,18 @@ time, location and other variables. The data accessed are conveniently
 preformatted for subsequent analyses.
     
 ## Installation
-You can install the development version of finbif from
+You can install the latest version of finbif from
+[CRAN](https://cran.r-project.org),
+
+```r
+install.packages("finbif")
+```
+
+You can also install the latest development version of finbif from
 [GitHub](https://github.com),
 
 ```r
-remotes::install_github("luomus/finbif")
+remotes::install_github("luomus/finbif@dev")
 ```
 
 ## Documentation
