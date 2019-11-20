@@ -4,21 +4,21 @@
 \name{finbif-package}
 \alias{finbif}
 \alias{finbif-package}
-\title{finbif: Finnish Biodiversity Information Facility R Interface}
+\title{finbif: Interface for the 'Finnish Biodiversity Information Facility' API}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-A programmatic interface to the Finnish Biodiversity Information
-    Facility ('FinBIF') API (<https://api.laji.fi>). 'FinBIF' aggregates Finnish
-    biodiversity data from multiple sources in a single open access portal for
-    researchers, citizen scientists, industry and government. 'FinBIF' allows
-    users of biodiversity information to find, access, combine and visualise
-    data on Finnish plants, animals and microorganisms. The 'finbif' package
-    makes the publicly available data in 'FinBIF' accessible from within R.
-    Biodiversity information is available on taxonomy and taxon occurrence.
-    Occurrence data can be filtered by taxon, time, location and other
-    variables. The data accessed are conveniently preformatted for subsequent
-    analyses.
+A programmatic interface to the 'Finnish Biodiversity Information
+    Facility' ('FinBIF') API (<https://api.laji.fi>). 'FinBIF' aggregates
+    Finnish biodiversity data from multiple sources in a single open access
+    portal for researchers, citizen scientists, industry and government.
+    'FinBIF' allows users of biodiversity information to find, access, combine
+    and visualise data on Finnish plants, animals and microorganisms. The
+    'finbif' package makes the publicly available data in 'FinBIF' easily
+    accessible to programmers. Biodiversity information is available on taxonomy
+    and taxon occurrence. Occurrence data can be filtered by taxon, time,
+    location and other variables. The data accessed are conveniently
+    preformatted for subsequent analyses.
 }
 \seealso{
 Useful links:

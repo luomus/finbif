@@ -4,11 +4,23 @@
 \alias{finbif_occurrence}
 \title{Download FinBIF occurrence records}
 \usage{
-finbif_occurrence(..., filter, select, order_by, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE, cache = TRUE,
-  check_taxa = TRUE, on_check_fail = c("warn", "error", "quiet"),
-  date_time = TRUE, date_time_method = "fast",
-  tzone = Sys.timezone(), dwc = FALSE)
+finbif_occurrence(
+  ...,
+  filter,
+  select,
+  order_by,
+  n = 10,
+  page = 1,
+  count_only = FALSE,
+  quiet = FALSE,
+  cache = TRUE,
+  check_taxa = TRUE,
+  on_check_fail = c("warn", "error", "quiet"),
+  date_time = TRUE,
+  date_time_method = "fast",
+  tzone = Sys.timezone(),
+  dwc = FALSE
+)
 }
 \arguments{
 \item{...}{Character vectors or list of character vectors. Taxa of records
@@ -23,7 +35,7 @@ as a shortcut for this set.}
 \item{order_by}{Character vector. Variables to order records by before they
 are returned. Most, though not all, variables can be used to order records
 before they are returned. Ordering is ascending by default. To return in
-descending order append a \code{-} to the front of the variable (e.g.,
+descending order append a \verb{-} to the front of the variable (e.g.,
 \code{"-date_start"}). Default order is \code{"-date_start"} > \code{"-load_data"} >
 \code{"reported_name"}.}
 

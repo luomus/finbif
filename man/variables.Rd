@@ -112,7 +112,7 @@ records with \code{abundance = 1} only indicate the record is of one individual
 and may not necessarily imply that this was the abundance at that specified
 place and time (e.g., a preserved museum specimen consisting of a single
 individual).
-\item \code{{female|male}_abundance} Integer.
+\item \verb{\{female|male\}_abundance} Integer.
 Number of female or male individuals recorded.
 \item \code{pair_abundance} Integer.
 Number of mating pairs recorded.
@@ -129,11 +129,11 @@ Sex of individual(s) recorded.
 
 Variables related to the location of records include:
 \itemize{
-\item \code{{lat|lon}_wgs84} Numeric.
+\item \verb{\{lat|lon\}_wgs84} Numeric.
 Coordinates (in \href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84}
 coordinate system) of the central point of a bounding box encompassing the
 record's geographic coverage.
-\item \code{{lat|lon}_{min|max}_{euref|kkj|wgs84}}. Numeric.
+\item \verb{\{lat|lon\}_\{min|max\}_\{euref|kkj|wgs84\}}. Numeric.
 Vertices of a bounding box encompassing the record's geographic coverage.
 Coordinates are available in
 \href{https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/}{EUREF},
@@ -144,7 +144,7 @@ The horizontal distance (in meters) from the record's given coordinates
 describing the smallest circle containing the whole of the record's
 location.
 \item \code{coordinates_source}
-\item \code{footprint_{euref|kkj|wgs84}} Character.
+\item \verb{footprint_\{euref|kkj|wgs84\}} Character.
 Well-Known Text (WKT) representation of the geographic shape defining the
 location of the record in either EUREF, KKJ or WGS84 coordinate systems.
 \item \code{country} Character.
@@ -189,10 +189,10 @@ The ordinal day of the year the recording event began.
 The ordinal day of the year the recording event ended
 \item \code{season_start} Integer.
 The day of the year the recording event began. A four digit number
-indicating the day of the year in MMDD (%m%d) format.
+indicating the day of the year in MMDD (\%m\%d) format.
 \item \code{season_end} Integer.
 The day of the year the recording event ended. A four digit number
-indicating the day of the year in MMDD (%m%d) format.
+indicating the day of the year in MMDD (\%m\%d) format.
 \item \code{century} Integer.
 The century during which the recording event occurred (\code{NA} if the event
 spans multiple centuries).
@@ -262,12 +262,12 @@ Source of the \code{taxon_reliability} rating.
 \item \code{reported_taxon_confidence}
 Reliability of the record taxonomic identification as reported by the
 original data author.
-\item \code{{document|time|location|event|record}_issue} Character.
+\item \verb{\{document|time|location|event|record\}_issue} Character.
 Issues with record associated with its document, time, location, event, or
 the record itself.
-\item \code{{document|time|location|event|record}_issue_message} Character.
+\item \verb{\{document|time|location|event|record\}_issue_message} Character.
 Details about the issue.
-\item \code{{document|time|location|event|record}_issue_source}
+\item \verb{\{document|time|location|event|record\}_issue_source}
 Source determining the issue.
 }
 }
@@ -290,16 +290,16 @@ Whether or not the record is of a type specimen.
 Whether or not the record is of a "wild" organism.
 \item \code{license} Character.
 The license of the data associated with the record.
-\item \code{{document|event|record}_notes} Character.
+\item \verb{\{document|event|record\}_notes} Character.
 Notes associated with the document, event or record itself.
-\item \code{{document|record}_keywords} List.
+\item \verb{\{document|record\}_keywords} List.
 List of keywords associated with the document or record.
 \item \code{record_annotation_count} Integer.
 How many annotations are associated with the record.
 \item \code{sample_count} Integer.
 How many material samples (DNA extractions, etc., ...) are associated with
 the record.
-\item \code{{document|event|record}_media_count} Integer.
+\item \verb{\{document|event|record\}_media_count} Integer.
 How many media items (images, audio, video, etc., ...) are associated with
 the record's document, event or the record itself.
 }

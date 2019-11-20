@@ -3,14 +3,14 @@
 \name{as.data.frame.finbif_records}
 \alias{as.data.frame.finbif_records}
 \alias{as.data.frame.finbif_records_list}
-\title{Coerce a \code{finbif_records*} object to a \code{data.frame}}
+\title{Coerce a \verb{finbif_records*} object to a \code{data.frame}}
 \usage{
 \method{as.data.frame}{finbif_records}(x, ...)
 
 \method{as.data.frame}{finbif_records_list}(x, ..., quiet = TRUE)
 }
 \arguments{
-\item{x}{A \code{finbif_records*} object.}
+\item{x}{A \verb{finbif_records*} object.}
 
 \item{...}{Additional arguments. Not used.}
 

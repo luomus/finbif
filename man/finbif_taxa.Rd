@@ -4,8 +4,7 @@
 \alias{finbif_taxa}
 \title{Search the FinBIF taxa}
 \usage{
-finbif_taxa(name, n = 1, type = c("exact", "partial", "likely"),
-  cache = TRUE)
+finbif_taxa(name, n = 1, type = c("exact", "partial", "likely"), cache = TRUE)
 }
 \arguments{
 \item{name}{Character. The name of a taxon to search for.}

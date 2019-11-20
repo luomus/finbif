@@ -4,8 +4,16 @@
 \alias{finbif_records}
 \title{Get FinBIF records}
 \usage{
-finbif_records(filter, select, order_by, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE, cache = TRUE)
+finbif_records(
+  filter,
+  select,
+  order_by,
+  n = 10,
+  page = 1,
+  count_only = FALSE,
+  quiet = FALSE,
+  cache = TRUE
+)
 }
 \arguments{
 \item{filter}{List of named character vectors. Filters to apply to records.}
@@ -17,7 +25,7 @@ as a shortcut for this set.}
 \item{order_by}{Character vector. Variables to order records by before they
 are returned. Most, though not all, variables can be used to order records
 before they are returned. Ordering is ascending by default. To return in
-descending order append a \code{-} to the front of the variable (e.g.,
+descending order append a \verb{-} to the front of the variable (e.g.,
 \code{"-date_start"}). Default order is \code{"-date_start"} > \code{"-load_data"} >
 \code{"reported_name"}.}
 

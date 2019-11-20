@@ -4,8 +4,14 @@
 \alias{finbif_collections}
 \title{FinBIF collections}
 \usage{
-finbif_collections(filter, select, subcollections = TRUE,
-  supercollections = FALSE, lang = c("en", "fi", "sv"), nmin = 0)
+finbif_collections(
+  filter,
+  select,
+  subcollections = TRUE,
+  supercollections = FALSE,
+  lang = c("en", "fi", "sv"),
+  nmin = 0
+)
 }
 \arguments{
 \item{filter}{Logical. Expression indicating elements or rows to keep:
