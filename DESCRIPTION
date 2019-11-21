@@ -54,5 +54,20 @@ Suggests:
     vcr,
     vdiffr
 X-schema.org-applicationCategory: Biodiversity
-X-schema.org-keywords: FinBIF, specimens, API, web-services, occurrences, species, taxonomy
+X-schema.org-keywords: 
+    api,
+    biodiversity,
+    biodiversity-informatics,
+    biodiversity-information,
+    finbif,
+    finbif-access,
+    occurrences,
+    r-package,
+    r-programming,
+    rstats,
+    species,
+    specimens,
+    taxon,
+    taxonomy,
+    web-services
 X-schema.org-isPartOf: https://species.fi

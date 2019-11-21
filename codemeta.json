@@ -274,8 +274,11 @@
   "developmentStatus": "https://www.repostatus.org/#wip",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
-  "keywords": ["FinBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "biodiversity-information", "taxon", "finbif-access", "biodiversity-informatics", "rstats"],
-  "relatedLink": ["https://luomus.github.io/finbif", "https://CRAN.R-project.org/package=finbif"],
+  "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
+  "relatedLink": [
+    "https://luomus.github.io/finbif",
+    "https://CRAN.R-project.org/package=finbif"
+  ],
   "citation": [
     {
       "@type": "SoftwareSourceCode",
