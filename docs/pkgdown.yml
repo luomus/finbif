@@ -1,0 +1,7 @@
+pandoc: 2.3.1
+pkgdown: 1.4.1
+pkgdown_sha: ~
+articles:
+  finbif: finbif.html
+  v02_filtering: v02_filtering.html
+
