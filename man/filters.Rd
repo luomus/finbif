@@ -123,8 +123,8 @@ first two elements are latitude and longitude and third is the coordinate
 system (currently only \code{"wgs84"} is implemented). Records returned will be
 those for which the center point exactly matches that which is specified.
 \item \verb{coordinates_cell_\{1k|10k|50k|100k\}} Coordinates.
-A vector of coordinate data (lat, long). Filter by grid cell at scale \verb{*}.
-Where \verb{*} is 1, 10, 50 or 100. The coordinates specify the southeast corner
+A vector of coordinate data (lat, long). Filter by grid cell at scale \code{*}.
+Where \code{*} is 1, 10, 50 or 100. The coordinates specify the southeast corner
 of the cell. Coordinates system is uniform \code{"kkj"} (also known as "ykj").
 \item \verb{coordinates_cell_\{1k|10k|50k|100k\}_center} Coordinates.
 As above, except coordinates indicate center of grid cell.
@@ -146,7 +146,7 @@ two \link[base:Dates]{Date} objects (start and end dates) or objects that
 are coercible to the \link[base:Dates]{Date} class by
 \link[lubridate]{as_date}. When supplying dates as strings, the day or
 month-and-day can be omitted (e.g.,\code{"2001-04"} or \code{"2001"}). Note however,
-that when omitting day, only "\verb{-}" is allowed to separate year and month,
+that when omitting day, only "\code{-}" is allowed to separate year and month,
 and months must in two-digit/leading zero form. If the start or end dates
 are partial date strings they will be interpreted as the first or last day
 of the month or year (e.g., \code{c(2001, 2003)} is equivalent to
