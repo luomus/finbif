@@ -40,7 +40,9 @@ remotes::install_github("luomus/finbif@dev")
 ```
 
 ## Documentation
-Read the online documentation [here](https://luomus.github.io/finbif).
+Read the online documentation for the current stable version of
+finbif [here](https://luomus.github.io/finbif), or the latest development
+version of finbif [here](https://finbif-docs-dev.netlify.com).
 
 ## Getting a FinBIF access token
 First load the finbif R package.
