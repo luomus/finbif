@@ -1,6 +1,6 @@
 
 # finbif <img src="man/figures/logo.png" align="right" alt="" width="120">
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![CRAN status](https://www.r-pkg.org/badges/version-last-release/finbif)](https://cran.r-project.org/package=finbif) 
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![CRAN status](https://www.r-pkg.org/badges/version-last-release/finbif)](https://cran.r-project.org/package=finbif) [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/finbif?color=brightgreen)](https://cran.r-project.org/package=finbif)
 
 Branch |Travis |Appveyor |Codecov
 ------ |------ |-------- |-------
