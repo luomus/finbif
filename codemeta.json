@@ -23,7 +23,8 @@
       "@type": "Person",
       "givenName": "William",
       "familyName": "Morris",
-      "email": "willi@mmorris.email"
+      "email": "willi@mmorris.email",
+      "@id": "https://orcid.org/0000-0002-8686-4154"
     }
   ],
   "contributor": {},
@@ -39,7 +40,8 @@
       "@type": "Person",
       "givenName": "William",
       "familyName": "Morris",
-      "email": "willi@mmorris.email"
+      "email": "willi@mmorris.email",
+      "@id": "https://orcid.org/0000-0002-8686-4154"
     }
   ],
   "softwareSuggestions": [

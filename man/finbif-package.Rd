@@ -30,7 +30,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: William Morris \email{willi@mmorris.email}
+\strong{Maintainer}: William Morris \email{willi@mmorris.email} (\href{https://orcid.org/0000-0002-8686-4154}{ORCID})
 
 Other contributors:
 \itemize{

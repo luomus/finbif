@@ -7,7 +7,8 @@ Authors@R: c(
     person(given = "William",
            family = "Morris",
            role = c("aut", "cre"),
-           email = "willi@mmorris.email")
+           email = "willi@mmorris.email",
+           comment = c(ORCID = "0000-0002-8686-4154"))
     )
 Description: A programmatic interface to the 'Finnish Biodiversity Information
     Facility' ('FinBIF') API (<https://api.laji.fi>). 'FinBIF' aggregates
