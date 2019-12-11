@@ -24,11 +24,18 @@ variables. The data accessed are conveniently preformatted for subsequent
 analyses.
 
 ## Installing the finbif package
-You can install the development version of finbif from
+You can install the latest version of finbif from
+[CRAN](https://cran.r-project.org),
+
+```r
+install.packages("finbif")
+```
+
+You can also install the latest development version of finbif from
 [GitHub](https://github.com),
 
 ```r
-remotes::install_github("luomus/finbif")
+remotes::install_github("luomus/finbif@dev")
 ```
 
 ## Loading the finbif package
@@ -101,29 +108,129 @@ partial matching.
 
 ```r
 birch_search <- finbif_taxa("Betula pendula", 2, "partial")
-str(birch_search$content, max.level = 2, list.len = 8)
-#> List of 2
-#>  $ :List of 11
-#>   ..$ matchingName  : chr "Betula pendula var. pendula"
-#>   ..$ nameType      : chr "MX.scientificName"
-#>   ..$ id            : chr "MX.37994"
-#>   ..$ scientificName: chr "Betula pendula var. pendula"
-#>   ..$ taxonRank     : chr "MX.variety"
-#>   ..$ cursiveName   : logi TRUE
-#>   ..$ finnish       : logi TRUE
-#>   ..$ species       : logi TRUE
-#>   .. [list output truncated]
-#>  $ :List of 12
-#>   ..$ matchingName            : chr "Betula pendula var. carelica"
-#>   ..$ nameType                : chr "MX.scientificName"
-#>   ..$ id                      : chr "MX.37997"
-#>   ..$ scientificName          : chr "Betula pendula var. carelica"
-#>   ..$ scientificNameAuthorship: chr "(Merckl.) Hämet-Ahti"
-#>   ..$ taxonRank               : chr "MX.variety"
-#>   ..$ cursiveName             : logi TRUE
-#>   ..$ finnish                 : logi TRUE
-#>   .. [list output truncated]
+birch_search$content
 ```
+<details closed>
+<summary> Click to toggle output. </summary>
+
+```r
+
+[[1]]
+[[1]]$matchingName
+[1] "Betula pendula var. pendula"
+
+[[1]]$nameType
+[1] "MX.scientificName"
+
+[[1]]$id
+[1] "MX.37994"
+
+[[1]]$scientificName
+[1] "Betula pendula var. pendula"
+
+[[1]]$taxonRank
+[1] "MX.variety"
+
+[[1]]$cursiveName
+[1] TRUE
+
+[[1]]$finnish
+[1] TRUE
+
+[[1]]$species
+[1] TRUE
+
+[[1]]$vernacularName
+[[1]]$vernacularName$sv
+[1] "vanlig vårtbjörk"
+
+[[1]]$vernacularName$fi
+[1] "vihtakoivu"
+
+
+[[1]]$informalGroups
+[[1]]$informalGroups[[1]]
+[[1]]$informalGroups[[1]]$id
+[1] "MVL.343"
+
+[[1]]$informalGroups[[1]]$name
+[[1]]$informalGroups[[1]]$name$en
+[1] "Vascular plants"
+
+[[1]]$informalGroups[[1]]$name$sv
+[1] "Kärlväxter"
+
+[[1]]$informalGroups[[1]]$name$fi
+[1] "Putkilokasvit"
+
+
+
+
+[[1]]$type
+[1] "partialMatches"
+
+
+[[2]]
+[[2]]$matchingName
+[1] "Betula pendula var. carelica"
+
+[[2]]$nameType
+[1] "MX.scientificName"
+
+[[2]]$id
+[1] "MX.37997"
+
+[[2]]$scientificName
+[1] "Betula pendula var. carelica"
+
+[[2]]$scientificNameAuthorship
+[1] "(Merckl.) Hämet-Ahti"
+
+[[2]]$taxonRank
+[1] "MX.variety"
+
+[[2]]$cursiveName
+[1] TRUE
+
+[[2]]$finnish
+[1] TRUE
+
+[[2]]$species
+[1] TRUE
+
+[[2]]$vernacularName
+[[2]]$vernacularName$fi
+[1] "visakoivu"
+
+[[2]]$vernacularName$sv
+[1] "masurbjörk"
+
+
+[[2]]$informalGroups
+[[2]]$informalGroups[[1]]
+[[2]]$informalGroups[[1]]$id
+[1] "MVL.343"
+
+[[2]]$informalGroups[[1]]$name
+[[2]]$informalGroups[[1]]$name$en
+[1] "Vascular plants"
+
+[[2]]$informalGroups[[1]]$name$sv
+[1] "Kärlväxter"
+
+[[2]]$informalGroups[[1]]$name$fi
+[1] "Putkilokasvit"
+
+
+
+
+[[2]]$type
+[1] "partialMatches"
+
+```
+
+</details>
+<br>
 
 ## Getting occurrence data
 You can download occurrence data from the FinBIF database as a `data.frame` with
@@ -132,25 +239,25 @@ the `finbif_occurrence()` function.
 ```r
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
-#> Records available: 55642
+#> Records available: 55923
 #> A data.frame [100 x 30]
 #>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1    Cygnus cygnus         1  61.07692  21.49222 2019-10-09 05:50:00
-#> 2    Cygnus cygnus         3  62.30263  24.52289 2019-10-09 04:45:00
-#> 3    Cygnus cygnus         2  60.95615  21.68894 2019-10-08 06:07:00
-#> 4    Cygnus cygnus         2  60.98465  21.70309 2019-10-08 05:59:00
-#> 5    Cygnus cygnus         9  62.22049  24.59103 2019-10-08 04:54:00
-#> 6    Cygnus cygnus         5  60.95401  26.09615 2019-09-29 21:00:00
-#> 7    Cygnus cygnus         1  60.45848  22.37712 2019-09-28 21:00:00
-#> 8    Cygnus cygnus         3  61.32291  28.56818 2019-09-29 00:00:00
-#> 9    Cygnus cygnus         2  60.56745  21.57187 2019-09-28 21:00:00
-#> 10   Cygnus cygnus         3  61.32291  28.56818 2019-09-27 07:46:00
+#> 1    Cygnus cygnus         1  60.45824  22.37683 2019-12-03 22:00:00
+#> 2    Cygnus cygnus         1  62.26510  24.69194 2019-12-04 05:20:00
+#> 3    Cygnus cygnus         2  61.12486  21.54164 2019-12-03 09:50:00
+#> 4    Cygnus cygnus         6  60.90052  26.31596 2019-12-02 22:00:00
+#> 5    Cygnus cygnus         4  61.33203  21.65924 2019-12-01 10:20:00
+#> 6    Cygnus cygnus         3  60.17308  25.10529 2019-11-30 12:00:00
+#> 7    Cygnus cygnus        14  60.17308  25.10529 2019-11-30 12:00:00
+#> 8    Cygnus cygnus         2  60.17308  25.10529 2019-11-30 12:00:00
+#> 9    Cygnus cygnus         6  61.07310  26.46700 2019-11-24 22:00:00
+#> 10   Cygnus cygnus         1  61.34301  24.23489 2019-11-16 06:30:00
 #> ...with 90 more records and 25 more variables:
 #> taxon_rank, country, province, municipality, date_start, date_end,
 #> hour_start, hour_end, minute_start, minute_end, record_id,
 #> individual_id, event_id, collection_id, any_issues, record_issue,
 #> record_reliable, taxon_reliability, document_issue,
-#> document_reliablity, coordinate_accuracy, event_issue,
+#> collection_reliability, coordinates_uncertainty, event_issue,
 #> location_issue, time_issue, duration
 ```
 
@@ -163,28 +270,38 @@ finbif_occurrence(
   "Cygnus olor",
   filter = list(coordinates_uncertainty_max = 100)
 )
-#> Records downloaded: 10
-#> Records available: 11297
-#> A data.frame [10 x 30]
-#>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1    Cygnus cygnus       260  60.95257  26.48997 2019-11-04 22:00:00
-#> 2    Cygnus cygnus       114  60.88855  26.12326 2019-11-04 22:00:00
-#> 3    Cygnus cygnus        14  60.95321  26.09083 2019-11-03 22:00:00
-#> 4    Cygnus cygnus         6  60.95231  26.09553 2019-11-03 22:00:00
-#> 5    Cygnus cygnus         1  61.10238  21.54661 2019-11-02 13:30:00
-#> 6    Cygnus cygnus         1  61.10237  21.54661 2019-10-31 14:20:00
-#> 7    Cygnus cygnus         1  61.10965  21.53318 2019-10-27 06:25:00
-#> 8    Cygnus cygnus        12  62.25014  25.74540 2019-10-26 21:00:00
-#> 9      Cygnus olor         1  60.45875  22.37761 2019-10-25 21:00:00
-#> 10   Cygnus cygnus         1  60.45875  22.37761 2019-10-25 21:00:00
-#> ...with 0 more records and 25 more variables:
-#> taxon_rank, country, province, municipality, date_start, date_end,
-#> hour_start, hour_end, minute_start, minute_end, record_id,
-#> individual_id, event_id, collection_id, any_issues, record_issue,
-#> record_reliable, taxon_reliability, document_issue,
-#> document_reliablity, coordinates_uncertainty, event_issue,
-#> location_issue, time_issue, duration
 ```
+<details closed>
+<summary> Click to toggle output. </summary>
+
+```r
+
+Records downloaded: 10
+Records available: 11340
+A data.frame [10 x 30]
+   scientific_name abundance lat_wgs84 lon_wgs84           date_time
+1    Cygnus cygnus         6  60.90052  26.31596 2019-12-02 22:00:00
+2    Cygnus cygnus         4  61.33203  21.65924 2019-12-01 10:20:00
+3      Cygnus olor         5  60.21815  24.73023 2019-11-26 22:00:00
+4    Cygnus cygnus         6  61.07310  26.46700 2019-11-24 22:00:00
+5    Cygnus cygnus         1  60.45901  22.38025 2019-11-11 22:00:00
+6    Cygnus cygnus         5  60.96115  26.08570 2019-11-08 22:00:00
+7    Cygnus cygnus       260  60.95257  26.48997 2019-11-04 22:00:00
+8    Cygnus cygnus       114  60.88855  26.12326 2019-11-04 22:00:00
+9    Cygnus cygnus        14  60.95321  26.09083 2019-11-03 22:00:00
+10   Cygnus cygnus         6  60.95231  26.09553 2019-11-03 22:00:00
+...with 0 more records and 25 more variables:
+taxon_rank, country, province, municipality, date_start, date_end,
+hour_start, hour_end, minute_start, minute_end, record_id,
+individual_id, event_id, collection_id, any_issues, record_issue,
+record_reliable, taxon_reliability, document_issue,
+collection_reliability, coordinates_uncertainty, event_issue,
+location_issue, time_issue, duration
+
+```
+
+</details>
+<br>
 
 See `?filters` and `vignette("filtering")` for more details on filtering FinBIF
 records.
@@ -196,6 +313,8 @@ used to plot the border of Finland (`?finland_map`). Together these utilities
 can be used to plot occurrences after they have been downloaded from FinBIF. For
 example, the following can be used to plot the density of Eurasian Jay
 occurrences from Finland.
+<details closed>
+<summary> <span title=''> Click to toggle code. </span> </summary>
 
 ```r
 # Download all the occurrences of Eurasian Jay in Finland
@@ -209,10 +328,7 @@ jays <- finbif_occurrence(
   n      = 2e4,
   quiet  = TRUE
 )
-```
 
-
-```r
 # Compute the density of occurrences in 1/4 degree cells and plot as a heatmap
 with(
   data = c(jays, finland_map),
@@ -243,8 +359,8 @@ with(
   }
 )
 ```
-
-![](figure/plot-occurrences-1.png)
+</details>
+![](figure/plot-occurrences-eval-1.png)
 
 ## Caching
 By default `finbif` uses local filesystem caching for repeated API request. This

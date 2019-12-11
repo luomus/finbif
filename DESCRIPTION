@@ -44,6 +44,7 @@ RoxygenNote: 7.0.2
 Suggests:
     codemetar,
     data.tree,
+    details,
     ISOcodes,
     knitr,
     rmarkdown,

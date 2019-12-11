@@ -18,6 +18,8 @@ knitr::opts_chunk$set(
   message = FALSE,
   cache.path = "cache/"
 )
+
+library(details, quietly = TRUE)
 ```
 When getting records from FinBIF there are many options for filtering the data
 before it is downloaded saving bandwidth and local post-processing time. For the
@@ -31,8 +33,14 @@ library(finbif)
 ## Informal taxonomic groups
 You can filter occurrence records based on informal taxonomic groups such as
 `Birds` or `Mammals`.
-```{r informal-groups, cache = TRUE}
+```{r informal-groups, eval = FALSE}
 finbif_occurrence(filter = list(informal_group = c("Birds", "Mammals")))
+```
+```{r informal-groups-eval, echo = FALSE, cache = TRUE}
+details::details(
+  finbif_occurrence(filter = list(informal_group = c("Birds", "Mammals"))),
+  "Click to toggle output.", NULL
+)
 ```
 
 See `finbif_informal_groups()` for the full list of groups you can filter by. 
@@ -46,10 +54,19 @@ finbif_informal_groups("macrofungi")
 Many records in the FinBIF database include taxa that have one or another
 administrative statuses. See `finbif_metadata("admin_status")` for a list of
 administrative statuses and short-codes.
-```{r admin-status, cache = TRUE}
+```{r admin-status, eval = FALSE}
 # Search for birds on the EU invasive species list
 finbif_occurrence(
   filter = list(informal_group = "Birds", administrative_status = "EU_INVSV")
+)
+```
+```{r admin-status-eval, echo = FALSE, cache = TRUE}
+# Search for birds on the EU invasive species list
+details::details(
+  finbif_occurrence(
+    filter = list(informal_group = "Birds", administrative_status = "EU_INVSV")
+  ),
+  "Click to toggle output.", NULL
 )
 ```
 
@@ -57,10 +74,19 @@ finbif_occurrence(
 Filtering can be done by [IUCN red list](https://punainenkirja.laji.fi/) 
 category. See `finbif_metadata("red_list")` for the IUCN red list categories and
 their short-codes.
-```{r red-list-status, cache = TRUE}
+```{r red-list-status, eval = FALSE}
 # Search for near threatened mammals
 finbif_occurrence(
   filter = list(informal_group = "Mammals", red_list_status = "NT")
+)
+```
+```{r red-list-status-eval, echo = FALSE, cache = TRUE}
+# Search for near threatened mammals
+details::details(
+  finbif_occurrence(
+    filter = list(informal_group = "Mammals", red_list_status = "NT")
+  ),
+  "Click to toggle output.", NULL
 )
 ```
 
@@ -73,12 +99,21 @@ or subtype codes. Note that filtering based on habitat is on taxa not on the
 location (i.e., filtering records with `primary_habitat = "M"` will only return
 records of taxa considered to primarily inhabit forests, yet the locations of
 those records may encompass habitats other than forests).
-```{r habitat-type, cache = TRUE}
+```{r habitat-type-head, cache = TRUE}
 head(finbif_metadata("habitat_types"))
-
+```
+```{r habitat-type-filter, eval = FALSE}
 # Search records of taxa for which forests are their primary or secondary
 # habitat type
 finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
+```
+```{r habitat-type-filter-eval, echo = FALSE, cache = TRUE}
+# Search records of taxa for which forests are their primary or secondary
+# habitat type
+details::details(
+  finbif_occurrence(filter = c(primary_secondary_habitat = "M")),
+  "Click to toggle output.", NULL
+)
 ```
 
 You may further refine habitat based searching using a specific habitat type
@@ -87,10 +122,19 @@ qualifier such as "sun-exposed" or "shady". Use
 specify qualifiers use a named list of character vectors where the names are
 habitat types or subtypes and the elements of the character vectors are the
 qualifier codes.
-```{r habitat-type-specific, cache = TRUE}
+```{r habitat-type-specific-meta, cache = TRUE}
 finbif_metadata("habitat_qualifiers")[4:6, ]
-
+```
+```{r habitat-type-specific-filter, eval = FALSE}
 # Search records of taxa for which forests with sun-exposure and broadleaved
 # deciduous trees are their primary habitat type
 finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J"))))
+```
+```{r habitat-type-specific-filter-eval, echo = FALSE, cache = TRUE}
+# Search records of taxa for which forests with sun-exposure and broadleaved
+# deciduous trees are their primary habitat type
+details::details(
+  finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J")))),
+  "Click to toggle output.", NULL
+)
 ```
