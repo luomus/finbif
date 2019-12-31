@@ -16,6 +16,8 @@
 #'   `"reported_name"`.
 #' @param n Integer. How many records to download.
 #' @param page Integer. Which page of records to start downloading from.
+#' @param sample Logical. If `TRUE` randomly sample the records from the FinBIF
+#'   database.
 #' @param count_only Logical. Only return the number of records available.
 #' @param quiet Logical. Suppress the progress indicator for multipage
 #'   downloads.
@@ -30,8 +32,8 @@
 #' @export
 
 finbif_records <- function(
-  filter, select, order_by, n = 10, page = 1, count_only = FALSE, quiet = FALSE,
-  cache = TRUE
+  filter, select, order_by, sample = FALSE, n = 10, page = 1,
+  count_only = FALSE, quiet = FALSE, cache = TRUE
 ) {
 
   max_queries  <- 2000L
@@ -100,6 +102,13 @@ finbif_records <- function(
       query[["orderBy"]] <- paste(order_by, collapse = ",")
 
     }
+
+    if (sample)
+      query[["orderBy"]] <- paste(
+        "RANDOM",
+        query[["orderBy"]],
+        sep = c("", ",")[[length(query[["orderBy"]]) + 1L]]
+      )
 
   })
 

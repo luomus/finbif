@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9001</span>
       </span>
     </div>
 
@@ -145,6 +145,7 @@
   <span class='no'>filter</span>,
   <span class='no'>select</span>,
   <span class='no'>order_by</span>,
+  <span class='kw'>sample</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>,
   <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
@@ -184,6 +185,11 @@ before they are returned. Ordering is ascending by default. To return in
 descending order append a <code>-</code> to the front of the variable (e.g.,
 <code>"-date_start"</code>). Default order is <code>"-date_start"</code> &gt; <code>"-load_data"</code> &gt;
 <code>"reported_name"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>sample</th>
+      <td><p>Logical. If <code>TRUE</code>, before ordering, randomly sample the
+records from the FinBIF database.</p></td>
     </tr>
     <tr>
       <th>n</th>
