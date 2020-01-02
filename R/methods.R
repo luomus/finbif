@@ -73,7 +73,8 @@ as.data.frame.finbif_records_list <- function(x, ..., quiet = TRUE) {
   time <- do.call(c, lapply(df, attr, "time", TRUE))
 
   df <- do.call(rbind, df)
-
+  if (inherits(x, "finbif_records_sample_list"))
+    df <- df[sample.int(nrow(df)), ]
   structure(df, url = url, time = time)
 
 }

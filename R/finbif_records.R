@@ -138,6 +138,19 @@ finbif_records <- function(
   n_tot <- resp[[1L]][["content"]][["total"]]
   n <- min(n, n_tot)
 
+  # If random sampling and requesting few records or a large proportion of the
+  # total number of records, it makes more sense to just get all the records and
+  # sample afterwards and avoid coping with duplicates due to pagination.
+  sample_after_request <- n_tot < 3000L || n / n_tot > .5
+
+  if (sample && sample_after_request && n > max_size) {
+    all_records <- finbif_records(
+      filter, var_names[select, "translated_var"], sample = FALSE, n = n_tot,
+      quiet = quiet, cache = cache
+    )
+    return(record_sample(all_records, n))
+  }
+
   resp <- get_extra_pages(resp, n, max_size, quiet, path, query, cache, select)
 
   structure(
@@ -287,4 +300,37 @@ translate <- function(x, translation, pos = -1) {
     row.names(trsltn)[ind]
 
   }
+}
+
+# sample records ---------------------------------------------------------------
+
+record_sample <- function(x, n) {
+
+  n_tot  <- attr(x, "nrec_dnld")
+  select <- attr(x, "select")
+  page_sizes <- vapply(x, function(x) x[["content"]][["pageSize"]], integer(1L))
+
+  excess <- sample.int(n_tot, n_tot - n)
+  excess_pages <- rep.int(seq_along(x), page_sizes)[excess]
+  excess <- excess - c(0L, cumsum(page_sizes)[-length(x)])[excess_pages]
+  excess <- split(excess, excess_pages)
+
+  for (i in seq_along(x)) {
+    x[[i]][["content"]][["results"]][excess[[as.character(i)]]] <- NULL
+    new_page_size <- length(x[[i]][["content"]][["results"]])
+    x[[i]][["content"]][["pageSize"]] <- new_page_size
+  }
+
+  x[!vapply(x, function(x) x[["content"]][["pageSize"]], integer(1L))] <- NULL
+
+  structure(
+    x,
+    class = c(
+      "finbif_records_sample_list", "finbif_records_list", "finbif_api_list"
+    ),
+    nrec_dnld = n,
+    nrec_avl = n_tot,
+    select = select
+  )
+
 }
