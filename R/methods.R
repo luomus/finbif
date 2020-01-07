@@ -83,6 +83,7 @@ as.data.frame.finbif_records_list <- function(x, ..., quiet = TRUE) {
     df <- df[records, ]
   }
 
+  if (!attr(x, "record_id")) df[["unit.unitId"]] <- NULL
 
   structure(df, url = url, time = time)
 

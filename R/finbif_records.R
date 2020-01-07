@@ -64,15 +64,22 @@ finbif_records <- function(
     if (missing(select)) {
 
       select <- row.names(default_vars)
+      select_ <- default_vars[["translated_var"]]
+      record_id_selected <- TRUE
 
     } else {
 
-      select <- ifelse(
+      select_ <- select
+      select  <- ifelse(
         select == "default_vars",
         list(default_vars[["translated_var"]]),
         select
       )
       select <- unlist(select)
+
+      record_id_selected <- "record_id" %in% select
+      if (!record_id_selected) select <- c("record_id", select)
+
       select_vars <- var_names[var_names[["select"]], ]
       for (var in names(var_names))
         class(select_vars[[var]]) <- class(var_names[[var]])
@@ -138,24 +145,35 @@ finbif_records <- function(
   n_tot <- resp[[1L]][["content"]][["total"]]
   n <- min(n, n_tot)
 
-  # If random sampling and requesting few records or a large proportion of the
-  # total number of records, it makes more sense to just get all the records and
-  # sample afterwards and avoid coping with duplicates due to pagination.
-  sample_after_request <- n_tot < 3000L || n / n_tot > .5
+  if (n > max_size) {
 
-  if (sample && sample_after_request && n > max_size) {
-    all_records <- finbif_records(
-      filter, var_names[select, "translated_var"], sample = FALSE, n = n_tot,
-      quiet = quiet, cache = cache
-    )
-    return(record_sample(all_records, n))
+    # If random sampling and requesting few records or a large proportion of the
+    # total number of records, it makes more sense to just get all the records
+    # and  sample afterwards and avoid coping with duplicates due to pagination.
+    sample_after_request <- n_tot < max_size * 3L || n / n_tot > .5
+
+    if (sample && sample_after_request) {
+      all_records <- finbif_records(
+        filter, select_, sample = FALSE, n = n_tot, quiet = quiet,
+        cache = cache
+      )
+      return(record_sample(all_records, n, cache))
+    }
+
+    resp <-
+      get_extra_pages(resp, n, max_size, quiet, path, query, cache, select)
+
+    if (sample)
+      resp <- handle_duplicates(
+        resp, filter, select_, max_size, cache, page = length(resp) + 1L, n
+      )
+
   }
-
-  resp <- get_extra_pages(resp, n, max_size, quiet, path, query, cache, select)
 
   structure(
     resp, class = c("finbif_records_list", "finbif_api_list"), nrec_dnld = n,
-    nrec_avl = n_tot, select = unique(select)
+    nrec_avl = n_tot, select = unique(select), record_id = record_id_selected,
+    cache = cache
   )
 
 }
@@ -178,7 +196,7 @@ get_extra_pages <-
     n_pages <- n %/% query[["pageSize"]]
 
     # Pausing between requests is important if many request will be made
-    sleep <- ifelse(n_pages > 10, 0L, 1L)
+    sleep <- ifelse(n_pages > 10L, 0L, 1L)
 
     while (multipage) {
 
@@ -304,33 +322,79 @@ translate <- function(x, translation, pos = -1) {
 
 # sample records ---------------------------------------------------------------
 
-record_sample <- function(x, n) {
+record_sample <- function(x, n, cache) {
 
   n_tot  <- attr(x, "nrec_dnld")
   select <- attr(x, "select")
-  page_sizes <- vapply(x, function(x) x[["content"]][["pageSize"]], integer(1L))
+  record_id <- attr(x, "record_id")
 
-  excess <- sample.int(n_tot, n_tot - n)
-  excess_pages <- rep.int(seq_along(x), page_sizes)[excess]
-  excess <- excess - c(0L, cumsum(page_sizes)[-length(x)])[excess_pages]
-  excess <- split(excess, excess_pages)
+  records <- if (cache) {
+    sample_with_seed(n_tot, n_tot - n, gen_seed(x))
+  } else {
+    sample.int(n_tot, n_tot - n)
+  }
+
+  structure(
+    remove_records(x, records),
+    class = c(
+      "finbif_records_sample_list", "finbif_records_list", "finbif_api_list"
+    ),
+    nrec_dnld = n,
+    nrec_avl = n_tot,
+    select = select,
+    record_id = record_id,
+    cache = cache
+  )
+
+}
+
+# handle duplicates ------------------------------------------------------------
+
+handle_duplicates <- function(x, filter, select, max_size, cache, page, n) {
+
+  ids <- lapply(
+    x,
+    function(x) {
+      vapply(
+        x[["content"]][["results"]], get_el_recurse, NA_character_,
+        c("unit", "unitId"), "character"
+      )
+    }
+  )
+
+  duplicates <- which(duplicated(unlist(ids)))
+
+  if (length(duplicates)) {
+    new_records <- finbif_records(
+      filter, select, sample = TRUE, n = max_size, page = page, cache = cache
+    )
+    x <- remove_records(x, duplicates)
+    x[[length(x) + 1L]] <- new_records[[1L]]
+    x <- handle_duplicates(x, filter, select, max_size, cache, page + 1L, n)
+  }
+
+  remove_records(x, n = n)
+
+}
+
+# remove records ---------------------------------------------------------------
+
+remove_records <- function(x, records, n) {
+
+  page_sizes <- vapply(x, function(x) x[["content"]][["pageSize"]], integer(1L))
+  if (missing(records)) records <- seq(1L, sum(page_sizes))[-seq(1L, n)]
+  excess_pages <- rep.int(seq_along(x), page_sizes)[records]
+  records <- records - c(0L, cumsum(page_sizes)[-length(x)])[excess_pages]
+  records <- split(records, excess_pages)
 
   for (i in seq_along(x)) {
-    x[[i]][["content"]][["results"]][excess[[as.character(i)]]] <- NULL
+    x[[i]][["content"]][["results"]][records[[as.character(i)]]] <- NULL
     new_page_size <- length(x[[i]][["content"]][["results"]])
     x[[i]][["content"]][["pageSize"]] <- new_page_size
   }
 
   x[!vapply(x, function(x) x[["content"]][["pageSize"]], integer(1L))] <- NULL
 
-  structure(
-    x,
-    class = c(
-      "finbif_records_sample_list", "finbif_records_list", "finbif_api_list"
-    ),
-    nrec_dnld = n,
-    nrec_avl = n_tot,
-    select = select
-  )
+  x
 
 }

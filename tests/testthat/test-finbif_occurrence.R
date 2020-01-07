@@ -34,7 +34,19 @@ vcr::use_cassette(
         )
 
         expect_s3_class(
+          finbif_occurrence(
+            "Pteromys volans", sample = TRUE, n = 1001, cache = FALSE
+          ),
+          "finbif_occ"
+        )
+
+        expect_s3_class(
           finbif_occurrence("Pteromys volans", sample = TRUE, n = 1001),
+          "finbif_occ"
+        )
+
+        expect_s3_class(
+          finbif_occurrence(select =  "taxon_id", sample = TRUE, n = 3001),
           "finbif_occ"
         )
 
