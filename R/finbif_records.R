@@ -119,7 +119,19 @@ finbif_records <- function(
 
   })
 
-  # request ====================================================================
+  request(
+    filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
+    select_, record_id_selected
+  )
+
+}
+
+# request ----------------------------------------------------------------------
+
+request <- function(
+  filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
+  select_, record_id_selected
+) {
 
   path <- "warehouse/query/"
 
