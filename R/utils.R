@@ -40,7 +40,8 @@ sample_with_seed <- function(n, size, seed) {
   } else {
     on.exit(rm(".Random.seed", pos = 1L))
   }
-  set.seed(seed, "default", "default", "default")
+  set.seed(seed, "default", "default")
+  if (getRversion() >= "3.6.0") set.seed(seed, "default", "default", "default")
   sample.int(n, size)
 }
 
