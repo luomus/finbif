@@ -67,7 +67,11 @@ finbif_api_get <- function(path, query, cache) {
   }
 
   ans <- structure(
-    list(content = parsed, path = path, response = resp), class = "finbif_api"
+    list(
+      content = parsed, path = path, response = resp,
+      hash = if (exists("hash")) hash
+    ),
+    class = "finbif_api"
   )
 
   ans
