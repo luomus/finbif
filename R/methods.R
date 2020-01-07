@@ -73,8 +73,17 @@ as.data.frame.finbif_records_list <- function(x, ..., quiet = TRUE) {
   time <- do.call(c, lapply(df, attr, "time", TRUE))
 
   df <- do.call(rbind, df)
-  if (inherits(x, "finbif_records_sample_list"))
-    df <- df[sample.int(nrow(df)), ]
+
+  if (inherits(x, "finbif_records_sample_list")) {
+    records <- if (attr(x, "cache")) {
+      sample_with_seed(nrow(df), nrow(df), gen_seed(x))
+    } else {
+      sample.int(nrow(df))
+    }
+    df <- df[records, ]
+  }
+
+
   structure(df, url = url, time = time)
 
 }
