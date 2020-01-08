@@ -366,23 +366,27 @@ handle_duplicates <- function(x, filter, select, max_size, cache, page, n) {
 
   ids <- lapply(
     x,
-    function(x) {
+    function(x)
       vapply(
         x[["content"]][["results"]], get_el_recurse, NA_character_,
         c("unit", "unitId"), "character"
       )
-    }
   )
+  ids <- unlist(ids)
 
-  duplicates <- which(duplicated(unlist(ids)))
+  duplicates <- which(duplicated(ids))
 
-  if (length(duplicates)) {
+  x <- remove_records(x, duplicates)
+
+  if (length(ids) - length(duplicates) < n) {
+
     new_records <- finbif_records(
       filter, select, sample = TRUE, n = max_size, page = page, cache = cache
     )
-    x <- remove_records(x, duplicates)
+
     x[[length(x) + 1L]] <- new_records[[1L]]
     x <- handle_duplicates(x, filter, select, max_size, cache, page + 1L, n)
+
   }
 
   remove_records(x, n = n)
