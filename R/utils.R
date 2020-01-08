@@ -3,13 +3,12 @@
 # misc -------------------------------------------------------------------------
 
 #' @noRd
-to_sentence_case <- function(string) {
+to_sentence_case <- function(string)
   paste0(substring(toupper(string), 1L, 1L), substring(tolower(string), 2L))
-}
 
 #' @noRd
 get_next_lowest_factor <-
-  function(x, y) ifelse(x %% y, get_next_lowest_factor(x, y - 1L), y)
+  function(x, y) if (x %% y) get_next_lowest_factor(x, y - 1L) else y
 
 #' @noRd
 #' @importFrom methods as
@@ -26,9 +25,8 @@ pb_head <- function(msg) {
 }
 
 #' @noRd
-truncate_string <- function(x, sl = 20L) {
+truncate_string <- function(x, sl = 20L)
   ifelse(nchar(x) > sl, sprintf("%s\u2026", substr(x, 1L, sl - 1L)), x)
-}
 
 # random sampling --------------------------------------------------------------
 
@@ -63,14 +61,13 @@ gen_seed.finbif_records_list <- function(x, ...) {
 # modified from https://github.com/reside-ic/defer/blob/master/R/defer.R
 
 #' @noRd
-deferrable_error <- function(message) {
+deferrable_error <- function(message)
   withRestarts({
     calls <- sys.calls()
     call <- calls[[max(length(calls) - 1L, 1L)]]
     stop(error(message, "deferrable_error", call = call, calls = calls))
   },
   continue_deferrable_error = function(...) NULL)
-}
 
 #' @noRd
 defer_errors <- function(expr, handler = stop) {
@@ -92,7 +89,7 @@ defer_errors <- function(expr, handler = stop) {
 }
 
 #' @noRd
-deferred_errors <- function(errors, handler, calls, value = NULL) {
+deferred_errors <- function(errors, handler, calls, value = NULL)
   if (length(errors)) {
     err <- list(errors = errors, value = value)
     class(err) <- c("dfrd_errors", "error", "condition")
@@ -100,14 +97,12 @@ deferred_errors <- function(errors, handler, calls, value = NULL) {
   } else {
     value
   }
-}
 
 #' @noRd
-error <- function(message, class, ...) {
+error <- function(message, class, ...)
   structure(
     list(message = message, ...), class = c(class, "error", "condition")
   )
-}
 
 #' @export
 #' @noRd

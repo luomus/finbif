@@ -208,7 +208,7 @@ get_extra_pages <-
     n_pages <- n %/% query[["pageSize"]]
 
     # Pausing between requests is important if many request will be made
-    sleep <- ifelse(n_pages > 10L, 0L, 1L)
+    sleep <- if (n_pages > 10L) 0L else 1L
 
     while (multipage) {
 

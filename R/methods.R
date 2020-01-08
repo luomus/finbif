@@ -210,9 +210,8 @@ print.finbif_occ <- function(x, ...) {
   # Some vars have data in the form of URIs where the protocol and domain don't
   # convey useful information
   for (i in names(df)) {
-    class <- var_names[
-      var_names[[ifelse(dwc, "dwc", "translated_var")]] == i, "class"
-    ]
+    class <-
+      var_names[var_names[[if (dwc) "dwc" else "translated_var"]] == i, "class"]
     # Variables may not necessarily be in the var_names object
     if (length(class) && class == "uri")
       df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/", "", df[[i]])
@@ -234,7 +233,7 @@ print_extras <- function(x, extra_rows, extra_cols, dsply_cols) {
   if (extra_rows == 0L && extra_cols == 0L) return(NULL)
 
   cat(
-    "...with ", extra_rows, " more record", ifelse(extra_rows == 1L, "", "s"),
+    "...with ", extra_rows, " more record", if (extra_rows == 1L) "" else "s",
     sep = ""
   )
 
@@ -244,7 +243,7 @@ print_extras <- function(x, extra_rows, extra_cols, dsply_cols) {
   }
 
   cat(
-    " and ", extra_cols, " more variable", ifelse(extra_cols == 1L, "", "s"),
+    " and ", extra_cols, " more variable", if (extra_cols == 1L) "" else "s",
     ":\n", sep = ""
   )
 

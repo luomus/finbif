@@ -75,7 +75,7 @@ finbif_occurrence <- function(..., filter, select, order_by, sample = FALSE,
   url  <- attr(df, "url", TRUE)
   time <- attr(df, "time", TRUE)
 
-  names(df) <- var_names[names(df), ifelse(dwc, "dwc", "translated_var")]
+  names(df) <- var_names[names(df), if (dwc) "dwc" else "translated_var"]
 
   if (date_time) {
     if (dwc) {

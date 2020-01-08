@@ -28,11 +28,10 @@ finbif_informal_groups <- function(group, limit = 50, quiet = FALSE) {
   if (!quiet) {
     cat(df[["tree"]][seq_len(limit)], sep = "\n")
     extra <- n - limit
-    if (extra > 0) {
+    if (extra > 0L)
       cat(
-        "...", extra, " more group", ifelse(extra == 1, "", "s"), "\n", sep = ""
+        "...", extra, " more group", if (extra == 1) "" else "s", "\n", sep = ""
       )
-    }
   }
   invisible(df[["name"]])
 }
