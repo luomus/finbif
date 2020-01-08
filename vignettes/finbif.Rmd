@@ -11,27 +11,25 @@ vignette: >
 ---
 
 
-The 
-[Finnish Biodiversity Information Facility (FinBIF) API](https://api.laji.fi).
-FinBIF aggregates Finnish biodiversity data from multiple sources in a single 
+FinBIF aggregates Finnish biodiversity data from multiple sources in a single
 open access portal for researchers, citizen scientists, industry and government.
 FinBIF allows users of biodiversity information to find, access, combine and 
 visualise data on Finnish plants, animals and microorganisms. The `finbif`
 R package makes the publicly available data in FinBIF easily accessible to 
 programmers. Biodiversity information is available on taxonomy and taxon
 occurrence. Occurrence data can be filtered by taxon, time, location and other
-variables. The data accessed are conveniently preformatted for subsequent 
+variables. The data accessed are conveniently preformatted for subsequent
 analyses.
 
 ## Installing the finbif package
-You can install the latest version of finbif from
+You can install the current stable version of `finbif` from
 [CRAN](https://cran.r-project.org),
 
 ```r
 install.packages("finbif")
 ```
 
-You can also install the latest development version of finbif from
+You can also install the latest development version of `finbif` from
 [GitHub](https://github.com),
 
 ```r
@@ -111,7 +109,7 @@ birch_search <- finbif_taxa("Betula pendula", 2, "partial")
 birch_search$content
 ```
 <details closed>
-<summary> Click to toggle output. </summary>
+<summary> Click to show/hide output. </summary>
 
 ```r
 
@@ -141,11 +139,11 @@ birch_search$content
 [1] TRUE
 
 [[1]]$vernacularName
-[[1]]$vernacularName$sv
-[1] "vanlig vårtbjörk"
-
 [[1]]$vernacularName$fi
 [1] "vihtakoivu"
+
+[[1]]$vernacularName$sv
+[1] "vanlig vårtbjörk"
 
 
 [[1]]$informalGroups
@@ -157,11 +155,11 @@ birch_search$content
 [[1]]$informalGroups[[1]]$name$en
 [1] "Vascular plants"
 
-[[1]]$informalGroups[[1]]$name$sv
-[1] "Kärlväxter"
-
 [[1]]$informalGroups[[1]]$name$fi
 [1] "Putkilokasvit"
+
+[[1]]$informalGroups[[1]]$name$sv
+[1] "Kärlväxter"
 
 
 
@@ -215,11 +213,11 @@ birch_search$content
 [[2]]$informalGroups[[1]]$name$en
 [1] "Vascular plants"
 
-[[2]]$informalGroups[[1]]$name$sv
-[1] "Kärlväxter"
-
 [[2]]$informalGroups[[1]]$name$fi
 [1] "Putkilokasvit"
+
+[[2]]$informalGroups[[1]]$name$sv
+[1] "Kärlväxter"
 
 
 
@@ -272,24 +270,24 @@ finbif_occurrence(
 )
 ```
 <details closed>
-<summary> Click to toggle output. </summary>
+<summary> Click to show/hide output. </summary>
 
 ```r
 
 Records downloaded: 10
-Records available: 11340
+Records available: 11363
 A data.frame [10 x 30]
    scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1    Cygnus cygnus         6  60.90052  26.31596 2019-12-02 22:00:00
-2    Cygnus cygnus         4  61.33203  21.65924 2019-12-01 10:20:00
-3      Cygnus olor         5  60.21815  24.73023 2019-11-26 22:00:00
-4    Cygnus cygnus         6  61.07310  26.46700 2019-11-24 22:00:00
-5    Cygnus cygnus         1  60.45901  22.38025 2019-11-11 22:00:00
-6    Cygnus cygnus         5  60.96115  26.08570 2019-11-08 22:00:00
-7    Cygnus cygnus       260  60.95257  26.48997 2019-11-04 22:00:00
-8    Cygnus cygnus       114  60.88855  26.12326 2019-11-04 22:00:00
-9    Cygnus cygnus        14  60.95321  26.09083 2019-11-03 22:00:00
-10   Cygnus cygnus         6  60.95231  26.09553 2019-11-03 22:00:00
+1    Cygnus cygnus        30  61.03529  26.13553 2020-01-07 22:00:00
+2    Cygnus cygnus        26  60.93560  26.37433 2020-01-06 22:00:00
+3    Cygnus cygnus         1  62.38777  26.05355 2020-01-04 22:00:00
+4    Cygnus cygnus        21  60.81513  26.24554 2020-01-04 22:00:00
+5    Cygnus cygnus         5  61.12549  21.53582 2020-01-05 10:45:00
+6      Cygnus olor         4  61.06336  26.17340 2019-12-31 22:00:00
+7    Cygnus cygnus         2  61.09991  21.50955 2019-12-17 10:20:00
+8    Cygnus cygnus        40  60.91752  26.32643 2019-12-15 22:00:00
+9    Cygnus cygnus         6  60.90052  26.31596 2019-12-02 22:00:00
+10   Cygnus cygnus         4  61.33203  21.65924 2019-12-01 10:20:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -313,8 +311,9 @@ used to plot the border of Finland (`?finland_map`). Together these utilities
 can be used to plot occurrences after they have been downloaded from FinBIF. For
 example, the following can be used to plot the density of Eurasian Jay
 occurrences from Finland.
+
 <details closed>
-<summary> <span title=''> Click to toggle code. </span> </summary>
+<summary><span title=''>Click to show/hide code.</span></summary>
 
 ```r
 # Download all the occurrences of Eurasian Jay in Finland

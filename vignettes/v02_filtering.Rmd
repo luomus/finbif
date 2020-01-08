@@ -29,24 +29,24 @@ You can filter occurrence records based on informal taxonomic groups such as
 finbif_occurrence(filter = list(informal_group = c("Birds", "Mammals")))
 ```
 <details closed>
-<summary> Click to toggle output. </summary>
+<summary> Click to show/hide output. </summary>
 
 ```r
 
 Records downloaded: 10
-Records available: 17836591
+Records available: 17895168
 A data.frame [10 x 30]
-       scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1            Pica pica         2  60.43933  22.35988 2019-12-09 22:00:00
-2      Regulus regulus         4  60.43415  22.36924 2019-12-09 22:00:00
-3    Dendrocopos major         1  60.43415  22.36924 2019-12-09 22:00:00
-4    Dendrocopos major         1  60.43933  22.35988 2019-12-09 22:00:00
-5        Turdus merula         1  60.43933  22.35988 2019-12-09 22:00:00
-6  Garrulus glandarius         1  60.43415  22.36924 2019-12-09 22:00:00
-7          Parus major         1  60.43933  22.35988 2019-12-09 22:00:00
-8  Bombycilla garrulus        45  60.43933  22.35988 2019-12-09 22:00:00
-9      Chloris chloris        10  60.43933  22.35988 2019-12-09 22:00:00
-10       Corvus corone         1  61.12160  21.52564 2019-12-10 13:35:00
+        scientific_name abundance lat_wgs84 lon_wgs84           date_time
+1    Bucephala clangula         6  61.03523  26.13556 2020-01-07 22:00:00
+2         Cygnus cygnus        30  61.03529  26.13553 2020-01-07 22:00:00
+3  Apodemus flavicollis         1  60.43997  22.37462 2020-01-07 22:00:00
+4        Sitta europaea         1  61.04351  26.17732 2020-01-07 22:00:00
+5         Spinus spinus         2  60.88937  26.44874 2020-01-06 22:00:00
+6         Cygnus cygnus        26  60.93560  26.37433 2020-01-06 22:00:00
+7      Mergus merganser        70  60.96558  26.42339 2020-01-06 22:00:00
+8       Melanitta nigra         1  60.96561  26.42340 2020-01-06 22:00:00
+9  Fringilla montifrin…        46  60.94323  26.43148 2020-01-06 22:00:00
+10         Surnia ulula         1  60.99228  26.43129 2020-01-06 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -93,7 +93,7 @@ finbif_occurrence(
 )
 ```
 <details closed>
-<summary> Click to toggle output. </summary>
+<summary> Click to show/hide output. </summary>
 
 ```r
 
@@ -136,24 +136,24 @@ finbif_occurrence(
 )
 ```
 <details closed>
-<summary> Click to toggle output. </summary>
+<summary> Click to show/hide output. </summary>
 
 ```r
 
 Records downloaded: 10
-Records available: 1144
+Records available: 1645
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
 1  Rangifer tarandus f…         4  64.42648  29.11431 2019-10-19 21:00:00
-2  Rangifer tarandus f…         1  63.79309  29.51080 2019-09-12 21:00:00
-3  Rangifer tarandus f…         1  63.93649  29.59252 2019-07-25 21:00:00
-4  Rangifer tarandus f…         2  63.27123  25.35634 2019-06-27 21:00:00
-5  Rangifer tarandus f…         1  63.26554  25.36645 2019-06-27 21:00:00
-6  Rangifer tarandus f…         4  63.03293  24.32905 2019-06-12 21:00:00
-7  Rangifer tarandus f…         1  64.32293  26.69975 2019-05-26 21:00:00
-8  Rangifer tarandus f…         1  63.54897  24.54795 2019-05-17 21:00:00
-9  Rangifer tarandus f…         7  64.43140  29.11998 2019-04-27 21:00:00
-10 Rangifer tarandus f…         1  63.95476  23.69793 2019-04-24 21:00:00
+2  Rangifer tarandus f…         1  64.09919  29.40356 2019-09-22 21:00:00
+3  Rangifer tarandus f…         1  63.79309  29.51080 2019-09-12 21:00:00
+4  Rangifer tarandus f…         1  63.93649  29.59252 2019-07-25 21:00:00
+5  Rangifer tarandus f…         2  63.27123  25.35634 2019-06-27 21:00:00
+6  Rangifer tarandus f…         1  63.26554  25.36645 2019-06-27 21:00:00
+7  Rangifer tarandus f…         4  63.03293  24.32905 2019-06-12 21:00:00
+8  Rangifer tarandus f…         1  64.32293  26.69975 2019-05-26 21:00:00
+9  Rangifer tarandus f…         1  63.54897  24.54795 2019-05-17 21:00:00
+10 Rangifer tarandus f…         7  64.43140  29.11998 2019-04-27 21:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -194,24 +194,24 @@ head(finbif_metadata("habitat_types"))
 finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 ```
 <details closed>
-<summary> Click to toggle output. </summary>
+<summary> Click to show/hide output. </summary>
 
 ```r
 
 Records downloaded: 10
-Records available: 19338124
+Records available: 19443255
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1             Pica pica         2  60.43933  22.35988 2019-12-09 22:00:00
-2       Regulus regulus         4  60.43415  22.36924 2019-12-09 22:00:00
-3  Ascocoryne sarcoides         2  60.44036  22.36989 2019-12-09 22:00:00
-4  Hypoxylon multiforme         1  60.44036  22.36989 2019-12-09 22:00:00
-5   Phellinus punctatus         1  60.44036  22.36989 2019-12-09 22:00:00
-6     Dendrocopos major         1  60.43415  22.36924 2019-12-09 22:00:00
-7     Dendrocopos major         1  60.43933  22.35988 2019-12-09 22:00:00
-8         Turdus merula         1  60.43933  22.35988 2019-12-09 22:00:00
-9     Exidia glandulosa         1  60.44222  22.37062 2019-12-09 22:00:00
-10  Garrulus glandarius         1  60.43415  22.36924 2019-12-09 22:00:00
+1  Apodemus flavicollis         1  60.43997  22.37462 2020-01-07 22:00:00
+2        Sitta europaea         1  61.04351  26.17732 2020-01-07 22:00:00
+3  Acanthosoma haemorr…         1  60.80671  26.74877 2020-01-07 22:00:00
+4   Anthocoris confusus         1  60.80671  26.74877 2020-01-07 22:00:00
+5  Scolopostethus thom…         1  60.80671  26.74877 2020-01-07 22:00:00
+6      Antrodia sinuosa         1  63.15110  21.66860 2020-01-06 22:00:00
+7  Phyllotopsis nidula…         1  63.15150  21.67020 2020-01-06 22:00:00
+8  Trichaptum abietinum         1  63.15260  21.67000 2020-01-06 22:00:00
+9  Trichaptum fuscovio…         1  63.15150  21.67020 2020-01-06 22:00:00
+10       Panellus mitis         1  63.15260  21.67000 2020-01-06 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -246,7 +246,7 @@ finbif_metadata("habitat_qualifiers")[4:6, ]
 finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J"))))
 ```
 <details closed>
-<summary> Click to toggle output. </summary>
+<summary> Click to show/hide output. </summary>
 
 ```r
 

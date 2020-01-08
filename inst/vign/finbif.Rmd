@@ -21,26 +21,24 @@ knitr::opts_chunk$set(
 
 library(details, quietly = TRUE)
 ```
-The 
-[Finnish Biodiversity Information Facility (FinBIF) API](https://api.laji.fi).
-FinBIF aggregates Finnish biodiversity data from multiple sources in a single 
+FinBIF aggregates Finnish biodiversity data from multiple sources in a single
 open access portal for researchers, citizen scientists, industry and government.
 FinBIF allows users of biodiversity information to find, access, combine and 
 visualise data on Finnish plants, animals and microorganisms. The `finbif`
 R package makes the publicly available data in FinBIF easily accessible to 
 programmers. Biodiversity information is available on taxonomy and taxon
 occurrence. Occurrence data can be filtered by taxon, time, location and other
-variables. The data accessed are conveniently preformatted for subsequent 
+variables. The data accessed are conveniently preformatted for subsequent
 analyses.
 
 ## Installing the finbif package
-You can install the latest version of finbif from
+You can install the current stable version of `finbif` from
 [CRAN](https://cran.r-project.org),
 ```{r install_cran, eval = FALSE}
 install.packages("finbif")
 ```
 
-You can also install the latest development version of finbif from
+You can also install the latest development version of `finbif` from
 [GitHub](https://github.com),
 ```{r install_gh, eval = FALSE}
 remotes::install_github("luomus/finbif@dev")
@@ -103,7 +101,10 @@ birch_search$content
 ```
 ```{r taxon-search-eval, echo = FALSE, cache = TRUE}
 birch_search <- finbif_taxa("Betula pendula", 2, "partial")
-details::details(birch_search$content, "Click to toggle output.", NULL)
+details::details(
+  birch_search$content, summary = "Click to show/hide output.",
+  tooltip = NULL
+)
 ```
 
 ## Getting occurrence data
@@ -123,11 +124,14 @@ finbif_occurrence(
 )
 ```
 ```{r occurrence2-eval, echo = FALSE, cache = TRUE}
-details::details(finbif_occurrence(
-  "Cygnus cygnus", 
-  "Cygnus olor",
-  filter = list(coordinates_uncertainty_max = 100)
-), "Click to toggle output.", NULL)
+details::details(
+  finbif_occurrence(
+    "Cygnus cygnus", 
+    "Cygnus olor",
+    filter = list(coordinates_uncertainty_max = 100)
+  ),
+  summary = "Click to show/hide output.", tooltip = NULL
+)
 ```
 
 See `?filters` and `vignette("filtering")` for more details on filtering FinBIF
@@ -140,8 +144,9 @@ used to plot the border of Finland (`?finland_map`). Together these utilities
 can be used to plot occurrences after they have been downloaded from FinBIF. For
 example, the following can be used to plot the density of Eurasian Jay
 occurrences from Finland.
+
 <details closed>
-<summary> <span title=''> Click to toggle code. </span> </summary>
+<summary><span title=''>Click to show/hide code.</span></summary>
 ```{r plot-occurrences, eval = FALSE}
 # Download all the occurrences of Eurasian Jay in Finland
 # that have coordinates accurate to at least 100m
@@ -193,7 +198,7 @@ jays <- finbif_occurrence(
   taxa   = "Eurasian Jay",
   filter = c(
     coordinates_uncertainty_max = 100,
-    country                 = "Finland"
+    country                     = "Finland"
   ),
   n      = 2e4,
   quiet  = TRUE

@@ -20,14 +20,14 @@ variables. The data accessed are conveniently preformatted for subsequent
 analyses.
     
 ## Installation
-You can install the latest version of finbif from
+You can install the current stable version of `finbif` from
 [CRAN](https://cran.r-project.org),
 
 ```r
 install.packages("finbif")
 ```
 
-You can also install the latest development version of finbif from
+You can also install the latest development version of `finbif` from
 [GitHub](https://github.com),
 
 ```r
@@ -40,7 +40,7 @@ finbif [here](https://luomus.github.io/finbif), or the latest development
 version of finbif [here](https://finbif-docs-dev.netlify.com).
 
 ## Getting a FinBIF access token
-First load the finbif R package.
+First load the `finbif` R package.
 
 ```r
 library(finbif)
@@ -81,6 +81,6 @@ Development is a community effort, and we encourage participation. Please read
 [the contribution guide](https://github.com/luomus/finbif/blob/master/CONTRIBUTING.md)
 for details.
 
-Please note that the 'finbif' project is released with a 
+Please note that the 'finbif' project is released with a
 [Contributor Code of Conduct](https://github.com/luomus/finbif/blob/master/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.

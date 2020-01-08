@@ -39,7 +39,7 @@ finbif_occurrence(filter = list(informal_group = c("Birds", "Mammals")))
 ```{r informal-groups-eval, echo = FALSE, cache = TRUE}
 details::details(
   finbif_occurrence(filter = list(informal_group = c("Birds", "Mammals"))),
-  "Click to toggle output.", NULL
+  summary = "Click to show/hide output.", tooltip = NULL
 )
 ```
 
@@ -66,7 +66,7 @@ details::details(
   finbif_occurrence(
     filter = list(informal_group = "Birds", administrative_status = "EU_INVSV")
   ),
-  "Click to toggle output.", NULL
+  summary = "Click to show/hide output.", tooltip = NULL
 )
 ```
 
@@ -86,7 +86,7 @@ details::details(
   finbif_occurrence(
     filter = list(informal_group = "Mammals", red_list_status = "NT")
   ),
-  "Click to toggle output.", NULL
+  summary = "Click to show/hide output.", tooltip = NULL
 )
 ```
 
@@ -112,7 +112,7 @@ finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 # habitat type
 details::details(
   finbif_occurrence(filter = c(primary_secondary_habitat = "M")),
-  "Click to toggle output.", NULL
+  summary = "Click to show/hide output.", tooltip = NULL
 )
 ```
 
@@ -135,6 +135,6 @@ finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J"))))
 # deciduous trees are their primary habitat type
 details::details(
   finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J")))),
-  "Click to toggle output.", NULL
+  summary = "Click to show/hide output.", tooltip = NULL
 )
 ```

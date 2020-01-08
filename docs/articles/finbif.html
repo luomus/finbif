@@ -103,13 +103,13 @@
 
     
     
-<p>The <a href="https://api.laji.fi">Finnish Biodiversity Information Facility (FinBIF) API</a>. FinBIF aggregates Finnish biodiversity data from multiple sources in a single open access portal for researchers, citizen scientists, industry and government. FinBIF allows users of biodiversity information to find, access, combine and visualise data on Finnish plants, animals and microorganisms. The <code>finbif</code> R package makes the publicly available data in FinBIF easily accessible to programmers. Biodiversity information is available on taxonomy and taxon occurrence. Occurrence data can be filtered by taxon, time, location and other variables. The data accessed are conveniently preformatted for subsequent analyses.</p>
+<p>FinBIF aggregates Finnish biodiversity data from multiple sources in a single open access portal for researchers, citizen scientists, industry and government. FinBIF allows users of biodiversity information to find, access, combine and visualise data on Finnish plants, animals and microorganisms. The <code>finbif</code> R package makes the publicly available data in FinBIF easily accessible to programmers. Biodiversity information is available on taxonomy and taxon occurrence. Occurrence data can be filtered by taxon, time, location and other variables. The data accessed are conveniently preformatted for subsequent analyses.</p>
 <div id="installing-the-finbif-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installing-the-finbif-package" class="anchor"></a>Installing the finbif package</h2>
-<p>You can install the latest version of finbif from <a href="https://cran.r-project.org">CRAN</a>,</p>
+<p>You can install the current stable version of <code>finbif</code> from <a href="https://cran.r-project.org">CRAN</a>,</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"finbif"</span>)</a></code></pre></div>
-<p>You can also install the latest development version of finbif from <a href="https://github.com">GitHub</a>,</p>
+<p>You can also install the latest development version of <code>finbif</code> from <a href="https://github.com">GitHub</a>,</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"luomus/finbif@dev"</span>)</a></code></pre></div>
 </div>
 <div id="loading-the-finbif-package" class="section level2">
@@ -153,7 +153,7 @@
 <p>The function <code><a href="../reference/finbif_taxa.html">finbif_taxa()</a></code> can be used for a more general search for taxa in the FinBIF database. Searches can be <code>exact</code>, <code>partial</code> or <code>likely</code> (fuzzy matching). Information for a single taxon is returned when using exact or fuzzy matching, but multiple taxa, up to a limit, <code>n</code>, may be returned when using partial matching.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">birch_search &lt;-<span class="st"> </span><span class="kw"><a href="../reference/finbif_taxa.html">finbif_taxa</a></span>(<span class="st">"Betula pendula"</span>, <span class="dv">2</span>, <span class="st">"partial"</span>)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">birch_search<span class="op">$</span>content</a></code></pre></div>
-<details closed><p><summary> Click to toggle output. </summary></p>
+<details closed><p><summary> Click to show/hide output. </summary></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb10-3" data-line-number="3">[[<span class="dv">1</span>]]<span class="op">$</span>matchingName</a>
@@ -181,11 +181,11 @@
 <a class="sourceLine" id="cb10-25" data-line-number="25">[<span class="dv">1</span>] <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb10-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb10-27" data-line-number="27">[[<span class="dv">1</span>]]<span class="op">$</span>vernacularName</a>
-<a class="sourceLine" id="cb10-28" data-line-number="28">[[<span class="dv">1</span>]]<span class="op">$</span>vernacularName<span class="op">$</span>sv</a>
-<a class="sourceLine" id="cb10-29" data-line-number="29">[<span class="dv">1</span>] <span class="st">"vanlig vårtbjörk"</span></a>
+<a class="sourceLine" id="cb10-28" data-line-number="28">[[<span class="dv">1</span>]]<span class="op">$</span>vernacularName<span class="op">$</span>fi</a>
+<a class="sourceLine" id="cb10-29" data-line-number="29">[<span class="dv">1</span>] <span class="st">"vihtakoivu"</span></a>
 <a class="sourceLine" id="cb10-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb10-31" data-line-number="31">[[<span class="dv">1</span>]]<span class="op">$</span>vernacularName<span class="op">$</span>fi</a>
-<a class="sourceLine" id="cb10-32" data-line-number="32">[<span class="dv">1</span>] <span class="st">"vihtakoivu"</span></a>
+<a class="sourceLine" id="cb10-31" data-line-number="31">[[<span class="dv">1</span>]]<span class="op">$</span>vernacularName<span class="op">$</span>sv</a>
+<a class="sourceLine" id="cb10-32" data-line-number="32">[<span class="dv">1</span>] <span class="st">"vanlig vårtbjörk"</span></a>
 <a class="sourceLine" id="cb10-33" data-line-number="33"></a>
 <a class="sourceLine" id="cb10-34" data-line-number="34"></a>
 <a class="sourceLine" id="cb10-35" data-line-number="35">[[<span class="dv">1</span>]]<span class="op">$</span>informalGroups</a>
@@ -197,11 +197,11 @@
 <a class="sourceLine" id="cb10-41" data-line-number="41">[[<span class="dv">1</span>]]<span class="op">$</span>informalGroups[[<span class="dv">1</span>]]<span class="op">$</span>name<span class="op">$</span>en</a>
 <a class="sourceLine" id="cb10-42" data-line-number="42">[<span class="dv">1</span>] <span class="st">"Vascular plants"</span></a>
 <a class="sourceLine" id="cb10-43" data-line-number="43"></a>
-<a class="sourceLine" id="cb10-44" data-line-number="44">[[<span class="dv">1</span>]]<span class="op">$</span>informalGroups[[<span class="dv">1</span>]]<span class="op">$</span>name<span class="op">$</span>sv</a>
-<a class="sourceLine" id="cb10-45" data-line-number="45">[<span class="dv">1</span>] <span class="st">"Kärlväxter"</span></a>
+<a class="sourceLine" id="cb10-44" data-line-number="44">[[<span class="dv">1</span>]]<span class="op">$</span>informalGroups[[<span class="dv">1</span>]]<span class="op">$</span>name<span class="op">$</span>fi</a>
+<a class="sourceLine" id="cb10-45" data-line-number="45">[<span class="dv">1</span>] <span class="st">"Putkilokasvit"</span></a>
 <a class="sourceLine" id="cb10-46" data-line-number="46"></a>
-<a class="sourceLine" id="cb10-47" data-line-number="47">[[<span class="dv">1</span>]]<span class="op">$</span>informalGroups[[<span class="dv">1</span>]]<span class="op">$</span>name<span class="op">$</span>fi</a>
-<a class="sourceLine" id="cb10-48" data-line-number="48">[<span class="dv">1</span>] <span class="st">"Putkilokasvit"</span></a>
+<a class="sourceLine" id="cb10-47" data-line-number="47">[[<span class="dv">1</span>]]<span class="op">$</span>informalGroups[[<span class="dv">1</span>]]<span class="op">$</span>name<span class="op">$</span>sv</a>
+<a class="sourceLine" id="cb10-48" data-line-number="48">[<span class="dv">1</span>] <span class="st">"Kärlväxter"</span></a>
 <a class="sourceLine" id="cb10-49" data-line-number="49"></a>
 <a class="sourceLine" id="cb10-50" data-line-number="50"></a>
 <a class="sourceLine" id="cb10-51" data-line-number="51"></a>
@@ -255,11 +255,11 @@
 <a class="sourceLine" id="cb10-99" data-line-number="99">[[<span class="dv">2</span>]]<span class="op">$</span>informalGroups[[<span class="dv">1</span>]]<span class="op">$</span>name<span class="op">$</span>en</a>
 <a class="sourceLine" id="cb10-100" data-line-number="100">[<span class="dv">1</span>] <span class="st">"Vascular plants"</span></a>
 <a class="sourceLine" id="cb10-101" data-line-number="101"></a>
-<a class="sourceLine" id="cb10-102" data-line-number="102">[[<span class="dv">2</span>]]<span class="op">$</span>informalGroups[[<span class="dv">1</span>]]<span class="op">$</span>name<span class="op">$</span>sv</a>
-<a class="sourceLine" id="cb10-103" data-line-number="103">[<span class="dv">1</span>] <span class="st">"Kärlväxter"</span></a>
+<a class="sourceLine" id="cb10-102" data-line-number="102">[[<span class="dv">2</span>]]<span class="op">$</span>informalGroups[[<span class="dv">1</span>]]<span class="op">$</span>name<span class="op">$</span>fi</a>
+<a class="sourceLine" id="cb10-103" data-line-number="103">[<span class="dv">1</span>] <span class="st">"Putkilokasvit"</span></a>
 <a class="sourceLine" id="cb10-104" data-line-number="104"></a>
-<a class="sourceLine" id="cb10-105" data-line-number="105">[[<span class="dv">2</span>]]<span class="op">$</span>informalGroups[[<span class="dv">1</span>]]<span class="op">$</span>name<span class="op">$</span>fi</a>
-<a class="sourceLine" id="cb10-106" data-line-number="106">[<span class="dv">1</span>] <span class="st">"Putkilokasvit"</span></a>
+<a class="sourceLine" id="cb10-105" data-line-number="105">[[<span class="dv">2</span>]]<span class="op">$</span>informalGroups[[<span class="dv">1</span>]]<span class="op">$</span>name<span class="op">$</span>sv</a>
+<a class="sourceLine" id="cb10-106" data-line-number="106">[<span class="dv">1</span>] <span class="st">"Kärlväxter"</span></a>
 <a class="sourceLine" id="cb10-107" data-line-number="107"></a>
 <a class="sourceLine" id="cb10-108" data-line-number="108"></a>
 <a class="sourceLine" id="cb10-109" data-line-number="109"></a>
@@ -300,22 +300,22 @@
 <a class="sourceLine" id="cb12-3" data-line-number="3">  <span class="st">"Cygnus olor"</span>,</a>
 <a class="sourceLine" id="cb12-4" data-line-number="4">  <span class="dt">filter =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">coordinates_uncertainty_max =</span> <span class="dv">100</span>)</a>
 <a class="sourceLine" id="cb12-5" data-line-number="5">)</a></code></pre></div>
-<details closed><p><summary> Click to toggle output. </summary></p>
+<details closed><p><summary> Click to show/hide output. </summary></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2">Records downloaded<span class="op">:</span><span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">Records available<span class="op">:</span><span class="st"> </span><span class="dv">11340</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">Records available<span class="op">:</span><span class="st"> </span><span class="dv">11363</span></a>
 <a class="sourceLine" id="cb13-4" data-line-number="4">A data.frame [<span class="dv">10</span> x <span class="dv">30</span>]</a>
 <a class="sourceLine" id="cb13-5" data-line-number="5">   scientific_name abundance lat_wgs84 lon_wgs84           date_time</a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="dv">1</span>    Cygnus cygnus         <span class="dv">6</span>  <span class="fl">60.90052</span>  <span class="fl">26.31596</span> <span class="dv">2019-12-02</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="dv">2</span>    Cygnus cygnus         <span class="dv">4</span>  <span class="fl">61.33203</span>  <span class="fl">21.65924</span> <span class="dv">2019-12-01</span> <span class="dv">10</span><span class="op">:</span><span class="dv">20</span><span class="op">:</span><span class="dv">00</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="dv">3</span>      Cygnus olor         <span class="dv">5</span>  <span class="fl">60.21815</span>  <span class="fl">24.73023</span> <span class="dv">2019-11-26</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="dv">4</span>    Cygnus cygnus         <span class="dv">6</span>  <span class="fl">61.07310</span>  <span class="fl">26.46700</span> <span class="dv">2019-11-24</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="dv">5</span>    Cygnus cygnus         <span class="dv">1</span>  <span class="fl">60.45901</span>  <span class="fl">22.38025</span> <span class="dv">2019-11-11</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="dv">6</span>    Cygnus cygnus         <span class="dv">5</span>  <span class="fl">60.96115</span>  <span class="fl">26.08570</span> <span class="dv">2019-11-08</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="dv">7</span>    Cygnus cygnus       <span class="dv">260</span>  <span class="fl">60.95257</span>  <span class="fl">26.48997</span> <span class="dv">2019-11-04</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
-<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="dv">8</span>    Cygnus cygnus       <span class="dv">114</span>  <span class="fl">60.88855</span>  <span class="fl">26.12326</span> <span class="dv">2019-11-04</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
-<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="dv">9</span>    Cygnus cygnus        <span class="dv">14</span>  <span class="fl">60.95321</span>  <span class="fl">26.09083</span> <span class="dv">2019-11-03</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
-<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="dv">10</span>   Cygnus cygnus         <span class="dv">6</span>  <span class="fl">60.95231</span>  <span class="fl">26.09553</span> <span class="dv">2019-11-03</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="dv">1</span>    Cygnus cygnus        <span class="dv">30</span>  <span class="fl">61.03529</span>  <span class="fl">26.13553</span> <span class="dv">2020-01-07</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="dv">2</span>    Cygnus cygnus        <span class="dv">26</span>  <span class="fl">60.93560</span>  <span class="fl">26.37433</span> <span class="dv">2020-01-06</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="dv">3</span>    Cygnus cygnus         <span class="dv">1</span>  <span class="fl">62.38777</span>  <span class="fl">26.05355</span> <span class="dv">2020-01-04</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="dv">4</span>    Cygnus cygnus        <span class="dv">21</span>  <span class="fl">60.81513</span>  <span class="fl">26.24554</span> <span class="dv">2020-01-04</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="dv">5</span>    Cygnus cygnus         <span class="dv">5</span>  <span class="fl">61.12549</span>  <span class="fl">21.53582</span> <span class="dv">2020-01-05</span> <span class="dv">10</span><span class="op">:</span><span class="dv">45</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="dv">6</span>      Cygnus olor         <span class="dv">4</span>  <span class="fl">61.06336</span>  <span class="fl">26.17340</span> <span class="dv">2019-12-31</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="dv">7</span>    Cygnus cygnus         <span class="dv">2</span>  <span class="fl">61.09991</span>  <span class="fl">21.50955</span> <span class="dv">2019-12-17</span> <span class="dv">10</span><span class="op">:</span><span class="dv">20</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="dv">8</span>    Cygnus cygnus        <span class="dv">40</span>  <span class="fl">60.91752</span>  <span class="fl">26.32643</span> <span class="dv">2019-12-15</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="dv">9</span>    Cygnus cygnus         <span class="dv">6</span>  <span class="fl">60.90052</span>  <span class="fl">26.31596</span> <span class="dv">2019-12-02</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="dv">10</span>   Cygnus cygnus         <span class="dv">4</span>  <span class="fl">61.33203</span>  <span class="fl">21.65924</span> <span class="dv">2019-12-01</span> <span class="dv">10</span><span class="op">:</span><span class="dv">20</span><span class="op">:</span><span class="dv">00</span></a>
 <a class="sourceLine" id="cb13-16" data-line-number="16">...with <span class="dv">0</span> more records and <span class="dv">25</span> more variables<span class="op">:</span></a>
 <a class="sourceLine" id="cb13-17" data-line-number="17">taxon_rank, country, province, municipality, date_start, date_end,</a>
 <a class="sourceLine" id="cb13-18" data-line-number="18">hour_start, hour_end, minute_start, minute_end, record_id,</a>
@@ -329,8 +329,8 @@
 <div id="plotting-occurrence-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plotting-occurrence-data" class="anchor"></a>Plotting occurrence data</h2>
-The <code>finbif</code> package has a number of inbuilt functions for plotting (see e.g., <code><a href="../reference/breaks_xy.html">breaks_xy()</a></code> and <code><a href="../reference/hist_xy.html">hist_xy()</a></code>). There is also an inbuilt dataset that can be used to plot the border of Finland (<code><a href="../reference/finland_map.html">?finland_map</a></code>). Together these utilities can be used to plot occurrences after they have been downloaded from FinBIF. For example, the following can be used to plot the density of Eurasian Jay occurrences from Finland.
-<details closed><p><summary><span title=""> Click to toggle code. </span> </summary></p>
+<p>The <code>finbif</code> package has a number of inbuilt functions for plotting (see e.g., <code><a href="../reference/breaks_xy.html">breaks_xy()</a></code> and <code><a href="../reference/hist_xy.html">hist_xy()</a></code>). There is also an inbuilt dataset that can be used to plot the border of Finland (<code><a href="../reference/finland_map.html">?finland_map</a></code>). Together these utilities can be used to plot occurrences after they have been downloaded from FinBIF. For example, the following can be used to plot the density of Eurasian Jay occurrences from Finland.</p>
+<details closed><p><summary><span title="">Click to show/hide code.</span></summary></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># Download all the occurrences of Eurasian Jay in Finland</span></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># that have coordinates accurate to at least 100m</span></a>
 <a class="sourceLine" id="cb14-3" data-line-number="3">jays &lt;-<span class="st"> </span><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(</a>
