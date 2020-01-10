@@ -2,8 +2,8 @@
 #'
 #' Display metadata from the FinBIF database.
 #'
-#' @param which Character. Which category of metadata to display. If unspecified
-#'   function returns the categories of metadata available.
+#' @param which Character. Which category of metadata to display. If
+#'  unspecified, function returns the categories of metadata available.
 #'
 #' @return A data.frame.
 #' @examples

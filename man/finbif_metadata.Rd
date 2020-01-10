@@ -7,8 +7,8 @@
 finbif_metadata(which)
 }
 \arguments{
-\item{which}{Character. Which category of metadata to display. If unspecified
-function returns the categories of metadata available.}
+\item{which}{Character. Which category of metadata to display. If
+unspecified, function returns the categories of metadata available.}
 }
 \value{
 A data.frame.

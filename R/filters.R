@@ -79,7 +79,7 @@
 #'
 #' - `locality` Character vector.
 #'   Filter by name of locality. Will first try to match strings to the
-#'   countries, provinces, and municipalities (see below) in FinBIF if none of
+#'   countries, provinces, and municipalities (see below) in FinBIF, if none of
 #'   these locality types match exactly then will return records with verbatim
 #'   locality matches in the original records.
 #' - `country` Character vector.
