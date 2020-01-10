@@ -100,14 +100,14 @@ md_provinces <- function() {
 md_municipalities <- function() {
   structure(
     municipality, row.names = seq_len(nrow(municipality)),
-    names = c("english_name", "finnish_name", "country")
+    names = c("finnish_name", "country")
   )
 }
 
 md_bird_assoc_areas <- function() {
   structure(
     bird_assoc_area, row.names = seq_len(nrow(bird_assoc_area)),
-    names = c("area_name", "area_code")
+    names = c("finnish_name", "area_code")
   )
 }
 

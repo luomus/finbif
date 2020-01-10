@@ -18,7 +18,7 @@ bird_assoc_area <- read.csv(text = "
   ML.1107,               'Merenkurkun Lintutieteellinen Yhdistys r.y.', MLY
   ML.1098,             'Päijät-Hämeen Lintutieteellinen Yhdistys r.y.', PHLY
   ML.1099,                'Pirkanmaan Lintutieteellinen Yhdistys r.y.', PiLY
-  ML.1103,         ' Pohjois-Karjalan Lintutieteellinen Yhdistys r.y.', PKLY
+  ML.1103,         'Pohjois-Karjalan Lintutieteellinen Yhdistys r.y.', PKLY
   ML.1109,        'Pohjois-Pohjanmaan Lintutieteellinen Yhdistys r.y.', PPLY
   ML.1102,                 'Pohjois-Savon Lintuyhdistys - Kuikka r.y.', Kuikka
   ML.1090,                     'Porin Lintutieteellinen Yhdistys r.y.', PLY

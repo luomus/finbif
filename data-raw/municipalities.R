@@ -22,3 +22,6 @@ municipality <- municipality[
 names(municipality) <- c("name_en", "name_fi", "country")
 class(municipality[["name_en"]]) <- "translation"
 class(municipality[["name_fi"]]) <- "translation"
+
+# english names are currently redundant
+municipality[["name_en"]] <- NULL
