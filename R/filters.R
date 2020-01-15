@@ -188,7 +188,7 @@
 #'   Filter by keywords.
 #' - `collection` Character vector or `finbif_collections()` data.frame.
 #'   Filter by collection. If a character vector can refer to collection ID,
-#'   collection name (in English, Finnish, or Swedish) or abbreviated name.
+#'   collection name (in English) or abbreviated name.
 #'   Use `finbif_collections()` to see list of collections and metadata. Can
 #'   also use the results of a call to `finbif_collections()` directly to
 #'   filter records.

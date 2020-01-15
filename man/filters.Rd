@@ -205,7 +205,7 @@ Other filters:
 Filter by keywords.
 \item \code{collection} Character vector or \code{finbif_collections()} data.frame.
 Filter by collection. If a character vector can refer to collection ID,
-collection name (in English, Finnish, or Swedish) or abbreviated name.
+collection name (in English) or abbreviated name.
 Use \code{finbif_collections()} to see list of collections and metadata. Can
 also use the results of a call to \code{finbif_collections()} directly to
 filter records.
