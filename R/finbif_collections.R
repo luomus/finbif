@@ -54,10 +54,11 @@ finbif_collections <- function(
   parent_collections <- row.names(collections)[ind]
 
   for (collection in parent_collections)
-    collections[collection, "count"] <- sum(
-      collections[collections[["is_part_of"]] == collection, "count"],
-      na.rm = TRUE
-    )
+    if (is.na(collections[collection, "count"]))
+      collections[collection, "count"] <- sum(
+        collections[collections[["is_part_of"]] == collection, "count"],
+        na.rm = TRUE
+      )
 
   if (!is.na(nmin))
     collections <- collections[
