@@ -279,14 +279,14 @@ recorded municipality).</p></li>
 <p>Filters related to time of record include:</p><ul>
 <li><p><code>date_range_ymd</code> Dates.
 An <a href='http://lubridate.tidyverse.org/reference/Interval-class.html'>Interval</a> object or a vector of one to
-two <a href='https://rdrr.io/r/base/Dates.html'>Date</a> objects (start and end dates) or objects that
+two <a href='https://rdrr.io/r/base/Dates.html'>Date</a> objects (begin and end dates) or objects that
 are coercible to the <a href='https://rdrr.io/r/base/Dates.html'>Date</a> class by
 <a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_date</a>. When supplying dates as strings, the day or
 month-and-day can be omitted (e.g.,<code>"2001-04"</code> or <code>"2001"</code>). Note however,
 that when omitting day, only "<code>-</code>" is allowed to separate year and month,
-and months must in two-digit/leading zero form. If the start or end dates
-are partial date strings they will be interpreted as the first or last day
-of the month or year (e.g., <code><a href='https://rdrr.io/r/base/c.html'>c(2001, 2003)</a></code> is equivalent to
+and months must be in two-digit/leading zero form. If the begin or end
+dates are partial date strings they will be interpreted as the first or
+last day of the month or year (e.g., <code><a href='https://rdrr.io/r/base/c.html'>c(2001, 2003)</a></code> is equivalent to
 <code><a href='https://rdrr.io/r/base/c.html'>c("2001-01-01", "2003-12-12")</a></code>). If a single date is supplied as a partial
 date string then all records that fall within that month or year will be
 returned (e.g., <code><a href='https://rdrr.io/r/base/c.html'>c("2001-01")</a></code> is equivalent to
@@ -294,12 +294,12 @@ returned (e.g., <code><a href='https://rdrr.io/r/base/c.html'>c("2001-01")</a></
 <li><p><code>date_range_ym</code> Dates.
 As above, but days (if supplied) will be ignored.</p></li>
 <li><p><code>date_range_d</code> Integer vector.
-Filter by day of the year (e.g., <code>1</code> to <code>366</code>). If start or end date is
-omitted then it is interpreted as the first or last or end day of the year.</p></li>
+Filter by day of the year (e.g., <code>1</code> to <code>366</code>). If begin or end date is
+omitted then it is interpreted as the first or last day of the year.</p></li>
 <li><p><code>date_range_md</code> Character vector.
 Filter by month and day of the year (e.g., <code>"01-01"</code> to <code>"12-31"</code>). If
-start or end date is omitted then it is interpreted as the first or last or
-end day of the year.</p></li>
+begin or end date is omitted then it is interpreted as the first or last
+day of the year.</p></li>
 <li><p><code>{first|last}_import_date_{min|max}</code> Date.
 Filter by date record was imported. A <a href='https://rdrr.io/r/base/Dates.html'>Date</a> object or
 object that is coercible to the <a href='https://rdrr.io/r/base/Dates.html'>Date</a> class by

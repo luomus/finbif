@@ -142,14 +142,14 @@ Filters related to time of record include:
 \itemize{
 \item \code{date_range_ymd} Dates.
 An \link[lubridate:Interval-class]{Interval} object or a vector of one to
-two \link[base:Dates]{Date} objects (start and end dates) or objects that
+two \link[base:Dates]{Date} objects (begin and end dates) or objects that
 are coercible to the \link[base:Dates]{Date} class by
 \link[lubridate]{as_date}. When supplying dates as strings, the day or
 month-and-day can be omitted (e.g.,\code{"2001-04"} or \code{"2001"}). Note however,
 that when omitting day, only "\code{-}" is allowed to separate year and month,
-and months must in two-digit/leading zero form. If the start or end dates
-are partial date strings they will be interpreted as the first or last day
-of the month or year (e.g., \code{c(2001, 2003)} is equivalent to
+and months must be in two-digit/leading zero form. If the begin or end
+dates are partial date strings they will be interpreted as the first or
+last day of the month or year (e.g., \code{c(2001, 2003)} is equivalent to
 \code{c("2001-01-01", "2003-12-12")}). If a single date is supplied as a partial
 date string then all records that fall within that month or year will be
 returned (e.g., \code{c("2001-01")} is equivalent to
@@ -157,12 +157,12 @@ returned (e.g., \code{c("2001-01")} is equivalent to
 \item \code{date_range_ym} Dates.
 As above, but days (if supplied) will be ignored.
 \item \code{date_range_d} Integer vector.
-Filter by day of the year (e.g., \code{1} to \code{366}). If start or end date is
-omitted then it is interpreted as the first or last or end day of the year.
+Filter by day of the year (e.g., \code{1} to \code{366}). If begin or end date is
+omitted then it is interpreted as the first or last day of the year.
 \item \code{date_range_md} Character vector.
 Filter by month and day of the year (e.g., \code{"01-01"} to \code{"12-31"}). If
-start or end date is omitted then it is interpreted as the first or last or
-end day of the year.
+begin or end date is omitted then it is interpreted as the first or last
+day of the year.
 \item \verb{\{first|last\}_import_date_\{min|max\}} Date.
 Filter by date record was imported. A \link[base:Dates]{Date} object or
 object that is coercible to the \link[base:Dates]{Date} class by
