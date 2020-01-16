@@ -1,4 +1,4 @@
-# finbif 0.2.0.9000
+# finbif 0.2.0
 
 ### NEW FEATURES
 
