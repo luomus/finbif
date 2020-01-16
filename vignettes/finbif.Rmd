@@ -15,7 +15,7 @@ FinBIF aggregates Finnish biodiversity data from multiple sources in a single
 open access portal for researchers, citizen scientists, industry and government.
 FinBIF allows users of biodiversity information to find, access, combine and 
 visualise data on Finnish plants, animals and microorganisms. The `finbif`
-R package makes the publicly available data in FinBIF easily accessible to 
+R package makes the publicly available data in FinBIF easily accessible to
 programmers. Biodiversity information is available on taxonomy and taxon
 occurrence. Occurrence data can be filtered by taxon, time, location and other
 variables. The data accessed are conveniently preformatted for subsequent
@@ -98,7 +98,7 @@ finbif_check_taxa(list(species = c("Ursus arctos", "Ursus"), genus = "Ursus"))
 #> [genus:   Ursus       ] ID: MX.51311
 ```
 
-The function `finbif_taxa()` can be used for a more general search for taxa in 
+The function `finbif_taxa()` can be used for a more general search for taxa in
 the FinBIF database. Searches can be `exact`, `partial` or `likely` (fuzzy
 matching). Information for a single taxon is returned when using exact or fuzzy
 matching, but multiple taxa, up to a limit, `n`, may be returned when using
@@ -301,8 +301,47 @@ location_issue, time_issue, duration
 </details>
 <br>
 
-See `?filters` and `vignette("filtering")` for more details on filtering FinBIF
+See `?filters` and `vignette("v0_filtering")` for more details on filtering FinBIF
 records.
+
+### Random sampling
+It is possible to request a random sample of records instead of the last `n`
+records (or records ordered by some other variable).
+
+```r
+finbif_occurrence("Birds", sample = TRUE)
+```
+<details closed>
+<summary> Click to show/hide output. </summary>
+
+```r
+
+Records downloaded: 10
+Records available: 17751448
+A data.frame [10 x 30]
+        scientific_name abundance lat_wgs84 lon_wgs84           date_time
+1    Erithacus rubecula         1  60.47356  27.44691 2007-09-01 04:00:00
+2      Numenius arquata         1  59.81111  22.89545 2008-09-01 21:00:00
+3     Falco tinnunculus         1  60.61667  22.93333 2012-06-29 13:00:00
+4  Corvus corone cornix         1  62.70686  22.02384 1985-06-10 01:20:00
+5    Ficedula hypoleuca         1  69.01667  20.86667 1973-06-29 23:00:00
+6      Acanthis flammea         1  60.82859  24.25148 1999-12-31 22:00:00
+7  Phylloscopus trochi…         1  64.80000  24.63333 1993-06-01 21:00:00
+8         Turdus merula         1  60.63333  22.41667 2001-02-18 06:00:00
+9  Phylloscopus trochi…         1  60.19879  24.81963 2004-09-11 03:00:00
+10  Aegithalos caudatus         1  59.88393  22.54163 1999-12-31 22:00:00
+...with 0 more records and 25 more variables:
+taxon_rank, country, province, municipality, date_start, date_end,
+hour_start, hour_end, minute_start, minute_end, record_id,
+individual_id, event_id, collection_id, any_issues, record_issue,
+record_reliable, taxon_reliability, document_issue,
+collection_reliability, coordinates_uncertainty, event_issue,
+location_issue, time_issue, duration
+
+```
+
+</details>
+<br>
 
 ## Plotting occurrence data
 The `finbif` package has a number of inbuilt functions for plotting (see e.g.,
@@ -322,7 +361,7 @@ jays <- finbif_occurrence(
   taxa   = "Eurasian Jay",
   filter = c(
     coordinates_uncertainty_max = 100,
-    country                 = "Finland"
+    country                     = "Finland"
   ),
   n      = 2e4,
   quiet  = TRUE

@@ -25,7 +25,7 @@ FinBIF aggregates Finnish biodiversity data from multiple sources in a single
 open access portal for researchers, citizen scientists, industry and government.
 FinBIF allows users of biodiversity information to find, access, combine and 
 visualise data on Finnish plants, animals and microorganisms. The `finbif`
-R package makes the publicly available data in FinBIF easily accessible to 
+R package makes the publicly available data in FinBIF easily accessible to
 programmers. Biodiversity information is available on taxonomy and taxon
 occurrence. Occurrence data can be filtered by taxon, time, location and other
 variables. The data accessed are conveniently preformatted for subsequent
@@ -90,7 +90,7 @@ will be limited to the specified rank.
 finbif_check_taxa(list(species = c("Ursus arctos", "Ursus"), genus = "Ursus"))
 ```
 
-The function `finbif_taxa()` can be used for a more general search for taxa in 
+The function `finbif_taxa()` can be used for a more general search for taxa in
 the FinBIF database. Searches can be `exact`, `partial` or `likely` (fuzzy
 matching). Information for a single taxon is returned when using exact or fuzzy
 matching, but multiple taxa, up to a limit, `n`, may be returned when using
@@ -134,8 +134,21 @@ details::details(
 )
 ```
 
-See `?filters` and `vignette("filtering")` for more details on filtering FinBIF
+See `?filters` and `vignette("v0_filtering")` for more details on filtering FinBIF
 records.
+
+### Random sampling
+It is possible to request a random sample of records instead of the last `n`
+records (or records ordered by some other variable).
+```{r random-sample, eval = FALSE}
+finbif_occurrence("Birds", sample = TRUE)
+```
+```{r random-sample-eval, echo = FALSE, cache = TRUE}
+details::details(
+  finbif_occurrence("Birds", sample = TRUE),
+  summary = "Click to show/hide output.", tooltip = NULL
+)
+```
 
 ## Plotting occurrence data
 The `finbif` package has a number of inbuilt functions for plotting (see e.g.,
@@ -154,7 +167,7 @@ jays <- finbif_occurrence(
   taxa   = "Eurasian Jay",
   filter = c(
     coordinates_uncertainty_max = 100,
-    country                 = "Finland"
+    country                     = "Finland"
   ),
   n      = 2e4,
   quiet  = TRUE

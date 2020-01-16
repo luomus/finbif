@@ -324,54 +324,84 @@
 <a class="sourceLine" id="cb13-21" data-line-number="21">collection_reliability, coordinates_uncertainty, event_issue,</a>
 <a class="sourceLine" id="cb13-22" data-line-number="22">location_issue, time_issue, duration</a></code></pre></div>
 </details><p><br></p>
-<p>See <code><a href="../reference/filters.html">?filters</a></code> and <code>vignette("filtering")</code> for more details on filtering FinBIF records.</p>
+<p>See <code><a href="../reference/filters.html">?filters</a></code> and <code>vignette("v0_filtering")</code> for more details on filtering FinBIF records.</p>
+<div id="random-sampling" class="section level3">
+<h3 class="hasAnchor">
+<a href="#random-sampling" class="anchor"></a>Random sampling</h3>
+<p>It is possible to request a random sample of records instead of the last <code>n</code> records (or records ordered by some other variable).</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Birds"</span>, <span class="dt">sample =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">Records downloaded<span class="op">:</span><span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">Records available<span class="op">:</span><span class="st"> </span><span class="dv">17751448</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">A data.frame [<span class="dv">10</span> x <span class="dv">30</span>]</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">        scientific_name abundance lat_wgs84 lon_wgs84           date_time</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="dv">1</span>    Erithacus rubecula         <span class="dv">1</span>  <span class="fl">60.47356</span>  <span class="fl">27.44691</span> <span class="dv">2007-09-01</span> <span class="dv">04</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="dv">2</span>      Numenius arquata         <span class="dv">1</span>  <span class="fl">59.81111</span>  <span class="fl">22.89545</span> <span class="dv">2008-09-01</span> <span class="dv">21</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="dv">3</span>     Falco tinnunculus         <span class="dv">1</span>  <span class="fl">60.61667</span>  <span class="fl">22.93333</span> <span class="dv">2012-06-29</span> <span class="dv">13</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="dv">4</span>  Corvus corone cornix         <span class="dv">1</span>  <span class="fl">62.70686</span>  <span class="fl">22.02384</span> <span class="dv">1985-06-10</span> <span class="dv">01</span><span class="op">:</span><span class="dv">20</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="dv">5</span>    Ficedula hypoleuca         <span class="dv">1</span>  <span class="fl">69.01667</span>  <span class="fl">20.86667</span> <span class="dv">1973-06-29</span> <span class="dv">23</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="dv">6</span>      Acanthis flammea         <span class="dv">1</span>  <span class="fl">60.82859</span>  <span class="fl">24.25148</span> <span class="dv">1999-12-31</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="dv">7</span>  Phylloscopus trochi…         <span class="dv">1</span>  <span class="fl">64.80000</span>  <span class="fl">24.63333</span> <span class="dv">1993-06-01</span> <span class="dv">21</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="dv">8</span>         Turdus merula         <span class="dv">1</span>  <span class="fl">60.63333</span>  <span class="fl">22.41667</span> <span class="dv">2001-02-18</span> <span class="dv">06</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb15-14" data-line-number="14"><span class="dv">9</span>  Phylloscopus trochi…         <span class="dv">1</span>  <span class="fl">60.19879</span>  <span class="fl">24.81963</span> <span class="dv">2004-09-11</span> <span class="dv">03</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb15-15" data-line-number="15"><span class="dv">10</span>  Aegithalos caudatus         <span class="dv">1</span>  <span class="fl">59.88393</span>  <span class="fl">22.54163</span> <span class="dv">1999-12-31</span> <span class="dv">22</span><span class="op">:</span><span class="dv">00</span><span class="op">:</span><span class="dv">00</span></a>
+<a class="sourceLine" id="cb15-16" data-line-number="16">...with <span class="dv">0</span> more records and <span class="dv">25</span> more variables<span class="op">:</span></a>
+<a class="sourceLine" id="cb15-17" data-line-number="17">taxon_rank, country, province, municipality, date_start, date_end,</a>
+<a class="sourceLine" id="cb15-18" data-line-number="18">hour_start, hour_end, minute_start, minute_end, record_id,</a>
+<a class="sourceLine" id="cb15-19" data-line-number="19">individual_id, event_id, collection_id, any_issues, record_issue,</a>
+<a class="sourceLine" id="cb15-20" data-line-number="20">record_reliable, taxon_reliability, document_issue,</a>
+<a class="sourceLine" id="cb15-21" data-line-number="21">collection_reliability, coordinates_uncertainty, event_issue,</a>
+<a class="sourceLine" id="cb15-22" data-line-number="22">location_issue, time_issue, duration</a></code></pre></div>
+</details><p><br></p>
+</div>
 </div>
 <div id="plotting-occurrence-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plotting-occurrence-data" class="anchor"></a>Plotting occurrence data</h2>
 <p>The <code>finbif</code> package has a number of inbuilt functions for plotting (see e.g., <code><a href="../reference/breaks_xy.html">breaks_xy()</a></code> and <code><a href="../reference/hist_xy.html">hist_xy()</a></code>). There is also an inbuilt dataset that can be used to plot the border of Finland (<code><a href="../reference/finland_map.html">?finland_map</a></code>). Together these utilities can be used to plot occurrences after they have been downloaded from FinBIF. For example, the following can be used to plot the density of Eurasian Jay occurrences from Finland.</p>
 <details closed><p><summary><span title="">Click to show/hide code.</span></summary></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># Download all the occurrences of Eurasian Jay in Finland</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># that have coordinates accurate to at least 100m</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">jays &lt;-<span class="st"> </span><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">  <span class="dt">taxa   =</span> <span class="st">"Eurasian Jay"</span>,</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">  <span class="dt">filter =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">    <span class="dt">coordinates_uncertainty_max =</span> <span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">    <span class="dt">country                 =</span> <span class="st">"Finland"</span></a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">  ),</a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">  <span class="dt">n      =</span> <span class="fl">2e4</span>,</a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">  <span class="dt">quiet  =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb14-11" data-line-number="11">)</a>
-<a class="sourceLine" id="cb14-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="co"># Compute the density of occurrences in 1/4 degree cells and plot as a heatmap</span></a>
-<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="kw"><a href="https://rdrr.io/r/base/with.html">with</a></span>(</a>
-<a class="sourceLine" id="cb14-15" data-line-number="15">  <span class="dt">data =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(jays, finland_map),</a>
-<a class="sourceLine" id="cb14-16" data-line-number="16">  <span class="dt">expr =</span> {</a>
-<a class="sourceLine" id="cb14-17" data-line-number="17">    <span class="kw"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(<span class="dt">mar =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">las =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb14-18" data-line-number="18">    <span class="co"># compute a 2d histogram from the occurrences</span></a>
-<a class="sourceLine" id="cb14-19" data-line-number="19">    breaks  &lt;-<span class="st"> </span><span class="kw"><a href="../reference/breaks_xy.html">breaks_xy</a></span>(bbox, <span class="fl">.25</span>) <span class="co"># breakpoints every 1/4 of a degree</span></a>
-<a class="sourceLine" id="cb14-20" data-line-number="20">    density &lt;-<span class="st"> </span><span class="kw"><a href="../reference/hist_xy.html">hist_xy</a></span>(<span class="dt">xy =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(lon_wgs84, lat_wgs84), breaks)</a>
-<a class="sourceLine" id="cb14-21" data-line-number="21">    <span class="co"># plot the histogram as a heatmap</span></a>
-<a class="sourceLine" id="cb14-22" data-line-number="22">    <span class="kw"><a href="https://rdrr.io/r/graphics/image.html">image</a></span>(density,</a>
-<a class="sourceLine" id="cb14-23" data-line-number="23">          <span class="dt">asp    =</span> <span class="fl">2.4</span>,</a>
-<a class="sourceLine" id="cb14-24" data-line-number="24">          <span class="dt">breaks =</span> <span class="dv">2</span><span class="op">^</span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="dv">0</span>, <span class="dv">12</span>), <span class="co"># breakpoints for the gridcell colours</span></a>
-<a class="sourceLine" id="cb14-25" data-line-number="25">          <span class="dt">col    =</span> <span class="kw"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span>(<span class="dv">12</span>, <span class="dt">rev =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb14-26" data-line-number="26">          <span class="dt">xlab   =</span> <span class="st">"Longitude"</span>,</a>
-<a class="sourceLine" id="cb14-27" data-line-number="27">          <span class="dt">ylab   =</span> <span class="st">"Latitude"</span>,</a>
-<a class="sourceLine" id="cb14-28" data-line-number="28">          <span class="dt">panel.first =</span> <span class="kw"><a href="https://rdrr.io/r/graphics/grid.html">grid</a></span>())</a>
-<a class="sourceLine" id="cb14-29" data-line-number="29">    <span class="kw"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span>(<span class="st">"topright"</span>,</a>
-<a class="sourceLine" id="cb14-30" data-line-number="30">           <span class="dt">inset  =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="fl">.01</span>),</a>
-<a class="sourceLine" id="cb14-31" data-line-number="31">           <span class="dt">legend =</span> <span class="kw"><a href="https://rdrr.io/r/base/expression.html">expression</a></span>(<span class="dv">2</span><span class="op">^</span><span class="dv">12</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="dv">2</span><span class="op">^</span><span class="dv">6</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="dv">2</span><span class="op">^</span><span class="dv">0</span>),</a>
-<a class="sourceLine" id="cb14-32" data-line-number="32">           <span class="dt">fill   =</span> <span class="kw"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span>(<span class="dv">7</span>),</a>
-<a class="sourceLine" id="cb14-33" data-line-number="33">           <span class="dt">border =</span> <span class="ot">NA</span>,</a>
-<a class="sourceLine" id="cb14-34" data-line-number="34">           <span class="dt">bty    =</span> <span class="st">"n"</span>,</a>
-<a class="sourceLine" id="cb14-35" data-line-number="35">           <span class="dt">adj    =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="fl">0.25</span>), </a>
-<a class="sourceLine" id="cb14-36" data-line-number="36">           <span class="dt">x.intersp =</span> <span class="fl">.2</span>,</a>
-<a class="sourceLine" id="cb14-37" data-line-number="37">           <span class="dt">y.intersp =</span> <span class="fl">.5</span>)</a>
-<a class="sourceLine" id="cb14-38" data-line-number="38">    <span class="co"># add the Finnish border</span></a>
-<a class="sourceLine" id="cb14-39" data-line-number="39">    <span class="kw"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span>(<span class="dt">x =</span> vertices, <span class="dt">lwd =</span> <span class="fl">.2</span>)</a>
-<a class="sourceLine" id="cb14-40" data-line-number="40">  }</a>
-<a class="sourceLine" id="cb14-41" data-line-number="41">)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># Download all the occurrences of Eurasian Jay in Finland</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># that have coordinates accurate to at least 100m</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">jays &lt;-<span class="st"> </span><span class="kw"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">  <span class="dt">taxa   =</span> <span class="st">"Eurasian Jay"</span>,</a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">  <span class="dt">filter =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">    <span class="dt">coordinates_uncertainty_max =</span> <span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">    <span class="dt">country                     =</span> <span class="st">"Finland"</span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">  ),</a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">  <span class="dt">n      =</span> <span class="fl">2e4</span>,</a>
+<a class="sourceLine" id="cb16-10" data-line-number="10">  <span class="dt">quiet  =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb16-11" data-line-number="11">)</a>
+<a class="sourceLine" id="cb16-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="co"># Compute the density of occurrences in 1/4 degree cells and plot as a heatmap</span></a>
+<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="kw"><a href="https://rdrr.io/r/base/with.html">with</a></span>(</a>
+<a class="sourceLine" id="cb16-15" data-line-number="15">  <span class="dt">data =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(jays, finland_map),</a>
+<a class="sourceLine" id="cb16-16" data-line-number="16">  <span class="dt">expr =</span> {</a>
+<a class="sourceLine" id="cb16-17" data-line-number="17">    <span class="kw"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(<span class="dt">mar =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">las =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb16-18" data-line-number="18">    <span class="co"># compute a 2d histogram from the occurrences</span></a>
+<a class="sourceLine" id="cb16-19" data-line-number="19">    breaks  &lt;-<span class="st"> </span><span class="kw"><a href="../reference/breaks_xy.html">breaks_xy</a></span>(bbox, <span class="fl">.25</span>) <span class="co"># breakpoints every 1/4 of a degree</span></a>
+<a class="sourceLine" id="cb16-20" data-line-number="20">    density &lt;-<span class="st"> </span><span class="kw"><a href="../reference/hist_xy.html">hist_xy</a></span>(<span class="dt">xy =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(lon_wgs84, lat_wgs84), breaks)</a>
+<a class="sourceLine" id="cb16-21" data-line-number="21">    <span class="co"># plot the histogram as a heatmap</span></a>
+<a class="sourceLine" id="cb16-22" data-line-number="22">    <span class="kw"><a href="https://rdrr.io/r/graphics/image.html">image</a></span>(density,</a>
+<a class="sourceLine" id="cb16-23" data-line-number="23">          <span class="dt">asp    =</span> <span class="fl">2.4</span>,</a>
+<a class="sourceLine" id="cb16-24" data-line-number="24">          <span class="dt">breaks =</span> <span class="dv">2</span><span class="op">^</span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="dv">0</span>, <span class="dv">12</span>), <span class="co"># breakpoints for the gridcell colours</span></a>
+<a class="sourceLine" id="cb16-25" data-line-number="25">          <span class="dt">col    =</span> <span class="kw"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span>(<span class="dv">12</span>, <span class="dt">rev =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb16-26" data-line-number="26">          <span class="dt">xlab   =</span> <span class="st">"Longitude"</span>,</a>
+<a class="sourceLine" id="cb16-27" data-line-number="27">          <span class="dt">ylab   =</span> <span class="st">"Latitude"</span>,</a>
+<a class="sourceLine" id="cb16-28" data-line-number="28">          <span class="dt">panel.first =</span> <span class="kw"><a href="https://rdrr.io/r/graphics/grid.html">grid</a></span>())</a>
+<a class="sourceLine" id="cb16-29" data-line-number="29">    <span class="kw"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span>(<span class="st">"topright"</span>,</a>
+<a class="sourceLine" id="cb16-30" data-line-number="30">           <span class="dt">inset  =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="fl">.01</span>),</a>
+<a class="sourceLine" id="cb16-31" data-line-number="31">           <span class="dt">legend =</span> <span class="kw"><a href="https://rdrr.io/r/base/expression.html">expression</a></span>(<span class="dv">2</span><span class="op">^</span><span class="dv">12</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="dv">2</span><span class="op">^</span><span class="dv">6</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="dv">2</span><span class="op">^</span><span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb16-32" data-line-number="32">           <span class="dt">fill   =</span> <span class="kw"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span>(<span class="dv">7</span>),</a>
+<a class="sourceLine" id="cb16-33" data-line-number="33">           <span class="dt">border =</span> <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb16-34" data-line-number="34">           <span class="dt">bty    =</span> <span class="st">"n"</span>,</a>
+<a class="sourceLine" id="cb16-35" data-line-number="35">           <span class="dt">adj    =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="fl">0.25</span>), </a>
+<a class="sourceLine" id="cb16-36" data-line-number="36">           <span class="dt">x.intersp =</span> <span class="fl">.2</span>,</a>
+<a class="sourceLine" id="cb16-37" data-line-number="37">           <span class="dt">y.intersp =</span> <span class="fl">.5</span>)</a>
+<a class="sourceLine" id="cb16-38" data-line-number="38">    <span class="co"># add the Finnish border</span></a>
+<a class="sourceLine" id="cb16-39" data-line-number="39">    <span class="kw"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span>(<span class="dt">x =</span> vertices, <span class="dt">lwd =</span> <span class="fl">.2</span>)</a>
+<a class="sourceLine" id="cb16-40" data-line-number="40">  }</a>
+<a class="sourceLine" id="cb16-41" data-line-number="41">)</a></code></pre></div>
 </details><p><img src="figure/plot-occurrences-eval-1.png"></p>
 </div>
 <div id="caching" class="section level2">
