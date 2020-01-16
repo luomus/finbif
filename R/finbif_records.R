@@ -33,7 +33,7 @@
 
 finbif_records <- function(
   filter, select, order_by, sample = FALSE, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE, cache = TRUE
+  count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache")
 ) {
 
   max_queries  <- 2000L

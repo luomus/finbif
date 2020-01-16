@@ -19,8 +19,10 @@
 #' }
 #' @export
 
-finbif_taxa <- function(name, n = 1, type = c("exact", "partial", "likely"),
-  cache = TRUE) {
+finbif_taxa <- function(
+  name, n = 1, type = c("exact", "partial", "likely"),
+  cache = getOption("finbif_use_cache")
+) {
   path <- "taxa/search"
   type <- match.arg(type)
   query <- list(query = name, matchType = type, limit = n)

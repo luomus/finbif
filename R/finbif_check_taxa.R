@@ -29,7 +29,7 @@
 #' }
 #' @export
 
-finbif_check_taxa <- function(taxa, cache = TRUE) {
+finbif_check_taxa <- function(taxa, cache = getOption("finbif_use_cache")) {
   taxa <- as.list(taxa)
   out <- taxa
   for (i in seq_along(taxa)) {

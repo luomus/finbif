@@ -146,7 +146,8 @@
   <span class='kw'>subcollections</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>supercollections</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>lang</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"en"</span>, <span class='st'>"fi"</span>, <span class='st'>"sv"</span>),
-  <span class='kw'>nmin</span> <span class='kw'>=</span> <span class='fl'>0</span>
+  <span class='kw'>nmin</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_use_cache"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -159,7 +160,7 @@ missing values are taken as false.</p></td>
     </tr>
     <tr>
       <th>select</th>
-      <td><p>Expression. Indicates columns to select from the data frame.#'</p></td>
+      <td><p>Expression. Indicates columns to select from the data frame.</p></td>
     </tr>
     <tr>
       <th>subcollections</th>
@@ -179,6 +180,10 @@ collections.</p></td>
       <td><p>Integer. Filter collections by number of records. Only return
 information on collections with greater than value specified. If <code>NA</code> then
 return information on all collections.</p></td>
+    </tr>
+    <tr>
+      <th>cache</th>
+      <td><p>Logical. Use cached data.</p></td>
     </tr>
     </table>
 

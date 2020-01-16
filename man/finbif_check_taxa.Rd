@@ -4,7 +4,7 @@
 \alias{finbif_check_taxa}
 \title{Check FinBIF taxa}
 \usage{
-finbif_check_taxa(taxa, cache = TRUE)
+finbif_check_taxa(taxa, cache = getOption("finbif_use_cache"))
 }
 \arguments{
 \item{taxa}{Character (or list of named character) vector(s). If a list each

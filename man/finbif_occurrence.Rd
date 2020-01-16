@@ -14,7 +14,7 @@ finbif_occurrence(
   page = 1,
   count_only = FALSE,
   quiet = FALSE,
-  cache = TRUE,
+  cache = getOption("finbif_use_cache"),
   check_taxa = TRUE,
   on_check_fail = c("warn", "error", "quiet"),
   date_time = TRUE,

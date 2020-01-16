@@ -4,7 +4,7 @@
 #'
 #' @param filter Logical. Expression indicating elements or rows to keep:
 #'   missing values are taken as false.
-#' @param select Expression. Indicates columns to select from the data frame.#'
+#' @param select Expression. Indicates columns to select from the data frame.
 #' @param subcollections Logical. Return subcollection metadata of higher level
 #'   collections.
 #' @param supercollections Logical. Return lowest level collection metadata.
@@ -12,6 +12,7 @@
 #' @param nmin Integer. Filter collections by number of records. Only return
 #'   information on collections with greater than value specified. If `NA` then
 #'   return information on all collections.
+#' @param cache Logical. Use cached data.
 #' @return A data.frame.
 #' @examples \dontrun{
 #'
@@ -22,7 +23,7 @@
 #' @export
 finbif_collections <- function(
   filter, select, subcollections = TRUE, supercollections = FALSE,
-  lang = c("en", "fi", "sv"), nmin = 0
+  lang = c("en", "fi", "sv"), nmin = 0, cache = getOption("finbif_use_cache")
 ) {
 
   lang <- match.arg(lang)
@@ -31,7 +32,9 @@ finbif_collections <- function(
   swagger <-
     jsonlite::fromJSON(httr::content(swagger, "text"), simplifyVector = FALSE)
   col_md_nms <- names(swagger[["definitions"]][["Collection"]][["properties"]])
-  col_md <- get_collections(list(lang = lang), "collections", col_md_nms, "id")
+  col_md <- get_collections(
+    list(lang = lang), "collections", col_md_nms, "id", cache
+  )
 
   col_count_nms <- names(
     swagger[["definitions"]][["DwQuery_AggregateRow"]][["properties"]]
@@ -41,7 +44,7 @@ finbif_collections <- function(
       aggregateBy = "document.collectionId", onlyCount = FALSE,
       pessimisticDateRangeHandling = TRUE
     ),
-    "warehouse/query/aggregate", col_count_nms, "aggregateBy"
+    "warehouse/query/aggregate", col_count_nms, "aggregateBy", cache
   )
 
   collections <-
@@ -102,14 +105,14 @@ finbif_collections <- function(
 
 }
 
-get_collections <- function(qry, path, nms, id) {
+get_collections <- function(qry, path, nms, id, cache) {
   qry <- c(qry, list(page = 0L, pageSize = 1000L))
   collections <- list()
   total <- 1L
 
   while (total > qry[["page"]] * qry[["pageSize"]]) {
     qry[["page"]] <- qry[["page"]] + 1L
-    collections[[qry[["page"]]]] <- finbif_api_get(path, qry, TRUE)
+    collections[[qry[["page"]]]] <- finbif_api_get(path, qry, cache)
     total <- collections[[qry[["page"]]]][["content"]][["total"]]
   }
 

@@ -10,14 +10,15 @@ finbif_collections(
   subcollections = TRUE,
   supercollections = FALSE,
   lang = c("en", "fi", "sv"),
-  nmin = 0
+  nmin = 0,
+  cache = getOption("finbif_use_cache")
 )
 }
 \arguments{
 \item{filter}{Logical. Expression indicating elements or rows to keep:
 missing values are taken as false.}
 
-\item{select}{Expression. Indicates columns to select from the data frame.#'}
+\item{select}{Expression. Indicates columns to select from the data frame.}
 
 \item{subcollections}{Logical. Return subcollection metadata of higher level
 collections.}
@@ -29,6 +30,8 @@ collections.}
 \item{nmin}{Integer. Filter collections by number of records. Only return
 information on collections with greater than value specified. If \code{NA} then
 return information on all collections.}
+
+\item{cache}{Logical. Use cached data.}
 }
 \value{
 A data.frame.

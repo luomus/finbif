@@ -20,7 +20,7 @@ finbif_api_get <- function(path, query, cache) {
   url <- getOption("finbif_api_url")
   version <- getOption("finbif_api_version")
 
-  if (getOption("finbif_use_cache") && cache) {
+  if (cache) {
     hash <- digest::digest(list(url, version, path, query))
     fcp <- getOption("finbif_cache_path")
     fcp <- if (is.null(fcp)) tempdir()

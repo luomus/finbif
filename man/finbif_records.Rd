@@ -13,7 +13,7 @@ finbif_records(
   page = 1,
   count_only = FALSE,
   quiet = FALSE,
-  cache = TRUE
+  cache = getOption("finbif_use_cache")
 )
 }
 \arguments{
