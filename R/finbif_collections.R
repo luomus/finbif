@@ -44,7 +44,7 @@ finbif_collections <- function(
       aggregateBy = "document.collectionId", onlyCount = FALSE,
       pessimisticDateRangeHandling = TRUE
     ),
-    "warehouse/query/aggregate", col_count_nms, "aggregateBy", cache
+    "warehouse/query/unit/aggregate", col_count_nms, "aggregateBy", cache
   )
 
   collections <-

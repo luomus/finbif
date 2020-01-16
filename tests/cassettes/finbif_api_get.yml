@@ -1,10 +1,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_token>
     body:
       encoding: ''
-      string: ''
+      string: no
     headers:
       Accept: application/json
   response:
@@ -14,6 +14,10 @@ http_interactions:
       reason: Bad Request
       message: 'Client error: (400) Bad Request'
     headers:
+      server: nginx/1.16.1
+      date: Thu, 16 Jan 2020 11:22:21 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-xss-protection: 1; mode=block
@@ -21,24 +25,21 @@ http_interactions:
       strict-transport-security: max-age=0; includeSubDomains
       x-download-options: noopen
       x-content-type-options: nosniff
-      date: Mon, 19 Aug 2019 13:15:23 GMT
-      server: Apache-Coyote/1.1
-      content-type: application/json;charset=utf-8
       via: 1.1 dw.laji.fi
-      transfer-encoding: chunked
       vary: Accept-Encoding
       content-encoding: gzip
     body:
       encoding: ASCII-8BIT
+      file: no
       string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX3ZhciJ9
-  recorded_at: 2019-08-19 13:15:30 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.4.0
+  recorded_at: 2020-01-16 11:22:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/list?format=xml&page=1&pageSize=1&selected=unit.unitId&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?format=xml&page=1&pageSize=1&selected=unit.unitId&access_token=<finbif_token>
     body:
       encoding: ''
-      string: ''
+      string: no
     headers:
       Accept: application/json
   response:
@@ -48,6 +49,10 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
+      server: nginx/1.16.1
+      date: Thu, 16 Jan 2020 11:22:22 GMT
+      content-type: application/xml;charset=utf-8
+      transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-xss-protection: 1; mode=block
@@ -55,15 +60,13 @@ http_interactions:
       strict-transport-security: max-age=0; includeSubDomains
       x-download-options: noopen
       x-content-type-options: nosniff
-      date: Mon, 19 Aug 2019 13:15:29 GMT
-      server: Apache-Coyote/1.1
-      content-type: application/xml;charset=utf-8
       via: 1.1 dw.laji.fi
-      transfer-encoding: chunked
       vary: Accept-Encoding
       content-encoding: gzip
+      cache-control: public
     body:
       encoding: ASCII-8BIT
-      string: PHJlc3BvbnNlPjxjdXJyZW50UGFnZT4xPC9jdXJyZW50UGFnZT48bmV4dFBhZ2U+MjwvbmV4dFBhZ2U+PGxhc3RQYWdlPjMyMjYwOTIzPC9sYXN0UGFnZT48cGFnZVNpemU+MTwvcGFnZVNpemU+PHRvdGFsPjMyMjYwOTIzPC90b3RhbD48cmVzdWx0cz48dW5pdD48dW5pdElkPmh0dHA6Ly90dW4uZmkvSlguMTAyMjU2NiM0PC91bml0SWQ+PC91bml0PjwvcmVzdWx0cz48L3Jlc3BvbnNlPg==
-  recorded_at: 2019-08-19 13:15:30 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.4.0
+      file: no
+      string: PHJlc3BvbnNlPjxjdXJyZW50UGFnZT4xPC9jdXJyZW50UGFnZT48bmV4dFBhZ2U+MjwvbmV4dFBhZ2U+PGxhc3RQYWdlPjM0MjA4NDAxPC9sYXN0UGFnZT48cGFnZVNpemU+MTwvcGFnZVNpemU+PHRvdGFsPjM0MjA4NDAxPC90b3RhbD48cmVzdWx0cz48dW5pdD48dW5pdElkPmh0dHA6Ly90dW4uZmkvSlguMTA1NzM1MyM3PC91bml0SWQ+PC91bml0PjwvcmVzdWx0cz48L3Jlc3BvbnNlPg==
+  recorded_at: 2020-01-16 11:22:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

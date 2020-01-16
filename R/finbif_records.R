@@ -133,7 +133,7 @@ request <- function(
   select_, record_id_selected
 ) {
 
-  path <- "warehouse/query/"
+  path <- "warehouse/query/unit/"
 
   if (count_only) {
 

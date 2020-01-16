@@ -6,7 +6,7 @@ var_names <- read.csv(
 
 vars <- httr::GET("https://api.laji.fi/explorer/swagger.json")
 vars <- jsonlite::fromJSON(httr::content(vars, "text"), simplifyVector = FALSE)
-vars <- vars[["paths"]][["/warehouse/query/list"]][["get"]][["parameters"]]
+vars <- vars[["paths"]][["/warehouse/query/unit/list"]][["get"]][["parameters"]]
 
 select_vars <- vars[[which(vapply(vars, getElement, "", "name") == "selected")]]
 select_vars <- unlist(select_vars[["items"]][["enum"]])

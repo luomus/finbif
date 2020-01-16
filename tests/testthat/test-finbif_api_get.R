@@ -23,7 +23,7 @@ vcr::use_cassette(
 
         expect_error(
           finbif_api_get(
-            path = "warehouse/query/list",
+            path = "warehouse/query/unit/list",
             query = list(page = 1, pageSize = 1, selected = "not_a_var"),
             cache = TRUE
           ),
@@ -40,7 +40,7 @@ vcr::use_cassette(
 
         expect_error(
           finbif_api_get(
-            path = "warehouse/query/list",
+            path = "warehouse/query/unit/list",
             query = list(
               format = "xml", page = 1, pageSize = 1, selected = "unit.unitId"
             ),
