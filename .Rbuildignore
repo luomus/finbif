@@ -17,3 +17,4 @@
 ^vignettes/figure$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
+^\.zenodo\.json$
