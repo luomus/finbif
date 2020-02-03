@@ -32,8 +32,8 @@ LazyData: true
 Depends: R (>= 3.5.0)
 Imports:
     digest,
-    httr,
     graphics,
+    httr,
     jsonlite,
     lubridate,
     lutz,
@@ -47,8 +47,8 @@ Suggests:
     details,
     ISOcodes,
     knitr,
-    rmarkdown,
     ows4R,
+    rmarkdown,
     sf,
     stats,
     testthat (>= 2.1.0),
