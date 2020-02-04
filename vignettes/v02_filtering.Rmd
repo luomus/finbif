@@ -49,19 +49,19 @@ finbif_occurrence(filter = list(date_range_ym = c("2019-12")))
 ```r
 
 Records downloaded: 10
-Records available: 7150
+Records available: 7535
 A data.frame [10 x 30]
-       scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1            Pica pica         6   62.7154   23.0893 2019-12-31 08:15:00
-2     Poecile montanus         1   62.7154   23.0893 2019-12-31 08:15:00
-3    Dendrocopos major         2   62.7154   23.0893 2019-12-31 08:15:00
-4      Corvus monedula         8   62.7154   23.0893 2019-12-31 08:15:00
-5      Passer montanus        11   62.7154   23.0893 2019-12-31 08:15:00
-6  Cyanistes caeruleus         5   62.7154   23.0893 2019-12-31 08:15:00
-7          Parus major        20   62.7154   23.0893 2019-12-31 08:15:00
-8     Acanthis flammea        12   62.7154   23.0893 2019-12-31 08:15:00
-9    Passer domesticus        22   62.7154   23.0893 2019-12-31 08:15:00
-10     Chloris chloris         6   62.7154   23.0893 2019-12-31 08:15:00
+        scientific_name abundance lat_wgs84 lon_wgs84           date_time
+1   Lactarius flexuosus         1  60.42775  22.21529 2019-12-30 22:00:00
+2  Thelephora terrestr…         1  64.97222  25.20148 2019-12-30 22:00:00
+3   Phasianus colchicus         5  64.11199  24.43127 2019-12-31 07:15:00
+4             Pica pica        27  64.11199  24.43127 2019-12-31 07:15:00
+5           Picus canus         1  64.11199  24.43127 2019-12-31 07:15:00
+6      Poecile montanus         1  64.11199  24.43127 2019-12-31 07:15:00
+7  Fringilla montifrin…        38  64.11199  24.43127 2019-12-31 07:15:00
+8   Emberiza citrinella        25  64.11199  24.43127 2019-12-31 07:15:00
+9  Columba livia domes…         7  64.11199  24.43127 2019-12-31 07:15:00
+10         Corvus corax         1  64.11199  24.43127 2019-12-31 07:15:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -89,19 +89,19 @@ finbif_occurrence(
 ```r
 
 Records downloaded: 10
-Records available: 227693
+Records available: 238000
 A data.frame [10 x 30]
-       scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1            Pica pica         6   62.7154   23.0893 2019-12-31 08:15:00
-2     Poecile montanus         1   62.7154   23.0893 2019-12-31 08:15:00
-3    Dendrocopos major         2   62.7154   23.0893 2019-12-31 08:15:00
-4      Corvus monedula         8   62.7154   23.0893 2019-12-31 08:15:00
-5      Passer montanus        11   62.7154   23.0893 2019-12-31 08:15:00
-6  Cyanistes caeruleus         5   62.7154   23.0893 2019-12-31 08:15:00
-7          Parus major        20   62.7154   23.0893 2019-12-31 08:15:00
-8     Acanthis flammea        12   62.7154   23.0893 2019-12-31 08:15:00
-9    Passer domesticus        22   62.7154   23.0893 2019-12-31 08:15:00
-10     Chloris chloris         6   62.7154   23.0893 2019-12-31 08:15:00
+        scientific_name abundance lat_wgs84 lon_wgs84           date_time
+1   Lactarius flexuosus         1  60.42775  22.21529 2019-12-30 22:00:00
+2  Thelephora terrestr…         1  64.97222  25.20148 2019-12-30 22:00:00
+3   Phasianus colchicus         5  64.11199  24.43127 2019-12-31 07:15:00
+4             Pica pica        27  64.11199  24.43127 2019-12-31 07:15:00
+5           Picus canus         1  64.11199  24.43127 2019-12-31 07:15:00
+6      Poecile montanus         1  64.11199  24.43127 2019-12-31 07:15:00
+7  Fringilla montifrin…        38  64.11199  24.43127 2019-12-31 07:15:00
+8   Emberiza citrinella        25  64.11199  24.43127 2019-12-31 07:15:00
+9  Columba livia domes…         7  64.11199  24.43127 2019-12-31 07:15:00
+10         Corvus corax         1  64.11199  24.43127 2019-12-31 07:15:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -132,19 +132,19 @@ finbif_occurrence(
 ```r
 
 Records downloaded: 10
-Records available: 1471374
+Records available: 1477846
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1                  <NA>         1  60.66508  23.60832 2020-01-14 08:47:00
-2                  <NA>         1  60.66508  23.60832 2020-01-14 08:47:00
-3   Fomitopsis pinicola         1  64.97964  25.52697 2020-01-13 22:00:00
-4  Basidioradulum radu…         1  64.97964  25.52697 2020-01-13 22:00:00
-5  Trichaptum abietinum         1  64.97964  25.52697 2020-01-13 22:00:00
-6     Inonotus obliquus         1  64.97964  25.52697 2020-01-13 22:00:00
-7     Dendrocopos major         2  60.42794  22.20052 2020-01-13 22:00:00
-8         Turdus merula         1  60.42794  22.20052 2020-01-13 22:00:00
-9     Pyrrhula pyrrhula         1  60.42794  22.20052 2020-01-13 22:00:00
-10  Carduelis carduelis         1  60.42794  22.20052 2020-01-13 22:00:00
+1    Anas platyrhynchos        30  60.17824  24.94096 2020-02-03 22:00:00
+2           Cygnus olor         1  60.17824  24.94096 2020-02-03 22:00:00
+3  Climacodon septentr…         1  60.17038  24.92525 2020-02-03 13:30:00
+4  Ganoderma applanatum        15  60.17038  24.92525 2020-02-03 13:30:00
+5  Schizophyllum commu…         1  60.17038  24.92525 2020-02-03 14:00:00
+6       Stereum rugosum         1  60.17038  24.92525 2020-02-03 13:30:00
+7  Illosporiopsis chri…         1  62.25377  25.71431 2020-02-02 22:00:00
+8  Ceriporiopsis pseud…         1  62.24950  25.72421 2020-02-02 22:00:00
+9     Cetraria pinastri         1  62.25758  25.71175 2020-02-02 22:00:00
+10 Parmeliopsis ambigua         1  62.25758  25.71175 2020-02-02 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -176,7 +176,7 @@ c(
   permissive = finbif_occurrence(filter = permissive, count_only = TRUE)
 )
 #>     strict permissive 
-#>     300819   31096863
+#>     301715   31126045
 ```
 
 ## Collection
@@ -192,7 +192,7 @@ finbif_occurrence(
 finbif_occurrence(
   filter = c(collection = "Notebook, general observations"), count_only = TRUE
 )
-#> [1] 585342
+#> [1] 600173
 ```
 
 ## Informal taxonomic groups
@@ -208,19 +208,19 @@ finbif_occurrence(filter = list(informal_group = c("Birds", "Mammals")))
 ```r
 
 Records downloaded: 10
-Records available: 17895168
+Records available: 17928640
 A data.frame [10 x 30]
-        scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1    Bucephala clangula         6  61.03523  26.13556 2020-01-07 22:00:00
-2         Cygnus cygnus        30  61.03529  26.13553 2020-01-07 22:00:00
-3  Apodemus flavicollis         1  60.43997  22.37462 2020-01-07 22:00:00
-4        Sitta europaea         1  61.04351  26.17732 2020-01-07 22:00:00
-5         Spinus spinus         2  60.88937  26.44874 2020-01-06 22:00:00
-6         Cygnus cygnus        26  60.93560  26.37433 2020-01-06 22:00:00
-7      Mergus merganser        70  60.96558  26.42339 2020-01-06 22:00:00
-8       Melanitta nigra         1  60.96561  26.42340 2020-01-06 22:00:00
-9  Fringilla montifrin…        46  60.94323  26.43148 2020-01-06 22:00:00
-10         Surnia ulula         1  60.99228  26.43129 2020-01-06 22:00:00
+      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+1  Anas platyrhynchos        30  60.17824  24.94096 2020-02-03 22:00:00
+2         Cygnus olor         1  60.17824  24.94096 2020-02-03 22:00:00
+3       Vulpes vulpes         1  60.82982  21.26534 2020-02-03 14:30:00
+4       Lepus timidus         1  60.79142  21.34777 2020-02-03 04:00:00
+5     Corvus monedula       120  60.43522  22.36280 2020-02-02 22:00:00
+6           Pica pica         5  60.42794  22.20052 2020-02-02 22:00:00
+7    Larus argentatus        10  60.42794  22.20052 2020-02-02 22:00:00
+8    Mergus merganser         1  60.42794  22.20052 2020-02-02 22:00:00
+9    Mergus merganser         1  60.42794  22.20052 2020-02-02 22:00:00
+10        Larus canus         2  60.42794  22.20052 2020-02-02 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -315,7 +315,7 @@ finbif_occurrence(
 ```r
 
 Records downloaded: 10
-Records available: 1645
+Records available: 1646
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
 1  Rangifer tarandus f…         4  64.42648  29.11431 2019-10-19 21:00:00
@@ -373,19 +373,19 @@ finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 ```r
 
 Records downloaded: 10
-Records available: 19443255
+Records available: 19489322
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1  Apodemus flavicollis         1  60.43997  22.37462 2020-01-07 22:00:00
-2        Sitta europaea         1  61.04351  26.17732 2020-01-07 22:00:00
-3  Acanthosoma haemorr…         1  60.80671  26.74877 2020-01-07 22:00:00
-4   Anthocoris confusus         1  60.80671  26.74877 2020-01-07 22:00:00
-5  Scolopostethus thom…         1  60.80671  26.74877 2020-01-07 22:00:00
-6      Antrodia sinuosa         1  63.15110  21.66860 2020-01-06 22:00:00
-7  Phyllotopsis nidula…         1  63.15150  21.67020 2020-01-06 22:00:00
-8  Trichaptum abietinum         1  63.15260  21.67000 2020-01-06 22:00:00
-9  Trichaptum fuscovio…         1  63.15150  21.67020 2020-01-06 22:00:00
-10       Panellus mitis         1  63.15260  21.67000 2020-01-06 22:00:00
+1  Climacodon septentr…         1  60.17038  24.92525 2020-02-03 13:30:00
+2  Ganoderma applanatum        15  60.17038  24.92525 2020-02-03 13:30:00
+3  Schizophyllum commu…         1  60.17038  24.92525 2020-02-03 14:00:00
+4       Stereum rugosum         1  60.17038  24.92525 2020-02-03 13:30:00
+5  Illosporiopsis chri…         1  62.25377  25.71431 2020-02-02 22:00:00
+6  Ceriporiopsis pseud…         1  62.24950  25.72421 2020-02-02 22:00:00
+7     Cetraria pinastri         1  62.25758  25.71175 2020-02-02 22:00:00
+8  Parmeliopsis ambigua         1  62.25758  25.71175 2020-02-02 22:00:00
+9   Phellinus punctatus         1  62.25758  25.71175 2020-02-02 22:00:00
+10 Lachnellula occiden…         1  62.25850  25.70893 2020-02-02 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -464,19 +464,19 @@ finbif_occurrence(filter = c(finnish_occurrence_status = "rare"))
 ```r
 
 Records downloaded: 10
-Records available: 256919
+Records available: 257378
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1  Dromius quadrimacul…         1  60.40483  22.42259 2020-01-10 22:00:00
-2  Calodromius spilotus         1  60.20746  25.63819 2020-01-08 22:00:00
-3      Tillus elongatus         1  60.27955  22.20464 2020-01-08 22:00:00
-4  Dromius quadrimacul…         1  60.40462  22.42190 2020-01-07 22:00:00
-5  Psammoecus bipuncta…         1  60.80671  26.74877 2020-01-07 22:00:00
-6  Calodromius spilotus         1  60.05714  24.23511 2020-01-04 22:00:00
-7  Dromius quadrimacul…         1  60.05083  24.26637 2020-01-04 22:00:00
-8  Dromius quadrimacul…         1  60.05535  24.27343 2020-01-04 22:00:00
-9     Acalles echinatus         3  60.26386  24.06557 2020-01-03 22:00:00
-10 Myrmechixenus subte…         1  60.26386  24.06557 2020-01-03 22:00:00
+1  Calodromius spilotus         2  60.14807  22.29686 2020-02-01 22:00:00
+2    Stethorus pusillus         1  60.28865  24.86263 2020-01-29 22:00:00
+3  Calodromius spilotus         2  60.11620  24.63514 2020-01-25 22:00:00
+4  Dromius quadrimacul…         1  60.11620  24.63514 2020-01-25 22:00:00
+5    Scymnus ferrugatus         1  60.50135  25.94171 2020-01-25 22:00:00
+6  Subcoccinella vigin…         1  61.05561  26.70590 2020-01-20 22:00:00
+7   Dermestes maculatus         4  62.64850  30.37929 2020-01-20 21:00:00
+8  Subcoccinella vigin…         1  60.90095  27.14353 2020-01-19 22:00:00
+9    Oenopia conglobata         1  61.06662  28.18071 2020-01-18 22:00:00
+10   Oenopia conglobata         1  61.06662  28.18071 2020-01-18 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -506,19 +506,19 @@ finbif_occurrence(
 ```r
 
 Records downloaded: 10
-Records available: 17732629
+Records available: 17754112
 A data.frame [10 x 30]
       scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1       Turdus merula         5  60.24014  24.98273 2020-01-12 22:00:00
-2   Passer domesticus         1  60.24014  24.98273 2020-01-12 22:00:00
-3       Spinus spinus         1  60.96301  21.44838 2020-01-11 22:00:00
-4  Anas platyrhynchos         1  61.12859  21.52177 2020-01-11 22:00:00
-5      Turdus pilaris         1  61.41560  22.62856 2020-01-11 22:00:00
-6   Dryocopus martius         1  61.41560  22.62856 2020-01-11 22:00:00
-7         Parus major         1  61.41560  22.62856 2020-01-11 22:00:00
-8           Pica pica         1  61.41560  22.62856 2020-01-11 22:00:00
-9   Dendrocopos major         1  61.41934  22.62869 2020-01-11 22:00:00
-10    Corvus monedula         3  61.41560  22.62856 2020-01-11 22:00:00
+1  Anas platyrhynchos        30  60.17824  24.94096 2020-02-03 22:00:00
+2         Cygnus olor         1  60.17824  24.94096 2020-02-03 22:00:00
+3     Corvus monedula       120  60.43522  22.36280 2020-02-02 22:00:00
+4           Pica pica         5  60.42794  22.20052 2020-02-02 22:00:00
+5    Larus argentatus        10  60.42794  22.20052 2020-02-02 22:00:00
+6    Mergus merganser         1  60.42794  22.20052 2020-02-02 22:00:00
+7    Mergus merganser         1  60.42794  22.20052 2020-02-02 22:00:00
+8         Larus canus         2  60.42794  22.20052 2020-02-02 22:00:00
+9   Dendrocopos major         1  60.42794  22.20052 2020-02-02 22:00:00
+10      Larus marinus         2  60.42794  22.20052 2020-02-02 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,

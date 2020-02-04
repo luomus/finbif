@@ -237,19 +237,19 @@ the `finbif_occurrence()` function.
 ```r
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
-#> Records available: 55923
+#> Records available: 56137
 #> A data.frame [100 x 30]
 #>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1    Cygnus cygnus         1  60.45824  22.37683 2019-12-03 22:00:00
-#> 2    Cygnus cygnus         1  62.26510  24.69194 2019-12-04 05:20:00
-#> 3    Cygnus cygnus         2  61.12486  21.54164 2019-12-03 09:50:00
-#> 4    Cygnus cygnus         6  60.90052  26.31596 2019-12-02 22:00:00
-#> 5    Cygnus cygnus         4  61.33203  21.65924 2019-12-01 10:20:00
-#> 6    Cygnus cygnus         3  60.17308  25.10529 2019-11-30 12:00:00
-#> 7    Cygnus cygnus        14  60.17308  25.10529 2019-11-30 12:00:00
-#> 8    Cygnus cygnus         2  60.17308  25.10529 2019-11-30 12:00:00
-#> 9    Cygnus cygnus         6  61.07310  26.46700 2019-11-24 22:00:00
-#> 10   Cygnus cygnus         1  61.34301  24.23489 2019-11-16 06:30:00
+#> 1    Cygnus cygnus         2  61.12368  21.53212 2020-01-31 09:55:00
+#> 2    Cygnus cygnus         3  60.45850  22.37715 2020-01-26 22:00:00
+#> 3    Cygnus cygnus        12  60.56757  21.57197 2020-01-24 22:00:00
+#> 4    Cygnus cygnus        17  60.56757  21.57197 2020-01-24 22:00:00
+#> 5    Cygnus cygnus        23  60.94748  26.58934 2020-01-23 22:00:00
+#> 6    Cygnus cygnus         4  61.10051  21.55668 2020-01-23 09:05:00
+#> 7    Cygnus cygnus         2  62.22059  24.63009 2020-01-18 07:20:00
+#> 8    Cygnus cygnus        65  60.77776  21.47181 2020-01-17 09:00:00
+#> 9    Cygnus cygnus         5  61.11829  21.52784 2020-01-08 08:00:00
+#> 10   Cygnus cygnus        30  61.03529  26.13553 2020-01-07 22:00:00
 #> ...with 90 more records and 25 more variables:
 #> taxon_rank, country, province, municipality, date_start, date_end,
 #> hour_start, hour_end, minute_start, minute_end, record_id,
@@ -275,19 +275,19 @@ finbif_occurrence(
 ```r
 
 Records downloaded: 10
-Records available: 11363
+Records available: 11395
 A data.frame [10 x 30]
    scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1    Cygnus cygnus        30  61.03529  26.13553 2020-01-07 22:00:00
-2    Cygnus cygnus        26  60.93560  26.37433 2020-01-06 22:00:00
-3    Cygnus cygnus         1  62.38777  26.05355 2020-01-04 22:00:00
-4    Cygnus cygnus        21  60.81513  26.24554 2020-01-04 22:00:00
-5    Cygnus cygnus         5  61.12549  21.53582 2020-01-05 10:45:00
-6      Cygnus olor         4  61.06336  26.17340 2019-12-31 22:00:00
-7    Cygnus cygnus         2  61.09991  21.50955 2019-12-17 10:20:00
-8    Cygnus cygnus        40  60.91752  26.32643 2019-12-15 22:00:00
-9    Cygnus cygnus         6  60.90052  26.31596 2019-12-02 22:00:00
-10   Cygnus cygnus         4  61.33203  21.65924 2019-12-01 10:20:00
+1      Cygnus olor         1  60.17824  24.94096 2020-02-03 22:00:00
+2    Cygnus cygnus         2  61.12368  21.53212 2020-01-31 09:55:00
+3      Cygnus olor         1  60.45850  22.37715 2020-01-26 22:00:00
+4    Cygnus cygnus         3  60.45850  22.37715 2020-01-26 22:00:00
+5      Cygnus olor         1  61.11068  21.53062 2020-01-25 06:55:00
+6      Cygnus olor         2  60.56757  21.57197 2020-01-24 22:00:00
+7    Cygnus cygnus        12  60.56757  21.57197 2020-01-24 22:00:00
+8    Cygnus cygnus        17  60.56757  21.57197 2020-01-24 22:00:00
+9    Cygnus cygnus        23  60.94748  26.58934 2020-01-23 22:00:00
+10     Cygnus olor         2  60.94740  26.58939 2020-01-23 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -301,8 +301,8 @@ location_issue, time_issue, duration
 </details>
 <br>
 
-See `?filters` and `vignette("v0_filtering")` for more details on filtering FinBIF
-records.
+See `?filters` and `vignette("v0_filtering")` for more details on filtering
+FinBIF records.
 
 ### Random sampling
 It is possible to request a random sample of records instead of the last `n`
@@ -317,19 +317,19 @@ finbif_occurrence("Birds", sample = TRUE)
 ```r
 
 Records downloaded: 10
-Records available: 17751448
+Records available: 17764091
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1    Erithacus rubecula         1  60.47356  27.44691 2007-09-01 04:00:00
-2      Numenius arquata         1  59.81111  22.89545 2008-09-01 21:00:00
-3     Falco tinnunculus         1  60.61667  22.93333 2012-06-29 13:00:00
-4  Corvus corone cornix         1  62.70686  22.02384 1985-06-10 01:20:00
-5    Ficedula hypoleuca         1  69.01667  20.86667 1973-06-29 23:00:00
-6      Acanthis flammea         1  60.82859  24.25148 1999-12-31 22:00:00
-7  Phylloscopus trochi…         1  64.80000  24.63333 1993-06-01 21:00:00
-8         Turdus merula         1  60.63333  22.41667 2001-02-18 06:00:00
-9  Phylloscopus trochi…         1  60.19879  24.81963 2004-09-11 03:00:00
-10  Aegithalos caudatus         1  59.88393  22.54163 1999-12-31 22:00:00
+1    Ficedula hypoleuca         1  66.93333  24.51667 1974-07-06 22:00:00
+2     Fringilla coelebs         1  61.23566  24.11011 1995-06-18 01:30:00
+3       Passer montanus         2  60.81331  26.35391 2006-06-28 21:00:00
+4       Hirundo rustica         1  61.14266  24.37962 2010-08-17 18:00:00
+5     Fringilla coelebs         1  62.69656  22.36466 2013-06-01 00:57:00
+6  Fringilla montifrin…         1  60.27855  24.41111 1995-10-21 06:00:00
+7   Cyanistes caeruleus         1  60.61667  21.80000 1989-07-10 05:00:00
+8     Fringilla coelebs         1  60.89581  22.10192 2012-06-09 07:00:00
+9     Falco tinnunculus         1  60.64095  27.89334 2003-07-07 21:00:00
+10   Bucephala clangula        10  59.81111  22.89545 2007-01-14 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -401,6 +401,6 @@ with(
 ![](figure/plot-occurrences-eval-1.png)
 
 ## Caching
-By default `finbif` uses local filesystem caching for repeated API request. This
+By default `finbif` uses local caching for repeated API requests. This
 can be turned on or off on a per request or session basis. See `?caching` for
 details.
