@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9001</span>
       </span>
     </div>
 
@@ -146,19 +146,19 @@
 
     
 
-<p>By default, local filesystem caching of most FinBIF API requests is turned
-on. Any request made using the same arguments will only request data from
-FinBIF in the first instance and subsequent requests will use the local
-cache while it exists. This will increase the speed of repeated requests and
-save bandwidth and computation for the FinBIF server. Caching can be turned
-off temporarily by setting the <code>cache = FALSE</code> in the requesting function.</p>
+<p>By default, local caching of most FinBIF API requests is turned on. Any
+request made using the same arguments will only request data from FinBIF in
+the first instance and subsequent requests will use the local cache while it
+exists. This will increase the speed of repeated requests and save bandwidth
+and computation for the FinBIF server. Caching can be turned off temporarily
+by setting the <code>cache = FALSE</code> in the requesting function.</p>
 <p>Setting <code><a href='https://rdrr.io/r/base/options.html'>options(finbif_use_cache = FALSE)</a></code> will turn off caching for the
 current session.</p>
-    <h2 class="hasAnchor" id="setting-the-cache-directory"><a class="anchor" href="#setting-the-cache-directory"></a>Setting the cache directory</h2>
+    <h2 class="hasAnchor" id="using-filesystem-caching"><a class="anchor" href="#using-filesystem-caching"></a>Using filesystem caching</h2>
 
     
 
-<p>By default cached requests are stored in <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir()</a></code>. This can be changed by
+<p>By default cached requests are stored in memory. This can be changed by
 setting the file path for the current session with
 <code><a href='https://rdrr.io/r/base/options.html'>options(finbif_cache_path = "path/to/cache")</a></code>.</p>
     <h2 class="hasAnchor" id="clearing-the-cache"><a class="anchor" href="#clearing-the-cache"></a>Clearing the cache</h2>
@@ -172,7 +172,7 @@ setting the file path for the current session with
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#turning-caching-off">Turning caching off</a></li>
-      <li><a href="#setting-the-cache-directory">Setting the cache directory</a></li>
+      <li><a href="#using-filesystem-caching">Using filesystem caching</a></li>
       <li><a href="#clearing-the-cache">Clearing the cache</a></li>
     </ul>
 
