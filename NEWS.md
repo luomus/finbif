@@ -1,3 +1,9 @@
+# finbif 0.2.0.9001
+
+### MINOR IMPROVEMENTS
+
+  * Caching defaults to in memory caching instead of relying on the tempory directory.
+
 # finbif 0.2.0
 
 ### NEW FEATURES

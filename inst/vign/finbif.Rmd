@@ -134,8 +134,8 @@ details::details(
 )
 ```
 
-See `?filters` and `vignette("v0_filtering")` for more details on filtering FinBIF
-records.
+See `?filters` and `vignette("v0_filtering")` for more details on filtering
+FinBIF records.
 
 ### Random sampling
 It is possible to request a random sample of records instead of the last `n`
@@ -249,6 +249,6 @@ with(
 ```
 
 ## Caching
-By default `finbif` uses local filesystem caching for repeated API request. This
+By default `finbif` uses local caching for repeated API requests. This
 can be turned on or off on a per request or session basis. See `?caching` for
 details.

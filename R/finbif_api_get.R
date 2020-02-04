@@ -23,10 +23,15 @@ finbif_api_get <- function(path, query, cache) {
   if (cache) {
     hash <- digest::digest(list(url, version, path, query))
     fcp <- getOption("finbif_cache_path")
-    fcp <- if (is.null(fcp)) tempdir()
-    cache_file <- file.path(fcp, paste0("finbif_cache_file_", hash))
-    if (file.exists(cache_file)) return(readRDS(cache_file))
-    on.exit(if (!is.null(ans)) saveRDS(ans, cache_file))
+    if (is.null(fcp)) {
+      ans <- get_cache(hash)
+      if (!is.null(ans)) return(ans)
+      on.exit(if (!is.null(ans)) set_cache(ans, hash))
+    } else {
+      cache_file <- file.path(fcp, paste0("finbif_cache_file_", hash))
+      if (file.exists(cache_file)) return(readRDS(cache_file))
+      on.exit(if (!is.null(ans)) saveRDS(ans, cache_file))
+    }
   }
 
   resp <- httr::GET(

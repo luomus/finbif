@@ -96,9 +96,13 @@ vcr::use_cassette(
           plot(fungi)
         )
 
+        options(finbif_cache_path = tempdir())
+
         expect_output(
           print(finbif_occurrence(dwc = TRUE)), "Records downloaded:"
         )
+
+        expect_output(print(finbif_occurrence()), "Records downloaded:")
 
       }
     )
