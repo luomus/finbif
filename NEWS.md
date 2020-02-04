@@ -2,7 +2,7 @@
 
 ### MINOR IMPROVEMENTS
 
-  * Caching defaults to in memory caching instead of relying on the tempory directory.
+  * Caching defaults to in memory caching instead of relying on the temporary directory.
 
 # finbif 0.2.0
 
