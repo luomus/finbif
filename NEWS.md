@@ -1,3 +1,9 @@
+# finbif 0.2.0.9002
+
+### BUG FIXES
+
+  * Ordering by descending variables did not work when ordering by both ascending and descending variables.
+
 # finbif 0.2.0.9001
 
 ### MINOR IMPROVEMENTS
