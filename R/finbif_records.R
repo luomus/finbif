@@ -105,7 +105,7 @@ finbif_records <- function(
         class(order_vars[[var]]) <- class(var_names[[var]])
       order_by <-
         translate(order_by, "order_vars", list(order_vars = order_vars))
-      order_by[desc_order] <- paste(order_by, "DESC")
+      order_by[desc_order] <- paste(order_by[desc_order], "DESC")
       query[["orderBy"]] <- paste(order_by, collapse = ",")
 
     }
