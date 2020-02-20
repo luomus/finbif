@@ -43,7 +43,7 @@ class(finnish_occurrence_status[["code"]]) <- "translation"
 finnish_occurrence_status_neg <- finnish_occurrence_status
 
 metadata_ranges <-
-  finbif:::finbif_api_get("metadata/ranges", list(), FALSE)[["content"]]
+  finbif:::api_get("metadata/ranges", list(), FALSE)[["content"]]
 
 fos <- metadata_ranges[["MX.typeOfOccurrenceEnum"]]
 fos <- lapply(fos, `[`, c("id", "value"))

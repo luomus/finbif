@@ -1,5 +1,5 @@
 metadata_ranges <-
-  finbif:::finbif_api_get("metadata/ranges", list(), FALSE)[["content"]]
+  finbif:::api_get("metadata/ranges", list(), FALSE)[["content"]]
 
 primary_habitat <-
   metadata_ranges[c("MKV.habitatEnum", "MKV.habitatSpecificTypeEnum")]

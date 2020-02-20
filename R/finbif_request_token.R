@@ -19,7 +19,7 @@
 #' @export
 
 finbif_request_token <- function(email) {
-  finbif_access_token <- finbif_token()
+  finbif_access_token <- token()
 
   if (!is.null(finbif_access_token)) {
     message(

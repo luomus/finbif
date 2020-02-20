@@ -1,6 +1,6 @@
 source("data-raw/utils.R")
 n <- 1000L
-province <- finbif:::finbif_api_get(
+province <- finbif:::api_get(
   "areas",
   list(
     type = "biogeographicalProvince", lang = "multi", page = 1L, pageSize = n

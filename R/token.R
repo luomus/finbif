@@ -1,6 +1,6 @@
 #' @noRd
 
-finbif_token <- function(quiet = TRUE) {
+token <- function(quiet = TRUE) {
   finbif_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
   if (!quiet) {
     message(

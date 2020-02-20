@@ -15,7 +15,7 @@ http_interactions:
       message: 'Client error: (400) Bad Request'
     headers:
       server: nginx/1.16.1
-      date: Thu, 16 Jan 2020 11:22:21 GMT
+      date: Thu, 20 Feb 2020 11:17:50 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -32,7 +32,7 @@ http_interactions:
       encoding: ASCII-8BIT
       file: no
       string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX3ZhciJ9
-  recorded_at: 2020-01-16 11:22:22 GMT
+  recorded_at: 2020-02-20 11:17:57 GMT
   recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
@@ -50,7 +50,7 @@ http_interactions:
       message: 'Success: (200) OK'
     headers:
       server: nginx/1.16.1
-      date: Thu, 16 Jan 2020 11:22:22 GMT
+      date: Thu, 20 Feb 2020 11:17:56 GMT
       content-type: application/xml;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -67,6 +67,6 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       file: no
-      string: PHJlc3BvbnNlPjxjdXJyZW50UGFnZT4xPC9jdXJyZW50UGFnZT48bmV4dFBhZ2U+MjwvbmV4dFBhZ2U+PGxhc3RQYWdlPjM0MjA4NDAxPC9sYXN0UGFnZT48cGFnZVNpemU+MTwvcGFnZVNpemU+PHRvdGFsPjM0MjA4NDAxPC90b3RhbD48cmVzdWx0cz48dW5pdD48dW5pdElkPmh0dHA6Ly90dW4uZmkvSlguMTA1NzM1MyM3PC91bml0SWQ+PC91bml0PjwvcmVzdWx0cz48L3Jlc3BvbnNlPg==
-  recorded_at: 2020-01-16 11:22:22 GMT
+      string: PHJlc3BvbnNlPjxjdXJyZW50UGFnZT4xPC9jdXJyZW50UGFnZT48bmV4dFBhZ2U+MjwvbmV4dFBhZ2U+PGxhc3RQYWdlPjM0NDUyNDI1PC9sYXN0UGFnZT48cGFnZVNpemU+MTwvcGFnZVNpemU+PHRvdGFsPjM0NDUyNDI1PC90b3RhbD48cmVzdWx0cz48dW5pdD48dW5pdElkPmh0dHA6Ly90dW4uZmkvSlguMTA5OTI0NyM0PC91bml0SWQ+PC91bml0PjwvcmVzdWx0cz48L3Jlc3BvbnNlPg==
+  recorded_at: 2020-02-20 11:17:57 GMT
   recorded_with: vcr/0.4.0, webmockr/0.5.0

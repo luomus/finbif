@@ -4,8 +4,8 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom utils packageVersion
 
-finbif_api_get <- function(path, query, cache) {
-  finbif_access_token <- finbif_token()
+api_get <- function(path, query, cache) {
+  finbif_access_token <- token()
 
   if (is.null(finbif_access_token)) {
     stop(

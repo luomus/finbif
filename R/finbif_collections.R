@@ -112,7 +112,7 @@ get_collections <- function(qry, path, nms, id, cache) {
 
   while (total > qry[["page"]] * qry[["pageSize"]]) {
     qry[["page"]] <- qry[["page"]] + 1L
-    collections[[qry[["page"]]]] <- finbif_api_get(path, qry, cache)
+    collections[[qry[["page"]]]] <- api_get(path, qry, cache)
     total <- collections[[qry[["page"]]]][["content"]][["total"]]
   }
 

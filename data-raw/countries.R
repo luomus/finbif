@@ -1,5 +1,5 @@
 source("data-raw/utils.R")
-country <- finbif:::finbif_api_get(
+country <- finbif:::api_get(
   "areas",
   list(type = "country", lang = "multi", page = 1L, pageSize = 1000L),
   FALSE

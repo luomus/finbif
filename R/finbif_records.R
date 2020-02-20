@@ -138,7 +138,7 @@ request <- function(
   if (count_only) {
 
     path <- paste0(path, "count")
-    return(finbif_api_get(path, query, cache))
+    return(api_get(path, query, cache))
 
   }
 
@@ -148,7 +148,7 @@ request <- function(
 
   resp <- list(
     structure(
-      finbif_api_get(path, query, cache),
+      api_get(path, query, cache),
       class = c("finbif_records", "finbif_api"),
       select = unique(select)
     )
@@ -227,7 +227,7 @@ get_extra_pages <-
       }
 
       resp[[i]] <- structure(
-        finbif_api_get(path, query, cache),
+        api_get(path, query, cache),
         class = c("finbif_records", "finbif_api"),
         select = unique(select)
       )
@@ -280,11 +280,11 @@ parse_filters <- function(filter) {
     if (
       identical(filter_names[finbif_filter_names[[i]], "class"], "coords")
     )
-      filter[[i]] <- do.call(finbif_coords, as.list(filter[[i]]))
+      filter[[i]] <- do.call(coords, as.list(filter[[i]]))
 
     if (identical(filter_names[finbif_filter_names[[i]], "class"], "date"))
       filter[[i]] <- do.call(
-        finbif_dates, c(list(names(filter)[[i]]), as.list(filter[[i]]))
+        dates, c(list(names(filter)[[i]]), as.list(filter[[i]]))
       )
 
     filter[[i]] <- paste(

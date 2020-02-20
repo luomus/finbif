@@ -16,7 +16,7 @@ parse_date <- function(x) {
 }
 
 #' @noRd
-finbif_dates <- function(filter, begin = NULL, end = NULL) {
+dates <- function(filter, begin = NULL, end = NULL) {
   if (!inherits(begin, "Interval") && !any(nchar(c(begin, end))))
     deferrable_error("Need to specify at least one of 'begin' or 'end' date")
   switch(

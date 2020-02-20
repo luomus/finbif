@@ -1,6 +1,6 @@
 source("data-raw/utils.R")
 metadata_ranges <-
-  finbif:::finbif_api_get("metadata/ranges", list(), FALSE)[["content"]]
+  finbif:::api_get("metadata/ranges", list(), FALSE)[["content"]]
 record_basis <- lapply(
   metadata_ranges[["MY.recordBases"]],  as.data.frame, stringsAsFactors = FALSE
 )

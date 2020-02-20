@@ -6,7 +6,7 @@ test_that(
     token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
     Sys.unsetenv("FINBIF_ACCESS_TOKEN")
 
-    expect_error(finbif_api_get(), "Access token for FinBIF has not been set")
+    expect_error(api_get(), "Access token for FinBIF has not been set")
 
     Sys.setenv(FINBIF_ACCESS_TOKEN = token)
 
@@ -14,7 +14,7 @@ test_that(
 )
 
 vcr::use_cassette(
-  "finbif_api_get", {
+  "api_get", {
 
     test_that(
       "with wrong var returns an error message", {
@@ -22,7 +22,7 @@ vcr::use_cassette(
         skip_on_cran()
 
         expect_error(
-          finbif_api_get(
+          api_get(
             path = "warehouse/query/unit/list",
             query = list(page = 1, pageSize = 1, selected = "not_a_var"),
             cache = TRUE
@@ -39,7 +39,7 @@ vcr::use_cassette(
         skip_on_cran()
 
         expect_error(
-          finbif_api_get(
+          api_get(
             path = "warehouse/query/unit/list",
             query = list(
               format = "xml", page = 1, pageSize = 1, selected = "unit.unitId"

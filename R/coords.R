@@ -1,6 +1,6 @@
 #' @noRd
 
-finbif_coords <- function(lat, lon, system, ratio) {
+coords <- function(lat, lon, system, ratio) {
     coords <- paste(c(lat, lon), collapse = ":")
     if (missing(system)) return(coords)
     system <- toupper(gsub("^kkj$", "ykj", system))
