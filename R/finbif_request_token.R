@@ -10,6 +10,7 @@
 #'   the FinBIF server.
 #' @importFrom httr accept_json content http_type POST user_agent status_code
 #' @importFrom jsonlite fromJSON
+#' @importFrom utils packageVersion
 #' @examples \dontrun{
 #'
 #' # Request a token for example@email.com
