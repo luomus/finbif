@@ -27,7 +27,7 @@ vignettes: install
 	cd inst/vign;\
 	${RSCRIPT} -e "for (i in list.files('.', '.Rmd$$')) knitr::knit(i)";\
 	cp *.md ../../vignettes;\
-	cp figure/* ../../vignettes/figure;\
+	cp ../man/figures/* ../../man/figures;\
 	cd ../../vignettes;\
 	for f in *.md; do mv -- "$$f" "$$(basename "$$f" .md).Rmd"; done;\
 	cd ../;\

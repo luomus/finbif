@@ -2,11 +2,11 @@
 title: "Filtering FinBIF records"
 author: "William K. Morris"
 output: 
-  rmarkdown::html_document:
+  rmarkdown::html_vignette:
     toc: true
 vignette: >
   %\VignetteIndexEntry{2. Filtering FinBIF records}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -16,7 +16,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
   message = FALSE,
-  cache.path = "cache/"
+  cache.path = "cache/",
+  fig.path = "../man/figures/"
 )
 
 library(details, quietly = TRUE)
