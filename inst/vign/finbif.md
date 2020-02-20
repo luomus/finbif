@@ -2,11 +2,11 @@
 title: "Introduction to the finbif package"
 author: "William K. Morris"
 output: 
-  rmarkdown::html_document:
+  rmarkdown::html_vignette:
     toc: true
 vignette: >
   %\VignetteIndexEntry{1. Introduction to the finbif package}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -152,14 +152,14 @@ birch_search$content
 [1] "MVL.343"
 
 [[1]]$informalGroups[[1]]$name
-[[1]]$informalGroups[[1]]$name$en
-[1] "Vascular plants"
-
 [[1]]$informalGroups[[1]]$name$fi
 [1] "Putkilokasvit"
 
 [[1]]$informalGroups[[1]]$name$sv
 [1] "Kärlväxter"
+
+[[1]]$informalGroups[[1]]$name$en
+[1] "Vascular plants"
 
 
 
@@ -210,14 +210,14 @@ birch_search$content
 [1] "MVL.343"
 
 [[2]]$informalGroups[[1]]$name
-[[2]]$informalGroups[[1]]$name$en
-[1] "Vascular plants"
-
 [[2]]$informalGroups[[1]]$name$fi
 [1] "Putkilokasvit"
 
 [[2]]$informalGroups[[1]]$name$sv
 [1] "Kärlväxter"
+
+[[2]]$informalGroups[[1]]$name$en
+[1] "Vascular plants"
 
 
 
@@ -237,19 +237,19 @@ the `finbif_occurrence()` function.
 ```r
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
-#> Records available: 56137
+#> Records available: 56162
 #> A data.frame [100 x 30]
 #>    scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1    Cygnus cygnus         2  61.12368  21.53212 2020-01-31 09:55:00
-#> 2    Cygnus cygnus         3  60.45850  22.37715 2020-01-26 22:00:00
-#> 3    Cygnus cygnus        12  60.56757  21.57197 2020-01-24 22:00:00
-#> 4    Cygnus cygnus        17  60.56757  21.57197 2020-01-24 22:00:00
-#> 5    Cygnus cygnus        23  60.94748  26.58934 2020-01-23 22:00:00
-#> 6    Cygnus cygnus         4  61.10051  21.55668 2020-01-23 09:05:00
-#> 7    Cygnus cygnus         2  62.22059  24.63009 2020-01-18 07:20:00
-#> 8    Cygnus cygnus        65  60.77776  21.47181 2020-01-17 09:00:00
-#> 9    Cygnus cygnus         5  61.11829  21.52784 2020-01-08 08:00:00
-#> 10   Cygnus cygnus        30  61.03529  26.13553 2020-01-07 22:00:00
+#> 1    Cygnus cygnus         1  61.45189  22.85723 2020-02-18 22:00:00
+#> 2    Cygnus cygnus         1  61.99939  22.16288 2020-02-17 22:00:00
+#> 3    Cygnus cygnus         1  60.60605  24.51953 2020-02-17 22:00:00
+#> 4    Cygnus cygnus         1  60.46486  22.35936 2020-02-16 22:00:00
+#> 5    Cygnus cygnus         6  60.98625  26.03254 2020-02-14 22:00:00
+#> 6    Cygnus cygnus         4  60.82640  26.23698 2020-02-12 22:00:00
+#> 7    Cygnus cygnus         1  61.45401  22.11611 2020-02-11 22:00:00
+#> 8    Cygnus cygnus         4  60.76301  26.23474 2020-02-11 22:00:00
+#> 9    Cygnus cygnus         1  61.11695  21.52778 2020-02-12 08:00:00
+#> 10   Cygnus cygnus         5  60.84168  26.18780 2020-02-10 22:00:00
 #> ...with 90 more records and 25 more variables:
 #> taxon_rank, country, province, municipality, date_start, date_end,
 #> hour_start, hour_end, minute_start, minute_end, record_id,
@@ -275,19 +275,19 @@ finbif_occurrence(
 ```r
 
 Records downloaded: 10
-Records available: 11395
+Records available: 11409
 A data.frame [10 x 30]
    scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1      Cygnus olor         1  60.17824  24.94096 2020-02-03 22:00:00
-2    Cygnus cygnus         2  61.12368  21.53212 2020-01-31 09:55:00
-3      Cygnus olor         1  60.45850  22.37715 2020-01-26 22:00:00
-4    Cygnus cygnus         3  60.45850  22.37715 2020-01-26 22:00:00
-5      Cygnus olor         1  61.11068  21.53062 2020-01-25 06:55:00
-6      Cygnus olor         2  60.56757  21.57197 2020-01-24 22:00:00
-7    Cygnus cygnus        12  60.56757  21.57197 2020-01-24 22:00:00
-8    Cygnus cygnus        17  60.56757  21.57197 2020-01-24 22:00:00
-9    Cygnus cygnus        23  60.94748  26.58934 2020-01-23 22:00:00
-10     Cygnus olor         2  60.94740  26.58939 2020-01-23 22:00:00
+1      Cygnus olor         1  60.44731  22.39747 2020-02-18 22:00:00
+2    Cygnus cygnus         6  60.98625  26.03254 2020-02-14 22:00:00
+3    Cygnus cygnus         4  60.82640  26.23698 2020-02-12 22:00:00
+4    Cygnus cygnus         4  60.76301  26.23474 2020-02-11 22:00:00
+5      Cygnus olor         1  60.42794  22.20052 2020-02-11 22:00:00
+6    Cygnus cygnus         1  61.11695  21.52778 2020-02-12 08:00:00
+7    Cygnus cygnus         5  60.84168  26.18780 2020-02-10 22:00:00
+8    Cygnus cygnus         2  61.10934  21.52165 2020-02-11 08:15:00
+9    Cygnus cygnus         2  61.11149  21.52930 2020-02-11 06:45:00
+10     Cygnus olor         1  60.42794  22.20052 2020-02-07 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -317,19 +317,19 @@ finbif_occurrence("Birds", sample = TRUE)
 ```r
 
 Records downloaded: 10
-Records available: 17764091
+Records available: 17772098
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1    Ficedula hypoleuca         1  66.93333  24.51667 1974-07-06 22:00:00
-2     Fringilla coelebs         1  61.23566  24.11011 1995-06-18 01:30:00
-3       Passer montanus         2  60.81331  26.35391 2006-06-28 21:00:00
-4       Hirundo rustica         1  61.14266  24.37962 2010-08-17 18:00:00
-5     Fringilla coelebs         1  62.69656  22.36466 2013-06-01 00:57:00
-6  Fringilla montifrin…         1  60.27855  24.41111 1995-10-21 06:00:00
-7   Cyanistes caeruleus         1  60.61667  21.80000 1989-07-10 05:00:00
-8     Fringilla coelebs         1  60.89581  22.10192 2012-06-09 07:00:00
-9     Falco tinnunculus         1  60.64095  27.89334 2003-07-07 21:00:00
-10   Bucephala clangula        10  59.81111  22.89545 2007-01-14 22:00:00
+1       Melanitta nigra         1  59.81111  22.89545 1985-10-20 22:00:00
+2       Accipiter nisus         1  62.61485  29.68231 1988-04-27 06:00:00
+3          Sylvia borin         1  59.83333  21.61667 1986-05-23 21:00:00
+4         Cygnus cygnus         1  52.71667   1.55000 1996-02-18 00:00:00
+5           Parus major         1  60.88407  24.52246 1995-07-17 21:00:00
+6          Larus fuscus         1  60.11667  25.41667 1990-06-10 21:00:00
+7        Turdus pilaris         5  63.90609  23.22687 1991-11-14 08:00:00
+8  Haliaeetus albicilla         1  60.98752  21.91595 1999-12-31 22:00:00
+9           Parus major         1  61.18333  24.16667 1999-06-05 21:00:00
+10          Parus major         1  60.75000  27.01667 1979-06-12 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -398,7 +398,7 @@ with(
 )
 ```
 </details>
-![](figure/plot-occurrences-eval-1.png)
+![](../man/figures/plot-occurrences-eval-1.png)
 
 ## Caching
 By default `finbif` uses local caching for repeated API requests. This

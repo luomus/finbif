@@ -2,11 +2,11 @@
 title: "Filtering FinBIF records"
 author: "William K. Morris"
 output: 
-  rmarkdown::html_document:
+  rmarkdown::html_vignette:
     toc: true
 vignette: >
   %\VignetteIndexEntry{2. Filtering FinBIF records}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -32,7 +32,7 @@ plot(finbif_occurrence(filter = filter1, n = 1000), main = "Name")
 plot(finbif_occurrence(filter = filter2, n = 1000), main = "Coordinates")
 ```
 
-![](figure/location-filter-eval-1.png)
+![](../man/figures/location-filter-eval-1.png)
 
 See `?filters` section "Location" for more details
 
@@ -49,19 +49,19 @@ finbif_occurrence(filter = list(date_range_ym = c("2019-12")))
 ```r
 
 Records downloaded: 10
-Records available: 7535
+Records available: 7546
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1   Lactarius flexuosus         1  60.42775  22.21529 2019-12-30 22:00:00
-2  Thelephora terrestr…         1  64.97222  25.20148 2019-12-30 22:00:00
-3   Phasianus colchicus         5  64.11199  24.43127 2019-12-31 07:15:00
-4             Pica pica        27  64.11199  24.43127 2019-12-31 07:15:00
-5           Picus canus         1  64.11199  24.43127 2019-12-31 07:15:00
-6      Poecile montanus         1  64.11199  24.43127 2019-12-31 07:15:00
-7  Fringilla montifrin…        38  64.11199  24.43127 2019-12-31 07:15:00
-8   Emberiza citrinella        25  64.11199  24.43127 2019-12-31 07:15:00
-9  Columba livia domes…         7  64.11199  24.43127 2019-12-31 07:15:00
-10         Corvus corax         1  64.11199  24.43127 2019-12-31 07:15:00
+1             Pica pica        26  61.59566  23.35462 2019-12-31 08:05:00
+2             Pica pica        31  65.72340  24.62299 2019-12-31 08:00:00
+3       Regulus regulus        11  62.91571  27.66064 2019-12-31 07:10:00
+4      Poecile montanus         1  62.91571  27.66064 2019-12-31 07:10:00
+5  Columba livia domes…        32  65.72340  24.62299 2019-12-31 08:00:00
+6  Columba livia domes…         2  61.59566  23.35462 2019-12-31 08:05:00
+7           Felis catus         1  61.59566  23.35462 2019-12-31 08:05:00
+8        Periparus ater         1  62.91571  27.66064 2019-12-31 07:10:00
+9                 Loxia         2  61.59566  23.35462 2019-12-31 08:05:00
+10    Dendrocopos major         5  62.91571  27.66064 2019-12-31 07:10:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -89,19 +89,19 @@ finbif_occurrence(
 ```r
 
 Records downloaded: 10
-Records available: 238000
+Records available: 334812
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1   Lactarius flexuosus         1  60.42775  22.21529 2019-12-30 22:00:00
-2  Thelephora terrestr…         1  64.97222  25.20148 2019-12-30 22:00:00
-3   Phasianus colchicus         5  64.11199  24.43127 2019-12-31 07:15:00
-4             Pica pica        27  64.11199  24.43127 2019-12-31 07:15:00
-5           Picus canus         1  64.11199  24.43127 2019-12-31 07:15:00
-6      Poecile montanus         1  64.11199  24.43127 2019-12-31 07:15:00
-7  Fringilla montifrin…        38  64.11199  24.43127 2019-12-31 07:15:00
-8   Emberiza citrinella        25  64.11199  24.43127 2019-12-31 07:15:00
-9  Columba livia domes…         7  64.11199  24.43127 2019-12-31 07:15:00
-10         Corvus corax         1  64.11199  24.43127 2019-12-31 07:15:00
+1             Pica pica        26  61.59566  23.35462 2019-12-31 08:05:00
+2             Pica pica        31  65.72340  24.62299 2019-12-31 08:00:00
+3       Regulus regulus        11  62.91571  27.66064 2019-12-31 07:10:00
+4      Poecile montanus         1  62.91571  27.66064 2019-12-31 07:10:00
+5  Columba livia domes…        32  65.72340  24.62299 2019-12-31 08:00:00
+6  Columba livia domes…         2  61.59566  23.35462 2019-12-31 08:05:00
+7           Felis catus         1  61.59566  23.35462 2019-12-31 08:05:00
+8        Periparus ater         1  62.91571  27.66064 2019-12-31 07:10:00
+9                 Loxia         2  61.59566  23.35462 2019-12-31 08:05:00
+10    Dendrocopos major         5  62.91571  27.66064 2019-12-31 07:10:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -132,19 +132,19 @@ finbif_occurrence(
 ```r
 
 Records downloaded: 10
-Records available: 1477846
+Records available: 1483232
 A data.frame [10 x 30]
-        scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1    Anas platyrhynchos        30  60.17824  24.94096 2020-02-03 22:00:00
-2           Cygnus olor         1  60.17824  24.94096 2020-02-03 22:00:00
-3  Climacodon septentr…         1  60.17038  24.92525 2020-02-03 13:30:00
-4  Ganoderma applanatum        15  60.17038  24.92525 2020-02-03 13:30:00
-5  Schizophyllum commu…         1  60.17038  24.92525 2020-02-03 14:00:00
-6       Stereum rugosum         1  60.17038  24.92525 2020-02-03 13:30:00
-7  Illosporiopsis chri…         1  62.25377  25.71431 2020-02-02 22:00:00
-8  Ceriporiopsis pseud…         1  62.24950  25.72421 2020-02-02 22:00:00
-9     Cetraria pinastri         1  62.25758  25.71175 2020-02-02 22:00:00
-10 Parmeliopsis ambigua         1  62.25758  25.71175 2020-02-02 22:00:00
+       scientific_name abundance lat_wgs84 lon_wgs84           date_time
+1          Strix aluco         1  60.97880  26.09086 2020-02-18 22:00:00
+2        Milvus milvus         1  60.78519  26.07963 2020-02-19 05:00:00
+3          Strix aluco         1  60.98431  26.04420 2020-02-18 22:00:00
+4        Schizophyllum        10  60.18082  25.01560 2020-02-18 22:00:00
+5  Exidia cartilaginea        10  60.37493  25.73387 2020-02-18 22:00:00
+6      Graphis scripta      1000  60.37480  25.73329 2020-02-18 22:00:00
+7    Formica (Formica)         1  59.89200  22.51700 2020-02-18 22:00:00
+8            Culicidae         1  59.89200  22.51700 2020-02-18 22:00:00
+9       Dicranum majus         1  62.25868  25.71230 2020-02-18 22:00:00
+10  Dicranum polysetum         1  62.25868  25.71230 2020-02-18 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -176,7 +176,7 @@ c(
   permissive = finbif_occurrence(filter = permissive, count_only = TRUE)
 )
 #>     strict permissive 
-#>     301715   31126045
+#>     303153   31322590
 ```
 
 ## Collection
@@ -192,7 +192,7 @@ finbif_occurrence(
 finbif_occurrence(
   filter = c(collection = "Notebook, general observations"), count_only = TRUE
 )
-#> [1] 600173
+#> [1] 680329
 ```
 
 ## Informal taxonomic groups
@@ -208,19 +208,19 @@ finbif_occurrence(filter = list(informal_group = c("Birds", "Mammals")))
 ```r
 
 Records downloaded: 10
-Records available: 17928640
+Records available: 17936842
 A data.frame [10 x 30]
-      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1  Anas platyrhynchos        30  60.17824  24.94096 2020-02-03 22:00:00
-2         Cygnus olor         1  60.17824  24.94096 2020-02-03 22:00:00
-3       Vulpes vulpes         1  60.82982  21.26534 2020-02-03 14:30:00
-4       Lepus timidus         1  60.79142  21.34777 2020-02-03 04:00:00
-5     Corvus monedula       120  60.43522  22.36280 2020-02-02 22:00:00
-6           Pica pica         5  60.42794  22.20052 2020-02-02 22:00:00
-7    Larus argentatus        10  60.42794  22.20052 2020-02-02 22:00:00
-8    Mergus merganser         1  60.42794  22.20052 2020-02-02 22:00:00
-9    Mergus merganser         1  60.42794  22.20052 2020-02-02 22:00:00
-10        Larus canus         2  60.42794  22.20052 2020-02-02 22:00:00
+       scientific_name abundance lat_wgs84 lon_wgs84           date_time
+1          Strix aluco         1  60.97880  26.09086 2020-02-18 22:00:00
+2        Milvus milvus         1  60.78519  26.07963 2020-02-19 05:00:00
+3          Strix aluco         1  60.98431  26.04420 2020-02-18 22:00:00
+4     Larus argentatus         2  61.17487  28.77918 2020-02-19 09:20:00
+5     Mergus merganser         5  61.17487  28.77918 2020-02-19 09:20:00
+6  Phalacrocorax carbo         1  61.17487  28.77918 2020-02-19 09:20:00
+7   Anas platyrhynchos         6  61.17487  28.77918 2020-02-19 09:20:00
+8   Bucephala clangula         9  61.17487  28.77918 2020-02-19 09:20:00
+9  Phalacrocorax carbo         1  61.17136  28.77579 2020-02-19 09:10:00
+10  Anas platyrhynchos         2  61.12640  21.53612 2020-02-19 14:50:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -315,7 +315,7 @@ finbif_occurrence(
 ```r
 
 Records downloaded: 10
-Records available: 1646
+Records available: 1647
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
 1  Rangifer tarandus f…         4  64.42648  29.11431 2019-10-19 21:00:00
@@ -373,19 +373,19 @@ finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 ```r
 
 Records downloaded: 10
-Records available: 19489322
+Records available: 19604348
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1  Climacodon septentr…         1  60.17038  24.92525 2020-02-03 13:30:00
-2  Ganoderma applanatum        15  60.17038  24.92525 2020-02-03 13:30:00
-3  Schizophyllum commu…         1  60.17038  24.92525 2020-02-03 14:00:00
-4       Stereum rugosum         1  60.17038  24.92525 2020-02-03 13:30:00
-5  Illosporiopsis chri…         1  62.25377  25.71431 2020-02-02 22:00:00
-6  Ceriporiopsis pseud…         1  62.24950  25.72421 2020-02-02 22:00:00
-7     Cetraria pinastri         1  62.25758  25.71175 2020-02-02 22:00:00
-8  Parmeliopsis ambigua         1  62.25758  25.71175 2020-02-02 22:00:00
-9   Phellinus punctatus         1  62.25758  25.71175 2020-02-02 22:00:00
-10 Lachnellula occiden…         1  62.25850  25.70893 2020-02-02 22:00:00
+1           Strix aluco         1  60.97880  26.09086 2020-02-18 22:00:00
+2           Strix aluco         1  60.98431  26.04420 2020-02-18 22:00:00
+3   Exidia cartilaginea        10  60.37493  25.73387 2020-02-18 22:00:00
+4       Graphis scripta      1000  60.37480  25.73329 2020-02-18 22:00:00
+5        Dicranum majus         1  62.25868  25.71230 2020-02-18 22:00:00
+6    Dicranum polysetum         1  62.25868  25.71230 2020-02-18 22:00:00
+7      Hypoxylon fuscum         1  62.25868  25.71230 2020-02-18 22:00:00
+8  Hylocomium splendens         1  62.25868  25.71230 2020-02-18 22:00:00
+9  Climacium dendroides         1  62.25868  25.71230 2020-02-18 22:00:00
+10 Pleurozium schreberi         1  62.25868  25.71230 2020-02-18 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -425,19 +425,19 @@ finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J"))))
 ```r
 
 Records downloaded: 10
-Records available: 105
+Records available: 106
 A data.frame [10 x 30]
     scientific_name abundance lat_wgs84 lon_wgs84           date_time
 1  Pammene fasciana         1  60.00217  23.43591 2019-06-21 21:00:00
-2  Pammene fasciana         1  60.50396  27.72823 2019-05-29 21:00:00
-3  Pammene fasciana         3  60.00217  23.43591 2019-05-07 21:00:00
-4  Pammene fasciana         1  59.96020  20.99521 2017-09-19 21:00:00
-5  Pammene fasciana         2  60.35244  19.83238 2017-08-02 21:00:00
-6  Pammene fasciana         1  60.35244  19.83238 2017-08-02 21:00:00
-7  Pammene fasciana         1  60.35244  19.83238 2017-08-01 21:00:00
-8  Pammene fasciana         1  60.21166  24.90204 2017-07-30 21:00:00
-9  Pammene fasciana         1  60.35244  19.83238 2017-07-30 21:00:00
-10 Pammene fasciana         1  60.35244  19.83238 2017-07-29 21:00:00
+2  Pammene fasciana         1  60.04555  23.31692 2019-06-18 21:00:00
+3  Pammene fasciana         1  60.50396  27.72823 2019-05-29 21:00:00
+4  Pammene fasciana         3  60.00217  23.43591 2019-05-07 21:00:00
+5  Pammene fasciana         1  59.96020  20.99521 2017-09-19 21:00:00
+6  Pammene fasciana         2  60.35244  19.83238 2017-08-02 21:00:00
+7  Pammene fasciana         1  60.35244  19.83238 2017-08-02 21:00:00
+8  Pammene fasciana         1  60.35244  19.83238 2017-08-01 21:00:00
+9  Pammene fasciana         1  60.21166  24.90204 2017-07-30 21:00:00
+10 Pammene fasciana         1  60.35244  19.83238 2017-07-30 21:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -464,19 +464,19 @@ finbif_occurrence(filter = c(finnish_occurrence_status = "rare"))
 ```r
 
 Records downloaded: 10
-Records available: 257378
+Records available: 259623
 A data.frame [10 x 30]
         scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1  Calodromius spilotus         2  60.14807  22.29686 2020-02-01 22:00:00
-2    Stethorus pusillus         1  60.28865  24.86263 2020-01-29 22:00:00
-3  Calodromius spilotus         2  60.11620  24.63514 2020-01-25 22:00:00
-4  Dromius quadrimacul…         1  60.11620  24.63514 2020-01-25 22:00:00
-5    Scymnus ferrugatus         1  60.50135  25.94171 2020-01-25 22:00:00
-6  Subcoccinella vigin…         1  61.05561  26.70590 2020-01-20 22:00:00
-7   Dermestes maculatus         4  62.64850  30.37929 2020-01-20 21:00:00
-8  Subcoccinella vigin…         1  60.90095  27.14353 2020-01-19 22:00:00
-9    Oenopia conglobata         1  61.06662  28.18071 2020-01-18 22:00:00
-10   Oenopia conglobata         1  61.06662  28.18071 2020-01-18 22:00:00
+1   Conistra rubiginosa         4  60.45842  22.17823 2020-02-16 22:00:00
+2    Oenopia conglobata         1  61.71205  29.39218 2020-02-13 13:36:00
+3    Oenopia conglobata         1  61.71378  29.39089 2020-02-12 16:52:00
+4  Nanomimus circumscr…         1  60.41145  26.60956 2020-02-10 22:00:00
+5    Nephus bipunctatus         1  60.41145  26.60956 2020-02-10 22:00:00
+6  Calodromius spilotus         2  60.14807  22.29686 2020-02-01 22:00:00
+7    Stethorus pusillus         1  60.28865  24.86263 2020-01-29 22:00:00
+8  Calodromius spilotus         2  60.11620  24.63514 2020-01-25 22:00:00
+9  Dromius quadrimacul…         1  60.11620  24.63514 2020-01-25 22:00:00
+10   Scymnus ferrugatus         1  60.50135  25.94171 2020-01-25 22:00:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
@@ -506,19 +506,19 @@ finbif_occurrence(
 ```r
 
 Records downloaded: 10
-Records available: 17754112
+Records available: 17762120
 A data.frame [10 x 30]
-      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-1  Anas platyrhynchos        30  60.17824  24.94096 2020-02-03 22:00:00
-2         Cygnus olor         1  60.17824  24.94096 2020-02-03 22:00:00
-3     Corvus monedula       120  60.43522  22.36280 2020-02-02 22:00:00
-4           Pica pica         5  60.42794  22.20052 2020-02-02 22:00:00
-5    Larus argentatus        10  60.42794  22.20052 2020-02-02 22:00:00
-6    Mergus merganser         1  60.42794  22.20052 2020-02-02 22:00:00
-7    Mergus merganser         1  60.42794  22.20052 2020-02-02 22:00:00
-8         Larus canus         2  60.42794  22.20052 2020-02-02 22:00:00
-9   Dendrocopos major         1  60.42794  22.20052 2020-02-02 22:00:00
-10      Larus marinus         2  60.42794  22.20052 2020-02-02 22:00:00
+       scientific_name abundance lat_wgs84 lon_wgs84           date_time
+1          Strix aluco         1  60.97880  26.09086 2020-02-18 22:00:00
+2        Milvus milvus         1  60.78519  26.07963 2020-02-19 05:00:00
+3          Strix aluco         1  60.98431  26.04420 2020-02-18 22:00:00
+4     Larus argentatus         2  61.17487  28.77918 2020-02-19 09:20:00
+5     Mergus merganser         5  61.17487  28.77918 2020-02-19 09:20:00
+6  Phalacrocorax carbo         1  61.17487  28.77918 2020-02-19 09:20:00
+7   Anas platyrhynchos         6  61.17487  28.77918 2020-02-19 09:20:00
+8   Bucephala clangula         9  61.17487  28.77918 2020-02-19 09:20:00
+9  Phalacrocorax carbo         1  61.17136  28.77579 2020-02-19 09:10:00
+10  Anas platyrhynchos         2  61.12640  21.53612 2020-02-19 14:50:00
 ...with 0 more records and 25 more variables:
 taxon_rank, country, province, municipality, date_start, date_end,
 hour_start, hour_end, minute_start, minute_end, record_id,
