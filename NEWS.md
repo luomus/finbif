@@ -1,3 +1,15 @@
+# finbif 0.2.0.9003
+
+### NEW FEATURES
+
+  * All user facing functions with a `finbif_` prefix can now also be used with
+    the alternative shorter prefix `fb_`.
+  * Crop Wild Relative, CWR, added to admin statuses.
+
+### MINOR IMPROVEMENTS
+
+  * Front matter of vignettes is nwo visible when using the R help browser.
+
 # finbif 0.2.0.9002
 
 ### BUG FIXES
