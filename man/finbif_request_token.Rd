@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_request_token.R
 \name{finbif_request_token}
 \alias{finbif_request_token}
+\alias{fb_request_token}
 \title{Get a FinBIF personal access token}
 \usage{
 finbif_request_token(email)

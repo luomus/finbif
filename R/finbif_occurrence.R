@@ -2,6 +2,8 @@
 #'
 #' Download filtered occurrence data from FinBIF as a `data.frame`.
 #'
+#' @aliases fb_occurrence
+#'
 #' @param ... Character vectors or list of character vectors. Taxa of records
 #'   to download.
 #' @inheritParams finbif_records

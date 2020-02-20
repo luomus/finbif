@@ -4,6 +4,8 @@
 #'
 #' Download records from FinBIF.
 #'
+#' @aliases fb_records
+#'
 #' @param filter List of named character vectors. Filters to apply to records.
 #' @param select Character vector. Variables to return. If not specified a
 #'   default set of commonly used variables will be used. Use `"default_vars"`

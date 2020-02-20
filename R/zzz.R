@@ -10,3 +10,6 @@
   if (any(toset)) options(op_finbif[toset])
   invisible()
 }
+
+#' @exportPattern ^fb
+for (fn in ls(pattern = "^finbif")) assign(gsub("finbif", "fb", fn), get(fn))

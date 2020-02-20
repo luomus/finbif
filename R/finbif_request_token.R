@@ -3,6 +3,8 @@
 #' Have a personal access token for use with the FinBIF API sent to a specified
 #' email address.
 #'
+#' @aliases fb_request_token
+#'
 #' @param email Character. The email address to which to send the API access
 #'   token.
 #' @return If an access token has already been set then `NULL` (invisibly) if

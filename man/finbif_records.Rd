@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_records.R
 \name{finbif_records}
 \alias{finbif_records}
+\alias{fb_records}
 \title{Get FinBIF records}
 \usage{
 finbif_records(

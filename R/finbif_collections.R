@@ -2,6 +2,8 @@
 #'
 #' Get information on collections in the FinBIF database.
 #'
+#' @aliases fb_collections
+#'
 #' @param filter Logical. Expression indicating elements or rows to keep:
 #'   missing values are taken as false.
 #' @param select Expression. Indicates columns to select from the data frame.
@@ -21,6 +23,7 @@
 #' }
 #' @importFrom utils hasName
 #' @export
+
 finbif_collections <- function(
   filter, select, subcollections = TRUE, supercollections = FALSE,
   lang = c("en", "fi", "sv"), nmin = 0, cache = getOption("finbif_use_cache")

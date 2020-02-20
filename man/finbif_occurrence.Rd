@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_occurrence.R
 \name{finbif_occurrence}
 \alias{finbif_occurrence}
+\alias{fb_occurrence}
 \title{Download FinBIF occurrence records}
 \usage{
 finbif_occurrence(

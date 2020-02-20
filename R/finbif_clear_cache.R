@@ -2,11 +2,14 @@
 #'
 #' Remove cached API requests from FinBIF.
 #'
+#' @aliases fb_clear_cache
+#'
 #' @examples \dontrun{
 #'
 #' finbif_clear_cache()
 #' }
 #' @export
+
 finbif_clear_cache <- function() {
   fcp <- getOption("finbif_cache_path")
   if (is.null(fcp)) {

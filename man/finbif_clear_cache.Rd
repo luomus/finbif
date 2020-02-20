@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_clear_cache.R
 \name{finbif_clear_cache}
 \alias{finbif_clear_cache}
+\alias{fb_clear_cache}
 \title{Clear cache}
 \usage{
 finbif_clear_cache()

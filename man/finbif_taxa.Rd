@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_taxa.R
 \name{finbif_taxa}
 \alias{finbif_taxa}
+\alias{fb_taxa}
 \title{Search the FinBIF taxa}
 \usage{
 finbif_taxa(
