@@ -20,7 +20,7 @@ vcr::use_cassette(
           finbif_occurrence(
             "Rangifer tarandus fennicus", "not a valid taxon",
             select = c("record_id", "date_start", "record_fact_content"),
-            on_check_fail = "quiet"
+            check_taxa = FALSE
           ),
           "finbif_occ"
         )

@@ -11,7 +11,7 @@
 #'   If true only records that match known taxa (have a valid taxon ID) are
 #'   returned.
 #' @param on_check_fail Character. What to do if a taxon is found not valid. One
-#'   of `"warn"` (default), `"error"` or `"continue"`.
+#'   of `"warn"` (default) or `"error"`.
 #' @param date_time Logical. Convert raw date and time variables into date-time
 #'   and duration.
 #' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
@@ -50,13 +50,12 @@
 finbif_occurrence <- function(
   ..., filter, select, order_by, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  check_taxa = TRUE, on_check_fail = c("warn", "error", "quiet"),
-  date_time = TRUE, date_time_method = "fast", tzone = Sys.timezone(),
-  dwc = FALSE
+  check_taxa = TRUE, on_check_fail = c("warn", "error"), date_time = TRUE,
+  date_time_method = "fast", tzone = Sys.timezone(), dwc = FALSE
 ) {
 
   taxa <- select_taxa(
-    ..., quiet = quiet, cache = cache, check_taxa = check_taxa,
+    ..., cache = cache, check_taxa = check_taxa,
     on_check_fail = match.arg(on_check_fail)
   )
 
@@ -115,37 +114,41 @@ finbif_occurrence <- function(
 
 }
 
-select_taxa <- function(..., quiet, cache, check_taxa, on_check_fail) {
+select_taxa <- function(..., cache, check_taxa, on_check_fail) {
+
   taxa <- list(...)
   ntaxa <- length(taxa)
-  if (ntaxa)
-    if (check_taxa) {
+  ans <- list(taxon_name = paste(taxa, collapse = ","))
 
-      taxa <- if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
+  if (ntaxa && check_taxa) {
+
+    taxa <-
+      if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
         unlist(finbif_check_taxa(taxa, cache = cache))
       } else {
         unlist(finbif_check_taxa(..., cache = cache))
       }
 
-      if (anyNA(taxa)) {
-        msg  <- paste(
-          "Cannot find taxa:",
-          paste(sub("\\.", " - ", names(taxa[is.na(taxa)])), collapse = ", ")
-        )
-        switch(
-          on_check_fail, warn = warning(msg), error = stop(msg), quiet = NULL
-        )
-      }
+    taxa_invalid <- is.na(taxa)
 
-      taxa <- list(taxon_id = paste(taxa[!is.na(taxa)], collapse = ","))
-
-    } else {
-
-      taxa <- list(taxon_name = paste(taxa, collapse = ","))
-
+    if (any(taxa_invalid)) {
+      msg  <- paste(
+        "Cannot find taxa:",
+        paste(sub("\\.", " - ", names(taxa[taxa_invalid])), collapse = ", ")
+      )
+      switch(
+        on_check_fail,
+        warn  = warning(msg, call. = FALSE),
+        error = stop(msg, call. = FALSE)
+      )
     }
 
-  taxa
+    if (!all(taxa_invalid))
+      ans <- list(taxon_id = paste(taxa[!taxa_invalid], collapse = ","))
+
+  }
+
+  ans
 
 }
 

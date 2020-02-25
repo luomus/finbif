@@ -17,7 +17,7 @@ finbif_occurrence(
   quiet = FALSE,
   cache = getOption("finbif_use_cache"),
   check_taxa = TRUE,
-  on_check_fail = c("warn", "error", "quiet"),
+  on_check_fail = c("warn", "error"),
   date_time = TRUE,
   date_time_method = "fast",
   tzone = Sys.timezone(),
@@ -60,7 +60,7 @@ If true only records that match known taxa (have a valid taxon ID) are
 returned.}
 
 \item{on_check_fail}{Character. What to do if a taxon is found not valid. One
-of \code{"warn"} (default), \code{"error"} or \code{"continue"}.}
+of \code{"warn"} (default) or \code{"error"}.}
 
 \item{date_time}{Logical. Convert raw date and time variables into date-time
 and duration.}
