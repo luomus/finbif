@@ -24,6 +24,9 @@
 #' @param quiet Logical. Suppress the progress indicator for multipage
 #'   downloads.
 #' @param cache Logical. Use cached data.
+#' @param seed Integer. Set a seed for randomly sampling records. Note that
+#'   the server currently ignores seed setting and this argument has
+#'   currently has little effect.
 #' @return A `finbif_api` or `finbif_api_list` object.
 #' @examples \dontrun{
 #'
@@ -35,7 +38,8 @@
 
 finbif_records <- function(
   filter, select, order_by, sample = FALSE, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache")
+  count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
+  seed
 ) {
 
   max_queries  <- 2000L
@@ -114,7 +118,7 @@ finbif_records <- function(
 
     if (sample)
       query[["orderBy"]] <- paste(
-        "RANDOM",
+        if (missing(seed)) "RANDOM" else paste0("RANDOM:", as.integer(seed)),
         query[["orderBy"]],
         sep = c("", ",")[[length(query[["orderBy"]]) + 1L]]
       )
@@ -178,9 +182,8 @@ request <- function(
       get_extra_pages(resp, n, max_size, quiet, path, query, cache, select)
 
     if (sample)
-      resp <- handle_duplicates(
-        resp, filter, select_, max_size, cache, page = length(resp) + 1L, n
-      )
+      resp <-
+        handle_duplicates(resp, filter, select_, max_size, cache, n, seed = 1L)
 
   }
 
@@ -364,7 +367,7 @@ record_sample <- function(x, n, cache) {
 
 # handle duplicates ------------------------------------------------------------
 
-handle_duplicates <- function(x, filter, select, max_size, cache, page, n) {
+handle_duplicates <- function(x, filter, select, max_size, cache, n, seed) {
 
   ids <- lapply(
     x,
@@ -383,11 +386,12 @@ handle_duplicates <- function(x, filter, select, max_size, cache, page, n) {
   if (length(ids) - length(duplicates) < n) {
 
     new_records <- finbif_records(
-      filter, select, sample = TRUE, n = max_size, page = page, cache = cache
+      filter, select, sample = TRUE, n = max_size, cache = cache, seed = seed
     )
 
     x[[length(x) + 1L]] <- new_records[[1L]]
-    x <- handle_duplicates(x, filter, select, max_size, cache, page + 1L, n)
+
+    x <- handle_duplicates(x, filter, select, max_size, cache, n, seed + 1L)
 
   }
 

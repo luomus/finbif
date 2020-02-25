@@ -14,7 +14,8 @@ finbif_records(
   page = 1,
   count_only = FALSE,
   quiet = FALSE,
-  cache = getOption("finbif_use_cache")
+  cache = getOption("finbif_use_cache"),
+  seed
 )
 }
 \arguments{
@@ -44,6 +45,10 @@ database.}
 downloads.}
 
 \item{cache}{Logical. Use cached data.}
+
+\item{seed}{Integer. Set a seed for randomly sampling records. Note that
+the server currently ignores seed setting and this argument has
+currently has little effect.}
 }
 \value{
 A \code{finbif_api} or \code{finbif_api_list} object.

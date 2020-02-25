@@ -41,7 +41,7 @@ vcr::use_cassette(
         )
 
         expect_s3_class(
-          finbif_occurrence("Pteromys volans", sample = TRUE, n = 1001),
+          finbif_occurrence("Vulpes vulpes", sample = TRUE, n = 1600),
           "finbif_occ"
         )
 
