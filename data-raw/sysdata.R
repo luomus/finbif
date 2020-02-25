@@ -1,4 +1,5 @@
 source("data-raw/variables.R")
+source("data-raw/variables_test.R")
 source("data-raw/filters.R")
 source("data-raw/status.R")
 source("data-raw/informal_groups.R")
@@ -17,6 +18,7 @@ source("data-raw/restriction.R")
 source("data-raw/misc.R")
 usethis::use_data(
   var_names,
+  var_names_test,
   filter_names,
   administrative_status,
   red_list_status,
