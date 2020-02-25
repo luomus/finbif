@@ -149,7 +149,8 @@
   <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_use_cache"</span>)
+  <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_use_cache"</span>),
+  <span class='no'>seed</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -199,6 +200,12 @@ downloads.</p></td>
     <tr>
       <th>cache</th>
       <td><p>Logical. Use cached data.</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>Integer. Set a seed for randomly sampling records. Note that
+the server currently ignores seed setting and this argument has
+currently has little effect.</p></td>
     </tr>
     </table>
 
