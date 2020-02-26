@@ -20,7 +20,7 @@ finbif_occurrence(
   on_check_fail = c("warn", "error"),
   date_time = TRUE,
   date_time_method = "fast",
-  tzone = Sys.timezone(),
+  tzone = getOption("finbif_tz"),
   dwc = FALSE
 )
 }

@@ -155,7 +155,7 @@
   <span class='kw'>on_check_fail</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"warn"</span>, <span class='st'>"error"</span>),
   <span class='kw'>date_time</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>date_time_method</span> <span class='kw'>=</span> <span class='st'>"fast"</span>,
-  <span class='kw'>tzone</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/timezones.html'>Sys.timezone</a></span>(),
+  <span class='kw'>tzone</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_tz"</span>),
   <span class='kw'>dwc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 

@@ -51,7 +51,7 @@ finbif_occurrence <- function(
   ..., filter, select, order_by, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
   check_taxa = TRUE, on_check_fail = c("warn", "error"), date_time = TRUE,
-  date_time_method = "fast", tzone = Sys.timezone(), dwc = FALSE
+  date_time_method = "fast", tzone = getOption("finbif_tz"), dwc = FALSE
 ) {
 
   taxa <- select_taxa(
