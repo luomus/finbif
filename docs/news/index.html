@@ -76,7 +76,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9006</span>
       </span>
     </div>
 
@@ -134,13 +134,25 @@
       <small>Source: <a href='https://github.com/luomus/finbif/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="finbif-0-2-0-9005" class="section level1">
+    <div id="finbif-0-2-0-9006" class="section level1">
 <h1 class="page-header">
-<a href="#finbif-0-2-0-9005" class="anchor"></a>finbif 0.2.0.9005<small> Unreleased </small>
+<a href="#finbif-0-2-0-9006" class="anchor"></a>finbif 0.2.0.9006<small> Unreleased </small>
 </h1>
 <div id="minor-improvements" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<ul>
+<li>Now when a record has no time information the start time is assumed to be midday. Previous behaviour was to assume start time was midnight, making errors potentially biased.</li>
+</ul>
+</div>
+</div>
+    <div id="finbif-0-2-0-9005" class="section level1">
+<h1 class="page-header">
+<a href="#finbif-0-2-0-9005" class="anchor"></a>finbif 0.2.0.9005<small> Unreleased </small>
+</h1>
+<div id="minor-improvements-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Global option to set timezone, “finbif_tz”, as default value for “tzone” argument to finbif_occurrence(). Avoids having to set system environment variable TZ or specify “tzone” every time finbif_occurrence() is run.</li>
 </ul>
@@ -150,9 +162,9 @@
 <h1 class="page-header">
 <a href="#finbif-0-2-0-9004" class="anchor"></a>finbif 0.2.0.9004<small> Unreleased </small>
 </h1>
-<div id="minor-improvements-1" class="section level3">
+<div id="minor-improvements-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Retired “quiet” option for “on_check_fail” argument in function <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>.</li>
 <li>Improved error messages when taxa fail checking in <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>.</li>
@@ -179,9 +191,9 @@
 <li>Crop Wild Relative, CWR, added to admin statuses.</li>
 </ul>
 </div>
-<div id="minor-improvements-2" class="section level3">
+<div id="minor-improvements-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Front matter of vignettes is now visible when using the R help browser.</li>
 </ul>
@@ -203,9 +215,9 @@
 <h1 class="page-header">
 <a href="#finbif-0-2-0-9001" class="anchor"></a>finbif 0.2.0.9001<small> Unreleased </small>
 </h1>
-<div id="minor-improvements-3" class="section level3">
+<div id="minor-improvements-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-4" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Caching defaults to in memory caching instead of relying on the temporary directory.</li>
 </ul>
@@ -222,9 +234,9 @@
 <li>Add capacity to request a random sample of FinBIF records.</li>
 </ul>
 </div>
-<div id="minor-improvements-4" class="section level3">
+<div id="minor-improvements-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-4" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-5" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Add more content to vignettes.</li>
 </ul>
@@ -244,6 +256,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#finbif-0-2-0-9006">0.2.0.9006</a></li>
         <li><a href="#finbif-0-2-0-9005">0.2.0.9005</a></li>
         <li><a href="#finbif-0-2-0-9004">0.2.0.9004</a></li>
         <li><a href="#finbif-0-2-0-9003">0.2.0.9003</a></li>

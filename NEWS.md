@@ -1,3 +1,11 @@
+# finbif 0.2.0.9006
+
+### MINOR IMPROVEMENTS
+
+  * Now when a record has no time information the start time is assumed to be
+    midday. Previous behaviour was to assume start time was midnight, making
+    errors potentially biased.
+
 # finbif 0.2.0.9005
 
 ### MINOR IMPROVEMENTS
