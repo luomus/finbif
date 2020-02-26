@@ -1,7 +1,15 @@
+# finbif 0.2.0.9005
+
+### MINOR IMPROVEMENTS
+
+  * Global option to set timezone, "finbif_tz", as default value for "tzone"
+    argument to finbif_occurrence(). Avoids having to set system environment
+    variable TZ or specify "tzone" every time finbif_occurrence() is run.
+
 # finbif 0.2.0.9004
 
 ### MINOR IMPROVEMENTS
-  
+
   * Retired "quiet" option for "on_check_fail" argument in function
     `finbif_occurrence()`.
   * Improved error messages when taxa fail checking in `finbif_occurrence()`.
@@ -12,7 +20,7 @@
     recursion.
   * Fixed bug that (when "on_check_fail" = "warn") all taxa failed checks
     `finbif_occurrence()` would proceed as if no taxa had been selected.
-  
+
 # finbif 0.2.0.9003
 
 ### NEW FEATURES
