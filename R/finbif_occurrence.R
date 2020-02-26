@@ -159,17 +159,20 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
   date_time <- lubridate::ymd(df[[date]])
   date_time <- lubridate::as_datetime(date_time)
 
-  if (!is.null(df[[hour]])) {
+  # When there is no hour assume the hour is midday (i.e., don't assume
+  # midnight)
+  lubridate::hour(date_time) <- 12L
+
+  if (!is.null(df[[hour]]))
     lubridate::hour(date_time) <-
       ifelse(is.na(df[[hour]]), lubridate::hour(date_time), df[[hour]])
-  }
 
-  if (!is.null(df[[minute]])) {
+  if (!is.null(df[[minute]]))
     lubridate::minute(date_time) <-
       ifelse(is.na(df[[minute]]), lubridate::minute(date_time), df[[minute]])
-  }
 
   if (is.null(df[[lat]]) || is.null(df[[lon]])) return(NULL)
+
   tz <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
   lubridate::force_tzs(
     date_time, tzones = ifelse(is.na(tz), "", tz), tzone_out = tzone
