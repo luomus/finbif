@@ -49,5 +49,5 @@ breaks_xy <- function(bbox, size) {
   bbox[1:2] <- floor(bbox[1:2])
   bbox[3:4] <- ceiling(bbox[3:4])
   bbox <- bbox * size
-  list(x = seq(bbox[1], bbox[3], size), y = seq(bbox[2], bbox[4], size))
+  list(x = seq(bbox[[1]], bbox[[3]], size), y = seq(bbox[[2]], bbox[[4]], size))
 }
