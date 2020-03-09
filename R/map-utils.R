@@ -38,7 +38,7 @@ in_intervals <- function(x, breaks) {
 #'   expanded to nearest multiple of `size`.
 #' @param size Numeric. The size of the cells between the breakpoints.
 #'
-#' @return A list with three components:
+#' @return A list with two components:
 #' - `x` The X dimension breakpoints.
 #' - `y` The Y dimension breakpoints.
 #' @examples

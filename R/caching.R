@@ -19,7 +19,7 @@
 #' `options(finbif_cache_path = "path/to/cache")`.
 #'
 #' @section Clearing the cache:
-#' The cache files can be removed using `finbif_clear_cache()`.
+#' The cache files can deleted `finbif_clear_cache()`.
 #'
 #' @name caching
 NULL
