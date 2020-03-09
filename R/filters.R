@@ -54,22 +54,22 @@
 #' - `primary_secondary_habitat` Character or named list of character vectors.
 #'   As above, except the records returned will be of taxa whose primary or
 #'   secondary habitat is considered to be the combination supplied.
-#' - `finnish_occurrence_status`, Character vector.
+#' - `finnish_occurrence_status` Character vector.
 #'   Filter by Finnish occurrence status of taxa. Use
 #'   [finbif_metadata()] to see the possible occurrence
 #'   statuses of taxa.
-#' - `finnish_occurrence_status_neg`, Character vector.
+#' - `finnish_occurrence_status_neg` Character vector.
 #'   Negation of the above. Selecting a status will filter out rather than
 #'   include records with the selected status.
-#' - `finnish`. Logical.
+#' - `finnish` Logical.
 #'   If `TRUE`, limit records to taxa thought to occur in Finland. Or if `FALSE`
 #'   limit to taxa not thought to occur in Finland. If unspecified (default)
 #'   return records of all taxa.
-#' - `invasive`. Logical.
+#' - `invasive` Logical.
 #'   If `TRUE`, limit records to invasive taxa. Or if `FALSE` limit to
 #'   non-invasive taxa. If unspecified (default) return records of invasive and
 #'   non-invasive taxa.
-#' - `taxon_rank`. Character vector.
+#' - `taxon_rank` Character vector.
 #'   Filter by taxonomic rank. Use `finbif_metadata()` to see the taxonomic
 #'   ranks available. Records returned will be limited to the specified ranks
 #'   and not include records of lower taxonomic levels.
@@ -115,7 +115,7 @@
 #'   system (currently only `"wgs84"` is implemented). Records returned will be
 #'   those for which the center point exactly matches that which is specified.
 #' - `coordinates_cell_{1k|10k|50k|100k}` Coordinates.
-#'   A vector of coordinate data (lat, long). Filter by grid cell at scale `*`.
+#'   A vector of coordinate data (lat, lon). Filter by grid cell at scale `*`.
 #'   Where `*` is 1, 10, 50 or 100. The coordinates specify the southeast corner
 #'   of the cell. Coordinates system is uniform `"kkj"` (also known as "ykj").
 #' - `coordinates_cell_{1k|10k|50k|100k}_center` Coordinates.
