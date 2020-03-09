@@ -20,6 +20,23 @@ A programmatic interface to the 'Finnish Biodiversity Information
     location and other variables. The data accessed are conveniently
     preformatted for subsequent analyses.
 }
+\section{Package options}{
+
+\describe{
+\item{\code{finbif_api_url}}{Character. The base url of the API to query. Default:
+\code{"api.laji.fi"}}
+\item{\code{finbif_api_version}}{Character. The API version to use. Default:
+\code{"v0"}}
+\item{\code{finbif_use_cache}}{Logical. Should API queries by cached. Default:
+\code{TRUE}}
+\item{\code{finbif_cache_path}}{The path to the directory where to store cached
+API queries. If unset (the default) in memory caching is used.}
+\item{\code{finbif_tz}}{The timezone used by \code{finbif} functions that compute dates
+and times. Default: \code{Sys.timezone()}}
+
+}
+}
+
 \seealso{
 Useful links:
 \itemize{
@@ -38,4 +55,3 @@ Other contributors:
 }
 
 }
-\keyword{internal}

@@ -28,6 +28,6 @@ setting the file path for the current session with
 
 \section{Clearing the cache}{
 
-The cache files can be removed using \code{finbif_clear_cache()}.
+The cache files can deleted \code{finbif_clear_cache()}.
 }
 

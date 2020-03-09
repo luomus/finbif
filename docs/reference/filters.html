@@ -196,22 +196,22 @@ qualifier combination supplied.</p></li>
 <li><p><code>primary_secondary_habitat</code> Character or named list of character vectors.
 As above, except the records returned will be of taxa whose primary or
 secondary habitat is considered to be the combination supplied.</p></li>
-<li><p><code>finnish_occurrence_status</code>, Character vector.
+<li><p><code>finnish_occurrence_status</code> Character vector.
 Filter by Finnish occurrence status of taxa. Use
 <code><a href='finbif_metadata.html'>finbif_metadata()</a></code> to see the possible occurrence
 statuses of taxa.</p></li>
-<li><p><code>finnish_occurrence_status_neg</code>, Character vector.
+<li><p><code>finnish_occurrence_status_neg</code> Character vector.
 Negation of the above. Selecting a status will filter out rather than
 include records with the selected status.</p></li>
-<li><p><code>finnish</code>. Logical.
+<li><p><code>finnish</code> Logical.
 If <code>TRUE</code>, limit records to taxa thought to occur in Finland. Or if <code>FALSE</code>
 limit to taxa not thought to occur in Finland. If unspecified (default)
 return records of all taxa.</p></li>
-<li><p><code>invasive</code>. Logical.
+<li><p><code>invasive</code> Logical.
 If <code>TRUE</code>, limit records to invasive taxa. Or if <code>FALSE</code> limit to
 non-invasive taxa. If unspecified (default) return records of invasive and
 non-invasive taxa.</p></li>
-<li><p><code>taxon_rank</code>. Character vector.
+<li><p><code>taxon_rank</code> Character vector.
 Filter by taxonomic rank. Use <code><a href='finbif_metadata.html'>finbif_metadata()</a></code> to see the taxonomic
 ranks available. Records returned will be limited to the specified ranks
 and not include records of lower taxonomic levels.</p></li>
@@ -260,7 +260,7 @@ first two elements are latitude and longitude and third is the coordinate
 system (currently only <code>"wgs84"</code> is implemented). Records returned will be
 those for which the center point exactly matches that which is specified.</p></li>
 <li><p><code>coordinates_cell_{1k|10k|50k|100k}</code> Coordinates.
-A vector of coordinate data (lat, long). Filter by grid cell at scale <code>*</code>.
+A vector of coordinate data (lat, lon). Filter by grid cell at scale <code>*</code>.
 Where <code>*</code> is 1, 10, 50 or 100. The coordinates specify the southeast corner
 of the cell. Coordinates system is uniform <code>"kkj"</code> (also known as "ykj").</p></li>
 <li><p><code>coordinates_cell_{1k|10k|50k|100k}_center</code> Coordinates.

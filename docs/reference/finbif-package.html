@@ -164,6 +164,25 @@ A programmatic interface to the 'Finnish Biodiversity Information
 
 
 
+    <h2 class="hasAnchor" id="package-options"><a class="anchor" href="#package-options"></a>Package options</h2>
+
+    
+
+<dl class='dl-horizontal'>
+<dt><code>finbif_api_url</code></dt><dd><p>Character. The base url of the API to query. Default:
+<code>"api.laji.fi"</code></p></dd>
+<dt><code>finbif_api_version</code></dt><dd><p>Character. The API version to use. Default:
+<code>"v0"</code></p></dd>
+<dt><code>finbif_use_cache</code></dt><dd><p>Logical. Should API queries by cached. Default:
+<code>TRUE</code></p></dd>
+<dt><code>finbif_cache_path</code></dt><dd><p>The path to the directory where to store cached
+API queries. If unset (the default) in memory caching is used.</p></dd>
+<dt><code>finbif_tz</code></dt><dd><p>The timezone used by <code>finbif</code> functions that compute dates
+and times. Default: <code><a href='https://rdrr.io/r/base/timezones.html'>Sys.timezone()</a></code></p></dd>
+
+
+</dl>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Useful links:</p><ul>
@@ -178,6 +197,7 @@ A programmatic interface to the 'Finnish Biodiversity Information
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#package-options">Package options</a></li>
       <li><a href="#see-also">See also</a></li>
     </ul>
 
