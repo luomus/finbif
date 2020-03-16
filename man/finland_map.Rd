@@ -4,13 +4,15 @@
 \name{finland_map}
 \alias{finland_map}
 \title{Border of Finland}
-\format{A list:
+\format{
+A list:
 \describe{
 \item{vertices}{A matrix of the vertices, in decimal degrees (WGS84) of the
 Finnish border at the (approximately) 1km scale.}
 \item{bbox}{A vector of coordinates for a box bounding the Finnish border.}
 ...
-}}
+}
+}
 \source{
 \url{https://www.stat.fi/org/avoindata/paikkatietoaineistot.html}
 }
