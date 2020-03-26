@@ -15,7 +15,8 @@ finbif_records(
   count_only = FALSE,
   quiet = FALSE,
   cache = getOption("finbif_use_cache"),
-  seed
+  seed,
+  date_time = TRUE
 )
 }
 \arguments{
@@ -49,6 +50,9 @@ downloads.}
 \item{seed}{Integer. Set a seed for randomly sampling records. Note that
 the server currently ignores seed setting and this argument has
 currently has little effect.}
+
+\item{date_time}{Logical. Convert raw date and time variables into date-time
+and duration.}
 }
 \value{
 A \code{finbif_api} or \code{finbif_api_list} object.

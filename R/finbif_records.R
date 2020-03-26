@@ -27,6 +27,8 @@
 #' @param seed Integer. Set a seed for randomly sampling records. Note that
 #'   the server currently ignores seed setting and this argument has
 #'   currently has little effect.
+#' @param date_time Logical. Convert raw date and time variables into date-time
+#'   and duration.
 #' @return A `finbif_api` or `finbif_api_list` object.
 #' @examples \dontrun{
 #'
@@ -39,7 +41,7 @@
 finbif_records <- function(
   filter, select, order_by, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  seed
+  seed, date_time = TRUE
 ) {
 
   max_queries  <- 2000L
@@ -66,25 +68,30 @@ finbif_records <- function(
     # select ===================================================================
 
     default_vars <- var_names[var_names[["default_var"]], ]
+    date_time_vars <- var_names[var_names[["date"]], ]
 
     if (missing(select)) {
 
       select <- row.names(default_vars)
       select_ <- default_vars[["translated_var"]]
       record_id_selected <- TRUE
+      if (date_time) select <- unique(c(select, row.names(date_time_vars)))
 
     } else {
 
-      select_ <- select
       select  <- ifelse(
         select == "default_vars",
         list(default_vars[["translated_var"]]),
         select
       )
       select <- unlist(select)
+      select_ <- select
 
       record_id_selected <- "record_id" %in% select
       if (!record_id_selected) select <- c("record_id", select)
+
+      if (date_time)
+        select <- unique(c(select, date_time_vars[["translated_var"]]))
 
       select_vars <- var_names[var_names[["select"]], ]
       for (var in names(var_names))
@@ -127,7 +134,7 @@ finbif_records <- function(
 
   request(
     filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-    select_, record_id_selected
+    select_, record_id_selected, date_time
   )
 
 }
@@ -136,7 +143,7 @@ finbif_records <- function(
 
 request <- function(
   filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-  select_, record_id_selected
+  select_, record_id_selected, date_time
 ) {
 
   path <- "warehouse/query/unit/"
@@ -173,7 +180,7 @@ request <- function(
     if (sample && sample_after_request) {
       all_records <- finbif_records(
         filter, select_, sample = FALSE, n = n_tot, quiet = quiet,
-        cache = cache
+        cache = cache, date_time = date_time
       )
       return(record_sample(all_records, n, cache))
     }
@@ -182,15 +189,16 @@ request <- function(
       get_extra_pages(resp, n, max_size, quiet, path, query, cache, select)
 
     if (sample)
-      resp <-
-        handle_duplicates(resp, filter, select_, max_size, cache, n, seed = 1L)
+      resp <- handle_duplicates(
+        resp, filter, select_, max_size, cache, n, seed = 1L, date_time
+      )
 
   }
 
   structure(
     resp, class = c("finbif_records_list", "finbif_api_list"), nrec_dnld = n,
-    nrec_avl = n_tot, select = unique(select), record_id = record_id_selected,
-    cache = cache
+    nrec_avl = n_tot, select = unique(select), select_user = unique(select_),
+    record_id = record_id_selected, cache = cache
   )
 
 }
@@ -364,37 +372,41 @@ record_sample <- function(x, n, cache) {
 
 # handle duplicates ------------------------------------------------------------
 
-handle_duplicates <- function(x, filter, select, max_size, cache, n, seed) {
+handle_duplicates <-
+  function(x, filter, select, max_size, cache, n, seed, date_time) {
 
-  ids <- lapply(
-    x,
-    function(x)
-      vapply(
-        x[["content"]][["results"]], get_el_recurse, NA_character_,
-        c("unit", "unitId"), "character"
-      )
-  )
-  ids <- unlist(ids)
-
-  duplicates <- which(duplicated(ids))
-
-  x <- remove_records(x, duplicates)
-
-  if (length(ids) - length(duplicates) < n) {
-
-    new_records <- finbif_records(
-      filter, select, sample = TRUE, n = max_size, cache = cache, seed = seed
+    ids <- lapply(
+      x,
+      function(x)
+        vapply(
+          x[["content"]][["results"]], get_el_recurse, NA_character_,
+          c("unit", "unitId"), "character"
+        )
     )
+    ids <- unlist(ids)
 
-    x[[length(x) + 1L]] <- new_records[[1L]]
+    duplicates <- which(duplicated(ids))
 
-    x <- handle_duplicates(x, filter, select, max_size, cache, n, seed + 1L)
+    x <- remove_records(x, duplicates)
+
+    if (length(ids) - length(duplicates) < n) {
+
+      new_records <- finbif_records(
+        filter, select, sample = TRUE, n = max_size, cache = cache, seed = seed,
+        date_time = date_time
+      )
+
+      x[[length(x) + 1L]] <- new_records[[1L]]
+
+      x <- handle_duplicates(
+        x, filter, select, max_size, cache, n, seed + 1L, date_time
+      )
+
+    }
+
+    remove_records(x, n = n)
 
   }
-
-  remove_records(x, n = n)
-
-}
 
 # remove records ---------------------------------------------------------------
 

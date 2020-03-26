@@ -151,10 +151,10 @@
   <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_use_cache"</span>),
-  <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>on_check_fail</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"warn"</span>, <span class='st'>"error"</span>),
   <span class='kw'>date_time</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>date_time_method</span> <span class='kw'>=</span> <span class='st'>"fast"</span>,
+  <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>on_check_fail</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"warn"</span>, <span class='st'>"error"</span>),
   <span class='kw'>tzone</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_tz"</span>),
   <span class='kw'>dwc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
@@ -213,17 +213,6 @@ downloads.</p></td>
       <td><p>Logical. Use cached data.</p></td>
     </tr>
     <tr>
-      <th>check_taxa</th>
-      <td><p>Logical. Check first that taxa are in the FinBIF database.
-If true only records that match known taxa (have a valid taxon ID) are
-returned.</p></td>
-    </tr>
-    <tr>
-      <th>on_check_fail</th>
-      <td><p>Character. What to do if a taxon is found not valid. One
-of <code>"warn"</code> (default) or <code>"error"</code>.</p></td>
-    </tr>
-    <tr>
       <th>date_time</th>
       <td><p>Logical. Convert raw date and time variables into date-time
 and duration.</p></td>
@@ -234,6 +223,17 @@ and duration.</p></td>
 <code>date_time = TRUE</code>. Default is <code>"fast"</code>. Use
 <code>date_time_method = "accurate"</code> (requires package <code>sf</code>) for greater
 accuracy.</p></td>
+    </tr>
+    <tr>
+      <th>check_taxa</th>
+      <td><p>Logical. Check first that taxa are in the FinBIF database.
+If true only records that match known taxa (have a valid taxon ID) are
+returned.</p></td>
+    </tr>
+    <tr>
+      <th>on_check_fail</th>
+      <td><p>Character. What to do if a taxon is found not valid. One
+of <code>"warn"</code> (default) or <code>"error"</code>.</p></td>
     </tr>
     <tr>
       <th>tzone</th>

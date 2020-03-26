@@ -46,7 +46,7 @@ vcr::use_cassette(
         )
 
         expect_s3_class(
-          finbif_occurrence(select =  "taxon_id", sample = TRUE, n = 3001),
+          finbif_occurrence(select = "taxon_id", sample = TRUE, n = 3001),
           "finbif_occ"
         )
 
@@ -77,18 +77,20 @@ vcr::use_cassette(
 
         fungi <- finbif_occurrence(
           filter = c(informal_group = "Fungi and lichens"),
-          select = c("record_id", "informal_groups", "default_vars"),
+          select = c(
+            "record_id", "informal_groups", "taxon_id", "default_vars"
+          ),
           n = 1100L
         )
 
         expect_output(print(fungi), "Records downloaded:")
 
         expect_output(
-          print(fungi[c("scientific_name", "taxon_rank")]), "A data"
+          print(fungi[c("scientific_name", "taxon_id")]), "A data"
         )
 
         expect_output(
-          print(fungi[1:10, c("scientific_name", "taxon_rank")]), "A data"
+          print(fungi[1:10, c("scientific_name", "taxon_id")]), "A data"
         )
 
         expect_doppelganger(

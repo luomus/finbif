@@ -16,10 +16,10 @@ finbif_occurrence(
   count_only = FALSE,
   quiet = FALSE,
   cache = getOption("finbif_use_cache"),
-  check_taxa = TRUE,
-  on_check_fail = c("warn", "error"),
   date_time = TRUE,
   date_time_method = "fast",
+  check_taxa = TRUE,
+  on_check_fail = c("warn", "error"),
   tzone = getOption("finbif_tz"),
   dwc = FALSE
 )
@@ -55,13 +55,6 @@ downloads.}
 
 \item{cache}{Logical. Use cached data.}
 
-\item{check_taxa}{Logical. Check first that taxa are in the FinBIF database.
-If true only records that match known taxa (have a valid taxon ID) are
-returned.}
-
-\item{on_check_fail}{Character. What to do if a taxon is found not valid. One
-of \code{"warn"} (default) or \code{"error"}.}
-
 \item{date_time}{Logical. Convert raw date and time variables into date-time
 and duration.}
 
@@ -69,6 +62,13 @@ and duration.}
 \code{date_time = TRUE}. Default is \code{"fast"}. Use
 \code{date_time_method = "accurate"} (requires package \code{sf}) for greater
 accuracy.}
+
+\item{check_taxa}{Logical. Check first that taxa are in the FinBIF database.
+If true only records that match known taxa (have a valid taxon ID) are
+returned.}
+
+\item{on_check_fail}{Character. What to do if a taxon is found not valid. One
+of \code{"warn"} (default) or \code{"error"}.}
 
 \item{tzone}{Character. If \code{date_time = TRUE} the timezone of outputted
 date-time. Defaults to system timezone.}

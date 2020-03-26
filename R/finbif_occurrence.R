@@ -7,17 +7,15 @@
 #' @param ... Character vectors or list of character vectors. Taxa of records
 #'   to download.
 #' @inheritParams finbif_records
+#' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
+#'   `date_time = TRUE`. Default is `"fast"`. Use
+#'   `date_time_method = "accurate"` (requires package `sf`) for greater
+#'   accuracy.
 #' @param check_taxa Logical. Check first that taxa are in the FinBIF database.
 #'   If true only records that match known taxa (have a valid taxon ID) are
 #'   returned.
 #' @param on_check_fail Character. What to do if a taxon is found not valid. One
 #'   of `"warn"` (default) or `"error"`.
-#' @param date_time Logical. Convert raw date and time variables into date-time
-#'   and duration.
-#' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
-#'   `date_time = TRUE`. Default is `"fast"`. Use
-#'   `date_time_method = "accurate"` (requires package `sf`) for greater
-#'   accuracy.
 #' @param tzone Character. If `date_time = TRUE` the timezone of outputted
 #'   date-time. Defaults to system timezone.
 #' @param dwc Logical. Return Darwin Core (or Darwin Core style) variable names.
@@ -50,8 +48,9 @@
 finbif_occurrence <- function(
   ..., filter, select, order_by, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  check_taxa = TRUE, on_check_fail = c("warn", "error"), date_time = TRUE,
-  date_time_method = "fast", tzone = getOption("finbif_tz"), dwc = FALSE
+  date_time = TRUE, date_time_method = "fast", check_taxa = TRUE,
+  on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
+  dwc = FALSE
 ) {
 
   taxa <- select_taxa(
@@ -63,7 +62,8 @@ finbif_occurrence <- function(
   filter <- c(taxa, filter)
 
   records <- finbif_records(
-    filter, select, order_by, sample, n, page, count_only, quiet, cache
+    filter, select, order_by, sample, n, page, count_only, quiet, cache,
+    date_time = date_time
   )
 
   if (count_only) return(records[["content"]][["total"]])
@@ -79,7 +79,11 @@ finbif_occurrence <- function(
 
   names(df) <- var_names[names(df), if (dwc) "dwc" else "translated_var"]
 
-  if (date_time) {
+  select_ <- attr(records, "select_user")
+  if (dwc)
+    select_ <- var_names[match(select_, var_names[["translated_var"]]), "dwc"]
+
+  if (date_time)
     if (dwc) {
       df[["eventDateTime"]] <- get_date_time(
         df, "eventDateStart", "hourStart", "minuteStart",
@@ -90,6 +94,7 @@ finbif_occurrence <- function(
         "minuteStart", "decimalLatitude", "decimalLongitude",
         date_time_method, tzone
       )
+      df <- df[c(select_, "eventDateTime", "samplingEffort")]
     } else {
       df[["date_time"]] <- get_date_time(
         df, "date_start", "hour_start", "minute_start", "lat_wgs84",
@@ -99,8 +104,8 @@ finbif_occurrence <- function(
         df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
         "lon_wgs84", date_time_method, tzone
       )
+      df <- df[c(select_, "date_time", "duration")]
     }
-  }
 
   structure(
     df,
@@ -154,8 +159,6 @@ select_taxa <- function(..., cache, check_taxa, on_check_fail) {
 
 get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
 
-  if (is.null(df[[date]])) return(NULL)
-
   date_time <- lubridate::ymd(df[[date]])
   date_time <- lubridate::as_datetime(date_time)
 
@@ -171,8 +174,6 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
     lubridate::minute(date_time) <-
       ifelse(is.na(df[[minute]]), lubridate::minute(date_time), df[[minute]])
 
-  if (is.null(df[[lat]]) || is.null(df[[lon]])) return(NULL)
-
   tz <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
   lubridate::force_tzs(
     date_time, tzones = ifelse(is.na(tz), "", tz), tzone_out = tzone
@@ -182,12 +183,8 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
 get_duration <-
   function(df, date_time, date, hour, minute, lat, lon, method, tzone) {
 
-    if (is.null(df[[date_time]])) return(NULL)
-
     date_time_end <-
       get_date_time(df, date, hour, minute, lat, lon, method, tzone)
-
-    if (is.null(date_time_end)) return(NULL)
 
     ans <- lubridate::interval(df[[date_time]], date_time_end)
     ans <- ifelse(is.na(df[[minute]]) | is.na(df[[hour]]), NA, ans)
