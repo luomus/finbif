@@ -14,8 +14,7 @@ addons:
     packages:
     - udunits
     - cairo
-r_packages:
-  - goodpractice
+r_packages: goodpractice
 jobs:
   include:
   - r: oldrel
@@ -35,7 +34,6 @@ jobs:
     os: osx
 notifications:
   slack:
-    rooms:
-      secure: ozcpfdk3i6CAHbig2eu9rElNI2P4xUs16cbM0NfKkEOz+dWlWJDWtWr9duM6XLioZusbSdcLK50ANuTb8cq4vGL9RnRsfRJsx7HlLb0OtOLEKYoVw8ZI+BSFK18j4QKPpqRnxerNK9J593+FxlGzBw/oeZaFIM89VunpwcF+pQ3Y9xxwB9RFrpHa0a9VYTfWbBXw5XkXwjmivTb93fkfaj5f0vEiWyNF/Alh9EwD2ovX1pZp/P8Po4C6+lq0gON7QH70JcstYvMvDTjYI/fTfdC7F7nFYyVa1h9wAyqy4O9ZfQXTfQtHW7xMrzL3UnciBRzplGNK4kk+eag9iIFfHHQMc/8BYTu03/yu4GxOW0Da8avGNMKYs1ecducV5CAAl9qdFALsG5YaY+chpU5K3zO2+ekCTtacvOX9r0TWlAmri3nUpB4oQrIWiiD0qODJyy5sQP8Ro0YGe+7+Wu8K0YxbjgaYvku3EoCh6+rZ+S2VchVptptSoy46aRoErJW4pdCyfi+voD5Uk+fDsQA4MPPeAteJ2NJGlGZQp+d44LjAas+/id5k1LAu5im2FNlYwFfrn6lt0XjXPbUsoCrRbMpXLhSftOELGJxDuWo5BJGuYDHz+7km+E9k1BS4WzdvHmt7kM8aUamP9fio/vcewcSh6PaZd0lbnNVzuKLzUdI=
     on_success: always
     on_failure: always
+    secure: ch0HYBP641kDbL+0xFaUbbOlkNXUWdtnWCLqbUnAbMAtfC5xmn58NkP0sI1495MCnWtuR+sulVdK+/bbEQOThY/QN2IzdkZLeMpnKDmQ1IUjBMF0YoMaRWUa9cLP3tk30Ab11SlQZA6ry94E1MjAwCMqtLh5hInd09R9UCLni3G6uDd367s+NKyEN1UN3OX4JWeZcExFWXf7X15mfurttRA/VArtgMLaFtD7Qz0F4PucQfhawEXO/6tdX0Th+DUfNeKHr1owfpHHxzqA8V3eKHJ0ZrSEym2olV1ZZ4rexdH1YXEE5tHuwRN/hpvW5m437XXUp4HQpYlweLSSgI9JgsUCXyz7vMFgl0we6FClhgOiIOj596T0DTkZJXI2c48VteYlC5xXTearRYiEvup9bZls5aSVNGy4nwRgbwK4ypZN9LIeEjPPA7j9wetmSgAswQGQ7kUXNtvG43/TBleF9EEC1yxLPtx5/auCw/QX9GKHCsK0AQ8zrgjjiupVjDmZXYHWCQUrG/bZrpUybiARjSDRCQFKiuNPIEcnPmrk3WHTw7fBnuGwIfsY2tLxT/1Xn0IvgQI4I/VymE/KLKIlzVgnkvFcg6EUgor/JLw2tFkLIRxwY3SCbvDtE+EqB0l95SJekom6rXP5EVqqDUtFxgHXsSvjqUv0MSZODOOIRUw=
