@@ -59,6 +59,5 @@ artifacts:
 
 notifications:
  - provider: Slack
-   auth_token:
-     secure: Be54myIavmJLdjNoBmxQlwYH/ni2PWYFQ6zx/7sEegR3f3upKm02gLocE9jMxqnbE/k0h7Vx9GiwJiWhKngXLg==
-   channel: "#r-package"
+   incoming_webhook:
+     secure: l75SR1EpufftyEA5yICq2+0qIErN3Vyu2CJVlarlQlPIeTaRARVDvVZ+d7MUHUX+n90RywsHTHecdlikOPc3++ZlE54xTw2InXYUHYwhACM=
