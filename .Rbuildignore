@@ -19,3 +19,4 @@
 ^CRAN-RELEASE$
 ^\.zenodo\.json$
 ^inst/man$
+^codecov\.yml$
