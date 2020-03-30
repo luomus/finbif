@@ -1,6 +1,18 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.2.0.9007}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Package options are now documented in the package level man page.
+      \item News file is now accessible via R internal help system.
+      \item The number of default variables selected when accessing occurrence
+        records has been reduced to speed up downloads and improve the display
+        of \code{finbif_occ} objects.
+    }
+  }
+}
+
 \section{finbif version 0.2.0.9006}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
@@ -45,8 +57,8 @@
 \section{finbif version 0.2.0.9003}{
   \subsection{NEW FEATURES}{
     \itemize{
-      \item All user facing functions with a \code{finbif_} prefix can now also be
-        used with the alternative shorter prefix \code{fb_}.
+      \item All user facing functions with a \code{finbif_} prefix can now also
+        be used with the alternative shorter prefix \code{fb_}.
       \item Crop Wild Relative, CWR, added to admin statuses.
     }
   }

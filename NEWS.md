@@ -1,3 +1,15 @@
+# finbif 0.2.0.9007
+
+#### MINOR IMPROVEMENTS
+
+  - Package options are now documented in the package level man page.
+
+  - News file is now accessible via R internal help system.
+
+  - The number of default variables selected when accessing occurrence
+    records has been reduced to speed up downloads and improve the
+    display of `finbif_occ` objects.
+
 # finbif 0.2.0.9006
 
 #### MINOR IMPROVEMENTS
