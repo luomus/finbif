@@ -58,11 +58,7 @@ artifacts:
     name: Bits
 
 notifications:
- - provider: Email
-   to:
-     - willi@mmorris.email
-   subject: 'finbif build {{status}}'
-   message: "https://ci.appveyor.com/project/luomus/finbif"
-   on_build_success: false
-   on_build_failure: true
-   on_build_status_changed: true
+ - provider: Slack
+   auth_token:
+     secure: Be54myIavmJLdjNoBmxQlwYH/ni2PWYFQ6zx/7sEegR3f3upKm02gLocE9jMxqnbE/k0h7Vx9GiwJiWhKngXLg==
+   channel: "#r-package"
