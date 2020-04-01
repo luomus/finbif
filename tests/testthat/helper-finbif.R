@@ -3,6 +3,7 @@ library("vdiffr")
 invisible(vcr::vcr_configure(
   dir = "../cassettes",
   record = "new_episodes",
+  clean_outdated_http_interactions = TRUE,
   filter_sensitive_data = list(
     "<finbif_token>" = Sys.getenv("FINBIF_ACCESS_TOKEN")
   )
