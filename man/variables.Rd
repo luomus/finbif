@@ -171,6 +171,13 @@ Whether or not the occurrence is recorded at a known breeding location.
 
 Variables related to time of record include:
 \itemize{
+\item \code{date_time} POSIXct.
+The date and time of the recording event. This variable is computed after
+records are downloaded from FinBIF. Its timezone and accuracy can be
+controlled see \code{finbif_occurrence()} for details.
+\item \code{duration} Duration.
+The duration of the recording event. This variable is computed after
+records are downloaded from FinBIF.
 \item \code{date_start} Character.
 The date the recording event began.
 \item \code{date_end} Character.

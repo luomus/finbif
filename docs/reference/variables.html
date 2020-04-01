@@ -311,6 +311,13 @@ Whether or not the occurrence is recorded at a known breeding location.</p></li>
     
 
 <p>Variables related to time of record include:</p><ul>
+<li><p><code>date_time</code> POSIXct.
+The date and time of the recording event. This variable is computed after
+records are downloaded from FinBIF. Its timezone and accuracy can be
+controlled see <code><a href='finbif_occurrence.html'>finbif_occurrence()</a></code> for details.</p></li>
+<li><p><code>duration</code> Duration.
+The duration of the recording event. This variable is computed after
+records are downloaded from FinBIF.</p></li>
 <li><p><code>date_start</code> Character.
 The date the recording event began.</p></li>
 <li><p><code>date_end</code> Character.

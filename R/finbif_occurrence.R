@@ -8,16 +8,16 @@
 #'   to download.
 #' @inheritParams finbif_records
 #' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
-#'   `date_time = TRUE`. Default is `"fast"`. Use
-#'   `date_time_method = "accurate"` (requires package `sf`) for greater
-#'   accuracy.
+#'   `date_time` and/or `duration` variables have been selected. Default is
+#'   `"fast"`. Use `date_time_method = "accurate"` (requires package `sf`) for
+#'   greater accuracy.
 #' @param check_taxa Logical. Check first that taxa are in the FinBIF database.
 #'   If true only records that match known taxa (have a valid taxon ID) are
 #'   returned.
 #' @param on_check_fail Character. What to do if a taxon is found not valid. One
 #'   of `"warn"` (default) or `"error"`.
-#' @param tzone Character. If `date_time = TRUE` the timezone of outputted
-#'   date-time. Defaults to system timezone.
+#' @param tzone Character. If `date_time` has been selected the timezone of the
+#'   outputted date-time. Defaults to system timezone.
 #' @param dwc Logical. Return Darwin Core (or Darwin Core style) variable names.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
@@ -48,18 +48,21 @@
 finbif_occurrence <- function(
   ..., filter, select, order_by, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  date_time = TRUE, date_time_method = "fast", check_taxa = TRUE,
+  date_time_method = "fast", check_taxa = TRUE,
   on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
   dwc = FALSE
 ) {
 
-  taxa <- select_taxa(
-    ..., cache = cache, check_taxa = check_taxa,
+  taxa <- select_taxa(..., cache = cache, check_taxa = check_taxa,
     on_check_fail = match.arg(on_check_fail)
   )
 
   if (missing(filter)) filter <- NULL
   filter <- c(taxa, filter)
+
+  date_time <-
+    missing(select) ||
+    any(c("default_vars", "date_time", "duration") %in% select)
 
   records <- finbif_records(
     filter, select, order_by, sample, n, page, count_only, quiet, cache,
@@ -89,26 +92,26 @@ finbif_occurrence <- function(
         df, "eventDateStart", "hourStart", "minuteStart",
         "decimalLatitude", "decimalLongitude", date_time_method, tzone
       )
-      df[["samplingEffort"]] <- get_duration(
-        df, "eventDateTime", "eventDateStart", "hourStart",
-        "minuteStart", "decimalLatitude", "decimalLongitude",
-        date_time_method, tzone
-      )
-      df <- df[c(select_, "eventDateTime", "samplingEffort")]
+      if ("samplingEffort" %in% select_)
+        df[["samplingEffort"]] <- get_duration(
+          df, "eventDateTime", "eventDateStart", "hourStart",
+          "minuteStart", "decimalLatitude", "decimalLongitude",
+          date_time_method, tzone
+        )
     } else {
       df[["date_time"]] <- get_date_time(
         df, "date_start", "hour_start", "minute_start", "lat_wgs84",
         "lon_wgs84", date_time_method, tzone
       )
-      df[["duration"]] <- get_duration(
-        df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
-        "lon_wgs84", date_time_method, tzone
-      )
-      df <- df[c(select_, "date_time", "duration")]
+      if ("duration" %in% select_)
+        df[["duration"]] <- get_duration(
+          df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
+          "lon_wgs84", date_time_method, tzone
+        )
     }
 
   structure(
-    df,
+    df[select_],
     class     = c("finbif_occ", "data.frame"),
     nrec_dnld = attr(records, "nrec_dnld", TRUE),
     nrec_avl  = attr(records, "nrec_avl", TRUE),

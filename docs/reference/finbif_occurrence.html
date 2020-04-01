@@ -154,7 +154,6 @@
   <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_use_cache"</span>),
-  <span class='kw'>date_time</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>date_time_method</span> <span class='kw'>=</span> <span class='st'>"fast"</span>,
   <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>on_check_fail</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"warn"</span>, <span class='st'>"error"</span>),
@@ -216,16 +215,11 @@ downloads.</p></td>
       <td><p>Logical. Use cached data.</p></td>
     </tr>
     <tr>
-      <th>date_time</th>
-      <td><p>Logical. Convert raw date and time variables into date-time
-and duration.</p></td>
-    </tr>
-    <tr>
       <th>date_time_method</th>
       <td><p>Character. Passed to <code><a href='https://andyteucher.ca/lutz/reference/tz_lookup_coords.html'>lutz::tz_lookup_coords()</a></code> when
-<code>date_time = TRUE</code>. Default is <code>"fast"</code>. Use
-<code>date_time_method = "accurate"</code> (requires package <code>sf</code>) for greater
-accuracy.</p></td>
+<code>date_time</code> and/or <code>duration</code> variables have been selected. Default is
+<code>"fast"</code>. Use <code>date_time_method = "accurate"</code> (requires package <code>sf</code>) for
+greater accuracy.</p></td>
     </tr>
     <tr>
       <th>check_taxa</th>
@@ -240,8 +234,8 @@ of <code>"warn"</code> (default) or <code>"error"</code>.</p></td>
     </tr>
     <tr>
       <th>tzone</th>
-      <td><p>Character. If <code>date_time = TRUE</code> the timezone of outputted
-date-time. Defaults to system timezone.</p></td>
+      <td><p>Character. If <code>date_time</code> has been selected the timezone of the
+outputted date-time. Defaults to system timezone.</p></td>
     </tr>
     <tr>
       <th>dwc</th>

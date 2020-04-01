@@ -154,6 +154,13 @@
 #' @section Time:
 #' Variables related to time of record include:
 #'
+#' - `date_time` POSIXct.
+#'    The date and time of the recording event. This variable is computed after
+#'    records are downloaded from FinBIF. Its timezone and accuracy can be
+#'    controlled see `finbif_occurrence()` for details.
+#' - `duration` Duration.
+#'   The duration of the recording event. This variable is computed after
+#'   records are downloaded from FinBIF.
 #' - `date_start` Character.
 #'   The date the recording event began.
 #' - `date_end` Character.

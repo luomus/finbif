@@ -75,7 +75,10 @@ finbif_records <- function(
       select <- row.names(default_vars)
       select_ <- default_vars[["translated_var"]]
       record_id_selected <- TRUE
-      if (date_time) select <- unique(c(select, row.names(date_time_vars)))
+
+      # Missing 'select' implies default selection which implies date-time calc
+      # needed
+      select <- unique(c(select, row.names(date_time_vars)))
 
     } else {
 
@@ -100,6 +103,9 @@ finbif_records <- function(
         translate(select, "select_vars", list(select_vars = select_vars))
 
     }
+
+    # Can't query the server for vars that are computed after download
+    select <- select[!grepl("^computed_var", select)]
 
     query[["selected"]] <- paste(select, collapse = ",")
 

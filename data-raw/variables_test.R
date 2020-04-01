@@ -14,6 +14,8 @@ order_vars  <- vars[[which(vapply(vars, getElement, "", "name") == "orderBy")]]
 order_vars  <- unlist(order_vars[["items"]][["enum"]])
 
 select_vars_pkg <- row.names(var_names_test[var_names_test[["select"]], ])
+select_vars_pkg <-
+  grep("^computed_var", select_vars_pkg, value = TRUE, invert = TRUE)
 
 in_pkg_only <- setdiff(select_vars_pkg, select_vars)
 schema_only <- setdiff(select_vars, select_vars_pkg)

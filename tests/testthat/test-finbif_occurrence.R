@@ -35,7 +35,8 @@ vcr::use_cassette(
 
         expect_s3_class(
           finbif_occurrence(
-            "Pteromys volans", sample = TRUE, n = 1001, cache = FALSE
+            "Pteromys volans", select = c("default_vars", "duration"),
+            sample = TRUE, n = 1001, cache = FALSE
           ),
           "finbif_occ"
         )
@@ -101,7 +102,12 @@ vcr::use_cassette(
         options(finbif_cache_path = tempdir())
 
         expect_output(
-          print(finbif_occurrence(dwc = TRUE)), "Records downloaded:"
+          print(
+            finbif_occurrence(
+              select = c("default_vars", "duration"), dwc = TRUE
+            )
+          ),
+          "Records downloaded:"
         )
 
         expect_output(print(finbif_occurrence()), "Records downloaded:")
