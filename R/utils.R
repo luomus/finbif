@@ -25,8 +25,24 @@ pb_head <- function(msg) {
 }
 
 #' @noRd
-truncate_string <- function(x, sl = 20L)
+truncate_string <- function(x, sl = 20L) {
+  x <- as.character(x)
   ifelse(nchar(x) > sl, sprintf("%s\u2026", substr(x, 1L, sl - 1L)), x)
+}
+
+#' @noRd
+truncate_string_to_unique <- function(x) {
+  i <- 0L
+  all_equal <- TRUE
+  while (all_equal) {
+    substr(x, i, i) <- " "
+    i <- i + 1L
+    j <- substr(x, i, i)
+    all_equal <- all(j == j[[1L]])
+  }
+  trimws(x)
+}
+
 
 # random sampling --------------------------------------------------------------
 

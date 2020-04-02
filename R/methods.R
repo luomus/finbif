@@ -93,16 +93,26 @@ as.data.frame.finbif_records_list <- function(x, ..., quiet = TRUE) {
 
 #' @noRd
 #' @export
-`[.finbif_occ` <- function(x, i, j, drop = TRUE) {
-  if (missing(j)) {
-    cols <- i
-    rows <- seq_len(nrow(x))
+`[.finbif_occ` <- function(x, i, j, drop = FALSE) {
+
+  mdrop  <- missing(drop)
+  n_args <- nargs() - !mdrop
+  has_i  <- !missing(i)
+  has_j  <- !missing(j)
+
+  rows <- seq_len(nrow(x))
+  cols <- seq_len(ncol(x))
+
+  if (n_args < 3L) {
+    if (has_i) cols <- i
   } else {
-    cols <- j
-    rows <- i
+    if (has_j) cols <- j
+    if (has_i) rows <- i
   }
-  ans <- NextMethod("[")
-  ans <- structure(ans, class = class(x))
+
+  ans <- if (has_j) NextMethod("[", drop = drop) else NextMethod("[")
+  ans <-
+    structure(as.data.frame(ans, stringsAsFactors = FALSE), class = class(x))
   attr <- attributes(x)
   attr[["row.names"]] <- as.integer(rows)
   mostattributes(ans) <- attr
@@ -175,47 +185,42 @@ print.finbif_metadata_df <- function(x, ..., right = FALSE) {
 #' @importFrom utils hasName head
 #' @export
 print.finbif_occ <- function(x, ...) {
+
   nrec_dnld <- attr(x, "nrec_dnld")
   nrec_avl  <- attr(x, "nrec_avl")
   ncols     <- ncol(x)
   nrows     <- nrow(x)
   dsply_nr  <- min(10L, nrows)
-  dsply_nc  <- min(5L, ncols)
 
   if (length(nrec_dnld)) cat("Records downloaded: ", nrec_dnld, "\n", sep = "")
   if (length(nrec_avl)) cat("Records available: ", nrec_avl, "\n", sep = "")
   cat("A data.frame [", nrows, " x ", ncols, "]\n", sep = "")
 
-  dwc <- attr(x, "dwc")
+  df <- x[seq_len(dsply_nr), ]
 
-  dsply_cols <- if (dwc) {
-    c(
-      "scientificName", "individualCount", "decimalLatitude",
-      "decimalLongitude", "eventDateTime"
-    )
-  } else {
-    c("scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time")
+  colname_widths <- vapply(names(df), nchar, integer(1L))
+
+  df <- format_cols(df, colname_widths)
+
+  widths <- apply(df, 2L, nchar)
+  # Printed NA values are four characters wide, "<NA>"
+  widths[is.na(widths)] <- 4L
+  widths <- apply(widths, 2L, max, na.rm = TRUE)
+  widths <- pmax(colname_widths, widths)
+
+  dsply_nc <- 0L
+  cumulative_width <- if (dsply_nr > 9L) 2L else 1L
+
+  for (i in widths) {
+    ind <- dsply_nc + 1L
+    cumulative_width <- cumulative_width + 1L + widths[[ind]]
+    if (cumulative_width > getOption("width")) break
+    dsply_nc <- ind
   }
-  dsply_cols <- which(names(x) %in% dsply_cols)
-  dsply_cols <- utils::head(union(dsply_cols, seq_len(dsply_nc)), dsply_nc)
 
-  df <- x[seq_len(dsply_nr), dsply_cols, drop = FALSE]
+  dsply_cols <- seq_len(dsply_nc)
 
-  # Some scientific names are very long
-  if (utils::hasName(df, "scientific_name"))
-    df[["scientific_name"]] <- truncate_string(df[["scientific_name"]])
-  if (utils::hasName(df, "scientificName"))
-    df[["scientificName"]] <- truncate_string(df[["scientificName"]])
-
-  # Some vars have data in the form of URIs where the protocol and domain don't
-  # convey useful information
-  for (i in names(df)) {
-    class <-
-      var_names[var_names[[if (dwc) "dwc" else "translated_var"]] == i, "class"]
-    # Variables may not necessarily be in the var_names object
-    if (length(class) && class == "uri")
-      df[[i]] <- gsub("^http:\\/\\/tun\\.fi\\/", "", df[[i]])
-  }
+  df <- df[, dsply_cols]
 
   print.data.frame(df)
 
@@ -225,6 +230,43 @@ print.finbif_occ <- function(x, ...) {
   print_extras(x, extra_rows, extra_cols, dsply_cols)
 
   invisible(x)
+
+}
+
+#' @noRd
+format_cols <- function(df, colname_widths) {
+
+  for (i in names(df)) {
+
+    ind <- var_names[[if (attr(df, "dwc")) "dwc" else "translated_var"]] == i
+    class  <- var_names[ind, "class"]
+    single <- var_names[ind, "single"]
+
+    # Variables may not necessarily be in the var_names object
+    if (length(class))
+      if (!single) {
+        df[[i]] <- vapply(
+          df[[i]],
+          function(x) length(Filter(isFALSE, is.na(x))), integer(1L)
+        )
+        df[[i]] <-
+          paste0(df[[i]], " element", ifelse(length(df[[i]]) == 1L, "", "s"))
+      } else {
+        if (class == "uri") df[[i]] <- truncate_string_to_unique(df[[i]])
+        if (class %in% c("character", "uri", "factor"))
+          df[[i]] <- truncate_string(df[[i]])
+        if (class %in% c("double", "integer"))
+          df[[i]] <- formatC(
+            df[[i]],
+            colname_widths[[i]] - 2L, colname_widths[[i]],
+            flag = "- "
+          )
+      }
+
+  }
+
+  df
+
 }
 
 #' @noRd
