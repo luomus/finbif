@@ -1,3 +1,11 @@
+# finbif 0.2.0.9008
+
+#### MINOR IMPROVEMENTS
+
+  - The print method for occurrence record objects has been updated. It
+    is now aware of console width and when truncating variable values is
+    more considerate of the context.
+
 # finbif 0.2.0.9007
 
 #### MINOR IMPROVEMENTS

@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.2.0.9008}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item The print method for occurrence record objects has been updated. It
+        is now aware of console width and when truncating variable values is
+        more considerate of the context.
+    }
+  }
+}
+
 \section{finbif version 0.2.0.9007}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
