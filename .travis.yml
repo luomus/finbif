@@ -32,6 +32,8 @@ jobs:
   - r: devel
   - r: release
     os: osx
+    before_install:
+      - tlmgr install inconsolata
 notifications:
   slack:
     rooms:
