@@ -1,3 +1,10 @@
+# finbif 0.2.0.9009
+
+#### MINOR IMPROVEMENTS
+
+  - Variables can now be "deselected" when using the `select` argument
+    to `finbif_occurrence` by prepending the variable name with a "`-`".
+
 # finbif 0.2.0.9008
 
 #### MINOR IMPROVEMENTS

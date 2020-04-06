@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.2.0.9009}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Variables can now be "deselected" when using the \code{select}
+        argument to \code{finbif_occurrence} by prepending the variable name
+        with a "\code{-}".
+    }
+  }
+}
+
 \section{finbif version 0.2.0.9008}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
