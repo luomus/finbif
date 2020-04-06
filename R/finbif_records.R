@@ -9,7 +9,9 @@
 #' @param filter List of named character vectors. Filters to apply to records.
 #' @param select Character vector. Variables to return. If not specified a
 #'   default set of commonly used variables will be used. Use `"default_vars"`
-#'   as a shortcut for this set.
+#'   as a shortcut for this set. Variables can be deselected by prepending a `-`
+#'   to the variable name. If only deselects are specified the default set of
+#'   variables without the deselection will be returned.
 #' @param order_by Character vector. Variables to order records by before they
 #'   are returned. Most, though not all, variables can be used to order records
 #'   before they are returned. Ordering is ascending by default. To return in
@@ -24,11 +26,9 @@
 #' @param quiet Logical. Suppress the progress indicator for multipage
 #'   downloads.
 #' @param cache Logical. Use cached data.
-#' @param seed Integer. Set a seed for randomly sampling records. Note that
-#'   the server currently ignores seed setting and this argument has
-#'   currently has little effect.
-#' @param date_time Logical. Convert raw date and time variables into date-time
-#'   and duration.
+#' @param seed Integer. Set a seed for randomly sampling records. Note that the
+#'   server currently ignores seed setting and this argument currently has
+#'   little effect.
 #' @return A `finbif_api` or `finbif_api_list` object.
 #' @examples \dontrun{
 #'
@@ -41,7 +41,7 @@
 finbif_records <- function(
   filter, select, order_by, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  seed, date_time = TRUE
+  seed
 ) {
 
   max_queries  <- 2000L
@@ -82,17 +82,22 @@ finbif_records <- function(
 
     } else {
 
-      select  <- ifelse(
+      deselect <- substring(grep("^-", select, value = TRUE), 2L)
+      if (identical(length(deselect), length(select))) select <- "default_vars"
+      select <- grep("^-", select, value = TRUE, invert = TRUE)
+      select <- ifelse(
         select == "default_vars",
         list(default_vars[["translated_var"]]),
         select
       )
       select <- unlist(select)
+      select <- setdiff(select, deselect)
       select_ <- select
 
       record_id_selected <- "record_id" %in% select
       if (!record_id_selected) select <- c("record_id", select)
 
+      date_time <- "date_time" %in% select
       if (date_time)
         select <- unique(c(select, date_time_vars[["translated_var"]]))
 
@@ -185,8 +190,7 @@ request <- function(
 
     if (sample && sample_after_request) {
       all_records <- finbif_records(
-        filter, select_, sample = FALSE, n = n_tot, quiet = quiet,
-        cache = cache, date_time = date_time
+        filter, select_, sample = FALSE, n = n_tot, quiet = quiet, cache = cache
       )
       return(record_sample(all_records, n, cache))
     }
@@ -398,8 +402,7 @@ handle_duplicates <-
     if (length(ids) - length(duplicates) < n) {
 
       new_records <- finbif_records(
-        filter, select, sample = TRUE, n = max_size, cache = cache, seed = seed,
-        date_time = date_time
+        filter, select, sample = TRUE, n = max_size, cache = cache, seed = seed
       )
 
       x[[length(x) + 1L]] <- new_records[[1L]]

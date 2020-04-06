@@ -60,13 +60,8 @@ finbif_occurrence <- function(
   if (missing(filter)) filter <- NULL
   filter <- c(taxa, filter)
 
-  date_time <-
-    missing(select) ||
-    any(c("default_vars", "date_time", "duration") %in% select)
-
   records <- finbif_records(
-    filter, select, order_by, sample, n, page, count_only, quiet, cache,
-    date_time = date_time
+    filter, select, order_by, sample, n, page, count_only, quiet, cache
   )
 
   if (count_only) return(records[["content"]][["total"]])
@@ -85,6 +80,10 @@ finbif_occurrence <- function(
   select_ <- attr(records, "select_user")
   if (dwc)
     select_ <- var_names[match(select_, var_names[["translated_var"]]), "dwc"]
+
+  date_time <-
+    missing(select) ||
+    any(c("default_vars", "date_time", "duration") %in% select)
 
   if (date_time)
     if (dwc) {

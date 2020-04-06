@@ -31,7 +31,9 @@ to download.}
 
 \item{select}{Character vector. Variables to return. If not specified a
 default set of commonly used variables will be used. Use \code{"default_vars"}
-as a shortcut for this set.}
+as a shortcut for this set. Variables can be deselected by prepending a \code{-}
+to the variable name. If only deselects are specified the default set of
+variables without the deselection will be returned.}
 
 \item{order_by}{Character vector. Variables to order records by before they
 are returned. Most, though not all, variables can be used to order records

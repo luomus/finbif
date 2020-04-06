@@ -15,8 +15,7 @@ finbif_records(
   count_only = FALSE,
   quiet = FALSE,
   cache = getOption("finbif_use_cache"),
-  seed,
-  date_time = TRUE
+  seed
 )
 }
 \arguments{
@@ -24,7 +23,9 @@ finbif_records(
 
 \item{select}{Character vector. Variables to return. If not specified a
 default set of commonly used variables will be used. Use \code{"default_vars"}
-as a shortcut for this set.}
+as a shortcut for this set. Variables can be deselected by prepending a \code{-}
+to the variable name. If only deselects are specified the default set of
+variables without the deselection will be returned.}
 
 \item{order_by}{Character vector. Variables to order records by before they
 are returned. Most, though not all, variables can be used to order records
@@ -47,12 +48,9 @@ downloads.}
 
 \item{cache}{Logical. Use cached data.}
 
-\item{seed}{Integer. Set a seed for randomly sampling records. Note that
-the server currently ignores seed setting and this argument has
-currently has little effect.}
-
-\item{date_time}{Logical. Convert raw date and time variables into date-time
-and duration.}
+\item{seed}{Integer. Set a seed for randomly sampling records. Note that the
+server currently ignores seed setting and this argument currently has
+little effect.}
 }
 \value{
 A \code{finbif_api} or \code{finbif_api_list} object.
