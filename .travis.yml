@@ -32,8 +32,10 @@ jobs:
   - r: devel
   - r: release
     os: osx
+    r_packages: tinytex
     before_install:
-      - tlmgr install inconsolata
+      - R -e "tinytex::install_tinytex()"
+      - R -e "tinytex::tlmgr_install('inconsolata')"
 notifications:
   slack:
     rooms:
