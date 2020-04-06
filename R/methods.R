@@ -298,7 +298,7 @@ print_extras <- function(x, extra_rows, extra_cols, dsply_cols) {
   for (i in seq_along(extra_names)[-1L]) {
     nchars_ <- nchar(extra_names[[i]]) + 2L
     nchars  <- nchars + nchars_
-    if (nchars > 70L) {
+    if (nchars > getOption("width")) {
       cat(",\n")
       nchars <- nchars_
     } else {
