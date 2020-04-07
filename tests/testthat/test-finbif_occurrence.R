@@ -109,7 +109,7 @@ vcr::use_cassette(
         expect_output(
           print(
             finbif_occurrence(
-              select = c("default_vars", "duration"), dwc = TRUE
+              select = c("default_vars", "samplingEffort"), dwc = TRUE
             )
           ),
           "Records downloaded:"

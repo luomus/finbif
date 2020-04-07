@@ -16,11 +16,11 @@ finbif_occurrence(
   count_only = FALSE,
   quiet = FALSE,
   cache = getOption("finbif_use_cache"),
+  dwc = FALSE,
   date_time_method = "fast",
   check_taxa = TRUE,
   on_check_fail = c("warn", "error"),
-  tzone = getOption("finbif_tz"),
-  dwc = FALSE
+  tzone = getOption("finbif_tz")
 )
 }
 \arguments{
@@ -56,6 +56,8 @@ downloads.}
 
 \item{cache}{Logical. Use cached data.}
 
+\item{dwc}{Logical. Use Darwin Core (or Darwin Core style) variable names.}
+
 \item{date_time_method}{Character. Passed to \code{lutz::tz_lookup_coords()} when
 \code{date_time} and/or \code{duration} variables have been selected. Default is
 \code{"fast"}. Use \code{date_time_method = "accurate"} (requires package \code{sf}) for
@@ -70,8 +72,6 @@ of \code{"warn"} (default) or \code{"error"}.}
 
 \item{tzone}{Character. If \code{date_time} has been selected the timezone of the
 outputted date-time. Defaults to system timezone.}
-
-\item{dwc}{Logical. Return Darwin Core (or Darwin Core style) variable names.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

@@ -18,7 +18,6 @@
 #'   of `"warn"` (default) or `"error"`.
 #' @param tzone Character. If `date_time` has been selected the timezone of the
 #'   outputted date-time. Defaults to system timezone.
-#' @param dwc Logical. Return Darwin Core (or Darwin Core style) variable names.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -48,9 +47,8 @@
 finbif_occurrence <- function(
   ..., filter, select, order_by, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  date_time_method = "fast", check_taxa = TRUE,
-  on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
-  dwc = FALSE
+  dwc = FALSE, date_time_method = "fast", check_taxa = TRUE,
+  on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz")
 ) {
 
   taxa <- select_taxa(..., cache = cache, check_taxa = check_taxa,
@@ -61,7 +59,7 @@ finbif_occurrence <- function(
   filter <- c(taxa, filter)
 
   records <- finbif_records(
-    filter, select, order_by, sample, n, page, count_only, quiet, cache
+    filter, select, order_by, sample, n, page, count_only, quiet, cache, dwc
   )
 
   if (count_only) return(records[["content"]][["total"]])
@@ -78,12 +76,16 @@ finbif_occurrence <- function(
   names(df) <- var_names[names(df), if (dwc) "dwc" else "translated_var"]
 
   select_ <- attr(records, "select_user")
-  if (dwc)
-    select_ <- var_names[match(select_, var_names[["translated_var"]]), "dwc"]
 
   date_time <-
     missing(select) ||
-    any(c("default_vars", "date_time", "duration") %in% select)
+    any(
+      c(
+        "default_vars", "date_time", "eventDateTime", "duration",
+        "samplingEffort"
+      ) %in%
+      select
+    )
 
   if (date_time)
     if (dwc) {

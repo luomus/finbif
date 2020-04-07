@@ -15,6 +15,7 @@ finbif_records(
   count_only = FALSE,
   quiet = FALSE,
   cache = getOption("finbif_use_cache"),
+  dwc = FALSE,
   seed
 )
 }
@@ -47,6 +48,8 @@ database.}
 downloads.}
 
 \item{cache}{Logical. Use cached data.}
+
+\item{dwc}{Logical. Use Darwin Core (or Darwin Core style) variable names.}
 
 \item{seed}{Integer. Set a seed for randomly sampling records. Note that the
 server currently ignores seed setting and this argument currently has

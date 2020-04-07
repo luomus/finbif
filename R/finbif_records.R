@@ -26,6 +26,7 @@
 #' @param quiet Logical. Suppress the progress indicator for multipage
 #'   downloads.
 #' @param cache Logical. Use cached data.
+#' @param dwc Logical. Use Darwin Core (or Darwin Core style) variable names.
 #' @param seed Integer. Set a seed for randomly sampling records. Note that the
 #'   server currently ignores seed setting and this argument currently has
 #'   little effect.
@@ -41,7 +42,7 @@
 finbif_records <- function(
   filter, select, order_by, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  seed
+  dwc = FALSE, seed
 ) {
 
   max_queries  <- 2000L
@@ -67,13 +68,15 @@ finbif_records <- function(
 
     # select ===================================================================
 
+    var_type <- if (dwc) "dwc" else "translated_var"
+
     default_vars <- var_names[var_names[["default_var"]], ]
     date_time_vars <- var_names[var_names[["date"]], ]
 
     if (missing(select)) {
 
       select <- row.names(default_vars)
-      select_ <- default_vars[["translated_var"]]
+      select_ <- default_vars[[var_type]]
       record_id_selected <- TRUE
 
       # Missing 'select' implies default selection which implies date-time calc
@@ -86,24 +89,24 @@ finbif_records <- function(
       if (identical(length(deselect), length(select))) select <- "default_vars"
       select <- grep("^-", select, value = TRUE, invert = TRUE)
       select <- ifelse(
-        select == "default_vars",
-        list(default_vars[["translated_var"]]),
-        select
+        select == "default_vars", list(default_vars[[var_type]]), select
       )
       select <- unlist(select)
       select <- setdiff(select, deselect)
       select_ <- select
 
-      record_id_selected <- "record_id" %in% select
-      if (!record_id_selected) select <- c("record_id", select)
+      record_id_selected <- any(c("record_id", "occurrenceID") %in% select)
+      if (!record_id_selected)
+        select <- c(if (dwc) "occurrenceID" else "record_id", select)
 
-      date_time <- "date_time" %in% select
-      if (date_time)
-        select <- unique(c(select, date_time_vars[["translated_var"]]))
+      date_time <- any(
+        c("date_time", "eventDateTime", "duration", "samplingEffort") %in%
+        select
+      )
+      if (date_time) select <- unique(c(select, date_time_vars[[var_type]]))
 
-      select_vars <- var_names[var_names[["select"]], ]
-      for (var in names(var_names))
-        class(select_vars[[var]]) <- class(var_names[[var]])
+      select_vars <- var_names[var_names[["select"]], var_type, drop = FALSE]
+      class(select_vars[[var_type]]) <- class(var_names[[var_type]])
       select <-
         translate(select, "select_vars", list(select_vars = select_vars))
 
@@ -124,9 +127,8 @@ finbif_records <- function(
 
       desc_order <- grepl("^-", order_by)
       order_by <- sub("^-", "", order_by)
-      order_vars <- var_names[var_names[["order"]], ]
-      for (var in names(var_names))
-        class(order_vars[[var]]) <- class(var_names[[var]])
+      order_vars <- var_names[var_names[["order"]], var_type, drop = FALSE]
+      class(order_vars[[var_type]]) <- class(var_names[[var_type]])
       order_by <-
         translate(order_by, "order_vars", list(order_vars = order_vars))
       order_by[desc_order] <- paste(order_by[desc_order], "DESC")
@@ -145,7 +147,7 @@ finbif_records <- function(
 
   request(
     filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-    select_, record_id_selected, date_time
+    select_, record_id_selected, date_time, dwc
   )
 
 }
@@ -154,7 +156,7 @@ finbif_records <- function(
 
 request <- function(
   filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-  select_, record_id_selected, date_time
+  select_, record_id_selected, date_time, dwc
 ) {
 
   path <- "warehouse/query/unit/"
@@ -190,7 +192,8 @@ request <- function(
 
     if (sample && sample_after_request) {
       all_records <- finbif_records(
-        filter, select_, sample = FALSE, n = n_tot, quiet = quiet, cache = cache
+        filter, select_, sample = FALSE, n = n_tot, quiet = quiet,
+        cache = cache, dwc = dwc
       )
       return(record_sample(all_records, n, cache))
     }
@@ -200,7 +203,7 @@ request <- function(
 
     if (sample)
       resp <- handle_duplicates(
-        resp, filter, select_, max_size, cache, n, seed = 1L, date_time
+        resp, filter, select_, max_size, cache, n, seed = 1L, date_time, dwc
       )
 
   }
@@ -397,7 +400,7 @@ record_sample <- function(x, n, cache) {
 # handle duplicates ------------------------------------------------------------
 
 handle_duplicates <-
-  function(x, filter, select, max_size, cache, n, seed, date_time) {
+  function(x, filter, select, max_size, cache, n, seed, date_time, dwc) {
 
     ids <- lapply(
       x,
@@ -416,13 +419,14 @@ handle_duplicates <-
     if (length(ids) - length(duplicates) < n) {
 
       new_records <- finbif_records(
-        filter, select, sample = TRUE, n = max_size, cache = cache, seed = seed
+        filter, select, sample = TRUE, n = max_size, cache = cache, dwc = dwc,
+        seed = seed
       )
 
       x[[length(x) + 1L]] <- new_records[[1L]]
 
       x <- handle_duplicates(
-        x, filter, select, max_size, cache, n, seed + 1L, date_time
+        x, filter, select, max_size, cache, n, seed + 1L, date_time, dwc
       )
 
     }

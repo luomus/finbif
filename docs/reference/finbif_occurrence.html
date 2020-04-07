@@ -154,11 +154,11 @@
   <span class='kw'>count_only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_use_cache"</span>),
+  <span class='kw'>dwc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>date_time_method</span> <span class='kw'>=</span> <span class='st'>"fast"</span>,
   <span class='kw'>check_taxa</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>on_check_fail</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"warn"</span>, <span class='st'>"error"</span>),
-  <span class='kw'>tzone</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_tz"</span>),
-  <span class='kw'>dwc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>tzone</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_tz"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -217,6 +217,10 @@ downloads.</p></td>
       <td><p>Logical. Use cached data.</p></td>
     </tr>
     <tr>
+      <th>dwc</th>
+      <td><p>Logical. Use Darwin Core (or Darwin Core style) variable names.</p></td>
+    </tr>
+    <tr>
       <th>date_time_method</th>
       <td><p>Character. Passed to <code><a href='https://andyteucher.ca/lutz/reference/tz_lookup_coords.html'>lutz::tz_lookup_coords()</a></code> when
 <code>date_time</code> and/or <code>duration</code> variables have been selected. Default is
@@ -238,10 +242,6 @@ of <code>"warn"</code> (default) or <code>"error"</code>.</p></td>
       <th>tzone</th>
       <td><p>Character. If <code>date_time</code> has been selected the timezone of the
 outputted date-time. Defaults to system timezone.</p></td>
-    </tr>
-    <tr>
-      <th>dwc</th>
-      <td><p>Logical. Return Darwin Core (or Darwin Core style) variable names.</p></td>
     </tr>
     </table>
 
