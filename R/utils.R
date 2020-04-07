@@ -126,7 +126,7 @@ conditionMessage.dfrd_errors <- function(c) {
   errors <- vapply(c[["errors"]], "[[", character(1), "message")
   n <- length(errors)
   sprintf(
-    "%d %s occured:\n%s", n, ngettext(n, "error", "errors"),
+    "%d %s occurred:\n%s", n, ngettext(n, "error", "errors"),
     paste0("  - ", errors, collapse = "\n")
   )
 }
