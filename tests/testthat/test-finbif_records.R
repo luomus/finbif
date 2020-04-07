@@ -63,5 +63,11 @@ test_that(
 
     expect_condition(finbif_records(filter = c(not_a_filter = TRUE)))
 
+    expect_condition(
+      finbif_records(
+        filter = list(coordinates = list(lat = c(60, 68), lon = c(20, 30)))
+      )
+    )
+
   }
 )

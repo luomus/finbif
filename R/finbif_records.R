@@ -300,8 +300,22 @@ parse_filters <- function(filter) {
       }
     }
 
-    if (identical(filter_names[finbif_filter_names[[i]], "class"], "coords"))
+    if (identical(filter_names[finbif_filter_names[[i]], "class"], "coords")) {
+      if (
+        identical(finbif_filter_names[[i]], "coordinates") &&
+        (
+          length(filter[["coordinates"]]) < 3L ||
+          (
+            !utils::hasName(filter[["coordinates"]], "system")  &&
+            !identical(names(filter[["coordinates"]][[3]]), "") &&
+            !is.null(names(filter[["coordinates"]]))
+          )
+        )
+      )
+        deferrable_error("Invalid coordinates: system not specified")
+
       filter[[i]] <- do.call(coords, as.list(filter[[i]]))
+    }
 
     if (identical(filter_names[finbif_filter_names[[i]], "class"], "date"))
       filter[[i]] <-
