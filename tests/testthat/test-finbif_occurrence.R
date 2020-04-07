@@ -52,7 +52,7 @@ vcr::use_cassette(
         )
 
         expect_s3_class(
-          finbif_occurrence(select = c("default_vars", "-date_time")),
+          finbif_occurrence(select = "-date_time"),
           "finbif_occ"
         )
 
