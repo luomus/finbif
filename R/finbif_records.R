@@ -36,7 +36,7 @@
 #' # Get the last 100 records from FinBIF
 #' finbif_records(n = 100)
 #' }
-#' @importFrom utils txtProgressBar setTxtProgressBar
+#' @importFrom utils hasName txtProgressBar setTxtProgressBar
 #' @export
 
 finbif_records <- function(
@@ -304,18 +304,9 @@ parse_filters <- function(filter) {
     }
 
     if (identical(filter_names[finbif_filter_names[[i]], "class"], "coords")) {
-      if (
-        identical(finbif_filter_names[[i]], "coordinates") &&
-        (
-          length(filter[["coordinates"]]) < 3L ||
-          (
-            !utils::hasName(filter[["coordinates"]], "system")  &&
-            !identical(names(filter[["coordinates"]][[3]]), "") &&
-            !is.null(names(filter[["coordinates"]]))
-          )
-        )
-      )
-        deferrable_error("Invalid coordinates: system not specified")
+
+      # Coordinates filter must have a system defined
+      check_coordinates(finbif_filter_names[[i]], filter[["coordinates"]])
 
       filter[[i]] <- do.call(coords, as.list(filter[[i]]))
     }
@@ -333,6 +324,24 @@ parse_filters <- function(filter) {
   names(filter) <- finbif_filter_names
 
   filter
+
+}
+
+check_coordinates <- function(filter_names, filter) {
+
+  if (
+    identical(filter_names, "coordinates") &&
+    (
+      length(filter) < 3L ||
+      (
+        !utils::hasName(filter, "system")  &&
+        !identical(names(filter[[3]]), "") &&
+        !is.null(names(filter))
+      )
+    )
+  )
+
+    deferrable_error("Invalid coordinates: system not specified")
 
 }
 
