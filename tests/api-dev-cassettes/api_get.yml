@@ -4,8 +4,9 @@ http_interactions:
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_dev_token>
     body:
       encoding: ''
-      string: no
+      string: ''
     headers:
+      Content-Type: ''
       Accept: application/json
   response:
     status:
@@ -14,7 +15,7 @@ http_interactions:
       reason: Bad Request
       message: 'Client error: (400) Bad Request'
     headers:
-      date: Thu, 20 Feb 2020 11:20:36 GMT
+      date: Tue, 14 Apr 2020 13:33:43 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -32,15 +33,88 @@ http_interactions:
       encoding: ASCII-8BIT
       file: no
       string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX3ZhciJ9
-  recorded_at: 2020-02-20 11:20:37 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2020-04-14 13:33:45 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_dev_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 400
+      category: Client error
+      reason: Bad Request
+      message: 'Client error: (400) Bad Request'
+    headers:
+      date: Tue, 14 Apr 2020 13:33:44 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      via: 1.1 staging.laji.fi
+      vary: Accept-Encoding
+      content-encoding: gzip
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX3ZhciJ9
+  recorded_at: 2020-04-14 13:33:45 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_dev_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 400
+      category: Client error
+      reason: Bad Request
+      message: 'Client error: (400) Bad Request'
+    headers:
+      date: Tue, 14 Apr 2020 13:33:45 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      via: 1.1 staging.laji.fi
+      vary: Accept-Encoding
+      content-encoding: gzip
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX3ZhciJ9
+  recorded_at: 2020-04-14 13:33:45 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?format=xml&page=1&pageSize=1&selected=unit.unitId&access_token=<finbif_dev_token>
     body:
       encoding: ''
-      string: no
+      string: ''
     headers:
+      Content-Type: ''
       Accept: application/json
   response:
     status:
@@ -49,7 +123,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 20 Feb 2020 11:20:37 GMT
+      date: Tue, 14 Apr 2020 13:33:45 GMT
       content-type: application/xml;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -67,6 +141,6 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       file: no
-      string: PHJlc3BvbnNlPjxjdXJyZW50UGFnZT4xPC9jdXJyZW50UGFnZT48bmV4dFBhZ2U+MjwvbmV4dFBhZ2U+PGxhc3RQYWdlPjM1MjY3MTc8L2xhc3RQYWdlPjxwYWdlU2l6ZT4xPC9wYWdlU2l6ZT48dG90YWw+MzUyNjcxNzwvdG90YWw+PHJlc3VsdHM+PHVuaXQ+PHVuaXRJZD5odHRwOi8vdHVuLmZpL0pYLjE3OTk1NyM0PC91bml0SWQ+PC91bml0PjwvcmVzdWx0cz48L3Jlc3BvbnNlPg==
-  recorded_at: 2020-02-20 11:20:37 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: PHJlc3BvbnNlPjxjdXJyZW50UGFnZT4xPC9jdXJyZW50UGFnZT48bmV4dFBhZ2U+MjwvbmV4dFBhZ2U+PGxhc3RQYWdlPjM3MTc5MTk8L2xhc3RQYWdlPjxwYWdlU2l6ZT4xPC9wYWdlU2l6ZT48dG90YWw+MzcxNzkxOTwvdG90YWw+PHJlc3VsdHM+PHVuaXQ+PHVuaXRJZD5odHRwOi8vdHVuLmZpL0pYLjE4MDMxNiM0PC91bml0SWQ+PC91bml0PjwvcmVzdWx0cz48L3Jlc3BvbnNlPg==
+  recorded_at: 2020-04-14 13:33:45 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
