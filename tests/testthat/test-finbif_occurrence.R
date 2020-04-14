@@ -83,8 +83,8 @@ vcr::use_cassette(
 
         fungi <- finbif_occurrence(
           filter = c(informal_group = "Fungi and lichens"),
-          select = c(
-            "record_id", "informal_groups", "taxon_id", "default_vars"
+          select = to_native(
+            "occurrenceID", "informalTaxonGroup", "taxonID", "default_vars"
           ),
           n = 1100L
         )
@@ -109,7 +109,7 @@ vcr::use_cassette(
         expect_output(
           print(
             finbif_occurrence(
-              select = c("default_vars", "samplingEffort"), dwc = TRUE
+              select = c("default_vars", to_dwc("duration")), dwc = TRUE
             )
           ),
           "Records downloaded:"

@@ -30,6 +30,7 @@ reference:
       - finbif_occurrence
       - finbif_records
       - filters
+      - to_dwc
       - variables
   - title: "Methods"
     desc: >

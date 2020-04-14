@@ -130,3 +130,33 @@ conditionMessage.dfrd_errors <- function(c) {
     paste0("  - ", errors, collapse = "\n")
   )
 }
+
+# variable names ---------------------------------------------------------------
+
+#' @noRd
+to_ <- function(x, from, to) {
+  x      <- unlist(x)
+  ind    <- !x %in% c(var_names[[to]], "default_vars")
+  x[ind] <- var_names[match(x[ind], var_names[[from]]), to]
+  x
+}
+
+#' Convert variable names to and from Darwin Core style
+#'
+#' Convert FinBIF native variable names to Darwin Core style variable names or
+#' vice versa.
+#'
+#' @param ... Character. Variable names in FinBIF native or Darwin Core
+#'   style.
+#'
+#' @return Character vector.
+#'
+#' @examples
+#'
+#' to_dwc("record_id", "date_time", "scientific_name")
+#' @export
+to_dwc <- function(...) to_(list(...), "translated_var", "dwc")
+
+#' @rdname to_dwc
+#' @export
+to_native <- function(...) to_(list(...), "dwc", "translated_var")
