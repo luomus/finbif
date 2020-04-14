@@ -1,6 +1,6 @@
 #' @noRd
 #' @importFrom digest digest
-#' @importFrom httr accept_json content GET http_type user_agent status_code
+#' @importFrom httr accept_json content RETRY http_type user_agent status_code
 #' @importFrom jsonlite fromJSON
 #' @importFrom utils packageVersion
 
@@ -34,7 +34,8 @@ api_get <- function(path, query, cache) {
     }
   }
 
-  resp <- httr::GET(
+  resp <- httr::RETRY(
+    "GET",
     sprintf("https://%s/%s/%s", url, version, path),
     httr::user_agent(
       paste0(
