@@ -1,6 +1,18 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.2.0.9010}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item There are two new utility functions, \code{to_dwc} and
+        \code{to_native} for converting variable names to and from Darwin Core
+        style.
+      \item Users can select and order by variables in Darwin Core style when
+        using \code{finbif_occurrence}.
+    }
+  }
+}
+
 \section{finbif version 0.2.0.9009}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

@@ -1,3 +1,13 @@
+# finbif 0.2.0.9010
+
+#### NEW FEATURES
+
+  - There are two new utility functions, `to_dwc` and `to_native` for
+    converting variable names to and from Darwin Core style.
+
+  - Users can select and order by variables in Darwin Core style when
+    using `finbif_occurrence`.
+
 # finbif 0.2.0.9009
 
 #### MINOR IMPROVEMENTS

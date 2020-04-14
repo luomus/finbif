@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/luomus/finbif",
   "issueTracker": "https://github.com/luomus/finbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.2.0.9009",
+  "version": "0.2.0.9010",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
