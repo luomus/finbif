@@ -89,9 +89,10 @@ get_calling_function <- function(pkg) {
 
   for (call in sys.calls()) {
     fun <- try(as.character(call[[1L]]), silent = TRUE)
-    if (inherits(fun, "try-error")) next
-    fun <- fun[[length(fun)]]
-    if (fun %in% ls(getNamespace(pkg))) break
+    if (inherits(fun, "character")) {
+      fun <- fun[[length(fun)]]
+      if (fun %in% ls(getNamespace(pkg))) break
+    }
   }
 
   args <- names(call)[-1L]
