@@ -314,9 +314,6 @@ object that is coercible to the <a href='https://rdrr.io/r/base/Dates.html'>Date
     
 
 <p>Filters related to quality of record:</p><ul>
-<li><p><code>collection_reliability</code> Integer.
-Filter by collection reliability rating, from low reliability (1) to highly
-reliable (5).</p></li>
 <li><p><code>coordinates_uncertainty_max</code> Integer.
 Filter by maximum uncertainty of coordinates (i.e.,
 <code>coordinates_uncertainty_max = 100</code> will return records that are accurate
@@ -327,13 +324,6 @@ Filter by the presence of record quality issues. One of <code>"without_issues"</
 record, the event, or the document. The default is <code>"without_issues"</code>
 unless filtering by record, event or document ID or record annotation
 status.</p></li>
-<li><p><code>reliable</code> Logical.
-Filter by reliability of record. The <code>"collection_reliability"</code> is 4-5 or
-the record has been "confirmed" and has no quality issues (record, event or
-document).</p></li>
-<li><p><code>taxon_reliability</code> Character vector.
-Filter by reliability of taxon identification. Can be one or more of
-<code>"reliable"</code>, <code>"likely"</code>, <code>"neutral"</code>, <code>"unlikely"</code> or <code>"unreliable"</code>.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="misc"><a class="anchor" href="#misc"></a>Misc</h2>
