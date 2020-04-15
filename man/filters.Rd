@@ -174,9 +174,6 @@ object that is coercible to the \link[base:Dates]{Date} class by
 
 Filters related to quality of record:
 \itemize{
-\item \code{collection_reliability} Integer.
-Filter by collection reliability rating, from low reliability (1) to highly
-reliable (5).
 \item \code{coordinates_uncertainty_max} Integer.
 Filter by maximum uncertainty of coordinates (i.e.,
 \code{coordinates_uncertainty_max = 100} will return records that are accurate
@@ -187,13 +184,6 @@ Filter by the presence of record quality issues. One of \code{"without_issues"},
 record, the event, or the document. The default is \code{"without_issues"}
 unless filtering by record, event or document ID or record annotation
 status.
-\item \code{reliable} Logical.
-Filter by reliability of record. The \code{"collection_reliability"} is 4-5 or
-the record has been "confirmed" and has no quality issues (record, event or
-document).
-\item \code{taxon_reliability} Character vector.
-Filter by reliability of taxon identification. Can be one or more of
-\code{"reliable"}, \code{"likely"}, \code{"neutral"}, \code{"unlikely"} or \code{"unreliable"}.
 }
 }
 

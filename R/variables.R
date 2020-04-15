@@ -89,8 +89,6 @@
 #'   by taxonomic group?
 #' - `orig_taxon_finnish` Logical.
 #'   Was the taxon considered Finnish before (if any) annotation?
-#' - `is_unidentifiable` Logical.
-#'   Is the record unable to be identified?
 #'
 #' @section Abundance, sex & life history:
 #' Variables related to abundance, sex and life history include:
@@ -231,18 +229,6 @@
 #' - `any_issues` Logical.
 #'   Are there any data quality issues associated with the record it's event or
 #'   document.
-#' - `record_reliable` Logical.
-#'   The `"collection_reliability"` is 4-5 or the record has been "confirmed"
-#'   and has no quality issues (record, event or document).
-#' - `collection_reliability` Integer.
-#'   A numeric rating of reliability from 1 (low reliability) to 5 (high
-#'   reliability) for the collection the record comes from.
-#' - `taxon_reliability` Character.
-#'   Reliability of the record taxonomic identification.
-#' - `taxon_reliability_message`
-#'   Remarks associated with `taxon_reliability`.
-#' - `taxon_reliability_source`
-#'   Source of the `taxon_reliability` rating.
 #' - `reported_taxon_confidence`
 #'    Reliability of the record taxonomic identification as reported by the
 #'    original data author.

@@ -97,8 +97,6 @@ Is the taxon considered Finnish. The definition of a Finnish taxon differs
 by taxonomic group?
 \item \code{orig_taxon_finnish} Logical.
 Was the taxon considered Finnish before (if any) annotation?
-\item \code{is_unidentifiable} Logical.
-Is the record unable to be identified?
 }
 }
 
@@ -254,18 +252,6 @@ Variables related to the quality of records include:
 \item \code{any_issues} Logical.
 Are there any data quality issues associated with the record it's event or
 document.
-\item \code{record_reliable} Logical.
-The \code{"collection_reliability"} is 4-5 or the record has been "confirmed"
-and has no quality issues (record, event or document).
-\item \code{collection_reliability} Integer.
-A numeric rating of reliability from 1 (low reliability) to 5 (high
-reliability) for the collection the record comes from.
-\item \code{taxon_reliability} Character.
-Reliability of the record taxonomic identification.
-\item \code{taxon_reliability_message}
-Remarks associated with \code{taxon_reliability}.
-\item \code{taxon_reliability_source}
-Source of the \code{taxon_reliability} rating.
 \item \code{reported_taxon_confidence}
 Reliability of the record taxonomic identification as reported by the
 original data author.
