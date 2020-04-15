@@ -40,7 +40,9 @@ api_get <- function(path, query, cache) {
     httr::user_agent(
       paste0(
         "https://github.com/luomus/finbif#",
-        utils::packageVersion("finbif")
+        utils::packageVersion("finbif"),
+        ":",
+        get_calling_function("finbif")
       )
     ),
     httr::accept_json(),
@@ -81,4 +83,32 @@ api_get <- function(path, query, cache) {
   )
 
   ans
+}
+
+get_calling_function <- function(pkg) {
+
+  for (call in sys.calls()) {
+    fun <- try(as.character(call[[1L]]), silent = TRUE)
+    if (inherits(fun, "try-error")) next
+    fun <- fun[[length(fun)]]
+    if (fun %in% ls(getNamespace(pkg))) break
+  }
+
+  args <- names(call)[-1L]
+
+  if (!length(args)) {
+
+    values <- ""
+
+  } else {
+
+    values <- call[-1L]
+    type   <- vapply(values, typeof, character(1L))
+    len    <- vapply(values, length, integer(1L))
+    values <- paste0(args, "=", type, "<", len, ">")
+
+  }
+
+  paste0(fun, "(", paste(values, collapse = ","), ")")
+
 }
