@@ -130,14 +130,16 @@ vcr::use_cassette(
       }
     )
 
+    test_that(
+      "returns errors appropriately", {
+
+        expect_error(
+          finbif_occurrence("not a valid taxa", on_check_fail = "error")
+        )
+
+      }
+    )
+
   },
   preserve_exact_body_bytes = TRUE
-)
-
-test_that(
-  "returns errors appropriately", {
-
-    expect_error(finbif_occurrence("not a valid taxa", on_check_fail = "error"))
-
-  }
 )

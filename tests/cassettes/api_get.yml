@@ -16,7 +16,7 @@ http_interactions:
       message: 'Client error: (400) Bad Request'
     headers:
       server: nginx/1.16.1
-      date: Tue, 14 Apr 2020 13:33:07 GMT
+      date: Wed, 15 Apr 2020 06:55:08 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -33,7 +33,7 @@ http_interactions:
       encoding: ASCII-8BIT
       file: no
       string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX3ZhciJ9
-  recorded_at: 2020-04-14 13:33:10 GMT
+  recorded_at: 2020-04-15 06:55:10 GMT
   recorded_with: vcr/0.5.4, webmockr/0.6.2
 - request:
     method: get
@@ -52,7 +52,7 @@ http_interactions:
       message: 'Client error: (400) Bad Request'
     headers:
       server: nginx/1.16.1
-      date: Tue, 14 Apr 2020 13:33:10 GMT
+      date: Wed, 15 Apr 2020 06:55:09 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -69,5 +69,78 @@ http_interactions:
       encoding: ASCII-8BIT
       file: no
       string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX3ZhciJ9
-  recorded_at: 2020-04-14 13:33:10 GMT
+  recorded_at: 2020-04-15 06:55:10 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 400
+      category: Client error
+      reason: Bad Request
+      message: 'Client error: (400) Bad Request'
+    headers:
+      server: nginx/1.16.1
+      date: Wed, 15 Apr 2020 06:55:10 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-xss-protection: 1; mode=block
+      x-frame-options: SAMEORIGIN
+      strict-transport-security: max-age=0; includeSubDomains
+      x-download-options: noopen
+      x-content-type-options: nosniff
+      via: 1.1 dw.laji.fi
+      vary: Accept-Encoding
+      content-encoding: gzip
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: eyJzdGF0dXMiOjQwMCwibWVzc2FnZSI6Ik5vIHN1Y2ggZmllbGQ6IG5vdF9hX3ZhciJ9
+  recorded_at: 2020-04-15 06:55:10 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?format=xml&page=1&pageSize=1&selected=unit.unitId&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.16.1
+      date: Wed, 15 Apr 2020 06:55:10 GMT
+      content-type: application/xml;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-xss-protection: 1; mode=block
+      x-frame-options: SAMEORIGIN
+      strict-transport-security: max-age=0; includeSubDomains
+      x-download-options: noopen
+      x-content-type-options: nosniff
+      via: 1.1 dw.laji.fi
+      vary: Accept-Encoding
+      content-encoding: gzip
+      cache-control: public
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: PHJlc3BvbnNlPjxjdXJyZW50UGFnZT4xPC9jdXJyZW50UGFnZT48bmV4dFBhZ2U+MjwvbmV4dFBhZ2U+PGxhc3RQYWdlPjM0NjkwMzEzPC9sYXN0UGFnZT48cGFnZVNpemU+MTwvcGFnZVNpemU+PHRvdGFsPjM0NjkwMzEzPC90b3RhbD48cmVzdWx0cz48dW5pdD48dW5pdElkPmh0dHA6Ly90dW4uZmkvS0UuMTc2LzVlOTYzOGM2MmQwZWI3OTI3NjY3YzcxYiNVbml0MTwvdW5pdElkPjwvdW5pdD48L3Jlc3VsdHM+PC9yZXNwb25zZT4=
+  recorded_at: 2020-04-15 06:55:10 GMT
   recorded_with: vcr/0.5.4, webmockr/0.6.2
