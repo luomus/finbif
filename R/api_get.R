@@ -60,7 +60,7 @@ api_get <- function(path, query, cache) {
   parsed <-
     jsonlite::fromJSON(httr::content(resp, "text"), simplifyVector = FALSE)
 
-  if (httr::status_code(resp) != 200) {
+  if (httr::status_code(resp) != 200L) {
     ans <- NULL
     stop(
       sprintf(
