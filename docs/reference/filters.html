@@ -273,6 +273,10 @@ Filter by source of coordinates. Currently accepted values are
 <code>"reported_value"</code> (coordinates were recorded at time of observation) and
 <code>"finnish_municipality"</code> (coordinates were derived and observer only
 recorded municipality).</p></li>
+<li><p><code>coordinates_uncertainty_max</code> Integer.
+Filter by maximum uncertainty of coordinates (i.e.,
+<code>coordinates_uncertainty_max = 100</code> will return records that are accurate
+to 100m).</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="time"><a class="anchor" href="#time"></a>Time</h2>
@@ -314,16 +318,26 @@ object that is coercible to the <a href='https://rdrr.io/r/base/Dates.html'>Date
     
 
 <p>Filters related to quality of record:</p><ul>
-<li><p><code>coordinates_uncertainty_max</code> Integer.
-Filter by maximum uncertainty of coordinates (i.e.,
-<code>coordinates_uncertainty_max = 100</code> will return records that are accurate
-to 100m).</p></li>
 <li><p><code>quality_issues</code>. Character.
 Filter by the presence of record quality issues. One of <code>"without_issues"</code>,
 <code>"with_issues"</code> or <code>"both"</code>. Issues include any quality issues with the
 record, the event, or the document. The default is <code>"without_issues"</code>
 unless filtering by record, event or document ID or record annotation
 status.</p></li>
+<li><p><code>requires_verification</code> Logical.
+Show only records requiring verification (<code>TRUE</code>) or not requiring
+verification (<code>FALSE</code>).</p></li>
+<li><p><code>collection_quality</code> Character vector.
+Filter by one or more collection quality types. Must be one of
+<code>"professional"</code>, <code>"hobbyist"</code> or <code>"amatuer"</code>.</p></li>
+<li><p><code>record_reliability</code> Character vector.
+Filter by the reliability of the record. Must be one or more of
+<code>"reliable"</code>, <code>"unassessed</code> or <code>"unreliable"</code>. Default is
+<code><a href='https://rdrr.io/r/base/c.html'>c("reliable", "unassessed")</a></code>.</p></li>
+<li><p><code>record_quality</code> Character vector.
+Filter by the quality of the record. Must be one or more of
+<code>"expert_verified"</code>, <code>"community_verified"</code>, <code>"unassessed"</code>, <code>"uncertain"</code>,
+or <code>"errorneous"</code>.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="misc"><a class="anchor" href="#misc"></a>Misc</h2>

@@ -281,7 +281,8 @@ Coordinates are available in
 The horizontal distance (in meters) from the record's given coordinates
 describing the smallest circle containing the whole of the record's
 location.</p></li>
-<li><p><code>coordinates_source</code></p></li>
+<li><p><code>coordinates_source</code> Character.
+Source of coordinates.</p></li>
 <li><p><code>footprint_{euref|kkj|wgs84}</code> Character.
 Well-Known Text (WKT) representation of the geographic shape defining the
 location of the record in either EUREF, KKJ or WGS84 coordinate systems.</p></li>
@@ -393,15 +394,23 @@ Has the record been restricted for other reasons.</p></li>
 Are there any data quality issues associated with the record it's event or
 document.</p></li>
 <li><p><code>reported_taxon_confidence</code>
-Reliability of the record taxonomic identification as reported by the
+Reliability of the record's taxonomic identification as reported by the
 original data author.</p></li>
 <li><p><code>{document|time|location|event|record}_issue</code> Character.
 Issues with record associated with its document, time, location, event, or
 the record itself.</p></li>
 <li><p><code>{document|time|location|event|record}_issue_message</code> Character.
 Details about the issue.</p></li>
-<li><p><code>{document|time|location|event|record}_issue_source</code>
+<li><p><code>{document|time|location|event|record}_issue_source</code> Character.
 Source determining the issue.</p></li>
+<li><p><code>requires_verification</code> Logical.
+Has the record been flagged for expert verification?</p></li>
+<li><p><code>requires_identification</code> Logical.
+Has the record been flagged for expert identification?</p></li>
+<li><p><code>record_reliability</code> Character.
+Indication of the records reliability.</p></li>
+<li><p><code>record_quality</code> Character.
+Indication of the records quality.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="misc"><a class="anchor" href="#misc"></a>Misc</h2>
