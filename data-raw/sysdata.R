@@ -41,7 +41,9 @@ usethis::use_data(
   restriction_reason,
   restriction_level,
   quality_issues,
-  taxon_reliability,
+  collection_quality,
+  record_quality,
+  record_reliability,
   internal = TRUE,
   overwrite = TRUE
 )

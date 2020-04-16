@@ -133,6 +133,10 @@ Filter by source of coordinates. Currently accepted values are
 \code{"reported_value"} (coordinates were recorded at time of observation) and
 \code{"finnish_municipality"} (coordinates were derived and observer only
 recorded municipality).
+\item \code{coordinates_uncertainty_max} Integer.
+Filter by maximum uncertainty of coordinates (i.e.,
+\code{coordinates_uncertainty_max = 100} will return records that are accurate
+to 100m).
 }
 }
 
@@ -174,16 +178,26 @@ object that is coercible to the \link[base:Dates]{Date} class by
 
 Filters related to quality of record:
 \itemize{
-\item \code{coordinates_uncertainty_max} Integer.
-Filter by maximum uncertainty of coordinates (i.e.,
-\code{coordinates_uncertainty_max = 100} will return records that are accurate
-to 100m).
 \item \code{quality_issues}. Character.
 Filter by the presence of record quality issues. One of \code{"without_issues"},
 \code{"with_issues"} or \code{"both"}. Issues include any quality issues with the
 record, the event, or the document. The default is \code{"without_issues"}
 unless filtering by record, event or document ID or record annotation
 status.
+\item \code{requires_verification} Logical.
+Show only records requiring verification (\code{TRUE}) or not requiring
+verification (\code{FALSE}).
+\item \code{collection_quality} Character vector.
+Filter by one or more collection quality types. Must be one of
+\code{"professional"}, \code{"hobbyist"} or \code{"amatuer"}.
+\item \code{record_reliability} Character vector.
+Filter by the reliability of the record. Must be one or more of
+\code{"reliable"}, \verb{"unassessed} or \code{"unreliable"}. Default is
+\code{c("reliable", "unassessed")}.
+\item \code{record_quality} Character vector.
+Filter by the quality of the record. Must be one or more of
+\code{"expert_verified"}, \code{"community_verified"}, \code{"unassessed"}, \code{"uncertain"},
+or \code{"errorneous"}.
 }
 }
 

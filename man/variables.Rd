@@ -141,7 +141,8 @@ Coordinates are available in
 The horizontal distance (in meters) from the record's given coordinates
 describing the smallest circle containing the whole of the record's
 location.
-\item \code{coordinates_source}
+\item \code{coordinates_source} Character.
+Source of coordinates.
 \item \verb{footprint_\{euref|kkj|wgs84\}} Character.
 Well-Known Text (WKT) representation of the geographic shape defining the
 location of the record in either EUREF, KKJ or WGS84 coordinate systems.
@@ -253,15 +254,23 @@ Variables related to the quality of records include:
 Are there any data quality issues associated with the record it's event or
 document.
 \item \code{reported_taxon_confidence}
-Reliability of the record taxonomic identification as reported by the
+Reliability of the record's taxonomic identification as reported by the
 original data author.
 \item \verb{\{document|time|location|event|record\}_issue} Character.
 Issues with record associated with its document, time, location, event, or
 the record itself.
 \item \verb{\{document|time|location|event|record\}_issue_message} Character.
 Details about the issue.
-\item \verb{\{document|time|location|event|record\}_issue_source}
+\item \verb{\{document|time|location|event|record\}_issue_source} Character.
 Source determining the issue.
+\item \code{requires_verification} Logical.
+Has the record been flagged for expert verification?
+\item \code{requires_identification} Logical.
+Has the record been flagged for expert identification?
+\item \code{record_reliability} Character.
+Indication of the records reliability.
+\item \code{record_quality} Character.
+Indication of the records quality.
 }
 }
 

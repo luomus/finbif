@@ -69,6 +69,7 @@ hasMedia,                              has_media,                     logical,  
 editorId,                              editor_id,                     uri,       FALSE,             ",", FALSE
 observerId,                            observer_id,                   uri,       FALSE,             ",", FALSE
 editorOrObserverId,                    editor_or_observer_id,         uri,       FALSE,             ",", FALSE
+editorOrObserverIdIsNot,               editor_or_observer_id_neg,     uri,       FALSE,             ",", FALSE
 teamMember,                            event_observer_name,           character, FALSE,             ",", TRUE
 teamMemberId,                          event_observer_id,             character, FALSE,             ",", TRUE
 secureReason,                          restriction_reason,            factor,    FALSE,             ",", TRUE
@@ -82,11 +83,11 @@ unitFact,                              record_fact,                   character,
 gatheringFact,                         event_fact,                    character, FALSE,             ",", TRUE
 documentFact,                          document_fact,                 character, FALSE,             ",", TRUE
 hasSample,                             has_sample,                    logical,   FALSE,             ",", TRUE
-collectionQuality,                     collection_quality,            factor,    FALSE,             ",", FALSE
+collectionQuality,                     collection_quality,            factor,    TRUE,              ",", TRUE
 hasUnitImages,                         has_record_images,             logical,   FALSE,             ",", FALSE
 hasUnitAudio,                          has_record_audio,              logical,   FALSE,             ",", FALSE
 hasUnitVideo,                          has_record_video,              logical,   FALSE,             ",", FALSE
-recordQuality,                         record_quality,                factor,    FALSE,             ",", FALSE
-reliability,                           reliability,                   factor,    FALSE,             ",", FALSE
+recordQuality,                         record_quality,                factor,    TRUE,              ",", TRUE
+reliability,                           record_reliability,            factor,    TRUE,              ",", TRUE
 effectiveTag,                          effective_tag,                 factor,    FALSE,             ",", FALSE
-needsCheck,                            requires_checking,             factor,    FALSE,             ",", FALSE
+needsCheck,                            requires_verification,         factor,    FALSE,             ",", TRUE

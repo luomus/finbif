@@ -125,6 +125,10 @@
 #'   `"reported_value"` (coordinates were recorded at time of observation) and
 #'   `"finnish_municipality"` (coordinates were derived and observer only
 #'   recorded municipality).
+#' - `coordinates_uncertainty_max` Integer.
+#'   Filter by maximum uncertainty of coordinates (i.e.,
+#'   `coordinates_uncertainty_max = 100` will return records that are accurate
+#'   to 100m).
 #'
 #' @section Time:
 #' Filters related to time of record include:
@@ -160,16 +164,26 @@
 #' @section Quality:
 #' Filters related to quality of record:
 #'
-#' - `coordinates_uncertainty_max` Integer.
-#'   Filter by maximum uncertainty of coordinates (i.e.,
-#'   `coordinates_uncertainty_max = 100` will return records that are accurate
-#'   to 100m).
 #' - `quality_issues`. Character.
 #'   Filter by the presence of record quality issues. One of `"without_issues"`,
 #'   `"with_issues"` or `"both"`. Issues include any quality issues with the
 #'   record, the event, or the document. The default is `"without_issues"`
 #'   unless filtering by record, event or document ID or record annotation
 #'   status.
+#' - `requires_verification` Logical.
+#'   Show only records requiring verification (`TRUE`) or not requiring
+#'   verification (`FALSE`).
+#' - `collection_quality` Character vector.
+#'   Filter by one or more collection quality types. Must be one of
+#'   `"professional"`, `"hobbyist"` or `"amatuer"`.
+#' - `record_reliability` Character vector.
+#'   Filter by the reliability of the record. Must be one or more of
+#'   `"reliable"`, `"unassessed` or `"unreliable"`. Default is
+#'   `c("reliable", "unassessed")`.
+#' - `record_quality` Character vector.
+#'   Filter by the quality of the record. Must be one or more of
+#'   `"expert_verified"`, `"community_verified"`, `"unassessed"`, `"uncertain"`,
+#'   or `"errorneous"`.
 #'
 #' @section Misc:
 #' Other filters:

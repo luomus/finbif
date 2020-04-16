@@ -127,7 +127,8 @@
 #'   The horizontal distance (in meters) from the record's given coordinates
 #'   describing the smallest circle containing the whole of the record's
 #'   location.
-#' - `coordinates_source`
+#' - `coordinates_source` Character.
+#'   Source of coordinates.
 #' - `footprint_{euref|kkj|wgs84}` Character.
 #'   Well-Known Text (WKT) representation of the geographic shape defining the
 #'   location of the record in either EUREF, KKJ or WGS84 coordinate systems.
@@ -230,15 +231,23 @@
 #'   Are there any data quality issues associated with the record it's event or
 #'   document.
 #' - `reported_taxon_confidence`
-#'    Reliability of the record taxonomic identification as reported by the
+#'    Reliability of the record's taxonomic identification as reported by the
 #'    original data author.
 #' - `{document|time|location|event|record}_issue` Character.
 #'   Issues with record associated with its document, time, location, event, or
 #'   the record itself.
 #' - `{document|time|location|event|record}_issue_message` Character.
 #'   Details about the issue.
-#' - `{document|time|location|event|record}_issue_source`
+#' - `{document|time|location|event|record}_issue_source` Character.
 #'   Source determining the issue.
+#' - `requires_verification` Logical.
+#'   Has the record been flagged for expert verification?
+#' - `requires_identification` Logical.
+#'   Has the record been flagged for expert identification?
+#' - `record_reliability` Character.
+#'   Indication of the records reliability.
+#' - `record_quality` Character.
+#'   Indication of the records quality.
 #'
 #' @section Misc:
 #' Other variables:
