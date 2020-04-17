@@ -28,7 +28,8 @@ record_quality  <- data.frame(
     "errorneous"
   ),
   row.names = c(
-    "expert_verified", "community_verified", "neutral", "uncertain", "errorneus"
+    "expert_verified", "community_verified", "neutral", "uncertain",
+    "errorneous"
   ),
   stringsAsFactors = FALSE
 )
