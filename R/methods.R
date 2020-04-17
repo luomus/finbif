@@ -196,7 +196,7 @@ print.finbif_occ <- function(x, ...) {
   if (length(nrec_avl)) cat("Records available: ", nrec_avl, "\n", sep = "")
   cat("A data.frame [", nrows, " x ", ncols, "]\n", sep = "")
 
-  df <- x[seq_len(dsply_nr), ]
+  df <- x[seq_len(dsply_nr), , drop = FALSE]
 
   colname_widths <- vapply(names(df), nchar, integer(1L))
 
