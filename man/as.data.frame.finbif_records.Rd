@@ -5,14 +5,16 @@
 \alias{as.data.frame.finbif_records_list}
 \title{Coerce a \verb{finbif_records*} object to a \code{data.frame}}
 \usage{
-\method{as.data.frame}{finbif_records}(x, ...)
+\method{as.data.frame}{finbif_records}(x, ..., locale = getOption("finbif_locale"))
 
-\method{as.data.frame}{finbif_records_list}(x, ..., quiet = TRUE)
+\method{as.data.frame}{finbif_records_list}(x, ..., locale = getOption("finbif_locale"), quiet = TRUE)
 }
 \arguments{
 \item{x}{A \verb{finbif_records*} object.}
 
 \item{...}{Additional arguments. Not used.}
+
+\item{locale}{Character. A locale to use for columns with localised data.}
 
 \item{quiet}{Logical. If \code{TRUE} (default) suppress progress indicator of
 conversion.}

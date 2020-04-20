@@ -160,3 +160,26 @@ to_dwc <- function(...) to_(list(...), "translated_var", "dwc")
 #' @rdname to_dwc
 #' @export
 to_native <- function(...) to_(list(...), "dwc", "translated_var")
+
+# localization -----------------------------------------------------------------
+get_locale <- function() {
+  ans <- supported_langs[[1L]]
+  sys_lang <- c(Sys.getenv(c("LANGUAGE", "LANG")), Sys.getlocale("LC_COLLATE"))
+
+  for (l in sys_lang) {
+    l <- regmatches(l, regexpr(".+?(?=[[:punct:]])", l, perl = TRUE))
+    if (length(l)) {
+      if (l %in% supported_langs) {
+        ans <- l
+        break
+      }
+      if (supported_langs[[l]] %in% supported_langs) {
+        ans <- supported_langs[[l]]
+        break
+      }
+    }
+  }
+
+  ans
+
+}

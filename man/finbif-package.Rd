@@ -29,11 +29,16 @@ A programmatic interface to the 'Finnish Biodiversity Information
 \code{"v0"}}
 \item{\code{finbif_use_cache}}{Logical. Should API queries by cached. Default:
 \code{TRUE}}
-\item{\code{finbif_cache_path}}{The path to the directory where to store cached
-API queries. If unset (the default) in memory caching is used.}
-\item{\code{finbif_tz}}{The timezone used by \code{finbif} functions that compute dates
-and times. Default: \code{Sys.timezone()}}
-
+\item{\code{finbif_cache_path}}{Character. The path to the directory where to
+store cached API queries. If unset (the default) in memory caching is
+used.}
+\item{\code{finbif_tz}}{Character. The timezone used by \code{finbif} functions that
+compute dates and times. Default: \code{Sys.timezone()}}
+\item{\code{finbif_locale}}{Character. One of the supported two-letter ISO 639-1
+language codes. Current supported languages are English, Finnish, Swedish,
+Russian, and Sami (Northern). By default, the system settings are used to
+set this option if they are set to one of the supported languages,
+otherwise English is used.}
 }
 }
 

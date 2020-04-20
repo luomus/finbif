@@ -11,3 +11,14 @@ test_that(
 
   }
 )
+
+test_that(
+  "getting locale works", {
+
+    Sys.setenv(LANGUAGE = "Finnish-Finland")
+
+    expect_match(get_locale(), "fi")
+
+  }
+)
+

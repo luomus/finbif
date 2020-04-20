@@ -18,6 +18,11 @@
 #'   of `"warn"` (default) or `"error"`.
 #' @param tzone Character. If `date_time` has been selected the timezone of the
 #'   outputted date-time. Defaults to system timezone.
+#' @param locale Character. One of the supported two-letter ISO 639-1 language
+#'   codes. Current supported languages are English, Finnish, Swedish, Russian,
+#'   and Sami (Northern). For data where more than one language is available
+#'   the language denoted by `locale` will be preferred while falling back to
+#'   the other languages in the order indicated above.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -48,7 +53,8 @@ finbif_occurrence <- function(
   ..., filter, select, order_by, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
   dwc = FALSE, date_time_method = "fast", check_taxa = TRUE,
-  on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz")
+  on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
+  locale = getOption("finbif_locale")
 ) {
 
   taxa <- select_taxa(..., cache = cache, check_taxa = check_taxa,
@@ -69,7 +75,7 @@ finbif_occurrence <- function(
 
   if (!quiet) pb_head("Processing data")
 
-  df   <- as.data.frame(records, quiet = quiet)
+  df   <- as.data.frame(records, locale = locale, quiet = quiet)
   url  <- attr(df, "url", TRUE)
   time <- attr(df, "time", TRUE)
 

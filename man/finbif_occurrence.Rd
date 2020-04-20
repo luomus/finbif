@@ -20,7 +20,8 @@ finbif_occurrence(
   date_time_method = "fast",
   check_taxa = TRUE,
   on_check_fail = c("warn", "error"),
-  tzone = getOption("finbif_tz")
+  tzone = getOption("finbif_tz"),
+  locale = getOption("finbif_locale")
 )
 }
 \arguments{
@@ -72,6 +73,12 @@ of \code{"warn"} (default) or \code{"error"}.}
 
 \item{tzone}{Character. If \code{date_time} has been selected the timezone of the
 outputted date-time. Defaults to system timezone.}
+
+\item{locale}{Character. One of the supported two-letter ISO 639-1 language
+codes. Current supported languages are English, Finnish, Swedish, Russian,
+and Sami (Northern). For data where more than one language is available
+the language denoted by \code{locale} will be preferred while falling back to
+the other languages in the order indicated above.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

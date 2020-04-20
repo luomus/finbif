@@ -6,6 +6,7 @@
 #'
 #' @param x A `finbif_records*` object.
 #' @param ... Additional arguments. Not used.
+#' @param locale Character. A locale to use for columns with localised data.
 #' @param quiet Logical. If `TRUE` (default) suppress progress indicator of
 #'   conversion.
 #' @return A `data.frame`.
@@ -19,75 +20,86 @@
 #' @importFrom methods as
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
-as.data.frame.finbif_records <- function(x, ...) {
+as.data.frame.finbif_records <-
+  function(x,  ..., locale = getOption("finbif_locale")) {
 
-  cols <- attr(x, "select")
-  url  <- x[["response"]][["url"]]
-  time <- x[["response"]][["date"]]
+    cols <- attr(x, "select")
+    url  <- x[["response"]][["url"]]
+    time <- x[["response"]][["date"]]
 
-  x <- x[["content"]][["results"]]
+    x <- x[["content"]][["results"]]
 
-  lst <- lapply(
-    cols,
-    function(col) {
-      type <- var_names[col, "type"]
-      type_na <- methods::as(NA, type)
-      single <- var_names[col, "single"]
-      el_names <- strsplit(col, "\\.")[[1L]]
-      if (single) return(vapply(x, get_el_recurse, type_na, el_names, type))
-      ans <- lapply(x, get_el_recurse, el_names, type)
-      lapply(ans, unlist)
-    }
-  )
+    lst <- lapply(
+      cols,
+      function(col) {
+        type      <- var_names[col, "type"]
+        type_na   <- methods::as(NA, type)
+        single    <- var_names[col, "single"]
+        localised <- var_names[col, "localised"]
+        el_names <- strsplit(col, "\\.")[[1L]]
+        if (single) return(vapply(x, get_el_recurse, type_na, el_names, type))
+        ans <- lapply(x, get_el_recurse, el_names, type)
+        ans <- lapply(ans, unlist)
+        if (localised) ans <- vapply(ans, with_locale, type_na, locale)
+        ans
+      }
+    )
 
-  names(lst) <- cols
-  cols_split <- split(cols, var_names[cols, "single"])
-  cols_split[["TRUE"]] <- c("ind", cols_split[["TRUE"]])
-  lst <- c(list(ind = seq_along(x)), lst)
-  df <- as.data.frame(lst[cols_split[["TRUE"]]], stringsAsFactors = FALSE)
-  df[cols_split[["FALSE"]]] <- lst[cols_split[["FALSE"]]]
-  df[["ind"]] <- NULL
-  structure(df[cols], url = url, time = time)
+    names(lst) <- cols
+    cols_split <- split(cols, var_names[cols, "single"])
+    cols_split[["TRUE"]] <- c("ind", cols_split[["TRUE"]])
+    lst <- c(list(ind = seq_along(x)), lst)
+    df <- as.data.frame(lst[cols_split[["TRUE"]]], stringsAsFactors = FALSE)
+    df[cols_split[["FALSE"]]] <- lst[cols_split[["FALSE"]]]
+    df[["ind"]] <- NULL
+    structure(df[cols], url = url, time = time)
 
+  }
+
+#' @noRd
+with_locale <- function(x, locale) {
+  if (identical(length(x), 1L)) return(x[[1L]])
+  x[[intersect(c(locale, setdiff(supported_langs, locale)), names(x))[[1L]]]]
 }
 
 #' @rdname as.data.frame.finbif_records
 #' @export
-as.data.frame.finbif_records_list <- function(x, ..., quiet = TRUE) {
+as.data.frame.finbif_records_list <-
+  function(x, ..., locale = getOption("finbif_locale"), quiet = TRUE) {
 
-  n <- length(x)
-  if (!quiet) {
-    pb <- utils::txtProgressBar(0L, n, style = 3L)
-    on.exit(close(pb))
-  }
-
-  df <- lapply(
-    seq_len(n),
-    function(i) {
-      if (!quiet) utils::setTxtProgressBar(pb, i)
-      as.data.frame(x[[i]])
+    n <- length(x)
+    if (!quiet) {
+      pb <- utils::txtProgressBar(0L, n, style = 3L)
+      on.exit(close(pb))
     }
-  )
 
-  url  <- do.call(c, lapply(df, attr, "url", TRUE))
-  time <- do.call(c, lapply(df, attr, "time", TRUE))
+    df <- lapply(
+      seq_len(n),
+      function(i) {
+        if (!quiet) utils::setTxtProgressBar(pb, i)
+        as.data.frame(x[[i]], locale = locale)
+      }
+    )
 
-  df <- do.call(rbind, df)
+    url  <- do.call(c, lapply(df, attr, "url", TRUE))
+    time <- do.call(c, lapply(df, attr, "time", TRUE))
 
-  if (inherits(x, "finbif_records_sample_list")) {
-    records <- if (attr(x, "cache")) {
-      sample_with_seed(nrow(df), nrow(df), gen_seed(x))
-    } else {
-      sample.int(nrow(df))
+    df <- do.call(rbind, df)
+
+    if (inherits(x, "finbif_records_sample_list")) {
+      records <- if (attr(x, "cache")) {
+        sample_with_seed(nrow(df), nrow(df), gen_seed(x))
+      } else {
+        sample.int(nrow(df))
+      }
+      df <- df[records, ]
     }
-    df <- df[records, ]
+
+    if (!attr(x, "record_id")) df[["unit.unitId"]] <- NULL
+
+    structure(df, url = url, time = time)
+
   }
-
-  if (!attr(x, "record_id")) df[["unit.unitId"]] <- NULL
-
-  structure(df, url = url, time = time)
-
-}
 
 # accessor methods -------------------------------------------------------------
 
@@ -240,7 +252,7 @@ format_cols <- function(df, colname_widths) {
 
     ind <- var_names[[if (attr(df, "dwc")) "dwc" else "translated_var"]] == i
     class  <- var_names[ind, "class"]
-    single <- var_names[ind, "single"]
+    single <- var_names[ind, "single"] || var_names[ind, "localised"]
 
     # Variables may not necessarily be in the var_names object
     if (length(class))

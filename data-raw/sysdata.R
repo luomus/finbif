@@ -44,6 +44,7 @@ usethis::use_data(
   collection_quality,
   record_quality,
   record_reliability,
+  supported_langs,
   internal = TRUE,
   overwrite = TRUE
 )
