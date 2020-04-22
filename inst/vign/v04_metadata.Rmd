@@ -1,0 +1,93 @@
+---
+title: "Metadata"
+author: "William K. Morris"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{4. Metadata}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, eval = TRUE, echo = FALSE, cache = FALSE}
+library(details)
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  cache = TRUE,
+  cache.path = "cache/",
+  fig.path = "../man/figures/",
+  details.summary = "Click to show/hide output.",
+  details.tooltip = NULL,
+  details.comment = "#>"
+)
+
+library(finbif)
+options(finbif_tz = "Europe/Helsinki", width = 100)
+```
+Much of the information in the FinBIF database consists of metadata that helps
+provide context for occurrence records and other information in FinBIF.
+
+## General metadata
+You can see some of the metadata available in `{finbif}` by calling the
+`finbif_metadata` function without any arguments.
+```{details metadata-general}
+finbif_metadata()
+```
+
+Calling `finbif_metadata()` and specifying one of the metadata categories will
+display a `data.frame` with the requested metadata.
+```{details metadata-red-list}
+finbif_metadata("red_list")
+```
+
+## Special cases
+Some more complex metadata is accessed with other `{finbif}` functions
+
+### Informal groups
+Informal taxonomic groups and their relationships can be displayed with
+`finbif_informal_groups()`
+```{details informal-groups6}
+finbif_informal_groups(limit = 6)
+```
+
+You can select a subgroup by specifying a parent informal group as a function
+argument.
+```{r informal-groups-crustacea}
+finbif_informal_groups("Crustaceans")
+```
+
+## Collections
+Another special case of metadata is `finbif_collections()`. Collections are the
+highest level of record aggregation in the FinBIF database.
+
+You can subset collection metadata by using the `filter` and `select` arguments.
+```{details collections-finland}
+finbif_collections(
+  filter = geographic_coverage == "Finland",
+  select = c("collection_name", "taxonomic_coverage", "count")
+)
+```
+
+By default, `finbif_collections()` only displays the lowest level collections.
+Higher level, "supercollections" can be viewed by setting
+`supercollections = TRUE` and you can limit the output to collections with
+a minimum number of records in them with the `nmin` argument.
+```{r collections-large, eval = FALSE, cache = FALSE}
+collections <- finbif_collections(supercollections = TRUE, nmin = 10000)
+```
+
+The `finbif_collections()` function returns a `data.frame` where the row names
+are the ID number of the collection.
+```{details luomus-collection}
+finbif_collections(supercollections = TRUE)["HR.128", "collection_name"]
+```
+
+You can see the child collections of a supercollection by specifying the ID as
+a filter. Note that the children of supercollections may also be supercollections
+```{details collections-128}
+finbif_collections(is_part_of == "HR.128", supercollections = TRUE)
+```

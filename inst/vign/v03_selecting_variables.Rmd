@@ -1,0 +1,84 @@
+---
+title: "Selecting and ordering variables"
+author: "William K. Morris"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{3. Selecting and ordering variables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, eval = TRUE, echo = FALSE, cache = FALSE}
+library(details)
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  cache = TRUE,
+  cache.path = "cache/",
+  fig.path = "../man/figures/",
+  details.summary = "Click to show/hide output.",
+  details.tooltip = NULL,
+  details.comment = "#>"
+)
+
+library(finbif)
+options(finbif_tz = "Europe/Helsinki", width = 100)
+```
+
+When requesting data using `{finbif}` you can select from among (or order by)
+many variables (properties of the occurrence records). The default set of
+variables returned is a small subset of those available. Note that not all
+variables are available for all records. See `?variables` for details.
+
+## Selecting variables
+### Limiting variables
+To retrieve a limited set of variables from FinBIF simply specify the desired
+variables in the `select` argument.
+```{details limiting}
+finbif_occurrence(
+  genus  = "Falco",
+  select = c("scientific_name", "life_stage", "sex")
+)
+```
+
+### Extra variables
+To get extra variables as well as the default set, specify the extra variables
+in addition to the keyword `"default_vars"`.
+```{details extras}
+finbif_occurrence(select = c("default_vars", "life_stage"))
+```
+
+## Ordering
+You can change the order of occurrence records before they are fetched from the
+server by using the `order_by` argument. The default ordering is `date_start`
+descending, then `load_date` descending, then `reported_name`.
+
+### Ascending order
+By default occurrence records are ordered by variables in ascending order.
+```{details order-ascend}
+finbif_occurrence("Cygnus cygnus", order_by = "abundance")
+```
+
+### Descending order
+You can switch to descending order by prefixing the variable with a dash.
+```{details order-descend}
+finbif_occurrence("Cygnus cygnus", order_by = "-abundance")
+```
+
+### Multiple variables
+You can specify multiple variables to order by. Sorting primacy is from left to
+right.
+```{details order-multiple}
+finbif_occurrence("Cygnus olor", order_by = c("municipality", "-abundance"))
+```
+
+### Random sample
+You can also request a random sample (random order) of occurrence records by
+setting the `sample` argument to `TRUE`.
+```{details random}
+finbif_occurrence(sample = TRUE)
+```

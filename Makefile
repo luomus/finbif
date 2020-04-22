@@ -35,6 +35,7 @@ NEWS.md: inst/NEWS.Rd install
 vignettes: install
 	cd inst/vign;\
 	${RSCRIPT} -e "for (i in list.files('.', '.Rmd$$')) knitr::knit(i)";\
+	sed -i 's/```details/```r/g' *.md;\
 	cp *.md ../../vignettes;\
 	cp ../man/figures/* ../../man/figures;\
 	cd ../../vignettes;\
