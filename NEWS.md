@@ -1,3 +1,37 @@
+# finbif 0.2.0.9011
+
+#### NEW FEATURES
+
+  - Some changes in variables and filters have flowed from upstream
+    changes to "api.laji.fi". The variables `is_unidentifiable`,
+    `record_reliable`, `collection_reliability`, `taxon_reliability`,
+    `taxon_reliability_message` and `taxon_reliability_source` have been
+    deprecated and replaced with `requires_verification`,
+    `requires_identification`, `record_reliability` and
+    `record_quality`. The filters `collection_reliability` and
+    `taxon_reliability` have been deprecated and replaced with
+    `requires_verification`, `collection_quality`, `record_reliability`,
+    `record_quality`, and `expert_verified`.
+
+  - Vernacular names are now localised. Users can select a language to
+    use for taxon vernacular names. Missing names will fallback
+    gracefully to other languages. A package-wide locale can be set and
+    is by default set to the system locale (if not set or can't be
+    determined it will default to English).
+
+  - New vignettes on getting occurrence records, selecting and ordering
+    variables, metadata and plotting have been added.
+
+#### MINOR IMPROVEMENTS
+
+  - After some failures, API requests are now automatically retried up
+    to three times.
+
+#### BUG FIXES
+
+  - Fixed bug in print method for `finbif_occ` objects that caused error
+    when trying to display a single column objects with a list-col only.
+
 # finbif 0.2.0.9010
 
 #### NEW FEATURES

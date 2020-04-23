@@ -1,6 +1,44 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.2.0.9011}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Some changes in variables and filters have flowed from upstream
+        changes to "api.laji.fi". The variables \code{is_unidentifiable},
+        \code{record_reliable}, \code{collection_reliability},
+        \code{taxon_reliability}, \code{taxon_reliability_message} and
+        \code{taxon_reliability_source} have been deprecated and replaced with
+        \code{requires_verification}, \code{requires_identification},
+        \code{record_reliability} and \code{record_quality}. The filters
+        \code{collection_reliability} and \code{taxon_reliability} have been
+        deprecated and replaced with \code{requires_verification},
+        \code{collection_quality}, \code{record_reliability},
+        \code{record_quality}, and \code{expert_verified}.
+      \item Vernacular names are now localised. Users can select a language to
+        use for taxon vernacular names. Missing names will fallback gracefully
+        to other languages. A package-wide locale can be set and is by default
+        set to the system locale (if not set or can't be determined it will
+        default to English).
+      \item New vignettes on getting occurrence records, selecting and ordering
+       variables, metadata and plotting have been added.
+    }
+  }
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item After some failures, API requests are now automatically retried up
+        to three times.
+    }
+  }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed bug in print method for \code{finbif_occ} objects that caused
+        error when trying to display a single column objects with a list-col
+        only.
+    }
+  }
+}
+
 \section{finbif version 0.2.0.9010}{
   \subsection{NEW FEATURES}{
     \itemize{
