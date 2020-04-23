@@ -1,9 +1,17 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.2.0.9011}{
+\section{finbif version 0.3.0}{
   \subsection{NEW FEATURES}{
     \itemize{
+      \item All user facing functions with a \code{finbif_} prefix can now also
+        be used with the alternative shorter prefix \code{fb_}.
+      \item Crop Wild Relative, CWR, added to admin statuses.
+      \item There are two new utility functions, \code{to_dwc} and
+        \code{to_native} for converting variable names to and from Darwin Core
+        style.
+      \item Users can select and order by variables in Darwin Core style when
+        using \code{finbif_occurrence}.
       \item Some changes in variables and filters have flowed from upstream
         changes to "api.laji.fi". The variables \code{is_unidentifiable},
         \code{record_reliable}, \code{collection_reliability},
@@ -26,134 +34,48 @@
   }
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
+      \item Caching defaults to in memory caching instead of relying on the
+        temporary directory.
+      \item Front matter of vignettes is now visible when using the R help
+        browser.
+      \item Retired "quiet" option for "on_check_fail" argument in function
+        \code{finbif_occurrence()}.
+      \item Improved error messages when taxa fail checking in
+        \code{finbif_occurrence()}.
+      \item Global option to set timezone, "finbif_tz", as default value for
+        "tzone" argument to \code{finbif_occurrence()}. Avoids having to set
+        system environment variable TZ or specify "tzone" every time
+        \code{finbif_occurrence()} is run.
+      \item Now when a record has no time information the start time is assumed
+        to be midday. Previous behaviour was to assume start time was midnight,
+        making errors potentially biased.
+      \item Package options are now documented in the package level man page.
+      \item News file is now accessible via R internal help system.
+      \item The number of default variables selected when accessing occurrence
+        records has been reduced to speed up downloads and improve the display
+        of \code{finbif_occ} objects.
+      \item The print method for occurrence record objects has been updated. It
+        is now aware of console width and when truncating variable values is
+        more considerate of the context.
+      \item Variables can now be "deselected" when using the \code{select}
+        argument to \code{finbif_occurrence} by prepending the variable name
+        with a "\code{-}".
       \item After some failures, API requests are now automatically retried up
         to three times.
     }
   }
   \subsection{BUG FIXES}{
     \itemize{
-      \item Fixed bug in print method for \code{finbif_occ} objects that caused
-        error when trying to display a single column objects with a list-col
-        only.
-    }
-  }
-}
-
-\section{finbif version 0.2.0.9010}{
-  \subsection{NEW FEATURES}{
-    \itemize{
-      \item There are two new utility functions, \code{to_dwc} and
-        \code{to_native} for converting variable names to and from Darwin Core
-        style.
-      \item Users can select and order by variables in Darwin Core style when
-        using \code{finbif_occurrence}.
-    }
-  }
-}
-
-\section{finbif version 0.2.0.9009}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item Variables can now be "deselected" when using the \code{select}
-        argument to \code{finbif_occurrence} by prepending the variable name
-        with a "\code{-}".
-    }
-  }
-}
-
-\section{finbif version 0.2.0.9008}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item The print method for occurrence record objects has been updated. It
-        is now aware of console width and when truncating variable values is
-        more considerate of the context.
-    }
-  }
-}
-
-\section{finbif version 0.2.0.9007}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item Package options are now documented in the package level man page.
-      \item News file is now accessible via R internal help system.
-      \item The number of default variables selected when accessing occurrence
-        records has been reduced to speed up downloads and improve the display
-        of \code{finbif_occ} objects.
-    }
-  }
-}
-
-\section{finbif version 0.2.0.9006}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item Now when a record has no time information the start time is assumed
-        to be midday. Previous behaviour was to assume start time was midnight,
-        making errors potentially biased.
-    }
-  }
-}
-
-\section{finbif version 0.2.0.9005}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item Global option to set timezone, "finbif_tz", as default value for
-        "tzone" argument to finbif_occurrence(). Avoids having to set system
-        environment variable TZ or specify "tzone" every time
-        finbif_occurrence() is run.
-    }
-  }
-}
-
-\section{finbif version 0.2.0.9004}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item Retired "quiet" option for "on_check_fail" argument in function
-        `finbif_occurrence()`.
-      \item Improved error messages when taxa fail checking in
-        `finbif_occurrence()`.
-    }
-  }
-  \subsection{BUG FIXES}{
-    \itemize{
+      \item Ordering by descending variables did not work when ordering by both
+        ascending and descending variables.
       \item Fixed bug in handling of duplicates that could result in an infinite
         recursion.
       \item Fixed bug that (when "on_check_fail" = "warn") all taxa failed
         checks `finbif_occurrence()` would proceed as if no taxa had been
         selected.
-    }
-  }
-}
-
-\section{finbif version 0.2.0.9003}{
-  \subsection{NEW FEATURES}{
-    \itemize{
-      \item All user facing functions with a \code{finbif_} prefix can now also
-        be used with the alternative shorter prefix \code{fb_}.
-      \item Crop Wild Relative, CWR, added to admin statuses.
-    }
-  }
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item Front matter of vignettes is now visible when using the R help
-        browser.
-    }
-  }
-}
-
-\section{finbif version 0.2.0.9002}{
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Ordering by descending variables did not work when ordering by both
-        ascending and descending variables.
-    }
-  }
-}
-
-\section{finbif version 0.2.0.9001}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item Caching defaults to in memory caching instead of relying on the
-        temporary directory.
+      \item Fixed bug in print method for \code{finbif_occ} objects that caused
+        error when trying to display a single column objects with a list-col
+        only.
     }
   }
 }
