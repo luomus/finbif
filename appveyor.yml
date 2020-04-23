@@ -58,11 +58,6 @@ artifacts:
     name: Bits
 
 notifications:
- - provider: Email
-   to:
-     - willi@mmorris.email
-   subject: 'finbif build {{status}}'
-   message: "https://ci.appveyor.com/project/luomus/finbif"
-   on_build_success: false
-   on_build_failure: true
-   on_build_status_changed: true
+ - provider: Slack
+   incoming_webhook:
+     secure: l75SR1EpufftyEA5yICq2+0qIErN3Vyu2CJVlarlQlPIeTaRARVDvVZ+d7MUHUX+n90RywsHTHecdlikOPc3++ZlE54xTw2InXYUHYwhACM=

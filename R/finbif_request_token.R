@@ -3,6 +3,8 @@
 #' Have a personal access token for use with the FinBIF API sent to a specified
 #' email address.
 #'
+#' @aliases fb_request_token
+#'
 #' @param email Character. The email address to which to send the API access
 #'   token.
 #' @return If an access token has already been set then `NULL` (invisibly) if
@@ -10,6 +12,7 @@
 #'   the FinBIF server.
 #' @importFrom httr accept_json content http_type POST user_agent status_code
 #' @importFrom jsonlite fromJSON
+#' @importFrom utils packageVersion
 #' @examples \dontrun{
 #'
 #' # Request a token for example@email.com
@@ -18,7 +21,7 @@
 #' @export
 
 finbif_request_token <- function(email) {
-  finbif_access_token <- finbif_token()
+  finbif_access_token <- token()
 
   if (!is.null(finbif_access_token)) {
     message(

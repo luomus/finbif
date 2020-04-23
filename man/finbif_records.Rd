@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_records.R
 \name{finbif_records}
 \alias{finbif_records}
+\alias{fb_records}
 \title{Get FinBIF records}
 \usage{
 finbif_records(
@@ -13,7 +14,9 @@ finbif_records(
   page = 1,
   count_only = FALSE,
   quiet = FALSE,
-  cache = getOption("finbif_use_cache")
+  cache = getOption("finbif_use_cache"),
+  dwc = FALSE,
+  seed
 )
 }
 \arguments{
@@ -21,7 +24,9 @@ finbif_records(
 
 \item{select}{Character vector. Variables to return. If not specified a
 default set of commonly used variables will be used. Use \code{"default_vars"}
-as a shortcut for this set.}
+as a shortcut for this set. Variables can be deselected by prepending a \code{-}
+to the variable name. If only deselects are specified the default set of
+variables without the deselection will be returned.}
 
 \item{order_by}{Character vector. Variables to order records by before they
 are returned. Most, though not all, variables can be used to order records
@@ -43,6 +48,12 @@ database.}
 downloads.}
 
 \item{cache}{Logical. Use cached data.}
+
+\item{dwc}{Logical. Use Darwin Core (or Darwin Core style) variable names.}
+
+\item{seed}{Integer. Set a seed for randomly sampling records. Note that the
+server currently ignores seed setting and this argument currently has
+little effect.}
 }
 \value{
 A \code{finbif_api} or \code{finbif_api_list} object.

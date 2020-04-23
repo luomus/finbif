@@ -1,0 +1,44 @@
+{
+    "language": "eng",
+    "license": "MIT",
+    "title": "finbif",
+    "related_identifiers": [
+        {
+            "scheme": "url",
+            "identifier": "https://github.com/luomus/finbif/releases/latest",
+            "relation": "isSupplementTo"
+        },
+        {
+            "scheme": "doi",
+            "identifier": "10.5281/zenodo.3612814",
+            "relation": "isVersionOf"
+        }
+    ],
+    "upload_type": "software",
+    "keywords": [
+        "api",
+        "biodiversity",
+        "biodiversity-informatics",
+        "biodiversity-information",
+        "finbif",
+        "finbif-access",
+        "occurrences",
+        "r-package",
+        "r-programming",
+        "rstats",
+        "species",
+        "specimens",
+        "taxon",
+        "taxonomy",
+        "web-services"
+    ],
+    "creators": [
+        {
+            "orcid": "0000-0002-8686-4154",
+            "affiliation": "LUOMUS - Finnish Museum of Natural History",
+            "name": "William K. Morris"
+        }
+    ],
+    "access_right": "open",
+    "description": "<p>Interface for the Finnish Biodiversity Information Facility API</p>"
+}

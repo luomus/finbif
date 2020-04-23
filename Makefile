@@ -20,14 +20,24 @@ check: pkgdown codemeta.json
 pkgdown: vignettes README.md
 	${RSCRIPT} -e "pkgdown::build_site()"
 
-README.md: README.Rmd install
+README.md: README.Rmd NEWS.md
 	${RSCRIPT} -e "knitr::knit('$<')"
+
+NEWS.md: inst/NEWS.Rd install
+	${RSCRIPT} -e "tools::Rd2HTML('$<', 'inst/NEWS.html')"
+	sed -i 's/h3>/h1>/g' inst/NEWS.html
+	pandoc -s inst/NEWS.html -o inst/NEWS.md -t gfm
+	sed -i '1,6d' inst/NEWS.md
+	sed -i 's/# ${PKGNAME} version/# ${PKGNAME}/g' inst/NEWS.md
+	cp inst/NEWS.md NEWS.md
+	$(RM) inst/NEWS.html inst/NEWS.md
 
 vignettes: install
 	cd inst/vign;\
 	${RSCRIPT} -e "for (i in list.files('.', '.Rmd$$')) knitr::knit(i)";\
+	sed -i 's/```details/```r/g' *.md;\
 	cp *.md ../../vignettes;\
-	cp figure/* ../../vignettes/figure;\
+	cp ../man/figures/* ../../man/figures;\
 	cd ../../vignettes;\
 	for f in *.md; do mv -- "$$f" "$$(basename "$$f" .md).Rmd"; done;\
 	cd ../;\

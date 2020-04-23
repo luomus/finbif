@@ -13,31 +13,31 @@ select_vars <- unlist(select_vars[["items"]][["enum"]])
 order_vars  <- vars[[which(vapply(vars, getElement, "", "name") == "orderBy")]]
 order_vars  <- unlist(order_vars[["items"]][["enum"]])
 
-stopifnot(
-  identical(
-    sort(row.names(var_names[var_names[["select"]], ])),
-    sort(select_vars)
-  )
+select_vars_pkg <- row.names(var_names[var_names[["select"]], ])
+select_vars_pkg <-
+  grep("^computed_var", select_vars_pkg, value = TRUE, invert = TRUE)
+
+in_pkg_only <- setdiff(select_vars_pkg, select_vars)
+schema_only <- setdiff(select_vars, select_vars_pkg)
+
+stopifnot(!length(c(in_pkg_only, schema_only)))
+
+order_vars_pkg <- c(
+  row.names(var_names[var_names[["order"]], ]) ,"RANDOM", "RANDOM:seed"
 )
 
-stopifnot(
-  identical(
-    sort(
-      c(
-        row.names(var_names[var_names[["order"]], ])
-       ,"RANDOM", "RANDOM:seed"
-      )
-    ),
-    sort(order_vars)
-  )
-)
+in_pkg_only <- setdiff(order_vars_pkg, order_vars)
+schema_only <- setdiff(order_vars, order_vars_pkg)
 
-stopifnot(
-  identical(
-    sort(var_names[var_names[["doc"]], "translated_var"]),
-    sort(documented_vars("R/variables.R"))
-  )
-)
+stopifnot(!length(c(in_pkg_only, schema_only)))
+
+doc_vars     <- var_names[var_names[["doc"]], "translated_var"]
+vars_in_docs <- documented_vars("R/variables.R")
+
+doc_vars_only <- setdiff(doc_vars, vars_in_docs)
+in_docs_only  <- setdiff(vars_in_docs, doc_vars)
+
+stopifnot(!length(c(doc_vars_only, in_docs_only)))
 
 class(var_names[["translated_var"]]) <- "translation"
 class(var_names[["dwc"]]) <- "translation"

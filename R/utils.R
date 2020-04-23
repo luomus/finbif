@@ -13,7 +13,7 @@ get_next_lowest_factor <-
 #' @noRd
 #' @importFrom methods as
 get_el_recurse <- function(obj, nms, type) {
-  if (length(nms) < 1) return(if (is.null(obj)) methods::as(NA, type) else obj)
+  if (length(nms) < 1L) return(if (is.null(obj)) methods::as(NA, type) else obj)
   obj <- getElement(obj, nms[[1L]])
   get_el_recurse(obj, nms[-1L], type)
 }
@@ -25,8 +25,24 @@ pb_head <- function(msg) {
 }
 
 #' @noRd
-truncate_string <- function(x, sl = 20L)
+truncate_string <- function(x, sl = 20L) {
+  x <- as.character(x)
   ifelse(nchar(x) > sl, sprintf("%s\u2026", substr(x, 1L, sl - 1L)), x)
+}
+
+#' @noRd
+truncate_string_to_unique <- function(x) {
+  i <- 0L
+  all_equal <- TRUE
+  while (all_equal) {
+    substr(x, i, i) <- " "
+    i <- i + 1L
+    j <- substr(x, i, i)
+    all_equal <- all(j == j[[1L]])
+  }
+  trimws(x)
+}
+
 
 # random sampling --------------------------------------------------------------
 
@@ -110,7 +126,60 @@ conditionMessage.dfrd_errors <- function(c) {
   errors <- vapply(c[["errors"]], "[[", character(1), "message")
   n <- length(errors)
   sprintf(
-    "%d %s occured:\n%s", n, ngettext(n, "error", "errors"),
+    "%d %s occurred:\n%s", n, ngettext(n, "error", "errors"),
     paste0("  - ", errors, collapse = "\n")
   )
+}
+
+# variable names ---------------------------------------------------------------
+
+#' @noRd
+to_ <- function(x, from, to) {
+  x      <- unlist(x)
+  ind    <- !x %in% c(var_names[[to]], "default_vars")
+  x[ind] <- var_names[match(x[ind], var_names[[from]]), to]
+  x
+}
+
+#' Convert variable names to and from Darwin Core style
+#'
+#' Convert FinBIF native variable names to Darwin Core style variable names or
+#' vice versa.
+#'
+#' @param ... Character. Variable names in FinBIF native or Darwin Core
+#'   style.
+#'
+#' @return Character vector.
+#'
+#' @examples
+#'
+#' to_dwc("record_id", "date_time", "scientific_name")
+#' @export
+to_dwc <- function(...) to_(list(...), "translated_var", "dwc")
+
+#' @rdname to_dwc
+#' @export
+to_native <- function(...) to_(list(...), "dwc", "translated_var")
+
+# localization -----------------------------------------------------------------
+get_locale <- function() {
+  ans <- supported_langs[[1L]]
+  sys_lang <- c(Sys.getenv(c("LANGUAGE", "LANG")), Sys.getlocale("LC_COLLATE"))
+
+  for (l in sys_lang) {
+    l <- regmatches(l, regexpr(".+?(?=[[:punct:]])", l, perl = TRUE))
+    if (length(l)) {
+      if (l %in% supported_langs) {
+        ans <- l
+        break
+      }
+      if (supported_langs[[l]] %in% supported_langs) {
+        ans <- supported_langs[[l]]
+        break
+      }
+    }
+  }
+
+  ans
+
 }

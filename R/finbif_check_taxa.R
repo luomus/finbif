@@ -2,6 +2,8 @@
 #'
 #' Check that taxa are in the FinBIF database.
 #'
+#' @aliases fb_check_taxa
+#'
 #' @param taxa Character (or list of named character) vector(s). If a list each
 #'   vector can have the name of a taxonomic rank (genus, species, etc.,).
 #'   The elements of the vectors should be the taxa to check.

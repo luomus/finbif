@@ -59,22 +59,22 @@ qualifier combination supplied.
 \item \code{primary_secondary_habitat} Character or named list of character vectors.
 As above, except the records returned will be of taxa whose primary or
 secondary habitat is considered to be the combination supplied.
-\item \code{finnish_occurrence_status}, Character vector.
+\item \code{finnish_occurrence_status} Character vector.
 Filter by Finnish occurrence status of taxa. Use
 \code{\link[=finbif_metadata]{finbif_metadata()}} to see the possible occurrence
 statuses of taxa.
-\item \code{finnish_occurrence_status_neg}, Character vector.
+\item \code{finnish_occurrence_status_neg} Character vector.
 Negation of the above. Selecting a status will filter out rather than
 include records with the selected status.
-\item \code{finnish}. Logical.
+\item \code{finnish} Logical.
 If \code{TRUE}, limit records to taxa thought to occur in Finland. Or if \code{FALSE}
 limit to taxa not thought to occur in Finland. If unspecified (default)
 return records of all taxa.
-\item \code{invasive}. Logical.
+\item \code{invasive} Logical.
 If \code{TRUE}, limit records to invasive taxa. Or if \code{FALSE} limit to
 non-invasive taxa. If unspecified (default) return records of invasive and
 non-invasive taxa.
-\item \code{taxon_rank}. Character vector.
+\item \code{taxon_rank} Character vector.
 Filter by taxonomic rank. Use \code{finbif_metadata()} to see the taxonomic
 ranks available. Records returned will be limited to the specified ranks
 and not include records of lower taxonomic levels.
@@ -123,7 +123,7 @@ first two elements are latitude and longitude and third is the coordinate
 system (currently only \code{"wgs84"} is implemented). Records returned will be
 those for which the center point exactly matches that which is specified.
 \item \verb{coordinates_cell_\{1k|10k|50k|100k\}} Coordinates.
-A vector of coordinate data (lat, long). Filter by grid cell at scale \code{*}.
+A vector of coordinate data (lat, lon). Filter by grid cell at scale \code{*}.
 Where \code{*} is 1, 10, 50 or 100. The coordinates specify the southeast corner
 of the cell. Coordinates system is uniform \code{"kkj"} (also known as "ykj").
 \item \verb{coordinates_cell_\{1k|10k|50k|100k\}_center} Coordinates.
@@ -133,6 +133,10 @@ Filter by source of coordinates. Currently accepted values are
 \code{"reported_value"} (coordinates were recorded at time of observation) and
 \code{"finnish_municipality"} (coordinates were derived and observer only
 recorded municipality).
+\item \code{coordinates_uncertainty_max} Integer.
+Filter by maximum uncertainty of coordinates (i.e.,
+\code{coordinates_uncertainty_max = 100} will return records that are accurate
+to 100m).
 }
 }
 
@@ -174,26 +178,26 @@ object that is coercible to the \link[base:Dates]{Date} class by
 
 Filters related to quality of record:
 \itemize{
-\item \code{collection_reliability} Integer.
-Filter by collection reliability rating, from low reliability (1) to highly
-reliable (5).
-\item \code{coordinates_uncertainty_max} Integer.
-Filter by maximum uncertainty of coordinates (i.e.,
-\code{coordinates_uncertainty_max = 100} will return records that are accurate
-to 100m).
 \item \code{quality_issues}. Character.
 Filter by the presence of record quality issues. One of \code{"without_issues"},
 \code{"with_issues"} or \code{"both"}. Issues include any quality issues with the
 record, the event, or the document. The default is \code{"without_issues"}
 unless filtering by record, event or document ID or record annotation
 status.
-\item \code{reliable} Logical.
-Filter by reliability of record. The \code{"collection_reliability"} is 4-5 or
-the record has been "confirmed" and has no quality issues (record, event or
-document).
-\item \code{taxon_reliability} Character vector.
-Filter by reliability of taxon identification. Can be one or more of
-\code{"reliable"}, \code{"likely"}, \code{"neutral"}, \code{"unlikely"} or \code{"unreliable"}.
+\item \code{requires_verification} Logical.
+Show only records requiring verification (\code{TRUE}) or not requiring
+verification (\code{FALSE}).
+\item \code{collection_quality} Character vector.
+Filter by one or more collection quality types. Must be one of
+\code{"professional"}, \code{"hobbyist"} or \code{"amatuer"}.
+\item \code{record_reliability} Character vector.
+Filter by the reliability of the record. Must be one or more of
+\code{"reliable"}, \verb{"unassessed} or \code{"unreliable"}. Default is
+\code{c("reliable", "unassessed")}.
+\item \code{record_quality} Character vector.
+Filter by the quality of the record. Must be one or more of
+\code{"expert_verified"}, \code{"community_verified"}, \code{"unassessed"}, \code{"uncertain"},
+or \code{"errorneous"}.
 }
 }
 

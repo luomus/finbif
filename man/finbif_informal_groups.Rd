@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_informal_groups.R
 \name{finbif_informal_groups}
 \alias{finbif_informal_groups}
+\alias{fb_informal_groups}
 \title{FinBIF informal groups}
 \usage{
 finbif_informal_groups(group, limit = 50, quiet = FALSE)

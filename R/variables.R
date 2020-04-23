@@ -89,8 +89,6 @@
 #'   by taxonomic group?
 #' - `orig_taxon_finnish` Logical.
 #'   Was the taxon considered Finnish before (if any) annotation?
-#' - `is_unidentifiable` Logical.
-#'   Is the record unable to be identified?
 #'
 #' @section Abundance, sex & life history:
 #' Variables related to abundance, sex and life history include:
@@ -129,7 +127,8 @@
 #'   The horizontal distance (in meters) from the record's given coordinates
 #'   describing the smallest circle containing the whole of the record's
 #'   location.
-#' - `coordinates_source`
+#' - `coordinates_source` Character.
+#'   Source of coordinates.
 #' - `footprint_{euref|kkj|wgs84}` Character.
 #'   Well-Known Text (WKT) representation of the geographic shape defining the
 #'   location of the record in either EUREF, KKJ or WGS84 coordinate systems.
@@ -154,6 +153,13 @@
 #' @section Time:
 #' Variables related to time of record include:
 #'
+#' - `date_time` POSIXct.
+#'    The date and time of the recording event. This variable is computed after
+#'    records are downloaded from FinBIF. Its timezone and accuracy can be
+#'    controlled see `finbif_occurrence()` for details.
+#' - `duration` Duration.
+#'   The duration of the recording event. This variable is computed after
+#'   records are downloaded from FinBIF.
 #' - `date_start` Character.
 #'   The date the recording event began.
 #' - `date_end` Character.
@@ -224,28 +230,24 @@
 #' - `any_issues` Logical.
 #'   Are there any data quality issues associated with the record it's event or
 #'   document.
-#' - `record_reliable` Logical.
-#'   The `"collection_reliability"` is 4-5 or the record has been "confirmed"
-#'   and has no quality issues (record, event or document).
-#' - `collection_reliability` Integer.
-#'   A numeric rating of reliability from 1 (low reliability) to 5 (high
-#'   reliability) for the collection the record comes from.
-#' - `taxon_reliability` Character.
-#'   Reliability of the record taxonomic identification.
-#' - `taxon_reliability_message`
-#'   Remarks associated with `taxon_reliability`.
-#' - `taxon_reliability_source`
-#'   Source of the `taxon_reliability` rating.
 #' - `reported_taxon_confidence`
-#'    Reliability of the record taxonomic identification as reported by the
+#'    Reliability of the record's taxonomic identification as reported by the
 #'    original data author.
 #' - `{document|time|location|event|record}_issue` Character.
 #'   Issues with record associated with its document, time, location, event, or
 #'   the record itself.
 #' - `{document|time|location|event|record}_issue_message` Character.
 #'   Details about the issue.
-#' - `{document|time|location|event|record}_issue_source`
+#' - `{document|time|location|event|record}_issue_source` Character.
 #'   Source determining the issue.
+#' - `requires_verification` Logical.
+#'   Has the record been flagged for expert verification?
+#' - `requires_identification` Logical.
+#'   Has the record been flagged for expert identification?
+#' - `record_reliability` Character.
+#'   Indication of the records reliability.
+#' - `record_quality` Character.
+#'   Indication of the records quality.
 #'
 #' @section Misc:
 #' Other variables:

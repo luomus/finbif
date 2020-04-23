@@ -4,10 +4,14 @@
 #'
 #' Download records from FinBIF.
 #'
+#' @aliases fb_records
+#'
 #' @param filter List of named character vectors. Filters to apply to records.
 #' @param select Character vector. Variables to return. If not specified a
 #'   default set of commonly used variables will be used. Use `"default_vars"`
-#'   as a shortcut for this set.
+#'   as a shortcut for this set. Variables can be deselected by prepending a `-`
+#'   to the variable name. If only deselects are specified the default set of
+#'   variables without the deselection will be returned.
 #' @param order_by Character vector. Variables to order records by before they
 #'   are returned. Most, though not all, variables can be used to order records
 #'   before they are returned. Ordering is ascending by default. To return in
@@ -22,18 +26,23 @@
 #' @param quiet Logical. Suppress the progress indicator for multipage
 #'   downloads.
 #' @param cache Logical. Use cached data.
+#' @param dwc Logical. Use Darwin Core (or Darwin Core style) variable names.
+#' @param seed Integer. Set a seed for randomly sampling records. Note that the
+#'   server currently ignores seed setting and this argument currently has
+#'   little effect.
 #' @return A `finbif_api` or `finbif_api_list` object.
 #' @examples \dontrun{
 #'
 #' # Get the last 100 records from FinBIF
 #' finbif_records(n = 100)
 #' }
-#' @importFrom utils txtProgressBar setTxtProgressBar
+#' @importFrom utils hasName txtProgressBar setTxtProgressBar
 #' @export
 
 finbif_records <- function(
   filter, select, order_by, sample = FALSE, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache")
+  count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
+  dwc = FALSE, seed
 ) {
 
   max_queries  <- 2000L
@@ -59,34 +68,52 @@ finbif_records <- function(
 
     # select ===================================================================
 
+    var_type <- if (dwc) "dwc" else "translated_var"
+
     default_vars <- var_names[var_names[["default_var"]], ]
+    date_time_vars <- var_names[var_names[["date"]], ]
 
     if (missing(select)) {
 
       select <- row.names(default_vars)
-      select_ <- default_vars[["translated_var"]]
+      select_ <- default_vars[[var_type]]
       record_id_selected <- TRUE
+
+      # Missing 'select' implies default selection which implies date-time calc
+      # needed
+      select <- unique(c(select, row.names(date_time_vars)))
 
     } else {
 
-      select_ <- select
-      select  <- ifelse(
-        select == "default_vars",
-        list(default_vars[["translated_var"]]),
-        select
+      deselect <- substring(grep("^-", select, value = TRUE), 2L)
+      if (identical(length(deselect), length(select))) select <- "default_vars"
+      select <- grep("^-", select, value = TRUE, invert = TRUE)
+      select <- ifelse(
+        select == "default_vars", list(default_vars[[var_type]]), select
       )
       select <- unlist(select)
+      select <- setdiff(select, deselect)
+      select_ <- select
 
-      record_id_selected <- "record_id" %in% select
-      if (!record_id_selected) select <- c("record_id", select)
+      record_id_selected <- any(c("record_id", "occurrenceID") %in% select)
+      if (!record_id_selected)
+        select <- c(if (dwc) "occurrenceID" else "record_id", select)
 
-      select_vars <- var_names[var_names[["select"]], ]
-      for (var in names(var_names))
-        class(select_vars[[var]]) <- class(var_names[[var]])
+      date_time <- any(
+        c("date_time", "eventDateTime", "duration", "samplingEffort") %in%
+        select
+      )
+      if (date_time) select <- unique(c(select, date_time_vars[[var_type]]))
+
+      select_vars <- var_names[var_names[["select"]], var_type, drop = FALSE]
+      class(select_vars[[var_type]]) <- class(var_names[[var_type]])
       select <-
         translate(select, "select_vars", list(select_vars = select_vars))
 
     }
+
+    # Can't query the server for vars that are computed after download
+    select <- select[!grepl("^computed_var", select)]
 
     query[["selected"]] <- paste(select, collapse = ",")
 
@@ -100,19 +127,18 @@ finbif_records <- function(
 
       desc_order <- grepl("^-", order_by)
       order_by <- sub("^-", "", order_by)
-      order_vars <- var_names[var_names[["order"]], ]
-      for (var in names(var_names))
-        class(order_vars[[var]]) <- class(var_names[[var]])
+      order_vars <- var_names[var_names[["order"]], var_type, drop = FALSE]
+      class(order_vars[[var_type]]) <- class(var_names[[var_type]])
       order_by <-
         translate(order_by, "order_vars", list(order_vars = order_vars))
-      order_by[desc_order] <- paste(order_by, "DESC")
+      order_by[desc_order] <- paste(order_by[desc_order], "DESC")
       query[["orderBy"]] <- paste(order_by, collapse = ",")
 
     }
 
     if (sample)
       query[["orderBy"]] <- paste(
-        "RANDOM",
+        if (missing(seed)) "RANDOM" else paste0("RANDOM:", as.integer(seed)),
         query[["orderBy"]],
         sep = c("", ",")[[length(query[["orderBy"]]) + 1L]]
       )
@@ -121,7 +147,7 @@ finbif_records <- function(
 
   request(
     filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-    select_, record_id_selected
+    select_, record_id_selected, date_time, dwc
   )
 
 }
@@ -130,7 +156,7 @@ finbif_records <- function(
 
 request <- function(
   filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-  select_, record_id_selected
+  select_, record_id_selected, date_time, dwc
 ) {
 
   path <- "warehouse/query/unit/"
@@ -138,7 +164,7 @@ request <- function(
   if (count_only) {
 
     path <- paste0(path, "count")
-    return(finbif_api_get(path, query, cache))
+    return(api_get(path, query, cache))
 
   }
 
@@ -148,7 +174,7 @@ request <- function(
 
   resp <- list(
     structure(
-      finbif_api_get(path, query, cache),
+      api_get(path, query, cache),
       class = c("finbif_records", "finbif_api"),
       select = unique(select)
     )
@@ -167,7 +193,7 @@ request <- function(
     if (sample && sample_after_request) {
       all_records <- finbif_records(
         filter, select_, sample = FALSE, n = n_tot, quiet = quiet,
-        cache = cache
+        cache = cache, dwc = dwc
       )
       return(record_sample(all_records, n, cache))
     }
@@ -177,15 +203,15 @@ request <- function(
 
     if (sample)
       resp <- handle_duplicates(
-        resp, filter, select_, max_size, cache, page = length(resp) + 1L, n
+        resp, filter, select_, max_size, cache, n, seed = 1L, date_time, dwc
       )
 
   }
 
   structure(
     resp, class = c("finbif_records_list", "finbif_api_list"), nrec_dnld = n,
-    nrec_avl = n_tot, select = unique(select), record_id = record_id_selected,
-    cache = cache
+    nrec_avl = n_tot, select = unique(select), select_user = unique(select_),
+    record_id = record_id_selected, cache = cache
   )
 
 }
@@ -227,7 +253,7 @@ get_extra_pages <-
       }
 
       resp[[i]] <- structure(
-        finbif_api_get(path, query, cache),
+        api_get(path, query, cache),
         class = c("finbif_records", "finbif_api"),
         select = unique(select)
       )
@@ -277,15 +303,17 @@ parse_filters <- function(filter) {
       }
     }
 
-    if (
-      identical(filter_names[finbif_filter_names[[i]], "class"], "coords")
-    )
-      filter[[i]] <- do.call(finbif_coords, as.list(filter[[i]]))
+    if (identical(filter_names[finbif_filter_names[[i]], "class"], "coords")) {
+
+      # Coordinates filter must have a system defined
+      check_coordinates(finbif_filter_names[[i]], filter[["coordinates"]])
+
+      filter[[i]] <- do.call(coords, as.list(filter[[i]]))
+    }
 
     if (identical(filter_names[finbif_filter_names[[i]], "class"], "date"))
-      filter[[i]] <- do.call(
-        finbif_dates, c(list(names(filter)[[i]]), as.list(filter[[i]]))
-      )
+      filter[[i]] <-
+        do.call(dates, c(list(names(filter)[[i]]), as.list(filter[[i]])))
 
     filter[[i]] <- paste(
       filter[[i]], collapse = filter_names[finbif_filter_names[[i]], "sep"]
@@ -296,6 +324,24 @@ parse_filters <- function(filter) {
   names(filter) <- finbif_filter_names
 
   filter
+
+}
+
+check_coordinates <- function(filter_names, filter) {
+
+  if (
+    identical(filter_names, "coordinates") &&
+    (
+      length(filter) < 3L ||
+      (
+        !utils::hasName(filter, "system")  &&
+        !identical(names(filter[[3]]), "") &&
+        !is.null(names(filter))
+      )
+    )
+  )
+
+    deferrable_error("Invalid coordinates: system not specified")
 
 }
 
@@ -362,36 +408,41 @@ record_sample <- function(x, n, cache) {
 
 # handle duplicates ------------------------------------------------------------
 
-handle_duplicates <- function(x, filter, select, max_size, cache, page, n) {
+handle_duplicates <-
+  function(x, filter, select, max_size, cache, n, seed, date_time, dwc) {
 
-  ids <- lapply(
-    x,
-    function(x)
-      vapply(
-        x[["content"]][["results"]], get_el_recurse, NA_character_,
-        c("unit", "unitId"), "character"
-      )
-  )
-  ids <- unlist(ids)
-
-  duplicates <- which(duplicated(ids))
-
-  x <- remove_records(x, duplicates)
-
-  if (length(ids) - length(duplicates) < n) {
-
-    new_records <- finbif_records(
-      filter, select, sample = TRUE, n = max_size, page = page, cache = cache
+    ids <- lapply(
+      x,
+      function(x)
+        vapply(
+          x[["content"]][["results"]], get_el_recurse, NA_character_,
+          c("unit", "unitId"), "character"
+        )
     )
+    ids <- unlist(ids)
 
-    x[[length(x) + 1L]] <- new_records[[1L]]
-    x <- handle_duplicates(x, filter, select, max_size, cache, page + 1L, n)
+    duplicates <- which(duplicated(ids))
+
+    x <- remove_records(x, duplicates)
+
+    if (length(ids) - length(duplicates) < n) {
+
+      new_records <- finbif_records(
+        filter, select, sample = TRUE, n = max_size, cache = cache, dwc = dwc,
+        seed = seed
+      )
+
+      x[[length(x) + 1L]] <- new_records[[1L]]
+
+      x <- handle_duplicates(
+        x, filter, select, max_size, cache, n, seed + 1L, date_time, dwc
+      )
+
+    }
+
+    remove_records(x, n = n)
 
   }
-
-  remove_records(x, n = n)
-
-}
 
 # remove records ---------------------------------------------------------------
 

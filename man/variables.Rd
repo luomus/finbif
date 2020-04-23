@@ -97,8 +97,6 @@ Is the taxon considered Finnish. The definition of a Finnish taxon differs
 by taxonomic group?
 \item \code{orig_taxon_finnish} Logical.
 Was the taxon considered Finnish before (if any) annotation?
-\item \code{is_unidentifiable} Logical.
-Is the record unable to be identified?
 }
 }
 
@@ -143,7 +141,8 @@ Coordinates are available in
 The horizontal distance (in meters) from the record's given coordinates
 describing the smallest circle containing the whole of the record's
 location.
-\item \code{coordinates_source}
+\item \code{coordinates_source} Character.
+Source of coordinates.
 \item \verb{footprint_\{euref|kkj|wgs84\}} Character.
 Well-Known Text (WKT) representation of the geographic shape defining the
 location of the record in either EUREF, KKJ or WGS84 coordinate systems.
@@ -171,6 +170,13 @@ Whether or not the occurrence is recorded at a known breeding location.
 
 Variables related to time of record include:
 \itemize{
+\item \code{date_time} POSIXct.
+The date and time of the recording event. This variable is computed after
+records are downloaded from FinBIF. Its timezone and accuracy can be
+controlled see \code{finbif_occurrence()} for details.
+\item \code{duration} Duration.
+The duration of the recording event. This variable is computed after
+records are downloaded from FinBIF.
 \item \code{date_start} Character.
 The date the recording event began.
 \item \code{date_end} Character.
@@ -247,28 +253,24 @@ Variables related to the quality of records include:
 \item \code{any_issues} Logical.
 Are there any data quality issues associated with the record it's event or
 document.
-\item \code{record_reliable} Logical.
-The \code{"collection_reliability"} is 4-5 or the record has been "confirmed"
-and has no quality issues (record, event or document).
-\item \code{collection_reliability} Integer.
-A numeric rating of reliability from 1 (low reliability) to 5 (high
-reliability) for the collection the record comes from.
-\item \code{taxon_reliability} Character.
-Reliability of the record taxonomic identification.
-\item \code{taxon_reliability_message}
-Remarks associated with \code{taxon_reliability}.
-\item \code{taxon_reliability_source}
-Source of the \code{taxon_reliability} rating.
 \item \code{reported_taxon_confidence}
-Reliability of the record taxonomic identification as reported by the
+Reliability of the record's taxonomic identification as reported by the
 original data author.
 \item \verb{\{document|time|location|event|record\}_issue} Character.
 Issues with record associated with its document, time, location, event, or
 the record itself.
 \item \verb{\{document|time|location|event|record\}_issue_message} Character.
 Details about the issue.
-\item \verb{\{document|time|location|event|record\}_issue_source}
+\item \verb{\{document|time|location|event|record\}_issue_source} Character.
 Source determining the issue.
+\item \code{requires_verification} Logical.
+Has the record been flagged for expert verification?
+\item \code{requires_identification} Logical.
+Has the record been flagged for expert identification?
+\item \code{record_reliability} Character.
+Indication of the records reliability.
+\item \code{record_quality} Character.
+Indication of the records quality.
 }
 }
 

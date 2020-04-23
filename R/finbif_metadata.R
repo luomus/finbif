@@ -2,6 +2,8 @@
 #'
 #' Display metadata from the FinBIF database.
 #'
+#' @aliases fb_metadata
+#'
 #' @param which Character. Which category of metadata to display. If
 #'  unspecified, function returns the categories of metadata available.
 #'
@@ -10,6 +12,7 @@
 #' finbif_metadata("red_list")
 #' @importFrom utils head
 #' @export
+
 finbif_metadata <- function(which) {
 
   metadata_name <- c(

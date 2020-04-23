@@ -2,29 +2,36 @@
 title: "Introduction to the finbif package"
 author: "William K. Morris"
 output: 
-  rmarkdown::html_document:
+  rmarkdown::html_vignette:
     toc: true
 vignette: >
   %\VignetteIndexEntry{1. Introduction to the finbif package}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, eval = TRUE, echo = FALSE}
+```{r setup, eval = TRUE, echo = FALSE, cache = FALSE}
+library(details)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
   warning = FALSE,
   message = FALSE,
-  cache.path = "cache/"
+  cache = TRUE,
+  cache.path = "cache/",
+  fig.path = "../man/figures/",
+  details.summary = "Click to show/hide output.",
+  details.tooltip = NULL,
+  details.comment = "#>"
 )
 
-library(details, quietly = TRUE)
+library(finbif)
+options(finbif_tz = "Europe/Helsinki", width = 100)
 ```
 FinBIF aggregates Finnish biodiversity data from multiple sources in a single
 open access portal for researchers, citizen scientists, industry and government.
 FinBIF allows users of biodiversity information to find, access, combine and 
-visualise data on Finnish plants, animals and microorganisms. The `finbif`
+visualise data on Finnish plants, animals and microorganisms. The `{finbif}`
 R package makes the publicly available data in FinBIF easily accessible to
 programmers. Biodiversity information is available on taxonomy and taxon
 occurrence. Occurrence data can be filtered by taxon, time, location and other
@@ -32,34 +39,34 @@ variables. The data accessed are conveniently preformatted for subsequent
 analyses.
 
 ## Installing the finbif package
-You can install the current stable version of `finbif` from
+You can install the current stable version of `{finbif}` from
 [CRAN](https://cran.r-project.org),
-```{r install_cran, eval = FALSE}
+```{r install_cran, eval = FALSE, cache = FALSE}
 install.packages("finbif")
 ```
 
-You can also install the latest development version of `finbif` from
+You can also install the latest development version of `{finbif}` from
 [GitHub](https://github.com),
-```{r install_gh, eval = FALSE}
+```{r install_gh, eval = FALSE, cache = FALSE}
 remotes::install_github("luomus/finbif@dev")
 ```
 
 ## Loading the finbif package
-```{r setup}
+```{r library, eval = FALSE, cache = FALSE}
 library(finbif)
 ```
 
 ## Getting a FinBIF access token
 To use the FinBIF API you must first request and set a personal access token.
 You can request an API token to be sent to your email address with the function
-`finbif_get_token`.
-```{r request-token, eval = FALSE}
+`finbif_get_token()`.
+```{r request-token, eval = FALSE, cache = FALSE}
 finbif_request_token("your@email.com")
 ```
 
 Copy the access token that was sent to your email and set it as the environment
 variable `FINBIF_ACCESS_TOKEN` either for the current session,
-```{r set-token, eval = FALSE}
+```{r set-token, eval = FALSE, cache = FALSE}
 Sys.setenv(
   FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"
 )
@@ -71,14 +78,14 @@ for details).
 
 ## Working with taxa
 You can check to see if a taxon exists in the FinBIF database.
-```{r taxon-check, cache = TRUE}
+```{r taxon-check}
 finbif_check_taxa("Ursus arctos")
 ```
 
 If the taxon is in the FinBIF database its unique ID is returned. When a taxon
 is not in the FinBIF database it is reported as "not found" and for that taxa
 the list element is `NA`.
-```{r taxon-not-found, cache = TRUE}
+```{r taxon-not-found}
 (taxa <- finbif_check_taxa(c("Ursus arctos", "Moomin")))
 taxa[[1]]
 taxa[[2]]
@@ -86,7 +93,7 @@ taxa[[2]]
 
 You can also specify the taxonomic rank when searching FinBIF and the search
 will be limited to the specified rank.
-```{r taxon-rank, cache = TRUE}
+```{r taxon-rank}
 finbif_check_taxa(list(species = c("Ursus arctos", "Ursus"), genus = "Ursus"))
 ```
 
@@ -95,63 +102,40 @@ the FinBIF database. Searches can be `exact`, `partial` or `likely` (fuzzy
 matching). Information for a single taxon is returned when using exact or fuzzy
 matching, but multiple taxa, up to a limit, `n`, may be returned when using
 partial matching.
-```{r taxon-search, eval = FALSE}
+```{details birch-search}
 birch_search <- finbif_taxa("Betula pendula", 2, "partial")
 birch_search$content
-```
-```{r taxon-search-eval, echo = FALSE, cache = TRUE}
-birch_search <- finbif_taxa("Betula pendula", 2, "partial")
-details::details(
-  birch_search$content, summary = "Click to show/hide output.",
-  tooltip = NULL
-)
 ```
 
 ## Getting occurrence data
 You can download occurrence data from the FinBIF database as a `data.frame` with
 the `finbif_occurrence()` function.
-```{r occurrence, cache = TRUE}
+```{r occurrence}
 finbif_occurrence("Cygnus cygnus", n = 100)
 ```
 
 You can search for multiple taxa at once and filter the records with the
 `filter` argument.
-```{r occurrence2, eval = FALSE}
+```{details occurrence2}
 finbif_occurrence(
   "Cygnus cygnus", 
   "Cygnus olor",
   filter = list(coordinates_uncertainty_max = 100)
 )
 ```
-```{r occurrence2-eval, echo = FALSE, cache = TRUE}
-details::details(
-  finbif_occurrence(
-    "Cygnus cygnus", 
-    "Cygnus olor",
-    filter = list(coordinates_uncertainty_max = 100)
-  ),
-  summary = "Click to show/hide output.", tooltip = NULL
-)
-```
 
-See `?filters` and `vignette("v0_filtering")` for more details on filtering FinBIF
-records.
+See `?filters` and `vignette("v05_filtering")` for more details on filtering
+FinBIF records.
 
 ### Random sampling
 It is possible to request a random sample of records instead of the last `n`
 records (or records ordered by some other variable).
-```{r random-sample, eval = FALSE}
+```{details random-sample}
 finbif_occurrence("Birds", sample = TRUE)
-```
-```{r random-sample-eval, echo = FALSE, cache = TRUE}
-details::details(
-  finbif_occurrence("Birds", sample = TRUE),
-  summary = "Click to show/hide output.", tooltip = NULL
-)
 ```
 
 ## Plotting occurrence data
-The `finbif` package has a number of inbuilt functions for plotting (see e.g.,
+The `{finbif}` package has a number of inbuilt functions for plotting (see e.g.,
 `breaks_xy()` and `hist_xy()`). There is also an inbuilt dataset that can be
 used to plot the border of Finland (`?finland_map`). Together these utilities
 can be used to plot occurrences after they have been downloaded from FinBIF. For
@@ -160,7 +144,7 @@ occurrences from Finland.
 
 <details closed>
 <summary><span title=''>Click to show/hide code.</span></summary>
-```{r plot-occurrences, eval = FALSE}
+```{r plot-occurrences, eval = FALSE, cache = FALSE}
 # Download all the occurrences of Eurasian Jay in Finland
 # that have coordinates accurate to at least 100m
 jays <- finbif_occurrence(
@@ -204,7 +188,7 @@ with(
 )
 ```
 </details>
-```{r plot-occurrences-eval, echo = FALSE, fig.cap = "", fig.width = 5, fig.height = 7, cache = TRUE}
+```{r plot-occurrences-eval, echo = FALSE, fig.cap = "", fig.width = 5, fig.height = 7}
 # Download all the occurrences of Eurasian Jay in Finland
 # that have coordinates accurate to at least 100m
 jays <- finbif_occurrence(
@@ -249,6 +233,5 @@ with(
 ```
 
 ## Caching
-By default `finbif` uses local filesystem caching for repeated API request. This
-can be turned on or off on a per request or session basis. See `?caching` for
-details.
+By default `{finbif}` uses local caching for repeated API requests. This can be
+turned on or off on a per request or session basis. See `?caching` for details.

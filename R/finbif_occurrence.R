@@ -2,23 +2,27 @@
 #'
 #' Download filtered occurrence data from FinBIF as a `data.frame`.
 #'
+#' @aliases fb_occurrence
+#'
 #' @param ... Character vectors or list of character vectors. Taxa of records
 #'   to download.
 #' @inheritParams finbif_records
+#' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
+#'   `date_time` and/or `duration` variables have been selected. Default is
+#'   `"fast"`. Use `date_time_method = "accurate"` (requires package `sf`) for
+#'   greater accuracy.
 #' @param check_taxa Logical. Check first that taxa are in the FinBIF database.
 #'   If true only records that match known taxa (have a valid taxon ID) are
 #'   returned.
 #' @param on_check_fail Character. What to do if a taxon is found not valid. One
-#'   of `"warn"` (default), `"error"` or `"continue"`.
-#' @param date_time Logical. Convert raw date and time variables into date-time
-#'   and duration.
-#' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
-#'   `date_time = TRUE`. Default is `"fast"`. Use
-#'   `date_time_method = "accurate"` (requires package `sf`) for greater
-#'   accuracy.
-#' @param tzone Character. If `date_time = TRUE` the timezone of outputted
-#'   date-time. Defaults to system timezone.
-#' @param dwc Logical. Return Darwin Core (or Darwin Core style) variable names.
+#'   of `"warn"` (default) or `"error"`.
+#' @param tzone Character. If `date_time` has been selected the timezone of the
+#'   outputted date-time. Defaults to system timezone.
+#' @param locale Character. One of the supported two-letter ISO 639-1 language
+#'   codes. Current supported languages are English, Finnish, Swedish, Russian,
+#'   and Sami (Northern). For data where more than one language is available
+#'   the language denoted by `locale` will be preferred while falling back to
+#'   the other languages in the order indicated above.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -48,13 +52,12 @@
 finbif_occurrence <- function(
   ..., filter, select, order_by, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  check_taxa = TRUE, on_check_fail = c("warn", "error", "quiet"),
-  date_time = TRUE, date_time_method = "fast", tzone = Sys.timezone(),
-  dwc = FALSE
+  dwc = FALSE, date_time_method = "fast", check_taxa = TRUE,
+  on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
+  locale = getOption("finbif_locale")
 ) {
 
-  taxa <- select_taxa(
-    ..., quiet = quiet, cache = cache, check_taxa = check_taxa,
+  taxa <- select_taxa(..., cache = cache, check_taxa = check_taxa,
     on_check_fail = match.arg(on_check_fail)
   )
 
@@ -62,7 +65,7 @@ finbif_occurrence <- function(
   filter <- c(taxa, filter)
 
   records <- finbif_records(
-    filter, select, order_by, sample, n, page, count_only, quiet, cache
+    filter, select, order_by, sample, n, page, count_only, quiet, cache, dwc
   )
 
   if (count_only) return(records[["content"]][["total"]])
@@ -72,37 +75,50 @@ finbif_occurrence <- function(
 
   if (!quiet) pb_head("Processing data")
 
-  df   <- as.data.frame(records, quiet = quiet)
+  df   <- as.data.frame(records, locale = locale, quiet = quiet)
   url  <- attr(df, "url", TRUE)
   time <- attr(df, "time", TRUE)
 
   names(df) <- var_names[names(df), if (dwc) "dwc" else "translated_var"]
 
-  if (date_time) {
+  select_ <- attr(records, "select_user")
+
+  date_time <-
+    missing(select) ||
+    any(
+      c(
+        "default_vars", "date_time", "eventDateTime", "duration",
+        "samplingEffort"
+      ) %in%
+      select
+    )
+
+  if (date_time)
     if (dwc) {
       df[["eventDateTime"]] <- get_date_time(
         df, "eventDateStart", "hourStart", "minuteStart",
         "decimalLatitude", "decimalLongitude", date_time_method, tzone
       )
-      df[["samplingEffort"]] <- get_duration(
-        df, "eventDateTime", "eventDateStart", "hourStart",
-        "minuteStart", "decimalLatitude", "decimalLongitude",
-        date_time_method, tzone
-      )
+      if ("samplingEffort" %in% select_)
+        df[["samplingEffort"]] <- get_duration(
+          df, "eventDateTime", "eventDateStart", "hourStart",
+          "minuteStart", "decimalLatitude", "decimalLongitude",
+          date_time_method, tzone
+        )
     } else {
       df[["date_time"]] <- get_date_time(
         df, "date_start", "hour_start", "minute_start", "lat_wgs84",
         "lon_wgs84", date_time_method, tzone
       )
-      df[["duration"]] <- get_duration(
-        df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
-        "lon_wgs84", date_time_method, tzone
-      )
+      if ("duration" %in% select_)
+        df[["duration"]] <- get_duration(
+          df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
+          "lon_wgs84", date_time_method, tzone
+        )
     }
-  }
 
   structure(
-    df,
+    df[select_],
     class     = c("finbif_occ", "data.frame"),
     nrec_dnld = attr(records, "nrec_dnld", TRUE),
     nrec_avl  = attr(records, "nrec_avl", TRUE),
@@ -113,58 +129,61 @@ finbif_occurrence <- function(
 
 }
 
-select_taxa <- function(..., quiet, cache, check_taxa, on_check_fail) {
+select_taxa <- function(..., cache, check_taxa, on_check_fail) {
+
   taxa <- list(...)
   ntaxa <- length(taxa)
-  if (ntaxa)
-    if (check_taxa) {
+  ans <- list(taxon_name = paste(taxa, collapse = ","))
 
-      taxa <- if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
+  if (ntaxa && check_taxa) {
+
+    taxa <-
+      if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
         unlist(finbif_check_taxa(taxa, cache = cache))
       } else {
         unlist(finbif_check_taxa(..., cache = cache))
       }
 
-      if (anyNA(taxa)) {
-        msg  <- paste(
-          "Cannot find taxa:",
-          paste(sub("\\.", " - ", names(taxa[is.na(taxa)])), collapse = ", ")
-        )
-        switch(
-          on_check_fail, warn = warning(msg), error = stop(msg), quiet = NULL
-        )
-      }
+    taxa_invalid <- is.na(taxa)
 
-      taxa <- list(taxon_id = paste(taxa[!is.na(taxa)], collapse = ","))
-
-    } else {
-
-      taxa <- list(taxon_name = paste(taxa, collapse = ","))
-
+    if (any(taxa_invalid)) {
+      msg  <- paste(
+        "Cannot find taxa:",
+        paste(sub("\\.", " - ", names(taxa[taxa_invalid])), collapse = ", ")
+      )
+      switch(
+        on_check_fail,
+        warn  = warning(msg, call. = FALSE),
+        error = stop(msg, call. = FALSE)
+      )
     }
 
-  taxa
+    if (!all(taxa_invalid))
+      ans <- list(taxon_id = paste(taxa[!taxa_invalid], collapse = ","))
+
+  }
+
+  ans
 
 }
 
 get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
 
-  if (is.null(df[[date]])) return(NULL)
-
   date_time <- lubridate::ymd(df[[date]])
   date_time <- lubridate::as_datetime(date_time)
 
-  if (!is.null(df[[hour]])) {
+  # When there is no hour assume the hour is midday (i.e., don't assume
+  # midnight)
+  lubridate::hour(date_time) <- 12L
+
+  if (!is.null(df[[hour]]))
     lubridate::hour(date_time) <-
       ifelse(is.na(df[[hour]]), lubridate::hour(date_time), df[[hour]])
-  }
 
-  if (!is.null(df[[minute]])) {
+  if (!is.null(df[[minute]]))
     lubridate::minute(date_time) <-
       ifelse(is.na(df[[minute]]), lubridate::minute(date_time), df[[minute]])
-  }
 
-  if (is.null(df[[lat]]) || is.null(df[[lon]])) return(NULL)
   tz <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
   lubridate::force_tzs(
     date_time, tzones = ifelse(is.na(tz), "", tz), tzone_out = tzone
@@ -174,12 +193,8 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
 get_duration <-
   function(df, date_time, date, hour, minute, lat, lon, method, tzone) {
 
-    if (is.null(df[[date_time]])) return(NULL)
-
     date_time_end <-
       get_date_time(df, date, hour, minute, lat, lon, method, tzone)
-
-    if (is.null(date_time_end)) return(NULL)
 
     ans <- lubridate::interval(df[[date_time]], date_time_end)
     ans <- ifelse(is.na(df[[minute]]) | is.na(df[[hour]]), NA, ans)

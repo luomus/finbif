@@ -5,7 +5,7 @@ filter_names <- read.csv(
 )
 
 filters <- names(
-  finbif:::finbif_api_get("warehouse/filters", list(), FALSE)[["content"]]
+  finbif:::api_get("warehouse/filters", list(), FALSE)[["content"]]
 )
 
 stopifnot(

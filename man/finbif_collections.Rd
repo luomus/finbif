@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_collections.R
 \name{finbif_collections}
 \alias{finbif_collections}
+\alias{fb_collections}
 \title{FinBIF collections}
 \usage{
 finbif_collections(

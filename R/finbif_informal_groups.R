@@ -2,6 +2,8 @@
 #'
 #' Display the informal taxonomic groups used in the FinBIF database.
 #'
+#' @aliases fb_informal_groups
+#'
 #' @param group Character. Optional, if supplied only display this group and
 #'  its subgroups.
 #' @param limit Integer. The maximum number informal groups to display.
@@ -13,6 +15,7 @@
 #' finbif_informal_groups()
 #' }
 #' @export
+
 finbif_informal_groups <- function(group, limit = 50, quiet = FALSE) {
   df <- informal_group
   if (!missing(group)) {

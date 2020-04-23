@@ -1,7 +1,12 @@
 pandoc: 2.3.1
-pkgdown: 1.4.1
+pkgdown: 1.5.1.9000
 pkgdown_sha: ~
 articles:
   finbif: finbif.html
-  v02_filtering: v02_filtering.html
+  v02_occurrence_data: v02_occurrence_data.html
+  v03_selecting_variables: v03_selecting_variables.html
+  v04_metadata: v04_metadata.html
+  v05_filtering: v05_filtering.html
+  v06_plotting: v06_plotting.html
+last_built: 2020-04-23T09:01Z
 

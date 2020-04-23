@@ -7,6 +7,8 @@ if (has_dev_api()) {
 
   options(finbif_api_url = "apitest.laji.fi")
 
+  assignInNamespace("var_names", finbif:::var_names_test, "finbif")
+
   invisible(vcr::vcr_configure(dir = "../api-dev-cassettes"))
 
   files <- list.files(pattern = "^test-finbif.*\\.[rR]$")

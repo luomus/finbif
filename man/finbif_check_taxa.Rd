@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_check_taxa.R
 \name{finbif_check_taxa}
 \alias{finbif_check_taxa}
+\alias{fb_check_taxa}
 \title{Check FinBIF taxa}
 \usage{
 finbif_check_taxa(taxa, cache = getOption("finbif_use_cache"))

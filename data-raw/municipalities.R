@@ -1,6 +1,6 @@
 source("data-raw/utils.R")
 n <- 1000L
-municipality <- finbif:::finbif_api_get(
+municipality <- finbif:::api_get(
   "areas", list(type = "municipality", lang = "multi", page = 1L, pageSize = n),
   FALSE
 )

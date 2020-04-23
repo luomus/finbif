@@ -22,11 +22,10 @@ vcr::use_cassette(
       }
     )
 
+    test_that(
+      "returns errors appropriately", expect_condition(finbif_collections(1:50))
+    )
+
   },
   preserve_exact_body_bytes = TRUE
-)
-
-
-test_that(
-  "returns errors appropriately", expect_condition(finbif_collections(1:50))
 )

@@ -2,6 +2,8 @@
 #'
 #' Search the FinBIF database for taxon.
 #'
+#' @aliases fb_taxa
+#'
 #' @param name Character. The name of a taxon to search for.
 #' @param n Integer. Maximum number of matches to return. For types "exact" and
 #'   "likely" a maximum of one taxon will be returned.
@@ -26,5 +28,5 @@ finbif_taxa <- function(
   path <- "taxa/search"
   type <- match.arg(type)
   query <- list(query = name, matchType = type, limit = n)
-  finbif_api_get(path, query, cache)
+  api_get(path, query, cache)
 }

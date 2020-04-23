@@ -54,22 +54,22 @@
 #' - `primary_secondary_habitat` Character or named list of character vectors.
 #'   As above, except the records returned will be of taxa whose primary or
 #'   secondary habitat is considered to be the combination supplied.
-#' - `finnish_occurrence_status`, Character vector.
+#' - `finnish_occurrence_status` Character vector.
 #'   Filter by Finnish occurrence status of taxa. Use
 #'   [finbif_metadata()] to see the possible occurrence
 #'   statuses of taxa.
-#' - `finnish_occurrence_status_neg`, Character vector.
+#' - `finnish_occurrence_status_neg` Character vector.
 #'   Negation of the above. Selecting a status will filter out rather than
 #'   include records with the selected status.
-#' - `finnish`. Logical.
+#' - `finnish` Logical.
 #'   If `TRUE`, limit records to taxa thought to occur in Finland. Or if `FALSE`
 #'   limit to taxa not thought to occur in Finland. If unspecified (default)
 #'   return records of all taxa.
-#' - `invasive`. Logical.
+#' - `invasive` Logical.
 #'   If `TRUE`, limit records to invasive taxa. Or if `FALSE` limit to
 #'   non-invasive taxa. If unspecified (default) return records of invasive and
 #'   non-invasive taxa.
-#' - `taxon_rank`. Character vector.
+#' - `taxon_rank` Character vector.
 #'   Filter by taxonomic rank. Use `finbif_metadata()` to see the taxonomic
 #'   ranks available. Records returned will be limited to the specified ranks
 #'   and not include records of lower taxonomic levels.
@@ -115,7 +115,7 @@
 #'   system (currently only `"wgs84"` is implemented). Records returned will be
 #'   those for which the center point exactly matches that which is specified.
 #' - `coordinates_cell_{1k|10k|50k|100k}` Coordinates.
-#'   A vector of coordinate data (lat, long). Filter by grid cell at scale `*`.
+#'   A vector of coordinate data (lat, lon). Filter by grid cell at scale `*`.
 #'   Where `*` is 1, 10, 50 or 100. The coordinates specify the southeast corner
 #'   of the cell. Coordinates system is uniform `"kkj"` (also known as "ykj").
 #' - `coordinates_cell_{1k|10k|50k|100k}_center` Coordinates.
@@ -125,6 +125,10 @@
 #'   `"reported_value"` (coordinates were recorded at time of observation) and
 #'   `"finnish_municipality"` (coordinates were derived and observer only
 #'   recorded municipality).
+#' - `coordinates_uncertainty_max` Integer.
+#'   Filter by maximum uncertainty of coordinates (i.e.,
+#'   `coordinates_uncertainty_max = 100` will return records that are accurate
+#'   to 100m).
 #'
 #' @section Time:
 #' Filters related to time of record include:
@@ -160,26 +164,26 @@
 #' @section Quality:
 #' Filters related to quality of record:
 #'
-#' - `collection_reliability` Integer.
-#'   Filter by collection reliability rating, from low reliability (1) to highly
-#'   reliable (5).
-#' - `coordinates_uncertainty_max` Integer.
-#'   Filter by maximum uncertainty of coordinates (i.e.,
-#'   `coordinates_uncertainty_max = 100` will return records that are accurate
-#'   to 100m).
 #' - `quality_issues`. Character.
 #'   Filter by the presence of record quality issues. One of `"without_issues"`,
 #'   `"with_issues"` or `"both"`. Issues include any quality issues with the
 #'   record, the event, or the document. The default is `"without_issues"`
 #'   unless filtering by record, event or document ID or record annotation
 #'   status.
-#' - `reliable` Logical.
-#'   Filter by reliability of record. The `"collection_reliability"` is 4-5 or
-#'   the record has been "confirmed" and has no quality issues (record, event or
-#'   document).
-#' - `taxon_reliability` Character vector.
-#'   Filter by reliability of taxon identification. Can be one or more of
-#'   `"reliable"`, `"likely"`, `"neutral"`, `"unlikely"` or `"unreliable"`.
+#' - `requires_verification` Logical.
+#'   Show only records requiring verification (`TRUE`) or not requiring
+#'   verification (`FALSE`).
+#' - `collection_quality` Character vector.
+#'   Filter by one or more collection quality types. Must be one of
+#'   `"professional"`, `"hobbyist"` or `"amatuer"`.
+#' - `record_reliability` Character vector.
+#'   Filter by the reliability of the record. Must be one or more of
+#'   `"reliable"`, `"unassessed` or `"unreliable"`. Default is
+#'   `c("reliable", "unassessed")`.
+#' - `record_quality` Character vector.
+#'   Filter by the quality of the record. Must be one or more of
+#'   `"expert_verified"`, `"community_verified"`, `"unassessed"`, `"uncertain"`,
+#'   or `"errorneous"`.
 #'
 #' @section Misc:
 #' Other filters:

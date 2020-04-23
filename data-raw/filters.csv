@@ -30,7 +30,6 @@ keyword,                               keywords,                      character,
 collectionId,                          collection,                    uri,       FALSE,             ",", TRUE
 includeSubCollections,                 subcollections,                logical,   FALSE,             ",", TRUE
 collectionIdNot,                       not_collection,                uri,       FALSE,             ",", TRUE
-reliabilityOfCollection,               collection_reliability,        integer,   FALSE,             ",", TRUE
 sourceId,                              source,                        uri,       TRUE,              ",", TRUE
 recordBasis,                           record_basis,                  factor,    TRUE,              ",", TRUE
 superRecordBasis,                      superrecord_basis,             factor,    TRUE,              ",", TRUE
@@ -70,6 +69,7 @@ hasMedia,                              has_media,                     logical,  
 editorId,                              editor_id,                     uri,       FALSE,             ",", FALSE
 observerId,                            observer_id,                   uri,       FALSE,             ",", FALSE
 editorOrObserverId,                    editor_or_observer_id,         uri,       FALSE,             ",", FALSE
+editorOrObserverIdIsNot,               editor_or_observer_id_neg,     uri,       FALSE,             ",", FALSE
 teamMember,                            event_observer_name,           character, FALSE,             ",", TRUE
 teamMemberId,                          event_observer_id,             character, FALSE,             ",", TRUE
 secureReason,                          restriction_reason,            factor,    FALSE,             ",", TRUE
@@ -77,11 +77,17 @@ secureLevel,                           restriction_level,             factor,   
 secured,                               restricted,                    logical,   FALSE,             ",", TRUE
 annotated,                             annotated,                     logical,   FALSE,             ",", TRUE
 qualityIssues,                         quality_issues,                factor,    TRUE,              ",", TRUE
-reliable,                              reliable,                      logical,   FALSE,             ",", TRUE
-taxonReliability,                      taxon_reliability,             factor,    TRUE,              ",", TRUE
 unidentified,                          unidentified,                  logical,   FALSE,             ",", TRUE
 taxonCensus,                           taxon_census,                  uri,       FALSE,             ",", TRUE
 unitFact,                              record_fact,                   character, FALSE,             ",", TRUE
 gatheringFact,                         event_fact,                    character, FALSE,             ",", TRUE
 documentFact,                          document_fact,                 character, FALSE,             ",", TRUE
 hasSample,                             has_sample,                    logical,   FALSE,             ",", TRUE
+collectionQuality,                     collection_quality,            factor,    TRUE,              ",", TRUE
+hasUnitImages,                         has_record_images,             logical,   FALSE,             ",", FALSE
+hasUnitAudio,                          has_record_audio,              logical,   FALSE,             ",", FALSE
+hasUnitVideo,                          has_record_video,              logical,   FALSE,             ",", FALSE
+recordQuality,                         record_quality,                factor,    TRUE,              ",", TRUE
+reliability,                           record_reliability,            factor,    TRUE,              ",", TRUE
+effectiveTag,                          effective_tag,                 factor,    FALSE,             ",", FALSE
+needsCheck,                            requires_verification,         factor,    FALSE,             ",", TRUE

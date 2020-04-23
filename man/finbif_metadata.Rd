@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_metadata.R
 \name{finbif_metadata}
 \alias{finbif_metadata}
+\alias{fb_metadata}
 \title{FinBIF metadata}
 \usage{
 finbif_metadata(which)

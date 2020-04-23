@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -45,7 +49,6 @@
 <meta property="og:title" content="FinBIF record variables — variables" />
 <meta property="og:description" content="FinBIF record variables that can be selected in a finbif occurrence search." />
 <meta property="og:image" content="/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -63,7 +66,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -77,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -103,7 +106,19 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/v02_filtering.html">Filtering FinBIF records</a>
+      <a href="../articles/v02_occurrence_data.html">Occurrence records from FinBIF</a>
+    </li>
+    <li>
+      <a href="../articles/v03_selecting_variables.html">Selecting and ordering variables</a>
+    </li>
+    <li>
+      <a href="../articles/v04_metadata.html">Metadata</a>
+    </li>
+    <li>
+      <a href="../articles/v05_filtering.html">Filtering occurrence records</a>
+    </li>
+    <li>
+      <a href="../articles/v06_plotting.html">Plotting FinBIF data</a>
     </li>
   </ul>
 </li>
@@ -113,7 +128,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/luomus/finbif">
+  <a href="https://github.com/luomus/finbif/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -234,8 +249,6 @@ Is the taxon considered Finnish. The definition of a Finnish taxon differs
 by taxonomic group?</p></li>
 <li><p><code>orig_taxon_finnish</code> Logical.
 Was the taxon considered Finnish before (if any) annotation?</p></li>
-<li><p><code>is_unidentifiable</code> Logical.
-Is the record unable to be identified?</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="abundance-sex-amp-life-history"><a class="anchor" href="#abundance-sex-amp-life-history"></a>Abundance, sex &amp; life history</h2>
@@ -280,7 +293,8 @@ Coordinates are available in
 The horizontal distance (in meters) from the record's given coordinates
 describing the smallest circle containing the whole of the record's
 location.</p></li>
-<li><p><code>coordinates_source</code></p></li>
+<li><p><code>coordinates_source</code> Character.
+Source of coordinates.</p></li>
 <li><p><code>footprint_{euref|kkj|wgs84}</code> Character.
 Well-Known Text (WKT) representation of the geographic shape defining the
 location of the record in either EUREF, KKJ or WGS84 coordinate systems.</p></li>
@@ -308,6 +322,13 @@ Whether or not the occurrence is recorded at a known breeding location.</p></li>
     
 
 <p>Variables related to time of record include:</p><ul>
+<li><p><code>date_time</code> POSIXct.
+The date and time of the recording event. This variable is computed after
+records are downloaded from FinBIF. Its timezone and accuracy can be
+controlled see <code><a href='finbif_occurrence.html'>finbif_occurrence()</a></code> for details.</p></li>
+<li><p><code>duration</code> Duration.
+The duration of the recording event. This variable is computed after
+records are downloaded from FinBIF.</p></li>
 <li><p><code>date_start</code> Character.
 The date the recording event began.</p></li>
 <li><p><code>date_end</code> Character.
@@ -384,28 +405,24 @@ Has the record been restricted for other reasons.</p></li>
 <li><p><code>any_issues</code> Logical.
 Are there any data quality issues associated with the record it's event or
 document.</p></li>
-<li><p><code>record_reliable</code> Logical.
-The <code>"collection_reliability"</code> is 4-5 or the record has been "confirmed"
-and has no quality issues (record, event or document).</p></li>
-<li><p><code>collection_reliability</code> Integer.
-A numeric rating of reliability from 1 (low reliability) to 5 (high
-reliability) for the collection the record comes from.</p></li>
-<li><p><code>taxon_reliability</code> Character.
-Reliability of the record taxonomic identification.</p></li>
-<li><p><code>taxon_reliability_message</code>
-Remarks associated with <code>taxon_reliability</code>.</p></li>
-<li><p><code>taxon_reliability_source</code>
-Source of the <code>taxon_reliability</code> rating.</p></li>
 <li><p><code>reported_taxon_confidence</code>
-Reliability of the record taxonomic identification as reported by the
+Reliability of the record's taxonomic identification as reported by the
 original data author.</p></li>
 <li><p><code>{document|time|location|event|record}_issue</code> Character.
 Issues with record associated with its document, time, location, event, or
 the record itself.</p></li>
 <li><p><code>{document|time|location|event|record}_issue_message</code> Character.
 Details about the issue.</p></li>
-<li><p><code>{document|time|location|event|record}_issue_source</code>
+<li><p><code>{document|time|location|event|record}_issue_source</code> Character.
 Source determining the issue.</p></li>
+<li><p><code>requires_verification</code> Logical.
+Has the record been flagged for expert verification?</p></li>
+<li><p><code>requires_identification</code> Logical.
+Has the record been flagged for expert identification?</p></li>
+<li><p><code>record_reliability</code> Character.
+Indication of the records reliability.</p></li>
+<li><p><code>record_quality</code> Character.
+Indication of the records quality.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="misc"><a class="anchor" href="#misc"></a>Misc</h2>
@@ -443,19 +460,10 @@ the record's document, event or the record itself.</p></li>
 
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#identifiers">Identifiers</a></li>
-      <li><a href="#taxa">Taxa</a></li>
-      <li><a href="#abundance-sex-amp-life-history">Abundance, sex &amp; life history</a></li>
-      <li><a href="#location">Location</a></li>
-      <li><a href="#time">Time</a></li>
-      <li><a href="#data-restrictions">Data restrictions</a></li>
-      <li><a href="#data-quality">Data quality</a></li>
-      <li><a href="#misc">Misc</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -466,7 +474,7 @@ the record's document, event or the record itself.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

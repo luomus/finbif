@@ -34,7 +34,7 @@ class(bird_assoc_area[["name"]]) <- "translation"
 class(bird_assoc_area[["code"]]) <- "translation"
 
 n <- 1000
-baa <- finbif:::finbif_api_get(
+baa <- finbif:::api_get(
   "areas",
   list(type = "birdAssociationArea", lang = "multi", page = 1L, pageSize = n),
   FALSE

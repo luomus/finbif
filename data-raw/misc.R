@@ -6,13 +6,35 @@ quality_issues <- data.frame(
 
 class(quality_issues[["options"]]) <- "translation"
 
-taxon_reliability  <- data.frame(
-  options = c("reliable", "likely", "neutral", "unlikely", "unreliable"),
-  row.names = c("reliable", "likely", "neutral", "suspicious", "unreliable"),
+collection_quality  <- data.frame(
+  options = c("professional", "hobbyist", "amatuer"),
+  row.names = c("professional", "hobbyist", "amatuer"),
   stringsAsFactors = FALSE
 )
 
-class(taxon_reliability[["options"]]) <- "translation"
+class(collection_quality[["options"]]) <- "translation"
+
+record_reliability  <- data.frame(
+  options = c("reliable", "unassessed", "unreliable"),
+  row.names = c("reliable", "undefined", "unreliable"),
+  stringsAsFactors = FALSE
+)
+
+class(record_reliability[["options"]]) <- "translation"
+
+record_quality  <- data.frame(
+  options = c(
+    "expert_verified", "community_verified", "unassessed", "uncertain",
+    "errorneous"
+  ),
+  row.names = c(
+    "expert_verified", "community_verified", "neutral", "uncertain",
+    "errorneous"
+  ),
+  stringsAsFactors = FALSE
+)
+
+class(record_quality[["options"]]) <- "translation"
 
 superrecord_basis <- data.frame(
   options = c("human_observation", "machine_observation", "specimen"),
@@ -24,3 +46,11 @@ superrecord_basis <- data.frame(
 )
 
 class(superrecord_basis[["options"]]) <- "translation"
+
+supported_langs <- c(
+  English           = "en",
+  Finnish           = "fi",
+  Swedish           = "sv",
+  Russian           = "ru",
+  `Sami (Northern)` = "se"
+)

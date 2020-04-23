@@ -2,6 +2,7 @@
 % Please edit documentation in R/finbif_occurrence.R
 \name{finbif_occurrence}
 \alias{finbif_occurrence}
+\alias{fb_occurrence}
 \title{Download FinBIF occurrence records}
 \usage{
 finbif_occurrence(
@@ -15,12 +16,12 @@ finbif_occurrence(
   count_only = FALSE,
   quiet = FALSE,
   cache = getOption("finbif_use_cache"),
-  check_taxa = TRUE,
-  on_check_fail = c("warn", "error", "quiet"),
-  date_time = TRUE,
+  dwc = FALSE,
   date_time_method = "fast",
-  tzone = Sys.timezone(),
-  dwc = FALSE
+  check_taxa = TRUE,
+  on_check_fail = c("warn", "error"),
+  tzone = getOption("finbif_tz"),
+  locale = getOption("finbif_locale")
 )
 }
 \arguments{
@@ -31,7 +32,9 @@ to download.}
 
 \item{select}{Character vector. Variables to return. If not specified a
 default set of commonly used variables will be used. Use \code{"default_vars"}
-as a shortcut for this set.}
+as a shortcut for this set. Variables can be deselected by prepending a \code{-}
+to the variable name. If only deselects are specified the default set of
+variables without the deselection will be returned.}
 
 \item{order_by}{Character vector. Variables to order records by before they
 are returned. Most, though not all, variables can be used to order records
@@ -54,25 +57,28 @@ downloads.}
 
 \item{cache}{Logical. Use cached data.}
 
+\item{dwc}{Logical. Use Darwin Core (or Darwin Core style) variable names.}
+
+\item{date_time_method}{Character. Passed to \code{lutz::tz_lookup_coords()} when
+\code{date_time} and/or \code{duration} variables have been selected. Default is
+\code{"fast"}. Use \code{date_time_method = "accurate"} (requires package \code{sf}) for
+greater accuracy.}
+
 \item{check_taxa}{Logical. Check first that taxa are in the FinBIF database.
 If true only records that match known taxa (have a valid taxon ID) are
 returned.}
 
 \item{on_check_fail}{Character. What to do if a taxon is found not valid. One
-of \code{"warn"} (default), \code{"error"} or \code{"continue"}.}
+of \code{"warn"} (default) or \code{"error"}.}
 
-\item{date_time}{Logical. Convert raw date and time variables into date-time
-and duration.}
+\item{tzone}{Character. If \code{date_time} has been selected the timezone of the
+outputted date-time. Defaults to system timezone.}
 
-\item{date_time_method}{Character. Passed to \code{lutz::tz_lookup_coords()} when
-\code{date_time = TRUE}. Default is \code{"fast"}. Use
-\code{date_time_method = "accurate"} (requires package \code{sf}) for greater
-accuracy.}
-
-\item{tzone}{Character. If \code{date_time = TRUE} the timezone of outputted
-date-time. Defaults to system timezone.}
-
-\item{dwc}{Logical. Return Darwin Core (or Darwin Core style) variable names.}
+\item{locale}{Character. One of the supported two-letter ISO 639-1 language
+codes. Current supported languages are English, Finnish, Swedish, Russian,
+and Sami (Northern). For data where more than one language is available
+the language denoted by \code{locale} will be preferred while falling back to
+the other languages in the order indicated above.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

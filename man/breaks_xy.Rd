@@ -14,7 +14,7 @@ expanded to nearest multiple of \code{size}.}
 \item{size}{Numeric. The size of the cells between the breakpoints.}
 }
 \value{
-A list with three components:
+A list with two components:
 \itemize{
 \item \code{x} The X dimension breakpoints.
 \item \code{y} The Y dimension breakpoints.

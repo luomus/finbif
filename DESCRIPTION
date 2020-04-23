@@ -1,6 +1,6 @@
 Package: finbif
 Title: Interface for the 'Finnish Biodiversity Information Facility' API
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(
     person(given = "LUOMUS - Finnish Museum of Natural History",
            role = "cph"),
@@ -32,23 +32,23 @@ LazyData: true
 Depends: R (>= 3.5.0)
 Imports:
     digest,
-    httr,
     graphics,
+    httr,
     jsonlite,
     lubridate,
     lutz,
     methods,
     utils
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests:
     codemetar,
     data.tree,
     details,
     ISOcodes,
     knitr,
-    rmarkdown,
     ows4R,
+    rmarkdown,
     sf,
     stats,
     testthat (>= 2.1.0),

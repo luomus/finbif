@@ -20,7 +20,7 @@ vcr::use_cassette(
           finbif_occurrence(
             "Rangifer tarandus fennicus", "not a valid taxon",
             select = c("record_id", "date_start", "record_fact_content"),
-            on_check_fail = "quiet"
+            check_taxa = FALSE
           ),
           "finbif_occ"
         )
@@ -35,18 +35,24 @@ vcr::use_cassette(
 
         expect_s3_class(
           finbif_occurrence(
-            "Pteromys volans", sample = TRUE, n = 1001, cache = FALSE
+            "Pteromys volans", select = c("default_vars", "duration"),
+            sample = TRUE, n = 1001, cache = FALSE
           ),
           "finbif_occ"
         )
 
         expect_s3_class(
-          finbif_occurrence("Pteromys volans", sample = TRUE, n = 1001),
+          finbif_occurrence("Vulpes vulpes", sample = TRUE, n = 1600),
           "finbif_occ"
         )
 
         expect_s3_class(
-          finbif_occurrence(select =  "taxon_id", sample = TRUE, n = 3001),
+          finbif_occurrence(select = "taxon_id", sample = TRUE, n = 3001),
+          "finbif_occ"
+        )
+
+        expect_s3_class(
+          finbif_occurrence(select = "-date_time"),
           "finbif_occ"
         )
 
@@ -77,18 +83,21 @@ vcr::use_cassette(
 
         fungi <- finbif_occurrence(
           filter = c(informal_group = "Fungi and lichens"),
-          select = c("record_id", "informal_groups", "default_vars"),
+          select = to_native(
+            "occurrenceID", "informalTaxonGroup", "taxonID", "vernacularName",
+            "default_vars"
+          ),
           n = 1100L
         )
 
         expect_output(print(fungi), "Records downloaded:")
 
         expect_output(
-          print(fungi[c("scientific_name", "taxon_rank")]), "A data"
+          print(fungi[c("scientific_name", "common_name")]), "A data"
         )
 
         expect_output(
-          print(fungi[1:10, c("scientific_name", "taxon_rank")]), "A data"
+          print(fungi[1:10, c("scientific_name", "taxon_id")]), "A data"
         )
 
         expect_doppelganger(
@@ -96,9 +105,18 @@ vcr::use_cassette(
           plot(fungi)
         )
 
+        options(finbif_cache_path = tempdir())
+
         expect_output(
-          print(finbif_occurrence(dwc = TRUE)), "Records downloaded:"
+          print(
+            finbif_occurrence(
+              select = c("default_vars", to_dwc("duration")), dwc = TRUE
+            )
+          ),
+          "Records downloaded:"
         )
+
+        expect_output(print(finbif_occurrence()), "Records downloaded:")
 
       }
     )
@@ -113,14 +131,16 @@ vcr::use_cassette(
       }
     )
 
+    test_that(
+      "returns errors appropriately", {
+
+        expect_error(
+          finbif_occurrence("not a valid taxa", on_check_fail = "error")
+        )
+
+      }
+    )
+
   },
   preserve_exact_body_bytes = TRUE
-)
-
-test_that(
-  "returns errors appropriately", {
-
-    expect_error(finbif_occurrence("not a valid taxa", on_check_fail = "error"))
-
-  }
 )
