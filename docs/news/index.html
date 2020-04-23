@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9010</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9011</span>
       </span>
     </div>
 
@@ -149,13 +149,41 @@
       <small>Source: <a href='https://github.com/luomus/finbif/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="finbif-0-2-0-9010" class="section level1">
-<h1 class="page-header" data-toc-text="0.2.0.9010">
-<a href="#finbif-0-2-0-9010" class="anchor"></a>finbif 0.2.0.9010<small> Unreleased </small>
+    <div id="finbif-0-2-0-9011" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0.9011">
+<a href="#finbif-0-2-0-9011" class="anchor"></a>finbif 0.2.0.9011<small> Unreleased </small>
 </h1>
 <div id="new-features" class="section level4">
 <h4 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>NEW FEATURES</h4>
+<ul>
+<li><p>Some changes in variables and filters have flowed from upstream changes to “api.laji.fi”. The variables <code>is_unidentifiable</code>, <code>record_reliable</code>, <code>collection_reliability</code>, <code>taxon_reliability</code>, <code>taxon_reliability_message</code> and <code>taxon_reliability_source</code> have been deprecated and replaced with <code>requires_verification</code>, <code>requires_identification</code>, <code>record_reliability</code> and <code>record_quality</code>. The filters <code>collection_reliability</code> and <code>taxon_reliability</code> have been deprecated and replaced with <code>requires_verification</code>, <code>collection_quality</code>, <code>record_reliability</code>, <code>record_quality</code>, and <code>expert_verified</code>.</p></li>
+<li><p>Vernacular names are now localised. Users can select a language to use for taxon vernacular names. Missing names will fallback gracefully to other languages. A package-wide locale can be set and is by default set to the system locale (if not set or can’t be determined it will default to English).</p></li>
+<li><p>New vignettes on getting occurrence records, selecting and ordering variables, metadata and plotting have been added.</p></li>
+</ul>
+</div>
+<div id="minor-improvements" class="section level4">
+<h4 class="hasAnchor">
+<a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<ul>
+<li>After some failures, API requests are now automatically retried up to three times.</li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level4">
+<h4 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>BUG FIXES</h4>
+<ul>
+<li>Fixed bug in print method for <code>finbif_occ</code> objects that caused error when trying to display a single column objects with a list-col only.</li>
+</ul>
+</div>
+</div>
+    <div id="finbif-0-2-0-9010" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0.9010">
+<a href="#finbif-0-2-0-9010" class="anchor"></a>finbif 0.2.0.9010<small> Unreleased </small>
+</h1>
+<div id="new-features-1" class="section level4">
+<h4 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li><p>There are two new utility functions, <code>to_dwc</code> and <code>to_native</code> for converting variable names to and from Darwin Core style.</p></li>
 <li><p>Users can select and order by variables in Darwin Core style when using <code>finbif_occurrence</code>.</p></li>
@@ -166,9 +194,9 @@
 <h1 class="page-header" data-toc-text="0.2.0.9009">
 <a href="#finbif-0-2-0-9009" class="anchor"></a>finbif 0.2.0.9009<small> Unreleased </small>
 </h1>
-<div id="minor-improvements" class="section level4">
+<div id="minor-improvements-1" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>Variables can now be “deselected” when using the <code>select</code> argument to <code>finbif_occurrence</code> by prepending the variable name with a “<code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>”.</li>
 </ul>
@@ -178,9 +206,9 @@
 <h1 class="page-header" data-toc-text="0.2.0.9008">
 <a href="#finbif-0-2-0-9008" class="anchor"></a>finbif 0.2.0.9008<small> Unreleased </small>
 </h1>
-<div id="minor-improvements-1" class="section level4">
+<div id="minor-improvements-2" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>The print method for occurrence record objects has been updated. It is now aware of console width and when truncating variable values is more considerate of the context.</li>
 </ul>
@@ -190,9 +218,9 @@
 <h1 class="page-header" data-toc-text="0.2.0.9007">
 <a href="#finbif-0-2-0-9007" class="anchor"></a>finbif 0.2.0.9007<small> Unreleased </small>
 </h1>
-<div id="minor-improvements-2" class="section level4">
+<div id="minor-improvements-3" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li><p>Package options are now documented in the package level man page.</p></li>
 <li><p>News file is now accessible via R internal help system.</p></li>
@@ -204,9 +232,9 @@
 <h1 class="page-header" data-toc-text="0.2.0.9006">
 <a href="#finbif-0-2-0-9006" class="anchor"></a>finbif 0.2.0.9006<small> Unreleased </small>
 </h1>
-<div id="minor-improvements-3" class="section level4">
+<div id="minor-improvements-4" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-4" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>Now when a record has no time information the start time is assumed to be midday. Previous behaviour was to assume start time was midnight, making errors potentially biased.</li>
 </ul>
@@ -216,9 +244,9 @@
 <h1 class="page-header" data-toc-text="0.2.0.9005">
 <a href="#finbif-0-2-0-9005" class="anchor"></a>finbif 0.2.0.9005<small> Unreleased </small>
 </h1>
-<div id="minor-improvements-4" class="section level4">
+<div id="minor-improvements-5" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-4" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-5" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>Global option to set timezone, “finbif_tz”, as default value for “tzone” argument to finbif_occurrence(). Avoids having to set system environment variable TZ or specify “tzone” every time finbif_occurrence() is run.</li>
 </ul>
@@ -228,17 +256,17 @@
 <h1 class="page-header" data-toc-text="0.2.0.9004">
 <a href="#finbif-0-2-0-9004" class="anchor"></a>finbif 0.2.0.9004<small> Unreleased </small>
 </h1>
-<div id="minor-improvements-5" class="section level4">
+<div id="minor-improvements-6" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-5" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-6" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li><p>Retired “quiet” option for “on_check_fail” argument in function ‘finbif_occurrence()’.</p></li>
 <li><p>Improved error messages when taxa fail checking in ‘finbif_occurrence()’.</p></li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level4">
+<div id="bug-fixes-1" class="section level4">
 <h4 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>BUG FIXES</h4>
+<a href="#bug-fixes-1" class="anchor"></a>BUG FIXES</h4>
 <ul>
 <li><p>Fixed bug in handling of duplicates that could result in an infinite recursion.</p></li>
 <li><p>Fixed bug that (when “on_check_fail” = “warn”) all taxa failed checks ‘finbif_occurrence()’ would proceed as if no taxa had been selected.</p></li>
@@ -249,17 +277,17 @@
 <h1 class="page-header" data-toc-text="0.2.0.9003">
 <a href="#finbif-0-2-0-9003" class="anchor"></a>finbif 0.2.0.9003<small> Unreleased </small>
 </h1>
-<div id="new-features-1" class="section level4">
+<div id="new-features-2" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li><p>All user facing functions with a <code>finbif_</code> prefix can now also be used with the alternative shorter prefix <code>fb_</code>.</p></li>
 <li><p>Crop Wild Relative, CWR, added to admin statuses.</p></li>
 </ul>
 </div>
-<div id="minor-improvements-6" class="section level4">
+<div id="minor-improvements-7" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-6" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-7" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>Front matter of vignettes is now visible when using the R help browser.</li>
 </ul>
@@ -269,9 +297,9 @@
 <h1 class="page-header" data-toc-text="0.2.0.9002">
 <a href="#finbif-0-2-0-9002" class="anchor"></a>finbif 0.2.0.9002<small> Unreleased </small>
 </h1>
-<div id="bug-fixes-1" class="section level4">
+<div id="bug-fixes-2" class="section level4">
 <h4 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>BUG FIXES</h4>
+<a href="#bug-fixes-2" class="anchor"></a>BUG FIXES</h4>
 <ul>
 <li>Ordering by descending variables did not work when ordering by both ascending and descending variables.</li>
 </ul>
@@ -281,9 +309,9 @@
 <h1 class="page-header" data-toc-text="0.2.0.9001">
 <a href="#finbif-0-2-0-9001" class="anchor"></a>finbif 0.2.0.9001<small> Unreleased </small>
 </h1>
-<div id="minor-improvements-7" class="section level4">
+<div id="minor-improvements-8" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-7" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-8" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>Caching defaults to in memory caching instead of relying on the temporary directory.</li>
 </ul>
@@ -293,16 +321,16 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#finbif-0-2-0" class="anchor"></a>finbif 0.2.0<small> 2020-01-16 </small>
 </h1>
-<div id="new-features-2" class="section level4">
+<div id="new-features-3" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-3" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li>Add capacity to request a random sample of FinBIF records.</li>
 </ul>
 </div>
-<div id="minor-improvements-8" class="section level4">
+<div id="minor-improvements-9" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-8" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-9" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>Add more content to vignettes.</li>
 </ul>
