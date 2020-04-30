@@ -48,6 +48,7 @@ Suggests:
     ISOcodes,
     knitr,
     ows4R,
+    pkgdown,
     rmarkdown,
     sf,
     stats,
