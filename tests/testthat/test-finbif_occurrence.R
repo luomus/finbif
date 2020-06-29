@@ -115,7 +115,7 @@ vcr::use_cassette(
 
         cat("\nNot comparing plots on R versions greater than 4.0.2\n")
 
-        skip_if(getRversion() < "4.0.2")
+        skip_if(getRversion() > "4.0.2")
 
         expect_doppelganger(
           paste0("occurrence plot ", if (is_dev_api()) "dev"),
