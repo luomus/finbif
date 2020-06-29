@@ -1,0 +1,17 @@
+1. On dev, update the version number to a release version without a dev component.
+2. Consolidate inst/NEWS.Rd and run make.
+3. Commit changes to description, codemeta and news files and docs.
+4. Checkout master (git checkout master).
+5. Merge changes (git merge dev) and resolve conflicts and commit, if any.
+6. Check rhub.
+7. Check winbuilder.
+8. Update and commit cran-comments.md.
+9. Release (devtools::release()) and wait for CRAN response.
+10. Commit CRAN-RELEASE.
+11. Push to Github.
+12. Tag as new release and copy news.md updates.
+13. Remove CRAN-RELEASE and then commit.
+14. Checkout dev (git checkout dev).
+15. Merge master (git merge master).
+16. Add dev component to version number, update news, and docs commit and push.
+17. Once CRAN version goes online (news file in particular) rebuild pkgdown docs, commit, and push (on master and dev).
