@@ -57,5 +57,5 @@ jobs:
           git config --global user.name "GitHub Actions User"
 
       - name: Test coverage
-        run: covr::codecov(line_exclusions = list('R/finbif_request_token.R' = 35:72)
+        run: covr::codecov(line_exclusions = list('R/finbif_request_token.R' = 35:72))
         shell: Rscript {0}
