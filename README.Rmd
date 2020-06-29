@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 Branch |Travis |AppVeyor |Codecov
 ------ |------ |-------- |-------
 master |[![Build Status](https://travis-ci.com/luomus/finbif.svg?branch=master)](https://travis-ci.com/luomus/finbif/branches) |[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/master) |[![codecov](https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/master)
-dev |[![Build Status](https://travis-ci.com/luomus/finbif.svg?branch=dev)](https://travis-ci.com/luomus/finbif/branches) |[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=dev&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/dev) |[![codecov](https://codecov.io/gh/luomus/finbif/branch/dev/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/dev)
+dev |[![Build Status](https://github.com/luomus/finbif/workflows/R-CMD-check/badge.svg?branch=dev)](https://github.com/luomus/finbif/actions) | |[![codecov](https://codecov.io/gh/luomus/finbif/branch/dev/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/dev)
 
 The `finbif` R package is a programmatic interface to the
 [Finnish Biodiversity Information Facility (FinBIF) API](https://api.laji.fi).
