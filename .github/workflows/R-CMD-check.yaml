@@ -66,7 +66,7 @@ jobs:
           sudo -s eval "$sysreqs"
 
       - name: MacOS brew system dependencies
-        if: runner.os == 'macOS' && matrix.config.binary == 'brew'
+        if: runner.os == 'macOS'
         run: |
            brew install proj
            brew install geos
