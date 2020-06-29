@@ -23,6 +23,13 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
+      - name: MacOS brew system dependencies
+        if: runner.os == 'macOS' && matrix.config.binary == 'brew'
+        run: |
+           brew install proj
+           brew install geos
+           brew install gdal
+
       - name: Query dependencies
         run: |
           install.packages('remotes')
