@@ -100,11 +100,6 @@ vcr::use_cassette(
           print(fungi[1:10, c("scientific_name", "taxon_id")]), "A data"
         )
 
-        expect_doppelganger(
-          paste0("occurrence plot ", if (is_dev_api()) "dev"),
-          plot(fungi)
-        )
-
         options(finbif_cache_path = tempdir())
 
         expect_output(
@@ -117,6 +112,15 @@ vcr::use_cassette(
         )
 
         expect_output(print(finbif_occurrence()), "Records downloaded:")
+
+        cat("\nNot comparing plots on R versions greater than 4.0.2\n")
+
+        skip_if(getRversion() < "4.0.2")
+
+        expect_doppelganger(
+          paste0("occurrence plot ", if (is_dev_api()) "dev"),
+          plot(fungi)
+        )
 
       }
     )
