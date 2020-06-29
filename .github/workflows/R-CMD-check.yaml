@@ -71,6 +71,7 @@ jobs:
            brew install proj
            brew install geos
            brew install gdal
+           brew install udunits
 
       - name: Install dependencies
         run: |
