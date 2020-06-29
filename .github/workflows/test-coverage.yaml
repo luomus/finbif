@@ -11,6 +11,11 @@ name: test-coverage
 jobs:
   test-coverage:
     runs-on: macOS-latest
+
+    env:
+      FINBIF_ACCESS_TOKEN: ${{ secrets.FINBIF_ACCESS_TOKEN }}
+      FINBIF_DEV_ACCESS_TOKEN: ${{ secrets.FINBIF_DEV_ACCESS_TOKEN }}
+
     steps:
       - uses: actions/checkout@v2
 
