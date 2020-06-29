@@ -1,11 +1,11 @@
 
 # finbif <img src="man/figures/logo.png" align="right" alt="" width="120">
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![CRAN status](https://www.r-pkg.org/badges/version-last-release/finbif)](https://cran.r-project.org/package=finbif) [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/finbif?color=brightgreen)](https://cran.r-project.org/package=finbif) [![DOI](https://zenodo.org/badge/194657383.svg)](https://zenodo.org/badge/latestdoi/194657383)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![CRAN status](https://www.r-pkg.org/badges/version-last-release/finbif)](https://cran.r-project.org/package=finbif) [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/finbif?color=brightgreen)](https://cran.r-project.org/package=finbif) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3612814.svg)](https://doi.org/10.5281/zenodo.3612814)
 
 Branch |Travis |AppVeyor |Codecov
 ------ |------ |-------- |-------
 master |[![Build Status](https://travis-ci.com/luomus/finbif.svg?branch=master)](https://travis-ci.com/luomus/finbif/branches) |[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=master&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/master) |[![codecov](https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/master)
-dev |[![Build Status](https://travis-ci.com/luomus/finbif.svg?branch=dev)](https://travis-ci.com/luomus/finbif/branches) |[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/luomus/finbif?branch=dev&svg=true)](https://ci.appveyor.com/project/luomus/finbif/branch/dev) |[![codecov](https://codecov.io/gh/luomus/finbif/branch/dev/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/dev)
+dev |[![Build Status](https://github.com/luomus/finbif/workflows/R-CMD-check/badge.svg?branch=dev)](https://github.com/luomus/finbif/actions) | |[![codecov](https://codecov.io/gh/luomus/finbif/branch/dev/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/dev)
 
 The `finbif` R package is a programmatic interface to the
 [Finnish Biodiversity Information Facility (FinBIF) API](https://api.laji.fi).
