@@ -183,7 +183,7 @@
 #' - `record_quality` Character vector.
 #'   Filter by the quality of the record. Must be one or more of
 #'   `"expert_verified"`, `"community_verified"`, `"unassessed"`, `"uncertain"`,
-#'   or `"errorneous"`.
+#'   or `"erroneous"`.
 #'
 #' @section Misc:
 #' Other filters:
