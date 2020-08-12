@@ -209,20 +209,23 @@
 <a href="#data-quality" class="anchor"></a>Data Quality</h2>
 <p>You can filter occurrence records by indicators of data quality. See <code><a href="../reference/filters.html">?filters</a></code> section “Quality” for details.</p>
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">strict</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-  <span class="kw">collection_reliability</span> <span class="kw">=</span> <span class="fl">5</span>, <span class="kw">coordinates_uncertainty_max</span> <span class="kw">=</span> <span class="fl">1</span>,
-  <span class="kw">taxon_reliability</span> <span class="kw">=</span> <span class="st">"reliable"</span>
+  <span class="kw">collection_quality</span> <span class="kw">=</span> <span class="st">"professional"</span>, <span class="kw">coordinates_uncertainty_max</span> <span class="kw">=</span> <span class="fl">1</span>,
+  <span class="kw">record_quality</span> <span class="kw">=</span> <span class="st">"expert_verified"</span>
 )
 <span class="no">permissive</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="kw">collection_reliability</span> <span class="kw">=</span> <span class="fl">1</span>:<span class="fl">5</span>, <span class="kw">coordinates_uncertainty_max</span> <span class="kw">=</span> <span class="fl">10000</span>,
-  <span class="kw">quality_issues</span> <span class="kw">=</span> <span class="st">"both"</span>
+  <span class="kw">quality_issues</span> <span class="kw">=</span> <span class="st">"both"</span>,
+  <span class="kw">record_reliability</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"reliable"</span>, <span class="st">"unassessed"</span>, <span class="st">"unreliable"</span>),
+  <span class="kw">record_quality</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+    <span class="st">"expert_verified"</span>, <span class="st">"community_verified"</span>, <span class="st">"unassessed"</span>, <span class="st">"uncertain"</span>,
+    <span class="st">"erroneous"</span>
+  )
 )
 <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
   <span class="kw">strict</span>     <span class="kw">=</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="kw">filter</span> <span class="kw">=</span> <span class="no">strict</span>,     <span class="kw">count_only</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
   <span class="kw">permissive</span> <span class="kw">=</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="kw">filter</span> <span class="kw">=</span> <span class="no">permissive</span>, <span class="kw">count_only</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 )
-<span class="co">#&gt; Error: 2 errors occurred:</span>
-<span class="co">#&gt;   - Invalid name in filter names: collection_reliability</span>
-<span class="co">#&gt;   - Invalid name in filter names: taxon_reliability</span></pre></body></html></div>
+<span class="co">#&gt;     strict permissive </span>
+<span class="co">#&gt;         14   36095576</span></pre></body></html></div>
 </div>
 <div id="collection" class="section level2">
 <h2 class="hasAnchor">
