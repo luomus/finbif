@@ -189,7 +189,7 @@ Show only records requiring verification (\code{TRUE}) or not requiring
 verification (\code{FALSE}).
 \item \code{collection_quality} Character vector.
 Filter by one or more collection quality types. Must be one of
-\code{"professional"}, \code{"hobbyist"} or \code{"amatuer"}.
+\code{"professional"}, \code{"hobbyist"} or \code{"amateur"}.
 \item \code{record_reliability} Character vector.
 Filter by the reliability of the record. Must be one or more of
 \code{"reliable"}, \verb{"unassessed} or \code{"unreliable"}. Default is
@@ -197,7 +197,7 @@ Filter by the reliability of the record. Must be one or more of
 \item \code{record_quality} Character vector.
 Filter by the quality of the record. Must be one or more of
 \code{"expert_verified"}, \code{"community_verified"}, \code{"unassessed"}, \code{"uncertain"},
-or \code{"errorneous"}.
+or \code{"erroneous"}.
 }
 }
 
