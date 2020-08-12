@@ -68,6 +68,8 @@ jobs:
       - name: MacOS brew system dependencies
         if: runner.os == 'macOS'
         run: |
+           brew install gcc
+           brew link --overwrite gcc
            brew install proj
            brew install geos
            brew install gdal
