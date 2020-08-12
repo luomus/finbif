@@ -1,4 +1,15 @@
-# finbif 0.3.0
+# finbif 0.3.0.9000
+
+#### NEW FEATURES
+
+  - New administrative statuses added to filters.
+
+##### MINOR IMPROVEMENTS
+
+  - Filtering vignette updated to reflect changes to data quality
+    filters.
+
+finbif version 0.3.0
 
 #### NEW FEATURES
 
@@ -89,7 +100,7 @@
   - Fixed bug in print method for `finbif_occ` objects that caused error
     when trying to display a single column objects with a list-col only.
 
-# finbif 0.2.0
+finbif version 0.2.0
 
 #### NEW FEATURES
 
@@ -99,6 +110,6 @@
 
   - Add more content to vignettes.
 
-# finbif 0.1.0
+finbif version 0.1.0
 
   - Initial release.

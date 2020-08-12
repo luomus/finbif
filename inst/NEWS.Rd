@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 \section{finbif version 0.3.0.9000}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New administrative statuses added to filters.
+    }
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Filtering vignette updated to reflect changes to data quality
+        filters.
+    }
+  }
 }
 \section{finbif version 0.3.0}{
   \subsection{NEW FEATURES}{
