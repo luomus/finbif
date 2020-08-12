@@ -152,20 +152,23 @@ section "Quality" for details.
 
 ```r
 strict <- c(
-  collection_reliability = 5, coordinates_uncertainty_max = 1,
-  taxon_reliability = "reliable"
+  collection_quality = "professional", coordinates_uncertainty_max = 1,
+  record_quality = "expert_verified"
 )
 permissive <- list(
-  collection_reliability = 1:5, coordinates_uncertainty_max = 10000,
-  quality_issues = "both"
+  quality_issues = "both",
+  record_reliability = c("reliable", "unassessed", "unreliable"),
+  record_quality = c(
+    "expert_verified", "community_verified", "unassessed", "uncertain",
+    "erroneous"
+  )
 )
 c(
   strict     = finbif_occurrence(filter = strict,     count_only = TRUE),
   permissive = finbif_occurrence(filter = permissive, count_only = TRUE)
 )
-#> Error: 2 errors occurred:
-#>   - Invalid name in filter names: collection_reliability
-#>   - Invalid name in filter names: taxon_reliability
+#>     strict permissive 
+#>         14   36095576
 ```
 
 ## Collection
