@@ -25,11 +25,11 @@ class(record_reliability[["options"]]) <- "translation"
 record_quality  <- data.frame(
   options = c(
     "expert_verified", "community_verified", "unassessed", "uncertain",
-    "errorneous"
+    "erroneous"
   ),
   row.names = c(
     "expert_verified", "community_verified", "neutral", "uncertain",
-    "errorneous"
+    "erroneous"
   ),
   stringsAsFactors = FALSE
 )
