@@ -175,7 +175,7 @@
 #'   verification (`FALSE`).
 #' - `collection_quality` Character vector.
 #'   Filter by one or more collection quality types. Must be one of
-#'   `"professional"`, `"hobbyist"` or `"amatuer"`.
+#'   `"professional"`, `"hobbyist"` or `"amateur"`.
 #' - `record_reliability` Character vector.
 #'   Filter by the reliability of the record. Must be one or more of
 #'   `"reliable"`, `"unassessed` or `"unreliable"`. Default is

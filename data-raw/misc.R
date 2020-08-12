@@ -7,8 +7,8 @@ quality_issues <- data.frame(
 class(quality_issues[["options"]]) <- "translation"
 
 collection_quality  <- data.frame(
-  options = c("professional", "hobbyist", "amatuer"),
-  row.names = c("professional", "hobbyist", "amatuer"),
+  options = c("professional", "hobbyist", "amateur"),
+  row.names = c("professional", "hobbyist", "amateur"),
   stringsAsFactors = FALSE
 )
 
