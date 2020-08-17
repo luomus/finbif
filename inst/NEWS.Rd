@@ -5,6 +5,7 @@
     \itemize{
       \item New administrative statuses added to filters.
     }
+  }
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
       \item Filtering vignette updated to reflect changes to data quality
