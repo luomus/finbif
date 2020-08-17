@@ -73,6 +73,9 @@ jobs:
            brew install geos
            brew install gdal
            brew install udunits
+           brew install libgit2
+           brew install libssh2
+           brew cask install gfortran
 
       - name: Install dependencies
         run: |
