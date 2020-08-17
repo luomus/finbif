@@ -68,6 +68,7 @@ jobs:
       - name: MacOS brew system dependencies
         if: runner.os == 'macOS'
         run: |
+           brew cask uninstall gfortran
            brew install proj
            brew install geos
            brew install gdal
