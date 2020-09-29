@@ -36,6 +36,7 @@ finnish_occurrence_status <- read.csv(text = "
   MX.typeOfOccurrenceOnlyCultivated,                                'In Finland, only in cultivation',                                                            cultivation_only
   MX.typeOfOccurrenceMaxRelict,                                     A relict of cultivation in Finland,                                                           cultivation_relict
   MX.typeOfOccurrenceMaxSoilImmigrant,                              'In Finland, at most a soil immigrant, possibly spreading vegetatively',                      soil_immigrant
+  MX.typeOfOccurrenceOccursBasedOnOccurrences,                      'Occurrence status based on occurrence records only and not based an any expert evaluation',  records_only
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'")
 
 class(finnish_occurrence_status[["code"]]) <- "translation"
