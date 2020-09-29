@@ -98,7 +98,7 @@ filter by collection with either the `collection` or `not_collection` filters.
 Use `finbif_collections()` to see metadata on the FinBIF collections.
 ```{r collection-filter}
 finbif_occurrence(
-  filter = c(collection = "iNaturalist"), count_only = TRUE
+  filter = c(collection = "iNaturalist Suomi Finland"), count_only = TRUE
 )
 finbif_occurrence(
   filter = c(collection = "Notebook, general observations"), count_only = TRUE

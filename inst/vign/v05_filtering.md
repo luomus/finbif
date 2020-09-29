@@ -178,13 +178,13 @@ Use `finbif_collections()` to see metadata on the FinBIF collections.
 
 ```r
 finbif_occurrence(
-  filter = c(collection = "iNaturalist"), count_only = TRUE
+  filter = c(collection = "iNaturalist Suomi Finland"), count_only = TRUE
 )
-#> [1] 20463
+#> [1] 204408
 finbif_occurrence(
   filter = c(collection = "Notebook, general observations"), count_only = TRUE
 )
-#> [1] 730369
+#> [1] 898820
 ```
 
 ## Informal taxonomic groups
