@@ -1,5 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
+\section{finbif version 0.3.0.9001}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Occurrence records can be ordered by the total number of records or
+        total number of Finnish records of the taxon (variables:
+        \code{n_total_records} & \code{n_total_finnish_records}, currently
+        undocument).
+      \item New Finnish occurrence status, \code{records_only}, added.
+    }
+  }
+}
 \section{finbif version 0.3.0.9000}{
   \subsection{NEW FEATURES}{
     \itemize{

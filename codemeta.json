@@ -10,11 +10,10 @@
   "codeRepository": "https://github.com/luomus/finbif",
   "issueTracker": "https://github.com/luomus/finbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.3.0.9000",
+  "version": "0.3.0.9001",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "4.0.2",
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.0.2 (2020-06-22)",
@@ -292,12 +291,8 @@
     }
   ],
   "releaseNotes": "https://github.com/luomus/finbif/blob/master/NEWS.md",
-  "contIntegration": [
-    "https://circleci.com/bb/luomus/finbif",
-    "https://codecov.io/bb/luomus/finbif",
-    "https://ci.appveyor.com/project/wkmorris/finbif"
-  ],
-  "developmentStatus": "https://www.repostatus.org/#wip",
+  "contIntegration": ["https://travis-ci.com/luomus/finbif/branches", "https://ci.appveyor.com/project/luomus/finbif/branch/master", "https://codecov.io/github/luomus/finbif/branch/master", "https://codecov.io/github/luomus/finbif/branch/dev"],
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
@@ -327,5 +322,6 @@
     "@type": "Organization",
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
-  }
+  },
+  "fileSize": "27735.871KB"
 }
