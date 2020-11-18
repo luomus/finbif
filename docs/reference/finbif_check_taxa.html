@@ -155,7 +155,7 @@
     <p>Check that taxa are in the FinBIF database.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>finbif_check_taxa</span>(<span class='no'>taxa</span>, <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"finbif_use_cache"</span>))</pre>
+    <pre class="usage"><span class='fu'>finbif_check_taxa</span><span class='op'>(</span><span class='va'>taxa</span>, cache <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_use_cache"</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,25 +178,26 @@ The elements of the vectors should be the taxa to check.</p></td>
 <code>taxa</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
 <span class='co'># Check a scientific name</span>
-<span class='fu'>finbif_check_taxa</span>(<span class='st'>"Cygnus cygnus"</span>)
+<span class='fu'>finbif_check_taxa</span><span class='op'>(</span><span class='st'>"Cygnus cygnus"</span><span class='op'>)</span>
 
 <span class='co'># Check a common name</span>
-<span class='fu'>finbif_check_taxa</span>(<span class='st'>"Whooper swan"</span>)
+<span class='fu'>finbif_check_taxa</span><span class='op'>(</span><span class='st'>"Whooper swan"</span><span class='op'>)</span>
 
 <span class='co'># Check a genus</span>
-<span class='fu'>finbif_check_taxa</span>(<span class='st'>"Cygnus"</span>)
+<span class='fu'>finbif_check_taxa</span><span class='op'>(</span><span class='st'>"Cygnus"</span><span class='op'>)</span>
 
 <span class='co'># Check a list of taxa</span>
-<span class='fu'>finbif_check_taxa</span>(
-  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-    <span class='kw'>species</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Cygnus cygnus"</span>, <span class='st'>"Ursus arctos"</span>),
-    <span class='kw'>genus</span>   <span class='kw'>=</span> <span class='st'>"Betula"</span>
-  )
-)
-}</div></pre>
+<span class='fu'>finbif_check_taxa</span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+    species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Cygnus cygnus"</span>, <span class='st'>"Ursus arctos"</span><span class='op'>)</span>,
+    genus   <span class='op'>=</span> <span class='st'>"Betula"</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -212,7 +213,7 @@ The elements of the vectors should be the taxa to check.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

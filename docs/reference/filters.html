@@ -275,8 +275,8 @@ first two elements are latitude and longitude and third is the coordinate
 system (currently only <code>"wgs84"</code> is implemented). Records returned will be
 those for which the center point exactly matches that which is specified.</p></li>
 <li><p><code>coordinates_cell_{1k|10k|50k|100k}</code> Coordinates.
-A vector of coordinate data (lat, lon). Filter by grid cell at scale <code>*</code>.
-Where <code>*</code> is 1, 10, 50 or 100. The coordinates specify the southeast corner
+A vector of coordinate data (lat, lon). Filter by grid cell at scale <code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code>.
+Where <code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code> is 1, 10, 50 or 100. The coordinates specify the southeast corner
 of the cell. Coordinates system is uniform <code>"kkj"</code> (also known as "ykj").</p></li>
 <li><p><code>coordinates_cell_{1k|10k|50k|100k}_center</code> Coordinates.
 As above, except coordinates indicate center of grid cell.</p></li>
@@ -302,7 +302,7 @@ two <a href='https://rdrr.io/r/base/Dates.html'>Date</a> objects (begin and end 
 are coercible to the <a href='https://rdrr.io/r/base/Dates.html'>Date</a> class by
 <a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_date</a>. When supplying dates as strings, the day or
 month-and-day can be omitted (e.g.,<code>"2001-04"</code> or <code>"2001"</code>). Note however,
-that when omitting day, only "<code>-</code>" is allowed to separate year and month,
+that when omitting day, only "<code><a href='https://rdrr.io/r/base/Arithmetic.html'>-</a></code>" is allowed to separate year and month,
 and months must be in two-digit/leading zero form. If the begin or end
 dates are partial date strings they will be interpreted as the first or
 last day of the month or year (e.g., <code><a href='https://rdrr.io/r/base/c.html'>c(2001, 2003)</a></code> is equivalent to
@@ -469,7 +469,7 @@ Record includes a sample or samples (e.g., a DNA sample or preparation).</p></li
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

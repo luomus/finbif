@@ -101,7 +101,8 @@
 
       
 
-      </header><script src="v04_metadata_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="v04_metadata_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="v04_metadata_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="v04_metadata_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Metadata</h1>
@@ -119,10 +120,12 @@
 <div id="general-metadata" class="section level2">
 <h2 class="hasAnchor">
 <a href="#general-metadata" class="anchor"></a>General metadata</h2>
-<p>You can see some of the metadata available in <code>{finbif}</code> by calling the <code>finbif_metadata</code> function without any arguments.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span>()</pre></body></html></div>
+<p>You can see some of the metadata available in <a href="https://github.com/luomus/finbif">finbif</a> by calling the <code>finbif_metadata</code> function without any arguments.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt;    metadata_name            </span>
 <span class="co">#&gt; 1  admin_status             </span>
 <span class="co">#&gt; 2  red_list                 </span>
@@ -139,12 +142,14 @@
 <span class="co">#&gt; 13 restriction_reasons      </span>
 <span class="co">#&gt; 14 sex_categories           </span>
 <span class="co">#&gt; 15 sources                  </span>
-<span class="co">#&gt; 16 taxon_ranks              </span></pre></body></html></div>
+<span class="co">#&gt; 16 taxon_ranks              </span></code></pre></div>
 </details><p><br></p>
 <p>Calling <code><a href="../reference/finbif_metadata.html">finbif_metadata()</a></code> and specifying one of the metadata categories will display a <code>data.frame</code> with the requested metadata.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span>(<span class="st">"red_list"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span><span class="op">(</span><span class="st">"red_list"</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt;    status_name           status_code</span>
 <span class="co">#&gt; 1  Critically Endangered CR         </span>
 <span class="co">#&gt; 2  Data Deficient        DD         </span>
@@ -156,20 +161,22 @@
 <span class="co">#&gt; 8  Not Applicable        NA         </span>
 <span class="co">#&gt; 9  Not Evaluated         NE         </span>
 <span class="co">#&gt; 10 Regionally Extinct    RE         </span>
-<span class="co">#&gt; 11 Vulnerable            VU         </span></pre></body></html></div>
+<span class="co">#&gt; 11 Vulnerable            VU         </span></code></pre></div>
 </details><p><br></p>
 </div>
 <div id="special-cases" class="section level2">
 <h2 class="hasAnchor">
 <a href="#special-cases" class="anchor"></a>Special cases</h2>
-<p>Some more complex metadata is accessed with other <code>{finbif}</code> functions</p>
+<p>Some more complex metadata is accessed with other <a href="https://github.com/luomus/finbif">finbif</a> functions</p>
 <div id="informal-groups" class="section level3">
 <h3 class="hasAnchor">
 <a href="#informal-groups" class="anchor"></a>Informal groups</h3>
 <p>Informal taxonomic groups and their relationships can be displayed with <code><a href="../reference/finbif_informal_groups.html">finbif_informal_groups()</a></code></p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_informal_groups.html">finbif_informal_groups</a></span>(<span class="kw">limit</span> <span class="kw">=</span> <span class="fl">6</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_informal_groups.html">finbif_informal_groups</a></span><span class="op">(</span>limit <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt;   [1] "Algae"                                                     </span>
 <span class="co">#&gt;   [2] "Macro algae"                                               </span>
 <span class="co">#&gt;   [3] "Brown algae and yellow green algae"                        </span>
@@ -288,10 +295,11 @@
 <span class="co">#&gt; [116] "Ribbon worms"                                              </span>
 <span class="co">#&gt; [117] "Turbellarians"                                             </span>
 <span class="co">#&gt; attr(,"class")</span>
-<span class="co">#&gt; [1] "translation"</span></pre></body></html></div>
+<span class="co">#&gt; [1] "translation"</span></code></pre></div>
 </details><p><br></p>
 <p>You can select a subgroup by specifying a parent informal group as a function argument.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_informal_groups.html">finbif_informal_groups</a></span>(<span class="st">"Crustaceans"</span>)
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_informal_groups.html">finbif_informal_groups</a></span><span class="op">(</span><span class="st">"Crustaceans"</span><span class="op">)</span>
 <span class="co">#&gt; Crustaceans                                                   </span>
 <span class="co">#&gt;  ¦--Macrocrustaceans                                          </span>
 <span class="co">#&gt;  ¦   ¦--Amphipods, isopods, opossum shrimps                   </span>
@@ -301,7 +309,7 @@
 <span class="co">#&gt;  °--Microcrustaceans                                          </span>
 <span class="co">#&gt;      ¦--Branchiopoda                                          </span>
 <span class="co">#&gt;      ¦--Copepods                                              </span>
-<span class="co">#&gt;      °--Seed shrimps</span></pre></body></html></div>
+<span class="co">#&gt;      °--Seed shrimps</span></code></pre></div>
 </div>
 </div>
 <div id="collections" class="section level2">
@@ -309,12 +317,14 @@
 <a href="#collections" class="anchor"></a>Collections</h2>
 <p>Another special case of metadata is <code><a href="../reference/finbif_collections.html">finbif_collections()</a></code>. Collections are the highest level of record aggregation in the FinBIF database.</p>
 <p>You can subset collection metadata by using the <code>filter</code> and <code>select</code> arguments.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span>(
-  <span class="kw">filter</span> <span class="kw">=</span> <span class="no">geographic_coverage</span> <span class="kw">==</span> <span class="st">"Finland"</span>,
-  <span class="kw">select</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"collection_name"</span>, <span class="st">"taxonomic_coverage"</span>, <span class="st">"count"</span>)
-)</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span><span class="op">(</span>
+  filter <span class="op">=</span> <span class="va">geographic_coverage</span> <span class="op">==</span> <span class="st">"Finland"</span>,
+  select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"collection_name"</span>, <span class="st">"taxonomic_coverage"</span>, <span class="st">"count"</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt;         collection_name                   taxonomic_coverage                count  </span>
 <span class="co">#&gt; HR.1227 Coll Mikko Heikkinen              Biota                                  62</span>
 <span class="co">#&gt; HR.1349 JYV - Fungal collections          &lt;NA&gt;                                13397</span>
@@ -348,20 +358,25 @@
 <span class="co">#&gt; HR.60   Monitoring scheme of birds and m… Aves, Mammalia                     771270</span>
 <span class="co">#&gt; HR.627  Invasive mammal species of Finla… Mammalia                              228</span>
 <span class="co">#&gt; HR.808  E. Sjöholm´s butterfly collection Lepidoptera                          4951</span>
-<span class="co">#&gt; HR.847  Atlas of amphibians and reptiles… Amphibia, Reptilia                   5142</span></pre></body></html></div>
+<span class="co">#&gt; HR.847  Atlas of amphibians and reptiles… Amphibia, Reptilia                   5142</span></code></pre></div>
 </details><p><br></p>
 <p>By default, <code><a href="../reference/finbif_collections.html">finbif_collections()</a></code> only displays the lowest level collections. Higher level, “supercollections” can be viewed by setting <code>supercollections = TRUE</code> and you can limit the output to collections with a minimum number of records in them with the <code>nmin</code> argument.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">collections</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span>(<span class="kw">supercollections</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">nmin</span> <span class="kw">=</span> <span class="fl">10000</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">collections</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span><span class="op">(</span>supercollections <span class="op">=</span> <span class="cn">TRUE</span>, nmin <span class="op">=</span> <span class="fl">10000</span><span class="op">)</span></code></pre></div>
 <p>The <code><a href="../reference/finbif_collections.html">finbif_collections()</a></code> function returns a <code>data.frame</code> where the row names are the ID number of the collection.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span>(<span class="kw">supercollections</span> <span class="kw">=</span> <span class="fl">TRUE</span>)[<span class="st">"HR.128"</span>, <span class="st">"collection_name"</span>]</pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span><span class="op">(</span>supercollections <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="st">"HR.128"</span>, <span class="st">"collection_name"</span><span class="op">]</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r">
-<span class="co">#&gt; Collections of the Finnish Museum of Natural History Luomus</span></pre></body></html></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="co">#&gt; Collections of the Finnish Museum of Natural History Luomus</span></code></pre></div>
 </details><p><br></p>
 <p>You can see the child collections of a supercollection by specifying the ID as a filter. Note that the children of supercollections may also be supercollections</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span>(<span class="no">is_part_of</span> <span class="kw">==</span> <span class="st">"HR.128"</span>, <span class="kw">supercollections</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span><span class="op">(</span><span class="va">is_part_of</span> <span class="op">==</span> <span class="st">"HR.128"</span>, supercollections <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt;        collection_name abbreviation description online_url has_children is_part_of data_quality</span>
 <span class="co">#&gt; HR.129 Collections of… H            Herbarium … &lt;NA&gt;        TRUE        HR.128     MY.dataQual…</span>
 <span class="co">#&gt; HR.160 Zoological col… MZH          The collec… http://ww…  TRUE        HR.128     MY.dataQual…</span>
@@ -382,7 +397,7 @@
 <span class="co">#&gt; HR.173 &lt;NA&gt;          4143322</span>
 <span class="co">#&gt; HR.203 &lt;NA&gt;            14572</span>
 <span class="co">#&gt; HR.447 &lt;NA&gt;          2012066</span>
-<span class="co">#&gt; HR.48  &lt;NA&gt;         11944694</span></pre></body></html></div>
+<span class="co">#&gt; HR.48  &lt;NA&gt;         11944694</span></code></pre></div>
 </details><p><br></p>
 </div>
   </div>
@@ -402,7 +417,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
