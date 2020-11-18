@@ -228,7 +228,7 @@
 #' Variables related to the quality of records include:
 #'
 #' - `any_issues` Logical.
-#'   Are there any data quality issues associated with the record it's event or
+#'   Are there any data quality issues associated with the record, its event or
 #'   document.
 #' - `reported_taxon_confidence`
 #'    Reliability of the record's taxonomic identification as reported by the
@@ -245,9 +245,9 @@
 #' - `requires_identification` Logical.
 #'   Has the record been flagged for expert identification?
 #' - `record_reliability` Character.
-#'   Indication of the records reliability.
+#'   Indication of the record's reliability.
 #' - `record_quality` Character.
-#'   Indication of the records quality.
+#'   Indication of the record's quality.
 #'
 #' @section Misc:
 #' Other variables:
