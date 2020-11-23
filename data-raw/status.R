@@ -21,11 +21,14 @@ administrative_status <- read.csv(
     MX.birdsDirectiveStatusAppendix3A, 'Birds directive status appendix 3a', BDS3A
     MX.birdsDirectiveStatusAppendix3B, 'Birds directive status appendix 3b', BDS3B
     MX.finnishEnvironmentInstitute2010protectionPrioritySpecies, 'Finnish environment institute 2010 protection priority species', FEI_PPS
+    MX.finnishEnvironmentInstitute2020conservationProjectSpecies, 'Finnish environment institute 2020 conservation project species', FEI_CPS
     MX.gameBird, 'Game bird', GMEB
     MX.gameMammal, 'Game mammal', GMEM
     MX.unprotectedSpecies, 'Unprotected species', UNP_SP
     MX.nationallySignificantInvasiveSpecies, 'Nationally significant invasive species', NS_INVSV
     MX.euInvasiveSpeciesList, 'EU invasive species list', EU_INVSV
+    MX.otherPlantPest, 'Other plant pest' OPP_INVSV
+    MX.qualityPlantPest, 'Quality plant pest', QLPP_INVSV
     MX.quarantinePlantPest, 'Quarantine plant pest', QPP_INVSV
     MX.nationalInvasiveSpeciesStrategy, 'National invasive species strategy', NSS_INVSV
     MX.otherInvasiveSpeciesList, 'Other invasive species list', OTH_INVSV

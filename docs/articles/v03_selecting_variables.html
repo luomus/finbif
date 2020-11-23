@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -101,7 +101,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="v03_selecting_variables_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="v03_selecting_variables_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="v03_selecting_variables_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Selecting and ordering variables</h1>
@@ -115,7 +116,7 @@
 
     
     
-<p>When requesting data using <code>{finbif}</code> you can select from among (or order by) many variables (properties of the occurrence records). The default set of variables returned is a small subset of those available. Note that not all variables are available for all records. See <code><a href="../reference/variables.html">?variables</a></code> for details.</p>
+<p>When requesting data using <a href="https://github.com/luomus/finbif">finbif</a> you can select from among (or order by) many variables (properties of the occurrence records). The default set of variables returned is a small subset of those available. Note that not all variables are available for all records. See <code><a href="../reference/variables.html">?variables</a></code> for details.</p>
 <div id="selecting-variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#selecting-variables" class="anchor"></a>Selecting variables</h2>
@@ -123,12 +124,14 @@
 <h3 class="hasAnchor">
 <a href="#limiting-variables" class="anchor"></a>Limiting variables</h3>
 <p>To retrieve a limited set of variables from FinBIF simply specify the desired variables in the <code>select</code> argument.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(
-  <span class="kw">genus</span>  <span class="kw">=</span> <span class="st">"Falco"</span>,
-  <span class="kw">select</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"scientific_name"</span>, <span class="st">"life_stage"</span>, <span class="st">"sex"</span>)
-)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
+  genus  <span class="op">=</span> <span class="st">"Falco"</span>,
+  select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"scientific_name"</span>, <span class="st">"life_stage"</span>, <span class="st">"sex"</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 280421</span>
 <span class="co">#&gt; A data.frame [10 x 3]</span>
@@ -142,16 +145,18 @@
 <span class="co">#&gt; 7  Falco tinnunculus         NA  NA</span>
 <span class="co">#&gt; 8  Falco tinnunculus         NA  NA</span>
 <span class="co">#&gt; 9  Falco tinnunculus         NA  NA</span>
-<span class="co">#&gt; 10 Falco tinnunculus         NA  NA</span></pre></body></html></div>
+<span class="co">#&gt; 10 Falco tinnunculus         NA  NA</span></code></pre></div>
 </details><p><br></p>
 </div>
 <div id="extra-variables" class="section level3">
 <h3 class="hasAnchor">
 <a href="#extra-variables" class="anchor"></a>Extra variables</h3>
 <p>To get extra variables as well as the default set, specify the extra variables in addition to the keyword <code>"default_vars"</code>.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="kw">select</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"default_vars"</span>, <span class="st">"life_stage"</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"default_vars"</span>, <span class="st">"life_stage"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 34696897</span>
 <span class="co">#&gt; A data.frame [10 x 13]</span>
@@ -168,7 +173,7 @@
 <span class="co">#&gt; 10       JX.1110587#115          Picus canus  1         60.4088   22.20608 2020-04-21 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 7 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality, life_stage</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality, life_stage</span></code></pre></div>
 </details><p><br></p>
 </div>
 </div>
@@ -180,9 +185,11 @@
 <h3 class="hasAnchor">
 <a href="#ascending-order" class="anchor"></a>Ascending order</h3>
 <p>By default occurrence records are ordered by variables in ascending order.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>, <span class="kw">order_by</span> <span class="kw">=</span> <span class="st">"abundance"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, order_by <span class="op">=</span> <span class="st">"abundance"</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 57007</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -199,16 +206,18 @@
 <span class="co">#&gt; 10         MHU.18161417   Cygnus cygnus  1         62.27627  23.59633 1994-04-30 19:50:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 </div>
 <div id="descending-order" class="section level3">
 <h3 class="hasAnchor">
 <a href="#descending-order" class="anchor"></a>Descending order</h3>
 <p>You can switch to descending order by prefixing the variable with a dash.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>, <span class="kw">order_by</span> <span class="kw">=</span> <span class="st">"-abundance"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, order_by <span class="op">=</span> <span class="st">"-abundance"</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 57007</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -225,16 +234,18 @@
 <span class="co">#&gt; 10     MHU.29306332   Cygnus cygnus  641       62.27627  23.59633 2008-11-20 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 </div>
 <div id="multiple-variables" class="section level3">
 <h3 class="hasAnchor">
 <a href="#multiple-variables" class="anchor"></a>Multiple variables</h3>
 <p>You can specify multiple variables to order by. Sorting primacy is from left to right.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus olor"</span>, <span class="kw">order_by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"municipality"</span>, <span class="st">"-abundance"</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus olor"</span>, order_by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"municipality"</span>, <span class="st">"-abundance"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 24344</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -251,16 +262,18 @@
 <span class="co">#&gt; 10     MHU.29307741     Cygnus olor  1         61.2287   23.92458 2010-05-11 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 </div>
 <div id="random-sample" class="section level3">
 <h3 class="hasAnchor">
 <a href="#random-sample" class="anchor"></a>Random sample</h3>
 <p>You can also request a random sample (random order) of occurrence records by setting the <code>sample</code> argument to <code>TRUE</code>.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="kw">sample</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 34696897</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -277,7 +290,7 @@
 <span class="co">#&gt; 10        JX.241328#2     Colocasia coryli  1         62.24982  27.47792 2014-06-09 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 </div>
 </div>
@@ -298,7 +311,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

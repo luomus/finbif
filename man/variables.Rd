@@ -251,7 +251,7 @@ Has the record been restricted for other reasons.
 Variables related to the quality of records include:
 \itemize{
 \item \code{any_issues} Logical.
-Are there any data quality issues associated with the record it's event or
+Are there any data quality issues associated with the record, its event or
 document.
 \item \code{reported_taxon_confidence}
 Reliability of the record's taxonomic identification as reported by the
@@ -268,9 +268,9 @@ Has the record been flagged for expert verification?
 \item \code{requires_identification} Logical.
 Has the record been flagged for expert identification?
 \item \code{record_reliability} Character.
-Indication of the records reliability.
+Indication of the record's reliability.
 \item \code{record_quality} Character.
-Indication of the records quality.
+Indication of the record's quality.
 }
 }
 

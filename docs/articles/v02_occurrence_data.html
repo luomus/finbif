@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -101,7 +101,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="v02_occurrence_data_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="v02_occurrence_data_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="v02_occurrence_data_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Occurrence records from FinBIF</h1>
@@ -115,10 +116,12 @@
 
     
     
-<p>The core purpose of <code>{finbif}</code> is accessing occurrence data stored in the FinBIF database. Occurrence data can be retrieved from FinBIF with the function <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>. Without any arguments specified <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> will retrieve the latest 10 occurrence records from FinBIF.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>()</pre></body></html></div>
+<p>The core purpose of <a href="https://github.com/luomus/finbif">finbif</a> is accessing occurrence data stored in the FinBIF database. Occurrence data can be retrieved from FinBIF with the function <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>. Without any arguments specified <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> will retrieve the latest 10 occurrence records from FinBIF.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 34700400</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -135,26 +138,29 @@
 <span class="co">#&gt; 10       7#7 Garrulus glandarius  1         61.13305  21.65151 2020-04-22 06:30:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br> The print method for the resulting <code>finbif_occ</code> object will display the number of records downloaded, the total number of records available, a data summary including up to 10 rows of some core record variables (when available), the number of remaining records and variables, as well as the names of additional variables.</p>
 <div id="darwin-core-variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#darwin-core-variables" class="anchor"></a>Darwin Core Variables</h2>
 <p>You can switch from the default variable names to <a href="http://rs.tdwg.org/dwc/">Darwin Core</a> style names by setting <code>dwc = TRUE</code>.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="kw">dwc</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>dwc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "occurrenceID"                  "scientificName"                "individualCount"              </span>
 <span class="co">#&gt;  [4] "decimalLatitude"               "decimalLongitude"              "eventDateTime"                </span>
 <span class="co">#&gt;  [7] "coordinateUncertaintyInMeters" "hasIssues"                     "requires_verification"        </span>
-<span class="co">#&gt; [10] "requiresIdentification"        "occurrenceReliability"         "occurrenceQuality"</span></pre></body></html></div>
-<p>The functions <code><a href="../reference/to_dwc.html">to_dwc()</a></code> and <code><a href="../reference/to_dwc.html">to_native()</a></code> can be used to translate variable names to and from Darwin Core style and <code>{finbif}</code>’s native variable names style.</p>
+<span class="co">#&gt; [10] "requiresIdentification"        "occurrenceReliability"         "occurrenceQuality"</span></code></pre></div>
+<p>The functions <code><a href="../reference/to_dwc.html">to_dwc()</a></code> and <code><a href="../reference/to_dwc.html">to_native()</a></code> can be used to translate variable names to and from Darwin Core style and <a href="https://github.com/luomus/finbif">finbif</a>’s native variable names style.</p>
 </div>
 <div id="choosing-taxa" class="section level2">
 <h2 class="hasAnchor">
 <a href="#choosing-taxa" class="anchor"></a>Choosing taxa</h2>
 <p>You can limit the records to certain taxa by specifying them as an argument.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 57007</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -171,12 +177,14 @@
 <span class="co">#&gt; 10         JX.1109952#4   Cygnus cygnus  4         61.2641   28.70687 2020-04-16 11:33:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 <p>Multiple taxa can be requested at once.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>, <span class="st">"Cygnus olor"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, <span class="st">"Cygnus olor"</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 81351</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -193,23 +201,26 @@
 <span class="co">#&gt; 10         JX.1110008#3   Cygnus cygnus  10        64.17427  25.9137  2020-04-17 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 <p>You can also chose higher taxonomic groups and use common names (in English, Finnish and Swedish).</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">birds</span>  <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Birds"</span>)
-<span class="no">linnut</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Linnut"</span>)
-<span class="no">faglar</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Fåglar"</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birds</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Birds"</span><span class="op">)</span>
+<span class="va">linnut</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Linnut"</span><span class="op">)</span>
+<span class="va">faglar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Fåglar"</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">birds</span>, <span class="no">linnut</span>, <span class="no">faglar</span>), <span class="no">nrow</span>)
-<span class="co">#&gt; [1] 10 10 10</span></pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">birds</span>, <span class="va">linnut</span>, <span class="va">faglar</span><span class="op">)</span>, <span class="va">nrow</span><span class="op">)</span>
+<span class="co">#&gt; [1] 10 10 10</span></code></pre></div>
 </div>
 <div id="request-size" class="section level2">
 <h2 class="hasAnchor">
 <a href="#request-size" class="anchor"></a>Request size</h2>
 <p>You can increase the number of records returned by using the <code>n</code> argument.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">1001</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1001</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 1001</span>
 <span class="co">#&gt; Records available: 34696846</span>
 <span class="co">#&gt; A data.frame [1001 x 12]</span>
@@ -226,19 +237,22 @@
 <span class="co">#&gt; 10       JX.1110587#115          Picus canus  1         60.4088   22.20608 2020-04-21 12:00:00</span>
 <span class="co">#&gt; ...with 991 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 <p>You can see how many records are available for a given request, without retrieving any records, by setting <code>count_only = TRUE</code>.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="kw">count_only</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="co">#&gt; [1] 34696846</span></pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>count_only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="co">#&gt; [1] 34696846</span></code></pre></div>
 </div>
 <div id="checking-taxa" class="section level2">
 <h2 class="hasAnchor">
 <a href="#checking-taxa" class="anchor"></a>Checking taxa</h2>
 <p>When you request occurrence records for specific taxa, by default, the taxon names are first checked against the FinBIF database. If any of the requested taxa are not found in the database you will receive a warning but the data will still be retrieved for the remaining taxa.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 3326</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -255,12 +269,14 @@
 <span class="co">#&gt; 10         JX.1103437#4   Vulpes vulpes  1         60.55732  22.25711 2020-03-14 09:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 <p>You can turn off taxon name pre-checking by setting the value of the <code>check_taxa</code> argument to <code>FALSE</code>.</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span>, <span class="kw">check_taxa</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span>, check_taxa <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 3326</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -277,20 +293,23 @@
 <span class="co">#&gt; 10         JX.1103437#4   Vulpes vulpes  1         60.55732  22.25711 2020-03-14 09:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 <p>By setting the argument, <code>on_check_fail</code> to <code>"error"</code> (the default is <code>"warn"</code>), you can elevate the warnings to errors and the request will fail if any of the taxa are not found in the FinBIF database.</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span>, <span class="kw">on_check_fail</span> <span class="kw">=</span> <span class="st">"error"</span>)
-<span class="co">#&gt; Error: Cannot find taxa: Moomin</span></pre></body></html></div>
-<p>This can be a useful strategy if you are using <code>{finbif}</code> non-interactively (in a script), and you do not want to proceed if any of your taxon names are wrong or misspelled.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span>, on_check_fail <span class="op">=</span> <span class="st">"error"</span><span class="op">)</span>
+<span class="co">#&gt; Error: Cannot find taxa: Moomin</span></code></pre></div>
+<p>This can be a useful strategy if you are using <a href="https://github.com/luomus/finbif">finbif</a> non-interactively (in a script), and you do not want to proceed if any of your taxon names are wrong or misspelled.</p>
 </div>
 <div id="time-duration" class="section level2">
 <h2 class="hasAnchor">
 <a href="#time-duration" class="anchor"></a>Time &amp; duration</h2>
 <p>The default behaviour of <code>finbif_occurrence</code> is to consolidate date and time data for occurrence recording events into a <code>date_time</code> variable. This can be turned off (which can speed up data processing time) by deselecting the <code>date_time</code> variable.</p>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="kw">select</span> <span class="kw">=</span> <span class="st">"-date_time"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>select <span class="op">=</span> <span class="st">"-date_time"</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 34696846</span>
 <span class="co">#&gt; A data.frame [10 x 11]</span>
@@ -306,7 +325,7 @@
 <span class="co">#&gt; 9        JX.1110587#112     Larus argentatus  3         60.4088   22.20608  10000                 </span>
 <span class="co">#&gt; 10       JX.1110587#115          Picus canus  1         60.4088   22.20608  10000                 </span>
 <span class="co">#&gt; ...with 0 more records and 5 more variables:</span>
-<span class="co">#&gt; any_issues, requires_verification, requires_identification, record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; any_issues, requires_verification, requires_identification, record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 <div id="timezone" class="section level3">
 <h3 class="hasAnchor">
@@ -314,10 +333,12 @@
 <div id="timezone-input" class="section level4">
 <h4 class="hasAnchor">
 <a href="#timezone-input" class="anchor"></a>Timezone input</h4>
-<p>The FinBIF database doesn’t currently store timezone information, so <code>{finbif}</code> makes assumptions about the appropriate timezone based on the time and location of the occurrence recording events to calculate <code>date_time</code> and <code>duration</code>. By default, a fast heuristic is used to determine the timezones. If you require greater accuracy (e.g., you are using data on the Finnish/Swedish border and daytime/nighttime hours are important), you can switch to more accurate, though slower, timezone calculation method.</p>
-<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="kw">date_time_method</span> <span class="kw">=</span> <span class="st">"accurate"</span>)</pre></body></html></div>
+<p>The FinBIF database doesn’t currently store timezone information, so <a href="https://github.com/luomus/finbif">finbif</a> makes assumptions about the appropriate timezone based on the time and location of the occurrence recording events to calculate <code>date_time</code> and <code>duration</code>. By default, a fast heuristic is used to determine the timezones. If you require greater accuracy (e.g., you are using data on the Finnish/Swedish border and daytime/nighttime hours are important), you can switch to more accurate, though slower, timezone calculation method.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>date_time_method <span class="op">=</span> <span class="st">"accurate"</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb20"><html><body><pre class="r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 34696846</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -334,18 +355,21 @@
 <span class="co">#&gt; 10       JX.1110587#115          Picus canus  1         60.4088   22.20608 2020-04-21 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 </div>
 <div id="timezone-output" class="section level4">
 <h4 class="hasAnchor">
 <a href="#timezone-output" class="anchor"></a>Timezone output</h4>
 <p>The timezone of the calculated <code>date_time</code> variable is determined by the timezone of your operating system.</p>
-<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/timezones.html">Sys.timezone</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/timezones.html">Sys.timezone</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>You can override this by setting the <code>tzone</code> argument to a different value.</p>
-<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="kw">tzone</span> <span class="kw">=</span> <span class="st">"Etc/UTC"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>tzone <span class="op">=</span> <span class="st">"Etc/UTC"</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb23"><html><body><pre class="r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 34696846</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -362,10 +386,11 @@
 <span class="co">#&gt; 10       JX.1110587#115          Picus canus  1         60.4088   22.20608 2020-04-21 09:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 <p>Or set the global timezone option to set the timezone for the current session.</p>
-<div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">finbif_tz</span> <span class="kw">=</span> <span class="st">"Etc/UTC"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>finbif_tz <span class="op">=</span> <span class="st">"Etc/UTC"</span><span class="op">)</span></code></pre></div>
 <p>This may be advisable for reproducibility or when working with multiple systems.</p>
 </div>
 </div>
@@ -387,7 +412,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

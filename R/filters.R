@@ -175,7 +175,7 @@
 #'   verification (`FALSE`).
 #' - `collection_quality` Character vector.
 #'   Filter by one or more collection quality types. Must be one of
-#'   `"professional"`, `"hobbyist"` or `"amatuer"`.
+#'   `"professional"`, `"hobbyist"` or `"amateur"`.
 #' - `record_reliability` Character vector.
 #'   Filter by the reliability of the record. Must be one or more of
 #'   `"reliable"`, `"unassessed` or `"unreliable"`. Default is
@@ -183,7 +183,7 @@
 #' - `record_quality` Character vector.
 #'   Filter by the quality of the record. Must be one or more of
 #'   `"expert_verified"`, `"community_verified"`, `"unassessed"`, `"uncertain"`,
-#'   or `"errorneous"`.
+#'   or `"erroneous"`.
 #'
 #' @section Misc:
 #' Other filters:
@@ -281,7 +281,7 @@
 #'   form `"<fact>=<value>"`. Value can be omitted in which case all records
 #'   with any value recorded for the specified fact will be returned.
 #' - `has_sample` Logical.
-#'   Record includes a sample or samples (e.g., a DNA sample or preparation)
+#'   Record includes a sample or samples (e.g., a DNA sample or preparation).
 #'
 #' @name filters
 NULL

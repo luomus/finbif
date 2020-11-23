@@ -2,6 +2,8 @@ PKGNAME := $(shell sed -n "s/Package: *\([^ ]*\)/\1/p" DESCRIPTION)
 PKGVERS := $(shell sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION)
 PKGSRC  := $(shell basename `pwd`)
 RSCRIPT = Rscript --no-init-file
+export _R_CHECK_SYSTEM_CLOCK_ = false
+export _R_CHECK_FUTURE_FILE_TIMESTAMPS_ = false
 
 all: check clean
 

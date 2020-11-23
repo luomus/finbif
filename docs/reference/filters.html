@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -275,8 +275,8 @@ first two elements are latitude and longitude and third is the coordinate
 system (currently only <code>"wgs84"</code> is implemented). Records returned will be
 those for which the center point exactly matches that which is specified.</p></li>
 <li><p><code>coordinates_cell_{1k|10k|50k|100k}</code> Coordinates.
-A vector of coordinate data (lat, lon). Filter by grid cell at scale <code>*</code>.
-Where <code>*</code> is 1, 10, 50 or 100. The coordinates specify the southeast corner
+A vector of coordinate data (lat, lon). Filter by grid cell at scale <code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code>.
+Where <code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code> is 1, 10, 50 or 100. The coordinates specify the southeast corner
 of the cell. Coordinates system is uniform <code>"kkj"</code> (also known as "ykj").</p></li>
 <li><p><code>coordinates_cell_{1k|10k|50k|100k}_center</code> Coordinates.
 As above, except coordinates indicate center of grid cell.</p></li>
@@ -302,7 +302,7 @@ two <a href='https://rdrr.io/r/base/Dates.html'>Date</a> objects (begin and end 
 are coercible to the <a href='https://rdrr.io/r/base/Dates.html'>Date</a> class by
 <a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_date</a>. When supplying dates as strings, the day or
 month-and-day can be omitted (e.g.,<code>"2001-04"</code> or <code>"2001"</code>). Note however,
-that when omitting day, only "<code>-</code>" is allowed to separate year and month,
+that when omitting day, only "<code><a href='https://rdrr.io/r/base/Arithmetic.html'>-</a></code>" is allowed to separate year and month,
 and months must be in two-digit/leading zero form. If the begin or end
 dates are partial date strings they will be interpreted as the first or
 last day of the month or year (e.g., <code><a href='https://rdrr.io/r/base/c.html'>c(2001, 2003)</a></code> is equivalent to
@@ -341,7 +341,7 @@ Show only records requiring verification (<code>TRUE</code>) or not requiring
 verification (<code>FALSE</code>).</p></li>
 <li><p><code>collection_quality</code> Character vector.
 Filter by one or more collection quality types. Must be one of
-<code>"professional"</code>, <code>"hobbyist"</code> or <code>"amatuer"</code>.</p></li>
+<code>"professional"</code>, <code>"hobbyist"</code> or <code>"amateur"</code>.</p></li>
 <li><p><code>record_reliability</code> Character vector.
 Filter by the reliability of the record. Must be one or more of
 <code>"reliable"</code>, <code>"unassessed</code> or <code>"unreliable"</code>. Default is
@@ -349,7 +349,7 @@ Filter by the reliability of the record. Must be one or more of
 <li><p><code>record_quality</code> Character vector.
 Filter by the quality of the record. Must be one or more of
 <code>"expert_verified"</code>, <code>"community_verified"</code>, <code>"unassessed"</code>, <code>"uncertain"</code>,
-or <code>"errorneous"</code>.</p></li>
+or <code>"erroneous"</code>.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="misc"><a class="anchor" href="#misc"></a>Misc</h2>
@@ -450,7 +450,7 @@ Filter by record, event or document facts. Facts are key-value pairs of the
 form <code>"&lt;fact&gt;=&lt;value&gt;"</code>. Value can be omitted in which case all records
 with any value recorded for the specified fact will be returned.</p></li>
 <li><p><code>has_sample</code> Logical.
-Record includes a sample or samples (e.g., a DNA sample or preparation)</p></li>
+Record includes a sample or samples (e.g., a DNA sample or preparation).</p></li>
 </ul>
 
 
@@ -469,7 +469,7 @@ Record includes a sample or samples (e.g., a DNA sample or preparation)</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

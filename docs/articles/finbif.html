@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -101,7 +101,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="finbif_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="finbif_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="finbif_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to the finbif package</h1>
@@ -115,58 +116,68 @@
 
     
     
-<p>FinBIF aggregates Finnish biodiversity data from multiple sources in a single open access portal for researchers, citizen scientists, industry and government. FinBIF allows users of biodiversity information to find, access, combine and visualise data on Finnish plants, animals and microorganisms. The <code>{finbif}</code> R package makes the publicly available data in FinBIF easily accessible to programmers. Biodiversity information is available on taxonomy and taxon occurrence. Occurrence data can be filtered by taxon, time, location and other variables. The data accessed are conveniently preformatted for subsequent analyses.</p>
+<p>FinBIF aggregates Finnish biodiversity data from multiple sources in a single open access portal for researchers, citizen scientists, industry and government. FinBIF allows users of biodiversity information to find, access, combine and visualise data on Finnish plants, animals and microorganisms. The <a href="https://github.com/luomus/finbif">finbif</a> R package makes the publicly available data in FinBIF easily accessible to programmers. Biodiversity information is available on taxonomy and taxon occurrence. Occurrence data can be filtered by taxon, time, location and other variables. The data accessed are conveniently preformatted for subsequent analyses.</p>
 <div id="installing-the-finbif-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installing-the-finbif-package" class="anchor"></a>Installing the finbif package</h2>
-<p>You can install the current stable version of <code>{finbif}</code> from <a href="https://cran.r-project.org">CRAN</a>,</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"finbif"</span>)</pre></body></html></div>
-<p>You can also install the latest development version of <code>{finbif}</code> from <a href="https://github.com">GitHub</a>,</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"luomus/finbif@dev"</span>)</pre></body></html></div>
+<p>You can install the current stable version of <a href="https://github.com/luomus/finbif">finbif</a> from <a href="https://cran.r-project.org">CRAN</a>,</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"finbif"</span><span class="op">)</span></code></pre></div>
+<p>You can also install the latest development version of <a href="https://github.com/luomus/finbif">finbif</a> from <a href="https://github.com">GitHub</a>,</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"luomus/finbif@dev"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="loading-the-finbif-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#loading-the-finbif-package" class="anchor"></a>Loading the finbif package</h2>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">finbif</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/luomus/finbif">finbif</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="getting-a-finbif-access-token" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-a-finbif-access-token" class="anchor"></a>Getting a FinBIF access token</h2>
 <p>To use the FinBIF API you must first request and set a personal access token. You can request an API token to be sent to your email address with the function <code>finbif_get_token()</code>.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_request_token.html">finbif_request_token</a></span>(<span class="st">"your@email.com"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_request_token.html">finbif_request_token</a></span><span class="op">(</span><span class="st">"your@email.com"</span><span class="op">)</span></code></pre></div>
 <p>Copy the access token that was sent to your email and set it as the environment variable <code>FINBIF_ACCESS_TOKEN</code> either for the current session,</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span>(
-  <span class="kw">FINBIF_ACCESS_TOKEN</span> <span class="kw">=</span> <span class="st">"xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"</span>
-)
-<span class="co"># Note: the above is not a real access token. Do not try using it.</span></pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>
+  FINBIF_ACCESS_TOKEN <span class="op">=</span> <span class="st">"xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"</span>
+<span class="op">)</span>
+<span class="co"># Note: the above is not a real access token. Do not try using it.</span></code></pre></div>
 <p>, or by adding it to a <code>Renviron</code> startup file (see <a href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/">here</a> for details).</p>
 </div>
 <div id="working-with-taxa" class="section level2">
 <h2 class="hasAnchor">
 <a href="#working-with-taxa" class="anchor"></a>Working with taxa</h2>
 <p>You can check to see if a taxon exists in the FinBIF database.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span>(<span class="st">"Ursus arctos"</span>)
-<span class="co">#&gt; [Ursus arctos] ID: MX.47348</span></pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span><span class="op">)</span>
+<span class="co">#&gt; [Ursus arctos] ID: MX.47348</span></code></pre></div>
 <p>If the taxon is in the FinBIF database its unique ID is returned. When a taxon is not in the FinBIF database it is reported as “not found” and for that taxa the list element is <code>NA</code>.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r">(<span class="no">taxa</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Ursus arctos"</span>, <span class="st">"Moomin"</span>)))
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">taxa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span>, <span class="st">"Moomin"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [Ursus arctos] ID: MX.47348</span>
 <span class="co">#&gt; [Moomin      ] Not found</span>
-<span class="no">taxa</span><span class="kw">[[</span><span class="fl">1</span>]]
+<span class="va">taxa</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; Ursus arctos </span>
 <span class="co">#&gt;   "MX.47348"</span>
-<span class="no">taxa</span><span class="kw">[[</span><span class="fl">2</span>]]
+<span class="va">taxa</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; Moomin </span>
-<span class="co">#&gt;     NA</span></pre></body></html></div>
+<span class="co">#&gt;     NA</span></code></pre></div>
 <p>You can also specify the taxonomic rank when searching FinBIF and the search will be limited to the specified rank.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">species</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Ursus arctos"</span>, <span class="st">"Ursus"</span>), <span class="kw">genus</span> <span class="kw">=</span> <span class="st">"Ursus"</span>))
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span>, <span class="st">"Ursus"</span><span class="op">)</span>, genus <span class="op">=</span> <span class="st">"Ursus"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [species: Ursus arctos] ID: MX.47348</span>
 <span class="co">#&gt; [species: Ursus       ] Not found</span>
-<span class="co">#&gt; [genus:   Ursus       ] ID: MX.51311</span></pre></body></html></div>
+<span class="co">#&gt; [genus:   Ursus       ] ID: MX.51311</span></code></pre></div>
 <p>The function <code><a href="../reference/finbif_taxa.html">finbif_taxa()</a></code> can be used for a more general search for taxa in the FinBIF database. Searches can be <code>exact</code>, <code>partial</code> or <code>likely</code> (fuzzy matching). Information for a single taxon is returned when using exact or fuzzy matching, but multiple taxa, up to a limit, <code>n</code>, may be returned when using partial matching.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">birch_search</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/finbif_taxa.html">finbif_taxa</a></span>(<span class="st">"Betula pendula"</span>, <span class="fl">2</span>, <span class="st">"partial"</span>)
-<span class="no">birch_search</span>$<span class="no">content</span></pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birch_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_taxa.html">finbif_taxa</a></span><span class="op">(</span><span class="st">"Betula pendula"</span>, <span class="fl">2</span>, <span class="st">"partial"</span><span class="op">)</span>
+<span class="va">birch_search</span><span class="op">$</span><span class="va">content</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; [[1]]$matchingName</span>
 <span class="co">#&gt; [1] "Betula pendula var. pendula"</span>
@@ -279,14 +290,15 @@
 <span class="co">#&gt; [[2]]$type</span>
 <span class="co">#&gt; [1] "partialMatches"</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; </span></pre></body></html></div>
+<span class="co">#&gt; </span></code></pre></div>
 </details><p><br></p>
 </div>
 <div id="getting-occurrence-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-occurrence-data" class="anchor"></a>Getting occurrence data</h2>
 <p>You can download occurrence data from the FinBIF database as a <code>data.frame</code> with the <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> function.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Cygnus cygnus"</span>, <span class="kw">n</span> <span class="kw">=</span> <span class="fl">100</span>)
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
 <span class="co">#&gt; Records downloaded: 100</span>
 <span class="co">#&gt; Records available: 57008</span>
 <span class="co">#&gt; A data.frame [100 x 12]</span>
@@ -303,15 +315,17 @@
 <span class="co">#&gt; 10         JX.1109952#4   Cygnus cygnus  4         61.2641   28.70687 2020-04-16 11:33:00</span>
 <span class="co">#&gt; ...with 90 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 <p>You can search for multiple taxa at once and filter the records with the <code>filter</code> argument.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(
-  <span class="st">"Cygnus cygnus"</span>,
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
+  <span class="st">"Cygnus cygnus"</span>, 
   <span class="st">"Cygnus olor"</span>,
-  <span class="kw">filter</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">coordinates_uncertainty_max</span> <span class="kw">=</span> <span class="fl">100</span>)
-)</pre></body></html></div>
+  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>coordinates_uncertainty_max <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 11553</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -328,16 +342,18 @@
 <span class="co">#&gt; 10      JX.1109218#22   Cygnus cygnus  1         61.09307  21.55221 2020-04-13 06:45:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 <p>See <code><a href="../reference/filters.html">?filters</a></code> and <code><a href="../articles/v05_filtering.html">vignette("v05_filtering")</a></code> for more details on filtering FinBIF records.</p>
 <div id="random-sampling" class="section level3">
 <h3 class="hasAnchor">
 <a href="#random-sampling" class="anchor"></a>Random sampling</h3>
 <p>It is possible to request a random sample of records instead of the last <code>n</code> records (or records ordered by some other variable).</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(<span class="st">"Birds"</span>, <span class="kw">sample</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Birds"</span>, sample <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 17833621</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
@@ -354,62 +370,63 @@
 <span class="co">#&gt; 10         MHU.1732099      Strix uralensis  1         62.34485  27.10288 2006-04-19 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></pre></body></html></div>
+<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
 </div>
 </div>
 <div id="plotting-occurrence-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plotting-occurrence-data" class="anchor"></a>Plotting occurrence data</h2>
-<p>The <code>{finbif}</code> package has a number of inbuilt functions for plotting (see e.g., <code><a href="../reference/breaks_xy.html">breaks_xy()</a></code> and <code><a href="../reference/hist_xy.html">hist_xy()</a></code>). There is also an inbuilt dataset that can be used to plot the border of Finland (<code><a href="../reference/finland_map.html">?finland_map</a></code>). Together these utilities can be used to plot occurrences after they have been downloaded from FinBIF. For example, the following can be used to plot the density of Eurasian Jay occurrences from Finland.</p>
+<p>The <a href="https://github.com/luomus/finbif">finbif</a> package has a number of inbuilt functions for plotting (see e.g., <code><a href="../reference/breaks_xy.html">breaks_xy()</a></code> and <code><a href="../reference/hist_xy.html">hist_xy()</a></code>). There is also an inbuilt dataset that can be used to plot the border of Finland (<code><a href="../reference/finland_map.html">?finland_map</a></code>). Together these utilities can be used to plot occurrences after they have been downloaded from FinBIF. For example, the following can be used to plot the density of Eurasian Jay occurrences from Finland.</p>
 <details closed><p><summary><span title="">Click to show/hide code.</span></summary></p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="co"># Download all the occurrences of Eurasian Jay in Finland</span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Download all the occurrences of Eurasian Jay in Finland</span>
 <span class="co"># that have coordinates accurate to at least 100m</span>
-<span class="no">jays</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span>(
-  <span class="kw">taxa</span>   <span class="kw">=</span> <span class="st">"Eurasian Jay"</span>,
-  <span class="kw">filter</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-    <span class="kw">coordinates_uncertainty_max</span> <span class="kw">=</span> <span class="fl">100</span>,
-    <span class="kw">country</span>                     <span class="kw">=</span> <span class="st">"Finland"</span>
-  ),
-  <span class="kw">n</span>      <span class="kw">=</span> <span class="fl">2e4</span>,
-  <span class="kw">quiet</span>  <span class="kw">=</span> <span class="fl">TRUE</span>
-)
+<span class="va">jays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
+  taxa   <span class="op">=</span> <span class="st">"Eurasian Jay"</span>,
+  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    coordinates_uncertainty_max <span class="op">=</span> <span class="fl">100</span>,
+    country                     <span class="op">=</span> <span class="st">"Finland"</span>
+  <span class="op">)</span>,
+  n      <span class="op">=</span> <span class="fl">2e4</span>,
+  quiet  <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
 
 <span class="co"># Compute the density of occurrences in 1/4 degree cells and plot as a heatmap</span>
-<span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">jays</span>, <span class="no">finland_map</span>),
-  <span class="kw">expr</span> <span class="kw">=</span> {
-    <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(<span class="kw">mar</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">1</span>), <span class="kw">las</span> <span class="kw">=</span> <span class="fl">1</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span>
+  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">jays</span>, <span class="va">finland_map</span><span class="op">)</span>,
+  expr <span class="op">=</span> <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
     <span class="co"># compute a 2d histogram from the occurrences</span>
-    <span class="no">breaks</span>  <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/breaks_xy.html">breaks_xy</a></span>(<span class="no">bbox</span>, <span class="fl">.25</span>) <span class="co"># breakpoints every 1/4 of a degree</span>
-    <span class="no">density</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/hist_xy.html">hist_xy</a></span>(<span class="kw">xy</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">lon_wgs84</span>, <span class="no">lat_wgs84</span>), <span class="no">breaks</span>)
+    <span class="va">breaks</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/breaks_xy.html">breaks_xy</a></span><span class="op">(</span><span class="va">bbox</span>, <span class="fl">.25</span><span class="op">)</span> <span class="co"># breakpoints every 1/4 of a degree</span>
+    <span class="va">density</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hist_xy.html">hist_xy</a></span><span class="op">(</span>xy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">lon_wgs84</span>, <span class="va">lat_wgs84</span><span class="op">)</span>, <span class="va">breaks</span><span class="op">)</span>
     <span class="co"># plot the histogram as a heatmap</span>
-    <span class="fu"><a href="https://rdrr.io/r/graphics/image.html">image</a></span>(<span class="no">density</span>,
-          <span class="kw">asp</span>    <span class="kw">=</span> <span class="fl">2.4</span>,
-          <span class="kw">breaks</span> <span class="kw">=</span> <span class="fl">2</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">0</span>, <span class="fl">12</span>), <span class="co"># breakpoints for the gridcell colours</span>
-          <span class="kw">col</span>    <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span>(<span class="fl">12</span>, <span class="kw">rev</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-          <span class="kw">xlab</span>   <span class="kw">=</span> <span class="st">"Longitude"</span>,
-          <span class="kw">ylab</span>   <span class="kw">=</span> <span class="st">"Latitude"</span>,
-          <span class="kw">panel.first</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/grid.html">grid</a></span>())
-    <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span>(<span class="st">"topright"</span>,
-           <span class="kw">inset</span>  <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">.01</span>),
-           <span class="kw">legend</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span>(<span class="fl">2</span>^<span class="fl">12</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="fl">2</span>^<span class="fl">6</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="fl">2</span>^<span class="fl">0</span>),
-           <span class="kw">fill</span>   <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span>(<span class="fl">7</span>),
-           <span class="kw">border</span> <span class="kw">=</span> <span class="fl">NA</span>,
-           <span class="kw">bty</span>    <span class="kw">=</span> <span class="st">"n"</span>,
-           <span class="kw">adj</span>    <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">0.25</span>),
-           <span class="kw">x.intersp</span> <span class="kw">=</span> <span class="fl">.2</span>,
-           <span class="kw">y.intersp</span> <span class="kw">=</span> <span class="fl">.5</span>)
+    <span class="fu"><a href="https://rdrr.io/r/graphics/image.html">image</a></span><span class="op">(</span><span class="va">density</span>,
+          asp    <span class="op">=</span> <span class="fl">2.4</span>,
+          breaks <span class="op">=</span> <span class="fl">2</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">12</span><span class="op">)</span>, <span class="co"># breakpoints for the gridcell colours</span>
+          col    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">12</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+          xlab   <span class="op">=</span> <span class="st">"Longitude"</span>,
+          ylab   <span class="op">=</span> <span class="st">"Latitude"</span>,
+          panel.first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/grid.html">grid</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>,
+           inset  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.01</span><span class="op">)</span>,
+           legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fl">2</span><span class="op">^</span><span class="fl">12</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="fl">2</span><span class="op">^</span><span class="fl">6</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="fl">2</span><span class="op">^</span><span class="fl">0</span><span class="op">)</span>,
+           fill   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span>,
+           border <span class="op">=</span> <span class="cn">NA</span>,
+           bty    <span class="op">=</span> <span class="st">"n"</span>,
+           adj    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.25</span><span class="op">)</span>, 
+           x.intersp <span class="op">=</span> <span class="fl">.2</span>,
+           y.intersp <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span>
     <span class="co"># add the Finnish border</span>
-    <span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">vertices</span>, <span class="kw">lwd</span> <span class="kw">=</span> <span class="fl">.2</span>)
-  }
-)</pre></body></html></div>
+    <span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">vertices</span>, lwd <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">)</span></code></pre></div>
 </details><p><img src="../man/figures/plot-occurrences-eval-1.png"></p>
 </div>
 <div id="caching" class="section level2">
 <h2 class="hasAnchor">
 <a href="#caching" class="anchor"></a>Caching</h2>
-<p>By default <code>{finbif}</code> uses local caching for repeated API requests. This can be turned on or off on a per request or session basis. See <code><a href="../reference/caching.html">?caching</a></code> for details.</p>
+<p>By default <a href="https://github.com/luomus/finbif">finbif</a> uses local caching for repeated API requests. This can be turned on or off on a per request or session basis. See <code><a href="../reference/caching.html">?caching</a></code> for details.</p>
 </div>
   </div>
 
@@ -428,7 +445,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

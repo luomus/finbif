@@ -1,3 +1,21 @@
+# finbif 0.3.1
+
+#### NEW FEATURES
+
+  - Occurrence records can be ordered by the total number of records or
+    total number of Finnish records of the taxon (variables:
+    `n_total_records` & `n_total_finnish_records`, currently
+    undocumented).
+
+  - New Finnish occurrence status, `records_only`, added.
+
+  - New administrative statuses added to filters.
+
+#### MINOR IMPROVEMENTS
+
+  - Filtering vignette updated to reflect changes to data quality
+    filters.
+
 # finbif 0.3.0
 
 #### NEW FEATURES

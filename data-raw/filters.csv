@@ -91,3 +91,5 @@ recordQuality,                         record_quality,                factor,   
 reliability,                           record_reliability,            factor,    TRUE,              ",", TRUE
 effectiveTag,                          effective_tag,                 factor,    FALSE,             ",", FALSE
 needsCheck,                            requires_verification,         factor,    FALSE,             ",", TRUE
+occurrenceCountMax,                    n_total_records_max,           integer,   FALSE,             ",", FALSE
+occurrenceCountFinlandMax,             n_total_records_finland_max,   integer,   FALSE,             ",", FALSE
