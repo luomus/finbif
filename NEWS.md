@@ -1,4 +1,4 @@
-# finbif 0.3.0.9001
+# finbif 0.3.1
 
 #### NEW FEATURES
 
@@ -8,10 +8,6 @@
     undocumented).
 
   - New Finnish occurrence status, `records_only`, added.
-
-# finbif 0.3.0.9000
-
-#### NEW FEATURES
 
   - New administrative statuses added to filters.
 

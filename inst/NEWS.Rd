@@ -1,6 +1,6 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
-\section{finbif version 0.3.0.9001}{
+\section{finbif version 0.3.1}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item Occurrence records can be ordered by the total number of records or
@@ -8,12 +8,6 @@
         \code{n_total_records} & \code{n_total_finnish_records}, currently
         undocumented).
       \item New Finnish occurrence status, \code{records_only}, added.
-    }
-  }
-}
-\section{finbif version 0.3.0.9000}{
-  \subsection{NEW FEATURES}{
-    \itemize{
       \item New administrative statuses added to filters.
     }
   }
