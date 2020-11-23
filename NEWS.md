@@ -5,7 +5,7 @@
   - Occurrence records can be ordered by the total number of records or
     total number of Finnish records of the taxon (variables:
     `n_total_records` & `n_total_finnish_records`, currently
-    undocument).
+    undocumented).
 
   - New Finnish occurrence status, `records_only`, added.
 
