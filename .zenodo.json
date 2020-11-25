@@ -35,5 +35,5 @@
         }
     ],
     "access_right": "open",
-    "description": "<p>Interface for the Finnish Biodiversity Information Facility API</p>"
+    "description": "<p>R Interface for the Finnish Biodiversity Information Facility API</p>"
 }
