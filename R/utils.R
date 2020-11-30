@@ -34,7 +34,7 @@ truncate_string <- function(x, sl = 20L) {
 truncate_string_to_unique <- function(x) {
   i <- 0L
   all_equal <- TRUE
-  while (all_equal) {
+  while (all_equal & length(unique(x)) > 1L) {
     substr(x, i, i) <- " "
     i <- i + 1L
     j <- substr(x, i, i)
@@ -42,7 +42,6 @@ truncate_string_to_unique <- function(x) {
   }
   trimws(x)
 }
-
 
 # random sampling --------------------------------------------------------------
 

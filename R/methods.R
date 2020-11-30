@@ -215,6 +215,7 @@ print.finbif_occ <- function(x, ...) {
   df <- format_cols(df, colname_widths)
 
   widths <- apply(df, 2L, nchar)
+  dim(widths) <- dim(df)
   # Printed NA values are four characters wide, "<NA>"
   widths[is.na(widths)] <- 4L
   widths <- apply(widths, 2L, max, na.rm = TRUE)

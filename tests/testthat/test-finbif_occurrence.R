@@ -96,6 +96,8 @@ vcr::use_cassette(
           print(fungi[c("scientific_name", "common_name")]), "A data"
         )
 
+        expect_output(print(fungi[1L, ]), "Records downloaded:")
+
         expect_output(
           print(fungi[1:10, c("scientific_name", "taxon_id")]), "A data"
         )

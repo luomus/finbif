@@ -1,3 +1,10 @@
+# finbif 0.3.1.9000
+
+#### BUG FIXES
+
+  - Fixed two bugs in print method for FinBIF occurrence records that
+    were triggered when attempting to print only one row of data.
+
 # finbif 0.3.1
 
 #### NEW FEATURES

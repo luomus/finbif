@@ -1,6 +1,12 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 \section{finbif version 0.3.1.9000}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed two bugs in print method for FinBIF occurrence records that
+        were triggered when attempting to print only one row of data.
+    }
+  }
 }
 \section{finbif version 0.3.1}{
   \subsection{NEW FEATURES}{
