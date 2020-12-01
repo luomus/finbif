@@ -211,15 +211,17 @@ print.finbif_occ <- function(x, ...) {
   df <- x[seq_len(dsply_nr), , drop = FALSE]
 
   colname_widths <- vapply(names(df), nchar, integer(1L))
+  widths <- colname_widths
 
-  df <- format_cols(df, colname_widths)
-
-  widths <- apply(df, 2L, nchar)
-  dim(widths) <- dim(df)
-  # Printed NA values are four characters wide, "<NA>"
-  widths[is.na(widths)] <- 4L
-  widths <- apply(widths, 2L, max, na.rm = TRUE)
-  widths <- pmax(colname_widths, widths)
+  if (nrows) {
+    df <- format_cols(df, colname_widths)
+    widths <- apply(df, 2L, nchar)
+    dim(widths) <- dim(df)
+    # Printed NA values are four characters wide, "<NA>"
+    widths[is.na(widths)] <- 4L
+    widths <- apply(widths, 2L, max, na.rm = TRUE)
+    widths <- pmax(colname_widths, widths)
+  }
 
   dsply_nc <- 0L
   cumulative_width <- if (dsply_nr > 9L) 2L else 1L
