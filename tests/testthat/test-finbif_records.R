@@ -59,6 +59,8 @@ vcr::use_cassette(
 test_that(
   "returns errors appropriately", {
 
+    expect_condition(finbif_records(n = 0))
+
     expect_condition(finbif_records(n = 1e99))
 
     expect_condition(finbif_records(filter = c(not_a_filter = TRUE)))

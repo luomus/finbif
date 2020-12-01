@@ -46,13 +46,18 @@ finbif_records <- function(
 ) {
 
   max_queries  <- 2000L
-  max_size <- 1000L
-  nmax <- max_queries * max_size
+  max_size     <- 1000L
+  nmax         <- max_queries * max_size
+  type         <- match.arg(type)
+  n            <- as.integer(n)
 
   defer_errors({
 
     if (n > nmax)
       deferrable_error(paste("Cannot download more than", nmax, "records"))
+
+    if (n < 1L)
+      deferrable_error(paste("Cannot request less than 1 record"))
 
     # filter ===================================================================
 
