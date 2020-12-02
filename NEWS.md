@@ -1,3 +1,30 @@
+# finbif 0.3.1.9001
+
+#### NEW FEATURES
+
+  - Occurrence record requests can now be made with type `"aggregate"`.
+    This returns the number of records for each combination of the
+    selected variables instead of the occurrence records themselves
+    (`type = "list"`).
+
+#### MINOR IMPROVEMENTS
+
+  - Error is triggered when attempting to request less than one record.
+
+#### BUG FIXES
+
+  - Fixed bug triggering error when attempting to print occurrence
+    record objects with zero rows.
+
+  - Fixed bug triggered when trying to print occurrence record data with
+    NA values.
+
+  - Fixed bug causing incorrect subsetting of occurrence records when
+    using logical vectors to subset rows.
+
+  - Fixed bug that printed occurrence records with multi-element data
+    incorrectly when there was a single element.
+
 # finbif 0.3.1.9000
 
 #### BUG FIXES

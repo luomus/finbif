@@ -1,5 +1,32 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
+\section{finbif version 0.3.1.9001}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Occurrence record requests can now be made with type
+        \code{"aggregate"}. This returns the number of records for each
+        combination of the selected variables instead of the occurrence records
+        themselves (\code{type = "list"}).
+    }
+  }
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Error is triggered when attempting to request less than one record.
+    }
+  }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed bug triggering error when attempting to print occurrence
+        record objects with zero rows.
+      \item Fixed bug triggered when trying to print occurrence record data
+        with NA values.
+      \item Fixed bug causing incorrect subsetting of occurrence records when
+        using logical vectors to subset rows.
+      \item Fixed bug that printed occurrence records with multi-element data
+        incorrectly when there was a single element.
+    }
+  }
+}
 \section{finbif version 0.3.1.9000}{
   \subsection{BUG FIXES}{
     \itemize{
