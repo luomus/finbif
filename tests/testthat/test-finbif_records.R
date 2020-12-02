@@ -49,6 +49,11 @@ vcr::use_cassette(
           "finbif_api"
         )
 
+        expect_s3_class(
+          finbif_records(type = "aggregate", count_only = TRUE),
+          "finbif_api"
+        )
+
       }
     )
 
@@ -61,7 +66,7 @@ test_that(
 
     expect_condition(finbif_records(n = 0))
 
-    expect_condition(finbif_records(n = 1e99))
+    expect_condition(finbif_records(n = 1e9))
 
     expect_condition(finbif_records(filter = c(not_a_filter = TRUE)))
 

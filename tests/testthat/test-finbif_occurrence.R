@@ -35,8 +35,10 @@ vcr::use_cassette(
 
         expect_s3_class(
           finbif_occurrence(
-            "Pteromys volans", select = c("default_vars", "duration"),
-            sample = TRUE, n = 1001, cache = FALSE
+            "Pteromys volans",
+            filter = c(province = "Uusimaa"),
+            select = c("default_vars", "duration"),
+            sample = TRUE, n = 5000, cache = FALSE
           ),
           "finbif_occ"
         )
@@ -115,6 +117,10 @@ vcr::use_cassette(
           "Records downloaded:"
         )
 
+        expect_output(
+          print(finbif_occurrence(type = "aggregate")), "Records downloaded:"
+        )
+
         expect_output(print(finbif_occurrence()), "Records downloaded:")
 
         cat("\nNot comparing plots on R versions greater than 4.0.3\n")
@@ -122,8 +128,7 @@ vcr::use_cassette(
         skip_if(getRversion() > "4.0.3")
 
         expect_doppelganger(
-          paste0("occurrence plot ", if (is_dev_api()) "dev"),
-          plot(fungi)
+          paste0("occurrence plot ", if (is_dev_api()) "dev"), plot(fungi)
         )
 
       }
