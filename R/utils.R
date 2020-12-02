@@ -32,15 +32,17 @@ truncate_string <- function(x, sl = 20L) {
 
 #' @noRd
 truncate_string_to_unique <- function(x) {
+  y <- x[!is.na(x)]
   i <- 0L
   all_equal <- TRUE
-  while (all_equal & length(unique(x)) > 1L) {
-    substr(x, i, i) <- " "
+  while (all_equal & length(unique(y)) > 1L) {
+    substr(y, i, i) <- " "
     i <- i + 1L
-    j <- substr(x, i, i)
+    j <- substr(y, i, i)
     all_equal <- all(j == j[[1L]])
   }
-  trimws(x)
+  x[!is.na(x)] <- trimws(y)
+  x
 }
 
 # random sampling --------------------------------------------------------------
