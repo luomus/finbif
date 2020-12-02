@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1.9001</span>
       </span>
     </div>
 
@@ -149,13 +149,42 @@
       <small>Source: <a href='https://github.com/luomus/finbif/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="finbif-0319001" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.1.9001">
+<a href="#finbif-0319001" class="anchor"></a>finbif 0.3.1.9001<small> Unreleased </small>
+</h1>
+<div id="new-features" class="section level4">
+<h4 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>NEW FEATURES</h4>
+<ul>
+<li>Occurrence record requests can now be made with type <code>"aggregate"</code>. This returns the number of records for each combination of the selected variables instead of the occurrence records themselves (<code>type = "list"</code>).</li>
+</ul>
+</div>
+<div id="minor-improvements" class="section level4">
+<h4 class="hasAnchor">
+<a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<ul>
+<li>Error is triggered when attempting to request less than one record.</li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level4">
+<h4 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>BUG FIXES</h4>
+<ul>
+<li><p>Fixed bug triggering error when attempting to print occurrence record objects with zero rows.</p></li>
+<li><p>Fixed bug triggered when trying to print occurrence record data with NA values.</p></li>
+<li><p>Fixed bug causing incorrect subsetting of occurrence records when using logical vectors to subset rows.</p></li>
+<li><p>Fixed bug that printed occurrence records with multi-element data incorrectly when there was a single element.</p></li>
+</ul>
+</div>
+</div>
     <div id="finbif-0319000" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.1.9000">
 <a href="#finbif-0319000" class="anchor"></a>finbif 0.3.1.9000<small> Unreleased </small>
 </h1>
-<div id="bug-fixes" class="section level4">
+<div id="bug-fixes-1" class="section level4">
 <h4 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>BUG FIXES</h4>
+<a href="#bug-fixes-1" class="anchor"></a>BUG FIXES</h4>
 <ul>
 <li>Fixed two bugs in print method for FinBIF occurrence records that were triggered when attempting to print only one row of data.</li>
 </ul>
@@ -165,18 +194,18 @@
 <h1 class="page-header" data-toc-text="0.3.1">
 <a href="#finbif-031" class="anchor"></a>finbif 0.3.1<small> 2020-11-24 </small>
 </h1>
-<div id="new-features" class="section level4">
+<div id="new-features-1" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li><p>Occurrence records can be ordered by the total number of records or total number of Finnish records of the taxon (variables: <code>n_total_records</code> &amp; <code>n_total_finnish_records</code>, currently undocumented).</p></li>
 <li><p>New Finnish occurrence status, <code>records_only</code>, added.</p></li>
 <li><p>New administrative statuses added to filters.</p></li>
 </ul>
 </div>
-<div id="minor-improvements" class="section level4">
+<div id="minor-improvements-1" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>Filtering vignette updated to reflect changes to data quality filters.</li>
 </ul>
@@ -186,9 +215,9 @@
 <h1 class="page-header" data-toc-text="0.3.0">
 <a href="#finbif-030" class="anchor"></a>finbif 0.3.0<small> 2020-04-23 </small>
 </h1>
-<div id="new-features-1" class="section level4">
+<div id="new-features-2" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li><p>All user facing functions with a <code>finbif_</code> prefix can now also be used with the alternative shorter prefix <code>fb_</code>.</p></li>
 <li><p>Crop Wild Relative, CWR, added to admin statuses.</p></li>
@@ -199,9 +228,9 @@
 <li><p>New vignettes on getting occurrence records, selecting and ordering variables, metadata and plotting have been added.</p></li>
 </ul>
 </div>
-<div id="minor-improvements-1" class="section level4">
+<div id="minor-improvements-2" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li><p>Caching defaults to in memory caching instead of relying on the temporary directory.</p></li>
 <li><p>Front matter of vignettes is now visible when using the R help browser.</p></li>
@@ -217,9 +246,9 @@
 <li><p>After some failures, API requests are now automatically retried up to three times.</p></li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level4">
+<div id="bug-fixes-2" class="section level4">
 <h4 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>BUG FIXES</h4>
+<a href="#bug-fixes-2" class="anchor"></a>BUG FIXES</h4>
 <ul>
 <li><p>Ordering by descending variables did not work when ordering by both ascending and descending variables.</p></li>
 <li><p>Fixed bug in handling of duplicates that could result in an infinite recursion.</p></li>
@@ -232,16 +261,16 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#finbif-020" class="anchor"></a>finbif 0.2.0<small> 2020-01-16 </small>
 </h1>
-<div id="new-features-2" class="section level4">
+<div id="new-features-3" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-3" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li>Add capacity to request a random sample of FinBIF records.</li>
 </ul>
 </div>
-<div id="minor-improvements-2" class="section level4">
+<div id="minor-improvements-3" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>Add more content to vignettes.</li>
 </ul>
