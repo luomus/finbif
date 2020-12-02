@@ -45,11 +45,10 @@ finbif_records <- function(
   dwc = FALSE, seed
 ) {
 
-  max_queries  <- 2000L
-  max_size     <- 1000L
-  nmax         <- max_queries * max_size
-  type         <- match.arg(type)
-  n            <- as.integer(n)
+  max_queries        <- 2000L
+  max_size           <- 1000L
+  nmax               <- max_queries * max_size
+  n                  <- as.integer(n)
 
   defer_errors({
 
