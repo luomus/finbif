@@ -268,7 +268,7 @@ format_cols <- function(df, colname_widths) {
           function(x) length(Filter(isFALSE, is.na(x))), integer(1L)
         )
         df[[i]] <-
-          paste0(df[[i]], " element", ifelse(length(df[[i]]) == 1L, "", "s"))
+          paste0(df[[i]], " element", ifelse(df[[i]] == 1L, "", "s"))
       } else {
         if (class == "uri") df[[i]] <- truncate_string_to_unique(df[[i]])
         if (class %in% c("character", "uri", "factor"))
