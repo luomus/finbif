@@ -10,6 +10,7 @@ finbif_occurrence(
   filter,
   select,
   order_by,
+  type = c("list", "aggregate"),
   sample = FALSE,
   n = 10,
   page = 1,
@@ -42,6 +43,9 @@ before they are returned. Ordering is ascending by default. To return in
 descending order append a \code{-} to the front of the variable (e.g.,
 \code{"-date_start"}). Default order is \code{"-date_start"} > \code{"-load_data"} >
 \code{"reported_name"}.}
+
+\item{type}{Character. Return full records as a \code{"list"} or return records in
+\code{"aggregate"}, counting records by the selected variables.}
 
 \item{sample}{Logical. If \code{TRUE} randomly sample the records from the FinBIF
 database.}

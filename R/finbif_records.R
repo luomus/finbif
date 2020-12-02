@@ -18,10 +18,12 @@
 #'   descending order append a `-` to the front of the variable (e.g.,
 #'   `"-date_start"`). Default order is `"-date_start"` > `"-load_data"` >
 #'   `"reported_name"`.
-#' @param n Integer. How many records to download.
-#' @param page Integer. Which page of records to start downloading from.
+#' @param type Character. Return full records as a `"list"` or return records in
+#'   `"aggregate"`, counting records by the selected variables.
 #' @param sample Logical. If `TRUE` randomly sample the records from the FinBIF
 #'   database.
+#' @param n Integer. How many records to download.
+#' @param page Integer. Which page of records to start downloading from.
 #' @param count_only Logical. Only return the number of records available.
 #' @param quiet Logical. Suppress the progress indicator for multipage
 #'   downloads.
@@ -40,15 +42,18 @@
 #' @export
 
 finbif_records <- function(
-  filter, select, order_by, sample = FALSE, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  dwc = FALSE, seed
+  filter, select, order_by, type = c("list", "aggregate"), sample = FALSE,
+  n = 10, page = 1, count_only = FALSE, quiet = FALSE,
+  cache = getOption("finbif_use_cache"), dwc = FALSE, seed
 ) {
 
   max_queries        <- 2000L
   max_size           <- 1000L
   nmax               <- max_queries * max_size
+  type               <- match.arg(type)
   n                  <- as.integer(n)
+  var_type           <- if (dwc) "dwc" else "translated_var"
+  record_id_selected <- TRUE
 
   defer_errors({
 
@@ -72,54 +77,10 @@ finbif_records <- function(
 
     # select ===================================================================
 
-    var_type <- if (dwc) "dwc" else "translated_var"
+    select  <- infer_selection(type, select, var_type, dwc, record_id_selected)
 
-    default_vars <- var_names[var_names[["default_var"]], ]
-    date_time_vars <- var_names[var_names[["date"]], ]
-
-    if (missing(select)) {
-
-      select <- row.names(default_vars)
-      select_ <- default_vars[[var_type]]
-      record_id_selected <- TRUE
-
-      # Missing 'select' implies default selection which implies date-time calc
-      # needed
-      select <- unique(c(select, row.names(date_time_vars)))
-
-    } else {
-
-      deselect <- substring(grep("^-", select, value = TRUE), 2L)
-      if (identical(length(deselect), length(select))) select <- "default_vars"
-      select <- grep("^-", select, value = TRUE, invert = TRUE)
-      select <- ifelse(
-        select == "default_vars", list(default_vars[[var_type]]), select
-      )
-      select <- unlist(select)
-      select <- setdiff(select, deselect)
-      select_ <- select
-
-      record_id_selected <- any(c("record_id", "occurrenceID") %in% select)
-      if (!record_id_selected)
-        select <- c(if (dwc) "occurrenceID" else "record_id", select)
-
-      date_time <- any(
-        c("date_time", "eventDateTime", "duration", "samplingEffort") %in%
-        select
-      )
-      if (date_time) select <- unique(c(select, date_time_vars[[var_type]]))
-
-      select_vars <- var_names[var_names[["select"]], var_type, drop = FALSE]
-      class(select_vars[[var_type]]) <- class(var_names[[var_type]])
-      select <-
-        translate(select, "select_vars", list(select_vars = select_vars))
-
-    }
-
-    # Can't query the server for vars that are computed after download
-    select <- select[!grepl("^computed_var", select)]
-
-    query[["selected"]] <- paste(select, collapse = ",")
+    select_type <- if (identical(type, "list")) "selected" else "aggregateBy"
+    query[[select_type]] <- paste(select[["query"]], collapse = ",")
 
     # order ====================================================================
 
@@ -150,9 +111,72 @@ finbif_records <- function(
   })
 
   request(
-    filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-    select_, record_id_selected, date_time, dwc
+    filter, select[["query"]], sample, n, page, count_only, quiet, cache, query,
+    max_size, select[["user"]], select[["record_id_selected"]], dwc, type
   )
+
+}
+
+# selection --------------------------------------------------------------------
+
+infer_selection <- function(type, select, var_type, dwc, record_id_selected) {
+
+  if (identical(type, "list")) {
+
+    default_vars <- var_names[var_names[["default_var"]], ]
+    date_time_vars <- var_names[var_names[["date"]], ]
+
+  } else {
+
+    default_vars <- var_names["unit.linkings.taxon.scientificName", ]
+    date_time_vars <- NULL
+
+  }
+
+  if (missing(select)) {
+
+    select <- row.names(default_vars)
+    select_ <- default_vars[[var_type]]
+
+    # Missing 'select' implies default selection which implies date-time calc
+    # needed
+    select <- unique(c(select, row.names(date_time_vars)))
+
+  } else {
+
+    deselect <- substring(grep("^-", select, value = TRUE), 2L)
+    if (identical(length(deselect), length(select))) select <- "default_vars"
+    select <- grep("^-", select, value = TRUE, invert = TRUE)
+    select <- ifelse(
+      select == "default_vars", list(default_vars[[var_type]]), select
+    )
+    select <- unlist(select)
+    select <- setdiff(select, deselect)
+    select_ <- select
+
+    record_id_selected <- any(c("record_id", "occurrenceID") %in% select)
+    if (!record_id_selected && identical(type, "list"))
+      select <- c(if (dwc) "occurrenceID" else "record_id", select)
+
+    date_time <- any(
+      c("date_time", "eventDateTime", "duration", "samplingEffort") %in%
+        select
+    )
+
+    if (date_time && identical(type, "list"))
+      select <- unique(c(select, date_time_vars[[var_type]]))
+
+    select_vars <- var_names[var_names[["select"]], var_type, drop = FALSE]
+    class(select_vars[[var_type]]) <- class(var_names[[var_type]])
+    select <-
+      translate(select, "select_vars", list(select_vars = select_vars))
+
+  }
+
+  # Can't query the server for vars that are computed after download
+  select <- select[!grepl("^computed_var", select)]
+
+  list(query = select, user = select_, record_id_selected = record_id_selected)
 
 }
 
@@ -160,19 +184,32 @@ finbif_records <- function(
 
 request <- function(
   filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-  select_, record_id_selected, date_time, dwc
+  select_, record_id_selected, dwc, type
 ) {
 
   path <- "warehouse/query/unit/"
 
-  if (count_only) {
+  if (count_only && identical(type, "list")) {
 
+    query[["selected"]] <- NULL
+    query[["orderBy"]]  <- NULL
     path <- paste0(path, "count")
     return(api_get(path, query, cache))
 
   }
 
-  path <- paste0(path, "list")
+  path <- paste0(path, type)
+
+  if (count_only) {
+
+    query[["page"]] <- 1L
+    query[["pageSize"]] <- 1L
+    resp <- api_get(path, query, cache)
+    resp[["content"]] <- list(total = resp[["content"]][["total"]])
+    return(resp)
+
+  }
+
   query[["page"]] <- page
   query[["pageSize"]] <- min(n, max_size)
 
@@ -180,7 +217,8 @@ request <- function(
     structure(
       api_get(path, query, cache),
       class = c("finbif_records", "finbif_api"),
-      select = unique(select)
+      select = unique(select),
+      type = type
     )
   )
 
@@ -191,7 +229,7 @@ request <- function(
 
     # If random sampling and requesting few records or a large proportion of the
     # total number of records, it makes more sense to just get all the records
-    # and  sample afterwards and avoid coping with duplicates due to pagination.
+    # and sample afterwards to avoid coping with duplicates due to pagination.
     sample_after_request <- n_tot < max_size * 3L || n / n_tot > .5
 
     if (sample && sample_after_request) {
@@ -202,12 +240,13 @@ request <- function(
       return(record_sample(all_records, n, cache))
     }
 
-    resp <-
-      get_extra_pages(resp, n, max_size, quiet, path, query, cache, select)
+    resp <- get_extra_pages(
+      resp, n, max_size, quiet, path, query, cache, select, type
+    )
 
     if (sample)
       resp <- handle_duplicates(
-        resp, filter, select_, max_size, cache, n, seed = 1L, date_time, dwc
+        resp, filter, select_, max_size, cache, n, seed = 1L, dwc
       )
 
   }
@@ -215,7 +254,7 @@ request <- function(
   structure(
     resp, class = c("finbif_records_list", "finbif_api_list"), nrec_dnld = n,
     nrec_avl = n_tot, select = unique(select), select_user = unique(select_),
-    record_id = record_id_selected, cache = cache
+    record_id = record_id_selected, type = type, cache = cache
   )
 
 }
@@ -223,7 +262,7 @@ request <- function(
 # record pagination ------------------------------------------------------------
 
 get_extra_pages <-
-  function(resp, n, max_size, quiet, path, query, cache, select) {
+  function(resp, n, max_size, quiet, path, query, cache, select, type) {
 
     multipage <- n > max_size
 
@@ -259,7 +298,8 @@ get_extra_pages <-
       resp[[i]] <- structure(
         api_get(path, query, cache),
         class = c("finbif_records", "finbif_api"),
-        select = unique(select)
+        select = unique(select),
+        type = type
       )
 
       query[["page"]] <- query[["page"]] + 1L
@@ -413,7 +453,7 @@ record_sample <- function(x, n, cache) {
 # handle duplicates ------------------------------------------------------------
 
 handle_duplicates <-
-  function(x, filter, select, max_size, cache, n, seed, date_time, dwc) {
+  function(x, filter, select, max_size, cache, n, seed, dwc) {
 
     ids <- lapply(
       x,
@@ -432,14 +472,14 @@ handle_duplicates <-
     if (length(ids) - length(duplicates) < n) {
 
       new_records <- finbif_records(
-        filter, select, sample = TRUE, n = max_size, cache = cache, dwc = dwc,
-        seed = seed
+        filter, select, sample = TRUE, n = max_size, cache = cache,
+        dwc = dwc, seed = seed
       )
 
       x[[length(x) + 1L]] <- new_records[[1L]]
 
       x <- handle_duplicates(
-        x, filter, select, max_size, cache, n, seed + 1L, date_time, dwc
+        x, filter, select, max_size, cache, n, seed + 1L, dwc
       )
 
     }

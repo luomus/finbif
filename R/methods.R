@@ -27,7 +27,13 @@ as.data.frame.finbif_records <-
     url  <- x[["response"]][["url"]]
     time <- x[["response"]][["date"]]
 
+    is_count <- identical(attr(x, "type"), "aggregate")
     x <- x[["content"]][["results"]]
+
+    if (is_count) {
+      count <- vapply(x, getElement, integer(1L), "count")
+      x <- lapply(x, getElement, "aggregateBy")
+    }
 
     lst <- lapply(
       cols,
@@ -36,9 +42,14 @@ as.data.frame.finbif_records <-
         type_na   <- methods::as(NA, type)
         single    <- var_names[col, "single"]
         localised <- var_names[col, "localised"]
-        el_names <- strsplit(col, "\\.")[[1L]]
-        if (single) return(vapply(x, get_el_recurse, type_na, el_names, type))
-        ans <- lapply(x, get_el_recurse, el_names, type)
+        if (is_count) {
+          # unit/aggregate always returns data as a single string
+          ans <- vapply(x, getElement, NA_character_, col)
+          return(methods::as(ans, type))
+        }
+        col <- strsplit(col, "\\.")[[1L]]
+        if (single) return(vapply(x, get_el_recurse, type_na, col, type))
+        ans <- lapply(x, get_el_recurse, col, type)
         ans <- lapply(ans, unlist)
         if (localised) ans <- vapply(ans, with_locale, type_na, locale)
         ans
@@ -52,6 +63,12 @@ as.data.frame.finbif_records <-
     df <- as.data.frame(lst[cols_split[["TRUE"]]], stringsAsFactors = FALSE)
     df[cols_split[["FALSE"]]] <- lst[cols_split[["FALSE"]]]
     df[["ind"]] <- NULL
+
+    if (is_count) {
+      cols <- c(cols, "n")
+      df[["n"]] <- count
+    }
+
     structure(df[cols], url = url, time = time)
 
   }
