@@ -119,7 +119,10 @@ as.data.frame.finbif_records_list <-
     if (has_i) cols <- i
   } else {
     if (has_j) cols <- j
-    if (has_i) rows <- i
+    if (has_i) {
+      if (is.logical(i)) i <- which(i)
+      rows <- i
+    }
   }
 
   ans <- if (has_j) NextMethod("[", drop = drop) else NextMethod("[")
