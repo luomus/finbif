@@ -3,10 +3,11 @@
 \section{finbif version 0.3.1.9001}{
   \subsection{NEW FEATURES}{
     \itemize{
-      \item Occurrence record requests can now be made with type
-        \code{"aggregate"}. This returns the number of records for each
-        combination of the selected variables instead of the occurrence records
-        themselves (\code{type = "list"}).
+      \item Occurrence record requests can now be made with aggregation,
+        \code{aggregate = c("records", "species", "taxa")}. This returns the
+        number of records, and or species or taxa for each combination of the
+        selected variables instead of the occurrence records themselves
+        (\code{type = "list"}).
     }
   }
   \subsection{MINOR IMPROVEMENTS}{
