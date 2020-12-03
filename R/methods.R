@@ -148,7 +148,7 @@ as.data.frame.finbif_records_list <-
   } else {
     if (has_j) cols <- j
     if (has_i) {
-      if (is.logical(i)) i <- which(i)
+      if (is.logical(i)) i <- which(rep_len(i, nrow(x)))
       rows <- i
     }
   }
