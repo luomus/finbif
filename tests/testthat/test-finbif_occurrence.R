@@ -83,13 +83,15 @@ vcr::use_cassette(
 
         skip_on_cran()
 
+        n <- 1100L
+
         fungi <- finbif_occurrence(
           filter = c(informal_group = "Fungi and lichens"),
           select = to_native(
             "occurrenceID", "informalTaxonGroup", "taxonID", "vernacularName",
             "default_vars"
           ),
-          n = 1100L
+          n = n
         )
 
         expect_output(print(fungi), "Records downloaded:")
@@ -98,7 +100,9 @@ vcr::use_cassette(
           print(fungi[c("scientific_name", "common_name")]), "A data"
         )
 
-        expect_output(print(fungi[1L, ]), "Records downloaded:")
+        expect_output(
+          print(fungi[c(TRUE, rep_len(FALSE, n - 1L)), ]), "Records downloaded:"
+        )
 
         expect_output(print(fungi[integer(0L), ]), "Records downloaded:")
 
@@ -118,7 +122,7 @@ vcr::use_cassette(
         )
 
         expect_output(
-          print(finbif_occurrence(type = "aggregate")), "Records downloaded:"
+          print(finbif_occurrence(aggregate = "species")), "Records downloaded:"
         )
 
         expect_output(print(finbif_occurrence()), "Records downloaded:")
