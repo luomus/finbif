@@ -50,11 +50,11 @@
 #' @export
 
 finbif_occurrence <- function(
-  ..., filter, select, order_by, type = c("list", "aggregate"),
-  sample = FALSE, n = 10, page = 1, count_only = FALSE, quiet = FALSE,
-  cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method = "fast",
-  check_taxa = TRUE, on_check_fail = c("warn", "error"),
-  tzone = getOption("finbif_tz"), locale = getOption("finbif_locale")
+  ..., filter, select, order_by, aggregate, sample = FALSE, n = 10, page = 1,
+  count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
+  dwc = FALSE, date_time_method = "fast", check_taxa = TRUE,
+  on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
+  locale = getOption("finbif_locale")
 ) {
 
   taxa <- select_taxa(..., cache = cache, check_taxa = check_taxa,
@@ -64,11 +64,19 @@ finbif_occurrence <- function(
   if (missing(filter)) filter <- NULL
   filter <- c(taxa, filter)
 
-  type <- match.arg(type)
+  if (missing(aggregate)) {
+
+    aggregate <- "none"
+
+  } else {
+
+    aggregate <- match.arg(aggregate, c("records", "species", "taxa"), TRUE)
+
+  }
 
   records <- finbif_records(
-    filter, select, order_by, type, sample, n, page, count_only, quiet, cache,
-    dwc
+    filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
+    cache, dwc
   )
 
   if (count_only) return(records[["content"]][["total"]])
@@ -82,15 +90,24 @@ finbif_occurrence <- function(
   url  <- attr(df, "url", TRUE)
   time <- attr(df, "time", TRUE)
 
-  n <- df[["n"]]
-  df[["n"]] <- NULL
+  n <- list()
+
+  for (i in paste0("n_", aggregate)) {
+    n[[i]] <- df[[i]]
+    df[[i]] <- NULL
+  }
 
   names(df) <- var_names[names(df), if (dwc) "dwc" else "translated_var"]
 
-  df[["n"]] <- n
+  for (i in paste0("n_", aggregate)) df[[i]] <- n[[i]]
 
   select_ <- attr(records, "select_user")
-  if (identical(type, "aggregate")) select_ <- c(select_, "n")
+
+  if (!identical(aggregate, "none")) {
+
+    select_ <- c(select_, paste0("n_", aggregate))
+
+  }
 
   date_time <-
     missing(select) ||
@@ -102,7 +119,7 @@ finbif_occurrence <- function(
       select
     )
 
-  date_time <- date_time && identical(type, "list")
+  date_time <- date_time && identical(aggregate, "none")
 
   if (date_time)
     if (dwc) {

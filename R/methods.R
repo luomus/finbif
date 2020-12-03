@@ -27,11 +27,19 @@ as.data.frame.finbif_records <-
     url  <- x[["response"]][["url"]]
     time <- x[["response"]][["date"]]
 
-    is_count <- identical(attr(x, "type"), "aggregate")
+    aggregation <- attr(x, "aggregate")
+    aggregated <- !identical(aggregation, "none")
     x <- x[["content"]][["results"]]
 
-    if (is_count) {
-      count <- vapply(x, getElement, integer(1L), "count")
+    if (aggregated) {
+      aggregations <-
+        c(records = "count", species = "speciesCount", taxa = "taxonCount")
+      aggregations <- aggregations[aggregation]
+      counts <- list()
+      for (i in seq_along(aggregations)) {
+        counts[[names(aggregations)[[i]]]] <-
+          vapply(x, getElement, integer(1L), aggregations[[i]])
+      }
       x <- lapply(x, getElement, "aggregateBy")
     }
 
@@ -42,7 +50,7 @@ as.data.frame.finbif_records <-
         type_na   <- methods::as(NA, type)
         single    <- var_names[col, "single"]
         localised <- var_names[col, "localised"]
-        if (is_count) {
+        if (aggregated) {
           # unit/aggregate always returns data as a single string
           ans <- vapply(x, getElement, NA_character_, col)
           return(methods::as(ans, type))
@@ -64,9 +72,12 @@ as.data.frame.finbif_records <-
     df[cols_split[["FALSE"]]] <- lst[cols_split[["FALSE"]]]
     df[["ind"]] <- NULL
 
-    if (is_count) {
-      cols <- c(cols, "n")
-      df[["n"]] <- count
+    if (aggregated) {
+      aggregation_cols <- paste0("n_", aggregation)
+      cols <- c(cols, aggregation_cols)
+      for (i in seq_along(aggregation)) {
+        df[[aggregation_cols[[i]]]] <- counts[[i]]
+      }
     }
 
     structure(df[cols], url = url, time = time)
