@@ -63,11 +63,7 @@ finbif_records <- function(
 
   defer_errors({
 
-    if (n > nmax)
-      deferrable_error(paste("Cannot download more than", nmax, "records"))
-
-    if (n < 1L)
-      deferrable_error(paste("Cannot request less than 1 record"))
+    check_n(n, nmax)
 
     # filter ===================================================================
 
@@ -83,13 +79,11 @@ finbif_records <- function(
 
     # select ===================================================================
 
-    select  <-
+    select <-
       infer_selection(aggregate, select, var_type, dwc, record_id_selected)
 
-    select_type <-
-      if (identical(aggregate, "none")) "selected" else "aggregateBy"
-
-    query[[select_type]] <- paste(select[["query"]], collapse = ",")
+    query[[select_type(aggregate, "selected", "aggregateBy")]] <-
+      paste(select[["query"]], collapse = ",")
 
     # order ====================================================================
 
@@ -209,8 +203,7 @@ request <- function(
 
   }
 
-  path <-
-    paste0(path, if (identical(aggregate, "none")) "list" else "aggregate")
+  path <- paste0(path, select_type(aggregate, "list", "aggregate"))
 
   if (count_only) {
 
@@ -222,7 +215,7 @@ request <- function(
 
   }
 
-  if (any(aggregate %in% c("species", "taxa"))) query[["taxonCounts"]] <- "true"
+  query[["taxonCounts"]] <- taxa_counts(aggregate)
 
   query[["page"]] <- page
   query[["pageSize"]] <- min(n, max_size)
@@ -522,4 +515,26 @@ remove_records <- function(x, records, n) {
 
   x
 
+}
+
+# utils ------------------------------------------------------------------------
+
+check_n <- function(n, nmax) {
+
+  if (n > nmax)
+    deferrable_error(paste("Cannot download more than", nmax, "records"))
+
+  if (n < 1L)
+    deferrable_error(paste("Cannot request less than 1 record"))
+
+}
+
+select_type <- function(aggregate, yes, no) {
+
+  if (identical(aggregate, "none")) yes else no
+
+}
+
+taxa_counts <- function(aggregate) {
+  if (any(aggregate %in% c("species", "taxa"))) "true"
 }

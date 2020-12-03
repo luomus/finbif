@@ -103,47 +103,12 @@ finbif_occurrence <- function(
 
   select_ <- attr(records, "select_user")
 
-  if (!identical(aggregate, "none")) {
-
+  if (!identical(aggregate, "none"))
     select_ <- c(select_, paste0("n_", aggregate))
 
-  }
-
-  date_time <-
-    missing(select) ||
-    any(
-      c(
-        "default_vars", "date_time", "eventDateTime", "duration",
-        "samplingEffort"
-      ) %in%
-      select
-    )
-
-  date_time <- date_time && identical(aggregate, "none")
-
-  if (date_time)
-    if (dwc) {
-      df[["eventDateTime"]] <- get_date_time(
-        df, "eventDateStart", "hourStart", "minuteStart",
-        "decimalLatitude", "decimalLongitude", date_time_method, tzone
-      )
-      if ("samplingEffort" %in% select_)
-        df[["samplingEffort"]] <- get_duration(
-          df, "eventDateTime", "eventDateStart", "hourStart",
-          "minuteStart", "decimalLatitude", "decimalLongitude",
-          date_time_method, tzone
-        )
-    } else {
-      df[["date_time"]] <- get_date_time(
-        df, "date_start", "hour_start", "minute_start", "lat_wgs84",
-        "lon_wgs84", date_time_method, tzone
-      )
-      if ("duration" %in% select_)
-        df[["duration"]] <- get_duration(
-          df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
-          "lon_wgs84", date_time_method, tzone
-        )
-    }
+  df <- compute_date_time(
+    df, select, select_, aggregate, dwc, date_time_method, tzone
+  )
 
   structure(
     df[select_],
@@ -192,6 +157,50 @@ select_taxa <- function(..., cache, check_taxa, on_check_fail) {
   }
 
   ans
+
+}
+
+compute_date_time <- function(
+  df, select, select_, aggregate, dwc, date_time_method, tzone
+) {
+
+  date_time <-
+    missing(select) ||
+    any(
+      c(
+        "default_vars", "date_time", "eventDateTime", "duration",
+        "samplingEffort"
+      ) %in%
+        select
+    )
+
+  date_time <- date_time && identical(aggregate, "none")
+
+  if (date_time)
+    if (dwc) {
+      df[["eventDateTime"]] <- get_date_time(
+        df, "eventDateStart", "hourStart", "minuteStart",
+        "decimalLatitude", "decimalLongitude", date_time_method, tzone
+      )
+      if ("samplingEffort" %in% select_)
+        df[["samplingEffort"]] <- get_duration(
+          df, "eventDateTime", "eventDateStart", "hourStart",
+          "minuteStart", "decimalLatitude", "decimalLongitude",
+          date_time_method, tzone
+        )
+    } else {
+      df[["date_time"]] <- get_date_time(
+        df, "date_start", "hour_start", "minute_start", "lat_wgs84",
+        "lon_wgs84", date_time_method, tzone
+      )
+      if ("duration" %in% select_)
+        df[["duration"]] <- get_duration(
+          df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
+          "lon_wgs84", date_time_method, tzone
+        )
+    }
+
+  df
 
 }
 
