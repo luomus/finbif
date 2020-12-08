@@ -148,18 +148,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "usethis",
-      "name": "usethis",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=usethis"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "vcr",
       "name": "vcr",
       "provider": {
@@ -300,5 +288,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "30342.726KB"
+  "fileSize": "25751.366KB"
 }

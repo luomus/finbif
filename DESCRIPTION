@@ -51,7 +51,6 @@ Suggests:
     rmarkdown,
     stats,
     testthat (>= 2.1.0),
-    usethis,
     vcr,
     vdiffr
 X-schema.org-applicationCategory: Biodiversity
