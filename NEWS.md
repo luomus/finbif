@@ -26,6 +26,8 @@
   - Fixed bug that printed occurrence records with multi-element data
     incorrectly when there was a single element.
 
+  - Fixed bug triggered by some system locales (\#1).
+
 # finbif 0.3.1.9000
 
 #### BUG FIXES

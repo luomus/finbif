@@ -25,6 +25,7 @@
         using logical vectors to subset rows.
       \item Fixed bug that printed occurrence records with multi-element data
         incorrectly when there was a single element.
+      \item Fixed bug triggered by some system locales (#1).
     }
   }
 }
