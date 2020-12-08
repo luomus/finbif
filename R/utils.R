@@ -174,7 +174,7 @@ get_locale <- function() {
         ans <- l
         break
       }
-      if (supported_langs[[l]] %in% supported_langs) {
+      if (l %in% names(supported_langs)) {
         ans <- supported_langs[[l]]
         break
       }
