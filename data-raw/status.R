@@ -22,6 +22,7 @@ administrative_status <- read.csv(
     MX.birdsDirectiveStatusAppendix3B, 'Birds directive status appendix 3b', BDS3B
     MX.finnishEnvironmentInstitute2010protectionPrioritySpecies, 'Finnish environment institute 2010 protection priority species', FEI_PPS
     MX.finnishEnvironmentInstitute2020conservationProjectSpecies, 'Finnish environment institute 2020 conservation project species', FEI_CPS
+    MX.finnishEnvironmentInstitute2020conservationProjectAapamireSpecies, 'Finnish environment institute 2020 conservation project aapamire species', FEI_CPAS
     MX.gameBird, 'Game bird', GMEB
     MX.gameMammal, 'Game mammal', GMEM
     MX.unprotectedSpecies, 'Unprotected species', UNP_SP
