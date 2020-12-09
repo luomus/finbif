@@ -110,6 +110,8 @@ finbif_occurrence <- function(
     df, select, select_, aggregate, dwc, date_time_method, tzone
   )
 
+  df <- compute_vars_from_id(df, select_)
+
   structure(
     df[select_],
     class     = c("finbif_occ", "data.frame"),
@@ -238,3 +240,26 @@ get_duration <-
     lubridate::as.duration(ans)
 
   }
+
+compute_vars_from_id <- function(df, select_) {
+
+  candidates <- setdiff(select_, df)
+
+  for (i in seq_along(candidates)) {
+
+    id_var_name <- paste0(candidates[[i]], "_id")
+
+    if (utils::hasName(df, id_var_name)) {
+
+      metadata <- get(candidates[[i]])
+
+      df[[candidates[[i]]]] <-
+        metadata[gsub("http://tun.fi/", "", df[[id_var_name]]), 1L]
+
+    }
+
+  }
+
+  df
+
+}

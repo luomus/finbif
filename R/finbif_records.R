@@ -176,6 +176,24 @@ infer_selection <- function(
     select <-
       translate(select, "select_vars", list(select_vars = select_vars))
 
+    vars_computed_from_id <- grepl("^computed_var_from_id", select)
+
+    if (any(vars_computed_from_id)) {
+
+      vars_computed_from_id <- var_names[select[vars_computed_from_id], ]
+
+      for (i in seq_len(nrow(vars_computed_from_id))) {
+
+        computed_var <- vars_computed_from_id[i, "translated_var"]
+        id_var <- paste0(computed_var, "_id")
+        id_var <-
+          translate(id_var, "select_vars", list(select_vars = select_vars))
+        select <- c(select, id_var)
+
+      }
+
+    }
+
   }
 
   # Can't query the server for vars that are computed after download

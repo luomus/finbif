@@ -11,7 +11,7 @@ use_cassette(
         expect_s3_class(
           finbif_occurrence(
             species = "Rangifer tarandus fennicus", check_taxa = FALSE,
-            select = "record_id", sample = TRUE
+            select = "municipality", sample = TRUE
           ),
           "finbif_occ"
         )
