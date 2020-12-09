@@ -359,9 +359,9 @@
 <div id="habitat-type" class="section level2">
 <h2 class="hasAnchor">
 <a href="#habitat-type" class="anchor"></a>Habitat type</h2>
-<p>Many taxa are associated with one or more primary or secondary habitat types (e.g., forest) or subtypes (e.g., herb-rich alpine birch forests). Use <code><a href="../reference/finbif_metadata.html">finbif_metadata("habitat_types")</a></code> to see the habitat types in FinBIF. You can filter occurrence records based on primary (or primary/secondary) habitat type or subtype codes. Note that filtering based on habitat is on taxa not on the location (i.e., filtering records with <code>primary_habitat = "M"</code> will only return records of taxa considered to primarily inhabit forests, yet the locations of those records may encompass habitats other than forests).</p>
+<p>Many taxa are associated with one or more primary or secondary habitat types (e.g., forest) or subtypes (e.g., herb-rich alpine birch forests). Use <code><a href="../reference/finbif_metadata.html">finbif_metadata("habitat_type")</a></code> to see the habitat types in FinBIF. You can filter occurrence records based on primary (or primary/secondary) habitat type or subtype codes. Note that filtering based on habitat is on taxa not on the location (i.e., filtering records with <code>primary_habitat = "M"</code> will only return records of taxa considered to primarily inhabit forests, yet the locations of those records may encompass habitats other than forests).</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span><span class="op">(</span><span class="st">"habitat_types"</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span><span class="op">(</span><span class="st">"habitat_type"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;   habitat_name                              habitat_code</span>
 <span class="co">#&gt; 1 Forests                                   M           </span>
 <span class="co">#&gt; 2 Heath forests                             MK          </span>
@@ -394,9 +394,9 @@
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
 <span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
-<p>You may further refine habitat based searching using a specific habitat type qualifier such as “sun-exposed” or “shady”. Use <code><a href="../reference/finbif_metadata.html">finbif_metadata("habitat_qualifiers")</a></code> to see the qualifiers available. To specify qualifiers use a named list of character vectors where the names are habitat types or subtypes and the elements of the character vectors are the qualifier codes.</p>
+<p>You may further refine habitat based searching using a specific habitat type qualifier such as “sun-exposed” or “shady”. Use <code><a href="../reference/finbif_metadata.html">finbif_metadata("habitat_qualifier")</a></code> to see the qualifiers available. To specify qualifiers use a named list of character vectors where the names are habitat types or subtypes and the elements of the character vectors are the qualifier codes.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span><span class="op">(</span><span class="st">"habitat_qualifiers"</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span><span class="op">(</span><span class="st">"habitat_qualifier"</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span>
 <span class="co">#&gt;   qualifier_name                      qualifier_code</span>
 <span class="co">#&gt; 4 Broadleaved deciduous trees present J             </span>
 <span class="co">#&gt; 5 Sun-exposed                         PA            </span>

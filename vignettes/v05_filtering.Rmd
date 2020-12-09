@@ -330,7 +330,7 @@ finbif_occurrence(
 ## Habitat type
 Many taxa are associated with one or more primary or secondary habitat types
 (e.g., forest) or subtypes (e.g., herb-rich alpine birch forests). Use
-`finbif_metadata("habitat_types")` to see the habitat types in FinBIF. You can
+`finbif_metadata("habitat_type")` to see the habitat types in FinBIF. You can
 filter occurrence records based on primary (or primary/secondary) habitat type
 or subtype codes. Note that filtering based on habitat is on taxa not on the
 location (i.e., filtering records with `primary_habitat = "M"` will only return
@@ -338,7 +338,7 @@ records of taxa considered to primarily inhabit forests, yet the locations of
 those records may encompass habitats other than forests).
 
 ```r
-head(finbif_metadata("habitat_types"))
+head(finbif_metadata("habitat_type"))
 #>   habitat_name                              habitat_code
 #> 1 Forests                                   M           
 #> 2 Heath forests                             MK          
@@ -385,13 +385,13 @@ finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 
 You may further refine habitat based searching using a specific habitat type
 qualifier such as "sun-exposed" or "shady". Use
-`finbif_metadata("habitat_qualifiers")` to see the qualifiers available. To
+`finbif_metadata("habitat_qualifier")` to see the qualifiers available. To
 specify qualifiers use a named list of character vectors where the names are
 habitat types or subtypes and the elements of the character vectors are the
 qualifier codes.
 
 ```r
-finbif_metadata("habitat_qualifiers")[4:6, ]
+finbif_metadata("habitat_qualifier")[4:6, ]
 #>   qualifier_name                      qualifier_code
 #> 4 Broadleaved deciduous trees present J             
 #> 5 Sun-exposed                         PA            
