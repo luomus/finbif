@@ -1,6 +1,6 @@
 context("Downloading FinBIF records")
 
-vcr::use_cassette(
+use_cassette(
   "finbif_records", {
 
     test_that(

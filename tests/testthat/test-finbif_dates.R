@@ -1,6 +1,6 @@
 context("Date formattting functions")
 
-vcr::use_cassette(
+use_cassette(
   "dates", {
 
     test_that(

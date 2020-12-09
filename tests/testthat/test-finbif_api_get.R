@@ -13,7 +13,7 @@ test_that(
   }
 )
 
-vcr::use_cassette(
+use_cassette(
   "api_get", {
 
     test_that(

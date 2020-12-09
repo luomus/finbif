@@ -9,7 +9,7 @@ if (has_dev_api()) {
 
   assignInNamespace("var_names", finbif:::var_names_test, "finbif")
 
-  invisible(vcr::vcr_configure(dir = "../api-dev-cassettes"))
+  invisible(vcr_configure(dir = "../api-dev-cassettes"))
 
   files <- list.files(pattern = "^test-finbif.*\\.[rR]$")
 

@@ -1,6 +1,6 @@
 context("Downloading FinBIF taxon info")
 
-vcr::use_cassette(
+use_cassette(
   "finbif_taxa", {
 
     test_that(

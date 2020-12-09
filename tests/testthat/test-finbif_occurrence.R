@@ -1,6 +1,6 @@
 context("Querying FinBIF occurrence data")
 
-vcr::use_cassette(
+use_cassette(
   "finbif_occurrence", {
 
     test_that(

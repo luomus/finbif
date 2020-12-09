@@ -1,6 +1,6 @@
 context("FinBIF taxa checking")
 
-vcr::use_cassette(
+use_cassette(
   "finbif_check_taxa", {
 
     test_that(
