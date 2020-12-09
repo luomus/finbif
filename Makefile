@@ -5,7 +5,19 @@ RSCRIPT = Rscript --no-init-file
 export _R_CHECK_SYSTEM_CLOCK_ = false
 export _R_CHECK_FUTURE_FILE_TIMESTAMPS_ = false
 
-all: check clean
+all: check_deps_only check clean
+
+dev_deps:
+	${RSCRIPT} -e "stopifnot(requireNamespace('data.tree', quietly = TRUE))"
+	${RSCRIPT} -e "stopifnot(requireNamespace('details', quietly = TRUE))"
+	${RSCRIPT} -e "stopifnot(requireNamespace('devtools', quietly = TRUE))"
+	${RSCRIPT} -e "stopifnot(requireNamespace('codemetar', quietly = TRUE))"
+	${RSCRIPT} -e "stopifnot(requireNamespace('ISOcodes', quietly = TRUE))"
+	${RSCRIPT} -e "stopifnot(requireNamespace('ows4R', quietly = TRUE))"
+	${RSCRIPT} -e "stopifnot(requireNamespace('pkgdown', quietly = TRUE))"
+	${RSCRIPT} -e "stopifnot(requireNamespace('sf', quietly = TRUE))"
+	${RSCRIPT} -e "stopifnot(requireNamespace('stats', quietly = TRUE))"
+	${RSCRIPT} -e "stopifnot(requireNamespace('usethis', quietly = TRUE))"
 
 build: doc
 	cd ..;\
@@ -14,6 +26,10 @@ build: doc
 install: build
 	cd ..;\
 	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
+
+check_deps_only: pkgdown codemeta.json
+	cd ..;\
+	_R_CHECK_DEPENDS_ONLY_=true R CMD check $(PKGNAME)_$(PKGVERS).tar.gz --as-cran
 
 check: pkgdown codemeta.json
 	cd ..;\
@@ -48,10 +64,10 @@ vignettes: install
 doc: R/sysdata.rda
 	${RSCRIPT} -e "devtools::document()"
 
-R/sysdata.rda: $(wildcard data-raw/*.R)
+R/sysdata.rda: dev_deps $(wildcard data-raw/*.R)
 	${RSCRIPT} data-raw/sysdata.R
 
-codemeta.json: DESCRIPTION
+codemeta.json: dev_deps DESCRIPTION
 	${RSCRIPT} -e "codemetar::write_codemeta()"
 
 clean:
