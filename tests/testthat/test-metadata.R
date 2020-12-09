@@ -9,33 +9,33 @@ test_that(
 
     expect_s3_class(finbif_metadata("red_list"), "data.frame")
 
-    expect_s3_class(finbif_metadata("habitat_types"), "data.frame")
+    expect_s3_class(finbif_metadata("habitat_type"), "data.frame")
 
-    expect_s3_class(finbif_metadata("habitat_qualifiers"), "data.frame")
+    expect_s3_class(finbif_metadata("habitat_qualifier"), "data.frame")
 
-    expect_s3_class(finbif_metadata("countries"), "data.frame")
+    expect_s3_class(finbif_metadata("country"), "data.frame")
 
-    expect_s3_class(finbif_metadata("provinces"), "data.frame")
+    expect_s3_class(finbif_metadata("province"), "data.frame")
 
-    expect_s3_class(finbif_metadata("municipalities"), "data.frame")
+    expect_s3_class(finbif_metadata("municipality"), "data.frame")
 
-    expect_s3_class(finbif_metadata("bird_assoc_areas"), "data.frame")
+    expect_s3_class(finbif_metadata("bird_assoc_area"), "data.frame")
 
     expect_s3_class(finbif_metadata("finnish_occurrence_status"), "data.frame")
 
-    expect_s3_class(finbif_metadata("sources"), "data.frame")
+    expect_s3_class(finbif_metadata("source"), "data.frame")
 
     expect_s3_class(finbif_metadata("record_basis"), "data.frame")
 
-    expect_s3_class(finbif_metadata("sex_categories"), "data.frame")
+    expect_s3_class(finbif_metadata("sex_category"), "data.frame")
 
-    expect_s3_class(finbif_metadata("restriction_reasons"), "data.frame")
+    expect_s3_class(finbif_metadata("restriction_reason"), "data.frame")
 
-    expect_s3_class(finbif_metadata("restriction_levels"), "data.frame")
+    expect_s3_class(finbif_metadata("restriction_level"), "data.frame")
 
-    expect_s3_class(finbif_metadata("life_stages"), "data.frame")
+    expect_s3_class(finbif_metadata("life_stage"), "data.frame")
 
-    expect_s3_class(finbif_metadata("taxon_ranks"), "data.frame")
+    expect_s3_class(finbif_metadata("taxon_rank"), "data.frame")
 
     expect_type(finbif_informal_groups(), "character")
 
@@ -46,7 +46,7 @@ test_that(
 
 test_that(
   "print method works",
-  expect_output(print(finbif_metadata("taxon_ranks")), "rank")
+  expect_output(print(finbif_metadata("taxon_rank")), "rank")
 )
 
 test_that(

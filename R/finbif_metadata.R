@@ -18,20 +18,20 @@ finbif_metadata <- function(which) {
   metadata_name <- c(
     "admin_status",
     "red_list",
-    "countries",
-    "provinces",
-    "municipalities",
-    "bird_assoc_areas",
+    "country",
+    "province",
+    "municipality",
+    "bird_assoc_area",
     "finnish_occurrence_status",
-    "habitat_types",
-    "habitat_qualifiers",
-    "life_stages",
+    "habitat_type",
+    "habitat_qualifier",
+    "life_stage",
     "record_basis",
-    "restriction_levels",
-    "restriction_reasons",
-    "sex_categories",
-    "sources",
-    "taxon_ranks"
+    "restriction_level",
+    "restriction_reason",
+    "sex_category",
+    "source",
+    "taxon_rank"
   )
 
   ans <-
@@ -46,20 +46,20 @@ finbif_metadata <- function(which) {
         which,
         admin_status              = md_admin_status(),
         red_list                  = md_red_list(),
-        countries                 = md_countries(),
-        provinces                 = md_provinces(),
-        municipalities            = md_municipalities(),
-        bird_assoc_areas          = md_bird_assoc_areas(),
+        country                   = md_countries(),
+        province                  = md_provinces(),
+        municipality              = md_municipalities(),
+        bird_assoc_area           = md_bird_assoc_areas(),
         finnish_occurrence_status = md_finnish_occurrence_status(),
-        habitat_types             = md_habitat_types(),
-        habitat_qualifiers        = md_habitat_qualifiers(),
-        life_stages               = md_life_stages(),
+        habitat_type              = md_habitat_types(),
+        habitat_qualifier         = md_habitat_qualifiers(),
+        life_stage                = md_life_stages(),
         record_basis              = md_record_basis(),
-        restriction_levels        = md_restriction_levels(),
-        restriction_reasons       = md_restriction_reasons(),
-        sex_categories            = md_sex_categories(),
-        sources                   = md_sources(),
-        taxon_ranks               = md_taxon_ranks()
+        restriction_level         = md_restriction_levels(),
+        restriction_reason        = md_restriction_reasons(),
+        sex_category              = md_sex_categories(),
+        source                    = md_sources(),
+        taxon_rank                = md_taxon_ranks()
       )
     }
 
