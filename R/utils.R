@@ -13,7 +13,10 @@ get_next_lowest_factor <-
 #' @noRd
 #' @importFrom methods as
 get_el_recurse <- function(obj, nms, type) {
-  if (length(nms) < 1L) return(if (is.null(obj)) methods::as(NA, type) else obj)
+  if (length(nms) < 1L)
+    return(
+      if (is.null(obj) || identical(obj, "")) methods::as(NA, type) else obj
+    )
   obj <- getElement(obj, nms[[1L]])
   get_el_recurse(obj, nms[-1L], type)
 }

@@ -53,6 +53,7 @@ as.data.frame.finbif_records <-
         if (aggregated) {
           # unit/aggregate always returns data as a single string
           ans <- vapply(x, getElement, NA_character_, col)
+          ans <- ifelse(ans == "", NA_character_, ans)
           return(methods::as(ans, type))
         }
         col <- strsplit(col, "\\.")[[1L]]
