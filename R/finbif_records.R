@@ -184,11 +184,11 @@ infer_selection <- function(
 
       for (i in seq_len(nrow(vars_computed_from_id))) {
 
+        ind <- match(row.names(vars_computed_from_id)[[i]], select)
         computed_var <- vars_computed_from_id[i, "translated_var"]
         id_var <- paste0(computed_var, "_id")
-        id_var <-
+        select[[ind]] <-
           translate(id_var, "select_vars", list(select_vars = select_vars))
-        select <- c(select, id_var)
 
       }
 
