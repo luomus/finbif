@@ -1,4 +1,4 @@
-dummy <- function(...) {}
+dummy <- function(...) NULL
 
 if (requireNamespace("vcr")) {
 
