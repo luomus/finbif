@@ -253,8 +253,9 @@ compute_vars_from_id <- function(df, select_) {
 
       metadata <- get(candidates[[i]])
 
-      df[[candidates[[i]]]] <-
-        metadata[gsub("http://tun.fi/", "", df[[id_var_name]]), 1L]
+      var <- metadata[gsub("http://tun.fi/", "", df[[id_var_name]]), 1L]
+
+      df[[candidates[[i]]]] <- ifelse(is.na(var), df[[id_var_name]], var)
 
     }
 
