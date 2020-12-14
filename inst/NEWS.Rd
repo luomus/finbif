@@ -5,14 +5,15 @@
     \itemize{
       \item Occurrence record requests can now be made with aggregation,
         \code{aggregate = c("records", "species", "taxa")}. This returns the
-        number of records, and or species or taxa for each combination of the
-        selected variables instead of the occurrence records themselves
-        (\code{type = "list"}).
+        number of records, and/or species or taxa for each combination of the
+        selected variables instead of the occurrence records themselves.
     }
   }
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
       \item Error is triggered when attempting to request less than one record.
+      \item New content on requesting aggregated occurrence records added to
+        vignette: 2. Occurrence records from FinBIF.
     }
   }
   \subsection{BUG FIXES}{

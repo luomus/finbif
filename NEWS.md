@@ -4,13 +4,15 @@
 
   - Occurrence record requests can now be made with aggregation,
     `aggregate = c("records", "species", "taxa")`. This returns the
-    number of records, and or species or taxa for each combination of
-    the selected variables instead of the occurrence records themselves
-    (`type = "list"`).
+    number of records, and/or species or taxa for each combination of
+    the selected variables instead of the occurrence records themselves.
 
 #### MINOR IMPROVEMENTS
 
   - Error is triggered when attempting to request less than one record.
+
+  - New content on requesting aggregated occurrence records added to
+    vignette: 2. Occurrence records from FinBIF.
 
 #### BUG FIXES
 
