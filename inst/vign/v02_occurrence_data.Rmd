@@ -110,6 +110,28 @@ This can be a useful strategy if you are using `{finbif}` non-interactively
 (in a script), and you do not want to proceed if any of your taxon names are
 wrong or misspelled.
 
+## Aggregating records
+You can request records in aggregate using the `aggregate` argument to
+`finbif_occurrence`. Aggregated requests will return counts for the combination
+of the `variables` you specify with the `select` argument. You can request
+counts of `"records"`, `"species"` or `"taxa"` by using the corresponding string
+as the value for the `aggregate` argument. Aggregating by `"species"` will count
+the number of unique species identifiers for a set of records grouped by the
+combination of selected variables. Note that this count will not include records
+of taxa that do not have species identifiers, including records of higher taxa
+(e.g., genus only records), records of the non-species children of aggregate or
+complex taxa, and hybrid taxa. Therefore, in some contexts the results returned
+will be an underestimate of species richness. Likewise, aggregating by `"taxa"`,
+which returns a count the number of unique taxon identifiers, could represent an
+overestimate of the number of taxa as records of higher taxa will contribute to
+the count while their true identify may be a duplicate of other records.
+
+To illustrate, you can count the number of moths and butterflies by municipality
+with the following:
+```{details aggregate}
+finbif_occurrence("Lepidoptera", select = "municipality", aggregate = "species")
+```
+
 ## Time & duration
 The default behaviour of `finbif_occurrence` is to consolidate date and time
 data for occurrence recording events into a `date_time` variable. This can be
