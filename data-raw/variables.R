@@ -6,12 +6,25 @@ var_names <- read.csv(
 
 vars <- httr::GET("https://api.laji.fi/explorer/swagger.json")
 vars <- jsonlite::fromJSON(httr::content(vars, "text"), simplifyVector = FALSE)
-vars <- vars[["paths"]][["/warehouse/query/unit/list"]][["get"]][["parameters"]]
+vars <- vars[["paths"]]
+select_order_vars <-
+  vars[["/warehouse/query/unit/list"]][["get"]][["parameters"]]
 
-select_vars <- vars[[which(vapply(vars, getElement, "", "name") == "selected")]]
+select_vars <- select_order_vars[[
+  which(vapply(select_order_vars, getElement, "", "name") == "selected")
+]]
 select_vars <- unlist(select_vars[["items"]][["enum"]])
-order_vars  <- vars[[which(vapply(vars, getElement, "", "name") == "orderBy")]]
-order_vars  <- unlist(order_vars[["items"]][["enum"]])
+
+order_vars <- select_order_vars[[
+  which(vapply(select_order_vars, getElement, "", "name") == "orderBy")
+]]
+order_vars <- unlist(order_vars[["items"]][["enum"]])
+
+agg_vars <-
+  vars[["/warehouse/query/unit/aggregate"]][["get"]][["parameters"]]
+agg_vars <-
+  agg_vars[[which(vapply(agg_vars, getElement, "", "name") == "aggregateBy")]]
+agg_vars <- unlist(agg_vars[["items"]][["enum"]])
 
 select_vars_pkg <- row.names(var_names[var_names[["select"]], ])
 select_vars_pkg <-
@@ -28,6 +41,15 @@ order_vars_pkg <- c(
 
 in_pkg_only <- setdiff(order_vars_pkg, order_vars)
 schema_only <- setdiff(order_vars, order_vars_pkg)
+
+stopifnot(!length(c(in_pkg_only, schema_only)))
+
+agg_vars_pkg <- row.names(var_names[var_names[["aggregate"]], ])
+agg_vars_pkg <-
+  grep("^computed_var", agg_vars_pkg, value = TRUE, invert = TRUE)
+
+in_pkg_only <- setdiff(agg_vars_pkg, agg_vars)
+schema_only <- setdiff(agg_vars, agg_vars_pkg)
 
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
