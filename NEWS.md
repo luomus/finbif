@@ -1,4 +1,4 @@
-# finbif 0.3.1.9001
+# finbif 0.4.0
 
 #### NEW FEATURES
 
@@ -16,6 +16,9 @@
 
 #### BUG FIXES
 
+  - Fixed two bugs in print method for FinBIF occurrence records that
+    were triggered when attempting to print only one row of data.
+
   - Fixed bug triggering error when attempting to print occurrence
     record objects with zero rows.
 
@@ -29,13 +32,6 @@
     incorrectly when there was a single element.
 
   - Fixed bug triggered by some system locales (\#1).
-
-# finbif 0.3.1.9000
-
-#### BUG FIXES
-
-  - Fixed two bugs in print method for FinBIF occurrence records that
-    were triggered when attempting to print only one row of data.
 
 # finbif 0.3.1
 

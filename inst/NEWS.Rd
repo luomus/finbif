@@ -1,6 +1,6 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
-\section{finbif version 0.3.1.9001}{
+\section{finbif version 0.4.0}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item Occurrence record requests can now be made with aggregation,
@@ -18,6 +18,8 @@
   }
   \subsection{BUG FIXES}{
     \itemize{
+      \item Fixed two bugs in print method for FinBIF occurrence records that
+        were triggered when attempting to print only one row of data.
       \item Fixed bug triggering error when attempting to print occurrence
         record objects with zero rows.
       \item Fixed bug triggered when trying to print occurrence record data
@@ -27,14 +29,6 @@
       \item Fixed bug that printed occurrence records with multi-element data
         incorrectly when there was a single element.
       \item Fixed bug triggered by some system locales (#1).
-    }
-  }
-}
-\section{finbif version 0.3.1.9000}{
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Fixed two bugs in print method for FinBIF occurrence records that
-        were triggered when attempting to print only one row of data.
     }
   }
 }

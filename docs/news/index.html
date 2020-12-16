@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -149,9 +149,9 @@
       <small>Source: <a href='https://github.com/luomus/finbif/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="finbif-0319001" class="section level1">
-<h1 class="page-header" data-toc-text="0.3.1.9001">
-<a href="#finbif-0319001" class="anchor"></a>finbif 0.3.1.9001<small> Unreleased </small>
+    <div id="finbif-040" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.0">
+<a href="#finbif-040" class="anchor"></a>finbif 0.4.0<small> Unreleased </small>
 </h1>
 <div id="new-features" class="section level4">
 <h4 class="hasAnchor">
@@ -172,23 +172,12 @@
 <h4 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>BUG FIXES</h4>
 <ul>
+<li><p>Fixed two bugs in print method for FinBIF occurrence records that were triggered when attempting to print only one row of data.</p></li>
 <li><p>Fixed bug triggering error when attempting to print occurrence record objects with zero rows.</p></li>
 <li><p>Fixed bug triggered when trying to print occurrence record data with NA values.</p></li>
 <li><p>Fixed bug causing incorrect subsetting of occurrence records when using logical vectors to subset rows.</p></li>
 <li><p>Fixed bug that printed occurrence records with multi-element data incorrectly when there was a single element.</p></li>
 <li><p>Fixed bug triggered by some system locales (<a href='https://github.com/luomus/finbif/issues/1'>#1</a>).</p></li>
-</ul>
-</div>
-</div>
-    <div id="finbif-0319000" class="section level1">
-<h1 class="page-header" data-toc-text="0.3.1.9000">
-<a href="#finbif-0319000" class="anchor"></a>finbif 0.3.1.9000<small> Unreleased </small>
-</h1>
-<div id="bug-fixes-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>BUG FIXES</h4>
-<ul>
-<li>Fixed two bugs in print method for FinBIF occurrence records that were triggered when attempting to print only one row of data.</li>
 </ul>
 </div>
 </div>
@@ -248,9 +237,9 @@
 <li><p>After some failures, API requests are now automatically retried up to three times.</p></li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level4">
+<div id="bug-fixes-1" class="section level4">
 <h4 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>BUG FIXES</h4>
+<a href="#bug-fixes-1" class="anchor"></a>BUG FIXES</h4>
 <ul>
 <li><p>Ordering by descending variables did not work when ordering by both ascending and descending variables.</p></li>
 <li><p>Fixed bug in handling of duplicates that could result in an infinite recursion.</p></li>
