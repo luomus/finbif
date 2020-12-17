@@ -1,5 +1,9 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
+
+\section{finbif version 0.4.0.9000}{
+}
+
 \section{finbif version 0.4.0}{
   \subsection{NEW FEATURES}{
     \itemize{
@@ -32,6 +36,7 @@
     }
   }
 }
+
 \section{finbif version 0.3.1}{
   \subsection{NEW FEATURES}{
     \itemize{
@@ -50,6 +55,7 @@
     }
   }
 }
+
 \section{finbif version 0.3.0}{
   \subsection{NEW FEATURES}{
     \itemize{
