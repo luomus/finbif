@@ -1,5 +1,3 @@
-context("Checking utilities")
-
 test_that(
   "setting seed works", {
 

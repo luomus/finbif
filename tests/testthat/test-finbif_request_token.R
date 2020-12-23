@@ -1,5 +1,3 @@
-context("Checking FinBIF API token request")
-
 test_that(
   "reports that token has been set", {
 

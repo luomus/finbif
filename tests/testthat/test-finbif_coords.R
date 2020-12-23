@@ -1,5 +1,3 @@
-context("Converting coordinates to FinBIF format")
-
 test_that(
   "returns valid data", {
 

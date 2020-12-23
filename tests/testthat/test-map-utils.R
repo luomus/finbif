@@ -1,5 +1,3 @@
-context("Checking map utilities")
-
 test_that(
   "hist_xy works", {
 

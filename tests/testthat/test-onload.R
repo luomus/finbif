@@ -1,5 +1,3 @@
-context("Checking option setting")
-
 test_that(
   "works", {
     options("finbif_use_cache" = NULL)

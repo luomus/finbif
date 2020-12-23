@@ -1,5 +1,3 @@
-context("Checking FinBIF API get request")
-
 test_that(
   "with missing token returns error", {
 

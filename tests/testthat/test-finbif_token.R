@@ -1,5 +1,3 @@
-context("Checking FinBIF access token")
-
 test_that("is a string", {
 
   tokn <- Sys.getenv("FINBIF_ACCESS_TOKEN")

@@ -1,5 +1,3 @@
-context("Downloading FinBIF records")
-
 use_cassette(
   "finbif_records", {
 

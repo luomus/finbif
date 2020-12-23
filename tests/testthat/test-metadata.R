@@ -1,5 +1,3 @@
-context("Checking FinBIF internal data functions")
-
 test_that(
   "return valid data", {
 

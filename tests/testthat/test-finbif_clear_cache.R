@@ -1,5 +1,3 @@
-context("Checking clearing FinBIF cache")
-
 test_that(
   "works", {
 

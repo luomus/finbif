@@ -1,5 +1,3 @@
-context("Downloading FinBIF taxon info")
-
 use_cassette(
   "finbif_taxa", {
 

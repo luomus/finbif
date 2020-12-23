@@ -1,5 +1,3 @@
-context("Rerunning all test against dev")
-
 if (has_dev_api()) {
 
   token <- Sys.getenv("FINBIF_ACCESS_TOKEN")

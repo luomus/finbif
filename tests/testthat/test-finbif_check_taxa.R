@@ -1,5 +1,3 @@
-context("FinBIF taxa checking")
-
 use_cassette(
   "finbif_check_taxa", {
 

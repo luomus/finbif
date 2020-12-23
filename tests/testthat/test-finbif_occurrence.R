@@ -1,5 +1,3 @@
-context("Querying FinBIF occurrence data")
-
 use_cassette(
   "finbif_occurrence", {
 

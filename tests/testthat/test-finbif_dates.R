@@ -1,5 +1,3 @@
-context("Date formattting functions")
-
 use_cassette(
   "dates", {
 
