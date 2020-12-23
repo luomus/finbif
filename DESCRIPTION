@@ -45,8 +45,7 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 2.1.0),
-    vcr,
-    vdiffr
+    vcr
 Config/testthat/edition: 3
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: 

@@ -21,17 +21,16 @@ if (requireNamespace("vcr")) {
 
 }
 
-if (requireNamespace("vdiffr")) {
-
-  library("vdiffr")
-
-} else {
-
-  expect_doppelganger <- dummy
-
-}
-
 has_dev_api <- function() nchar(Sys.getenv("FINBIF_DEV_ACCESS_TOKEN")) > 0L
 
 is_dev_api <-
   function() identical(getOption("finbif_api_url"), "apitest.laji.fi")
+
+save_png <- function(code, width = 400, height = 400) {
+  path <- tempfile(fileext = ".png")
+  png(path, width = width, height = height)
+  on.exit(dev.off())
+  code
+
+  path
+}
