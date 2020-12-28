@@ -22,6 +22,8 @@ test_that(
 test_that(
   "returns errors appropriately", {
 
+    skip_on_cran()
+
     expect_condition(finbif_collections(1:50))
 
   }

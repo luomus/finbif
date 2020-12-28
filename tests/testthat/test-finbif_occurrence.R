@@ -130,8 +130,8 @@ test_that(
 
     expect_output(print(finbif_occurrence()), "Records downloaded:")
 
-    if (!identical(Sys.getenv("_R_CHECK_DEPENDS_ONLY_"), "true"))
-      expect_snapshot_file(save_png(plot(fungi)), "fungi.png")
+    if (requireNamespace("grDevices"))
+      expect_snapshot_file(save_svg(plot(fungi)), "fungi.svg")
 
   }
 )

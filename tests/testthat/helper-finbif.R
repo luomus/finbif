@@ -19,6 +19,7 @@ if (requireNamespace("vcr")) {
   vcr_configure <- dummy
   insert_cassette <- dummy
   eject_cassette <- dummy
+  Sys.setenv(NOT_CRAN = "false")
 
 }
 
@@ -27,11 +28,15 @@ has_dev_api <- function() nchar(Sys.getenv("FINBIF_DEV_ACCESS_TOKEN")) > 0L
 is_dev_api <-
   function() identical(getOption("finbif_api_url"), "apitest.laji.fi")
 
-save_png <- function(code, width = 400, height = 400) {
-  path <- tempfile(fileext = ".png")
-  png(path, width = width, height = height)
-  on.exit(dev.off())
-  code
+if (requireNamespace("grDevices")) {
 
-  path
+  save_svg <- function(code, width = 7, height = 7) {
+    path <- tempfile(fileext = ".svg")
+    svg(path, width = width, height = height)
+    on.exit(dev.off())
+    code
+
+    path
+  }
+
 }
