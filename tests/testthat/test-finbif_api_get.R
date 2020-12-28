@@ -11,45 +11,44 @@ test_that(
   }
 )
 
-use_cassette(
-  "api_get", {
+suppressMessages(insert_cassette("api_get"))
 
-    test_that(
-      "with wrong var returns an error message", {
+test_that(
+  "with wrong var returns an error message", {
 
-        skip_on_cran()
+    skip_on_cran()
 
-        expect_error(
-          api_get(
-            path = "warehouse/query/unit/list",
-            query = list(page = 1, pageSize = 1, selected = "not_a_var"),
-            cache = TRUE
-          ),
-          "API request failed"
+    expect_error(
+      suppressMessages(
+        api_get(
+          path = "warehouse/query/unit/list",
+          query = list(page = 1, pageSize = 1, selected = "not_a_var"),
+          cache = TRUE
         )
-
-      }
+      ),
+      "API request failed"
     )
 
-    test_that(
-      "that doesn't receive JSON returns an error message", {
-
-        skip_on_cran()
-
-        expect_error(
-          api_get(
-            path = "warehouse/query/unit/list",
-            query = list(
-              format = "xml", page = 1, pageSize = 1, selected = "unit.unitId"
-            ),
-            cache = TRUE
-          ),
-          "API did not return json"
-        )
-
-      }
-    )
-
-  },
-  preserve_exact_body_bytes = TRUE
+  }
 )
+
+test_that(
+  "that doesn't receive JSON returns an error message", {
+
+    skip_on_cran()
+
+    expect_error(
+      api_get(
+        path = "warehouse/query/unit/list",
+        query = list(
+          format = "xml", page = 1, pageSize = 1, selected = "unit.unitId"
+        ),
+        cache = TRUE
+      ),
+      "API did not return json"
+    )
+
+  }
+)
+
+suppressMessages(eject_cassette("api_get"))

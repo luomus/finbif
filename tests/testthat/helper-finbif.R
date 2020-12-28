@@ -17,7 +17,8 @@ if (requireNamespace("vcr")) {
 } else {
 
   vcr_configure <- dummy
-  use_cassette <- dummy
+  insert_cassette <- dummy
+  eject_cassette <- dummy
 
 }
 

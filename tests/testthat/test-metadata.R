@@ -35,18 +35,23 @@ test_that(
 
     expect_s3_class(finbif_metadata("taxon_rank"), "data.frame")
 
-    expect_type(finbif_informal_groups(), "character")
+    capture.output(informal_groups <- finbif_informal_groups())
 
-    expect_type(finbif_informal_groups("Algae"), "character")
+    expect_type(informal_groups, "character")
+
+    expect_type(finbif_informal_groups("Algae", quiet = TRUE), "character")
 
   }
 )
 
 test_that(
-  "print method works",
-  expect_output(print(finbif_metadata("taxon_rank")), "rank")
+  "print method works", {
+    expect_output(print(finbif_metadata("taxon_rank")), "rank")
+  }
 )
 
 test_that(
-  "returns errors appropriately", expect_error(finbif_metadata("notmetdata"))
+  "returns errors appropriately", {
+    expect_error(finbif_metadata("notmetdata"))
+  }
 )

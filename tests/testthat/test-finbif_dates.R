@@ -1,23 +1,19 @@
-use_cassette(
-  "dates", {
+suppressMessages(insert_cassette("dates"))
 
-    test_that(
-      "return valid data", {
+test_that(
+  "return valid data", {
 
-        skip_on_cran()
+    skip_on_cran()
 
-        records <-
-          finbif_records(filter = list(date_range_ymd = c("2001", "2008")))
+    records <-
+      finbif_records(filter = list(date_range_ymd = c("2001", "2008")))
 
-        expect_output(print(records), "FinBIF")
+    expect_output(print(records), "FinBIF")
 
-      }
-    )
-
-  },
-  preserve_exact_body_bytes = TRUE
+  }
 )
 
+suppressMessages(eject_cassette("dates"))
 
 test_that(
   "returns errors appropriately", {
