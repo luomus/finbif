@@ -36,7 +36,9 @@ check: pkgdown codemeta.json
 	R CMD check $(PKGNAME)_$(PKGVERS).tar.gz --as-cran
 
 pkgdown: vignettes README.md
-	${RSCRIPT} -e "pkgdown::build_site()"
+	echo "options(rmarkdown.html_vignette.check_title = FALSE)" > .Rprofile;\
+	${RSCRIPT} -e "pkgdown::build_site()";\
+	rm .Rprofile
 
 README.md: README.Rmd NEWS.md
 	${RSCRIPT} -e "knitr::knit('$<')"
@@ -59,7 +61,9 @@ vignettes: install
 	cd ../../vignettes;\
 	for f in *.md; do mv -- "$$f" "$$(basename "$$f" .md).Rmd"; done;\
 	cd ../;\
-	${RSCRIPT} -e "devtools::build_vignettes()"
+	echo "options(rmarkdown.html_vignette.check_title = FALSE)" > .Rprofile;\
+	${RSCRIPT} -e "devtools::build_vignettes()";\
+	rm .Rprofile
 
 doc: R/sysdata.rda
 	${RSCRIPT} -e "devtools::document()"
