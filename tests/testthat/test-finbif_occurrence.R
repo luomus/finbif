@@ -132,7 +132,8 @@ test_that(
 
     if (requireNamespace("grDevices"))
       expect_snapshot_file(save_svg(
-        plot(fungi, axes = FALSE, xlab = NA, ylab = NA)), "fungi.svg"
+        plot(fungi, axes = FALSE, xlab = NA, ylab = NA, panel.first = NULL)),
+        "fungi.svg"
       )
 
   }
