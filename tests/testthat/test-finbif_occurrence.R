@@ -131,7 +131,9 @@ test_that(
     expect_output(print(finbif_occurrence()), "Records downloaded:")
 
     if (requireNamespace("grDevices"))
-      expect_snapshot_file(save_svg(plot(fungi)), "fungi.svg")
+      expect_snapshot_file(save_svg(
+        plot(fungi, axes = FALSE, xlab = NA, ylab = NA)), "fungi.svg"
+      )
 
   }
 )
