@@ -32,7 +32,7 @@ if (requireNamespace("grDevices")) {
 
   save_svg <- function(code, width = 7, height = 7) {
     path <- tempfile(fileext = ".svg")
-    svg(path, width = width, height = height)
+    svg(path, width = width, height = height, antialias = "none")
     on.exit(dev.off())
     code
 
