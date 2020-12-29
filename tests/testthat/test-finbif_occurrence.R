@@ -130,7 +130,9 @@ test_that(
 
     expect_output(print(finbif_occurrence()), "Records downloaded:")
 
-    if (requireNamespace("grDevices"))
+    if (
+      requireNamespace("grDevices") && !identical(.Platform$OS.type, "windows")
+    )
       expect_snapshot_file(save_svg(
         plot(fungi, axes = FALSE, xlab = NA, ylab = NA, panel.first = NULL)),
         "fungi.svg"
