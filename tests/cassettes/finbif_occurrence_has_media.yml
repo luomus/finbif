@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?target=&hasMedia=TRUE&selected=unit.unitId%2Cunit.media.fullURL&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?hasMedia=TRUE&selected=unit.unitId%2Cunit.media.fullURL&orderBy=RANDOM&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 04 Jan 2021 11:18:12 GMT
+      date: Tue, 05 Jan 2021 09:51:56 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -33,6 +33,6 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":105693,"pageSize":10,"total":1056927,"results":[{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1606641/20210103_100820.jpg"}],"unitId":"http://tun.fi/JX.1200653#22"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1606640/20210103_100829.jpg"}],"unitId":"http://tun.fi/JX.1200653#19"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1606637/20210103_100858.jpg"}],"unitId":"http://tun.fi/JX.1200653#10"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1606638/20210103_100848.jpg"}],"unitId":"http://tun.fi/JX.1200653#13"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1606639/20210103_100843.jpg"}],"unitId":"http://tun.fi/JX.1200653#16"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1606636/20210103_101344.jpg"}],"unitId":"http://tun.fi/JX.1200653#7"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1606635/20210103_103148.jpg"}],"unitId":"http://tun.fi/JX.1200653#4"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1606574/ADB6B4CC-A97D-4C23-816B-BC5E169BA268.jpeg"},{"fullURL":"https://image.laji.fi/MM.1606575/B55BEA6F-1160-45DD-B8B9-E92E92FF5B7E.jpeg"}],"unitId":"http://tun.fi/JX.1200635#7"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1606573/DC26A279-6049-4402-9214-9230A43E3A9A.jpeg"}],"unitId":"http://tun.fi/JX.1200635#4"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1606536/IMG_7788.jpg"}],"unitId":"http://tun.fi/JX.1200627#4"}}]}'
-  recorded_at: 2021-01-04 11:18:12 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":105700,"pageSize":10,"total":1056996,"results":[{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/H.1699333/CombinedPreview_001-002.jpg"}],"unitId":"http://tun.fi/MY.771364"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.355596/20190927_182420.jpg"}],"unitId":"http://tun.fi/JX.1040621#37"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/C.43646/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.4748262"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/C.169542/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.4438134"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/C.408989/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.8534431"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/C.343227/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.7738919"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/39398797/original.jpeg?1558354902"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/39398805/original.jpeg?1558354910"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/39398811/original.jpeg?1558354916"}],"unitId":"http://tun.fi/HR.3211/25437767-U"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/C.139947/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.4356930"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/C.176208/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.4458120"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/EIG.13949/CombinedPreview_001-002.jpg"}],"unitId":"http://tun.fi/MY.693880"}}]}'
+  recorded_at: 2021-01-05 09:51:56 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4
