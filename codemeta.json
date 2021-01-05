@@ -196,7 +196,7 @@
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2020",
+      "datePublished": "2021",
       "author": [
         {
           "@type": "Person",
@@ -216,5 +216,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "35614.566KB"
+  "fileSize": "35571.228KB"
 }
