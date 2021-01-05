@@ -140,6 +140,7 @@ select_taxa <- function(..., cache, check_taxa, on_check_fail) {
       }
 
     taxa_invalid <- is.na(taxa)
+    taxa_valid  <- !taxa_invalid
 
     if (any(taxa_invalid)) {
       msg  <- paste(
@@ -153,8 +154,8 @@ select_taxa <- function(..., cache, check_taxa, on_check_fail) {
       )
     }
 
-    if (!all(taxa_invalid))
-      ans <- list(taxon_id = paste(taxa[!taxa_invalid], collapse = ","))
+    if (any(taxa_valid))
+      ans <- list(taxon_id = paste(taxa[taxa_valid], collapse = ","))
 
   }
 
