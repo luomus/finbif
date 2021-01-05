@@ -166,7 +166,9 @@ suppressMessages(eject_cassette("finbif_occurrence"))
 suppressMessages(insert_cassette("finbif_occurrence_has_media"))
 
 test_that(
-  "returns errors appropriately", {
+  "can process complex record variables", {
+
+    skip_on_cran()
 
     has_media <- finbif_occurrence(
       filter = c(has_media = TRUE), select = "record_media_url"
