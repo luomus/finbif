@@ -162,3 +162,21 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_occurrence"))
+
+suppressMessages(insert_cassette("finbif_occurrence_has_media"))
+
+test_that(
+  "returns errors appropriately", {
+
+    has_media <- finbif_occurrence(
+      filter = c(has_media = TRUE), select = "record_media_url"
+    )
+
+    url <- sample(unlist(has_media[["record_media_url"]]), 1L)
+
+    expect_match(url, "^http")
+
+  }
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_has_media"))

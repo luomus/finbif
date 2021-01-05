@@ -12,12 +12,23 @@ get_next_lowest_factor <-
 
 #' @noRd
 #' @importFrom methods as
+#' @importFrom utils hasName
 get_el_recurse <- function(obj, nms, type) {
+
   if (length(nms) < 1L)
     return(
       if (is.null(obj) || identical(obj, "")) methods::as(NA, type) else obj
     )
-  obj <- getElement(obj, nms[[1L]])
+
+  nm <- nms[[1L]]
+
+  if (!utils::hasName(obj, nm) && any(vapply(obj, utils::hasName, NA, nm))) {
+    obj <- lapply(obj, getElement, nm)
+    obj <- unlist(obj, recursive = FALSE)
+  } else {
+    obj <- getElement(obj, nm)
+  }
+
   get_el_recurse(obj, nms[-1L], type)
 }
 
