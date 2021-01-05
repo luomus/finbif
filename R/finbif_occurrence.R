@@ -128,9 +128,12 @@ select_taxa <- function(..., cache, check_taxa, on_check_fail) {
 
   taxa <- list(...)
   ntaxa <- length(taxa)
+
+  if (identical(ntaxa, 0L)) return(NULL)
+
   ans <- list(taxon_name = paste(taxa, collapse = ","))
 
-  if (ntaxa && check_taxa) {
+  if (check_taxa) {
 
     taxa <-
       if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
