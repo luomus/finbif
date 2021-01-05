@@ -2,6 +2,12 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.4.0.9000}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Add ability to extract complex record variables such as those
+        associated with record media (currently undocumented).
+    }
+  }
 }
 
 \section{finbif version 0.4.0}{

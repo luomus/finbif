@@ -1,3 +1,10 @@
+# finbif 0.4.0.9000
+
+#### NEW FEATURES
+
+  - Add ability to extract complex record variables such as those
+    associated with record media (currently undocumented).
+
 # finbif 0.4.0
 
 #### NEW FEATURES
