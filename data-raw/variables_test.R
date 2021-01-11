@@ -54,13 +54,5 @@ schema_only <- setdiff(agg_vars, agg_vars_pkg)
 
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
-doc_vars     <- var_names_test[var_names_test[["doc"]], "translated_var"]
-vars_in_docs <- documented_vars("R/variables.R")
-
-doc_vars_only <- setdiff(doc_vars, vars_in_docs)
-in_docs_only  <- setdiff(vars_in_docs, doc_vars)
-
-stopifnot(!length(c(doc_vars_only, in_docs_only)))
-
 class(var_names_test[["translated_var"]]) <- "translation"
 class(var_names_test[["dwc"]]) <- "translation"
