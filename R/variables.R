@@ -217,12 +217,6 @@
 #'   What level of restriction has been applied to the record.
 #' - `restriction_reasons` List.
 #'   List of reasons restriction has been applied.
-#' - `restriction_reasons_conservation` Logical.
-#'   Has the record been restricted for reasons of conservation.
-#' - `restriction_reasons_embargo` Logical.
-#'   Has the record been restricted due to a temporary data embargo.
-#' - `restriction_reasons_custom` Logical.
-#'   Has the record been restricted for other reasons.
 #'
 #' @section Data quality:
 #' Variables related to the quality of records include:

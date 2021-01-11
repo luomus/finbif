@@ -92,10 +92,7 @@ unit.taxonVerbatim,reported_name,verbatimTaxonName,FALSE,FALSE,character,charact
 unit.typeSpecimen,type_specimen,typeStatus,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 unit.unitOrder,record_order,occurrenceOrder,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 unit.wild,is_wild,occurrenceIsWild,FALSE,FALSE,character,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.conservationReasonSecured,restriction_reasons_conservation,dataGeneralizationsConservationReason,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.createdDate,date_created,documentCreatedDate,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.customReasonSecured,restriction_reasons_custom,dataGeneralizationsCustomReason,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.dataQuarantinePeriodReasonSecured,restriction_reasons_embargo,dataGeneralizationsEmbargoReason,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.documentId,document_id,documentID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.editorUserIds,editor_user_ids,editorUserID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE
 document.facts.decimalValue,document_fact_decimal,documentFactDecimal,FALSE,FALSE,double,double,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE

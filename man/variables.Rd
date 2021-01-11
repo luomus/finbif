@@ -237,12 +237,6 @@ Has the record been restricted in some way (e.g., geospatially aggregated).
 What level of restriction has been applied to the record.
 \item \code{restriction_reasons} List.
 List of reasons restriction has been applied.
-\item \code{restriction_reasons_conservation} Logical.
-Has the record been restricted for reasons of conservation.
-\item \code{restriction_reasons_embargo} Logical.
-Has the record been restricted due to a temporary data embargo.
-\item \code{restriction_reasons_custom} Logical.
-Has the record been restricted for other reasons.
 }
 }
 
