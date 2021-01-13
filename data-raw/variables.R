@@ -4,11 +4,11 @@ var_names <- read.csv(
   row.names = 1L, comment.char = "#"
 )
 
-vars <- httr::GET("https://api.laji.fi/explorer/swagger.json")
+vars <- httr::GET(Sys.getenv("WAREHOUSE_SWAGGER_URL"))
 vars <- jsonlite::fromJSON(httr::content(vars, "text"), simplifyVector = FALSE)
 vars <- vars[["paths"]]
 select_order_vars <-
-  vars[["/warehouse/query/unit/list"]][["get"]][["parameters"]]
+  vars[["/query/unit/list"]][["get"]][["parameters"]]
 
 select_vars <- select_order_vars[[
   which(vapply(select_order_vars, getElement, "", "name") == "selected")
@@ -21,7 +21,7 @@ order_vars <- select_order_vars[[
 order_vars <- unlist(order_vars[["items"]][["enum"]])
 
 agg_vars <-
-  vars[["/warehouse/query/unit/aggregate"]][["get"]][["parameters"]]
+  vars[["/query/unit/aggregate"]][["get"]][["parameters"]]
 agg_vars <-
   agg_vars[[which(vapply(agg_vars, getElement, "", "name") == "aggregateBy")]]
 agg_vars <- unlist(agg_vars[["items"]][["enum"]])
