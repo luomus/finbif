@@ -255,7 +255,18 @@ compute_vars_from_id <- function(df, select_) {
 
     if (utils::hasName(df, id_var_name)) {
 
-      metadata <- get(candidates[[i]])
+      metadata <- if (identical(id_var_name, "collection_id")) {
+
+        collection <-  finbif_collections(
+          select = "collection_name",
+          subcollections = TRUE, supercollections = TRUE, nmin = NA
+        )
+
+      } else {
+
+        get(candidates[[i]])
+
+      }
 
       var <- metadata[gsub("http://tun.fi/", "", df[[id_var_name]]), 1L]
 

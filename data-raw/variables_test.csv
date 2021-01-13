@@ -29,6 +29,7 @@ gathering.minutesEnd,minute_end,minuteEnd,FALSE,FALSE,integer,integer,TRUE,TRUE,
 unit.individualId,individual_id,organismID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 gathering.gatheringId,event_id,eventID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.collectionId,collection_id,collectionID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+computed_var_from_id_collection,collection,collection,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 unit.annotationCount,record_annotation_count,occurrenceAnnotationCount,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE
 unit.annotations.annotationByPerson,record_annotation_person_id,occurrenceAnnotationByID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE
 unit.annotations.annotationByPersonName,record_annotation_person_name,occurrenceAnnotationBy,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE
@@ -92,10 +93,7 @@ unit.taxonVerbatim,reported_name,verbatimTaxonName,FALSE,FALSE,character,charact
 unit.typeSpecimen,type_specimen,typeStatus,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 unit.unitOrder,record_order,occurrenceOrder,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 unit.wild,is_wild,occurrenceIsWild,FALSE,FALSE,character,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.conservationReasonSecured,restriction_reasons_conservation,dataGeneralizationsConservationReason,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.createdDate,date_created,documentCreatedDate,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.customReasonSecured,restriction_reasons_custom,dataGeneralizationsCustomReason,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.dataQuarantinePeriodReasonSecured,restriction_reasons_embargo,dataGeneralizationsEmbargoReason,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.documentId,document_id,documentID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.editorUserIds,editor_user_ids,editorUserID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE
 document.facts.decimalValue,document_fact_decimal,documentFactDecimal,FALSE,FALSE,double,double,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE

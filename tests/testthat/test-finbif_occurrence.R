@@ -182,3 +182,19 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_occurrence_has_media"))
+
+suppressMessages(insert_cassette("finbif_occurrence_collection"))
+
+test_that(
+  "can process collection ids", {
+
+    skip_on_cran()
+
+    expect_s3_class(finbif_occurrence(select = "collection"), "finbif_occ")
+
+  }
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_collection"))
+
+

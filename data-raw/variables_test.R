@@ -39,6 +39,8 @@ order_vars_pkg <- c(
   row.names(var_names_test[var_names_test[["order"]], ]) ,"RANDOM",
   "RANDOM:seed"
 )
+order_vars_pkg <-
+  grep("^computed_var", order_vars_pkg, value = TRUE, invert = TRUE)
 
 in_pkg_only <- setdiff(order_vars_pkg, order_vars)
 schema_only <- setdiff(order_vars, order_vars_pkg)

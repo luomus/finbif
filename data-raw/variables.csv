@@ -29,6 +29,7 @@ gathering.minutesEnd,minute_end,minuteEnd,FALSE,FALSE,integer,integer,TRUE,TRUE,
 unit.individualId,individual_id,organismID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 gathering.gatheringId,event_id,eventID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.collectionId,collection_id,collectionID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+computed_var_from_id_collection,collection,collection,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 unit.annotationCount,record_annotation_count,occurrenceAnnotationCount,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE
 unit.annotations.annotationByPerson,record_annotation_person_id,occurrenceAnnotationByID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE
 unit.annotations.annotationByPersonName,record_annotation_person_name,occurrenceAnnotationBy,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE

@@ -424,6 +424,13 @@ Indication of the record's quality.</p></li>
     
 
 <p>Other variables:</p><ul>
+<li><p><code>collection</code> Character.
+Collection name. All documents, events, and records belong to a collection
+(e.g., a museum collection, or the datasets collected by a specific
+institution). Collections themselves can be part of a larger
+(super)collection (e.g., all the collections at a specific museum). Only
+the lowest level collection name for a record is returned. Use
+<code><a href='finbif_collections.html'>finbif_collections()</a></code> to explore the hierarchy of collections.</p></li>
 <li><p><code>observers_ids</code> List.
 List of observer identifiers for the record.</p></li>
 <li><p><code>determiner</code> Character.
