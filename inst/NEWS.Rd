@@ -1,6 +1,18 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.4.0.9001}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Collection name can be selected as a variable for occurrence
+        records. Previously it had to be manually translated from collection ID.
+      \item Variables \code{restriction_reasons_conservation},
+        \code{restriction_reason_embargo} and \code{restriction_reason_custom}
+        are no longer in use upstream and can no longer be selected.
+    }
+  }
+}
+
 \section{finbif version 0.4.0.9000}{
   \subsection{NEW FEATURES}{
     \itemize{

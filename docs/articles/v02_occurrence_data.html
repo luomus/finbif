@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9001</span>
       </span>
     </div>
 
@@ -101,7 +101,7 @@
 
       
 
-      </header><script src="v02_occurrence_data_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="v02_occurrence_data_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Occurrence records from FinBIF</h1>
@@ -118,8 +118,9 @@
 <p>The core purpose of <a href="https://github.com/luomus/finbif">finbif</a> is accessing occurrence data stored in the FinBIF database. Occurrence data can be retrieved from FinBIF with the function <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>. Without any arguments specified <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> will retrieve the latest 10 occurrence records from FinBIF.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 34700400</span>
@@ -157,8 +158,9 @@
 <p>You can limit the records to certain taxa by specifying them as an argument.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 57007</span>
@@ -181,8 +183,9 @@
 <p>Multiple taxa can be requested at once.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, <span class="st">"Cygnus olor"</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 81351</span>
@@ -217,8 +220,9 @@
 <p>You can increase the number of records returned by using the <code>n</code> argument.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1001</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 1001</span>
 <span class="co">#&gt; Records available: 34696846</span>
@@ -249,8 +253,9 @@
 <p>When you request occurrence records for specific taxa, by default, the taxon names are first checked against the FinBIF database. If any of the requested taxa are not found in the database you will receive a warning but the data will still be retrieved for the remaining taxa.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 3326</span>
@@ -273,8 +278,9 @@
 <p>You can turn off taxon name pre-checking by setting the value of the <code>check_taxa</code> argument to <code>FALSE</code>.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span>, check_taxa <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 3326</span>
@@ -307,22 +313,23 @@
 <p>To illustrate, you can count the number of moths and butterflies by municipality with the following:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Lepidoptera"</span>, select <span class="op">=</span> <span class="st">"municipality"</span>, aggregate <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a></span>
-<span id="cb18-2"><a href="#cb18-2"></a>Records downloaded<span class="op">:</span><span class="st"> </span><span class="dv">10</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a>Records available<span class="op">:</span><span class="st"> </span><span class="dv">318</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a>A data.frame [<span class="dv">10</span> x <span class="dv">2</span>]</span>
-<span id="cb18-5"><a href="#cb18-5"></a>   municipality n_species</span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="dv">1</span>     Virolahti      <span class="dv">1919</span></span>
-<span id="cb18-7"><a href="#cb18-7"></a><span class="dv">2</span>       Kouvola      <span class="dv">1312</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a><span class="dv">3</span>      Rääkkylä      <span class="dv">1343</span></span>
-<span id="cb18-9"><a href="#cb18-9"></a><span class="dv">4</span>   Kemiönsaari      <span class="dv">1956</span></span>
-<span id="cb18-10"><a href="#cb18-10"></a><span class="dv">5</span>      Parainen      <span class="dv">1738</span></span>
-<span id="cb18-11"><a href="#cb18-11"></a><span class="dv">6</span>         Hanko      <span class="dv">1876</span></span>
-<span id="cb18-12"><a href="#cb18-12"></a><span class="dv">7</span>        Kuopio      <span class="dv">1307</span></span>
-<span id="cb18-13"><a href="#cb18-13"></a><span class="dv">8</span>      Helsinki      <span class="dv">1928</span></span>
-<span id="cb18-14"><a href="#cb18-14"></a><span class="dv">9</span>       Joensuu      <span class="dv">1331</span></span>
-<span id="cb18-15"><a href="#cb18-15"></a><span class="dv">10</span>    Raasepori      <span class="dv">1841</span></span></code></pre></div>
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>Records downloaded<span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Records available<span class="sc">:</span> <span class="dv">318</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>A data.frame [<span class="dv">10</span> x <span class="dv">2</span>]</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>   municipality n_species</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>     Virolahti      <span class="dv">1919</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>       Kouvola      <span class="dv">1312</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>      Rääkkylä      <span class="dv">1343</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>   Kemiönsaari      <span class="dv">1956</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>      Parainen      <span class="dv">1738</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>         Hanko      <span class="dv">1876</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>        Kuopio      <span class="dv">1307</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>      Helsinki      <span class="dv">1928</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>       Joensuu      <span class="dv">1331</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>    Raasepori      <span class="dv">1841</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div id="time-duration" class="section level2">
@@ -331,8 +338,9 @@
 <p>The default behaviour of <code>finbif_occurrence</code> is to consolidate date and time data for occurrence recording events into a <code>date_time</code> variable. This can be turned off (which can speed up data processing time) by deselecting the <code>date_time</code> variable.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>select <span class="op">=</span> <span class="st">"-date_time"</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 34696846</span>
@@ -360,8 +368,9 @@
 <p>The FinBIF database doesn’t currently store timezone information, so <a href="https://github.com/luomus/finbif">finbif</a> makes assumptions about the appropriate timezone based on the time and location of the occurrence recording events to calculate <code>date_time</code> and <code>duration</code>. By default, a fast heuristic is used to determine the timezones. If you require greater accuracy (e.g., you are using data on the Finnish/Swedish border and daytime/nighttime hours are important), you can switch to more accurate, though slower, timezone calculation method.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>date_time_method <span class="op">=</span> <span class="st">"accurate"</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 34696846</span>
@@ -391,8 +400,9 @@
 <p>You can override this by setting the <code>tzone</code> argument to a different value.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>tzone <span class="op">=</span> <span class="st">"Etc/UTC"</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 34696846</span>

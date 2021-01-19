@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9001</span>
       </span>
     </div>
 
@@ -101,7 +101,7 @@
 
       
 
-      </header><script src="v05_filtering_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="v05_filtering_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Filtering occurrence records</h1>
@@ -135,8 +135,9 @@
 <p>The event or import date of records can be used to filter occurrence data from FinBIF. The date filters can be a single year, month or date,</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>date_range_ym <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2019-12"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 9305</span>
@@ -160,8 +161,9 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
   filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>date_range_ymd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2019-06-01"</span>, <span class="st">"2019-12-31"</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 408296</span>
@@ -189,8 +191,9 @@
     date_range_md <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>begin <span class="op">=</span> <span class="st">"01-01"</span>, end <span class="op">=</span> <span class="st">"02-20"</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 1495416</span>
@@ -255,8 +258,9 @@
 <p>You can filter occurrence records based on informal taxonomic groups such as <code>Birds</code> or <code>Mammals</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>informal_group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Birds"</span>, <span class="st">"Mammals"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 18004003</span>
@@ -302,8 +306,9 @@
 <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
   filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>informal_group <span class="op">=</span> <span class="st">"Birds"</span>, administrative_status <span class="op">=</span> <span class="st">"EU_INVSV"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 437</span>
@@ -333,8 +338,9 @@
 <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
   filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>informal_group <span class="op">=</span> <span class="st">"Mammals"</span>, red_list_status <span class="op">=</span> <span class="st">"NT"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 1658</span>
@@ -372,8 +378,9 @@
 <code class="sourceCode R"><span class="co"># Search records of taxa for which forests are their primary or secondary</span>
 <span class="co"># habitat type</span>
 <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>primary_secondary_habitat <span class="op">=</span> <span class="st">"M"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 19741767</span>
@@ -404,8 +411,9 @@
 <code class="sourceCode R"><span class="co"># Search records of taxa for which forests with sun-exposure and broadleaved</span>
 <span class="co"># deciduous trees are their primary habitat type</span>
 <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>primary_habitat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>M <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"PA"</span>, <span class="st">"J"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 107</span>
@@ -432,8 +440,9 @@
 <p>You can restrict the occurrence records by the status of the taxa in Finland. For example you can request records for only rare species.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>finnish_occurrence_status <span class="op">=</span> <span class="st">"rare"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 261222</span>
@@ -460,8 +469,9 @@
     finnish_occurrence_status_neg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"vagrant_%sregular"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"ir"</span><span class="op">)</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 17823645</span>
