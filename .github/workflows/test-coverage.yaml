@@ -27,11 +27,9 @@ jobs:
       - name: MacOS brew system dependencies
         if: runner.os == 'macOS'
         run: |
-           brew uninstall --cask gfortran
            brew install udunits
            brew install libgit2
            brew install libssh2
-           brew install --cask gfortran
            brew install --cask xquartz
 
       - name: Query dependencies
