@@ -22,6 +22,7 @@ test_that(
 
     expect_identical(scientific_name("Otter"), "Lutra lutra")
     expect_identical(common_name("Bubo bubo", "se"), "lidnu")
+    expect_identical(common_name("MX.279648"), NA_character_)
 
   }
 )

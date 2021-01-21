@@ -87,6 +87,7 @@ as.data.frame.finbif_records <-
 
 #' @noRd
 with_locale <- function(x, locale = getOption("finbif_locale")) {
+  if (identical(length(x), 0L)) return(NA_character_)
   if (identical(length(x), 1L)) return(x[[1L]])
   x[[intersect(c(locale, setdiff(supported_langs, locale)), names(x))[[1L]]]]
 }
