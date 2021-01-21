@@ -11,3 +11,19 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_taxa"))
+
+
+suppressMessages(insert_cassette("taxon_name"))
+
+test_that(
+  "returns correct strings", {
+
+    skip_on_cran()
+
+    expect_identical(scientific_name("Otter"), "Lutra lutra")
+    expect_identical(common_name("Bubo bubo", "se"), "lidnu")
+
+  }
+)
+
+suppressMessages(eject_cassette("taxon_name"))

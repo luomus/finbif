@@ -3,6 +3,8 @@
 \name{finbif_taxa}
 \alias{finbif_taxa}
 \alias{fb_taxa}
+\alias{common_name}
+\alias{scientific_name}
 \title{Search the FinBIF taxa}
 \usage{
 finbif_taxa(
@@ -11,20 +13,32 @@ finbif_taxa(
   type = c("exact", "partial", "likely"),
   cache = getOption("finbif_use_cache")
 )
+
+common_name(name, locale = getOption("finbif_locale"))
+
+scientific_name(name)
 }
 \arguments{
-\item{name}{Character. The name of a taxon to search for.}
+\item{name}{Character. The name or ID of a taxon. Or, for functions other
+than \code{finbif_taxa} a \code{finbif_taxa} object.}
 
 \item{n}{Integer. Maximum number of matches to return. For types "exact" and
-"likely" a maximum of one taxon will be returned.}
+"likely" only one taxon will be returned.}
 
 \item{type}{Character. Type of match to make. Must be one of \code{exact},
 \code{partial} or \code{likely}.}
 
 \item{cache}{Logical. Use cached data.}
+
+\item{locale}{Character. One of the supported two-letter ISO 639-1 language
+codes. Current supported languages are English, Finnish, Swedish, Russian,
+and Sámi (Northern). For data where more than one language is available
+the language denoted by \code{locale} will be preferred while falling back to
+the other languages in the order indicated above.}
 }
 \value{
-A \code{finbif_api} object.
+For \code{finbif_taxa} a \code{finbif_taxa} object. Otherwise, a character
+vector.
 }
 \description{
 Search the FinBIF database for taxon.
@@ -37,5 +51,12 @@ finbif_taxa("Ursus arctos")
 
 # Use partial matching
 finbif_taxa("Ursus", n = 10, "partial")
+
+# Get Sámi (Northern) name of Eurasian Eagle-owl
+common_name("Bubo bubo", "se")
+
+# Get scientific name of "Otter"
+scientific_name("Otter")
+
 }
 }

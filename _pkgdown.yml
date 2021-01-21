@@ -23,6 +23,8 @@ reference:
     contents:
       - finbif_check_taxa
       - finbif_taxa
+      - scientific_name
+      - common_name
   - title: "Records"
     desc: >
       Getting records from finbif
