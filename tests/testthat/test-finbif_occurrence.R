@@ -196,5 +196,3 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_occurrence_collection"))
-
-
