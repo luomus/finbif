@@ -10,7 +10,7 @@
 #' @return If an access token has already been set then `NULL` (invisibly) if
 #'   not then, invisibly, a `finbif_api` object containing the response from
 #'   the FinBIF server.
-#' @importFrom httr accept_json content http_type POST user_agent status_code
+#' @importFrom httr accept_json content http_type RETRY user_agent status_code
 #' @importFrom jsonlite fromJSON
 #' @importFrom utils packageVersion
 #' @examples \dontrun{
@@ -35,9 +35,10 @@ finbif_request_token <- function(email) {
   url     <- getOption("finbif_api_url")
   version <- getOption("finbif_api_version")
   path    <- "api-users"
-  resp <- httr::POST(
-    sprintf("https://%s/%s/%s", url, version, path),
-    httr::user_agent(
+  resp <- httr::RETRY(
+    verb = "POST",
+    url = sprintf("https://%s/%s/%s", url, version, path),
+    config = httr::user_agent(
       paste0(
         "https://github.com/luomus/finbif#",
         utils::packageVersion("finbif")
@@ -51,11 +52,13 @@ finbif_request_token <- function(email) {
   parsed <-
     jsonlite::fromJSON(httr::content(resp, "text"), simplifyVector = FALSE)
 
-  if (httr::status_code(resp) != 200) {
+  status <- httr::status_code(resp)
+
+  if (!identical(status, 200L)) {
     stop(
       sprintf(
         "API request failed [%s]\n%s",
-        httr::status_code(resp),
+        status,
         parsed[["message"]]
       ),
       call. = FALSE
