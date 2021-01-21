@@ -1,6 +1,17 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.4.0.9002}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New functions \code{scientific_name} and \code{common_name} are now
+        available to get scientific and common names for taxa (given a taxon
+        name or FinBIF ID code) or extract names from a \code{finbif_taxa}-
+        class object.
+    }
+  }
+}
+
 \section{finbif version 0.4.0.9001}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

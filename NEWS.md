@@ -1,3 +1,11 @@
+# finbif 0.4.0.9002
+
+#### NEW FEATURES
+
+-   New functions `scientific_name` and `common_name` are now available
+    to get scientific and common names for taxa (given a taxon name or
+    FinBIF ID code) or extract names from a `finbif_taxa`- class object.
+
 # finbif 0.4.0.9001
 
 #### MINOR IMPROVEMENTS
