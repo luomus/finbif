@@ -46,7 +46,8 @@ truncate_string <- function(x, sl = 20L) {
 
 #' @noRd
 truncate_string_to_unique <- function(x) {
-  y <- x[!is.na(x)]
+  ind <- !is.na(x)
+  y <- x[ind]
   i <- 0L
   all_equal <- TRUE
   while (all_equal & length(unique(y)) > 1L) {
@@ -55,7 +56,8 @@ truncate_string_to_unique <- function(x) {
     j <- substr(y, i, i)
     all_equal <- all(j == j[[1L]])
   }
-  x[!is.na(x)] <- trimws(y)
+  y <- trimws(y)
+  x[ind] <- ifelse(x[ind] == y, y, paste0("\u2026", y))
   x
 }
 
