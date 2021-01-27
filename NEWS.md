@@ -1,4 +1,4 @@
-# finbif 0.4.0.9002
+# finbif 0.4.1
 
 #### NEW FEATURES
 
@@ -6,7 +6,8 @@
     to get scientific and common names for taxa (given a taxon name or
     FinBIF ID code) or extract names from a `finbif_taxa`- class object.
 
-# finbif 0.4.0.9001
+-   Add ability to extract complex record variables such as those
+    associated with record media (currently undocumented).
 
 #### MINOR IMPROVEMENTS
 
@@ -17,13 +18,6 @@
 -   Variables `restriction_reasons_conservation`,
     `restriction_reason_embargo` and `restriction_reason_custom` are no
     longer in use upstream and can no longer be selected.
-
-# finbif 0.4.0.9000
-
-#### NEW FEATURES
-
--   Add ability to extract complex record variables such as those
-    associated with record media (currently undocumented).
 
 # finbif 0.4.0
 
