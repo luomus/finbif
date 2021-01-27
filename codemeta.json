@@ -184,7 +184,7 @@
   ],
   "releaseNotes": "https://github.com/luomus/finbif/blob/master/NEWS.md",
   "contIntegration": ["https://codecov.io/github/luomus/finbif/branch/master", "https://codecov.io/github/luomus/finbif/branch/dev"],
-  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
