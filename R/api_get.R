@@ -34,6 +34,9 @@ api_get <- function(path, query, cache) {
     }
   }
 
+  # Pausing between requests is important if many request will be made
+  Sys.sleep(1L)
+
   resp <- httr::RETRY(
     "GET",
     sprintf("https://%s/%s/%s", url, version, path),

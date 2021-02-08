@@ -301,12 +301,8 @@ get_extra_pages <-
     query[["page"]] <- query[["page"]] + 1L
     n_pages <- n %/% query[["pageSize"]]
 
-    # Pausing between requests is important if many request will be made
-    sleep <- if (n_pages > 10L) 0L else 1L
-
     while (multipage) {
 
-      Sys.sleep(sleep)
       if (!quiet) utils::setTxtProgressBar(pb, i)
       i <- i + 1L
 
