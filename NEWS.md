@@ -1,3 +1,14 @@
+# finbif 0.4.1.9000
+
+#### NEW FEATURES
+
+-   Getting records from FinBIF can now be speed up (\~1.5x) with
+    Asynchronous processing. If the `future` package is available and
+    and asynchronous strategy (e.g., `plan(multisession, workers = 2)`)
+    is selected then downloading records and processing them will occur
+    simulataneously in separate threads, often leading to a significant
+    speed up over sequential processing.
+
 # finbif 0.4.1
 
 #### NEW FEATURES
