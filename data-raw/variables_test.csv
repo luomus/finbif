@@ -501,3 +501,5 @@ unit.linkings.taxon.superphylumId,superphylum_id,superphylumID,FALSE,FALSE,chara
 unit.linkings.taxon.tribeId,tribe_id,tribeID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
 unit.linkings.taxon.typesOfOccurrenceInFinland,finnish_occurrence_type,finnishOccurrenceType,FALSE,FALSE,integer,integer,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
 unit.linkings.taxon.varietyId,variety_id,varietyID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+unit.linkings.taxon.taxonSets,taxon_sets,taxonSets,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+unit.linkings.originalTaxon.taxonSets,original_taxon_sets,originalTaxonSets,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE

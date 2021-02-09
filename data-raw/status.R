@@ -35,6 +35,7 @@ administrative_status <- read.csv(
     MX.otherInvasiveSpeciesList, 'Other invasive species list', OTH_INVSV
     MX.controllingRisksOfInvasiveAlienSpecies, 'Controlling risks of invasive alien species', CRAS_INVSV
     MX.finnishEnvironmentInstitute20072010forestSpecies, 'Finnish environment institute 2007-2010 forest species', FEI_FS
+    MX.finnishEnvironmentInstitute20192021forestSpecies, 'Finnish environment institute 2019-2021 forest species', FEI_FS2
     MX.cropWildRelative, 'Crop wild relative', CWR
   ",
   stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'"
