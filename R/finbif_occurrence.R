@@ -76,7 +76,7 @@ finbif_occurrence <- function(
 
   records <- finbif_records(
     filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
-    cache, dwc
+    cache, dwc, df = TRUE
   )
 
   if (count_only) return(records[["content"]][["total"]])

@@ -19,3 +19,11 @@ test_that(
 
   }
 )
+
+test_that(
+  "dummy function for conditional package use works", {
+
+    expect_match(value("a"), "a")
+
+  }
+)

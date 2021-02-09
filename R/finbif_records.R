@@ -33,6 +33,8 @@
 #' @param seed Integer. Set a seed for randomly sampling records. Note that the
 #'   server currently ignores seed setting and this argument currently has
 #'   little effect.
+#' @param df Logical. Should the data.frame representation of the records be
+#'   returned as an attribute?
 #' @return A `finbif_api` or `finbif_api_list` object.
 #' @examples \dontrun{
 #'
@@ -45,7 +47,7 @@
 finbif_records <- function(
   filter, select, order_by, aggregate, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  dwc = FALSE, seed
+  dwc = FALSE, seed, df = FALSE
 ) {
 
   max_queries        <- 2000L
@@ -113,10 +115,18 @@ finbif_records <- function(
 
   })
 
-  request(
+  ans <- request(
     filter, select[["query"]], sample, n, page, count_only, quiet, cache, query,
-    max_size, select[["user"]], select[["record_id_selected"]], dwc, aggregate
+    max_size, select[["user"]], select[["record_id_selected"]], dwc, aggregate,
+    df
   )
+
+  if (df) {
+    ind <- length(ans)
+    attr(ans[[ind]], "df") <- as.data.frame(ans[[ind]])
+  }
+
+  ans
 
 }
 
@@ -207,7 +217,7 @@ infer_selection <- function(
 
 request <- function(
   filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-  select_, record_id_selected, dwc, aggregate
+  select_, record_id_selected, dwc, aggregate, df
 ) {
 
   path <- "warehouse/query/unit/"
@@ -239,12 +249,7 @@ request <- function(
   query[["pageSize"]] <- min(n, max_size)
 
   resp <- list(
-    structure(
-      api_get(path, query, cache),
-      class = c("finbif_records", "finbif_api"),
-      select = unique(select),
-      aggregate = aggregate
-    )
+    records_obj(path, query, cache, select, aggregate)
   )
 
   n_tot <- resp[[1L]][["content"]][["total"]]
@@ -260,18 +265,18 @@ request <- function(
     if (sample && sample_after_request) {
       all_records <- finbif_records(
         filter, select_, sample = FALSE, n = n_tot, quiet = quiet,
-        cache = cache, dwc = dwc
+        cache = cache, dwc = dwc, df = df
       )
       return(record_sample(all_records, n, cache))
     }
 
     resp <- get_extra_pages(
-      resp, n, max_size, quiet, path, query, cache, select, aggregate
+      resp, n, max_size, quiet, path, query, cache, select, aggregate, df
     )
 
     if (sample)
       resp <- handle_duplicates(
-        resp, filter, select_, max_size, cache, n, seed = 1L, dwc
+        resp, filter, select_, max_size, cache, n, seed = 1L, dwc, df
       )
 
   }
@@ -284,52 +289,73 @@ request <- function(
 
 }
 
+# construct request ------------------------------------------------------------
+
+records_obj <- function(path, query, cache, select, aggregate) {
+  structure(
+    api_get(path, query, cache),
+    class = c("finbif_records", "finbif_api"),
+    select = unique(select),
+    aggregate = aggregate
+  )
+}
+
 # record pagination ------------------------------------------------------------
 
-get_extra_pages <-
-  function(resp, n, max_size, quiet, path, query, cache, select, aggregate) {
+get_extra_pages <- function(
+  resp, n, max_size, quiet, path, query, cache, select, aggregate, df
+) {
 
-    multipage <- n > max_size
+  multipage <- n > max_size
 
-    if (multipage && !quiet) {
-      pb_head("Fetching data")
-      pb <- utils::txtProgressBar(0L, floor(n / max_size), style = 3L)
-      on.exit(close(pb))
+  if (multipage && !quiet) {
+    pb_head("Fetching data")
+    pb <- utils::txtProgressBar(0L, floor(n / max_size), style = 3L)
+    on.exit(close(pb))
+  }
+
+  i <- 1L
+  query[["page"]] <- query[["page"]] + 1L
+  n_pages <- n %/% query[["pageSize"]]
+
+  has_future <- requireNamespace("future", quietly = TRUE)
+
+  if (has_future) value <- future::value
+
+  while (multipage) {
+
+    if (!quiet) utils::setTxtProgressBar(pb, i)
+
+    if (query[["page"]] > n_pages) {
+
+      excess_records <- n %% query[["pageSize"]]
+      last_record <- query[["pageSize"]] * n_pages
+      if (last_record == n) break
+      query[["pageSize"]] <-
+        get_next_lowest_factor(last_record, excess_records)
+      query[["page"]] <- last_record / query[["pageSize"]] + 1L
+      n_pages <- n %/% query[["pageSize"]]
+
     }
 
-    i <- 1L
+    delayedAssign("res", records_obj(path, query, cache, select, aggregate))
+
+    if (has_future)
+      res <- future::future(records_obj(path, query, cache, select, aggregate))
+
+    if (df) attr(resp[[i]], "df") <- as.data.frame(resp[[i]])
+
+    i <- i + 1L
+
+    resp[[i]] <- value(res)
+
     query[["page"]] <- query[["page"]] + 1L
-    n_pages <- n %/% query[["pageSize"]]
-
-    while (multipage) {
-
-      if (!quiet) utils::setTxtProgressBar(pb, i)
-      i <- i + 1L
-
-      if (query[["page"]] > n_pages) {
-        excess_records <- n %% query[["pageSize"]]
-        last_record <- query[["pageSize"]] * n_pages
-        if (last_record == n) break
-        query[["pageSize"]] <-
-          get_next_lowest_factor(last_record, excess_records)
-        query[["page"]] <- last_record / query[["pageSize"]] + 1L
-        n_pages <- n %/% query[["pageSize"]]
-      }
-
-      resp[[i]] <- structure(
-        api_get(path, query, cache),
-        class = c("finbif_records", "finbif_api"),
-        select = unique(select),
-        aggregate = aggregate
-      )
-
-      query[["page"]] <- query[["page"]] + 1L
-
-    }
-
-    resp
 
   }
+
+  resp
+
+}
 
 # parsing filters --------------------------------------------------------------
 
@@ -474,7 +500,7 @@ record_sample <- function(x, n, cache) {
 # handle duplicates ------------------------------------------------------------
 
 handle_duplicates <-
-  function(x, filter, select, max_size, cache, n, seed, dwc) {
+  function(x, filter, select, max_size, cache, n, seed, dwc, df) {
 
     ids <- lapply(
       x,
@@ -494,13 +520,13 @@ handle_duplicates <-
 
       new_records <- finbif_records(
         filter, select, sample = TRUE, n = max_size, cache = cache,
-        dwc = dwc, seed = seed
+        dwc = dwc, seed = seed, df = df
       )
 
       x[[length(x) + 1L]] <- new_records[[1L]]
 
       x <- handle_duplicates(
-        x, filter, select, max_size, cache, n, seed + 1L, dwc
+        x, filter, select, max_size, cache, n, seed + 1L, dwc, df
       )
 
     }
@@ -520,7 +546,10 @@ remove_records <- function(x, records, n) {
   records <- split(records, excess_pages)
 
   for (i in seq_along(x)) {
-    x[[i]][["content"]][["results"]][records[[as.character(i)]]] <- NULL
+    ind <- records[[as.character(i)]]
+    x[[i]][["content"]][["results"]][ind] <- NULL
+    if (!is.null(ind))
+      attr(x[[i]], "df") <- attr(x[[i]], "df")[-ind, ]
     new_page_size <- length(x[[i]][["content"]][["results"]])
     x[[i]][["content"]][["pageSize"]] <- new_page_size
   }
@@ -550,5 +579,7 @@ select_type <- function(aggregate, yes, no) {
 }
 
 taxa_counts <- function(aggregate) {
+
   if (any(aggregate %in% c("species", "taxa"))) "true"
+
 }

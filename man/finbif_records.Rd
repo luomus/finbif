@@ -17,7 +17,8 @@ finbif_records(
   quiet = FALSE,
   cache = getOption("finbif_use_cache"),
   dwc = FALSE,
-  seed
+  seed,
+  df = FALSE
 )
 }
 \arguments{
@@ -59,6 +60,9 @@ downloads.}
 \item{seed}{Integer. Set a seed for randomly sampling records. Note that the
 server currently ignores seed setting and this argument currently has
 little effect.}
+
+\item{df}{Logical. Should the data.frame representation of the records be
+returned as an attribute?}
 }
 \value{
 A \code{finbif_api} or \code{finbif_api_list} object.

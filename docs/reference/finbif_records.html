@@ -167,7 +167,8 @@
   quiet <span class='op'>=</span> <span class='cn'>FALSE</span>,
   cache <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_use_cache"</span><span class='op'>)</span>,
   dwc <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  <span class='va'>seed</span>
+  <span class='va'>seed</span>,
+  df <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -235,6 +236,11 @@ downloads.</p></td>
       <td><p>Integer. Set a seed for randomly sampling records. Note that the
 server currently ignores seed setting and this argument currently has
 little effect.</p></td>
+    </tr>
+    <tr>
+      <th>df</th>
+      <td><p>Logical. Should the data.frame representation of the records be
+returned as an attribute?</p></td>
     </tr>
     </table>
 

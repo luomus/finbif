@@ -107,7 +107,12 @@ as.data.frame.finbif_records_list <-
       seq_len(n),
       function(i) {
         if (!quiet) utils::setTxtProgressBar(pb, i)
-        as.data.frame(x[[i]], locale = locale)
+        x_df <- attr(x[[i]], "df")
+        if (is.null(x_df)) {
+          as.data.frame(x[[i]], locale = locale)
+        } else {
+          x_df
+        }
       }
     )
 

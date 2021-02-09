@@ -61,6 +61,9 @@ truncate_string_to_unique <- function(x) {
   x
 }
 
+#' @noRd
+value <- function(obj) obj
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd
