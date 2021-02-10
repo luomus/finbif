@@ -3,22 +3,25 @@
 # misc -------------------------------------------------------------------------
 
 #' @noRd
-to_sentence_case <- function(string)
+to_sentence_case <- function(string) {
   paste0(substring(toupper(string), 1L, 1L), substring(tolower(string), 2L))
+}
 
 #' @noRd
-get_next_lowest_factor <-
-  function(x, y) if (x %% y) get_next_lowest_factor(x, y - 1L) else y
+get_next_lowest_factor <- function(x, y) {
+  if (x %% y) get_next_lowest_factor(x, y - 1L) else y
+}
 
 #' @noRd
 #' @importFrom methods as
 #' @importFrom utils hasName
 get_el_recurse <- function(obj, nms, type) {
 
-  if (length(nms) < 1L)
+  if (length(nms) < 1L) {
     return(
       if (is.null(obj) || identical(obj, "")) methods::as(NA, type) else obj
     )
+  }
 
   nm <- nms[[1L]]
 
@@ -30,6 +33,7 @@ get_el_recurse <- function(obj, nms, type) {
   }
 
   get_el_recurse(obj, nms[-1L], type)
+
 }
 
 #' @noRd
@@ -97,13 +101,16 @@ gen_seed.finbif_records_list <- function(x, ...) {
 # modified from https://github.com/reside-ic/defer/blob/master/R/defer.R
 
 #' @noRd
-deferrable_error <- function(message)
-  withRestarts({
-    calls <- sys.calls()
-    call <- calls[[max(length(calls) - 1L, 1L)]]
-    stop(error(message, "deferrable_error", call = call, calls = calls))
-  },
-  continue_deferrable_error = function(...) NULL)
+deferrable_error <- function(message) {
+  withRestarts(
+    {
+      calls <- sys.calls()
+      call <- calls[[max(length(calls) - 1L, 1L)]]
+      stop(error(message, "deferrable_error", call = call, calls = calls))
+    },
+    continue_deferrable_error = function(...) NULL
+  )
+}
 
 #' @noRd
 defer_errors <- function(expr, handler = stop) {
@@ -125,7 +132,7 @@ defer_errors <- function(expr, handler = stop) {
 }
 
 #' @noRd
-deferred_errors <- function(errors, handler, calls, value = NULL)
+deferred_errors <- function(errors, handler, calls, value = NULL) {
   if (length(errors)) {
     err <- list(errors = errors, value = value)
     class(err) <- c("dfrd_errors", "error", "condition")
@@ -133,12 +140,14 @@ deferred_errors <- function(errors, handler, calls, value = NULL)
   } else {
     value
   }
+}
 
 #' @noRd
-error <- function(message, class, ...)
+error <- function(message, class, ...) {
   structure(
     list(message = message, ...), class = c(class, "error", "condition")
   )
+}
 
 #' @export
 #' @noRd

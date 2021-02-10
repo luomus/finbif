@@ -49,8 +49,9 @@ finbif_request_token <- function(email) {
     encode = "json"
   )
 
-  parsed <-
-    jsonlite::fromJSON(httr::content(resp, "text"), simplifyVector = FALSE)
+  parsed <- jsonlite::fromJSON(
+    httr::content(resp, "text"), simplifyVector = FALSE
+  )
 
   status <- httr::status_code(resp)
 
@@ -73,4 +74,5 @@ finbif_request_token <- function(email) {
   )
 
   invisible(ans)
+
 }

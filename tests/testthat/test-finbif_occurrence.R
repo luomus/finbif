@@ -158,6 +158,10 @@ test_that(
       finbif_occurrence("not a valid taxa", on_check_fail = "error")
     )
 
+    expect_error(
+      finbif_occurrence(filter = list(coordinates = list(c(60, 68), c(20, 30))))
+    )
+
   }
 )
 

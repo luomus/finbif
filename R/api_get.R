@@ -52,18 +52,21 @@ api_get <- function(path, query, cache) {
     query = c(query, list(access_token = finbif_access_token))
   )
 
-  notoken <-
-    sub(sprintf("&access_token=%s", finbif_access_token), "", resp[["url"]])
+  notoken <- sub(
+    sprintf("&access_token=%s", finbif_access_token), "", resp[["url"]]
+  )
 
-  resp[["request"]][["url"]] <- resp[["url"]] <- notoken
+  resp[["url"]] <- notoken
+  resp[["request"]][["url"]] <- notoken
 
   if (httr::http_type(resp) != "application/json") {
     ans <- NULL
     stop("API did not return json", call. = FALSE)
   }
 
-  parsed <-
-    jsonlite::fromJSON(httr::content(resp, "text"), simplifyVector = FALSE)
+  parsed <- jsonlite::fromJSON(
+    httr::content(resp, "text"), simplifyVector = FALSE
+  )
 
   if (httr::status_code(resp) != 200L) {
     ans <- NULL

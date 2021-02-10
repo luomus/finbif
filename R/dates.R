@@ -17,8 +17,9 @@ parse_date <- function(x) {
 
 #' @noRd
 dates <- function(filter, begin = NULL, end = NULL) {
-  if (!inherits(begin, "Interval") && !any(nchar(c(begin, end))))
+  if (!inherits(begin, "Interval") && !any(nchar(c(begin, end)))) {
     deferrable_error("Need to specify at least one of 'begin' or 'end' date")
+  }
   switch(
     filter,
     date_range_ymd = date_range_ymd(begin, end),
@@ -73,8 +74,9 @@ date_range_ymd2 <- function(x, y, format) {
 
   if (inherits(y, "ym")) {
     y <- paste0(y, "-01")
-    y <-
-      lubridate::rollback(lubridate::as_date(y) + lubridate::period(month = 1L))
+    y <- lubridate::rollback(
+      lubridate::as_date(y) + lubridate::period(month = 1L)
+    )
     return(date_range_ymd(x, y, format))
   }
 

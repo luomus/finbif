@@ -34,34 +34,38 @@ finbif_metadata <- function(which) {
     "taxon_rank"
   )
 
-  ans <-
-    if (missing(which)) data.frame(metadata_name)
-    else {
 
-      if (!which %in% metadata_name) {
-        stop(which, " not found in FinBIF metadata.")
-      }
+  if (missing(which)) {
 
-      switch(
-        which,
-        admin_status              = md_admin_status(),
-        red_list                  = md_red_list(),
-        country                   = md_countries(),
-        province                  = md_provinces(),
-        municipality              = md_municipalities(),
-        bird_assoc_area           = md_bird_assoc_areas(),
-        finnish_occurrence_status = md_finnish_occurrence_status(),
-        habitat_type              = md_habitat_types(),
-        habitat_qualifier         = md_habitat_qualifiers(),
-        life_stage                = md_life_stages(),
-        record_basis              = md_record_basis(),
-        restriction_level         = md_restriction_levels(),
-        restriction_reason        = md_restriction_reasons(),
-        sex_category              = md_sex_categories(),
-        source                    = md_sources(),
-        taxon_rank                = md_taxon_ranks()
-      )
+    ans <- data.frame(metadata_name)
+
+  } else {
+
+    if (!which %in% metadata_name) {
+      stop(which, " not found in FinBIF metadata.")
     }
+
+    ans <- switch(
+      which,
+      admin_status              = md_admin_status(),
+      red_list                  = md_red_list(),
+      country                   = md_countries(),
+      province                  = md_provinces(),
+      municipality              = md_municipalities(),
+      bird_assoc_area           = md_bird_assoc_areas(),
+      finnish_occurrence_status = md_finnish_occurrence_status(),
+      habitat_type              = md_habitat_types(),
+      habitat_qualifier         = md_habitat_qualifiers(),
+      life_stage                = md_life_stages(),
+      record_basis              = md_record_basis(),
+      restriction_level         = md_restriction_levels(),
+      restriction_reason        = md_restriction_reasons(),
+      sex_category              = md_sex_categories(),
+      source                    = md_sources(),
+      taxon_rank                = md_taxon_ranks()
+    )
+
+  }
 
   class(ans) <- c("finbif_metadata_df", "data.frame")
 

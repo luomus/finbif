@@ -57,7 +57,8 @@ finbif_occurrence <- function(
   locale = getOption("finbif_locale")
 ) {
 
-  taxa <- select_taxa(..., cache = cache, check_taxa = check_taxa,
+  taxa <- select_taxa(
+    ..., cache = cache, check_taxa = check_taxa,
     on_check_fail = match.arg(on_check_fail)
   )
 
@@ -99,12 +100,15 @@ finbif_occurrence <- function(
 
   names(df) <- var_names[names(df), if (dwc) "dwc" else "translated_var"]
 
-  for (i in paste0("n_", aggregate)) df[[i]] <- n[[i]]
+  for (i in paste0("n_", aggregate)) {
+    df[[i]] <- n[[i]]
+  }
 
   select_ <- attr(records, "select_user")
 
-  if (!identical(aggregate, "none"))
+  if (!identical(aggregate, "none")) {
     select_ <- c(select_, paste0("n_", aggregate))
+  }
 
   df <- compute_date_time(
     df, select, select_, aggregate, dwc, date_time_method, tzone
@@ -135,12 +139,11 @@ select_taxa <- function(..., cache, check_taxa, on_check_fail) {
 
   if (check_taxa) {
 
-    taxa <-
-      if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
-        unlist(finbif_check_taxa(taxa, cache = cache))
-      } else {
-        unlist(finbif_check_taxa(..., cache = cache))
-      }
+    if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
+      taxa <- unlist(finbif_check_taxa(taxa, cache = cache))
+    } else {
+      taxa <- unlist(finbif_check_taxa(..., cache = cache))
+    }
 
     taxa_invalid <- is.na(taxa)
     taxa_valid  <- !taxa_invalid
@@ -157,8 +160,9 @@ select_taxa <- function(..., cache, check_taxa, on_check_fail) {
       )
     }
 
-    if (any(taxa_valid))
+    if (any(taxa_valid)) {
       ans <- list(taxon_id = paste(taxa[taxa_valid], collapse = ","))
+    }
 
   }
 
@@ -170,41 +174,40 @@ compute_date_time <- function(
   df, select, select_, aggregate, dwc, date_time_method, tzone
 ) {
 
-  date_time <-
-    missing(select) ||
-    any(
-      c(
-        "default_vars", "date_time", "eventDateTime", "duration",
-        "samplingEffort"
-      ) %in%
-        select
-    )
+  vars <- c(
+    "default_vars", "date_time", "eventDateTime", "duration", "samplingEffort"
+  )
 
+  date_time <- missing(select)
+  date_time <- date_time || any(vars %in% select)
   date_time <- date_time && identical(aggregate, "none")
 
-  if (date_time)
+  if (date_time) {
     if (dwc) {
       df[["eventDateTime"]] <- get_date_time(
         df, "eventDateStart", "hourStart", "minuteStart",
         "decimalLatitude", "decimalLongitude", date_time_method, tzone
       )
-      if ("samplingEffort" %in% select_)
+      if ("samplingEffort" %in% select_) {
         df[["samplingEffort"]] <- get_duration(
           df, "eventDateTime", "eventDateStart", "hourStart",
           "minuteStart", "decimalLatitude", "decimalLongitude",
           date_time_method, tzone
         )
+      }
     } else {
       df[["date_time"]] <- get_date_time(
         df, "date_start", "hour_start", "minute_start", "lat_wgs84",
         "lon_wgs84", date_time_method, tzone
       )
-      if ("duration" %in% select_)
+      if ("duration" %in% select_) {
         df[["duration"]] <- get_duration(
           df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
           "lon_wgs84", date_time_method, tzone
         )
+      }
     }
+  }
 
   df
 
@@ -219,13 +222,17 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
   # midnight)
   lubridate::hour(date_time) <- 12L
 
-  if (!is.null(df[[hour]]))
-    lubridate::hour(date_time) <-
-      ifelse(is.na(df[[hour]]), lubridate::hour(date_time), df[[hour]])
+  if (!is.null(df[[hour]])) {
+    lubridate::hour(date_time) <- ifelse(
+      is.na(df[[hour]]), lubridate::hour(date_time), df[[hour]]
+    )
+  }
 
-  if (!is.null(df[[minute]]))
-    lubridate::minute(date_time) <-
-      ifelse(is.na(df[[minute]]), lubridate::minute(date_time), df[[minute]])
+  if (!is.null(df[[minute]])) {
+    lubridate::minute(date_time) <- ifelse(
+      is.na(df[[minute]]), lubridate::minute(date_time), df[[minute]]
+    )
+  }
 
   tz <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
   lubridate::force_tzs(
@@ -233,17 +240,19 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
   )
 }
 
-get_duration <-
-  function(df, date_time, date, hour, minute, lat, lon, method, tzone) {
+get_duration <- function(
+  df, date_time, date, hour, minute, lat, lon, method, tzone
+) {
 
-    date_time_end <-
-      get_date_time(df, date, hour, minute, lat, lon, method, tzone)
+  date_time_end <- get_date_time(
+    df, date, hour, minute, lat, lon, method, tzone
+  )
 
-    ans <- lubridate::interval(df[[date_time]], date_time_end)
-    ans <- ifelse(is.na(df[[minute]]) | is.na(df[[hour]]), NA, ans)
-    lubridate::as.duration(ans)
+  ans <- lubridate::interval(df[[date_time]], date_time_end)
+  ans <- ifelse(is.na(df[[minute]]) | is.na(df[[hour]]), NA, ans)
+  lubridate::as.duration(ans)
 
-  }
+}
 
 compute_vars_from_id <- function(df, select_) {
 
@@ -255,16 +264,16 @@ compute_vars_from_id <- function(df, select_) {
 
     if (utils::hasName(df, id_var_name)) {
 
-      metadata <- if (identical(id_var_name, "collection_id")) {
+      if (identical(id_var_name, "collection_id")) {
 
-        collection <-  finbif_collections(
-          select = "collection_name",
-          subcollections = TRUE, supercollections = TRUE, nmin = NA
+        metadata <- finbif_collections(
+          select = "collection_name", subcollections = TRUE,
+          supercollections = TRUE, nmin = NA
         )
 
       } else {
 
-        get(candidates[[i]])
+        metadata <-get(candidates[[i]])
 
       }
 

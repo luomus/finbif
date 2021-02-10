@@ -81,11 +81,13 @@ finbif_records <- function(
 
     # select ===================================================================
 
-    select <-
-      infer_selection(aggregate, select, var_type, dwc, record_id_selected)
+    select <- infer_selection(
+      aggregate, select, var_type, dwc, record_id_selected
+    )
 
-    query[[select_type(aggregate, "selected", "aggregateBy")]] <-
-      paste(select[["query"]], collapse = ",")
+    query[[select_type(aggregate, "selected", "aggregateBy")]] <- paste(
+      select[["query"]], collapse = ","
+    )
 
     # order ====================================================================
 
@@ -106,12 +108,13 @@ finbif_records <- function(
 
     }
 
-    if (sample)
+    if (sample) {
       query[["orderBy"]] <- paste(
         if (missing(seed)) "RANDOM" else paste0("RANDOM:", as.integer(seed)),
         query[["orderBy"]],
         sep = c("", ",")[[length(query[["orderBy"]]) + 1L]]
       )
+    }
 
   })
 
@@ -170,21 +173,22 @@ infer_selection <- function(
     select_ <- select
 
     record_id_selected <- any(c("record_id", "occurrenceID") %in% select)
-    if (!record_id_selected && identical(aggregate, "none"))
+    if (!record_id_selected && identical(aggregate, "none")) {
       select <- c(if (dwc) "occurrenceID" else "record_id", select)
+    }
 
-    date_time <- any(
-      c("date_time", "eventDateTime", "duration", "samplingEffort") %in%
-        select
-    )
+    vars <-  c("date_time", "eventDateTime", "duration", "samplingEffort")
+    date_time <- any(vars %in% select)
 
-    if (date_time && identical(aggregate, "none"))
+    if (date_time && identical(aggregate, "none")) {
       select <- unique(c(select, date_time_vars[[var_type]]))
+    }
 
     select_vars <- var_names[var_names[["select"]], var_type, drop = FALSE]
     class(select_vars[[var_type]]) <- class(var_names[[var_type]])
-    select <-
-      translate(select, "select_vars", list(select_vars = select_vars))
+    select <- translate(
+      select, "select_vars", list(select_vars = select_vars)
+    )
 
     vars_computed_from_id <- grepl("^computed_var_from_id", select)
 
@@ -197,8 +201,9 @@ infer_selection <- function(
         ind <- match(row.names(vars_computed_from_id)[[i]], select)
         computed_var <- vars_computed_from_id[i, "translated_var"]
         id_var <- paste0(computed_var, "_id")
-        select[[ind]] <-
-          translate(id_var, "select_vars", list(select_vars = select_vars))
+        select[[ind]] <- translate(
+          id_var, "select_vars", list(select_vars = select_vars)
+        )
 
       }
 
@@ -248,9 +253,7 @@ request <- function(
   query[["page"]] <- page
   query[["pageSize"]] <- min(n, max_size)
 
-  resp <- list(
-    records_obj(path, query, cache, select, aggregate)
-  )
+  resp <- list(records_obj(path, query, cache, select, aggregate))
 
   n_tot <- resp[[1L]][["content"]][["total"]]
   n <- min(n, n_tot)
@@ -274,10 +277,11 @@ request <- function(
       resp, n, max_size, quiet, path, query, cache, select, aggregate, df
     )
 
-    if (sample)
+    if (sample) {
       resp <- handle_duplicates(
         resp, filter, select_, max_size, cache, n, seed = 1L, dwc, df
       )
+    }
 
   }
 
@@ -331,8 +335,7 @@ get_extra_pages <- function(
       excess_records <- n %% query[["pageSize"]]
       last_record <- query[["pageSize"]] * n_pages
       if (last_record == n) break
-      query[["pageSize"]] <-
-        get_next_lowest_factor(last_record, excess_records)
+      query[["pageSize"]] <- get_next_lowest_factor(last_record, excess_records)
       query[["page"]] <- last_record / query[["pageSize"]] + 1L
       n_pages <- n %/% query[["pageSize"]]
 
@@ -340,8 +343,9 @@ get_extra_pages <- function(
 
     delayedAssign("res", records_obj(path, query, cache, select, aggregate))
 
-    if (has_future)
+    if (has_future) {
       res <- future::future(records_obj(path, query, cache, select, aggregate))
+    }
 
     if (df) attr(resp[[i]], "df") <- as.data.frame(resp[[i]])
 
@@ -369,8 +373,9 @@ parse_filters <- function(filter) {
     # the filter might not exist
     if (is.na(finbif_filter_names[[i]])) next
 
-    if (filter_names[finbif_filter_names[[i]], "translated_values"])
+    if (filter_names[finbif_filter_names[[i]], "translated_values"]) {
       filter[[i]] <- translate(filter[[i]], names(filter)[[i]])
+    }
 
     if (grepl("^(not_){0,1}collection$", names(filter)[[i]])) { # nolint
 
@@ -386,12 +391,14 @@ parse_filters <- function(filter) {
           select = NA, supercollections = TRUE, nmin = NA
         )
 
-        for (cl in c("id", "collection_name", "abbreviation"))
+        for (cl in c("id", "collection_name", "abbreviation")) {
           class(env[[names(filter)[[i]]]][[cl]]) <- "translation"
+        }
 
         filter[[i]] <- translate(filter[[i]], names(filter)[[i]], env)
 
       }
+
     }
 
     if (identical(filter_names[finbif_filter_names[[i]], "class"], "coords")) {
@@ -400,11 +407,16 @@ parse_filters <- function(filter) {
       check_coordinates(finbif_filter_names[[i]], filter[["coordinates"]])
 
       filter[[i]] <- do.call(coords, as.list(filter[[i]]))
+
     }
 
-    if (identical(filter_names[finbif_filter_names[[i]], "class"], "date"))
-      filter[[i]] <-
-        do.call(dates, c(list(names(filter)[[i]]), as.list(filter[[i]])))
+    if (identical(filter_names[finbif_filter_names[[i]], "class"], "date")) {
+
+      filter[[i]] <- do.call(
+        dates, c(list(names(filter)[[i]]), as.list(filter[[i]]))
+      )
+
+    }
 
     filter[[i]] <- paste(
       filter[[i]], collapse = filter_names[finbif_filter_names[[i]], "sep"]
@@ -420,26 +432,21 @@ parse_filters <- function(filter) {
 
 check_coordinates <- function(filter_names, filter) {
 
-  if (
-    identical(filter_names, "coordinates") &&
-    (
-      length(filter) < 3L ||
-      (
-        !utils::hasName(filter, "system")  &&
-        !identical(names(filter[[3]]), "") &&
-        !is.null(names(filter))
-      )
-    )
-  )
+  cond <- !is.null(names(filter)) && !identical(names(filter[[3]]), "")
+  cond <- !utils::hasName(filter, "system") && cond
+  cond <- length(filter) < 3L || cond
+  cond <- identical(filter_names, "coordinates") && cond
 
-    deferrable_error("Invalid coordinates: system not specified")
+  if (cond) deferrable_error("Invalid coordinates: system not specified")
 
 }
 
 # translation ------------------------------------------------------------------
 
 translate <- function(x, translation, pos = -1) {
+
   trsltn <- get(translation, pos)
+
   # Some filters have multi-level values to translate (e.g., primary_habitat)
   if (is.list(x)) {
 
@@ -451,8 +458,10 @@ translate <- function(x, translation, pos = -1) {
   } else {
 
     ind <- rep(NA_integer_, length(x))
+
     # multilevel filters have data.frames a level below
     if (!is.data.frame(trsltn)) trsltn <- trsltn[[1L]]
+
     for (i in trsltn) {
       if (inherits(i, "translation")) {
         ind_ <- match(tolower(x), tolower(i))
@@ -460,10 +469,14 @@ translate <- function(x, translation, pos = -1) {
       }
     }
 
-    if (anyNA(ind)) for (err in x[is.na(ind)])
-      deferrable_error(
-        paste0("Invalid name in ", gsub("_", " ", translation), ": ", err)
-      )
+    if (anyNA(ind)) {
+      for (err in x[is.na(ind)]) {
+        deferrable_error(
+          paste0("Invalid name in ", gsub("_", " ", translation), ": ", err)
+        )
+      }
+    }
+
     row.names(trsltn)[ind]
 
   }
@@ -477,10 +490,10 @@ record_sample <- function(x, n, cache) {
   select <- attr(x, "select")
   record_id <- attr(x, "record_id")
 
-  records <- if (cache) {
-    sample_with_seed(n_tot, n_tot - n, gen_seed(x))
+  if (cache) {
+    records <- sample_with_seed(n_tot, n_tot - n, gen_seed(x))
   } else {
-    sample.int(n_tot, n_tot - n)
+    records <- sample.int(n_tot, n_tot - n)
   }
 
   structure(
@@ -499,41 +512,44 @@ record_sample <- function(x, n, cache) {
 
 # handle duplicates ------------------------------------------------------------
 
-handle_duplicates <-
-  function(x, filter, select, max_size, cache, n, seed, dwc, df) {
+handle_duplicates <- function(
+  x, filter, select, max_size, cache, n, seed, dwc, df
+) {
 
-    ids <- lapply(
-      x,
-      function(x)
-        vapply(
-          x[["content"]][["results"]], get_el_recurse, NA_character_,
-          c("unit", "unitId"), "character"
-        )
-    )
-    ids <- unlist(ids)
-
-    duplicates <- which(duplicated(ids))
-
-    x <- remove_records(x, duplicates)
-
-    if (length(ids) - length(duplicates) < n) {
-
-      new_records <- finbif_records(
-        filter, select, sample = TRUE, n = max_size, cache = cache,
-        dwc = dwc, seed = seed, df = df
+  ids <- lapply(
+    x,
+    function(x) {
+      vapply(
+        x[["content"]][["results"]], get_el_recurse, NA_character_,
+        c("unit", "unitId"), "character"
       )
-
-      x[[length(x) + 1L]] <- new_records[[1L]]
-
-      x <- handle_duplicates(
-        x, filter, select, max_size, cache, n, seed + 1L, dwc, df
-      )
-
     }
+  )
 
-    remove_records(x, n = n)
+  ids <- unlist(ids)
+
+  duplicates <- which(duplicated(ids))
+
+  x <- remove_records(x, duplicates)
+
+  if (length(ids) - length(duplicates) < n) {
+
+    new_records <- finbif_records(
+      filter, select, sample = TRUE, n = max_size, cache = cache, dwc = dwc,
+      seed = seed, df = df
+    )
+
+    x[[length(x) + 1L]] <- new_records[[1L]]
+
+    x <- handle_duplicates(
+      x, filter, select, max_size, cache, n, seed + 1L, dwc, df
+    )
 
   }
+
+  remove_records(x, n = n)
+
+}
 
 # remove records ---------------------------------------------------------------
 
@@ -548,8 +564,9 @@ remove_records <- function(x, records, n) {
   for (i in seq_along(x)) {
     ind <- records[[as.character(i)]]
     x[[i]][["content"]][["results"]][ind] <- NULL
-    if (!is.null(ind))
+    if (!is.null(ind)) {
       attr(x[[i]], "df") <- attr(x[[i]], "df")[-ind, ]
+    }
     new_page_size <- length(x[[i]][["content"]][["results"]])
     x[[i]][["content"]][["pageSize"]] <- new_page_size
   }
@@ -564,11 +581,13 @@ remove_records <- function(x, records, n) {
 
 check_n <- function(n, nmax) {
 
-  if (n > nmax)
+  if (n > nmax) {
     deferrable_error(paste("Cannot download more than", nmax, "records"))
+  }
 
-  if (n < 1L)
+  if (n < 1L) {
     deferrable_error(paste("Cannot request less than 1 record"))
+  }
 
 }
 

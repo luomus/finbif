@@ -28,7 +28,8 @@ NULL
 
 cache_location <- new.env()
 
-get_cache <- function(hash)
+get_cache <- function(hash) {
   if (exists(hash, envir = cache_location)) get(hash, envir = cache_location)
+}
 
 set_cache <- function(ans, hash) assign(hash, ans, envir = cache_location)

@@ -50,8 +50,9 @@ finbif_collections <- function(
     "warehouse/query/unit/aggregate", col_count_nms, "aggregateBy", cache
   )
 
-  collections <-
-    merge(col_md, col_count, by.x = "id", by.y = "aggregate_by", all.x = TRUE)
+  collections <- merge(
+    col_md, col_count, by.x = "id", by.y = "aggregate_by", all.x = TRUE
+  )
 
   row.names(collections) <- collections[["id"]]
   # Sometimes collections dont have a "has_children" field
@@ -59,31 +60,36 @@ finbif_collections <- function(
   ind <- ind & !is.na(ind)
   parent_collections <- row.names(collections)[ind]
 
-  for (collection in parent_collections)
+  for (collection in parent_collections) {
     if (is.na(collections[collection, "count"]))
       collections[collection, "count"] <- sum(
         collections[collections[["is_part_of"]] == collection, "count"],
         na.rm = TRUE
       )
+  }
 
-  if (!is.na(nmin))
+  if (!is.na(nmin)) {
     collections <- collections[
       !is.na(collections[["count"]]) & collections[["count"]] > nmin,
     ]
+  }
 
-  if (!subcollections)
+  if (!subcollections) {
     collections <- collections[is.na(collections[["is_part_of"]]), ]
+  }
 
-  if (!supercollections)
+  if (!supercollections) {
     collections <- collections[!collections[["has_children"]], ]
+  }
 
   if (missing(filter)) {
     rows <- rep_len(TRUE, nrow(collections))
   } else {
     call <- substitute(filter)
     rows <- eval(call, collections, parent.frame())
-    if (!is.logical(rows))
+    if (!is.logical(rows)) {
        deferrable_error("'Collections filter must be logical")
+    }
     rows <- rows & !is.na(rows)
   }
 
@@ -119,8 +125,9 @@ get_collections <- function(qry, path, nms, id, cache) {
     total <- collections[[qry[["page"]]]][["content"]][["total"]]
   }
 
-  for (i in c("content", "results"))
+  for (i in c("content", "results")) {
     collections <- lapply(collections, getElement, i)
+  }
 
   collections <- do.call(c, collections)
 
@@ -152,12 +159,15 @@ get_collections <- function(qry, path, nms, id, cache) {
 
   collections[nms[["TRUE"]]] <- list_cols
 
-  collections[[id]] <-
-    gsub("^http:\\/\\/tun\\.fi\\/", "", collections[[id]])
+  collections[[id]] <- gsub(
+    "^http:\\/\\/tun\\.fi\\/", "", collections[[id]]
+  )
 
   names(collections) <- sub("\\.", "_", names(collections))
-  names(collections) <-
-    gsub("([a-z])([A-Z])", "\\1_\\L\\2", names(collections), perl = TRUE)
+  names(collections) <- gsub(
+    "([a-z])([A-Z])", "\\1_\\L\\2", names(collections), perl = TRUE
+  )
+
   collections
 
 }
