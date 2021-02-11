@@ -1,16 +1,27 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.4.1.9001}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Occurrence records can now be requested using multiple sets of
+        filters at the same time. If a list of filters (with unnamed elements)
+        is supplied then a record request will be made for each set of filters
+        and the results of all requests combined and all duplicate records
+        removed.
+    }
+  }
+}
+
 \section{finbif version 0.4.1.9000}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item Getting records from FinBIF can now be speed up (~1.5x) with
-        Asynchronous processing. If the \code{future} package is available and
-        and asynchronous strategy (e.g.,
-        \code{plan(multisession, workers = 2)}) is selected then downloading
-        records and processing them will occur simulataneously in separate
-        threads, often leading to a significant speed up over sequential
-        processing.
+        asynchronous processing. If the \code{future} package is available and
+        an asynchronous strategy (e.g., \code{plan(multisession, workers = 2)})
+        is selected then downloading records and processing them will occur
+        simulataneously in separate threads, often leading to a significant
+        speed up over sequential processing.
     }
   }
 }

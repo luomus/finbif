@@ -1,11 +1,21 @@
+# finbif 0.4.1.9001
+
+#### NEW FEATURES
+
+-   Occurrence records can now be requested using multiple sets of
+    filters at the same time. If a list of filters (with unnamed
+    elements) is supplied then a record request will be made for each
+    set of filters and the results of all requests combined and all
+    duplicate records removed.
+
 # finbif 0.4.1.9000
 
 #### NEW FEATURES
 
 -   Getting records from FinBIF can now be speed up (\~1.5x) with
-    Asynchronous processing. If the `future` package is available and
-    and asynchronous strategy (e.g., `plan(multisession, workers = 2)`)
-    is selected then downloading records and processing them will occur
+    asynchronous processing. If the `future` package is available and an
+    asynchronous strategy (e.g., `plan(multisession, workers = 2)`) is
+    selected then downloading records and processing them will occur
     simulataneously in separate threads, often leading to a significant
     speed up over sequential processing.
 
