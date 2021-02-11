@@ -37,9 +37,13 @@ get_el_recurse <- function(obj, nms, type) {
 }
 
 #' @noRd
-pb_head <- function(msg) {
+pb_head <- function(msg, quiet = FALSE) {
   gap <- nchar(msg) + 15L
-  message("  |=== ", msg, " ", rep("=", max(0L, getOption("width") - gap)), "|")
+  if (!quiet) {
+    message(
+      "  |=== ", msg, " ", rep("=", max(0L, getOption("width") - gap)), "|"
+    )
+  }
 }
 
 #' @noRd
@@ -102,8 +106,7 @@ gen_seed.finbif_records_list <- function(x, ...) {
 
 #' @noRd
 deferrable_error <- function(message) {
-  withRestarts(
-    {
+  withRestarts({
       calls <- sys.calls()
       call <- calls[[max(length(calls) - 1L, 1L)]]
       stop(error(message, "deferrable_error", call = call, calls = calls))

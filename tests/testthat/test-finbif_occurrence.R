@@ -200,3 +200,17 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_occurrence_collection"))
+
+suppressMessages(insert_cassette("finbif_occurrence_multirequest"))
+
+test_that(
+  "can make a multifilter request", {
+
+    skip_on_cran()
+
+    expect_s3_class(finbif_occurrence(filter = list(NULL, NULL)), "finbif_occ")
+
+  }
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_multirequest"))

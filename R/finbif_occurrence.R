@@ -62,7 +62,29 @@ finbif_occurrence <- function(
     on_check_fail = match.arg(on_check_fail)
   )
 
-  if (missing(filter)) filter <- NULL
+  if (missing(filter) || is.null(filter)) {
+
+    filter <- NULL
+
+  } else {
+
+    if (is.null(names(filter))) {
+
+      stopifnot(
+        "only one filter set can be used with aggregation" = missing(aggregate)
+      )
+
+      multi_request <- multi_req(
+        taxa, filter, select, order_by, sample, n, page, count_only, quiet,
+        cache, dwc, date_time_method, tzone, locale
+      )
+
+      return(multi_request)
+
+    }
+
+  }
+
   filter <- c(taxa, filter)
 
   if (missing(aggregate)) {
@@ -83,13 +105,14 @@ finbif_occurrence <- function(
   if (count_only) return(records[["content"]][["total"]])
 
   # Don't need a processing progress bar if only one page of records
-  if (length(records) < 2L) quiet <- TRUE
+  quiet <- quiet || length(records) < 2L
 
-  if (!quiet) pb_head("Processing data")
+  pb_head("Processing data", quiet = quiet)
 
   df   <- as.data.frame(records, locale = locale, quiet = quiet)
   url  <- attr(df, "url", TRUE)
   time <- attr(df, "time", TRUE)
+  record_id <- attr(df, "record_id", TRUE)
 
   n <- list()
 
@@ -123,14 +146,15 @@ finbif_occurrence <- function(
     nrec_avl  = attr(records, "nrec_avl", TRUE),
     url       = url,
     time      = time,
-    dwc       = dwc
+    dwc       = dwc,
+    record_id = record_id
   )
 
 }
 
 select_taxa <- function(..., cache, check_taxa, on_check_fail) {
 
-  taxa <- list(...)
+  taxa <- c(...)
   ntaxa <- length(taxa)
 
   if (identical(ntaxa, 0L)) return(NULL)
@@ -273,7 +297,7 @@ compute_vars_from_id <- function(df, select_) {
 
       } else {
 
-        metadata <-get(candidates[[i]])
+        metadata <- get(candidates[[i]])
 
       }
 
@@ -286,5 +310,47 @@ compute_vars_from_id <- function(df, select_) {
   }
 
   df
+
+}
+
+multi_req <- function(
+  taxa, filter, select, order_by, sample, n, page, count_only, quiet, cache,
+  dwc, date_time_method, tzone, locale
+) {
+
+  ans <- vector("list", length(filter))
+
+  rep_args <- c(
+    "sample", "n", "page", "quiet", "cache", "date_time_method", "tzone",
+    "locale"
+  )
+
+  for (arg in rep_args) {
+
+    assign(arg, rep_len(get(arg), length(ans)))
+
+  }
+
+  for (i in seq_along(ans)) {
+
+    ans[[i]] <- finbif_occurrence(
+      taxa, filter = filter[[i]], select = select, order_by = order_by,
+      sample = sample[[i]], n = n[[i]], page = page[[i]],
+      count_only = count_only, quiet = quiet[[i]], cache = cache[[i]],
+      dwc = dwc, date_time_method = date_time_method[[i]], check_taxa = FALSE,
+      tzone = tzone[[i]], locale = locale[[i]]
+    )
+
+  }
+
+  if (!count_only) {
+
+    ans <- do.call(rbind, ans)
+    dups <- duplicated(attr(ans, "record_id"))
+    ans <- ans[!dups, ]
+
+  }
+
+  ans
 
 }

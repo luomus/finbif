@@ -125,6 +125,8 @@ as.data.frame.finbif_records_list <- function(
 
   df <- do.call(rbind, df)
 
+  record_id <- df[["unit.unitId"]]
+
   if (inherits(x, "finbif_records_sample_list")) {
     records <- if (attr(x, "cache")) {
       sample_with_seed(nrow(df), nrow(df), gen_seed(x))
@@ -136,7 +138,7 @@ as.data.frame.finbif_records_list <- function(
 
   if (!attr(x, "record_id")) df[["unit.unitId"]] <- NULL
 
-  structure(df, url = url, time = time)
+  structure(df, url = url, time = time, record_id = record_id)
 
 }
 
@@ -170,9 +172,28 @@ as.data.frame.finbif_records_list <- function(
   )
   attr <- attributes(x)
   attr[["row.names"]] <- as.integer(rows)
+  attr[["record_id"]] <- attr[["record_id"]][as.integer(rows)]
   mostattributes(ans) <- attr
   names(ans) <- if (is.character(cols)) cols else names(x)[cols]
   ans
+}
+
+# rbind methods ----------------------------------------------------------------
+
+#' @noRd
+#' @export
+rbind.finbif_occ <- function(...) {
+
+  ans <- rbind.data.frame(...)
+
+  l <- list(...)
+
+  for (i in c("nrec_dnld", "nrec_avl", "url", "time", "record_id")) {
+    attr(ans, i) <- unlist(lapply(l, attr, i))
+  }
+
+  ans
+
 }
 
 # print methods ----------------------------------------------------------------
@@ -241,14 +262,14 @@ print.finbif_metadata_df <- function(x, ..., right = FALSE) {
 #' @export
 print.finbif_occ <- function(x, ...) {
 
-  nrec_dnld <- attr(x, "nrec_dnld")
-  nrec_avl  <- attr(x, "nrec_avl")
+  dwdth <- getOption("width")
+
   ncols     <- ncol(x)
   nrows     <- nrow(x)
   dsply_nr  <- min(10L, nrows)
 
-  if (length(nrec_dnld)) cat("Records downloaded: ", nrec_dnld, "\n", sep = "")
-  if (length(nrec_avl)) cat("Records available: ", nrec_avl, "\n", sep = "")
+  records_msg(x, dwdth, nrec_dnld = "downloaded", nrec_avl = "available")
+
   cat("A data.frame [", nrows, " x ", ncols, "]\n", sep = "")
 
   df <- x[seq_len(dsply_nr), , drop = FALSE]
@@ -272,7 +293,7 @@ print.finbif_occ <- function(x, ...) {
   for (i in widths) {
     ind <- dsply_nc + 1L
     cumulative_width <- cumulative_width + 1L + widths[[ind]]
-    if (cumulative_width > getOption("width")) break
+    if (cumulative_width > dwdth) break
     dsply_nc <- ind
   }
 
@@ -288,6 +309,26 @@ print.finbif_occ <- function(x, ...) {
   print_extras(x, extra_rows, extra_cols, dsply_cols)
 
   invisible(x)
+
+}
+
+#' @noRd
+records_msg <- function(x, width, ...) {
+  l <- list(...)
+
+  for (i in seq_along(l)) {
+
+    n <- attr(x, names(l)[[i]])
+
+    if (!identical(length(n), 0L)) {
+
+      suf <- paste0("Records ", l[[i]], ": ")
+      n <- truncate_string(paste(n, collapse = " + "), width - nchar(suf) - 2L)
+      cat(suf, n, "\n", sep = "")
+
+    }
+
+  }
 
 }
 
