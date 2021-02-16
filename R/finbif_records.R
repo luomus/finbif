@@ -55,7 +55,6 @@ finbif_records <- function(
   nmax               <- max_queries * max_size
   n                  <- as.integer(n)
   var_type           <- if (dwc) "dwc" else "translated_var"
-  record_id_selected <- TRUE
 
   if (missing(aggregate)) aggregate <- "none"
 
@@ -81,9 +80,7 @@ finbif_records <- function(
 
     # select ===================================================================
 
-    select <- infer_selection(
-      aggregate, select, var_type, dwc, record_id_selected
-    )
+    select <- infer_selection(aggregate, select, var_type, dwc)
 
     query[[select_type(aggregate, "selected", "aggregateBy")]] <- paste(
       select[["query"]], collapse = ","
@@ -135,9 +132,7 @@ finbif_records <- function(
 
 # selection --------------------------------------------------------------------
 
-infer_selection <- function(
-  aggregate, select, var_type, dwc, record_id_selected
-) {
+infer_selection <- function(aggregate, select, var_type, dwc) {
 
   if (identical(aggregate, "none")) {
 
@@ -159,6 +154,7 @@ infer_selection <- function(
     # Missing 'select' implies default selection which implies date-time calc
     # needed
     select <- unique(c(select, row.names(date_time_vars)))
+    record_id_selected <- TRUE
 
   } else {
 
