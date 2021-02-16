@@ -80,7 +80,7 @@ finbif_records <- function(
 
     # select ===================================================================
 
-    select <- infer_selection(aggregate, select, var_type, dwc)
+    select <- infer_selection(aggregate, select, var_type)
 
     query[[select_type(aggregate, "selected", "aggregateBy")]] <- paste(
       select[["query"]], collapse = ","
@@ -132,7 +132,7 @@ finbif_records <- function(
 
 # selection --------------------------------------------------------------------
 
-infer_selection <- function(aggregate, select, var_type, dwc) {
+infer_selection <- function(aggregate, select, var_type) {
 
   if (identical(aggregate, "none")) {
 
@@ -168,9 +168,10 @@ infer_selection <- function(aggregate, select, var_type, dwc) {
     select <- setdiff(select, deselect)
     select_ <- select
 
-    record_id_selected <- any(c("record_id", "occurrenceID") %in% select)
+    record_id_selected <- var_names["unit.unitId", var_type] %in% select
+
     if (!record_id_selected && identical(aggregate, "none")) {
-      select <- c(if (dwc) "occurrenceID" else "record_id", select)
+      select <- c(var_names["unit.unitId", var_type], select)
     }
 
     vars <-  c("date_time", "eventDateTime", "duration", "samplingEffort")
