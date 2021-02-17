@@ -20,7 +20,7 @@
   "author": [
     {
       "@type": "Person",
-      "givenName": "William",
+      "givenName": "William K.",
       "familyName": "Morris",
       "email": "willi@mmorris.email",
       "@id": "https://orcid.org/0000-0002-8686-4154"
@@ -30,14 +30,14 @@
   "copyrightHolder": [
     {
       "@type": "Organization",
-      "name": "LUOMUS - Finnish Museum of Natural History"
+      "name": "Finnish Museum of Natural History - Luomus"
     }
   ],
   "funder": {},
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": "William",
+      "givenName": "William K.",
       "familyName": "Morris",
       "email": "willi@mmorris.email",
       "@id": "https://orcid.org/0000-0002-8686-4154"
@@ -212,13 +212,17 @@
       "author": [
         {
           "@type": "Person",
-          "givenName": "William",
+          "givenName": "William K.",
           "familyName": "Morris",
-          "email": "willi@mmorris.email"
+          "email": "willi@mmorris.email",
+          "@id": "https://orcid.org/0000-0002-8686-4154"
         }
       ],
       "name": "Introduction to the finbif package",
-      "url": "https://luomus.github.io/finbif/articles/finbif.html"
+      "identifier": "10.5281/zenodo.3612814",
+      "url": "https://luomus.github.io/finbif/articles/finbif.html",
+      "@id": "https://doi.org/10.5281/zenodo.3612814",
+      "sameAs": "https://doi.org/10.5281/zenodo.3612814"
     }
   ],
   "readme": "https://github.com/luomus/finbif/blob/master/README.md",
@@ -228,5 +232,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "36596.415KB"
+  "fileSize": "36598.237KB"
 }

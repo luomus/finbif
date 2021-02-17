@@ -75,6 +75,11 @@ Download occurrence data from FinBIF.
 finbif_occurrence("Cygnus cygnus", n = 100)
 ```
 
+## Citation
+```{r citation, results = "asis", echo = FALSE}
+print(citation("finbif"), bibtex = FALSE)
+```
+
 ----
 
 ## Contributing

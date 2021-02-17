@@ -2,9 +2,9 @@ Package: finbif
 Title: Interface for the 'Finnish Biodiversity Information Facility' API
 Version: 0.4.1.9001
 Authors@R: c(
-    person(given = "LUOMUS - Finnish Museum of Natural History",
+    person(given = "Finnish Museum of Natural History - Luomus",
            role = "cph"),
-    person(given = "William",
+    person(given = "William K.",
            family = "Morris",
            role = c("aut", "cre"),
            email = "willi@mmorris.email",

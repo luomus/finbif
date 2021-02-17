@@ -1,19 +1,29 @@
 year <- format(Sys.Date(), "%Y")
 note <- sprintf("R package version %s", meta$Version)
 
-citHeader("To cite finbif in publications use:")
+citHeader("Data from FinBIF comes from many sources.",
+          "For information on citing FinBIF itself and the contributed",
+          "datasets please visit this link:\n\n",
+          "<https://laji.fi/en/about/2986>",
+          "\n\n",
+          "To cite the finbif R package in publications please use:")
 
 citEntry(
   entry    = "Manual",
-  textVersion = NULL,
+  textVersion = paste0(
+    "Morris, William K. (", year, "). Introduction to the finbif package. ",
+    note, ", https://doi.org/10.5281/zenodo.3612814"
+  ),
   title    = "Introduction to the finbif package",
   author   = person(
-    given  = "William",
+    given = "William K.",
     family = "Morris",
-    role   = c("aut", "cre"),
-    email  = "willi@mmorris.email"
+    role = c("aut", "cre"),
+    email = "willi@mmorris.email",
+    comment = c(ORCID = "0000-0002-8686-4154")
   ),
   year     = year,
   note     = note,
-  url      = "https://luomus.github.io/finbif/articles/finbif.html"
+  url      = "https://luomus.github.io/finbif/articles/finbif.html",
+  doi      = "10.5281/zenodo.3612814"
 )

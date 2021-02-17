@@ -74,6 +74,18 @@ Download occurrence data from FinBIF.
 finbif_occurrence("Cygnus cygnus", n = 100)
 ```
 
+## Citation
+
+Data from FinBIF comes from many sources. For information on citing
+FinBIF itself and the contributed datasets please visit this link:
+
+<https://laji.fi/en/about/2986>
+
+To cite the finbif R package in publications please use:
+
+  Morris, William K. (2021). Introduction to the finbif package. R
+  package version 0.4.1.9001, https://doi.org/10.5281/zenodo.3612814
+
 ----
 
 ## Contributing
