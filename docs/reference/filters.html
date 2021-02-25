@@ -320,9 +320,13 @@ Filter by month and day of the year (e.g., <code>"01-01"</code> to <code>"12-31"
 begin or end date is omitted then it is interpreted as the first or last
 day of the year.</p></li>
 <li><p><code>{first|last}_import_date_{min|max}</code> Date.
-Filter by date record was imported. A <a href='https://rdrr.io/r/base/Dates.html'>Date</a> object or
-object that is coercible to the <a href='https://rdrr.io/r/base/Dates.html'>Date</a> class by
-<a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_date</a>.</p></li>
+Filter by date record was imported/modified. Either a
+<a href='https://rdrr.io/r/base/Dates.html'>Date</a> object or object that is coercible to the
+<a href='https://rdrr.io/r/base/Dates.html'>Date</a> class by <a href='http://lubridate.tidyverse.org/reference/as_date.html'>as_date</a>, or the number
+of seconds since 1970-01-01 00:00.00 UTC (the so-called UNIX epoch). Note
+that this means that specifying a year, such as 2019, without a month and
+day will be interpreted as 2019 seconds after midnight on Jan 1, 1970 and
+not the year 2019.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="quality"><a class="anchor" href="#quality"></a>Quality</h2>

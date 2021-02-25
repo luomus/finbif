@@ -168,9 +168,13 @@ Filter by month and day of the year (e.g., \code{"01-01"} to \code{"12-31"}). If
 begin or end date is omitted then it is interpreted as the first or last
 day of the year.
 \item \verb{\{first|last\}_import_date_\{min|max\}} Date.
-Filter by date record was imported. A \link[base:Dates]{Date} object or
-object that is coercible to the \link[base:Dates]{Date} class by
-\link[lubridate]{as_date}.
+Filter by date record was imported/modified. Either a
+\link[base:Dates]{Date} object or object that is coercible to the
+\link[base:Dates]{Date} class by \link[lubridate]{as_date}, or the number
+of seconds since 1970-01-01 00:00.00 UTC (the so-called UNIX epoch). Note
+that this means that specifying a year, such as 2019, without a month and
+day will be interpreted as 2019 seconds after midnight on Jan 1, 1970 and
+not the year 2019.
 }
 }
 
