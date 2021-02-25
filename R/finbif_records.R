@@ -138,11 +138,13 @@ infer_selection <- function(aggregate, select, var_type) {
 
     default_vars <- var_names[var_names[["default_var"]], ]
     date_time_vars <- var_names[var_names[["date"]], ]
+    select_type <- "select"
 
   } else {
 
     default_vars <- var_names["unit.linkings.taxon.scientificName", ]
     date_time_vars <- NULL
+    select_type <- "aggregate"
 
   }
 
@@ -181,7 +183,7 @@ infer_selection <- function(aggregate, select, var_type) {
       select <- unique(c(select, date_time_vars[[var_type]]))
     }
 
-    select_vars <- var_names[var_names[["select"]], var_type, drop = FALSE]
+    select_vars <- var_names[var_names[[select_type]], var_type, drop = FALSE]
     class(select_vars[[var_type]]) <- class(var_names[[var_type]])
     select <- translate(
       select, "select_vars", list(select_vars = select_vars)
