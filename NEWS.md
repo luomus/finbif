@@ -2,6 +2,15 @@
 
 #### NEW FEATURES
 
+-   Occurrence records can now be read directly from FinBIF download
+    request files. The function `finbif_occurrence_load` can load data
+    from a local file or remotely using a persistent identifier URI
+    (e.g. `http://tun.fi/HBF.49381`).
+
+# finbif 0.4.1.9001
+
+#### NEW FEATURES
+
 -   Occurrence records can now be requested using multiple sets of
     filters at the same time. If a list of filters (with unnamed
     elements) is supplied then a record request will be made for each
@@ -16,7 +25,7 @@
     asynchronous processing. If the `future` package is available and an
     asynchronous strategy (e.g., `plan(multisession, workers = 2)`) is
     selected then downloading records and processing them will occur
-    simulataneously in separate threads, often leading to a significant
+    simultaneously in separate threads, often leading to a significant
     speed up over sequential processing.
 
 # finbif 0.4.1
