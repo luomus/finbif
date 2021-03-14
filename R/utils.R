@@ -72,6 +72,49 @@ truncate_string_to_unique <- function(x) {
 #' @noRd
 value <- function(obj) obj
 
+#' @noRd
+col_type_string <- function(dwc) {
+  if (dwc) {
+    "dwc"
+  } else {
+    "translated_var"
+  }
+}
+
+#' @noRd
+det_datetime_method <- function(method, n) {
+  if (missing(method)) {
+    if (n < 1e5) {
+      method <- "fast"
+    } else {
+      method <- "none"
+    }
+  }
+  method
+}
+
+#' @noRd
+nlines <- function(x, header = TRUE) {
+  on.exit(close(con))
+  if (inherits(x, "unz")) {
+    con <- summary(x)
+    con <- con[["description"]]
+    con <- strsplit(con, ":")
+    con <- con[[1L]]
+    con <- unz(con[[1L]], con[[2L]], "rb")
+  } else {
+    con <- file(x, open = "rb")
+  }
+  n <- 0L
+  cond <- TRUE
+  while (cond) {
+    chunk <- readBin(con, "raw", 65536L)
+    n <- n + sum(chunk == as.raw(10L))
+    cond <- !identical(chunk, raw(0L))
+  }
+  n - header
+}
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd
@@ -194,6 +237,8 @@ to_dwc <- function(...) to_(list(...), "translated_var", "dwc")
 to_native <- function(...) to_(list(...), "dwc", "translated_var")
 
 # localization -----------------------------------------------------------------
+
+#' @noRd
 get_locale <- function() {
   ans <- supported_langs[[1L]]
   sys_lang <- c(Sys.getenv(c("LANGUAGE", "LANG")), Sys.getlocale("LC_COLLATE"))

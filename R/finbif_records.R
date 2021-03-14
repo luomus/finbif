@@ -54,7 +54,7 @@ finbif_records <- function(
   max_size           <- 1000L
   nmax               <- max_queries * max_size
   n                  <- as.integer(n)
-  var_type           <- if (dwc) "dwc" else "translated_var"
+  var_type           <- col_type_string(dwc)
 
   if (missing(aggregate)) aggregate <- "none"
 

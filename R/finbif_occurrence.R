@@ -9,8 +9,10 @@
 #' @inheritParams finbif_records
 #' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
 #'   `date_time` and/or `duration` variables have been selected. Default is
-#'   `"fast"`. Use `date_time_method = "accurate"` (requires package `sf`) for
-#'   greater accuracy.
+#'   `"fast"` when  less than 100,000 records are requested and `"none"` when
+#'   more. Using method `"none"` assumes all records are in timezone
+#'    "Europe/Helsinki", Use `date_time_method = "accurate"` (requires package
+#'     `sf`) for greater accuracy at the cost of slower computation.
 #' @param check_taxa Logical. Check first that taxa are in the FinBIF database.
 #'   If true only records that match known taxa (have a valid taxon ID) are
 #'   returned.
@@ -52,7 +54,7 @@
 finbif_occurrence <- function(
   ..., filter, select, order_by, aggregate, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  dwc = FALSE, date_time_method = "fast", check_taxa = TRUE,
+  dwc = FALSE, date_time_method, check_taxa = TRUE,
   on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
   locale = getOption("finbif_locale")
 ) {
@@ -61,6 +63,8 @@ finbif_occurrence <- function(
     ..., cache = cache, check_taxa = check_taxa,
     on_check_fail = match.arg(on_check_fail)
   )
+
+  date_time_method <- det_datetime_method(date_time_method, n = sum(n))
 
   if (missing(filter) || is.null(filter)) {
 
@@ -87,15 +91,11 @@ finbif_occurrence <- function(
 
   filter <- c(taxa, filter)
 
-  if (missing(aggregate)) {
+  if (missing(aggregate)) aggregate <- "none"
 
-    aggregate <- "none"
-
-  } else {
-
-    aggregate <- match.arg(aggregate, c("records", "species", "taxa"), TRUE)
-
-  }
+  aggregate <- match.arg(
+    aggregate, c("none", "records", "species", "taxa"), TRUE
+  )
 
   records <- finbif_records(
     filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
@@ -121,17 +121,15 @@ finbif_occurrence <- function(
     df[[i]] <- NULL
   }
 
-  names(df) <- var_names[names(df), if (dwc) "dwc" else "translated_var"]
+  names(df) <- var_names[names(df), col_type_string(dwc)]
 
   for (i in paste0("n_", aggregate)) {
     df[[i]] <- n[[i]]
   }
 
   select_ <- attr(records, "select_user")
-
-  if (!identical(aggregate, "none")) {
-    select_ <- c(select_, paste0("n_", aggregate))
-  }
+  select_ <- c(select_, paste0("n_", aggregate))
+  select_ <- setdiff(select_, "n_none")
 
   df <- compute_date_time(
     df, select, select_, aggregate, dwc, date_time_method, tzone
@@ -258,10 +256,23 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
     )
   }
 
-  tz <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
-  lubridate::force_tzs(
-    date_time, tzones = ifelse(is.na(tz), "", tz), tzone_out = tzone
-  )
+  method <- match.arg(method, c("none", "fast", "accurate"), TRUE)
+
+  if (identical(method, "none")) {
+
+    tz_in <- "Europe/Helsinki"
+    date_time <- lubridate::force_tz(date_time, tz_in)
+    lubridate::with_tz(date_time, tzone)
+
+  } else {
+
+    tz_in <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
+    lubridate::force_tzs(
+      date_time, tzones = ifelse(is.na(tz_in), "", tz_in), tzone_out = tzone
+    )
+
+  }
+
 }
 
 get_duration <- function(
@@ -280,7 +291,7 @@ get_duration <- function(
 
 compute_vars_from_id <- function(df, select_) {
 
-  candidates <- setdiff(select_, df)
+  candidates <- setdiff(select_, names(df))
 
   for (i in seq_along(candidates)) {
 

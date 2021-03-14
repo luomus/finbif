@@ -31,6 +31,7 @@ Language: en-US
 LazyData: true
 Depends: R (>= 3.5.0)
 Imports:
+    curl,
     digest,
     graphics,
     httr,

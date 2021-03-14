@@ -503,3 +503,7 @@ unit.linkings.taxon.typesOfOccurrenceInFinland,finnish_occurrence_type,finnishOc
 unit.linkings.taxon.varietyId,variety_id,varietyID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
 unit.linkings.taxon.taxonSets,taxon_sets,taxonSets,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.taxonSets,original_taxon_sets,originalTaxonSets,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+unit.annotations.identification.linkings.taxon.sensitive,record_annotation_taxon_sensitive,occurrenceAnnotationTaxonSensitive,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.sensitive,record_pre_annotation_taxon_sensitive,occurrencePreAnnotationTaxonSensitive,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.originalTaxon.sensitive,orig_taxon_sensitive,originalTaxonSensitive,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE
+unit.linkings.taxon.sensitive,sensitive,sensitive,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE
