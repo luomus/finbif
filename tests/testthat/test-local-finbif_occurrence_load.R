@@ -7,7 +7,7 @@ test_that(
     tsv <- paste(tempdir(), tsv, sep = "/")
 
     expect_snapshot_value(
-      finbif_occurrence_load(zip), style = "json2"
+      finbif_occurrence_load(zip, tzone = "Etc/UTC"), style = "json2"
     )
 
     expect_identical(
@@ -16,7 +16,7 @@ test_that(
     )
 
     expect_snapshot_value(
-      finbif_occurrence_load(zip, n = 300L), style = "json2"
+      finbif_occurrence_load(zip, n = 300L, tzone = "Etc/UTC"), style = "json2"
     )
 
     expect_identical(
