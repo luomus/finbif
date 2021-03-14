@@ -30,6 +30,7 @@ reference:
       Getting records from finbif
     contents:
       - finbif_occurrence
+      - finbif_occurrence_load
       - finbif_records
       - filters
       - to_dwc

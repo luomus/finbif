@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1.9002</span>
       </span>
     </div>
 
@@ -168,7 +168,7 @@
   quiet <span class='op'>=</span> <span class='cn'>FALSE</span>,
   cache <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_use_cache"</span><span class='op'>)</span>,
   dwc <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  date_time_method <span class='op'>=</span> <span class='st'>"fast"</span>,
+  <span class='va'>date_time_method</span>,
   check_taxa <span class='op'>=</span> <span class='cn'>TRUE</span>,
   on_check_fail <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"warn"</span>, <span class='st'>"error"</span><span class='op'>)</span>,
   tzone <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_tz"</span><span class='op'>)</span>,
@@ -244,8 +244,10 @@ downloads.</p></td>
       <th>date_time_method</th>
       <td><p>Character. Passed to <code><a href='https://andyteucher.ca/lutz/reference/tz_lookup_coords.html'>lutz::tz_lookup_coords()</a></code> when
 <code>date_time</code> and/or <code>duration</code> variables have been selected. Default is
-<code>"fast"</code>. Use <code>date_time_method = "accurate"</code> (requires package <code>sf</code>) for
-greater accuracy.</p></td>
+<code>"fast"</code> when  less than 100,000 records are requested and <code>"none"</code> when
+more. Using method <code>"none"</code> assumes all records are in timezone
+"Europe/Helsinki", Use <code>date_time_method = "accurate"</code> (requires package
+<code>sf</code>) for greater accuracy at the cost of slower computation.</p></td>
     </tr>
     <tr>
       <th>check_taxa</th>
