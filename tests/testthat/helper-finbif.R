@@ -40,3 +40,5 @@ if (requireNamespace("grDevices")) {
   }
 
 }
+
+options(stringsAsFactors = FALSE)
