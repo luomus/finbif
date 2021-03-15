@@ -1,12 +1,22 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.4.1.9001}{
+\section{finbif version 0.4.1.9003}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Aggregation of records can now be performed at the recording "event"
+      level as well as the "record"" level.
+    }
+  }
+}
+
+
+\section{finbif version 0.4.1.9002}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item Occurrence records can now be read directly from FinBIF download
         request files. The function \code{finbif_occurrence_load} can load data
-        from a local file or remotely using a persistent identifier URI (e.g.
+        from a local file or remotely using a persistent identifier URI (e.g.,
         \code{http://tun.fi/HBF.49381}).
     }
   }
