@@ -5,9 +5,11 @@ test_that(
     tsv  <- "rows_HBF.49381.tsv"
     unzip(zip, tsv, exdir = tempdir())
     tsv <- paste(tempdir(), tsv, sep = "/")
+    nrows <- 280L
 
     expect_snapshot_value(
-      finbif_occurrence_load(zip, tzone = "Etc/UTC"), style = "json2"
+      finbif_occurrence_load(zip, tzone = "Etc/UTC")[seq(nrows), ],
+      style = "json2"
     )
 
     expect_identical(
@@ -16,12 +18,13 @@ test_that(
     )
 
     expect_snapshot_value(
-      finbif_occurrence_load(zip, n = 300L, tzone = "Etc/UTC"), style = "json2"
+      finbif_occurrence_load(zip, n = nrows, tzone = "Etc/UTC"),
+      style = "json2"
     )
 
     expect_identical(
-      300L,
-      finbif_occurrence_load(tsv, n = 300L, count_only = TRUE)
+      nrows,
+      finbif_occurrence_load(tsv, n = nrows, count_only = TRUE)
     )
 
   }
