@@ -20,7 +20,7 @@ finnishMunicipalityId,municipality,uri,TRUE,",",TRUE
 biogeographicalProvinceId,province,uri,TRUE,",",TRUE
 area,locality,character,FALSE,",",TRUE
 birdAssociationAreaId,bird_assoc_area,uri,TRUE,",",TRUE
-namedPlaceId,place_name_id,uri,FALSE,",",FALSE
+namedPlaceId,location_id,uri,FALSE,",",FALSE
 formId,form_id,uri,FALSE,",",FALSE
 time,date_range_ymd,date,FALSE,",",TRUE
 yearMonth,date_range_ym,date,FALSE,",",TRUE

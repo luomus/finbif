@@ -19,8 +19,10 @@
 #'   `"-date_start"`). Default order is `"-date_start"` > `"-load_data"` >
 #'   `"reported_name"`.
 #' @param aggregate Character. If missing, returns full records. If one or more
-#'   of `"records"`, `"species"`, or `"taxa"` aggregates combinations of the
-#'   selected variables by counting records, species and/or taxa.
+#'   of `"records"`, `"species"`, `"taxa"`, or `"events"` aggregates
+#'   combinations of the selected variables by counting records, species, taxa,
+#'   or events. Aggregation by event cannot be done in combination with any of
+#'   the other aggregation types.
 #' @param sample Logical. If `TRUE` randomly sample the records from the FinBIF
 #'   database.
 #' @param n Integer. How many records to download.
@@ -56,15 +58,13 @@ finbif_records <- function(
   n                  <- as.integer(n)
   var_type           <- col_type_string(dwc)
 
-  if (missing(aggregate)) aggregate <- "none"
-
-  aggregate <- match.arg(
-    aggregate, c("none", "records", "species", "taxa"), TRUE
-  )
-
   defer_errors({
 
     check_n(n, nmax)
+
+    # aggregation ==============================================================
+
+    aggregate <- infer_aggregation(aggregate)
 
     # filter ===================================================================
 
@@ -82,9 +82,9 @@ finbif_records <- function(
 
     select <- infer_selection(aggregate, select, var_type)
 
-    query[[select_type(aggregate, "selected", "aggregateBy")]] <- paste(
-      select[["query"]], collapse = ","
-    )
+    select_param <- switch(aggregate[[1L]], none = "selected", "aggregateBy")
+
+    query[[select_param]] <- paste(select[["query"]], collapse = ",")
 
     # order ====================================================================
 
@@ -130,6 +130,30 @@ finbif_records <- function(
 
 }
 
+# aggregation ------------------------------------------------------------------
+
+infer_aggregation <- function(aggregate) {
+
+  if (missing(aggregate)) {
+     aggregate <- "none"
+  }
+
+  aggregate <- match.arg(
+    aggregate, c("none", "records", "species", "taxa", "events"), TRUE
+  )
+
+  cond <- "events" %in% aggregate && length(aggregate) > 1L
+
+  if (cond) {
+    deferrable_error(
+      "Aggregating by events cannot by combined with other aggregations"
+    )
+  }
+
+  aggregate
+
+}
+
 # selection --------------------------------------------------------------------
 
 infer_selection <- function(aggregate, select, var_type) {
@@ -142,9 +166,19 @@ infer_selection <- function(aggregate, select, var_type) {
 
   } else {
 
-    default_vars <- var_names["unit.linkings.taxon.scientificName", ]
-    date_time_vars <- NULL
-    select_type <- "aggregate"
+    if (identical(aggregate, "events")) {
+
+      default_vars <- var_names["gathering.gatheringId", ]
+      date_time_vars <- NULL
+      select_type <- "aggregate_events"
+
+    } else {
+
+      default_vars <- var_names["unit.linkings.taxon.scientificName", ]
+      date_time_vars <- NULL
+      select_type <- "aggregate"
+
+    }
 
   }
 
@@ -224,18 +258,18 @@ request <- function(
   select_, record_id_selected, dwc, aggregate, df
 ) {
 
-  path <- "warehouse/query/unit/"
+  path <- "warehouse/query/"
 
   if (count_only && identical(aggregate, "none")) {
 
     query[["selected"]] <- NULL
     query[["orderBy"]]  <- NULL
-    path <- paste0(path, "count")
+    path <- paste0(path, "unit/count")
     return(api_get(path, query, cache))
 
   }
 
-  path <- paste0(path, select_type(aggregate, "list", "aggregate"))
+  path <- paste0(path, select_endpoint(aggregate))
 
   if (count_only) {
 
@@ -590,10 +624,13 @@ check_n <- function(n, nmax) {
 
 }
 
-select_type <- function(aggregate, yes, no) {
-
-  if (identical(aggregate, "none")) yes else no
-
+select_endpoint <- function(aggregate) {
+  switch(
+    aggregate[[1L]],
+    none = "unit/list",
+    events = "gathering/aggregate",
+    "unit/aggregate"
+  )
 }
 
 taxa_counts <- function(aggregate) {

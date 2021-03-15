@@ -91,16 +91,12 @@ finbif_occurrence <- function(
 
   filter <- c(taxa, filter)
 
-  if (missing(aggregate)) aggregate <- "none"
-
-  aggregate <- match.arg(
-    aggregate, c("none", "records", "species", "taxa"), TRUE
-  )
-
   records <- finbif_records(
     filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
     cache, dwc, df = TRUE
   )
+
+  aggregate <- attr(records, "aggregate", TRUE)
 
   if (count_only) return(records[["content"]][["total"]])
 

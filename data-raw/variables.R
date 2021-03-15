@@ -26,6 +26,13 @@ agg_vars <-
   agg_vars[[which(vapply(agg_vars, getElement, "", "name") == "aggregateBy")]]
 agg_vars <- unlist(agg_vars[["items"]][["enum"]])
 
+agg_gath_vars <-
+  vars[["/query/gathering/aggregate"]][["get"]][["parameters"]]
+agg_gath_vars <- agg_gath_vars[[
+  which(vapply(agg_gath_vars, getElement, "", "name") == "aggregateBy")
+]]
+agg_gath_vars <- unlist(agg_gath_vars[["items"]][["enum"]])
+
 select_vars_pkg <- row.names(var_names[var_names[["select"]], ])
 select_vars_pkg <-
   grep("^computed_var", select_vars_pkg, value = TRUE, invert = TRUE)
@@ -52,6 +59,15 @@ agg_vars_pkg <-
 
 in_pkg_only <- setdiff(agg_vars_pkg, agg_vars)
 schema_only <- setdiff(agg_vars, agg_vars_pkg)
+
+stopifnot(!length(c(in_pkg_only, schema_only)))
+
+agg_gath_vars_pkg <- row.names(var_names[var_names[["aggregate_events"]], ])
+agg_gath_vars_pkg <-
+  grep("^computed_var", agg_gath_vars_pkg, value = TRUE, invert = TRUE)
+
+in_pkg_only <- setdiff(agg_gath_vars_pkg, agg_gath_vars)
+schema_only <- setdiff(agg_gath_vars, agg_gath_vars_pkg)
 
 stopifnot(!length(c(in_pkg_only, schema_only)))
 

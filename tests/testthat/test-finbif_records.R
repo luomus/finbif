@@ -71,5 +71,7 @@ test_that(
       )
     )
 
+    expect_condition(finbif_records(aggregate = c("records", "events")))
+
   }
 )

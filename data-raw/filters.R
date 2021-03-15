@@ -23,8 +23,7 @@ stopifnot(
 )
 
 # Some filter have been deprecated or are not available in the public API
-unused_filters <-
-  c("namedPlaceId", "editorId", "editorOrObserverId", "observerId")
+unused_filters <- c("editorId", "editorOrObserverId", "observerId")
 
 filter_names <- filter_names[-match(unused_filters, rownames(filter_names)), ]
 
