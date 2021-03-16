@@ -87,6 +87,8 @@ read_finbif_tsv <- function(x, n, count_only, quiet) {
 
   if (all) n <- -1L
 
+  x <- as.character(x)
+
   tsv <- basename(x)
   tsv <- gsub("zip", "tsv", tsv)
   tsv <- paste0("rows_", tsv)
