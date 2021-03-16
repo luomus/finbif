@@ -7,7 +7,7 @@ gathering.conversions.wgs84CenterPoint.lon,lon_wgs84,decimalLongitude,TRUE,FALSE
 computed_var_date_time,date_time,eventDateTime,TRUE,FALSE,double,date,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE
 gathering.interpretations.coordinateAccuracy,coordinates_uncertainty,coordinateUncertaintyInMeters,TRUE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 unit.quality.documentGatheringUnitQualityIssues,any_issues,hasIssues,TRUE,TRUE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
-unit.interpretations.needsCheck,requires_verification,requires_verification,TRUE,TRUE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE
+unit.interpretations.needsCheck,requires_verification,requiresVerification,TRUE,TRUE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE
 unit.interpretations.needsIdentification,requires_identification,requiresIdentification,TRUE,TRUE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE
 unit.interpretations.reliability,record_reliability,occurrenceReliability,TRUE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 unit.interpretations.recordQuality,record_quality,occurrenceQuality,TRUE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
