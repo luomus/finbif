@@ -158,27 +158,21 @@ infer_aggregation <- function(aggregate) {
 
 infer_selection <- function(aggregate, select, var_type) {
 
+  date_time_vars <- var_names[var_names[["date"]], ]
+  default_vars <- var_names["unit.linkings.taxon.scientificName", ]
+  select_type <- "aggregate"
+
+  if (identical(aggregate, "events")) {
+
+    default_vars <- var_names["gathering.gatheringId", ]
+    select_type <- "aggregate_events"
+
+  }
+
   if (identical(aggregate, "none")) {
 
     default_vars <- var_names[var_names[["default_var"]], ]
-    date_time_vars <- var_names[var_names[["date"]], ]
     select_type <- "select"
-
-  } else {
-
-    if (identical(aggregate, "events")) {
-
-      default_vars <- var_names["gathering.gatheringId", ]
-      date_time_vars <- NULL
-      select_type <- "aggregate_events"
-
-    } else {
-
-      default_vars <- var_names["unit.linkings.taxon.scientificName", ]
-      date_time_vars <- NULL
-      select_type <- "aggregate"
-
-    }
 
   }
 
@@ -186,11 +180,14 @@ infer_selection <- function(aggregate, select, var_type) {
 
     select <- row.names(default_vars)
     select_ <- default_vars[[var_type]]
+    record_id_selected <- FALSE
 
-    # Missing 'select' implies default selection which implies date-time calc
-    # needed
-    select <- unique(c(select, row.names(date_time_vars)))
-    record_id_selected <- TRUE
+    if (identical(aggregate, "none")) {
+      # Missing 'select' implies default selection which implies date-time calc
+      # needed
+      select <- unique(c(select, row.names(date_time_vars)))
+      record_id_selected <- TRUE
+    }
 
   } else {
 
@@ -213,7 +210,7 @@ infer_selection <- function(aggregate, select, var_type) {
     vars <-  c("date_time", "eventDateTime", "duration", "samplingEffort")
     date_time <- any(vars %in% select)
 
-    if (date_time && identical(aggregate, "none")) {
+    if (date_time) {
       select <- unique(c(select, date_time_vars[[var_type]]))
     }
 

@@ -110,22 +110,15 @@ finbif_occurrence <- function(
   time <- attr(df, "time", TRUE)
   record_id <- attr(df, "record_id", TRUE)
 
-  n <- list()
+  n_col_nms <- grep("^n_", names(df), value = TRUE)
 
-  for (i in paste0("n_", aggregate)) {
-    n[[i]] <- df[[i]]
-    df[[i]] <- NULL
-  }
+  ind <- !names(df) %in% n_col_nms
 
-  names(df) <- var_names[names(df), col_type_string(dwc)]
-
-  for (i in paste0("n_", aggregate)) {
-    df[[i]] <- n[[i]]
-  }
+  names(df)[ind] <- var_names[names(df)[ind], col_type_string(dwc)]
 
   select_ <- attr(records, "select_user")
-  select_ <- c(select_, paste0("n_", aggregate))
-  select_ <- setdiff(select_, "n_none")
+
+  select_ <- c(select_, n_col_nms)
 
   df <- compute_date_time(
     df, select, select_, aggregate, dwc, date_time_method, tzone
@@ -193,12 +186,19 @@ compute_date_time <- function(
 ) {
 
   vars <- c(
-    "default_vars", "date_time", "eventDateTime", "duration", "samplingEffort"
+    "date_time", "eventDateTime", "duration", "samplingEffort"
   )
 
-  date_time <- missing(select)
-  date_time <- date_time || any(vars %in% select)
-  date_time <- date_time && identical(aggregate, "none")
+  if (missing(select)) {
+
+    date_time <- identical("none", aggregate)
+
+  } else {
+
+    if (identical("none", aggregate)) vars <- c(vars, "default_vars")
+    date_time <- any(vars %in% select)
+
+  }
 
   if (date_time) {
     if (dwc) {

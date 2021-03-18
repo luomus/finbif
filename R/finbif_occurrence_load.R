@@ -45,7 +45,7 @@ finbif_occurrence_load <- function(
   date_time_method <- det_datetime_method(date_time_method, n_recs)
 
   df <- compute_date_time(
-    df, select, select, "none", dwc, date_time_method, tzone
+    df, select, select, aggregate = "none", dwc, date_time_method, tzone
   )
 
   if (!utils::hasName(df, "any_issues")) {
