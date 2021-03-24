@@ -6,6 +6,7 @@ if (requireNamespace("vcr")) {
   invisible(
     vcr::vcr_configure(
       dir = "../cassettes",
+      write_disk_path = "../write-files",
       record = "new_episodes",
       filter_sensitive_data = list(
         "<finbif_token>"     = Sys.getenv("FINBIF_ACCESS_TOKEN"),

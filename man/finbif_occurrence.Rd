@@ -53,7 +53,7 @@ the other aggregation types.}
 \item{sample}{Logical. If \code{TRUE} randomly sample the records from the FinBIF
 database.}
 
-\item{n}{Integer. How many records to download.}
+\item{n}{Integer. How many records to download/import.}
 
 \item{page}{Integer. Which page of records to start downloading from.}
 

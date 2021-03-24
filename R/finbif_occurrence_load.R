@@ -4,39 +4,52 @@
 #'
 #' @aliases fb_occurrence_load
 #'
-#' @param x Character or Integer. Either the path to a Zip archive or a TSV data
-#'   file that has been downloaded from "laji.fi". Or a URI pointing to the data
-#'   file (e.g., `http://tun.fi/HBF.49381`) or the integer representing the URI
-#'   (i.e., `49381`).
+#' @param file Character or Integer. Either the path to a Zip archive or a TSV
+#'   data file that has been downloaded from "laji.fi". Or a URI pointing to the
+#'   data file (e.g., [http://tun.fi/HBF.49381](http://tun.fi/HBF.49381)) or the
+#'   integer representing the URI (i.e., `49381`).
+#' @param write_file Character. Path to write downloaded zip file to if `file`
+#'   refers to a URI. Will be ignored if `getOption("finbif_cache_path")` is not
+#'   `NULL`.
 #' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
-#' @return A `data.frame`. If `count_only =  TRUE` an integer.
-#' @importFrom curl curl_download
+#' @return A `data.frame`, or if `count_only =  TRUE` an integer.
+#' @examples \dontrun{
+#'
+#' # Get occurrence data
+#' finbif_occurrence_load(49381)
+#'
+#' }
+#' @importFrom digest digest
+#' @importFrom httr progress RETRY status_code write_disk
 #' @importFrom utils hasName read.delim
 #' @importFrom methods as
 #' @export
 
 finbif_occurrence_load <- function(
-  x, select, n, count_only = FALSE, quiet = FALSE, dwc = FALSE,
-  date_time_method, tzone = getOption("finbif_tz"),
-  locale = getOption("finbif_locale")
+  file, select, n, count_only = FALSE, quiet = FALSE,
+  cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
+  tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"),
+  write_file = tempfile()
 ) {
 
-  df <- read_finbif_tsv(x, n, count_only, quiet)
+  var_type <- col_type_string(dwc)
+
+  defer_errors(select <- infer_selection("none", select, var_type))
+
+  select <- select[["user"]]
+
+  if (missing(n)) n <- -1L
+
+  df <- read_finbif_tsv(file, n, count_only, quiet, cache, write_file)
 
   if (count_only) return(df)
 
   n_recs <- attr(df, "nrow")
 
+  url <- attr(df, "url")
+
   df <- fix_issue_vars(df)
-
-  var_type <- col_type_string(dwc)
-
-  defer_errors({
-    select <- infer_selection("none", select, var_type)
-  })
-
-  select <- select[["user"]]
 
   names(df) <- cite_file_vars[names(df), var_type]
 
@@ -68,52 +81,60 @@ finbif_occurrence_load <- function(
 
   }
 
-  structure(
+  df <- structure(
     df[, select],
     class     = c("finbif_occ", "data.frame"),
     nrec_dnld = n_recs,
     nrec_avl  = n_recs,
-    url       = "??",
+    url       = url,
     time      = "??",
     dwc       = dwc,
     record_id = record_id
   )
 
+  df
+
 }
 
-read_finbif_tsv <- function(x, n, count_only, quiet) {
+read_finbif_tsv <- function(file, n, count_only, quiet, cache, write_file) {
 
-  all <- missing(n)
+  file <- as.character(file)
 
-  if (all) n <- -1L
+  ptrn <- "http://tun.fi/HBF."
 
-  x <- as.character(x)
+  is_url <- grepl(ptrn, file, fixed = TRUE)
 
-  tsv <- basename(x)
+  if (is_url) file <- gsub(ptrn, "", file)
+
+  tsv <- basename(file)
   tsv <- gsub("zip", "tsv", tsv)
   tsv <- paste0("rows_", tsv)
 
-  if (grepl("^[0-9]*$", x)) {
+  if (grepl("^[0-9]*$", file)) {
 
-    url <- sprintf("https://dw.laji.fi/download/HBF.%s", x)
+    url <- sprintf("https://dw.laji.fi/download/HBF.%s", file)
 
-    tsv <- sprintf("rows_HBF.%s.tsv", x)
+    tsv <- sprintf("rows_HBF.%s.tsv", file)
 
-    x <- tempfile()
+    file <- get_zip(url, quiet, cache, write_file)
 
-    curl::curl_download(url, x, quiet)
+  } else {
 
-    if (!quiet) message("")
+    url <- file
 
   }
 
-  con <- unz(x, tsv)
+  attr(df, "url") <- url
+
+  con <- unz(file, tsv)
 
   warn <- getOption("warn")
   on.exit(options(warn = warn))
   options(warn = 2L)
 
-  for (i in list(con, x)) {
+  all <- identical(n, -1L)
+
+  for (i in list(con, file)) {
 
     df <- try(
       if (count_only) {
@@ -183,5 +204,63 @@ fix_issue_vars <- function(df) {
   }
 
   df
+
+}
+
+get_zip <- function(url, quiet, cache, write_file) {
+
+  if (cache) {
+
+    hash <- digest::digest(url)
+
+    fcp <- getOption("finbif_cache_path")
+
+    if (is.null(fcp)) {
+
+      zip <- get_cache(hash)
+
+      if (!is.null(zip)) {
+
+        return(zip)
+
+      }
+
+      zip <- write_file
+
+      on.exit(if (!is.null(zip)) set_cache(zip, hash))
+
+    } else {
+
+      zip <- file.path(fcp, paste0("finbif_cache_file_", hash))
+
+      if (file.exists(zip)) {
+
+        return(zip)
+
+      }
+
+    }
+
+  }
+
+  progress <- NULL
+
+  if (!quiet) progress <- httr::progress()
+
+  resp <- httr::RETRY(
+    "GET", url, httr::write_disk(zip, overwrite = TRUE), progress
+  )
+
+  if (!quiet) message("")
+
+  code <- httr::status_code(resp)
+
+  if (!identical(code, 200L)) {
+
+    stop(sprintf("File request failed [%s]", code), call. = FALSE)
+
+  }
+
+  zip
 
 }

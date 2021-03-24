@@ -6,22 +6,24 @@
 \title{Load FinBIF occurrence records from a file}
 \usage{
 finbif_occurrence_load(
-  x,
+  file,
   select,
   n,
   count_only = FALSE,
   quiet = FALSE,
+  cache = getOption("finbif_use_cache"),
   dwc = FALSE,
   date_time_method,
   tzone = getOption("finbif_tz"),
-  locale = getOption("finbif_locale")
+  locale = getOption("finbif_locale"),
+  write_file = tempfile()
 )
 }
 \arguments{
-\item{x}{Character or Integer. Either the path to a Zip archive or a TSV data
-file that has been downloaded from "laji.fi". Or a URI pointing to the data
-file (e.g., \verb{http://tun.fi/HBF.49381}) or the integer representing the URI
-(i.e., \code{49381}).}
+\item{file}{Character or Integer. Either the path to a Zip archive or a TSV
+data file that has been downloaded from "laji.fi". Or a URI pointing to the
+data file (e.g., \url{http://tun.fi/HBF.49381}) or the
+integer representing the URI (i.e., \code{49381}).}
 
 \item{select}{Character vector. Variables to return. If not specified a
 default set of commonly used variables will be used. Use \code{"default_vars"}
@@ -29,12 +31,14 @@ as a shortcut for this set. Variables can be deselected by prepending a \code{-}
 to the variable name. If only deselects are specified the default set of
 variables without the deselection will be returned.}
 
-\item{n}{Integer. How many records to download.}
+\item{n}{Integer. How many records to download/import.}
 
 \item{count_only}{Logical. Only return the number of records available.}
 
 \item{quiet}{Logical. Suppress the progress indicator for multipage
 downloads.}
+
+\item{cache}{Logical. Use cached data.}
 
 \item{dwc}{Logical. Use Darwin Core (or Darwin Core style) variable names.}
 
@@ -53,10 +57,22 @@ codes. Current supported languages are English, Finnish, Swedish, Russian,
 and Sámi (Northern). For data where more than one language is available
 the language denoted by \code{locale} will be preferred while falling back to
 the other languages in the order indicated above.}
+
+\item{write_file}{Character. Path to write downloaded zip file to if \code{file}
+refers to a URI. Will be ignored if \code{getOption("finbif_cache_path")} is not
+\code{NULL}.}
 }
 \value{
-A \code{data.frame}. If \code{count_only =  TRUE} an integer.
+A \code{data.frame}, or if \code{count_only =  TRUE} an integer.
 }
 \description{
 Load occurrence data from a file as a \code{data.frame}.
+}
+\examples{
+\dontrun{
+
+# Get occurrence data
+finbif_occurrence_load(49381)
+
+}
 }

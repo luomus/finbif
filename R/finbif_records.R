@@ -25,7 +25,7 @@
 #'   the other aggregation types.
 #' @param sample Logical. If `TRUE` randomly sample the records from the FinBIF
 #'   database.
-#' @param n Integer. How many records to download.
+#' @param n Integer. How many records to download/import.
 #' @param page Integer. Which page of records to start downloading from.
 #' @param count_only Logical. Only return the number of records available.
 #' @param quiet Logical. Suppress the progress indicator for multipage
