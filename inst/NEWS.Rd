@@ -1,40 +1,7 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.4.1.9003}{
-  \subsection{NEW FEATURES}{
-    \itemize{
-      \item Aggregation of records can now be performed at the recording "event"
-      level as well as the "record"" level.
-    }
-  }
-}
-
-
-\section{finbif version 0.4.1.9002}{
-  \subsection{NEW FEATURES}{
-    \itemize{
-      \item Occurrence records can now be read directly from FinBIF download
-        request files. The function \code{finbif_occurrence_load} can load data
-        from a local file or remotely using a persistent identifier URI (e.g.,
-        \code{http://tun.fi/HBF.49381}).
-    }
-  }
-}
-
-\section{finbif version 0.4.1.9001}{
-  \subsection{NEW FEATURES}{
-    \itemize{
-      \item Occurrence records can now be requested using multiple sets of
-        filters at the same time. If a list of filters (with unnamed elements)
-        is supplied then a record request will be made for each set of filters
-        and the results of all requests combined and all duplicate records
-        removed.
-    }
-  }
-}
-
-\section{finbif version 0.4.1.9000}{
+\section{finbif version 0.5.0}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item Getting records from FinBIF can now be speed up (~1.5x) with
@@ -43,6 +10,17 @@
         is selected then downloading records and processing them will occur
         simultaneously in separate threads, often leading to a significant
         speed up over sequential processing.
+      \item Occurrence records can now be requested using multiple sets of
+        filters at the same time. If a list of filters (with unnamed elements)
+        is supplied then a record request will be made for each set of filters
+        and the results of all requests combined and all duplicate records
+        removed.
+      \item Occurrence records can now be read directly from FinBIF download
+        request files. The function \code{finbif_occurrence_load} can load data
+        from a local file or remotely using a persistent identifier URI (e.g.,
+        \code{http://tun.fi/HBF.49381}).
+      \item Aggregation of records can now be performed at the recording "event"
+        level as well as the "record"" level.
     }
   }
 }

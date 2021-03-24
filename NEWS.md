@@ -1,30 +1,4 @@
-# finbif 0.4.1.9003
-
-#### NEW FEATURES
-
--   Aggregation of records can now be performed at the recording "event"
-    level as well as the "record"" level.
-
-# finbif 0.4.1.9002
-
-#### NEW FEATURES
-
--   Occurrence records can now be read directly from FinBIF download
-    request files. The function `finbif_occurrence_load` can load data
-    from a local file or remotely using a persistent identifier URI
-    (e.g., `http://tun.fi/HBF.49381`).
-
-# finbif 0.4.1.9001
-
-#### NEW FEATURES
-
--   Occurrence records can now be requested using multiple sets of
-    filters at the same time. If a list of filters (with unnamed
-    elements) is supplied then a record request will be made for each
-    set of filters and the results of all requests combined and all
-    duplicate records removed.
-
-# finbif 0.4.1.9000
+# finbif 0.5.0
 
 #### NEW FEATURES
 
@@ -34,6 +8,20 @@
     selected then downloading records and processing them will occur
     simultaneously in separate threads, often leading to a significant
     speed up over sequential processing.
+
+-   Occurrence records can now be requested using multiple sets of
+    filters at the same time. If a list of filters (with unnamed
+    elements) is supplied then a record request will be made for each
+    set of filters and the results of all requests combined and all
+    duplicate records removed.
+
+-   Occurrence records can now be read directly from FinBIF download
+    request files. The function `finbif_occurrence_load` can load data
+    from a local file or remotely using a persistent identifier URI
+    (e.g., `http://tun.fi/HBF.49381`).
+
+-   Aggregation of records can now be performed at the recording "event"
+    level as well as the "record"" level.
 
 # finbif 0.4.1
 
