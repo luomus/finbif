@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
       </span>
     </div>
 
@@ -160,7 +160,7 @@
 <li><p>Getting records from FinBIF can now be speed up (~1.5x) with asynchronous processing. If the <code>future</code> package is available and an asynchronous strategy (e.g., <code>plan(multisession, workers = 2)</code>) is selected then downloading records and processing them will occur simultaneously in separate threads, often leading to a significant speed up over sequential processing.</p></li>
 <li><p>Occurrence records can now be requested using multiple sets of filters at the same time. If a list of filters (with unnamed elements) is supplied then a record request will be made for each set of filters and the results of all requests combined and all duplicate records removed.</p></li>
 <li><p>Occurrence records can now be read directly from FinBIF download request files. The function <code>finbif_occurrence_load</code> can load data from a local file or remotely using a persistent identifier URI (e.g., <code>http://tun.fi/HBF.49381</code>).</p></li>
-<li><p>Aggregation of records can now be performed at the recording “event” level as well as the “record”" level.</p></li>
+<li><p>Aggregation of records can now be performed at the recording “event” level as well as the “record” level.</p></li>
 </ul>
 </div>
 </div>

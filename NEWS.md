@@ -21,7 +21,7 @@
     (e.g., `http://tun.fi/HBF.49381`).
 
 -   Aggregation of records can now be performed at the recording "event"
-    level as well as the "record"" level.
+    level as well as the "record" level.
 
 # finbif 0.4.1
 

@@ -1,6 +1,9 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.5.0.9000}{
+}
+
 \section{finbif version 0.5.0}{
   \subsection{NEW FEATURES}{
     \itemize{
@@ -20,7 +23,7 @@
         from a local file or remotely using a persistent identifier URI (e.g.,
         \code{http://tun.fi/HBF.49381}).
       \item Aggregation of records can now be performed at the recording "event"
-        level as well as the "record"" level.
+        level as well as the "record" level.
     }
   }
 }
