@@ -2,6 +2,12 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.5.0.9000}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed bug that prevented occurrence record counting when caching
+        was not in use.
+    }
+  }
 }
 
 \section{finbif version 0.5.0}{

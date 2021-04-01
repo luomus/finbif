@@ -1,3 +1,10 @@
+# finbif 0.5.0.9000
+
+#### BUG FIXES
+
+-   Fixed bug that prevented occurrence record counting when caching was
+    not in use.
+
 # finbif 0.5.0
 
 #### NEW FEATURES
