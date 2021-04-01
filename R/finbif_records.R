@@ -121,7 +121,7 @@ finbif_records <- function(
     df
   )
 
-  if (df) {
+  if (df && !count_only) {
     ind <- length(ans)
     attr(ans[[ind]], "df") <- as.data.frame(ans[[ind]])
   }
