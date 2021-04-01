@@ -255,7 +255,7 @@ request <- function(
   select_, record_id_selected, dwc, aggregate, df
 ) {
 
-  path <- "warehouse/query/"
+  path <- getOption("finbif_warehouse_query")
 
   if (count_only && identical(aggregate, "none")) {
 
