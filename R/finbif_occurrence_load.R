@@ -51,6 +51,8 @@ finbif_occurrence_load <- function(
 
   df <- fix_issue_vars(df)
 
+  df <- new_vars(df)
+
   names(df) <- cite_file_vars[names(df), var_type]
 
   record_id <- df[["record_id"]]
@@ -201,6 +203,22 @@ fix_issue_vars <- function(df) {
         names(df)
       )
     }
+  }
+
+  df
+
+}
+
+new_vars <- function(df) {
+
+  new_vars <- setdiff(row.names(cite_file_vars), names(df))
+
+  for (i in new_vars) {
+
+    ## TODO: update logic if and when new citable file vars that are not
+    ## character data are added.
+    df[[i]] <- NA_character_
+
   }
 
   df
