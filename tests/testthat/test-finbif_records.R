@@ -56,6 +56,8 @@ test_that(
 
 suppressMessages(eject_cassette("finbif_records"))
 
+suppressMessages(insert_cassette("finbif_records_count_only"))
+
 test_that(
   "with count only, df and no cache returns valid data", {
 
@@ -67,8 +69,6 @@ test_that(
 
   }
 )
-
-suppressMessages(insert_cassette("finbif_records_count_only"))
 
 suppressMessages(eject_cassette("finbif_records_count_only"))
 
