@@ -1,0 +1,38 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=unit.unitId&personEmail=noreply%40laji.fi&access_token=<finbif_dev_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Wed, 14 Apr 2021 07:55:30 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      via: 1.1 staging.laji.fi
+      vary: Accept-Encoding
+      content-encoding: gzip
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":4701848,"pageSize":1,"total":4701848,"results":[{"unit":{"unitId":"http://tun.fi/JX.196087#4"}}]}'
+  recorded_at: 2021-04-14 07:55:30 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0

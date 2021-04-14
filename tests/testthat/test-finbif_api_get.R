@@ -52,3 +52,28 @@ test_that(
 )
 
 suppressMessages(eject_cassette("api_get"))
+
+suppressMessages(insert_cassette("api_get_with_email"))
+
+test_that(
+  "query works with email", {
+
+    skip_on_cran()
+
+    options(finbif_email = "noreply@laji.fi")
+
+    expect_s3_class(
+      api_get(
+        path = "warehouse/query/unit/list",
+        query = list(page = 1, pageSize = 1, selected = "unit.unitId"),
+        cache = TRUE
+      ),
+      "finbif_api"
+    )
+
+    options(finbif_email = NULL)
+
+  }
+)
+
+suppressMessages(eject_cassette("api_get_with_email"))
