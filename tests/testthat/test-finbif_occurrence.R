@@ -16,7 +16,7 @@ test_that(
     expect_s3_class(
       finbif_occurrence(
         "Rangifer tarandus fennicus", "not a valid taxon",
-        select = c("record_id", "date_start", "record_fact_content"),
+        select = c("record_id", "date_start", "record_fact_name"),
         check_taxa = FALSE
       ),
       "finbif_occ"
@@ -90,7 +90,7 @@ test_that(
     fungi <- finbif_occurrence(
       filter = c(informal_group = "Fungi and lichens"),
       select = to_native(
-        "occurrenceID", "informalTaxonGroup", "taxonID", "vernacularName",
+        "occurrenceID", "informalTaxonGroups", "taxonID", "vernacularName",
         "default_vars"
       ),
       n = n,
