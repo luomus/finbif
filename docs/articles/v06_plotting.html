@@ -47,7 +47,7 @@
 <li>
   <a href="../index.html">
     <span class="fas fa-home fa-lg"></span>
-     
+
   </a>
 </li>
 <li>
@@ -59,7 +59,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -88,7 +88,7 @@
 <li>
   <a href="https://github.com/luomus/finbif/">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -99,22 +99,22 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><script src="v06_plotting_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Plotting FinBIF data</h1>
                         <h4 class="author">William K. Morris</h4>
-            
-      
+
+
       <small class="dont-index">Source: <a href="https://github.com/luomus/finbif/blob/master/vignettes/v06_plotting.Rmd"><code>vignettes/v06_plotting.Rmd</code></a></small>
       <div class="hidden name"><code>v06_plotting.Rmd</code></div>
 
     </div>
 
-    
-    
+
+
 <p>Visualisation is an important part of data exploration and analysis. The <a href="https://github.com/luomus/finbif">finbif</a> package has a few functions and methods that can be used to visualise occurrence data from FinBIF.</p>
 <div id="occurrence-points" class="section level2">
 <h2 class="hasAnchor">
@@ -122,6 +122,9 @@
 <p>The default <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> method for the result of a call to <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> will display (if available) coordinates of the occurrence points in a scatter-plot.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">recent_obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"Finland"</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">recent_obs</span><span class="op">)</span></code></pre></div>
+<p><img src="../man/figures/plot-recent-obs-1.png"></p>
 </div>
 <div id="occurrence-density" class="section level2">
 <h2 class="hasAnchor">
@@ -206,6 +209,9 @@
 <h3 class="hasAnchor">
 <a href="#border" class="anchor"></a>Border</h3>
 <p>Finally, you can use <a href="https://github.com/luomus/finbif">finbif</a>’s internal map to add the border of Finland to your plot.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span><span class="op">(</span><span class="va">finland_map</span><span class="op">$</span><span class="va">vertices</span>, lwd <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span></code></pre></div>
+<p><img src="../man/figures/plot-finland-1.png"></p>
 </div>
 </div>
 <div class="footnotes">
@@ -239,7 +245,7 @@
       </footer>
 </div>
 
-  
+
 
 
   </body>
