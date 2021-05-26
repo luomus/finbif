@@ -101,7 +101,7 @@
 
       
 
-      </header><script src="v06_plotting_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><script src="v06_plotting_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Plotting FinBIF data</h1>
@@ -122,9 +122,6 @@
 <p>The default <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> method for the result of a call to <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> will display (if available) coordinates of the occurrence points in a scatter-plot.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">recent_obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"Finland"</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">recent_obs</span><span class="op">)</span></code></pre></div>
-<p><img src="../man/figures/plot-recent-obs-1.png"></p>
 </div>
 <div id="occurrence-density" class="section level2">
 <h2 class="hasAnchor">
@@ -134,7 +131,7 @@
 <h3 class="hasAnchor">
 <a href="#data" class="anchor"></a>Data</h3>
 <p>First you’ll need to acquire some occurrence records. For example, you can use the following to get the latitude and longitude of all the Finnish records of Eurasian Jays where the coordinate uncertainty is less then 100m<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
   <span class="st">"Eurasian Jay"</span>,
   filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>coordinates_uncertainty_max <span class="op">=</span> <span class="fl">100</span>, country <span class="op">=</span> <span class="st">"Finland"</span><span class="op">)</span>,
@@ -147,11 +144,11 @@
 <a href="#breakpoints" class="anchor"></a>Breakpoints</h3>
 <p>Now you will need to define the break points of the grid cells over which to plot the density of occurrence records.</p>
 <p>The <a href="https://github.com/luomus/finbif">finbif</a> package has an inbuilt Finland map object which includes its bounding box.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">finland_map</span><span class="op">$</span><span class="va">bbox</span>
 <span class="co">#&gt; [1] 19 59 32 71</span></code></pre></div>
 <p>You can use the function <code>breaks_xy</code> in combination with map bounding box to compute break points that a quarter of a degree in both dimensions.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/breaks_xy.html">breaks_xy</a></span><span class="op">(</span><span class="va">finland_map</span><span class="op">$</span><span class="va">bbox</span>, size <span class="op">=</span> <span class="fl">.25</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; $x</span>
 <span class="co">#&gt;  [1] 19.00 19.25 19.50 19.75 20.00 20.25 20.50 20.75 21.00 21.25 21.50 21.75 22.00 22.25 22.50 22.75</span>
@@ -169,14 +166,14 @@
 <h3 class="hasAnchor">
 <a href="#d-histogram" class="anchor"></a>2d histogram</h3>
 <p>The function <code>hist_xy</code> can be used compute the density of occurrences in the grid-cells defined by a set of break points.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jay_density</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hist_xy.html">hist_xy</a></span><span class="op">(</span><span class="va">jays</span>, <span class="va">breaks</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="image" class="section level3">
 <h3 class="hasAnchor">
 <a href="#image" class="anchor"></a>Image</h3>
 <p>The function <code><a href="https://rdrr.io/r/graphics/image.html">image()</a></code> creates a grid of colored rectangles with colors corresponding to the density of occurrence records. You can use its arguments to control properties of the plot such as the aspect ratio<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, the breaks<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, the color palette, the axis labels and grid lines.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/image.html">image</a></span><span class="op">(</span>
   <span class="va">jay_density</span>,
   asp    <span class="op">=</span> <span class="fl">2.4</span>,
@@ -192,7 +189,7 @@
 <h3 class="hasAnchor">
 <a href="#legend" class="anchor"></a>Legend</h3>
 <p>You can add a plot legend to indicate how the image breakpoints are mapped to the image colors.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span>
   <span class="st">"topright"</span>,
   inset  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.01</span><span class="op">)</span>,
@@ -209,9 +206,6 @@
 <h3 class="hasAnchor">
 <a href="#border" class="anchor"></a>Border</h3>
 <p>Finally, you can use <a href="https://github.com/luomus/finbif">finbif</a>’s internal map to add the border of Finland to your plot.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span><span class="op">(</span><span class="va">finland_map</span><span class="op">$</span><span class="va">vertices</span>, lwd <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span></code></pre></div>
-<p><img src="../man/figures/plot-finland-1.png"></p>
 </div>
 </div>
 <div class="footnotes">
