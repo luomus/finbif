@@ -5,11 +5,14 @@ on:
       - master
   pull_request:
     branches:
+      - dev
+      - master
 
 name: test-coverage
 
 jobs:
   test-coverage:
+
     runs-on: macOS-latest
     env:
       FINBIF_ACCESS_TOKEN: ${{ secrets.FINBIF_ACCESS_TOKEN }}
@@ -21,6 +24,11 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
 
       - uses: r-lib/actions/setup-pandoc@v1
+
+      - name: MacOS brew system dependencies
+        if: runner.os == 'macOS'
+        run: |
+          brew install --cask xquartz
 
       - name: Query dependencies
         run: |

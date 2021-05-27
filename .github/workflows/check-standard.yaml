@@ -3,11 +3,11 @@
 on:
   push:
     branches:
-      - main
+      - dev
       - master
   pull_request:
     branches:
-      - main
+      - dev
       - master
 
 name: R-CMD-check
@@ -43,6 +43,11 @@ jobs:
           r-version: ${{ matrix.config.r }}
 
       - uses: r-lib/actions/setup-pandoc@v1
+
+      - name: MacOS brew system dependencies
+        if: runner.os == 'macOS'
+        run: |
+          brew install --cask xquartz
 
       - name: Query dependencies
         run: |
