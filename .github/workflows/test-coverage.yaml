@@ -5,11 +5,14 @@ on:
       - master
   pull_request:
     branches:
+      - dev
+      - master
 
 name: test-coverage
 
 jobs:
   test-coverage:
+
     runs-on: macOS-latest
     env:
       FINBIF_ACCESS_TOKEN: ${{ secrets.FINBIF_ACCESS_TOKEN }}
