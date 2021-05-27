@@ -1,6 +1,17 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.5.0.9001}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New variables \code{lat_euref} and \code{lon_euref} available for
+        occurrence record downloads. These new variables represent the central
+        point of a bounding box encompassing a record's geographic coverage in
+        the EUREF (ETRS89/ETRS-TM35FIN) coordinate system.
+    }
+  }
+}
+
 \section{finbif version 0.5.0.9000}{
   \subsection{BUG FIXES}{
     \itemize{

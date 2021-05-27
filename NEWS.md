@@ -1,3 +1,12 @@
+# finbif 0.5.0.9001
+
+#### NEW FEATURES
+
+-   New variables `lat_euref` and `lon_euref` available for occurrence
+    record downloads. These new variables represent the central point of
+    a bounding box encompassing a record's geographic coverage in the
+    EUREF (ETRS89/ETRS-TM35FIN) coordinate system.
+
 # finbif 0.5.0.9000
 
 #### BUG FIXES
