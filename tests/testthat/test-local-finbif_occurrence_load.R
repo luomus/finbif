@@ -75,6 +75,11 @@ test_that(
       style = "json2"
     )
 
+    expect_snapshot_value(
+      finbif_occurrence_load(zip, select = "all", n = nrows),
+      style = "json2"
+    )
+
   }
 
 )
