@@ -68,6 +68,19 @@ finbif_occurrence_load <- function(
 
   names(df) <- cite_file_vars[names(df), var_type]
 
+  for (i in names(df)) {
+
+    cond <- all(is.na(df[[i]]))
+
+    if (cond) {
+
+      ind <- cite_file_vars[["translated_var"]] == i
+      df[[i]] <- methods::as(NA, cite_file_vars[ind, "type"])
+
+    }
+
+  }
+
   record_id <- df[["record_id"]]
 
   date_time_method <- det_datetime_method(date_time_method, n_recs)
@@ -232,9 +245,7 @@ new_vars <- function(df) {
 
   for (i in new_vars) {
 
-    ## TODO: update logic if and when new citable file vars that are not
-    ## character data are added.
-    df[[i]] <- NA_character_
+    df[[i]] <- NA
 
   }
 
