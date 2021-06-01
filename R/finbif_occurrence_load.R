@@ -226,7 +226,9 @@ fix_issue_vars <- function(df) {
 
 new_vars <- function(df) {
 
-  new_vars <- setdiff(row.names(cite_file_vars), names(df))
+  nms <- row.names(cite_file_vars[!cite_file_vars[["superseeded"]], ])
+
+  new_vars <- setdiff(nms, names(df))
 
   for (i in new_vars) {
 
