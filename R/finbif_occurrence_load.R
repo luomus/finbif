@@ -8,6 +8,12 @@
 #'   data file that has been downloaded from "laji.fi". Or a URI pointing to the
 #'   data file (e.g., [http://tun.fi/HBF.49381](http://tun.fi/HBF.49381)) or the
 #'   integer representing the URI (i.e., `49381`).
+#' @param select Character vector. Variables to return. If not specified, a
+#'   default set of commonly used variables will be used. Use `"default_vars"`
+#'   as a shortcut for this set. Variables can be deselected by prepending a `-`
+#'   to the variable name. If only deselects are specified the default set of
+#'   variables without the deselection will be returned. Use `"all"` to select
+#'   all available variables in the file.
 #' @param write_file Character. Path to write downloaded zip file to if `file`
 #'   refers to a URI. Will be ignored if `getOption("finbif_cache_path")` is not
 #'   `NULL`.
@@ -34,6 +40,13 @@ finbif_occurrence_load <- function(
 ) {
 
   var_type <- col_type_string(dwc)
+
+  select_all <- FALSE
+
+  if (!missing(select) && identical(select, "all")) {
+    select <- "default_vars"
+    select_all <- TRUE
+  }
 
   defer_errors(select <- infer_selection("none", select, var_type))
 
@@ -82,6 +95,8 @@ finbif_occurrence_load <- function(
     df[[extra_var]] <- methods::as(NA, var_names[ind, "type"])
 
   }
+
+  if (select_all) select <- TRUE
 
   df <- structure(
     df[, select],

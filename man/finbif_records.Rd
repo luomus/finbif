@@ -24,7 +24,7 @@ finbif_records(
 \arguments{
 \item{filter}{List of named character vectors. Filters to apply to records.}
 
-\item{select}{Character vector. Variables to return. If not specified a
+\item{select}{Character vector. Variables to return. If not specified, a
 default set of commonly used variables will be used. Use \code{"default_vars"}
 as a shortcut for this set. Variables can be deselected by prepending a \code{-}
 to the variable name. If only deselects are specified the default set of

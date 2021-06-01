@@ -25,11 +25,12 @@ data file that has been downloaded from "laji.fi". Or a URI pointing to the
 data file (e.g., \url{http://tun.fi/HBF.49381}) or the
 integer representing the URI (i.e., \code{49381}).}
 
-\item{select}{Character vector. Variables to return. If not specified a
+\item{select}{Character vector. Variables to return. If not specified, a
 default set of commonly used variables will be used. Use \code{"default_vars"}
 as a shortcut for this set. Variables can be deselected by prepending a \code{-}
 to the variable name. If only deselects are specified the default set of
-variables without the deselection will be returned.}
+variables without the deselection will be returned. Use \code{"all"} to select
+all available variables in the file.}
 
 \item{n}{Integer. How many records to download/import.}
 

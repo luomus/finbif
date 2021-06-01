@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.5.0.9002}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Can now select all available variables when importing a FinBIF
+        download request file using \code{finbif_occurrence_load} with
+        \code{select = "all"}.
+    }
+  }
+}
+
 \section{finbif version 0.5.0.9001}{
   \subsection{NEW FEATURES}{
     \itemize{

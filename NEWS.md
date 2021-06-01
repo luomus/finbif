@@ -1,3 +1,11 @@
+# finbif 0.5.0.9002
+
+#### MINOR IMPROVEMENTS
+
+-   Can now select all available variables when importing a FinBIF
+    download request file using `finbif_occurrence_load` with
+    `select = "all"`.
+
 # finbif 0.5.0.9001
 
 #### NEW FEATURES

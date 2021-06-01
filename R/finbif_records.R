@@ -7,7 +7,7 @@
 #' @aliases fb_records
 #'
 #' @param filter List of named character vectors. Filters to apply to records.
-#' @param select Character vector. Variables to return. If not specified a
+#' @param select Character vector. Variables to return. If not specified, a
 #'   default set of commonly used variables will be used. Use `"default_vars"`
 #'   as a shortcut for this set. Variables can be deselected by prepending a `-`
 #'   to the variable name. If only deselects are specified the default set of
