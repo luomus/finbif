@@ -76,7 +76,7 @@ test_that(
     )
 
     expect_snapshot_value(
-      finbif_occurrence_load(zip, select = "all", n = nrows),
+      finbif_occurrence_load(zip, select = "all", n = nrows, tzone = "Etc/UTC"),
       style = "json2"
     )
 
