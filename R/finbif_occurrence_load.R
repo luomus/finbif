@@ -83,33 +83,39 @@ finbif_occurrence_load <- function(
 
   record_id <- df[["record_id"]]
 
-  date_time_method <- det_datetime_method(date_time_method, n_recs)
+  if (select_all) {
 
-  df <- compute_date_time(
-    df, select, select, aggregate = "none", dwc, date_time_method, tzone
-  )
+    select <- TRUE
 
-  if (!utils::hasName(df, "any_issues")) {
+  } else {
 
-    rec_iss <- !is.na(df[["record_issue"]])
-    ev_iss  <- !is.na(df[["event_issue"]])
-    tm_iss  <- !is.na(df[["time_issue"]])
-    loc_iss <- !is.na(df[["location_issue"]])
+    date_time_method <- det_datetime_method(date_time_method, n_recs)
 
-    df[["any_issues"]] <- rec_iss | ev_iss | tm_iss | loc_iss
+    df <- compute_date_time(
+      df, select, select, aggregate = "none", dwc, date_time_method, tzone
+    )
+
+    if (!utils::hasName(df, "any_issues")) {
+
+      rec_iss <- !is.na(df[["record_issue"]])
+      ev_iss  <- !is.na(df[["event_issue"]])
+      tm_iss  <- !is.na(df[["time_issue"]])
+      loc_iss <- !is.na(df[["location_issue"]])
+
+      df[["any_issues"]] <- rec_iss | ev_iss | tm_iss | loc_iss
+
+    }
+
+    df <- compute_vars_from_id(df, select)
+
+    for (extra_var in setdiff(select, names(df))) {
+
+      ind <- var_names[["translated_var"]] == extra_var
+      df[[extra_var]] <- methods::as(NA, var_names[ind, "type"])
+
+    }
 
   }
-
-  df <- compute_vars_from_id(df, select)
-
-  for (extra_var in setdiff(select, names(df))) {
-
-    ind <- var_names[["translated_var"]] == extra_var
-    df[[extra_var]] <- methods::as(NA, var_names[ind, "type"])
-
-  }
-
-  if (select_all) select <- TRUE
 
   df <- structure(
     df[, select],
