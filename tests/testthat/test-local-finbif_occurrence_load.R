@@ -76,9 +76,13 @@ test_that(
     )
 
     expect_snapshot_value(
-      finbif_occurrence_load(
-        zip, select = "all", n = nrows, tzone = "Etc/UTC"
-      )["record_id"],
+      capture.output(
+        print(
+          finbif_occurrence_load(
+            zip, select = "short", n = nrows, tzone = "Etc/UTC"
+          )[c("recID", "lonWGS84", "latWGS84")]
+        )
+      ),
       style = "json2"
     )
 

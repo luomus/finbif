@@ -338,9 +338,19 @@ format_cols <- function(df, colname_widths) {
 
   for (i in names(df)) {
 
-    ind <- var_names[[if (attr(df, "dwc")) "dwc" else "translated_var"]] == i
-    class  <- var_names[ind, "class"]
-    single <- var_names[ind, "single"] || var_names[ind, "localised"]
+    if (isTRUE(attr(df, "short"))) {
+
+      class <- class(df[[i]])
+      if (identical(class, "numeric")) class <- "double"
+      single <- TRUE
+
+    } else {
+
+      ind <- var_names[[if (attr(df, "dwc")) "dwc" else "translated_var"]] == i
+      class  <- var_names[ind, "class"]
+      single <- var_names[ind, "single"] || var_names[ind, "localised"]
+
+    }
 
     # Variables may not necessarily be in the var_names object
     if (length(class)) {

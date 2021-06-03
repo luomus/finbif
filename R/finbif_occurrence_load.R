@@ -42,10 +42,14 @@ finbif_occurrence_load <- function(
   var_type <- col_type_string(dwc)
 
   select_all <- FALSE
+  short <- FALSE
 
-  if (!missing(select) && identical(select, "all")) {
+  if (!missing(select) && select %in% c("all", "short")) {
+
+    short <- identical(select, "short")
     select <- "default_vars"
     select_all <- TRUE
+
   }
 
   defer_errors(select <- infer_selection("none", select, var_type))
@@ -124,9 +128,16 @@ finbif_occurrence_load <- function(
     nrec_avl  = n_recs,
     url       = url,
     time      = "??",
-    dwc       = dwc,
+    short_nms = short,
+    dwc       = dwc && !short,
     record_id = record_id
   )
+
+  if (short) {
+    short_nms <- cite_file_vars[["shrtnm"]]
+    names(short_nms) <- cite_file_vars[[var_type]]
+    names(df) <- short_nms[names(df)]
+  }
 
   df
 
@@ -245,9 +256,19 @@ fix_issue_vars <- function(df) {
 
 new_vars <- function(df) {
 
-  nms <- row.names(cite_file_vars[!cite_file_vars[["superseeded"]], ])
+  nms_df <- names(df)
 
-  new_vars <- setdiff(nms, names(df))
+  ind <- cite_file_vars[["superseeded"]] == "FALSE"
+
+  ss <- rownames(cite_file_vars[!ind, ])
+
+  ss <- intersect(ss, nms_df)
+
+  ss <- cite_file_vars[ss, "superseeded"]
+
+  nms <- row.names(cite_file_vars[ind, ])
+
+  new_vars <- setdiff(nms, c(nms_df, ss))
 
   for (i in new_vars) {
 
