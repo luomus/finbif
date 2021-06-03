@@ -74,14 +74,7 @@ finbif_occurrence_load <- function(
 
   for (i in names(df)) {
 
-    cond <- all(is.na(df[[i]]))
-
-    if (cond) {
-
-      ind <- cite_file_vars[["translated_var"]] == i
-      df[[i]] <- methods::as(NA, cite_file_vars[ind, "type"])
-
-    }
+    df[[i]] <- add_nas(df, i)
 
   }
 
@@ -99,16 +92,7 @@ finbif_occurrence_load <- function(
       df, select, select, aggregate = "none", dwc, date_time_method, tzone
     )
 
-    if (!utils::hasName(df, "any_issues")) {
-
-      rec_iss <- !is.na(df[["record_issue"]])
-      ev_iss  <- !is.na(df[["event_issue"]])
-      tm_iss  <- !is.na(df[["time_issue"]])
-      loc_iss <- !is.na(df[["location_issue"]])
-
-      df[["any_issues"]] <- rec_iss | ev_iss | tm_iss | loc_iss
-
-    }
+    df <- any_issues(df, var_type)
 
     df <- compute_vars_from_id(df, select)
 
@@ -335,5 +319,40 @@ get_zip <- function(url, quiet, cache, write_file) {
   }
 
   zip
+
+}
+
+add_nas <- function(df, nm) {
+
+  ans <- df[[nm]]
+
+  if (all(is.na(ans))) {
+
+    ind <- cite_file_vars[["translated_var"]] == nm
+    ans <- methods::as(ans, cite_file_vars[ind, "type"])
+
+  }
+
+  ans
+
+}
+
+any_issues <- function(df, var_type) {
+
+  vnms <- var_names[var_type]
+  any_issue <- vnms["unit.quality.documentGatheringUnitQualityIssues", ]
+
+  if (!utils::hasName(df, any_issue)) {
+
+    rec_iss <- !is.na(df[[vnms["unit.quality.issue.issue", ]]])
+    ev_iss  <- !is.na(df[[vnms["gathering.quality.issue.issue", ]]])
+    tm_iss  <- !is.na(df[[vnms["gathering.quality.timeIssue.issue", ]]])
+    loc_iss <- !is.na(df[[vnms["gathering.quality.locationIssue.issue", ]]])
+
+    df[[any_issue]] <- rec_iss | ev_iss | tm_iss | loc_iss
+
+  }
+
+  df
 
 }
