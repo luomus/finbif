@@ -8,7 +8,7 @@ Unit.NameAccordingTo,checklist,checklist,checklist,FALSE,character
 Document.CollectionID,collectID,collection_id,collectionID,FALSE,character
 Document.Linkings.CollectionQuality,collectQl,collection_quality,collectionQuality,FALSE,character
 Taxon.EnglishName,comNmEN,common_name_english,vernacularNameEnglish,FALSE,character
-Taxon.FinnishName,comNmEN,common_name_finnish,vernacularNameFinnish,FALSE,character
+Taxon.FinnishName,comNmFI,common_name_finnish,vernacularNameFinnish,FALSE,character
 Taxon.SwedishName,comNmSV,common_name_swedish,vernacularNameSwedish,FALSE,character
 Gathering.Interpretations.CoordinateSource,crdSrc,coordinates_source,georeferenceSources,FALSE,character
 Gathering.Interpretations.CoordinateAccuracy,crdUncert,coordinates_uncertainty,coordinateUncertaintyInMeters,FALSE,integer
