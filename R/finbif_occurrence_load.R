@@ -70,6 +70,8 @@ finbif_occurrence_load <- function(
 
   df <- new_vars(df)
 
+  record_id <- df[["Unit.UnitID"]]
+
   names(df) <- cite_file_vars[names(df), var_type]
 
   for (i in names(df)) {
@@ -77,8 +79,6 @@ finbif_occurrence_load <- function(
     df[[i]] <- add_nas(df, i)
 
   }
-
-  record_id <- df[["record_id"]]
 
   if (select_all) {
 
@@ -329,6 +329,13 @@ add_nas <- function(df, nm) {
   if (all(is.na(ans))) {
 
     ind <- cite_file_vars[["translated_var"]] == nm
+
+    if (length(which(ind)) > 1L) {
+
+      ind <- ind & cite_file_vars[["superseeded"]] == "FALSE"
+
+    }
+
     ans <- methods::as(ans, cite_file_vars[ind, "type"])
 
   }

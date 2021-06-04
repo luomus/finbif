@@ -122,3 +122,8 @@ Gathering.Quality.TimeIssue.Message,tmIssMsg,time_issue_message,timeIssueRemarks
 Gathering.Quality.TimeIssue.Source,tmIssSrc,time_issue_source,timeIssueSource,FALSE,character
 Unit.TypeSpecimen,typeSpcmn,type_specimen,typeStatus,FALSE,logical
 Gathering.Conversions.Year,year,year,year,FALSE,integer
+Unit.Quality.Taxon.Reliability,recQl,record_quality,occurrenceQuality,Unit.Interpretations.RecordQuality,character
+Unit.Quality.Taxon.Source,recQlSrc,record_quality_source,occurrenceQualitySource,,character
+Unit.Quality.Taxon.Message,recQlMsg,record_quality_message,occurrenceQualityMessage,,character
+Document.Quality.CollectionReliabilityRating,collectQl,collection_quality,collectionQuality,Document.Linkings.CollectionQuality,character
+Unit.InvasiveControl,invasCntrl,invasive_control,invasiveControlled,Unit.Interpretations.InvasiveControl,logical
