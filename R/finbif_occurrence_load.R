@@ -16,7 +16,9 @@
 #'   all available variables in the file.
 #' @param write_file Character. Path to write downloaded zip file to if `file`
 #'   refers to a URI. Will be ignored if `getOption("finbif_cache_path")` is not
-#'   `NULL`.
+#'   `NULL` and will use the cache path instead.
+#' @param dt Logical. If package, `data.table`, is available return a
+#'   `data.table` object rather than a `data.frame`.
 #' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
 #' @return A `data.frame`, or if `count_only =  TRUE` an integer.
@@ -30,13 +32,14 @@
 #' @importFrom httr progress RETRY status_code write_disk
 #' @importFrom utils hasName read.delim
 #' @importFrom methods as
+#' @importFrom tools file_ext
 #' @export
 
 finbif_occurrence_load <- function(
   file, select, n, count_only = FALSE, quiet = FALSE,
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"),
-  write_file = tempfile()
+  write_file = tempfile(), dt
 ) {
 
   var_type <- col_type_string(dwc)
@@ -56,11 +59,19 @@ finbif_occurrence_load <- function(
 
   select <- select[["user"]]
 
-  if (missing(n)) n <- -1L
+  if (missing(n)) {
 
-  df <- read_finbif_tsv(file, n, count_only, quiet, cache, write_file)
+    n <- -1L
 
-  if (count_only) return(df)
+  }
+
+  df <- read_finbif_tsv(file, n, count_only, quiet, cache, write_file, dt)
+
+  if (count_only) {
+
+    return(df)
+
+  }
 
   n_recs <- attr(df, "nrow")
 
@@ -107,7 +118,7 @@ finbif_occurrence_load <- function(
 
   df <- structure(
     df[, select],
-    class     = c("finbif_occ", "data.frame"),
+    class     = c("finbif_occ", class(df)),
     nrec_dnld = n_recs,
     nrec_avl  = n_recs,
     url       = url,
@@ -118,16 +129,20 @@ finbif_occurrence_load <- function(
   )
 
   if (short) {
+
     short_nms <- cite_file_vars[["shrtnm"]]
     names(short_nms) <- cite_file_vars[[var_type]]
     names(df) <- short_nms[names(df)]
+
   }
 
   df
 
 }
 
-read_finbif_tsv <- function(file, n, count_only, quiet, cache, write_file) {
+read_finbif_tsv <- function(
+  file, n, count_only, quiet, cache, write_file, dt
+) {
 
   file <- as.character(file)
 
@@ -135,7 +150,11 @@ read_finbif_tsv <- function(file, n, count_only, quiet, cache, write_file) {
 
   is_url <- grepl(ptrn, file, fixed = TRUE)
 
-  if (is_url) file <- gsub(ptrn, "", file)
+  if (is_url) {
+
+    file <- gsub(ptrn, "", file)
+
+  }
 
   tsv <- basename(file)
   tsv <- gsub("zip", "tsv", tsv)
@@ -155,9 +174,40 @@ read_finbif_tsv <- function(file, n, count_only, quiet, cache, write_file) {
 
   }
 
+  con <- unz(file, tsv)
+
+  df <- attempt_read(con, file, tsv, count_only, n, quiet, dt)
+
+  if (count_only) {
+
+    return(df)
+
+  }
+
   attr(df, "url") <- url
 
-  con <- unz(file, tsv)
+  if (identical(n, -1L)) {
+
+    attr(df, "nrow") <- nrow(df)
+
+  }
+
+  df
+
+}
+
+attempt_read <- function(con, file, tsv, count_only, n, quiet, dt) {
+
+  if (missing(dt)) {
+
+    use_dt <- TRUE
+    dt <- FALSE
+
+  } else {
+
+    use_dt <- dt
+
+  }
 
   warn <- getOption("warn")
   on.exit(options(warn = warn))
@@ -188,7 +238,29 @@ read_finbif_tsv <- function(file, n, count_only, quiet, cache, write_file) {
 
         }
 
-        utils::read.delim(i, nrows = n, na.strings = "", quote = "")
+        if (requireNamespace("data.table", quietly = TRUE) && use_dt) {
+
+          input <- as.character(i)
+
+          switch(
+            tools::file_ext(input),
+            tsv = data.table::fread(
+              input, nrows = n, na.strings = "", quote = "", sep = "\t",
+              fill = TRUE, check.names = TRUE, showProgress = quiet,
+              data.table = dt
+            ),
+            data.table::fread(
+              cmd = sprintf("unzip -p %s %s", input, tsv), nrows = n,
+              na.strings = "", quote = "", sep = "\t", fill = TRUE,
+              check.names = TRUE, showProgress = quiet, data.table = dt
+            )
+          )
+
+        } else {
+
+          utils::read.delim(i, nrows = n, na.strings = "", quote = "")
+
+        }
 
       },
       silent = TRUE
@@ -198,19 +270,17 @@ read_finbif_tsv <- function(file, n, count_only, quiet, cache, write_file) {
 
     success <- !inherits(df, "try-error")
 
-    if (success) break
+    if (success) {
+
+      break
+
+    }
 
   }
 
   stopifnot("invalid file!" = success)
 
-  if (count_only) return(df)
-
-  if (all) {
-
-    attr(df, "nrow") <- nrow(df)
-
-  } else {
+  if (!all && !count_only) {
 
     attr(df, "nrow") <- n_rows
 
@@ -220,18 +290,22 @@ read_finbif_tsv <- function(file, n, count_only, quiet, cache, write_file) {
 
 }
 
+
 fix_issue_vars <- function(df) {
 
   type <- c("Time", "Location")
 
   for (i in c("Issue", "Source", "Message")) {
+
     for (j in 1:2) {
+
       names(df) <- gsub(
-        sprintf("Issue.%s.%s", i, j),
-        sprintf("%sIssue.%s", type[j], i),
+        sprintf("Issue.%s.%s", i, j), sprintf("%sIssue.%s", type[j], i),
         names(df)
       )
+
     }
+
   }
 
   df
@@ -284,7 +358,15 @@ get_zip <- function(url, quiet, cache, write_file) {
 
       zip <- write_file
 
-      on.exit(if (!is.null(zip)) set_cache(zip, hash))
+      on.exit({
+
+        if (!is.null(zip)) {
+
+          set_cache(zip, hash)
+
+        }
+
+      })
 
     } else {
 
@@ -302,7 +384,11 @@ get_zip <- function(url, quiet, cache, write_file) {
 
   progress <- NULL
 
-  if (!quiet) progress <- httr::progress()
+  if (!quiet) {
+
+    progress <- httr::progress()
+
+  }
 
   resp <- httr::RETRY(
     "GET", url, httr::write_disk(zip, overwrite = TRUE), progress

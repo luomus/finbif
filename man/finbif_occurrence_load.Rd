@@ -16,7 +16,8 @@ finbif_occurrence_load(
   date_time_method,
   tzone = getOption("finbif_tz"),
   locale = getOption("finbif_locale"),
-  write_file = tempfile()
+  write_file = tempfile(),
+  dt
 )
 }
 \arguments{
@@ -61,7 +62,10 @@ the other languages in the order indicated above.}
 
 \item{write_file}{Character. Path to write downloaded zip file to if \code{file}
 refers to a URI. Will be ignored if \code{getOption("finbif_cache_path")} is not
-\code{NULL}.}
+\code{NULL} and will use the cache path instead.}
+
+\item{dt}{Logical. If package, \code{data.table}, is available return a
+\code{data.table} object rather than a \code{data.frame}.}
 }
 \value{
 A \code{data.frame}, or if \code{count_only =  TRUE} an integer.

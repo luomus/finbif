@@ -11,7 +11,7 @@ test_that(
     zip <- sprintf("HBF.%s.zip", file)
     tsv <- sprintf("rows_HBF.%s.tsv", file)
     unzip(zip, tsv, exdir = tempdir())
-    tsv <- paste(tempdir(), tsv, sep = "/")
+    file.copy(paste(tempdir(), tsv, sep = "/"), tsv)
 
     expect_identical(
       335L,
@@ -37,6 +37,15 @@ test_that(
       style = "json2"
     )
 
+    expect_snapshot_value(
+      finbif_occurrence_load(tsv, quiet = TRUE, tzone = "Etc/UTC")[
+        seq(nrows),
+      ],
+      style = "json2"
+    )
+
+    file.remove(tsv)
+
     options(finbif_cache_path = NULL)
 
     capture.output(
@@ -53,7 +62,7 @@ test_that(
 
     expect_snapshot_value(
       finbif_occurrence_load(
-        file_full, tzone = "Etc/UTC", write_file = file_path
+        file_full, tzone = "Etc/UTC", write_file = file_path, dt = FALSE
         )[seq(nrows), ],
       style = "json2"
     )

@@ -38,10 +38,12 @@ Imports:
     lubridate,
     lutz,
     methods,
+    tools,
     utils
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests:
+    data.table,
     future,
     grDevices,
     knitr,
