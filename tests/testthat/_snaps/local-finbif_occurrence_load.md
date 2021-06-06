@@ -920,6 +920,6 @@
     {
       "type": "character",
       "attributes": {},
-      "value": ["Records downloaded: 221", "Records available: 221", "A data.frame [280 x 3]", "                  recID lonWGS84 latWGS84", "1  http://id.herb.oulu…  29.0657  65.0436", "2  http://id.herb.oulu…  29.0657  65.0436", "3  http://id.herb.oulu…  29.0657  65.0436", "4  http://id.herb.oulu…  29.0657  65.0436", "5  http://id.herb.oulu…  29.0657  65.0436", "6  http://id.herb.oulu…  29.0657  65.0436", "7  http://id.herb.oulu…  29.0657  65.0436", "8  http://id.herb.oulu…  29.0657  65.0436", "9  http://id.herb.oulu…  29.0657  65.0436", "10 http://id.herb.oulu…  26.1574  61.2484", "...with 270 more records"]
+      "value": ["Records downloaded: 221", "Records available: 221", "A data.frame [280 x 4]", "   recID recOrder lonWGS84 latWGS84", "1  …0992  5        29.0657  65.0436", "2  …0995  6        29.0657  65.0436", "3  …0998  2        29.0657  65.0436", "4  …1001  7        29.0657  65.0436", "5  …1004  4        29.0657  65.0436", "6  …1007  8        29.0657  65.0436", "7  …1010  0        29.0657  65.0436", "8  …1013  3        29.0657  65.0436", "9  …1016  1        29.0657  65.0436", "10 …3721  3        26.1574  61.2484", "...with 270 more records"]
     }
 

@@ -57,7 +57,9 @@ finbif_occurrence_load <- function(
 
   defer_errors(select <- infer_selection("none", select, var_type))
 
-  select <- select[["user"]]
+  select_user <- select[["user"]]
+
+  select <- list(select = select[["query"]], all = select_all, type = var_type)
 
   if (missing(n)) {
 
@@ -65,7 +67,9 @@ finbif_occurrence_load <- function(
 
   }
 
-  df <- read_finbif_tsv(file, n, count_only, quiet, cache, write_file, dt)
+  df <- read_finbif_tsv(
+    file, select, n, count_only, quiet, cache, write_file, dt
+  )
 
   if (count_only) {
 
@@ -77,7 +81,7 @@ finbif_occurrence_load <- function(
 
   url <- attr(df, "url")
 
-  df <- fix_issue_vars(df)
+  names(df) <- fix_issue_vars(names(df))
 
   df <- new_vars(df)
 
@@ -87,29 +91,30 @@ finbif_occurrence_load <- function(
 
   for (i in names(df)) {
 
-    df[[i]] <- add_nas(df, i)
+    df[[i]] <- add_nas(df, i, var_type)
 
   }
 
   if (select_all) {
 
-    select <- TRUE
+    select_user <- TRUE
 
   } else {
 
     date_time_method <- det_datetime_method(date_time_method, n_recs)
 
     df <- compute_date_time(
-      df, select, select, aggregate = "none", dwc, date_time_method, tzone
+      df, select_user, select_user, aggregate = "none", dwc, date_time_method,
+      tzone
     )
 
     df <- any_issues(df, var_type)
 
-    df <- compute_vars_from_id(df, select)
+    df <- compute_vars_from_id(df, select_user)
 
-    for (extra_var in setdiff(select, names(df))) {
+    for (extra_var in setdiff(select_user, names(df))) {
 
-      ind <- var_names[["translated_var"]] == extra_var
+      ind <- var_names[[var_type]] == extra_var
       df[[extra_var]] <- methods::as(NA, var_names[ind, "type"])
 
     }
@@ -117,7 +122,7 @@ finbif_occurrence_load <- function(
   }
 
   df <- structure(
-    df[, select],
+    df[, select_user],
     class     = c("finbif_occ", class(df)),
     nrec_dnld = n_recs,
     nrec_avl  = n_recs,
@@ -141,7 +146,7 @@ finbif_occurrence_load <- function(
 }
 
 read_finbif_tsv <- function(
-  file, n, count_only, quiet, cache, write_file, dt
+  file, select, n, count_only, quiet, cache, write_file, dt
 ) {
 
   file <- as.character(file)
@@ -176,7 +181,7 @@ read_finbif_tsv <- function(
 
   con <- unz(file, tsv)
 
-  df <- attempt_read(con, file, tsv, count_only, n, quiet, dt)
+  df <- attempt_read(con, file, tsv, select, count_only, n, quiet, dt)
 
   if (count_only) {
 
@@ -196,7 +201,7 @@ read_finbif_tsv <- function(
 
 }
 
-attempt_read <- function(con, file, tsv, count_only, n, quiet, dt) {
+attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
 
   if (missing(dt)) {
 
@@ -244,15 +249,9 @@ attempt_read <- function(con, file, tsv, count_only, n, quiet, dt) {
 
           switch(
             tools::file_ext(input),
-            tsv = data.table::fread(
-              input, nrows = n, na.strings = "", quote = "", sep = "\t",
-              fill = TRUE, check.names = TRUE, showProgress = quiet,
-              data.table = dt
-            ),
-            data.table::fread(
-              cmd = sprintf("unzip -p %s %s", input, tsv), nrows = n,
-              na.strings = "", quote = "", sep = "\t", fill = TRUE,
-              check.names = TRUE, showProgress = quiet, data.table = dt
+            tsv = dt_read(select, n, quiet, dt, input = input),
+            dt_read(
+              select, n, quiet, dt, cmd = sprintf("unzip -p %s %s", input, tsv)
             )
           )
 
@@ -291,7 +290,7 @@ attempt_read <- function(con, file, tsv, count_only, n, quiet, dt) {
 }
 
 
-fix_issue_vars <- function(df) {
+fix_issue_vars <- function(x) {
 
   type <- c("Time", "Location")
 
@@ -299,22 +298,28 @@ fix_issue_vars <- function(df) {
 
     for (j in 1:2) {
 
-      names(df) <- gsub(
+      x <- gsub(
         sprintf("Issue.%s.%s", i, j), sprintf("%sIssue.%s", type[j], i),
-        names(df)
+        x
       )
 
     }
 
   }
 
-  df
+  x
 
 }
 
 new_vars <- function(df) {
 
-  nms_df <- names(df)
+  if (is.null(attr(df, "file_cols"))) {
+
+    attr(df, "file_cols") <- names(df)
+
+  }
+
+  nms_df <- attr(df, "file_cols")
 
   ind <- cite_file_vars[["superseeded"]] == "FALSE"
 
@@ -408,13 +413,13 @@ get_zip <- function(url, quiet, cache, write_file) {
 
 }
 
-add_nas <- function(df, nm) {
+add_nas <- function(df, nm, var_type) {
 
   ans <- df[[nm]]
 
   if (all(is.na(ans))) {
 
-    ind <- cite_file_vars[["translated_var"]] == nm
+    ind <- cite_file_vars[[var_type]] == nm
 
     if (length(which(ind)) > 1L) {
 
@@ -445,6 +450,58 @@ any_issues <- function(df, var_type) {
     df[[any_issue]] <- rec_iss | ev_iss | tm_iss | loc_iss
 
   }
+
+  df
+
+}
+
+dt_read <- function(select, n, quiet, dt, ...) {
+
+  args <- list(
+    ..., nrows = 0, showProgress = quiet, data.table = dt, na.strings = "",
+    quote = "", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE
+  )
+
+  cols <- NULL
+
+  if (!select[["all"]]) {
+
+    cols <- do.call(data.table::fread, args)
+    cols_raw <- names(cols)
+    cols <- make.names(cols_raw)
+    cols <- make.unique(cols)
+    cols <- fix_issue_vars(cols)
+
+    iss <- "unit.quality.documentGatheringUnitQualityIssues"
+    iss <- iss %in% select[["select"]]
+
+    if (iss) {
+      select[["select"]] <- c(
+        select[["select"]],
+        "unit.quality.issue.issue",
+        "gathering.quality.issue.issue",
+        "gathering.quality.timeIssue.issue",
+        "gathering.quality.locationIssue.issue"
+      )
+    }
+
+    select_file <- cite_file_vars[[select[["type"]]]]
+
+    select_vars <-  var_names[select[["select"]], select[["type"]]]
+
+    select <- select_file %in% select_vars
+    select <- row.names(cite_file_vars[select, ])
+
+    args[["select"]] <- which(cols %in% select)
+
+  }
+
+  args[["nrows"]] <- n
+  args[["check.names"]] <- TRUE
+
+  df <- do.call(data.table::fread, args)
+
+  attr(df, "file_cols") <- cols
 
   df
 

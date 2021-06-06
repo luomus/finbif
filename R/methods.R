@@ -340,8 +340,8 @@ format_cols <- function(df, colname_widths) {
 
     if (isTRUE(attr(df, "short"))) {
 
-      class <- class(df[[i]])
-      if (identical(class, "numeric")) class <- "double"
+      class <- short_col_class(df[[i]])
+
       single <- TRUE
 
     } else {
@@ -378,6 +378,32 @@ format_cols <- function(df, colname_widths) {
   }
 
   df
+
+}
+
+#' @noRd
+short_col_class <- function(x) {
+
+  class <-  "character"
+
+  if (any(grepl("^http", x))) {
+
+    class <- "uri"
+  }
+
+  if (is.numeric(x)) {
+
+    class <- "double"
+
+  }
+
+  if (is.integer(x)) {
+
+    class <- "integer"
+
+  }
+
+  class
 
 }
 

@@ -89,7 +89,7 @@ test_that(
         print(
           finbif_occurrence_load(
             zip, select = "short", n = nrows, tzone = "Etc/UTC"
-          )[c("recID", "lonWGS84", "latWGS84")]
+          )[c("recID", "recOrder", "lonWGS84", "latWGS84")]
         )
       ),
       style = "json2"
