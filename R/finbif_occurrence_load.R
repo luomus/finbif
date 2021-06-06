@@ -30,7 +30,7 @@
 #' }
 #' @importFrom digest digest
 #' @importFrom httr progress RETRY status_code write_disk
-#' @importFrom utils hasName read.delim
+#' @importFrom utils hasName read.delim unzip
 #' @importFrom methods as
 #' @importFrom tools file_ext
 #' @export
@@ -250,9 +250,7 @@ attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
           switch(
             tools::file_ext(input),
             tsv = dt_read(select, n, quiet, dt, input = input),
-            dt_read(
-              select, n, quiet, dt, cmd = sprintf("unzip -p %s %s", input, tsv)
-            )
+            dt_read(select, n, quiet, dt, zip = list(input = input, tsv = tsv))
           )
 
         } else {
@@ -461,6 +459,29 @@ dt_read <- function(select, n, quiet, dt, ...) {
     ..., nrows = 0, showProgress = quiet, data.table = dt, na.strings = "",
     quote = "", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE
   )
+
+  if (utils::hasName(args, "zip")) {
+
+    unzip <- "internal"
+
+    if (!is.null(getOption("unzip")) && !identical(getOption("unzip"), "")) {
+
+      unzip <- getOption("unzip")
+
+    }
+
+    utils::unzip(
+      args[["zip"]][["input"]], files = args[["zip"]][["tsv"]],
+      exdir = tempdir(), unzip = unzip
+    )
+
+    args[["input"]] <- sprintf("%s/%s", tempdir(), args[["zip"]][["tsv"]])
+
+    on.exit(unlink(args[["input"]]))
+
+    args[["zip"]] <- NULL
+
+  }
 
   cols <- NULL
 
