@@ -115,7 +115,10 @@ finbif_occurrence_load <- function(
     for (extra_var in setdiff(select_user, names(df))) {
 
       ind <- var_names[[var_type]] == extra_var
-      df[[extra_var]] <- methods::as(NA, var_names[ind, "type"])
+
+      df[[extra_var]] <- methods::as(
+        rep_len(NA, nrow(df)), var_names[ind, "type"]
+      )
 
     }
 
@@ -333,7 +336,7 @@ new_vars <- function(df) {
 
   for (i in new_vars) {
 
-    df[[i]] <- NA
+    df[[i]] <- rep_len(NA, nrow(df))
 
   }
 
