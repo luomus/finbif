@@ -91,7 +91,7 @@ finbif_occurrence_load <- function(
 
   names(df) <- fix_issue_vars(names(df))
 
-  df <- new_vars(df)
+  df <- new_vars(df, deselect)
 
   record_id <- df[["Unit.UnitID"]]
 
@@ -330,7 +330,7 @@ fix_issue_vars <- function(x) {
 
 }
 
-new_vars <- function(df) {
+new_vars <- function(df, deselect) {
 
   if (is.null(attr(df, "file_cols"))) {
 
@@ -343,10 +343,13 @@ new_vars <- function(df) {
   ind <- cite_file_vars[["superseeded"]] == "FALSE"
 
   ss <- rownames(cite_file_vars[!ind, ])
-
   ss <- intersect(ss, nms_df)
-
   ss <- cite_file_vars[ss, "superseeded"]
+
+  deselect <- var_names[deselect, "translated_var"]
+  deselect <- cite_file_vars[["translated_var"]] %in% deselect
+
+  ind <- ind & !deselect
 
   nms <- row.names(cite_file_vars[ind, ])
 
