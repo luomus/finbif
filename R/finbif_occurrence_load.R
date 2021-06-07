@@ -108,7 +108,7 @@ finbif_occurrence_load <- function(
       tzone
     )
 
-    df <- any_issues(df, var_type)
+    df <- any_issues(df, select_user, var_type)
 
     df <- compute_vars_from_id(df, select_user)
 
@@ -125,7 +125,7 @@ finbif_occurrence_load <- function(
   }
 
   df <- structure(
-    df[, select_user],
+    df[, select_user, drop = FALSE],
     class     = c("finbif_occ", class(df)),
     nrec_dnld = n_recs,
     nrec_avl  = n_recs,
@@ -446,12 +446,12 @@ add_nas <- function(df, nm, var_type) {
 
 }
 
-any_issues <- function(df, var_type) {
+any_issues <- function(df, select_user, var_type) {
 
   vnms <- var_names[var_type]
   any_issue <- vnms["unit.quality.documentGatheringUnitQualityIssues", ]
 
-  if (!utils::hasName(df, any_issue)) {
+  if (!utils::hasName(df, any_issue) && any_issue %in% select_user) {
 
     rec_iss <- !is.na(df[[vnms["unit.quality.issue.issue", ]]])
     ev_iss  <- !is.na(df[[vnms["gathering.quality.issue.issue", ]]])
