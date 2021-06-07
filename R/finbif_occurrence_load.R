@@ -520,7 +520,7 @@ dt_read <- function(select, n, quiet, dt, ...) {
 
   }
 
-  args[["nrows"]] <- n
+  args[["nrows"]] <- as.double(n)
   args[["check.names"]] <- TRUE
 
   df <- do.call(data.table::fread, args)
