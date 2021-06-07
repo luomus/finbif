@@ -258,7 +258,17 @@ attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
 
         } else {
 
-          utils::read.delim(i, nrows = n, na.strings = "", quote = "")
+          df <- utils::read.delim(
+            i, nrows = max(abs(n), 1L) * sign(n), na.strings = "", quote = ""
+          )
+
+          if (identical(as.integer(n), 0L)) {
+
+            df <- df[0L, ]
+
+          }
+
+          df
 
         }
 
