@@ -46,10 +46,15 @@ finbif_occurrence_load <- function(
 
   select_all <- FALSE
   short <- FALSE
+  deselect <- character()
 
   if (!missing(select) && select %in% c("all", "short")) {
 
-    short <- identical(select, "short")
+    short <- identical(select[[1L]], "short")
+    deselect <- grep("^-", select, value = TRUE)
+    deselect <- gsub("-", "", deselect)
+    deselect <- match(deselect, var_names[, var_type])
+    deselect <- row.names(var_names[deselect, ])
     select <- "default_vars"
     select_all <- TRUE
 
@@ -59,7 +64,10 @@ finbif_occurrence_load <- function(
 
   select_user <- select[["user"]]
 
-  select <- list(select = select[["query"]], all = select_all, type = var_type)
+  select <- list(
+    select = select[["query"]], deselect = deselect, all = select_all,
+    type = var_type
+  )
 
   if (missing(n)) {
 
@@ -268,7 +276,7 @@ attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
 
           }
 
-          df
+          df[!fix_issue_vars(names(df)) %in% deselect(select)]
 
         }
 
@@ -496,15 +504,17 @@ dt_read <- function(select, n, quiet, dt, ...) {
 
   }
 
-  cols <- NULL
+  cols <- do.call(data.table::fread, args)
+  cols <- names(cols)
+  cols <- make.names(cols)
+  cols <- make.unique(cols)
+  cols <- fix_issue_vars(cols)
 
-  if (!select[["all"]]) {
+  if (select[["all"]]) {
 
-    cols <- do.call(data.table::fread, args)
-    cols_raw <- names(cols)
-    cols <- make.names(cols_raw)
-    cols <- make.unique(cols)
-    cols <- fix_issue_vars(cols)
+    args[["select"]] <- which(!cols %in% deselect(select))
+
+  } else {
 
     iss <- "unit.quality.documentGatheringUnitQualityIssues"
     iss <- iss %in% select[["select"]]
@@ -519,11 +529,9 @@ dt_read <- function(select, n, quiet, dt, ...) {
       )
     }
 
-    select_file <- cite_file_vars[[select[["type"]]]]
-
     select_vars <-  var_names[select[["select"]], select[["type"]]]
 
-    select <- select_file %in% select_vars
+    select <- cite_file_vars[[select[["type"]]]] %in% select_vars
     select <- row.names(cite_file_vars[select, ])
 
     args[["select"]] <- which(cols %in% select)
@@ -538,5 +546,13 @@ dt_read <- function(select, n, quiet, dt, ...) {
   attr(df, "file_cols") <- cols
 
   df
+
+}
+
+deselect <- function(select) {
+
+  deselect <- var_names[select[["deselect"]], select[["type"]]]
+  deselect <- cite_file_vars[[select[["type"]]]] %in% deselect
+  row.names(cite_file_vars[deselect, ])
 
 }
