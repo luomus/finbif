@@ -190,9 +190,7 @@ read_finbif_tsv <- function(
 
   }
 
-  con <- unz(file, tsv)
-
-  df <- attempt_read(con, file, tsv, select, count_only, n, quiet, dt)
+  df <- attempt_read(file, tsv, select, count_only, n, quiet, dt)
 
   if (count_only) {
 
@@ -212,7 +210,7 @@ read_finbif_tsv <- function(
 
 }
 
-attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
+attempt_read <- function(file, tsv, select, count_only, n, quiet, dt) {
 
   if (missing(dt)) {
 
@@ -225,6 +223,7 @@ attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
 
   }
 
+  con <- unz(file, tsv)
   warn <- getOption("warn")
   on.exit(options(warn = warn))
   options(warn = 2L)
@@ -234,6 +233,7 @@ attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
   for (i in list(con, file)) {
 
     df <- try(
+
       if (count_only) {
 
         if (all) {
@@ -248,6 +248,8 @@ attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
 
       } else {
 
+        n_rows <- NULL
+
         if (!all) {
 
           n_rows <- nlines(i)
@@ -258,7 +260,7 @@ attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
 
           input <- as.character(i)
 
-          switch(
+          df <- switch(
             tools::file_ext(input),
             tsv = dt_read(select, n, quiet, dt, input = input),
             dt_read(select, n, quiet, dt, zip = list(input = input, tsv = tsv))
@@ -266,8 +268,15 @@ attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
 
         } else {
 
+          df <- utils::read.delim(i, nrows = 1L, na.strings = "", quote = "")
+
+          cols <- fix_issue_vars(names(df))
+
+          i <- switch(class(i)[[1L]], character = i, unz(file, tsv))
+
           df <- utils::read.delim(
-            i, nrows = max(abs(n), 1L) * sign(n), na.strings = "", quote = ""
+            i, nrows = max(abs(n), 1L) * sign(n), na.strings = "",
+            colClasses =  cite_file_vars[cols, "type"], quote = ""
           )
 
           if (identical(as.integer(n), 0L)) {
@@ -276,12 +285,18 @@ attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
 
           }
 
-          df[!fix_issue_vars(names(df)) %in% deselect(select)]
+          df <- df[!cols %in% deselect(select)]
 
         }
 
+        attr(df, "nrow") <- n_rows
+
+        df
+
       },
+
       silent = TRUE
+
     )
 
     try(close(i), silent = TRUE)
@@ -297,12 +312,6 @@ attempt_read <- function(con, file, tsv, select, count_only, n, quiet, dt) {
   }
 
   stopifnot("invalid file!" = success)
-
-  if (!all && !count_only) {
-
-    attr(df, "nrow") <- n_rows
-
-  }
 
   df
 
@@ -541,6 +550,7 @@ dt_read <- function(select, n, quiet, dt, ...) {
 
   }
 
+  args[["colClasses"]] <- cite_file_vars[cols, "type"]
   args[["nrows"]] <- as.double(n)
   args[["check.names"]] <- TRUE
 
