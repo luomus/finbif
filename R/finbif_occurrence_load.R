@@ -19,6 +19,9 @@
 #'   `NULL` and will use the cache path instead.
 #' @param dt Logical. If package, `data.table`, is available return a
 #'   `data.table` object rather than a `data.frame`.
+#' @param keep_tsv Logical. Whether to keep the TSV file if `file` is a ZIP
+#'   archive or represents a URI. Is ignored if `file` is already a TSV. If
+#'   `TRUE` the tsv file will be kept in the same directory as the ZIP archive.
 #' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
 #' @return A `data.frame`, or if `count_only =  TRUE` an integer.
@@ -39,7 +42,7 @@ finbif_occurrence_load <- function(
   file, select, n, count_only = FALSE, quiet = FALSE,
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"),
-  write_file = tempfile(), dt
+  write_file = tempfile(), dt, keep_tsv = FALSE
 ) {
 
   var_type <- col_type_string(dwc)
@@ -76,7 +79,7 @@ finbif_occurrence_load <- function(
   }
 
   df <- read_finbif_tsv(
-    file, select, n, count_only, quiet, cache, write_file, dt
+    file, select, n, count_only, quiet, cache, write_file, dt, keep_tsv
   )
 
   if (count_only) {
@@ -157,7 +160,7 @@ finbif_occurrence_load <- function(
 }
 
 read_finbif_tsv <- function(
-  file, select, n, count_only, quiet, cache, write_file, dt
+  file, select, n, count_only, quiet, cache, write_file, dt, keep_tsv
 ) {
 
   file <- as.character(file)
@@ -190,7 +193,7 @@ read_finbif_tsv <- function(
 
   }
 
-  df <- attempt_read(file, tsv, select, count_only, n, quiet, dt)
+  df <- attempt_read(file, tsv, select, count_only, n, quiet, dt, keep_tsv)
 
   if (count_only) {
 
@@ -210,7 +213,9 @@ read_finbif_tsv <- function(
 
 }
 
-attempt_read <- function(file, tsv, select, count_only, n, quiet, dt) {
+attempt_read <- function(
+  file, tsv, select, count_only, n, quiet, dt, keep_tsv
+) {
 
   if (missing(dt)) {
 
@@ -263,29 +268,15 @@ attempt_read <- function(file, tsv, select, count_only, n, quiet, dt) {
           df <- switch(
             tools::file_ext(input),
             tsv = dt_read(select, n, quiet, dt, input = input),
-            dt_read(select, n, quiet, dt, zip = list(input = input, tsv = tsv))
+            dt_read(
+              select, n, quiet, dt, keep_tsv,
+              zip = list(input = input, tsv = tsv)
+            )
           )
 
         } else {
 
-          df <- utils::read.delim(i, nrows = 1L, na.strings = "", quote = "")
-
-          cols <- fix_issue_vars(names(df))
-
-          i <- switch(class(i)[[1L]], character = i, unz(file, tsv))
-
-          df <- utils::read.delim(
-            i, nrows = max(abs(n), 1L) * sign(n), na.strings = "",
-            colClasses =  cite_file_vars[cols, "type"], quote = ""
-          )
-
-          if (identical(as.integer(n), 0L)) {
-
-            df <- df[0L, ]
-
-          }
-
-          df <- df[!cols %in% deselect(select)]
+          df <- rd_read(i, file, tsv, n, select, keep_tsv)
 
         }
 
@@ -316,7 +307,6 @@ attempt_read <- function(file, tsv, select, count_only, n, quiet, dt) {
   df
 
 }
-
 
 fix_issue_vars <- function(x) {
 
@@ -486,7 +476,7 @@ any_issues <- function(df, select_user, var_type) {
 
 }
 
-dt_read <- function(select, n, quiet, dt, ...) {
+dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
   args <- list(
     ..., nrows = 0, showProgress = quiet, data.table = dt, na.strings = "",
@@ -503,14 +493,24 @@ dt_read <- function(select, n, quiet, dt, ...) {
 
     }
 
-    utils::unzip(
-      args[["zip"]][["input"]], files = args[["zip"]][["tsv"]],
-      exdir = tempdir(), unzip = unzip
+    args[["input"]] <- sprintf(
+      "%s/%s", dirname(args[["zip"]][["input"]]), args[["zip"]][["tsv"]]
     )
 
-    args[["input"]] <- sprintf("%s/%s", tempdir(), args[["zip"]][["tsv"]])
+    if (!file.exists(args[["input"]])) {
 
-    on.exit(unlink(args[["input"]]))
+      utils::unzip(
+        args[["zip"]][["input"]], files = args[["zip"]][["tsv"]],
+        exdir = dirname(args[["zip"]][["input"]]), unzip = unzip
+      )
+
+      if (!keep_tsv) {
+
+        on.exit(unlink(args[["input"]]))
+
+      }
+
+    }
 
     args[["zip"]] <- NULL
 
@@ -559,6 +559,49 @@ dt_read <- function(select, n, quiet, dt, ...) {
   attr(df, "file_cols") <- cols
 
   df
+
+}
+
+rd_read <- function(x, file, tsv, n, select, keep_tsv) {
+
+  df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "")
+
+  cols <- fix_issue_vars(names(df))
+
+  if (keep_tsv && !identical(tools::file_ext(file), "tsv")) {
+
+    unzip <- "internal"
+
+    if (!is.null(getOption("unzip")) && !identical(getOption("unzip"), "")) {
+
+      unzip <- getOption("unzip")
+
+    }
+
+    utils::unzip(file, tsv, exdir = dirname(file), unzip = unzip)
+
+  }
+
+  if (identical(as.integer(n), 0L)) {
+
+    df <- df[0L, ]
+
+  } else {
+
+    if (inherits(x, "connection")) {
+
+      x <- unz(file, tsv)
+
+    }
+
+    df <- utils::read.delim(
+      x, nrows = max(abs(n), 1L) * sign(n), na.strings = "",
+      colClasses =  cite_file_vars[cols, "type"], quote = ""
+    )
+
+  }
+
+  df[!cols %in% deselect(select)]
 
 }
 

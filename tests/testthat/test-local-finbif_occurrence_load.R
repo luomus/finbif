@@ -62,15 +62,17 @@ test_that(
 
     expect_snapshot_value(
       finbif_occurrence_load(
-        file_full, n = 0, tzone = "Etc/UTC", write_file = file_path, dt = FALSE
+        file_full, n = 0, tzone = "Etc/UTC", write_file = file_path, dt = FALSE,
+        keep_tsv = TRUE
       ),
       style = "json2"
     )
 
     expect_snapshot_value(
       finbif_occurrence_load(
-        file_full, tzone = "Etc/UTC", write_file = file_path
-        )[seq(nrows), ],
+        file_full, tzone = "Etc/UTC", write_file = file_path, dt = FALSE,
+        keep_tsv = TRUE
+      )[seq(nrows), ],
       style = "json2"
     )
 

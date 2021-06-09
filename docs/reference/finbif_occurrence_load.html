@@ -167,7 +167,8 @@
   tzone <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_tz"</span><span class='op'>)</span>,
   locale <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_locale"</span><span class='op'>)</span>,
   write_file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>,
-  <span class='va'>dt</span>
+  <span class='va'>dt</span>,
+  keep_tsv <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -242,6 +243,12 @@ refers to a URI. Will be ignored if <code><a href='https://rdrr.io/r/base/option
       <th>dt</th>
       <td><p>Logical. If package, <code>data.table</code>, is available return a
 <code>data.table</code> object rather than a <code>data.frame</code>.</p></td>
+    </tr>
+    <tr>
+      <th>keep_tsv</th>
+      <td><p>Logical. Whether to keep the TSV file if <code>file</code> is a ZIP
+archive or represents a URI. Is ignored if <code>file</code> is already a TSV. If
+<code>TRUE</code> the tsv file will be kept in the same directory as the ZIP archive.</p></td>
     </tr>
     </table>
 

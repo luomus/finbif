@@ -17,7 +17,8 @@ finbif_occurrence_load(
   tzone = getOption("finbif_tz"),
   locale = getOption("finbif_locale"),
   write_file = tempfile(),
-  dt
+  dt,
+  keep_tsv = FALSE
 )
 }
 \arguments{
@@ -66,6 +67,10 @@ refers to a URI. Will be ignored if \code{getOption("finbif_cache_path")} is not
 
 \item{dt}{Logical. If package, \code{data.table}, is available return a
 \code{data.table} object rather than a \code{data.frame}.}
+
+\item{keep_tsv}{Logical. Whether to keep the TSV file if \code{file} is a ZIP
+archive or represents a URI. Is ignored if \code{file} is already a TSV. If
+\code{TRUE} the tsv file will be kept in the same directory as the ZIP archive.}
 }
 \value{
 A \code{data.frame}, or if \code{count_only =  TRUE} an integer.
