@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.5.0.9003}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Option now available to retain the TSV data file when loading FinBIF
+        occurrence data with \code{finbif_occurrence_load} from ZIP archive or
+        online reference.
+    }
+  }
+}
+
 \section{finbif version 0.5.0.9002}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

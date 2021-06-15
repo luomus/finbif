@@ -1,3 +1,11 @@
+# finbif 0.5.0.9003
+
+#### NEW FEATURES
+
+-   Option now available to retain the TSV data file when loading FinBIF
+    occurrence data with `finbif_occurrence_load` from ZIP archive or
+    online reference.
+
 # finbif 0.5.0.9002
 
 #### MINOR IMPROVEMENTS

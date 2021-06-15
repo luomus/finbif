@@ -84,7 +84,7 @@ FinBIF itself and the contributed datasets please visit this link:
 To cite the finbif R package in publications please use:
 
   Morris, William K. (2021). Introduction to the finbif package. R
-  package version 0.5.0.9002, https://doi.org/10.5281/zenodo.3612814
+  package version 0.5.0.9003, https://doi.org/10.5281/zenodo.3612814
 
 ----
 
