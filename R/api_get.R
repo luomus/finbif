@@ -59,9 +59,7 @@ api_get <- function(path, query, cache) {
     paste0("&access_token=", finbif_access_token), "", resp[["url"]]
   )
 
-  notoken <- sub(
-    paste0("&personEmail=", email), "", resp[["url"]]
-  )
+  notoken <- sub(paste0("&personEmail=", email), "", notoken)
 
   resp[["url"]] <- notoken
   resp[["request"]][["url"]] <- notoken
