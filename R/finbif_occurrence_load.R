@@ -261,7 +261,7 @@ attempt_read <- function(
 
         }
 
-        if (requireNamespace("data.table", quietly = TRUE) && use_dt) {
+        if (has_pkgs("data.table") && use_dt) {
 
           input <- as.character(i)
 

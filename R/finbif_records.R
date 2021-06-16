@@ -352,7 +352,7 @@ get_extra_pages <- function(
   query[["page"]] <- query[["page"]] + 1L
   n_pages <- n %/% query[["pageSize"]]
 
-  has_future <- requireNamespace("future", quietly = TRUE)
+  has_future <- has_pkgs("future")
 
   if (has_future) value <- future::value
 

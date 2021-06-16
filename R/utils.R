@@ -1,5 +1,3 @@
-#' @importFrom digest digest
-
 # misc -------------------------------------------------------------------------
 
 #' @noRd
@@ -115,6 +113,13 @@ nlines <- function(x, header = TRUE) {
   n - header
 }
 
+#' @noRd
+has_pkgs <- function(...) {
+  pkgs <- list(...)
+  ans <- vapply(pkgs, requireNamespace, logical(1L), quietly = TRUE)
+  all(ans)
+}
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd
@@ -134,6 +139,7 @@ sample_with_seed <- function(n, size, seed) {
 #' @noRd
 gen_seed <- function(x, ...) UseMethod("gen_seed", x)
 
+#' @importFrom digest digest
 #' @export
 #' @noRd
 gen_seed.finbif_records_list <- function(x, ...) {
