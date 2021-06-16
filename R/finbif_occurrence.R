@@ -56,7 +56,7 @@ finbif_occurrence <- function(
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
   dwc = FALSE, date_time_method, check_taxa = TRUE,
   on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
-  locale = getOption("finbif_locale")
+  locale = getOption("finbif_locale"), seed
 ) {
 
   taxa <- select_taxa(
@@ -93,7 +93,7 @@ finbif_occurrence <- function(
 
   records <- finbif_records(
     filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
-    cache, dwc, df = TRUE
+    cache, dwc, df = TRUE, seed
   )
 
   aggregate <- attr(records, "aggregate", TRUE)

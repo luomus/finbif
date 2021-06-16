@@ -22,7 +22,8 @@ finbif_occurrence(
   check_taxa = TRUE,
   on_check_fail = c("warn", "error"),
   tzone = getOption("finbif_tz"),
-  locale = getOption("finbif_locale")
+  locale = getOption("finbif_locale"),
+  seed
 )
 }
 \arguments{
@@ -88,6 +89,8 @@ codes. Current supported languages are English, Finnish, Swedish, Russian,
 and Sámi (Northern). For data where more than one language is available
 the language denoted by \code{locale} will be preferred while falling back to
 the other languages in the order indicated above.}
+
+\item{seed}{Integer. Set a seed for randomly sampling records.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

@@ -32,9 +32,7 @@
 #'   downloads.
 #' @param cache Logical. Use cached data.
 #' @param dwc Logical. Use Darwin Core (or Darwin Core style) variable names.
-#' @param seed Integer. Set a seed for randomly sampling records. Note that the
-#'   server currently ignores seed setting and this argument currently has
-#'   little effect.
+#' @param seed Integer. Set a seed for randomly sampling records.
 #' @param df Logical. Should the data.frame representation of the records be
 #'   returned as an attribute?
 #' @return A `finbif_api` or `finbif_api_list` object.
@@ -118,7 +116,7 @@ finbif_records <- function(
   ans <- request(
     filter, select[["query"]], sample, n, page, count_only, quiet, cache, query,
     max_size, select[["user"]], select[["record_id_selected"]], dwc, aggregate,
-    df
+    df, seed
   )
 
   if (df && !count_only) {
@@ -252,7 +250,7 @@ infer_selection <- function(aggregate, select, var_type) {
 
 request <- function(
   filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-  select_, record_id_selected, dwc, aggregate, df
+  select_, record_id_selected, dwc, aggregate, df, seed
 ) {
 
   path <- getOption("finbif_warehouse_query")
@@ -308,9 +306,13 @@ request <- function(
     )
 
     if (sample) {
+
+      if (missing(seed)) seed <- 1L
+
       resp <- handle_duplicates(
-        resp, filter, select_, max_size, cache, n, seed = 1L, dwc, df
+        resp, filter, select_, max_size, cache, n, seed, dwc, df
       )
+
     }
 
   }
