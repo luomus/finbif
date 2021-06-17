@@ -14,6 +14,8 @@
 #'   to the variable name. If only deselects are specified the default set of
 #'   variables without the deselection will be returned. Use `"all"` to select
 #'   all available variables in the file.
+#' @param n Integer. How many records to import. Negative and other
+#'    invalid values are ignored causing all records will to be imported.
 #' @param write_file Character. Path to write downloaded zip file to if `file`
 #'   refers to a URI. Will be ignored if `getOption("finbif_cache_path")` is not
 #'   `NULL` and will use the cache path instead.
@@ -22,6 +24,14 @@
 #' @param keep_tsv Logical. Whether to keep the TSV file if `file` is a ZIP
 #'   archive or represents a URI. Is ignored if `file` is already a TSV. If
 #'   `TRUE` the tsv file will be kept in the same directory as the ZIP archive.
+#' @param facts List. A named list of "facts" to extract from supplementary
+#'   "fact" files in a local or online FinBIF data archive. Names can include
+#'   one or more of `"record"`, `"event"` or `"document"`. Elements of the list
+#'   are character vectors of the "facts" to be extracted and then joined to the
+#'   return value. Note that this functionality requires that the `{dplyr}` and
+#'   `{tidyr}` packages are available.
+#' @param type_convert_facts Logical. Should facts be converted from character
+#'   to numeric or integer data where applicable?
 #' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
 #' @return A `data.frame`, or if `count_only =  TRUE` an integer.
@@ -39,10 +49,11 @@
 #' @export
 
 finbif_occurrence_load <- function(
-  file, select, n, count_only = FALSE, quiet = FALSE,
+  file, select, n = -1, count_only = FALSE, quiet = FALSE,
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"),
-  write_file = tempfile(), dt, keep_tsv = FALSE
+  write_file = tempfile(), dt, keep_tsv = FALSE, facts = list(),
+  type_convert_facts = TRUE
 ) {
 
   var_type <- col_type_string(dwc)
@@ -54,10 +65,12 @@ finbif_occurrence_load <- function(
   if (!missing(select) && select %in% c("all", "short")) {
 
     short <- identical(select[[1L]], "short")
+
     deselect <- grep("^-", select, value = TRUE)
     deselect <- gsub("-", "", deselect)
     deselect <- match(deselect, var_names[, var_type])
     deselect <- row.names(var_names[deselect, ])
+
     select <- "default_vars"
     select_all <- TRUE
 
@@ -65,18 +78,12 @@ finbif_occurrence_load <- function(
 
   defer_errors(select <- infer_selection("none", select, var_type))
 
-  select_user <- select[["user"]]
+  select[["deselect"]] <- deselect
+  select[["all"]] <- select_all
+  select[["type"]] <- var_type
+  select[["facts"]] <- names(facts)
 
-  select <- list(
-    select = select[["query"]], deselect = deselect, all = select_all,
-    type = var_type
-  )
-
-  if (missing(n)) {
-
-    n <- -1L
-
-  }
+  n <- as.integer(n)
 
   df <- read_finbif_tsv(
     file, select, n, count_only, quiet, cache, write_file, dt, keep_tsv
@@ -108,22 +115,22 @@ finbif_occurrence_load <- function(
 
   if (select_all) {
 
-    select_user <- TRUE
+    select[["user"]] <- TRUE
 
   } else {
 
     date_time_method <- det_datetime_method(date_time_method, n_recs)
 
     df <- compute_date_time(
-      df, select_user, select_user, aggregate = "none", dwc, date_time_method,
-      tzone
+      df, select[["user"]], select[["user"]], aggregate = "none", dwc,
+      date_time_method, tzone
     )
 
-    df <- any_issues(df, select_user, var_type)
+    df <- any_issues(df, select[["user"]], var_type)
 
-    df <- compute_vars_from_id(df, select_user)
+    df <- compute_vars_from_id(df, select[["user"]])
 
-    for (extra_var in setdiff(select_user, names(df))) {
+    for (extra_var in setdiff(select[["user"]], names(df))) {
 
       ind <- var_names[[var_type]] == extra_var
 
@@ -136,7 +143,7 @@ finbif_occurrence_load <- function(
   }
 
   df <- structure(
-    df[, select_user, drop = FALSE],
+    df,
     class     = c("finbif_occ", class(df)),
     nrec_dnld = n_recs,
     nrec_avl  = n_recs,
@@ -147,20 +154,74 @@ finbif_occurrence_load <- function(
     record_id = record_id
   )
 
-  if (short) {
+  for (fact_type in names(facts)) {
 
-    short_nms <- cite_file_vars[["shrtnm"]]
-    names(short_nms) <- cite_file_vars[[var_type]]
-    names(df) <- short_nms[names(df)]
+    facts_df <- read_finbif_tsv(
+      file,
+      select = list(
+        all = TRUE,
+        deselect = character(),
+        type = "translated_var"
+      ),
+      n = -1,
+      count_only, quiet, cache, write_file, dt, keep_tsv,
+      facts = fact_type
+    )
+
+    id <- switch(
+      fact_type,
+      record = cite_file_vars[["Unit.UnitID", var_type]],
+      event = cite_file_vars[["Gathering.GatheringID", var_type]],
+      document = cite_file_vars[["Document.DocumentID", var_type]]
+    )
+
+    facts_df <- spread_facts(
+      facts_df, facts[[fact_type]], fact_type, id, type_convert_facts
+    )
+
+    select[["user"]] <- c(
+      names(df[select[["user"]]]), setdiff(names(facts_df), id)
+    )
+
+    df <- bind_facts(df, facts_df)
 
   }
 
-  df
+  if (short) {
+
+    short_nms <- cite_file_vars[["shrtnm"]]
+
+    names(short_nms) <- cite_file_vars[[var_type]]
+
+    short_nms <- short_nms[names(df)]
+
+    short_fcts <- unlist(facts)
+
+    short_fcts <- gsub("http://tun.fi/", "", short_fcts)
+
+    short_fcts <- abbreviate(
+      short_fcts, 8L, FALSE, strict = TRUE, method = "both.sides"
+    )
+    short_fcts <- paste0("f", seq_along(short_fcts), short_fcts)
+
+    short_nms[is.na(short_nms)] <- short_fcts
+
+    names(df) <- short_nms
+
+    select[["user"]] <- names(df)
+
+  }
+
+  df[, select[["user"]], drop = FALSE]
 
 }
 
+#' @noRd
 read_finbif_tsv <- function(
-  file, select, n, count_only, quiet, cache, write_file, dt, keep_tsv
+  file,
+  select = list(all = TRUE, deselect = character(), type = "translated_var"),
+  n = -1L, count_only = FALSE, quiet = FALSE, cache = TRUE,
+  write_file = tempfile(), dt, keep_tsv, facts = "none"
 ) {
 
   file <- as.character(file)
@@ -177,13 +238,29 @@ read_finbif_tsv <- function(
 
   tsv <- basename(file)
   tsv <- gsub("zip", "tsv", tsv)
-  tsv <- paste0("rows_", tsv)
+
+  tsv_prefix <- switch(
+    facts,
+    none = "rows_",
+    record = "unit_facts_",
+    event = "gathering_facts_",
+    document = "document_facts_",
+  )
+
+  valid_facts <- facts %in% c("none", "record", "event", "document")
+
+  stopifnot(
+    "Facts can only be of types: record, event and/or document" = valid_facts
+  )
+
+  file <- gsub("rows_", tsv_prefix, file)
+  tsv <- paste0(tsv_prefix, tsv)
 
   if (grepl("^[0-9]*$", file)) {
 
     url <- sprintf("https://dw.laji.fi/download/HBF.%s", file)
 
-    tsv <- sprintf("rows_HBF.%s.tsv", file)
+    tsv <- sprintf("%sHBF.%s.tsv", tsv_prefix, file)
 
     file <- get_zip(url, quiet, cache, write_file)
 
@@ -213,6 +290,7 @@ read_finbif_tsv <- function(
 
 }
 
+#' @noRd
 attempt_read <- function(
   file, tsv, select, count_only, n, quiet, dt, keep_tsv
 ) {
@@ -302,12 +380,13 @@ attempt_read <- function(
 
   }
 
-  stopifnot("invalid file!" = success)
+  stopifnot("invalid file or missing file(s)!" = success)
 
   df
 
 }
 
+#' @noRd
 fix_issue_vars <- function(x) {
 
   type <- c("Time", "Location")
@@ -317,8 +396,7 @@ fix_issue_vars <- function(x) {
     for (j in 1:2) {
 
       x <- gsub(
-        sprintf("Issue.%s.%s", i, j), sprintf("%sIssue.%s", type[j], i),
-        x
+        sprintf("Issue.%s.%s", i, j), sprintf("%sIssue.%s", type[j], i), x
       )
 
     }
@@ -329,6 +407,7 @@ fix_issue_vars <- function(x) {
 
 }
 
+#' @noRd
 new_vars <- function(df, deselect) {
 
   if (is.null(attr(df, "file_cols"))) {
@@ -364,6 +443,7 @@ new_vars <- function(df, deselect) {
 
 }
 
+#' @noRd
 get_zip <- function(url, quiet, cache, write_file) {
 
   if (cache) {
@@ -434,6 +514,7 @@ get_zip <- function(url, quiet, cache, write_file) {
 
 }
 
+#' @noRd
 add_nas <- function(df, nm, var_type) {
 
   ans <- df[[nm]]
@@ -456,6 +537,7 @@ add_nas <- function(df, nm, var_type) {
 
 }
 
+#' @noRd
 any_issues <- function(df, select_user, var_type) {
 
   vnms <- var_names[var_type]
@@ -476,6 +558,7 @@ any_issues <- function(df, select_user, var_type) {
 
 }
 
+#' @noRd
 dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
   args <- list(
@@ -529,11 +612,11 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
   } else {
 
     iss <- "unit.quality.documentGatheringUnitQualityIssues"
-    iss <- iss %in% select[["select"]]
+    iss <- iss %in% select[["query"]]
 
     if (iss) {
-      select[["select"]] <- c(
-        select[["select"]],
+      select[["query"]] <- c(
+        select[["query"]],
         "unit.quality.issue.issue",
         "gathering.quality.issue.issue",
         "gathering.quality.timeIssue.issue",
@@ -541,16 +624,37 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
       )
     }
 
-    select_vars <-  var_names[select[["select"]], select[["type"]]]
+    select_vars <-  var_names[select[["query"]], select[["type"]]]
 
-    select <- cite_file_vars[[select[["type"]]]] %in% select_vars
-    select <- row.names(cite_file_vars[select, ])
+    select_vars <- cite_file_vars[[select[["type"]]]] %in% select_vars
+    select_vars <- row.names(cite_file_vars[select_vars, ])
 
-    args[["select"]] <- which(cols %in% select)
+    args[["select"]] <- which(cols %in% select_vars)
+
+    for (ftype in select[["facts"]]) {
+
+      id_col <- switch(
+        ftype,
+        record = "Unit.UnitID",
+        event = "Gathering.GatheringID",
+        document = "Document.DocumentID"
+      )
+
+      id_col <- which(cols %in% id_col)
+
+      args[["select"]]  <- c(args[["select"]], id_col)
+
+    }
+
+    args[["select"]] <- sort(unique(args[["select"]]))
 
   }
 
   args[["colClasses"]] <- cite_file_vars[cols, "type"]
+  args[["colClasses"]] <- ifelse(
+    is.na(args[["colClasses"]]), "character", args[["colClasses"]]
+  )
+
   args[["nrows"]] <- as.double(n)
   args[["check.names"]] <- TRUE
 
@@ -562,6 +666,7 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
 }
 
+#' @noRd
 rd_read <- function(x, file, tsv, n, select, keep_tsv) {
 
   df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "")
@@ -610,5 +715,136 @@ deselect <- function(select) {
   deselect <- var_names[select[["deselect"]], select[["type"]]]
   deselect <- cite_file_vars[[select[["type"]]]] %in% deselect
   row.names(cite_file_vars[deselect, ])
+
+}
+
+#' @noRd
+spread_facts <-  function(facts, select, type, id, type_convert_facts) {
+
+  ind <- match(select, facts[[2L]])
+
+  if (anyNA(ind)) {
+
+    stop(
+      "Selected fact(s) - ", paste(select[is.na(ind)], collapse = ", "),
+      " - could not be found in dataset", call. = FALSE
+    )
+
+  }
+
+  ind <- which(facts[[2L]] %in% select)
+
+  facts <- facts[ind, ]
+
+  facts[[2L]] <- paste(type, "fact_", facts[[2L]], sep = "_")
+
+  stopifnot(
+    "Package {tidyr} is required for this functionality" = has_pkgs("tidyr")
+  )
+
+  facts <- tidyr::pivot_wider(
+    facts, 1L, names_from = 2L, values_from = 3L, values_fn = list,
+    values_fill = list(NA)
+  )
+
+  ind <- names(facts) == "Parent"
+
+  names(facts)[ind] <- id
+
+  facts[!ind] <- lapply(facts[!ind], unlist_col)
+
+  ind[!ind] <- rep_len(type_convert_facts, length(select))
+
+  facts[ind] <- lapply(facts[ind], convert_col_type)
+
+  facts <- as.data.frame(facts)
+
+  attr(facts, "id") <- id
+
+  facts
+
+}
+
+#' @noRd
+#' @importFrom utils hasName
+bind_facts <- function(x, facts) {
+
+  stopifnot(
+    "Package {dplyr} is required for this functionality" = has_pkgs("dplyr")
+  )
+
+  id <- attr(facts, "id")
+
+  stopifnot(
+    "Cannot bind facts. ID column missing from data" = utils::hasName(x, id)
+  )
+
+  attr <- attributes(x)
+
+  x <- dplyr::left_join(x, facts, by = id)
+
+  attr[["names"]] <- names(x)
+
+  attributes(x) <- attr
+
+  x
+
+}
+
+#' @noRd
+unlist_col <- function(col) {
+
+  col_ <- unlist(col)
+
+  l1 <- length(col)
+
+  l2 <- length(col_)
+
+  cond <- identical(l1, l2)
+
+  if (cond) col <- col_
+
+  col
+
+}
+
+#' @noRd
+convert_col_type <- function(col) {
+
+  if (is.list(col)) {
+
+    return(col)
+
+  }
+
+  col_na <- is.na(col)
+
+  col_nws <- trimws(col)
+
+  is_num <- grepl(
+    "^[-+]?[0-9]*[\\.,]?[0-9]+([eE][-+]?[0-9]+)?$", col_nws[!col_na]
+  )
+
+  is_num <- all(is_num)
+
+  if (is_num) {
+
+    is_int <- !grepl("[\\.,]", col_nws[!col_na])
+
+    is_int <- all(is_int)
+
+    if (is_int) {
+
+      col <- as.integer(col_nws)
+
+    } else {
+
+      col <- as.numeric(col_nws)
+
+    }
+
+  }
+
+  col
 
 }

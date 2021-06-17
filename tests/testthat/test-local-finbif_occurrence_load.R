@@ -82,8 +82,19 @@ test_that(
     )
 
     expect_snapshot_value(
-      finbif_occurrence_load(zip, n = nrows, tzone = "Etc/UTC"),
+      finbif_occurrence_load(
+        zip, n = nrows, tzone = "Etc/UTC",
+        facts = list(record = c("imageCount", "imageUrl", "areaInSqMeters"))
+      ),
       style = "json2"
+    )
+
+    expect_error(
+      finbif_occurrence_load(
+        zip, n = nrows, tzone = "Etc/UTC",
+        facts = list(record = c("not a fact"))
+      ),
+      "Selected fact"
     )
 
     expect_snapshot_value(

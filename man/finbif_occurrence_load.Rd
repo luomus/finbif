@@ -8,7 +8,7 @@
 finbif_occurrence_load(
   file,
   select,
-  n,
+  n = -1,
   count_only = FALSE,
   quiet = FALSE,
   cache = getOption("finbif_use_cache"),
@@ -18,7 +18,9 @@ finbif_occurrence_load(
   locale = getOption("finbif_locale"),
   write_file = tempfile(),
   dt,
-  keep_tsv = FALSE
+  keep_tsv = FALSE,
+  facts = list(),
+  type_convert_facts = TRUE
 )
 }
 \arguments{
@@ -34,7 +36,8 @@ to the variable name. If only deselects are specified the default set of
 variables without the deselection will be returned. Use \code{"all"} to select
 all available variables in the file.}
 
-\item{n}{Integer. How many records to download/import.}
+\item{n}{Integer. How many records to import. Negative and other
+invalid values are ignored causing all records will to be imported.}
 
 \item{count_only}{Logical. Only return the number of records available.}
 
@@ -71,6 +74,16 @@ refers to a URI. Will be ignored if \code{getOption("finbif_cache_path")} is not
 \item{keep_tsv}{Logical. Whether to keep the TSV file if \code{file} is a ZIP
 archive or represents a URI. Is ignored if \code{file} is already a TSV. If
 \code{TRUE} the tsv file will be kept in the same directory as the ZIP archive.}
+
+\item{facts}{List. A named list of "facts" to extract from supplementary
+"fact" files in a local or online FinBIF data archive. Names can include
+one or more of \code{"record"}, \code{"event"} or \code{"document"}. Elements of the list
+are character vectors of the "facts" to be extracted and then joined to the
+return value. Note that this functionality requires that the \code{{dplyr}} and
+\code{{tidyr}} packages are available.}
+
+\item{type_convert_facts}{Logical. Should facts be converted from character
+to numeric or integer data where applicable?}
 }
 \value{
 A \code{data.frame}, or if \code{count_only =  TRUE} an integer.

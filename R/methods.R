@@ -342,7 +342,7 @@ format_cols <- function(df, colname_widths) {
 
       class <- short_col_class(df[[i]])
 
-      single <- TRUE
+      single <- !is.list(df[[i]])
 
     } else {
 

@@ -44,11 +44,13 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests:
     data.table,
+    dplyr,
     future,
     grDevices,
     knitr,
     rmarkdown,
     testthat (>= 2.1.0),
+    tidyr,
     vcr
 Config/testthat/edition: 3
 X-schema.org-applicationCategory: Biodiversity
