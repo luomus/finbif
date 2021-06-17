@@ -1,6 +1,19 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.5.0.9004}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Option now available to extract "facts" when using
+      \code{finbif_occurrence_load} to import records from a ZIP archive. The
+      user must supply a named list where the names refer to one or more fact
+      types: "record", "event" and/or "document", and the list elements
+      are character vectors indicating which "facts" to extract.
+    }
+  }
+}
+
+
 \section{finbif version 0.5.0.9003}{
   \subsection{NEW FEATURES}{
     \itemize{

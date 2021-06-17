@@ -1,3 +1,13 @@
+# finbif 0.5.0.9004
+
+#### NEW FEATURES
+
+-   Option now available to extract "facts" when using
+    `finbif_occurrence_load` to import records from a ZIP archive. The
+    user must supply a named list where the names refer to one or more
+    fact types: "record", "event" and/or "document", and the list
+    elements are character vectors indicating which "facts" to extract.
+
 # finbif 0.5.0.9003
 
 #### NEW FEATURES
