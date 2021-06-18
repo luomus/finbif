@@ -813,9 +813,11 @@ convert_col_type <- function(col) {
 
   if (is.list(col)) {
 
-    return(col)
+    col <- vapply(col, paste, character(1L), collapse = ", ")
 
   }
+
+  col[col == ""] <- NA_character_
 
   col_na <- is.na(col)
 
