@@ -89,7 +89,7 @@ test_that(
       style = "json2"
     )
 
-    expect_error(
+    expect_warning(
       finbif_occurrence_load(
         zip, n = nrows, tzone = "Etc/UTC",
         facts = list(record = c("not a fact"))

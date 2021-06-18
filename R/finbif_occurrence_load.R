@@ -721,43 +721,65 @@ deselect <- function(select) {
 #' @noRd
 spread_facts <-  function(facts, select, type, id, type_convert_facts) {
 
+  missing_facts <- character()
+
   ind <- match(select, facts[[2L]])
+
+  id_col <- names(facts) == "Parent"
+
+  names(facts)[id_col] <- id
 
   if (anyNA(ind)) {
 
-    stop(
-      "Selected fact(s) - ", paste(select[is.na(ind)], collapse = ", "),
+    missing_facts <- select[is.na(ind)]
+
+    warning(
+      "Selected fact(s) - ", paste(missing_facts, collapse = ", "),
       " - could not be found in dataset", call. = FALSE
     )
 
   }
 
-  ind <- which(facts[[2L]] %in% select)
+  if (!all(is.na(ind))) {
 
-  facts <- facts[ind, ]
+    select <- select[!is.na(ind)]
 
-  facts[[2L]] <- paste(type, "fact_", facts[[2L]], sep = "_")
+    ind <- which(facts[[2L]] %in% select)
 
-  stopifnot(
-    "Package {tidyr} is required for this functionality" = has_pkgs("tidyr")
-  )
+    facts <- facts[ind, ]
 
-  facts <- tidyr::pivot_wider(
-    facts, 1L, names_from = 2L, values_from = 3L, values_fn = list,
-    values_fill = list(NA)
-  )
+    facts[[2L]] <- paste(type, "fact_", facts[[2L]], sep = "_")
 
-  ind <- names(facts) == "Parent"
+    stopifnot(
+      "Package {tidyr} is required for this functionality" = has_pkgs("tidyr")
+    )
 
-  names(facts)[ind] <- id
+    facts <- tidyr::pivot_wider(
+      facts, 1L, names_from = 2L, values_from = 3L, values_fn = list,
+      values_fill = list(NA)
+    )
 
-  facts[!ind] <- lapply(facts[!ind], unlist_col)
+    fact_cols <- names(facts) != id
 
-  ind[!ind] <- rep_len(type_convert_facts, length(select))
+    facts[fact_cols] <- lapply(facts[fact_cols], unlist_col)
 
-  facts[ind] <- lapply(facts[ind], convert_col_type)
+    fact_cols[fact_cols] <- rep_len(type_convert_facts, length(select))
 
-  facts <- as.data.frame(facts)
+    facts[fact_cols] <- lapply(facts[fact_cols], convert_col_type)
+
+    facts <- as.data.frame(facts)
+
+  } else {
+
+    facts <- facts[, id_col, drop = FALSE]
+
+  }
+
+  for (mf in missing_facts) {
+
+    facts[[paste(type, "fact_", mf, sep = "_")]] <- NA_character_
+
+  }
 
   attr(facts, "id") <- id
 
