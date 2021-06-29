@@ -44,7 +44,7 @@
 #' }
 #' @importFrom digest digest
 #' @importFrom httr progress RETRY status_code write_disk
-#' @importFrom utils hasName read.delim unzip write.table
+#' @importFrom utils hasName head read.delim tail unzip write.table
 #' @importFrom methods as
 #' @importFrom tools file_ext
 #' @export
@@ -108,7 +108,13 @@ finbif_occurrence_load <- function(
 
   df <- new_vars(df, deselect, file_vars)
 
-  record_id <- df[["Unit.UnitID"]]
+  record_id <- file_vars[["translated_var"]] == "record_id"
+
+  record_id <- rownames(file_vars[record_id, ])
+
+  record_id <- df[[record_id]]
+
+  df <- expand_lite_cols(df)
 
   names(df) <- file_vars[names(df), var_type]
 
@@ -575,7 +581,7 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
   args <- list(
     ..., nrows = 0, showProgress = quiet, data.table = dt, na.strings = "",
-    quote = "", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE
+    quote = "\"", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE
   )
 
   if (utils::hasName(args, "zip")) {
@@ -638,6 +644,14 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
       )
     }
 
+    ind <- file_vars[["translated_vars"]] == "formatted_date_time"
+
+    select[["query"]] <- switch(
+      attr(file_vars, "locale"),
+      none = select[["query"]],
+      c(select[["queary"]], rownames(file_vars[ind, ]))
+    )
+
     select_vars <-  var_names[select[["query"]], select[["type"]]]
 
     select_vars <- file_vars[[select[["type"]]]] %in% select_vars
@@ -685,7 +699,7 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 #' @noRd
 rd_read <- function(x, file, tsv, n, select, keep_tsv) {
 
-  df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "")
+  df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "\"")
 
   cols <- fix_issue_vars(names(df))
 
@@ -719,7 +733,7 @@ rd_read <- function(x, file, tsv, n, select, keep_tsv) {
 
     df <- utils::read.delim(
       x, nrows = max(abs(n), 1L) * sign(n), na.strings = "",
-      colClasses =  file_vars[cols, "type"], quote = ""
+      colClasses =  file_vars[cols, "type"], quote = "\""
     )
 
   }
@@ -900,6 +914,8 @@ infer_file_vars <- function(cols) {
 
   file_vars <- cite_file_vars
 
+  locale <- "none"
+
   if (length(cols) < 100L && !"Fact" %in% cols) {
 
     file_vars <- lite_download_file_vars
@@ -917,7 +933,11 @@ infer_file_vars <- function(cols) {
 
     rownames(file_vars) <- file_vars[[locale]]
 
+
+
   }
+
+  attr(file_vars, "locale") <- locale
 
   file_vars
 
@@ -964,8 +984,166 @@ write_tsv <- function(df) {
 
   file <- tempfile(fileext = ".tsv")
 
-  write.table(df, file, quote = FALSE, sep = "\t", na = "", row.names = FALSE)
+  write.table(df, file, quote = TRUE, sep = "\t", na = "", row.names = FALSE)
 
   file
+
+}
+
+#' @noRd
+expand_lite_cols <- function(df) {
+
+  file_vars <- attr(df, "file_vars")
+
+  cols <- c(
+    "formatted_taxon_name", "formatted_date_time", "coordinates_1_kkj",
+    "coordinates_10_kkj", "coordinates_1_center_kkj",
+    "coordinates_10_center_kkj"
+  )
+
+  cols <- which(file_vars[["translated_var"]] %in% cols)
+
+  for (col in cols) {
+
+    col_nm <- rownames(file_vars[col, ])
+
+    type <- switch(
+      file_vars[[col, "translated_var"]],
+      formatted_taxon_name = "taxon",
+      formatted_date_time = "date_time",
+      "coords"
+    )
+
+    if (utils::hasName(df, col_nm)) {
+
+      split_cols <- switch(
+        type,
+        taxon = split_taxa_col(df[[col_nm]], attr(file_vars, "locale")),
+        date_time = split_dt_col(df[[col_nm]]),
+        coords = split_coord_col(df[[col_nm]]),
+      )
+
+      new_cols <- switch(
+        file_vars[[col, "translated_var"]],
+        formatted_taxon_name = c(
+          "scientific_name", "common_name_english", "common_name_finnish",
+          "common_name_swedish"
+        ),
+        formatted_date_time = c(
+          "date_start", "date_end", "hour_start", "hour_end",
+          "minute_start", "minute_end"
+        ),
+        coordinates_1_kkj = c("lon_1_kkj", "lat_1_kkj"),
+        coordinates_10_kkj = c("lon_10_kkj", "lat_10_kkj"),
+        coordinates_1_center_kkj = c("lon_1_center_kkj", "lat_1_center_kkj"),
+        coordinates_10_center_kkj = c("lon_10_center_kkj", "lat_10_center_kkj")
+      )
+
+      new_cols <- file_vars[["translated_var"]] %in% new_cols
+      new_cols <- rownames(file_vars[new_cols, ])
+
+      for (i in seq_along(new_cols)) {
+
+        cond <- is.null(df[[new_cols[[i]]]]) || all(is.na(df[[new_cols[[i]]]]))
+
+        if (cond) {
+
+          df[[new_cols[[i]]]] <- split_cols[[i]]
+
+        }
+
+      }
+
+    }
+
+  }
+
+  df
+
+}
+
+#' @noRd
+split_taxa_col <- function(col, locale) {
+
+  split_cols <- split_col(col, " \u2014 ")
+
+  common_names <- split_col(split_cols[[2L]], " \\(|\\)")
+
+  split_cols <- list(scientific_name = split_cols[[1L]])
+
+  common_names[[1L]] <- ifelse(
+    is.na(common_names[[1L]]), locale, common_names[[1L]]
+  )
+
+  locales <- c("en", "fi", "sv")
+
+  for (l in locales) {
+
+    ind <- common_names[[1L]] == l
+    split_cols[[l]] <- NA_character_
+    split_cols[[l]][ind] <- common_names[[2L]][ind]
+
+  }
+
+  split_cols
+
+}
+
+#' @noRd
+split_dt_col <- function(col) {
+
+  split_cols <- split_col(col, " - ")
+  split_cols <- lapply(split_cols, split_col, " \\[|\\]")
+
+  dates <- lapply(split_cols, utils::tail, 1L)
+  dates <- lapply(dates, unlist)
+
+  dates[[1L]] <- ifelse(is.na(dates[[1L]]), dates[[2L]], dates[[1L]])
+
+  times <- lapply(split_cols, utils::head, 1L)
+  times <- lapply(times, unlist)
+  times <- lapply(times, split_col, "-")
+
+  start_times <- times[[2L]][[2L]]
+  start_times <- split_col(start_times, ":")
+
+  end_times <- ifelse(
+    is.na(times[[1L]][[1L]]), times[[2L]][[1L]], times[[1L]][[1L]]
+  )
+  end_times <- split_col(end_times, ":")
+
+  list(
+    date_start = dates[[2L]],
+    date_end = dates[[1L]],
+    hour_start = as.integer(start_times[[2L]]),
+    hour_end = as.integer(end_times[[2L]]),
+    minute_start = as.integer(start_times[[1L]]),
+    minute_end = as.integer(end_times[[1L]])
+  )
+
+}
+
+#' @noRd
+split_coord_col <- function(col) {
+
+  split_cols <- split_col(col, ":")
+  split_cols <- lapply(split_cols, as.numeric)
+
+  names(split_cols) <- c("lon", "lat")
+
+  split_cols
+
+}
+
+#' @noRd
+split_col <- function(col, split) {
+
+  split_cols <- strsplit(as.character(col), split)
+  split_cols <- lapply(split_cols, c, NA_character_)
+  split_cols <- lapply(split_cols, utils::head, 2L)
+  split_cols <- lapply(split_cols, rev)
+  split_cols <- do.call(rbind, split_cols)
+
+  list(split_cols[, 1], split_cols[, 2])
 
 }

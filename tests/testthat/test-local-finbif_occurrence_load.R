@@ -120,6 +120,8 @@ test_that(
       style = "json2"
     )
 
+    skip_on_cran()
+
     expect_snapshot_value(
       finbif_occurrence_load("laji-data.ods", tzone = "Etc/UTC"),
       style = "json2", ignore_attr = "url"

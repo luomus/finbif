@@ -24,6 +24,16 @@ lite_download_file_vars <- read.csv(
 
 locales <- locales[rownames(lite_download_file_vars), ]
 
+for (l in names(locales)) {
+
+  locales[[l]] <- ifelse(
+    is.na(locales[[l]]),
+    lite_download_file_vars[["translated_var"]],
+    locales[[l]]
+  )
+
+}
+
 locales <- Map(make.names, locales)
 
 lite_download_file_vars <- cbind(lite_download_file_vars, locales)
