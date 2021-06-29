@@ -48,6 +48,8 @@ Suggests:
     future,
     grDevices,
     knitr,
+    readODS,
+    readxl,
     rmarkdown,
     testthat (>= 2.1.0),
     tidyr,

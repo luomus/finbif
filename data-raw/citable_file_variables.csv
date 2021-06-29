@@ -11,7 +11,7 @@ Taxon.EnglishName,comNmEN,common_name_english,vernacularNameEnglish,FALSE,charac
 Taxon.FinnishName,comNmFI,common_name_finnish,vernacularNameFinnish,FALSE,character
 Taxon.SwedishName,comNmSV,common_name_swedish,vernacularNameSwedish,FALSE,character
 Gathering.Interpretations.CoordinateSource,crdSrc,coordinates_source,georeferenceSources,FALSE,character
-Gathering.Interpretations.CoordinateAccuracy,crdUncert,coordinates_uncertainty,coordinateUncertaintyInMeters,FALSE,integer
+Gathering.Interpretations.CoordinateAccuracy,crdUncert,coordinates_uncertainty,coordinateUncertaintyInMeters,FALSE,double
 Gathering.Interpretations.Country,cntryID,country_id,countryID,FALSE,character
 Gathering.Interpretations.CountrySource,cntrySrc,country_source,countrySource,FALSE,character
 Gathering.CountryVerbatim,cntryVbtm,country_verbatim,verbatimCountry,FALSE,character
@@ -63,7 +63,7 @@ Gathering.Conversions.WGS84CenterPoint.Lat.N.,latWGS84,lat_wgs84,decimalLatitude
 Document.License,license,license,documentLicenseID,FALSE,character
 Unit.LifeStage,lifeStage,life_stage,lifeStage,FALSE,character
 Document.LoadDate,loadDate,load_date,documentLoadedDate,FALSE,character
-Gathering.LocalityVerbatim,locVbtm,locality_verbatim,verbatimLocality,FALSE,character
+Gathering.LocalityVerbatim,locality,locality,locality,FALSE,character
 Document.NamedPlaceID,locID,location_id,locationID,FALSE,character
 Gathering.Quality.LocationIssue.Issue,locIss,location_issue,locationIssue,FALSE,character
 Gathering.Quality.LocationIssue.Message,locIssMsg,location_issue_message,locationIssueRemarks,FALSE,character
@@ -82,7 +82,7 @@ Gathering.Conversions.WGS84.LonMin.E.,lonMnWGS84,lon_min_wgs84,decimalLongitudeM
 Gathering.Conversions.WGS84CenterPoint.Lon.E.,lonWGS84,lon_wgs84,decimalLongitude,FALSE,double
 Document.Modified,modDate,modified_date,documentModified,FALSE,character
 Gathering.Conversions.Month,month,month,month,FALSE,integer
-Gathering.MunicipalityVerbatim,mncplty,municipality,county,FALSE,character
+Gathering.MunicipalityVerbatim,mncptyVbtm,municipality_verbatim,verbatimCounty,FALSE,character
 Gathering.Interpretations.Municipality,mncpltyNm,municipality_name,countyName,FALSE,character
 Gathering.Interpretations.MunicipalitySource,mncpltySrc,municipality_source,countySource,FALSE,character
 Gathering.Conversions.DayOfYearEnd,ordDayEnd,ordinal_day_end,endDayOfYear,FALSE,integer
@@ -116,7 +116,7 @@ Document.SourceID,srcID,source_id,sourceID,FALSE,character
 Unit.RecordBasis,surecBasis,superrecord_basis,basisOfSuperRecord,FALSE,character
 Taxon.ID,txnID,taxon_id,taxonID,FALSE,character
 Taxon.TaxonomicOrder,txnmicOrdr,taxonomic_order,taxonTaxonomicOrder,FALSE,character
-Gathering.TeamMembers,teamMmbers,team_members,teamMembers,FALSE,character
+Gathering.TeamMembers,team,team,recordedByTeam,FALSE,character
 Gathering.Quality.TimeIssue.Issue,tmIss,time_issue,timeIssue,FALSE,character
 Gathering.Quality.TimeIssue.Message,tmIssMsg,time_issue_message,timeIssueRemarks,FALSE,character
 Gathering.Quality.TimeIssue.Source,tmIssSrc,time_issue_source,timeIssueSource,FALSE,character

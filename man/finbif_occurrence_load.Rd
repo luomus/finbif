@@ -24,10 +24,11 @@ finbif_occurrence_load(
 )
 }
 \arguments{
-\item{file}{Character or Integer. Either the path to a Zip archive or a TSV
-data file that has been downloaded from "laji.fi". Or a URI pointing to the
-data file (e.g., \url{http://tun.fi/HBF.49381}) or the
-integer representing the URI (i.e., \code{49381}).}
+\item{file}{Character or Integer. Either the path to a Zip archive or
+tabular data file that has been downloaded from "laji.fi", a URI
+linking to such a data file (e.g.,
+\url{https://tun.fi/HBF.49381}) or an integer
+representing the URI (i.e., \code{49381}).}
 
 \item{select}{Character vector. Variables to return. If not specified, a
 default set of commonly used variables will be used. Use \code{"default_vars"}
@@ -36,8 +37,8 @@ to the variable name. If only deselects are specified the default set of
 variables without the deselection will be returned. Use \code{"all"} to select
 all available variables in the file.}
 
-\item{n}{Integer. How many records to import. Negative and other
-invalid values are ignored causing all records will to be imported.}
+\item{n}{Integer. How many records to import. Negative and other invalid
+values are ignored causing all records to be imported.}
 
 \item{count_only}{Logical. Only return the number of records available.}
 

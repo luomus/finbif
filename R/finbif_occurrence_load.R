@@ -4,18 +4,19 @@
 #'
 #' @aliases fb_occurrence_load
 #'
-#' @param file Character or Integer. Either the path to a Zip archive or a TSV
-#'   data file that has been downloaded from "laji.fi". Or a URI pointing to the
-#'   data file (e.g., [http://tun.fi/HBF.49381](http://tun.fi/HBF.49381)) or the
-#'   integer representing the URI (i.e., `49381`).
+#' @param file Character or Integer. Either the path to a Zip archive or
+#'   tabular data file that has been downloaded from "laji.fi", a URI
+#'   linking to such a data file (e.g.,
+#'   [https://tun.fi/HBF.49381](https://tun.fi/HBF.49381)) or an integer
+#'   representing the URI (i.e., `49381`).
 #' @param select Character vector. Variables to return. If not specified, a
 #'   default set of commonly used variables will be used. Use `"default_vars"`
 #'   as a shortcut for this set. Variables can be deselected by prepending a `-`
 #'   to the variable name. If only deselects are specified the default set of
 #'   variables without the deselection will be returned. Use `"all"` to select
 #'   all available variables in the file.
-#' @param n Integer. How many records to import. Negative and other
-#'    invalid values are ignored causing all records will to be imported.
+#' @param n Integer. How many records to import. Negative and other invalid
+#'   values are ignored causing all records to be imported.
 #' @param write_file Character. Path to write downloaded zip file to if `file`
 #'   refers to a URI. Will be ignored if `getOption("finbif_cache_path")` is not
 #'   `NULL` and will use the cache path instead.
@@ -43,7 +44,7 @@
 #' }
 #' @importFrom digest digest
 #' @importFrom httr progress RETRY status_code write_disk
-#' @importFrom utils hasName read.delim unzip
+#' @importFrom utils hasName read.delim unzip write.table
 #' @importFrom methods as
 #' @importFrom tools file_ext
 #' @export
@@ -55,6 +56,8 @@ finbif_occurrence_load <- function(
   write_file = tempfile(), dt, keep_tsv = FALSE, facts = list(),
   type_convert_facts = TRUE
 ) {
+
+  file <- preprocess_data_file(file)
 
   var_type <- col_type_string(dwc)
 
@@ -101,15 +104,17 @@ finbif_occurrence_load <- function(
 
   names(df) <- fix_issue_vars(names(df))
 
-  df <- new_vars(df, deselect)
+  file_vars <- attr(df, "file_vars")
+
+  df <- new_vars(df, deselect, file_vars)
 
   record_id <- df[["Unit.UnitID"]]
 
-  names(df) <- cite_file_vars[names(df), var_type]
+  names(df) <- file_vars[names(df), var_type]
 
   for (i in names(df)) {
 
-    df[[i]] <- add_nas(df, i, var_type)
+    df[[i]] <- add_nas(df, i, var_type, file_vars)
 
   }
 
@@ -142,6 +147,9 @@ finbif_occurrence_load <- function(
 
   }
 
+  attr(df, "file_cols") <- NULL
+  attr(df, "file_vars") <- NULL
+
   df <- structure(
     df,
     class     = c("finbif_occ", class(df)),
@@ -163,16 +171,16 @@ finbif_occurrence_load <- function(
         deselect = character(),
         type = "translated_var"
       ),
-      n = -1,
+      n = -1L,
       count_only, quiet, cache, write_file, dt, keep_tsv,
       facts = fact_type
     )
 
     id <- switch(
       fact_type,
-      record = cite_file_vars[["Unit.UnitID", var_type]],
-      event = cite_file_vars[["Gathering.GatheringID", var_type]],
-      document = cite_file_vars[["Document.DocumentID", var_type]]
+      record = file_vars[["Unit.UnitID", var_type]],
+      event = file_vars[["Gathering.GatheringID", var_type]],
+      document = file_vars[["Document.DocumentID", var_type]]
     )
 
     facts_df <- spread_facts(
@@ -189,9 +197,9 @@ finbif_occurrence_load <- function(
 
   if (short) {
 
-    short_nms <- cite_file_vars[["shrtnm"]]
+    short_nms <- file_vars[["shrtnm"]]
 
-    names(short_nms) <- cite_file_vars[[var_type]]
+    names(short_nms) <- file_vars[[var_type]]
 
     short_nms <- short_nms[names(df)]
 
@@ -408,7 +416,7 @@ fix_issue_vars <- function(x) {
 }
 
 #' @noRd
-new_vars <- function(df, deselect) {
+new_vars <- function(df, deselect, file_vars) {
 
   if (is.null(attr(df, "file_cols"))) {
 
@@ -418,18 +426,18 @@ new_vars <- function(df, deselect) {
 
   nms_df <- attr(df, "file_cols")
 
-  ind <- cite_file_vars[["superseeded"]] == "FALSE"
+  ind <- file_vars[["superseeded"]] == "FALSE"
 
-  ss <- rownames(cite_file_vars[!ind, ])
+  ss <- rownames(file_vars[!ind, ])
   ss <- intersect(ss, nms_df)
-  ss <- cite_file_vars[ss, "superseeded"]
+  ss <- file_vars[ss, "superseeded"]
 
   deselect <- var_names[deselect, "translated_var"]
-  deselect <- cite_file_vars[["translated_var"]] %in% deselect
+  deselect <- file_vars[["translated_var"]] %in% deselect
 
   ind <- ind & !deselect
 
-  nms <- row.names(cite_file_vars[ind, ])
+  nms <- row.names(file_vars[ind, ])
 
   new_vars <- setdiff(nms, c(nms_df, ss))
 
@@ -515,21 +523,21 @@ get_zip <- function(url, quiet, cache, write_file) {
 }
 
 #' @noRd
-add_nas <- function(df, nm, var_type) {
+add_nas <- function(df, nm, var_type, file_vars) {
 
   ans <- df[[nm]]
 
   if (all(is.na(ans))) {
 
-    ind <- cite_file_vars[[var_type]] == nm
+    ind <- file_vars[[var_type]] == nm
 
     if (length(which(ind)) > 1L) {
 
-      ind <- ind & cite_file_vars[["superseeded"]] == "FALSE"
+      ind <- ind & file_vars[["superseeded"]] == "FALSE"
 
     }
 
-    ans <- methods::as(ans, cite_file_vars[ind, "type"])
+    ans <- methods::as(ans, file_vars[ind, "type"])
 
   }
 
@@ -550,7 +558,11 @@ any_issues <- function(df, select_user, var_type) {
     tm_iss  <- !is.na(df[[vnms["gathering.quality.timeIssue.issue", ]]])
     loc_iss <- !is.na(df[[vnms["gathering.quality.locationIssue.issue", ]]])
 
-    df[[any_issue]] <- rec_iss | ev_iss | tm_iss | loc_iss
+    iss <- rec_iss | ev_iss | tm_iss | loc_iss
+
+    if (length(iss) < 1L && nrow(df) > 0L) iss <- NA
+
+    df[[any_issue]] <- iss
 
   }
 
@@ -605,9 +617,11 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
   cols <- make.unique(cols)
   cols <- fix_issue_vars(cols)
 
+  file_vars <- infer_file_vars(cols)
+
   if (select[["all"]]) {
 
-    args[["select"]] <- which(!cols %in% deselect(select))
+    args[["select"]] <- which(!cols %in% deselect(select, file_vars))
 
   } else {
 
@@ -626,8 +640,8 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
     select_vars <-  var_names[select[["query"]], select[["type"]]]
 
-    select_vars <- cite_file_vars[[select[["type"]]]] %in% select_vars
-    select_vars <- row.names(cite_file_vars[select_vars, ])
+    select_vars <- file_vars[[select[["type"]]]] %in% select_vars
+    select_vars <- row.names(file_vars[select_vars, ])
 
     args[["select"]] <- which(cols %in% select_vars)
 
@@ -650,7 +664,7 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
   }
 
-  args[["colClasses"]] <- cite_file_vars[cols, "type"]
+  args[["colClasses"]] <- file_vars[cols, "type"]
   args[["colClasses"]] <- ifelse(
     is.na(args[["colClasses"]]), "character", args[["colClasses"]]
   )
@@ -659,6 +673,8 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
   args[["check.names"]] <- TRUE
 
   df <- do.call(data.table::fread, args)
+
+  attr(df, "file_vars") <- file_vars
 
   attr(df, "file_cols") <- cols
 
@@ -672,6 +688,8 @@ rd_read <- function(x, file, tsv, n, select, keep_tsv) {
   df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "")
 
   cols <- fix_issue_vars(names(df))
+
+  file_vars <- infer_file_vars(cols)
 
   if (keep_tsv && !identical(tools::file_ext(file), "tsv")) {
 
@@ -701,20 +719,25 @@ rd_read <- function(x, file, tsv, n, select, keep_tsv) {
 
     df <- utils::read.delim(
       x, nrows = max(abs(n), 1L) * sign(n), na.strings = "",
-      colClasses =  cite_file_vars[cols, "type"], quote = ""
+      colClasses =  file_vars[cols, "type"], quote = ""
     )
 
   }
 
-  df[!cols %in% deselect(select)]
+  df <- df[!cols %in% deselect(select, file_vars)]
+
+  attr(df, "file_vars") <- file_vars
+
+  df
 
 }
 
-deselect <- function(select) {
+#' @noRd
+deselect <- function(select, file_vars) {
 
   deselect <- var_names[select[["deselect"]], select[["type"]]]
-  deselect <- cite_file_vars[[select[["type"]]]] %in% deselect
-  row.names(cite_file_vars[deselect, ])
+  deselect <- file_vars[[select[["type"]]]] %in% deselect
+  row.names(file_vars[deselect, ])
 
 }
 
@@ -788,7 +811,6 @@ spread_facts <-  function(facts, select, type, id, type_convert_facts) {
 }
 
 #' @noRd
-#' @importFrom utils hasName
 bind_facts <- function(x, facts) {
 
   stopifnot(
@@ -870,5 +892,80 @@ convert_col_type <- function(col) {
   }
 
   col
+
+}
+
+#' @noRd
+infer_file_vars <- function(cols) {
+
+  file_vars <- cite_file_vars
+
+  if (length(cols) < 100L && !"Fact" %in% cols) {
+
+    file_vars <- lite_download_file_vars
+
+    locale <- lapply(lite_download_file_vars, intersect, cols)
+    locale <- lapply(locale, sort)
+    locale <- vapply(locale, identical, logical(1L), sort(cols))
+
+    stopifnot(
+      "File has field names incompatible with this {finbif} R package version" =
+        any(locale)
+    )
+
+    locale <- names(which(locale))[[1L]]
+
+    rownames(file_vars) <- file_vars[[locale]]
+
+  }
+
+  file_vars
+
+}
+
+#' @noRd
+preprocess_data_file <- function(file) {
+
+  ext <- tools::file_ext(file)
+
+  file <- switch(ext, ods = from_ods(file), xlsx = from_xlsx(file), file)
+
+  file
+
+}
+
+#' @noRd
+from_ods <- function(file) {
+
+  stopifnot("Package {readODS} required for ODS files" = has_pkgs("readODS"))
+
+  df <- readODS::read_ods(file, col_types = NA)
+
+  write_tsv(df)
+
+}
+
+#' @noRd
+from_xlsx <- function(file) {
+
+  stopifnot("Package {readxl} required for Excel files" = has_pkgs("readxl"))
+
+  df <- readxl::read_xlsx(
+    file, progress = FALSE, col_types = "text", trim_ws = FALSE,
+    .name_repair = "minimal"
+  )
+
+  write_tsv(df)
+
+}
+
+#' @noRd
+write_tsv <- function(df) {
+
+  file <- tempfile(fileext = ".tsv")
+
+  write.table(df, file, quote = FALSE, sep = "\t", na = "", row.names = FALSE)
+
+  file
 
 }
