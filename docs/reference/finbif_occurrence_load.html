@@ -165,7 +165,6 @@
   dwc <span class='op'>=</span> <span class='cn'>FALSE</span>,
   <span class='va'>date_time_method</span>,
   tzone <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_tz"</span><span class='op'>)</span>,
-  locale <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_locale"</span><span class='op'>)</span>,
   write_file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>,
   <span class='va'>dt</span>,
   keep_tsv <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -229,14 +228,6 @@ more. Using method <code>"none"</code> assumes all records are in timezone
       <th>tzone</th>
       <td><p>Character. If <code>date_time</code> has been selected the timezone of the
 outputted date-time. Defaults to system timezone.</p></td>
-    </tr>
-    <tr>
-      <th>locale</th>
-      <td><p>Character. One of the supported two-letter ISO 639-1 language
-codes. Current supported languages are English, Finnish, Swedish, Russian,
-and Sámi (Northern). For data where more than one language is available
-the language denoted by <code>locale</code> will be preferred while falling back to
-the other languages in the order indicated above.</p></td>
     </tr>
     <tr>
       <th>write_file</th>

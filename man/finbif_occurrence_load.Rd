@@ -15,7 +15,6 @@ finbif_occurrence_load(
   dwc = FALSE,
   date_time_method,
   tzone = getOption("finbif_tz"),
-  locale = getOption("finbif_locale"),
   write_file = tempfile(),
   dt,
   keep_tsv = FALSE,
@@ -59,12 +58,6 @@ more. Using method \code{"none"} assumes all records are in timezone
 
 \item{tzone}{Character. If \code{date_time} has been selected the timezone of the
 outputted date-time. Defaults to system timezone.}
-
-\item{locale}{Character. One of the supported two-letter ISO 639-1 language
-codes. Current supported languages are English, Finnish, Swedish, Russian,
-and Sámi (Northern). For data where more than one language is available
-the language denoted by \code{locale} will be preferred while falling back to
-the other languages in the order indicated above.}
 
 \item{write_file}{Character. Path to write downloaded zip file to if \code{file}
 refers to a URI. Will be ignored if \code{getOption("finbif_cache_path")} is not

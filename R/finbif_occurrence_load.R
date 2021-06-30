@@ -52,9 +52,8 @@
 finbif_occurrence_load <- function(
   file, select, n = -1, count_only = FALSE, quiet = FALSE,
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
-  tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"),
-  write_file = tempfile(), dt, keep_tsv = FALSE, facts = list(),
-  type_convert_facts = TRUE, drop_na = FALSE
+  tzone = getOption("finbif_tz"), write_file = tempfile(), dt, keep_tsv = FALSE,
+  facts = list(), type_convert_facts = TRUE, drop_na = FALSE
 ) {
 
   file <- preprocess_data_file(file)
