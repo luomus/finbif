@@ -3,11 +3,14 @@
 #### NEW FEATURES
 
 -   "Lite" download files (occurrence record datasets of less than
-    10,000 records downloaded directlty from laji.fi) can now be
-    imported using `finbif_occurrence_load`.
+    10,000 records downloaded directly from laji.fi) can now be imported
+    using `finbif_occurrence_load`.
 
 -   New filters (currently undocumented) `ely_center_id` and `region_id`
     are available for `finbif_occurrence`.
+
+-   New function, `from_schema`, to convert variable names from FinBIF
+    schema to other styles.
 
 #### MINOR IMPROVEMENTS
 

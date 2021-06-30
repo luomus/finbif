@@ -238,13 +238,19 @@ to_ <- function(x, from, to) {
   x
 }
 
-#' Convert variable names to and from Darwin Core style
+#' Convert variable names
 #'
-#' Convert FinBIF native variable names to Darwin Core style variable names or
-#' vice versa.
+#' Convert variable names to Darwin Core or FinBIF R package native style.
 #'
-#' @param ... Character. Variable names in FinBIF native or Darwin Core
-#'   style.
+#' @param ... Character. Variable names to convert. For `to_dwc` and `to_native`
+#'   the names must be in the opposite format. For `from_schema` the names must
+#'   be from the FinBIF schema (e.g., names returned https://api.laji.fi) or
+#'   a FinBIF download file (citable or lite).
+#' @param to Character. Type of variable names to convert to.
+#' @param file Character. For variable names that are derived from a FinBIF
+#'   download file which type of file.
+#' @param locale Character. For variable names from a lite download file which
+#'   locale the file is in.
 #'
 #' @return Character vector.
 #'
@@ -257,6 +263,32 @@ to_dwc <- function(...) to_(list(...), "translated_var", "dwc")
 #' @rdname to_dwc
 #' @export
 to_native <- function(...) to_(list(...), "dwc", "translated_var")
+
+#' @rdname to_dwc
+#' @export
+from_schema <- function(
+  ..., to = c("native", "dwc", "short"), file = c("none", "citable", "lite"),
+  locale = c("en", "fi", "sv")
+) {
+
+  nms <- make.names(c(...))
+
+  file <- match.arg(file)
+
+  vars <- switch(
+    file,
+    none = var_names,
+    citable = cite_file_vars,
+    lite = lite_download_file_vars
+  )
+
+  to <- match.arg(to)
+
+  to <- switch(to, native = "translated_var", dwc = "dwc", short = "shrtnm")
+
+  vars[nms, to]
+
+}
 
 # localization -----------------------------------------------------------------
 

@@ -5,10 +5,12 @@
   \subsection{NEW FEATURES}{
     \itemize{
       \item "Lite" download files (occurrence record datasets of less than
-        10,000 records downloaded directlty from laji.fi) can now be imported
+        10,000 records downloaded directly from laji.fi) can now be imported
         using \code{finbif_occurrence_load}.
       \item New filters (currently undocumented) \code{ely_center_id} and
         \code{region_id} are available for  \code{finbif_occurrence}.
+      \item New function, \code{from_schema}, to convert variable names from
+        FinBIF schema to other styles.
     }
   }
   \subsection{MINOR IMPROVEMENTS}{
