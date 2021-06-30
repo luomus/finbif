@@ -1,18 +1,36 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.5.0.9004}{
+\section{finbif version 0.5.0.9005}{
   \subsection{NEW FEATURES}{
     \itemize{
-      \item Option now available to extract "facts" when using
-      \code{finbif_occurrence_load} to import records from a ZIP archive. The
-      user must supply a named list where the names refer to one or more fact
-      types: "record", "event" and/or "document", and the list elements
-      are character vectors indicating which "facts" to extract.
+      \item "Lite" download files (occurrence record datasets of less than
+        10,000 records downloaded directlty from laji.fi) can now be imported
+        using \code{finbif_occurrence_load}.
+      \item New filters (currently undocumented) \code{ely_center_id} and
+        \code{region_id} are available for  \code{finbif_occurrence}.
+    }
+  }
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item New option, \code{drop_na}, to drop columns that only contain
+        missing data added to \code{finbif_occurrence} and
+        \code{finbif_occurrence} load.
     }
   }
 }
 
+\section{finbif version 0.5.0.9004}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Option now available to extract "facts" when using
+        \code{finbif_occurrence_load} to import records from a ZIP archive. The
+        user must supply a named list where the names refer to one or more fact
+        types: "record", "event" and/or "document", and the list elements
+        are character vectors indicating which "facts" to extract.
+    }
+  }
+}
 
 \section{finbif version 0.5.0.9003}{
   \subsection{NEW FEATURES}{

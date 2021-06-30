@@ -1,3 +1,19 @@
+# finbif 0.5.0.9005
+
+#### NEW FEATURES
+
+-   "Lite" download files (occurrence record datasets of less than
+    10,000 records downloaded directlty from laji.fi) can now be
+    imported using `finbif_occurrence_load`.
+
+-   New filters (currently undocumented) `ely_center_id` and `region_id`
+    are available for `finbif_occurrence`.
+
+#### MINOR IMPROVEMENTS
+
+-   New option, `drop_na`, to drop columns that only contain missing
+    data added to `finbif_occurrence` and `finbif_occurrence` load.
+
 # finbif 0.5.0.9004
 
 #### NEW FEATURES
