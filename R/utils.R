@@ -1,6 +1,22 @@
 # misc -------------------------------------------------------------------------
 
 #' @noRd
+#' @description Drop columns from a data.frame where all elements are missing.
+#' @param df A data.frame.
+#' @param which Logical. A vector indicating which columns to check for missing
+#'   data. Values recycled to length of `df`. Defaults to all columns.
+drop_na_col <- function(df, which = TRUE) {
+
+  which <- rep_len(which, length(df))
+
+  is_na <- lapply(df, is.na)
+  is_na <- vapply(is_na, all, logical(1L))
+
+  df[, !is_na | !which, drop = FALSE]
+
+}
+
+#' @noRd
 to_sentence_case <- function(string) {
   paste0(substring(toupper(string), 1L, 1L), substring(tolower(string), 2L))
 }

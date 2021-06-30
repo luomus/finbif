@@ -170,7 +170,8 @@
   <span class='va'>dt</span>,
   keep_tsv <span class='op'>=</span> <span class='cn'>FALSE</span>,
   facts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
-  type_convert_facts <span class='op'>=</span> <span class='cn'>TRUE</span>
+  type_convert_facts <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  drop_na <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -267,6 +268,12 @@ return value. Note that this functionality requires that the <code>{dplyr}</code
       <th>type_convert_facts</th>
       <td><p>Logical. Should facts be converted from character
 to numeric or integer data where applicable?</p></td>
+    </tr>
+    <tr>
+      <th>drop_na</th>
+      <td><p>Logical. A vector indicating which columns to check for
+missing data. Values recycled to the number of columns. Defaults to all
+columns.</p></td>
     </tr>
     </table>
 

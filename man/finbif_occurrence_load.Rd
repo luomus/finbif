@@ -20,7 +20,8 @@ finbif_occurrence_load(
   dt,
   keep_tsv = FALSE,
   facts = list(),
-  type_convert_facts = TRUE
+  type_convert_facts = TRUE,
+  drop_na = FALSE
 )
 }
 \arguments{
@@ -85,6 +86,10 @@ return value. Note that this functionality requires that the \code{{dplyr}} and
 
 \item{type_convert_facts}{Logical. Should facts be converted from character
 to numeric or integer data where applicable?}
+
+\item{drop_na}{Logical. A vector indicating which columns to check for
+missing data. Values recycled to the number of columns. Defaults to all
+columns.}
 }
 \value{
 A \code{data.frame}, or if \code{count_only =  TRUE} an integer.

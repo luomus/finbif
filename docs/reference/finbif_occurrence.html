@@ -173,7 +173,8 @@
   on_check_fail <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"warn"</span>, <span class='st'>"error"</span><span class='op'>)</span>,
   tzone <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_tz"</span><span class='op'>)</span>,
   locale <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_locale"</span><span class='op'>)</span>,
-  <span class='va'>seed</span>
+  <span class='va'>seed</span>,
+  drop_na <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -279,6 +280,12 @@ the other languages in the order indicated above.</p></td>
     <tr>
       <th>seed</th>
       <td><p>Integer. Set a seed for randomly sampling records.</p></td>
+    </tr>
+    <tr>
+      <th>drop_na</th>
+      <td><p>Logical. A vector indicating which columns to check for
+missing data. Values recycled to the number of columns. Defaults to all
+columns.</p></td>
     </tr>
     </table>
 

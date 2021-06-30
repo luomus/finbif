@@ -25,6 +25,9 @@
 #'   and Sámi (Northern). For data where more than one language is available
 #'   the language denoted by `locale` will be preferred while falling back to
 #'   the other languages in the order indicated above.
+#' @param drop_na Logical. A vector indicating which columns to check for
+#'   missing data. Values recycled to the number of columns. Defaults to all
+#'   columns.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -56,7 +59,7 @@ finbif_occurrence <- function(
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
   dwc = FALSE, date_time_method, check_taxa = TRUE,
   on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
-  locale = getOption("finbif_locale"), seed
+  locale = getOption("finbif_locale"), seed, drop_na = FALSE
 ) {
 
   taxa <- select_taxa(
@@ -126,7 +129,7 @@ finbif_occurrence <- function(
 
   df <- compute_vars_from_id(df, select_)
 
-  structure(
+  df <- structure(
     df[select_],
     class     = c("finbif_occ", "data.frame"),
     nrec_dnld = attr(records, "nrec_dnld", TRUE),
@@ -136,6 +139,8 @@ finbif_occurrence <- function(
     dwc       = dwc,
     record_id = record_id
   )
+
+  drop_na_col(df, drop_na)
 
 }
 

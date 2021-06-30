@@ -54,7 +54,7 @@ finbif_occurrence_load <- function(
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"),
   write_file = tempfile(), dt, keep_tsv = FALSE, facts = list(),
-  type_convert_facts = TRUE
+  type_convert_facts = TRUE, drop_na = FALSE
 ) {
 
   file <- preprocess_data_file(file)
@@ -226,7 +226,9 @@ finbif_occurrence_load <- function(
 
   }
 
-  df[, select[["user"]], drop = FALSE]
+  df <- df[, select[["user"]], drop = FALSE]
+
+  drop_na_col(df, drop_na)
 
 }
 
