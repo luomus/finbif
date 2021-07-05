@@ -578,3 +578,12 @@ unit.types.taxonSpecifierAuthor,type_specimen_specifier_author,typeSpecimenSpeci
 unit.types.typif,type_specimen_typed_by,typeSpecimenTypedBy,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.typifDate,type_specimen_date_typed,typeSpecimenDateTyped,FALSE,FALSE,character,date,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.verification,type_specimen_verification,typeSpecimenVerification,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_informal_group_english,informal_group_english,informalTaxonGroupEnglish,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_informal_group_finnish,informal_group_finnish,informalTaxonGroupFinnish,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_record_quality_source,record_quality_source,occurrenceQualitySource,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_record_quality_message,record_quality_message,occurrenceQualityMessage,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_formatted_taxon_name,formatted_taxon_name,displayTaxonName,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_coordinates_10_center_kkj,coordinates_10_center_kkj,decimalCoordinatesGrid10CenterKKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_coordinates_10_kkj,coordinates_10_kkj,decimalCoordinatesGrid10KKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_coordinates_1_center_kkj,coordinates_1_center_kkj,decimalCoordinatesGrid1CenterKKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_coordinates_1_kkj,coordinates_1_kkj,decimalCoordinatesGrid10KKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE

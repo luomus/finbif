@@ -4,7 +4,7 @@ Unit.AbundanceUnit,abundUnit,abundance_unit,abundanceUnit,FALSE,character
 Unit.Abundance,abundVbtm,abundance_verbatim,verbatimAbundance,FALSE,character
 Unit.Interpretations.AnnotatedTaxonId,annTxnID,annotated_taxon_id,annotatedTaxonID,FALSE,character
 Gathering.Conversions.Century,century,century,century,FALSE,integer
-Unit.NameAccordingTo,checklist,checklist,checklist,FALSE,character
+Unit.NameAccordingTo,checklist,taxon_checklist,taxonChecklist,FALSE,character
 Document.CollectionID,collectID,collection_id,collectionID,FALSE,character
 Document.Linkings.CollectionQuality,collectQl,collection_quality,collectionQuality,FALSE,character
 Taxon.EnglishName,comNmEN,common_name_english,vernacularNameEnglish,FALSE,character
@@ -38,12 +38,12 @@ Gathering.GatheringOrder,evntOrder,event_order,eventOrder,FALSE,integer
 Document.FirstLoadDate,frstLdDate,first_load_date,documentFirstLoadedDate,FALSE,character
 Gathering.Conversions.WGS84_WKT,fprntWGS84,footprint_wgs84,footprintWKT,FALSE,character
 Gathering.DisplayDateTime,fmtDateTme,formatted_date_time,eventDateTimeDisplay,FALSE,character
-Gathering.HigherGeographyVerbatim,hiGeoVbtm,higher_geography_verbatim,verbatimHigherGeography,FALSE,character
+Gathering.HigherGeographyVerbatim,higherGeo,higher_geography,higherGeography,FALSE,character
 Gathering.HourEnd,hourEnd,hour_end,hourEnd,FALSE,integer
 Gathering.HourBegin,hourStart,hour_start,hourStart,FALSE,integer
 Unit.IndividualID,individID,individual_id,organismID,FALSE,character
-Taxon.InformalGroupEN,infrmGrpEN,informal_group_english,InformalTaxonGroupEnglish,FALSE,character
-Taxon.InformalGroupFI,infrmGrpFI,informal_group_finnish,InformalTaxonGroupFinnsih,FALSE,character
+Taxon.InformalGroupEN,infrmGrpEN,informal_group_english,informalTaxonGroupEnglish,FALSE,character
+Taxon.InformalGroupFI,infrmGrpFI,informal_group_finnish,informalTaxonGroupFinnsih,FALSE,character
 Unit.Interpretations.InvasiveControl,invasCntrl,invasive_control,invasiveControlled,FALSE,logical
 Unit.BreedingSite,isBreedLoc,is_breeding_location,breedingLocationStatus,FALSE,logical
 Document.PartialDocument,isPartial,is_partial,documentPartialStatus,FALSE,logical
@@ -91,7 +91,7 @@ Unit.Interpretations.PairCount,pairAbund,pair_abundance,pairCount,FALSE,integer
 Gathering.Interpretations.Bioprovince,prov,province,stateProvince,FALSE,character
 Gathering.Interpretations.BioProvinceSource,provSrc,province_source,stateProvinceSource,FALSE,character
 Gathering.BioProvinceVerbatim,provVbtm,province_verbatim,verbatimStateProvince,FALSE,character
-Gathering.ProvinceVerbatim,prov2Vbtm,province2_verbatim,verbatimProvince2,FALSE,character
+Gathering.ProvinceVerbatim,provVbtm2,province_verbatim2,verbatimStateProvince2,FALSE,character
 Unit.AnnotationCount,recAnnN,record_annotation_count,occurrenceAnnotationCount,FALSE,integer
 Unit.DetailedRecordBasis,recBasis,record_basis,basisOfRecord,FALSE,character
 Unit.UnitID,recID,record_id,occurrenceID,FALSE,character
