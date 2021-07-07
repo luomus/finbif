@@ -83,7 +83,7 @@ finbif_occurrence_load <- function(
   select[["deselect"]] <- deselect
   select[["all"]] <- select_all
   select[["type"]] <- var_type
-  select[["facts"]] <- names(facts)
+  select[["facts"]] <- names(which(vapply(facts, length, integer(1L)) > 0L))
 
   n <- as.integer(n)
 
