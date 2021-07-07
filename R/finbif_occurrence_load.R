@@ -80,10 +80,12 @@ finbif_occurrence_load <- function(
 
   defer_errors(select <- infer_selection("none", select, var_type))
 
+  fact_types <- names(which(vapply(facts, length, integer(1L)) > 0L))
+
   select[["deselect"]] <- deselect
   select[["all"]] <- select_all
   select[["type"]] <- var_type
-  select[["facts"]] <- names(which(vapply(facts, length, integer(1L)) > 0L))
+  select[["facts"]] <- fact_types
 
   n <- as.integer(n)
 
@@ -167,7 +169,7 @@ finbif_occurrence_load <- function(
     record_id = record_id
   )
 
-  for (fact_type in names(facts)) {
+  for (fact_type in fact_types) {
 
     facts_df <- read_finbif_tsv(
       file,
