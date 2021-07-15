@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.5.0.9007}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New computed variable \code{date_time_ISO8601} (currently
+        undocumented) can be selected when creating \code{finbif_occ} objects.
+    }
+  }
+}
+
 \section{finbif version 0.5.0.9006}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

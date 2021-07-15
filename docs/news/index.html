@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9006</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9007</span>
       </span>
     </div>
 
@@ -149,6 +149,18 @@
       <small>Source: <a href='https://github.com/luomus/finbif/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="finbif-0509007" class="section level1">
+<h1 class="page-header" data-toc-text="0.5.0.9007">
+<a href="#finbif-0509007" class="anchor"></a>finbif 0.5.0.9007<small> Unreleased </small>
+</h1>
+<div id="new-features" class="section level4">
+<h4 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>NEW FEATURES</h4>
+<ul>
+<li>New computed variable <code>date_time_ISO8601</code> (currently undocumented) can be selected when creating <code>finbif_occ</code> objects.</li>
+</ul>
+</div>
+</div>
     <div id="finbif-0509006" class="section level1">
 <h1 class="page-header" data-toc-text="0.5.0.9006">
 <a href="#finbif-0509006" class="anchor"></a>finbif 0.5.0.9006<small> Unreleased </small>
@@ -165,9 +177,9 @@
 <h1 class="page-header" data-toc-text="0.5.0.9005">
 <a href="#finbif-0509005" class="anchor"></a>finbif 0.5.0.9005<small> Unreleased </small>
 </h1>
-<div id="new-features" class="section level4">
+<div id="new-features-1" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li><p>“Lite” download files (occurrence record datasets of less than 10,000 records downloaded directly from laji.fi) can now be imported using <code>finbif_occurrence_load</code>.</p></li>
 <li><p>New filters (currently undocumented) <code>ely_center_id</code> and <code>region_id</code> are available for <code>finbif_occurrence</code>.</p></li>
@@ -186,9 +198,9 @@
 <h1 class="page-header" data-toc-text="0.5.0.9004">
 <a href="#finbif-0509004" class="anchor"></a>finbif 0.5.0.9004<small> Unreleased </small>
 </h1>
-<div id="new-features-1" class="section level4">
+<div id="new-features-2" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li>Option now available to extract “facts” when using <code>finbif_occurrence_load</code> to import records from a ZIP archive. The user must supply a named list where the names refer to one or more fact types: “record”, “event” and/or “document”, and the list elements are character vectors indicating which “facts” to extract.</li>
 </ul>
@@ -198,9 +210,9 @@
 <h1 class="page-header" data-toc-text="0.5.0.9003">
 <a href="#finbif-0509003" class="anchor"></a>finbif 0.5.0.9003<small> Unreleased </small>
 </h1>
-<div id="new-features-2" class="section level4">
+<div id="new-features-3" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-3" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li>Option now available to retain the TSV data file when loading FinBIF occurrence data with <code>finbif_occurrence_load</code> from ZIP archive or online reference.</li>
 </ul>
@@ -222,9 +234,9 @@
 <h1 class="page-header" data-toc-text="0.5.0.9001">
 <a href="#finbif-0509001" class="anchor"></a>finbif 0.5.0.9001<small> Unreleased </small>
 </h1>
-<div id="new-features-3" class="section level4">
+<div id="new-features-4" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-3" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-4" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li>New variables <code>lat_euref</code> and <code>lon_euref</code> available for occurrence record downloads. These new variables represent the central point of a bounding box encompassing a record’s geographic coverage in the EUREF (ETRS89/ETRS-TM35FIN) coordinate system.</li>
 </ul>
@@ -246,9 +258,9 @@
 <h1 class="page-header" data-toc-text="0.5.0">
 <a href="#finbif-050" class="anchor"></a>finbif 0.5.0<small> 2021-03-27 </small>
 </h1>
-<div id="new-features-4" class="section level4">
+<div id="new-features-5" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-4" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-5" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li><p>Getting records from FinBIF can now be speed up (~1.5x) with asynchronous processing. If the <code>future</code> package is available and an asynchronous strategy (e.g., <code>plan(multisession, workers = 2)</code>) is selected then downloading records and processing them will occur simultaneously in separate threads, often leading to a significant speed up over sequential processing.</p></li>
 <li><p>Occurrence records can now be requested using multiple sets of filters at the same time. If a list of filters (with unnamed elements) is supplied then a record request will be made for each set of filters and the results of all requests combined and all duplicate records removed.</p></li>
@@ -261,9 +273,9 @@
 <h1 class="page-header" data-toc-text="0.4.1">
 <a href="#finbif-041" class="anchor"></a>finbif 0.4.1<small> 2021-01-27 </small>
 </h1>
-<div id="new-features-5" class="section level4">
+<div id="new-features-6" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-5" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-6" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li><p>New functions <code>scientific_name</code> and <code>common_name</code> are now available to get scientific and common names for taxa (given a taxon name or FinBIF ID code) or extract names from a <code>finbif_taxa</code>- class object.</p></li>
 <li><p>Add ability to extract complex record variables such as those associated with record media (currently undocumented).</p></li>
@@ -282,9 +294,9 @@
 <h1 class="page-header" data-toc-text="0.4.0">
 <a href="#finbif-040" class="anchor"></a>finbif 0.4.0<small> 2020-12-17 </small>
 </h1>
-<div id="new-features-6" class="section level4">
+<div id="new-features-7" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-6" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-7" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li>Occurrence record requests can now be made with aggregation, <code>aggregate = c("records", "species", "taxa")</code>. This returns the number of records, and/or species or taxa for each combination of the selected variables instead of the occurrence records themselves.</li>
 </ul>
@@ -314,9 +326,9 @@
 <h1 class="page-header" data-toc-text="0.3.1">
 <a href="#finbif-031" class="anchor"></a>finbif 0.3.1<small> 2020-11-24 </small>
 </h1>
-<div id="new-features-7" class="section level4">
+<div id="new-features-8" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-7" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-8" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li><p>Occurrence records can be ordered by the total number of records or total number of Finnish records of the taxon (variables: <code>n_total_records</code> &amp; <code>n_total_finnish_records</code>, currently undocumented).</p></li>
 <li><p>New Finnish occurrence status, <code>records_only</code>, added.</p></li>
@@ -335,9 +347,9 @@
 <h1 class="page-header" data-toc-text="0.3.0">
 <a href="#finbif-030" class="anchor"></a>finbif 0.3.0<small> 2020-04-23 </small>
 </h1>
-<div id="new-features-8" class="section level4">
+<div id="new-features-9" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-8" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-9" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li><p>All user facing functions with a <code>finbif_</code> prefix can now also be used with the alternative shorter prefix <code>fb_</code>.</p></li>
 <li><p>Crop Wild Relative, CWR, added to admin statuses.</p></li>
@@ -381,9 +393,9 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#finbif-020" class="anchor"></a>finbif 0.2.0<small> 2020-01-16 </small>
 </h1>
-<div id="new-features-9" class="section level4">
+<div id="new-features-10" class="section level4">
 <h4 class="hasAnchor">
-<a href="#new-features-9" class="anchor"></a>NEW FEATURES</h4>
+<a href="#new-features-10" class="anchor"></a>NEW FEATURES</h4>
 <ul>
 <li>Add capacity to request a random sample of FinBIF records.</li>
 </ul>

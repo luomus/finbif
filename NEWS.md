@@ -1,3 +1,10 @@
+# finbif 0.5.0.9007
+
+#### NEW FEATURES
+
+-   New computed variable `date_time_ISO8601` (currently undocumented)
+    can be selected when creating `finbif_occ` objects.
+
 # finbif 0.5.0.9006
 
 #### MINOR IMPROVEMENTS
