@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd&page=1&pageSize=10&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 15 Jul 2021 12:03:43 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 dw.laji.fi
+      cache-control: no-store
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":3935619,"pageSize":10,"total":39356185,"results":[{"unit":{"unitId":"http://tun.fi/HR.3211/87126564-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":62.71018,"lon":25.53206}},"eventDate":{"begin":"2021-07-15","end":"2021-07-15"}}},{"unit":{"unitId":"http://tun.fi/HR.3211/87096834-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.95207,"lon":22.85191}},"eventDate":{"begin":"2021-07-15","end":"2021-07-15"}}},{"unit":{"unitId":"http://tun.fi/HR.3211/87117676-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.3259,"lon":23.77481}},"eventDate":{"begin":"2021-07-15","end":"2021-07-15"}}},{"unit":{"unitId":"http://tun.fi/HR.3211/87126845-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":59.95494,"lon":23.05248}},"eventDate":{"begin":"2021-07-15","end":"2021-07-15"}}},{"unit":{"unitId":"http://tun.fi/HR.3211/87128340-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":62.23005,"lon":25.72426}},"eventDate":{"begin":"2021-07-15","end":"2021-07-15"}}},{"unit":{"unitId":"http://tun.fi/HR.3211/87117685-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":68.99644,"lon":26.75071}},"eventDate":{"begin":"2021-07-15","end":"2021-07-15"}}},{"unit":{"unitId":"http://tun.fi/HR.3211/87127168-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":67.57335,"lon":26.7634}},"eventDate":{"begin":"2021-07-15","end":"2021-07-15"}}},{"unit":{"unitId":"http://tun.fi/HR.3211/87118953-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":68.99609,"lon":26.75192}},"eventDate":{"begin":"2021-07-15","end":"2021-07-15"}}},{"unit":{"unitId":"http://tun.fi/HR.3211/87127867-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":68.9945,"lon":26.74473}},"eventDate":{"begin":"2021-07-15","end":"2021-07-15"}}},{"unit":{"unitId":"http://tun.fi/HR.3211/87117767-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":63.64366,"lon":25.97742}},"eventDate":{"begin":"2021-07-15","end":"2021-07-15"}}}]}'
+  recorded_at: 2021-07-15 12:03:43 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

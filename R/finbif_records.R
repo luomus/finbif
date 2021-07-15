@@ -205,7 +205,11 @@ infer_selection <- function(aggregate, select, var_type) {
       select <- c(var_names["unit.unitId", var_type], select)
     }
 
-    vars <-  c("date_time", "eventDateTime", "duration", "samplingEffort")
+    vars <- c(
+      "date_time", "eventDateTime", "date_time_ISO8601", "eventDate",
+      "duration", "samplingEffort"
+    )
+
     date_time <- any(vars %in% select)
 
     if (date_time) {

@@ -237,3 +237,26 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_occurrence_aggregate_events"))
+
+suppressMessages(insert_cassette("finbif_occurrence_date_time_ISO8601"))
+
+test_that(
+  "can create ISO8601 date strings", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(select = "date_time_ISO8601"),
+      "finbif_occ"
+    )
+
+    expect_s3_class(
+      finbif_occurrence(select = "eventDate", dwc = TRUE),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_date_time_ISO8601"))
