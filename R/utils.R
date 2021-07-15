@@ -136,6 +136,33 @@ has_pkgs <- function(...) {
   all(ans)
 }
 
+#' @noRd
+name_chr_vec <- function(x, unique = TRUE) {
+
+  stopifnot(inherits(x, "character"))
+
+  nms <- names(x)
+
+  if (is.null(nms)) {
+
+    names(x) <- x
+
+  } else {
+
+    names(x) <- ifelse(nms == "", x, nms)
+
+  }
+
+  if (unique) {
+
+    names(x) <- make.unique(names(x))
+
+  }
+
+  x
+
+}
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd

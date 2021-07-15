@@ -196,7 +196,7 @@ infer_selection <- function(aggregate, select, var_type) {
       select == "default_vars", list(default_vars[[var_type]]), select
     )
     select <- unlist(select)
-    select <- setdiff(select, deselect)
+    select <- select[!select %in% deselect]
     select_ <- select
 
     record_id_selected <- var_names["unit.unitId", var_type] %in% select
@@ -319,7 +319,7 @@ request <- function(
 
   structure(
     resp, class = c("finbif_records_list", "finbif_api_list"), nrec_dnld = n,
-    nrec_avl = n_tot, select = unique(select), select_user = unique(select_),
+    nrec_avl = n_tot, select = unique(select), select_user = select_,
     record_id = record_id_selected, aggregate = aggregate, cache = cache
   )
 

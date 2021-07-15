@@ -121,7 +121,7 @@ finbif_occurrence <- function(
 
   select_ <- attr(records, "select_user")
 
-  select_ <- c(select_, n_col_nms)
+  select_ <-  name_chr_vec(c(select_, n_col_nms))
 
   df <- compute_date_time(
     df, select, select_, aggregate, dwc, date_time_method, tzone
@@ -137,8 +137,11 @@ finbif_occurrence <- function(
     url       = url,
     time      = time,
     dwc       = dwc,
+    column_names = select_,
     record_id = record_id
   )
+
+  names(df) <- names(select_)
 
   drop_na_col(df, drop_na)
 

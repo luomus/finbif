@@ -181,10 +181,11 @@ test_that(
     skip_on_cran()
 
     has_media <- finbif_occurrence(
-      filter = c(has_media = TRUE), select = "record_media_url", sample = TRUE
+      filter = c(has_media = TRUE), select = c(media = "record_media_url"),
+      sample = TRUE
     )
 
-    url <- sample(unlist(has_media[["record_media_url"]]), 1L)
+    url <- sample(unlist(has_media[["media"]]), 1L)
 
     expect_match(url, "^http")
 

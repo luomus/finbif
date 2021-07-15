@@ -336,7 +336,9 @@ records_msg <- function(x, width, ...) {
 #' @noRd
 format_cols <- function(df, colname_widths) {
 
-  for (i in names(df)) {
+  for (i in seq_along(df)) {
+
+    k <- attr(df, "column_names")[[i]]
 
     if (isTRUE(attr(df, "short"))) {
 
@@ -346,7 +348,7 @@ format_cols <- function(df, colname_widths) {
 
     } else {
 
-      ind <- var_names[[if (attr(df, "dwc")) "dwc" else "translated_var"]] == i
+      ind <- var_names[[if (attr(df, "dwc")) "dwc" else "translated_var"]] == k
       class  <- var_names[ind, "class"]
       single <- var_names[ind, "single"] || var_names[ind, "localised"]
 

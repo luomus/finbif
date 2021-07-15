@@ -227,7 +227,13 @@ finbif_occurrence_load <- function(
 
   }
 
+  select[["user"]] <- name_chr_vec(select[["user"]])
+
   df <- df[, select[["user"]], drop = FALSE]
+
+  names(df) <- names(select[["user"]])
+
+  attr(df, "column_names") <- select[["user"]]
 
   drop_na_col(df, drop_na)
 
