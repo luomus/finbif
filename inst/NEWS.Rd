@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.5.0.9006}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item User can now select columns multiple times and rename them on the
+        fly by using a named character vector as the value of the `select`
+        argument.
+    }
+  }
+}
+
 \section{finbif version 0.5.0.9005}{
   \subsection{NEW FEATURES}{
     \itemize{
