@@ -129,6 +129,8 @@ finbif_occurrence <- function(
 
   df <- compute_vars_from_id(df, select_)
 
+  df <- compute_epsg(df, select_, dwc)
+
   df <- structure(
     df[select_],
     class     = c("finbif_occ", "data.frame"),
@@ -384,6 +386,41 @@ compute_vars_from_id <- function(df, select_) {
     }
 
   }
+
+  df
+
+}
+
+compute_epsg <- function(df, select_, dwc) {
+
+  select_ <- var_names[, col_type_string(dwc)] %in% select_
+
+  select_ <- row.names(var_names[select_, ])
+
+  epsg <- c("euref", "kkj", "wgs84")
+
+  names(epsg) <- epsg
+
+  epsg[] <- paste0("_", epsg, "$")
+
+  epsg <- lapply(epsg, grepl, var_names[select_, "translated_var"])
+
+  epsg <- lapply(epsg, c, TRUE)
+
+  epsg <- lapply(epsg, which)
+
+  epsg <- vapply(epsg, min, integer(1L), USE.NAMES = TRUE)
+
+  epsg <- names(which.min(epsg))
+
+  epsg <- switch(
+    epsg,
+    euref = "EPSG:3067", kkj = "EPSG:2393", wgs84 = "EPSG:4326", NA_character_
+  )
+
+  epsg <- rep_len(epsg, nrow(df))
+
+  df[[var_names[["computed_var_epsg", col_type_string(dwc)]]]] <- epsg
 
   df
 
