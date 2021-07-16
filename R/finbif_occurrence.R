@@ -127,7 +127,7 @@ finbif_occurrence <- function(
     df, select, select_, aggregate, dwc, date_time_method, tzone
   )
 
-  df <- compute_vars_from_id(df, select_)
+  df <- compute_vars_from_id(df, select_, dwc)
 
   df <- compute_epsg(df, select_, dwc)
 
@@ -356,13 +356,15 @@ get_iso8601 <- function(
 }
 
 
-compute_vars_from_id <- function(df, select_) {
+compute_vars_from_id <- function(df, select_, dwc) {
 
   candidates <- setdiff(select_, names(df))
 
+  suffix <- switch(col_type_string(dwc), translated_var = "_id", dwc = "ID")
+
   for (i in seq_along(candidates)) {
 
-    id_var_name <- paste0(candidates[[i]], "_id")
+    id_var_name <- paste0(candidates[[i]], suffix)
 
     if (utils::hasName(df, id_var_name)) {
 
@@ -375,7 +377,7 @@ compute_vars_from_id <- function(df, select_) {
 
       } else {
 
-        metadata <- get(candidates[[i]])
+        metadata <- get(to_native(candidates[[i]]))
 
       }
 

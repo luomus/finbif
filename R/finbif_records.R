@@ -231,8 +231,9 @@ infer_selection <- function(aggregate, select, var_type) {
       for (i in seq_len(nrow(vars_computed_from_id))) {
 
         ind <- match(row.names(vars_computed_from_id)[[i]], select)
-        computed_var <- vars_computed_from_id[i, "translated_var"]
-        id_var <- paste0(computed_var, "_id")
+        computed_var <- vars_computed_from_id[i, var_type]
+        suffix <- switch(var_type, translated_var = "_id", dwc = "ID")
+        id_var <- paste0(computed_var, suffix)
         select[[ind]] <- translate(
           id_var, "select_vars", list(select_vars = select_vars)
         )
