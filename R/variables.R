@@ -66,10 +66,9 @@
 #' - `reported_author` Character.
 #'   The authority of the taxon as originally reported by the record creator.
 #' - `taxon_rank` Character.
-#'   The taxonomic rank of the taxon (in the form of a URI).
+#'   The taxonomic rank of the taxon.
 #' - `orig_taxon_rank` Character.
-#'   The taxonomic rank of the taxon (in the form of a URI) before (if any)
-#'   annotation.
+#'   The taxonomic rank of the taxon before (if any) annotation.
 #' - `informal_groups` List.
 #'   The informal taxonomic groups that the taxon belongs to (e.g., birds) in
 #'   the form of URIs.

@@ -14,7 +14,8 @@ unit.interpretations.recordQuality,record_quality,occurrenceQuality,TRUE,TRUE,ch
 computed_var_duration,duration,samplingEffort,FALSE,FALSE,double,date,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE
 computed_var_date_time_ISO8601,date_time_ISO8601,eventDate,FALSE,FALSE,double,date,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE
 computed_var_epsg,epsg,geodeticDatum,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE
-unit.linkings.taxon.taxonRank,taxon_rank,taxonRankID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+unit.linkings.taxon.taxonRank,taxon_rank_id,taxonRankID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+computed_var_from_id_taxon_rank,taxon_rank,taxonRank,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 unit.abundanceString,abundance_verbatim,verbatimAbundance,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.countryDisplayname,country,country,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 gathering.interpretations.biogeographicalProvinceDisplayname,province,stateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
@@ -60,7 +61,8 @@ unit.linkings.originalTaxon.informalTaxonGroups,orig_informal_groups,originalInf
 unit.linkings.originalTaxon.scientificName,orig_scientific_name,originalScientificName,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 unit.linkings.originalTaxon.scientificNameAuthorship,orig_scientific_name_author,originalScientificNameAuthorship,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.linkings.originalTaxon.scientificNameDisplayName,orig_scientific_display_name,originalScientificNameDisplay,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
-unit.linkings.originalTaxon.taxonRank,orig_taxon_rank,originalTaxonRankID,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+unit.linkings.originalTaxon.taxonRank,orig_taxon_rank_id,originalTaxonRankID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+computed_var_from_id_orig_taxon_rank,orig_taxon_rank,originalTaxonRank,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 unit.linkings.originalTaxon.vernacularName,orig_common_name,originalVernacularName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,TRUE
 unit.linkings.taxon.checklist,taxon_checklist,taxonChecklist,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.linkings.taxon.cursiveName,scientific_name_italicised,scientificNameItalicised,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE
@@ -322,7 +324,7 @@ unit.annotations.identification.linkings.taxon.informalTaxonGroups,record_annota
 unit.annotations.identification.linkings.taxon.scientificName,record_annotation_scientific_name,occurrenceAnnotationScientificName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.scientificNameAuthorship,record_annotation_scientific_name_author,occurrenceAnnotationScientiicNameAuthor,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.scientificNameDisplayName,record_annotation_scientific_display_name,occurrenceAnnotationScientificDisplayName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.annotations.identification.linkings.taxon.taxonRank,record_annotation_taxon_rank,occurrenceAnnotationTaxoRankID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.identification.linkings.taxon.taxonRank,record_annotation_taxon_rank_id,occurrenceAnnotationTaxoRankID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.vernacularName,record_annotation_common_name,occurrenceAnnotationVernacularName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.countryVerbatim,record_pre_annotation_country_verbatim,occurrencePreAnnotationVerbatimCountry,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.dateBegin,record_pre_annotation_date_start,occurrencePreAnnotationEventDateStart,FALSE,FALSE,character,date,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -335,7 +337,7 @@ unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.informalTaxonGroups
 unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.scientificName,record_pre_annotation_scientific_name,occurrencePreAnnotationScientificName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.scientificNameAuthorship,record_pre_annotation_scientific_name_author,occurrencePreAnnotationScientificNameAuthor,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.scientificNameDisplayName,record_pre_annotation_scientific_display_name,occurrencePreAnnotationScientificDisplayName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.taxonRank,record_pre_annotation_taxon_rank,occurrencePreAnnotationTaxonRankID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.taxonRank,record_pre_annotation_taxon_rank_id,occurrencePreAnnotationTaxonRankID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.vernacularName,record_pre_annotation_common_name,occurrencePreAnnotationVernacularName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.locality,record_pre_annotation_locality,occurrencePreAnnotationLocality,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.municipalityVerbatim,record_pre_annotation_municipality_verbatim,occurrencePreAnnotationVerbatimCounty,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -539,7 +541,7 @@ unit.identifications.linkings.taxon.scientificName,record_identifications_scient
 unit.identifications.linkings.taxon.scientificNameAuthorship,record_identifications_scientific_name_author,occurrenceIdentificationsScientificNameAuthor,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.linkings.taxon.scientificNameDisplayName,record_identifications_scientific_display_name,occurrenceIdentificationsScientificDisplayName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.linkings.taxon.sensitive,record_identifications_taxon_sensitive,occurrenceIdentificationsTaxonSensitive,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.identifications.linkings.taxon.taxonRank,record_identifications_taxon_rank,occurrenceIdentificationsTaxonRankID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.identifications.linkings.taxon.taxonRank,record_identifications_taxon_rank_id,occurrenceIdentificationsTaxonRankID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.linkings.taxon.taxonomicOrder,record_identifications_taxonomic_order,occurrenceIdentificationsTaxonomicOrder,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.linkings.taxon.vernacularName,record_identifications_common_name,occurrenceIdentificationsVernacularName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE
 unit.identifications.notes,record_identifications_notes,occurrenceIdentificationsRemarks,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -567,7 +569,7 @@ unit.types.linkings.taxon.scientificName,type_specimen_taxon_scientific_name,typ
 unit.types.linkings.taxon.scientificNameAuthorship,type_specimen_taxon_scientific_name_author,typeSpecimenScientificNameAuthor,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.scientificNameDisplayName,type_specimen_taxon_scientific_display_name,typeSpecimenScientificDisplayName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.sensitive,type_specimen_taxon_sensitive,typeSpecimenTaxonSensitive,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.types.linkings.taxon.taxonRank,type_specimen_taxon_rank,typeSpecimenTaxonRankID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.types.linkings.taxon.taxonRank,type_specimen_taxon_rank_id,typeSpecimenTaxonRankID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.taxonomicOrder,type_specimen_taxonomic_order,typeSpecimenTaxonomicOrder,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.vernacularName,type_specimen_common_name,typeSpecimenVernacularName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.notes,type_specimen_notes,typeSpecimenRemarks,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
