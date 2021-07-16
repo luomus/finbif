@@ -1,3 +1,11 @@
+# finbif 0.5.0.9008
+
+#### NEW FEATURES
+
+-   New computed variable `epsg` (currently undocumented). If selected,
+    the column will have the EPSG code of the first column that contains
+    geographic data.
+
 # finbif 0.5.0.9007
 
 #### NEW FEATURES

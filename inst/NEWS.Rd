@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.5.0.9008}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New computed variable \code{epsg} (currently undocumented). If
+        selected, the column will have the EPSG code of the first column that
+        contains geographic data.
+    }
+  }
+}
+
 \section{finbif version 0.5.0.9007}{
   \subsection{NEW FEATURES}{
     \itemize{
