@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.5.0.9009}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item The variable \code{taxon_rank} is now converted to string on the
+       fly via \code{taxon_rank_id}.
+    }
+  }
+}
+
 \section{finbif version 0.5.0.9008}{
   \subsection{NEW FEATURES}{
     \itemize{

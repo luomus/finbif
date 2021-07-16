@@ -76,8 +76,7 @@ The authority of the taxon as originally reported by the record creator.
 \item \code{taxon_rank} Character.
 The taxonomic rank of the taxon.
 \item \code{orig_taxon_rank} Character.
-The taxonomic rank of the taxon before (if any)
-annotation.
+The taxonomic rank of the taxon before (if any) annotation.
 \item \code{informal_groups} List.
 The informal taxonomic groups that the taxon belongs to (e.g., birds) in
 the form of URIs.

@@ -1,3 +1,10 @@
+# finbif 0.5.0.9009
+
+#### MINOR IMPROVEMENTS
+
+-   The variable `taxon_rank` is now converted to string on the fly via
+    `taxon_rank_id`.
+
 # finbif 0.5.0.9008
 
 #### NEW FEATURES
