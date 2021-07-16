@@ -14,7 +14,7 @@ unit.interpretations.recordQuality,record_quality,occurrenceQuality,TRUE,TRUE,ch
 computed_var_duration,duration,samplingEffort,FALSE,FALSE,double,date,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE
 computed_var_date_time_ISO8601,date_time_ISO8601,eventDate,FALSE,FALSE,double,date,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE
 computed_var_epsg,epsg,geodeticDatum,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE
-unit.linkings.taxon.taxonRank,taxon_rank_id,taxonRankID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.taxon.taxonRank,taxon_rank_id,taxonRank,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 computed_var_from_id_taxon_rank,taxon_rank,taxonRank,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 unit.abundanceString,abundance_verbatim,verbatimAbundance,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.countryDisplayname,country,country,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
