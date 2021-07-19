@@ -13,15 +13,15 @@ record_basis[["description"]] <-
   sub("catched", "caught", record_basis[["description"]])
 record_basis[["description"]] <-
   sub(" etc", " etc.", record_basis[["description"]])
-record_basis[["name"]] <-
+record_basis[["name_en"]] <-
   sub("( \\(.*\\)){0,1}( specimen){0,1}$", "", record_basis[["description"]])
-record_basis[["name"]] <-
-  tolower(gsub("( from){0,1} ", "_", record_basis[["name"]]))
+record_basis[["name_en"]] <-
+  tolower(gsub("( from){0,1} ", "_", record_basis[["name_en"]]))
 
-class(record_basis[["name"]]) <- "translation"
+class(record_basis[["name_en"]]) <- "translation"
 
 superrecord_basis <- data.frame(
-  options = c("human_observation", "machine_observation", "specimen"),
+  name_en = c("human_observation", "machine_observation", "specimen"),
   row.names = c(
     "human_observation_unspecified", "machine_observation_unspecified",
     "preserved_specimen"
@@ -29,4 +29,4 @@ superrecord_basis <- data.frame(
   stringsAsFactors = FALSE
 )
 
-class(superrecord_basis[["options"]]) <- "translation"
+class(superrecord_basis[["name_en"]]) <- "translation"

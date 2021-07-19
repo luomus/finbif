@@ -127,7 +127,7 @@ finbif_occurrence <- function(
     df, select, select_, aggregate, dwc, date_time_method, tzone
   )
 
-  df <- compute_vars_from_id(df, select_, dwc)
+  df <- compute_vars_from_id(df, select_, dwc, locale)
 
   df <- compute_epsg(df, select_, dwc)
 
@@ -356,15 +356,15 @@ get_iso8601 <- function(
 }
 
 
-compute_vars_from_id <- function(df, select_, dwc) {
+compute_vars_from_id <- function(df, select_, dwc, locale) {
 
   candidates <- setdiff(select_, names(df))
 
   suffix <- switch(col_type_string(dwc), translated_var = "_id", dwc = "ID")
 
-  for (i in seq_along(candidates)) {
+  for (k in seq_along(candidates)) {
 
-    id_var_name <- paste0(candidates[[i]], suffix)
+    id_var_name <- paste0(candidates[[k]], suffix)
 
     if (utils::hasName(df, id_var_name)) {
 
@@ -377,13 +377,25 @@ compute_vars_from_id <- function(df, select_, dwc) {
 
       } else {
 
-        metadata <- get(to_native(candidates[[i]]))
+        metadata <- get(to_native(candidates[[k]]))
 
       }
 
-      var <- metadata[gsub("http://tun.fi/", "", df[[id_var_name]]), 1L]
+      ptrn <- "^name_"
 
-      df[[candidates[[i]]]] <- ifelse(is.na(var), df[[id_var_name]], var)
+      i <- gsub("http://tun.fi/", "", df[[id_var_name]])
+
+      j <- grep(ptrn, names(metadata))
+
+      var <- metadata[i, j, drop = FALSE]
+
+      names(var) <- gsub(ptrn, "", names(var))
+
+      var <- apply(var, 1L, as.list)
+
+      var <- vapply(var, with_locale, NA_character_, locale)
+
+      df[[candidates[[k]]]] <- ifelse(is.na(var), df[[id_var_name]], var)
 
     }
 
