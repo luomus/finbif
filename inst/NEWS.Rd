@@ -1,6 +1,21 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.5.0.9010}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Variables that are computed from their identifiers are now localised
+        when multiple languages are available.
+    }
+  }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed bug that triggered an error when selected a variable that
+        had to be computed from its ID when using DWC style variable names.
+    }
+  }
+}
+
 \section{finbif version 0.5.0.9009}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

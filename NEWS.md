@@ -1,3 +1,15 @@
+# finbif 0.5.0.9010
+
+#### MINOR IMPROVEMENTS
+
+-   Variables that are computed from their identifiers are now localised
+    when multiple languages are available.
+
+#### BUG FIXES
+
+-   Fixed bug that triggered an error when selected a variable that had
+    to be computed from its ID when using DWC style variable names.
+
 # finbif 0.5.0.9009
 
 #### MINOR IMPROVEMENTS
