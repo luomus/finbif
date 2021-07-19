@@ -31,6 +31,7 @@ usethis::use_data(
   primary_habitat,
   primary_secondary_habitat,
   taxon_rank,
+  orig_taxon_rank,
   country,
   province,
   municipality,

@@ -9,3 +9,5 @@ taxon_rank <- as.data.frame(
 )
 taxon_rank <- stats::setNames(taxon_rank, "rank")
 class(taxon_rank[["rank"]]) <- "translation"
+
+orig_taxon_rank <- taxon_rank
