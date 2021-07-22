@@ -1,128 +1,58 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.5.0.9010}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item Variables that are computed from their identifiers are now localised
-        when multiple languages are available.
-    }
-  }
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Fixed bug that triggered an error when selected a variable that
-        had to be computed from its ID when using DWC style variable names.
-    }
-  }
-}
-
-\section{finbif version 0.5.0.9009}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item The variable \code{taxon_rank} is now converted to string on the
-       fly via \code{taxon_rank_id}.
-    }
-  }
-}
-
-\section{finbif version 0.5.0.9008}{
-  \subsection{NEW FEATURES}{
-    \itemize{
-      \item New computed variable \code{epsg} (currently undocumented). If
-        selected, the column will have the EPSG code of the first column that
-        contains geographic data.
-    }
-  }
-}
-
-\section{finbif version 0.5.0.9007}{
-  \subsection{NEW FEATURES}{
-    \itemize{
-      \item New computed variable \code{date_time_ISO8601} (currently
-        undocumented) can be selected when creating \code{finbif_occ} objects.
-    }
-  }
-}
-
-\section{finbif version 0.5.0.9006}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item User can now select columns multiple times and rename them on the
-        fly by using a named character vector as the value of the `select`
-        argument.
-    }
-  }
-}
-
-\section{finbif version 0.5.0.9005}{
-  \subsection{NEW FEATURES}{
-    \itemize{
-      \item "Lite" download files (occurrence record datasets of less than
-        10,000 records downloaded directly from laji.fi) can now be imported
-        using \code{finbif_occurrence_load}.
-      \item New filters (currently undocumented) \code{ely_center_id} and
-        \code{region_id} are available for  \code{finbif_occurrence}.
-      \item New function, \code{from_schema}, to convert variable names from
-        FinBIF schema to other styles.
-    }
-  }
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item New option, \code{drop_na}, to drop columns that only contain
-        missing data added to \code{finbif_occurrence} and
-        \code{finbif_occurrence} load.
-    }
-  }
-}
-
-\section{finbif version 0.5.0.9004}{
-  \subsection{NEW FEATURES}{
-    \itemize{
-      \item Option now available to extract "facts" when using
-        \code{finbif_occurrence_load} to import records from a ZIP archive. The
-        user must supply a named list where the names refer to one or more fact
-        types: "record", "event" and/or "document", and the list elements
-        are character vectors indicating which "facts" to extract.
-    }
-  }
-}
-
-\section{finbif version 0.5.0.9003}{
-  \subsection{NEW FEATURES}{
-    \itemize{
-      \item Option now available to retain the TSV data file when loading FinBIF
-        occurrence data with \code{finbif_occurrence_load} from ZIP archive or
-        online reference.
-    }
-  }
-}
-
-\section{finbif version 0.5.0.9002}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item Can now select all available variables when importing a FinBIF
-        download request file using \code{finbif_occurrence_load} with
-        \code{select = "all"}.
-    }
-  }
-}
-
-\section{finbif version 0.5.0.9001}{
+\section{finbif version 0.6.0}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item New variables \code{lat_euref} and \code{lon_euref} available for
         occurrence record downloads. These new variables represent the central
         point of a bounding box encompassing a record's geographic coverage in
         the EUREF (ETRS89/ETRS-TM35FIN) coordinate system.
+      \item Option now available to retain the TSV data file when loading FinBIF
+        occurrence data with \code{finbif_occurrence_load} from ZIP archive or
+        online reference.
+      \item Option now available to extract "facts" when using
+        \code{finbif_occurrence_load} to import records from a ZIP archive. The
+        user must supply a named list, where the names refer to one or more fact
+        types: "record", "event" and/or "document", and the list elements
+        are character vectors indicating which "facts" to extract.
+      \item "Lite" download files (occurrence record datasets of less than
+        10,000 records downloaded directly from laji.fi) can now be imported
+        using \code{finbif_occurrence_load}.
+      \item New filters (currently undocumented) \code{ely_center_id} and
+        \code{region_id} are available for \code{finbif_occurrence}.
+      \item New function, \code{from_schema}, to convert variable names from
+        FinBIF schema to other styles.
+      \item New computed variable \code{date_time_ISO8601} (currently
+        undocumented) can be selected when creating \code{finbif_occ} objects.
+      \item New computed variable \code{epsg} (currently undocumented). If
+        selected, the column will have the EPSG code of the first column that
+        contains geographic data.
     }
   }
-}
-
-\section{finbif version 0.5.0.9000}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Can now select all available variables when importing a FinBIF
+        download request file using \code{finbif_occurrence_load} with
+        \code{select = "all"}.
+      \item New option, \code{drop_na}, to drop columns that only contain
+        missing data added to \code{finbif_occurrence} and
+        \code{finbif_occurrence} load.
+      \item User can now select columns multiple times and rename them on the
+        fly by using a named character vector as the value of the `select`
+        argument.
+      \item The variable \code{taxon_rank} is now converted to a string on the
+        fly via \code{taxon_rank_id}.
+      \item Variables that are computed from their identifiers are now localised
+        when multiple languages are available.
+    }
+  }
   \subsection{BUG FIXES}{
     \itemize{
       \item Fixed bug that prevented occurrence record counting when caching
         was not in use.
+      \item Fixed bug that triggered an error when selected a variable that
+        had to be computed from its ID when using DWC style variable names.
     }
   }
 }
