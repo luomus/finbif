@@ -20,3 +20,4 @@
 ^\.zenodo\.json$
 ^inst/man$
 ^prepare-for-release$
+^LICENSE\.md$
