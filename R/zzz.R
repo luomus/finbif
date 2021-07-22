@@ -4,6 +4,7 @@
     # There are (or will be) multiple versions and locations of the FinBIF API
     finbif_api_url = "api.laji.fi",
     finbif_api_version = "v0",
+    finbif_warehouse_query = "warehouse/query/",
     finbif_use_cache = TRUE,
     finbif_tz = Sys.timezone(),
     finbif_locale = get_locale()

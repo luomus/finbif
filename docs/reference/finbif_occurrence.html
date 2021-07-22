@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">finbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0</span>
       </span>
     </div>
 
@@ -172,7 +172,9 @@
   check_taxa <span class='op'>=</span> <span class='cn'>TRUE</span>,
   on_check_fail <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"warn"</span>, <span class='st'>"error"</span><span class='op'>)</span>,
   tzone <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_tz"</span><span class='op'>)</span>,
-  locale <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_locale"</span><span class='op'>)</span>
+  locale <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"finbif_locale"</span><span class='op'>)</span>,
+  <span class='va'>seed</span>,
+  drop_na <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -189,7 +191,7 @@ to download.</p></td>
     </tr>
     <tr>
       <th>select</th>
-      <td><p>Character vector. Variables to return. If not specified a
+      <td><p>Character vector. Variables to return. If not specified, a
 default set of commonly used variables will be used. Use <code>"default_vars"</code>
 as a shortcut for this set. Variables can be deselected by prepending a <code><a href='https://rdrr.io/r/base/Arithmetic.html'>-</a></code>
 to the variable name. If only deselects are specified the default set of
@@ -274,6 +276,16 @@ codes. Current supported languages are English, Finnish, Swedish, Russian,
 and Sámi (Northern). For data where more than one language is available
 the language denoted by <code>locale</code> will be preferred while falling back to
 the other languages in the order indicated above.</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>Integer. Set a seed for randomly sampling records.</p></td>
+    </tr>
+    <tr>
+      <th>drop_na</th>
+      <td><p>Logical. A vector indicating which columns to check for
+missing data. Values recycled to the number of columns. Defaults to all
+columns.</p></td>
     </tr>
     </table>
 

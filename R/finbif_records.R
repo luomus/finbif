@@ -7,7 +7,7 @@
 #' @aliases fb_records
 #'
 #' @param filter List of named character vectors. Filters to apply to records.
-#' @param select Character vector. Variables to return. If not specified a
+#' @param select Character vector. Variables to return. If not specified, a
 #'   default set of commonly used variables will be used. Use `"default_vars"`
 #'   as a shortcut for this set. Variables can be deselected by prepending a `-`
 #'   to the variable name. If only deselects are specified the default set of
@@ -32,9 +32,7 @@
 #'   downloads.
 #' @param cache Logical. Use cached data.
 #' @param dwc Logical. Use Darwin Core (or Darwin Core style) variable names.
-#' @param seed Integer. Set a seed for randomly sampling records. Note that the
-#'   server currently ignores seed setting and this argument currently has
-#'   little effect.
+#' @param seed Integer. Set a seed for randomly sampling records.
 #' @param df Logical. Should the data.frame representation of the records be
 #'   returned as an attribute?
 #' @return A `finbif_api` or `finbif_api_list` object.
@@ -118,10 +116,10 @@ finbif_records <- function(
   ans <- request(
     filter, select[["query"]], sample, n, page, count_only, quiet, cache, query,
     max_size, select[["user"]], select[["record_id_selected"]], dwc, aggregate,
-    df
+    df, seed
   )
 
-  if (df) {
+  if (df && !count_only) {
     ind <- length(ans)
     attr(ans[[ind]], "df") <- as.data.frame(ans[[ind]])
   }
@@ -198,7 +196,7 @@ infer_selection <- function(aggregate, select, var_type) {
       select == "default_vars", list(default_vars[[var_type]]), select
     )
     select <- unlist(select)
-    select <- setdiff(select, deselect)
+    select <- select[!select %in% deselect]
     select_ <- select
 
     record_id_selected <- var_names["unit.unitId", var_type] %in% select
@@ -207,7 +205,11 @@ infer_selection <- function(aggregate, select, var_type) {
       select <- c(var_names["unit.unitId", var_type], select)
     }
 
-    vars <-  c("date_time", "eventDateTime", "duration", "samplingEffort")
+    vars <- c(
+      "date_time", "eventDateTime", "date_time_ISO8601", "eventDate",
+      "duration", "samplingEffort"
+    )
+
     date_time <- any(vars %in% select)
 
     if (date_time) {
@@ -229,8 +231,9 @@ infer_selection <- function(aggregate, select, var_type) {
       for (i in seq_len(nrow(vars_computed_from_id))) {
 
         ind <- match(row.names(vars_computed_from_id)[[i]], select)
-        computed_var <- vars_computed_from_id[i, "translated_var"]
-        id_var <- paste0(computed_var, "_id")
+        computed_var <- vars_computed_from_id[i, var_type]
+        suffix <- switch(var_type, translated_var = "_id", dwc = "ID")
+        id_var <- paste0(computed_var, suffix)
         select[[ind]] <- translate(
           id_var, "select_vars", list(select_vars = select_vars)
         )
@@ -252,10 +255,10 @@ infer_selection <- function(aggregate, select, var_type) {
 
 request <- function(
   filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-  select_, record_id_selected, dwc, aggregate, df
+  select_, record_id_selected, dwc, aggregate, df, seed
 ) {
 
-  path <- "warehouse/query/"
+  path <- getOption("finbif_warehouse_query")
 
   if (count_only && identical(aggregate, "none")) {
 
@@ -308,16 +311,20 @@ request <- function(
     )
 
     if (sample) {
+
+      if (missing(seed)) seed <- 1L
+
       resp <- handle_duplicates(
-        resp, filter, select_, max_size, cache, n, seed = 1L, dwc, df
+        resp, filter, select_, max_size, cache, n, seed, dwc, df
       )
+
     }
 
   }
 
   structure(
     resp, class = c("finbif_records_list", "finbif_api_list"), nrec_dnld = n,
-    nrec_avl = n_tot, select = unique(select), select_user = unique(select_),
+    nrec_avl = n_tot, select = unique(select), select_user = select_,
     record_id = record_id_selected, aggregate = aggregate, cache = cache
   )
 
@@ -352,7 +359,7 @@ get_extra_pages <- function(
   query[["page"]] <- query[["page"]] + 1L
   n_pages <- n %/% query[["pageSize"]]
 
-  has_future <- requireNamespace("future", quietly = TRUE)
+  has_future <- has_pkgs("future")
 
   if (has_future) value <- future::value
 

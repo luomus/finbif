@@ -27,3 +27,11 @@ test_that(
 
   }
 )
+
+test_that(
+  "variable conversion works", {
+
+    expect_match(from_schema("unit.unitId"), "record_id")
+
+  }
+)

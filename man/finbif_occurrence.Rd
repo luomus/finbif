@@ -22,7 +22,9 @@ finbif_occurrence(
   check_taxa = TRUE,
   on_check_fail = c("warn", "error"),
   tzone = getOption("finbif_tz"),
-  locale = getOption("finbif_locale")
+  locale = getOption("finbif_locale"),
+  seed,
+  drop_na = FALSE
 )
 }
 \arguments{
@@ -31,7 +33,7 @@ to download.}
 
 \item{filter}{List of named character vectors. Filters to apply to records.}
 
-\item{select}{Character vector. Variables to return. If not specified a
+\item{select}{Character vector. Variables to return. If not specified, a
 default set of commonly used variables will be used. Use \code{"default_vars"}
 as a shortcut for this set. Variables can be deselected by prepending a \code{-}
 to the variable name. If only deselects are specified the default set of
@@ -88,6 +90,12 @@ codes. Current supported languages are English, Finnish, Swedish, Russian,
 and Sámi (Northern). For data where more than one language is available
 the language denoted by \code{locale} will be preferred while falling back to
 the other languages in the order indicated above.}
+
+\item{seed}{Integer. Set a seed for randomly sampling records.}
+
+\item{drop_na}{Logical. A vector indicating which columns to check for
+missing data. Values recycled to the number of columns. Defaults to all
+columns.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

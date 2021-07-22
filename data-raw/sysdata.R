@@ -1,6 +1,7 @@
 source("data-raw/variables.R")
 source("data-raw/variables_test.R")
 source("data-raw/citable_file_variables.R")
+source("data-raw/lite_download_file_variables.R")
 source("data-raw/filters.R")
 source("data-raw/status.R")
 source("data-raw/informal_groups.R")
@@ -21,6 +22,7 @@ usethis::use_data(
   var_names,
   var_names_test,
   cite_file_vars,
+  lite_download_file_vars,
   filter_names,
   administrative_status,
   red_list_status,
@@ -29,6 +31,7 @@ usethis::use_data(
   primary_habitat,
   primary_secondary_habitat,
   taxon_rank,
+  orig_taxon_rank,
   country,
   province,
   municipality,

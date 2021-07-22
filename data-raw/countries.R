@@ -20,7 +20,7 @@ country[["name.en"]] <- ifelse(
 )
 row.names(country) <- country[["id"]]
 country <- country[
-  order(country["name.en"]),
+  order(country[["name.en"]]),
   c("name.en", "name.fi", "countryCodeISOalpha2", "countryCodeISOalpha3")
 ]
 names(country) <- c("name_en", "name_fi", "alpha2", "alpha3")

@@ -147,7 +147,7 @@ md_life_stages <- function() {
 
 md_record_basis <- function() {
   structure(
-    record_basis[c("description", "name")],
+    record_basis[c("description", "name_en")],
     row.names = seq_len(nrow(record_basis)),
     names = c("basis_description", "basis_name")
   )

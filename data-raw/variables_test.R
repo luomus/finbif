@@ -34,8 +34,9 @@ agg_gath_vars <- agg_gath_vars[[
 agg_gath_vars <- unlist(agg_gath_vars[["items"]][["enum"]])
 
 select_vars_pkg <- row.names(var_names_test[var_names_test[["select"]], ])
-select_vars_pkg <-
-  grep("^computed_var", select_vars_pkg, value = TRUE, invert = TRUE)
+select_vars_pkg <- grep(
+  "^computed_var|^missing_var", select_vars_pkg, value = TRUE, invert = TRUE
+)
 
 in_pkg_only <- setdiff(select_vars_pkg, select_vars)
 schema_only <- setdiff(select_vars, select_vars_pkg)
@@ -46,8 +47,9 @@ order_vars_pkg <- c(
   row.names(var_names_test[var_names_test[["order"]], ]) ,"RANDOM",
   "RANDOM:seed"
 )
-order_vars_pkg <-
-  grep("^computed_var", order_vars_pkg, value = TRUE, invert = TRUE)
+order_vars_pkg <- grep(
+  "^computed_var|^missing_var", order_vars_pkg, value = TRUE, invert = TRUE
+)
 
 in_pkg_only <- setdiff(order_vars_pkg, order_vars)
 schema_only <- setdiff(order_vars, order_vars_pkg)
@@ -55,8 +57,9 @@ schema_only <- setdiff(order_vars, order_vars_pkg)
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
 agg_vars_pkg <- row.names(var_names_test[var_names_test[["aggregate"]], ])
-agg_vars_pkg <-
-  grep("^computed_var", agg_vars_pkg, value = TRUE, invert = TRUE)
+agg_vars_pkg <- grep(
+  "^computed_var|^missing_var", agg_vars_pkg, value = TRUE, invert = TRUE
+)
 
 in_pkg_only <- setdiff(agg_vars_pkg, agg_vars)
 schema_only <- setdiff(agg_vars, agg_vars_pkg)
@@ -64,8 +67,9 @@ schema_only <- setdiff(agg_vars, agg_vars_pkg)
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
 agg_gath_vars_pkg <- row.names(var_names[var_names[["aggregate_events"]], ])
-agg_gath_vars_pkg <-
-  grep("^computed_var", agg_gath_vars_pkg, value = TRUE, invert = TRUE)
+agg_gath_vars_pkg <- grep(
+  "^computed_var|^missing_var", agg_gath_vars_pkg, value = TRUE, invert = TRUE
+)
 
 in_pkg_only <- setdiff(agg_gath_vars_pkg, agg_gath_vars)
 schema_only <- setdiff(agg_gath_vars, agg_gath_vars_pkg)

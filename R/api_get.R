@@ -34,6 +34,9 @@ api_get <- function(path, query, cache) {
     }
   }
 
+  email <- getOption("finbif_email")
+  if (!is.null(email)) query <- c(query, list(personEmail = email))
+
   # Pausing between requests is important if many request will be made
   Sys.sleep(1L)
 
@@ -53,8 +56,10 @@ api_get <- function(path, query, cache) {
   )
 
   notoken <- sub(
-    sprintf("&access_token=%s", finbif_access_token), "", resp[["url"]]
+    paste0("&access_token=", finbif_access_token), "", resp[["url"]]
   )
+
+  notoken <- sub(paste0("&personEmail=", email), "", notoken)
 
   resp[["url"]] <- notoken
   resp[["request"]][["url"]] <- notoken

@@ -25,6 +25,9 @@
 #'   and Sámi (Northern). For data where more than one language is available
 #'   the language denoted by `locale` will be preferred while falling back to
 #'   the other languages in the order indicated above.
+#' @param drop_na Logical. A vector indicating which columns to check for
+#'   missing data. Values recycled to the number of columns. Defaults to all
+#'   columns.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -46,8 +49,8 @@
 #' }
 #' @importFrom methods as
 #' @importFrom utils hasName
-#' @importFrom lubridate as_datetime as.duration force_tzs hour interval minute
-#' @importFrom lubridate ymd
+#' @importFrom lubridate as_datetime as.duration force_tzs format_ISO8601 hour
+#' @importFrom lubridate interval minute ymd
 #' @importFrom lutz tz_lookup_coords
 #' @export
 
@@ -56,7 +59,7 @@ finbif_occurrence <- function(
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
   dwc = FALSE, date_time_method, check_taxa = TRUE,
   on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
-  locale = getOption("finbif_locale")
+  locale = getOption("finbif_locale"), seed, drop_na = FALSE
 ) {
 
   taxa <- select_taxa(
@@ -93,7 +96,7 @@ finbif_occurrence <- function(
 
   records <- finbif_records(
     filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
-    cache, dwc, df = TRUE
+    cache, dwc, df = TRUE, seed
   )
 
   aggregate <- attr(records, "aggregate", TRUE)
@@ -118,15 +121,17 @@ finbif_occurrence <- function(
 
   select_ <- attr(records, "select_user")
 
-  select_ <- c(select_, n_col_nms)
+  select_ <-  name_chr_vec(c(select_, n_col_nms))
 
   df <- compute_date_time(
     df, select, select_, aggregate, dwc, date_time_method, tzone
   )
 
-  df <- compute_vars_from_id(df, select_)
+  df <- compute_vars_from_id(df, select_, dwc, locale)
 
-  structure(
+  df <- compute_epsg(df, select_, dwc)
+
+  df <- structure(
     df[select_],
     class     = c("finbif_occ", "data.frame"),
     nrec_dnld = attr(records, "nrec_dnld", TRUE),
@@ -134,8 +139,13 @@ finbif_occurrence <- function(
     url       = url,
     time      = time,
     dwc       = dwc,
+    column_names = select_,
     record_id = record_id
   )
+
+  names(df) <- names(select_)
+
+  drop_na_col(df, drop_na)
 
 }
 
@@ -186,7 +196,8 @@ compute_date_time <- function(
 ) {
 
   vars <- c(
-    "date_time", "eventDateTime", "duration", "samplingEffort"
+    "date_time", "eventDateTime", "date_time_ISO8601", "eventDate",
+    "duration", "samplingEffort"
   )
 
   if (missing(select)) {
@@ -208,9 +219,16 @@ compute_date_time <- function(
       )
       if ("samplingEffort" %in% select_) {
         df[["samplingEffort"]] <- get_duration(
-          df, "eventDateTime", "eventDateStart", "hourStart",
-          "minuteStart", "decimalLatitude", "decimalLongitude",
+          df, "eventDateTime", "eventDateEnd", "hourEnd",
+          "minuteEnd", "decimalLatitude", "decimalLongitude",
           date_time_method, tzone
+        )
+      }
+      if ("eventDate" %in% select_) {
+        df[["eventDate"]] <- get_iso8601(
+          df, "eventDateTime", "eventDateStart", "hourStart", "minuteStart",
+          "eventDateEnd", "hourEnd", "minuteEnd", "decimalLatitude",
+          "decimalLongitude", date_time_method, tzone
         )
       }
     } else {
@@ -222,6 +240,13 @@ compute_date_time <- function(
         df[["duration"]] <- get_duration(
           df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
           "lon_wgs84", date_time_method, tzone
+        )
+      }
+      if ("date_time_ISO8601" %in% select_) {
+        df[["date_time_ISO8601"]] <- get_iso8601(
+          df, "date_time", "date_start", "hour_start", "minute_start",
+          "date_end", "hour_end", "minute_end", "lat_wgs84", "lon_wgs84",
+          date_time_method, tzone
         )
       }
     }
@@ -280,18 +305,66 @@ get_duration <- function(
   )
 
   ans <- lubridate::interval(df[[date_time]], date_time_end)
-  ans <- ifelse(is.na(df[[minute]]) | is.na(df[[hour]]), NA, ans)
+  missing_interval <- lubridate::interval(NA_character_)
+  ans <- ifelse(is.na(df[[minute]]) | is.na(df[[hour]]), missing_interval, ans)
   lubridate::as.duration(ans)
 
 }
 
-compute_vars_from_id <- function(df, select_) {
+get_iso8601 <- function(
+  df, date_time, date_start, hour_start, minute_start, date_end, hour_end,
+  minute_end, lat, lon, method, tzone
+) {
+
+  date_time_end <- get_date_time(
+    df, date_end, hour_end, minute_end, lat, lon, method, tzone
+  )
+
+  ans <- lubridate::interval(df[[date_time]], date_time_end)
+
+  ans <- lubridate::format_ISO8601(ans, usetz = TRUE)
+
+  ans <- ifelse(
+    is.na(df[[minute_start]]) & is.na(df[[hour_start]]) |
+      is.na(df[[minute_end]]) & is.na(df[[hour_end]]),
+    lubridate::format_ISO8601(
+      lubridate::interval(
+        lubridate::ymd(df[[date_start]]), lubridate::ymd(df[[date_end]])
+      ),
+      usetz = TRUE
+    ),
+    ans
+  )
+
+  ans <- ifelse(
+    ((is.na(df[[minute_end]]) & is.na(df[[hour_end]])) &
+      (is.na(df[[date_end]]) | df[[date_start]] == df[[date_end]])) |
+        df[[date_time]] == date_time_end,
+    lubridate::format_ISO8601(df[[date_time]], usetz = TRUE),
+    ans
+  )
+
+  ans <- ifelse(
+    (is.na(df[[minute_start]]) & is.na(df[[hour_start]])) &
+      (is.na(df[[date_end]]) | df[[date_start]] == df[[date_end]]),
+    lubridate::format_ISO8601(lubridate::ymd(df[[date_start]]), usetz = TRUE),
+    ans
+  )
+
+  ifelse(is.na(df[[date_start]]), NA_character_, ans)
+
+}
+
+
+compute_vars_from_id <- function(df, select_, dwc, locale) {
 
   candidates <- setdiff(select_, names(df))
 
-  for (i in seq_along(candidates)) {
+  suffix <- switch(col_type_string(dwc), translated_var = "_id", dwc = "ID")
 
-    id_var_name <- paste0(candidates[[i]], "_id")
+  for (k in seq_along(candidates)) {
+
+    id_var_name <- paste0(candidates[[k]], suffix)
 
     if (utils::hasName(df, id_var_name)) {
 
@@ -304,17 +377,64 @@ compute_vars_from_id <- function(df, select_) {
 
       } else {
 
-        metadata <- get(candidates[[i]])
+        metadata <- get(to_native(candidates[[k]]))
 
       }
 
-      var <- metadata[gsub("http://tun.fi/", "", df[[id_var_name]]), 1L]
+      ptrn <- "^name_"
 
-      df[[candidates[[i]]]] <- ifelse(is.na(var), df[[id_var_name]], var)
+      i <- gsub("http://tun.fi/", "", df[[id_var_name]])
+
+      j <- grep(ptrn, names(metadata))
+
+      var <- metadata[i, j, drop = FALSE]
+
+      names(var) <- gsub(ptrn, "", names(var))
+
+      var <- apply(var, 1L, as.list)
+
+      var <- vapply(var, with_locale, NA_character_, locale)
+
+      df[[candidates[[k]]]] <- ifelse(is.na(var), df[[id_var_name]], var)
 
     }
 
   }
+
+  df
+
+}
+
+compute_epsg <- function(df, select_, dwc) {
+
+  select_ <- var_names[, col_type_string(dwc)] %in% select_
+
+  select_ <- row.names(var_names[select_, ])
+
+  epsg <- c("euref", "kkj", "wgs84")
+
+  names(epsg) <- epsg
+
+  epsg[] <- paste0("_", epsg, "$")
+
+  epsg <- lapply(epsg, grepl, var_names[select_, "translated_var"])
+
+  epsg <- lapply(epsg, c, TRUE)
+
+  epsg <- lapply(epsg, which)
+
+  epsg <- vapply(epsg, min, integer(1L), USE.NAMES = TRUE)
+
+  epsg <- names(which.min(epsg))
+
+  epsg <- switch(
+    epsg,
+    euref = "EPSG:3067", kkj = "EPSG:2393", wgs84 = "EPSG:4326", NA_character_
+  )
+
+  epsg <- rep_len(epsg, nrow(df))
+
+  df[[var_names[["computed_var_epsg", col_type_string(dwc)]]]] <- epsg
 
   df
 

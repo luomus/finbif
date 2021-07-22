@@ -89,13 +89,6 @@ as.data.frame.finbif_records <- function(
 
 }
 
-#' @noRd
-with_locale <- function(x, locale = getOption("finbif_locale")) {
-  if (identical(length(x), 0L)) return(NA_character_)
-  if (identical(length(x), 1L)) return(x[[1L]])
-  x[[intersect(c(locale, setdiff(supported_langs, locale)), names(x))[[1L]]]]
-}
-
 #' @rdname as.data.frame.finbif_records
 #' @export
 as.data.frame.finbif_records_list <- function(
@@ -336,11 +329,23 @@ records_msg <- function(x, width, ...) {
 #' @noRd
 format_cols <- function(df, colname_widths) {
 
-  for (i in names(df)) {
+  for (i in seq_along(df)) {
 
-    ind <- var_names[[if (attr(df, "dwc")) "dwc" else "translated_var"]] == i
-    class  <- var_names[ind, "class"]
-    single <- var_names[ind, "single"] || var_names[ind, "localised"]
+    k <- attr(df, "column_names")[[i]]
+
+    if (isTRUE(attr(df, "short"))) {
+
+      class <- short_col_class(df[[i]])
+
+      single <- !is.list(df[[i]])
+
+    } else {
+
+      ind <- var_names[[if (attr(df, "dwc")) "dwc" else "translated_var"]] == k
+      class  <- var_names[ind, "class"]
+      single <- var_names[ind, "single"] || var_names[ind, "localised"]
+
+    }
 
     # Variables may not necessarily be in the var_names object
     if (length(class)) {
@@ -368,6 +373,32 @@ format_cols <- function(df, colname_widths) {
   }
 
   df
+
+}
+
+#' @noRd
+short_col_class <- function(x) {
+
+  class <-  "character"
+
+  if (any(grepl("^http", x))) {
+
+    class <- "uri"
+  }
+
+  if (is.numeric(x)) {
+
+    class <- "double"
+
+  }
+
+  if (is.integer(x)) {
+
+    class <- "integer"
+
+  }
+
+  class
 
 }
 

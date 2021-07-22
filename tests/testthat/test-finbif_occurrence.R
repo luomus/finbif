@@ -16,7 +16,7 @@ test_that(
     expect_s3_class(
       finbif_occurrence(
         "Rangifer tarandus fennicus", "not a valid taxon",
-        select = c("record_id", "date_start", "record_fact_content"),
+        select = c("record_id", "date_start", "record_fact_name"),
         check_taxa = FALSE
       ),
       "finbif_occ"
@@ -90,7 +90,7 @@ test_that(
     fungi <- finbif_occurrence(
       filter = c(informal_group = "Fungi and lichens"),
       select = to_native(
-        "occurrenceID", "informalTaxonGroup", "taxonID", "vernacularName",
+        "occurrenceID", "informalTaxonGroups", "taxonID", "vernacularName",
         "default_vars"
       ),
       n = n,
@@ -181,10 +181,11 @@ test_that(
     skip_on_cran()
 
     has_media <- finbif_occurrence(
-      filter = c(has_media = TRUE), select = "record_media_url", sample = TRUE
+      filter = c(has_media = TRUE), select = c(media = "record_media_url"),
+      sample = TRUE
     )
 
-    url <- sample(unlist(has_media[["record_media_url"]]), 1L)
+    url <- sample(unlist(has_media[["media"]]), 1L)
 
     expect_match(url, "^http")
 
@@ -236,3 +237,26 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_occurrence_aggregate_events"))
+
+suppressMessages(insert_cassette("finbif_occurrence_date_time_ISO8601"))
+
+test_that(
+  "can create ISO8601 date strings", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(select = "date_time_ISO8601"),
+      "finbif_occ"
+    )
+
+    expect_s3_class(
+      finbif_occurrence(select = "eventDate", dwc = TRUE),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_date_time_ISO8601"))

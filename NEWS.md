@@ -1,3 +1,66 @@
+# finbif 0.6.0
+
+#### NEW FEATURES
+
+-   New variables `lat_euref` and `lon_euref` available for occurrence
+    record downloads. These new variables represent the central point of
+    a bounding box encompassing a record's geographic coverage in the
+    EUREF (ETRS89/ETRS-TM35FIN) coordinate system.
+
+-   Option now available to retain the TSV data file when loading FinBIF
+    occurrence data with `finbif_occurrence_load` from ZIP archive or
+    online reference.
+
+-   Option now available to extract "facts" when using
+    `finbif_occurrence_load` to import records from a ZIP archive. The
+    user must supply a named list, where the names refer to one or more
+    fact types: "record", "event" and/or "document", and the list
+    elements are character vectors indicating which "facts" to extract.
+
+-   "Lite" download files (occurrence record datasets of less than
+    10,000 records downloaded directly from laji.fi) can now be imported
+    using `finbif_occurrence_load`.
+
+-   New filters (currently undocumented) `ely_center_id` and `region_id`
+    are available for `finbif_occurrence`.
+
+-   New function, `from_schema`, to convert variable names from FinBIF
+    schema to other styles.
+
+-   New computed variable `date_time_ISO8601` (currently undocumented)
+    can be selected when creating `finbif_occ` objects.
+
+-   New computed variable `epsg` (currently undocumented). If selected,
+    the column will have the EPSG code of the first column that contains
+    geographic data.
+
+#### MINOR IMPROVEMENTS
+
+-   Can now select all available variables when importing a FinBIF
+    download request file using `finbif_occurrence_load` with
+    `select = "all"`.
+
+-   New option, `drop_na`, to drop columns that only contain missing
+    data added to `finbif_occurrence` and `finbif_occurrence` load.
+
+-   User can now select columns multiple times and rename them on the
+    fly by using a named character vector as the value of the 'select'
+    argument.
+
+-   The variable `taxon_rank` is now converted to a string on the fly
+    via `taxon_rank_id`.
+
+-   Variables that are computed from their identifiers are now localised
+    when multiple languages are available.
+
+#### BUG FIXES
+
+-   Fixed bug that prevented occurrence record counting when caching was
+    not in use.
+
+-   Fixed bug that triggered an error when selected a variable that had
+    to be computed from its ID when using DWC style variable names.
+
 # finbif 0.5.0
 
 #### NEW FEATURES
@@ -21,7 +84,7 @@
     (e.g., `http://tun.fi/HBF.49381`).
 
 -   Aggregation of records can now be performed at the recording "event"
-    level as well as the "record"" level.
+    level as well as the "record" level.
 
 # finbif 0.4.1
 

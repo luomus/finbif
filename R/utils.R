@@ -1,6 +1,22 @@
-#' @importFrom digest digest
-
 # misc -------------------------------------------------------------------------
+
+#' @noRd
+#' @description Drop columns from a data.frame where all elements are missing.
+#' @param df A `finbif_occ` object.
+#' @param which Logical. A vector indicating which columns to check for missing
+#'   data. Values recycled to length of `df`. Defaults to all columns.
+drop_na_col <- function(df, which = TRUE) {
+
+  which <- rep_len(which, length(df))
+
+  is_na <- lapply(df, is.na)
+  is_na <- vapply(is_na, all, logical(1L))
+
+  attr(df, "column_names") <- attr(df, "column_names")[!is_na]
+
+  df[, !is_na | !which, drop = FALSE]
+
+}
 
 #' @noRd
 to_sentence_case <- function(string) {
@@ -115,6 +131,47 @@ nlines <- function(x, header = TRUE) {
   n - header
 }
 
+#' @noRd
+has_pkgs <- function(...) {
+  pkgs <- list(...)
+  ans <- vapply(pkgs, requireNamespace, logical(1L), quietly = TRUE)
+  all(ans)
+}
+
+#' @noRd
+name_chr_vec <- function(x, unique = TRUE) {
+
+  stopifnot(inherits(x, "character"))
+
+  nms <- names(x)
+
+  if (is.null(nms)) {
+
+    names(x) <- x
+
+  } else {
+
+    names(x) <- ifelse(nms == "", x, nms)
+
+  }
+
+  if (unique) {
+
+    names(x) <- make.unique(names(x))
+
+  }
+
+  x
+
+}
+
+#' @noRd
+with_locale <- function(x, locale = getOption("finbif_locale")) {
+  if (identical(length(x), 0L)) return(NA_character_)
+  if (identical(length(x), 1L)) return(x[[1L]])
+  x[[intersect(c(locale, setdiff(supported_langs, locale)), names(x))[[1L]]]]
+}
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd
@@ -134,6 +191,7 @@ sample_with_seed <- function(n, size, seed) {
 #' @noRd
 gen_seed <- function(x, ...) UseMethod("gen_seed", x)
 
+#' @importFrom digest digest
 #' @export
 #' @noRd
 gen_seed.finbif_records_list <- function(x, ...) {
@@ -216,13 +274,19 @@ to_ <- function(x, from, to) {
   x
 }
 
-#' Convert variable names to and from Darwin Core style
+#' Convert variable names
 #'
-#' Convert FinBIF native variable names to Darwin Core style variable names or
-#' vice versa.
+#' Convert variable names to Darwin Core or FinBIF R package native style.
 #'
-#' @param ... Character. Variable names in FinBIF native or Darwin Core
-#'   style.
+#' @param ... Character. Variable names to convert. For `to_dwc` and `to_native`
+#'   the names must be in the opposite format. For `from_schema` the names must
+#'   be from the FinBIF schema (e.g., names returned https://api.laji.fi) or
+#'   a FinBIF download file (citable or lite).
+#' @param to Character. Type of variable names to convert to.
+#' @param file Character. For variable names that are derived from a FinBIF
+#'   download file which type of file.
+#' @param locale Character. For variable names from a lite download file which
+#'   locale the file is in.
 #'
 #' @return Character vector.
 #'
@@ -235,6 +299,32 @@ to_dwc <- function(...) to_(list(...), "translated_var", "dwc")
 #' @rdname to_dwc
 #' @export
 to_native <- function(...) to_(list(...), "dwc", "translated_var")
+
+#' @rdname to_dwc
+#' @export
+from_schema <- function(
+  ..., to = c("native", "dwc", "short"), file = c("none", "citable", "lite"),
+  locale = c("en", "fi", "sv")
+) {
+
+  nms <- make.names(c(...))
+
+  file <- match.arg(file)
+
+  vars <- switch(
+    file,
+    none = var_names,
+    citable = cite_file_vars,
+    lite = lite_download_file_vars
+  )
+
+  to <- match.arg(to)
+
+  to <- switch(to, native = "translated_var", dwc = "dwc", short = "shrtnm")
+
+  vars[nms, to]
+
+}
 
 # localization -----------------------------------------------------------------
 

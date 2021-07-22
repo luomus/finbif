@@ -66,10 +66,9 @@
 #' - `reported_author` Character.
 #'   The authority of the taxon as originally reported by the record creator.
 #' - `taxon_rank` Character.
-#'   The taxonomic rank of the taxon (in the form of a URI).
+#'   The taxonomic rank of the taxon.
 #' - `orig_taxon_rank` Character.
-#'   The taxonomic rank of the taxon (in the form of a URI) before (if any)
-#'   annotation.
+#'   The taxonomic rank of the taxon before (if any) annotation.
 #' - `informal_groups` List.
 #'   The informal taxonomic groups that the taxon belongs to (e.g., birds) in
 #'   the form of URIs.
@@ -113,10 +112,12 @@
 #' @section Location:
 #' Variables related to the location of records include:
 #'
-#' - `{lat|lon}_wgs84` Numeric.
-#'   Coordinates (in [WGS84](https://spatialreference.org/ref/epsg/wgs-84/)
-#'   coordinate system) of the central point of a bounding box encompassing the
-#'   record's geographic coverage.
+#' - `{lat|lon}_{euref|wgs84}` Numeric.
+#'   Coordinates (in
+#'   [EUREF](https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/) or
+#'   [WGS84](https://spatialreference.org/ref/epsg/wgs-84/) coordinate system)
+#'   of the central point of a bounding box encompassing the record's geographic
+#'   coverage.
 #' - `{lat|lon}_{min|max}_{euref|kkj|wgs84}`. Numeric.
 #'   Vertices of a bounding box encompassing the record's geographic coverage.
 #'   Coordinates are available in

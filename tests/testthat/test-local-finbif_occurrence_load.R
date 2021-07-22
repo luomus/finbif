@@ -11,7 +11,7 @@ test_that(
     zip <- sprintf("HBF.%s.zip", file)
     tsv <- sprintf("rows_HBF.%s.tsv", file)
     unzip(zip, tsv, exdir = tempdir())
-    tsv <- paste(tempdir(), tsv, sep = "/")
+    file.copy(paste(tempdir(), tsv, sep = "/"), tsv)
 
     expect_identical(
       335L,
@@ -37,6 +37,15 @@ test_that(
       style = "json2"
     )
 
+    expect_snapshot_value(
+      finbif_occurrence_load(tsv, quiet = TRUE, tzone = "Etc/UTC")[
+        seq(nrows),
+      ],
+      style = "json2"
+    )
+
+    file.remove(tsv)
+
     options(finbif_cache_path = NULL)
 
     capture.output(
@@ -53,15 +62,17 @@ test_that(
 
     expect_snapshot_value(
       finbif_occurrence_load(
-        file_full, tzone = "Etc/UTC", write_file = file_path
-        )[seq(nrows), ],
+        file_full, n = 0, tzone = "Etc/UTC", write_file = file_path, dt = FALSE,
+        keep_tsv = TRUE
+      ),
       style = "json2"
     )
 
     expect_snapshot_value(
       finbif_occurrence_load(
-        file_full, tzone = "Etc/UTC", write_file = file_path
-        )[seq(nrows), ],
+        file_full, tzone = "Etc/UTC", write_file = file_path, dt = FALSE,
+        keep_tsv = TRUE
+      )[seq(nrows), ],
       style = "json2"
     )
 
@@ -71,12 +82,57 @@ test_that(
     )
 
     expect_snapshot_value(
-      finbif_occurrence_load(zip, n = nrows, tzone = "Etc/UTC"),
+      finbif_occurrence_load(
+        zip, n = nrows, tzone = "Etc/UTC",
+        facts = list(record = c("imageCount", "imageUrl", "areaInSqMeters"))
+      ),
+      style = "json2"
+    )
+
+    expect_warning(
+      finbif_occurrence_load(
+        zip, n = nrows, tzone = "Etc/UTC",
+        facts = list(record = c("not a fact"))
+      ),
+      "Selected fact"
+    )
+
+    expect_snapshot_value(
+      capture.output(
+        print(
+          finbif_occurrence_load(
+            zip, select = "short", n = nrows, tzone = "Etc/UTC"
+          )[c("recID", "recOrder", "lonWGS84", "latWGS84")]
+        )
+      ),
       style = "json2"
     )
 
   }
 
+)
+
+test_that(
+  "can load data from a lite download", {
+
+    expect_snapshot_value(
+      finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC"),
+      style = "json2"
+    )
+
+    skip_on_cran()
+
+    expect_snapshot_value(
+      finbif_occurrence_load("laji-data.ods", tzone = "Etc/UTC"),
+      style = "json2", ignore_attr = "url"
+    )
+
+    expect_snapshot_value(
+      finbif_occurrence_load("laji-data.xlsx", tzone = "Etc/UTC"),
+      style = "json2", ignore_attr = "url"
+    )
+
+  }
 )
 
 test_that(

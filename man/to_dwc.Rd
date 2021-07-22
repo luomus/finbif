@@ -3,22 +3,39 @@
 \name{to_dwc}
 \alias{to_dwc}
 \alias{to_native}
-\title{Convert variable names to and from Darwin Core style}
+\alias{from_schema}
+\title{Convert variable names}
 \usage{
 to_dwc(...)
 
 to_native(...)
+
+from_schema(
+  ...,
+  to = c("native", "dwc", "short"),
+  file = c("none", "citable", "lite"),
+  locale = c("en", "fi", "sv")
+)
 }
 \arguments{
-\item{...}{Character. Variable names in FinBIF native or Darwin Core
-style.}
+\item{...}{Character. Variable names to convert. For \code{to_dwc} and \code{to_native}
+the names must be in the opposite format. For \code{from_schema} the names must
+be from the FinBIF schema (e.g., names returned https://api.laji.fi) or
+a FinBIF download file (citable or lite).}
+
+\item{to}{Character. Type of variable names to convert to.}
+
+\item{file}{Character. For variable names that are derived from a FinBIF
+download file which type of file.}
+
+\item{locale}{Character. For variable names from a lite download file which
+locale the file is in.}
 }
 \value{
 Character vector.
 }
 \description{
-Convert FinBIF native variable names to Darwin Core style variable names or
-vice versa.
+Convert variable names to Darwin Core or FinBIF R package native style.
 }
 \examples{
 

@@ -74,10 +74,9 @@ The authority for the taxon scientific name before (if any) annotation.
 \item \code{reported_author} Character.
 The authority of the taxon as originally reported by the record creator.
 \item \code{taxon_rank} Character.
-The taxonomic rank of the taxon (in the form of a URI).
+The taxonomic rank of the taxon.
 \item \code{orig_taxon_rank} Character.
-The taxonomic rank of the taxon (in the form of a URI) before (if any)
-annotation.
+The taxonomic rank of the taxon before (if any) annotation.
 \item \code{informal_groups} List.
 The informal taxonomic groups that the taxon belongs to (e.g., birds) in
 the form of URIs.
@@ -127,10 +126,12 @@ Sex of individual(s) recorded.
 
 Variables related to the location of records include:
 \itemize{
-\item \verb{\{lat|lon\}_wgs84} Numeric.
-Coordinates (in \href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84}
-coordinate system) of the central point of a bounding box encompassing the
-record's geographic coverage.
+\item \verb{\{lat|lon\}_\{euref|wgs84\}} Numeric.
+Coordinates (in
+\href{https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/}{EUREF} or
+\href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84} coordinate system)
+of the central point of a bounding box encompassing the record's geographic
+coverage.
 \item \verb{\{lat|lon\}_\{min|max\}_\{euref|kkj|wgs84\}}. Numeric.
 Vertices of a bounding box encompassing the record's geographic coverage.
 Coordinates are available in

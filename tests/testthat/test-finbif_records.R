@@ -56,6 +56,22 @@ test_that(
 
 suppressMessages(eject_cassette("finbif_records"))
 
+suppressMessages(insert_cassette("finbif_records_count_only"))
+
+test_that(
+  "with count only, df and no cache returns valid data", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_records(count_only = TRUE, cache = FALSE, df = TRUE), "finbif_api"
+    )
+
+  }
+)
+
+suppressMessages(eject_cassette("finbif_records_count_only"))
+
 test_that(
   "returns errors appropriately", {
 
