@@ -1,3 +1,11 @@
+# finbif 0.6.1.9000
+
+#### MINOR IMPROVEMENTS
+
+-   A client-side error will be triggered if an attempt is made to
+    filter by taxon and aggregate data by event with
+    `finbif_occurrence`.
+
 # finbif 0.6.1
 
 #### BUG FIXES

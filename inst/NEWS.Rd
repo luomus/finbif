@@ -2,6 +2,13 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.6.1.9000}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item A client-side error will be triggered if an attempt is made to
+        filter by taxon and aggregate data by event with
+        \code{finbif_occurrence}.
+    }
+  }
 }
 
 \section{finbif version 0.6.1}{

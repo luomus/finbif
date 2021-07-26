@@ -149,9 +149,21 @@
       <small>Source: <a href='https://github.com/luomus/finbif/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="finbif-0619000" class="section level1">
+<h1 class="page-header" data-toc-text="0.6.1.9000">
+<a href="#finbif-0619000" class="anchor"></a>finbif 0.6.1.9000<small> Unreleased </small>
+</h1>
+<div id="minor-improvements" class="section level4">
+<h4 class="hasAnchor">
+<a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<ul>
+<li>A client-side error will be triggered if an attempt is made to filter by taxon and aggregate data by event with <code>finbif_occurrence</code>.</li>
+</ul>
+</div>
+</div>
     <div id="finbif-061" class="section level1">
 <h1 class="page-header" data-toc-text="0.6.1">
-<a href="#finbif-061" class="anchor"></a>finbif 0.6.1<small> Unreleased </small>
+<a href="#finbif-061" class="anchor"></a>finbif 0.6.1<small> 2021-07-26 </small>
 </h1>
 <div id="bug-fixes" class="section level4">
 <h4 class="hasAnchor">
@@ -179,9 +191,9 @@
 <li><p>New computed variable <code>epsg</code> (currently undocumented). If selected, the column will have the EPSG code of the first column that contains geographic data.</p></li>
 </ul>
 </div>
-<div id="minor-improvements" class="section level4">
+<div id="minor-improvements-1" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li><p>Can now select all available variables when importing a FinBIF download request file using <code>finbif_occurrence_load</code> with <code>select = "all"</code>.</p></li>
 <li><p>New option, <code>drop_na</code>, to drop columns that only contain missing data added to <code>finbif_occurrence</code> and <code>finbif_occurrence</code> load.</p></li>
@@ -226,9 +238,9 @@
 <li><p>Add ability to extract complex record variables such as those associated with record media (currently undocumented).</p></li>
 </ul>
 </div>
-<div id="minor-improvements-1" class="section level4">
+<div id="minor-improvements-2" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li><p>Collection name can be selected as a variable for occurrence records. Previously it had to be manually translated from collection ID.</p></li>
 <li><p>Variables <code>restriction_reasons_conservation</code>, <code>restriction_reason_embargo</code> and <code>restriction_reason_custom</code> are no longer in use upstream and can no longer be selected.</p></li>
@@ -246,9 +258,9 @@
 <li>Occurrence record requests can now be made with aggregation, <code>aggregate = c("records", "species", "taxa")</code>. This returns the number of records, and/or species or taxa for each combination of the selected variables instead of the occurrence records themselves.</li>
 </ul>
 </div>
-<div id="minor-improvements-2" class="section level4">
+<div id="minor-improvements-3" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li><p>Error is triggered when attempting to request less than one record.</p></li>
 <li><p>New content on requesting aggregated occurrence records added to vignette: 2. Occurrence records from FinBIF.</p></li>
@@ -280,9 +292,9 @@
 <li><p>New administrative statuses added to filters.</p></li>
 </ul>
 </div>
-<div id="minor-improvements-3" class="section level4">
+<div id="minor-improvements-4" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-4" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>Filtering vignette updated to reflect changes to data quality filters.</li>
 </ul>
@@ -305,9 +317,9 @@
 <li><p>New vignettes on getting occurrence records, selecting and ordering variables, metadata and plotting have been added.</p></li>
 </ul>
 </div>
-<div id="minor-improvements-4" class="section level4">
+<div id="minor-improvements-5" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-4" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-5" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li><p>Caching defaults to in memory caching instead of relying on the temporary directory.</p></li>
 <li><p>Front matter of vignettes is now visible when using the R help browser.</p></li>
@@ -345,9 +357,9 @@
 <li>Add capacity to request a random sample of FinBIF records.</li>
 </ul>
 </div>
-<div id="minor-improvements-5" class="section level4">
+<div id="minor-improvements-6" class="section level4">
 <h4 class="hasAnchor">
-<a href="#minor-improvements-5" class="anchor"></a>MINOR IMPROVEMENTS</h4>
+<a href="#minor-improvements-6" class="anchor"></a>MINOR IMPROVEMENTS</h4>
 <ul>
 <li>Add more content to vignettes.</li>
 </ul>
