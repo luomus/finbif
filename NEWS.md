@@ -1,3 +1,10 @@
+# finbif 0.6.1
+
+#### BUG FIXES
+
+-   Fixed a regression in the last release that prevented collection
+    names being converted from their URIs.
+
 # finbif 0.6.0
 
 #### NEW FEATURES
