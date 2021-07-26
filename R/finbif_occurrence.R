@@ -355,7 +355,6 @@ get_iso8601 <- function(
 
 }
 
-
 compute_vars_from_id <- function(df, select_, dwc, locale) {
 
   candidates <- setdiff(select_, names(df))
@@ -370,18 +369,20 @@ compute_vars_from_id <- function(df, select_, dwc, locale) {
 
       if (identical(id_var_name, "collection_id")) {
 
+        ptrn <- "collection_name"
+
         metadata <- finbif_collections(
-          select = "collection_name", subcollections = TRUE,
+          select = ptrn, subcollections = TRUE,
           supercollections = TRUE, nmin = NA
         )
 
       } else {
 
+        ptrn <- "^name_"
+
         metadata <- get(to_native(candidates[[k]]))
 
       }
-
-      ptrn <- "^name_"
 
       i <- gsub("http://tun.fi/", "", df[[id_var_name]])
 
