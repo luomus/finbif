@@ -168,6 +168,10 @@ test_that(
       finbif_occurrence(filter = list(NULL), aggregate = "records", n = 2e5)
     )
 
+    expect_error(
+      finbif_occurrence("Birds", aggregate = "events")
+    )
+
   }
 )
 

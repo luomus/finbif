@@ -72,7 +72,9 @@ finbif_records <- function(
 
     } else {
 
-      query <- lapply(parse_filters(filter), paste, collapse = ",")
+      parsed_filters <- parse_filters(filter, aggregate)
+
+      query <- lapply(parsed_filters, paste, collapse = ",")
 
     }
 
@@ -133,7 +135,7 @@ finbif_records <- function(
 infer_aggregation <- function(aggregate) {
 
   if (missing(aggregate)) {
-     aggregate <- "none"
+    aggregate <- "none"
   }
 
   aggregate <- match.arg(
@@ -400,10 +402,20 @@ get_extra_pages <- function(
 
 # parsing filters --------------------------------------------------------------
 
-parse_filters <- function(filter) {
+parse_filters <- function(filter, aggregate) {
 
   filter <- as.list(filter)
   finbif_filter_names <- translate(names(filter), "filter_names")
+
+  cond <- switch(aggregate, "events" = TRUE, FALSE)
+
+  cond <- cond && any(c("taxonId", "target") %in% finbif_filter_names)
+
+  if (cond) {
+
+    deferrable_error("Cannot aggregate by events and filter by taxon")
+
+  }
 
   for (i in seq_along(filter)) {
 
