@@ -1,6 +1,6 @@
 ## Release summary
 
-This release adds new features, minor improvements and bug fixes
+A patch to fix in a critical regression from the last release
 
 ## Test environments
 
@@ -14,8 +14,4 @@ This release adds new features, minor improvements and bug fixes
 ## R CMD check results
 0 errors | 0 warnings | 0 notes
 
-Have fixed previous release NOTE:
-  
-  Namespace in Imports field not imported from: ‘curl’
-
-Only declared Imports now used.
+Apologies for the short turn-around since the previous release.
