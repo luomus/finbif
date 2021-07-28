@@ -34,8 +34,8 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":469032,"pageSize":10,"total":4690318,"results":[{"unit":{"unitId":"http://tun.fi/JX.185619#4"},"document":{"collectionId":"http://tun.fi/HR.2129"}},{"unit":{"unitId":"http://tun.fi/JX.185602#4"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.185597#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.185596#5"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.185596#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.185596#7"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.185595#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.185594#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.185593#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.185574#4"},"document":{"collectionId":"http://tun.fi/HR.1747"}}]}'
-  recorded_at: 2021-01-12 13:22:58 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.7.4
+  recorded_at: 2021-07-28 13:53:50 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.laji.fi/explorer/swagger.json
@@ -4734,5 +4734,38 @@ http_interactions:
         is unknown."}}},"reserve":{"required":["reserver","until"],"properties":{"reserver":{"type":"string","description":"QName
         for MA.person"},"until":{"type":"string","description":"date string using
         ISO8601 format"}}}}}'
-  recorded_at: 2021-01-12 13:22:58 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.7.4
+  recorded_at: 2021-07-28 13:53:50 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.collectionId%2Cdocument.collectionId&page=1&pageSize=10&access_token=<finbif_dev_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Wed, 28 Jul 2021 13:53:49 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":334034,"pageSize":10,"total":3340332,"results":[{"unit":{"unitId":"http://tun.fi/JX.250948#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.250948#7"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.250207#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.250205#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.250203#3"},"document":{"collectionId":"http://tun.fi/HR.3531"}},{"unit":{"unitId":"http://tun.fi/JX.250202#3"},"document":{"collectionId":"http://tun.fi/HR.3531"}},{"unit":{"unitId":"http://tun.fi/JX.250196#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.250194#3"},"document":{"collectionId":"http://tun.fi/HR.3531"}},{"unit":{"unitId":"http://tun.fi/JX.250142#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.250142#18"},"document":{"collectionId":"http://tun.fi/HR.1747"}}]}'
+  recorded_at: 2021-07-28 13:53:50 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
