@@ -260,7 +260,7 @@
     }
   ],
   "releaseNotes": "https://github.com/luomus/finbif/blob/master/NEWS.md",
-  "contIntegration": ["https://codecov.io/github/luomus/finbif/branch/master", "https://codecov.io/github/luomus/finbif/branch/dev"],
+  "contIntegration": ["https://github.com/luomus/finbif/actions", "https://codecov.io/github/luomus/finbif/branch/master", "https://github.com/luomus/finbif/actions", "https://codecov.io/github/luomus/finbif/branch/dev"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
@@ -297,5 +297,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "36670.729KB"
+  "fileSize": "36676.878KB"
 }
