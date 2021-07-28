@@ -1,3 +1,9 @@
+# finbif 0.6.1.9001
+
+#### NEW FEATURES
+
+-   Records can now be aggregated by document.
+
 # finbif 0.6.1.9000
 
 #### MINOR IMPROVEMENTS

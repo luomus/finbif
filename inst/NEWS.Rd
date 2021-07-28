@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.1.9001}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Records can now be aggregated by document.
+    }
+  }
+}
+
 \section{finbif version 0.6.1.9000}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
