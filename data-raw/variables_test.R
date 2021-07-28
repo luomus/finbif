@@ -33,6 +33,13 @@ agg_gath_vars <- agg_gath_vars[[
 ]]
 agg_gath_vars <- unlist(agg_gath_vars[["items"]][["enum"]])
 
+agg_doc_vars <-
+  vars[["/query/document/aggregate"]][["get"]][["parameters"]]
+agg_doc_vars <- agg_doc_vars[[
+  which(vapply(agg_doc_vars, getElement, "", "name") == "aggregateBy")
+]]
+agg_doc_vars <- unlist(agg_doc_vars[["items"]][["enum"]])
+
 select_vars_pkg <- row.names(var_names_test[var_names_test[["select"]], ])
 select_vars_pkg <- grep(
   "^computed_var|^missing_var", select_vars_pkg, value = TRUE, invert = TRUE
@@ -73,6 +80,16 @@ agg_gath_vars_pkg <- grep(
 
 in_pkg_only <- setdiff(agg_gath_vars_pkg, agg_gath_vars)
 schema_only <- setdiff(agg_gath_vars, agg_gath_vars_pkg)
+
+stopifnot(!length(c(in_pkg_only, schema_only)))
+
+agg_doc_vars_pkg <- row.names(var_names[var_names[["aggregate_documents"]], ])
+agg_doc_vars_pkg <- grep(
+  "^computed_var|^missing_var", agg_doc_vars_pkg, value = TRUE, invert = TRUE
+)
+
+in_pkg_only <- setdiff(agg_doc_vars_pkg, agg_doc_vars)
+schema_only <- setdiff(agg_doc_vars, agg_doc_vars_pkg)
 
 stopifnot(!length(c(in_pkg_only, schema_only)))
 

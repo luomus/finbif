@@ -19,10 +19,10 @@
 #'   `"-date_start"`). Default order is `"-date_start"` > `"-load_data"` >
 #'   `"reported_name"`.
 #' @param aggregate Character. If missing, returns full records. If one or more
-#'   of `"records"`, `"species"`, `"taxa"`, or `"events"` aggregates
-#'   combinations of the selected variables by counting records, species, taxa,
-#'   or events. Aggregation by event cannot be done in combination with any of
-#'   the other aggregation types.
+#'   of `"records"`, `"species"`, `"taxa"`, `"events"` or `"documents"`
+#'   aggregates combinations of the selected variables by counting records,
+#'   species, taxa, events or documents. Aggregation by events or documents
+#'   cannot be done in combination with any of the other aggregation types.
 #' @param sample Logical. If `TRUE` randomly sample the records from the FinBIF
 #'   database.
 #' @param n Integer. How many records to download/import.
@@ -135,18 +135,22 @@ finbif_records <- function(
 infer_aggregation <- function(aggregate) {
 
   if (missing(aggregate)) {
+
     aggregate <- "none"
+
   }
 
   aggregate <- match.arg(
-    aggregate, c("none", "records", "species", "taxa", "events"), TRUE
+    aggregate,
+    c("none", "records", "species", "taxa", "events", "documents"),
+    TRUE
   )
 
-  cond <- "events" %in% aggregate && length(aggregate) > 1L
+  cond <- any(c("events", "documents") %in% aggregate) && length(aggregate) > 1L
 
   if (cond) {
     deferrable_error(
-      "Aggregating by events cannot by combined with other aggregations"
+      "Chosen aggregation cannot by combined with other aggregations"
     )
   }
 
@@ -159,22 +163,22 @@ infer_aggregation <- function(aggregate) {
 infer_selection <- function(aggregate, select, var_type) {
 
   date_time_vars <- var_names[var_names[["date"]], ]
-  default_vars <- var_names["unit.linkings.taxon.scientificName", ]
-  select_type <- "aggregate"
 
-  if (identical(aggregate, "events")) {
+  default_vars <- switch(
+    aggregate,
+    none = var_names[var_names[["default_var"]], ],
+    events = var_names["gathering.gatheringId", ],
+    documents = var_names["document.documentId", ],
+    var_names["unit.linkings.taxon.scientificName", ]
+  )
 
-    default_vars <- var_names["gathering.gatheringId", ]
-    select_type <- "aggregate_events"
-
-  }
-
-  if (identical(aggregate, "none")) {
-
-    default_vars <- var_names[var_names[["default_var"]], ]
-    select_type <- "select"
-
-  }
+  select_type <- switch(
+    aggregate,
+    none = "select",
+    events = "aggregate_events",
+    documents = "aggregate_documents",
+    "aggregate"
+  )
 
   if (missing(select)) {
 
@@ -407,13 +411,13 @@ parse_filters <- function(filter, aggregate) {
   filter <- as.list(filter)
   finbif_filter_names <- translate(names(filter), "filter_names")
 
-  cond <- switch(aggregate, "events" = TRUE, FALSE)
+  cond <- switch(aggregate, events = TRUE, documents = TRUE, FALSE)
 
   cond <- cond && any(c("taxonId", "target") %in% finbif_filter_names)
 
   if (cond) {
 
-    deferrable_error("Cannot aggregate by events and filter by taxon")
+    deferrable_error("Cannot use current aggregation and filter by taxon")
 
   }
 
@@ -645,6 +649,7 @@ select_endpoint <- function(aggregate) {
     aggregate[[1L]],
     none = "unit/list",
     events = "gathering/aggregate",
+    documents = "document/aggregate",
     "unit/aggregate"
   )
 }

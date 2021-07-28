@@ -246,6 +246,26 @@ test_that(
 
 suppressMessages(eject_cassette("finbif_occurrence_aggregate_events"))
 
+suppressMessages(insert_cassette("finbif_occurrence_aggregate_documents"))
+
+test_that(
+  "can aggregate by events", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(
+        filter = c(location_id = "MNP.798"), aggregate = "documents"
+      ),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_aggregate_documents"))
+
 suppressMessages(insert_cassette("finbif_occurrence_date_time_ISO8601"))
 
 test_that(

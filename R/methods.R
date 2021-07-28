@@ -35,7 +35,7 @@ as.data.frame.finbif_records <- function(
   if (aggregated) {
     aggregations <- c(
       records = "count", species = "speciesCount", taxa = "taxonCount",
-      events = "count"
+      events = "count", documents = "count"
     )
     aggregations <- aggregations[aggregation]
     counts <- list()
