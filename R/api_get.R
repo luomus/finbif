@@ -43,7 +43,7 @@ api_get <- function(path, query, cache) {
   if (!is.null(email)) query <- c(query, list(personEmail = email))
 
   # Pausing between requests is important if many request will be made
-  Sys.sleep(1L)
+  Sys.sleep(1 / getOption("finbif_rate_limit"))
 
   resp <- httr::RETRY(
     "GET",

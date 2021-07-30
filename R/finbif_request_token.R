@@ -40,6 +40,8 @@ finbif_request_token <- function(email) {
     "Option:finbif_allow_query = FALSE" = getOption("finbif_allow_query")
   )
 
+  Sys.sleep(1 / getOption("finbif_rate_limit"))
+
   resp <- httr::RETRY(
     verb = "POST",
     url = sprintf("https://%s/%s/%s", url, version, path),

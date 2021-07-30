@@ -239,6 +239,8 @@ get_swagger <- function(cache) {
       getOption("finbif_allow_query")
   )
 
+  Sys.sleep(1 / getOption("finbif_rate_limit"))
+
   ans <- httr::RETRY("GET", url)
 
   ans

@@ -50,11 +50,10 @@ finbif_records <- function(
   dwc = FALSE, seed, df = FALSE
 ) {
 
-  max_queries        <- 2000L
-  max_size           <- 1000L
-  nmax               <- max_queries * max_size
-  n                  <- as.integer(n)
-  var_type           <- col_type_string(dwc)
+  max_size <- getOption("finbif_max_page_size")
+  nmax     <- getOption("finbif_max_queries") * max_size
+  n        <- as.integer(n)
+  var_type <- col_type_string(dwc)
 
   defer_errors({
 

@@ -524,6 +524,8 @@ get_zip <- function(url, quiet, cache, write_file) {
       getOption("finbif_allow_query")
   )
 
+  Sys.sleep(1 / getOption("finbif_rate_limit"))
+
   resp <- httr::RETRY(
     "GET", url, httr::write_disk(zip, overwrite = TRUE), progress
   )
