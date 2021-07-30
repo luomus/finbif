@@ -519,6 +519,11 @@ get_zip <- function(url, quiet, cache, write_file) {
 
   }
 
+  stopifnot(
+    "Request not cached and option:finbif_allow_query = FALSE" =
+      getOption("finbif_allow_query")
+  )
+
   resp <- httr::RETRY(
     "GET", url, httr::write_disk(zip, overwrite = TRUE), progress
   )

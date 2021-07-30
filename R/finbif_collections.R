@@ -31,10 +31,13 @@ finbif_collections <- function(
 
   lang <- match.arg(lang)
 
-  swagger <- httr::GET("https://api.laji.fi/explorer/swagger.json")
+  swagger <- get_swagger(cache)
+
   swagger <-
     jsonlite::fromJSON(httr::content(swagger, "text"), simplifyVector = FALSE)
+
   col_md_nms <- names(swagger[["definitions"]][["Collection"]][["properties"]])
+
   col_md <- get_collections(
     list(lang = lang), "collections", col_md_nms, "id", cache
   )
@@ -170,5 +173,74 @@ get_collections <- function(qry, path, nms, id, cache) {
   )
 
   collections
+
+}
+
+#' @noRd
+#' @importFrom digest digest
+#' @importFrom httr RETRY
+
+get_swagger <- function(cache) {
+
+  url <- "https://api.laji.fi/explorer/swagger.json"
+
+  if (cache) {
+
+    hash <- digest::digest(url)
+
+    fcp <- getOption("finbif_cache_path")
+
+    if (is.null(fcp)) {
+
+      ans <- get_cache(hash)
+
+      if (!is.null(ans)) {
+
+        return(ans)
+
+      }
+
+      on.exit(
+
+        if (!is.null(ans)) {
+
+          set_cache(ans, hash)
+
+        }
+
+      )
+
+    } else {
+
+      cache_file <- file.path(fcp, paste0("finbif_cache_file_", hash))
+
+      if (file.exists(cache_file)) {
+
+        return(readRDS(cache_file))
+
+      }
+
+      on.exit(
+
+        if (!is.null(ans)) {
+
+          saveRDS(ans, cache_file)
+
+        }
+
+      )
+
+    }
+
+  }
+
+  stopifnot(
+    "Request not cached and option:finbif_allow_query = FALSE" =
+      getOption("finbif_allow_query")
+  )
+
+  ans <- httr::RETRY("GET", url)
+
+  ans
 
 }

@@ -35,6 +35,11 @@ finbif_request_token <- function(email) {
   url     <- getOption("finbif_api_url")
   version <- getOption("finbif_api_version")
   path    <- "api-users"
+
+  stopifnot(
+    "Option:finbif_allow_query = FALSE" = getOption("finbif_allow_query")
+  )
+
   resp <- httr::RETRY(
     verb = "POST",
     url = sprintf("https://%s/%s/%s", url, version, path),

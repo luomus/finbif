@@ -5,6 +5,7 @@
     finbif_api_url = "api.laji.fi",
     finbif_api_version = "v0",
     finbif_warehouse_query = "warehouse/query/",
+    finbif_allow_query = TRUE,
     finbif_use_cache = TRUE,
     finbif_tz = Sys.timezone(),
     finbif_locale = get_locale()

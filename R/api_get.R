@@ -34,6 +34,11 @@ api_get <- function(path, query, cache) {
     }
   }
 
+  stopifnot(
+    "Request not cached and option:finbif_allow_query = FALSE" =
+      getOption("finbif_allow_query")
+  )
+
   email <- getOption("finbif_email")
   if (!is.null(email)) query <- c(query, list(personEmail = email))
 
@@ -94,6 +99,7 @@ api_get <- function(path, query, cache) {
   )
 
   ans
+
 }
 
 get_calling_function <- function(pkg) {
