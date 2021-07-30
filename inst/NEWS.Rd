@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.1.9002}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New package option, \code{finbif_allow_query}, with default value,
+        \code{TRUE}. If set to \code{FALSE} then remote API queries will trigger
+        an error meaning only cached requests will run if a cache is found.
+    }
+  }
+}
+
 \section{finbif version 0.6.1.9001}{
   \subsection{NEW FEATURES}{
     \itemize{

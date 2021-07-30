@@ -1,3 +1,11 @@
+# finbif 0.6.1.9002
+
+#### NEW FEATURES
+
+-   New package option, `finbif_allow_query`, with default value,
+    `TRUE`. If set to `FALSE` then remote API queries will trigger an
+    error meaning only cached requests will run if a cache is found.
+
 # finbif 0.6.1.9001
 
 #### NEW FEATURES
