@@ -47,7 +47,7 @@ api_get <- function(path, query, cache) {
 
   resp <- httr::RETRY(
     "GET",
-    sprintf("https://%s/%s/%s", url, version, path),
+    sprintf("%s/%s/%s", url, version, path),
     httr::user_agent(
       paste0(
         "https://github.com/luomus/finbif#",
@@ -75,7 +75,7 @@ api_get <- function(path, query, cache) {
   }
 
   parsed <- jsonlite::fromJSON(
-    httr::content(resp, "text"), simplifyVector = FALSE
+    httr::content(resp, "text", encoding = "UTF-8"), simplifyVector = FALSE
   )
 
   if (httr::status_code(resp) != 200L) {

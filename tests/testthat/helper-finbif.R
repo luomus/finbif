@@ -1,6 +1,6 @@
 dummy <- function(...) NULL
 
-if (requireNamespace("vcr")) {
+if (requireNamespace("vcr", quietly = TRUE)) {
 
   library("vcr")
   invisible(
@@ -27,7 +27,7 @@ if (requireNamespace("vcr")) {
 has_dev_api <- function() nchar(Sys.getenv("FINBIF_DEV_ACCESS_TOKEN")) > 0L
 
 is_dev_api <-
-  function() identical(getOption("finbif_api_url"), "apitest.laji.fi")
+  function() identical(getOption("finbif_api_url"), "https://apitest.laji.fi")
 
 if (requireNamespace("grDevices")) {
 

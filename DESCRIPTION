@@ -53,7 +53,8 @@ Suggests:
     rmarkdown,
     testthat (>= 2.1.0),
     tidyr,
-    vcr
+    vcr,
+    webfakes
 Config/testthat/edition: 3
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: 

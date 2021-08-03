@@ -7,6 +7,7 @@
 #'
 #' @param email Character. The email address to which to send the API access
 #'   token.
+#' @param quiet Logical. Suppress messages.
 #' @return If an access token has already been set then `NULL` (invisibly) if
 #'   not then, invisibly, a `finbif_api` object containing the response from
 #'   the FinBIF server.
@@ -20,7 +21,7 @@
 #' }
 #' @export
 
-finbif_request_token <- function(email) {
+finbif_request_token <- function(email, quiet = FALSE) {
   finbif_access_token <- token()
 
   if (!is.null(finbif_access_token)) {
@@ -44,7 +45,7 @@ finbif_request_token <- function(email) {
 
   resp <- httr::RETRY(
     verb = "POST",
-    url = sprintf("https://%s/%s/%s", url, version, path),
+    url = sprintf("%s/%s/%s", url, version, path),
     config = httr::user_agent(
       paste0(
         "https://github.com/luomus/finbif#",
@@ -53,11 +54,13 @@ finbif_request_token <- function(email) {
     ),
     httr::accept_json(),
     body = list(email = email),
-    encode = "json"
+    encode = "json",
+    quiet = quiet,
+    terminate_on = 404L
   )
 
   parsed <- jsonlite::fromJSON(
-    httr::content(resp, "text"), simplifyVector = FALSE
+    httr::content(resp, "text", encoding = "UTF-8"), simplifyVector = FALSE
   )
 
   status <- httr::status_code(resp)
@@ -71,8 +74,12 @@ finbif_request_token <- function(email) {
       ),
       call. = FALSE
     )
-  } else {
+  }
+
+  if (!quiet) {
+
     message("A personal access token for api.laji.fi has been sent to: ", email)
+
   }
 
   ans <- structure(

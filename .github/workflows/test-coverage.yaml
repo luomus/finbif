@@ -52,5 +52,5 @@ jobs:
         shell: Rscript {0}
 
       - name: Test coverage
-        run: covr::codecov(line_exclusions = list("R/finbif_request_token.R" = 35:77))
+        run: covr::codecov()
         shell: Rscript {0}

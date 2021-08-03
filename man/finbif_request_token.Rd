@@ -5,11 +5,13 @@
 \alias{fb_request_token}
 \title{Get a FinBIF personal access token}
 \usage{
-finbif_request_token(email)
+finbif_request_token(email, quiet = FALSE)
 }
 \arguments{
 \item{email}{Character. The email address to which to send the API access
 token.}
+
+\item{quiet}{Logical. Suppress messages.}
 }
 \value{
 If an access token has already been set then \code{NULL} (invisibly) if
