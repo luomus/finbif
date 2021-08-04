@@ -27,7 +27,7 @@ by the package.
 for documentation.
 *  We use [testthat](https://cran.r-project.org/package=testthat). Contributions
 with test cases included are easier to accept.
-*  For user-facing changes, add a bullet to the top of `NEWS.md` below the
+*  For user-facing changes, add a section to the top of `inst/NEWS.Rd` below the
 current development version header describing the changes made followed by your
 username, and links to relevant issue(s)/PR(s).
 

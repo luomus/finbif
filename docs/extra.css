@@ -1,0 +1,15 @@
+body {
+  padding-top: 65px;
+}
+
+div.pb-2.mt-4.mb-2.border-bottom {
+  min-height: 155px;
+}
+
+.ref-description img {
+  display: none;
+}
+
+.sourceCode {
+  font-size: 93%;
+}

@@ -1,3 +1,17 @@
+template:
+  bootstrap: 4
+  bootswatch: materia
+  bslib:
+    table-border-width: "0px"
+    primary: "#2691D9"
+    font-size-base: "1rem"
+    base_font:
+      google: "Roboto"
+navbar:
+  type: dark
+  bg: primary
+home:
+  title: "FinBIF R package"
 destination: docs
 reference:
   - title: "The finbif package"
@@ -34,6 +48,7 @@ reference:
       - finbif_records
       - filters
       - to_dwc
+      - to_native
       - variables
   - title: "Methods"
     desc: >
