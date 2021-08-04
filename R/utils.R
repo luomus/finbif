@@ -280,7 +280,7 @@ to_ <- function(x, from, to) {
 #'
 #' @param ... Character. Variable names to convert. For `to_dwc` and `to_native`
 #'   the names must be in the opposite format. For `from_schema` the names must
-#'   be from the FinBIF schema (e.g., names returned https://api.laji.fi) or
+#'   be from the FinBIF schema (e.g., names returned by https://api.laji.fi) or
 #'   a FinBIF download file (citable or lite).
 #' @param to Character. Type of variable names to convert to.
 #' @param file Character. For variable names that are derived from a FinBIF
