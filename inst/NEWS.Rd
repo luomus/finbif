@@ -74,7 +74,7 @@
         \code{select = "all"}.
       \item New option, \code{drop_na}, to drop columns that only contain
         missing data added to \code{finbif_occurrence} and
-        \code{finbif_occurrence} load.
+        \code{finbif_occurrence_load}.
       \item User can now select columns multiple times and rename them on the
         fly by using a named character vector as the value of the `select`
         argument.

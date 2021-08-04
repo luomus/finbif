@@ -70,7 +70,7 @@
     `select = "all"`.
 
 -   New option, `drop_na`, to drop columns that only contain missing
-    data added to `finbif_occurrence` and `finbif_occurrence` load.
+    data added to `finbif_occurrence` and `finbif_occurrence_load`.
 
 -   User can now select columns multiple times and rename them on the
     fly by using a named character vector as the value of the 'select'
