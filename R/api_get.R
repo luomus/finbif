@@ -21,7 +21,7 @@ api_get <- function(path, query, cache) {
   version <- getOption("finbif_api_version")
 
   if (cache) {
-    hash <- digest::digest(list(url, version, path, query))
+    hash <- digest::digest(list(sub(".*://", "", url), version, path, query))
     fcp <- getOption("finbif_cache_path")
     if (is.null(fcp)) {
       ans <- get_cache(hash)
