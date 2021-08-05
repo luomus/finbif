@@ -1,3 +1,10 @@
+# finbif 0.6.1.9004
+
+#### BUG FIXES
+
+-   Fix bug preventing loading of FinBIF archives that is triggered when
+    all variables are selected with `select = "all"`.
+
 # finbif 0.6.1.9003
 
 #### BUG FIXES

@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.1.9004}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fix bug preventing loading of FinBIF archives that is triggered
+        when all variables are selected with \code{select = "all"}.
+    }
+  }
+}
+
 \section{finbif version 0.6.1.9003}{
   \subsection{BUG FIXES}{
     \itemize{
