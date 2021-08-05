@@ -108,6 +108,17 @@ test_that(
       style = "json2"
     )
 
+    expect_snapshot_value(
+      capture.output(
+        print(
+          finbif_occurrence_load(
+            zip, select = "all", n = nrows, tzone = "Etc/UTC"
+          )
+        )
+      ),
+      style = "json2"
+    )
+
   }
 
 )

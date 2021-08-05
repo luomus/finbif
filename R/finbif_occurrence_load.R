@@ -127,7 +127,7 @@ finbif_occurrence_load <- function(
 
   if (select_all) {
 
-    select[["user"]] <- TRUE
+    select[["user"]] <- names(df)
 
   } else {
 
