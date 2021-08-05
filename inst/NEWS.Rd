@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.1.9003}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fix bug preventing \code{finbif_occ} objects from printing when one
+        or more columns contained missing data only.
+    }
+  }
+}
+
 \section{finbif version 0.6.1.9002}{
   \subsection{NEW FEATURES}{
     \itemize{

@@ -1,3 +1,10 @@
+# finbif 0.6.1.9003
+
+#### BUG FIXES
+
+-   Fix bug preventing `finbif_occ` objects from printing when one or
+    more columns contained missing data only.
+
 # finbif 0.6.1.9002
 
 #### NEW FEATURES
