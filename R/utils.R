@@ -12,9 +12,11 @@ drop_na_col <- function(df, which = TRUE) {
   is_na <- lapply(df, is.na)
   is_na <- vapply(is_na, all, logical(1L))
 
-  attr(df, "column_names") <- attr(df, "column_names")[!is_na]
+  cond <- !is_na | !which
 
-  df[, !is_na | !which, drop = FALSE]
+  attr(df, "column_names") <- attr(df, "column_names")[cond]
+
+  df[, cond, drop = FALSE]
 
 }
 
