@@ -164,7 +164,7 @@ infer_selection <- function(aggregate, select, var_type) {
   date_time_vars <- var_names[var_names[["date"]], ]
 
   default_vars <- switch(
-    aggregate,
+    aggregate[[1L]],
     none = var_names[var_names[["default_var"]], ],
     events = var_names["gathering.gatheringId", ],
     documents = var_names["document.documentId", ],
