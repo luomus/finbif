@@ -172,7 +172,7 @@ infer_selection <- function(aggregate, select, var_type) {
   )
 
   select_type <- switch(
-    aggregate,
+    aggregate[[1L]],
     none = "select",
     events = "aggregate_events",
     documents = "aggregate_documents",
