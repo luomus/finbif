@@ -410,7 +410,7 @@ parse_filters <- function(filter, aggregate) {
   filter <- as.list(filter)
   finbif_filter_names <- translate(names(filter), "filter_names")
 
-  cond <- switch(aggregate, events = TRUE, documents = TRUE, FALSE)
+  cond <- switch(aggregate[[1L]], events = TRUE, documents = TRUE, FALSE)
 
   cond <- cond && any(c("taxonId", "target") %in% finbif_filter_names)
 
