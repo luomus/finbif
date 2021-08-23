@@ -21,3 +21,4 @@
 ^inst/man$
 ^prepare-for-release$
 ^LICENSE\.md$
+^CITATION\.cff$
