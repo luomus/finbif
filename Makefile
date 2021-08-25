@@ -8,15 +8,15 @@ export _R_CHECK_FUTURE_FILE_TIMESTAMPS_ = false
 all: check_deps_only check clean
 
 dev_deps:
-	${RSCRIPT} -e "stopifnot(requireNamespace('data.tree', quietly = TRUE))"
-	${RSCRIPT} -e "stopifnot(requireNamespace('details', quietly = TRUE))"
-	${RSCRIPT} -e "stopifnot(requireNamespace('devtools', quietly = TRUE))"
-	${RSCRIPT} -e "stopifnot(requireNamespace('codemetar', quietly = TRUE))"
-	${RSCRIPT} -e "stopifnot(requireNamespace('ISOcodes', quietly = TRUE))"
-	${RSCRIPT} -e "stopifnot(requireNamespace('ows4R', quietly = TRUE))"
-	${RSCRIPT} -e "stopifnot(requireNamespace('pkgdown', quietly = TRUE))"
-	${RSCRIPT} -e "stopifnot(requireNamespace('sf', quietly = TRUE))"
-	${RSCRIPT} -e "stopifnot(requireNamespace('stats', quietly = TRUE))"
+	${RSCRIPT} -e "stopifnot(requireNamespace('data.tree', quietly = TRUE))";\
+	${RSCRIPT} -e "stopifnot(requireNamespace('details', quietly = TRUE))";\
+	${RSCRIPT} -e "stopifnot(requireNamespace('devtools', quietly = TRUE))";\
+	${RSCRIPT} -e "stopifnot(requireNamespace('codemetar', quietly = TRUE))";\
+	${RSCRIPT} -e "stopifnot(requireNamespace('ISOcodes', quietly = TRUE))";\
+	${RSCRIPT} -e "stopifnot(requireNamespace('ows4R', quietly = TRUE))";\
+	${RSCRIPT} -e "stopifnot(requireNamespace('pkgdown', quietly = TRUE))";\
+	${RSCRIPT} -e "stopifnot(requireNamespace('sf', quietly = TRUE))";\
+	${RSCRIPT} -e "stopifnot(requireNamespace('stats', quietly = TRUE))";\
 	${RSCRIPT} -e "stopifnot(requireNamespace('usethis', quietly = TRUE))"
 
 build: doc
@@ -44,12 +44,12 @@ README.md: README.Rmd NEWS.md
 	${RSCRIPT} -e "knitr::knit('$<')"
 
 NEWS.md: inst/NEWS.Rd install
-	${RSCRIPT} -e "tools::Rd2HTML('$<', 'inst/NEWS.html')"
-	sed -i 's/h3>/h1>/g' inst/NEWS.html
-	pandoc -s inst/NEWS.html -o inst/NEWS.md -t gfm
-	sed -i '1,6d' inst/NEWS.md
-	sed -i 's/# ${PKGNAME} version/# ${PKGNAME}/g' inst/NEWS.md
-	cp inst/NEWS.md NEWS.md
+	${RSCRIPT} -e "tools::Rd2HTML('$<', 'inst/NEWS.html')";\
+	sed -i 's/h3>/h1>/g' inst/NEWS.html;\
+	pandoc -s inst/NEWS.html -o inst/NEWS.md -t gfm;\
+	sed -i '1,8d' inst/NEWS.md;\
+	head -n -2 inst/NEWS.md > NEWS.md;\
+	sed -i 's/# ${PKGNAME} version/# ${PKGNAME}/g' NEWS.md;\
 	$(RM) inst/NEWS.html inst/NEWS.md
 
 vignettes: install
