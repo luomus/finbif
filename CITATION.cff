@@ -1,5 +1,7 @@
 # YAML 1.2
 ---
+version: "0.6.1.9004"
+date-released: 2021-08-23
 title: finbif
 abstract: |
     "The `finbif` R package is a programmatic interface to the
@@ -20,7 +22,6 @@ authors:
     given-names: "William K."
     orcid: "https://orcid.org/0000-0002-8686-4154"
 cff-version: "1.2.0"
-date-released: 2021-08-23
 doi: "10.5281/zenodo.3612814"
 keywords:
   - api
@@ -41,7 +42,6 @@ keywords:
 license: MIT
 url: "https://luomus.github.io/finbif"
 repository-code: "https://github.com/luomus/finbif"
-version: "0.6.1.9004"
 preferred-citation:
   authors:
     - family-names: Morris
