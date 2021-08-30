@@ -12,7 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Released version">0.6.1.9004</button>
+    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Released version">0.6.2</button>
 
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto ml-3"><li class="nav-item">
@@ -53,55 +53,31 @@
       <small>Source: <a href="https://github.com/luomus/finbif/blob/master/NEWS.md"><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="finbif-0619004" class="section level2">
-<h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.1.9004">
-<a href="#finbif-0619004" class="anchor" aria-hidden="true"></a>finbif 0.6.1.9004</h2><h6 class="text-muted" data-toc-skip> CRAN release: Unreleased</h6>
-<div id="bug-fixes" class="section level5">
-<h5 class="hasAnchor" id="bug-fixes-0.6.1.9004">
-<a href="#bug-fixes-0.6.1.9004" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
-<ul><li>Fix bug preventing loading of FinBIF archives that is triggered when all variables are selected with <code>select = "all"</code>.</li>
-</ul></div>
-</div>
-    <div id="finbif-0619003" class="section level2">
-<h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.1.9003">
-<a href="#finbif-0619003" class="anchor" aria-hidden="true"></a>finbif 0.6.1.9003</h2><h6 class="text-muted" data-toc-skip> CRAN release: Unreleased</h6>
-<div id="bug-fixes-1" class="section level5">
-<h5 class="hasAnchor" id="bug-fixes-0.6.1.9003">
-<a href="#bug-fixes-0.6.1.9003" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
-<ul><li>Fix bug preventing <code>finbif_occ</code> objects from printing when one or more columns contained missing data only.</li>
-</ul></div>
-</div>
-    <div id="finbif-0619002" class="section level2">
-<h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.1.9002">
-<a href="#finbif-0619002" class="anchor" aria-hidden="true"></a>finbif 0.6.1.9002</h2><h6 class="text-muted" data-toc-skip> CRAN release: Unreleased</h6>
+    <div id="finbif-062" class="section level2">
+<h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.2">
+<a href="#finbif-062" class="anchor" aria-hidden="true"></a>finbif 0.6.2</h2><h6 class="text-muted" data-toc-skip> CRAN release: Unreleased</h6>
 <div id="new-features" class="section level5">
-<h5 class="hasAnchor" id="new-features-0.6.1.9002">
-<a href="#new-features-0.6.1.9002" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
-<ul><li>New package option, <code>finbif_allow_query</code>, with default value, <code>TRUE</code>. If set to <code>FALSE</code> then remote API queries will trigger an error meaning only cached requests will run if a cache is found.</li>
+<h5 class="hasAnchor" id="new-features-0.6.2">
+<a href="#new-features-0.6.2" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
+<ul><li><p>New package option, <code>finbif_allow_query</code>, with default value, <code>TRUE</code>. If set to <code>FALSE</code> then remote API queries will trigger an error meaning only cached requests will run if a cache is found.</p></li>
+<li><p>Records can now be aggregated by document.</p></li>
 </ul></div>
-</div>
-    <div id="finbif-0619001" class="section level2">
-<h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.1.9001">
-<a href="#finbif-0619001" class="anchor" aria-hidden="true"></a>finbif 0.6.1.9001</h2><h6 class="text-muted" data-toc-skip> CRAN release: Unreleased</h6>
-<div id="new-features-1" class="section level5">
-<h5 class="hasAnchor" id="new-features-0.6.1.9001">
-<a href="#new-features-0.6.1.9001" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
-<ul><li>Records can now be aggregated by document.</li>
-</ul></div>
-</div>
-    <div id="finbif-0619000" class="section level2">
-<h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.1.9000">
-<a href="#finbif-0619000" class="anchor" aria-hidden="true"></a>finbif 0.6.1.9000</h2><h6 class="text-muted" data-toc-skip> CRAN release: Unreleased</h6>
 <div id="minor-improvements" class="section level5">
-<h5 class="hasAnchor" id="minor-improvements-0.6.1.9000">
-<a href="#minor-improvements-0.6.1.9000" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
+<h5 class="hasAnchor" id="minor-improvements-0.6.2">
+<a href="#minor-improvements-0.6.2" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
 <ul><li>A client-side error will be triggered if an attempt is made to filter by taxon and aggregate data by event with <code>finbif_occurrence</code>.</li>
+</ul></div>
+<div id="bug-fixes" class="section level5">
+<h5 class="hasAnchor" id="bug-fixes-0.6.2">
+<a href="#bug-fixes-0.6.2" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
+<ul><li><p>Fix bug preventing loading of FinBIF archives that is triggered when all variables are selected with <code>select = "all"</code>.</p></li>
+<li><p>Fix bug preventing <code>finbif_occ</code> objects from printing when one or more columns contain missing data only.</p></li>
 </ul></div>
 </div>
     <div id="finbif-061" class="section level2">
 <h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.1">
 <a href="#finbif-061" class="anchor" aria-hidden="true"></a>finbif 0.6.1</h2><h6 class="text-muted" data-toc-skip> CRAN release: 2021-07-26</h6>
-<div id="bug-fixes-2" class="section level5">
+<div id="bug-fixes-1" class="section level5">
 <h5 class="hasAnchor" id="bug-fixes-0.6.1">
 <a href="#bug-fixes-0.6.1" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
 <ul><li>Fixed a regression in the last release that prevented collection names being converted from their URIs.</li>
@@ -110,7 +86,7 @@
     <div id="finbif-060" class="section level2">
 <h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.0">
 <a href="#finbif-060" class="anchor" aria-hidden="true"></a>finbif 0.6.0</h2><h6 class="text-muted" data-toc-skip> CRAN release: 2021-07-22</h6>
-<div id="new-features-2" class="section level5">
+<div id="new-features-1" class="section level5">
 <h5 class="hasAnchor" id="new-features-0.6.0">
 <a href="#new-features-0.6.0" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
 <ul><li><p>New variables <code>lat_euref</code> and <code>lon_euref</code> available for occurrence record downloads. These new variables represent the central point of a bounding box encompassing a record’s geographic coverage in the EUREF (ETRS89/ETRS-TM35FIN) coordinate system.</p></li>
@@ -131,7 +107,7 @@
 <li><p>The variable <code>taxon_rank</code> is now converted to a string on the fly via <code>taxon_rank_id</code>.</p></li>
 <li><p>Variables that are computed from their identifiers are now localised when multiple languages are available.</p></li>
 </ul></div>
-<div id="bug-fixes-3" class="section level5">
+<div id="bug-fixes-2" class="section level5">
 <h5 class="hasAnchor" id="bug-fixes-0.6.0">
 <a href="#bug-fixes-0.6.0" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
 <ul><li><p>Fixed bug that prevented occurrence record counting when caching was not in use.</p></li>
@@ -141,7 +117,7 @@
     <div id="finbif-050" class="section level2">
 <h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.5.0">
 <a href="#finbif-050" class="anchor" aria-hidden="true"></a>finbif 0.5.0</h2><h6 class="text-muted" data-toc-skip> CRAN release: 2021-03-27</h6>
-<div id="new-features-3" class="section level5">
+<div id="new-features-2" class="section level5">
 <h5 class="hasAnchor" id="new-features-0.5.0">
 <a href="#new-features-0.5.0" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
 <ul><li><p>Getting records from FinBIF can now be speed up (~1.5x) with asynchronous processing. If the <code>future</code> package is available and an asynchronous strategy (e.g., <code>plan(multisession, workers = 2)</code>) is selected then downloading records and processing them will occur simultaneously in separate threads, often leading to a significant speed up over sequential processing.</p></li>
@@ -153,7 +129,7 @@
     <div id="finbif-041" class="section level2">
 <h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.4.1">
 <a href="#finbif-041" class="anchor" aria-hidden="true"></a>finbif 0.4.1</h2><h6 class="text-muted" data-toc-skip> CRAN release: 2021-01-27</h6>
-<div id="new-features-4" class="section level5">
+<div id="new-features-3" class="section level5">
 <h5 class="hasAnchor" id="new-features-0.4.1">
 <a href="#new-features-0.4.1" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
 <ul><li><p>New functions <code>scientific_name</code> and <code>common_name</code> are now available to get scientific and common names for taxa (given a taxon name or FinBIF ID code) or extract names from a <code>finbif_taxa</code>- class object.</p></li>
@@ -169,7 +145,7 @@
     <div id="finbif-040" class="section level2">
 <h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.4.0">
 <a href="#finbif-040" class="anchor" aria-hidden="true"></a>finbif 0.4.0</h2><h6 class="text-muted" data-toc-skip> CRAN release: 2020-12-17</h6>
-<div id="new-features-5" class="section level5">
+<div id="new-features-4" class="section level5">
 <h5 class="hasAnchor" id="new-features-0.4.0">
 <a href="#new-features-0.4.0" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
 <ul><li>Occurrence record requests can now be made with aggregation, <code>aggregate = c("records", "species", "taxa")</code>. This returns the number of records, and/or species or taxa for each combination of the selected variables instead of the occurrence records themselves.</li>
@@ -180,7 +156,7 @@
 <ul><li><p>Error is triggered when attempting to request less than one record.</p></li>
 <li><p>New content on requesting aggregated occurrence records added to vignette: 2. Occurrence records from FinBIF.</p></li>
 </ul></div>
-<div id="bug-fixes-4" class="section level5">
+<div id="bug-fixes-3" class="section level5">
 <h5 class="hasAnchor" id="bug-fixes-0.4.0">
 <a href="#bug-fixes-0.4.0" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
 <ul><li><p>Fixed two bugs in print method for FinBIF occurrence records that were triggered when attempting to print only one row of data.</p></li>
@@ -194,7 +170,7 @@
     <div id="finbif-031" class="section level2">
 <h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.3.1">
 <a href="#finbif-031" class="anchor" aria-hidden="true"></a>finbif 0.3.1</h2><h6 class="text-muted" data-toc-skip> CRAN release: 2020-11-24</h6>
-<div id="new-features-6" class="section level5">
+<div id="new-features-5" class="section level5">
 <h5 class="hasAnchor" id="new-features-0.3.1">
 <a href="#new-features-0.3.1" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
 <ul><li><p>Occurrence records can be ordered by the total number of records or total number of Finnish records of the taxon (variables: <code>n_total_records</code> &amp; <code>n_total_finnish_records</code>, currently undocumented).</p></li>
@@ -210,7 +186,7 @@
     <div id="finbif-030" class="section level2">
 <h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.3.0">
 <a href="#finbif-030" class="anchor" aria-hidden="true"></a>finbif 0.3.0</h2><h6 class="text-muted" data-toc-skip> CRAN release: 2020-04-23</h6>
-<div id="new-features-7" class="section level5">
+<div id="new-features-6" class="section level5">
 <h5 class="hasAnchor" id="new-features-0.3.0">
 <a href="#new-features-0.3.0" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
 <ul><li><p>All user facing functions with a <code>finbif_</code> prefix can now also be used with the alternative shorter prefix <code>fb_</code>.</p></li>
@@ -237,7 +213,7 @@
 <li><p>Variables can now be “deselected” when using the <code>select</code> argument to <code>finbif_occurrence</code> by prepending the variable name with a “<code>-</code>”.</p></li>
 <li><p>After some failures, API requests are now automatically retried up to three times.</p></li>
 </ul></div>
-<div id="bug-fixes-5" class="section level5">
+<div id="bug-fixes-4" class="section level5">
 <h5 class="hasAnchor" id="bug-fixes-0.3.0">
 <a href="#bug-fixes-0.3.0" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
 <ul><li><p>Ordering by descending variables did not work when ordering by both ascending and descending variables.</p></li>
@@ -249,7 +225,7 @@
     <div id="finbif-020" class="section level2">
 <h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.2.0">
 <a href="#finbif-020" class="anchor" aria-hidden="true"></a>finbif 0.2.0</h2><h6 class="text-muted" data-toc-skip> CRAN release: 2020-01-16</h6>
-<div id="new-features-8" class="section level5">
+<div id="new-features-7" class="section level5">
 <h5 class="hasAnchor" id="new-features-0.2.0">
 <a href="#new-features-0.2.0" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
 <ul><li>Add capacity to request a random sample of FinBIF records.</li>

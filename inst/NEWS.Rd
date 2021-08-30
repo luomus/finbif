@@ -1,48 +1,28 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.6.1.9004}{
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Fix bug preventing loading of FinBIF archives that is triggered
-        when all variables are selected with \code{select = "all"}.
-    }
-  }
-}
-
-\section{finbif version 0.6.1.9003}{
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Fix bug preventing \code{finbif_occ} objects from printing when one
-        or more columns contained missing data only.
-    }
-  }
-}
-
-\section{finbif version 0.6.1.9002}{
+\section{finbif version 0.6.2}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item New package option, \code{finbif_allow_query}, with default value,
         \code{TRUE}. If set to \code{FALSE} then remote API queries will trigger
         an error meaning only cached requests will run if a cache is found.
-    }
-  }
-}
-
-\section{finbif version 0.6.1.9001}{
-  \subsection{NEW FEATURES}{
-    \itemize{
       \item Records can now be aggregated by document.
     }
   }
-}
-
-\section{finbif version 0.6.1.9000}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
       \item A client-side error will be triggered if an attempt is made to
         filter by taxon and aggregate data by event with
         \code{finbif_occurrence}.
+    }
+  }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fix bug preventing loading of FinBIF archives that is triggered
+        when all variables are selected with \code{select = "all"}.
+      \item Fix bug preventing \code{finbif_occ} objects from printing when one
+        or more columns contain missing data only.
     }
   }
 }

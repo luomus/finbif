@@ -1,18 +1,4 @@
-# finbif 0.6.1.9004
-
-#### BUG FIXES
-
--   Fix bug preventing loading of FinBIF archives that is triggered when
-    all variables are selected with `select = "all"`.
-
-# finbif 0.6.1.9003
-
-#### BUG FIXES
-
--   Fix bug preventing `finbif_occ` objects from printing when one or
-    more columns contained missing data only.
-
-# finbif 0.6.1.9002
+# finbif 0.6.2
 
 #### NEW FEATURES
 
@@ -20,19 +6,21 @@
     `TRUE`. If set to `FALSE` then remote API queries will trigger an
     error meaning only cached requests will run if a cache is found.
 
-# finbif 0.6.1.9001
-
-#### NEW FEATURES
-
 -   Records can now be aggregated by document.
-
-# finbif 0.6.1.9000
 
 #### MINOR IMPROVEMENTS
 
 -   A client-side error will be triggered if an attempt is made to
     filter by taxon and aggregate data by event with
     `finbif_occurrence`.
+
+#### BUG FIXES
+
+-   Fix bug preventing loading of FinBIF archives that is triggered when
+    all variables are selected with `select = "all"`.
+
+-   Fix bug preventing `finbif_occ` objects from printing when one or
+    more columns contain missing data only.
 
 # finbif 0.6.1
 
