@@ -1,8 +1,8 @@
 
 # FinBIF R package <img src="man/figures/logo.png" align="right" alt="" width="120">
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://opensource.org/licenses/MIT) [![CRAN status](https://www.r-pkg.org/badges/version-last-release/finbif)](https://cran.r-project.org/package=finbif) [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/finbif?color=brightgreen)](https://cran.r-project.org/package=finbif) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3612814.svg)](https://doi.org/10.5281/zenodo.3612814)
-[![Build Status](https://github.com/luomus/finbif/workflows/R-CMD-check/badge.svg?branch=master)](https://github.com/luomus/finbif/actions)
-[![codecov](https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/master)
+[![Build Status](https://github.com/luomus/finbif/workflows/R-CMD-check/badge.svg?branch=dev)](https://github.com/luomus/finbif/actions)
+[![codecov](https://codecov.io/gh/luomus/finbif/branch/dev/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/dev)
 
 The `finbif` R package is a programmatic interface to the
 [Finnish Biodiversity Information Facility (FinBIF) API](https://api.laji.fi).
@@ -81,7 +81,7 @@ FinBIF itself and the contributed datasets please visit this link:
 To cite the finbif R package in publications please use:
 
   Morris, William K. (2021). Introduction to the finbif package. R
-  package version 0.6.2, https://doi.org/10.5281/zenodo.3612814
+  package version 0.6.2.9000, https://doi.org/10.5281/zenodo.3612814
 
 ----
 
