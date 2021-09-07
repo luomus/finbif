@@ -249,13 +249,13 @@ read_finbif_tsv <- function(
 
   file <- as.character(file)
 
-  ptrn <- "http://tun.fi/HBF."
+  ptrn <- "^https?://.+?/HBF\\."
 
-  is_url <- grepl(ptrn, file, fixed = TRUE)
+  is_url <- grepl(ptrn, file)
 
   if (is_url) {
 
-    file <- gsub(ptrn, "", file)
+    file <- sub(ptrn, "", file)
 
   }
 
@@ -281,7 +281,7 @@ read_finbif_tsv <- function(
 
   if (grepl("^[0-9]*$", file)) {
 
-    url <- sprintf("https://dw.laji.fi/download/HBF.%s", file)
+    url <- sprintf("%s/HBF.%s", getOption("finbif_dl_url"), file)
 
     tsv <- sprintf("%sHBF.%s.tsv", tsv_prefix, file)
 
@@ -526,8 +526,18 @@ get_zip <- function(url, quiet, cache, write_file) {
 
   Sys.sleep(1 / getOption("finbif_rate_limit"))
 
+  query <- list()
+
+  auth <- Sys.getenv("FINBIF_RESTRICTED_FILE_ACCESS_TOKEN")
+
+  if (!identical(auth, "")) {
+
+    query <- list(personToken = auth)
+
+  }
+
   resp <- httr::RETRY(
-    "GET", url, httr::write_disk(zip, overwrite = TRUE), progress
+    "GET", url, httr::write_disk(zip, overwrite = TRUE), progress, query = query
   )
 
   if (!quiet) message("")

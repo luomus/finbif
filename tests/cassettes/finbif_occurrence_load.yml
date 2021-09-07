@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://dw.laji.fi/download/HBF.49381
+    uri: https://dw.laji.fi/download/HBF.49381?personToken=<finbif_dl_token>
     body:
       encoding: ''
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Mar 2021 13:03:16 GMT
+      date: Tue, 07 Sep 2021 07:28:40 GMT
       content-disposition: attachment; filename=HBF.49381.zip
       content-type: application/zip
       via: 1.1 dw.laji.fi
@@ -28,11 +28,11 @@ http_interactions:
       encoding: UTF-8
       file: yes
       string: ../write-files/finbif_cache_file_4c64a068da60f708c4e928701ec538ef
-  recorded_at: 2021-03-23 14:45:30 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.8.0
+  recorded_at: 2021-09-07 07:48:45 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: https://dw.laji.fi/download/HBF.0
+    uri: https://dw.laji.fi/download/HBF.0?personToken=<finbif_dl_token>
     body:
       encoding: ''
       string: ''
@@ -46,7 +46,7 @@ http_interactions:
       reason: Internal Server Error
       message: 'Server error: (500) Internal Server Error'
     headers:
-      date: Tue, 23 Mar 2021 14:45:27 GMT
+      date: Tue, 07 Sep 2021 07:48:40 GMT
       access-control-allow-origin: '*'
       content-type: application/json;charset=utf-8
       via: 1.1 dw.laji.fi
@@ -58,12 +58,12 @@ http_interactions:
     body:
       encoding: UTF-8
       file: yes
-      string: ../write-files/file23882b73f6f3
-  recorded_at: 2021-03-23 14:45:30 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.8.0
+      string: ../write-files/file13066a531e89
+  recorded_at: 2021-09-07 07:48:45 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: https://dw.laji.fi/download/HBF.0
+    uri: https://dw.laji.fi/download/HBF.0?personToken=<finbif_dl_token>
     body:
       encoding: ''
       string: ''
@@ -77,7 +77,7 @@ http_interactions:
       reason: Internal Server Error
       message: 'Server error: (500) Internal Server Error'
     headers:
-      date: Tue, 23 Mar 2021 14:45:28 GMT
+      date: Tue, 07 Sep 2021 07:48:41 GMT
       access-control-allow-origin: '*'
       content-type: application/json;charset=utf-8
       via: 1.1 dw.laji.fi
@@ -89,12 +89,12 @@ http_interactions:
     body:
       encoding: UTF-8
       file: yes
-      string: ../write-files/file23882b73f6f3
-  recorded_at: 2021-03-23 14:45:30 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.8.0
+      string: ../write-files/file13066a531e89
+  recorded_at: 2021-09-07 07:48:45 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: https://dw.laji.fi/download/HBF.0
+    uri: https://dw.laji.fi/download/HBF.0?personToken=<finbif_dl_token>
     body:
       encoding: ''
       string: ''
@@ -108,7 +108,7 @@ http_interactions:
       reason: Internal Server Error
       message: 'Server error: (500) Internal Server Error'
     headers:
-      date: Tue, 23 Mar 2021 14:45:30 GMT
+      date: Tue, 07 Sep 2021 07:48:45 GMT
       access-control-allow-origin: '*'
       content-type: application/json;charset=utf-8
       via: 1.1 dw.laji.fi
@@ -120,6 +120,6 @@ http_interactions:
     body:
       encoding: UTF-8
       file: yes
-      string: ../write-files/file23882b73f6f3
-  recorded_at: 2021-03-23 14:45:30 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.8.0
+      string: ../write-files/file13066a531e89
+  recorded_at: 2021-09-07 07:48:45 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
