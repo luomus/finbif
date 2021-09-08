@@ -17,6 +17,7 @@ jobs:
     env:
       FINBIF_ACCESS_TOKEN: ${{ secrets.FINBIF_ACCESS_TOKEN }}
       FINBIF_DEV_ACCESS_TOKEN: ${{ secrets.FINBIF_DEV_ACCESS_TOKEN }}
+      FINBIF_RESTRICTED_FILE_ACCESS_TOKEN: ${{ secrets.FINBIF_RESTRICTED_FILE_ACCESS_TOKEN }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
