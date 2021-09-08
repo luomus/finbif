@@ -1,4 +1,5 @@
 template:
+  path: inst/man/templates
   bootstrap: 4
   bootswatch: materia
   bslib:
