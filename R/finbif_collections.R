@@ -182,7 +182,7 @@ get_collections <- function(qry, path, nms, id, cache) {
 
 get_swagger <- function(cache) {
 
-  url <- "https://api.laji.fi/explorer/swagger.json"
+  url <- paste0(getOption("finbif_api_url"), "/explorer/swagger.json")
 
   if (cache) {
 
