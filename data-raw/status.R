@@ -37,6 +37,16 @@ administrative_status <- read.csv(
     MX.finnishEnvironmentInstitute20072010forestSpecies, 'Finnish environment institute 2007-2010 forest species', FEI_FS
     MX.finnishEnvironmentInstitute20192021forestSpecies, 'Finnish environment institute 2019-2021 forest species', FEI_FS2
     MX.cropWildRelative, 'Crop wild relative', CWR
+    MX.birdsDirectiveStatusMigratoryBirds, 'Birds Directive - Status of Migratory Birds', BDSMB
+    MX.cites_appendixI, 'CITES appendix I', CITES1
+    MX.cites_appendixII, 'CITES appendix II', CITES2
+    MX.cites_appendixIII, 'CITES appendix III', CITES3
+    MX.euRequlation_cites_appendixA, 'EU Regulation - CITES appendix A', EU_CITESA
+    MX.euRequlation_cites_appendixB, 'EU Regulation - CITES appendix B', EU_CITESB
+    MX.finlex160_1997_appendix4_2021, 'Finlex 160 1997 appendix 4 2021', FNLX160_97_4_2021
+    MX.finlex160_1997_appendix4_specialInterest_2021, 'Finlex 160 1997 appendix 4 Special Interest 2021', FNLX160_97_4_SI_2021
+    MX.finlex160_1997_largeBirdsOfPrey, 'Finlex 160 1997 Large Birds of Prey', FNLX160_97_LBP
+    MX.finnishEnvironmentInstitute2020protectionPrioritySpecies, 'Finnish Environment Institute 2020 Protection Priority Species', FEI2020PPS
   ",
   stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'"
 )
