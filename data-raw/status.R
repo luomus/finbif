@@ -41,8 +41,8 @@ administrative_status <- read.csv(
     MX.cites_appendixI, 'CITES appendix I', CITES1
     MX.cites_appendixII, 'CITES appendix II', CITES2
     MX.cites_appendixIII, 'CITES appendix III', CITES3
-    MX.euRequlation_cites_appendixA, 'EU Regulation - CITES appendix A', EU_CITESA
-    MX.euRequlation_cites_appendixB, 'EU Regulation - CITES appendix B', EU_CITESB
+    MX.euRegulation_cites_appendixA, 'EU Regulation - CITES appendix A', EU_CITESA
+    MX.euRegulation_cites_appendixB, 'EU Regulation - CITES appendix B', EU_CITESB
     MX.finlex160_1997_appendix4_2021, 'Finlex 160 1997 appendix 4 2021', FNLX160_97_4_2021
     MX.finlex160_1997_appendix4_specialInterest_2021, 'Finlex 160 1997 appendix 4 Special Interest 2021', FNLX160_97_4_SI_2021
     MX.finlex160_1997_largeBirdsOfPrey, 'Finlex 160 1997 Large Birds of Prey', FNLX160_97_LBP
