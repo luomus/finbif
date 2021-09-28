@@ -607,7 +607,7 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
   args <- list(
     ..., nrows = 0, showProgress = quiet, data.table = dt, na.strings = "",
-    quote = "\"", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE
+    quote = "", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE
   )
 
   if (utils::hasName(args, "zip")) {
@@ -725,7 +725,7 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 #' @noRd
 rd_read <- function(x, file, tsv, n, select, keep_tsv) {
 
-  df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "\"")
+  df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "")
 
   cols <- fix_issue_vars(names(df))
 
@@ -1010,7 +1010,7 @@ write_tsv <- function(df) {
 
   file <- tempfile(fileext = ".tsv")
 
-  write.table(df, file, quote = TRUE, sep = "\t", na = "", row.names = FALSE)
+  write.table(df, file, quote = FALSE, sep = "\t", na = "", row.names = FALSE)
 
   file
 
