@@ -1,5 +1,5 @@
 #' @noRd
-#' @importFrom lubridate as_date period rollback
+#' @importFrom lubridate as_date period rollback int_end int_start
 parse_date <- function(x) {
 
   if (is.null(x)) return(x)
