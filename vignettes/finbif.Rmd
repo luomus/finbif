@@ -141,11 +141,11 @@ birch_search$content
 #> [1] TRUE
 #> 
 #> [[1]]$vernacularName
-#> [[1]]$vernacularName$fi
-#> [1] "vihtakoivu"
-#> 
 #> [[1]]$vernacularName$sv
 #> [1] "vanlig vårtbjörk"
+#> 
+#> [[1]]$vernacularName$fi
+#> [1] "vihtakoivu"
 #> 
 #> 
 #> [[1]]$informalGroups
@@ -172,22 +172,19 @@ birch_search$content
 #> 
 #> [[2]]
 #> [[2]]$matchingName
-#> [1] "Betula pendula var. carelica"
+#> [1] "Betula nana × pendula"
 #> 
 #> [[2]]$nameType
 #> [1] "MX.scientificName"
 #> 
 #> [[2]]$id
-#> [1] "MX.37997"
+#> [1] "MX.38005"
 #> 
 #> [[2]]$scientificName
-#> [1] "Betula pendula var. carelica"
-#> 
-#> [[2]]$scientificNameAuthorship
-#> [1] "(Merckl.) Hämet-Ahti"
+#> [1] "Betula nana × pendula"
 #> 
 #> [[2]]$taxonRank
-#> [1] "MX.variety"
+#> [1] "MX.infragenericHybrid"
 #> 
 #> [[2]]$cursiveName
 #> [1] TRUE
@@ -199,12 +196,7 @@ birch_search$content
 #> [1] TRUE
 #> 
 #> [[2]]$vernacularName
-#> [[2]]$vernacularName$fi
-#> [1] "visakoivu"
-#> 
-#> [[2]]$vernacularName$sv
-#> [1] "masurbjörk"
-#> 
+#> named list()
 #> 
 #> [[2]]$informalGroups
 #> [[2]]$informalGroups[[1]]
@@ -241,19 +233,19 @@ the `finbif_occurrence()` function.
 ```r
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
-#> Records available: 57008
+#> Records available: 71156
 #> A data.frame [100 x 12]
-#>               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  KE.176/5e9dd5782d0e…   Cygnus cygnus  1         62.79256  30.96101 2020-04-20 12:00:00
-#> 2        JX.1108556#265   Cygnus cygnus  2         64.2081   29.03035 2020-04-19 12:00:00
-#> 3         JX.1110250#40   Cygnus cygnus  20        63.12255  24.32082 2020-04-19 05:00:00
-#> 4          JX.1110117#3   Cygnus cygnus  2         65.87333  24.28142 2020-04-19 17:00:00
-#> 5         JX.1110052#46   Cygnus cygnus  2         61.13841  21.64607 2020-04-19 06:35:00
-#> 6         JX.1110024#10   Cygnus cygnus  2         60.32418  22.39303 2020-04-18 12:00:00
-#> 7          JX.1110008#3   Cygnus cygnus  10        64.17427  25.9137  2020-04-17 12:00:00
-#> 8         JX.1109958#52   Cygnus cygnus  2         61.32291  28.56818 2020-04-17 05:45:00
-#> 9          JX.1109939#4   Cygnus cygnus  2         61.2604   28.71105 2020-04-17 12:27:00
-#> 10         JX.1109952#4   Cygnus cygnus  4         61.2641   28.70687 2020-04-16 11:33:00
+#>              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00
+#> 2        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00
+#> 3       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00
+#> 4  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00
+#> 5  …HR.3211/96886383-U   Cygnus cygnus  1         62.91891  28.18733 2021-10-02 12:00:00
+#> 6  …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00
+#> 7       …JX.1315449#15   Cygnus cygnus  6         61.32296  28.56814 2021-10-02 10:40:00
+#> 8       …JX.1315165#30   Cygnus cygnus  2         61.10535  21.55759 2021-10-02 08:25:00
+#> 9        …JX.1296318#3   Cygnus cygnus  26        60.83174  26.44824 2021-09-30 12:00:00
+#> 10 …HR.3211/96581760-U   Cygnus cygnus  1         61.46442  23.65117 2021-09-29 12:00:00
 #> ...with 90 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
@@ -277,19 +269,19 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 11553
+#> Records available: 26352
 #> A data.frame [10 x 12]
-#>             record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1       JX.1110624#19     Cygnus olor  2         60.13623  24.65125 2020-04-21 11:30:00
-#> 2       JX.1110052#46   Cygnus cygnus  2         61.13841  21.64607 2020-04-19 06:35:00
-#> 3  HR.3211/42456319-U     Cygnus olor  1         60.17978  24.93999 2020-04-18 12:00:00
-#> 4        JX.1109939#4   Cygnus cygnus  2         61.2604   28.71105 2020-04-17 12:27:00
-#> 5       JX.1109826#13     Cygnus olor  2         60.79963  21.39606 2020-04-17 11:30:00
-#> 6       JX.1109535#12   Cygnus cygnus  2         66.27089  29.3796  2020-04-15 12:00:00
-#> 7        JX.1109515#4   Cygnus cygnus  1         65.01262  25.43289 2020-04-14 12:00:00
-#> 8        JX.1109461#4   Cygnus cygnus  2         60.92088  26.38893 2020-04-14 12:00:00
-#> 9       JX.1109294#76     Cygnus olor  2         60.42794  22.20052 2020-04-13 12:00:00
-#> 10      JX.1109218#22   Cygnus cygnus  1         61.09307  21.55221 2020-04-13 06:45:00
+#>              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1        …JX.1315856#9     Cygnus olor  8         60.42794  22.20052 2021-10-04 12:00:00
+#> 2       …JX.1315724#21     Cygnus olor  6         60.44906  22.76845 2021-10-03 12:00:00
+#> 3       …JX.1315701#36     Cygnus olor  8         60.42794  22.20052 2021-10-03 12:00:00
+#> 4       …JX.1315699#24     Cygnus olor  8         60.56739  21.57188 2021-10-03 12:00:00
+#> 5       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00
+#> 6        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00
+#> 7       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00
+#> 8  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00
+#> 9  …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00
+#> 10 …HR.3211/96867853-U     Cygnus olor  1         60.12642  24.73924 2021-10-02 12:00:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
@@ -317,19 +309,19 @@ finbif_occurrence("Birds", sample = TRUE)
 ```r
 
 #> Records downloaded: 10
-#> Records available: 17833621
+#> Records available: 19686186
 #> A data.frame [10 x 12]
-#>              record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1       JX.1027476#519    Fringilla coelebs  1         59.86154  23.16479 1997-06-10 07:20:00
-#> 2  KE.67/11806345#Unit      Corvus monedula  1         60.82859  24.25148 2000-01-01 12:00:00
-#> 3  KE.383/4571#UNIT170      Passer montanus  6         63.05393  25.90933 2015-04-16 12:00:00
-#> 4     MKH.20030914#593       Motacilla alba  133       59.81111  22.89545 2003-09-14 12:00:00
-#> 5     MKH.20000726#566         Hirundininae  80        59.81111  22.89545 2000-07-26 12:00:00
-#> 6   KE.67/8317861#Unit Phoenicurus phoenic…  1         59.83333  21.61667 2002-05-04 13:00:00
-#> 7     MKH.20140510#553      Alauda arvensis  2         59.81111  22.89545 2014-05-10 12:00:00
-#> 8   KE.67/5518966#Unit  Aegithalos caudatus  1         59.81667  22.9     1996-10-11 18:00:00
-#> 9   KE.67/3683617#Unit Acanthis hornemanni…  1         63.95     22.85    2013-10-25 18:00:00
-#> 10         MHU.1732099      Strix uralensis  1         62.34485  27.10288 2006-04-19 12:00:00
+#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1         …MHU.29129341     Sturnus vulgaris  1         60.52698  21.62055 2010-05-01 12:00:00
+#> 2           …JX.93743#5 Corvus corone cornix  46        62.14011  24.59989 1969-12-26 09:00:00
+#> 3   …KE.67/3168115#Unit     Numenius arquata  1         63.15     27.83333 2008-06-06 13:00:00
+#> 4  …KE.67/11186470#Unit  Emberiza citrinella  1         62.75622  26.6937  2017-01-17 14:00:00
+#> 5       …JX.1029925#296    Turdus philomelos  1         61.43368  28.6004  1998-06-05 05:02:00
+#> 6   …KE.67/3446629#Unit          Parus major  1         60.33031  25.20922 2011-03-27 17:00:00
+#> 7   …KE.67/7662953#Unit   Sylvia atricapilla  1         59.83333  19.93333 1976-09-07 12:00:00
+#> 8   …KE.67/7531888#Unit   Prunella modularis  1         59.83333  19.93333 1993-04-26 07:00:00
+#> 9   …KE.383/1607#UNIT76 Lophophanes cristat…  3         59.9815   24.39953 1996-12-16 12:00:00
+#> 10      …JX.1025345#261    Fringilla coelebs  1         62.29238  24.35626 2009-06-08 03:30:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality

@@ -28,19 +28,19 @@ finbif_occurrence()
 ```r
 
 #> Records downloaded: 10
-#> Records available: 34700400
+#> Records available: 40410386
 #> A data.frame [10 x 12]
-#>    record_id     scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1      9#111      Aglais urticae  16        60.37011  24.72526 2020-04-22 15:00:00
-#> 2       8#19               Loxia  1         61.13068  21.65088 2020-04-22 07:20:00
-#> 3        8#4    Poecile montanus  1         61.13068  21.65088 2020-04-22 07:20:00
-#> 4       8#16      Turdus iliacus  1         61.13068  21.65088 2020-04-22 07:20:00
-#> 5        8#7  Erithacus rubecula  1         61.13068  21.65088 2020-04-22 07:20:00
-#> 6       8#13 Cyanistes caeruleus  1         61.13068  21.65088 2020-04-22 07:20:00
-#> 7       8#10       Spinus spinus  3         61.13068  21.65088 2020-04-22 07:20:00
-#> 8       7#13   Turdus philomelos  1         61.13305  21.65151 2020-04-22 06:30:00
-#> 9       7#25     Tringa ochropus  1         61.13305  21.65151 2020-04-22 06:30:00
-#> 10       7#7 Garrulus glandarius  1         61.13305  21.65151 2020-04-22 06:30:00
+#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1        …JX.1315966#18             Trametes  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 3        …JX.1315966#15                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 4        …JX.1315966#12                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864 2021-10-05 12:00:00
+#> 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467 2021-10-05 12:00:00
+#> 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361 2021-10-05 12:00:00
+#> 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456 2021-10-05 12:00:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
@@ -63,7 +63,7 @@ You can switch from the default variable names to [Darwin Core
 colnames(finbif_occurrence(dwc = TRUE))
 #>  [1] "occurrenceID"                  "scientificName"                "individualCount"              
 #>  [4] "decimalLatitude"               "decimalLongitude"              "eventDateTime"                
-#>  [7] "coordinateUncertaintyInMeters" "hasIssues"                     "requires_verification"        
+#>  [7] "coordinateUncertaintyInMeters" "hasIssues"                     "requiresVerification"         
 #> [10] "requiresIdentification"        "occurrenceReliability"         "occurrenceQuality"
 ```
 The functions `to_dwc()` and `to_native()` can be used to translate variable
@@ -84,19 +84,19 @@ finbif_occurrence("Cygnus cygnus")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 57007
+#> Records available: 71156
 #> A data.frame [10 x 12]
-#>               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  KE.176/5e9dd5782d0e…   Cygnus cygnus  1         62.79256  30.96101 2020-04-20 12:00:00
-#> 2        JX.1108556#265   Cygnus cygnus  2         64.2081   29.03035 2020-04-19 12:00:00
-#> 3         JX.1110250#40   Cygnus cygnus  20        63.12255  24.32082 2020-04-19 05:00:00
-#> 4          JX.1110117#3   Cygnus cygnus  2         65.87333  24.28142 2020-04-19 17:00:00
-#> 5         JX.1110052#46   Cygnus cygnus  2         61.13841  21.64607 2020-04-19 06:35:00
-#> 6         JX.1110024#10   Cygnus cygnus  2         60.32418  22.39303 2020-04-18 12:00:00
-#> 7          JX.1110008#3   Cygnus cygnus  10        64.17427  25.9137  2020-04-17 12:00:00
-#> 8         JX.1109958#52   Cygnus cygnus  2         61.32291  28.56818 2020-04-17 05:45:00
-#> 9          JX.1109939#4   Cygnus cygnus  2         61.2604   28.71105 2020-04-17 12:27:00
-#> 10         JX.1109952#4   Cygnus cygnus  4         61.2641   28.70687 2020-04-16 11:33:00
+#>              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00
+#> 2        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00
+#> 3       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00
+#> 4  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00
+#> 5  …HR.3211/96886383-U   Cygnus cygnus  1         62.91891  28.18733 2021-10-02 12:00:00
+#> 6  …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00
+#> 7       …JX.1315449#15   Cygnus cygnus  6         61.32296  28.56814 2021-10-02 10:40:00
+#> 8       …JX.1315165#30   Cygnus cygnus  2         61.10535  21.55759 2021-10-02 08:25:00
+#> 9        …JX.1296318#3   Cygnus cygnus  26        60.83174  26.44824 2021-09-30 12:00:00
+#> 10 …HR.3211/96581760-U   Cygnus cygnus  1         61.46442  23.65117 2021-09-29 12:00:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
@@ -119,19 +119,19 @@ finbif_occurrence("Cygnus cygnus", "Cygnus olor")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 81351
+#> Records available: 101999
 #> A data.frame [10 x 12]
-#>               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  KE.176/5e9dd5782d0e…   Cygnus cygnus  1         62.79256  30.96101 2020-04-20 12:00:00
-#> 2        JX.1108556#265   Cygnus cygnus  2         64.2081   29.03035 2020-04-19 12:00:00
-#> 3         JX.1110250#40   Cygnus cygnus  20        63.12255  24.32082 2020-04-19 05:00:00
-#> 4         JX.1110172#49     Cygnus olor  2         61.0113   21.38515 2020-04-19 12:00:00
-#> 5          JX.1110117#3   Cygnus cygnus  2         65.87333  24.28142 2020-04-19 17:00:00
-#> 6         JX.1110052#46   Cygnus cygnus  2         61.13841  21.64607 2020-04-19 06:35:00
-#> 7    HR.3211/42456319-U     Cygnus olor  1         60.17978  24.93999 2020-04-18 12:00:00
-#> 8         JX.1110024#10   Cygnus cygnus  2         60.32418  22.39303 2020-04-18 12:00:00
-#> 9         JX.1109909#31     Cygnus olor  20        61.10578  21.44994 2020-04-18 07:35:00
-#> 10         JX.1110008#3   Cygnus cygnus  10        64.17427  25.9137  2020-04-17 12:00:00
+#>              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1        …JX.1315856#9     Cygnus olor  8         60.42794  22.20052 2021-10-04 12:00:00
+#> 2       …JX.1315724#21     Cygnus olor  6         60.44906  22.76845 2021-10-03 12:00:00
+#> 3       …JX.1315701#36     Cygnus olor  8         60.42794  22.20052 2021-10-03 12:00:00
+#> 4       …JX.1315699#24     Cygnus olor  8         60.56739  21.57188 2021-10-03 12:00:00
+#> 5       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00
+#> 6        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00
+#> 7       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00
+#> 8  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00
+#> 9  …HR.3211/96886383-U   Cygnus cygnus  1         62.91891  28.18733 2021-10-02 12:00:00
+#> 10 …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
@@ -167,19 +167,19 @@ finbif_occurrence(n = 1001)
 ```r
 
 #> Records downloaded: 1001
-#> Records available: 34696846
+#> Records available: 40410386
 #> A data.frame [1001 x 12]
-#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1          JX.1110588#7            Aglais io  2         63.13815  21.56879 2020-04-21 12:00:00
-#> 2          JX.1110588#4       Aglais urticae  6         63.13815  21.56879 2020-04-21 12:00:00
-#> 3         JX.1110588#10    Nymphalis antiopa  1         63.13815  21.56879 2020-04-21 12:00:00
-#> 4          JX.1110427#4 Noccaea caerulescen…  1         60.72342  24.84861 2020-04-21 12:00:00
-#> 5  KE.176/5e5bb8932d0e…       Aglais urticae  1         62.94     26.794   2020-04-21 12:00:00
-#> 6        JX.1110587#148  Phasianus colchicus  1         60.4088   22.20608 2020-04-21 12:00:00
-#> 7         JX.1110587#82            Pica pica  7         60.4088   22.20608 2020-04-21 12:00:00
-#> 8        JX.1110587#121        Ardea cinerea  1         60.4088   22.20608 2020-04-21 12:00:00
-#> 9        JX.1110587#112     Larus argentatus  3         60.4088   22.20608 2020-04-21 12:00:00
-#> 10       JX.1110587#115          Picus canus  1         60.4088   22.20608 2020-04-21 12:00:00
+#>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1      …50#3 Exechiopsis fimbria…  1         65.01504  25.52607 2021-10-05 12:00:00
+#> 2     …29#12 Depressaria badiella  1         62.92172  27.63335 2021-10-05 12:00:00
+#> 3     …29#15 Depressaria daucella  1         62.92172  27.63335 2021-10-05 12:00:00
+#> 4      …29#9   Epirrita autumnata  1         62.92172  27.63335 2021-10-05 12:00:00
+#> 5      …29#6  Poecilocampa populi  1         62.92172  27.63335 2021-10-05 12:00:00
+#> 6      …29#3      Xestia c-nigrum  1         62.92172  27.63335 2021-10-05 12:00:00
+#> 7     …31#18 Agriopis aurantiaria  1         60.4528   22.40844 2021-10-04 12:00:00
+#> 8      …31#3     Autographa gamma  1         60.4528   22.40844 2021-10-04 12:00:00
+#> 9     …31#12 Chloroclysta sitera…  1         60.4528   22.40844 2021-10-04 12:00:00
+#> 10    …31#15   Epirrita autumnata  1         60.4528   22.40844 2021-10-04 12:00:00
 #> ...with 991 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
@@ -194,7 +194,7 @@ retrieving any records, by setting `count_only = TRUE`.
 
 ```r
 finbif_occurrence(count_only = TRUE)
-#> [1] 34696846
+#> [1] 40410386
 ```
 
 ## Checking taxa
@@ -214,19 +214,19 @@ finbif_occurrence("Vulpes vulpes", "Moomin")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 3326
+#> Records available: 4238
 #> A data.frame [10 x 12]
 #>               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1         JX.1110052#67   Vulpes vulpes  1         61.13841  21.64607 2020-04-19 06:35:00
-#> 2         JX.1109239#13   Vulpes vulpes  1         66.82291  28.39749 2020-04-13 12:00:00
-#> 3          JX.1108569#4   Vulpes vulpes  1         65.07722  25.5018  2020-04-11 12:00:00
-#> 4          JX.1109741#4   Vulpes vulpes  1         60.30568  24.70511 2020-04-08 12:00:00
-#> 5          JX.1107461#8   Vulpes vulpes  1         60.11628  23.47399 2020-04-05 12:00:00
-#> 6  KE.176/5e98b2d02d0e…   Vulpes vulpes  1         61.53415  25.51793 2020-04-03 12:00:00
-#> 7         JX.1105990#19   Vulpes vulpes  1         60.42794  22.20052 2020-03-31 12:00:00
-#> 8          JX.1104874#4   Vulpes vulpes  1         62.61875  29.66306 2020-03-22 12:00:00
-#> 9         JX.1104505#19   Vulpes vulpes  1         60.10224  23.5459  2020-03-22 12:00:00
-#> 10         JX.1103437#4   Vulpes vulpes  1         60.55732  22.25711 2020-03-14 09:00:00
+#> 1         …JX.1315490#3   Vulpes vulpes  1         65.05719  25.62634 2021-10-02 12:00:00
+#> 2  …KE.176/6154c070d5d…   Vulpes vulpes  1         60.20882  24.90362 2021-09-29 12:00:00
+#> 3         …JX.1294654#3   Vulpes vulpes  1         60.83805  21.37382 2021-09-24 05:30:00
+#> 4   …HR.3211/95828765-U   Vulpes vulpes  1         60.76014  24.91448 2021-09-23 12:00:00
+#> 5  …KE.176/614e5d42d5d…   Vulpes vulpes  1         60.11016  25.01864 2021-09-22 12:00:00
+#> 6  …KE.176/614abfb4d5d…   Vulpes vulpes  1         60.13192  24.72079 2021-09-22 12:00:00
+#> 7         …JX.1293417#7   Vulpes vulpes  1         60.82366  21.2978  2021-09-20 05:30:00
+#> 8   …HR.3211/95510814-U   Vulpes vulpes  1         60.5      21.9     2021-09-19 12:00:00
+#> 9       …JX.1293110#126   Vulpes vulpes  1         62.57362  28.58553 2021-09-18 12:00:00
+#> 10      …JX.1272497#417   Vulpes vulpes  1         64.50244  29.98219 2021-09-17 12:00:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
@@ -250,19 +250,19 @@ finbif_occurrence("Vulpes vulpes", "Moomin", check_taxa = FALSE)
 ```r
 
 #> Records downloaded: 10
-#> Records available: 3326
+#> Records available: 4238
 #> A data.frame [10 x 12]
 #>               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1         JX.1110052#67   Vulpes vulpes  1         61.13841  21.64607 2020-04-19 06:35:00
-#> 2         JX.1109239#13   Vulpes vulpes  1         66.82291  28.39749 2020-04-13 12:00:00
-#> 3          JX.1108569#4   Vulpes vulpes  1         65.07722  25.5018  2020-04-11 12:00:00
-#> 4          JX.1109741#4   Vulpes vulpes  1         60.30568  24.70511 2020-04-08 12:00:00
-#> 5          JX.1107461#8   Vulpes vulpes  1         60.11628  23.47399 2020-04-05 12:00:00
-#> 6  KE.176/5e98b2d02d0e…   Vulpes vulpes  1         61.53415  25.51793 2020-04-03 12:00:00
-#> 7         JX.1105990#19   Vulpes vulpes  1         60.42794  22.20052 2020-03-31 12:00:00
-#> 8          JX.1104874#4   Vulpes vulpes  1         62.61875  29.66306 2020-03-22 12:00:00
-#> 9         JX.1104505#19   Vulpes vulpes  1         60.10224  23.5459  2020-03-22 12:00:00
-#> 10         JX.1103437#4   Vulpes vulpes  1         60.55732  22.25711 2020-03-14 09:00:00
+#> 1         …JX.1315490#3   Vulpes vulpes  1         65.05719  25.62634 2021-10-02 12:00:00
+#> 2  …KE.176/6154c070d5d…   Vulpes vulpes  1         60.20882  24.90362 2021-09-29 12:00:00
+#> 3         …JX.1294654#3   Vulpes vulpes  1         60.83805  21.37382 2021-09-24 05:30:00
+#> 4   …HR.3211/95828765-U   Vulpes vulpes  1         60.76014  24.91448 2021-09-23 12:00:00
+#> 5  …KE.176/614e5d42d5d…   Vulpes vulpes  1         60.11016  25.01864 2021-09-22 12:00:00
+#> 6  …KE.176/614abfb4d5d…   Vulpes vulpes  1         60.13192  24.72079 2021-09-22 12:00:00
+#> 7         …JX.1293417#7   Vulpes vulpes  1         60.82366  21.2978  2021-09-20 05:30:00
+#> 8   …HR.3211/95510814-U   Vulpes vulpes  1         60.5      21.9     2021-09-19 12:00:00
+#> 9       …JX.1293110#126   Vulpes vulpes  1         62.57362  28.58553 2021-09-18 12:00:00
+#> 10      …JX.1272497#417   Vulpes vulpes  1         64.50244  29.98219 2021-09-17 12:00:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
@@ -313,20 +313,20 @@ finbif_occurrence("Lepidoptera", select = "municipality", aggregate = "species")
 
 ```r
 
-Records downloaded: 10
-Records available: 318
-A data.frame [10 x 2]
-   municipality n_species
-1     Virolahti      1919
-2       Kouvola      1312
-3      Rääkkylä      1343
-4   Kemiönsaari      1956
-5      Parainen      1738
-6         Hanko      1876
-7        Kuopio      1307
-8      Helsinki      1928
-9       Joensuu      1331
-10    Raasepori      1841
+#> Records downloaded: 10
+#> Records available: 317
+#> A data.frame [10 x 2]
+#>    municipality n_species
+#> 1       Kouvola      1328
+#> 2     Virolahti      1932
+#> 3      Rääkkylä      1346
+#> 4   Kemiönsaari      1963
+#> 5      Parainen      1765
+#> 6         Hanko      1895
+#> 7      Helsinki      1937
+#> 8     Raasepori      1860
+#> 9         Kotka      1635
+#> 10       Kuopio      1319
 
 ```
 
@@ -350,19 +350,19 @@ finbif_occurrence(select = "-date_time")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 34696846
+#> Records available: 40410386
 #> A data.frame [10 x 11]
 #>               record_id      scientific_name abundance lat_wgs84 lon_wgs84 coordinates_uncertainty
-#> 1          JX.1110588#7            Aglais io  2         63.13815  21.56879  1000                  
-#> 2          JX.1110588#4       Aglais urticae  6         63.13815  21.56879  1000                  
-#> 3         JX.1110588#10    Nymphalis antiopa  1         63.13815  21.56879  1000                  
-#> 4          JX.1110427#4 Noccaea caerulescen…  1         60.72342  24.84861  1                     
-#> 5  KE.176/5e5bb8932d0e…       Aglais urticae  1         62.94     26.794    10000                 
-#> 6        JX.1110587#148  Phasianus colchicus  1         60.4088   22.20608  10000                 
-#> 7         JX.1110587#82            Pica pica  7         60.4088   22.20608  10000                 
-#> 8        JX.1110587#121        Ardea cinerea  1         60.4088   22.20608  10000                 
-#> 9        JX.1110587#112     Larus argentatus  3         60.4088   22.20608  10000                 
-#> 10       JX.1110587#115          Picus canus  1         60.4088   22.20608  10000                 
+#> 1        …JX.1315966#18             Trametes  1         65.08865  25.45157  1                     
+#> 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157  1                     
+#> 3        …JX.1315966#15                Fungi  1         65.08865  25.45157  1                     
+#> 4        …JX.1315966#12                Fungi  1         65.08865  25.45157  1                     
+#> 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157  1                     
+#> 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157  1                     
+#> 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864  50000                 
+#> 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467  1                     
+#> 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361  1                     
+#> 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456  1                     
 #> ...with 0 more records and 5 more variables:
 #> any_issues, requires_verification, requires_identification, record_reliability, record_quality
 
@@ -392,19 +392,19 @@ finbif_occurrence(date_time_method = "accurate")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 34696846
+#> Records available: 40410386
 #> A data.frame [10 x 12]
 #>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1          JX.1110588#7            Aglais io  2         63.13815  21.56879 2020-04-21 12:00:00
-#> 2          JX.1110588#4       Aglais urticae  6         63.13815  21.56879 2020-04-21 12:00:00
-#> 3         JX.1110588#10    Nymphalis antiopa  1         63.13815  21.56879 2020-04-21 12:00:00
-#> 4          JX.1110427#4 Noccaea caerulescen…  1         60.72342  24.84861 2020-04-21 12:00:00
-#> 5  KE.176/5e5bb8932d0e…       Aglais urticae  1         62.94     26.794   2020-04-21 12:00:00
-#> 6        JX.1110587#148  Phasianus colchicus  1         60.4088   22.20608 2020-04-21 12:00:00
-#> 7         JX.1110587#82            Pica pica  7         60.4088   22.20608 2020-04-21 12:00:00
-#> 8        JX.1110587#121        Ardea cinerea  1         60.4088   22.20608 2020-04-21 12:00:00
-#> 9        JX.1110587#112     Larus argentatus  3         60.4088   22.20608 2020-04-21 12:00:00
-#> 10       JX.1110587#115          Picus canus  1         60.4088   22.20608 2020-04-21 12:00:00
+#> 1        …JX.1315966#18             Trametes  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 3        …JX.1315966#15                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 4        …JX.1315966#12                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157 2021-10-05 12:00:00
+#> 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864 2021-10-05 12:00:00
+#> 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467 2021-10-05 12:00:00
+#> 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361 2021-10-05 12:00:00
+#> 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456 2021-10-05 12:00:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
@@ -435,19 +435,19 @@ finbif_occurrence(tzone = "Etc/UTC")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 34696846
+#> Records available: 40410386
 #> A data.frame [10 x 12]
 #>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1          JX.1110588#7            Aglais io  2         63.13815  21.56879 2020-04-21 09:00:00
-#> 2          JX.1110588#4       Aglais urticae  6         63.13815  21.56879 2020-04-21 09:00:00
-#> 3         JX.1110588#10    Nymphalis antiopa  1         63.13815  21.56879 2020-04-21 09:00:00
-#> 4          JX.1110427#4 Noccaea caerulescen…  1         60.72342  24.84861 2020-04-21 09:00:00
-#> 5  KE.176/5e5bb8932d0e…       Aglais urticae  1         62.94     26.794   2020-04-21 09:00:00
-#> 6        JX.1110587#148  Phasianus colchicus  1         60.4088   22.20608 2020-04-21 09:00:00
-#> 7         JX.1110587#82            Pica pica  7         60.4088   22.20608 2020-04-21 09:00:00
-#> 8        JX.1110587#121        Ardea cinerea  1         60.4088   22.20608 2020-04-21 09:00:00
-#> 9        JX.1110587#112     Larus argentatus  3         60.4088   22.20608 2020-04-21 09:00:00
-#> 10       JX.1110587#115          Picus canus  1         60.4088   22.20608 2020-04-21 09:00:00
+#> 1        …JX.1315966#18             Trametes  1         65.08865  25.45157 2021-10-05 09:00:00
+#> 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157 2021-10-05 09:00:00
+#> 3        …JX.1315966#15                Fungi  1         65.08865  25.45157 2021-10-05 09:00:00
+#> 4        …JX.1315966#12                Fungi  1         65.08865  25.45157 2021-10-05 09:00:00
+#> 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157 2021-10-05 09:00:00
+#> 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157 2021-10-05 09:00:00
+#> 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864 2021-10-05 09:00:00
+#> 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467 2021-10-05 09:00:00
+#> 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361 2021-10-05 09:00:00
+#> 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456 2021-10-05 09:00:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
