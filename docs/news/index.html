@@ -12,7 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Released version">0.6.2.9000</button>
+    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Released version">0.6.2.9001</button>
 
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto ml-3"><li class="nav-item">
@@ -53,6 +53,29 @@
       <small>Source: <a href="https://github.com/luomus/finbif/blob/master/NEWS.md"><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="finbif-0629001" class="section level2">
+<h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.2.9001">
+<a href="#finbif-0629001" class="anchor" aria-hidden="true"></a>finbif 0.6.2.9001</h2><h6 class="text-muted" data-toc-skip> CRAN release: Unreleased</h6>
+<div id="minor-improvements" class="section level5">
+<h5 class="hasAnchor" id="minor-improvements-0.6.2.9001">
+<a href="#minor-improvements-0.6.2.9001" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
+<ul><li>Occurrence record filtering can now be done using open-ended date ranges.</li>
+</ul></div>
+</div>
+    <div id="finbif-0629000" class="section level2">
+<h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.2.9000">
+<a href="#finbif-0629000" class="anchor" aria-hidden="true"></a>finbif 0.6.2.9000</h2><h6 class="text-muted" data-toc-skip> CRAN release: Unreleased</h6>
+<div id="bug-fixes" class="section level5">
+<h5 class="hasAnchor" id="bug-fixes-0.6.2.9000">
+<a href="#bug-fixes-0.6.2.9000" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
+<ul><li>Fix bug in importing of file downloads triggered by string quotation errors.</li>
+</ul></div>
+<div id="minor-improvements-1" class="section level5">
+<h5 class="hasAnchor" id="minor-improvements-0.6.2.9000">
+<a href="#minor-improvements-0.6.2.9000" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
+<ul><li>New administrative statuses added.</li>
+</ul></div>
+</div>
     <div id="finbif-062" class="section level2">
 <h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.2">
 <a href="#finbif-062" class="anchor" aria-hidden="true"></a>finbif 0.6.2</h2><h6 class="text-muted" data-toc-skip> CRAN release: 2021-09-03</h6>
@@ -62,12 +85,12 @@
 <ul><li><p>New package option, <code>finbif_allow_query</code>, with default value, <code>TRUE</code>. If set to <code>FALSE</code> then remote API queries will trigger an error meaning only cached requests will run if a cache is found.</p></li>
 <li><p>Records can now be aggregated by document.</p></li>
 </ul></div>
-<div id="minor-improvements" class="section level5">
+<div id="minor-improvements-2" class="section level5">
 <h5 class="hasAnchor" id="minor-improvements-0.6.2">
 <a href="#minor-improvements-0.6.2" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
 <ul><li>A client-side error will be triggered if an attempt is made to filter by taxon and aggregate data by event with <code>finbif_occurrence</code>.</li>
 </ul></div>
-<div id="bug-fixes" class="section level5">
+<div id="bug-fixes-1" class="section level5">
 <h5 class="hasAnchor" id="bug-fixes-0.6.2">
 <a href="#bug-fixes-0.6.2" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
 <ul><li><p>Fix bug preventing loading of FinBIF archives that is triggered when all variables are selected with <code>select = "all"</code>.</p></li>
@@ -77,7 +100,7 @@
     <div id="finbif-061" class="section level2">
 <h2 class="pb-2 mt-4 mb-2 border-bottom pkg-version" data-toc-text="0.6.1">
 <a href="#finbif-061" class="anchor" aria-hidden="true"></a>finbif 0.6.1</h2><h6 class="text-muted" data-toc-skip> CRAN release: 2021-07-26</h6>
-<div id="bug-fixes-1" class="section level5">
+<div id="bug-fixes-2" class="section level5">
 <h5 class="hasAnchor" id="bug-fixes-0.6.1">
 <a href="#bug-fixes-0.6.1" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
 <ul><li>Fixed a regression in the last release that prevented collection names being converted from their URIs.</li>
@@ -98,7 +121,7 @@
 <li><p>New computed variable <code>date_time_ISO8601</code> (currently undocumented) can be selected when creating <code>finbif_occ</code> objects.</p></li>
 <li><p>New computed variable <code>epsg</code> (currently undocumented). If selected, the column will have the EPSG code of the first column that contains geographic data.</p></li>
 </ul></div>
-<div id="minor-improvements-1" class="section level5">
+<div id="minor-improvements-3" class="section level5">
 <h5 class="hasAnchor" id="minor-improvements-0.6.0">
 <a href="#minor-improvements-0.6.0" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
 <ul><li><p>Can now select all available variables when importing a FinBIF download request file using <code>finbif_occurrence_load</code> with <code>select = "all"</code>.</p></li>
@@ -107,7 +130,7 @@
 <li><p>The variable <code>taxon_rank</code> is now converted to a string on the fly via <code>taxon_rank_id</code>.</p></li>
 <li><p>Variables that are computed from their identifiers are now localised when multiple languages are available.</p></li>
 </ul></div>
-<div id="bug-fixes-2" class="section level5">
+<div id="bug-fixes-3" class="section level5">
 <h5 class="hasAnchor" id="bug-fixes-0.6.0">
 <a href="#bug-fixes-0.6.0" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
 <ul><li><p>Fixed bug that prevented occurrence record counting when caching was not in use.</p></li>
@@ -135,7 +158,7 @@
 <ul><li><p>New functions <code>scientific_name</code> and <code>common_name</code> are now available to get scientific and common names for taxa (given a taxon name or FinBIF ID code) or extract names from a <code>finbif_taxa</code>- class object.</p></li>
 <li><p>Add ability to extract complex record variables such as those associated with record media (currently undocumented).</p></li>
 </ul></div>
-<div id="minor-improvements-2" class="section level5">
+<div id="minor-improvements-4" class="section level5">
 <h5 class="hasAnchor" id="minor-improvements-0.4.1">
 <a href="#minor-improvements-0.4.1" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
 <ul><li><p>Collection name can be selected as a variable for occurrence records. Previously it had to be manually translated from collection ID.</p></li>
@@ -150,13 +173,13 @@
 <a href="#new-features-0.4.0" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
 <ul><li>Occurrence record requests can now be made with aggregation, <code>aggregate = c("records", "species", "taxa")</code>. This returns the number of records, and/or species or taxa for each combination of the selected variables instead of the occurrence records themselves.</li>
 </ul></div>
-<div id="minor-improvements-3" class="section level5">
+<div id="minor-improvements-5" class="section level5">
 <h5 class="hasAnchor" id="minor-improvements-0.4.0">
 <a href="#minor-improvements-0.4.0" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
 <ul><li><p>Error is triggered when attempting to request less than one record.</p></li>
 <li><p>New content on requesting aggregated occurrence records added to vignette: 2. Occurrence records from FinBIF.</p></li>
 </ul></div>
-<div id="bug-fixes-3" class="section level5">
+<div id="bug-fixes-4" class="section level5">
 <h5 class="hasAnchor" id="bug-fixes-0.4.0">
 <a href="#bug-fixes-0.4.0" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
 <ul><li><p>Fixed two bugs in print method for FinBIF occurrence records that were triggered when attempting to print only one row of data.</p></li>
@@ -177,7 +200,7 @@
 <li><p>New Finnish occurrence status, <code>records_only</code>, added.</p></li>
 <li><p>New administrative statuses added to filters.</p></li>
 </ul></div>
-<div id="minor-improvements-4" class="section level5">
+<div id="minor-improvements-6" class="section level5">
 <h5 class="hasAnchor" id="minor-improvements-0.3.1">
 <a href="#minor-improvements-0.3.1" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
 <ul><li>Filtering vignette updated to reflect changes to data quality filters.</li>
@@ -197,7 +220,7 @@
 <li><p>Vernacular names are now localised. Users can select a language to use for taxon vernacular names. Missing names will fallback gracefully to other languages. A package-wide locale can be set and is by default set to the system locale (if not set or can’t be determined it will default to English).</p></li>
 <li><p>New vignettes on getting occurrence records, selecting and ordering variables, metadata and plotting have been added.</p></li>
 </ul></div>
-<div id="minor-improvements-5" class="section level5">
+<div id="minor-improvements-7" class="section level5">
 <h5 class="hasAnchor" id="minor-improvements-0.3.0">
 <a href="#minor-improvements-0.3.0" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
 <ul><li><p>Caching defaults to in memory caching instead of relying on the temporary directory.</p></li>
@@ -213,7 +236,7 @@
 <li><p>Variables can now be “deselected” when using the <code>select</code> argument to <code>finbif_occurrence</code> by prepending the variable name with a “<code>-</code>”.</p></li>
 <li><p>After some failures, API requests are now automatically retried up to three times.</p></li>
 </ul></div>
-<div id="bug-fixes-4" class="section level5">
+<div id="bug-fixes-5" class="section level5">
 <h5 class="hasAnchor" id="bug-fixes-0.3.0">
 <a href="#bug-fixes-0.3.0" class="anchor" aria-hidden="true"></a>BUG FIXES</h5>
 <ul><li><p>Ordering by descending variables did not work when ordering by both ascending and descending variables.</p></li>
@@ -230,7 +253,7 @@
 <a href="#new-features-0.2.0" class="anchor" aria-hidden="true"></a>NEW FEATURES</h5>
 <ul><li>Add capacity to request a random sample of FinBIF records.</li>
 </ul></div>
-<div id="minor-improvements-6" class="section level5">
+<div id="minor-improvements-8" class="section level5">
 <h5 class="hasAnchor" id="minor-improvements-0.2.0">
 <a href="#minor-improvements-0.2.0" class="anchor" aria-hidden="true"></a>MINOR IMPROVEMENTS</h5>
 <ul><li>Add more content to vignettes.</li>

@@ -39,7 +39,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Released version">0.6.2.9000</button>
+    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Released version">0.6.2.9001</button>
 
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto ml-3">
@@ -100,19 +100,19 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 34700400</span>
+<span class="co">#&gt; Records available: 40410386</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
-<span class="co">#&gt;    record_id     scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1      9#111      Aglais urticae  16        60.37011  24.72526 2020-04-22 15:00:00</span>
-<span class="co">#&gt; 2       8#19               Loxia  1         61.13068  21.65088 2020-04-22 07:20:00</span>
-<span class="co">#&gt; 3        8#4    Poecile montanus  1         61.13068  21.65088 2020-04-22 07:20:00</span>
-<span class="co">#&gt; 4       8#16      Turdus iliacus  1         61.13068  21.65088 2020-04-22 07:20:00</span>
-<span class="co">#&gt; 5        8#7  Erithacus rubecula  1         61.13068  21.65088 2020-04-22 07:20:00</span>
-<span class="co">#&gt; 6       8#13 Cyanistes caeruleus  1         61.13068  21.65088 2020-04-22 07:20:00</span>
-<span class="co">#&gt; 7       8#10       Spinus spinus  3         61.13068  21.65088 2020-04-22 07:20:00</span>
-<span class="co">#&gt; 8       7#13   Turdus philomelos  1         61.13305  21.65151 2020-04-22 06:30:00</span>
-<span class="co">#&gt; 9       7#25     Tringa ochropus  1         61.13305  21.65151 2020-04-22 06:30:00</span>
-<span class="co">#&gt; 10       7#7 Garrulus glandarius  1         61.13305  21.65151 2020-04-22 06:30:00</span>
+<span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
+<span class="co">#&gt; 1        …JX.1315966#18             Trametes  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 3        …JX.1315966#15                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 4        …JX.1315966#12                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456 2021-10-05 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
 <span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
@@ -125,7 +125,7 @@ Click to show/hide output.
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>dwc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "occurrenceID"                  "scientificName"                "individualCount"              </span>
 <span class="co">#&gt;  [4] "decimalLatitude"               "decimalLongitude"              "eventDateTime"                </span>
-<span class="co">#&gt;  [7] "coordinateUncertaintyInMeters" "hasIssues"                     "requires_verification"        </span>
+<span class="co">#&gt;  [7] "coordinateUncertaintyInMeters" "hasIssues"                     "requiresVerification"         </span>
 <span class="co">#&gt; [10] "requiresIdentification"        "occurrenceReliability"         "occurrenceQuality"</span></code></pre></div>
 <p>The functions <code><a href="../reference/to_dwc.html">to_dwc()</a></code> and <code><a href="../reference/to_dwc.html">to_native()</a></code> can be used to translate variable names to and from Darwin Core style and <a href="https://github.com/luomus/finbif" class="external-link">finbif</a>’s native variable names style.</p>
 </div>
@@ -140,19 +140,19 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 57007</span>
+<span class="co">#&gt; Records available: 71156</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
-<span class="co">#&gt;               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1  KE.176/5e9dd5782d0e…   Cygnus cygnus  1         62.79256  30.96101 2020-04-20 12:00:00</span>
-<span class="co">#&gt; 2        JX.1108556#265   Cygnus cygnus  2         64.2081   29.03035 2020-04-19 12:00:00</span>
-<span class="co">#&gt; 3         JX.1110250#40   Cygnus cygnus  20        63.12255  24.32082 2020-04-19 05:00:00</span>
-<span class="co">#&gt; 4          JX.1110117#3   Cygnus cygnus  2         65.87333  24.28142 2020-04-19 17:00:00</span>
-<span class="co">#&gt; 5         JX.1110052#46   Cygnus cygnus  2         61.13841  21.64607 2020-04-19 06:35:00</span>
-<span class="co">#&gt; 6         JX.1110024#10   Cygnus cygnus  2         60.32418  22.39303 2020-04-18 12:00:00</span>
-<span class="co">#&gt; 7          JX.1110008#3   Cygnus cygnus  10        64.17427  25.9137  2020-04-17 12:00:00</span>
-<span class="co">#&gt; 8         JX.1109958#52   Cygnus cygnus  2         61.32291  28.56818 2020-04-17 05:45:00</span>
-<span class="co">#&gt; 9          JX.1109939#4   Cygnus cygnus  2         61.2604   28.71105 2020-04-17 12:27:00</span>
-<span class="co">#&gt; 10         JX.1109952#4   Cygnus cygnus  4         61.2641   28.70687 2020-04-16 11:33:00</span>
+<span class="co">#&gt;              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
+<span class="co">#&gt; 1       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00</span>
+<span class="co">#&gt; 2        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00</span>
+<span class="co">#&gt; 3       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00</span>
+<span class="co">#&gt; 4  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00</span>
+<span class="co">#&gt; 5  …HR.3211/96886383-U   Cygnus cygnus  1         62.91891  28.18733 2021-10-02 12:00:00</span>
+<span class="co">#&gt; 6  …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00</span>
+<span class="co">#&gt; 7       …JX.1315449#15   Cygnus cygnus  6         61.32296  28.56814 2021-10-02 10:40:00</span>
+<span class="co">#&gt; 8       …JX.1315165#30   Cygnus cygnus  2         61.10535  21.55759 2021-10-02 08:25:00</span>
+<span class="co">#&gt; 9        …JX.1296318#3   Cygnus cygnus  26        60.83174  26.44824 2021-09-30 12:00:00</span>
+<span class="co">#&gt; 10 …HR.3211/96581760-U   Cygnus cygnus  1         61.46442  23.65117 2021-09-29 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
 <span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
@@ -165,19 +165,19 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 81351</span>
+<span class="co">#&gt; Records available: 101999</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
-<span class="co">#&gt;               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1  KE.176/5e9dd5782d0e…   Cygnus cygnus  1         62.79256  30.96101 2020-04-20 12:00:00</span>
-<span class="co">#&gt; 2        JX.1108556#265   Cygnus cygnus  2         64.2081   29.03035 2020-04-19 12:00:00</span>
-<span class="co">#&gt; 3         JX.1110250#40   Cygnus cygnus  20        63.12255  24.32082 2020-04-19 05:00:00</span>
-<span class="co">#&gt; 4         JX.1110172#49     Cygnus olor  2         61.0113   21.38515 2020-04-19 12:00:00</span>
-<span class="co">#&gt; 5          JX.1110117#3   Cygnus cygnus  2         65.87333  24.28142 2020-04-19 17:00:00</span>
-<span class="co">#&gt; 6         JX.1110052#46   Cygnus cygnus  2         61.13841  21.64607 2020-04-19 06:35:00</span>
-<span class="co">#&gt; 7    HR.3211/42456319-U     Cygnus olor  1         60.17978  24.93999 2020-04-18 12:00:00</span>
-<span class="co">#&gt; 8         JX.1110024#10   Cygnus cygnus  2         60.32418  22.39303 2020-04-18 12:00:00</span>
-<span class="co">#&gt; 9         JX.1109909#31     Cygnus olor  20        61.10578  21.44994 2020-04-18 07:35:00</span>
-<span class="co">#&gt; 10         JX.1110008#3   Cygnus cygnus  10        64.17427  25.9137  2020-04-17 12:00:00</span>
+<span class="co">#&gt;              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
+<span class="co">#&gt; 1        …JX.1315856#9     Cygnus olor  8         60.42794  22.20052 2021-10-04 12:00:00</span>
+<span class="co">#&gt; 2       …JX.1315724#21     Cygnus olor  6         60.44906  22.76845 2021-10-03 12:00:00</span>
+<span class="co">#&gt; 3       …JX.1315701#36     Cygnus olor  8         60.42794  22.20052 2021-10-03 12:00:00</span>
+<span class="co">#&gt; 4       …JX.1315699#24     Cygnus olor  8         60.56739  21.57188 2021-10-03 12:00:00</span>
+<span class="co">#&gt; 5       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00</span>
+<span class="co">#&gt; 6        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00</span>
+<span class="co">#&gt; 7       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00</span>
+<span class="co">#&gt; 8  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00</span>
+<span class="co">#&gt; 9  …HR.3211/96886383-U   Cygnus cygnus  1         62.91891  28.18733 2021-10-02 12:00:00</span>
+<span class="co">#&gt; 10 …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
 <span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
@@ -202,19 +202,19 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 1001</span>
-<span class="co">#&gt; Records available: 34696846</span>
+<span class="co">#&gt; Records available: 40410386</span>
 <span class="co">#&gt; A data.frame [1001 x 12]</span>
-<span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1          JX.1110588#7            Aglais io  2         63.13815  21.56879 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 2          JX.1110588#4       Aglais urticae  6         63.13815  21.56879 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 3         JX.1110588#10    Nymphalis antiopa  1         63.13815  21.56879 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 4          JX.1110427#4 Noccaea caerulescen…  1         60.72342  24.84861 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 5  KE.176/5e5bb8932d0e…       Aglais urticae  1         62.94     26.794   2020-04-21 12:00:00</span>
-<span class="co">#&gt; 6        JX.1110587#148  Phasianus colchicus  1         60.4088   22.20608 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 7         JX.1110587#82            Pica pica  7         60.4088   22.20608 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 8        JX.1110587#121        Ardea cinerea  1         60.4088   22.20608 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 9        JX.1110587#112     Larus argentatus  3         60.4088   22.20608 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 10       JX.1110587#115          Picus canus  1         60.4088   22.20608 2020-04-21 12:00:00</span>
+<span class="co">#&gt;    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
+<span class="co">#&gt; 1      …50#3 Exechiopsis fimbria…  1         65.01504  25.52607 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 2     …29#12 Depressaria badiella  1         62.92172  27.63335 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 3     …29#15 Depressaria daucella  1         62.92172  27.63335 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 4      …29#9   Epirrita autumnata  1         62.92172  27.63335 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 5      …29#6  Poecilocampa populi  1         62.92172  27.63335 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 6      …29#3      Xestia c-nigrum  1         62.92172  27.63335 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 7     …31#18 Agriopis aurantiaria  1         60.4528   22.40844 2021-10-04 12:00:00</span>
+<span class="co">#&gt; 8      …31#3     Autographa gamma  1         60.4528   22.40844 2021-10-04 12:00:00</span>
+<span class="co">#&gt; 9     …31#12 Chloroclysta sitera…  1         60.4528   22.40844 2021-10-04 12:00:00</span>
+<span class="co">#&gt; 10    …31#15   Epirrita autumnata  1         60.4528   22.40844 2021-10-04 12:00:00</span>
 <span class="co">#&gt; ...with 991 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
 <span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
@@ -222,7 +222,7 @@ Click to show/hide output.
 <p>You can see how many records are available for a given request, without retrieving any records, by setting <code>count_only = TRUE</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>count_only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; [1] 34696846</span></code></pre></div>
+<span class="co">#&gt; [1] 40410386</span></code></pre></div>
 </div>
 <div id="checking-taxa" class="section level2">
 <h2 class="hasAnchor">
@@ -235,19 +235,19 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 3326</span>
+<span class="co">#&gt; Records available: 4238</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
 <span class="co">#&gt;               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1         JX.1110052#67   Vulpes vulpes  1         61.13841  21.64607 2020-04-19 06:35:00</span>
-<span class="co">#&gt; 2         JX.1109239#13   Vulpes vulpes  1         66.82291  28.39749 2020-04-13 12:00:00</span>
-<span class="co">#&gt; 3          JX.1108569#4   Vulpes vulpes  1         65.07722  25.5018  2020-04-11 12:00:00</span>
-<span class="co">#&gt; 4          JX.1109741#4   Vulpes vulpes  1         60.30568  24.70511 2020-04-08 12:00:00</span>
-<span class="co">#&gt; 5          JX.1107461#8   Vulpes vulpes  1         60.11628  23.47399 2020-04-05 12:00:00</span>
-<span class="co">#&gt; 6  KE.176/5e98b2d02d0e…   Vulpes vulpes  1         61.53415  25.51793 2020-04-03 12:00:00</span>
-<span class="co">#&gt; 7         JX.1105990#19   Vulpes vulpes  1         60.42794  22.20052 2020-03-31 12:00:00</span>
-<span class="co">#&gt; 8          JX.1104874#4   Vulpes vulpes  1         62.61875  29.66306 2020-03-22 12:00:00</span>
-<span class="co">#&gt; 9         JX.1104505#19   Vulpes vulpes  1         60.10224  23.5459  2020-03-22 12:00:00</span>
-<span class="co">#&gt; 10         JX.1103437#4   Vulpes vulpes  1         60.55732  22.25711 2020-03-14 09:00:00</span>
+<span class="co">#&gt; 1         …JX.1315490#3   Vulpes vulpes  1         65.05719  25.62634 2021-10-02 12:00:00</span>
+<span class="co">#&gt; 2  …KE.176/6154c070d5d…   Vulpes vulpes  1         60.20882  24.90362 2021-09-29 12:00:00</span>
+<span class="co">#&gt; 3         …JX.1294654#3   Vulpes vulpes  1         60.83805  21.37382 2021-09-24 05:30:00</span>
+<span class="co">#&gt; 4   …HR.3211/95828765-U   Vulpes vulpes  1         60.76014  24.91448 2021-09-23 12:00:00</span>
+<span class="co">#&gt; 5  …KE.176/614e5d42d5d…   Vulpes vulpes  1         60.11016  25.01864 2021-09-22 12:00:00</span>
+<span class="co">#&gt; 6  …KE.176/614abfb4d5d…   Vulpes vulpes  1         60.13192  24.72079 2021-09-22 12:00:00</span>
+<span class="co">#&gt; 7         …JX.1293417#7   Vulpes vulpes  1         60.82366  21.2978  2021-09-20 05:30:00</span>
+<span class="co">#&gt; 8   …HR.3211/95510814-U   Vulpes vulpes  1         60.5      21.9     2021-09-19 12:00:00</span>
+<span class="co">#&gt; 9       …JX.1293110#126   Vulpes vulpes  1         62.57362  28.58553 2021-09-18 12:00:00</span>
+<span class="co">#&gt; 10      …JX.1272497#417   Vulpes vulpes  1         64.50244  29.98219 2021-09-17 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
 <span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
@@ -260,19 +260,19 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 3326</span>
+<span class="co">#&gt; Records available: 4238</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
 <span class="co">#&gt;               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1         JX.1110052#67   Vulpes vulpes  1         61.13841  21.64607 2020-04-19 06:35:00</span>
-<span class="co">#&gt; 2         JX.1109239#13   Vulpes vulpes  1         66.82291  28.39749 2020-04-13 12:00:00</span>
-<span class="co">#&gt; 3          JX.1108569#4   Vulpes vulpes  1         65.07722  25.5018  2020-04-11 12:00:00</span>
-<span class="co">#&gt; 4          JX.1109741#4   Vulpes vulpes  1         60.30568  24.70511 2020-04-08 12:00:00</span>
-<span class="co">#&gt; 5          JX.1107461#8   Vulpes vulpes  1         60.11628  23.47399 2020-04-05 12:00:00</span>
-<span class="co">#&gt; 6  KE.176/5e98b2d02d0e…   Vulpes vulpes  1         61.53415  25.51793 2020-04-03 12:00:00</span>
-<span class="co">#&gt; 7         JX.1105990#19   Vulpes vulpes  1         60.42794  22.20052 2020-03-31 12:00:00</span>
-<span class="co">#&gt; 8          JX.1104874#4   Vulpes vulpes  1         62.61875  29.66306 2020-03-22 12:00:00</span>
-<span class="co">#&gt; 9         JX.1104505#19   Vulpes vulpes  1         60.10224  23.5459  2020-03-22 12:00:00</span>
-<span class="co">#&gt; 10         JX.1103437#4   Vulpes vulpes  1         60.55732  22.25711 2020-03-14 09:00:00</span>
+<span class="co">#&gt; 1         …JX.1315490#3   Vulpes vulpes  1         65.05719  25.62634 2021-10-02 12:00:00</span>
+<span class="co">#&gt; 2  …KE.176/6154c070d5d…   Vulpes vulpes  1         60.20882  24.90362 2021-09-29 12:00:00</span>
+<span class="co">#&gt; 3         …JX.1294654#3   Vulpes vulpes  1         60.83805  21.37382 2021-09-24 05:30:00</span>
+<span class="co">#&gt; 4   …HR.3211/95828765-U   Vulpes vulpes  1         60.76014  24.91448 2021-09-23 12:00:00</span>
+<span class="co">#&gt; 5  …KE.176/614e5d42d5d…   Vulpes vulpes  1         60.11016  25.01864 2021-09-22 12:00:00</span>
+<span class="co">#&gt; 6  …KE.176/614abfb4d5d…   Vulpes vulpes  1         60.13192  24.72079 2021-09-22 12:00:00</span>
+<span class="co">#&gt; 7         …JX.1293417#7   Vulpes vulpes  1         60.82366  21.2978  2021-09-20 05:30:00</span>
+<span class="co">#&gt; 8   …HR.3211/95510814-U   Vulpes vulpes  1         60.5      21.9     2021-09-19 12:00:00</span>
+<span class="co">#&gt; 9       …JX.1293110#126   Vulpes vulpes  1         62.57362  28.58553 2021-09-18 12:00:00</span>
+<span class="co">#&gt; 10      …JX.1272497#417   Vulpes vulpes  1         64.50244  29.98219 2021-09-17 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
 <span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
@@ -292,21 +292,22 @@ Click to show/hide output.
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Lepidoptera"</span>, select <span class="op">=</span> <span class="st">"municipality"</span>, aggregate <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span></code></pre></div>
 <details closed><summary>
 Click to show/hide output.
-</summary><div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>Records downloaded<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Records available<span class="sc">:</span> <span class="dv">318</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>A data.frame [<span class="dv">10</span> x <span class="dv">2</span>]</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>   municipality n_species</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>     Virolahti      <span class="dv">1919</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>       Kouvola      <span class="dv">1312</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>      Rääkkylä      <span class="dv">1343</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>   Kemiönsaari      <span class="dv">1956</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>      Parainen      <span class="dv">1738</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>         Hanko      <span class="dv">1876</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>        Kuopio      <span class="dv">1307</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>      Helsinki      <span class="dv">1928</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>       Joensuu      <span class="dv">1331</span></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>    Raasepori      <span class="dv">1841</span></span></code></pre></div>
+</summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="co">#&gt; Records downloaded: 10</span>
+<span class="co">#&gt; Records available: 317</span>
+<span class="co">#&gt; A data.frame [10 x 2]</span>
+<span class="co">#&gt;    municipality n_species</span>
+<span class="co">#&gt; 1       Kouvola      1328</span>
+<span class="co">#&gt; 2     Virolahti      1932</span>
+<span class="co">#&gt; 3      Rääkkylä      1346</span>
+<span class="co">#&gt; 4   Kemiönsaari      1963</span>
+<span class="co">#&gt; 5      Parainen      1765</span>
+<span class="co">#&gt; 6         Hanko      1895</span>
+<span class="co">#&gt; 7      Helsinki      1937</span>
+<span class="co">#&gt; 8     Raasepori      1860</span>
+<span class="co">#&gt; 9         Kotka      1635</span>
+<span class="co">#&gt; 10       Kuopio      1319</span></code></pre></div>
 </details><p><br></p>
 </div>
 <div id="time-duration" class="section level2">
@@ -320,19 +321,19 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 34696846</span>
+<span class="co">#&gt; Records available: 40410386</span>
 <span class="co">#&gt; A data.frame [10 x 11]</span>
 <span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84 coordinates_uncertainty</span>
-<span class="co">#&gt; 1          JX.1110588#7            Aglais io  2         63.13815  21.56879  1000                  </span>
-<span class="co">#&gt; 2          JX.1110588#4       Aglais urticae  6         63.13815  21.56879  1000                  </span>
-<span class="co">#&gt; 3         JX.1110588#10    Nymphalis antiopa  1         63.13815  21.56879  1000                  </span>
-<span class="co">#&gt; 4          JX.1110427#4 Noccaea caerulescen…  1         60.72342  24.84861  1                     </span>
-<span class="co">#&gt; 5  KE.176/5e5bb8932d0e…       Aglais urticae  1         62.94     26.794    10000                 </span>
-<span class="co">#&gt; 6        JX.1110587#148  Phasianus colchicus  1         60.4088   22.20608  10000                 </span>
-<span class="co">#&gt; 7         JX.1110587#82            Pica pica  7         60.4088   22.20608  10000                 </span>
-<span class="co">#&gt; 8        JX.1110587#121        Ardea cinerea  1         60.4088   22.20608  10000                 </span>
-<span class="co">#&gt; 9        JX.1110587#112     Larus argentatus  3         60.4088   22.20608  10000                 </span>
-<span class="co">#&gt; 10       JX.1110587#115          Picus canus  1         60.4088   22.20608  10000                 </span>
+<span class="co">#&gt; 1        …JX.1315966#18             Trametes  1         65.08865  25.45157  1                     </span>
+<span class="co">#&gt; 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157  1                     </span>
+<span class="co">#&gt; 3        …JX.1315966#15                Fungi  1         65.08865  25.45157  1                     </span>
+<span class="co">#&gt; 4        …JX.1315966#12                Fungi  1         65.08865  25.45157  1                     </span>
+<span class="co">#&gt; 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157  1                     </span>
+<span class="co">#&gt; 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157  1                     </span>
+<span class="co">#&gt; 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864  50000                 </span>
+<span class="co">#&gt; 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467  1                     </span>
+<span class="co">#&gt; 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361  1                     </span>
+<span class="co">#&gt; 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456  1                     </span>
 <span class="co">#&gt; ...with 0 more records and 5 more variables:</span>
 <span class="co">#&gt; any_issues, requires_verification, requires_identification, record_reliability, record_quality</span></code></pre></div>
 </details><p><br></p>
@@ -350,19 +351,19 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 34696846</span>
+<span class="co">#&gt; Records available: 40410386</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
 <span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1          JX.1110588#7            Aglais io  2         63.13815  21.56879 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 2          JX.1110588#4       Aglais urticae  6         63.13815  21.56879 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 3         JX.1110588#10    Nymphalis antiopa  1         63.13815  21.56879 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 4          JX.1110427#4 Noccaea caerulescen…  1         60.72342  24.84861 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 5  KE.176/5e5bb8932d0e…       Aglais urticae  1         62.94     26.794   2020-04-21 12:00:00</span>
-<span class="co">#&gt; 6        JX.1110587#148  Phasianus colchicus  1         60.4088   22.20608 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 7         JX.1110587#82            Pica pica  7         60.4088   22.20608 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 8        JX.1110587#121        Ardea cinerea  1         60.4088   22.20608 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 9        JX.1110587#112     Larus argentatus  3         60.4088   22.20608 2020-04-21 12:00:00</span>
-<span class="co">#&gt; 10       JX.1110587#115          Picus canus  1         60.4088   22.20608 2020-04-21 12:00:00</span>
+<span class="co">#&gt; 1        …JX.1315966#18             Trametes  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 3        …JX.1315966#15                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 4        …JX.1315966#12                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361 2021-10-05 12:00:00</span>
+<span class="co">#&gt; 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456 2021-10-05 12:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
 <span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
@@ -382,19 +383,19 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 34696846</span>
+<span class="co">#&gt; Records available: 40410386</span>
 <span class="co">#&gt; A data.frame [10 x 12]</span>
 <span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1          JX.1110588#7            Aglais io  2         63.13815  21.56879 2020-04-21 09:00:00</span>
-<span class="co">#&gt; 2          JX.1110588#4       Aglais urticae  6         63.13815  21.56879 2020-04-21 09:00:00</span>
-<span class="co">#&gt; 3         JX.1110588#10    Nymphalis antiopa  1         63.13815  21.56879 2020-04-21 09:00:00</span>
-<span class="co">#&gt; 4          JX.1110427#4 Noccaea caerulescen…  1         60.72342  24.84861 2020-04-21 09:00:00</span>
-<span class="co">#&gt; 5  KE.176/5e5bb8932d0e…       Aglais urticae  1         62.94     26.794   2020-04-21 09:00:00</span>
-<span class="co">#&gt; 6        JX.1110587#148  Phasianus colchicus  1         60.4088   22.20608 2020-04-21 09:00:00</span>
-<span class="co">#&gt; 7         JX.1110587#82            Pica pica  7         60.4088   22.20608 2020-04-21 09:00:00</span>
-<span class="co">#&gt; 8        JX.1110587#121        Ardea cinerea  1         60.4088   22.20608 2020-04-21 09:00:00</span>
-<span class="co">#&gt; 9        JX.1110587#112     Larus argentatus  3         60.4088   22.20608 2020-04-21 09:00:00</span>
-<span class="co">#&gt; 10       JX.1110587#115          Picus canus  1         60.4088   22.20608 2020-04-21 09:00:00</span>
+<span class="co">#&gt; 1        …JX.1315966#18             Trametes  1         65.08865  25.45157 2021-10-05 09:00:00</span>
+<span class="co">#&gt; 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157 2021-10-05 09:00:00</span>
+<span class="co">#&gt; 3        …JX.1315966#15                Fungi  1         65.08865  25.45157 2021-10-05 09:00:00</span>
+<span class="co">#&gt; 4        …JX.1315966#12                Fungi  1         65.08865  25.45157 2021-10-05 09:00:00</span>
+<span class="co">#&gt; 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157 2021-10-05 09:00:00</span>
+<span class="co">#&gt; 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157 2021-10-05 09:00:00</span>
+<span class="co">#&gt; 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864 2021-10-05 09:00:00</span>
+<span class="co">#&gt; 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467 2021-10-05 09:00:00</span>
+<span class="co">#&gt; 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361 2021-10-05 09:00:00</span>
+<span class="co">#&gt; 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456 2021-10-05 09:00:00</span>
 <span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
 <span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
 <span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
