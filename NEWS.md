@@ -1,3 +1,21 @@
+# finbif 0.6.2.9001
+
+#### MINOR IMPROVEMENTS
+
+-   Occurrence record filtering can now be done using open-ended date
+    ranges.
+
+# finbif 0.6.2.9000
+
+#### BUG FIXES
+
+-   Fix bug in importing of file downloads triggered by string quotation
+    errors.
+
+#### MINOR IMPROVEMENTS
+
+-   New administrative statuses added.
+
 # finbif 0.6.2
 
 #### NEW FEATURES

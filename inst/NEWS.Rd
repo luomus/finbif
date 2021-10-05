@@ -1,7 +1,27 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.2.9001}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Occurrence record filtering can now be done using open-ended date
+        ranges.
+    }
+  }
+}
+
 \section{finbif version 0.6.2.9000}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fix bug in importing of file downloads triggered by string quotation
+        errors.
+    }
+  }
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item New administrative statuses added.
+    }
+  }
 }
 
 \section{finbif version 0.6.2}{
