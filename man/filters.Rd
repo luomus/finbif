@@ -157,7 +157,9 @@ last day of the month or year (e.g., \code{c(2001, 2003)} is equivalent to
 \code{c("2001-01-01", "2003-12-12")}). If a single date is supplied as a partial
 date string then all records that fall within that month or year will be
 returned (e.g., \code{c("2001-01")} is equivalent to
-\code{c("2001-01-01", "2001-01-31")}).
+\code{c("2001-01-01", "2001-01-31")}). Use empty strings for the begin or end
+date to specify open-ended date ranges (e.g., \code{c("2000-01-01", "")} for
+all dates from the turn of the century).
 \item \code{date_range_ym} Dates.
 As above, but days (if supplied) will be ignored.
 \item \code{date_range_d} Integer vector.
