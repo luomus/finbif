@@ -19,6 +19,7 @@
 ^CRAN-RELEASE$
 ^\.zenodo\.json$
 ^inst/man$
+^inst/vign$
 ^prepare-for-release$
 ^LICENSE\.md$
 ^CITATION\.cff$
