@@ -126,10 +126,14 @@ test_that(
 test_that(
   "can load data from a lite download", {
 
-    expect_snapshot_value(
-      finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC"),
-      style = "json2"
-    )
+    !identical(.Platform$OS.type, "windows") {
+
+      expect_snapshot_value(
+        finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC"),
+        style = "json2"
+      )
+
+    }
 
     skip_on_cran()
 
