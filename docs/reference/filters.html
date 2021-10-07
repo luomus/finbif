@@ -198,10 +198,10 @@ to 100m).</p></li>
     
 
 <p>Filters related to time of record include:</p><ul><li><p><code>date_range_ymd</code> Dates.
-An <a href="http://lubridate.tidyverse.org/reference/Interval-class.html">Interval</a> object or a vector of one to
+An <a href="https://lubridate.tidyverse.org/reference/Interval-class.html">Interval</a> object or a vector of one to
 two <a href="https://rdrr.io/r/base/Dates.html">Date</a> objects (begin and end dates) or objects that
 are coercible to the <a href="https://rdrr.io/r/base/Dates.html">Date</a> class by
-<a href="http://lubridate.tidyverse.org/reference/as_date.html">as_date</a>. When supplying dates as strings, the day or
+<a href="https://lubridate.tidyverse.org/reference/as_date.html">as_date</a>. When supplying dates as strings, the day or
 month-and-day can be omitted (e.g.,<code>"2001-04"</code> or <code>"2001"</code>). Note however,
 that when omitting day, only "<code>-</code>" is allowed to separate year and month,
 and months must be in two-digit/leading zero form. If the begin or end
@@ -225,7 +225,7 @@ day of the year.</p></li>
 <li><p><code>{first|last}_import_date_{min|max}</code> Date.
 Filter by date record was imported/modified. Either a
 <a href="https://rdrr.io/r/base/Dates.html">Date</a> object or object that is coercible to the
-<a href="https://rdrr.io/r/base/Dates.html">Date</a> class by <a href="http://lubridate.tidyverse.org/reference/as_date.html">as_date</a>, or the number
+<a href="https://rdrr.io/r/base/Dates.html">Date</a> class by <a href="https://lubridate.tidyverse.org/reference/as_date.html">as_date</a>, or the number
 of seconds since 1970-01-01 00:00.00 UTC (the so-called UNIX epoch). Note
 that this means that specifying a year, such as 2019, without a month and
 day will be interpreted as 2019 seconds after midnight on Jan 1, 1970 and
