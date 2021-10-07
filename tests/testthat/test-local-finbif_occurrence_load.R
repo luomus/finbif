@@ -126,7 +126,7 @@ test_that(
 test_that(
   "can load data from a lite download", {
 
-    !identical(.Platform$OS.type, "windows") {
+   if (!identical(.Platform$OS.type, "windows")) {
 
       expect_snapshot_value(
         finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC"),
