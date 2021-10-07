@@ -123,32 +123,32 @@ test_that(
 
 )
 
-test_that(
-  "can load data from a lite download", {
+if (!identical(.Platform$OS.type, "windows")) {
 
-   if (!identical(.Platform$OS.type, "windows")) {
+  test_that(
+    "can load data from a lite download", {
+
+        expect_snapshot_value(
+          finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC"),
+          style = "json2"
+        )
+
+      skip_on_cran()
 
       expect_snapshot_value(
-        finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC"),
-        style = "json2"
+        finbif_occurrence_load("laji-data.ods", tzone = "Etc/UTC"),
+        style = "json2", ignore_attr = "url"
+      )
+
+      expect_snapshot_value(
+        finbif_occurrence_load("laji-data.xlsx", tzone = "Etc/UTC"),
+        style = "json2", ignore_attr = "url"
       )
 
     }
+  )
 
-    skip_on_cran()
-
-    expect_snapshot_value(
-      finbif_occurrence_load("laji-data.ods", tzone = "Etc/UTC"),
-      style = "json2", ignore_attr = "url"
-    )
-
-    expect_snapshot_value(
-      finbif_occurrence_load("laji-data.xlsx", tzone = "Etc/UTC"),
-      style = "json2", ignore_attr = "url"
-    )
-
-  }
-)
+}
 
 test_that(
   "with invalid URL returns an error message", {
