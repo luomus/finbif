@@ -6,6 +6,7 @@ if (has_dev_api()) {
   options(finbif_api_url = "https://apitest.laji.fi")
 
   assignInNamespace("var_names", finbif:::var_names_test, "finbif")
+  assignInNamespace("filter_names", finbif:::filter_names_test, "finbif")
 
   invisible(vcr_configure(dir = "../api-dev-cassettes"))
 

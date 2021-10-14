@@ -3,6 +3,7 @@ source("data-raw/variables_test.R")
 source("data-raw/citable_file_variables.R")
 source("data-raw/lite_download_file_variables.R")
 source("data-raw/filters.R")
+source("data-raw/filters_test.R")
 source("data-raw/status.R")
 source("data-raw/informal_groups.R")
 source("data-raw/habitat_types.R")
@@ -24,6 +25,7 @@ usethis::use_data(
   cite_file_vars,
   lite_download_file_vars,
   filter_names,
+  filter_names_test,
   administrative_status,
   red_list_status,
   informal_group,
