@@ -1,6 +1,6 @@
 dummy <- function(...) NULL
 
-if (requireNamespace("vcr", quietly = TRUE)) {
+if (requireNamespace("vcr", quietly = TRUE) && dir.exists("../cassettes")) {
 
   library("vcr")
   invisible(

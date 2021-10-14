@@ -23,3 +23,5 @@
 ^prepare-for-release$
 ^LICENSE\.md$
 ^CITATION\.cff$
+^tests/api-dev-cassettes$
+^tests/cassettes$
