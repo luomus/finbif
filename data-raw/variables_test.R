@@ -73,7 +73,7 @@ schema_only <- setdiff(agg_vars, agg_vars_pkg)
 
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
-agg_gath_vars_pkg <- row.names(var_names[var_names[["aggregate_events"]], ])
+agg_gath_vars_pkg <- row.names(var_names_test[var_names_test[["aggregate_events"]], ])
 agg_gath_vars_pkg <- grep(
   "^computed_var|^missing_var", agg_gath_vars_pkg, value = TRUE, invert = TRUE
 )
@@ -83,7 +83,7 @@ schema_only <- setdiff(agg_gath_vars, agg_gath_vars_pkg)
 
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
-agg_doc_vars_pkg <- row.names(var_names[var_names[["aggregate_documents"]], ])
+agg_doc_vars_pkg <- row.names(var_names_test[var_names_test[["aggregate_documents"]], ])
 agg_doc_vars_pkg <- grep(
   "^computed_var|^missing_var", agg_doc_vars_pkg, value = TRUE, invert = TRUE
 )
