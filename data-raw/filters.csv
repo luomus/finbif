@@ -97,3 +97,4 @@ collectionAndRecordQuality,collection_and_record_quality,factor,FALSE,",",FALSE
 plantStatusCode,plant_status_code,character,FALSE,",",FALSE
 elyCentreId,ely_center_id,uri,FALSE,",",FALSE
 provinceId,region_id,uri,FALSE,",",FALSE
+partition,subset,integer,FALSE,"/",FALSE
