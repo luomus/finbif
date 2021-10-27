@@ -131,6 +131,8 @@ finbif_occurrence <- function(
 
   df <- compute_epsg(df, select_, dwc)
 
+  df <- compute_abundance(df, select_, dwc)
+
   df <- structure(
     df[select_],
     class     = c("finbif_occ", "data.frame"),
@@ -148,6 +150,8 @@ finbif_occurrence <- function(
   drop_na_col(df, drop_na)
 
 }
+
+#' @noRd
 
 select_taxa <- function(..., cache, check_taxa, on_check_fail) {
 
@@ -190,6 +194,8 @@ select_taxa <- function(..., cache, check_taxa, on_check_fail) {
   ans
 
 }
+
+#' @noRd
 
 compute_date_time <- function(
   df, select, select_, aggregate, dwc, date_time_method, tzone
@@ -256,6 +262,8 @@ compute_date_time <- function(
 
 }
 
+#' @noRd
+
 get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
 
   date_time <- lubridate::ymd(df[[date]])
@@ -296,6 +304,8 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
 
 }
 
+#' @noRd
+
 get_duration <- function(
   df, date_time, date, hour, minute, lat, lon, method, tzone
 ) {
@@ -310,6 +320,8 @@ get_duration <- function(
   lubridate::as.duration(ans)
 
 }
+
+#' @noRd
 
 get_iso8601 <- function(
   df, date_time, date_start, hour_start, minute_start, date_end, hour_end,
@@ -354,6 +366,8 @@ get_iso8601 <- function(
   ifelse(is.na(df[[date_start]]), NA_character_, ans)
 
 }
+
+#' @noRd
 
 compute_vars_from_id <- function(df, select_, dwc, locale) {
 
@@ -406,6 +420,8 @@ compute_vars_from_id <- function(df, select_, dwc, locale) {
 
 }
 
+#' @noRd
+
 compute_epsg <- function(df, select_, dwc) {
 
   select_ <- var_names[, col_type_string(dwc)] %in% select_
@@ -440,6 +456,36 @@ compute_epsg <- function(df, select_, dwc) {
   df
 
 }
+
+#' @noRd
+
+compute_abundance <- function(df, select_, dwc) {
+
+  type <- col_type_string(dwc)
+
+  abundance_ <- var_names[["computed_var_abundance", type]]
+
+  abundance_i <- var_names[["unit.interpretations.individualCount", type]]
+
+  abundance_v <- var_names[["unit.abundanceString", type]]
+
+  if (abundance_ %in% select_) {
+
+    abundance <- ifelse(
+      df[[abundance_i]] == 1L,
+      ifelse(grepl("1", df[[abundance_v]]), 1L, NA_integer_),
+      df[[abundance_i]]
+    )
+
+  }
+
+  df[[abundance_]] <- abundance
+
+  df
+
+}
+
+#' @noRd
 
 multi_req <- function(
   taxa, filter, select, order_by, sample, n, page, count_only, quiet, cache,

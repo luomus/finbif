@@ -221,6 +221,20 @@ infer_selection <- function(aggregate, select, var_type) {
       select <- unique(c(select, date_time_vars[[var_type]]))
     }
 
+    vars <- c("abundance", "individualCount")
+
+    abundance <- any(vars %in% select)
+
+    if (abundance) {
+
+      abundance_vars <- c(
+        "unit.interpretations.individualCount", "unit.abundanceString"
+      )
+
+      select <- unique(c(select, var_names[abundance_vars, var_type]))
+
+    }
+
     select_vars <- var_names[var_names[[select_type]], var_type, drop = FALSE]
     class(select_vars[[var_type]]) <- class(var_names[[var_type]])
     select <- translate(

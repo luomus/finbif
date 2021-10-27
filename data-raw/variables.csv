@@ -1,7 +1,8 @@
 finbif_api_var,translated_var,dwc,default_var,quality_var,type,class,single,select,order,aggregate,aggregate_events,aggregate_documents,doc,date,localised
 unit.unitId,record_id,occurrenceID,TRUE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.linkings.taxon.scientificName,scientific_name,scientificName,TRUE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
-unit.interpretations.individualCount,abundance,individualCount,TRUE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+computed_var_abundance,abundance,individualCount,TRUE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.interpretations.individualCount,abundance_interpreted,individualCountIntepreted,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.conversions.wgs84CenterPoint.lat,lat_wgs84,decimalLatitude,TRUE,FALSE,double,double,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
 gathering.conversions.wgs84CenterPoint.lon,lon_wgs84,decimalLongitude,TRUE,FALSE,double,double,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
 computed_var_date_time,date_time,eventDateTime,TRUE,FALSE,double,date,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
