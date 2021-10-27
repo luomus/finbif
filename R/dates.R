@@ -46,12 +46,21 @@ date_range_ymd <- function(x, y, format = "%Y-%m-%d") {
   y <- parse_date(y)
 
   if ("" %in% list(x, y) || is.null(x) || is.null(y) || inherits(x, class(y))) {
-    if (inherits(x, "Date")) x <- format.Date(x, format)
-    if (inherits(y, "Date")) y <- format.Date(y, format)
+    x <- format_date(x, format)
+    y <- format_date(y, format)
     return(paste(c(x, y), collapse = "/"))
   }
 
   date_range_ymd2(x, y, format)
+
+}
+
+#' @noRd
+format_date <- function(x, format) {
+
+  if (inherits(x, "Date")) x <- format.Date(x, format)
+
+  x
 
 }
 
