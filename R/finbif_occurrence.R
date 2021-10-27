@@ -477,9 +477,9 @@ compute_abundance <- function(df, select_, dwc) {
       df[[abundance_i]]
     )
 
-  }
+    df[[abundance_]] <- abundance
 
-  df[[abundance_]] <- abundance
+  }
 
   df
 
