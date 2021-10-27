@@ -6,7 +6,8 @@ unit.interpretations.individualCount,abundance_interpreted,individualCountIntepr
 gathering.conversions.wgs84CenterPoint.lat,lat_wgs84,decimalLatitude,TRUE,FALSE,double,double,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
 gathering.conversions.wgs84CenterPoint.lon,lon_wgs84,decimalLongitude,TRUE,FALSE,double,double,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
 computed_var_date_time,date_time,eventDateTime,TRUE,FALSE,double,date,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
-gathering.interpretations.coordinateAccuracy,coordinates_uncertainty,coordinateUncertaintyInMeters,TRUE,FALSE,double,double,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+computed_var_coordinates_uncertainty,coordinates_uncertainty,coordinateUncertaintyInMeters,TRUE,FALSE,double,double,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+gathering.interpretations.coordinateAccuracy,coordinates_uncertainty_interpreted,coordinateUncertaintyInMetersInterpreted,FALSE,FALSE,double,double,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 unit.quality.documentGatheringUnitQualityIssues,any_issues,hasIssues,TRUE,TRUE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.interpretations.needsCheck,requires_verification,requiresVerification,TRUE,TRUE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.interpretations.needsIdentification,requires_identification,requiresIdentification,TRUE,TRUE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE

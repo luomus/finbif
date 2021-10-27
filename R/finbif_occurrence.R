@@ -133,6 +133,8 @@ finbif_occurrence <- function(
 
   df <- compute_abundance(df, select_, dwc)
 
+  df <- coordinates_uncertainty(df, select_, dwc)
+
   df <- structure(
     df[select_],
     class     = c("finbif_occ", "data.frame"),
@@ -478,6 +480,37 @@ compute_abundance <- function(df, select_, dwc) {
     )
 
     df[[abundance_]] <- abundance
+
+  }
+
+  df
+
+}
+
+
+#' @noRd
+
+coordinates_uncertainty <- function(df, select_, dwc) {
+
+  type <- col_type_string(dwc)
+
+  coord_uncert_ <- var_names[["computed_var_coordinates_uncertainty", type]]
+
+  coord_uncert_i <- var_names[[
+    "gathering.interpretations.coordinateAccuracy", type
+  ]]
+
+  source <- var_names[["document.sourceId", type]]
+
+  if (coord_uncert_ %in% select_) {
+
+    coord_uncert <- ifelse(
+      df[[source]] == "http://tun.fi/KE.3" & df[[coord_uncert_i]] == 1,
+      NA_real_,
+      df[[coord_uncert_i]]
+    )
+
+    df[[coord_uncert_]] <- coord_uncert
 
   }
 

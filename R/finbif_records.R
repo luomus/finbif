@@ -235,6 +235,22 @@ infer_selection <- function(aggregate, select, var_type) {
 
     }
 
+    vars <- c("coordinates_uncertainty", "coordinateUncertaintyInMeters")
+
+    coordinates_uncertainty <- any(vars %in% select)
+
+    if (coordinates_uncertainty) {
+
+      coordinates_uncertainty_vars <- c(
+        "gathering.interpretations.coordinateAccuracy", "document.sourceId"
+      )
+
+      select <- unique(
+        c(select, var_names[coordinates_uncertainty_vars, var_type])
+      )
+
+    }
+
     select_vars <- var_names[var_names[[select_type]], var_type, drop = FALSE]
     class(select_vars[[var_type]]) <- class(var_names[[var_type]])
     select <- translate(
