@@ -13,6 +13,8 @@ test_that(
     unzip(zip, tsv, exdir = tempdir())
     file.copy(paste(tempdir(), tsv, sep = "/"), tsv)
 
+    options(finbif_tz = "Etc/UTC")
+
     expect_identical(
       335L,
       finbif_occurrence_load(tsv, count_only = TRUE)
@@ -25,7 +27,7 @@ test_that(
       finbif_occurrence_load(tsv, n = nrows, count_only = TRUE)
     )
 
-    options(finbif_cache_path = "../write-files")
+    options(finbif_cache_path = "../write-files", finbif_tz = Sys.timezone())
 
     file_path <-
       "../write-files/finbif_cache_file_4c64a068da60f708c4e928701ec538ef"
