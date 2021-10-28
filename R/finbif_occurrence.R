@@ -226,8 +226,8 @@ compute_date_time <- function(
       )
       if ("samplingEffort" %in% select_) {
         df[["samplingEffort"]] <- get_duration(
-          df, "eventDateTime", "eventDateEnd", "month", "day", "hourEnd",
-          "minuteEnd", "decimalLatitude", "decimalLongitude",
+          df, "eventDateTime", "eventDateEnd", "month", "day", "hourStart",
+          "hourEnd", "minuteEnd", "decimalLatitude", "decimalLongitude",
           date_time_method, tzone
         )
       }
@@ -245,8 +245,8 @@ compute_date_time <- function(
       )
       if ("duration" %in% select_) {
         df[["duration"]] <- get_duration(
-          df, "date_time", "date_end", "month", "day", "hour_end", "minute_end",
-          "lat_wgs84", "lon_wgs84", date_time_method, tzone
+          df, "date_time", "date_end", "month", "day", "hour_start", "hour_end",
+          "minute_end", "lat_wgs84", "lon_wgs84", date_time_method, tzone
         )
       }
       if ("date_time_ISO8601" %in% select_) {
@@ -316,18 +316,29 @@ get_date_time <- function(
 #' @noRd
 
 get_duration <- function(
-  df, date_time, date, month, day, hour, minute, lat, lon, method, tzone
+  df, date_time, date, month, day, hour_start, hour_end, minute, lat, lon,
+  method, tzone
 ) {
 
   date_time_end <- get_date_time(
-    df, date, month, day, hour, minute, lat, lon, method, tzone
+    df, date, month, day, hour_end, minute, lat, lon, method, tzone
   )
 
-  ind <- is.na(df[[date_time]]) | is.na(date_time_end)
+  ind <-
+    is.na(df[[hour_start]]) |
+    is.na(df[[hour_end]])   |
+    is.na(df[[date_time]])  |
+    is.na(date_time_end)
 
-  ans <- lubridate::as.interval(rep_len(NA_integer_, length(ind)))
+  na_interval <- lubridate::as.interval(rep_len(NA_integer_, length(ind)))
+
+  ans <- na_interval
 
   ans[!ind] <- lubridate::interval(df[!ind, date_time], date_time_end[!ind])
+
+  ind <- !is.na(ans) & ans == 0
+
+  ans[ind] <- na_interval[ind]
 
   lubridate::as.duration(ans)
 
