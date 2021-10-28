@@ -1,5 +1,5 @@
 finbif_api_var,shrtnm,translated_var,dwc,superseeded,type
-Unit.Interpretations.IndividualCount,abund,abundance,individualCount,FALSE,integer
+Unit.Interpretations.IndividualCount,abundI,abundance_interpreted,individualCountInterpreted,FALSE,integer
 Unit.AbundanceUnit,abundUnit,abundance_unit,abundanceUnit,FALSE,character
 Unit.Abundance,abundVbtm,abundance_verbatim,verbatimAbundance,FALSE,character
 Unit.Interpretations.AnnotatedTaxonId,annTxnID,annotated_taxon_id,annotatedTaxonID,FALSE,character
@@ -11,7 +11,7 @@ Taxon.EnglishName,comNmEN,common_name_english,vernacularNameEnglish,FALSE,charac
 Taxon.FinnishName,comNmFI,common_name_finnish,vernacularNameFinnish,FALSE,character
 Taxon.SwedishName,comNmSV,common_name_swedish,vernacularNameSwedish,FALSE,character
 Gathering.Interpretations.CoordinateSource,crdSrc,coordinates_source,georeferenceSources,FALSE,character
-Gathering.Interpretations.CoordinateAccuracy,crdUncert,coordinates_uncertainty,coordinateUncertaintyInMeters,FALSE,double
+Gathering.Interpretations.CoordinateAccuracy,crdUncertI,coordinates_uncertainty_interpreted,coordinateUncertaintyInMetersInterpreted,FALSE,double
 Gathering.Interpretations.Country,cntryID,country_id,countryID,FALSE,character
 Gathering.Interpretations.CountrySource,cntrySrc,country_source,countrySource,FALSE,character
 Gathering.CountryVerbatim,cntryVbtm,country_verbatim,verbatimCountry,FALSE,character
