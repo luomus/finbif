@@ -357,9 +357,13 @@ get_iso8601 <- function(
 
   ind <- is.na(df[[date_time]]) | is.na(date_time_end)
 
-  ans <- lubridate::as.interval(rep_len(NA_integer_, length(ind)))
+  ans <- lubridate::interval(
+    rep_len("1970-01-01/1970-01-01", length(ind)), tzone = tzone
+  )
 
   ans[!ind] <- lubridate::interval(df[!ind, date_time], date_time_end[!ind])
+
+  ans[ind] <- lubridate::as.interval(NA_integer_)
 
   ans <- lubridate::format_ISO8601(ans, usetz = TRUE)
 
@@ -390,7 +394,15 @@ get_iso8601 <- function(
     ans
   )
 
-  ifelse(is.na(df[[date_start]]), NA_character_, ans)
+  ifelse(
+    is.na(ans),
+    ifelse(
+      df[[date_start]] == df[[date_end]],
+      df[[date_start]],
+      paste(df[[date_start]], df[[date_end]], sep = "/")
+    ),
+    ans
+  )
 
 }
 
