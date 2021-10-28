@@ -47,10 +47,9 @@
 #' )
 #'
 #' }
-#' @importFrom methods as
 #' @importFrom utils hasName
-#' @importFrom lubridate as_datetime as.duration force_tzs format_ISO8601 hour
-#' @importFrom lubridate interval minute ymd
+#' @importFrom lubridate as_datetime as.duration as.interval force_tzs
+#' @importFrom lubridate format_ISO8601 hour interval minute ymd
 #' @importFrom lutz tz_lookup_coords
 #' @export
 
@@ -222,39 +221,39 @@ compute_date_time <- function(
   if (date_time) {
     if (dwc) {
       df[["eventDateTime"]] <- get_date_time(
-        df, "eventDateStart", "hourStart", "minuteStart",
+        df, "eventDateStart", "month", "day", "hourStart", "minuteStart",
         "decimalLatitude", "decimalLongitude", date_time_method, tzone
       )
       if ("samplingEffort" %in% select_) {
         df[["samplingEffort"]] <- get_duration(
-          df, "eventDateTime", "eventDateEnd", "hourEnd",
+          df, "eventDateTime", "eventDateEnd", "month", "day", "hourEnd",
           "minuteEnd", "decimalLatitude", "decimalLongitude",
           date_time_method, tzone
         )
       }
       if ("eventDate" %in% select_) {
         df[["eventDate"]] <- get_iso8601(
-          df, "eventDateTime", "eventDateStart", "hourStart", "minuteStart",
-          "eventDateEnd", "hourEnd", "minuteEnd", "decimalLatitude",
-          "decimalLongitude", date_time_method, tzone
+          df, "eventDateTime", "month", "day", "eventDateStart", "hourStart",
+          "minuteStart", "eventDateEnd", "hourEnd", "minuteEnd",
+          "decimalLatitude", "decimalLongitude", date_time_method, tzone
         )
       }
     } else {
       df[["date_time"]] <- get_date_time(
-        df, "date_start", "hour_start", "minute_start", "lat_wgs84",
-        "lon_wgs84", date_time_method, tzone
+        df, "date_start", "month", "day", "hour_start", "minute_start",
+        "lat_wgs84", "lon_wgs84", date_time_method, tzone
       )
       if ("duration" %in% select_) {
         df[["duration"]] <- get_duration(
-          df, "date_time", "date_end", "hour_end", "minute_end", "lat_wgs84",
-          "lon_wgs84", date_time_method, tzone
+          df, "date_time", "date_end", "month", "day", "hour_end", "minute_end",
+          "lat_wgs84", "lon_wgs84", date_time_method, tzone
         )
       }
       if ("date_time_ISO8601" %in% select_) {
         df[["date_time_ISO8601"]] <- get_iso8601(
-          df, "date_time", "date_start", "hour_start", "minute_start",
-          "date_end", "hour_end", "minute_end", "lat_wgs84", "lon_wgs84",
-          date_time_method, tzone
+          df, "date_time", "month", "day", "date_start", "hour_start",
+          "minute_start", "date_end", "hour_end", "minute_end", "lat_wgs84",
+          "lon_wgs84", date_time_method, tzone
         )
       }
     }
@@ -266,7 +265,9 @@ compute_date_time <- function(
 
 #' @noRd
 
-get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
+get_date_time <- function(
+  df, date, month, day, hour, minute, lat, lon, method, tzone
+) {
 
   date_time <- lubridate::ymd(df[[date]])
   date_time <- lubridate::as_datetime(date_time)
@@ -293,32 +294,41 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
 
     tz_in <- "Europe/Helsinki"
     date_time <- lubridate::force_tz(date_time, tz_in)
-    lubridate::with_tz(date_time, tzone)
+    date_time <- lubridate::with_tz(date_time, tzone)
 
   } else {
 
     tz_in <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
-    lubridate::force_tzs(
+    date_time <- lubridate::force_tzs(
       date_time, tzones = ifelse(is.na(tz_in), tzone, tz_in), tzone_out = tzone
     )
 
   }
+
+  ind <- is.na(df[[month]]) | is.na(df[[day]])
+
+  date_time[ind] <- lubridate::as_datetime(NA_integer_, tz = tzone)
+
+  date_time
 
 }
 
 #' @noRd
 
 get_duration <- function(
-  df, date_time, date, hour, minute, lat, lon, method, tzone
+  df, date_time, date, month, day, hour, minute, lat, lon, method, tzone
 ) {
 
   date_time_end <- get_date_time(
-    df, date, hour, minute, lat, lon, method, tzone
+    df, date, month, day, hour, minute, lat, lon, method, tzone
   )
 
-  ans <- lubridate::interval(df[[date_time]], date_time_end)
-  missing_interval <- lubridate::interval(NA_character_)
-  ans <- ifelse(is.na(df[[minute]]) | is.na(df[[hour]]), missing_interval, ans)
+  ind <- is.na(df[[date_time]]) | is.na(date_time_end)
+
+  ans <- lubridate::as.interval(rep_len(NA_integer_, length(ind)))
+
+  ans[!ind] <- lubridate::interval(df[!ind, date_time], date_time_end[!ind])
+
   lubridate::as.duration(ans)
 
 }
@@ -326,15 +336,19 @@ get_duration <- function(
 #' @noRd
 
 get_iso8601 <- function(
-  df, date_time, date_start, hour_start, minute_start, date_end, hour_end,
-  minute_end, lat, lon, method, tzone
+  df, date_time, month, day, date_start, hour_start, minute_start, date_end,
+  hour_end, minute_end, lat, lon, method, tzone
 ) {
 
   date_time_end <- get_date_time(
-    df, date_end, hour_end, minute_end, lat, lon, method, tzone
+    df, date_end, month, day, hour_end, minute_end, lat, lon, method, tzone
   )
 
-  ans <- lubridate::interval(df[[date_time]], date_time_end)
+  ind <- is.na(df[[date_time]]) | is.na(date_time_end)
+
+  ans <- lubridate::as.interval(rep_len(NA_integer_, length(ind)))
+
+  ans[!ind] <- lubridate::interval(df[!ind, date_time], date_time_end[!ind])
 
   ans <- lubridate::format_ISO8601(ans, usetz = TRUE)
 

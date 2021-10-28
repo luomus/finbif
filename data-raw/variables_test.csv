@@ -137,7 +137,7 @@ document.secured,restriction,informationRestricted,FALSE,FALSE,logical,logical,T
 document.sourceId,source_id,sourceID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 gathering.biogeographicalProvince,province_verbatim,verbatimStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.conversions.century,century,century,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
-gathering.conversions.day,day,day,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+gathering.conversions.day,day,day,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
 gathering.conversions.dayOfYearBegin,ordinal_day_start,startDayOfYear,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.dayOfYearEnd,ordinal_day_end,endDayOfYear,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.decade,decade,decade,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
@@ -146,7 +146,7 @@ gathering.conversions.euref.latMin,lat_min_euref,decimalLatitudeMinEUREF,FALSE,F
 gathering.conversions.euref.lonMax,lon_max_euref,decimalLongitudeMaxEUREF,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.euref.lonMin,lon_min_euref,decimalLongitudeMinEUREF,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.eurefWKT,footprint_euref,footprintWKT_EUREF,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
-gathering.conversions.month,month,month,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+gathering.conversions.month,month,month,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
 gathering.conversions.seasonBegin,season_start,seasonStart,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.seasonEnd,season_end,seasonEnd,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.wgs84.latMax,lat_max_wgs84,decimalLatitudeMaxWGS84,FALSE,FALSE,double,double,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
