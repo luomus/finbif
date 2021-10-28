@@ -179,6 +179,14 @@ infer_selection <- function(aggregate, select, var_type) {
     "aggregate"
   )
 
+  abundance_vars <- c(
+    "unit.interpretations.individualCount", "unit.abundanceString"
+  )
+
+  coordinates_uncertainty_vars <- c(
+    "gathering.interpretations.coordinateAccuracy", "document.sourceId"
+  )
+
   if (missing(select)) {
 
     select <- row.names(default_vars)
@@ -186,9 +194,14 @@ infer_selection <- function(aggregate, select, var_type) {
     record_id_selected <- FALSE
 
     if (identical(aggregate, "none")) {
-      # Missing 'select' implies default selection which implies date-time calc
-      # needed
-      select <- unique(c(select, row.names(date_time_vars)))
+      # Missing 'select' implies default selection which implies date-time,
+      # abundance and coord uncertainty calc needed
+      select <- unique(
+        c(
+          select, row.names(date_time_vars), abundance_vars,
+          coordinates_uncertainty_vars
+        )
+      )
       record_id_selected <- TRUE
     }
 
@@ -227,10 +240,6 @@ infer_selection <- function(aggregate, select, var_type) {
 
     if (abundance) {
 
-      abundance_vars <- c(
-        "unit.interpretations.individualCount", "unit.abundanceString"
-      )
-
       select <- unique(c(select, var_names[abundance_vars, var_type]))
 
     }
@@ -240,10 +249,6 @@ infer_selection <- function(aggregate, select, var_type) {
     coordinates_uncertainty <- any(vars %in% select)
 
     if (coordinates_uncertainty) {
-
-      coordinates_uncertainty_vars <- c(
-        "gathering.interpretations.coordinateAccuracy", "document.sourceId"
-      )
 
       select <- unique(
         c(select, var_names[coordinates_uncertainty_vars, var_type])
