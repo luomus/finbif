@@ -299,7 +299,7 @@ get_date_time <- function(df, date, hour, minute, lat, lon, method, tzone) {
 
     tz_in <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
     lubridate::force_tzs(
-      date_time, tzones = ifelse(is.na(tz_in), "", tz_in), tzone_out = tzone
+      date_time, tzones = ifelse(is.na(tz_in), tzone, tz_in), tzone_out = tzone
     )
 
   }
