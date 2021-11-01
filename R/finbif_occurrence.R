@@ -132,6 +132,8 @@ finbif_occurrence <- function(
 
   df <- compute_abundance(df, select_, dwc)
 
+  df <- compute_occurrence_status(df, select_, dwc)
+
   df <- coordinates_uncertainty(df, select_, dwc)
 
   df <- structure(
@@ -524,6 +526,27 @@ compute_abundance <- function(df, select_, dwc) {
 
 }
 
+#' @noRd
+
+compute_occurrence_status <- function(df, select_, dwc) {
+
+  type <- col_type_string(dwc)
+
+  occurrence_status_ <- var_names[["computed_var_occurrence_status", type]]
+
+  abundance <- var_names[["computed_var_abundance", type]]
+
+  if (occurrence_status_ %in% select_) {
+
+    occurrence_status <- ifelse(df[[abundance]] == 0L, "absent","present")
+
+    df[[occurrence_status_]] <- occurrence_status
+
+  }
+
+  df
+
+}
 
 #' @noRd
 
