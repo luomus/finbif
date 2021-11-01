@@ -215,7 +215,8 @@ finbif_occurrence_load <- function(
     short_fcts <- gsub("http://tun.fi/", "", short_fcts)
 
     short_fcts <- abbreviate(
-      short_fcts, 8L, FALSE, strict = TRUE, method = "both.sides"
+      short_fcts, 9 - ceiling(log10(length(short_fcts) + .1)), FALSE,
+      strict = TRUE, method = "both.sides"
     )
     short_fcts <- paste0("f", seq_along(short_fcts), short_fcts)
 
