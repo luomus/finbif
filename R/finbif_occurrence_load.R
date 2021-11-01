@@ -858,7 +858,7 @@ spread_facts <-  function(
 
   attr(facts, "id") <- id
 
-  facts
+  unique(facts)
 
 }
 
