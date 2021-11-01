@@ -33,6 +33,11 @@
 #'   `{tidyr}` packages are available.
 #' @param type_convert_facts Logical. Should facts be converted from character
 #'   to numeric or integer data where applicable?
+#' @param drop_na_facts Logical. Should missing or "all `NA`" facts be dropped?
+#'   Any value other than a length one logical vector with the value of TRUE
+#'   will be interpreted as FALSE. Argument is ignored if `drop_na` is TRUE for
+#'   all variables explicitly or via recycling. To only drop some
+#'   missing/`NA`-data facts use `drop_na` argument.
 #' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
 #' @return A `data.frame`, or if `count_only =  TRUE` an integer.
@@ -53,7 +58,8 @@ finbif_occurrence_load <- function(
   file, select, n = -1, count_only = FALSE, quiet = FALSE,
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   tzone = getOption("finbif_tz"), write_file = tempfile(), dt, keep_tsv = FALSE,
-  facts = list(), type_convert_facts = TRUE, drop_na = FALSE
+  facts = list(), type_convert_facts = TRUE, drop_na = FALSE,
+  drop_na_facts = drop_na
 ) {
 
   file <- preprocess_data_file(file)
@@ -191,7 +197,8 @@ finbif_occurrence_load <- function(
     )
 
     facts_df <- spread_facts(
-      facts_df, facts[[fact_type]], fact_type, id, type_convert_facts
+      facts_df, facts[[fact_type]], fact_type, id, type_convert_facts,
+      drop_na_facts
     )
 
     select[["user"]] <- c(
@@ -783,7 +790,9 @@ deselect <- function(select, file_vars) {
 }
 
 #' @noRd
-spread_facts <-  function(facts, select, type, id, type_convert_facts) {
+spread_facts <-  function(
+  facts, select, type, id, type_convert_facts, drop_na_facts
+) {
 
   missing_facts <- character()
 
@@ -801,6 +810,8 @@ spread_facts <-  function(facts, select, type, id, type_convert_facts) {
       "Selected fact(s) - ", paste(missing_facts, collapse = ", "),
       " - could not be found in dataset", call. = FALSE
     )
+
+    missing_facts <- missing_facts[!isTRUE(drop_na_facts)]
 
   }
 

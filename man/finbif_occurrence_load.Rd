@@ -20,7 +20,8 @@ finbif_occurrence_load(
   keep_tsv = FALSE,
   facts = list(),
   type_convert_facts = TRUE,
-  drop_na = FALSE
+  drop_na = FALSE,
+  drop_na_facts = drop_na
 )
 }
 \arguments{
@@ -83,6 +84,12 @@ to numeric or integer data where applicable?}
 \item{drop_na}{Logical. A vector indicating which columns to check for
 missing data. Values recycled to the number of columns. Defaults to all
 columns.}
+
+\item{drop_na_facts}{Logical. Should missing or "all \code{NA}" facts be dropped?
+Any value other than a length one logical vector with the value of TRUE
+will be interpreted as FALSE. Argument is ignored if \code{drop_na} is TRUE for
+all variables explicitly or via recycling. To only drop some
+missing/\code{NA}-data facts use \code{drop_na} argument.}
 }
 \value{
 A \code{data.frame}, or if \code{count_only =  TRUE} an integer.

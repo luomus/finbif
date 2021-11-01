@@ -74,7 +74,8 @@
   keep_tsv <span class="op">=</span> <span class="cn">FALSE</span>,
   facts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>,
   type_convert_facts <span class="op">=</span> <span class="cn">TRUE</span>,
-  drop_na <span class="op">=</span> <span class="cn">FALSE</span>
+  drop_na <span class="op">=</span> <span class="cn">FALSE</span>,
+  drop_na_facts <span class="op">=</span> <span class="va">drop_na</span>
 <span class="op">)</span></code></pre>
     </div>
 
@@ -139,6 +140,12 @@ to numeric or integer data where applicable?</p></dd>
       <dd class="col-sm-9" id="ref-arguments desc"><p>Logical. A vector indicating which columns to check for
 missing data. Values recycled to the number of columns. Defaults to all
 columns.</p></dd>
+    <dt class="col-sm-3 section level2" id="pkg-arg-drop_na_facts">drop_na_facts</dt>
+      <dd class="col-sm-9" id="ref-arguments desc"><p>Logical. Should missing or "all <code>NA</code>" facts be dropped?
+Any value other than a length one logical vector with the value of TRUE
+will be interpreted as FALSE. Argument is ignored if <code>drop_na</code> is TRUE for
+all variables explicitly or via recycling. To only drop some
+missing/<code>NA</code>-data facts use <code>drop_na</code> argument.</p></dd>
     </dl><div class="ref-section section level2" id="section-value">
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value" aria-hidden="true"></a>Value</h2>
 
