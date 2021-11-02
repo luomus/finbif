@@ -463,38 +463,43 @@ compute_vars_from_id <- function(df, select_, dwc, locale) {
 
 compute_epsg <- function(df, select_, dwc) {
 
-  select_ <- var_names[, col_type_string(dwc)] %in% select_
+  select_ <- match(select_, var_names[, col_type_string(dwc)])
 
   select_ <- row.names(var_names[select_, ])
 
-  epsg <- c("euref", "kkj", "wgs84")
+  crs <- c(computed_var_epsg = "", computed_var_fp_epsg = "footprint")
 
-  names(epsg) <- epsg
+  for (i in seq_along(crs)) {
 
-  epsg[] <- paste0("_", epsg, "$")
+    epsg <- c("euref", "kkj", "wgs84")
 
-  epsg <- lapply(epsg, grepl, var_names[select_, "translated_var"])
+    names(epsg) <- epsg
 
-  epsg <- lapply(epsg, c, TRUE)
+    epsg[] <- paste0(crs[[i]], "_", epsg, "$")
 
-  epsg <- lapply(epsg, which)
+    epsg <- lapply(epsg, grepl, var_names[select_, "translated_var"])
 
-  epsg <- vapply(epsg, min, integer(1L), USE.NAMES = TRUE)
+    epsg <- lapply(epsg, c, TRUE)
 
-  epsg <- names(which.min(epsg))
+    epsg <- lapply(epsg, which)
 
-  epsg <- switch(
-    epsg,
-    euref = "EPSG:3067", kkj = "EPSG:2393", wgs84 = "EPSG:4326", NA_character_
-  )
+    epsg <- vapply(epsg, min, integer(1L), USE.NAMES = TRUE)
 
-  epsg <- rep_len(epsg, nrow(df))
+    epsg <- names(which.min(epsg))
 
-  df[[var_names[["computed_var_epsg", col_type_string(dwc)]]]] <- epsg
+    epsg <- switch(
+      epsg,
+      euref = "EPSG:3067",
+      kkj = "EPSG:2393",
+      wgs84 = "EPSG:4326",
+      NA_character_
+    )
 
-  epsg <- rep_len("EPSG:4326", nrow(df))
+    epsg <- rep_len(epsg, nrow(df))
 
-  df[[var_names[["computed_var_fp_epsg", col_type_string(dwc)]]]] <- epsg
+    df[[var_names[[names(crs)[[i]], col_type_string(dwc)]]]] <- epsg
+
+  }
 
   df
 
