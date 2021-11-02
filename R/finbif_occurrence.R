@@ -132,8 +132,6 @@ finbif_occurrence <- function(
 
   df <- compute_abundance(df, select_, dwc)
 
-  df <- compute_occurrence_status(df, select_, dwc)
-
   df <- coordinates_uncertainty(df, select_, dwc)
 
   df <- structure(
@@ -506,11 +504,13 @@ compute_abundance <- function(df, select_, dwc) {
 
   abundance_ <- var_names[["computed_var_abundance", type]]
 
+  occurrence_status_ <- var_names[["computed_var_occurrence_status", type]]
+
   abundance_i <- var_names[["unit.interpretations.individualCount", type]]
 
   abundance_v <- var_names[["unit.abundanceString", type]]
 
-  if (abundance_ %in% select_) {
+  if (abundance_ %in% select_ || occurrence_status_ %in% select_) {
 
     abundance <- ifelse(
       df[[abundance_i]] == 1L,
@@ -518,29 +518,21 @@ compute_abundance <- function(df, select_, dwc) {
       df[[abundance_i]]
     )
 
-    df[[abundance_]] <- abundance
+    if (abundance_ %in% select_) {
 
-  }
+      df[[abundance_]] <- abundance
 
-  df
+    }
 
-}
+    if (occurrence_status_ %in% select_) {
 
-#' @noRd
+      occurrence_status <- ifelse(
+        is.na(abundance) | abundance > 0L, "present", "absent"
+      )
 
-compute_occurrence_status <- function(df, select_, dwc) {
+      df[[occurrence_status_]] <- occurrence_status
 
-  type <- col_type_string(dwc)
-
-  occurrence_status_ <- var_names[["computed_var_occurrence_status", type]]
-
-  abundance <- var_names[["computed_var_abundance", type]]
-
-  if (occurrence_status_ %in% select_) {
-
-    occurrence_status <- ifelse(df[[abundance]] == 0L, "absent","present")
-
-    df[[occurrence_status_]] <- occurrence_status
+    }
 
   }
 

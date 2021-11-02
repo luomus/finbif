@@ -234,7 +234,9 @@ infer_selection <- function(aggregate, select, var_type) {
       select <- unique(c(select, date_time_vars[[var_type]]))
     }
 
-    vars <- c("abundance", "individualCount")
+    vars <- c(
+      "abundance", "individualCount", "occurrence_status", "occurrenceStatus"
+    )
 
     abundance <- any(vars %in% select)
 

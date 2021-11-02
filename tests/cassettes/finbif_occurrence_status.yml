@@ -1,0 +1,65 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId&page=1&pageSize=10&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 02 Nov 2021 10:47:13 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 dw.laji.fi
+      cache-control: no-store
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":4080279,"pageSize":10,"total":40802783,"results":[{"unit":{"unitId":"http://tun.fi/JX.1325098#107"}},{"unit":{"unitId":"http://tun.fi/JX.1325098#103"}},{"unit":{"unitId":"http://tun.fi/JX.1325098#161"}},{"unit":{"unitId":"http://tun.fi/JX.1325098#123"}},{"unit":{"unitId":"http://tun.fi/JX.1325098#149"}},{"unit":{"unitId":"http://tun.fi/JX.1325098#93"}},{"unit":{"unitId":"http://tun.fi/JX.1325098#95"}},{"unit":{"unitId":"http://tun.fi/JX.1325098#115"}},{"unit":{"unitId":"http://tun.fi/JX.1325098#121"}},{"unit":{"unitId":"http://tun.fi/JX.1325098#129"}}]}'
+  recorded_at: 2021-11-02 10:52:05 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.interpretations.individualCount%2Cunit.abundanceString&page=1&pageSize=10&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 02 Nov 2021 10:52:05 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 dw.laji.fi
+      cache-control: no-store
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":4080285,"pageSize":10,"total":40802849,"results":[{"unit":{"abundanceString":"19","interpretations":{"individualCount":19},"unitId":"http://tun.fi/JX.1325098#107"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.1325098#103"}},{"unit":{"abundanceString":"4","interpretations":{"individualCount":4},"unitId":"http://tun.fi/JX.1325098#161"}},{"unit":{"abundanceString":"7","interpretations":{"individualCount":7},"unitId":"http://tun.fi/JX.1325098#123"}},{"unit":{"abundanceString":"7","interpretations":{"individualCount":7},"unitId":"http://tun.fi/JX.1325098#149"}},{"unit":{"abundanceString":"8","interpretations":{"individualCount":8},"unitId":"http://tun.fi/JX.1325098#93"}},{"unit":{"abundanceString":"72","interpretations":{"individualCount":72},"unitId":"http://tun.fi/JX.1325098#95"}},{"unit":{"abundanceString":"6","interpretations":{"individualCount":6},"unitId":"http://tun.fi/JX.1325098#115"}},{"unit":{"abundanceString":"12","interpretations":{"individualCount":12},"unitId":"http://tun.fi/JX.1325098#121"}},{"unit":{"abundanceString":"13","interpretations":{"individualCount":13},"unitId":"http://tun.fi/JX.1325098#129"}}]}'
+  recorded_at: 2021-11-02 10:52:05 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

@@ -288,3 +288,21 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_occurrence_date_time_ISO8601"))
+
+suppressMessages(insert_cassette("finbif_occurrence_status"))
+
+test_that(
+  "can create occurrence status", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(select = "occurrence_status"),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_status"))
