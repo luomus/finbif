@@ -492,6 +492,10 @@ compute_epsg <- function(df, select_, dwc) {
 
   df[[var_names[["computed_var_epsg", col_type_string(dwc)]]]] <- epsg
 
+  epsg <- rep_len("EPSG:4326", nrow(df))
+
+  df[[var_names[["computed_var_fp_epsg", col_type_string(dwc)]]]] <- epsg
+
   df
 
 }
