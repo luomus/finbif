@@ -217,9 +217,11 @@ finbif_occurrence_load <- function(
 
     short_nms <- short_nms[names(df)]
 
-    short_fcts <- unlist(facts)
+    short_fcts <- grep("_fact__", names(df), value = TRUE)
 
-    short_fcts <- gsub("http://tun.fi/", "", short_fcts)
+    short_fcts <- sub("^.*_fact__", "", short_fcts)
+
+    short_fcts <- sub("http://tun.fi/", "", short_fcts)
 
     short_fcts <- abbreviate(
       short_fcts, 9 - ceiling(log10(length(short_fcts) + .1)), FALSE,
