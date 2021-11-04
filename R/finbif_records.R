@@ -187,6 +187,8 @@ infer_selection <- function(aggregate, select, var_type) {
     "gathering.interpretations.coordinateAccuracy", "document.sourceId"
   )
 
+  citation_vars <- c("document.documentId", "document.sourceId")
+
   if (missing(select)) {
 
     select <- row.names(default_vars)
@@ -254,6 +256,18 @@ infer_selection <- function(aggregate, select, var_type) {
 
       select <- unique(
         c(select, var_names[coordinates_uncertainty_vars, var_type])
+      )
+
+    }
+
+    vars <- c("citation", "bibliographicCitation")
+
+    citation <- any(vars %in% select)
+
+    if (citation) {
+
+      select <- unique(
+        c(select, var_names[citation_vars, var_type])
       )
 
     }

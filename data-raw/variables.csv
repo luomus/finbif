@@ -1,5 +1,6 @@
 finbif_api_var,translated_var,dwc,default_var,quality_var,type,class,single,select,order,aggregate,aggregate_events,aggregate_documents,doc,date,localised
 unit.unitId,record_id,occurrenceID,TRUE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+computed_var_citation,citation,bibliographicCitation,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.scientificName,scientific_name,scientificName,TRUE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 computed_var_abundance,abundance,individualCount,TRUE,FALSE,integer,integer,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 computed_var_occurrence_status,occurrence_status,occurrenceStatus,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -91,7 +92,7 @@ unit.quality.issue.issue,record_issue,occurrenceIssue,FALSE,TRUE,character,facto
 unit.quality.issue.message,record_issue_message,occurrenceIssueRemarks,FALSE,TRUE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.quality.issue.source,record_issue_source,occurrenceIssueSource,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.recordBasis,record_basis,basisOfRecord,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
-unit.referencePublication,reference_publication,bibliographicCitation,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.referencePublication,reference_publication,references,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.reportedInformalTaxonGroup,reported_informal_groups,verbatimInformalTaxonomicGroup,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.reportedTaxonConfidence,reported_taxon_confidence,verbatimIdentifactionQualifer,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.reportedTaxonId,reported_taxon_id,verbatimTaxonID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE

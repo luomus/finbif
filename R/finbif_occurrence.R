@@ -132,6 +132,8 @@ finbif_occurrence <- function(
 
   df <- compute_abundance(df, select_, dwc)
 
+  df <- compute_citation(df, select_, dwc, record_id)
+
   df <- coordinates_uncertainty(df, select_, dwc)
 
   df <- structure(
@@ -542,6 +544,34 @@ compute_abundance <- function(df, select_, dwc) {
       df[[occurrence_status_]] <- occurrence_status
 
     }
+
+  }
+
+  df
+
+}
+
+#' @noRd
+
+compute_citation <- function(df, select_, dwc, record_id) {
+
+  type <- col_type_string(dwc)
+
+  citation <- var_names[["computed_var_citation", type]]
+
+  source <- var_names[["document.sourceId", type]]
+
+  document_id <- var_names[["document.documentId", type]]
+
+  if (citation %in% select_) {
+
+    df[[citation]] <- ifelse(
+      df[[source]] == "http://tun.fi/KE.3",
+      df[[document_id]],
+      record_id
+    )
+
+    df[[citation]] <- paste(df[[citation]], "Source: FinBIF")
 
   }
 

@@ -297,8 +297,7 @@ test_that(
     skip_on_cran()
 
     expect_s3_class(
-      finbif_occurrence(select = "occurrence_status"),
-      "finbif_occ"
+      finbif_occurrence(select = "occurrence_status"), "finbif_occ"
     )
 
   }
@@ -306,3 +305,18 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_occurrence_status"))
+
+suppressMessages(insert_cassette("finbif_citation"))
+
+test_that(
+  "can create citation", {
+
+    skip_on_cran()
+
+    expect_s3_class(finbif_occurrence(select = "citation"), "finbif_occ")
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_citation"))
