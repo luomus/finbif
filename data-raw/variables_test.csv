@@ -234,7 +234,7 @@ gathering.quality.timeIssue.message,time_issue_message,timeIssueRemarks,FALSE,TR
 gathering.quality.timeIssue.source,time_issue_source,timeIssueSource,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.taxonCensus.taxonId,taxon_census_id,taxonCensusID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.taxonCensus.type,taxon_census_type,taxonCensusType,FALSE,FALSE,character,factor,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-gathering.team,team,recordedByTeam,FALSE,FALSE,character,character,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+gathering.team,team,recordedBy,FALSE,FALSE,character,character,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.gatheringSection,section,eventSection,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 document.annotations.annotationByPerson,document_annotation_person_id,documentAnnotationRecordedByID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.annotations.annotationByPersonName,document_annotation_person_name,documentAnnotationRecordedBy,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -371,7 +371,7 @@ document.namedPlace.id,location_id2,locationID2,FALSE,FALSE,character,uri,TRUE,F
 document.namedPlace.municipalityId,location_municipality_id,locationCountyID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.ykj10km.lat,location_lat_10_kkj,locationDecimalLatitudeGrid10KKJ,FALSE,FALSE,integer,integer,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.ykj10km.lon,location_lon_10_kkj,locationDecimalLongitudeGrid10KKJ,FALSE,FALSE,integer,integer,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-gathering.linkings.observers,observers,recordedBy,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+gathering.linkings.observers,observers,recordedByTeam,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.team.memberId,team_member_id,recordedByTeamMemberID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.team.memberName,team_member,recordedByTeamMember,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.administrativeStatuses,orig_taxon_admin_statuses,originalTaxonAdministrativeStatuses,FALSE,FALSE,integer,integer,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
