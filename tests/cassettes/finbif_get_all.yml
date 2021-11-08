@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.778&selected=unit.unitId&page=1&pageSize=1000&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Mon, 08 Nov 2021 08:32:02 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 dw.laji.fi
+      cache-control: no-store
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"lastPage":1,"pageSize":1000,"total":10,"results":[{"unit":{"unitId":"http://mus.utu.fi/MY.10888538"}},{"unit":{"unitId":"http://mus.utu.fi/MY.10888542"}},{"unit":{"unitId":"http://mus.utu.fi/MY.4247571"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475339"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475342"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475121"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475348"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475351"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475184"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475345"}}]}'
+  recorded_at: 2021-11-08 08:32:02 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

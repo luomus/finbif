@@ -320,3 +320,23 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_citation"))
+
+suppressMessages(insert_cassette("finbif_get_all"))
+
+test_that(
+  "can get all records", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(
+        filter = c(collection = "HR.778"), select = "record_id", n = -1
+      ),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_get_all"))

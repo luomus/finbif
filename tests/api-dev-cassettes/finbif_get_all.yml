@@ -1,0 +1,34 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.778&selected=unit.unitId&page=1&pageSize=1000&access_token=<finbif_dev_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Mon, 08 Nov 2021 08:33:58 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"lastPage":1,"pageSize":1000,"total":2,"results":[{"unit":{"unitId":"http://mus.utu.fi/MY.2475121"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475184"}}]}'
+  recorded_at: 2021-11-08 08:33:58 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

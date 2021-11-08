@@ -93,6 +93,21 @@ finbif_occurrence <- function(
 
   filter <- c(taxa, filter)
 
+
+  if (!is.finite(n) || is.factor(n) || n < 0) {
+
+    n <- finbif_records(
+      filter, select, order_by, aggregate, sample,
+      n = getOption("finbif_max_page_size"), page, count_only, quiet,
+      cache, dwc, df = TRUE, seed
+    )
+
+    n <- attr(n, "nrec_avl")
+
+    n <- pmax(n, getOption("finbif_max_page_size"))
+
+  }
+
   records <- finbif_records(
     filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
     cache, dwc, df = TRUE, seed
