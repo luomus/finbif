@@ -3,6 +3,7 @@ metadata_ranges <-
 
 primary_habitat <-
   metadata_ranges[c("MKV.habitatEnum", "MKV.habitatSpecificTypeEnum")]
+primary_habitat <- lapply(primary_habitat, function(x) lapply(x, head, 2))
 primary_habitat <- lapply(primary_habitat, unlist)
 primary_habitat <- lapply(primary_habitat, matrix, ncol = 2L, byrow = TRUE)
 
