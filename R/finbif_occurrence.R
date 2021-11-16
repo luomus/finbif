@@ -66,7 +66,7 @@ finbif_occurrence <- function(
     on_check_fail = match.arg(on_check_fail)
   )
 
-  date_time_method <- det_datetime_method(date_time_method, n = sum(n))
+  date_time_method <- det_datetime_method(date_time_method, n = n)
 
   if (missing(filter) || is.null(filter)) {
 

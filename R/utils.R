@@ -101,14 +101,23 @@ col_type_string <- function(dwc) {
 
 #' @noRd
 det_datetime_method <- function(method, n) {
+
   if (missing(method)) {
+
+    method <- "none"
+
+    n <- sum(ifelse(is.numeric(n) & n >= 0L, n, Inf))
+
     if (n < 1e5) {
+
       method <- "fast"
-    } else {
-      method <- "none"
+
     }
+
   }
+
   method
+
 }
 
 #' @noRd
