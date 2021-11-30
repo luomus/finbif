@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.2.9002}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Data quality description has been appended to description field in
+      \code{data.frame} returned by \code{finbif_collections()}.
+    }
+  }
+}
+
 \section{finbif version 0.6.2.9001}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

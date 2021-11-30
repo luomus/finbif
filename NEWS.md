@@ -1,3 +1,10 @@
+# finbif 0.6.2.9002
+
+#### MINOR IMPROVEMENTS
+
+  - Data quality description has been appended to description field in
+    `data.frame` returned by `finbif_collections()`.
+
 # finbif 0.6.2.9001
 
 #### MINOR IMPROVEMENTS
