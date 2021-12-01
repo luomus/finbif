@@ -1,6 +1,5 @@
 template:
-  path: inst/man/templates
-  bootstrap: 4
+  bootstrap: 5
   bootswatch: materia
   bslib:
     table-border-width: "0px"
@@ -8,9 +7,6 @@ template:
     font-size-base: "1rem"
     base_font:
       google: "Roboto"
-navbar:
-  type: dark
-  bg: primary
 home:
   title: "FinBIF R package"
 destination: docs
