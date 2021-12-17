@@ -413,7 +413,7 @@ attempt_read <- function(
 
   }
 
-  names(success) <- as.character(unlist(df)[[1L]])
+  names(success) <- c(as.character(unlist(df)), "")[[1L]]
 
   do.call(stopifnot, list(success))
 
