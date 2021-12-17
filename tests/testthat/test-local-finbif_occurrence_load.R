@@ -121,6 +121,15 @@ test_that(
       style = "json2"
     )
 
+    expect_snapshot_value(
+      capture.output(
+        print(
+          finbif_occurrence_load("HBF.6968.zip", facts = list(event = "fact"))
+        )
+      ),
+      style = "json2"
+    )
+
   }
 
 )

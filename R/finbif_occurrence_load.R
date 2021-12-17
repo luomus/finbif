@@ -177,16 +177,23 @@ finbif_occurrence_load <- function(
 
   for (fact_type in fact_types) {
 
-    facts_df <- read_finbif_tsv(
-      file,
-      select = list(
-        all = TRUE,
-        deselect = character(),
-        type = "translated_var"
+    stopifnot(
+      "Invalid fact type" = fact_type %in% c("record", "event", "document")
+    )
+
+    facts_df <- try(
+      read_finbif_tsv(
+        file,
+        select = list(
+          all = TRUE,
+          deselect = character(),
+          type = "translated_var"
+        ),
+        n = -1L,
+        count_only, quiet, cache, write_file, dt, keep_tsv,
+        facts = fact_type
       ),
-      n = -1L,
-      count_only, quiet, cache, write_file, dt, keep_tsv,
-      facts = fact_type
+      silent = TRUE
     )
 
     id <- switch(
@@ -797,6 +804,18 @@ deselect <- function(select, file_vars) {
 spread_facts <-  function(
   facts, select, type, id, type_convert_facts, drop_na_facts
 ) {
+
+  if (inherits(facts, "try-error")) {
+
+    facts <- data.frame(
+      Parent = NA_character_,
+      Fact = NA_character_,
+      Value = NA_character_,
+      IntValue = NA_character_,
+      DecimalValue = NA_character_
+    )
+
+  }
 
   missing_facts <- character()
 
