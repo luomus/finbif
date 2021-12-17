@@ -413,7 +413,9 @@ attempt_read <- function(
 
   }
 
-  stopifnot("invalid file or missing file(s)!" = success)
+  names(success) <- df[["message"]]
+
+  do.call(stopifnot, list(success))
 
   df
 
