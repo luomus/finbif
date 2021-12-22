@@ -1,11 +1,21 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.2.9003}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Argument \code{drop_na_facts} has been changed to
+        \code{drop_facts_na} for function \code{finbif_occurrence_download} to
+        avoid problems due to partial matching of argument \code{drop_na}.
+    }
+  }
+}
+
 \section{finbif version 0.6.2.9002}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
       \item Data quality description has been appended to description field in
-      \code{data.frame} returned by \code{finbif_collections()}.
+        \code{data.frame} returned by \code{finbif_collections()}.
     }
   }
 }
