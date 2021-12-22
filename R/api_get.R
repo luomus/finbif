@@ -9,9 +9,9 @@ api_get <- function(path, query, cache) {
 
   if (is.null(finbif_access_token)) {
     stop(
-      "Access token for FinBIF has not been set. Use finbif_get_token() to",
-      "have an access token sent to your email address. Then set it as the",
-      "environment variable FINBIF_ACCESS_TOKEN with",
+      "Access token for FinBIF has not been set. Use finbif_get_token() to \n",
+      "have an access token sent to your email address. Then set it as the \n",
+      "environment variable FINBIF_ACCESS_TOKEN with \n",
       "Sys.setenv(FINBIF_ACCESS_TOKEN = \"<access_token_sent_to_your_email>\")",
       call. = FALSE
     )
