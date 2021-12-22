@@ -33,7 +33,7 @@
 #'   `{tidyr}` packages are available.
 #' @param type_convert_facts Logical. Should facts be converted from character
 #'   to numeric or integer data where applicable?
-#' @param drop_na_facts Logical. Should missing or "all `NA`" facts be dropped?
+#' @param drop_facts_na Logical. Should missing or "all `NA`" facts be dropped?
 #'   Any value other than a length one logical vector with the value of TRUE
 #'   will be interpreted as FALSE. Argument is ignored if `drop_na` is TRUE for
 #'   all variables explicitly or via recycling. To only drop some
@@ -59,7 +59,7 @@ finbif_occurrence_load <- function(
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   tzone = getOption("finbif_tz"), write_file = tempfile(), dt, keep_tsv = FALSE,
   facts = list(), type_convert_facts = TRUE, drop_na = FALSE,
-  drop_na_facts = drop_na
+  drop_facts_na = drop_na
 ) {
 
   file <- preprocess_data_file(file)
@@ -205,7 +205,7 @@ finbif_occurrence_load <- function(
 
     facts_df <- spread_facts(
       facts_df, facts[[fact_type]], fact_type, id, type_convert_facts,
-      drop_na_facts
+      drop_facts_na
     )
 
     select[["user"]] <- c(
@@ -802,7 +802,7 @@ deselect <- function(select, file_vars) {
 
 #' @noRd
 spread_facts <-  function(
-  facts, select, type, id, type_convert_facts, drop_na_facts
+  facts, select, type, id, type_convert_facts, drop_facts_na
 ) {
 
   if (inherits(facts, "try-error")) {
@@ -834,7 +834,7 @@ spread_facts <-  function(
       " - could not be found in dataset", call. = FALSE
     )
 
-    missing_facts <- missing_facts[!isTRUE(drop_na_facts)]
+    missing_facts <- missing_facts[!isTRUE(drop_facts_na)]
 
   }
 

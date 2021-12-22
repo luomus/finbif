@@ -80,7 +80,7 @@
   facts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
   type_convert_facts <span class="op">=</span> <span class="cn">TRUE</span>,
   drop_na <span class="op">=</span> <span class="cn">FALSE</span>,
-  drop_na_facts <span class="op">=</span> <span class="va">drop_na</span>
+  drop_facts_na <span class="op">=</span> <span class="va">drop_na</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -146,7 +146,7 @@ to numeric or integer data where applicable?</p></dd>
 <dd><p>Logical. A vector indicating which columns to check for
 missing data. Values recycled to the number of columns. Defaults to all
 columns.</p></dd>
-<dt>drop_na_facts</dt>
+<dt>drop_facts_na</dt>
 <dd><p>Logical. Should missing or "all <code>NA</code>" facts be dropped?
 Any value other than a length one logical vector with the value of TRUE
 will be interpreted as FALSE. Argument is ignored if <code>drop_na</code> is TRUE for

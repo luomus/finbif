@@ -21,7 +21,7 @@ finbif_occurrence_load(
   facts = list(),
   type_convert_facts = TRUE,
   drop_na = FALSE,
-  drop_na_facts = drop_na
+  drop_facts_na = drop_na
 )
 }
 \arguments{
@@ -85,7 +85,7 @@ to numeric or integer data where applicable?}
 missing data. Values recycled to the number of columns. Defaults to all
 columns.}
 
-\item{drop_na_facts}{Logical. Should missing or "all \code{NA}" facts be dropped?
+\item{drop_facts_na}{Logical. Should missing or "all \code{NA}" facts be dropped?
 Any value other than a length one logical vector with the value of TRUE
 will be interpreted as FALSE. Argument is ignored if \code{drop_na} is TRUE for
 all variables explicitly or via recycling. To only drop some
