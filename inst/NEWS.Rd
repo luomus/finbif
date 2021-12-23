@@ -5,7 +5,7 @@
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
       \item Argument \code{drop_na_facts} has been changed to
-        \code{drop_facts_na} for function \code{finbif_occurrence_download} to
+        \code{drop_facts_na} for function \code{finbif_occurrence_load} to
         avoid problems due to partial matching of argument \code{drop_na}.
     }
   }
