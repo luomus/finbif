@@ -14,6 +14,7 @@
 #' - `z` A frequency table of the number of `xy` points in each cell.
 #'
 #' @examples
+#' set.seed(1L)
 #' hist_xy(matrix(runif(50), 25), list(seq(0, 1, .2), seq(0, 1, .2)))
 #' @export
 hist_xy <- function(xy, breaks) {

@@ -26,5 +26,6 @@ A list with three components:
 Compute a histogram from xy data given set of breakpoints.
 }
 \examples{
+set.seed(1L)
 hist_xy(matrix(runif(50), 25), list(seq(0, 1, .2), seq(0, 1, .2)))
 }

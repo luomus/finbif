@@ -86,7 +86,8 @@ each vector gives the breakpoints between the histogram cells.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">hist_xy</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span>, <span class="fl">25</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">.2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">.2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">hist_xy</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span>, <span class="fl">25</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">.2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">.2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $x</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.0 0.2 0.4 0.6 0.8 1.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -96,11 +97,11 @@ each vector gives the breakpoints between the histogram cells.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $z</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    y</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> x   1 2 3 4 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1 1 0 1 0 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   2 3 0 0 2 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   3 2 0 3 3 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   4 1 0 0 2 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   5 2 0 1 0 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1 0 0 0 2 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   2 2 2 1 3 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   3 0 1 0 0 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   4 2 0 4 1 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   5 0 0 2 2 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
