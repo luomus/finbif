@@ -3,8 +3,8 @@
 #### MINOR IMPROVEMENTS
 
   - Argument `drop_na_facts` has been changed to `drop_facts_na` for
-    function `finbif_occurrence_load` to avoid problems due to
-    partial matching of argument `drop_na`.
+    function `finbif_occurrence_load` to avoid problems due to partial
+    matching of argument `drop_na`.
 
 # finbif 0.6.2.9002
 
