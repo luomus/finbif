@@ -4,10 +4,10 @@ A bug fix release with some additional minor improvements.
 
 ## Test environments
 
-* local Linux 5.4.0-81-generic, R 4.1.1
-* ubuntu 20.04 (on github actions), R-devel, R 4.1.1, R 4.0.5
-* mac OS 10.15.7 (on github actions) R 4.1.0
-* Microsoft Windows Server 2019 10.0.17763 (on github actions) R 4.1.1
+* local Linux 5.13.0-22-generic, R 4.1.2
+* ubuntu 20.04 (on github actions), R-devel, R 4.1.2, R 4.0.5
+* mac OS 10.15.7 (on github actions) R 4.1.2
+* Microsoft Windows Server 2019 10.0.17763 (on github actions) R 4.1.2
 * win-builder (devel)
 * r-hub: windows-x86_64-devel, ubuntu-gcc-release, fedora-clang-devel
 
