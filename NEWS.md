@@ -1,4 +1,4 @@
-# finbif 0.6.2.9003
+# finbif 0.6.3
 
 #### MINOR IMPROVEMENTS
 
@@ -6,30 +6,18 @@
     function `finbif_occurrence_load` to avoid problems due to partial
     matching of argument `drop_na`.
 
-# finbif 0.6.2.9002
-
-#### MINOR IMPROVEMENTS
-
   - Data quality description has been appended to description field in
     `data.frame` returned by `finbif_collections()`.
-
-# finbif 0.6.2.9001
-
-#### MINOR IMPROVEMENTS
 
   - Occurrence record filtering can now be done using open-ended date
     ranges.
 
-# finbif 0.6.2.9000
+  - New administrative statuses added.
 
 #### BUG FIXES
 
   - Fix bug in importing of file downloads triggered by string quotation
     errors.
-
-#### MINOR IMPROVEMENTS
-
-  - New administrative statuses added.
 
 # finbif 0.6.2
 
