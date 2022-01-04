@@ -44,7 +44,7 @@ Gathering.HourBegin,hourStart,hour_start,hourStart,FALSE,integer
 Unit.IndividualID,individID,individual_id,organismID,FALSE,character
 Taxon.InformalGroupEN,infrmGrpEN,informal_group_english,informalTaxonGroupEnglish,FALSE,character
 Taxon.InformalGroupFI,infrmGrpFI,informal_group_finnish,informalTaxonGroupFinnsih,FALSE,character
-Unit.Interpretations.InvasiveControl,invasCntrl,invasive_control,invasiveControlled,FALSE,logical
+Unit.Interpretations.InvasiveControl,invCtrlCls,invasive_control_class,invasiveControlClass,FALSE,character
 Unit.BreedingSite,isBreedLoc,is_breeding_location,breedingLocationStatus,FALSE,logical
 Document.PartialDocument,isPartial,is_partial,documentPartialStatus,FALSE,logical
 Unit.Wild,isWild,is_wild,occurrenceIsWild,FALSE,character
