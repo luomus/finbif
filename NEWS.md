@@ -1,3 +1,9 @@
+# finbif 0.6.3.9000
+
+#### MINOR IMPROVEMENTS
+
+  - New administrative statuses added.
+
 # finbif 0.6.3
 
 #### MINOR IMPROVEMENTS
