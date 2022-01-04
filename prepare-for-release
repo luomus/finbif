@@ -7,9 +7,9 @@
 7. Check winbuilder (`devtools::check_win_devel()`) and rhub (`devtools::check_rhub()`).
 8. Update and commit cran-comments.md.
 9. Release (`devtools::release()`) and wait for CRAN response.
-10. Once CRAN version goes online (news file in particular) rebuild pkgdown docs, commit changes and CRAN-RELEASE file, and push.
+10. Once CRAN version goes online (news file in particular) rebuild pkgdown docs, commit changes and CRAN-SUBMISSION file, and push.
 11. On GitHub, tag as new release and copy NEWS.md updates.
-12. Remove CRAN-RELEASE and then commit.
+12. Remove CRAN-SUBMISSION and then commit.
 13. Checkout dev (`git checkout dev`).
 14. Merge master (`git merge master`).
 15. Add dev component to version number, update cff, news and docs, commit and push.
