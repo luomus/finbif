@@ -1,12 +1,10 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "finbif",
-  "description": "A programmatic interface to the 'Finnish Biodiversity Information\n    Facility' ('FinBIF') API (<https://api.laji.fi>). 'FinBIF' aggregates\n    Finnish biodiversity data from multiple sources in a single open access\n    portal for researchers, citizen scientists, industry and government.\n    'FinBIF' allows users of biodiversity information to find, access, combine\n    and visualise data on Finnish plants, animals and microorganisms. The\n    'finbif' package makes the publicly available data in 'FinBIF' easily\n    accessible to programmers. Biodiversity information is available on taxonomy\n    and taxon occurrence. Occurrence data can be filtered by taxon, time,\n    location and other variables. The data accessed are conveniently\n    preformatted for subsequent analyses.",
+  "description": "A programmatic interface to the 'Finnish Biodiversity Information Facility' ('FinBIF') API (<https://api.laji.fi>). 'FinBIF' aggregates Finnish biodiversity data from multiple sources in a single open access portal for researchers, citizen scientists, industry and government. 'FinBIF' allows users of biodiversity information to find, access, combine and visualise data on Finnish plants, animals and microorganisms. The 'finbif' package makes the publicly available data in 'FinBIF' easily accessible to programmers. Biodiversity information is available on taxonomy and taxon occurrence. Occurrence data can be filtered by taxon, time, location and other variables. The data accessed are conveniently preformatted for subsequent analyses.",
   "name": "finbif: Interface for the 'Finnish Biodiversity Information Facility' API",
+  "relatedLink": ["https://luomus.github.io/finbif/", "https://CRAN.R-project.org/package=finbif"],
   "codeRepository": "https://github.com/luomus/finbif",
   "issueTracker": "https://github.com/luomus/finbif/issues",
   "license": "https://spdx.org/licenses/MIT",
@@ -17,6 +15,12 @@
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -26,14 +30,12 @@
       "@id": "https://orcid.org/0000-0002-8686-4154"
     }
   ],
-  "contributor": {},
   "copyrightHolder": [
     {
       "@type": "Organization",
       "name": "Finnish Museum of Natural History - Luomus"
     }
   ],
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -183,14 +185,14 @@
       "sameAs": "https://CRAN.R-project.org/package=webfakes"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": ">= 3.5.0"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "digest",
       "name": "digest",
@@ -202,12 +204,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=digest"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "graphics",
       "name": "graphics"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "httr",
       "name": "httr",
@@ -219,7 +221,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=httr"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -231,7 +233,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "lubridate",
       "name": "lubridate",
@@ -243,7 +245,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lubridate"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "lutz",
       "name": "lutz",
@@ -255,32 +257,27 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lutz"
     },
-    {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "methods",
       "name": "methods"
     },
-    {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "tools",
       "name": "tools"
     },
-    {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
-    }
-  ],
-  "releaseNotes": "https://github.com/luomus/finbif/blob/master/NEWS.md",
-  "developmentStatus": "https://www.repostatus.org/#active",
+    },
+    "SystemRequirements": null
+  },
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "relatedLink": [
-    "https://luomus.github.io/finbif",
-    "https://CRAN.R-project.org/package=finbif",
-    "https://luomus.github.io/finbif/"
-  ],
+  "fileSize": "3171.787KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -297,16 +294,12 @@
       "name": "Introduction to the finbif package",
       "identifier": "10.5281/zenodo.3612814",
       "url": "https://luomus.github.io/finbif/articles/finbif.html",
+      "description": "R package version 0.6.3.9000",
       "@id": "https://doi.org/10.5281/zenodo.3612814",
       "sameAs": "https://doi.org/10.5281/zenodo.3612814"
     }
   ],
+  "releaseNotes": "https://github.com/luomus/finbif/blob/master/NEWS.md",
   "readme": "https://github.com/luomus/finbif/blob/main/README.md",
-  "provider": {
-    "@id": "https://cran.r-project.org",
-    "@type": "Organization",
-    "name": "Comprehensive R Archive Network (CRAN)",
-    "url": "https://cran.r-project.org"
-  },
-  "fileSize": "3171.757KB"
+  "developmentStatus": "https://www.repostatus.org/#active"
 }
