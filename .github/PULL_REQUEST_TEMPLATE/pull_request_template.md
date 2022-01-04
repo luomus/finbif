@@ -22,7 +22,7 @@ _to help! This is simply a reminder of what we are going to look for before_
 _merging your code._
 
 - [ ] I have read the
-      [CONTRIBUTING](https://github.com/luomus/finbif/blob/master/CONTRIBUTING.md)
+      [CONTRIBUTING](https://github.com/luomus/finbif/blob/main/CONTRIBUTING.md)
       doc
 - [ ] Lint and unit tests pass locally with my changes
 - [ ] I have added tests that prove my fix is effective or that my feature works
