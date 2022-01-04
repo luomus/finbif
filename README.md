@@ -8,8 +8,8 @@
 [![r-universe](https://luomus.r-universe.dev/badges/finbif)](https://luomus.r-universe.dev)
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/finbif?color=brightgreen)](https://cran.r-project.org/package=finbif)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3612814.svg)](https://doi.org/10.5281/zenodo.3612814)
-[![Build Status](https://github.com/luomus/finbif/workflows/R-CMD-check/badge.svg?branch=master)](https://github.com/luomus/finbif/actions)
-[![codecov](https://codecov.io/gh/luomus/finbif/branch/master/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/master)
+[![Build Status](https://github.com/luomus/finbif/workflows/R-CMD-check/badge.svg?branch=main)](https://github.com/luomus/finbif/actions)
+[![codecov](https://codecov.io/gh/luomus/finbif/branch/main/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/main)
 <!-- badges: end -->
 
 The `finbif` R package is a programmatic interface to the
@@ -95,9 +95,9 @@ To cite the finbif R package in publications please use:
 
 ## Contributing
 Development is a community effort, and we encourage participation. Please read
-[the contribution guide](https://github.com/luomus/finbif/blob/master/CONTRIBUTING.md)
+[the contribution guide](https://github.com/luomus/finbif/blob/main/CONTRIBUTING.md)
 for details.
 
 Please note that the 'finbif' project is released with a
-[Contributor Code of Conduct](https://github.com/luomus/finbif/blob/master/CODE_OF_CONDUCT.md).
+[Contributor Code of Conduct](https://github.com/luomus/finbif/blob/main/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.

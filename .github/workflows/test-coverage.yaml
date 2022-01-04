@@ -2,11 +2,11 @@ on:
   push:
     branches:
       - dev
-      - master
+      - main
   pull_request:
     branches:
       - dev
-      - master
+      - main
 
 name: test-coverage
 

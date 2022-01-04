@@ -301,12 +301,12 @@
       "sameAs": "https://doi.org/10.5281/zenodo.3612814"
     }
   ],
-  "readme": "https://github.com/luomus/finbif/blob/master/README.md",
+  "readme": "https://github.com/luomus/finbif/blob/main/README.md",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "3171.528KB"
+  "fileSize": "3171.518KB"
 }
