@@ -616,7 +616,7 @@ coordinates_uncertainty <- function(df, select_, dwc) {
       df[[coord_uncert_i]]
     )
 
-    df[[coord_uncert_]] <- coord_uncert
+    df[[coord_uncert_]] <- as.numeric(coord_uncert)
 
   }
 
