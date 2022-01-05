@@ -1,3 +1,10 @@
+# finbif 0.6.3.9001
+
+#### BUG FIXES
+
+  - Fix bug triggered when printing occurrence records where all records
+    have no coordinate uncertainty.
+
 # finbif 0.6.3.9000
 
 #### MINOR IMPROVEMENTS

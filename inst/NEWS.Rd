@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.3.9001}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fix bug triggered when printing occurrence records where all records
+        have no coordinate uncertainty.
+    }
+  }
+}
+
 \section{finbif version 0.6.3.9000}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
