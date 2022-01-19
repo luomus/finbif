@@ -113,6 +113,10 @@ finbif_occurrence_load <- function(
 
   file_vars <- attr(df, "file_vars")
 
+  fact_types <- select_facts(fact_types, attr(file_vars, "lite"))
+
+  select[["facts"]] <- fact_types
+
   df <- new_vars(df, deselect, file_vars)
 
   record_id <- file_vars[["translated_var"]] == "record_id"
@@ -800,6 +804,14 @@ deselect <- function(select, file_vars) {
 
 }
 
+select_facts <- function(fact_types, file_type_lite) {
+
+  if (file_type_lite) fact_types <- NULL
+
+  fact_types
+
+}
+
 #' @noRd
 spread_facts <-  function(
   facts, select, type, id, type_convert_facts, drop_facts_na
@@ -975,6 +987,8 @@ infer_file_vars <- function(cols) {
 
   file_vars <- cite_file_vars
 
+  attr(file_vars, "lite") <- FALSE
+
   locale <- "none"
 
   if (length(cols) < 100L && !"Fact" %in% cols) {
@@ -994,7 +1008,7 @@ infer_file_vars <- function(cols) {
 
     rownames(file_vars) <- file_vars[[locale]]
 
-
+    attr(file_vars, "lite") <- TRUE
 
   }
 
