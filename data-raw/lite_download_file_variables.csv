@@ -71,3 +71,8 @@ gathering.hourBegin,hourStart,hour_start,hourStart,FALSE,integer
 gathering.hourEnd,hourEnd,hour_end,hourEnd,FALSE,integer
 gathering.minutesBegin,minStart,minute_start,minuteStart,FALSE,integer
 gathering.minutesEnd,minEnd,minute_end,minuteEnd,FALSE,integer
+result.document.facts.mappingReason,mapReason,mapping_reason,mappingReason,FALSE,character
+result.document.facts.sourceDescription,srcDesc,source_description,sourceDescription,FALSE,character
+result.document.facts.sourceMaterial,srcMtrl,source_material,sourceMaterial,FALSE,character
+result.document.facts.speciesTrackingStatus,spTrkStat,species_tracking_status,speciesTrackingStatus,FALSE,character
+result.document.facts.targetState,targState,target_state,targetState,FALSE,character
