@@ -101,3 +101,6 @@ partition,subset,integer,FALSE,"/",FALSE
 informalTaxonGroupIdNot,informal_group_neg,uri,TRUE,",",FALSE
 onlyNonValidTaxa,invalid_taxa_only,logical,FALSE,",",FALSE
 taxonAdminFiltersOperator,taxon_admin_filters,character,FALSE,",",FALSE
+atlasClass,atlas_class,character,FALSE,",",FALSE
+atlasCode,atlas_code,character,FALSE,",",FALSE
+hasValue,has_value,character,FALSE,",",FALSE
