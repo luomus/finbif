@@ -638,3 +638,4 @@ unit.identifications.linkings.taxon.administrativeStatuses,record_identification
 unit.types.linkings.taxon.administrativeStatuses,type_specimen_admin_statuses,typeSpecimenAdministrativeStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.atlasClass,atlas_class,atlasClass,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.atlasCode,atlas_code,atlasCode,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+document.prefix,document_prefix,documentPrefix,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE

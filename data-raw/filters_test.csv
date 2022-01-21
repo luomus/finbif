@@ -104,3 +104,4 @@ taxonAdminFiltersOperator,taxon_admin_filters,character,FALSE,",",FALSE
 atlasClass,atlas_class,character,FALSE,",",FALSE
 atlasCode,atlas_code,character,FALSE,",",FALSE
 hasValue,has_value,character,FALSE,",",FALSE
+documentIdPrefix,document_prefix,character,FALSE,",",FALSE
