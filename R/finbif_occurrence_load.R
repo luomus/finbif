@@ -560,7 +560,17 @@ get_zip <- function(url, quiet, cache, write_file) {
   }
 
   resp <- httr::RETRY(
-    "GET", url, httr::write_disk(zip, overwrite = TRUE), progress, query = query
+    "GET",
+    url,
+    httr::write_disk(zip, overwrite = TRUE),
+    progress,
+    query = query,
+    times = getOption("finbif_retry_times"),
+    pause_base = getOption("finbif_retry_pause_base"),
+    pause_cap = getOption("finbif_retry_pause_cap"),
+    pause_min = getOption("finbif_retry_pause_min"),
+    quiet = quiet,
+    terminate_on = 404L
   )
 
   if (!quiet) message("")

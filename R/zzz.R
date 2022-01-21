@@ -10,6 +10,10 @@
     finbif_rate_limit = 1,
     finbif_max_queries = 2000L,
     finbif_max_page_size = 1000L,
+    finbif_retry_times = 3,
+    finbif_retry_pause_base = 1,
+    finbif_retry_pause_cap = 60,
+    finbif_retry_pause_min = 1,
     finbif_use_cache = TRUE,
     finbif_tz = Sys.timezone(),
     finbif_locale = get_locale()

@@ -256,7 +256,15 @@ get_swagger <- function(cache) {
 
   Sys.sleep(1 / getOption("finbif_rate_limit"))
 
-  ans <- httr::RETRY("GET", url)
+  ans <- httr::RETRY(
+    "GET",
+    url,
+    times = getOption("finbif_retry_times"),
+    pause_base = getOption("finbif_retry_pause_base"),
+    pause_cap = getOption("finbif_retry_pause_cap"),
+    pause_min = getOption("finbif_retry_pause_min"),
+    terminate_on = 404L
+  )
 
   ans
 

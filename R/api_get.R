@@ -57,7 +57,12 @@ api_get <- function(path, query, cache) {
       )
     ),
     httr::accept_json(),
-    query = c(query, list(access_token = finbif_access_token))
+    query = c(query, list(access_token = finbif_access_token)),
+    times = getOption("finbif_retry_times"),
+    pause_base = getOption("finbif_retry_pause_base"),
+    pause_cap = getOption("finbif_retry_pause_cap"),
+    pause_min = getOption("finbif_retry_pause_min"),
+    terminate_on = 404L
   )
 
   notoken <- sub(
