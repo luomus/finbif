@@ -151,6 +151,8 @@ finbif_occurrence <- function(
 
   df <- coordinates_uncertainty(df, select_, dwc)
 
+  df <- compute_scientific_name(df, select_, dwc)
+
   df <- structure(
     df[select_],
     class     = c("finbif_occ", "data.frame"),
@@ -617,6 +619,33 @@ coordinates_uncertainty <- function(df, select_, dwc) {
     )
 
     df[[coord_uncert_]] <- as.numeric(coord_uncert)
+
+  }
+
+  df
+
+}
+
+#' @noRd
+
+compute_scientific_name <- function(df, select_, dwc) {
+
+  type <- col_type_string(dwc)
+
+  scientific <- var_names[["computed_var_scientific_name", type]]
+
+  scientific_ <- var_names[["unit.linkings.taxon.scientificName", type]]
+
+  verbatim <- var_names[["unit.taxonVerbatim", type]]
+
+  source <- var_names[["document.sourceId", type]]
+
+  if (scientific %in% select_) {
+
+    df[[scientific]] <- ifelse(
+      is.na(df[[scientific_]]) & df[[source]] == "http://tun.fi/KE.3",
+      df[[verbatim]], df[[scientific_]]
+    )
 
   }
 

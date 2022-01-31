@@ -189,6 +189,11 @@ infer_selection <- function(aggregate, select, var_type) {
 
   citation_vars <- c("document.documentId", "document.sourceId")
 
+  scientific_name_vars <- c(
+    "unit.linkings.taxon.scientificName", "unit.taxonVerbatim",
+    "document.sourceId"
+  )
+
   if (missing(select)) {
 
     select <- row.names(default_vars)
@@ -197,11 +202,11 @@ infer_selection <- function(aggregate, select, var_type) {
 
     if (identical(aggregate, "none")) {
       # Missing 'select' implies default selection which implies date-time,
-      # abundance and coord uncertainty calc needed
+      # abundance and coord uncertainty and scientific name calc needed
       select <- unique(
         c(
           select, row.names(date_time_vars), abundance_vars,
-          coordinates_uncertainty_vars
+          coordinates_uncertainty_vars, scientific_name_vars
         )
       )
       record_id_selected <- TRUE
@@ -271,6 +276,19 @@ infer_selection <- function(aggregate, select, var_type) {
       )
 
     }
+
+    vars <- c("scientific_name", "scientificName")
+
+    scientific_name <- any(vars %in% select)
+
+    if (scientific_name) {
+
+      select <- unique(
+        c(select, var_names[scientific_name_vars, var_type])
+      )
+
+    }
+
 
     select_vars <- var_names[var_names[[select_type]], var_type, drop = FALSE]
     class(select_vars[[var_type]]) <- class(var_names[[var_type]])
