@@ -1,6 +1,18 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.3.9002}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item The number of (and interval between) api request retries can be
+        configured (currently undocumented).
+      \item For some museum collections scientific names have been added for
+        non-Finnish species.
+    }
+  }
+}
+
+
 \section{finbif version 0.6.3.9001}{
   \subsection{BUG FIXES}{
     \itemize{

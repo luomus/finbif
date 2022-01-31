@@ -1,3 +1,13 @@
+# finbif 0.6.3.9002
+
+#### MINOR IMPROVEMENTS
+
+  - The number of (and interval between) api request retries can be
+    configured (currently undocumented).
+
+  - For some museum collections scientific names have been added for
+    non-Finnish species.
+
 # finbif 0.6.3.9001
 
 #### BUG FIXES
