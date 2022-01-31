@@ -1,7 +1,8 @@
 finbif_api_var,translated_var,dwc,default_var,quality_var,type,class,single,select,order,aggregate,aggregate_events,aggregate_documents,doc,date,localised
 unit.unitId,record_id,occurrenceID,TRUE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 computed_var_citation,citation,bibliographicCitation,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.linkings.taxon.scientificName,scientific_name,scientificName,TRUE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+computed_var_scientific_name,scientific_name,scientificName,TRUE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.linkings.taxon.scientificName,scientific_name_interpreted,scientificNameInterpreted,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 computed_var_abundance,abundance,individualCount,TRUE,FALSE,integer,integer,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 computed_var_occurrence_status,occurrence_status,occurrenceStatus,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.interpretations.individualCount,abundance_interpreted,individualCountIntepreted,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -103,7 +104,7 @@ unit.typeSpecimen,type_specimen,typeStatus,FALSE,FALSE,logical,logical,TRUE,TRUE
 unit.unitOrder,record_order,occurrenceOrder,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.wild,is_wild,occurrenceIsWild,FALSE,FALSE,character,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 document.createdDate,date_created,documentCreatedDate,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.documentId,document_id,documentID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+document.documentId,document_id,catalogNumber,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.editorUserIds,editor_user_ids,editorUserID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.facts.decimalValue,document_fact_decimal,documentFactDecimal,FALSE,FALSE,double,double,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.facts.fact,document_fact_name,documentFactName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
@@ -639,3 +640,8 @@ unit.types.linkings.taxon.administrativeStatuses,type_specimen_admin_statuses,ty
 unit.atlasClass,atlas_class,atlasClass,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.atlasCode,atlas_code,atlasCode,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.prefix,document_prefix,documentPrefix,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.dataSource,data_source,dataSource,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.siteStatus,site_status,siteStatus,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.siteType,site_type,siteType,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+gathering.stateLand,state_land,stateLand,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+document.createdDateMonth,created_date_month,createdDateMonth,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE

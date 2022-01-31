@@ -105,3 +105,5 @@ atlasClass,atlas_class,character,FALSE,",",FALSE
 atlasCode,atlas_code,character,FALSE,",",FALSE
 hasValue,has_value,character,FALSE,",",FALSE
 documentIdPrefix,document_prefix,character,FALSE,",",FALSE
+createdDateYear,created_date_year,character,FALSE,",",FALSE
+onlyNonStateLands,only_non_state_land,logical,FALSE,",",FALSE
