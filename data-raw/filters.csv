@@ -100,4 +100,4 @@ provinceId,region_id,uri,FALSE,",",FALSE
 partition,subset,integer,FALSE,"/",FALSE
 informalTaxonGroupIdNot,informal_group_neg,uri,TRUE,",",FALSE
 onlyNonValidTaxa,invalid_taxa_only,logical,FALSE,",",FALSE
-taxonAdminFiltersOperator,taxon_admin_filters,character,FALSE,",",FALSE
+taxonAdminFiltersOperator,status_filter_operator,character,FALSE,",",FALSE
