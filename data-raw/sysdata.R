@@ -22,6 +22,8 @@ source("data-raw/misc.R")
 usethis::use_data(
   var_names,
   var_names_test,
+  has_value,
+  has_value_test,
   cite_file_vars,
   lite_download_file_vars,
   filter_names,

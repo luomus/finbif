@@ -7,6 +7,7 @@ if (has_dev_api()) {
 
   assignInNamespace("var_names", finbif:::var_names_test, "finbif")
   assignInNamespace("filter_names", finbif:::filter_names_test, "finbif")
+  assignInNamespace("has_value", finbif:::has_value_test, "finbif")
 
   invisible(vcr_configure(dir = "../api-dev-cassettes"))
 
