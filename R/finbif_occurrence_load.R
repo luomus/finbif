@@ -38,6 +38,11 @@
 #'   will be interpreted as FALSE. Argument is ignored if `drop_na` is TRUE for
 #'   all variables explicitly or via recycling. To only drop some
 #'   missing/`NA`-data facts use `drop_na` argument.
+#' @param locale Character. One of the supported two-letter ISO 639-1 language
+#'   codes. Current supported languages are English, Finnish, Swedish, Russian,
+#'   and Sámi (Northern). For data where more than one language is available
+#'   the language denoted by `locale` will be preferred while falling back to
+#'   the other languages in the order indicated above.
 #' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
 #' @return A `data.frame`, or if `count_only =  TRUE` an integer.
@@ -59,7 +64,7 @@ finbif_occurrence_load <- function(
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   tzone = getOption("finbif_tz"), write_file = tempfile(), dt, keep_tsv = FALSE,
   facts = list(), type_convert_facts = TRUE, drop_na = FALSE,
-  drop_facts_na = drop_na
+  drop_facts_na = drop_na, locale = getOption("finbif_locale")
 ) {
 
   file <- preprocess_data_file(file)
@@ -128,6 +133,16 @@ finbif_occurrence_load <- function(
   df <- expand_lite_cols(df)
 
   names(df) <- file_vars[names(df), var_type]
+
+  df <- compute_vars_from_id(df, select[["user"]], dwc, locale)
+
+  df <- compute_abundance(df, select[["user"]], dwc)
+
+  df <- compute_citation(df, select[["user"]], dwc, record_id)
+
+  df <- coordinates_uncertainty(df, select[["user"]], dwc)
+
+  df <- compute_scientific_name(df, select[["user"]], dwc)
 
   for (i in names(df)) {
 
@@ -596,9 +611,19 @@ add_nas <- function(df, nm, var_type, file_vars) {
 
     ind <- file_vars[[var_type]] == nm
 
-    if (length(which(ind)) > 1L) {
+    l <- length(which(ind))
+
+    if (l > 1L) {
 
       ind <- ind & file_vars[["superseeded"]] == "FALSE"
+
+    }
+
+    if (l < 1L) {
+
+      file_vars <- var_names
+
+      ind <- file_vars[[var_type]] == nm
 
     }
 

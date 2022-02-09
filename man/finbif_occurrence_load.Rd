@@ -21,7 +21,8 @@ finbif_occurrence_load(
   facts = list(),
   type_convert_facts = TRUE,
   drop_na = FALSE,
-  drop_facts_na = drop_na
+  drop_facts_na = drop_na,
+  locale = getOption("finbif_locale")
 )
 }
 \arguments{
@@ -90,6 +91,12 @@ Any value other than a length one logical vector with the value of TRUE
 will be interpreted as FALSE. Argument is ignored if \code{drop_na} is TRUE for
 all variables explicitly or via recycling. To only drop some
 missing/\code{NA}-data facts use \code{drop_na} argument.}
+
+\item{locale}{Character. One of the supported two-letter ISO 639-1 language
+codes. Current supported languages are English, Finnish, Swedish, Russian,
+and Sámi (Northern). For data where more than one language is available
+the language denoted by \code{locale} will be preferred while falling back to
+the other languages in the order indicated above.}
 }
 \value{
 A \code{data.frame}, or if \code{count_only =  TRUE} an integer.
