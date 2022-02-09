@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.3.9003}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item New fields have been added to citable download imports.
+    }
+  }
+}
+
 \section{finbif version 0.6.3.9002}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
@@ -11,7 +19,6 @@
     }
   }
 }
-
 
 \section{finbif version 0.6.3.9001}{
   \subsection{BUG FIXES}{

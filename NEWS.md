@@ -1,3 +1,9 @@
+# finbif 0.6.3.9003
+
+#### MINOR IMPROVEMENTS
+
+  - New fields have been added to citable download imports.
+
 # finbif 0.6.3.9002
 
 #### MINOR IMPROVEMENTS
