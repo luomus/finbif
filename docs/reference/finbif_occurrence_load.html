@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.3.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.3.9003</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,7 +80,8 @@
   facts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
   type_convert_facts <span class="op">=</span> <span class="cn">TRUE</span>,
   drop_na <span class="op">=</span> <span class="cn">FALSE</span>,
-  drop_facts_na <span class="op">=</span> <span class="va">drop_na</span>
+  drop_facts_na <span class="op">=</span> <span class="va">drop_na</span>,
+  locale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"finbif_locale"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -152,6 +153,12 @@ Any value other than a length one logical vector with the value of TRUE
 will be interpreted as FALSE. Argument is ignored if <code>drop_na</code> is TRUE for
 all variables explicitly or via recycling. To only drop some
 missing/<code>NA</code>-data facts use <code>drop_na</code> argument.</p></dd>
+<dt>locale</dt>
+<dd><p>Character. One of the supported two-letter ISO 639-1 language
+codes. Current supported languages are English, Finnish, Swedish, Russian,
+and Sámi (Northern). For data where more than one language is available
+the language denoted by <code>locale</code> will be preferred while falling back to
+the other languages in the order indicated above.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
