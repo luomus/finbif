@@ -1136,8 +1136,8 @@ expand_lite_cols <- function(df) {
       new_cols <- switch(
         file_vars[[col, "translated_var"]],
         formatted_taxon_name = c(
-          "scientific_name", "common_name_english", "common_name_finnish",
-          "common_name_swedish"
+          "scientific_name_interpreted", "common_name_english",
+          "common_name_finnish", "common_name_swedish"
         ),
         formatted_date_time = c(
           "date_start", "date_end", "hour_start", "hour_end",
