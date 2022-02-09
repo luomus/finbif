@@ -11,7 +11,7 @@ result.document.collectionId,collectID,collection_id,collectionID,FALSE,characte
 result.document.documentId,documentID,document_id,documentID,FALSE,character
 result.gathering.team,team,team,recordedByTeam,FALSE,character
 taxonomy.vernacular.name,comNm,common_name,vernacularName,FALSE,character
-result.scientificName,sciNm,scientific_name,scientificName,FALSE,character
+result.scientificName,sciNmI,scientific_name_interpreted,scientificNameInterpreted,FALSE,character
 taxonVerbatim,repNm,reported_name,verbatimTaxonName,FALSE,character
 result.taxonomicOrder,txnmicOrdr,taxonomic_order,taxonTaxonomicOrder,FALSE,character
 taxonomy.latestRedListStatusFinland,redLstStat,red_list_status,taxonRedListStatus,FALSE,character

@@ -109,7 +109,7 @@ Unit.ReportedTaxonConfidence,repTxnConf,reported_taxon_confidence,verbatimIdenti
 Document.DataSecureLevel,rstrctLev,restriction_level,documentInformationWithheld,FALSE,character
 Document.DataSecureReasons,rstrctRsns,restriction_reasons,documentInformationWithheldReasons,FALSE,character
 Unit.SampleCount,sampleN,sample_count,materialSampleCount,FALSE,integer
-Taxon.ScientificName,sciNm,scientific_name,scientificName,FALSE,character
+Taxon.ScientificName,sciNmI,scientific_name_interpreted,scientificNameInterpreted,FALSE,character
 Gathering.GatheringSection,section,section,eventSection,FALSE,integer
 Unit.Sex,sex,sex,sex,FALSE,character
 Document.SourceID,srcID,source_id,sourceID,FALSE,character
