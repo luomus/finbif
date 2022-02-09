@@ -68,7 +68,7 @@ finbif_collections <- function(
       list(
         collections[["description"]],
         collections[["data_quality_description"]],
-        sep = "\nData_quality: "
+        sep = "\nData quality: "
       )
     )
   )
