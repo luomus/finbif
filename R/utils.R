@@ -43,7 +43,7 @@ get_el_recurse <- function(obj, nms, type) {
 
   nm <- nms[[1L]]
 
-  if (!utils::hasName(obj, nm) && any(vapply(obj, utils::hasName, NA, nm))) {
+  if (is.null(names(obj)) && any(vapply(obj, utils::hasName, NA, nm))) {
     obj <- lapply(obj, getElement, nm)
     obj <- unlist(obj, recursive = FALSE)
   } else {
