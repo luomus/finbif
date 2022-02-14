@@ -1106,8 +1106,8 @@ expand_lite_cols <- function(df) {
   file_vars <- attr(df, "file_vars")
 
   cols <- c(
-    "formatted_taxon_name", "formatted_date_time", "coordinates_1_kkj",
-    "coordinates_10_kkj", "coordinates_1_center_kkj",
+    "formatted_taxon_name", "formatted_date_time", "coordinates_euref",
+    "coordinates_1_kkj", "coordinates_10_kkj", "coordinates_1_center_kkj",
     "coordinates_10_center_kkj"
   )
 
@@ -1121,15 +1121,17 @@ expand_lite_cols <- function(df) {
       file_vars[[col, "translated_var"]],
       formatted_taxon_name = "taxon",
       formatted_date_time = "date_time",
+      coordinates_euref = "coordinates_euref",
       "coords"
     )
 
-    if (utils::hasName(df, col_nm)) {
+    if (utils::hasName(df, col_nm) && !all(is.na(df[[col_nm]]))) {
 
       split_cols <- switch(
         type,
         taxon = split_taxa_col(df[[col_nm]], attr(file_vars, "locale")),
         date_time = split_dt_col(df[[col_nm]]),
+        coordinates_euref = split_coord_euref_col(df[[col_nm]]),
         coords = split_coord_col(df[[col_nm]]),
       )
 
@@ -1143,6 +1145,9 @@ expand_lite_cols <- function(df) {
           "date_start", "date_end", "hour_start", "hour_end",
           "minute_start", "minute_end"
         ),
+        coordinates_euref = c(
+           "lat_min_euref", "lat_max_euref", "lon_min_euref", "lon_max_euref"
+        ),
         coordinates_1_kkj = c("lon_1_kkj", "lat_1_kkj"),
         coordinates_10_kkj = c("lon_10_kkj", "lat_10_kkj"),
         coordinates_1_center_kkj = c("lon_1_center_kkj", "lat_1_center_kkj"),
@@ -1154,7 +1159,8 @@ expand_lite_cols <- function(df) {
 
       for (i in seq_along(new_cols)) {
 
-        cond <- is.null(df[[new_cols[[i]]]]) || all(is.na(df[[new_cols[[i]]]]))
+        cond <- is.null(df[[new_cols[[i]]]])
+        cond <- cond || all(is.na(df[[new_cols[[i]]]]))
 
         if (cond) {
 
@@ -1237,23 +1243,31 @@ split_dt_col <- function(col) {
 split_coord_col <- function(col) {
 
   split_cols <- split_col(col, ":")
-  split_cols <- lapply(split_cols, as.numeric)
 
-  names(split_cols) <- c("lon", "lat")
-
-  split_cols
+  lapply(split_cols, as.numeric)
 
 }
 
 #' @noRd
-split_col <- function(col, split) {
+split_coord_euref_col <- function(col) {
+
+  split_cols <- split_col(col, "\\D", 4L)
+
+  split_cols <- lapply(split_cols, as.numeric)
+
+  rev(split_cols)
+
+}
+
+#' @noRd
+split_col <- function(col, split, n = 2L) {
 
   split_cols <- strsplit(as.character(col), split)
   split_cols <- lapply(split_cols, c, NA_character_)
-  split_cols <- lapply(split_cols, utils::head, 2L)
+  split_cols <- lapply(split_cols, utils::head, n)
   split_cols <- lapply(split_cols, rev)
   split_cols <- do.call(rbind, split_cols)
 
-  list(split_cols[, 1], split_cols[, 2])
+  lapply(seq_len(n), function(x) split_cols[, x])
 
 }

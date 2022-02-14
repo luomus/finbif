@@ -33,6 +33,7 @@ result.gathering.conversions.wgs84.latMin,latMnWGS84,lat_min_wgs84,decimalLatitu
 result.gathering.conversions.wgs84.latMax,latMxWGS84,lat_max_wgs84,decimalLatitudeMaxWGS84,FALSE,double
 result.gathering.conversions.wgs84.lonMin,lonMnWGS84,lon_min_wgs84,decimalLongitudeMinWGS84,FALSE,double
 result.gathering.conversions.wgs84.lonMax,lonMxWGS84,lon_max_wgs84,decimalLongitudeMaxWGS84,FALSE,double
+result.gathering.conversions.euref,crdEUREF,coordinates_euref,decimalCoordinatesEUREF,FALSE,character
 result.gathering.conversions.euref.latMin,latMnEUREF,lat_min_euref,decimalLatitudeMinEUREF,FALSE,double
 result.gathering.conversions.euref.latMax,latMxEUREF,lat_max_euref,decimalLatitudeMaxEUREF,FALSE,double
 result.gathering.conversions.euref.lonMin,lonMnEUREF,lon_min_euref,decimalLongitudeMinEUREF,FALSE,double

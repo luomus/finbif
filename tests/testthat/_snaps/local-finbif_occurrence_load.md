@@ -1213,12 +1213,159 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
+          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+        },
+        "url": {
+          "type": "character",
+          "attributes": {},
+          "value": ["laji-data-pap.tsv"]
+        },
+        "nrow": {
+          "type": "integer",
+          "attributes": {},
+          "value": [50]
+        },
+        "class": {
+          "type": "character",
+          "attributes": {},
+          "value": ["finbif_occ", "data.frame"]
+        },
+        "nrec_dnld": {
+          "type": "integer",
+          "attributes": {},
+          "value": [50]
+        },
+        "nrec_avl": {
+          "type": "integer",
+          "attributes": {},
+          "value": [50]
+        },
+        "time": {
+          "type": "character",
+          "attributes": {},
+          "value": ["??"]
+        },
+        "short_nms": {
+          "type": "logical",
+          "attributes": {},
+          "value": [false]
+        },
+        "dwc": {
+          "type": "logical",
+          "attributes": {},
+          "value": [false]
+        },
+        "record_id": {
+          "type": "logical",
+          "attributes": {},
+          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+        },
+        "column_names": {
+          "type": "character",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            }
+          },
+          "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+        },
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+        }
+      },
+      "value": [
+        {
+          "type": "character",
+          "attributes": {},
+          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["Sciurus vulgaris", "Pica pica", "Larus argentatus", "Mergus merganser", "Dendrocopos major", "Turdus merula", "Corvus monedula", "Fringilla coelebs", "Passer montanus", "Anas platyrhynchos", "Cyanistes caeruleus", "Parus major", "Passer domesticus", "Chloris chloris", "Pteromys volans", "Sciurus vulgaris", "Agonopterix heracliana", "Myodes glareolus", "Aegithalos caudatus", "Rattus norvegicus", "Lophophanes cristatus", "Perdix perdix", "Peniophora quercina", "Ramalina fraxinea", "Ramalina farinacea", "Bombycilla garrulus", "Nucifraga caryocatactes", "Regulus regulus", "Poecile montanus", "Periparus ater", "Dendrocopos major", "Corvus monedula", "Pyrrhula pyrrhula", "Cyanistes caeruleus", "Cyanistes caeruleus", "Cyanistes caeruleus", "Parus major", "Parus major", "Parus major", "Parus major", "Paridae", "Corvus corone", "Columba livia domestica", "Columba livia domestica", "Dendrocopos major", "Parus major", "Chloris chloris", "Lutra lutra", "Lepus europaeus", "Lepus europaeus"]
+        },
+        {
+          "type": "integer",
+          "attributes": {},
+          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
+        },
+        {
+          "type": "double",
+          "attributes": {},
+          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
+        },
+        {
+          "type": "double",
+          "attributes": {},
+          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
+        },
+        {
+          "type": "double",
+          "attributes": {
+            "class": {
+              "type": "character",
+              "attributes": {},
+              "value": ["POSIXct", "POSIXt"]
+            },
+            "tzone": {
+              "type": "character",
+              "attributes": {},
+              "value": ["Etc/UTC"]
+            }
+          },
+          "value": [1644832800, 1644840000, 1644840000, 1644840000, 1644840000, 1644840000, 1644840000, 1644840000, 1644840000, 1644840000, 1644840000, 1644840000, 1644840000, 1644840000, 1644753600, 1644746400, 1644753600, 1644766800, 1644766740, 1644766680, 1644767880, 1644753600, 1644753600, 1644753600, 1644753600, 1644753600, 1644753600, 1644751560, 1644750600, 1644750420, 1644748860, 1644747780, 1644747780, 1644752220, 1644748380, 1644753420, 1644748680, 1644747780, 1644750360, 1644752220, 1644747780, 1644747840, 1644749160, 1644747600, 1644752280, 1644746340, 1644745980, 1644753600, 1644710520, 1644711660]
+        },
+        {
+          "type": "double",
+          "attributes": {},
+          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
+        },
+        {
+          "type": "logical",
+          "attributes": {},
+          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+        },
+        {
+          "type": "logical",
+          "attributes": {},
+          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+        },
+        {
+          "type": "logical",
+          "attributes": {},
+          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "row.names": {
+          "type": "integer",
+          "attributes": {},
           "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
         },
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpUUwkaI/file133314071a88a.tsv"]
+          "value": ["/tmp/RtmpUUwkaI/file1333133d50358.tsv"]
         },
         "nrow": {
           "type": "integer",
@@ -1365,7 +1512,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpUUwkaI/file1333133d50358.tsv"]
+          "value": ["/tmp/Rtmp3D6FQp/file4a6c54b77a69.tsv"]
         },
         "nrow": {
           "type": "integer",
