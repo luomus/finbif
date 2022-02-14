@@ -1,3 +1,10 @@
+# finbif 0.6.3.9004
+
+#### MINOR IMPROVEMENTS
+
+  - New filters and variables (currently undocumented) added from
+    upstream API.
+
 # finbif 0.6.3.9003
 
 #### MINOR IMPROVEMENTS
