@@ -101,3 +101,9 @@ partition,subset,integer,FALSE,"/",FALSE
 informalTaxonGroupIdNot,informal_group_neg,uri,TRUE,",",FALSE
 onlyNonValidTaxa,invalid_taxa_only,logical,FALSE,",",FALSE
 taxonAdminFiltersOperator,status_filter_operator,character,FALSE,",",FALSE
+atlasClass,atlas_class,character,FALSE,",",FALSE
+atlasCode,atlas_code,character,FALSE,",",FALSE
+hasValue,has_value,character,TRUE,",",FALSE
+documentIdPrefix,document_prefix,character,FALSE,",",FALSE
+createdDateYear,created_date_year,character,FALSE,",",FALSE
+onlyNonStateLands,only_non_state_land,logical,FALSE,",",FALSE

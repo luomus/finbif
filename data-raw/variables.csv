@@ -642,3 +642,11 @@ unit.annotations.identification.linkings.taxon.administrativeStatuses,record_ann
 unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.administrativeStatuses,record_pre_annotation_taxon_admin_statuses,occurrencePreAnnotationTaxonAdministrativeStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.linkings.taxon.administrativeStatuses,record_identifications_taxon_admin_statuses,occurrenceIdentificationsTaxonAdministrativeStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.administrativeStatuses,type_specimen_admin_statuses,typeSpecimenAdministrativeStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.atlasClass,atlas_class,atlasClass,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.atlasCode,atlas_code,atlasCode,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+document.prefix,document_prefix,documentPrefix,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.dataSource,data_source,dataSource,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.siteStatus,site_status,siteStatus,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.siteType,site_type,siteType,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+gathering.stateLand,state_land,stateLand,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+document.createdDateMonth,created_date_month,createdDateMonth,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
