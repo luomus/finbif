@@ -609,6 +609,7 @@ missing_var_source_description,source_description,sourceDescription,FALSE,FALSE,
 missing_var_source_material,source_material,sourceMaterial,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_species_tracking_status,species_tracking_status,speciesTrackingStatus,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_target_state,target_state,targetState,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_collection_name,collection_name,collectionName,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.randomKey,document_key,documentKey,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.occurrenceCountFinland,record_annotation_identification_total_finnish_records,occurrenceAnnotationIdentificationCountFinnish,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.primaryHabitat.habitat,record_annotation_identification_primary_habitat,occurrenceAnnotationIdentificationPrimaryHabitat,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
