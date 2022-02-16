@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.3.9005}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item New argument \code{aggregate_counts} (defaulting to \code{TRUE})
+        added to \code{finbif_occurrence} to toggle the inclusion of
+        aggregation count fields on and off.
+    }
+  }
+}
+
 \section{finbif version 0.6.3.9004}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

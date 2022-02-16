@@ -28,6 +28,8 @@
 #' @param drop_na Logical. A vector indicating which columns to check for
 #'   missing data. Values recycled to the number of columns. Defaults to all
 #'   columns.
+#' @param aggregate_counts Logical. Should count variables be returned when
+#'   using aggregation.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -58,7 +60,8 @@ finbif_occurrence <- function(
   count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
   dwc = FALSE, date_time_method, check_taxa = TRUE,
   on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
-  locale = getOption("finbif_locale"), seed, drop_na = FALSE
+  locale = getOption("finbif_locale"), seed, drop_na = FALSE,
+  aggregate_counts = TRUE
 ) {
 
   taxa <- select_taxa(
@@ -92,7 +95,6 @@ finbif_occurrence <- function(
   }
 
   filter <- c(taxa, filter)
-
 
   if (!is.finite(n) || is.factor(n) || n < 0) {
 
@@ -135,7 +137,7 @@ finbif_occurrence <- function(
 
   select_ <- attr(records, "select_user")
 
-  select_ <-  name_chr_vec(c(select_, n_col_nms))
+  select_ <-  name_chr_vec(c(select_, n_col_nms[aggregate_counts]))
 
   df <- compute_date_time(
     df, select, select_, aggregate, dwc, date_time_method, tzone

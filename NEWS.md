@@ -1,3 +1,11 @@
+# finbif 0.6.3.9005
+
+#### MINOR IMPROVEMENTS
+
+  - New argument `aggregate_counts` (defaulting to `TRUE`) added to
+    `finbif_occurrence` to toggle the inclusion of aggregation count
+    fields on and off.
+
 # finbif 0.6.3.9004
 
 #### MINOR IMPROVEMENTS

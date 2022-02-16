@@ -150,9 +150,15 @@ has_pkgs <- function(...) {
 }
 
 #' @noRd
-name_chr_vec <- function(x, unique = TRUE) {
+name_chr_vec <- function(x, unique = TRUE, na.rm = TRUE) {
 
   stopifnot(inherits(x, "character"))
+
+  if (na.rm) {
+
+    x <- x[!is.na(x)]
+
+  }
 
   nms <- names(x)
 
