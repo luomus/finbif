@@ -237,11 +237,7 @@ finbif_occurrence_load <- function(
 
   if (short) {
 
-    short_nms <- file_vars[["shrtnm"]]
-
-    names(short_nms) <- file_vars[[var_type]]
-
-    short_nms <- short_nms[names(df)]
+    short_nms <- short_nms(file_vars, var_type)[names(df)]
 
     short_fcts <- grep("_fact__", names(df), value = TRUE)
 
@@ -954,6 +950,27 @@ bind_facts <- function(x, facts) {
   attributes(x) <- attr
 
   x
+
+}
+
+#' @noRd
+short_nms <- function(file_vars, var_type) {
+
+  short_nms <- c(file_vars[["shrtnm"]], "abund", "crdUncert", "sciNm")
+
+  nms <- switch(
+    var_type,
+    translated_var = c(
+      "abundance", "coordinates_uncertainty", "scientific_name"
+    ),
+    dwc = c(
+      "individualCount", "coordinateUncertaintyInMeters", "scientificName"
+    )
+  )
+
+  names(short_nms) <- c(file_vars[[var_type]], nms)
+
+  short_nms
 
 }
 
