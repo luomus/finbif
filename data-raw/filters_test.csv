@@ -107,3 +107,5 @@ hasValue,has_value,character,TRUE,",",FALSE
 documentIdPrefix,document_prefix,character,FALSE,",",FALSE
 createdDateYear,created_date_year,character,FALSE,",",FALSE
 onlyNonStateLands,only_non_state_land,logical,FALSE,",",FALSE
+polygon,polygon,character,FALSE,",",FALSE
+polygonId,polygon_id,character,FALSE,",",FALSE
