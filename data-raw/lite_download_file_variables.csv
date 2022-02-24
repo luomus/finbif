@@ -77,3 +77,6 @@ result.document.facts.sourceDescription,srcDesc,source_description,sourceDescrip
 result.document.facts.sourceMaterial,srcMtrl,source_material,sourceMaterial,FALSE,character
 result.document.facts.speciesTrackingStatus,spTrkStat,species_tracking_status,speciesTrackingStatus,FALSE,character
 result.document.facts.targetState,targState,target_state,targetState,FALSE,character
+result.gathering.coordinatesVerbatim,coordVbtm,coordinates_verbatim,verbatimCoordinates,FALSE,character
+result.unit.linkings.taxon.occurrenceCountFinland,nFinRecs,n_total_finnish_records,taxonOccurrenceCountFinnish,FALSE,integer
+result.unit.linkings.taxon.primaryHabitat,primaryHab,taxon_primary_habitat,taxonPrimaryHabitat,FALSE,character
