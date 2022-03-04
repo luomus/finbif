@@ -1,3 +1,10 @@
+# finbif 0.6.3.9006
+
+#### MINOR IMPROVEMENTS
+
+  - New bird association area, occurrence types and location tag
+    metadata added.
+
 # finbif 0.6.3.9005
 
 #### MINOR IMPROVEMENTS

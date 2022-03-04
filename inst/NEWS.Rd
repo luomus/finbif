@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.3.9006}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item New bird association area, occurrence types and location tag
+        metadata added.
+    }
+  }
+}
+
 \section{finbif version 0.6.3.9005}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
