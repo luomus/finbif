@@ -37,6 +37,14 @@ finnish_occurrence_status <- read.csv(text = "
   MX.typeOfOccurrenceMaxRelict,                                     A relict of cultivation in Finland,                                                           cultivation_relict
   MX.typeOfOccurrenceMaxSoilImmigrant,                              'In Finland, at most a soil immigrant, possibly spreading vegetatively',                      soil_immigrant
   MX.typeOfOccurrenceOccursBasedOnOccurrences,                      'Occurrence status based on occurrence records only and not based an any expert evaluation',  records_only
+  MX.typeOfOccurrenceRegularBreeder,                                Regular breeder,                                                                              regular_breeder
+  MX.typeOfOccurrenceIrregularBreeder,                              Irregular breeder,                                                                            irregular_breeder
+  MX.typeOfOccurrencePassageMigrant,                                Passage migrant,                                                                              passage_migrant
+  MX.typeOfOccurrenceBirdLifeCategoryA,                             BirdLife Category A,                                                                          BLA
+  MX.typeOfOccurrenceBirdLifeCategoryB,                             BirdLife Category B,                                                                          BLB
+  MX.typeOfOccurrenceBirdLifeCategoryC,                             BirdLife Category C,                                                                          BLC
+  MX.typeOfOccurrenceBirdLifeCategoryD,                             BirdLife Category D,                                                                          BLD
+  MX.typeOfOccurrenceBirdLifeCategoryE,                             BirdLife Category E,                                                                          BLE
 ", stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'")
 
 class(finnish_occurrence_status[["code"]]) <- "translation"
