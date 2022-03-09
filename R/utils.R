@@ -150,7 +150,7 @@ has_pkgs <- function(...) {
 }
 
 #' @noRd
-name_chr_vec <- function(x, unique = TRUE, na.rm = TRUE) {
+name_chr_vec <- function(x, unique = TRUE, na.rm = TRUE) { # nolint
 
   stopifnot(inherits(x, "character"))
 
