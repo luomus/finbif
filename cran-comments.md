@@ -1,13 +1,13 @@
 ## Release summary
 
-A bug fix release with some additional minor improvements.
+A minor release with some improvements and a bug fix.
 
 ## Test environments
 
-* local Linux 5.13.0-22-generic, R 4.1.2
+* local Linux 5.13.0-35-generic, R 4.1.2
 * ubuntu 20.04 (on github actions), R-devel, R 4.1.2, R 4.0.5
-* mac OS 10.15.7 (on github actions) R 4.1.2
-* Microsoft Windows Server 2019 10.0.17763 (on github actions) R 4.1.2
+* mac OS 11.6.4 (on github actions) R 4.1.2
+* Microsoft Windows Server 2022 10.0.20348 (on github actions) R 4.1.2
 * win-builder (devel)
 * r-hub: windows-x86_64-devel, ubuntu-gcc-release, fedora-clang-devel
 
