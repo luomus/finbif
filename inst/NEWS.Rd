@@ -1,75 +1,28 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.6.3.9007}{
+\section{finbif version 0.6.4}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
-      \item New filters and variables (currently undocumented) added from
-        upstream API.
-    }
-  }
-}
-
-\section{finbif version 0.6.3.9006}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item New bird association area, occurrence types and location tag
-        metadata added.
-    }
-  }
-}
-
-\section{finbif version 0.6.3.9005}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item New argument \code{aggregate_counts} (defaulting to \code{TRUE})
-        added to \code{finbif_occurrence} to toggle the inclusion of
-        aggregation count fields on and off.
-    }
-  }
-}
-
-\section{finbif version 0.6.3.9004}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item New filters and variables (currently undocumented) added from
-        upstream API.
-    }
-  }
-}
-
-\section{finbif version 0.6.3.9003}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item New fields have been added to citable download imports.
-    }
-  }
-}
-
-\section{finbif version 0.6.3.9002}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
+      \item New administrative statuses added.
       \item The number of (and interval between) api request retries can be
         configured (currently undocumented).
       \item For some museum collections scientific names have been added for
         non-Finnish species.
+      \item New fields have been added to citable download imports.
+      \item New argument \code{aggregate_counts} (defaulting to \code{TRUE})
+        added to \code{finbif_occurrence} to toggle the inclusion of
+        aggregation count fields on and off.
+      \item New bird association area, occurrence types and location tag
+        metadata added.
+      \item New filters and variables (currently undocumented) added from
+        upstream API.
     }
   }
-}
-
-\section{finbif version 0.6.3.9001}{
   \subsection{BUG FIXES}{
     \itemize{
       \item Fix bug triggered when printing occurrence records where all records
         have no coordinate uncertainty.
-    }
-  }
-}
-
-\section{finbif version 0.6.3.9000}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item New administrative statuses added.
     }
   }
 }
