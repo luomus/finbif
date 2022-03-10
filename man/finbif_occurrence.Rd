@@ -24,7 +24,8 @@ finbif_occurrence(
   tzone = getOption("finbif_tz"),
   locale = getOption("finbif_locale"),
   seed,
-  drop_na = FALSE
+  drop_na = FALSE,
+  aggregate_counts = TRUE
 )
 }
 \arguments{
@@ -96,6 +97,9 @@ the other languages in the order indicated above.}
 \item{drop_na}{Logical. A vector indicating which columns to check for
 missing data. Values recycled to the number of columns. Defaults to all
 columns.}
+
+\item{aggregate_counts}{Logical. Should count variables be returned when
+using aggregation.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

@@ -46,7 +46,11 @@ administrative_status <- read.csv(
     MX.finlex160_1997_appendix4_2021, 'Finlex 160 1997 appendix 4 2021', FNLX160_97_4_2021
     MX.finlex160_1997_appendix4_specialInterest_2021, 'Finlex 160 1997 appendix 4 Special Interest 2021', FNLX160_97_4_SI_2021
     MX.finlex160_1997_largeBirdsOfPrey, 'Finlex 160 1997 Large Birds of Prey', FNLX160_97_LBP
+    MX.finlex160_1997_appendix1, 'Finlex 160 1997 appendix 1', FNLX160_97_1
     MX.finnishEnvironmentInstitute2020protectionPrioritySpecies, 'Finnish Environment Institute 2020 Protection Priority Species', FEI2020PPS
+    MX.finnishEnvironmentInstitute2020conservationProjectVascularSpecies, 'Finnish Environment Institute 2020 Conservation Project Vascular Plant Species', FEI2020CPVPS
+    MX.habitatsDirectiveAnnexII_FinlandNaturaSpecies, 'Habitats directive annex II Finland Natura Species', HABDIR2FN
+    MX.euRegulation_cites_appendixD, 'EU Regulation - CITES appendix D', EU_CITESD
   ",
   stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'"
 )

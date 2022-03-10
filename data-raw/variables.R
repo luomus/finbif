@@ -40,9 +40,11 @@ agg_doc_vars <- agg_doc_vars[[
 ]]
 agg_doc_vars <- unlist(agg_doc_vars[["items"]][["enum"]])
 
+remove_vars <- "^computed_var|^missing_var"
+
 select_vars_pkg <- row.names(var_names[var_names[["select"]], ])
 select_vars_pkg <-
-  grep("^computed_var", select_vars_pkg, value = TRUE, invert = TRUE)
+  grep(remove_vars, select_vars_pkg, value = TRUE, invert = TRUE)
 
 in_pkg_only <- setdiff(select_vars_pkg, select_vars)
 schema_only <- setdiff(select_vars, select_vars_pkg)
@@ -53,7 +55,7 @@ order_vars_pkg <- c(
   row.names(var_names[var_names[["order"]], ]) ,"RANDOM", "RANDOM:seed"
 )
 order_vars_pkg <- grep(
-  "^computed_var|^missing_var", order_vars_pkg, value = TRUE, invert = TRUE
+  remove_vars, order_vars_pkg, value = TRUE, invert = TRUE
 )
 
 in_pkg_only <- setdiff(order_vars_pkg, order_vars)
@@ -63,7 +65,7 @@ stopifnot(!length(c(in_pkg_only, schema_only)))
 
 agg_vars_pkg <- row.names(var_names[var_names[["aggregate"]], ])
 agg_vars_pkg <- grep(
-  "^computed_var|^missing_var", agg_vars_pkg, value = TRUE, invert = TRUE
+  remove_vars, agg_vars_pkg, value = TRUE, invert = TRUE
 )
 
 in_pkg_only <- setdiff(agg_vars_pkg, agg_vars)
@@ -73,7 +75,7 @@ stopifnot(!length(c(in_pkg_only, schema_only)))
 
 agg_gath_vars_pkg <- row.names(var_names[var_names[["aggregate_events"]], ])
 agg_gath_vars_pkg <- grep(
-  "^computed_var|^missing_var", agg_gath_vars_pkg, value = TRUE, invert = TRUE
+  remove_vars, agg_gath_vars_pkg, value = TRUE, invert = TRUE
 )
 
 in_pkg_only <- setdiff(agg_gath_vars_pkg, agg_gath_vars)
@@ -83,7 +85,7 @@ stopifnot(!length(c(in_pkg_only, schema_only)))
 
 agg_doc_vars_pkg <- row.names(var_names[var_names[["aggregate_documents"]], ])
 agg_doc_vars_pkg <- grep(
-  "^computed_var|^missing_var", agg_doc_vars_pkg, value = TRUE, invert = TRUE
+  remove_vars, agg_doc_vars_pkg, value = TRUE, invert = TRUE
 )
 
 in_pkg_only <- setdiff(agg_doc_vars_pkg, agg_doc_vars)
@@ -99,5 +101,13 @@ in_docs_only  <- setdiff(vars_in_docs, doc_vars)
 
 stopifnot(!length(c(doc_vars_only, in_docs_only)))
 
+has_value <- var_names[
+  grep(remove_vars, rownames(var_names),value = TRUE, invert = TRUE),
+  c("translated_var", "dwc"),
+  drop = FALSE
+]
+
 class(var_names[["translated_var"]]) <- "translation"
 class(var_names[["dwc"]]) <- "translation"
+class(has_value[["translated_var"]]) <- "translation"
+class(has_value[["dwc"]]) <- "translation"

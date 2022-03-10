@@ -44,7 +44,7 @@ Gathering.HourBegin,hourStart,hour_start,hourStart,FALSE,integer
 Unit.IndividualID,individID,individual_id,organismID,FALSE,character
 Taxon.InformalGroupEN,infrmGrpEN,informal_group_english,informalTaxonGroupEnglish,FALSE,character
 Taxon.InformalGroupFI,infrmGrpFI,informal_group_finnish,informalTaxonGroupFinnsih,FALSE,character
-Unit.Interpretations.InvasiveControl,invasCntrl,invasive_control,invasiveControlled,FALSE,logical
+Unit.Interpretations.InvasiveControl,invCtrlCls,invasive_control_class,invasiveControlClass,FALSE,character
 Unit.BreedingSite,isBreedLoc,is_breeding_location,breedingLocationStatus,FALSE,logical
 Document.PartialDocument,isPartial,is_partial,documentPartialStatus,FALSE,logical
 Unit.Wild,isWild,is_wild,occurrenceIsWild,FALSE,character
@@ -109,7 +109,7 @@ Unit.ReportedTaxonConfidence,repTxnConf,reported_taxon_confidence,verbatimIdenti
 Document.DataSecureLevel,rstrctLev,restriction_level,documentInformationWithheld,FALSE,character
 Document.DataSecureReasons,rstrctRsns,restriction_reasons,documentInformationWithheldReasons,FALSE,character
 Unit.SampleCount,sampleN,sample_count,materialSampleCount,FALSE,integer
-Taxon.ScientificName,sciNm,scientific_name,scientificName,FALSE,character
+Taxon.ScientificName,sciNmI,scientific_name_interpreted,scientificNameInterpreted,FALSE,character
 Gathering.GatheringSection,section,section,eventSection,FALSE,integer
 Unit.Sex,sex,sex,sex,FALSE,character
 Document.SourceID,srcID,source_id,sourceID,FALSE,character
@@ -127,3 +127,10 @@ Unit.Quality.Taxon.Source,recQlSrc,record_quality_source,occurrenceQualitySource
 Unit.Quality.Taxon.Message,recQlMsg,record_quality_message,occurrenceQualityMessage,,character
 Document.Quality.CollectionReliabilityRating,collectQl,collection_quality,collectionQuality,Document.Linkings.CollectionQuality,character
 Unit.InvasiveControl,invasCntrl,invasive_control,invasiveControlled,Unit.Interpretations.InvasiveControl,logical
+Unit.PlantStatusCode,plntStatCd,plant_status_code,plantStatusCode,FALSE,character
+Unit.AtlasCode,atlasCode,atlas_code,atlasCode,FALSE,character
+Unit.AtlasClass,atlasCls,atlas_class,atlasClass,FALSE,character
+Gathering.StateLand,stateLand,state_land,stateLand,FALSE,character
+Document.OriginalDataSource,dataSource,data_source,dataSource,FALSE,character
+Document.MonitoringSiteType,siteType,site_type,siteType,FALSE,character
+Document.MonitoringSiteStatus,siteStatus,site_status,siteStatus,FALSE,character

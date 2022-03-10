@@ -44,7 +44,7 @@ http_interactions:
         major"}},"interpretations":{"needsCheck":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED","needsIdentification":false,"individualCount":8}},"gathering":{"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000},"conversions":{"wgs84CenterPoint":{"lat":60.985177,"lon":25.426672}},"hourBegin":11,"hourEnd":14}},{"unit":{"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.147449#7","linkings":{"taxon":{"scientificName":"Passer
         montanus"}},"interpretations":{"needsCheck":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED","needsIdentification":false,"individualCount":61}},"gathering":{"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000},"conversions":{"wgs84CenterPoint":{"lat":60.985177,"lon":25.426672}},"hourBegin":11,"hourEnd":14}},{"unit":{"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.147449#8","linkings":{"taxon":{"scientificName":"Pyrrhula
         pyrrhula"}},"interpretations":{"needsCheck":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED","needsIdentification":false,"individualCount":2}},"gathering":{"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000},"conversions":{"wgs84CenterPoint":{"lat":60.985177,"lon":25.426672}},"hourBegin":11,"hourEnd":14}}]}'
-  recorded_at: 2021-10-28 10:48:33 GMT
+  recorded_at: 2022-01-31 13:49:48 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
@@ -87,7 +87,7 @@ http_interactions:
         major"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1195827#2"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Passer
         montanus"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1195827#12"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrrhula
         pyrrhula"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1195827#14"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"}}}]}'
-  recorded_at: 2021-10-28 10:48:33 GMT
+  recorded_at: 2022-01-31 13:49:48 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
@@ -130,7 +130,7 @@ http_interactions:
         major"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1195827#2"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"13","interpretations":{"individualCount":13,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Passer
         montanus"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1195827#12"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrrhula
         pyrrhula"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1195827#14"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
-  recorded_at: 2021-10-28 10:48:33 GMT
+  recorded_at: 2022-01-31 13:49:48 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
@@ -173,5 +173,97 @@ http_interactions:
         major"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1195827#2"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"13","interpretations":{"individualCount":13,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Passer
         montanus"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1195827#12"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrrhula
         pyrrhula"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1195827#14"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
-  recorded_at: 2021-10-28 10:48:33 GMT
+  recorded_at: 2022-01-31 13:49:48 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?time=2001%2F2008&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId%2Cunit.taxonVerbatim&page=1&pageSize=10&access_token=<finbif_dev_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Mon, 31 Jan 2022 13:44:40 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":42379,"pageSize":10,"total":423787,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
+        volans"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Pteromys
+        volans","unitId":"http://tun.fi/KE.921/LGE.159554/308977"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.622128,"lon":27.121641}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
+        volans"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Pteromys
+        volans","unitId":"http://tun.fi/KE.921/LGE.159555/308978"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.621383,"lon":27.121582}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
+        volans"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Pteromys
+        volans","unitId":"http://tun.fi/KE.921/LGE.159556/308979"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.621065,"lon":27.125522}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}},{"unit":{"abundanceString":"24","interpretations":{"individualCount":24,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pica
+        pica"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"harakka","unitId":"http://tun.fi/KE.8_1195827#9"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"6","interpretations":{"individualCount":6,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Regulus
+        regulus"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"hippiäinen","unitId":"http://tun.fi/KE.8_1195827#3"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"39","interpretations":{"individualCount":39,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Emberiza
+        citrinella"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"keltasirkku","unitId":"http://tun.fi/KE.8_1195827#15"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Periparus
+        ater"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kuusitiainen","unitId":"http://tun.fi/KE.8_1195827#6"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"6","interpretations":{"individualCount":6,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Dendrocopos
+        major"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"käpytikka","unitId":"http://tun.fi/KE.8_1195827#2"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"13","interpretations":{"individualCount":13,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Passer
+        montanus"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"pikkuvarpunen","unitId":"http://tun.fi/KE.8_1195827#12"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrrhula
+        pyrrhula"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"punatulkku","unitId":"http://tun.fi/KE.8_1195827#14"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
+  recorded_at: 2022-01-31 13:49:48 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?time=2001%2F2008&selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim&page=1&pageSize=10&access_token=<finbif_dev_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Mon, 31 Jan 2022 13:49:48 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":42379,"pageSize":10,"total":423787,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
+        volans"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Pteromys
+        volans","unitId":"http://tun.fi/KE.921/LGE.159554/308977"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.622128,"lon":27.121641}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
+        volans"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Pteromys
+        volans","unitId":"http://tun.fi/KE.921/LGE.159555/308978"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.621383,"lon":27.121582}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
+        volans"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Pteromys
+        volans","unitId":"http://tun.fi/KE.921/LGE.159556/308979"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.621065,"lon":27.125522}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}},{"unit":{"abundanceString":"24","interpretations":{"individualCount":24,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pica
+        pica"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"harakka","unitId":"http://tun.fi/KE.8_1195827#9"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"6","interpretations":{"individualCount":6,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Regulus
+        regulus"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"hippiäinen","unitId":"http://tun.fi/KE.8_1195827#3"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"39","interpretations":{"individualCount":39,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Emberiza
+        citrinella"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"keltasirkku","unitId":"http://tun.fi/KE.8_1195827#15"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Periparus
+        ater"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kuusitiainen","unitId":"http://tun.fi/KE.8_1195827#6"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"6","interpretations":{"individualCount":6,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Dendrocopos
+        major"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"käpytikka","unitId":"http://tun.fi/KE.8_1195827#2"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"13","interpretations":{"individualCount":13,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Passer
+        montanus"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"pikkuvarpunen","unitId":"http://tun.fi/KE.8_1195827#12"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrrhula
+        pyrrhula"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"punatulkku","unitId":"http://tun.fi/KE.8_1195827#14"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":61.443022,"lon":26.903228}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
+  recorded_at: 2022-01-31 13:49:48 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

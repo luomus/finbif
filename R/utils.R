@@ -43,7 +43,7 @@ get_el_recurse <- function(obj, nms, type) {
 
   nm <- nms[[1L]]
 
-  if (!utils::hasName(obj, nm) && any(vapply(obj, utils::hasName, NA, nm))) {
+  if (is.null(names(obj)) && any(vapply(obj, utils::hasName, NA, nm))) {
     obj <- lapply(obj, getElement, nm)
     obj <- unlist(obj, recursive = FALSE)
   } else {
@@ -150,9 +150,15 @@ has_pkgs <- function(...) {
 }
 
 #' @noRd
-name_chr_vec <- function(x, unique = TRUE) {
+name_chr_vec <- function(x, unique = TRUE, na.rm = TRUE) { # nolint
 
   stopifnot(inherits(x, "character"))
+
+  if (na.rm) {
+
+    x <- x[!is.na(x)]
+
+  }
 
   nms <- names(x)
 

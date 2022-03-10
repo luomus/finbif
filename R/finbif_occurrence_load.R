@@ -38,6 +38,11 @@
 #'   will be interpreted as FALSE. Argument is ignored if `drop_na` is TRUE for
 #'   all variables explicitly or via recycling. To only drop some
 #'   missing/`NA`-data facts use `drop_na` argument.
+#' @param locale Character. One of the supported two-letter ISO 639-1 language
+#'   codes. Current supported languages are English, Finnish, Swedish, Russian,
+#'   and Sámi (Northern). For data where more than one language is available
+#'   the language denoted by `locale` will be preferred while falling back to
+#'   the other languages in the order indicated above.
 #' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
 #' @return A `data.frame`, or if `count_only =  TRUE` an integer.
@@ -59,7 +64,7 @@ finbif_occurrence_load <- function(
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   tzone = getOption("finbif_tz"), write_file = tempfile(), dt, keep_tsv = FALSE,
   facts = list(), type_convert_facts = TRUE, drop_na = FALSE,
-  drop_facts_na = drop_na
+  drop_facts_na = drop_na, locale = getOption("finbif_locale")
 ) {
 
   file <- preprocess_data_file(file)
@@ -113,6 +118,10 @@ finbif_occurrence_load <- function(
 
   file_vars <- attr(df, "file_vars")
 
+  fact_types <- select_facts(fact_types, attr(file_vars, "lite"))
+
+  select[["facts"]] <- fact_types
+
   df <- new_vars(df, deselect, file_vars)
 
   record_id <- file_vars[["translated_var"]] == "record_id"
@@ -124,6 +133,16 @@ finbif_occurrence_load <- function(
   df <- expand_lite_cols(df)
 
   names(df) <- file_vars[names(df), var_type]
+
+  df <- compute_vars_from_id(df, select[["user"]], dwc, locale)
+
+  df <- compute_abundance(df, select[["user"]], dwc)
+
+  df <- compute_citation(df, select[["user"]], dwc, record_id)
+
+  df <- coordinates_uncertainty(df, select[["user"]], dwc)
+
+  df <- compute_scientific_name(df, select[["user"]], dwc)
 
   for (i in names(df)) {
 
@@ -218,11 +237,7 @@ finbif_occurrence_load <- function(
 
   if (short) {
 
-    short_nms <- file_vars[["shrtnm"]]
-
-    names(short_nms) <- file_vars[[var_type]]
-
-    short_nms <- short_nms[names(df)]
+    short_nms <- short_nms(file_vars, var_type)[names(df)]
 
     short_fcts <- grep("_fact__", names(df), value = TRUE)
 
@@ -556,7 +571,17 @@ get_zip <- function(url, quiet, cache, write_file) {
   }
 
   resp <- httr::RETRY(
-    "GET", url, httr::write_disk(zip, overwrite = TRUE), progress, query = query
+    "GET",
+    url,
+    httr::write_disk(zip, overwrite = TRUE),
+    progress,
+    query = query,
+    times = getOption("finbif_retry_times"),
+    pause_base = getOption("finbif_retry_pause_base"),
+    pause_cap = getOption("finbif_retry_pause_cap"),
+    pause_min = getOption("finbif_retry_pause_min"),
+    quiet = quiet,
+    terminate_on = 404L
   )
 
   if (!quiet) message("")
@@ -582,9 +607,19 @@ add_nas <- function(df, nm, var_type, file_vars) {
 
     ind <- file_vars[[var_type]] == nm
 
-    if (length(which(ind)) > 1L) {
+    l <- length(which(ind))
+
+    if (l > 1L) {
 
       ind <- ind & file_vars[["superseeded"]] == "FALSE"
+
+    }
+
+    if (l < 1L) {
+
+      file_vars <- var_names
+
+      ind <- file_vars[[var_type]] == nm
 
     }
 
@@ -800,6 +835,14 @@ deselect <- function(select, file_vars) {
 
 }
 
+select_facts <- function(fact_types, file_type_lite) {
+
+  if (file_type_lite) fact_types <- NULL
+
+  fact_types
+
+}
+
 #' @noRd
 spread_facts <-  function(
   facts, select, type, id, type_convert_facts, drop_facts_na
@@ -911,6 +954,27 @@ bind_facts <- function(x, facts) {
 }
 
 #' @noRd
+short_nms <- function(file_vars, var_type) {
+
+  short_nms <- c(file_vars[["shrtnm"]], "abund", "crdUncert", "sciNm")
+
+  nms <- switch(
+    var_type,
+    translated_var = c(
+      "abundance", "coordinates_uncertainty", "scientific_name"
+    ),
+    dwc = c(
+      "individualCount", "coordinateUncertaintyInMeters", "scientificName"
+    )
+  )
+
+  names(short_nms) <- c(file_vars[[var_type]], nms)
+
+  short_nms
+
+}
+
+#' @noRd
 unlist_col <- function(col) {
 
   col_ <- unlist(col)
@@ -975,6 +1039,8 @@ infer_file_vars <- function(cols) {
 
   file_vars <- cite_file_vars
 
+  attr(file_vars, "lite") <- FALSE
+
   locale <- "none"
 
   if (length(cols) < 100L && !"Fact" %in% cols) {
@@ -994,7 +1060,7 @@ infer_file_vars <- function(cols) {
 
     rownames(file_vars) <- file_vars[[locale]]
 
-
+    attr(file_vars, "lite") <- TRUE
 
   }
 
@@ -1057,8 +1123,8 @@ expand_lite_cols <- function(df) {
   file_vars <- attr(df, "file_vars")
 
   cols <- c(
-    "formatted_taxon_name", "formatted_date_time", "coordinates_1_kkj",
-    "coordinates_10_kkj", "coordinates_1_center_kkj",
+    "formatted_taxon_name", "formatted_date_time", "coordinates_euref",
+    "coordinates_1_kkj", "coordinates_10_kkj", "coordinates_1_center_kkj",
     "coordinates_10_center_kkj"
   )
 
@@ -1072,27 +1138,32 @@ expand_lite_cols <- function(df) {
       file_vars[[col, "translated_var"]],
       formatted_taxon_name = "taxon",
       formatted_date_time = "date_time",
+      coordinates_euref = "coordinates_euref",
       "coords"
     )
 
-    if (utils::hasName(df, col_nm)) {
+    if (utils::hasName(df, col_nm) && !all(is.na(df[[col_nm]]))) {
 
       split_cols <- switch(
         type,
         taxon = split_taxa_col(df[[col_nm]], attr(file_vars, "locale")),
         date_time = split_dt_col(df[[col_nm]]),
+        coordinates_euref = split_coord_euref_col(df[[col_nm]]),
         coords = split_coord_col(df[[col_nm]]),
       )
 
       new_cols <- switch(
         file_vars[[col, "translated_var"]],
         formatted_taxon_name = c(
-          "scientific_name", "common_name_english", "common_name_finnish",
-          "common_name_swedish"
+          "scientific_name_interpreted", "common_name_english",
+          "common_name_finnish", "common_name_swedish"
         ),
         formatted_date_time = c(
           "date_start", "date_end", "hour_start", "hour_end",
           "minute_start", "minute_end"
+        ),
+        coordinates_euref = c(
+           "lat_min_euref", "lat_max_euref", "lon_min_euref", "lon_max_euref"
         ),
         coordinates_1_kkj = c("lon_1_kkj", "lat_1_kkj"),
         coordinates_10_kkj = c("lon_10_kkj", "lat_10_kkj"),
@@ -1105,7 +1176,8 @@ expand_lite_cols <- function(df) {
 
       for (i in seq_along(new_cols)) {
 
-        cond <- is.null(df[[new_cols[[i]]]]) || all(is.na(df[[new_cols[[i]]]]))
+        cond <- is.null(df[[new_cols[[i]]]])
+        cond <- cond || all(is.na(df[[new_cols[[i]]]]))
 
         if (cond) {
 
@@ -1188,23 +1260,31 @@ split_dt_col <- function(col) {
 split_coord_col <- function(col) {
 
   split_cols <- split_col(col, ":")
-  split_cols <- lapply(split_cols, as.numeric)
 
-  names(split_cols) <- c("lon", "lat")
-
-  split_cols
+  lapply(split_cols, as.numeric)
 
 }
 
 #' @noRd
-split_col <- function(col, split) {
+split_coord_euref_col <- function(col) {
+
+  split_cols <- split_col(col, "\\D", 4L)
+
+  split_cols <- lapply(split_cols, as.numeric)
+
+  rev(split_cols)
+
+}
+
+#' @noRd
+split_col <- function(col, split, n = 2L) {
 
   split_cols <- strsplit(as.character(col), split)
   split_cols <- lapply(split_cols, c, NA_character_)
-  split_cols <- lapply(split_cols, utils::head, 2L)
+  split_cols <- lapply(split_cols, utils::head, n)
   split_cols <- lapply(split_cols, rev)
   split_cols <- do.call(rbind, split_cols)
 
-  list(split_cols[, 1], split_cols[, 2])
+  lapply(seq_len(n), function(x) split_cols[, x])
 
 }

@@ -40,9 +40,11 @@ agg_doc_vars <- agg_doc_vars[[
 ]]
 agg_doc_vars <- unlist(agg_doc_vars[["items"]][["enum"]])
 
+remove_vars <- "^computed_var|^missing_var"
+
 select_vars_pkg <- row.names(var_names_test[var_names_test[["select"]], ])
 select_vars_pkg <- grep(
-  "^computed_var|^missing_var", select_vars_pkg, value = TRUE, invert = TRUE
+  remove_vars, select_vars_pkg, value = TRUE, invert = TRUE
 )
 
 in_pkg_only <- setdiff(select_vars_pkg, select_vars)
@@ -55,7 +57,7 @@ order_vars_pkg <- c(
   "RANDOM:seed"
 )
 order_vars_pkg <- grep(
-  "^computed_var|^missing_var", order_vars_pkg, value = TRUE, invert = TRUE
+  remove_vars, order_vars_pkg, value = TRUE, invert = TRUE
 )
 
 in_pkg_only <- setdiff(order_vars_pkg, order_vars)
@@ -65,7 +67,7 @@ stopifnot(!length(c(in_pkg_only, schema_only)))
 
 agg_vars_pkg <- row.names(var_names_test[var_names_test[["aggregate"]], ])
 agg_vars_pkg <- grep(
-  "^computed_var|^missing_var", agg_vars_pkg, value = TRUE, invert = TRUE
+  remove_vars, agg_vars_pkg, value = TRUE, invert = TRUE
 )
 
 in_pkg_only <- setdiff(agg_vars_pkg, agg_vars)
@@ -75,7 +77,7 @@ stopifnot(!length(c(in_pkg_only, schema_only)))
 
 agg_gath_vars_pkg <- row.names(var_names_test[var_names_test[["aggregate_events"]], ])
 agg_gath_vars_pkg <- grep(
-  "^computed_var|^missing_var", agg_gath_vars_pkg, value = TRUE, invert = TRUE
+  remove_vars, agg_gath_vars_pkg, value = TRUE, invert = TRUE
 )
 
 in_pkg_only <- setdiff(agg_gath_vars_pkg, agg_gath_vars)
@@ -85,7 +87,7 @@ stopifnot(!length(c(in_pkg_only, schema_only)))
 
 agg_doc_vars_pkg <- row.names(var_names_test[var_names_test[["aggregate_documents"]], ])
 agg_doc_vars_pkg <- grep(
-  "^computed_var|^missing_var", agg_doc_vars_pkg, value = TRUE, invert = TRUE
+  remove_vars, agg_doc_vars_pkg, value = TRUE, invert = TRUE
 )
 
 in_pkg_only <- setdiff(agg_doc_vars_pkg, agg_doc_vars)
@@ -93,5 +95,13 @@ schema_only <- setdiff(agg_doc_vars, agg_doc_vars_pkg)
 
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
+has_value_test <- var_names_test[
+  grep(remove_vars, rownames(var_names_test),value = TRUE, invert = TRUE),
+  c("translated_var", "dwc"),
+  drop = FALSE
+]
+
 class(var_names_test[["translated_var"]]) <- "translation"
 class(var_names_test[["dwc"]]) <- "translation"
+class(has_value_test[["translated_var"]]) <- "translation"
+class(has_value_test[["dwc"]]) <- "translation"

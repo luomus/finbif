@@ -7,11 +7,11 @@ result.gathering.displayDateTime,fmtDateTme,formatted_date_time,eventDateTimeDis
 result.gathering.country,country,country,country,FALSE,character
 result.gathering.biogeographicalProvince,prov,province,stateProvince,FALSE,character
 result.gathering.locality,locality,locality,locality,FALSE,character
-result.document.collectionId,collectID,collection_id,collectionID,FALSE,character
+result.document.collectionId,collectNm,collection_name,collectionName,FALSE,character
 result.document.documentId,documentID,document_id,documentID,FALSE,character
 result.gathering.team,team,team,recordedByTeam,FALSE,character
 taxonomy.vernacular.name,comNm,common_name,vernacularName,FALSE,character
-result.scientificName,sciNm,scientific_name,scientificName,FALSE,character
+result.scientificName,sciNmI,scientific_name_interpreted,scientificNameInterpreted,FALSE,character
 taxonVerbatim,repNm,reported_name,verbatimTaxonName,FALSE,character
 result.taxonomicOrder,txnmicOrdr,taxonomic_order,taxonTaxonomicOrder,FALSE,character
 taxonomy.latestRedListStatusFinland,redLstStat,red_list_status,taxonRedListStatus,FALSE,character
@@ -33,6 +33,7 @@ result.gathering.conversions.wgs84.latMin,latMnWGS84,lat_min_wgs84,decimalLatitu
 result.gathering.conversions.wgs84.latMax,latMxWGS84,lat_max_wgs84,decimalLatitudeMaxWGS84,FALSE,double
 result.gathering.conversions.wgs84.lonMin,lonMnWGS84,lon_min_wgs84,decimalLongitudeMinWGS84,FALSE,double
 result.gathering.conversions.wgs84.lonMax,lonMxWGS84,lon_max_wgs84,decimalLongitudeMaxWGS84,FALSE,double
+result.gathering.conversions.euref,crdEUREF,coordinates_euref,decimalCoordinatesEUREF,FALSE,character
 result.gathering.conversions.euref.latMin,latMnEUREF,lat_min_euref,decimalLatitudeMinEUREF,FALSE,double
 result.gathering.conversions.euref.latMax,latMxEUREF,lat_max_euref,decimalLatitudeMaxEUREF,FALSE,double
 result.gathering.conversions.euref.lonMin,lonMnEUREF,lon_min_euref,decimalLongitudeMinEUREF,FALSE,double
@@ -71,3 +72,11 @@ gathering.hourBegin,hourStart,hour_start,hourStart,FALSE,integer
 gathering.hourEnd,hourEnd,hour_end,hourEnd,FALSE,integer
 gathering.minutesBegin,minStart,minute_start,minuteStart,FALSE,integer
 gathering.minutesEnd,minEnd,minute_end,minuteEnd,FALSE,integer
+result.document.facts.mappingReason,mapReason,mapping_reason,mappingReason,FALSE,character
+result.document.facts.sourceDescription,srcDesc,source_description,sourceDescription,FALSE,character
+result.document.facts.sourceMaterial,srcMtrl,source_material,sourceMaterial,FALSE,character
+result.document.facts.speciesTrackingStatus,spTrkStat,species_tracking_status,speciesTrackingStatus,FALSE,character
+result.document.facts.targetState,targState,target_state,targetState,FALSE,character
+result.gathering.coordinatesVerbatim,coordVbtm,coordinates_verbatim,verbatimCoordinates,FALSE,character
+result.unit.linkings.taxon.occurrenceCountFinland,nFinRecs,n_total_finnish_records,taxonOccurrenceCountFinnish,FALSE,integer
+result.unit.linkings.taxon.primaryHabitat,primaryHab,taxon_primary_habitat,taxonPrimaryHabitat,FALSE,character

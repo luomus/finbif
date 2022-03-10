@@ -19,9 +19,12 @@ source("data-raw/life_stage.R")
 source("data-raw/sex.R")
 source("data-raw/restriction.R")
 source("data-raw/misc.R")
+source("data-raw/location_tag.R")
 usethis::use_data(
   var_names,
   var_names_test,
+  has_value,
+  has_value_test,
   cite_file_vars,
   lite_download_file_vars,
   filter_names,
@@ -52,6 +55,7 @@ usethis::use_data(
   record_quality,
   record_reliability,
   supported_langs,
+  location_tag,
   internal = TRUE,
   overwrite = TRUE
 )

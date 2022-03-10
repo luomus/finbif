@@ -1,3 +1,32 @@
+# finbif 0.6.4
+
+#### MINOR IMPROVEMENTS
+
+  - New administrative statuses added.
+
+  - The number of (and interval between) api request retries can be
+    configured (currently undocumented).
+
+  - For some museum collections scientific names have been added for
+    non-Finnish species.
+
+  - New fields have been added to citable download imports.
+
+  - New argument `aggregate_counts` (defaulting to `TRUE`) added to
+    `finbif_occurrence` to toggle the inclusion of aggregation count
+    fields on and off.
+
+  - New bird association area, occurrence types and location tag
+    metadata added.
+
+  - New filters and variables (currently undocumented) added from
+    upstream API.
+
+#### BUG FIXES
+
+  - Fix bug triggered when printing occurrence records where all records
+    have no coordinate uncertainty.
+
 # finbif 0.6.3
 
 #### MINOR IMPROVEMENTS

@@ -331,21 +331,9 @@ format_cols <- function(df, colname_widths) {
 
   for (i in seq_along(df)) {
 
-    k <- attr(df, "column_names")[[i]]
+    class <- col_class(df[[i]])
 
-    if (isTRUE(attr(df, "short"))) {
-
-      class <- short_col_class(df[[i]])
-
-      single <- !is.list(df[[i]])
-
-    } else {
-
-      ind <- var_names[[if (attr(df, "dwc")) "dwc" else "translated_var"]] == k
-      class  <- var_names[ind, "class"]
-      single <- var_names[ind, "single"] || var_names[ind, "localised"]
-
-    }
+    single <- !is.list(df[[i]])
 
     # Variables may not necessarily be in the var_names object
     if (length(class)) {
@@ -357,7 +345,7 @@ format_cols <- function(df, colname_widths) {
         df[[i]] <- paste0(df[[i]], " element", ifelse(df[[i]] == 1L, "", "s"))
       } else {
         if (class == "uri") df[[i]] <- truncate_string_to_unique(df[[i]])
-        if (class %in% c("character", "uri", "factor")) {
+        if (class %in% c("uri", "character")) {
           df[[i]] <- truncate_string(df[[i]])
         }
         if (class %in% c("double", "integer")) {
@@ -377,7 +365,7 @@ format_cols <- function(df, colname_widths) {
 }
 
 #' @noRd
-short_col_class <- function(x) {
+col_class <- function(x) {
 
   class <-  "character"
 

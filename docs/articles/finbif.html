@@ -35,14 +35,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="active nav-item">
   <a class="nav-link" href="../articles/finbif.html">Get started</a>
@@ -82,7 +82,9 @@
   </div>
 </nav><div class="container template-article">
 
-<div class="row">
+
+
+<script src="finbif_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Introduction to the finbif package</h1>
                         <h4 data-toc-skip class="author">William K. Morris</h4>
@@ -153,9 +155,8 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">birch_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_taxa.html">finbif_taxa</a></span><span class="op">(</span><span class="st">"Betula pendula"</span>, <span class="fl">2</span>, <span class="st">"partial"</span><span class="op">)</span>
 <span class="va">birch_search</span><span class="op">$</span><span class="va">content</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; [[1]]$matchingName</span>
@@ -294,9 +295,8 @@ Click to show/hide output.
   <span class="st">"Cygnus olor"</span>,
   filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>coordinates_uncertainty_max <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 26352</span>
@@ -323,9 +323,8 @@ Click to show/hide output.
 <p>It is possible to request a random sample of records instead of the last <code>n</code> records (or records ordered by some other variable).</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Birds"</span>, sample <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Records downloaded: 10</span>
 <span class="co">#&gt; Records available: 19686186</span>
@@ -351,8 +350,8 @@ Click to show/hide output.
 <h2 id="plotting-occurrence-data">Plotting occurrence data<a class="anchor" aria-label="anchor" href="#plotting-occurrence-data"></a>
 </h2>
 <p>The <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> package has a number of inbuilt functions for plotting (see e.g., <code><a href="../reference/breaks_xy.html">breaks_xy()</a></code> and <code><a href="../reference/hist_xy.html">hist_xy()</a></code>). There is also an inbuilt dataset that can be used to plot the border of Finland (<code><a href="../reference/finland_map.html">?finland_map</a></code>). Together these utilities can be used to plot occurrences after they have been downloaded from FinBIF. For example, the following can be used to plot the density of Eurasian Jay occurrences from Finland.</p>
-<details closed><summary><span title="">Click to show/hide code.</span>
-</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<details closed><p><summary><span title="">Click to show/hide code.</span></summary></p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Download all the occurrences of Eurasian Jay in Finland</span>
 <span class="co"># that have coordinates accurate to at least 100m</span>
 <span class="va">jays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
@@ -416,7 +415,7 @@ Click to show/hide output.
 </div>
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer>

@@ -121,13 +121,12 @@ test_that(
       style = "json2"
     )
 
-    expect_snapshot_value(
+    expect_warning(
       capture.output(
         print(
           finbif_occurrence_load("HBF.6968.zip", facts = list(event = "fact"))
         )
-      ),
-      style = "json2"
+      )
     )
 
   }
@@ -139,10 +138,15 @@ if (!identical(.Platform$OS.type, "windows")) {
   test_that(
     "can load data from a lite download", {
 
-        expect_snapshot_value(
-          finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC"),
-          style = "json2"
-        )
+      expect_snapshot_value(
+        finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC"),
+        style = "json2"
+      )
+
+      expect_snapshot_value(
+        finbif_occurrence_load("laji-data-pap.tsv", tzone = "Etc/UTC"),
+        style = "json2"
+      )
 
       skip_on_cran()
 
