@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.3.9007}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item New filters and variables (currently undocumented) added from
+        upstream API.
+    }
+  }
+}
+
 \section{finbif version 0.6.3.9006}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

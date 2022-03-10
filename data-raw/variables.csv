@@ -88,7 +88,7 @@ unit.media.mediaType,record_media_type,associatedMediaType,FALSE,FALSE,character
 unit.media.squareThumbnailURL,record_thumbnail_square,occurrenceAssociatedMediaSquareThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.media.thumbnailURL,record_thumbnail,occurrenceAssociatedMediaThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.mediaCount,record_media_count,occurrenceAssociatedMediaCount,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
-unit.notes,record_notes,occurrenceRemarks,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.notes,record_notes,occurrenceRemarks,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.quality.issue.issue,record_issue,occurrenceIssue,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.quality.issue.message,record_issue_message,occurrenceIssueRemarks,FALSE,TRUE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.quality.issue.source,record_issue_source,occurrenceIssueSource,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
@@ -130,7 +130,7 @@ document.media.thumbnailURL,document_thumbnail,documentAssociatedMediaThumbnail,
 document.mediaCount,document_media_count,documentAssociatedMediaCount,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.modifiedDate,modified_date,documentModified,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.namedPlaceId,location_id,locationID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.notes,document_notes,documentRemarks,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
+document.notes,document_notes,documentRemarks,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
 document.partial,is_partial,documentPartialStatus,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.quality.issue.issue,document_issue,documentIssue,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.quality.issue.message,document_issue_message,documentIssueRemarks,FALSE,TRUE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
@@ -223,7 +223,7 @@ gathering.media.thumbnailURL,event_thumbnail,eventAssociatedMediaThumbnail,FALSE
 gathering.mediaCount,event_media_count,eventAssociatedMediaCount,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.municipality,municipality_verbatim,verbatimCounty,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.province,province_verbatim2,verbatimStateProvince2,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-gathering.notes,event_notes,eventRemarks,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
+gathering.notes,event_notes,eventRemarks,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.observerUserIds,observers_ids,recordedByIDs,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.quality.issue.issue,event_issue,eventIssue,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.quality.issue.message,event_issue_message,eventIssueRemarks,FALSE,TRUE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
@@ -261,9 +261,9 @@ unit.samples.sampleOrder,sample_order,materialSampleOrder,FALSE,FALSE,character,
 unit.samples.status,sample_status,materialSampleStatus,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.samples.type,sample_type,materialSampleType,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.samples.material,sample_material,materialSampleMaterial,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
-document.namedPlace.birdAssociationAreaDisplayName,bird_assoc_area,birdAssociationArea,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.namedPlace.municipalityDisplayName,municipality_name2,countyName2,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.namedPlace.name,location,location,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.birdAssociationAreaDisplayName,bird_assoc_area,birdAssociationArea,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.municipalityDisplayName,municipality_name2,countyName2,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.name,location,location,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.author,orig_taxon_author,originalTaxonNameAuthorship,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.invasive,orig_taxon_is_invasive,originalTaxonIsInvasive,FALSE,FALSE,logical,logical,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.nameEnglish,orig_common_name_english,originalVernacularNameEnglish,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -367,12 +367,12 @@ unit.linkings.originalTaxon.latestRedListStatusFinland.year,orig_finnish_red_lis
 unit.linkings.taxon.latestRedListStatusFinland.status,finnish_red_list_status,finnishRedListStatus,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.latestRedListStatusFinland.year,finnish_red_list_year,finnishRedListYear,FALSE,FALSE,integer,integer,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.linkings.editors,editors,editors,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.namedPlace.birdAssociationAreaId,bird_assoc_area_id,birdAssociationAreaId,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.namedPlace.collectionId,location_collection_id,locationCollectionId,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.namedPlace.id,location_id2,locationID2,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.namedPlace.municipalityId,location_municipality_id,locationCountyID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.namedPlace.ykj10km.lat,location_lat_10_kkj,locationDecimalLatitudeGrid10KKJ,FALSE,FALSE,integer,integer,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.namedPlace.ykj10km.lon,location_lon_10_kkj,locationDecimalLongitudeGrid10KKJ,FALSE,FALSE,integer,integer,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.birdAssociationAreaId,bird_assoc_area_id,birdAssociationAreaId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.collectionId,location_collection_id,locationCollectionId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.id,location_id2,locationID2,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.municipalityId,location_municipality_id,locationCountyID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.ykj10km.lat,location_lat_10_kkj,locationDecimalLatitudeGrid10KKJ,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.ykj10km.lon,location_lon_10_kkj,locationDecimalLongitudeGrid10KKJ,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 gathering.linkings.observers,observers,recordedByTeam,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.team.memberId,team_member_id,recordedByTeamMemberID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.team.memberName,team_member,recordedByTeamMember,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
@@ -651,3 +651,5 @@ document.siteStatus,site_status,siteStatus,FALSE,FALSE,character,character,TRUE,
 document.siteType,site_type,siteType,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 gathering.stateLand,state_land,stateLand,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 document.createdDateMonth,created_date_month,createdDateMonth,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.alternativeId,location_alt_id,locationAltID,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.tags,location_tags,locationTags,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
