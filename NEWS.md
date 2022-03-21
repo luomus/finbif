@@ -1,3 +1,11 @@
+# finbif 0.6.4.9000
+
+#### MINOR IMPROVEMENTS
+
+  - When selecting all available variables for download file imports
+    using `finbif_occurrence_load` "extra" variables will no longer be
+    automatically added.
+
 # finbif 0.6.4
 
 #### MINOR IMPROVEMENTS

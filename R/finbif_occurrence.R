@@ -429,7 +429,7 @@ get_iso8601 <- function(
 
 #' @noRd
 
-compute_vars_from_id <- function(df, select_, dwc, locale) {
+compute_vars_from_id <- function(df, select_, dwc, locale, add = TRUE) {
 
   candidates <- setdiff(select_, names(df))
 
@@ -439,7 +439,7 @@ compute_vars_from_id <- function(df, select_, dwc, locale) {
 
     id_var_name <- paste0(candidates[[k]], suffix)
 
-    if (utils::hasName(df, id_var_name)) {
+    if (utils::hasName(df, id_var_name) && add) {
 
       if (identical(id_var_name, "collection_id")) {
 
@@ -482,7 +482,7 @@ compute_vars_from_id <- function(df, select_, dwc, locale) {
 
 #' @noRd
 
-compute_epsg <- function(df, select_, dwc) {
+compute_epsg <- function(df, select_, dwc, add = TRUE) {
 
   select_ <- match(select_, var_names[, col_type_string(dwc)])
 
@@ -490,7 +490,7 @@ compute_epsg <- function(df, select_, dwc) {
 
   crs <- c(computed_var_epsg = "", computed_var_fp_epsg = "footprint")
 
-  for (i in seq_along(crs)) {
+  for (i in seq_along(crs)[add]) {
 
     epsg <- c("euref", "kkj", "wgs84")
 
@@ -528,7 +528,7 @@ compute_epsg <- function(df, select_, dwc) {
 
 #' @noRd
 
-compute_abundance <- function(df, select_, dwc) {
+compute_abundance <- function(df, select_, dwc, add = TRUE) {
 
   type <- col_type_string(dwc)
 
@@ -540,7 +540,7 @@ compute_abundance <- function(df, select_, dwc) {
 
   abundance_v <- var_names[["unit.abundanceString", type]]
 
-  if (abundance_ %in% select_ || occurrence_status_ %in% select_) {
+  if (abundance_ %in% select_ || occurrence_status_ %in% select_ && add) {
 
     abundance <- ifelse(
       df[[abundance_i]] == 1L,
@@ -572,7 +572,7 @@ compute_abundance <- function(df, select_, dwc) {
 
 #' @noRd
 
-compute_citation <- function(df, select_, dwc, record_id) {
+compute_citation <- function(df, select_, dwc, record_id, add = TRUE) {
 
   type <- col_type_string(dwc)
 
@@ -582,7 +582,7 @@ compute_citation <- function(df, select_, dwc, record_id) {
 
   document_id <- var_names[["document.documentId", type]]
 
-  if (citation %in% select_) {
+  if (citation %in% select_ && add) {
 
     df[[citation]] <- ifelse(
       df[[source]] == "http://tun.fi/KE.3",
@@ -600,7 +600,7 @@ compute_citation <- function(df, select_, dwc, record_id) {
 
 #' @noRd
 
-coordinates_uncertainty <- function(df, select_, dwc) {
+coordinates_uncertainty <- function(df, select_, dwc, add = TRUE) {
 
   type <- col_type_string(dwc)
 
@@ -612,7 +612,7 @@ coordinates_uncertainty <- function(df, select_, dwc) {
 
   source <- var_names[["document.sourceId", type]]
 
-  if (coord_uncert_ %in% select_) {
+  if (coord_uncert_ %in% select_ && add) {
 
     coord_uncert <- ifelse(
       df[[source]] == "http://tun.fi/KE.3" & df[[coord_uncert_i]] == 1,
@@ -630,7 +630,7 @@ coordinates_uncertainty <- function(df, select_, dwc) {
 
 #' @noRd
 
-compute_scientific_name <- function(df, select_, dwc) {
+compute_scientific_name <- function(df, select_, dwc, add = TRUE) {
 
   type <- col_type_string(dwc)
 
@@ -642,7 +642,7 @@ compute_scientific_name <- function(df, select_, dwc) {
 
   source <- var_names[["document.sourceId", type]]
 
-  if (scientific %in% select_) {
+  if (scientific %in% select_ && add) {
 
     df[[scientific]] <- ifelse(
       is.na(df[[scientific_]]) & df[[source]] == "http://tun.fi/KE.3",

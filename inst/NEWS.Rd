@@ -2,6 +2,13 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.6.4.9000}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item When selecting all available variables for download file imports
+        using \code{finbif_occurrence_load} "extra" variables will no longer
+        be automatically added.
+    }
+  }
 }
 
 \section{finbif version 0.6.4}{

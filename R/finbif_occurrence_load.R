@@ -122,7 +122,7 @@ finbif_occurrence_load <- function(
 
   select[["facts"]] <- fact_types
 
-  df <- new_vars(df, deselect, file_vars)
+  df <- new_vars(df, deselect, file_vars, !select[["all"]])
 
   record_id <- file_vars[["translated_var"]] == "record_id"
 
@@ -134,15 +134,17 @@ finbif_occurrence_load <- function(
 
   names(df) <- file_vars[names(df), var_type]
 
-  df <- compute_vars_from_id(df, select[["user"]], dwc, locale)
+  df <- compute_vars_from_id(
+    df, select[["user"]], dwc, locale, !select[["all"]]
+  )
 
-  df <- compute_abundance(df, select[["user"]], dwc)
+  df <- compute_abundance(df, select[["user"]], dwc, !select[["all"]])
 
-  df <- compute_citation(df, select[["user"]], dwc, record_id)
+  df <- compute_citation(df, select[["user"]], dwc, record_id, !select[["all"]])
 
-  df <- coordinates_uncertainty(df, select[["user"]], dwc)
+  df <- coordinates_uncertainty(df, select[["user"]], dwc, !select[["all"]])
 
-  df <- compute_scientific_name(df, select[["user"]], dwc)
+  df <- compute_scientific_name(df, select[["user"]], dwc, !select[["all"]])
 
   for (i in names(df)) {
 
@@ -465,7 +467,7 @@ fix_issue_vars <- function(x) {
 }
 
 #' @noRd
-new_vars <- function(df, deselect, file_vars) {
+new_vars <- function(df, deselect, file_vars, which = TRUE) {
 
   if (is.null(attr(df, "file_cols"))) {
 
@@ -490,7 +492,7 @@ new_vars <- function(df, deselect, file_vars) {
 
   new_vars <- setdiff(nms, c(nms_df, ss))
 
-  for (i in new_vars) {
+  for (i in new_vars[which]) {
 
     df[[i]] <- rep_len(NA, nrow(df))
 
