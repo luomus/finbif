@@ -130,7 +130,7 @@ finbif_occurrence_load <- function(
 
   record_id <- df[[record_id]]
 
-  df <- expand_lite_cols(df)
+  df <- expand_lite_cols(df, !select[["all"]])
 
   names(df) <- file_vars[names(df), var_type]
 
@@ -1120,14 +1120,14 @@ write_tsv <- function(df) {
 }
 
 #' @noRd
-expand_lite_cols <- function(df) {
+expand_lite_cols <- function(df, add = TRUE) {
 
   file_vars <- attr(df, "file_vars")
 
   cols <- c(
-    "formatted_taxon_name", "formatted_date_time", "coordinates_euref",
-    "coordinates_1_kkj", "coordinates_10_kkj", "coordinates_1_center_kkj",
-    "coordinates_10_center_kkj"
+    "formatted_taxon_name"[add], "formatted_date_time"[add],
+    "coordinates_euref", "coordinates_1_kkj", "coordinates_10_kkj",
+    "coordinates_1_center_kkj","coordinates_10_center_kkj"
   )
 
   cols <- which(file_vars[["translated_var"]] %in% cols)
