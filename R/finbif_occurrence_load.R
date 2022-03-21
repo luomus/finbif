@@ -167,8 +167,6 @@ finbif_occurrence_load <- function(
 
     df <- any_issues(df, select[["user"]], var_type)
 
-    df <- compute_vars_from_id(df, select[["user"]], dwc)
-
     for (extra_var in setdiff(select[["user"]], names(df))) {
 
       ind <- var_names[[var_type]] == extra_var
