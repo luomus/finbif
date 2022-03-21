@@ -540,7 +540,7 @@ compute_abundance <- function(df, select_, dwc, add = TRUE) {
 
   abundance_v <- var_names[["unit.abundanceString", type]]
 
-  if (abundance_ %in% select_ || occurrence_status_ %in% select_ && add) {
+  if ((abundance_ %in% select_ || occurrence_status_ %in% select_) && add) {
 
     abundance <- ifelse(
       df[[abundance_i]] == 1L,
