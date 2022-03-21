@@ -724,17 +724,26 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
       )
     }
 
-    ind <- file_vars[["translated_vars"]] == "formatted_date_time"
 
-    select[["query"]] <- switch(
-      attr(file_vars, "locale"),
-      none = select[["query"]],
-      c(select[["queary"]], rownames(file_vars[ind, ]))
-    )
 
     select_vars <-  var_names[select[["query"]], select[["type"]]]
 
     select_vars <- file_vars[[select[["type"]]]] %in% select_vars
+
+    expand_vars <- c(
+      "formatted_taxon_name", "formatted_date_time",
+      "coordinates_euref", "coordinates_1_kkj", "coordinates_10_kkj",
+      "coordinates_1_center_kkj", "coordinates_10_center_kkj"
+    )
+
+    expand_vars <- file_vars[["translated_var"]] %in% expand_vars
+
+    select_vars <- switch(
+      attr(file_vars, "locale"),
+      none = select_vars,
+      select_vars | expand_vars
+    )
+
     select_vars <- row.names(file_vars[select_vars, ])
 
     args[["select"]] <- which(cols %in% select_vars)
@@ -758,15 +767,22 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
   }
 
-  args[["colClasses"]] <- file_vars[cols, "type"]
-  args[["colClasses"]] <- ifelse(
-    is.na(args[["colClasses"]]), "character", args[["colClasses"]]
-  )
-
   args[["nrows"]] <- as.double(n)
   args[["check.names"]] <- TRUE
 
   df <- do.call(data.table::fread, args)
+
+  classes <- file_vars[cols, "type"]
+
+  classes <- classes[args[["select"]]]
+
+  classes <- ifelse(is.na(classes), "character", classes)
+
+  for (i in seq_along(df)) {
+
+    df[[i]] <- suppressWarnings(methods::as(df[[i]], classes[[i]]))
+
+  }
 
   attr(df, "file_vars") <- file_vars
 
@@ -812,9 +828,18 @@ rd_read <- function(x, file, tsv, n, select, keep_tsv) {
     }
 
     df <- utils::read.delim(
-      x, nrows = max(abs(n), 1L) * sign(n), na.strings = "",
-      colClasses =  file_vars[cols, "type"], quote = "\""
+      x, nrows = max(abs(n), 1L) * sign(n), na.strings = "", quote = ""
     )
+
+    classes <- file_vars[cols, "type"]
+
+    classes <- ifelse(is.na(classes), "character", classes)
+
+    for (i in seq_along(df)) {
+
+      df[[i]] <- suppressWarnings(methods::as(df[[i]], classes[[i]]))
+
+    }
 
   }
 
@@ -1125,7 +1150,7 @@ expand_lite_cols <- function(df, add = TRUE) {
   cols <- c(
     "formatted_taxon_name"[add], "formatted_date_time"[add],
     "coordinates_euref", "coordinates_1_kkj", "coordinates_10_kkj",
-    "coordinates_1_center_kkj","coordinates_10_center_kkj"
+    "coordinates_1_center_kkj", "coordinates_10_center_kkj"
   )
 
   cols <- which(file_vars[["translated_var"]] %in% cols)
