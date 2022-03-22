@@ -1148,12 +1148,12 @@ expand_lite_cols <- function(df, add = TRUE) {
   file_vars <- attr(df, "file_vars")
 
   cols <- c(
-    "formatted_taxon_name"[add], "formatted_date_time"[add],
+    "formatted_taxon_name", "formatted_date_time",
     "coordinates_euref", "coordinates_1_kkj", "coordinates_10_kkj",
     "coordinates_1_center_kkj", "coordinates_10_center_kkj"
   )
 
-  cols <- which(file_vars[["translated_var"]] %in% cols)
+  cols <- which(file_vars[["translated_var"]] %in% cols[add])
 
   for (col in cols) {
 
