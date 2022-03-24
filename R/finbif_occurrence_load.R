@@ -465,7 +465,7 @@ fix_issue_vars <- function(x) {
 }
 
 #' @noRd
-new_vars <- function(df, deselect, file_vars, which = TRUE) {
+new_vars <- function(df, deselect, file_vars, add = TRUE) {
 
   if (is.null(attr(df, "file_cols"))) {
 
@@ -490,9 +490,13 @@ new_vars <- function(df, deselect, file_vars, which = TRUE) {
 
   new_vars <- setdiff(nms, c(nms_df, ss))
 
-  for (i in new_vars[which]) {
+  if (add) {
 
-    df[[i]] <- rep_len(NA, nrow(df))
+    for (i in new_vars) {
+
+      df[[i]] <- rep_len(NA, nrow(df))
+
+    }
 
   }
 
