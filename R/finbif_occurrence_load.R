@@ -709,6 +709,12 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
   file_vars <- infer_file_vars(cols)
 
+  if (attr(file_vars, "lite")) {
+
+    args[["quote"]] <- "\""
+
+  }
+
   if (select[["all"]]) {
 
     args[["select"]] <- which(!cols %in% deselect(select, file_vars))
@@ -805,6 +811,14 @@ rd_read <- function(x, file, tsv, n, select, keep_tsv) {
 
   file_vars <- infer_file_vars(cols)
 
+  quote <- ""
+
+  if (attr(file_vars, "lite")) {
+
+    quote <- "\""
+
+  }
+
   if (keep_tsv && !identical(tools::file_ext(file), "tsv")) {
 
     unzip <- "internal"
@@ -832,7 +846,7 @@ rd_read <- function(x, file, tsv, n, select, keep_tsv) {
     }
 
     df <- utils::read.delim(
-      x, nrows = max(abs(n), 1L) * sign(n), na.strings = "", quote = ""
+      x, nrows = max(abs(n), 1L) * sign(n), na.strings = "", quote = quote
     )
 
     classes <- file_vars[cols, "type"]
