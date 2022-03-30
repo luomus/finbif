@@ -602,6 +602,7 @@ missing_var_record_quality_message,record_quality_message,occurrenceQualityMessa
 missing_var_formatted_taxon_name,formatted_taxon_name,displayTaxonName,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_coordinates_10_center_kkj,coordinates_10_center_kkj,decimalCoordinatesGrid10CenterKKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_coordinates_10_kkj,coordinates_10_kkj,decimalCoordinatesGrid10KKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_coordinates_euref,coordinates_10_euref,decimalCoordinatesEUREF,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_coordinates_1_center_kkj,coordinates_1_center_kkj,decimalCoordinatesGrid1CenterKKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_coordinates_1_kkj,coordinates_1_kkj,decimalCoordinatesGrid1KKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_mapping_reason,mapping_reason,mappingReason,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -610,6 +611,7 @@ missing_var_source_material,source_material,sourceMaterial,FALSE,FALSE,character
 missing_var_species_tracking_status,species_tracking_status,speciesTrackingStatus,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_target_state,target_state,targetState,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_collection_name,collection_name,collectionName,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_invasive_control_class,invasive_control_class,invasiveControlClass,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.randomKey,document_key,documentKey,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.occurrenceCountFinland,record_annotation_identification_total_finnish_records,occurrenceAnnotationIdentificationCountFinnish,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.primaryHabitat.habitat,record_annotation_identification_primary_habitat,occurrenceAnnotationIdentificationPrimaryHabitat,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
