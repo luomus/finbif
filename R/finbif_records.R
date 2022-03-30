@@ -598,9 +598,12 @@ translate <- function(x, translation, pos = -1) {
       }
     }
 
-    row.names(trsltn)[ind]
+    ans <- row.names(trsltn)[ind]
+
+    ans[!grepl("DUPLICATE", ans)]
 
   }
+
 }
 
 # sample records ---------------------------------------------------------------

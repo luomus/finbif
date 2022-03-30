@@ -11,7 +11,9 @@ informal_group <- data.tree::as.Node(informal_group)
 informal_group <-
   data.tree::ToDataFrameTree(informal_group, "name", "id")[-1L, ]
 informal_group <- stats::setNames(informal_group, c("tree", "name", "id"))
-row.names(informal_group) <- informal_group[["id"]]
+row.names(informal_group) <- make.unique(
+  informal_group[["id"]], ".DUPLICATE."
+)
 informal_group[["id"]] <- NULL
 informal_group[["tree"]] <- substring(informal_group[["tree"]], 5L)
 class(informal_group[["name"]]) <- "translation"
