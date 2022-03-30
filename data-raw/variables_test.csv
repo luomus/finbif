@@ -348,7 +348,7 @@ unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.taxonRank,record_pr
 unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.vernacularName,record_pre_annotation_common_name,occurrencePreAnnotationVernacularName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.locality,record_pre_annotation_locality,occurrencePreAnnotationLocality,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.municipalityVerbatim,record_pre_annotation_municipality_verbatim,occurrencePreAnnotationVerbatimCounty,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.annotations.occurrenceAtTimeOfAnnotation.taxonId,record_pre_annotation_taxon_id,occurrencePreAnnotationTaxonID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.occurrenceAtTimeOfAnnotation.taxonId,record_pre_annotation_taxon_id2,occurrencePreAnnotationTaxonID2,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.taxonVerbatim,record_pre_annotation_reported_name,occurrencePreAnnotationVerbatimTaxonName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.wgs84centerPointLat,record_pre_annotation_lat_wgs84,occurrencePreAnnotationDecimalLatitude,FALSE,FALSE,double,double,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.wgs84centerPointLon,record_pre_annotation_lon_wgs84,occurrencePreAnnotationDecimalLongitude,FALSE,FALSE,double,double,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -440,7 +440,7 @@ unit.linkings.originalTaxon.superdomainId,orig_taxon_superdomain_id,originalTaxo
 unit.linkings.originalTaxon.superfamilyId,orig_taxon_superfamily_id,originalTaxonSuperfamilyID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.supergenusId,orig_taxon_supergenus_id,originalTaxonSupergenusID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.superorderId,orig_taxon_superorder_id,originalTaxonSuperorderID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.linkings.originalTaxon.superphylumId,orig_taxon_subphylum_id,originalTaxonSuperphylumID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.originalTaxon.superphylumId,orig_taxon_superphylum_id,originalTaxonSuperphylumID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.tribeId,orig_taxon_tribe_id,originalTaxonTribeID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.typesOfOccurrenceInFinland,orig_taxon_finnish_occurrence_type,originalTaxonFinnishOccurrenceType,FALSE,FALSE,integer,integer,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.varietyId,orig_taxon_variety_id,originalTaxonVarietyID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -456,7 +456,7 @@ unit.linkings.taxon.ecotypeId,ecotype_id,ecotypeID,FALSE,FALSE,character,uri,TRU
 unit.linkings.taxon.euringCode,euring_code,euringCode,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.euringNumber,euring_number,euringNumber,FALSE,FALSE,integer,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.familyId,family_id,familyID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.linkings.taxon.formId,form_id,formID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.taxon.formId,taxon_form_id,taxonFormID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.genusId,genus_id,genusID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.grexId,grex_id,grexID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.groupId,group_id,groupID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -559,7 +559,7 @@ unit.identifications.linkings.taxon.vernacularName,record_identifications_common
 unit.identifications.notes,record_identifications_notes,occurrenceIdentificationsRemarks,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.preferred,record_identifications_preferred,occurrenceIdentificationsPreferred,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.taxon,record_identifications_taxon,occurrenceIdentificationsTaxon,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.identifications.taxonID,record_identifications_taxon_id,occurrenceIdentificationsTaxonID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.identifications.taxonID,record_identifications_taxon_id2,occurrenceIdentificationsTaxonID2,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.taxonSpecifier,record_identifications_specifier,occurrenceIdentificationsSpecifier,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.taxonSpecifierAuthor,record_identifications_specifier_author,occurrenceIdentificationsSpeciferAuthor,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.plantStatusCode,plant_status_code,plantStatusCode,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -589,7 +589,7 @@ unit.types.notes,type_specimen_notes,typeSpecimenRemarks,FALSE,FALSE,character,c
 unit.types.publication,type_specimen_publication,typeSpecimenPublication,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.status,type_specimen_status,typeSpecimenStatus,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.taxon,type_specimen_taxon,typeSpecimenTaxon,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.types.taxonID,type_specimen_taxon_id,typeSpecimenTaxonID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.types.taxonID,type_specimen_taxon_id2,typeSpecimenTaxonID2,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.taxonSpecifier,type_specimen_specifier,typeSpecimenSpecifier,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.taxonSpecifierAuthor,type_specimen_specifier_author,typeSpecimenSpecifierAuthor,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.typif,type_specimen_typed_by,typeSpecimenTypedBy,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
