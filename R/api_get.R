@@ -45,17 +45,16 @@ api_get <- function(path, query, cache) {
   # Pausing between requests is important if many request will be made
   Sys.sleep(1 / getOption("finbif_rate_limit"))
 
+  agent <- paste0(
+    "https://github.com/luomus/finbif#", utils::packageVersion("finbif")
+  )
+
+  agent <- Sys.getenv("FINBIF_USER_AGENT", agent)
+
   resp <- httr::RETRY(
     "GET",
     sprintf("%s/%s/%s", url, version, path),
-    httr::user_agent(
-      paste0(
-        "https://github.com/luomus/finbif#",
-        utils::packageVersion("finbif"),
-        ":",
-        get_calling_function("finbif")
-      )
-    ),
+    httr::user_agent(paste0(agent, ":", get_calling_function("finbif"))),
     httr::accept_json(),
     query = c(query, list(access_token = finbif_access_token)),
     times = getOption("finbif_retry_times"),
