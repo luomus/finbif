@@ -655,3 +655,5 @@ gathering.stateLand,state_land,stateLand,FALSE,FALSE,character,character,TRUE,TR
 document.createdDateMonth,created_date_month,createdDateMonth,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.alternativeId,location_alt_id,locationAltID,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.tags,location_tags,locationTags,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+document.completeListTaxonId,complete_list_taxon_id,completeListTaxonID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.completeListType,complete_list_type,completeListType,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
