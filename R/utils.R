@@ -302,8 +302,6 @@ to_ <- function(x, from, to) {
 #' @param to Character. Type of variable names to convert to.
 #' @param file Character. For variable names that are derived from a FinBIF
 #'   download file which type of file.
-#' @param locale Character. For variable names from a lite download file which
-#'   locale the file is in.
 #'
 #' @return Character vector.
 #'
@@ -320,8 +318,7 @@ to_native <- function(...) to_(list(...), "dwc", "translated_var")
 #' @rdname to_dwc
 #' @export
 from_schema <- function(
-  ..., to = c("native", "dwc", "short"), file = c("none", "citable", "lite"),
-  locale = c("en", "fi", "sv")
+  ..., to = c("native", "dwc", "short"), file = c("none", "citable", "lite")
 ) {
 
   nms <- make.names(c(...))

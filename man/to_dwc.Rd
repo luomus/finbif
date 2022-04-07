@@ -13,8 +13,7 @@ to_native(...)
 from_schema(
   ...,
   to = c("native", "dwc", "short"),
-  file = c("none", "citable", "lite"),
-  locale = c("en", "fi", "sv")
+  file = c("none", "citable", "lite")
 )
 }
 \arguments{
@@ -27,9 +26,6 @@ a FinBIF download file (citable or lite).}
 
 \item{file}{Character. For variable names that are derived from a FinBIF
 download file which type of file.}
-
-\item{locale}{Character. For variable names from a lite download file which
-locale the file is in.}
 }
 \value{
 Character vector.
