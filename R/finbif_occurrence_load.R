@@ -515,21 +515,19 @@ get_zip <- function(url, quiet, cache, write_file) {
 
     if (is.null(fcp)) {
 
-      zip <- get_cache(hash)
+      cache_file <- get_cache(hash)
 
-      if (!is.null(zip)) {
+      if (!is.null(cache_file)) {
 
-        return(zip)
+        return(cache_file)
 
       }
 
-      zip <- write_file
-
       on.exit({
 
-        if (!is.null(zip)) {
+        if (!is.null(write_file)) {
 
-          set_cache(zip, hash)
+          set_cache(write_file, hash)
 
         }
 
@@ -537,11 +535,11 @@ get_zip <- function(url, quiet, cache, write_file) {
 
     } else {
 
-      zip <- file.path(fcp, paste0("finbif_cache_file_", hash))
+      write_file <- file.path(fcp, paste0("finbif_cache_file_", hash))
 
-      if (file.exists(zip)) {
+      if (file.exists(write_file)) {
 
-        return(zip)
+        return(write_file)
 
       }
 
@@ -577,7 +575,7 @@ get_zip <- function(url, quiet, cache, write_file) {
   resp <- httr::RETRY(
     "GET",
     url,
-    httr::write_disk(zip, overwrite = TRUE),
+    httr::write_disk(write_file, overwrite = TRUE),
     progress,
     query = query,
     times = getOption("finbif_retry_times"),
@@ -598,7 +596,7 @@ get_zip <- function(url, quiet, cache, write_file) {
 
   }
 
-  zip
+  write_file
 
 }
 
