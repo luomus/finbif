@@ -664,7 +664,7 @@ any_issues <- function(df, select_user, var_type) {
 dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
   args <- list(
-    ..., nrows = 0, showProgress = quiet, data.table = dt, na.strings = "",
+    ..., nrows = 0, showProgress = !quiet, data.table = dt, na.strings = "",
     quote = "", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE
   )
 
