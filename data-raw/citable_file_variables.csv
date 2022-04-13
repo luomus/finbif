@@ -11,7 +11,7 @@ Taxon.EnglishName,comNmEN,common_name_english,vernacularNameEnglish,FALSE,charac
 Taxon.FinnishName,comNmFI,common_name_finnish,vernacularNameFinnish,FALSE,character
 Taxon.SwedishName,comNmSV,common_name_swedish,vernacularNameSwedish,FALSE,character
 Gathering.Interpretations.CoordinateSource,crdSrc,coordinates_source,georeferenceSources,FALSE,character
-Gathering.Interpretations.CoordinateAccuracy,crdUncertI,coordinates_uncertainty_interpreted,coordinateUncertaintyInMetersInterpreted,FALSE,double
+Gathering.Interpretations.CoordinateAccuracy,crdUncertI,coordinates_uncertainty_interpreted,coordinateUncertaintyInMetersInterpreted,FALSE,integer
 Gathering.Interpretations.Country,cntryID,country_id,countryID,FALSE,character
 Gathering.Interpretations.CountrySource,cntrySrc,country_source,countrySource,FALSE,character
 Gathering.CountryVerbatim,cntryVbtm,country_verbatim,verbatimCountry,FALSE,character
@@ -48,8 +48,8 @@ Unit.Interpretations.InvasiveControl,invCtrlCls,invasive_control_class,invasiveC
 Unit.BreedingSite,isBreedLoc,is_breeding_location,breedingLocationStatus,FALSE,logical
 Document.PartialDocument,isPartial,is_partial,documentPartialStatus,FALSE,logical
 Unit.Wild,isWild,is_wild,occurrenceIsWild,FALSE,character
-Gathering.Conversions.YKJ_1KM.Lat.N.,lat1YKJ,lat_1_ykj,decimalLatitudeGrid1YKJ,FALSE,double
-Gathering.Conversions.YKJ_10KM.Lat.N.,lat10YKJ,lat_10_ykj,decimalLatitudeGrid10YKJ,FALSE,double
+Gathering.Conversions.YKJ_1KM.Lat.N.,lat1YKJ,lat_1_ykj,decimalLatitudeGrid1YKJ,FALSE,integer
+Gathering.Conversions.YKJ_10KM.Lat.N.,lat10YKJ,lat_10_ykj,decimalLatitudeGrid10YKJ,FALSE,integer
 Gathering.Conversions.ETRS.TM35FINCenterPoint.Lat.N.,latEUREF,lat_euref,decimalLatitudeEUREF,FALSE,double
 Gathering.Conversions.ETRS.TM35FIN.LatMax.N.,latMxEUREF,lat_max_euref,decimalLatitudeMaxEUREF,FALSE,double
 Gathering.Conversions.EUREF.LatMax.N.,latMxEUREF,lat_max_euref,decimalLatitudeMaxEUREF,Gathering.Conversions.ETRS.TM35FIN.LatMax.N.,double
@@ -68,8 +68,8 @@ Document.NamedPlaceID,locID,location_id,locationID,FALSE,character
 Gathering.Quality.LocationIssue.Issue,locIss,location_issue,locationIssue,FALSE,character
 Gathering.Quality.LocationIssue.Message,locIssMsg,location_issue_message,locationIssueRemarks,FALSE,character
 Gathering.Quality.LocationIssue.Source,locIssSrc,location_issue_source,locationIssueSource,FALSE,character
-Gathering.Conversions.YKJ_1KM.Lon.E.,lon1YKJ,lon_1_ykj,decimalLongitudeGrid1YKJ,FALSE,double
-Gathering.Conversions.YKJ_10KM.Lon.E.,lon10YKJ,lon_10_ykj,decimalLongitudeGrid10YKJ,FALSE,double
+Gathering.Conversions.YKJ_1KM.Lon.E.,lon1YKJ,lon_1_ykj,decimalLongitudeGrid1YKJ,FALSE,integer
+Gathering.Conversions.YKJ_10KM.Lon.E.,lon10YKJ,lon_10_ykj,decimalLongitudeGrid10YKJ,FALSE,integer
 Gathering.Conversions.ETRS.TM35FINCenterPoint.Lon.E.,lonEUREF,lon_euref,decimalLongitudeEUREF,FALSE,double
 Gathering.Conversions.ETRS.TM35FIN.LonMax.E.,lonMxEUREF,lon_max_euref,decimalLongitudeMaxEUREF,FALSE,double
 Gathering.Conversions.EUREF.LonMax.E.,lonMxEUREF,lon_max_euref,decimalLongitudeMaxEUREF,Gathering.Conversions.ETRS.TM35FIN.LonMax.E.,double
