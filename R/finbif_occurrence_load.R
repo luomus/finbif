@@ -1037,7 +1037,7 @@ convert_col_type <- function(col) {
 
   if (is.list(col)) {
 
-    col <- vapply(col, paste, character(1L), collapse = ", ")
+    col <- vapply(col, paste_col, character(1L))
 
   }
 
@@ -1072,6 +1072,15 @@ convert_col_type <- function(col) {
   }
 
   col
+
+}
+
+#' @noRd
+paste_col <- function(x) {
+
+  x[is.na(x)] <- ""
+
+  paste(x, collapse = ", ")
 
 }
 
