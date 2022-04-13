@@ -492,7 +492,7 @@ compute_epsg <- function(df, select_, dwc, add = TRUE) {
 
   for (i in seq_along(crs)[add]) {
 
-    epsg <- c("euref", "kkj", "wgs84")
+    epsg <- c("euref", "ykj", "wgs84")
 
     names(epsg) <- epsg
 
@@ -511,7 +511,7 @@ compute_epsg <- function(df, select_, dwc, add = TRUE) {
     epsg <- switch(
       epsg,
       euref = "EPSG:3067",
-      kkj = "EPSG:2393",
+      ykj = "EPSG:2393",
       wgs84 = "EPSG:4326",
       NA_character_
     )

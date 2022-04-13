@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.4.9001}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item KKJ coordinate reference system is now refered to as YKJ.
+    }
+  }
+}
+
 \section{finbif version 0.6.4.9000}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

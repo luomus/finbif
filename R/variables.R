@@ -118,11 +118,11 @@
 #'   [WGS84](https://spatialreference.org/ref/epsg/wgs-84/) coordinate system)
 #'   of the central point of a bounding box encompassing the record's geographic
 #'   coverage.
-#' - `{lat|lon}_{min|max}_{euref|kkj|wgs84}`. Numeric.
+#' - `{lat|lon}_{min|max}_{euref|ykj|wgs84}`. Numeric.
 #'   Vertices of a bounding box encompassing the record's geographic coverage.
 #'   Coordinates are available in
 #'   [EUREF](https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/),
-#'   [KKJ](https://spatialreference.org/ref/epsg/2393/), or
+#'   [YKJ](https://spatialreference.org/ref/epsg/2393/), or
 #'   [WGS84](https://spatialreference.org/ref/epsg/wgs-84/).
 #' - `coordinates_uncertainty` Integer.
 #'   The horizontal distance (in meters) from the record's given coordinates
@@ -130,9 +130,9 @@
 #'   location.
 #' - `coordinates_source` Character.
 #'   Source of coordinates.
-#' - `footprint_{euref|kkj|wgs84}` Character.
+#' - `footprint_{euref|ykj|wgs84}` Character.
 #'   Well-Known Text (WKT) representation of the geographic shape defining the
-#'   location of the record in either EUREF, KKJ or WGS84 coordinate systems.
+#'   location of the record in either EUREF, YKJ or WGS84 coordinate systems.
 #' - `country` Character.
 #'   The country of the record's location.
 #' - `province` Character.

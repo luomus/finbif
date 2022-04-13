@@ -132,11 +132,11 @@ Coordinates (in
 \href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84} coordinate system)
 of the central point of a bounding box encompassing the record's geographic
 coverage.
-\item \verb{\{lat|lon\}_\{min|max\}_\{euref|kkj|wgs84\}}. Numeric.
+\item \verb{\{lat|lon\}_\{min|max\}_\{euref|ykj|wgs84\}}. Numeric.
 Vertices of a bounding box encompassing the record's geographic coverage.
 Coordinates are available in
 \href{https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/}{EUREF},
-\href{https://spatialreference.org/ref/epsg/2393/}{KKJ}, or
+\href{https://spatialreference.org/ref/epsg/2393/}{YKJ}, or
 \href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84}.
 \item \code{coordinates_uncertainty} Integer.
 The horizontal distance (in meters) from the record's given coordinates
@@ -144,9 +144,9 @@ describing the smallest circle containing the whole of the record's
 location.
 \item \code{coordinates_source} Character.
 Source of coordinates.
-\item \verb{footprint_\{euref|kkj|wgs84\}} Character.
+\item \verb{footprint_\{euref|ykj|wgs84\}} Character.
 Well-Known Text (WKT) representation of the geographic shape defining the
-location of the record in either EUREF, KKJ or WGS84 coordinate systems.
+location of the record in either EUREF, YKJ or WGS84 coordinate systems.
 \item \code{country} Character.
 The country of the record's location.
 \item \code{province} Character.

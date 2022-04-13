@@ -740,8 +740,8 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
     expand_vars <- c(
       "formatted_taxon_name", "formatted_date_time",
-      "coordinates_euref", "coordinates_1_kkj", "coordinates_10_kkj",
-      "coordinates_1_center_kkj", "coordinates_10_center_kkj"
+      "coordinates_euref", "coordinates_1_ykj", "coordinates_10_ykj",
+      "coordinates_1_center_ykj", "coordinates_10_center_ykj"
     )
 
     expand_vars <- file_vars[["translated_var"]] %in% expand_vars
@@ -1165,8 +1165,8 @@ expand_lite_cols <- function(df, add = TRUE) {
 
   cols <- c(
     "formatted_taxon_name", "formatted_date_time",
-    "coordinates_euref", "coordinates_1_kkj", "coordinates_10_kkj",
-    "coordinates_1_center_kkj", "coordinates_10_center_kkj"
+    "coordinates_euref", "coordinates_1_ykj", "coordinates_10_ykj",
+    "coordinates_1_center_ykj", "coordinates_10_center_ykj"
   )
 
   cols <- which(file_vars[["translated_var"]] %in% cols[add])
@@ -1206,10 +1206,10 @@ expand_lite_cols <- function(df, add = TRUE) {
         coordinates_euref = c(
            "lat_min_euref", "lat_max_euref", "lon_min_euref", "lon_max_euref"
         ),
-        coordinates_1_kkj = c("lon_1_kkj", "lat_1_kkj"),
-        coordinates_10_kkj = c("lon_10_kkj", "lat_10_kkj"),
-        coordinates_1_center_kkj = c("lon_1_center_kkj", "lat_1_center_kkj"),
-        coordinates_10_center_kkj = c("lon_10_center_kkj", "lat_10_center_kkj")
+        coordinates_1_ykj = c("lon_1_ykj", "lat_1_ykj"),
+        coordinates_10_ykj = c("lon_10_ykj", "lat_10_ykj"),
+        coordinates_1_center_ykj = c("lon_1_center_ykj", "lat_1_center_ykj"),
+        coordinates_10_center_ykj = c("lon_10_center_ykj", "lat_10_center_ykj")
       )
 
       new_cols <- file_vars[["translated_var"]] %in% new_cols

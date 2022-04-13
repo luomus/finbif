@@ -99,16 +99,16 @@
 #'   `list(lat = c(60.4, 61), lon = c(22, 22.5), system = "wgs84", ratio = 1)`.
 #'   The first element is minimum and maximum latitude and the second minimum
 #'   and maximum longitude (or can be minimums only). The third element is the
-#'   coordinate system; either one of `"wgs84"`, `"euref"` or `"kkj"`. The
+#'   coordinate system; either one of `"wgs84"`, `"euref"` or `"ykj"`. The
 #'   optional fourth element is a positive value less than `1`. When `1`, the
 #'   coverage area of the returned records will be completely within the box
 #'   bound by the coordinates values. Values less than `1` requires the returned
 #'   record's coverage to overlap with the bounding box in that proportion. When
-#'   using the system "`kkj`" the coordinates will be coerced to integers with
+#'   using the system "`ykj`" the coordinates will be coerced to integers with
 #'   units inferred from the number of integer digits (7 digits equals km's, 6
 #'   equals 10km's, etc.,). If coordinate maximums are not specified they will
-#'   be assumed to be one unit above the minimums (e.g., `c(666, 333, "kkj")` is
-#'   equivalent to `list(c(6660000, 6670000), c(3330000, 3340000), "kkj")`).
+#'   be assumed to be one unit above the minimums (e.g., `c(666, 333, "ykj")` is
+#'   equivalent to `list(c(6660000, 6670000), c(3330000, 3340000), "ykj")`).
 #' - `coordinates_center` Coordinates.
 #'   A character vector or list of coordinate data. Must be of length 3. The
 #'   first two elements are latitude and longitude and third is the coordinate
@@ -117,7 +117,7 @@
 #' - `coordinates_cell_{1k|10k|50k|100k}` Coordinates.
 #'   A vector of coordinate data (lat, lon). Filter by grid cell at scale `*`.
 #'   Where `*` is 1, 10, 50 or 100. The coordinates specify the southeast corner
-#'   of the cell. Coordinates system is uniform `"kkj"` (also known as "ykj").
+#'   of the cell. Coordinates system is `"ykj"`.
 #' - `coordinates_cell_{1k|10k|50k|100k}_center` Coordinates.
 #'   As above, except coordinates indicate center of grid cell.
 #' - `coordinates_source` Character.

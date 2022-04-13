@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.4.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.4.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -162,16 +162,16 @@ A character vector or list of coordinate data. Must be length 3 to 4 (e.g.,
 <code>list(lat = c(60.4, 61), lon = c(22, 22.5), system = "wgs84", ratio = 1)</code>.
 The first element is minimum and maximum latitude and the second minimum
 and maximum longitude (or can be minimums only). The third element is the
-coordinate system; either one of <code>"wgs84"</code>, <code>"euref"</code> or <code>"kkj"</code>. The
+coordinate system; either one of <code>"wgs84"</code>, <code>"euref"</code> or <code>"ykj"</code>. The
 optional fourth element is a positive value less than <code>1</code>. When <code>1</code>, the
 coverage area of the returned records will be completely within the box
 bound by the coordinates values. Values less than <code>1</code> requires the returned
 record's coverage to overlap with the bounding box in that proportion. When
-using the system "<code>kkj</code>" the coordinates will be coerced to integers with
+using the system "<code>ykj</code>" the coordinates will be coerced to integers with
 units inferred from the number of integer digits (7 digits equals km's, 6
 equals 10km's, etc.,). If coordinate maximums are not specified they will
-be assumed to be one unit above the minimums (e.g., <code>c(666, 333, "kkj")</code> is
-equivalent to <code>list(c(6660000, 6670000), c(3330000, 3340000), "kkj")</code>).</p></li>
+be assumed to be one unit above the minimums (e.g., <code>c(666, 333, "ykj")</code> is
+equivalent to <code>list(c(6660000, 6670000), c(3330000, 3340000), "ykj")</code>).</p></li>
 <li><p><code>coordinates_center</code> Coordinates.
 A character vector or list of coordinate data. Must be of length 3. The
 first two elements are latitude and longitude and third is the coordinate
@@ -180,7 +180,7 @@ those for which the center point exactly matches that which is specified.</p></l
 <li><p><code>coordinates_cell_{1k|10k|50k|100k}</code> Coordinates.
 A vector of coordinate data (lat, lon). Filter by grid cell at scale <code>*</code>.
 Where <code>*</code> is 1, 10, 50 or 100. The coordinates specify the southeast corner
-of the cell. Coordinates system is uniform <code>"kkj"</code> (also known as "ykj").</p></li>
+of the cell. Coordinates system is <code>"ykj"</code>.</p></li>
 <li><p><code>coordinates_cell_{1k|10k|50k|100k}_center</code> Coordinates.
 As above, except coordinates indicate center of grid cell.</p></li>
 <li><p><code>coordinates_source</code> Character.

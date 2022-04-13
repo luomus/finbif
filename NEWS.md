@@ -1,3 +1,9 @@
+# finbif 0.6.4.9001
+
+#### MINOR IMPROVEMENTS
+
+  - KKJ coordinate reference system is now refered to as YKJ.
+
 # finbif 0.6.4.9000
 
 #### MINOR IMPROVEMENTS
