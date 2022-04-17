@@ -2,6 +2,7 @@ source("data-raw/variables.R")
 source("data-raw/variables_test.R")
 source("data-raw/citable_file_variables.R")
 source("data-raw/lite_download_file_variables.R")
+source("data-raw/lite_download_file_variables_test.R")
 source("data-raw/filters.R")
 source("data-raw/filters_test.R")
 source("data-raw/status.R")
@@ -27,6 +28,7 @@ usethis::use_data(
   has_value_test,
   cite_file_vars,
   lite_download_file_vars,
+  lite_download_file_vars_test,
   filter_names,
   filter_names_test,
   administrative_status,
