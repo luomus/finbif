@@ -1,8 +1,16 @@
+# finbif 0.6.4.9002
+
+#### NEW FEATURES
+
+  - New variables and filters (currently undocumented) have been added
+    for the forthcoming Finnish atlas of breeding birds.
+
 # finbif 0.6.4.9001
 
 #### MINOR IMPROVEMENTS
 
-  - KKJ coordinate reference system is now refered to as YKJ.
+  - For clarity, KKJ coordinate reference system is now refered to as
+    YKJ.
 
 # finbif 0.6.4.9000
 

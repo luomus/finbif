@@ -80,3 +80,5 @@ result.document.facts.targetState,targState,target_state,targetState,FALSE,chara
 result.gathering.coordinatesVerbatim,coordVbtm,coordinates_verbatim,verbatimCoordinates,FALSE,character,
 result.unit.linkings.taxon.occurrenceCountFinland,nFinRecs,n_total_finnish_records,taxonOccurrenceCountFinnish,FALSE,integer,
 result.unit.linkings.taxon.primaryHabitat,primaryHab,taxon_primary_habitat,taxonPrimaryHabitat,FALSE,character,
+result.unit.atlasClass,atlasClsD,atlas_class_display,atlasClassDisplay,FALSE,character,
+result.unit.atlasCode,atlasCodeD,atlas_code_display,atlasCodeDisplay,FALSE,character,

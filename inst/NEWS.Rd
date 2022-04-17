@@ -1,10 +1,20 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.4.9002}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New variables and filters (currently undocumented) have been added
+        for the forthcoming Finnish atlas of breeding birds.
+    }
+  }
+}
+
 \section{finbif version 0.6.4.9001}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
-      \item KKJ coordinate reference system is now refered to as YKJ.
+      \item For clarity, KKJ coordinate reference system is now refered to as
+        YKJ.
     }
   }
 }

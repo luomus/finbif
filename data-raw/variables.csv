@@ -612,6 +612,8 @@ missing_var_species_tracking_status,species_tracking_status,speciesTrackingStatu
 missing_var_target_state,target_state,targetState,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_collection_name,collection_name,collectionName,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_invasive_control_class,invasive_control_class,invasiveControlClass,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_atlas_class_display,atlas_class_display,atlasClassDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_atlas_code_display,atlas_code_display,atlasCodeDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.randomKey,document_key,documentKey,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.occurrenceCountFinland,record_annotation_identification_total_finnish_records,occurrenceAnnotationIdentificationCountFinnish,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.primaryHabitat.habitat,record_annotation_identification_primary_habitat,occurrenceAnnotationIdentificationPrimaryHabitat,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -655,3 +657,5 @@ gathering.stateLand,state_land,stateLand,FALSE,FALSE,character,character,TRUE,TR
 document.createdDateMonth,created_date_month,createdDateMonth,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.alternativeId,location_alt_id,locationAltID,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.tags,location_tags,locationTags,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+document.completeListTaxonId,complete_list_taxon_id,completeListTaxonID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.completeListType,complete_list_type,completeListType,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
