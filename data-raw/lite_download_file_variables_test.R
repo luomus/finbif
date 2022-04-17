@@ -18,7 +18,7 @@ locales <- as.data.frame(locales)
 names(locales) <- gsub(".json", "", names(locales))
 
 lite_download_file_vars_test <- read.csv(
-  "data-raw/lite_download_file_variables.csv", stringsAsFactors = FALSE,
+  "data-raw/lite_download_file_variables_test.csv", stringsAsFactors = FALSE,
   strip.white = TRUE, row.names = 1L, comment.char = "#", na.strings = ""
 )
 

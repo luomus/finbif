@@ -605,11 +605,9 @@ missing_var_coordinates_10_ykj,coordinates_10_ykj,decimalCoordinatesGrid10YKJ,FA
 missing_var_coordinates_euref,coordinates_euref,decimalCoordinatesEUREF,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_coordinates_1_center_ykj,coordinates_1_center_ykj,decimalCoordinatesGrid1CenterYKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_coordinates_1_ykj,coordinates_1_ykj,decimalCoordinatesGrid1YKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-missing_var_mapping_reason,mapping_reason,mappingReason,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-missing_var_source_description,source_description,sourceDescription,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-missing_var_source_material,source_material,sourceMaterial,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-missing_var_species_tracking_status,species_tracking_status,speciesTrackingStatus,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-missing_var_target_state,target_state,targetState,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_site_type_display,site_type_display,siteTypeDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_data_source_display,data_source_display,dataSourceDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_site_status_display,site_statusDisplay,siteStatusDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_collection_name,collection_name,collectionName,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_invasive_control_class,invasive_control_class,invasiveControlClass,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_atlas_class_display,atlas_class_display,atlasClassDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
