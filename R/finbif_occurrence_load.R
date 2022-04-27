@@ -586,6 +586,18 @@ get_zip <- function(url, quiet, cache, write_file) {
     terminate_on = 404L
   )
 
+  fs <- file.size(write_file)
+
+  fl <- Sys.getenv("FINBIF_FILE_SIZE_LIMIT")
+
+  fl <- as.integer(fl)
+
+  if (isTRUE(fs > fl)) {
+
+    stop("File download too large; err_name: too_large", call. = FALSE)
+
+  }
+
   if (!quiet) message("")
 
   code <- httr::status_code(resp)
