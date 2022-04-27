@@ -180,4 +180,26 @@ test_that(
   }
 )
 
+test_that(
+  "large download returns an error message", {
+
+    skip_on_cran()
+
+    Sys.setenv("FINBIF_FILE_SIZE_LIMIT" = "52e3")
+
+    file_path <-
+      "../write-files/finbif_cache_file_4c64a068da60f708c4e928701ec538ef"
+
+    expect_error(
+      finbif_occurrence_load(
+        49381L, cache = FALSE, quiet = TRUE, write_file = file_path
+      ),
+      "File download too large"
+    )
+
+    Sys.unsetenv("FINBIF_FILE_SIZE_LIMIT")
+
+  }
+)
+
 suppressMessages(eject_cassette("finbif_occurrence_load"))
