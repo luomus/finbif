@@ -592,7 +592,10 @@ get_zip <- function(url, quiet, cache, write_file) {
 
   if (!identical(code, 200L)) {
 
-    stop(sprintf("File request failed [%s]", code), call. = FALSE)
+    stop(
+      sprintf("File request failed [%s]; err_name: request_failed", code),
+      call. = FALSE
+    )
 
   }
 
