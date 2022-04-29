@@ -35,19 +35,30 @@ get_next_lowest_factor <- function(x, y) {
 #' @importFrom utils hasName
 get_el_recurse <- function(obj, nms, type) {
 
+  type_na <- methods::as(NA, type)
+
   if (length(nms) < 1L) {
     return(
-      if (is.null(obj) || identical(obj, "")) methods::as(NA, type) else obj
+      if (is.null(obj) || identical(obj, "")) type_na else obj
     )
   }
 
   nm <- nms[[1L]]
 
   if (is.null(names(obj)) && any(vapply(obj, utils::hasName, NA, nm))) {
+
     obj <- lapply(obj, getElement, nm)
+
+    null_elements <- vapply(obj, is.null, NA)
+
+    obj[null_elements] <- type_na
+
     obj <- unlist(obj, recursive = FALSE)
+
   } else {
+
     obj <- getElement(obj, nm)
+
   }
 
   get_el_recurse(obj, nms[-1L], type)
