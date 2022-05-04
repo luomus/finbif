@@ -22,7 +22,8 @@ finbif_occurrence_load(
   type_convert_facts = TRUE,
   drop_na = FALSE,
   drop_facts_na = drop_na,
-  locale = getOption("finbif_locale")
+  locale = getOption("finbif_locale"),
+  skip = 0
 )
 }
 \arguments{
@@ -97,6 +98,9 @@ codes. Current supported languages are English, Finnish, Swedish, Russian,
 and Sámi (Northern). For data where more than one language is available
 the language denoted by \code{locale} will be preferred while falling back to
 the other languages in the order indicated above.}
+
+\item{skip}{Integer. The number of lines of the data file to skip before
+beginning to read data.}
 }
 \value{
 A \code{data.frame}, or if \code{count_only =  TRUE} an integer.

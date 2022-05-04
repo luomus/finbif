@@ -43,6 +43,8 @@
 #'   and Sámi (Northern). For data where more than one language is available
 #'   the language denoted by `locale` will be preferred while falling back to
 #'   the other languages in the order indicated above.
+#' @param skip Integer. The number of lines of the data file to skip before
+#'   beginning to read data.
 #' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
 #' @return A `data.frame`, or if `count_only =  TRUE` an integer.
@@ -64,7 +66,7 @@ finbif_occurrence_load <- function(
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   tzone = getOption("finbif_tz"), write_file = tempfile(), dt, keep_tsv = FALSE,
   facts = list(), type_convert_facts = TRUE, drop_na = FALSE,
-  drop_facts_na = drop_na, locale = getOption("finbif_locale")
+  drop_facts_na = drop_na, locale = getOption("finbif_locale"), skip = 0
 ) {
 
   file <- preprocess_data_file(file)
@@ -101,7 +103,8 @@ finbif_occurrence_load <- function(
   n <- as.integer(n)
 
   df <- read_finbif_tsv(
-    file, select, n, count_only, quiet, cache, write_file, dt, keep_tsv
+    file, select, n, count_only, quiet, cache, write_file, dt, keep_tsv,
+    skip = skip
   )
 
   if (count_only) {
@@ -276,7 +279,7 @@ read_finbif_tsv <- function(
   file,
   select = list(all = TRUE, deselect = character(), type = "translated_var"),
   n = -1L, count_only = FALSE, quiet = FALSE, cache = TRUE,
-  write_file = tempfile(), dt, keep_tsv, facts = "none"
+  write_file = tempfile(), dt, keep_tsv, facts = "none", skip = 0
 ) {
 
   file <- as.character(file)
@@ -325,7 +328,9 @@ read_finbif_tsv <- function(
 
   }
 
-  df <- attempt_read(file, tsv, select, count_only, n, quiet, dt, keep_tsv)
+  df <- attempt_read(
+    file, tsv, select, count_only, n, quiet, dt, keep_tsv, skip
+  )
 
   if (count_only) {
 
@@ -347,7 +352,7 @@ read_finbif_tsv <- function(
 
 #' @noRd
 attempt_read <- function(
-  file, tsv, select, count_only, n, quiet, dt, keep_tsv
+  file, tsv, select, count_only, n, quiet, dt, keep_tsv, skip
 ) {
 
   if (missing(dt)) {
@@ -400,16 +405,16 @@ attempt_read <- function(
 
           df <- switch(
             tools::file_ext(input),
-            tsv = dt_read(select, n, quiet, dt, input = input),
+            tsv = dt_read(select, n, quiet, dt, input = input, skip = skip),
             dt_read(
-              select, n, quiet, dt, keep_tsv,
+              select, n, quiet, dt, keep_tsv, skip,
               zip = list(input = input, tsv = tsv)
             )
           )
 
         } else {
 
-          df <- rd_read(i, file, tsv, n, select, keep_tsv)
+          df <- rd_read(i, file, tsv, n, select, keep_tsv, skip)
 
         }
 
@@ -674,11 +679,12 @@ any_issues <- function(df, select_user, var_type) {
 }
 
 #' @noRd
-dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
+dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, skip, ...) {
 
   args <- list(
     ..., nrows = 0, showProgress = !quiet, data.table = dt, na.strings = "",
-    quote = "", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE
+    quote = "", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE,
+    skip = 0
   )
 
   if (utils::hasName(args, "zip")) {
@@ -747,8 +753,6 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
       )
     }
 
-
-
     select_vars <-  var_names[select[["query"]], select[["type"]]]
 
     select_vars <- file_vars[[select[["type"]]]] %in% select_vars
@@ -792,8 +796,11 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 
   args[["nrows"]] <- as.double(n)
   args[["check.names"]] <- TRUE
+  args[["skip"]] <- skip
 
   df <- do.call(data.table::fread, args)
+
+  names(df) <- cols[args[["select"]]]
 
   classes <- file_vars[cols, "type"]
 
@@ -816,9 +823,9 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, ...) {
 }
 
 #' @noRd
-rd_read <- function(x, file, tsv, n, select, keep_tsv) {
+rd_read <- function(x, file, tsv, n, select, keep_tsv, skip) {
 
-  df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "")
+  df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "", skip = 0)
 
   cols <- fix_issue_vars(names(df))
 
@@ -859,7 +866,8 @@ rd_read <- function(x, file, tsv, n, select, keep_tsv) {
     }
 
     df <- utils::read.delim(
-      x, nrows = max(abs(n), 1L) * sign(n), na.strings = "", quote = quote
+      x, nrows = max(abs(n), 1L) * sign(n), na.strings = "", quote = quote,
+      skip = skip
     )
 
     classes <- file_vars[cols, "type"]
@@ -874,7 +882,11 @@ rd_read <- function(x, file, tsv, n, select, keep_tsv) {
 
   }
 
-  df <- df[!cols %in% deselect(select, file_vars)]
+  idx <- !cols %in% deselect(select, file_vars)
+
+  df <- df[idx]
+
+  names(df) <- cols[idx]
 
   attr(df, "file_vars") <- file_vars
 

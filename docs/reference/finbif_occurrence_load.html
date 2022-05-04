@@ -81,7 +81,8 @@
   type_convert_facts <span class="op">=</span> <span class="cn">TRUE</span>,
   drop_na <span class="op">=</span> <span class="cn">FALSE</span>,
   drop_facts_na <span class="op">=</span> <span class="va">drop_na</span>,
-  locale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"finbif_locale"</span><span class="op">)</span>
+  locale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"finbif_locale"</span><span class="op">)</span>,
+  skip <span class="op">=</span> <span class="fl">0</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -159,6 +160,9 @@ codes. Current supported languages are English, Finnish, Swedish, Russian,
 and Sámi (Northern). For data where more than one language is available
 the language denoted by <code>locale</code> will be preferred while falling back to
 the other languages in the order indicated above.</p></dd>
+<dt>skip</dt>
+<dd><p>Integer. The number of lines of the data file to skip before
+beginning to read data.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
