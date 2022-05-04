@@ -44,7 +44,7 @@
 #'   the language denoted by `locale` will be preferred while falling back to
 #'   the other languages in the order indicated above.
 #' @param skip Integer. The number of lines of the data file to skip before
-#'   beginning to read data.
+#'   beginning to read data (not including the header).
 #' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
 #' @return A `data.frame`, or if `count_only =  TRUE` an integer.
@@ -684,7 +684,7 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, skip, ...) {
   args <- list(
     ..., nrows = 0, showProgress = !quiet, data.table = dt, na.strings = "",
     quote = "", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE,
-    skip = 0
+    skip = 0L
   )
 
   if (utils::hasName(args, "zip")) {
@@ -796,7 +796,8 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, skip, ...) {
 
   args[["nrows"]] <- as.double(n)
   args[["check.names"]] <- TRUE
-  args[["skip"]] <- skip
+  args[["skip"]] <- skip + 1L
+  args[["header"]] <- FALSE
 
   df <- do.call(data.table::fread, args)
 
@@ -825,7 +826,7 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, skip, ...) {
 #' @noRd
 rd_read <- function(x, file, tsv, n, select, keep_tsv, skip) {
 
-  df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "", skip = 0)
+  df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "", skip = 0L)
 
   cols <- fix_issue_vars(names(df))
 
@@ -866,8 +867,8 @@ rd_read <- function(x, file, tsv, n, select, keep_tsv, skip) {
     }
 
     df <- utils::read.delim(
-      x, nrows = max(abs(n), 1L) * sign(n), na.strings = "", quote = quote,
-      skip = skip
+      x, header = FALSE, quote = quote, na.strings = "",
+      nrows = max(abs(n), 1L) * sign(n), skip = skip + 1L
     )
 
     classes <- file_vars[cols, "type"]

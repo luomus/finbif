@@ -100,7 +100,7 @@ the language denoted by \code{locale} will be preferred while falling back to
 the other languages in the order indicated above.}
 
 \item{skip}{Integer. The number of lines of the data file to skip before
-beginning to read data.}
+beginning to read data (not including the header).}
 }
 \value{
 A \code{data.frame}, or if \code{count_only =  TRUE} an integer.
