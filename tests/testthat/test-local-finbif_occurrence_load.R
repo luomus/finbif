@@ -23,7 +23,7 @@ test_that(
     finbif_clear_cache()
 
     expect_identical(
-      nrows,
+      335L,
       finbif_occurrence_load(tsv, n = nrows, count_only = TRUE)
     )
 
@@ -139,7 +139,7 @@ if (!identical(.Platform$OS.type, "windows")) {
     "can load data from a lite download", {
 
       expect_snapshot_value(
-        finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC"),
+        finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC", dt = FALSE),
         style = "json2"
       )
 

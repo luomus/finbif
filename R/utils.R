@@ -132,25 +132,45 @@ det_datetime_method <- function(method, n) {
 }
 
 #' @noRd
-nlines <- function(x, header = TRUE) {
-  on.exit(close(con))
-  if (inherits(x, "unz")) {
-    con <- summary(x)
-    con <- con[["description"]]
-    con <- strsplit(con, ":")
-    con <- con[[1L]]
-    con <- unz(con[[1L]], con[[2L]], "rb")
+#' @importFrom tools file_ext
+open_tsv_connection <- function(file, tsv, mode = "rt") {
+
+  if (!identical(tools::file_ext(file), "tsv")) {
+
+    con <- unz(file, tsv, mode)
+
   } else {
-    con <- file(x, open = "rb")
+
+    con <- file(file, mode)
+
   }
+
+  con
+
+}
+
+#' @noRd
+nlines <- function(file, tsv) {
+
+  on.exit(close(con))
+
+  con <- open_tsv_connection(file, tsv, "rb")
+
   n <- 0L
+
   cond <- TRUE
+
   while (cond) {
+
     chunk <- readBin(con, "raw", 65536L)
+
     n <- n + sum(chunk == as.raw(10L))
+
     cond <- !identical(chunk, raw(0L))
+
   }
-  n - header
+
+  n - 1L
 }
 
 #' @noRd

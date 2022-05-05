@@ -358,6 +358,7 @@ attempt_read <- function(
   if (missing(dt)) {
 
     use_dt <- TRUE
+
     dt <- FALSE
 
   } else {
@@ -366,85 +367,46 @@ attempt_read <- function(
 
   }
 
-  con <- unz(file, tsv)
-  warn <- getOption("warn")
-  on.exit(options(warn = warn))
-  options(warn = 2L)
-
   all <- identical(n, -1L)
 
-  for (i in list(con, file)) {
+  if (count_only) {
 
-    df <- try(
+    nlines(file, tsv)
 
-      if (count_only) {
+  } else {
 
-        if (all) {
+    n_rows <- NULL
 
-          nlines(i)
+    if (!all) {
 
-        } else {
-
-          n
-
-        }
-
-      } else {
-
-        n_rows <- NULL
-
-        if (!all) {
-
-          n_rows <- nlines(i)
-
-        }
-
-        if (has_pkgs("data.table") && use_dt) {
-
-          input <- as.character(i)
-
-          df <- switch(
-            tools::file_ext(input),
-            tsv = dt_read(select, n, quiet, dt, input = input, skip = skip),
-            dt_read(
-              select, n, quiet, dt, keep_tsv, skip,
-              zip = list(input = input, tsv = tsv)
-            )
-          )
-
-        } else {
-
-          df <- rd_read(i, file, tsv, n, select, keep_tsv, skip)
-
-        }
-
-        attr(df, "nrow") <- n_rows
-
-        df
-
-      },
-
-      silent = TRUE
-
-    )
-
-    try(close(i), silent = TRUE)
-
-    success <- !inherits(df, "try-error")
-
-    if (success) {
-
-      break
+      n_rows <- nlines(file, tsv)
 
     }
 
+    if (has_pkgs("data.table") && use_dt) {
+
+      input <- as.character(file)
+
+      df <- switch(
+        tools::file_ext(input),
+        tsv = dt_read(select, n, quiet, dt, input = input, skip = skip),
+        dt_read(
+          select, n, quiet, dt, keep_tsv, skip,
+          zip = list(input = input, tsv = tsv)
+        )
+      )
+
+    } else {
+
+      df <- rd_read(file, tsv, n, select, keep_tsv, skip)
+
+    }
+
+    attr(df, "nrow") <- n_rows
+
+    df
+
   }
-
-  names(success) <- c(as.character(unlist(df)), "")[[1L]]
-
-  do.call(stopifnot, list(success))
-
-  df
 
 }
 
@@ -824,21 +786,9 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, skip, ...) {
 }
 
 #' @noRd
-rd_read <- function(x, file, tsv, n, select, keep_tsv, skip) {
-
-  df <- utils::read.delim(x, nrows = 1L, na.strings = "", quote = "", skip = 0L)
-
-  cols <- fix_issue_vars(names(df))
-
-  file_vars <- infer_file_vars(cols)
+rd_read <- function(file, tsv, n, select, keep_tsv, skip) {
 
   quote <- ""
-
-  if (attr(file_vars, "lite")) {
-
-    quote <- "\""
-
-  }
 
   if (keep_tsv && !identical(tools::file_ext(file), "tsv")) {
 
@@ -854,20 +804,32 @@ rd_read <- function(x, file, tsv, n, select, keep_tsv, skip) {
 
   }
 
+  con <- open_tsv_connection(file, tsv, "")
+
+  df <- utils::read.delim(
+    con, nrows = 1L, na.strings = "", quote = quote, skip = 0L
+  )
+
+  cols <- fix_issue_vars(names(df))
+
+  file_vars <- infer_file_vars(cols)
+
+  if (attr(file_vars, "lite")) {
+
+    quote <- "\""
+
+  }
+
   if (identical(as.integer(n), 0L)) {
 
     df <- df[0L, ]
 
   } else {
 
-    if (inherits(x, "connection")) {
-
-      x <- unz(file, tsv)
-
-    }
+    con <- open_tsv_connection(file, tsv, "")
 
     df <- utils::read.delim(
-      x, header = FALSE, quote = quote, na.strings = "",
+      con, header = FALSE, quote = quote, na.strings = "",
       nrows = max(abs(n), 1L) * sign(n), skip = skip + 1L
     )
 
@@ -1241,7 +1203,7 @@ expand_lite_cols <- function(df, add = TRUE) {
           "minute_start", "minute_end"
         ),
         coordinates_euref = c(
-           "lat_min_euref", "lat_max_euref", "lon_min_euref", "lon_max_euref"
+          "lat_min_euref", "lat_max_euref", "lon_min_euref", "lon_max_euref"
         ),
         coordinates_1_ykj = c("lon_1_ykj", "lat_1_ykj"),
         coordinates_10_ykj = c("lon_10_ykj", "lat_10_ykj"),
