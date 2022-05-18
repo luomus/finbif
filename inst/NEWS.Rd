@@ -1,27 +1,19 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.6.4.9002}{
+\section{finbif version 0.6.5}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item New variables and filters (currently undocumented) have been added
         for the forthcoming Finnish atlas of breeding birds.
+      \item Skip rows argument added to \code{finbif_occurrence_load} so files
+        can be read in chunks.
     }
   }
-}
-
-\section{finbif version 0.6.4.9001}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
       \item For clarity, KKJ coordinate reference system is now refered to as
         YKJ.
-    }
-  }
-}
-
-\section{finbif version 0.6.4.9000}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
       \item When selecting all available variables for download file imports
         using \code{finbif_occurrence_load} "extra" variables will no longer
         be automatically added.
