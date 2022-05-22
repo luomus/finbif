@@ -1,7 +1,7 @@
 # YAML 1.2
 ---
 version: "0.6.5"
-date-released: 2022-05-18
+date-released: 2022-05-20
 title: finbif
 abstract: |
     "The `finbif` R package is a programmatic interface to the
