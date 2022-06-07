@@ -13,6 +13,12 @@ locales <- Map(jsonlite::fromJSON, locales)
 
 locales <- Map(unlist, locales)
 
+nms <- Map(names, locales)
+
+nms <- Reduce(intersect, nms)
+
+locales <- lapply(locales, `[`, nms)
+
 locales <- as.data.frame(locales)
 
 names(locales) <- gsub(".json", "", names(locales))
