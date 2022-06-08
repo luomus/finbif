@@ -607,7 +607,7 @@ missing_var_coordinates_1_center_ykj,coordinates_1_center_ykj,decimalCoordinates
 missing_var_coordinates_1_ykj,coordinates_1_ykj,decimalCoordinatesGrid1YKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_site_type_display,site_type_display,siteTypeDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_data_source_display,data_source_display,dataSourceDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-missing_var_site_status_display,site_statusDisplay,siteStatusDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+missing_var_site_status_display,site_status_display,siteStatusDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_collection_name,collection_name,collectionName,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_invasive_control_class,invasive_control_class,invasiveControlClass,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_atlas_class_display,atlas_class_display,atlasClassDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
