@@ -1,4 +1,4 @@
-pandoc: 2.9.2.1
+pandoc: '2.18'
 pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
@@ -8,5 +8,5 @@ articles:
   v04_metadata: v04_metadata.html
   v05_filtering: v05_filtering.html
   v06_plotting: v06_plotting.html
-last_built: 2022-05-22T23:57Z
+last_built: 2022-06-08T07:41Z
 
