@@ -95,7 +95,7 @@ unit.quality.issue.source,record_issue_source,occurrenceIssueSource,FALSE,TRUE,c
 unit.recordBasis,record_basis,basisOfRecord,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.referencePublication,reference_publication,references,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.reportedInformalTaxonGroup,reported_informal_groups,verbatimInformalTaxonomicGroup,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
-unit.reportedTaxonConfidence,reported_taxon_confidence,verbatimIdentifactionQualifer,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.reportedTaxonConfidence,reported_taxon_confidence,identificationQualifer,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.reportedTaxonId,reported_taxon_id,verbatimTaxonID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.sex,sex,sex,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.superRecordBasis,superrecord_basis,basisOfSuperRecord,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE

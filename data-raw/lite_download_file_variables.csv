@@ -47,7 +47,7 @@ result.gathering.conversions.ykj10kmCenter,crd10cYKJ,coordinates_10_center_ykj,d
 result.gathering.conversions.ykj10km,crd10YKJ,coordinates_10_ykj,decimalCoordinatesGrid10YKJ,FALSE,character,
 result.gathering.conversions.ykj1kmCenter,crd1cYKJ,coordinates_1_center_ykj,decimalCoordinatesGrid1CenterYKJ,FALSE,character,
 result.gathering.conversions.ykj1km,crd1YKJ,coordinates_1_ykj,decimalCoordinatesGrid1YKJ,FALSE,character,
-result.unit.reportedTaxonConfidence,repTxnConf,reported_taxon_confidence,verbatimIdentifactionQualifer,FALSE,character,
+result.unit.reportedTaxonConfidence,repTxnConf,reported_taxon_confidence,identificationQualifer,FALSE,character,
 observation.filterBy.recordBasis,recBasis,record_basis,basisOfRecord,FALSE,character,
 result.unit.notes,recNotes,record_notes,occurrenceRemarks,FALSE,character,
 result.gathering.notes,evntNotes,event_notes,eventRemarks,FALSE,character,
