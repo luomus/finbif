@@ -50,7 +50,7 @@ Some more complex metadata is accessed with other `{finbif}` functions
 ### Informal groups
 Informal taxonomic groups and their relationships can be displayed with
 `finbif_informal_groups()`
-```{details informal-groups6}
+```{r informal-groups6}
 finbif_informal_groups(limit = 6)
 ```
 

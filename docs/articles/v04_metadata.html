@@ -165,165 +165,17 @@ Click to show/hide output.
 <p>Informal taxonomic groups and their relationships can be displayed
 with <code><a href="../reference/finbif_informal_groups.html">finbif_informal_groups()</a></code></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_informal_groups.html">finbif_informal_groups</a></span><span class="op">(</span>limit <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#&gt;   [1] "Algae"                                                     </span>
-<span class="co">#&gt;   [2] "Macro algae"                                               </span>
-<span class="co">#&gt;   [3] "Brown algae and yellow green algae"                        </span>
-<span class="co">#&gt;   [4] "Green algae"                                               </span>
-<span class="co">#&gt;   [5] "Red algae"                                                 </span>
-<span class="co">#&gt;   [6] "Stoneworts"                                                </span>
-<span class="co">#&gt;   [7] "Birds"                                                     </span>
-<span class="co">#&gt;   [8] "Birds of prey and owls"                                    </span>
-<span class="co">#&gt;   [9] "Birds of prey"                                             </span>
-<span class="co">#&gt;  [10] "Owls"                                                      </span>
-<span class="co">#&gt;  [11] "Bryophytes"                                                </span>
-<span class="co">#&gt;  [12] "Hornworts"                                                 </span>
-<span class="co">#&gt;  [13] "Liverworts"                                                </span>
-<span class="co">#&gt;  [14] "Mosses"                                                    </span>
-<span class="co">#&gt;  [15] "Crustaceans"                                               </span>
-<span class="co">#&gt;  [16] "Macrocrustaceans"                                          </span>
-<span class="co">#&gt;  [17] "Amphipods, isopods, opossum shrimps"                       </span>
-<span class="co">#&gt;  [18] "Crabs, shrimps and crayfishes"                             </span>
-<span class="co">#&gt;  [19] "Other macrocrustaceans"                                    </span>
-<span class="co">#&gt;  [20] "Woodlice"                                                  </span>
-<span class="co">#&gt;  [21] "Microcrustaceans"                                          </span>
-<span class="co">#&gt;  [22] "Branchiopoda"                                              </span>
-<span class="co">#&gt;  [23] "Copepods"                                                  </span>
-<span class="co">#&gt;  [24] "Seed shrimps"                                              </span>
-<span class="co">#&gt;  [25] "Fishes"                                                    </span>
-<span class="co">#&gt;  [26] "Fungi and lichens"                                         </span>
-<span class="co">#&gt;  [27] "Ascomycota"                                                </span>
-<span class="co">#&gt;  [28] "Erysiphales"                                               </span>
-<span class="co">#&gt;  [29] "Non-lichenized Ascomycota"                                 </span>
-<span class="co">#&gt;  [30] "Lichenized and lichenicolous fungi"                        </span>
-<span class="co">#&gt;  [31] "Lichenicolous fungi"                                       </span>
-<span class="co">#&gt;  [32] "Lichenized fungi"                                          </span>
-<span class="co">#&gt;  [33] "Macrofungi"                                                </span>
-<span class="co">#&gt;  [34] "Agaricoid fungi"                                           </span>
-<span class="co">#&gt;  [35] "Aphyllophoroid fungi"                                      </span>
-<span class="co">#&gt;  [36] "Cantharelloid fungi"                                       </span>
-<span class="co">#&gt;  [37] "Clavarioid fungi"                                          </span>
-<span class="co">#&gt;  [38] "Corticioid fungi"                                          </span>
-<span class="co">#&gt;  [39] "Hydnoid fungi"                                             </span>
-<span class="co">#&gt;  [40] "Jelly fungi, tremelloid fungi"                             </span>
-<span class="co">#&gt;  [41] "Polypores"                                                 </span>
-<span class="co">#&gt;  [42] "Ramarioid fungi"                                           </span>
-<span class="co">#&gt;  [43] "Boletoid fungi"                                            </span>
-<span class="co">#&gt;  [44] "Cyphelloid fungi"                                          </span>
-<span class="co">#&gt;  [45] "Gastroid fungi, puffballs"                                 </span>
-<span class="co">#&gt;  [46] "Parasitic microfungi"                                      </span>
-<span class="co">#&gt;  [47] "Exobasibium"                                               </span>
-<span class="co">#&gt;  [48] "Rust fungi"                                                </span>
-<span class="co">#&gt;  [49] "Smut fungi"                                                </span>
-<span class="co">#&gt;  [50] "Insects and arachnids"                                     </span>
-<span class="co">#&gt;  [51] "Aquatic insects"                                           </span>
-<span class="co">#&gt;  [52] "Caddisflies"                                               </span>
-<span class="co">#&gt;  [53] "Mayflies"                                                  </span>
-<span class="co">#&gt;  [54] "Stoneflies"                                                </span>
-<span class="co">#&gt;  [55] "Archaeognatha and Zygentoma"                               </span>
-<span class="co">#&gt;  [56] "Beetles"                                                   </span>
-<span class="co">#&gt;  [57] "Booklice"                                                  </span>
-<span class="co">#&gt;  [58] "Cockroaches"                                               </span>
-<span class="co">#&gt;  [59] "Dragonflies"                                               </span>
-<span class="co">#&gt;  [60] "Earwigs"                                                   </span>
-<span class="co">#&gt;  [61] "Fleas"                                                     </span>
-<span class="co">#&gt;  [62] "Harvestmen"                                                </span>
-<span class="co">#&gt;  [63] "Katydids, crickets, grasshopper"                           </span>
-<span class="co">#&gt;  [64] "Lice"                                                      </span>
-<span class="co">#&gt;  [65] "Mites and ticks"                                           </span>
-<span class="co">#&gt;  [66] "Moths and butterflies"                                     </span>
-<span class="co">#&gt;  [67] "Butterflies"                                               </span>
-<span class="co">#&gt;  [68] "Geometer moths"                                            </span>
-<span class="co">#&gt;  [69] "Macrolepidoptera"                                          </span>
-<span class="co">#&gt;  [70] "Microlepidoptera"                                          </span>
-<span class="co">#&gt;  [71] "Owlet moths"                                               </span>
-<span class="co">#&gt;  [72] "Sphinx moths"                                              </span>
-<span class="co">#&gt;  [73] "Net-winged insects, megalopterans, snakeflies, mecopterans"</span>
-<span class="co">#&gt;  [74] "Pseudoscorpions"                                           </span>
-<span class="co">#&gt;  [75] "Sawflies, wasps, ants and bees"                            </span>
-<span class="co">#&gt;  [76] "Spiders"                                                   </span>
-<span class="co">#&gt;  [77] "Thrips"                                                    </span>
-<span class="co">#&gt;  [78] "True bugs"                                                 </span>
-<span class="co">#&gt;  [79] "Aphids"                                                    </span>
-<span class="co">#&gt;  [80] "Auchenorrhynchans"                                         </span>
-<span class="co">#&gt;  [81] "Bladloppor"                                                </span>
-<span class="co">#&gt;  [82] "Heteropterans"                                             </span>
-<span class="co">#&gt;  [83] "Soft scales"                                               </span>
-<span class="co">#&gt;  [84] "Whiteflies"                                                </span>
-<span class="co">#&gt;  [85] "True flies"                                                </span>
-<span class="co">#&gt;  [86] "Brachyceran flies"                                         </span>
-<span class="co">#&gt;  [87] "Nematoceran flies"                                         </span>
-<span class="co">#&gt;  [88] "Twisted-wing parasites"                                    </span>
-<span class="co">#&gt;  [89] "Mammals"                                                   </span>
-<span class="co">#&gt;  [90] "Bats"                                                      </span>
-<span class="co">#&gt;  [91] "Small mammals"                                             </span>
-<span class="co">#&gt;  [92] "Molluscs"                                                  </span>
-<span class="co">#&gt;  [93] "Aquatic snails"                                            </span>
-<span class="co">#&gt;  [94] "Bivalves"                                                  </span>
-<span class="co">#&gt;  [95] "Landsnails and slugs"                                      </span>
-<span class="co">#&gt;  [96] "Myriapods"                                                 </span>
-<span class="co">#&gt;  [97] "Chilopods, centipedes"                                     </span>
-<span class="co">#&gt;  [98] "Millipedes"                                                </span>
-<span class="co">#&gt;  [99] "Pauropods"                                                 </span>
-<span class="co">#&gt; [100] "Symphylans"                                                </span>
-<span class="co">#&gt; [101] "Other organisms"                                           </span>
-<span class="co">#&gt; [102] "Bacteria"                                                  </span>
-<span class="co">#&gt; [103] "Entognatha"                                                </span>
-<span class="co">#&gt; [104] "Slime molds"                                               </span>
-<span class="co">#&gt; [105] "Sponges, bryozoans and cnidarians"                         </span>
-<span class="co">#&gt; [106] "Viruses and viroids"                                       </span>
-<span class="co">#&gt; [107] "Reptiles and amphibians"                                   </span>
-<span class="co">#&gt; [108] "Amphibians"                                                </span>
-<span class="co">#&gt; [109] "Reptiles"                                                  </span>
-<span class="co">#&gt; [110] "Vascular plants"                                           </span>
-<span class="co">#&gt; [111] "Berry plants"                                              </span>
-<span class="co">#&gt; [112] "Carnivorous plants"                                        </span>
-<span class="co">#&gt; [113] "Plant life forms"                                          </span>
-<span class="co">#&gt; [114] "Aquatic plants"                                            </span>
-<span class="co">#&gt; [115] "Elodeids"                                                  </span>
-<span class="co">#&gt; [116] "Helophytes"                                                </span>
-<span class="co">#&gt; [117] "Isoetids"                                                  </span>
-<span class="co">#&gt; [118] "Lemnids"                                                   </span>
-<span class="co">#&gt; [119] "Nympheids"                                                 </span>
-<span class="co">#&gt; [120] "Submerged plants"                                          </span>
-<span class="co">#&gt; [121] "Chamaephytes"                                              </span>
-<span class="co">#&gt; [122] "Deciduous chamaephytes"                                    </span>
-<span class="co">#&gt; [123] "Evergreen chamaephytes"                                    </span>
-<span class="co">#&gt; [124] "Climbers"                                                  </span>
-<span class="co">#&gt; [125] "Deciduous climbers"                                        </span>
-<span class="co">#&gt; [126] "Evergreen climbers"                                        </span>
-<span class="co">#&gt; [127] "Geophytes"                                                 </span>
-<span class="co">#&gt; [128] "Hemicryptophytes"                                          </span>
-<span class="co">#&gt; [129] "Shore plants"                                              </span>
-<span class="co">#&gt; [130] "Shrubs"                                                    </span>
-<span class="co">#&gt; [131] "Deciduous shrubs"                                          </span>
-<span class="co">#&gt; [132] "Evergreen bushes"                                          </span>
-<span class="co">#&gt; [133] "Therophytes"                                               </span>
-<span class="co">#&gt; [134] "Trees"                                                     </span>
-<span class="co">#&gt; [135] "Deciduous trees"                                           </span>
-<span class="co">#&gt; [136] "Evergreen trees"                                           </span>
-<span class="co">#&gt; [137] "Spring flowers"                                            </span>
-<span class="co">#&gt; [138] "Worms"                                                     </span>
-<span class="co">#&gt; [139] "Annelids"                                                  </span>
-<span class="co">#&gt; [140] "Earthworms, oligochaetes"                                  </span>
-<span class="co">#&gt; [141] "Leeches"                                                   </span>
-<span class="co">#&gt; [142] "Polychaetes"                                               </span>
-<span class="co">#&gt; [143] "Parasitic worms"                                           </span>
-<span class="co">#&gt; [144] "Monogeneans"                                               </span>
-<span class="co">#&gt; [145] "Tapeworms"                                                 </span>
-<span class="co">#&gt; [146] "Priapulid worms"                                           </span>
-<span class="co">#&gt; [147] "Ribbon worms"                                              </span>
-<span class="co">#&gt; [148] "Turbellarians"                                             </span>
-<span class="co">#&gt; attr(,"class")</span>
-<span class="co">#&gt; [1] "translation"</span></code></pre></div>
-</details><p><br></p>
+<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_informal_groups.html">finbif_informal_groups</a></span><span class="op">(</span>limit <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>
+<span class="co">#&gt; Algae                                                         </span>
+<span class="co">#&gt;  °--Macro algae                                               </span>
+<span class="co">#&gt;      ¦--Brown algae and yellow green algae                    </span>
+<span class="co">#&gt;      ¦--Green algae                                           </span>
+<span class="co">#&gt;      ¦--Red algae                                             </span>
+<span class="co">#&gt;      °--Stoneworts                                            </span>
+<span class="co">#&gt; ...142 more groups</span></code></pre></div>
 <p>You can select a subgroup by specifying a parent informal group as a
 function argument.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_informal_groups.html">finbif_informal_groups</a></span><span class="op">(</span><span class="st">"Crustaceans"</span><span class="op">)</span>
 <span class="co">#&gt; Crustaceans                                                   </span>
 <span class="co">#&gt;  ¦--Macrocrustaceans                                          </span>
@@ -345,14 +197,14 @@ function argument.</p>
 record aggregation in the FinBIF database.</p>
 <p>You can subset collection metadata by using the <code>filter</code>
 and <code>select</code> arguments.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span><span class="op">(</span>
   filter <span class="op">=</span> <span class="va">geographic_coverage</span> <span class="op">==</span> <span class="st">"Finland"</span>,
   select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"collection_name"</span>, <span class="st">"taxonomic_coverage"</span>, <span class="st">"count"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <details closed><summary>
 Click to show/hide output.
-</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt;         collection_name                   taxonomic_coverage                count  </span>
 <span class="co">#&gt; HR.1227 Coll Mikko Heikkinen              Biota                                  67</span>
@@ -406,27 +258,27 @@ lowest level collections. Higher level, “supercollections” can be viewed
 by setting <code>supercollections = TRUE</code> and you can limit the
 output to collections with a minimum number of records in them with the
 <code>nmin</code> argument.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">collections</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span><span class="op">(</span>supercollections <span class="op">=</span> <span class="cn">TRUE</span>, nmin <span class="op">=</span> <span class="fl">10000</span><span class="op">)</span></code></pre></div>
 <p>The <code><a href="../reference/finbif_collections.html">finbif_collections()</a></code> function returns a
 <code>data.frame</code> where the row names are the ID number of the
 collection.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span><span class="op">(</span>supercollections <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="st">"HR.128"</span>, <span class="st">"collection_name"</span><span class="op">]</span></code></pre></div>
 <details closed><summary>
 Click to show/hide output.
-</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt; Collections of the Finnish Museum of Natural History Luomus</span></code></pre></div>
 </details><p><br></p>
 <p>You can see the child collections of a supercollection by specifying
 the ID as a filter. Note that the children of supercollections may also
 be supercollections</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span><span class="op">(</span><span class="va">is_part_of</span> <span class="op">==</span> <span class="st">"HR.128"</span>, supercollections <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <details closed><summary>
 Click to show/hide output.
-</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">#&gt;         collection_name abbreviation description online_url has_children is_part_of data_quality</span>
 <span class="co">#&gt; HR.129  Collections of… H            Herbarium … &lt;NA&gt;        TRUE        HR.128     MY.dataQual…</span>
