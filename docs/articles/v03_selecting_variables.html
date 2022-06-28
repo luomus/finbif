@@ -84,12 +84,10 @@
 
 
 
-
-<div class="row">
-  <main id="main"><div class="page-header">
+<script src="v03_selecting_variables_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Selecting and ordering variables</h1>
-                        <h4 data-toc-skip class="author">William K.
-Morris</h4>
+                        <h4 data-toc-skip class="author">William K. Morris</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/luomus/finbif/blob/HEAD/vignettes/v03_selecting_variables.Rmd" class="external-link"><code>vignettes/v03_selecting_variables.Rmd</code></a></small>
@@ -98,201 +96,181 @@ Morris</h4>
 
     
     
-<p>When requesting data using <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> you can select from
-among (or order by) many variables (properties of the occurrence
-records). The default set of variables returned is a small subset of
-those available. Note that not all variables are available for all
-records. See <code><a href="../reference/variables.html">?variables</a></code> for details.</p>
+<p>When requesting data using <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> you can select from among (or order by) many variables (properties of the occurrence records). The default set of variables returned is a small subset of those available. Note that not all variables are available for all records. See <code><a href="../reference/variables.html">?variables</a></code> for details.</p>
 <div class="section level2">
 <h2 id="selecting-variables">Selecting variables<a class="anchor" aria-label="anchor" href="#selecting-variables"></a>
 </h2>
 <div class="section level3">
 <h3 id="limiting-variables">Limiting variables<a class="anchor" aria-label="anchor" href="#limiting-variables"></a>
 </h3>
-<p>To retrieve a limited set of variables from FinBIF simply specify the
-desired variables in the <code>select</code> argument.</p>
+<p>To retrieve a limited set of variables from FinBIF simply specify the desired variables in the <code>select</code> argument.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
-  genus  <span class="op">=</span> <span class="st">"Falco"</span>,
-  select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"scientific_name"</span>, <span class="st">"life_stage"</span>, <span class="st">"sex"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 315462</span>
-<span class="co">#&gt; A data.frame [10 x 3]</span>
-<span class="co">#&gt;      scientific_name life_stage sex</span>
-<span class="co">#&gt; 1  Falco columbarius         NA  NA</span>
-<span class="co">#&gt; 2  Falco columbarius         NA  NA</span>
-<span class="co">#&gt; 3     Falco subbuteo         NA  NA</span>
-<span class="co">#&gt; 4  Falco tinnunculus         NA  NA</span>
-<span class="co">#&gt; 5  Falco tinnunculus         NA  NA</span>
-<span class="co">#&gt; 6     Falco subbuteo         NA  NA</span>
-<span class="co">#&gt; 7              Falco         NA  NA</span>
-<span class="co">#&gt; 8  Falco tinnunculus         NA  NA</span>
-<span class="co">#&gt; 9  Falco columbarius         NA  NA</span>
-<span class="co">#&gt; 10             Falco         NA  NA</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
+<span>  genus  <span class="op">=</span> <span class="st">"Falco"</span>,</span>
+<span>  select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"scientific_name"</span>, <span class="st">"life_stage"</span>, <span class="st">"sex"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; Records downloaded: 10</span></span>
+<span><span class="co">#&gt; Records available: 315462</span></span>
+<span><span class="co">#&gt; A data.frame [10 x 3]</span></span>
+<span><span class="co">#&gt;      scientific_name life_stage sex</span></span>
+<span><span class="co">#&gt; 1  Falco columbarius         NA  NA</span></span>
+<span><span class="co">#&gt; 2  Falco columbarius         NA  NA</span></span>
+<span><span class="co">#&gt; 3     Falco subbuteo         NA  NA</span></span>
+<span><span class="co">#&gt; 4  Falco tinnunculus         NA  NA</span></span>
+<span><span class="co">#&gt; 5  Falco tinnunculus         NA  NA</span></span>
+<span><span class="co">#&gt; 6     Falco subbuteo         NA  NA</span></span>
+<span><span class="co">#&gt; 7              Falco         NA  NA</span></span>
+<span><span class="co">#&gt; 8  Falco tinnunculus         NA  NA</span></span>
+<span><span class="co">#&gt; 9  Falco columbarius         NA  NA</span></span>
+<span><span class="co">#&gt; 10             Falco         NA  NA</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div class="section level3">
 <h3 id="extra-variables">Extra variables<a class="anchor" aria-label="anchor" href="#extra-variables"></a>
 </h3>
-<p>To get extra variables as well as the default set, specify the extra
-variables in addition to the keyword <code>"default_vars"</code>.</p>
+<p>To get extra variables as well as the default set, specify the extra variables in addition to the keyword <code>"default_vars"</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"default_vars"</span>, <span class="st">"life_stage"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 40410386</span>
-<span class="co">#&gt; A data.frame [10 x 13]</span>
-<span class="co">#&gt;    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1      …50#3 Exechiopsis fimbria…  1         65.01504  25.52607 2021-10-05 12:00:00</span>
-<span class="co">#&gt; 2     …29#12 Depressaria badiella  1         62.92172  27.63335 2021-10-05 12:00:00</span>
-<span class="co">#&gt; 3     …29#15 Depressaria daucella  1         62.92172  27.63335 2021-10-05 12:00:00</span>
-<span class="co">#&gt; 4      …29#9   Epirrita autumnata  1         62.92172  27.63335 2021-10-05 12:00:00</span>
-<span class="co">#&gt; 5      …29#6  Poecilocampa populi  1         62.92172  27.63335 2021-10-05 12:00:00</span>
-<span class="co">#&gt; 6      …29#3      Xestia c-nigrum  1         62.92172  27.63335 2021-10-05 12:00:00</span>
-<span class="co">#&gt; 7     …31#18 Agriopis aurantiaria  1         60.4528   22.40844 2021-10-04 12:00:00</span>
-<span class="co">#&gt; 8      …31#3     Autographa gamma  1         60.4528   22.40844 2021-10-04 12:00:00</span>
-<span class="co">#&gt; 9     …31#12 Chloroclysta sitera…  1         60.4528   22.40844 2021-10-04 12:00:00</span>
-<span class="co">#&gt; 10    …31#15   Epirrita autumnata  1         60.4528   22.40844 2021-10-04 12:00:00</span>
-<span class="co">#&gt; ...with 0 more records and 7 more variables:</span>
-<span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality, life_stage</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"default_vars"</span>, <span class="st">"life_stage"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; Records downloaded: 10</span></span>
+<span><span class="co">#&gt; Records available: 40410386</span></span>
+<span><span class="co">#&gt; A data.frame [10 x 13]</span></span>
+<span><span class="co">#&gt;    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1      …50#3 Exechiopsis fimbria…  1         65.01504  25.52607 2021-10-05 12:00:00</span></span>
+<span><span class="co">#&gt; 2     …29#12 Depressaria badiella  1         62.92172  27.63335 2021-10-05 12:00:00</span></span>
+<span><span class="co">#&gt; 3     …29#15 Depressaria daucella  1         62.92172  27.63335 2021-10-05 12:00:00</span></span>
+<span><span class="co">#&gt; 4      …29#9   Epirrita autumnata  1         62.92172  27.63335 2021-10-05 12:00:00</span></span>
+<span><span class="co">#&gt; 5      …29#6  Poecilocampa populi  1         62.92172  27.63335 2021-10-05 12:00:00</span></span>
+<span><span class="co">#&gt; 6      …29#3      Xestia c-nigrum  1         62.92172  27.63335 2021-10-05 12:00:00</span></span>
+<span><span class="co">#&gt; 7     …31#18 Agriopis aurantiaria  1         60.4528   22.40844 2021-10-04 12:00:00</span></span>
+<span><span class="co">#&gt; 8      …31#3     Autographa gamma  1         60.4528   22.40844 2021-10-04 12:00:00</span></span>
+<span><span class="co">#&gt; 9     …31#12 Chloroclysta sitera…  1         60.4528   22.40844 2021-10-04 12:00:00</span></span>
+<span><span class="co">#&gt; 10    …31#15   Epirrita autumnata  1         60.4528   22.40844 2021-10-04 12:00:00</span></span>
+<span><span class="co">#&gt; ...with 0 more records and 7 more variables:</span></span>
+<span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
+<span><span class="co">#&gt; record_reliability, record_quality, life_stage</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="ordering">Ordering<a class="anchor" aria-label="anchor" href="#ordering"></a>
 </h2>
-<p>You can change the order of occurrence records before they are
-fetched from the server by using the <code>order_by</code> argument. The
-default ordering is <code>date_start</code> descending, then
-<code>load_date</code> descending, then <code>reported_name</code>.</p>
+<p>You can change the order of occurrence records before they are fetched from the server by using the <code>order_by</code> argument. The default ordering is <code>date_start</code> descending, then <code>load_date</code> descending, then <code>reported_name</code>.</p>
 <div class="section level3">
 <h3 id="ascending-order">Ascending order<a class="anchor" aria-label="anchor" href="#ascending-order"></a>
 </h3>
-<p>By default occurrence records are ordered by variables in ascending
-order.</p>
+<p>By default occurrence records are ordered by variables in ascending order.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, order_by <span class="op">=</span> <span class="st">"abundance"</span><span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 71156</span>
-<span class="co">#&gt; A data.frame [10 x 12]</span>
-<span class="co">#&gt;               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1   …KE.67/9403350#Unit   Cygnus cygnus  1         60.41667  16       1997-04-01 13:00:00</span>
-<span class="co">#&gt; 2         …MHU.29327372   Cygnus cygnus  1         63.37022  30.37826                &lt;NA&gt;</span>
-<span class="co">#&gt; 3  …KE.176/58c7db302d0…   Cygnus cygnus  1         61.082    27.78355 2017-04-08 12:00:00</span>
-<span class="co">#&gt; 4          …MHU.2529766   Cygnus cygnus  1         64.94099  27.52532 2007-06-09 12:00:00</span>
-<span class="co">#&gt; 5   …KE.67/9069501#Unit   Cygnus cygnus  1         52.71667  1.55     1997-01-03 14:00:00</span>
-<span class="co">#&gt; 6         …MHU.12651157   Cygnus cygnus  1         61.21489  23.36719 2006-06-12 12:00:00</span>
-<span class="co">#&gt; 7         …MHU.21539922   Cygnus cygnus  1         60.42008  22.44084 2009-03-15 12:00:00</span>
-<span class="co">#&gt; 8   …KE.67/9465507#Unit   Cygnus cygnus  1         61.8      22.76667 2000-03-22 12:00:00</span>
-<span class="co">#&gt; 9   …KE.67/9607357#Unit   Cygnus cygnus  1         63.13333  22.43333 2003-06-07 12:00:00</span>
-<span class="co">#&gt; 10  …HR.3211/71804082-U   Cygnus cygnus  1         60.22502  25.00972 2021-03-21 12:00:00</span>
-<span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
-<span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, order_by <span class="op">=</span> <span class="st">"abundance"</span><span class="op">)</span></span></code></pre></div>
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; Records downloaded: 10</span></span>
+<span><span class="co">#&gt; Records available: 71156</span></span>
+<span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
+<span><span class="co">#&gt;               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1   …KE.67/9403350#Unit   Cygnus cygnus  1         60.41667  16       1997-04-01 13:00:00</span></span>
+<span><span class="co">#&gt; 2         …MHU.29327372   Cygnus cygnus  1         63.37022  30.37826                &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3  …KE.176/58c7db302d0…   Cygnus cygnus  1         61.082    27.78355 2017-04-08 12:00:00</span></span>
+<span><span class="co">#&gt; 4          …MHU.2529766   Cygnus cygnus  1         64.94099  27.52532 2007-06-09 12:00:00</span></span>
+<span><span class="co">#&gt; 5   …KE.67/9069501#Unit   Cygnus cygnus  1         52.71667  1.55     1997-01-03 14:00:00</span></span>
+<span><span class="co">#&gt; 6         …MHU.12651157   Cygnus cygnus  1         61.21489  23.36719 2006-06-12 12:00:00</span></span>
+<span><span class="co">#&gt; 7         …MHU.21539922   Cygnus cygnus  1         60.42008  22.44084 2009-03-15 12:00:00</span></span>
+<span><span class="co">#&gt; 8   …KE.67/9465507#Unit   Cygnus cygnus  1         61.8      22.76667 2000-03-22 12:00:00</span></span>
+<span><span class="co">#&gt; 9   …KE.67/9607357#Unit   Cygnus cygnus  1         63.13333  22.43333 2003-06-07 12:00:00</span></span>
+<span><span class="co">#&gt; 10  …HR.3211/71804082-U   Cygnus cygnus  1         60.22502  25.00972 2021-03-21 12:00:00</span></span>
+<span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
+<span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
+<span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div class="section level3">
 <h3 id="descending-order">Descending order<a class="anchor" aria-label="anchor" href="#descending-order"></a>
 </h3>
-<p>You can switch to descending order by prefixing the variable with a
-dash.</p>
+<p>You can switch to descending order by prefixing the variable with a dash.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, order_by <span class="op">=</span> <span class="st">"-abundance"</span><span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 71156</span>
-<span class="co">#&gt; A data.frame [10 x 12]</span>
-<span class="co">#&gt;               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1          …MHU.2981587   Cygnus cygnus  6000      64.4     -14.54    1995-07-05 15:00:00</span>
-<span class="co">#&gt; 2         …MHU.29480894   Cygnus cygnus  2010      64.54597  27.88859 2010-01-01 12:00:00</span>
-<span class="co">#&gt; 3  …HR.3691/OBS6046423…   Cygnus cygnus  1753      64.5074   24.2789  2018-04-23 12:00:00</span>
-<span class="co">#&gt; 4  …HR.3691/OBS6635688…   Cygnus cygnus  1600      65.9879   24.0634  2018-10-06 13:00:00</span>
-<span class="co">#&gt; 5         …MHU.28815250   Cygnus cygnus  1500            NA        NA 2003-04-18 15:00:00</span>
-<span class="co">#&gt; 6  …HR.3691/OBS6713538…   Cygnus cygnus  1361      64.7166   24.5319  2018-10-27 12:00:00</span>
-<span class="co">#&gt; 7         …MHU.28815110   Cygnus cygnus  1200            NA        NA 2003-04-16 15:00:00</span>
-<span class="co">#&gt; 8  …HR.3691/OBS6015318…   Cygnus cygnus  1145      64.5074   24.2789  2018-04-18 12:00:00</span>
-<span class="co">#&gt; 9  …HR.3691/OBS6023666…   Cygnus cygnus  1125      64.5074   24.2789  2018-04-19 12:00:00</span>
-<span class="co">#&gt; 10    …KE.8_1209789#134   Cygnus cygnus  1064      62.50172  21.3326  2017-11-04 08:40:00</span>
-<span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
-<span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, order_by <span class="op">=</span> <span class="st">"-abundance"</span><span class="op">)</span></span></code></pre></div>
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; Records downloaded: 10</span></span>
+<span><span class="co">#&gt; Records available: 71156</span></span>
+<span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
+<span><span class="co">#&gt;               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1          …MHU.2981587   Cygnus cygnus  6000      64.4     -14.54    1995-07-05 15:00:00</span></span>
+<span><span class="co">#&gt; 2         …MHU.29480894   Cygnus cygnus  2010      64.54597  27.88859 2010-01-01 12:00:00</span></span>
+<span><span class="co">#&gt; 3  …HR.3691/OBS6046423…   Cygnus cygnus  1753      64.5074   24.2789  2018-04-23 12:00:00</span></span>
+<span><span class="co">#&gt; 4  …HR.3691/OBS6635688…   Cygnus cygnus  1600      65.9879   24.0634  2018-10-06 13:00:00</span></span>
+<span><span class="co">#&gt; 5         …MHU.28815250   Cygnus cygnus  1500            NA        NA 2003-04-18 15:00:00</span></span>
+<span><span class="co">#&gt; 6  …HR.3691/OBS6713538…   Cygnus cygnus  1361      64.7166   24.5319  2018-10-27 12:00:00</span></span>
+<span><span class="co">#&gt; 7         …MHU.28815110   Cygnus cygnus  1200            NA        NA 2003-04-16 15:00:00</span></span>
+<span><span class="co">#&gt; 8  …HR.3691/OBS6015318…   Cygnus cygnus  1145      64.5074   24.2789  2018-04-18 12:00:00</span></span>
+<span><span class="co">#&gt; 9  …HR.3691/OBS6023666…   Cygnus cygnus  1125      64.5074   24.2789  2018-04-19 12:00:00</span></span>
+<span><span class="co">#&gt; 10    …KE.8_1209789#134   Cygnus cygnus  1064      62.50172  21.3326  2017-11-04 08:40:00</span></span>
+<span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
+<span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
+<span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div class="section level3">
 <h3 id="multiple-variables">Multiple variables<a class="anchor" aria-label="anchor" href="#multiple-variables"></a>
 </h3>
-<p>You can specify multiple variables to order by. Sorting primacy is
-from left to right.</p>
+<p>You can specify multiple variables to order by. Sorting primacy is from left to right.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus olor"</span>, order_by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"municipality_id"</span>, <span class="st">"-abundance"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 30843</span>
-<span class="co">#&gt; A data.frame [10 x 12]</span>
-<span class="co">#&gt;    record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1  …12015253     Cygnus olor  2500            NA        NA 2008-08-17 15:00:00</span>
-<span class="co">#&gt; 2  …13633876     Cygnus olor  1500            NA        NA 2008-10-03 15:00:00</span>
-<span class="co">#&gt; 3    …780984     Cygnus olor  1300            NA        NA 2006-02-14 14:00:00</span>
-<span class="co">#&gt; 4    …781416     Cygnus olor  1300            NA        NA 2006-02-14 14:00:00</span>
-<span class="co">#&gt; 5   …2062563     Cygnus olor  1200            NA        NA 2006-12-19 14:00:00</span>
-<span class="co">#&gt; 6  …10352894     Cygnus olor  1100            NA        NA 2008-06-28 15:00:00</span>
-<span class="co">#&gt; 7    …927797     Cygnus olor  1050            NA        NA 2006-04-05 15:00:00</span>
-<span class="co">#&gt; 8   …3110953     Cygnus olor  960             NA        NA 2007-10-06 15:00:00</span>
-<span class="co">#&gt; 9  …26309317     Cygnus olor  900             NA        NA 2009-07-08 15:00:00</span>
-<span class="co">#&gt; 10  …1260385     Cygnus olor  800       58.66     23.57    2006-04-26 18:00:00</span>
-<span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
-<span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus olor"</span>, order_by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"municipality_id"</span>, <span class="st">"-abundance"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; Records downloaded: 10</span></span>
+<span><span class="co">#&gt; Records available: 30843</span></span>
+<span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
+<span><span class="co">#&gt;    record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1  …12015253     Cygnus olor  2500            NA        NA 2008-08-17 15:00:00</span></span>
+<span><span class="co">#&gt; 2  …13633876     Cygnus olor  1500            NA        NA 2008-10-03 15:00:00</span></span>
+<span><span class="co">#&gt; 3    …780984     Cygnus olor  1300            NA        NA 2006-02-14 14:00:00</span></span>
+<span><span class="co">#&gt; 4    …781416     Cygnus olor  1300            NA        NA 2006-02-14 14:00:00</span></span>
+<span><span class="co">#&gt; 5   …2062563     Cygnus olor  1200            NA        NA 2006-12-19 14:00:00</span></span>
+<span><span class="co">#&gt; 6  …10352894     Cygnus olor  1100            NA        NA 2008-06-28 15:00:00</span></span>
+<span><span class="co">#&gt; 7    …927797     Cygnus olor  1050            NA        NA 2006-04-05 15:00:00</span></span>
+<span><span class="co">#&gt; 8   …3110953     Cygnus olor  960             NA        NA 2007-10-06 15:00:00</span></span>
+<span><span class="co">#&gt; 9  …26309317     Cygnus olor  900             NA        NA 2009-07-08 15:00:00</span></span>
+<span><span class="co">#&gt; 10  …1260385     Cygnus olor  800       58.66     23.57    2006-04-26 18:00:00</span></span>
+<span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
+<span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
+<span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div class="section level3">
 <h3 id="random-sample">Random sample<a class="anchor" aria-label="anchor" href="#random-sample"></a>
 </h3>
-<p>You can also request a random sample (random order) of occurrence
-records by setting the <code>sample</code> argument to
-<code>TRUE</code>.</p>
+<p>You can also request a random sample (random order) of occurrence records by setting the <code>sample</code> argument to <code>TRUE</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 40410449</span>
-<span class="co">#&gt; A data.frame [10 x 12]</span>
-<span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1   …KE.67/2798389#Unit  Emberiza citrinella  1         63.1745   23.85393 2005-06-26 12:00:00</span>
-<span class="co">#&gt; 2   …KE.67/5096145#Unit      Hirundo rustica  1         61.31215  23.78458 2000-08-31 20:00:00</span>
-<span class="co">#&gt; 3           …JX.98066#3            Pica pica  7         61.16842  25.78921 1969-12-29 09:00:00</span>
-<span class="co">#&gt; 4         …MKC.30782842 Vaccinium uliginosum  1         60.71347  21.67181 2016-10-06 12:00:00</span>
-<span class="co">#&gt; 5        …JX.1041885#63     Gimnomera tarsea  1         67.568    26.8804  2012-07-06 12:00:00</span>
-<span class="co">#&gt; 6          …JX.751150#2 Brachylomia viminal…  1         61.09245  21.47795 1974-09-20 12:00:00</span>
-<span class="co">#&gt; 7          …MKC.5700111            Taraxacum  1         62.56906  24.48739 1969-01-01 12:00:00</span>
-<span class="co">#&gt; 8  …KE.67/10030682#Unit     Larus argentatus  1         60.75066  26.86027 2004-07-11 12:00:00</span>
-<span class="co">#&gt; 9         …MKC.24352916         Rubus idaeus  1         62.81964  23.41582 2008-07-03 12:00:00</span>
-<span class="co">#&gt; 10  …KE.67/7670229#Unit      Curruca curruca  1         59.93333  24.4     1979-06-09 04:00:00</span>
-<span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
-<span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; Records downloaded: 10</span></span>
+<span><span class="co">#&gt; Records available: 40410449</span></span>
+<span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
+<span><span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1   …KE.67/2798389#Unit  Emberiza citrinella  1         63.1745   23.85393 2005-06-26 12:00:00</span></span>
+<span><span class="co">#&gt; 2   …KE.67/5096145#Unit      Hirundo rustica  1         61.31215  23.78458 2000-08-31 20:00:00</span></span>
+<span><span class="co">#&gt; 3           …JX.98066#3            Pica pica  7         61.16842  25.78921 1969-12-29 09:00:00</span></span>
+<span><span class="co">#&gt; 4         …MKC.30782842 Vaccinium uliginosum  1         60.71347  21.67181 2016-10-06 12:00:00</span></span>
+<span><span class="co">#&gt; 5        …JX.1041885#63     Gimnomera tarsea  1         67.568    26.8804  2012-07-06 12:00:00</span></span>
+<span><span class="co">#&gt; 6          …JX.751150#2 Brachylomia viminal…  1         61.09245  21.47795 1974-09-20 12:00:00</span></span>
+<span><span class="co">#&gt; 7          …MKC.5700111            Taraxacum  1         62.56906  24.48739 1969-01-01 12:00:00</span></span>
+<span><span class="co">#&gt; 8  …KE.67/10030682#Unit     Larus argentatus  1         60.75066  26.86027 2004-07-11 12:00:00</span></span>
+<span><span class="co">#&gt; 9         …MKC.24352916         Rubus idaeus  1         62.81964  23.41582 2008-07-03 12:00:00</span></span>
+<span><span class="co">#&gt; 10  …KE.67/7670229#Unit      Curruca curruca  1         59.93333  24.4     1979-06-09 04:00:00</span></span>
+<span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
+<span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
+<span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 </div>
@@ -311,7 +289,7 @@ Click to show/hide output.
 </div>
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer>

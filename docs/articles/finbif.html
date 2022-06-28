@@ -84,12 +84,10 @@
 
 
 
-
-<div class="row">
-  <main id="main"><div class="page-header">
+<script src="finbif_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Introduction to the finbif package</h1>
-                        <h4 data-toc-skip class="author">William K.
-Morris</h4>
+                        <h4 data-toc-skip class="author">William K. Morris</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/luomus/finbif/blob/HEAD/vignettes/finbif.Rmd" class="external-link"><code>vignettes/finbif.Rmd</code></a></small>
@@ -98,350 +96,309 @@ Morris</h4>
 
     
     
-<p>FinBIF aggregates Finnish biodiversity data from multiple sources in
-a single open access portal for researchers, citizen scientists,
-industry and government. FinBIF allows users of biodiversity information
-to find, access, combine and visualise data on Finnish plants, animals
-and microorganisms. The <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> R package makes the
-publicly available data in FinBIF easily accessible to programmers.
-Biodiversity information is available on taxonomy and taxon occurrence.
-Occurrence data can be filtered by taxon, time, location and other
-variables. The data accessed are conveniently preformatted for
-subsequent analyses.</p>
+<p>FinBIF aggregates Finnish biodiversity data from multiple sources in a single open access portal for researchers, citizen scientists, industry and government. FinBIF allows users of biodiversity information to find, access, combine and visualise data on Finnish plants, animals and microorganisms. The <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> R package makes the publicly available data in FinBIF easily accessible to programmers. Biodiversity information is available on taxonomy and taxon occurrence. Occurrence data can be filtered by taxon, time, location and other variables. The data accessed are conveniently preformatted for subsequent analyses.</p>
 <div class="section level2">
 <h2 id="installing-the-finbif-package">Installing the finbif package<a class="anchor" aria-label="anchor" href="#installing-the-finbif-package"></a>
 </h2>
-<p>You can install the current stable version of <a href="https://github.com/luomus/finbif" class="external-link">finbif</a>
-from <a href="https://cran.r-project.org" class="external-link">CRAN</a>,</p>
+<p>You can install the current stable version of <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> from <a href="https://cran.r-project.org" class="external-link">CRAN</a>,</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"finbif"</span><span class="op">)</span></code></pre></div>
-<p>You can also install the latest development version of
-<a href="https://github.com/luomus/finbif" class="external-link">finbif</a> from <a href="https://github.com" class="external-link">GitHub</a>,</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"finbif"</span><span class="op">)</span></span></code></pre></div>
+<p>You can also install the latest development version of <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> from <a href="https://github.com" class="external-link">GitHub</a>,</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"luomus/finbif@dev"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"luomus/finbif@dev"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="loading-the-finbif-package">Loading the finbif package<a class="anchor" aria-label="anchor" href="#loading-the-finbif-package"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/luomus/finbif" class="external-link">finbif</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/luomus/finbif" class="external-link">finbif</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-a-finbif-access-token">Getting a FinBIF access token<a class="anchor" aria-label="anchor" href="#getting-a-finbif-access-token"></a>
 </h2>
-<p>To use the FinBIF API you must first request and set a personal
-access token. You can request an API token to be sent to your email
-address with the function <code>finbif_get_token()</code>.</p>
+<p>To use the FinBIF API you must first request and set a personal access token. You can request an API token to be sent to your email address with the function <code>finbif_get_token()</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_request_token.html">finbif_request_token</a></span><span class="op">(</span><span class="st">"your@email.com"</span><span class="op">)</span></code></pre></div>
-<p>Copy the access token that was sent to your email and set it as the
-environment variable <code>FINBIF_ACCESS_TOKEN</code> either for the
-current session,</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_request_token.html">finbif_request_token</a></span><span class="op">(</span><span class="st">"your@email.com"</span><span class="op">)</span></span></code></pre></div>
+<p>Copy the access token that was sent to your email and set it as the environment variable <code>FINBIF_ACCESS_TOKEN</code> either for the current session,</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>
-  FINBIF_ACCESS_TOKEN <span class="op">=</span> <span class="st">"xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"</span>
-<span class="op">)</span>
-<span class="co"># Note: the above is not a real access token. Do not try using it.</span></code></pre></div>
-<p>, or by adding it to a <code>Renviron</code> startup file (see <a href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/" class="external-link">here</a>
-for details).</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span></span>
+<span>  FINBIF_ACCESS_TOKEN <span class="op">=</span> <span class="st">"xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># Note: the above is not a real access token. Do not try using it.</span></span></code></pre></div>
+<p>, or by adding it to a <code>Renviron</code> startup file (see <a href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/" class="external-link">here</a> for details).</p>
 </div>
 <div class="section level2">
 <h2 id="working-with-taxa">Working with taxa<a class="anchor" aria-label="anchor" href="#working-with-taxa"></a>
 </h2>
 <p>You can check to see if a taxon exists in the FinBIF database.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span><span class="op">)</span>
-<span class="co">#&gt; [Ursus arctos] ID: MX.47348</span></code></pre></div>
-<p>If the taxon is in the FinBIF database its unique ID is returned.
-When a taxon is not in the FinBIF database it is reported as “not found”
-and for that taxa the list element is <code>NA</code>.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [Ursus arctos] ID: MX.47348</span></span></code></pre></div>
+<p>If the taxon is in the FinBIF database its unique ID is returned. When a taxon is not in the FinBIF database it is reported as “not found” and for that taxa the list element is <code>NA</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="op">(</span><span class="va">taxa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span>, <span class="st">"Moomin"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [Ursus arctos] ID: MX.47348</span>
-<span class="co">#&gt; [Moomin      ] Not found</span>
-<span class="va">taxa</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; Ursus arctos </span>
-<span class="co">#&gt;   "MX.47348"</span>
-<span class="va">taxa</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; Moomin </span>
-<span class="co">#&gt;     NA</span></code></pre></div>
-<p>You can also specify the taxonomic rank when searching FinBIF and the
-search will be limited to the specified rank.</p>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">taxa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span>, <span class="st">"Moomin"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [Ursus arctos] ID: MX.47348</span></span>
+<span><span class="co">#&gt; [Moomin      ] Not found</span></span>
+<span><span class="va">taxa</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; Ursus arctos </span></span>
+<span><span class="co">#&gt;   "MX.47348"</span></span>
+<span><span class="va">taxa</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; Moomin </span></span>
+<span><span class="co">#&gt;     NA</span></span></code></pre></div>
+<p>You can also specify the taxonomic rank when searching FinBIF and the search will be limited to the specified rank.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span>, <span class="st">"Ursus"</span><span class="op">)</span>, genus <span class="op">=</span> <span class="st">"Ursus"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [species: Ursus arctos] ID: MX.47348</span>
-<span class="co">#&gt; [species: Ursus       ] Not found</span>
-<span class="co">#&gt; [genus:   Ursus       ] ID: MX.51311</span></code></pre></div>
-<p>The function <code><a href="../reference/finbif_taxa.html">finbif_taxa()</a></code> can be used for a more
-general search for taxa in the FinBIF database. Searches can be
-<code>exact</code>, <code>partial</code> or <code>likely</code> (fuzzy
-matching). Information for a single taxon is returned when using exact
-or fuzzy matching, but multiple taxa, up to a limit, <code>n</code>, may
-be returned when using partial matching.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span>, <span class="st">"Ursus"</span><span class="op">)</span>, genus <span class="op">=</span> <span class="st">"Ursus"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [species: Ursus arctos] ID: MX.47348</span></span>
+<span><span class="co">#&gt; [species: Ursus       ] Not found</span></span>
+<span><span class="co">#&gt; [genus:   Ursus       ] ID: MX.51311</span></span></code></pre></div>
+<p>The function <code><a href="../reference/finbif_taxa.html">finbif_taxa()</a></code> can be used for a more general search for taxa in the FinBIF database. Searches can be <code>exact</code>, <code>partial</code> or <code>likely</code> (fuzzy matching). Information for a single taxon is returned when using exact or fuzzy matching, but multiple taxa, up to a limit, <code>n</code>, may be returned when using partial matching.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">birch_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_taxa.html">finbif_taxa</a></span><span class="op">(</span><span class="st">"Betula pendula"</span>, <span class="fl">2</span>, <span class="st">"partial"</span><span class="op">)</span>
-<span class="va">birch_search</span><span class="op">$</span><span class="va">content</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; [[1]]$matchingName</span>
-<span class="co">#&gt; [1] "Betula pendula var. pendula"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$nameType</span>
-<span class="co">#&gt; [1] "MX.scientificName"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$id</span>
-<span class="co">#&gt; [1] "MX.37994"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$scientificName</span>
-<span class="co">#&gt; [1] "Betula pendula var. pendula"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$taxonRank</span>
-<span class="co">#&gt; [1] "MX.variety"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$cursiveName</span>
-<span class="co">#&gt; [1] TRUE</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$finnish</span>
-<span class="co">#&gt; [1] TRUE</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$species</span>
-<span class="co">#&gt; [1] TRUE</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$vernacularName</span>
-<span class="co">#&gt; [[1]]$vernacularName$sv</span>
-<span class="co">#&gt; [1] "vanlig vårtbjörk"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$vernacularName$fi</span>
-<span class="co">#&gt; [1] "vihtakoivu"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$informalGroups</span>
-<span class="co">#&gt; [[1]]$informalGroups[[1]]</span>
-<span class="co">#&gt; [[1]]$informalGroups[[1]]$id</span>
-<span class="co">#&gt; [1] "MVL.343"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$informalGroups[[1]]$name</span>
-<span class="co">#&gt; [[1]]$informalGroups[[1]]$name$fi</span>
-<span class="co">#&gt; [1] "Putkilokasvit"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$informalGroups[[1]]$name$sv</span>
-<span class="co">#&gt; [1] "Kärlväxter"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$informalGroups[[1]]$name$en</span>
-<span class="co">#&gt; [1] "Vascular plants"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$type</span>
-<span class="co">#&gt; [1] "partialMatches"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt; [[2]]$matchingName</span>
-<span class="co">#&gt; [1] "Betula nana × pendula"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$nameType</span>
-<span class="co">#&gt; [1] "MX.scientificName"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$id</span>
-<span class="co">#&gt; [1] "MX.38005"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$scientificName</span>
-<span class="co">#&gt; [1] "Betula nana × pendula"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$taxonRank</span>
-<span class="co">#&gt; [1] "MX.infragenericHybrid"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$cursiveName</span>
-<span class="co">#&gt; [1] TRUE</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$finnish</span>
-<span class="co">#&gt; [1] TRUE</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$species</span>
-<span class="co">#&gt; [1] TRUE</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$vernacularName</span>
-<span class="co">#&gt; named list()</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$informalGroups</span>
-<span class="co">#&gt; [[2]]$informalGroups[[1]]</span>
-<span class="co">#&gt; [[2]]$informalGroups[[1]]$id</span>
-<span class="co">#&gt; [1] "MVL.343"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$informalGroups[[1]]$name</span>
-<span class="co">#&gt; [[2]]$informalGroups[[1]]$name$fi</span>
-<span class="co">#&gt; [1] "Putkilokasvit"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$informalGroups[[1]]$name$sv</span>
-<span class="co">#&gt; [1] "Kärlväxter"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$informalGroups[[1]]$name$en</span>
-<span class="co">#&gt; [1] "Vascular plants"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]$type</span>
-<span class="co">#&gt; [1] "partialMatches"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">birch_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_taxa.html">finbif_taxa</a></span><span class="op">(</span><span class="st">"Betula pendula"</span>, <span class="fl">2</span>, <span class="st">"partial"</span><span class="op">)</span></span>
+<span><span class="va">birch_search</span><span class="op">$</span><span class="va">content</span></span></code></pre></div>
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; [[1]]$matchingName</span></span>
+<span><span class="co">#&gt; [1] "Betula pendula var. pendula"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$nameType</span></span>
+<span><span class="co">#&gt; [1] "MX.scientificName"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$id</span></span>
+<span><span class="co">#&gt; [1] "MX.37994"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$scientificName</span></span>
+<span><span class="co">#&gt; [1] "Betula pendula var. pendula"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$taxonRank</span></span>
+<span><span class="co">#&gt; [1] "MX.variety"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$cursiveName</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$finnish</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$species</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$vernacularName</span></span>
+<span><span class="co">#&gt; [[1]]$vernacularName$sv</span></span>
+<span><span class="co">#&gt; [1] "vanlig vårtbjörk"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$vernacularName$fi</span></span>
+<span><span class="co">#&gt; [1] "vihtakoivu"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$informalGroups</span></span>
+<span><span class="co">#&gt; [[1]]$informalGroups[[1]]</span></span>
+<span><span class="co">#&gt; [[1]]$informalGroups[[1]]$id</span></span>
+<span><span class="co">#&gt; [1] "MVL.343"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$informalGroups[[1]]$name</span></span>
+<span><span class="co">#&gt; [[1]]$informalGroups[[1]]$name$fi</span></span>
+<span><span class="co">#&gt; [1] "Putkilokasvit"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$informalGroups[[1]]$name$sv</span></span>
+<span><span class="co">#&gt; [1] "Kärlväxter"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$informalGroups[[1]]$name$en</span></span>
+<span><span class="co">#&gt; [1] "Vascular plants"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$type</span></span>
+<span><span class="co">#&gt; [1] "partialMatches"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; [[2]]$matchingName</span></span>
+<span><span class="co">#&gt; [1] "Betula nana × pendula"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$nameType</span></span>
+<span><span class="co">#&gt; [1] "MX.scientificName"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$id</span></span>
+<span><span class="co">#&gt; [1] "MX.38005"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$scientificName</span></span>
+<span><span class="co">#&gt; [1] "Betula nana × pendula"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$taxonRank</span></span>
+<span><span class="co">#&gt; [1] "MX.infragenericHybrid"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$cursiveName</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$finnish</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$species</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$vernacularName</span></span>
+<span><span class="co">#&gt; named list()</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$informalGroups</span></span>
+<span><span class="co">#&gt; [[2]]$informalGroups[[1]]</span></span>
+<span><span class="co">#&gt; [[2]]$informalGroups[[1]]$id</span></span>
+<span><span class="co">#&gt; [1] "MVL.343"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$informalGroups[[1]]$name</span></span>
+<span><span class="co">#&gt; [[2]]$informalGroups[[1]]$name$fi</span></span>
+<span><span class="co">#&gt; [1] "Putkilokasvit"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$informalGroups[[1]]$name$sv</span></span>
+<span><span class="co">#&gt; [1] "Kärlväxter"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$informalGroups[[1]]$name$en</span></span>
+<span><span class="co">#&gt; [1] "Vascular plants"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]$type</span></span>
+<span><span class="co">#&gt; [1] "partialMatches"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div class="section level2">
 <h2 id="getting-occurrence-data">Getting occurrence data<a class="anchor" aria-label="anchor" href="#getting-occurrence-data"></a>
 </h2>
-<p>You can download occurrence data from the FinBIF database as a
-<code>data.frame</code> with the <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>
-function.</p>
+<p>You can download occurrence data from the FinBIF database as a <code>data.frame</code> with the <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> function.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
-<span class="co">#&gt; Records downloaded: 100</span>
-<span class="co">#&gt; Records available: 71156</span>
-<span class="co">#&gt; A data.frame [100 x 12]</span>
-<span class="co">#&gt;              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00</span>
-<span class="co">#&gt; 2        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00</span>
-<span class="co">#&gt; 3       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00</span>
-<span class="co">#&gt; 4  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00</span>
-<span class="co">#&gt; 5  …HR.3211/96886383-U   Cygnus cygnus  1         62.91891  28.18733 2021-10-02 12:00:00</span>
-<span class="co">#&gt; 6  …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00</span>
-<span class="co">#&gt; 7       …JX.1315449#15   Cygnus cygnus  6         61.32296  28.56814 2021-10-02 10:40:00</span>
-<span class="co">#&gt; 8       …JX.1315165#30   Cygnus cygnus  2         61.10535  21.55759 2021-10-02 08:25:00</span>
-<span class="co">#&gt; 9        …JX.1296318#3   Cygnus cygnus  26        60.83174  26.44824 2021-09-30 12:00:00</span>
-<span class="co">#&gt; 10 …HR.3211/96581760-U   Cygnus cygnus  1         61.46442  23.65117 2021-09-29 12:00:00</span>
-<span class="co">#&gt; ...with 90 more records and 6 more variables:</span>
-<span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
-<p>You can search for multiple taxa at once and filter the records with
-the <code>filter</code> argument.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Records downloaded: 100</span></span>
+<span><span class="co">#&gt; Records available: 71156</span></span>
+<span><span class="co">#&gt; A data.frame [100 x 12]</span></span>
+<span><span class="co">#&gt;              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00</span></span>
+<span><span class="co">#&gt; 2        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00</span></span>
+<span><span class="co">#&gt; 3       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00</span></span>
+<span><span class="co">#&gt; 4  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00</span></span>
+<span><span class="co">#&gt; 5  …HR.3211/96886383-U   Cygnus cygnus  1         62.91891  28.18733 2021-10-02 12:00:00</span></span>
+<span><span class="co">#&gt; 6  …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00</span></span>
+<span><span class="co">#&gt; 7       …JX.1315449#15   Cygnus cygnus  6         61.32296  28.56814 2021-10-02 10:40:00</span></span>
+<span><span class="co">#&gt; 8       …JX.1315165#30   Cygnus cygnus  2         61.10535  21.55759 2021-10-02 08:25:00</span></span>
+<span><span class="co">#&gt; 9        …JX.1296318#3   Cygnus cygnus  26        60.83174  26.44824 2021-09-30 12:00:00</span></span>
+<span><span class="co">#&gt; 10 …HR.3211/96581760-U   Cygnus cygnus  1         61.46442  23.65117 2021-09-29 12:00:00</span></span>
+<span><span class="co">#&gt; ...with 90 more records and 6 more variables:</span></span>
+<span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
+<span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
+<p>You can search for multiple taxa at once and filter the records with the <code>filter</code> argument.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
-  <span class="st">"Cygnus cygnus"</span>, 
-  <span class="st">"Cygnus olor"</span>,
-  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>coordinates_uncertainty_max <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 26352</span>
-<span class="co">#&gt; A data.frame [10 x 12]</span>
-<span class="co">#&gt;              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1        …JX.1315856#9     Cygnus olor  8         60.42794  22.20052 2021-10-04 12:00:00</span>
-<span class="co">#&gt; 2       …JX.1315724#21     Cygnus olor  6         60.44906  22.76845 2021-10-03 12:00:00</span>
-<span class="co">#&gt; 3       …JX.1315701#36     Cygnus olor  8         60.42794  22.20052 2021-10-03 12:00:00</span>
-<span class="co">#&gt; 4       …JX.1315699#24     Cygnus olor  8         60.56739  21.57188 2021-10-03 12:00:00</span>
-<span class="co">#&gt; 5       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00</span>
-<span class="co">#&gt; 6        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00</span>
-<span class="co">#&gt; 7       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00</span>
-<span class="co">#&gt; 8  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00</span>
-<span class="co">#&gt; 9  …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00</span>
-<span class="co">#&gt; 10 …HR.3211/96867853-U     Cygnus olor  1         60.12642  24.73924 2021-10-02 12:00:00</span>
-<span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
-<span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Cygnus cygnus"</span>, </span>
+<span>  <span class="st">"Cygnus olor"</span>,</span>
+<span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>coordinates_uncertainty_max <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; Records downloaded: 10</span></span>
+<span><span class="co">#&gt; Records available: 26352</span></span>
+<span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
+<span><span class="co">#&gt;              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1        …JX.1315856#9     Cygnus olor  8         60.42794  22.20052 2021-10-04 12:00:00</span></span>
+<span><span class="co">#&gt; 2       …JX.1315724#21     Cygnus olor  6         60.44906  22.76845 2021-10-03 12:00:00</span></span>
+<span><span class="co">#&gt; 3       …JX.1315701#36     Cygnus olor  8         60.42794  22.20052 2021-10-03 12:00:00</span></span>
+<span><span class="co">#&gt; 4       …JX.1315699#24     Cygnus olor  8         60.56739  21.57188 2021-10-03 12:00:00</span></span>
+<span><span class="co">#&gt; 5       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00</span></span>
+<span><span class="co">#&gt; 6        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00</span></span>
+<span><span class="co">#&gt; 7       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00</span></span>
+<span><span class="co">#&gt; 8  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00</span></span>
+<span><span class="co">#&gt; 9  …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00</span></span>
+<span><span class="co">#&gt; 10 …HR.3211/96867853-U     Cygnus olor  1         60.12642  24.73924 2021-10-02 12:00:00</span></span>
+<span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
+<span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
+<span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>See <code><a href="../reference/filters.html">?filters</a></code> and <code><a href="../articles/v05_filtering.html">vignette("v05_filtering")</a></code>
-for more details on filtering FinBIF records.</p>
+<p>See <code><a href="../reference/filters.html">?filters</a></code> and <code><a href="../articles/v05_filtering.html">vignette("v05_filtering")</a></code> for more details on filtering FinBIF records.</p>
 <div class="section level3">
 <h3 id="random-sampling">Random sampling<a class="anchor" aria-label="anchor" href="#random-sampling"></a>
 </h3>
-<p>It is possible to request a random sample of records instead of the
-last <code>n</code> records (or records ordered by some other
-variable).</p>
+<p>It is possible to request a random sample of records instead of the last <code>n</code> records (or records ordered by some other variable).</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Birds"</span>, sample <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#&gt; Records downloaded: 10</span>
-<span class="co">#&gt; Records available: 19686186</span>
-<span class="co">#&gt; A data.frame [10 x 12]</span>
-<span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span>
-<span class="co">#&gt; 1         …MHU.29129341     Sturnus vulgaris  1         60.52698  21.62055 2010-05-01 12:00:00</span>
-<span class="co">#&gt; 2           …JX.93743#5 Corvus corone cornix  46        62.14011  24.59989 1969-12-26 09:00:00</span>
-<span class="co">#&gt; 3   …KE.67/3168115#Unit     Numenius arquata  1         63.15     27.83333 2008-06-06 13:00:00</span>
-<span class="co">#&gt; 4  …KE.67/11186470#Unit  Emberiza citrinella  1         62.75622  26.6937  2017-01-17 14:00:00</span>
-<span class="co">#&gt; 5       …JX.1029925#296    Turdus philomelos  1         61.43368  28.6004  1998-06-05 05:02:00</span>
-<span class="co">#&gt; 6   …KE.67/3446629#Unit          Parus major  1         60.33031  25.20922 2011-03-27 17:00:00</span>
-<span class="co">#&gt; 7   …KE.67/7662953#Unit   Sylvia atricapilla  1         59.83333  19.93333 1976-09-07 12:00:00</span>
-<span class="co">#&gt; 8   …KE.67/7531888#Unit   Prunella modularis  1         59.83333  19.93333 1993-04-26 07:00:00</span>
-<span class="co">#&gt; 9   …KE.383/1607#UNIT76 Lophophanes cristat…  3         59.9815   24.39953 1996-12-16 12:00:00</span>
-<span class="co">#&gt; 10      …JX.1025345#261    Fringilla coelebs  1         62.29238  24.35626 2009-06-08 03:30:00</span>
-<span class="co">#&gt; ...with 0 more records and 6 more variables:</span>
-<span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span>
-<span class="co">#&gt; record_reliability, record_quality</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Birds"</span>, sample <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; Records downloaded: 10</span></span>
+<span><span class="co">#&gt; Records available: 19686186</span></span>
+<span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
+<span><span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1         …MHU.29129341     Sturnus vulgaris  1         60.52698  21.62055 2010-05-01 12:00:00</span></span>
+<span><span class="co">#&gt; 2           …JX.93743#5 Corvus corone cornix  46        62.14011  24.59989 1969-12-26 09:00:00</span></span>
+<span><span class="co">#&gt; 3   …KE.67/3168115#Unit     Numenius arquata  1         63.15     27.83333 2008-06-06 13:00:00</span></span>
+<span><span class="co">#&gt; 4  …KE.67/11186470#Unit  Emberiza citrinella  1         62.75622  26.6937  2017-01-17 14:00:00</span></span>
+<span><span class="co">#&gt; 5       …JX.1029925#296    Turdus philomelos  1         61.43368  28.6004  1998-06-05 05:02:00</span></span>
+<span><span class="co">#&gt; 6   …KE.67/3446629#Unit          Parus major  1         60.33031  25.20922 2011-03-27 17:00:00</span></span>
+<span><span class="co">#&gt; 7   …KE.67/7662953#Unit   Sylvia atricapilla  1         59.83333  19.93333 1976-09-07 12:00:00</span></span>
+<span><span class="co">#&gt; 8   …KE.67/7531888#Unit   Prunella modularis  1         59.83333  19.93333 1993-04-26 07:00:00</span></span>
+<span><span class="co">#&gt; 9   …KE.383/1607#UNIT76 Lophophanes cristat…  3         59.9815   24.39953 1996-12-16 12:00:00</span></span>
+<span><span class="co">#&gt; 10      …JX.1025345#261    Fringilla coelebs  1         62.29238  24.35626 2009-06-08 03:30:00</span></span>
+<span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
+<span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
+<span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="plotting-occurrence-data">Plotting occurrence data<a class="anchor" aria-label="anchor" href="#plotting-occurrence-data"></a>
 </h2>
-<p>The <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> package has a number of inbuilt functions
-for plotting (see e.g., <code><a href="../reference/breaks_xy.html">breaks_xy()</a></code> and
-<code><a href="../reference/hist_xy.html">hist_xy()</a></code>). There is also an inbuilt dataset that can be
-used to plot the border of Finland (<code><a href="../reference/finland_map.html">?finland_map</a></code>). Together
-these utilities can be used to plot occurrences after they have been
-downloaded from FinBIF. For example, the following can be used to plot
-the density of Eurasian Jay occurrences from Finland.</p>
-<details closed><summary><span title="">Click to show/hide code.</span>
-</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Download all the occurrences of Eurasian Jay in Finland</span>
-<span class="co"># that have coordinates accurate to at least 100m</span>
-<span class="va">jays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>
-  taxa   <span class="op">=</span> <span class="st">"Eurasian Jay"</span>,
-  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
-    coordinates_uncertainty_max <span class="op">=</span> <span class="fl">100</span>,
-    country                     <span class="op">=</span> <span class="st">"Finland"</span>
-  <span class="op">)</span>,
-  n      <span class="op">=</span> <span class="fl">2e4</span>,
-  quiet  <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-
-<span class="co"># Compute the density of occurrences in 1/4 degree cells and plot as a heatmap</span>
-<span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">jays</span>, <span class="va">finland_map</span><span class="op">)</span>,
-  expr <span class="op">=</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-    <span class="co"># compute a 2d histogram from the occurrences</span>
-    <span class="va">breaks</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/breaks_xy.html">breaks_xy</a></span><span class="op">(</span><span class="va">bbox</span>, <span class="fl">.25</span><span class="op">)</span> <span class="co"># breakpoints every 1/4 of a degree</span>
-    <span class="va">density</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hist_xy.html">hist_xy</a></span><span class="op">(</span>xy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">lon_wgs84</span>, <span class="va">lat_wgs84</span><span class="op">)</span>, <span class="va">breaks</span><span class="op">)</span>
-    <span class="co"># plot the histogram as a heatmap</span>
-    <span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">density</span>,
-          asp    <span class="op">=</span> <span class="fl">2.4</span>,
-          breaks <span class="op">=</span> <span class="fl">2</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">12</span><span class="op">)</span>, <span class="co"># breakpoints for the gridcell colours</span>
-          col    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">12</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-          xlab   <span class="op">=</span> <span class="st">"Longitude"</span>,
-          ylab   <span class="op">=</span> <span class="st">"Latitude"</span>,
-          panel.first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/grid.html" class="external-link">grid</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>,
-           inset  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.01</span><span class="op">)</span>,
-           legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="fl">2</span><span class="op">^</span><span class="fl">12</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="fl">2</span><span class="op">^</span><span class="fl">6</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="fl">2</span><span class="op">^</span><span class="fl">0</span><span class="op">)</span>,
-           fill   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span>,
-           border <span class="op">=</span> <span class="cn">NA</span>,
-           bty    <span class="op">=</span> <span class="st">"n"</span>,
-           adj    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.25</span><span class="op">)</span>, 
-           x.intersp <span class="op">=</span> <span class="fl">.2</span>,
-           y.intersp <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span>
-    <span class="co"># add the Finnish border</span>
-    <span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html" class="external-link">polygon</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">vertices</span>, lwd <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span>
-  <span class="op">}</span>
-<span class="op">)</span></code></pre></div>
+<p>The <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> package has a number of inbuilt functions for plotting (see e.g., <code><a href="../reference/breaks_xy.html">breaks_xy()</a></code> and <code><a href="../reference/hist_xy.html">hist_xy()</a></code>). There is also an inbuilt dataset that can be used to plot the border of Finland (<code><a href="../reference/finland_map.html">?finland_map</a></code>). Together these utilities can be used to plot occurrences after they have been downloaded from FinBIF. For example, the following can be used to plot the density of Eurasian Jay occurrences from Finland.</p>
+<details closed><p><summary><span title="">Click to show/hide code.</span></summary></p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Download all the occurrences of Eurasian Jay in Finland</span></span>
+<span><span class="co"># that have coordinates accurate to at least 100m</span></span>
+<span><span class="va">jays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
+<span>  taxa   <span class="op">=</span> <span class="st">"Eurasian Jay"</span>,</span>
+<span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    coordinates_uncertainty_max <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>    country                     <span class="op">=</span> <span class="st">"Finland"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  n      <span class="op">=</span> <span class="fl">2e4</span>,</span>
+<span>  quiet  <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Compute the density of occurrences in 1/4 degree cells and plot as a heatmap</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">jays</span>, <span class="va">finland_map</span><span class="op">)</span>,</span>
+<span>  expr <span class="op">=</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>    <span class="co"># compute a 2d histogram from the occurrences</span></span>
+<span>    <span class="va">breaks</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/breaks_xy.html">breaks_xy</a></span><span class="op">(</span><span class="va">bbox</span>, <span class="fl">.25</span><span class="op">)</span> <span class="co"># breakpoints every 1/4 of a degree</span></span>
+<span>    <span class="va">density</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hist_xy.html">hist_xy</a></span><span class="op">(</span>xy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">lon_wgs84</span>, <span class="va">lat_wgs84</span><span class="op">)</span>, <span class="va">breaks</span><span class="op">)</span></span>
+<span>    <span class="co"># plot the histogram as a heatmap</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">density</span>,</span>
+<span>          asp    <span class="op">=</span> <span class="fl">2.4</span>,</span>
+<span>          breaks <span class="op">=</span> <span class="fl">2</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">12</span><span class="op">)</span>, <span class="co"># breakpoints for the gridcell colours</span></span>
+<span>          col    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">12</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>          xlab   <span class="op">=</span> <span class="st">"Longitude"</span>,</span>
+<span>          ylab   <span class="op">=</span> <span class="st">"Latitude"</span>,</span>
+<span>          panel.first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/grid.html" class="external-link">grid</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>,</span>
+<span>           inset  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.01</span><span class="op">)</span>,</span>
+<span>           legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="fl">2</span><span class="op">^</span><span class="fl">12</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="fl">2</span><span class="op">^</span><span class="fl">6</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="fl">2</span><span class="op">^</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>           fill   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span>,</span>
+<span>           border <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>           bty    <span class="op">=</span> <span class="st">"n"</span>,</span>
+<span>           adj    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.25</span><span class="op">)</span>, </span>
+<span>           x.intersp <span class="op">=</span> <span class="fl">.2</span>,</span>
+<span>           y.intersp <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
+<span>    <span class="co"># add the Finnish border</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html" class="external-link">polygon</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">vertices</span>, lwd <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </details><p><img src="../reference/figures/plot-occurrences-eval-1.png"></p>
 </div>
 <div class="section level2">
 <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
-<p>By default <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> uses local caching for repeated API
-requests. This can be turned on or off on a per request or session
-basis. See <code><a href="../reference/caching.html">?caching</a></code> for details.</p>
+<p>By default <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> uses local caching for repeated API requests. This can be turned on or off on a per request or session basis. See <code><a href="../reference/caching.html">?caching</a></code> for details.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
@@ -458,7 +415,7 @@ basis. See <code><a href="../reference/caching.html">?caching</a></code> for det
 </div>
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer>
