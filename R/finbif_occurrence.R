@@ -197,8 +197,11 @@ select_taxa <- function(..., cache, check_taxa, on_check_fail) {
 
     if (any(taxa_invalid)) {
       msg  <- paste(
-        "Cannot find taxa:",
-        paste(sub("\\.", " - ", names(taxa[taxa_invalid])), collapse = ", ")
+        "Cannot find the following taxa in the FinBIF taxonomy.",
+        "Please check you are using accepted names and not synonyms or",
+        "other names for the taxa you are selecting:\n",
+        paste(sub("\\.", " - ", names(taxa[taxa_invalid])), collapse = ", "),
+        sep = "\n"
       )
       switch(
         on_check_fail,
