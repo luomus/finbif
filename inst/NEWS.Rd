@@ -2,6 +2,14 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.6.5.9000}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item The warning/error message returned when an invalid taxon is
+        requested with \code{finbif_occurrence} has been made more detailed,
+        warning the user they may be using synonyms or other invalid taxon
+        names.
+    }
+  }
 }
 
 \section{finbif version 0.6.5}{

@@ -1,3 +1,12 @@
+# finbif 0.6.5.9000
+
+#### MINOR IMPROVEMENTS
+
+  - The warning/error message returned when an invalid taxon is
+    requested with `finbif_occurrence` has been made more detailed,
+    warning the user they may be using synonyms or other invalid taxon
+    names.
+
 # finbif 0.6.5
 
 #### NEW FEATURES
