@@ -51,5 +51,5 @@ finbif_check_taxa <- function(taxa, cache = getOption("finbif_use_cache")) {
       }
     }
   }
-  structure(out, class = c("list", "finbif_taxa"))
+  structure(out, class = c("list", "finbif_taxa_list"))
 }

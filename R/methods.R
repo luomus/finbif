@@ -211,7 +211,7 @@ print.finbif_api_list <- function(x, ...) {
 
 #' @noRd
 #' @export
-print.finbif_taxa <- function(x, ...) {
+print.finbif_taxa_list <- function(x, ...) {
   ranks <- names(x)
   nms   <- names(unlist(unname(x)))
   padl  <- if (is.null(ranks)) 0L else max(nchar(ranks)) + 2L
