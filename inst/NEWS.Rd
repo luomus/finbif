@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.5.9001}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fix applied for a print method error triggered by clashing class
+        names.
+    }
+  }
+}
+
 \section{finbif version 0.6.5.9000}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

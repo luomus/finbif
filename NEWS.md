@@ -1,3 +1,10 @@
+# finbif 0.6.5.9001
+
+#### BUG FIXES
+
+  - Fix applied for a print method error triggered by clashing class
+    names.
+
 # finbif 0.6.5.9000
 
 #### MINOR IMPROVEMENTS
