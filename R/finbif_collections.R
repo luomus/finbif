@@ -123,7 +123,7 @@ finbif_collections <- function(
     col_ind <- as.list(seq_along(collections))
     names(col_ind) <- names(collections)
     cols <- eval(substitute(select), col_ind, parent.frame())
-    if (is.na(cols) || is.null(cols)) cols <- TRUE
+    if (all(is.na(cols)) || is.null(cols)) cols <- TRUE
   }
 
   structure(
