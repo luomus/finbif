@@ -1,3 +1,9 @@
+# finbif 0.6.5.9002
+
+#### BUG FIXES
+
+  - Fixed issue with ordering by some variables.
+
 # finbif 0.6.5.9001
 
 #### BUG FIXES

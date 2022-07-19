@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.5.9002}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed issue with ordering by some variables.
+    }
+  }
+}
+
 \section{finbif version 0.6.5.9001}{
   \subsection{BUG FIXES}{
     \itemize{
