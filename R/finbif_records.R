@@ -99,6 +99,7 @@ finbif_records <- function(
       class(order_vars[[var_type]]) <- class(var_names[[var_type]])
       order_by <-
         translate(order_by, "order_vars", list(order_vars = order_vars))
+      order_by <- order_by_computed_var(order_by)
       order_by[desc_order] <- paste(order_by[desc_order], "DESC")
       query[["orderBy"]] <- paste(order_by, collapse = ",")
 
@@ -728,5 +729,24 @@ select_endpoint <- function(aggregate) {
 taxa_counts <- function(aggregate) {
 
   if (any(aggregate %in% c("species", "taxa"))) "true"
+
+}
+
+order_by_computed_var <- function(order_by) {
+
+  lt <- c(
+    scientific_name = "unit.linkings.taxon.scientificName",
+    abundance = "unit.interpretations.individualCount",
+    date_time = "gathering.eventDate.begin",
+    coordinates_uncertainty = "gathering.interpretations.coordinateAccuracy"
+  )
+
+  names(lt) <- paste0("computed_var_", names(lt))
+
+  ans <- lt[order_by]
+
+  ans <- ifelse(is.na(ans), order_by, ans)
+
+  as.character(ans)
 
 }
