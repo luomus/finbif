@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.5.9003}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New option to exclude all records with any NA values for any of the
+       selected variables added to \code{finbif_occurrence}.
+    }
+  }
+}
+
 \section{finbif version 0.6.5.9002}{
   \subsection{BUG FIXES}{
     \itemize{

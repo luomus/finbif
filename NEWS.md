@@ -1,3 +1,10 @@
+# finbif 0.6.5.9003
+
+#### NEW FEATURES
+
+  - New option to exclude all records with any NA values for any of the
+    selected variables added to `finbif_occurrence`.
+
 # finbif 0.6.5.9002
 
 #### BUG FIXES
