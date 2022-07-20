@@ -25,7 +25,8 @@ finbif_occurrence(
   locale = getOption("finbif_locale"),
   seed,
   drop_na = FALSE,
-  aggregate_counts = TRUE
+  aggregate_counts = TRUE,
+  exclude_na = FALSE
 )
 }
 \arguments{
@@ -100,6 +101,9 @@ columns.}
 
 \item{aggregate_counts}{Logical. Should count variables be returned when
 using aggregation.}
+
+\item{exclude_na}{Logical. Should records where all selected variables have
+non-NA values only be returned.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

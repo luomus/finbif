@@ -18,7 +18,8 @@ finbif_records(
   cache = getOption("finbif_use_cache"),
   dwc = FALSE,
   seed,
-  df = FALSE
+  df = FALSE,
+  exclude_na = FALSE
 )
 }
 \arguments{
@@ -63,6 +64,9 @@ downloads.}
 
 \item{df}{Logical. Should the data.frame representation of the records be
 returned as an attribute?}
+
+\item{exclude_na}{Logical. Should records where all selected variables have
+non-NA values only be returned.}
 }
 \value{
 A \code{finbif_api} or \code{finbif_api_list} object.

@@ -61,7 +61,7 @@ finbif_occurrence <- function(
   dwc = FALSE, date_time_method, check_taxa = TRUE,
   on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
   locale = getOption("finbif_locale"), seed, drop_na = FALSE,
-  aggregate_counts = TRUE
+  aggregate_counts = TRUE, exclude_na = FALSE
 ) {
 
   taxa <- select_taxa(
@@ -85,7 +85,7 @@ finbif_occurrence <- function(
 
       multi_request <- multi_req(
         taxa, filter, select, order_by, sample, n, page, count_only, quiet,
-        cache, dwc, date_time_method, tzone, locale
+        cache, dwc, date_time_method, tzone, locale, exclude_na
       )
 
       return(multi_request)
@@ -101,7 +101,7 @@ finbif_occurrence <- function(
     n <- finbif_records(
       filter, select, order_by, aggregate, sample,
       n = getOption("finbif_max_page_size"), page, count_only, quiet,
-      cache, dwc, df = TRUE, seed
+      cache, dwc, df = TRUE, seed, exclude_na
     )
 
     n <- attr(n, "nrec_avl")
@@ -112,7 +112,7 @@ finbif_occurrence <- function(
 
   records <- finbif_records(
     filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
-    cache, dwc, df = TRUE, seed
+    cache, dwc, df = TRUE, seed, exclude_na
   )
 
   aggregate <- attr(records, "aggregate", TRUE)
@@ -662,14 +662,14 @@ compute_scientific_name <- function(df, select_, dwc, add = TRUE) {
 
 multi_req <- function(
   taxa, filter, select, order_by, sample, n, page, count_only, quiet, cache,
-  dwc, date_time_method, tzone, locale
+  dwc, date_time_method, tzone, locale, exclude_na
 ) {
 
   ans <- vector("list", length(filter))
 
   rep_args <- c(
     "sample", "n", "page", "quiet", "cache", "date_time_method", "tzone",
-    "locale"
+    "locale", "exclude_na"
   )
 
   for (arg in rep_args) {
@@ -685,7 +685,7 @@ multi_req <- function(
       sample = sample[[i]], n = n[[i]], page = page[[i]],
       count_only = count_only, quiet = quiet[[i]], cache = cache[[i]],
       dwc = dwc, date_time_method = date_time_method[[i]], check_taxa = FALSE,
-      tzone = tzone[[i]], locale = locale[[i]]
+      tzone = tzone[[i]], locale = locale[[i]], exclude_na = exclude_na[[i]]
     )
 
   }

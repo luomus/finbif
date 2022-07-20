@@ -84,7 +84,8 @@
 <span>  locale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"finbif_locale"</span><span class="op">)</span>,</span>
 <span>  <span class="va">seed</span>,</span>
 <span>  drop_na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  aggregate_counts <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  aggregate_counts <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  exclude_na <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -200,6 +201,11 @@ columns.</p></dd>
 <dt>aggregate_counts</dt>
 <dd><p>Logical. Should count variables be returned when
 using aggregation.</p></dd>
+
+
+<dt>exclude_na</dt>
+<dd><p>Logical. Should records where all selected variables have
+non-NA values only be returned.</p></dd>
 
 </dl></div>
     <div class="section level2">
