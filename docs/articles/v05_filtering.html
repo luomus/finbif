@@ -84,10 +84,12 @@
 
 
 
-<script src="v05_filtering_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Filtering occurrence records</h1>
-                        <h4 data-toc-skip class="author">William K. Morris</h4>
+                        <h4 data-toc-skip class="author">William K.
+Morris</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/luomus/finbif/blob/HEAD/vignettes/v05_filtering.Rmd" class="external-link"><code>vignettes/v05_filtering.Rmd</code></a></small>
@@ -96,11 +98,15 @@
 
     
     
-<p>When getting records from FinBIF there are many options for filtering the data before it is downloaded, saving bandwidth and local post-processing time. For the full list of filtering options see <code><a href="../reference/filters.html">?filters</a></code>.</p>
+<p>When getting records from FinBIF there are many options for filtering
+the data before it is downloaded, saving bandwidth and local
+post-processing time. For the full list of filtering options see
+<code><a href="../reference/filters.html">?filters</a></code>.</p>
 <div class="section level2">
 <h2 id="location">Location<a class="anchor" aria-label="anchor" href="#location"></a>
 </h2>
-<p>Records can be filtered by the name of a location or by a set of coordinates.</p>
+<p>Records can be filtered by the name of a location or by a set of
+coordinates.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">filter1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"Finland"</span><span class="op">)</span></span>
 <span><span class="va">filter2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>coordinates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">60</span>, <span class="fl">68</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">30</span><span class="op">)</span>, <span class="st">"wgs84"</span><span class="op">)</span><span class="op">)</span></span>
@@ -113,11 +119,14 @@
 <div class="section level2">
 <h2 id="time">Time<a class="anchor" aria-label="anchor" href="#time"></a>
 </h2>
-<p>The event or import date of records can be used to filter occurrence data from FinBIF. The date filters can be a single year, month or date,</p>
+<p>The event or import date of records can be used to filter occurrence
+data from FinBIF. The date filters can be a single year, month or
+date,</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>date_range_ym <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2019-12"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 19546</span></span>
@@ -136,13 +145,15 @@
 <span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
-</details><p><br> , or for record events, a range as a character vector or an <a href="https://lubridate.tidyverse.org/reference/Interval-class.html" class="external-link">Interval</a> object.</p>
+</details><p><br> , or for record events, a range as a character vector or an <a href="https://lubridate.tidyverse.org/reference/Interval-class.html" class="external-link">Interval</a>
+object.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>date_range_ymd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2019-06-01"</span>, <span class="st">"2019-12-31"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 669879</span></span>
@@ -162,7 +173,8 @@
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>Records for a specific season or time-span across all years can also be requested.</p>
+<p>Records for a specific season or time-span across all years can also
+be requested.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -170,8 +182,9 @@
 <span>    date_range_md <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>begin <span class="op">=</span> <span class="st">"01-01"</span>, end <span class="op">=</span> <span class="st">"02-20"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 1598855</span></span>
@@ -195,7 +208,8 @@
 <div class="section level2">
 <h2 id="data-quality">Data Quality<a class="anchor" aria-label="anchor" href="#data-quality"></a>
 </h2>
-<p>You can filter occurrence records by indicators of data quality. See <code><a href="../reference/filters.html">?filters</a></code> section “Quality” for details.</p>
+<p>You can filter occurrence records by indicators of data quality. See
+<code><a href="../reference/filters.html">?filters</a></code> section “Quality” for details.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">strict</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>  collection_quality <span class="op">=</span> <span class="st">"professional"</span>, coordinates_uncertainty_max <span class="op">=</span> <span class="fl">1</span>,</span>
@@ -219,7 +233,11 @@
 <div class="section level2">
 <h2 id="collection">Collection<a class="anchor" aria-label="anchor" href="#collection"></a>
 </h2>
-<p>The FinBIF database consists of a number of constituent collections. You can filter by collection with either the <code>collection</code> or <code>not_collection</code> filters. Use <code><a href="../reference/finbif_collections.html">finbif_collections()</a></code> to see metadata on the FinBIF collections.</p>
+<p>The FinBIF database consists of a number of constituent collections.
+You can filter by collection with either the <code>collection</code> or
+<code>not_collection</code> filters. Use
+<code><a href="../reference/finbif_collections.html">finbif_collections()</a></code> to see metadata on the FinBIF
+collections.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>collection <span class="op">=</span> <span class="st">"iNaturalist Suomi Finland"</span><span class="op">)</span>, count_only <span class="op">=</span> <span class="cn">TRUE</span></span>
@@ -233,11 +251,13 @@
 <div class="section level2">
 <h2 id="informal-taxonomic-groups">Informal taxonomic groups<a class="anchor" aria-label="anchor" href="#informal-taxonomic-groups"></a>
 </h2>
-<p>You can filter occurrence records based on informal taxonomic groups such as <code>Birds</code> or <code>Mammals</code>.</p>
+<p>You can filter occurrence records based on informal taxonomic groups
+such as <code>Birds</code> or <code>Mammals</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>informal_group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Birds"</span>, <span class="st">"Mammals"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 19946472</span></span>
@@ -257,7 +277,9 @@
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>See <code><a href="../reference/finbif_informal_groups.html">finbif_informal_groups()</a></code> for the full list of groups you can filter by. You can use the same function to see the subgroups that make up a higher level informal group:</p>
+<p>See <code><a href="../reference/finbif_informal_groups.html">finbif_informal_groups()</a></code> for the full list of groups
+you can filter by. You can use the same function to see the subgroups
+that make up a higher level informal group:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_informal_groups.html">finbif_informal_groups</a></span><span class="op">(</span><span class="st">"macrofungi"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  ¦--Macrofungi                                                </span></span>
@@ -277,14 +299,18 @@
 <div class="section level2">
 <h2 id="administrative-status">Administrative status<a class="anchor" aria-label="anchor" href="#administrative-status"></a>
 </h2>
-<p>Many records in the FinBIF database include taxa that have one or another administrative statuses. See <code>finbif_metadata("admin_status")</code> for a list of administrative statuses and short-codes.</p>
+<p>Many records in the FinBIF database include taxa that have one or
+another administrative statuses. See
+<code>finbif_metadata("admin_status")</code> for a list of
+administrative statuses and short-codes.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Search for birds on the EU invasive species list</span></span>
 <span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>informal_group <span class="op">=</span> <span class="st">"Birds"</span>, administrative_status <span class="op">=</span> <span class="st">"EU_INVSV"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 452</span></span>
@@ -308,14 +334,17 @@
 <div class="section level2">
 <h2 id="iucn-red-list">IUCN red list<a class="anchor" aria-label="anchor" href="#iucn-red-list"></a>
 </h2>
-<p>Filtering can be done by <a href="https://punainenkirja.laji.fi/" class="external-link">IUCN red list</a> category. See <code>finbif_metadata("red_list")</code> for the IUCN red list categories and their short-codes.</p>
+<p>Filtering can be done by <a href="https://punainenkirja.laji.fi/" class="external-link">IUCN red list</a> category. See
+<code>finbif_metadata("red_list")</code> for the IUCN red list
+categories and their short-codes.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Search for near threatened mammals</span></span>
 <span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>informal_group <span class="op">=</span> <span class="st">"Mammals"</span>, red_list_status <span class="op">=</span> <span class="st">"NT"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 1958</span></span>
@@ -339,7 +368,16 @@
 <div class="section level2">
 <h2 id="habitat-type">Habitat type<a class="anchor" aria-label="anchor" href="#habitat-type"></a>
 </h2>
-<p>Many taxa are associated with one or more primary or secondary habitat types (e.g., forest) or subtypes (e.g., herb-rich alpine birch forests). Use <code>finbif_metadata("habitat_type")</code> to see the habitat types in FinBIF. You can filter occurrence records based on primary (or primary/secondary) habitat type or subtype codes. Note that filtering based on habitat is on taxa not on the location (i.e., filtering records with <code>primary_habitat = "M"</code> will only return records of taxa considered to primarily inhabit forests, yet the locations of those records may encompass habitats other than forests).</p>
+<p>Many taxa are associated with one or more primary or secondary
+habitat types (e.g., forest) or subtypes (e.g., herb-rich alpine birch
+forests). Use <code>finbif_metadata("habitat_type")</code> to see the
+habitat types in FinBIF. You can filter occurrence records based on
+primary (or primary/secondary) habitat type or subtype codes. Note that
+filtering based on habitat is on taxa not on the location (i.e.,
+filtering records with <code>primary_habitat = "M"</code> will only
+return records of taxa considered to primarily inhabit forests, yet the
+locations of those records may encompass habitats other than
+forests).</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span><span class="op">(</span><span class="st">"habitat_type"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   habitat_name                              habitat_code</span></span>
@@ -353,8 +391,9 @@
 <code class="sourceCode R"><span><span class="co"># Search records of taxa for which forests are their primary or secondary</span></span>
 <span><span class="co"># habitat type</span></span>
 <span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>primary_secondary_habitat <span class="op">=</span> <span class="st">"M"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 22695106</span></span>
@@ -374,7 +413,12 @@
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>You may further refine habitat based searching using a specific habitat type qualifier such as “sun-exposed” or “shady”. Use <code>finbif_metadata("habitat_qualifier")</code> to see the qualifiers available. To specify qualifiers use a named list of character vectors where the names are habitat types or subtypes and the elements of the character vectors are the qualifier codes.</p>
+<p>You may further refine habitat based searching using a specific
+habitat type qualifier such as “sun-exposed” or “shady”. Use
+<code>finbif_metadata("habitat_qualifier")</code> to see the qualifiers
+available. To specify qualifiers use a named list of character vectors
+where the names are habitat types or subtypes and the elements of the
+character vectors are the qualifier codes.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span><span class="op">(</span><span class="st">"habitat_qualifier"</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span></span>
 <span><span class="co">#&gt;   qualifier_name                      qualifier_code</span></span>
@@ -385,8 +429,9 @@
 <code class="sourceCode R"><span><span class="co"># Search records of taxa for which forests with sun-exposure and broadleaved</span></span>
 <span><span class="co"># deciduous trees are their primary habitat type</span></span>
 <span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>primary_habitat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>M <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PA"</span>, <span class="st">"J"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 123</span></span>
@@ -410,11 +455,13 @@
 <div class="section level2">
 <h2 id="status-of-taxa-in-finland">Status of taxa in Finland<a class="anchor" aria-label="anchor" href="#status-of-taxa-in-finland"></a>
 </h2>
-<p>You can restrict the occurrence records by the status of the taxa in Finland. For example you can request records for only rare species.</p>
+<p>You can restrict the occurrence records by the status of the taxa in
+Finland. For example you can request records for only rare species.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>finnish_occurrence_status <span class="op">=</span> <span class="st">"rare"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 318316</span></span>
@@ -433,7 +480,8 @@
 <span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
-</details><p><br> Or, by using the negation of occurrence status, you can request records of birds excluding those considered vagrants.</p>
+</details><p><br> Or, by using the negation of occurrence status, you can request
+records of birds excluding those considered vagrants.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -441,8 +489,9 @@
 <span>    finnish_occurrence_status_neg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"vagrant_%sregular"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"ir"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 19675504</span></span>
@@ -462,7 +511,8 @@
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>See <code>finbif_metadata("finnish_occurrence_status")</code> for a full list of statuses and their descriptions.</p>
+<p>See <code>finbif_metadata("finnish_occurrence_status")</code> for a
+full list of statuses and their descriptions.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
