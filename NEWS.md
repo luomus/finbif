@@ -1,24 +1,9 @@
-# finbif 0.6.5.9003
+# finbif 0.6.6
 
 #### NEW FEATURES
 
   - New option to exclude all records with any NA values for any of the
     selected variables added to `finbif_occurrence`.
-
-# finbif 0.6.5.9002
-
-#### BUG FIXES
-
-  - Fixed issue with ordering by some variables.
-
-# finbif 0.6.5.9001
-
-#### BUG FIXES
-
-  - Fix applied for a print method error triggered by clashing class
-    names.
-
-# finbif 0.6.5.9000
 
 #### MINOR IMPROVEMENTS
 
@@ -26,6 +11,13 @@
     requested with `finbif_occurrence` has been made more detailed,
     warning the user they may be using synonyms or other invalid taxon
     names.
+
+#### BUG FIXES
+
+  - Fix applied for a print method error triggered by clashing class
+    names.
+
+  - Fixed issue with ordering by some variables.
 
 # finbif 0.6.5
 

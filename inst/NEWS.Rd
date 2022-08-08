@@ -1,39 +1,26 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.6.5.9003}{
+\section{finbif version 0.6.6}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item New option to exclude all records with any NA values for any of the
        selected variables added to \code{finbif_occurrence}.
     }
   }
-}
-
-\section{finbif version 0.6.5.9002}{
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Fixed issue with ordering by some variables.
-    }
-  }
-}
-
-\section{finbif version 0.6.5.9001}{
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Fix applied for a print method error triggered by clashing class
-        names.
-    }
-  }
-}
-
-\section{finbif version 0.6.5.9000}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
       \item The warning/error message returned when an invalid taxon is
         requested with \code{finbif_occurrence} has been made more detailed,
         warning the user they may be using synonyms or other invalid taxon
         names.
+    }
+  }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fix applied for a print method error triggered by clashing class
+        names.
+      \item Fixed issue with ordering by some variables.
     }
   }
 }
