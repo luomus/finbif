@@ -27,3 +27,4 @@
 ^tests/cassettes$
 ^CRAN-SUBMISSION$
 ^sandbox$
+^sentinels$
