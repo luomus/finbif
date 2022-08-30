@@ -17,38 +17,41 @@ RSCRIPT = Rscript --no-init-file
 export _R_CHECK_SYSTEM_CLOCK_ = false
 export _R_CHECK_FUTURE_FILE_TIMESTAMPS_ = false
 
-all: dev_deps sentinels/check_deps_only sentinels/check clean
+all: dev_deps sentinels/check_deps_only sentinels/check codemeta.json R/sysdata.rda clean
 .PHONY: all
 
 dev_deps:
+> ${RSCRIPT} -e "stopifnot(requireNamespace('codemetar', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('data.table', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('data.tree', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('details', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('devtools', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('codemetar', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('diffviewer', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('dplyr', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('future', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('gert', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('grDevices', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('here', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('ISOcodes', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('knitr', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('ows4R', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('pkgdown', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('readODS', quietly = TRUE))"
+> ${RSCRIPT} -e "stopifnot(requireNamespace('readxl', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('rmarkdown', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('sf', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('stats', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('testthat', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('tidyr', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('usethis', quietly = TRUE))"
+> ${RSCRIPT} -e "stopifnot(requireNamespace('vcr', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('webfakes', quietly = TRUE))";
 .PHONY: dev_deps
-
-sentinels/build: sentinels/doc
-> cd ..;\
-> R CMD build $(PKGSRC);\
-> cd $(PKGSRC);\
-> mkdir -p $(@D);\
-> touch $@
-
-sentinels/install: sentinels/build
-> cd ..;\
-> R CMD INSTALL $(PKGNM)_$(PKGVERS).tar.gz;\
-> cd $(PKGSRC);\
-> mkdir -p $(@D);\
-> touch $@
 
 sentinels/check_deps_only: sentinels/pkgdown $(shell find tests -type f)
 > cd ..;\
+> R CMD build $(PKGSRC);\
+> R CMD INSTALL $(PKGNM)_$(PKGVERS).tar.gz;\
 > _R_CHECK_DEPENDS_ONLY_=true R CMD check $(PKGNM)_$(PKGVERS).tar.gz --as-cran;\
 > cd $(PKGSRC);\
 > mkdir -p $(@D);\
@@ -56,12 +59,14 @@ sentinels/check_deps_only: sentinels/pkgdown $(shell find tests -type f)
 
 sentinels/check: sentinels/pkgdown $(shell find tests -type f)
 > cd ..;\
+> R CMD build $(PKGSRC);\
+> R CMD INSTALL $(PKGNM)_$(PKGVERS).tar.gz;\
 > R CMD check $(PKGNM)_$(PKGVERS).tar.gz --as-cran;\
 > cd $(PKGSRC);\
 > mkdir -p $(@D);\
 > touch $@
 
-sentinels/pkgdown: sentinels/vignettes README.md NEWS.md
+sentinels/pkgdown: sentinels/vignettes README.md NEWS.md sentinels/doc
 > echo "options(rmarkdown.html_vignette.check_title = FALSE)" > .Rprofile;\
 > ${RSCRIPT} -e "pkgdown::build_site()";\
 > rm .Rprofile;\
@@ -80,8 +85,11 @@ NEWS.md: inst/NEWS.Rd
 > sed -i 's/# ${PKGNM} version/# ${PKGNM}/g' NEWS.md;\
 > $(RM) inst/NEWS.html inst/NEWS.md
 
-sentinels/vignettes: sentinels/install $(shell find inst/vign -type f)
-> cd inst/vign;\
+sentinels/vignettes: $(shell find inst/vign -type f)
+> cd ..;\
+> R CMD build $(PKGSRC);\
+> R CMD INSTALL $(PKGNM)_$(PKGVERS).tar.gz;\
+> cd $(PKGSRC)/inst/vign;\
 > ${RSCRIPT} -e "for (i in list.files('.', '.Rmd$$')) knitr::knit(i)";\
 > sed -i 's/```details/```r/g' *.md;\
 > cp *.md ../../vignettes;\
