@@ -1,4 +1,35 @@
-suppressMessages(insert_cassette("finbif_occurrence_load"))
+if (requireNamespace("webfakes", quietly = TRUE)) {
+
+  library("webfakes", quietly = TRUE)
+
+  app <- new_app()
+
+  app[["get"]](
+    "/HBF.49381",
+    function(req, res) {
+      file <- "HBF.49381.zip"
+      ans <- readBin(file, "raw", n = file.info(file)[["size"]])
+      res[["send"]](ans)
+    }
+  )
+
+  app[["get"]](
+    "/HBF.0",
+    function(req, res) {
+      res[["set_status"]](404L)
+      res[["send"]]("")
+    }
+  )
+
+  api <- local_app_process(app, .local_envir = teardown_env(), port = 36761)
+
+  options(finbif_dl_url = api[["url"]]())
+
+} else {
+
+  Sys.setenv(NOT_CRAN = "false")
+
+}
 
 test_that(
   "can load a file", {
@@ -30,7 +61,7 @@ test_that(
     options(finbif_cache_path = "../write-files", finbif_tz = Sys.timezone())
 
     file_path <-
-      "../write-files/finbif_cache_file_4c64a068da60f708c4e928701ec538ef"
+      "../write-files/finbif_cache_file_3db6439c7601e4401b8a27a2094919a3"
 
     expect_snapshot_value(
       finbif_occurrence_load(file, quiet = TRUE, tzone = "Etc/UTC")[
@@ -63,11 +94,11 @@ test_that(
     file_full <- paste0("http://tun.fi/HBF.", file)
 
     expect_snapshot_value(
-      finbif_occurrence_load(
-        file_full, n = 0, tzone = "Etc/UTC", write_file = file_path, dt = FALSE,
-        keep_tsv = TRUE
-      ),
-      style = "json2"
+     finbif_occurrence_load(
+       file_full, n = 0, tzone = "Etc/UTC", write_file = file_path, dt = FALSE,
+       keep_tsv = TRUE
+     ),
+     style = "json2", ignore_attr = "url"
     )
 
     expect_snapshot_value(
@@ -75,7 +106,7 @@ test_that(
         file_full, tzone = "Etc/UTC", write_file = file_path, dt = FALSE,
         keep_tsv = TRUE
       )[seq(nrows), ],
-      style = "json2"
+      style = "json2", ignore_attr = "url"
     )
 
     expect_snapshot_value(
@@ -175,8 +206,6 @@ test_that(
       "File request failed"
     )
 
-    options(finbif_cache_path = tempdir())
-
   }
 )
 
@@ -188,7 +217,7 @@ test_that(
     Sys.setenv("FINBIF_FILE_SIZE_LIMIT" = "52e3")
 
     file_path <-
-      "../write-files/finbif_cache_file_4c64a068da60f708c4e928701ec538ef"
+      "../write-files/finbif_cache_file_3db6439c7601e4401b8a27a2094919a3"
 
     expect_error(
       finbif_occurrence_load(
@@ -201,5 +230,3 @@ test_that(
 
   }
 )
-
-suppressMessages(eject_cassette("finbif_occurrence_load"))

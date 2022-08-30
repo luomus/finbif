@@ -11,7 +11,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["https://dw.laji.fi/download/HBF.49381"]
+          "value": ["http://127.0.0.1:36761//HBF.49381"]
         },
         "nrow": {
           "type": "integer",
@@ -305,7 +305,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["https://dw.laji.fi/download/HBF.49381"]
+          "value": ["http://127.0.0.1:36761//HBF.49381"]
         },
         "nrow": {
           "type": "integer",
@@ -457,7 +457,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["https://dw.laji.fi/download/HBF.49381"]
+          "value": ["http://127.0.0.1:36761//HBF.49381"]
         },
         "class": {
           "type": "character",
@@ -554,7 +554,7 @@
           "value": []
         },
         {
-          "type": "double",
+          "type": "integer",
           "attributes": {},
           "value": []
         },
@@ -599,7 +599,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["https://dw.laji.fi/download/HBF.49381"]
+          "value": ["http://127.0.0.1:36761//HBF.49381"]
         },
         "nrow": {
           "type": "integer",

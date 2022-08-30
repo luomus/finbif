@@ -66,6 +66,24 @@ test_that(
 )
 
 test_that(
+  "can get a small random sample", {
+
+    x <- finbif_occurrence(
+      filter = c(n_total_records_max = 2000), aggregate = "records", n = 100
+    )
+
+    x <- subset(x, n_records < 3000, scientific_name_interpreted)
+
+    expect_s3_class(
+      finbif_occurrence(x[[1, 1]], sample = TRUE, n = 1001, quiet = TRUE),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+test_that(
   "can return a count", {
 
     skip_on_cran()
@@ -131,15 +149,16 @@ test_that(
 
     expect_output(print(finbif_occurrence()), "Records downloaded:")
 
-    if (
-      requireNamespace("grDevices") && !identical(.Platform$OS.type, "windows")
-    )
+    if (has_grd && !identical(.Platform$OS.type, "windows") && is_dev_branch) {
+
       expect_snapshot_file(
         save_svg(
           plot(fungi, axes = FALSE, xlab = NA, ylab = NA, panel.first = NULL)
         ),
         "fungi.svg"
       )
+
+    }
 
   }
 )
