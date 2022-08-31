@@ -17,7 +17,7 @@ RSCRIPT = Rscript --no-init-file
 export _R_CHECK_SYSTEM_CLOCK_ = false
 export _R_CHECK_FUTURE_FILE_TIMESTAMPS_ = false
 
-all: dev_deps sentinels/check_deps_only sentinels/check codemeta.json R/sysdata.rda clean
+all: dev_deps R/sysdata.rda sentinels/check codemeta.json clean
 .PHONY: all
 
 dev_deps:
@@ -48,19 +48,11 @@ dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('webfakes', quietly = TRUE))";
 .PHONY: dev_deps
 
-sentinels/check_deps_only: sentinels/pkgdown $(shell find tests -type f)
-> cd ..;\
-> R CMD build $(PKGSRC);\
-> R CMD INSTALL $(PKGNM)_$(PKGVERS).tar.gz;\
-> _R_CHECK_DEPENDS_ONLY_=true R CMD check $(PKGNM)_$(PKGVERS).tar.gz --as-cran;\
-> cd $(PKGSRC);\
-> mkdir -p $(@D);\
-> touch $@
-
 sentinels/check: sentinels/pkgdown $(shell find tests -type f)
 > cd ..;\
 > R CMD build $(PKGSRC);\
 > R CMD INSTALL $(PKGNM)_$(PKGVERS).tar.gz;\
+> _R_CHECK_DEPENDS_ONLY_=true R CMD check $(PKGNM)_$(PKGVERS).tar.gz --as-cran;\
 > R CMD check $(PKGNM)_$(PKGVERS).tar.gz --as-cran;\
 > cd $(PKGSRC);\
 > mkdir -p $(@D);\
