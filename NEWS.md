@@ -1,3 +1,10 @@
+# finbif 0.6.6.9000
+
+#### NEW FEATURES
+
+  - New function `taxon_id` that returns FinBIF taxon identifiers given
+    a scientific name, vernacular name or other taxon identifier.
+
 # finbif 0.6.6
 
 #### NEW FEATURES

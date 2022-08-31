@@ -2,6 +2,12 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.6.6.9000}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New function \code{taxon_id} that returns FinBIF taxon identifiers
+        given a scientific name, vernacular name or other taxon identifier.
+    }
+  }
 }
 
 \section{finbif version 0.6.6}{

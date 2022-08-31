@@ -36,6 +36,7 @@ reference:
       - finbif_taxa
       - scientific_name
       - common_name
+      - taxon_id
   - title: "Records"
     desc: >
       Getting records from finbif
