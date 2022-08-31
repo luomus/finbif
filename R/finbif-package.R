@@ -18,6 +18,9 @@
 #'   Russian, and Sámi (Northern). By default, the system settings are used to
 #'   set this option if they are set to one of the supported languages,
 #'   otherwise English is used.}
+#' \item{`finbif_hide_progress`}{Logical. Global option to suppress progress
+#'   indicators for downloading, importing and processing FinBIF records.
+#'   Default: `FALSE`}
 #' }
 "_PACKAGE"
 

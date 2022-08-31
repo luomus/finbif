@@ -31,6 +31,9 @@ language codes. Current supported languages are English, Finnish, Swedish,
 Russian, and Sámi (Northern). By default, the system settings are used to
 set this option if they are set to one of the supported languages,
 otherwise English is used.}
+\item{\code{finbif_hide_progress}}{Logical. Global option to suppress progress
+indicators for downloading, importing and processing FinBIF records.
+Default: \code{FALSE}}
 }
 }
 

@@ -57,11 +57,11 @@
 
 finbif_occurrence <- function(
   ..., filter, select, order_by, aggregate, sample = FALSE, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  dwc = FALSE, date_time_method, check_taxa = TRUE,
-  on_check_fail = c("warn", "error"), tzone = getOption("finbif_tz"),
-  locale = getOption("finbif_locale"), seed, drop_na = FALSE,
-  aggregate_counts = TRUE, exclude_na = FALSE
+  count_only = FALSE, quiet = getOption("finbif_hide_progress"),
+  cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
+  check_taxa = TRUE, on_check_fail = c("warn", "error"),
+  tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"), seed,
+  drop_na = FALSE, aggregate_counts = TRUE, exclude_na = FALSE
 ) {
 
   taxa <- select_taxa(

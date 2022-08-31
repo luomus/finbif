@@ -29,7 +29,7 @@
 #' @param page Integer. Which page of records to start downloading from.
 #' @param count_only Logical. Only return the number of records available.
 #' @param quiet Logical. Suppress the progress indicator for multipage
-#'   downloads.
+#'   downloads. Defaults to value of option `finbif_hide_progress`.
 #' @param cache Logical. Use cached data.
 #' @param dwc Logical. Use Darwin Core (or Darwin Core style) variable names.
 #' @param seed Integer. Set a seed for randomly sampling records.
@@ -48,8 +48,9 @@
 
 finbif_records <- function(
   filter, select, order_by, aggregate, sample = FALSE, n = 10, page = 1,
-  count_only = FALSE, quiet = FALSE, cache = getOption("finbif_use_cache"),
-  dwc = FALSE, seed, df = FALSE, exclude_na = FALSE
+  count_only = FALSE, quiet = getOption("finbif_hide_progress"),
+  cache = getOption("finbif_use_cache"), dwc = FALSE, seed, df = FALSE,
+  exclude_na = FALSE
 ) {
 
   max_size <- getOption("finbif_max_page_size")
