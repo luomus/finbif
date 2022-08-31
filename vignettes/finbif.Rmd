@@ -56,7 +56,7 @@ variable `FINBIF_ACCESS_TOKEN` either for the current session,
 
 ```r
 Sys.setenv(
-  FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"
+  FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrv"
 )
 # Note: the above is not a real access token. Do not try using it.
 ```
@@ -377,7 +377,7 @@ with(
            fill   = hcl.colors(7),
            border = NA,
            bty    = "n",
-           adj    = c(0, 0.25), 
+           adj    = c(0, 0.25),
            x.intersp = .2,
            y.intersp = .5)
     # add the Finnish border
