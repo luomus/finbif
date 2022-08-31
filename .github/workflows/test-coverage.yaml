@@ -53,5 +53,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Test coverage
-        run: covr::codecov()
+        run: |
+          Sys.setenv(BRANCH = "${GIT_BRANCH}")
+          covr::codecov()
         shell: Rscript {0}

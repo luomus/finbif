@@ -2,7 +2,7 @@ has_dev_token <- !identical(nchar(Sys.getenv("FINBIF_DEV_ACCESS_TOKEN")), 0L)
 
 not_cran <- identical(Sys.getenv("NOT_CRAN"), "true")
 
-is_dev_branch <- FALSE
+is_main_branch <- FALSE
 
 has_gert <- requireNamespace("gert", quietly = TRUE)
 
@@ -39,17 +39,17 @@ if (has_vcr && not_cran) {
 
     has_git <- dir.exists(here::here(".git"))
 
-    is_dev_branch <- identical(Sys.getenv("DEV_BRANCH"), "true")
+    is_main_branch <- identical(Sys.getenv("BRANCH"), "main")
 
     if (has_gert && has_git) {
 
       suppressPackageStartupMessages(library("gert", quietly = TRUE))
 
-      is_dev_branch <- identical(gert::git_branch(), "dev")
+      is_main_branch <- identical(gert::git_branch(), "main")
 
     }
 
-    if (is_dev_branch) {
+    if (!is_main_branch && has_dev_token) {
 
       Sys.setenv(FINBIF_ACCESS_TOKEN = Sys.getenv("FINBIF_DEV_ACCESS_TOKEN"))
 

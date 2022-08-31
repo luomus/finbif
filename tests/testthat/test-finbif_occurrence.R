@@ -149,13 +149,13 @@ test_that(
 
     expect_output(print(finbif_occurrence()), "Records downloaded:")
 
-    if (has_grd && !identical(.Platform$OS.type, "windows") && is_dev_branch) {
+    if (has_grd && !identical(.Platform$OS.type, "windows")) {
 
       expect_snapshot_file(
         save_svg(
           plot(fungi, axes = FALSE, xlab = NA, ylab = NA, panel.first = NULL)
         ),
-        "fungi.svg"
+        if (is_main_branch) "fungi.svg" else "fungi-dev.svg"
       )
 
     }
