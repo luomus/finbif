@@ -87,7 +87,7 @@ truncate_string_to_unique <- function(x) {
   y <- x[ind]
   i <- 0L
   all_equal <- TRUE
-  while (all_equal & length(unique(y)) > 1L) {
+  while (all_equal && length(unique(y)) > 1L) {
     substr(y, i, i) <- " "
     i <- i + 1L
     j <- substr(y, i, i)
