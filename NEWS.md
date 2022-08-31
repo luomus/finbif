@@ -1,3 +1,10 @@
+# finbif 0.6.6.9001
+
+#### NEW FEATURES
+
+  - New filters `complete_list_taxon_id` and `complete_list_type` now
+    available.
+
 # finbif 0.6.6.9000
 
 #### NEW FEATURES

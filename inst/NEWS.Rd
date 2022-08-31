@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.6.9001}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New filters \code{complete_list_taxon_id} and
+        \code{complete_list_type} now available.
+    }
+  }
+}
+
 \section{finbif version 0.6.6.9000}{
   \subsection{NEW FEATURES}{
     \itemize{
