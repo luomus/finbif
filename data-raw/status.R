@@ -1,4 +1,5 @@
 administrative_status <- read.csv(
+  # nolint start: line_len
   text = "
     finbif_api_status, translated_status, translated_status_code
     MX.finlex160_1997_appendix4, 'Finlex 160 1997 appendix 4', FNLX160_97_4
@@ -52,6 +53,7 @@ administrative_status <- read.csv(
     MX.habitatsDirectiveAnnexII_FinlandNaturaSpecies, 'Habitats directive annex II Finland Natura Species', HABDIR2FN
     MX.euRegulation_cites_appendixD, 'EU Regulation - CITES appendix D', EU_CITESD
   ",
+  # nolint end
   stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'"
 )
 

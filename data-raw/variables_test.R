@@ -53,7 +53,7 @@ schema_only <- setdiff(select_vars, select_vars_pkg)
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
 order_vars_pkg <- c(
-  row.names(var_names_test[var_names_test[["order"]], ]) ,"RANDOM",
+  row.names(var_names_test[var_names_test[["order"]], ]), "RANDOM",
   "RANDOM:seed"
 )
 order_vars_pkg <- grep(
@@ -75,7 +75,9 @@ schema_only <- setdiff(agg_vars, agg_vars_pkg)
 
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
-agg_gath_vars_pkg <- row.names(var_names_test[var_names_test[["aggregate_events"]], ])
+agg_gath_vars_pkg <- row.names(
+  var_names_test[var_names_test[["aggregate_events"]], ]
+)
 agg_gath_vars_pkg <- grep(
   remove_vars, agg_gath_vars_pkg, value = TRUE, invert = TRUE
 )
@@ -85,7 +87,9 @@ schema_only <- setdiff(agg_gath_vars, agg_gath_vars_pkg)
 
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
-agg_doc_vars_pkg <- row.names(var_names_test[var_names_test[["aggregate_documents"]], ])
+agg_doc_vars_pkg <- row.names(
+  var_names_test[var_names_test[["aggregate_documents"]], ]
+)
 agg_doc_vars_pkg <- grep(
   remove_vars, agg_doc_vars_pkg, value = TRUE, invert = TRUE
 )
@@ -96,7 +100,7 @@ schema_only <- setdiff(agg_doc_vars, agg_doc_vars_pkg)
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
 has_value_test <- var_names_test[
-  grep(remove_vars, rownames(var_names_test),value = TRUE, invert = TRUE),
+  grep(remove_vars, rownames(var_names_test), value = TRUE, invert = TRUE),
   c("translated_var", "dwc"),
   drop = FALSE
 ]

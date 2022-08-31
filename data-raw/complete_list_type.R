@@ -23,8 +23,11 @@ complete_list_type <- rbind(
   complete_list_type,
   data.frame(
     type = "all_species",
-    row.names =
-      "MY.completeListTypeCompleteWithBreedingStatus,MY.completeListTypeComplete"
+    row.names = paste(
+      "MY.completeListTypeCompleteWithBreedingStatus",
+      "MY.completeListTypeComplete",
+      sep = ","
+    )
   )
 )
 

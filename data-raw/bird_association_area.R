@@ -46,4 +46,3 @@ stopifnot(n > baa[["content"]][["total"]])
 baa <- sapply(baa[["content"]][["results"]], getElement, "id")
 
 stopifnot(identical(sort(row.names(bird_assoc_area)), sort(baa)))
-

@@ -52,7 +52,7 @@ schema_only <- setdiff(select_vars, select_vars_pkg)
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
 order_vars_pkg <- c(
-  row.names(var_names[var_names[["order"]], ]) ,"RANDOM", "RANDOM:seed"
+  row.names(var_names[var_names[["order"]], ]), "RANDOM", "RANDOM:seed"
 )
 order_vars_pkg <- grep(
   remove_vars, order_vars_pkg, value = TRUE, invert = TRUE
@@ -102,7 +102,7 @@ in_docs_only  <- setdiff(vars_in_docs, doc_vars)
 stopifnot(!length(c(doc_vars_only, in_docs_only)))
 
 has_value <- var_names[
-  grep(remove_vars, rownames(var_names),value = TRUE, invert = TRUE),
+  grep(remove_vars, rownames(var_names), value = TRUE, invert = TRUE),
   c("translated_var", "dwc"),
   drop = FALSE
 ]
