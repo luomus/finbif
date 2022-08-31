@@ -32,6 +32,9 @@
 #' # Get scientific name of "Otter"
 #' scientific_name("Otter")
 #'
+#' # Get scientific name of "Otter"
+#' taxon_id("Otter")
+#'
 #' }
 #' @export
 
@@ -71,4 +74,10 @@ common_name <- function(name, locale = getOption("finbif_locale")) {
 #' @rdname finbif_taxa
 scientific_name <- function(name) {
   taxon_attribute(name, "scientificName")
+}
+
+#' @export
+#' @rdname finbif_taxa
+taxon_id <- function(name) {
+  taxon_attribute(name, "id")
 }

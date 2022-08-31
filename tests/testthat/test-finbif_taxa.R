@@ -12,7 +12,6 @@ test_that(
 
 suppressMessages(eject_cassette("finbif_taxa"))
 
-
 suppressMessages(insert_cassette("taxon_name"))
 
 test_that(
@@ -28,3 +27,17 @@ test_that(
 )
 
 suppressMessages(eject_cassette("taxon_name"))
+
+suppressMessages(insert_cassette("taxon_id"))
+
+test_that(
+  "returns correct ID", {
+
+    skip_on_cran()
+
+    expect_identical(taxon_id("Lutra lutra"), "MX.47169")
+
+  }
+)
+
+suppressMessages(eject_cassette("taxon_id"))

@@ -5,6 +5,7 @@
 \alias{fb_taxa}
 \alias{common_name}
 \alias{scientific_name}
+\alias{taxon_id}
 \title{Search the FinBIF taxa}
 \usage{
 finbif_taxa(
@@ -17,6 +18,8 @@ finbif_taxa(
 common_name(name, locale = getOption("finbif_locale"))
 
 scientific_name(name)
+
+taxon_id(name)
 }
 \arguments{
 \item{name}{Character. The name or ID of a taxon. Or, for functions other
@@ -57,6 +60,9 @@ common_name("Bubo bubo", "se")
 
 # Get scientific name of "Otter"
 scientific_name("Otter")
+
+# Get scientific name of "Otter"
+taxon_id("Otter")
 
 }
 }
