@@ -354,6 +354,15 @@ form <code>"&lt;fact&gt;=&lt;value&gt;"</code>. Value can be omitted in which ca
 with any value recorded for the specified fact will be returned.</p></li>
 <li><p><code>has_sample</code> Logical.
 Record includes a sample or samples (e.g., a DNA sample or preparation).</p></li>
+<li><p><code>complete_list_type</code> Filter by complete list type. Records made during
+monitoring that produces taxon lists for a given group of taxa (e.g.,
+birds) can include all species observed with breeding status recorded for
+each observed species (<code>all_species_and_breeding</code>), all species observed
+without breeding status recorded for all species observed, all species
+observed with or without breeding status recorded for all observed species
+(<code>all_species</code>), or only some of the species observed (<code>incomplete</code>).</p></li>
+<li><p><code>complete_list_taxon_id</code> Filter by the taxon ID of the target group (e.g.,
+birds) for a complete list.</p></li>
 </ul></div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

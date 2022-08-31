@@ -288,6 +288,15 @@
 #'   with any value recorded for the specified fact will be returned.
 #' - `has_sample` Logical.
 #'   Record includes a sample or samples (e.g., a DNA sample or preparation).
+#' - `complete_list_type` Filter by complete list type. Records made during
+#'   monitoring that produces taxon lists for a given group of taxa (e.g.,
+#'   birds) can include all species observed with breeding status recorded for
+#'   each observed species (`all_species_and_breeding`), all species observed
+#'   without breeding status recorded for all species observed, all species
+#'   observed with or without breeding status recorded for all observed species
+#'   (`all_species`), or only some of the species observed (`incomplete`).
+#' - `complete_list_taxon_id` Filter by the taxon ID of the target group (e.g.,
+#'   birds) for a complete list.
 #'
 #' @name filters
 NULL

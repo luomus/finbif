@@ -305,6 +305,15 @@ form \code{"<fact>=<value>"}. Value can be omitted in which case all records
 with any value recorded for the specified fact will be returned.
 \item \code{has_sample} Logical.
 Record includes a sample or samples (e.g., a DNA sample or preparation).
+\item \code{complete_list_type} Filter by complete list type. Records made during
+monitoring that produces taxon lists for a given group of taxa (e.g.,
+birds) can include all species observed with breeding status recorded for
+each observed species (\code{all_species_and_breeding}), all species observed
+without breeding status recorded for all species observed, all species
+observed with or without breeding status recorded for all observed species
+(\code{all_species}), or only some of the species observed (\code{incomplete}).
+\item \code{complete_list_taxon_id} Filter by the taxon ID of the target group (e.g.,
+birds) for a complete list.
 }
 }
 
