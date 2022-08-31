@@ -1,3 +1,10 @@
+# finbif 0.6.6.9002
+
+#### NEW FEATURES
+
+  - New global option `finbif_hide_progress` to suppress progress bars
+    when downloading, importing or processing FinBIF records.
+
 # finbif 0.6.6.9001
 
 #### NEW FEATURES

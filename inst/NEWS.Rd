@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.6.9002}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New global option \code{finbif_hide_progress} to suppress progress
+        bars when downloading, importing or processing FinBIF records.
+    }
+  }
+}
+
 \section{finbif version 0.6.6.9001}{
   \subsection{NEW FEATURES}{
     \itemize{
