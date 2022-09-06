@@ -657,3 +657,9 @@ document.namedPlace.alternativeId,location_alt_id,locationAltID,FALSE,FALSE,char
 document.namedPlace.tags,location_tags,locationTags,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.completeListTaxonId,complete_list_taxon_id,completeListTaxonID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.completeListType,complete_list_type,completeListType,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+unit.annotations.identification.linkings.taxon.threatenedStatus,record_annotation_threatened_status,occurrenceAnnotationThreatenedStatus,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.threatenedStatus,record_pre_annotation_threatened_status,occurrencePreAnnotationThreatenedStatus,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.identifications.linkings.taxon.threatenedStatus,record_identifications_threatened_status,occurrenceIdentificationsThreatenedStatus,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.originalTaxon.threatenedStatus,orig_taxon_threatened_status,originalTaxonThreatenedStatus,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.taxon.threatenedStatus,threatened_status,threatenedStatus,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.types.linkings.taxon.threatenedStatus,type_specimen_threatened_status,typeSpecimenThreatenedStatus,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
