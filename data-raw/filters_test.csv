@@ -93,7 +93,7 @@ effectiveTag,effective_tag,factor,FALSE,",",FALSE
 needsCheck,requires_verification,factor,FALSE,",",TRUE
 occurrenceCountMax,n_total_records_max,integer,FALSE,",",FALSE
 occurrenceCountFinlandMax,n_total_records_finland_max,integer,FALSE,",",FALSE
-collectionAndRecordQuality,collection_and_record_quality,factor,FALSE,",",FALSE
+collectionAndRecordQuality,collection_and_record_quality,factor,FALSE,";",FALSE
 plantStatusCode,plant_status_code,character,FALSE,",",FALSE
 elyCentreId,ely_center_id,uri,FALSE,",",FALSE
 provinceId,region_id,uri,FALSE,",",FALSE
