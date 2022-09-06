@@ -29,7 +29,7 @@ regulatory_status <- read.csv(
     MX.unprotectedSpecies, 'Unprotected species', UNP_SP
     MX.nationallySignificantInvasiveSpecies, 'Nationally significant invasive species', NS_INVSV
     MX.euInvasiveSpeciesList, 'EU invasive species list', EU_INVSV
-    MX.otherPlantPest, 'Other plant pest' OPP_INVSV
+    MX.otherPlantPest, 'Other plant pest', OPP_INVSV
     MX.qualityPlantPest, 'Quality plant pest', QLPP_INVSV
     MX.quarantinePlantPest, 'Quarantine plant pest', QPP_INVSV
     MX.nationalInvasiveSpeciesStrategy, 'National invasive species strategy', NSS_INVSV
