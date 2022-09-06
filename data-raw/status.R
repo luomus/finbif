@@ -1,4 +1,4 @@
-administrative_status <- read.csv(
+regulatory_status <- read.csv(
   # nolint start: line_len
   text = "
     finbif_api_status, translated_status, translated_status_code
@@ -57,7 +57,7 @@ administrative_status <- read.csv(
   stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'"
 )
 
-class(administrative_status[["translated_status_code"]]) <- "translation"
+class(regulatory_status[["translated_status_code"]]) <- "translation"
 
 red_list_status <- read.csv(
   text = "
@@ -88,7 +88,7 @@ admin_status <-
   sapply(metadata_ranges[["MX.adminStatusEnum"]], getElement, "id")
 
 stopifnot(
-  identical(sort(row.names(administrative_status)), sort(admin_status))
+  identical(sort(row.names(regulatory_status)), sort(admin_status))
 )
 
 redlist_status <- sapply(metadata_ranges[["MX.iucnStatuses"]], getElement, "id")

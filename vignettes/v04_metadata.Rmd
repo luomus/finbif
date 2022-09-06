@@ -29,7 +29,7 @@ finbif_metadata()
 ```r
 
 #>    metadata_name            
-#> 1  admin_status             
+#> 1  regulatory_status        
 #> 2  red_list                 
 #> 3  country                  
 #> 4  province                 

@@ -119,14 +119,14 @@ level informal group:
 finbif_informal_groups("macrofungi")
 ```
 
-## Administrative status
+## Regulatory 
 Many records in the FinBIF database include taxa that have one or another
-administrative statuses. See `finbif_metadata("admin_status")` for a list of
-administrative statuses and short-codes.
-```{details admin-status}
+regulatory statuses. See `finbif_metadata("regulatory_status")` for a list of
+regulatory statuses and short-codes.
+```{details regulatory-status}
 # Search for birds on the EU invasive species list
 finbif_occurrence(
-  filter = list(informal_group = "Birds", administrative_status = "EU_INVSV")
+  filter = list(informal_group = "Birds", regulatory_status = "EU_INVSV")
 )
 ```
 

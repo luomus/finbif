@@ -245,15 +245,15 @@ finbif_informal_groups("macrofungi")
 #>  ¦   °--Gastroid fungi, puffballs
 ```
 
-## Administrative status
+## Regulatory 
 Many records in the FinBIF database include taxa that have one or another
-administrative statuses. See `finbif_metadata("admin_status")` for a list of
-administrative statuses and short-codes.
+regulatory statuses. See `finbif_metadata("regulatory_status")` for a list of
+regulatory statuses and short-codes.
 
 ```r
 # Search for birds on the EU invasive species list
 finbif_occurrence(
-  filter = list(informal_group = "Birds", administrative_status = "EU_INVSV")
+  filter = list(informal_group = "Birds", regulatory_status = "EU_INVSV")
 )
 ```
 
@@ -264,19 +264,19 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 452
+#> Records available: 469
 #> A data.frame [10 x 12]
-#>            record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1     …JX.1045316#34 Alopochen aegyptiaca  3         52.16081  4.485534 2019-10-23 13:00:00
-#> 2     …JX.138840#123 Alopochen aegyptiaca  4         53.36759  6.191796 2018-10-26 11:15:00
-#> 3     …JX.139978#214 Alopochen aegyptiaca  6         53.37574  6.207861 2018-10-23 08:30:00
-#> 4      …JX.139710#17 Alopochen aegyptiaca  30        52.3399   5.069133 2018-10-22 10:45:00
-#> 5      …JX.139645#57 Alopochen aegyptiaca  36        51.74641  4.535283 2018-10-21 13:00:00
-#> 6      …JX.139645#10 Alopochen aegyptiaca  3         51.74641  4.535283 2018-10-21 13:00:00
-#> 7      …JX.139442#16 Alopochen aegyptiaca  2         51.90871  4.53258  2018-10-20 12:10:00
-#> 8   …KE.8_1208123#15 Alopochen aegyptiaca  2         53.19242  5.437417 2017-10-24 11:06:00
-#> 9   …KE.8_1208068#89 Alopochen aegyptiaca  5         53.32081  6.192341 2017-10-23 12:15:00
-#> 10 …KE.8_1208068#101 Alopochen aegyptiaca  20        53.32081  6.192341 2017-10-23 12:15:00
+#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1  …KE.176/62b1ad90d5d…   Oxyura jamaicensis  7         61.66207  23.57706 2022-06-21 12:00:00
+#> 2        …JX.1045316#34 Alopochen aegyptiaca  3         52.16081  4.485534 2019-10-23 13:00:00
+#> 3        …JX.138840#123 Alopochen aegyptiaca  4         53.36759  6.191796 2018-10-26 11:15:00
+#> 4        …JX.139978#214 Alopochen aegyptiaca  6         53.37574  6.207861 2018-10-23 08:30:00
+#> 5         …JX.139710#17 Alopochen aegyptiaca  30        52.3399   5.069133 2018-10-22 10:45:00
+#> 6         …JX.139645#57 Alopochen aegyptiaca  36        51.74641  4.535283 2018-10-21 13:00:00
+#> 7         …JX.139645#10 Alopochen aegyptiaca  3         51.74641  4.535283 2018-10-21 13:00:00
+#> 8         …JX.139442#16 Alopochen aegyptiaca  2         51.90871  4.53258  2018-10-20 12:10:00
+#> 9      …KE.8_1208123#15 Alopochen aegyptiaca  2         53.19242  5.437417 2017-10-24 11:06:00
+#> 10    …KE.8_1208068#101 Alopochen aegyptiaca  20        53.32081  6.192341 2017-10-23 12:15:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
