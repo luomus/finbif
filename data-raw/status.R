@@ -3,7 +3,7 @@ regulatory_status <- read.csv(
   text = "
     finbif_api_status, translated_status, translated_status_code
     MX.finlex160_1997_appendix4, 'Finlex 160 1997 appendix 4', FNLX160_97_4
-    MX.finlex160_1997_appendix4_specialInterest, 'Finlex 160 1997 appendix 4 special interest', FNLX160_97_4SI
+    MX.finlex160_1997_appendix4_specialInterest, 'Finlex 160 1997 appendix 4 Special interest', FNLX160_97_4_SI
     MX.finlex160_1997_appendix2a, 'Finlex 160 1997 appendix 2a', FNLX160_97_2A
     MX.finlex160_1997_appendix2b, 'Finlex 160 1997 appendix 2b', FNLX160_97_2B
     MX.finlex160_1997_appendix3a, 'Finlex 160 1997 appendix 3a', FNLX160_97_3A
