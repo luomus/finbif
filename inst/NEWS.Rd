@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.6.9003}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item For the sack of clarity and consistency the term "adminstrative
+        status" is now refered to as "regulatory status" throughout.
+    }
+  }
+}
+
 \section{finbif version 0.6.6.9002}{
   \subsection{NEW FEATURES}{
     \itemize{

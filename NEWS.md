@@ -1,3 +1,10 @@
+# finbif 0.6.6.9003
+
+#### NEW FEATURES
+
+  - For the sack of clarity and consistency the term "adminstrative
+    status" is now refered to as "regulatory status" throughout.
+
 # finbif 0.6.6.9002
 
 #### NEW FEATURES
