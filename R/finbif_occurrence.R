@@ -455,25 +455,37 @@ compute_vars_from_id <- function(df, select_, dwc, locale, add = TRUE) {
 
       } else {
 
-        ptrn <- "^name_"
+        ptrn <- "^name_|^description_"
 
         metadata <- get(to_native(candidates[[k]]))
 
       }
 
-      i <- gsub("http://tun.fi/", "", df[[id_var_name]])
+      id_var <- df[[id_var_name]]
 
       j <- grep(ptrn, names(metadata))
 
-      var <- metadata[i, j, drop = FALSE]
+      names(metadata) <- gsub(ptrn, "", names(metadata))
 
-      names(var) <- gsub(ptrn, "", names(var))
+      i <- lapply(id_var, remove_domain)
 
-      var <- apply(var, 1L, as.list)
+      var <- lapply(i, function(i) metadata[i, j, drop = FALSE])
 
-      var <- vapply(var, with_locale, NA_character_, locale)
+      var <- lapply(var, apply, 1L, as.list)
 
-      df[[candidates[[k]]]] <- ifelse(is.na(var), df[[id_var_name]], var)
+      var <- lapply(var, vapply, with_locale, NA_character_, locale)
+
+      df[[candidates[[k]]]] <- mapply(
+        function(x, y) unname(ifelse(is.na(x), y, x)),
+        var, id_var,
+        SIMPLIFY = FALSE, USE.NAMES = FALSE
+      )
+
+      if (!is.list(id_var)) {
+
+        df[[candidates[[k]]]] <- unlist(df[[candidates[[k]]]])
+
+      }
 
     }
 

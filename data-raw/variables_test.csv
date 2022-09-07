@@ -376,7 +376,7 @@ document.namedPlace.ykj10km.lon,location_lon_10_ykj,locationDecimalLongitudeGrid
 gathering.linkings.observers,observers,recordedByTeam,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.team.memberId,team_member_id,recordedByTeamMemberID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.team.memberName,team_member,recordedByTeamMember,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-unit.linkings.originalTaxon.administrativeStatuses,orig_taxon_regulatory_statuses,originalTaxonRegulatoryStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.originalTaxon.administrativeStatuses,orig_taxon_regulatory_statuses_id,originalTaxonRegulatoryStatusesID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.aggregateId,orig_taxon_aggregate_id,originalTaxonAggregateID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.anamorphId,orig_taxon_anamorph_id,originalTaxonAnamorphID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.birdlifeCode,orig_taxon_birdlife_code,originalTaxonBirdLifeCode,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -444,7 +444,8 @@ unit.linkings.originalTaxon.superphylumId,orig_taxon_superphylum_id,originalTaxo
 unit.linkings.originalTaxon.tribeId,orig_taxon_tribe_id,originalTaxonTribeID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.typesOfOccurrenceInFinland,orig_taxon_finnish_occurrence_type,originalTaxonFinnishOccurrenceType,FALSE,FALSE,integer,integer,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.varietyId,orig_taxon_variety_id,originalTaxonVarietyID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.linkings.taxon.administrativeStatuses,regulatory_statuses,regulatoryStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.taxon.administrativeStatuses,regulatory_statuses_id,regulatoryStatusesID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+computed_var_from_id_regulatory_statuses,regulatory_statuses,regulatoryStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.aggregateId,aggregate_id,aggregateID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.anamorphId,anamorph_id,anamorphID,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.birdlifeCode,birdlife_code,birdlifeCode,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -641,10 +642,10 @@ unit.types.linkings.taxon.primaryHabitat.habitat,type_specimen_primary_habitat,t
 unit.types.linkings.taxon.primaryHabitat.habitatSpecificTypes,type_specimen_primary_habitat_specific_types,typeSpecimenPrimaryHabitatSpecificTypes,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.primaryHabitat.id,type_specimen_primary_habitat_id,typeSpecimenPrimaryHabitatID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.primaryHabitat.order,type_specimen_primary_habitat_order,typeSpecimenPrimaryHabitatOrder,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.annotations.identification.linkings.taxon.administrativeStatuses,record_annotation_taxon_regulatory_statuses,occurrenceAnnotationTaxonRegulatoryStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.administrativeStatuses,record_pre_annotation_taxon_regulatory_statuses,occurrencePreAnnotationTaxonRegulatoryStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.identifications.linkings.taxon.administrativeStatuses,record_identifications_taxon_regulatory_statuses,occurrenceIdentificationsTaxonRegulatoryStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.types.linkings.taxon.administrativeStatuses,type_specimen_regulatory_statuses,typeSpecimenRegulatoryStatuses,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.identification.linkings.taxon.administrativeStatuses,record_annotation_taxon_regulatory_statuses_id,occurrenceAnnotationTaxonRegulatoryStatusesID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.administrativeStatuses,record_pre_annotation_taxon_regulatory_statuses_id,occurrencePreAnnotationTaxonRegulatoryStatusesID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.identifications.linkings.taxon.administrativeStatuses,record_identifications_taxon_regulatory_statuses_id,occurrenceIdentificationsTaxonRegulatoryStatusesID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.types.linkings.taxon.administrativeStatuses,type_specimen_regulatory_statuses_id,typeSpecimenRegulatoryStatusesID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.atlasClass,atlas_class,atlasClass,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.atlasCode,atlas_code,atlasCode,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.prefix,document_prefix,documentPrefix,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
