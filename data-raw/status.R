@@ -57,7 +57,6 @@ regulatory_statuses <- read.csv(
   stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'"
 )
 
-
 for (i in row.names(regulatory_statuses)) {
 
   status <- httr::GET(paste0("https://tun.fi/", i))
