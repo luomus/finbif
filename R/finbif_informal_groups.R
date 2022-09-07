@@ -8,6 +8,11 @@
 #'  its subgroups.
 #' @param limit Integer. The maximum number informal groups to display.
 #' @param quiet Logical. Return informal group names without displaying them.
+#' @param locale Character. One of the supported two-letter ISO 639-1 language
+#'   codes. Current supported languages are English, Finnish, Swedish, Russian,
+#'   and Sámi (Northern). For data where more than one language is available
+#'   the language denoted by `locale` will be preferred while falling back to
+#'   the other languages in the order indicated above.
 #' @return A character vector (invisibly).
 #' @examples \dontrun{
 #'
@@ -16,20 +21,31 @@
 #' }
 #' @export
 
-finbif_informal_groups <- function(group, limit = 50, quiet = FALSE) {
-  df <- informal_group
+finbif_informal_groups <- function(
+  group, limit = 50, quiet = FALSE, locale = getOption("finbif_locale")
+) {
+
+  df_names <- informal_groups[, grep("^name_", names(informal_groups))]
+  names(df_names) <- sub("^name_", "", names(df_names))
+  df_names <- with_locale(df_names, locale)
+
+  df_trees <- informal_groups[, grep("^tree_", names(informal_groups))]
+  names(df_trees) <- sub("^tree_", "", names(df_trees))
+  df_trees <- with_locale(df_trees, locale)
+
   if (!missing(group)) {
     group <- to_sentence_case(group)
-    stopifnot(group %in% df[["name"]])
-    begin <- which(df[["name"]] == group)
-    lvl <- regexpr("\\w", df[["tree"]])
+    stopifnot(group %in% df_names)
+    begin <- which(df_names == group)
+    lvl <- regexpr("\\w", df_trees)
     end <- which(lvl == lvl[begin] & seq_along(lvl) > begin)[1L] - 1L
-    df  <- df[seq.int(begin, end), ]
+    df_names <- df_names[seq.int(begin, end)]
+    df_trees <- df_trees[seq.int(begin, end)]
   }
-  n <- nrow(df)
+  n <- length(df_names)
   limit <- min(limit, n)
   if (!quiet) {
-    cat(df[["tree"]][seq_len(limit)], sep = "\n")
+    cat(df_trees[seq_len(limit)], sep = "\n")
     extra <- n - limit
     if (extra > 0L) {
       cat(
@@ -37,5 +53,5 @@ finbif_informal_groups <- function(group, limit = 50, quiet = FALSE) {
       )
     }
   }
-  invisible(df[["name"]])
+  invisible(df_names)
 }

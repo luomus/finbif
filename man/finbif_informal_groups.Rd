@@ -5,7 +5,12 @@
 \alias{fb_informal_groups}
 \title{FinBIF informal groups}
 \usage{
-finbif_informal_groups(group, limit = 50, quiet = FALSE)
+finbif_informal_groups(
+  group,
+  limit = 50,
+  quiet = FALSE,
+  locale = getOption("finbif_locale")
+)
 }
 \arguments{
 \item{group}{Character. Optional, if supplied only display this group and
@@ -14,6 +19,12 @@ its subgroups.}
 \item{limit}{Integer. The maximum number informal groups to display.}
 
 \item{quiet}{Logical. Return informal group names without displaying them.}
+
+\item{locale}{Character. One of the supported two-letter ISO 639-1 language
+codes. Current supported languages are English, Finnish, Swedish, Russian,
+and Sámi (Northern). For data where more than one language is available
+the language denoted by \code{locale} will be preferred while falling back to
+the other languages in the order indicated above.}
 }
 \value{
 A character vector (invisibly).

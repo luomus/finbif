@@ -107,7 +107,7 @@ test_that(
     n <- 1100L
 
     fungi <- finbif_occurrence(
-      filter = c(informal_group = "Fungi and lichens"),
+      filter = c(informal_groups = "Fungi and lichens"),
       select = to_native(
         "occurrenceID", "informalTaxonGroups", "taxonID", "vernacularName",
         "default_vars"

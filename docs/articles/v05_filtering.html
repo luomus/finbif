@@ -254,25 +254,25 @@ collections.</p>
 <p>You can filter occurrence records based on informal taxonomic groups
 such as <code>Birds</code> or <code>Mammals</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>informal_group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Birds"</span>, <span class="st">"Mammals"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>informal_groups <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Birds"</span>, <span class="st">"Mammals"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <details closed><summary>
 Click to show/hide output.
 </summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 19946472</span></span>
+<span><span class="co">#&gt; Records available: 21117917</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
-<span><span class="co">#&gt;               record_id   scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
-<span><span class="co">#&gt; 1  …KE.176/615c0572d5d…   Pteromys volans  1         61.84054  23.5467  2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 2  …KE.176/615bd55fd5d…     Martes martes  1         62.41282  25.05716 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 3         …JX.1315879#3            Cygnus  2         60.13003  23.75727 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 4        …JX.1315856#12 Clangula hyemalis  10        60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 5        …JX.1315856#15 Clangula hyemalis  3         60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 6        …JX.1315856#57         Pica pica  1         60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 7        …JX.1315856#27  Larus argentatus  12        60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 8        …JX.1315856#33 Branta canadensis  6         60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 9         …JX.1315856#9       Cygnus olor  8         60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 10       …JX.1315856#24     Larus marinus  4         60.42794  22.20052 2021-10-04 12:00:00</span></span>
+<span><span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1  …HR.3211/134012805-U    Microtus agrestis        NA  60.22896  25.08694 2022-09-07 12:00:00</span></span>
+<span><span class="co">#&gt; 2  …HR.3211/134000236-U Oryctolagus cunicul…        NA  60.15647  24.69299 2022-09-07 12:00:00</span></span>
+<span><span class="co">#&gt; 3         …JX.1440059#3    Dendrocopos major  1         61.09692  21.76019 2022-09-06 19:50:00</span></span>
+<span><span class="co">#&gt; 4         …JX.1440058#6               Passer  2         61.07281  21.75856 2022-09-06 19:00:00</span></span>
+<span><span class="co">#&gt; 5         …JX.1440058#9            Grus grus  1         61.07281  21.75856 2022-09-06 19:00:00</span></span>
+<span><span class="co">#&gt; 6         …JX.1440058#3      Accipiter nisus  1         61.07281  21.75856 2022-09-06 19:00:00</span></span>
+<span><span class="co">#&gt; 7        …JX.1440058#12    Carduelis chloris  3         61.07281  21.75856 2022-09-06 19:00:00</span></span>
+<span><span class="co">#&gt; 8  …HR.3211/133925964-U          Larus canus        NA  60.1      24.9     2022-09-06 12:00:00</span></span>
+<span><span class="co">#&gt; 9  …HR.3211/133975979-U     Anthus trivialis        NA  60.23348  24.91985 2022-09-06 12:00:00</span></span>
+<span><span class="co">#&gt; 10 …HR.3211/133975532-U       Sylvia curruca        NA  60.2336   24.91986 2022-09-06 12:00:00</span></span>
 <span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
@@ -306,7 +306,7 @@ regulatory statuses and short-codes.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Search for birds on the EU invasive species list</span></span>
 <span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
-<span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>informal_group <span class="op">=</span> <span class="st">"Birds"</span>, regulatory_statuses <span class="op">=</span> <span class="st">"EU_INVSV"</span><span class="op">)</span></span>
+<span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>informal_groups <span class="op">=</span> <span class="st">"Birds"</span>, regulatory_statuses <span class="op">=</span> <span class="st">"EU_INVSV"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <details closed><summary>
 Click to show/hide output.
@@ -340,26 +340,26 @@ categories and their short-codes.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Search for near threatened mammals</span></span>
 <span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
-<span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>informal_group <span class="op">=</span> <span class="st">"Mammals"</span>, red_list_status <span class="op">=</span> <span class="st">"NT"</span><span class="op">)</span></span>
+<span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>informal_groups <span class="op">=</span> <span class="st">"Mammals"</span>, red_list_status <span class="op">=</span> <span class="st">"NT"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <details closed><summary>
 Click to show/hide output.
 </summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 1958</span></span>
+<span><span class="co">#&gt; Records available: 2503</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
-<span><span class="co">#&gt; 1         …JX.1292283#3 Rangifer tarandus f…  3         63.03263  24.61494 2021-09-15 12:00:00</span></span>
-<span><span class="co">#&gt; 2   …HR.3211/91544814-U Rangifer tarandus f…  1         63.3      24.7     2021-08-17 12:00:00</span></span>
-<span><span class="co">#&gt; 3         …JX.1266980#3 Rangifer tarandus f…  4         64.15017  23.88253 2021-08-12 12:00:00</span></span>
-<span><span class="co">#&gt; 4   …HR.3211/87570966-U         Castor fiber  1               NA        NA 2021-07-15 15:00:00</span></span>
-<span><span class="co">#&gt; 5         …JX.1258628#3 Rangifer tarandus f…  1         63.8164   26.12318 2021-07-14 12:00:00</span></span>
-<span><span class="co">#&gt; 6         …JX.1257513#3 Rangifer tarandus f…  2         63.74909  24.12696 2021-07-11 12:00:00</span></span>
-<span><span class="co">#&gt; 7  …KE.176/60e9c3b8d5d… Rangifer tarandus f…  2         63.868    26.131   2021-07-10 12:00:00</span></span>
-<span><span class="co">#&gt; 8   …HR.3211/86130026-U Rangifer tarandus f…  1         63.3      24.7     2021-07-07 12:00:00</span></span>
-<span><span class="co">#&gt; 9   …HR.3211/85932628-U Rangifer tarandus f…  1         63.3      24.9     2021-07-06 12:00:00</span></span>
-<span><span class="co">#&gt; 10  …HR.3211/85820527-U Rangifer tarandus f…  1         64.3      28.1     2021-06-26 12:00:00</span></span>
+<span><span class="co">#&gt; 1  …KE.176/63122fa2d5d… Rangifer tarandus f…  2         64.493    25.417   2022-09-01 12:00:00</span></span>
+<span><span class="co">#&gt; 2         …JX.1436288#3 Rangifer tarandus f…  1         62.65913  24.56789 2022-08-25 12:00:00</span></span>
+<span><span class="co">#&gt; 3       …JX.1427444#284 Rangifer tarandus f…  1         64.32297  28.86242 2022-08-21 12:00:00</span></span>
+<span><span class="co">#&gt; 4       …JX.1427444#293 Rangifer tarandus f…  1         64.43202  28.91627 2022-08-21 12:00:00</span></span>
+<span><span class="co">#&gt; 5  …HR.3211/131434391-U                 &lt;NA&gt;        NA  60.74312  24.77281 2022-08-19 12:00:00</span></span>
+<span><span class="co">#&gt; 6  …HR.3211/131366861-U Rangifer tarandus f…        NA  63.9      24.9     2022-08-18 12:00:00</span></span>
+<span><span class="co">#&gt; 7        …JX.1427444#95 Rangifer tarandus f…        NA  64.07652  29.75366 2022-08-17 12:00:00</span></span>
+<span><span class="co">#&gt; 8         …JX.1432414#3 Rangifer tarandus f…  3         62.15446  22.18987 2022-08-14 10:00:00</span></span>
+<span><span class="co">#&gt; 9         …JX.1431845#3 Rangifer tarandus f…  1         63.31183  24.90167 2022-08-11 12:00:00</span></span>
+<span><span class="co">#&gt; 10        …JX.1430963#3 Rangifer tarandus f…  1         62.29971  24.48758 2022-08-11 06:20:00</span></span>
 <span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
@@ -485,7 +485,7 @@ records of birds excluding those considered vagrants.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    informal_group                <span class="op">=</span> <span class="st">"birds"</span>,</span>
+<span>    informal_groups               <span class="op">=</span> <span class="st">"birds"</span>,</span>
 <span>    finnish_occurrence_status_neg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"vagrant_%sregular"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"ir"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -494,19 +494,19 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 19675504</span></span>
+<span><span class="co">#&gt; Records available: 20779181</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
-<span><span class="co">#&gt;    record_id     scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
-<span><span class="co">#&gt; 1      …79#3              Cygnus  2         60.13003  23.75727 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 2     …56#12   Clangula hyemalis  10        60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 3     …56#15   Clangula hyemalis  3         60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 4     …56#57           Pica pica  1         60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 5     …56#27    Larus argentatus  12        60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 6     …56#33   Branta canadensis  6         60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 7      …56#9         Cygnus olor  8         60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 8     …56#24       Larus marinus  4         60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 9      …56#3 Phalacrocorax carbo  32        60.42794  22.20052 2021-10-04 12:00:00</span></span>
-<span><span class="co">#&gt; 10    …56#45     Corvus monedula  6         60.42794  22.20052 2021-10-04 12:00:00</span></span>
+<span><span class="co">#&gt;               record_id     scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1         …JX.1440059#3   Dendrocopos major  1         61.09692  21.76019 2022-09-06 19:50:00</span></span>
+<span><span class="co">#&gt; 2         …JX.1440058#6              Passer  2         61.07281  21.75856 2022-09-06 19:00:00</span></span>
+<span><span class="co">#&gt; 3         …JX.1440058#9           Grus grus  1         61.07281  21.75856 2022-09-06 19:00:00</span></span>
+<span><span class="co">#&gt; 4         …JX.1440058#3     Accipiter nisus  1         61.07281  21.75856 2022-09-06 19:00:00</span></span>
+<span><span class="co">#&gt; 5        …JX.1440058#12   Carduelis chloris  3         61.07281  21.75856 2022-09-06 19:00:00</span></span>
+<span><span class="co">#&gt; 6  …HR.3211/133925964-U         Larus canus        NA  60.1      24.9     2022-09-06 12:00:00</span></span>
+<span><span class="co">#&gt; 7  …HR.3211/133975979-U    Anthus trivialis        NA  60.23348  24.91985 2022-09-06 12:00:00</span></span>
+<span><span class="co">#&gt; 8  …HR.3211/133975532-U      Sylvia curruca        NA  60.2336   24.91986 2022-09-06 12:00:00</span></span>
+<span><span class="co">#&gt; 9  …HR.3211/133877304-U Garrulus glandarius        NA  61.44345  23.86333 2022-09-06 12:00:00</span></span>
+<span><span class="co">#&gt; 10 …HR.3211/133974658-U      Turdus iliacus        NA  60.22801  24.91946 2022-09-06 12:00:00</span></span>
 <span><span class="co">#&gt; ...with 0 more records and 6 more variables:</span></span>
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>

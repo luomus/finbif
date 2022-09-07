@@ -4,8 +4,8 @@ useIdentificationAnnotations,quality_controlled_det,logical,FALSE,",",TRUE
 includeSubTaxa,subtaxa,logical,FALSE,",",TRUE
 target,taxon_name,character,FALSE,",",TRUE
 includeNonValidTaxa,invalid_taxa,logical,FALSE,",",TRUE
-informalTaxonGroupId,informal_group,uri,TRUE,",",TRUE
-informalTaxonGroupIdIncludingReported,informal_group_reported,uri,TRUE,",",TRUE
+informalTaxonGroupId,informal_groups,uri,TRUE,",",TRUE
+informalTaxonGroupIdIncludingReported,informal_groups_reported,uri,TRUE,",",TRUE
 administrativeStatusId,regulatory_statuses,uri,TRUE,",",TRUE
 redListStatusId,red_list_status,uri,TRUE,",",TRUE
 typeOfOccurrenceId,finnish_occurrence_status,uri,TRUE,",",TRUE
@@ -98,7 +98,7 @@ plantStatusCode,plant_status_code,character,FALSE,",",FALSE
 elyCentreId,ely_center_id,uri,FALSE,",",FALSE
 provinceId,region_id,uri,FALSE,",",FALSE
 partition,subset,integer,FALSE,"/",FALSE
-informalTaxonGroupIdNot,informal_group_neg,uri,TRUE,",",FALSE
+informalTaxonGroupIdNot,informal_groups_neg,uri,TRUE,",",FALSE
 onlyNonValidTaxa,invalid_taxa_only,logical,FALSE,",",FALSE
 taxonAdminFiltersOperator,status_filter_operator,character,FALSE,",",FALSE
 atlasClass,atlas_class,character,FALSE,",",FALSE

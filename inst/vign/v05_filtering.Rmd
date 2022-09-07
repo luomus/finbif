@@ -109,7 +109,7 @@ finbif_occurrence(
 You can filter occurrence records based on informal taxonomic groups such as
 `Birds` or `Mammals`.
 ```{details informal-groups-filter}
-finbif_occurrence(filter = list(informal_group = c("Birds", "Mammals")))
+finbif_occurrence(filter = list(informal_groups = c("Birds", "Mammals")))
 ```
 
 See `finbif_informal_groups()` for the full list of groups you can filter by.
@@ -126,7 +126,7 @@ regulatory statuses and short-codes.
 ```{details regulatory-statuses}
 # Search for birds on the EU invasive species list
 finbif_occurrence(
-  filter = list(informal_group = "Birds", regulatory_statuses = "EU_INVSV")
+  filter = list(informal_groups = "Birds", regulatory_statuses = "EU_INVSV")
 )
 ```
 
@@ -137,7 +137,7 @@ their short-codes.
 ```{details red-list-status}
 # Search for near threatened mammals
 finbif_occurrence(
-  filter = list(informal_group = "Mammals", red_list_status = "NT")
+  filter = list(informal_groups = "Mammals", red_list_status = "NT")
 )
 ```
 
@@ -185,7 +185,7 @@ excluding those considered vagrants.
 ```{details occurrence-status-neg-filter}
 finbif_occurrence(
   filter = list(
-    informal_group                = "birds",
+    informal_groups               = "birds",
     finnish_occurrence_status_neg = sprintf("vagrant_%sregular", c("", "ir"))
   )
 )

@@ -30,12 +30,12 @@ genus only and not identified to a lower taxonomic level).
 If \code{TRUE} (default) return records for taxa not found in the FinBIF
 taxonomic database as well as taxa that are in the FinBIF database. Or, if
 \code{FALSE} limit records to only those of taxa found in the FinBIF database.
-\item \code{informal_group} Character vector.
+\item \code{informal_groups} Character vector.
 Filter by informal taxonomic groups. Only including informal groups linked
 to the recorded taxa in the FinBIF database. Use the function
 \code{\link[=finbif_informal_groups]{finbif_informal_groups()}} to see the informal taxonomic groups available
 in FinBIF.
-\item \code{informal_group_reported} Character vector.
+\item \code{informal_groups_reported} Character vector.
 Filter by informal taxonomic groups including groups reported directly with
 the record and those linked to the recorded taxa in the FinBIF database.
 Use the function \code{\link[=finbif_informal_groups]{finbif_informal_groups()}} to see the informal taxonomic

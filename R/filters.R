@@ -25,12 +25,12 @@
 #'   If `TRUE` (default) return records for taxa not found in the FinBIF
 #'   taxonomic database as well as taxa that are in the FinBIF database. Or, if
 #'   `FALSE` limit records to only those of taxa found in the FinBIF database.
-#' - `informal_group` Character vector.
+#' - `informal_groups` Character vector.
 #'   Filter by informal taxonomic groups. Only including informal groups linked
 #'   to the recorded taxa in the FinBIF database. Use the function
 #'   [finbif_informal_groups()] to see the informal taxonomic groups available
 #'   in FinBIF.
-#' - `informal_group_reported` Character vector.
+#' - `informal_groups_reported` Character vector.
 #'   Filter by informal taxonomic groups including groups reported directly with
 #'   the record and those linked to the recorded taxa in the FinBIF database.
 #'   Use the function [finbif_informal_groups()] to see the informal taxonomic

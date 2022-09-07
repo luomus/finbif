@@ -42,8 +42,8 @@ Gathering.HigherGeographyVerbatim,higherGeo,higher_geography,higherGeography,FAL
 Gathering.HourEnd,hourEnd,hour_end,hourEnd,FALSE,integer
 Gathering.HourBegin,hourStart,hour_start,hourStart,FALSE,integer
 Unit.IndividualID,individID,individual_id,organismID,FALSE,character
-Taxon.InformalGroupEN,infrmGrpEN,informal_group_english,informalTaxonGroupEnglish,FALSE,character
-Taxon.InformalGroupFI,infrmGrpFI,informal_group_finnish,informalTaxonGroupFinnish,FALSE,character
+Taxon.InformalGroupEN,infrmGrpEN,informal_groups_english,informalTaxonGroupsEnglish,FALSE,character
+Taxon.InformalGroupFI,infrmGrpFI,informal_groups_finnish,informalTaxonGroupsFinnish,FALSE,character
 Unit.Interpretations.InvasiveControl,invCtrlCls,invasive_control_class,invasiveControlClass,FALSE,character
 Unit.BreedingSite,isBreedLoc,is_breeding_location,breedingLocationStatus,FALSE,logical
 Document.PartialDocument,isPartial,is_partial,documentPartialStatus,FALSE,logical
