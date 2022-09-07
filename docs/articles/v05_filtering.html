@@ -380,13 +380,13 @@ locations of those records may encompass habitats other than
 forests).</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span><span class="op">(</span><span class="st">"habitat_type"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   habitat_name                              habitat_code</span></span>
-<span><span class="co">#&gt; 1 Forests                                   M           </span></span>
-<span><span class="co">#&gt; 2 Heath forests                             MK          </span></span>
-<span><span class="co">#&gt; 3 Sub-xeric, xeric and barren heath forests MKK         </span></span>
-<span><span class="co">#&gt; 4 Mesic and herb-rich heath forests         MKT         </span></span>
-<span><span class="co">#&gt; 5 Herb-rich forests (also spruce-dominated) ML          </span></span>
-<span><span class="co">#&gt; 6 Dry and mesic herb-rich forests           MLT</span></span></code></pre></div>
+<span><span class="co">#&gt;   habitat_code habitat_description                               </span></span>
+<span><span class="co">#&gt; 1 U            ? – Habitat unknown                               </span></span>
+<span><span class="co">#&gt; 2 I            I – Rural biotopes and cultural habitats          </span></span>
+<span><span class="co">#&gt; 3 Ih           Ih – wooded pastures, pollard meadows and grazed …</span></span>
+<span><span class="co">#&gt; 4 Ik           Ik – seminatural moist meadows (excluding shore m…</span></span>
+<span><span class="co">#&gt; 5 In           In – seminatural dry meadows                      </span></span>
+<span><span class="co">#&gt; 6 Io           Io – ditches etc.</span></span></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Search records of taxa for which forests are their primary or secondary</span></span>
 <span><span class="co"># habitat type</span></span>
@@ -421,10 +421,10 @@ where the names are habitat types or subtypes and the elements of the
 character vectors are the qualifier codes.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_metadata.html">finbif_metadata</a></span><span class="op">(</span><span class="st">"habitat_qualifier"</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span></span>
-<span><span class="co">#&gt;   qualifier_name                      qualifier_code</span></span>
-<span><span class="co">#&gt; 4 Broadleaved deciduous trees present J             </span></span>
-<span><span class="co">#&gt; 5 Sun-exposed                         PA            </span></span>
-<span><span class="co">#&gt; 6 Shady                               VA</span></span></code></pre></div>
+<span><span class="co">#&gt;   qualifier_code qualifier_description                             </span></span>
+<span><span class="co">#&gt; 4 KA             ka – acidic rocks and boulder fields              </span></span>
+<span><span class="co">#&gt; 5 KE             ke – intermediate-basic rock outcrops and boulder…</span></span>
+<span><span class="co">#&gt; 6 P              p – burnt forest areas and other young stages of …</span></span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Search records of taxa for which forests with sun-exposure and broadleaved</span></span>
 <span><span class="co"># deciduous trees are their primary habitat type</span></span>

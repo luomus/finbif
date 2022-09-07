@@ -459,6 +459,16 @@ compute_vars_from_id <- function(df, select_, dwc, locale, add = TRUE) {
 
         metadata <- get(to_native(candidates[[k]]))
 
+        if (!inherits(metadata, "data.frame")) {
+
+          r <- unlist(lapply(metadata, row.names))
+
+          metadata <- do.call(rbind, c(metadata, make.row.names = FALSE))
+
+          row.names(metadata) <- r
+
+        }
+
       }
 
       id_var <- df[[id_var_name]]

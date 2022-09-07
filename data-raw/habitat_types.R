@@ -1,28 +1,60 @@
 metadata_ranges <-
   finbif:::api_get("metadata/ranges", list(), FALSE)[["content"]]
 
-primary_habitat <-
-  metadata_ranges[c("MKV.habitatEnum", "MKV.habitatSpecificTypeEnum")]
-primary_habitat <- lapply(primary_habitat, function(x) lapply(x, head, 2))
-primary_habitat <- lapply(primary_habitat, unlist)
-primary_habitat <- lapply(primary_habitat, matrix, ncol = 2L, byrow = TRUE)
+get_habitat_types <- function(x) {
+
+  habitat_types <- metadata_ranges[x][[1]]
+  habitat_types <- lapply(habitat_types, head, 1L)
+  habitat_types <- unlist(habitat_types)
+
+  habitat_types <- structure(
+    data.frame(
+      code = sub("SpecificType", "", sub("MKV.habitat", "", habitat_types))
+    ),
+    row.names = habitat_types
+  )
+
+  for (i in row.names(habitat_types)) {
+
+    status <- httr::GET(
+      "https://tun.fi", path = i, query = list(format = "json")
+    )
+    status <- httr::content(status)
+
+    if (hasName(status[["label"]], "@language")) {
+
+      habitat_types[i, paste0("name_", status[["label"]][["@language"]])] <-
+        status[["label"]][["@value"]]
+
+    } else {
+
+      for (j in status[["label"]]) {
+
+        habitat_types[i, paste0("name_", j[["@language"]])] <- j[["@value"]]
+
+      }
+
+    }
+
+  }
+
+  habitat_types <- t(
+    apply(habitat_types, 1L, function(x) ifelse(is.na(x), x["name_fi"], x))
+  )
+
+  habitat_types <- as.data.frame(habitat_types)
+
+  class(habitat_types[["code"]]) <- "translation"
+
+  habitat_types
+
+}
 
 primary_habitat <- lapply(
-  primary_habitat,
-  function(x) {
-    df <- data.frame(
-      stringr::str_split_fixed(x[, 2L], " ", 3L)[, c(3L, 1L)],
-      row.names = x[, 1L],
-      stringsAsFactors = FALSE
-    )
-    df <- stats::setNames(df, c("habitat_type", "code"))
-    df[["habitat_type"]] <- gsub("ä", "a", df[["habitat_type"]])
-    df[["habitat_type"]] <- finbif:::to_sentence_case(df[["habitat_type"]])
-    df[["code"]] <- toupper(df[["code"]])
-    class(df[["code"]]) <- "translation"
-    df
-  }
+  c("MKV.habitatEnum", "MKV.habitatSpecificTypeEnum"),
+  get_habitat_types
 )
 
 names(primary_habitat) <- c("habitat_types", "specific_habitat_types")
+
 primary_secondary_habitat <- primary_habitat

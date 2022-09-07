@@ -139,17 +139,47 @@ md_finnish_occurrence_status <- function() {
 }
 
 md_habitat_types <- function() {
+
   df <- primary_habitat[["habitat_types"]]
+
+  locale <- getOption("finbif_locale")
+
+  col <- paste0("name_", locale)
+
+  if (!col %in% names(df)) {
+
+    col <- "name_en"
+
+  }
+
+  df <- df[order(df[[col]]), c("code", col)]
+
   structure(
-    df, row.names = seq_len(nrow(df)), names = c("habitat_name", "habitat_code")
+    df, row.names = seq_len(nrow(df)),
+    names = c("habitat_code", "habitat_description")
   )
+
 }
 
 md_habitat_qualifiers <- function() {
+
   df <- primary_habitat[["specific_habitat_types"]]
+
+  locale <- getOption("finbif_locale")
+
+  col <- paste0("name_", locale)
+
+  if (!col %in% names(df)) {
+
+    col <- "name_en"
+
+  }
+
+  df <- df[order(df[[col]]), c("code", col)]
+
   structure(
     df, row.names = seq_len(nrow(df)),
-    names = c("qualifier_name", "qualifier_code")
+    names = c("qualifier_code", "qualifier_description")
   )
 }
 

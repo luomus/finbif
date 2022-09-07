@@ -339,13 +339,13 @@ those records may encompass habitats other than forests).
 
 ```r
 head(finbif_metadata("habitat_type"))
-#>   habitat_name                              habitat_code
-#> 1 Forests                                   M           
-#> 2 Heath forests                             MK          
-#> 3 Sub-xeric, xeric and barren heath forests MKK         
-#> 4 Mesic and herb-rich heath forests         MKT         
-#> 5 Herb-rich forests (also spruce-dominated) ML          
-#> 6 Dry and mesic herb-rich forests           MLT
+#>   habitat_code habitat_description                               
+#> 1 U            ? – Habitat unknown                               
+#> 2 I            I – Rural biotopes and cultural habitats          
+#> 3 Ih           Ih – wooded pastures, pollard meadows and grazed …
+#> 4 Ik           Ik – seminatural moist meadows (excluding shore m…
+#> 5 In           In – seminatural dry meadows                      
+#> 6 Io           Io – ditches etc.
 ```
 
 ```r
@@ -392,10 +392,10 @@ qualifier codes.
 
 ```r
 finbif_metadata("habitat_qualifier")[4:6, ]
-#>   qualifier_name                      qualifier_code
-#> 4 Broadleaved deciduous trees present J             
-#> 5 Sun-exposed                         PA            
-#> 6 Shady                               VA
+#>   qualifier_code qualifier_description                             
+#> 4 KA             ka – acidic rocks and boulder fields              
+#> 5 KE             ke – intermediate-basic rock outcrops and boulder…
+#> 6 P              p – burnt forest areas and other young stages of …
 ```
 
 ```r
