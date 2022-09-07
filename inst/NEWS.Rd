@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.6.9004}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Regulatory status data is now localised.
+    }
+  }
+}
+
 \section{finbif version 0.6.6.9003}{
   \subsection{NEW FEATURES}{
     \itemize{

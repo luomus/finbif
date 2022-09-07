@@ -1,3 +1,9 @@
+# finbif 0.6.6.9004
+
+#### NEW FEATURES
+
+  - Regulatory status data is now localised.
+
 # finbif 0.6.6.9003
 
 #### NEW FEATURES
