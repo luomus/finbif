@@ -2,7 +2,8 @@
 
 #### NEW FEATURES
 
-  - Regulatory status data is now localised.
+  - Regulatory status and informal taxonomic group data is now
+    localised.
 
 # finbif 0.6.6.9003
 

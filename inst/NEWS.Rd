@@ -4,7 +4,8 @@
 \section{finbif version 0.6.6.9004}{
   \subsection{NEW FEATURES}{
     \itemize{
-      \item Regulatory status data is now localised.
+      \item Regulatory status and informal taxonomic group data is now
+        localised.
     }
   }
 }
