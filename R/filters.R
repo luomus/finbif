@@ -35,7 +35,7 @@
 #'   the record and those linked to the recorded taxa in the FinBIF database.
 #'   Use the function [finbif_informal_groups()] to see the informal taxonomic
 #'   groups available in FinBIF.
-#' - `regulatory_status` Character vector.
+#' - `regulatory_statuses` Character vector.
 #'   Filter by regulatory status code. Use the function
 #'   [finbif_metadata()] to see regulatory statuses and codes.
 #' - `red_list_status` Character vector.

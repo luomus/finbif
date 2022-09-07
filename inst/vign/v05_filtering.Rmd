@@ -123,10 +123,10 @@ finbif_informal_groups("macrofungi")
 Many records in the FinBIF database include taxa that have one or another
 regulatory statuses. See `finbif_metadata("regulatory_status")` for a list of
 regulatory statuses and short-codes.
-```{details regulatory-status}
+```{details regulatory-statuses}
 # Search for birds on the EU invasive species list
 finbif_occurrence(
-  filter = list(informal_group = "Birds", regulatory_status = "EU_INVSV")
+  filter = list(informal_group = "Birds", regulatory_statuses = "EU_INVSV")
 )
 ```
 

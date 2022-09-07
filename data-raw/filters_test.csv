@@ -6,7 +6,7 @@ target,taxon_name,character,FALSE,",",TRUE
 includeNonValidTaxa,invalid_taxa,logical,FALSE,",",TRUE
 informalTaxonGroupId,informal_group,uri,TRUE,",",TRUE
 informalTaxonGroupIdIncludingReported,informal_group_reported,uri,TRUE,",",TRUE
-administrativeStatusId,regulatory_status,uri,TRUE,",",TRUE
+administrativeStatusId,regulatory_statuses,uri,TRUE,",",TRUE
 redListStatusId,red_list_status,uri,TRUE,",",TRUE
 typeOfOccurrenceId,finnish_occurrence_status,uri,TRUE,",",TRUE
 typeOfOccurrenceIdNot,finnish_occurrence_status_neg,uri,TRUE,",",TRUE
