@@ -74,11 +74,23 @@ finbif_metadata <- function(which) {
 }
 
 md_regulatory_status <- function() {
+
   df <- regulatory_status
-  df <- df[order(df[["translated_status"]]), ]
-  structure(
-    df, row.names = seq_len(nrow(df)), names = c("status_name", "status_code")
-  )
+
+  locale <- getOption("finbif_locale")
+
+  col <- paste0("description_", locale)
+
+  if (!col %in% names(df)) {
+
+    col <- "description_en"
+
+  }
+
+  df <- df[order(df[[col]]), c("status_code", col)]
+
+  structure(df, row.names = seq_len(nrow(df)))
+
 }
 
 md_red_list <- function() {

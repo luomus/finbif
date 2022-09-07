@@ -1,63 +1,77 @@
 regulatory_status <- read.csv(
   # nolint start: line_len
   text = "
-    finbif_api_status, translated_status, translated_status_code
-    MX.finlex160_1997_appendix4, 'Finlex 160 1997 appendix 4', FNLX160_97_4
-    MX.finlex160_1997_appendix4_specialInterest, 'Finlex 160 1997 appendix 4 Special interest', FNLX160_97_4_SI
-    MX.finlex160_1997_appendix2a, 'Finlex 160 1997 appendix 2a', FNLX160_97_2A
-    MX.finlex160_1997_appendix2b, 'Finlex 160 1997 appendix 2b', FNLX160_97_2B
-    MX.finlex160_1997_appendix3a, 'Finlex 160 1997 appendix 3a', FNLX160_97_3A
-    MX.finlex160_1997_appendix3b, 'Finlex 160 1997 appendix 3b', FNLX160_97_3B
-    MX.finlex160_1997_appendix3c, 'Finlex 160 1997 appendix 3c', FNLX160_97_3C
-    MX.habitatsDirectiveAnnexII, 'Habitats directive annex II', HABDIR2
-    MX.habitatsDirectiveAnnexIV, 'Habitats directive annex IV', HABDIR4
-    MX.habitatsDirectiveAnnexV, 'Habitats directive annex V', HABDIR5
-    MX.primaryInterestInEU, 'Primary interest in EU', PI_EU
-    MX.habitatsDirectiveAnnexIIExceptionGranted, 'Habitats directive annex II exception granted', HABDIR2E
-    MX.habitatsDirectiveAnnexIVExceptionGranted, 'Habitats directive annex IV exception granted', HABDIR4E
-    MX.habitatsDirectiveAnnexVExceptionGranted, 'Habitats directive annex V exception granted', HABDIR5E
-    MX.birdsDirectiveStatusAppendix1, 'Birds directive status appendix 1', BDS1
-    MX.birdsDirectiveStatusAppendix2A, 'Birds directive status appendix 2a', BDS2A
-    MX.birdsDirectiveStatusAppendix2B, 'Birds directive status appendix 2b', BDS2B
-    MX.birdsDirectiveStatusAppendix3A, 'Birds directive status appendix 3a', BDS3A
-    MX.birdsDirectiveStatusAppendix3B, 'Birds directive status appendix 3b', BDS3B
-    MX.finnishEnvironmentInstitute2010protectionPrioritySpecies, 'Finnish environment institute 2010 protection priority species', FEI_PPS
-    MX.finnishEnvironmentInstitute2020conservationProjectSpecies, 'Finnish environment institute 2020 conservation project species', FEI_CPS
-    MX.finnishEnvironmentInstitute2020conservationProjectAapamireSpecies, 'Finnish environment institute 2020 conservation project aapamire species', FEI_CPAS
-    MX.gameBird, 'Game bird', GMEB
-    MX.gameMammal, 'Game mammal', GMEM
-    MX.unprotectedSpecies, 'Unprotected species', UNP_SP
-    MX.nationallySignificantInvasiveSpecies, 'Nationally significant invasive species', NS_INVSV
-    MX.euInvasiveSpeciesList, 'EU invasive species list', EU_INVSV
-    MX.otherPlantPest, 'Other plant pest', OPP_INVSV
-    MX.qualityPlantPest, 'Quality plant pest', QLPP_INVSV
-    MX.quarantinePlantPest, 'Quarantine plant pest', QPP_INVSV
-    MX.nationalInvasiveSpeciesStrategy, 'National invasive species strategy', NSS_INVSV
-    MX.otherInvasiveSpeciesList, 'Other invasive species list', OTH_INVSV
-    MX.controllingRisksOfInvasiveAlienSpecies, 'Controlling risks of invasive alien species', CRAS_INVSV
-    MX.finnishEnvironmentInstitute20072010forestSpecies, 'Finnish environment institute 2007-2010 forest species', FEI_FS
-    MX.finnishEnvironmentInstitute20192021forestSpecies, 'Finnish environment institute 2019-2021 forest species', FEI_FS2
-    MX.cropWildRelative, 'Crop wild relative', CWR
-    MX.birdsDirectiveStatusMigratoryBirds, 'Birds Directive - Status of Migratory Birds', BDSMB
-    MX.cites_appendixI, 'CITES appendix I', CITES1
-    MX.cites_appendixII, 'CITES appendix II', CITES2
-    MX.cites_appendixIII, 'CITES appendix III', CITES3
-    MX.euRegulation_cites_appendixA, 'EU Regulation - CITES appendix A', EU_CITESA
-    MX.euRegulation_cites_appendixB, 'EU Regulation - CITES appendix B', EU_CITESB
-    MX.finlex160_1997_appendix4_2021, 'Finlex 160 1997 appendix 4 2021', FNLX160_97_4_2021
-    MX.finlex160_1997_appendix4_specialInterest_2021, 'Finlex 160 1997 appendix 4 Special Interest 2021', FNLX160_97_4_SI_2021
-    MX.finlex160_1997_largeBirdsOfPrey, 'Finlex 160 1997 Large Birds of Prey', FNLX160_97_LBP
-    MX.finlex160_1997_appendix1, 'Finlex 160 1997 appendix 1', FNLX160_97_1
-    MX.finnishEnvironmentInstitute2020protectionPrioritySpecies, 'Finnish Environment Institute 2020 Protection Priority Species', FEI2020PPS
-    MX.finnishEnvironmentInstitute2020conservationProjectVascularSpecies, 'Finnish Environment Institute 2020 Conservation Project Vascular Plant Species', FEI2020CPVPS
-    MX.habitatsDirectiveAnnexII_FinlandNaturaSpecies, 'Habitats directive annex II Finland Natura Species', HABDIR2FN
-    MX.euRegulation_cites_appendixD, 'EU Regulation - CITES appendix D', EU_CITESD
+    finbif_api_status, status_code, description_en, description_fi, description_sv
+    MX.finlex160_1997_appendix4, FNLX160_97_4
+    MX.finlex160_1997_appendix4_specialInterest, FNLX160_97_4_SI
+    MX.finlex160_1997_appendix2a, FNLX160_97_2A
+    MX.finlex160_1997_appendix2b, FNLX160_97_2B
+    MX.finlex160_1997_appendix3a, FNLX160_97_3A
+    MX.finlex160_1997_appendix3b, FNLX160_97_3B
+    MX.finlex160_1997_appendix3c, FNLX160_97_3C
+    MX.habitatsDirectiveAnnexII, HABDIR2
+    MX.habitatsDirectiveAnnexIV, HABDIR4
+    MX.habitatsDirectiveAnnexV, HABDIR5
+    MX.primaryInterestInEU, PI_EU
+    MX.habitatsDirectiveAnnexIIExceptionGranted, HABDIR2E
+    MX.habitatsDirectiveAnnexIVExceptionGranted, HABDIR4E
+    MX.habitatsDirectiveAnnexVExceptionGranted, HABDIR5E
+    MX.birdsDirectiveStatusAppendix1, BDS1
+    MX.birdsDirectiveStatusAppendix2A, BDS2A
+    MX.birdsDirectiveStatusAppendix2B, BDS2B
+    MX.birdsDirectiveStatusAppendix3A, BDS3A
+    MX.birdsDirectiveStatusAppendix3B, BDS3B
+    MX.finnishEnvironmentInstitute2010protectionPrioritySpecies, FEI_PPS
+    MX.finnishEnvironmentInstitute2020conservationProjectSpecies, FEI_CPS
+    MX.finnishEnvironmentInstitute2020conservationProjectAapamireSpecies, FEI_CPAS
+    MX.gameBird, GMEB
+    MX.gameMammal, GMEM
+    MX.unprotectedSpecies, UNP_SP
+    MX.nationallySignificantInvasiveSpecies, NS_INVSV
+    MX.euInvasiveSpeciesList, EU_INVSV
+    MX.otherPlantPest, OPP_INVSV
+    MX.qualityPlantPest, QLPP_INVSV
+    MX.quarantinePlantPest, QPP_INVSV
+    MX.nationalInvasiveSpeciesStrategy, NSS_INVSV
+    MX.otherInvasiveSpeciesList, OTH_INVSV
+    MX.controllingRisksOfInvasiveAlienSpecies, CRAS_INVSV
+    MX.finnishEnvironmentInstitute20072010forestSpecies, FEI_FS
+    MX.finnishEnvironmentInstitute20192021forestSpecies, FEI_FS2
+    MX.cropWildRelative, CWR
+    MX.birdsDirectiveStatusMigratoryBirds, BDSMB
+    MX.cites_appendixI, CITES1
+    MX.cites_appendixII, CITES2
+    MX.cites_appendixIII, CITES3
+    MX.euRegulation_cites_appendixA, EU_CITESA
+    MX.euRegulation_cites_appendixB, EU_CITESB
+    MX.finlex160_1997_appendix4_2021, FNLX160_97_4_2021
+    MX.finlex160_1997_appendix4_specialInterest_2021, FNLX160_97_4_SI_2021
+    MX.finlex160_1997_largeBirdsOfPrey, FNLX160_97_LBP
+    MX.finlex160_1997_appendix1, FNLX160_97_1
+    MX.finnishEnvironmentInstitute2020protectionPrioritySpecies, FEI2020PPS
+    MX.finnishEnvironmentInstitute2020conservationProjectVascularSpecies, FEI2020CPVPS
+    MX.habitatsDirectiveAnnexII_FinlandNaturaSpecies, HABDIR2FN
+    MX.euRegulation_cites_appendixD, EU_CITESD
   ",
   # nolint end
   stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'"
 )
 
-class(regulatory_status[["translated_status_code"]]) <- "translation"
+
+for (i in row.names(regulatory_status)) {
+
+  status <- httr::GET(paste0("https://tun.fi/", i))
+  status <- httr::content(status)
+
+  for (j in status[["label"]]) {
+
+    regulatory_status[i, paste0("description_", j[["@language"]])] <- j[["@value"]]
+
+  }
+
+}
+
+class(regulatory_status[["status_code"]]) <- "translation"
 
 red_list_status <- read.csv(
   text = "
