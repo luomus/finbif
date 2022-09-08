@@ -253,7 +253,7 @@ regulatory statuses and short-codes.
 ```r
 # Search for birds on the EU invasive species list
 finbif_occurrence(
-  filter = list(informal_groups = "Birds", regulatory_statuses = "EU_INVSV")
+  filter = list(informal_groups = "Birds", regulatory_status = "EU_INVSV")
 )
 ```
 

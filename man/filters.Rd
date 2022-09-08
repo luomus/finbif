@@ -40,7 +40,7 @@ Filter by informal taxonomic groups including groups reported directly with
 the record and those linked to the recorded taxa in the FinBIF database.
 Use the function \code{\link[=finbif_informal_groups]{finbif_informal_groups()}} to see the informal taxonomic
 groups available in FinBIF.
-\item \code{regulatory_statuses} Character vector.
+\item \code{regulatory_status} Character vector.
 Filter by regulatory status code. Use the function
 \code{\link[=finbif_metadata]{finbif_metadata()}} to see regulatory statuses and codes.
 \item \code{red_list_status} Character vector.

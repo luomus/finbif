@@ -16,7 +16,7 @@
 finbif_metadata <- function(which) {
 
   metadata_name <- c(
-    "regulatory_statuses",
+    "regulatory_status",
     "red_list",
     "country",
     "province",
@@ -47,7 +47,7 @@ finbif_metadata <- function(which) {
 
     ans <- switch(
       which,
-      regulatory_statuses       = md_regulatory_statuses(),
+      regulatory_status         = md_regulatory_status(),
       red_list                  = md_red_list(),
       country                   = md_countries(),
       province                  = md_provinces(),
@@ -73,9 +73,9 @@ finbif_metadata <- function(which) {
 
 }
 
-md_regulatory_statuses <- function() {
+md_regulatory_status <- function() {
 
-  df <- regulatory_statuses
+  df <- regulatory_status
 
   locale <- getOption("finbif_locale")
 

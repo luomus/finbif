@@ -34,7 +34,7 @@ usethis::use_data(
   lite_download_file_vars_test,
   filter_names,
   filter_names_test,
-  regulatory_statuses,
+  regulatory_status,
   red_list_status,
   informal_groups,
   informal_groups_reported,

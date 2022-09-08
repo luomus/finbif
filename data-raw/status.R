@@ -1,4 +1,4 @@
-regulatory_statuses <- read.csv(
+regulatory_status <- read.csv(
   # nolint start: line_len
   text = "
     finbif_api_status, status_code, description_en, description_fi, description_sv
@@ -57,21 +57,21 @@ regulatory_statuses <- read.csv(
   stringsAsFactors = FALSE, strip.white = TRUE, row.names = 1L, quote = "'"
 )
 
-for (i in row.names(regulatory_statuses)) {
+for (i in row.names(regulatory_status)) {
 
   status <- httr::GET(paste0("https://tun.fi/", i))
   status <- httr::content(status)
 
   for (j in status[["label"]]) {
 
-    regulatory_statuses[i, paste0("description_", j[["@language"]])] <-
+    regulatory_status[i, paste0("description_", j[["@language"]])] <-
       j[["@value"]]
 
   }
 
 }
 
-class(regulatory_statuses[["status_code"]]) <- "translation"
+class(regulatory_status[["status_code"]]) <- "translation"
 
 red_list_status <- read.csv(
   text = "
@@ -102,7 +102,7 @@ admin_status <-
   sapply(metadata_ranges[["MX.adminStatusEnum"]], getElement, "id")
 
 stopifnot(
-  identical(sort(row.names(regulatory_statuses)), sort(admin_status))
+  identical(sort(row.names(regulatory_status)), sort(admin_status))
 )
 
 redlist_status <- sapply(metadata_ranges[["MX.iucnStatuses"]], getElement, "id")
