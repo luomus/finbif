@@ -656,7 +656,7 @@ document.prefix,document_prefix,documentPrefix,FALSE,FALSE,character,character,T
 document.dataSource,data_source,dataSource,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.siteStatus,site_status,siteStatus,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.siteType,site_type,siteType,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-gathering.stateLand,state_land,stateLand,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+gathering.stateLand,state_land,stateLand,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 document.createdDateMonth,created_date_month,createdDateMonth,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.alternativeId,location_alt_id,locationAltID,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.tags,location_tags,locationTags,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
