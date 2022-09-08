@@ -150,6 +150,8 @@ finbif_occurrence <- function(
 
   df <- compute_scientific_name(df, select_, dwc)
 
+  df <- compute_red_list_status(df, select_, dwc)
+
   df <- structure(
     df[select_],
     class     = c("finbif_occ", "data.frame"),
@@ -667,6 +669,37 @@ compute_scientific_name <- function(df, select_, dwc, add = TRUE) {
     df[[scientific]] <- ifelse(
       is.na(df[[scientific_]]) & df[[source]] == "http://tun.fi/KE.3",
       df[[verbatim]], df[[scientific_]]
+    )
+
+  }
+
+  df
+
+}
+
+#' @noRd
+
+compute_red_list_status <- function(df, select_, dwc, add = TRUE) {
+
+  type <- col_type_string(dwc)
+
+  red_list_status <- var_names[["computed_var_red_list_status", type]]
+
+  red_list_status_id <-
+    var_names[["unit.linkings.taxon.latestRedListStatusFinland.status", type]]
+
+  red_list_status_year <-
+    var_names[["unit.linkings.taxon.latestRedListStatusFinland.year", type]]
+
+  if (red_list_status %in% select_ && add) {
+
+    df[[red_list_status]] <- ifelse(
+      is.na(df[[red_list_status_id]]),
+      NA_character_,
+      paste(
+        sub("http://tun.fi/MX.iucn","", df[[red_list_status_id]]),
+        df[[red_list_status_year]]
+      )
     )
 
   }

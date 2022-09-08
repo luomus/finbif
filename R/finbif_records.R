@@ -190,21 +190,6 @@ infer_selection <- function(aggregate, select, var_type) {
     "aggregate"
   )
 
-  abundance_vars <- c(
-    "unit.interpretations.individualCount", "unit.abundanceString"
-  )
-
-  coordinates_uncertainty_vars <- c(
-    "gathering.interpretations.coordinateAccuracy", "document.sourceId"
-  )
-
-  citation_vars <- c("document.documentId", "document.sourceId")
-
-  scientific_name_vars <- c(
-    "unit.linkings.taxon.scientificName", "unit.taxonVerbatim",
-    "document.sourceId"
-  )
-
   if (missing(select)) {
 
     select <- row.names(default_vars)
@@ -213,11 +198,14 @@ infer_selection <- function(aggregate, select, var_type) {
 
     if (identical(aggregate, "none")) {
       # Missing 'select' implies default selection which implies date-time,
-      # abundance and coord uncertainty and scientific name calc needed
+      # abundance, coord uncertainty and scientific name calc needed
       select <- unique(
         c(
-          select, row.names(date_time_vars), abundance_vars,
-          coordinates_uncertainty_vars, scientific_name_vars
+          select, row.names(date_time_vars),
+          "unit.interpretations.individualCount", "unit.abundanceString",
+          "gathering.interpretations.coordinateAccuracy",
+          "unit.linkings.taxon.scientificName", "unit.taxonVerbatim",
+          "document.sourceId"
         )
       )
       record_id_selected <- TRUE
@@ -238,7 +226,9 @@ infer_selection <- function(aggregate, select, var_type) {
     record_id_selected <- var_names["unit.unitId", var_type] %in% select
 
     if (!record_id_selected && identical(aggregate, "none")) {
+
       select <- c(var_names["unit.unitId", var_type], select)
+
     }
 
     vars <- c(
@@ -246,63 +236,18 @@ infer_selection <- function(aggregate, select, var_type) {
       "duration", "samplingEffort"
     )
 
-    date_time <- any(vars %in% select)
+    if (any(vars %in% select)) {
 
-    if (date_time) {
       select <- unique(c(select, date_time_vars[[var_type]]))
-    }
-
-    vars <- c(
-      "abundance", "individualCount", "occurrence_status", "occurrenceStatus"
-    )
-
-    abundance <- any(vars %in% select)
-
-    if (abundance) {
-
-      select <- unique(c(select, var_names[abundance_vars, var_type]))
 
     }
 
-    vars <- c("coordinates_uncertainty", "coordinateUncertaintyInMeters")
-
-    coordinates_uncertainty <- any(vars %in% select)
-
-    if (coordinates_uncertainty) {
-
-      select <- unique(
-        c(select, var_names[coordinates_uncertainty_vars, var_type])
-      )
-
-    }
-
-    vars <- c("citation", "bibliographicCitation")
-
-    citation <- any(vars %in% select)
-
-    if (citation) {
-
-      select <- unique(
-        c(select, var_names[citation_vars, var_type])
-      )
-
-    }
-
-    vars <- c("scientific_name", "scientificName")
-
-    scientific_name <- any(vars %in% select)
-
-    if (scientific_name) {
-
-      select <- unique(
-        c(select, var_names[scientific_name_vars, var_type])
-      )
-
-    }
-
+    select <- infer_computed_vars(select, var_type)
 
     select_vars <- var_names[var_names[[select_type]], var_type, drop = FALSE]
+
     class(select_vars[[var_type]]) <- class(var_names[[var_type]])
+
     select <- translate(
       select, "select_vars", list(select_vars = select_vars)
     )
@@ -333,6 +278,78 @@ infer_selection <- function(aggregate, select, var_type) {
   select <- select[!grepl("^computed_var", select)]
 
   list(query = select, user = select_, record_id_selected = record_id_selected)
+
+}
+
+infer_computed_vars <- function(select, var_type) {
+
+  abundance_vars <- c(
+    "abundance", "individualCount", "occurrence_status", "occurrenceStatus"
+  )
+
+  if (any(abundance_vars %in% select)) {
+
+    abundance_vars <- c(
+      "unit.interpretations.individualCount", "unit.abundanceString"
+    )
+
+    select <- unique(c(select, var_names[abundance_vars, var_type]))
+
+  }
+
+  coordinates_uncertainty_vars <- c(
+    "coordinates_uncertainty", "coordinateUncertaintyInMeters"
+  )
+
+  if (any(coordinates_uncertainty_vars %in% select)) {
+
+    coordinates_uncertainty_vars <- c(
+      "gathering.interpretations.coordinateAccuracy", "document.sourceId"
+    )
+
+    select <- unique(
+      c(select, var_names[coordinates_uncertainty_vars, var_type])
+    )
+
+  }
+
+  citation_vars <- c("citation", "bibliographicCitation")
+
+  if (any(citation_vars %in% select)) {
+
+    citation_vars <- c("document.documentId", "document.sourceId")
+
+    select <- unique(c(select, var_names[citation_vars, var_type]))
+
+  }
+
+  scientific_name_vars <- c("scientific_name", "scientificName")
+
+  if (any(scientific_name_vars %in% select)) {
+
+    scientific_name_vars <- c(
+      "unit.linkings.taxon.scientificName", "unit.taxonVerbatim",
+      "document.sourceId"
+    )
+
+    select <- unique(c(select, var_names[scientific_name_vars, var_type]))
+
+  }
+
+  red_list_vars <- c("red_list_status", "redListStatus")
+
+  if (any(red_list_vars %in% select)) {
+
+    red_list_vars <- c(
+      "unit.linkings.taxon.latestRedListStatusFinland.status",
+      "unit.linkings.taxon.latestRedListStatusFinland.year"
+    )
+
+    select <- unique(c(select, var_names[red_list_vars, var_type]))
+
+  }
+
+  select
 
 }
 
