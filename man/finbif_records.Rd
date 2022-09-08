@@ -19,7 +19,8 @@ finbif_records(
   dwc = FALSE,
   seed,
   df = FALSE,
-  exclude_na = FALSE
+  exclude_na = FALSE,
+  locale = getOption("finbif_locale")
 )
 }
 \arguments{
@@ -67,6 +68,12 @@ returned as an attribute?}
 
 \item{exclude_na}{Logical. Should records where all selected variables have
 non-NA values only be returned.}
+
+\item{locale}{Character. One of the supported two-letter ISO 639-1 language
+codes. Current supported languages are English, Finnish, Swedish, Russian,
+and Sámi (Northern). For data where more than one language is available
+the language denoted by \code{locale} will be preferred while falling back to
+the other languages in the order indicated above.}
 }
 \value{
 A \code{finbif_api} or \code{finbif_api_list} object.

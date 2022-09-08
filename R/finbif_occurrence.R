@@ -20,11 +20,6 @@
 #'   of `"warn"` (default) or `"error"`.
 #' @param tzone Character. If `date_time` has been selected the timezone of the
 #'   outputted date-time. Defaults to system timezone.
-#' @param locale Character. One of the supported two-letter ISO 639-1 language
-#'   codes. Current supported languages are English, Finnish, Swedish, Russian,
-#'   and Sámi (Northern). For data where more than one language is available
-#'   the language denoted by `locale` will be preferred while falling back to
-#'   the other languages in the order indicated above.
 #' @param drop_na Logical. A vector indicating which columns to check for
 #'   missing data. Values recycled to the number of columns. Defaults to all
 #'   columns.
@@ -101,7 +96,7 @@ finbif_occurrence <- function(
     n <- finbif_records(
       filter, select, order_by, aggregate, sample,
       n = getOption("finbif_max_page_size"), page, count_only, quiet,
-      cache, dwc, df = TRUE, seed, exclude_na
+      cache, dwc, df = TRUE, seed, exclude_na, locale
     )
 
     n <- attr(n, "nrec_avl")
@@ -112,7 +107,7 @@ finbif_occurrence <- function(
 
   records <- finbif_records(
     filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
-    cache, dwc, df = TRUE, seed, exclude_na
+    cache, dwc, df = TRUE, seed, exclude_na, locale
   )
 
   aggregate <- attr(records, "aggregate", TRUE)
