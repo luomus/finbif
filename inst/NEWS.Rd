@@ -23,8 +23,8 @@
 \section{finbif version 0.6.6.9003}{
   \subsection{NEW FEATURES}{
     \itemize{
-      \item For the sack of clarity and consistency the term "adminstrative
-        status" is now refered to as "regulatory statuses" throughout.
+      \item For the sake of clarity and consistency the term "adminstrative
+        status" is now refered to as "regulatory status" throughout.
     }
   }
 }

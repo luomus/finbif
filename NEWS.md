@@ -18,8 +18,8 @@
 
 #### NEW FEATURES
 
-  - For the sack of clarity and consistency the term "adminstrative
-    status" is now refered to as "regulatory statuses" throughout.
+  - For the sake of clarity and consistency the term "adminstrative
+    status" is now refered to as "regulatory status" throughout.
 
 # finbif 0.6.6.9002
 
