@@ -36,6 +36,7 @@ usethis::use_data(
   filter_names_test,
   regulatory_status,
   red_list_status,
+  threatened_status,
   informal_groups,
   informal_groups_reported,
   primary_habitat,
