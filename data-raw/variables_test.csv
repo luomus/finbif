@@ -278,7 +278,7 @@ unit.linkings.originalTaxon.speciesNameEnglish,orig_species_english_name,origina
 unit.linkings.originalTaxon.speciesNameFinnish,orig_species_finnish_name,originalTaxonSpeciesNameFinnish,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.speciesNameSwedish,orig_species_swedish_name,originalTaxonSpeciesNameSwedish,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.speciesScientificName,orig_species_scientific_name,originalTaxonScientificName,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.linkings.originalTaxon.taxonomicOrder,orig_taxonomic_order,originalTaxonTaxonomicOrder,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.originalTaxon.taxonomicOrder,orig_taxonomic_order,originalTaxonTaxonomicOrder,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.author,taxon_author,verbatimTaxonAuthorship,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.invasive,taxon_is_invasive,taxonIsInvasive,FALSE,FALSE,logical,logical,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.nameEnglish,common_name_english,vernacularNameEnglish,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -290,7 +290,7 @@ unit.linkings.taxon.speciesNameEnglish,species_name_english,taxonSpeciesNameEngl
 unit.linkings.taxon.speciesNameFinnish,species_name_finnish,taxonSpeciesNameFinnish,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.speciesNameSwedish,species_name_swedish,taxonSpeciesNameSwedish,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.speciesScientificName,species_scientific_name,taxonSpeciesScientificName,FALSE,FALSE,character,character,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.linkings.taxon.taxonomicOrder,taxonomic_order,taxonTaxonomicOrder,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.taxon.taxonomicOrder,taxonomic_order,taxonTaxonomicOrder,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.annotations.addedTags,document_annotation_tags,documentAnnotationTags,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.annotations.byRole,document_annotation_role,documentAnnotationRole,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.annotations.deleted,document_annotation_deleted,documentAnnotationDeleted,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -558,7 +558,7 @@ unit.identifications.linkings.taxon.scientificNameAuthorship,record_identificati
 unit.identifications.linkings.taxon.scientificNameDisplayName,record_identifications_scientific_display_name,occurrenceIdentificationsScientificDisplayName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.linkings.taxon.sensitive,record_identifications_taxon_sensitive,occurrenceIdentificationsTaxonSensitive,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.linkings.taxon.taxonRank,record_identifications_taxon_rank_id,occurrenceIdentificationsTaxonRankID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.identifications.linkings.taxon.taxonomicOrder,record_identifications_taxonomic_order,occurrenceIdentificationsTaxonomicOrder,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.identifications.linkings.taxon.taxonomicOrder,record_identifications_taxonomic_order,occurrenceIdentificationsTaxonomicOrder,FALSE,FALSE,integer,integer,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.linkings.taxon.vernacularName,record_identifications_common_name,occurrenceIdentificationsVernacularName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE
 unit.identifications.notes,record_identifications_notes,occurrenceIdentificationsRemarks,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.preferred,record_identifications_preferred,occurrenceIdentificationsPreferred,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -586,7 +586,7 @@ unit.types.linkings.taxon.scientificNameAuthorship,type_specimen_taxon_scientifi
 unit.types.linkings.taxon.scientificNameDisplayName,type_specimen_taxon_scientific_display_name,typeSpecimenScientificDisplayName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.sensitive,type_specimen_taxon_sensitive,typeSpecimenTaxonSensitive,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.taxonRank,type_specimen_taxon_rank_id,typeSpecimenTaxonRankID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.types.linkings.taxon.taxonomicOrder,type_specimen_taxonomic_order,typeSpecimenTaxonomicOrder,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.types.linkings.taxon.taxonomicOrder,type_specimen_taxonomic_order,typeSpecimenTaxonomicOrder,FALSE,FALSE,integer,integer,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.vernacularName,type_specimen_common_name,typeSpecimenVernacularName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.kingdomScientificName,type_specimen_kingdom,typeSpecimenKingdom,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.notes,type_specimen_notes,typeSpecimenRemarks,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
