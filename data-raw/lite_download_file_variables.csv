@@ -23,7 +23,7 @@ result.unit.interpretations.individualCount,abundI,abundance_interpreted,individ
 result.unit.lifeStage,lifeStage,life_stage,lifeStage,FALSE,character,
 result.gathering.abundanceUnit,abundUnit,abundance_unit,abundanceUnit,FALSE,character,
 observation.form.sex,sex,sex,sex,FALSE,character,
-observation.form.municipality,mncpltyNm,municipality_name,countyName,FALSE,character,
+observation.form.municipality,mncplty,municipality,county,FALSE,character,
 result.gathering.conversions.wgs84CenterPoint.lat,latWGS84,lat_wgs84,decimalLatitude,FALSE,double,
 result.gathering.conversions.wgs84CenterPoint.lon,lonWGS84,lon_wgs84,decimalLongitude,FALSE,double,
 result.gathering.conversions.eurefCenterPoint.lat,latEUREF,lat_euref,decimalLatitudeEUREF,FALSE,double,

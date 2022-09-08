@@ -83,7 +83,7 @@ Gathering.Conversions.WGS84CenterPoint.Lon.E.,lonWGS84,lon_wgs84,decimalLongitud
 Document.Modified,modDate,modified_date,documentModified,FALSE,character
 Gathering.Conversions.Month,month,month,month,FALSE,integer
 Gathering.MunicipalityVerbatim,mncptyVbtm,municipality_verbatim,verbatimCounty,FALSE,character
-Gathering.Interpretations.Municipality,mncpltyNm,municipality_name,countyName,FALSE,character
+Gathering.Interpretations.Municipality,mncplty,municipality,county,FALSE,character
 Gathering.Interpretations.MunicipalitySource,mncpltySrc,municipality_source,countySource,FALSE,character
 Gathering.Conversions.DayOfYearEnd,ordDayEnd,ordinal_day_end,endDayOfYear,FALSE,integer
 Gathering.Conversions.DayOfYearBegin,ordDayStrt,ordinal_day_start,startDayOfYear,FALSE,integer
