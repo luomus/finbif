@@ -1,3 +1,12 @@
+# finbif 0.6.6.9005
+
+#### BUG FIXES
+
+  - Fixed bug triggered by incorrect data type applied to
+    `taxonomic_order`.
+
+  - Fixed bug preventing locale switching of vernacular name data.
+
 # finbif 0.6.6.9004
 
 #### NEW FEATURES

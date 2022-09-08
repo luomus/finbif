@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.6.9005}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed bug triggered by incorrect data type applied to
+        \code{taxonomic_order}.
+      \item Fixed bug preventing locale switching of vernacular name data.
+    }
+  }
+}
+
 \section{finbif version 0.6.6.9004}{
   \subsection{NEW FEATURES}{
     \itemize{
