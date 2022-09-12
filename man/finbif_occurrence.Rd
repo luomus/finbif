@@ -26,7 +26,8 @@ finbif_occurrence(
   seed,
   drop_na = FALSE,
   aggregate_counts = TRUE,
-  exclude_na = FALSE
+  exclude_na = FALSE,
+  unlist = FALSE
 )
 }
 \arguments{
@@ -104,6 +105,9 @@ using aggregation.}
 
 \item{exclude_na}{Logical. Should records where all selected variables have
 non-NA values only be returned.}
+
+\item{unlist}{Logical. Should variables that contain non atomic data be
+concatenated into a string separated by ";"?}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

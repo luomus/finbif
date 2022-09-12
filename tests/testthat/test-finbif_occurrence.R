@@ -360,3 +360,21 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_get_all"))
+
+suppressMessages(insert_cassette("finbif_unlist"))
+
+test_that(
+  "can concatenate list cols", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(select = "informal_groups", unlist = TRUE),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_unlist"))

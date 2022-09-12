@@ -85,7 +85,8 @@
 <span>  <span class="va">seed</span>,</span>
 <span>  drop_na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  aggregate_counts <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  exclude_na <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  exclude_na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  unlist <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -206,6 +207,11 @@ using aggregation.</p></dd>
 <dt>exclude_na</dt>
 <dd><p>Logical. Should records where all selected variables have
 non-NA values only be returned.</p></dd>
+
+
+<dt>unlist</dt>
+<dd><p>Logical. Should variables that contain non atomic data be
+concatenated into a string separated by ";"?</p></dd>
 
 </dl></div>
     <div class="section level2">

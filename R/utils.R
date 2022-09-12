@@ -220,6 +220,21 @@ remove_domain <- function(x, domain = "tun.fi", protocol =  "http") {
 
 }
 
+#' @noRd
+concat_string <- function(x) {
+
+  if (any(!is.na(x))) {
+
+    paste(x, collapse = "; ")
+
+  } else {
+
+    NA_character_
+
+  }
+
+}
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd

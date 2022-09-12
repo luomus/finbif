@@ -25,6 +25,8 @@
 #'   columns.
 #' @param aggregate_counts Logical. Should count variables be returned when
 #'   using aggregation.
+#' @param unlist Logical. Should variables that contain non atomic data be
+#'  concatenated into a string separated by ";"?
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -56,7 +58,7 @@ finbif_occurrence <- function(
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   check_taxa = TRUE, on_check_fail = c("warn", "error"),
   tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"), seed,
-  drop_na = FALSE, aggregate_counts = TRUE, exclude_na = FALSE
+  drop_na = FALSE, aggregate_counts = TRUE, exclude_na = FALSE, unlist = FALSE
 ) {
 
   taxa <- select_taxa(
@@ -80,7 +82,7 @@ finbif_occurrence <- function(
 
       multi_request <- multi_req(
         taxa, filter, select, order_by, sample, n, page, count_only, quiet,
-        cache, dwc, date_time_method, tzone, locale, exclude_na
+        cache, dwc, date_time_method, tzone, locale, exclude_na, unlist
       )
 
       return(multi_request)
@@ -163,6 +165,8 @@ finbif_occurrence <- function(
     column_names = select_,
     record_id = record_id
   )
+
+  df <- unlist_cols(df, select_, unlist)
 
   names(df) <- names(select_)
 
@@ -712,7 +716,7 @@ compute_red_list_status <- function(df, select_, dwc, add = TRUE) {
 
 multi_req <- function(
   taxa, filter, select, order_by, sample, n, page, count_only, quiet, cache,
-  dwc, date_time_method, tzone, locale, exclude_na
+  dwc, date_time_method, tzone, locale, exclude_na, unlist
 ) {
 
   ans <- vector("list", length(filter))
@@ -735,7 +739,8 @@ multi_req <- function(
       sample = sample[[i]], n = n[[i]], page = page[[i]],
       count_only = count_only, quiet = quiet[[i]], cache = cache[[i]],
       dwc = dwc, date_time_method = date_time_method[[i]], check_taxa = FALSE,
-      tzone = tzone[[i]], locale = locale[[i]], exclude_na = exclude_na[[i]]
+      tzone = tzone[[i]], locale = locale[[i]], exclude_na = exclude_na[[i]],
+      unlist = unlist
     )
 
   }
@@ -751,3 +756,26 @@ multi_req <- function(
   ans
 
 }
+
+#' @noRd
+
+unlist_cols <- function(df, cols, unlist) {
+
+  if (unlist) {
+
+    for (i in cols) {
+
+      if (is.list(df[[i]]) && !grepl("Fact|fact_", i)) {
+
+        df[[i]] <- vapply(df[[i]], concat_string, character(1L))
+
+      }
+
+    }
+
+  }
+
+  df
+
+}
+
