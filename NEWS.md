@@ -1,10 +1,17 @@
+# finbif 0.6.6.9007
+
+#### NEW FEATURES
+
+  - New argument `facts` added to `finbif_occurrence` that can be used
+    to automatically extract facts when downloading occurrence records.
+
 # finbif 0.6.6.9006
 
 #### NEW FEATURES
 
-  - Options `unlist` added to `finbif_occurrence` that casts list
-    columns to strings. If a cell has multiple values the values are
-    cast to a string separated by semi-colons.
+  - Option `unlist` added to `finbif_occurrence` that casts list columns
+    to strings. If a cell has multiple values the values are cast to a
+    string separated by semi-colons.
 
 # finbif 0.6.6.9005
 
@@ -26,7 +33,7 @@
 
 #### NEW FEATURES
 
-  - For the sake of clarity and consistency the term "adminstrative
+  - For the sake of clarity and consistency the term "administrative
     status" is now refered to as "regulatory status" throughout.
 
 # finbif 0.6.6.9002
