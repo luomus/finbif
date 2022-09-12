@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.6.6.9006}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Options \code{unlist} added to \code{finbif_occurrence} that casts
+        list columns to strings. If a cell has multiple values the values are
+        cast to a string separated by semi-colons.
+    }
+  }
+}
+
 \section{finbif version 0.6.6.9005}{
   \subsection{BUG FIXES}{
     \itemize{

@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/luomus/finbif",
   "issueTracker": "https://github.com/luomus/finbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.6.6.9005",
+  "version": "0.6.6.9006",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -301,7 +301,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "fileSize": "4243.384KB",
+  "fileSize": "4246.198KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -318,7 +318,7 @@
       "name": "Introduction to the finbif package",
       "identifier": "10.5281/zenodo.3612814",
       "url": "https://luomus.github.io/finbif/articles/finbif.html",
-      "description": "R package version 0.6.6.9005",
+      "description": "R package version 0.6.6.9006",
       "@id": "https://doi.org/10.5281/zenodo.3612814",
       "sameAs": "https://doi.org/10.5281/zenodo.3612814"
     }

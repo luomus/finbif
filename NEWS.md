@@ -1,3 +1,11 @@
+# finbif 0.6.6.9006
+
+#### NEW FEATURES
+
+  - Options `unlist` added to `finbif_occurrence` that casts list
+    columns to strings. If a cell has multiple values the values are
+    cast to a string separated by semi-colons.
+
 # finbif 0.6.6.9005
 
 #### BUG FIXES
