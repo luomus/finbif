@@ -118,7 +118,7 @@ You can search for multiple taxa at once and filter the records with the
 `filter` argument.
 ```{details occurrence2}
 finbif_occurrence(
-  "Cygnus cygnus", 
+  "Cygnus cygnus",
   "Cygnus olor",
   filter = list(coordinates_uncertainty_max = 100)
 )

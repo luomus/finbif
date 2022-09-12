@@ -256,7 +256,7 @@ You can search for multiple taxa at once and filter the records with the
 
 ```r
 finbif_occurrence(
-  "Cygnus cygnus", 
+  "Cygnus cygnus",
   "Cygnus olor",
   filter = list(coordinates_uncertainty_max = 100)
 )
@@ -269,19 +269,19 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 26352
+#> Records available: 36710
 #> A data.frame [10 x 12]
-#>              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1        …JX.1315856#9     Cygnus olor  8         60.42794  22.20052 2021-10-04 12:00:00
-#> 2       …JX.1315724#21     Cygnus olor  6         60.44906  22.76845 2021-10-03 12:00:00
-#> 3       …JX.1315701#36     Cygnus olor  8         60.42794  22.20052 2021-10-03 12:00:00
-#> 4       …JX.1315699#24     Cygnus olor  8         60.56739  21.57188 2021-10-03 12:00:00
-#> 5       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00
-#> 6        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00
-#> 7       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00
-#> 8  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00
-#> 9  …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00
-#> 10 …HR.3211/96867853-U     Cygnus olor  1         60.12642  24.73924 2021-10-02 12:00:00
+#>     record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1   …41168#42     Cygnus olor  10        60.42799  22.20051 2022-09-12 12:00:00
+#> 2   …40986#60     Cygnus olor  3         60.42797  22.20056 2022-09-11 12:00:00
+#> 3    …41017#3   Cygnus cygnus  5         62.01636  22.99255 2022-09-11 12:00:00
+#> 4    …40997#3   Cygnus cygnus  2         61.09915  21.55087 2022-09-11 09:55:00
+#> 5   …40730#75     Cygnus olor  6         60.42796  22.20057 2022-09-10 12:00:00
+#> 6   …40539#51     Cygnus olor  7         61.10534  21.45097 2022-09-09 08:55:00
+#> 7  …38974#119   Cygnus cygnus  6         63.6616   29.22317 2022-09-08 12:00:00
+#> 8  …38974#140   Cygnus cygnus  3         63.50457  29.39159 2022-09-08 12:00:00
+#> 9  …38974#110   Cygnus cygnus  4         63.73461  29.37687 2022-09-08 12:00:00
+#> 10 …40443#120     Cygnus olor  3         60.42797  22.20054 2022-09-08 12:00:00
 #> ...with 0 more records and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality

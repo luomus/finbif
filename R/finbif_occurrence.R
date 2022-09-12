@@ -701,7 +701,7 @@ compute_red_list_status <- function(df, select_, dwc, add = TRUE) {
       is.na(df[[red_list_status_id]]),
       NA_character_,
       paste(
-        sub("http://tun.fi/MX.iucn","", df[[red_list_status_id]]),
+        sub("http://tun.fi/MX.iucn", "", df[[red_list_status_id]]),
         df[[red_list_status_year]]
       )
     )
@@ -778,4 +778,3 @@ unlist_cols <- function(df, cols, unlist) {
   df
 
 }
-
