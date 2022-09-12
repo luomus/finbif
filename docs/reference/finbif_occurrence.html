@@ -86,7 +86,8 @@
 <span>  drop_na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  aggregate_counts <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  exclude_na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  unlist <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  unlist <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">facts</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -212,6 +213,11 @@ non-NA values only be returned.</p></dd>
 <dt>unlist</dt>
 <dd><p>Logical. Should variables that contain non atomic data be
 concatenated into a string separated by ";"?</p></dd>
+
+
+<dt>facts</dt>
+<dd><p>Character vectors. Extra variables to be extracted from record,
+event and document "facts".</p></dd>
 
 </dl></div>
     <div class="section level2">

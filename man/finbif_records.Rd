@@ -20,7 +20,8 @@ finbif_records(
   seed,
   df = FALSE,
   exclude_na = FALSE,
-  locale = getOption("finbif_locale")
+  locale = getOption("finbif_locale"),
+  include_facts = FALSE
 )
 }
 \arguments{
@@ -74,6 +75,8 @@ codes. Current supported languages are English, Finnish, Swedish, Russian,
 and Sámi (Northern). For data where more than one language is available
 the language denoted by \code{locale} will be preferred while falling back to
 the other languages in the order indicated above.}
+
+\item{include_facts}{Logical. Should all "fact" variables be included?}
 }
 \value{
 A \code{finbif_api} or \code{finbif_api_list} object.

@@ -414,3 +414,24 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_primary_habitat"))
+
+suppressMessages(insert_cassette("finbif_extract_facts"))
+
+test_that(
+  "can extract facts", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      fb_occurrence(
+        select = "record_id", filter = c(collection = "HR.48"),
+        facts = "weightInGrams", sample = TRUE
+      ),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_extract_facts"))

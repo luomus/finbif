@@ -42,6 +42,7 @@
 #'   and Sámi (Northern). For data where more than one language is available
 #'   the language denoted by `locale` will be preferred while falling back to
 #'   the other languages in the order indicated above.
+#' @param include_facts Logical. Should all "fact" variables be included?
 #' @return A `finbif_api` or `finbif_api_list` object.
 #' @examples \dontrun{
 #'
@@ -55,7 +56,7 @@ finbif_records <- function(
   filter, select, order_by, aggregate, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"), dwc = FALSE, seed, df = FALSE,
-  exclude_na = FALSE, locale = getOption("finbif_locale")
+  exclude_na = FALSE, locale = getOption("finbif_locale"), include_facts = FALSE
 ) {
 
   max_size <- getOption("finbif_max_page_size")
@@ -87,7 +88,7 @@ finbif_records <- function(
 
     # select ===================================================================
 
-    select <- infer_selection(aggregate, select, var_type)
+    select <- infer_selection(aggregate, select, include_facts, var_type)
 
     select_param <- switch(aggregate[[1L]], none = "selected", "aggregateBy")
 
@@ -128,7 +129,7 @@ finbif_records <- function(
   ans <- request(
     filter, select[["query"]], sample, n, page, count_only, quiet, cache, query,
     max_size, select[["user"]], select[["record_id_selected"]], dwc, aggregate,
-    df, seed, exclude_na, locale
+    df, seed, exclude_na, locale, include_facts
   )
 
   if (df && !count_only) {
@@ -170,7 +171,7 @@ infer_aggregation <- function(aggregate) {
 
 # selection --------------------------------------------------------------------
 
-infer_selection <- function(aggregate, select, var_type) {
+infer_selection <- function(aggregate, select, include_facts, var_type) {
 
   date_time_vars <- var_names[var_names[["date"]], ]
 
@@ -274,8 +275,17 @@ infer_selection <- function(aggregate, select, var_type) {
 
   }
 
+  if (include_facts) {
+
+    select <- c(
+      select, "unit.facts.fact", "unit.facts.value", "gathering.facts.fact",
+      "gathering.facts.value", "document.facts.fact", "document.facts.value"
+    )
+
+  }
+
   # Can't query the server for vars that are computed after download
-  select <- select[!grepl("^computed_var", select)]
+  select <- unique(select[!grepl("^computed_var", select)])
 
   list(query = select, user = select_, record_id_selected = record_id_selected)
 
@@ -357,7 +367,8 @@ infer_computed_vars <- function(select, var_type) {
 
 request <- function(
   filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-  select_, record_id_selected, dwc, aggregate, df, seed, exclude_na, locale
+  select_, record_id_selected, dwc, aggregate, df, seed, exclude_na, locale,
+  include_facts
 ) {
 
   path <- getOption("finbif_warehouse_query")
@@ -404,7 +415,7 @@ request <- function(
       all_records <- finbif_records(
         filter, select_, sample = FALSE, n = n_tot, quiet = quiet,
         cache = cache, dwc = dwc, df = df, exclude_na = exclude_na,
-        locale = locale
+        locale = locale, include_facts = include_facts
       )
       return(record_sample(all_records, n, cache))
     }
@@ -419,7 +430,7 @@ request <- function(
 
       resp <- handle_duplicates(
         resp, filter, select_, max_size, cache, n, seed, dwc, df, exclude_na,
-        locale
+        locale, include_facts
       )
 
     }
@@ -667,7 +678,8 @@ record_sample <- function(x, n, cache) {
 # handle duplicates ------------------------------------------------------------
 
 handle_duplicates <- function(
-  x, filter, select, max_size, cache, n, seed, dwc, df, exclude_na, locale
+  x, filter, select, max_size, cache, n, seed, dwc, df, exclude_na, locale,
+  include_facts
 ) {
 
   ids <- lapply(
@@ -690,14 +702,15 @@ handle_duplicates <- function(
 
     new_records <- finbif_records(
       filter, select, sample = TRUE, n = max_size, cache = cache, dwc = dwc,
-      seed = seed, df = df, exclude_na = exclude_na, locale = locale
+      seed = seed, df = df, exclude_na = exclude_na, locale = locale,
+      include_facts = include_facts
     )
 
     x[[length(x) + 1L]] <- new_records[[1L]]
 
     x <- handle_duplicates(
       x, filter, select, max_size, cache, n, seed + 1L, dwc, df, exclude_na,
-      locale
+      locale, include_facts
     )
 
   }

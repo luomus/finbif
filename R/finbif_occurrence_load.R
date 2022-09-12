@@ -92,7 +92,7 @@ finbif_occurrence_load <- function(
 
   }
 
-  defer_errors(select <- infer_selection("none", select, var_type))
+  defer_errors(select <- infer_selection("none", select, FALSE, var_type))
 
   fact_types <- names(which(vapply(facts, length, integer(1L)) > 0L))
 

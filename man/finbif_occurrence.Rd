@@ -27,7 +27,8 @@ finbif_occurrence(
   drop_na = FALSE,
   aggregate_counts = TRUE,
   exclude_na = FALSE,
-  unlist = FALSE
+  unlist = FALSE,
+  facts
 )
 }
 \arguments{
@@ -108,6 +109,9 @@ non-NA values only be returned.}
 
 \item{unlist}{Logical. Should variables that contain non atomic data be
 concatenated into a string separated by ";"?}
+
+\item{facts}{Character vectors. Extra variables to be extracted from record,
+event and document "facts".}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

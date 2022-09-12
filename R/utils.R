@@ -183,6 +183,8 @@ has_pkgs <- function(...) {
 #' @noRd
 name_chr_vec <- function(x, unique = TRUE, na.rm = TRUE) { # nolint
 
+  if (missing(x)) return(NULL)
+
   stopifnot(inherits(x, "character"))
 
   if (na.rm) {

@@ -27,6 +27,8 @@
 #'   using aggregation.
 #' @param unlist Logical. Should variables that contain non atomic data be
 #'  concatenated into a string separated by ";"?
+#' @param facts Character vectors. Extra variables to be extracted from record,
+#'  event and document "facts".
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -58,7 +60,8 @@ finbif_occurrence <- function(
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   check_taxa = TRUE, on_check_fail = c("warn", "error"),
   tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"), seed,
-  drop_na = FALSE, aggregate_counts = TRUE, exclude_na = FALSE, unlist = FALSE
+  drop_na = FALSE, aggregate_counts = TRUE, exclude_na = FALSE, unlist = FALSE,
+  facts
 ) {
 
   taxa <- select_taxa(
@@ -82,7 +85,7 @@ finbif_occurrence <- function(
 
       multi_request <- multi_req(
         taxa, filter, select, order_by, sample, n, page, count_only, quiet,
-        cache, dwc, date_time_method, tzone, locale, exclude_na, unlist
+        cache, dwc, date_time_method, tzone, locale, exclude_na, unlist, facts
       )
 
       return(multi_request)
@@ -93,12 +96,14 @@ finbif_occurrence <- function(
 
   filter <- c(taxa, filter)
 
+  include_facts <- !missing(facts)
+
   if (!is.finite(n) || is.factor(n) || n < 0) {
 
     n <- finbif_records(
       filter, select, order_by, aggregate, sample,
       n = getOption("finbif_max_page_size"), page, count_only, quiet,
-      cache, dwc, df = TRUE, seed, exclude_na, locale
+      cache, dwc, df = TRUE, seed, exclude_na, locale, include_facts
     )
 
     n <- attr(n, "nrec_avl")
@@ -109,7 +114,7 @@ finbif_occurrence <- function(
 
   records <- finbif_records(
     filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
-    cache, dwc, df = TRUE, seed, exclude_na, locale
+    cache, dwc, df = TRUE, seed, exclude_na, locale, include_facts
   )
 
   aggregate <- attr(records, "aggregate", TRUE)
@@ -153,6 +158,10 @@ finbif_occurrence <- function(
   df <- compute_scientific_name(df, select_, dwc)
 
   df <- compute_red_list_status(df, select_, dwc)
+
+  df <- extract_facts(df, facts, dwc)
+
+  select_ <- c(select_, name_chr_vec(facts))
 
   df <- structure(
     df[select_],
@@ -716,7 +725,7 @@ compute_red_list_status <- function(df, select_, dwc, add = TRUE) {
 
 multi_req <- function(
   taxa, filter, select, order_by, sample, n, page, count_only, quiet, cache,
-  dwc, date_time_method, tzone, locale, exclude_na, unlist
+  dwc, date_time_method, tzone, locale, exclude_na, unlist, facts
 ) {
 
   ans <- vector("list", length(filter))
@@ -740,7 +749,7 @@ multi_req <- function(
       count_only = count_only, quiet = quiet[[i]], cache = cache[[i]],
       dwc = dwc, date_time_method = date_time_method[[i]], check_taxa = FALSE,
       tzone = tzone[[i]], locale = locale[[i]], exclude_na = exclude_na[[i]],
-      unlist = unlist
+      unlist = unlist, facts = facts
     )
 
   }
@@ -768,6 +777,52 @@ unlist_cols <- function(df, cols, unlist) {
       if (is.list(df[[i]]) && !grepl("Fact|fact_", i)) {
 
         df[[i]] <- vapply(df[[i]], concat_string, character(1L))
+
+      }
+
+    }
+
+  }
+
+  df
+
+}
+
+#' @noRd
+
+extract_facts <- function(df, facts, dwc) {
+
+  if (!missing(facts)) {
+
+    names <- c(
+      "unit.facts.fact", "gathering.facts.fact", "document.facts.fact"
+    )
+
+    values <- c(
+      "unit.facts.value", "gathering.facts.value", "document.facts.value"
+    )
+
+    df[facts] <- NA_character_
+
+    for (fact in facts) {
+
+      for (level in 1L:3L) {
+
+        idx <- lapply(
+          df[[var_names[[names[[level]], col_type_string(dwc)]]]], `==`, fact
+        )
+
+        vk <- mapply(
+          function(v, k) ifelse(length(v[k]) > 0L, v[k], NA_character_),
+          df[[var_names[[values[[level]], col_type_string(dwc)]]]],
+          idx
+        )
+
+        if (!all(is.na(vk))) {
+
+          df[[fact]] <- vk
+
+        }
 
       }
 
