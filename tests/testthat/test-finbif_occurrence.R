@@ -378,3 +378,39 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_unlist"))
+
+suppressMessages(insert_cassette("finbif_red_list"))
+
+test_that(
+  "can compute red list status", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(select = "red_list_status"),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_red_list"))
+
+suppressMessages(insert_cassette("finbif_primary_habitat"))
+
+test_that(
+  "can compute primary habitat type from ID", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(select = "primary_habitat"),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_primary_habitat"))

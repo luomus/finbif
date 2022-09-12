@@ -3,13 +3,7 @@ test_that(
 
     expect_s3_class(finbif_metadata(), "data.frame")
 
-    expect_s3_class(finbif_metadata("regulatory_status"), "data.frame")
-
     expect_s3_class(finbif_metadata("red_list"), "data.frame")
-
-    expect_s3_class(finbif_metadata("habitat_type"), "data.frame")
-
-    expect_s3_class(finbif_metadata("habitat_qualifier"), "data.frame")
 
     expect_s3_class(finbif_metadata("country"), "data.frame")
 
@@ -34,6 +28,14 @@ test_that(
     expect_s3_class(finbif_metadata("life_stage"), "data.frame")
 
     expect_s3_class(finbif_metadata("taxon_rank"), "data.frame")
+
+    options(finbif_locale = "ru")
+
+    expect_s3_class(finbif_metadata("regulatory_status"), "data.frame")
+
+    expect_s3_class(finbif_metadata("habitat_type"), "data.frame")
+
+    expect_s3_class(finbif_metadata("habitat_qualifier"), "data.frame")
 
     capture.output(informal_groups <- finbif_informal_groups())
 
