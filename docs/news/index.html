@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.6.9007</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,60 +58,21 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.6.9007" id="finbif-0669007">finbif 0.6.6.9007<a class="anchor" aria-label="anchor" href="#finbif-0669007"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.7.0" id="finbif-070">finbif 0.7.0<a class="anchor" aria-label="anchor" href="#finbif-070"></a></h2>
 <div class="section level5">
-<h5 id="new-features-0-6-6-9007">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-6-9007"></a></h5>
-<ul><li>New argument <code>facts</code> added to <code>finbif_occurrence</code> that can be used to automatically extract facts when downloading occurrence records.</li>
+<h5 id="new-features-0-7-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-7-0"></a></h5>
+<ul><li><p>New function <code>taxon_id</code> that returns FinBIF taxon identifiers given a scientific name, vernacular name or other taxon identifier.</p></li>
+<li><p>New filters <code>complete_list_taxon_id</code> and <code>complete_list_type</code> now available.</p></li>
+<li><p>New global option <code>finbif_hide_progress</code> to suppress progress bars when downloading, importing or processing FinBIF records.</p></li>
+<li><p>For the sake of clarity and consistency the term “administrative status” is now refered to as “regulatory status” throughout.</p></li>
+<li><p>Regulatory status, informal taxonomic group and habitat data are now localised.</p></li>
+<li><p>Option <code>unlist</code> added to <code>finbif_occurrence</code> that casts list columns to strings. If a cell has multiple values the values are cast to a string separated by semi-colons.</p></li>
+<li><p>New argument <code>facts</code> added to <code>finbif_occurrence</code> that can be used to automatically extract facts when downloading occurrence records.</p></li>
 </ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.6.9006" id="finbif-0669006">finbif 0.6.6.9006<a class="anchor" aria-label="anchor" href="#finbif-0669006"></a></h2>
 <div class="section level5">
-<h5 id="new-features-0-6-6-9006">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-6-9006"></a></h5>
-<ul><li>Option <code>unlist</code> added to <code>finbif_occurrence</code> that casts list columns to strings. If a cell has multiple values the values are cast to a string separated by semi-colons.</li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.6.9005" id="finbif-0669005">finbif 0.6.6.9005<a class="anchor" aria-label="anchor" href="#finbif-0669005"></a></h2>
-<div class="section level5">
-<h5 id="bug-fixes-0-6-6-9005">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-6-9005"></a></h5>
+<h5 id="bug-fixes-0-7-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-7-0"></a></h5>
 <ul><li><p>Fixed bug triggered by incorrect data type applied to <code>taxonomic_order</code>.</p></li>
 <li><p>Fixed bug preventing locale switching of vernacular name data.</p></li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.6.9004" id="finbif-0669004">finbif 0.6.6.9004<a class="anchor" aria-label="anchor" href="#finbif-0669004"></a></h2>
-<div class="section level5">
-<h5 id="new-features-0-6-6-9004">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-6-9004"></a></h5>
-<ul><li>Regulatory status, informal taxonomic group and habitat data are now localised.</li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.6.9003" id="finbif-0669003">finbif 0.6.6.9003<a class="anchor" aria-label="anchor" href="#finbif-0669003"></a></h2>
-<div class="section level5">
-<h5 id="new-features-0-6-6-9003">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-6-9003"></a></h5>
-<ul><li>For the sake of clarity and consistency the term “administrative status” is now refered to as “regulatory status” throughout.</li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.6.9002" id="finbif-0669002">finbif 0.6.6.9002<a class="anchor" aria-label="anchor" href="#finbif-0669002"></a></h2>
-<div class="section level5">
-<h5 id="new-features-0-6-6-9002">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-6-9002"></a></h5>
-<ul><li>New global option <code>finbif_hide_progress</code> to suppress progress bars when downloading, importing or processing FinBIF records.</li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.6.9001" id="finbif-0669001">finbif 0.6.6.9001<a class="anchor" aria-label="anchor" href="#finbif-0669001"></a></h2>
-<div class="section level5">
-<h5 id="new-features-0-6-6-9001">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-6-9001"></a></h5>
-<ul><li>New filters <code>complete_list_taxon_id</code> and <code>complete_list_type</code> now available.</li>
-</ul></div>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.6.9000" id="finbif-0669000">finbif 0.6.6.9000<a class="anchor" aria-label="anchor" href="#finbif-0669000"></a></h2>
-<div class="section level5">
-<h5 id="new-features-0-6-6-9000">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-6-9000"></a></h5>
-<ul><li>New function <code>taxon_id</code> that returns FinBIF taxon identifiers given a scientific name, vernacular name or other taxon identifier.</li>
 </ul></div>
 </div>
     <div class="section level2">

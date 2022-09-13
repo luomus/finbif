@@ -1,19 +1,28 @@
-# finbif 0.6.6.9007
+# finbif 0.7.0
 
 #### NEW FEATURES
 
-  - New argument `facts` added to `finbif_occurrence` that can be used
-    to automatically extract facts when downloading occurrence records.
+  - New function `taxon_id` that returns FinBIF taxon identifiers given
+    a scientific name, vernacular name or other taxon identifier.
 
-# finbif 0.6.6.9006
+  - New filters `complete_list_taxon_id` and `complete_list_type` now
+    available.
 
-#### NEW FEATURES
+  - New global option `finbif_hide_progress` to suppress progress bars
+    when downloading, importing or processing FinBIF records.
+
+  - For the sake of clarity and consistency the term "administrative
+    status" is now refered to as "regulatory status" throughout.
+
+  - Regulatory status, informal taxonomic group and habitat data are now
+    localised.
 
   - Option `unlist` added to `finbif_occurrence` that casts list columns
     to strings. If a cell has multiple values the values are cast to a
     string separated by semi-colons.
 
-# finbif 0.6.6.9005
+  - New argument `facts` added to `finbif_occurrence` that can be used
+    to automatically extract facts when downloading occurrence records.
 
 #### BUG FIXES
 
@@ -21,41 +30,6 @@
     `taxonomic_order`.
 
   - Fixed bug preventing locale switching of vernacular name data.
-
-# finbif 0.6.6.9004
-
-#### NEW FEATURES
-
-  - Regulatory status, informal taxonomic group and habitat data are now
-    localised.
-
-# finbif 0.6.6.9003
-
-#### NEW FEATURES
-
-  - For the sake of clarity and consistency the term "administrative
-    status" is now refered to as "regulatory status" throughout.
-
-# finbif 0.6.6.9002
-
-#### NEW FEATURES
-
-  - New global option `finbif_hide_progress` to suppress progress bars
-    when downloading, importing or processing FinBIF records.
-
-# finbif 0.6.6.9001
-
-#### NEW FEATURES
-
-  - New filters `complete_list_taxon_id` and `complete_list_type` now
-    available.
-
-# finbif 0.6.6.9000
-
-#### NEW FEATURES
-
-  - New function `taxon_id` that returns FinBIF taxon identifiers given
-    a scientific name, vernacular name or other taxon identifier.
 
 # finbif 0.6.6
 
