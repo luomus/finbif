@@ -68,6 +68,8 @@ test_that(
 test_that(
   "can get a small random sample", {
 
+    skip_on_cran()
+
     x <- finbif_occurrence(
       filter = c(n_total_records_max = 2000), aggregate = "records", n = 100
     )
@@ -175,6 +177,8 @@ test_that(
 
 test_that(
   "returns errors appropriately", {
+
+    skip_on_cran()
 
     expect_error(
       finbif_occurrence("not a valid taxa", on_check_fail = "error")
