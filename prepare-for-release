@@ -18,5 +18,5 @@
 13. Remove CRAN-SUBMISSION and then commit.
 14. Checkout dev (`git checkout dev`).
 15. Merge main (`git merge main`).
-16. Add dev component to version number, update cff, news and docs, commit and
-    push.
+16. Add dev component to version number, rerun tests, update cff, news and docs,
+    commit and push.
