@@ -1,0 +1,57 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.48&selected=unit.unitId%2Cunit.facts.fact%2Cunit.facts.value%2Cgathering.facts.fact%2Cgathering.facts.value%2Cdocument.facts.fact%2Cdocument.facts.value&orderBy=RANDOM&page=1&pageSize=10&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 13 Sep 2022 08:47:05 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 dw.laji.fi
+      cache-control: no-store
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":1272712,"pageSize":10,"total":12727115,"results":[{"unit":{"unitId":"http://tun.fi/KE.67/12292151#Unit"}},{"unit":{"facts":[{"fact":"ringVerification","value":"V"},{"fact":"fieldReadableCode","value":"FD65731B887FD56158A3BD99C9D7B45E"},{"fact":"attachmentPoint","value":"A"},{"fact":"mainColor","value":"PU"},{"fact":"codeColor","value":"VA"},{"fact":"codeAlign","value":"PE"},{"fact":"upsideDown","value":"A"},{"fact":"attachmentLeftRight","value":"V"},{"fact":"species","value":"LARFUS"},{"fact":"ringedSpecies","value":"LARFUS"},{"fact":"age","value":"1"},{"fact":"ageDeterminationMethod","value":"V"}],"unitId":"http://tun.fi/KE.67/9701982#Unit"},"gathering":{"facts":[{"fact":"type","value":"recovery"},{"fact":"eventDate","value":"2.8.2005"},{"fact":"eventDateAccuracy","value":"0"},{"fact":"hour","value":"7"},{"fact":"country","value":"FINLAND"},{"fact":"province","value":"HÄME"},{"fact":"euringProvinceCode","value":"SF80"},{"fact":"municipality","value":"TAMPER"},{"fact":"countryCode","value":"SF"},{"fact":"elyCentreCode","value":"4"},{"fact":"elyCentre","value":"Pirkanmaan
+        ELY"},{"fact":"finnishProvinceCode","value":"6"},{"fact":"finnishProvince","value":"Pirkanmaa"},{"fact":"finnishOldCountyCode","value":"4"},{"fact":"finnishOldCounty","value":"HÄME,
+        FINLAND"},{"fact":"lylAreaCode","value":"44"},{"fact":"lylArea","value":"Pirkanmaan
+        Lintutieteellinen Yhdistys r.y."},{"fact":"currentMunicipality","value":"TAMPER"},{"fact":"lat","value":"6829900"},{"fact":"lon","value":"3339800"},{"fact":"coordinateSystem","value":"YKJ"},{"fact":"coordinateAccuracy","value":"100"},{"fact":"captureMethod","value":"T"},{"fact":"ringsAttached","value":"V"},{"fact":"recoveryMethod","value":"29"},{"fact":"birdConditionEURING","value":"8"}]}},{"unit":{"unitId":"http://tun.fi/KE.67/12379624#Unit"}},{"unit":{"facts":[{"fact":"species","value":"STEHIR"},{"fact":"ringedSpecies","value":"STEHIR"},{"fact":"age","value":"PP"}],"unitId":"http://tun.fi/KE.67/3911028#Unit"},"gathering":{"facts":[{"fact":"type","value":"ringing"},{"fact":"eventDate","value":"5.7.1973"},{"fact":"country","value":"FINLAND"},{"fact":"province","value":"TURKU-PORI"},{"fact":"euringProvinceCode","value":"SF86"},{"fact":"municipality","value":"DRAGSF"},{"fact":"countryCode","value":"SF"},{"fact":"elyCentreCode","value":"2"},{"fact":"elyCentre","value":"Varsinais-Suomen
+        ELY"},{"fact":"finnishProvinceCode","value":"2"},{"fact":"finnishProvince","value":"Varsinais-Suomi"},{"fact":"finnishOldCountyCode","value":"2"},{"fact":"finnishOldCounty","value":"TURKU
+        - PORI, FINLAND"},{"fact":"lylAreaCode","value":"11"},{"fact":"lylArea","value":"Turun
+        Lintutieteellinen Yhdistys r.y."},{"fact":"currentMunicipality","value":"KEMIÖN"},{"fact":"lat","value":"594800"},{"fact":"lon","value":"223000"},{"fact":"coordinateSystem","value":"WGS84-DMS"},{"fact":"coordinateAccuracy","value":"1000"}]}},{"unit":{"facts":[{"fact":"species","value":"CARCHL"},{"fact":"ringedSpecies","value":"CARCHL"},{"fact":"age","value":"PP"}],"unitId":"http://tun.fi/KE.67/6716529#Unit"},"gathering":{"facts":[{"fact":"type","value":"ringing"},{"fact":"eventDate","value":"2.6.1993"},{"fact":"country","value":"FINLAND"},{"fact":"province","value":"UUSIMAA"},{"fact":"euringProvinceCode","value":"SF87"},{"fact":"municipality","value":"HELSIN"},{"fact":"countryCode","value":"SF"},{"fact":"elyCentreCode","value":"1"},{"fact":"elyCentre","value":"Uudenmaan
+        ELY"},{"fact":"finnishProvinceCode","value":"1"},{"fact":"finnishProvince","value":"Uusimaa"},{"fact":"finnishOldCountyCode","value":"1"},{"fact":"finnishOldCounty","value":"UUSIMAA,
+        FINLAND"},{"fact":"lylAreaCode","value":"21"},{"fact":"lylArea","value":"Helsingin
+        Seudun Lintutieteellinen Yhdistys - Tringa r.y."},{"fact":"currentMunicipality","value":"HELSIN"},{"fact":"lat","value":"6682000"},{"fact":"lon","value":"3380600"},{"fact":"coordinateSystem","value":"YKJ"},{"fact":"coordinateAccuracy","value":"100"},{"fact":"clutchNumber","value":"3"},{"fact":"clutchNumberOwner","value":"42D2CB081CB5F06C98ACEE38149EA0C5"}]}},{"unit":{"facts":[{"fact":"species","value":"ANTTRI"},{"fact":"ringedSpecies","value":"ANTTRI"},{"fact":"age","value":"1"},{"fact":"ageDeterminationMethod","value":"V"}],"unitId":"http://tun.fi/KE.67/10761059#Unit"},"gathering":{"facts":[{"fact":"type","value":"ringing"},{"fact":"eventDate","value":"20.8.2016"},{"fact":"hour","value":"13"},{"fact":"country","value":"FINLAND"},{"fact":"province","value":"HÄME"},{"fact":"euringProvinceCode","value":"SF80"},{"fact":"municipality","value":"HATTUL"},{"fact":"countryCode","value":"SF"},{"fact":"elyCentreCode","value":"3"},{"fact":"elyCentre","value":"Hämeen
+        ELY"},{"fact":"finnishProvinceCode","value":"5"},{"fact":"finnishProvince","value":"Kanta-Häme"},{"fact":"finnishOldCountyCode","value":"4"},{"fact":"finnishOldCounty","value":"HÄME,
+        FINLAND"},{"fact":"lylAreaCode","value":"42"},{"fact":"lylArea","value":"Kanta-Hämeen
+        Lintutieteellinen Yhdistys r.y."},{"fact":"currentMunicipality","value":"HATTUL"},{"fact":"lat","value":"6782628"},{"fact":"lon","value":"3362449"},{"fact":"coordinateSystem","value":"YKJ"},{"fact":"coordinateAccuracy","value":"1"},{"fact":"coordinateMeasurementMethod","value":"PAPERIKARTTA"},{"fact":"captureMethod","value":"V"}]}},{"unit":{"facts":[{"fact":"species","value":"FALTIN"},{"fact":"ringedSpecies","value":"FALTIN"},{"fact":"age","value":"PP"}],"unitId":"http://tun.fi/KE.67/5731995#Unit"},"gathering":{"facts":[{"fact":"type","value":"ringing"},{"fact":"eventDate","value":"26.6.2002"},{"fact":"country","value":"FINLAND"},{"fact":"province","value":"VAASA"},{"fact":"euringProvinceCode","value":"SF88"},{"fact":"municipality","value":"KANNUS"},{"fact":"countryCode","value":"SF"},{"fact":"elyCentreCode","value":"10"},{"fact":"elyCentre","value":"Etelä-Pohjanmaan
+        ELY"},{"fact":"finnishProvinceCode","value":"16"},{"fact":"finnishProvince","value":"Keski-Pohjanmaa"},{"fact":"finnishOldCountyCode","value":"9"},{"fact":"finnishOldCounty","value":"VAASA,
+        FINLAND"},{"fact":"lylAreaCode","value":"74"},{"fact":"lylArea","value":"Keski-Pohjanmaan
+        Lintutieteellinen Yhdistys r.y."},{"fact":"currentMunicipality","value":"KANNUS"},{"fact":"lat","value":"635100"},{"fact":"lon","value":"235000"},{"fact":"coordinateSystem","value":"WGS84-DMS"},{"fact":"coordinateAccuracy","value":"1000"},{"fact":"clutchNumber","value":"62"},{"fact":"clutchNumberOwner","value":"42D2CB081CB5F06C98ACEE38149EA0C5"}]}},{"unit":{"facts":[{"fact":"species","value":"STEAEA"},{"fact":"ringedSpecies","value":"STEAEA"},{"fact":"age","value":"PM"}],"unitId":"http://tun.fi/KE.67/4128684#Unit"},"gathering":{"facts":[{"fact":"type","value":"ringing"},{"fact":"eventDate","value":"18.6.1991"},{"fact":"country","value":"FINLAND"},{"fact":"province","value":"TURKU-PORI"},{"fact":"euringProvinceCode","value":"SF86"},{"fact":"municipality","value":"PYHÄRA"},{"fact":"countryCode","value":"SF"},{"fact":"elyCentreCode","value":"2"},{"fact":"elyCentre","value":"Varsinais-Suomen
+        ELY"},{"fact":"finnishProvinceCode","value":"2"},{"fact":"finnishProvince","value":"Varsinais-Suomi"},{"fact":"finnishOldCountyCode","value":"2"},{"fact":"finnishOldCounty","value":"TURKU
+        - PORI, FINLAND"},{"fact":"lylAreaCode","value":"13"},{"fact":"lylArea","value":"Rauman
+        Seudun Lintuharrastajat r.y."},{"fact":"currentMunicipality","value":"PYHÄRA"},{"fact":"lat","value":"610000"},{"fact":"lon","value":"212100"},{"fact":"coordinateSystem","value":"WGS84-DMS"},{"fact":"coordinateAccuracy","value":"1000"}]}},{"unit":{"facts":[{"fact":"species","value":"PARCIN"},{"fact":"ringedSpecies","value":"PARCIN"},{"fact":"age","value":"PP"}],"unitId":"http://tun.fi/KE.67/1918766#Unit"},"gathering":{"facts":[{"fact":"type","value":"ringing"},{"fact":"eventDate","value":"20.6.1986"},{"fact":"country","value":"FINLAND"},{"fact":"province","value":"LAPPI"},{"fact":"euringProvinceCode","value":"SF83"},{"fact":"municipality","value":"KITTIL"},{"fact":"countryCode","value":"SF"},{"fact":"elyCentreCode","value":"13"},{"fact":"elyCentre","value":"Lapin
+        ELY"},{"fact":"finnishProvinceCode","value":"19"},{"fact":"finnishProvince","value":"Lappi"},{"fact":"finnishOldCountyCode","value":"12"},{"fact":"finnishOldCounty","value":"LAPPI,
+        FINLAND"},{"fact":"lylAreaCode","value":"92"},{"fact":"lylArea","value":"Lapin
+        Lintutieteellinen Yhdistys r.y."},{"fact":"currentMunicipality","value":"KITTIL"},{"fact":"lat","value":"673600"},{"fact":"lon","value":"245600"},{"fact":"coordinateSystem","value":"WGS84-DMS"},{"fact":"coordinateAccuracy","value":"1000"},{"fact":"clutchNumber","value":"12"},{"fact":"clutchNumberOwner","value":"42D2CB081CB5F06C98ACEE38149EA0C5"}]}},{"unit":{"facts":[{"fact":"species","value":"PARMAJ"},{"fact":"ringedSpecies","value":"PARMAJ"},{"fact":"age","value":"PP"}],"unitId":"http://tun.fi/KE.67/4748316#Unit"},"gathering":{"facts":[{"fact":"type","value":"ringing"},{"fact":"eventDate","value":"23.6.1979"},{"fact":"country","value":"FINLAND"},{"fact":"province","value":"UUSIMAA"},{"fact":"euringProvinceCode","value":"SF87"},{"fact":"municipality","value":"HYVINK"},{"fact":"countryCode","value":"SF"},{"fact":"elyCentreCode","value":"1"},{"fact":"elyCentre","value":"Uudenmaan
+        ELY"},{"fact":"finnishProvinceCode","value":"1"},{"fact":"finnishProvince","value":"Uusimaa"},{"fact":"finnishOldCountyCode","value":"1"},{"fact":"finnishOldCounty","value":"UUSIMAA,
+        FINLAND"},{"fact":"lylAreaCode","value":"22"},{"fact":"lylArea","value":"Keski-
+        ja Pohjois-Uudenmaan Lintuharrastajat - Apus r.y."},{"fact":"currentMunicipality","value":"HYVINK"},{"fact":"lat","value":"603400"},{"fact":"lon","value":"245900"},{"fact":"coordinateSystem","value":"WGS84-DMS"},{"fact":"coordinateAccuracy","value":"1000"},{"fact":"clutchNumber","value":"20"},{"fact":"clutchNumberOwner","value":"42D2CB081CB5F06C98ACEE38149EA0C5"}]}}]}'
+  recorded_at: 2022-09-13 08:47:05 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.2

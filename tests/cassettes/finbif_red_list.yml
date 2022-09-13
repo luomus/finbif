@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.latestRedListStatusFinland.status%2Cunit.linkings.taxon.latestRedListStatusFinland.year&page=1&pageSize=10&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 13 Sep 2022 08:46:46 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 dw.laji.fi
+      cache-control: no-store
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":4434620,"pageSize":10,"total":44346195,"results":[{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1441300#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1441298#12"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1441298#15"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1441298#9"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1441298#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1441298#18"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1441298#6"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/KE.176/631fa9f8d5debf694eaa582c#Unit1"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1441340#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1441339#3"}}]}'
+  recorded_at: 2022-09-13 08:46:47 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.2
