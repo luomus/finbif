@@ -44,6 +44,6 @@ Get information on collections in the FinBIF database.
 \dontrun{
 
 # Get collection metadata
-collecitons <- finbif_collections()
+collections <- finbif_collections()
 }
 }

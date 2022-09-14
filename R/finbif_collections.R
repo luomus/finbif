@@ -19,9 +19,10 @@
 #' @examples \dontrun{
 #'
 #' # Get collection metadata
-#' collecitons <- finbif_collections()
+#' collections <- finbif_collections()
 #' }
 #' @importFrom utils hasName
+#' @importFrom jsonlite fromJSON
 #' @export
 
 finbif_collections <- function(
