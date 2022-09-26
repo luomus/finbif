@@ -135,13 +135,14 @@
 #'   location of the record in either EUREF, YKJ or WGS84 coordinate systems.
 #' - `country` Character.
 #'   The country of the record's location.
-#' - `province` Character.
-#'   The administrative area directly below the level of country. For data from
-#'   Finland FinBIF uses the concept of
+#' - `region` Character.
+#'   The administrative area directly below the level of country.
+#' - `bio_province` Character.
+#'   For data from Finland FinBIF uses the concept of
 #'   [Biogeographical Province](https://laji.fi/en/theme/emk). See link for
 #'   details.
 #' - `municipality`. Character.
-#'   Administrative level below province.
+#'   Administrative level below region
 #' - `higher_geography` Character.
 #'   Geographic place name that is at higher level than country.
 #' - `line_length_m` Integer.

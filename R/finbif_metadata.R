@@ -19,7 +19,8 @@ finbif_metadata <- function(which) {
     "regulatory_status",
     "red_list",
     "country",
-    "province",
+    "region",
+    "bio_province",
     "municipality",
     "bird_assoc_area",
     "finnish_occurrence_status",
@@ -50,7 +51,8 @@ finbif_metadata <- function(which) {
       regulatory_status         = md_regulatory_status(),
       red_list                  = md_red_list(),
       country                   = md_countries(),
-      province                  = md_provinces(),
+      region                    = md_regions(),
+      bio_province              = md_bio_provinces(),
       municipality              = md_municipalities(),
       bird_assoc_area           = md_bird_assoc_areas(),
       finnish_occurrence_status = md_finnish_occurrence_status(),
@@ -109,9 +111,17 @@ md_countries <- function() {
   )
 }
 
-md_provinces <- function() {
+md_regions <- function() {
   structure(
-    province, row.names = seq_len(nrow(province)),
+    region,
+    row.names = seq_len(nrow(region)),
+    names = c("english_name", "finnish_name", "swedish_name")
+  )
+}
+
+md_bio_provinces <- function() {
+  structure(
+    bio_province, row.names = seq_len(nrow(bio_province)),
     names = c("english_name", "finnish_name", "alpha_code", "country")
   )
 }

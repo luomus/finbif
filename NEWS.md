@@ -1,3 +1,15 @@
+# finbif 0.7.0.9000
+
+#### NEW FEATURES
+
+  - Region is now a selectable variable for `finbif_occurrence` and can
+    also be used to filter records.
+
+#### MINOR IMPROVEMENTS
+
+  - For the sake of clarity "province" is now referred to as
+    "bio-province".
+
 # finbif 0.7.0
 
 #### NEW FEATURES

@@ -11,7 +11,8 @@ source("data-raw/informal_groups.R")
 source("data-raw/habitat_types.R")
 source("data-raw/taxon_ranks.R")
 source("data-raw/countries.R")
-source("data-raw/provinces.R")
+source("data-raw/regions.R")
+source("data-raw/bio_provinces.R")
 source("data-raw/municipalities.R")
 source("data-raw/bird_association_area.R")
 source("data-raw/finnish_occurrence.R")
@@ -44,7 +45,8 @@ usethis::use_data(
   taxon_rank,
   orig_taxon_rank,
   country,
-  province,
+  region,
+  bio_province,
   municipality,
   bird_assoc_area,
   finnish_occurrence_status,

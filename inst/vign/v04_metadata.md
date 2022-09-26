@@ -32,19 +32,20 @@ finbif_metadata()
 #> 1  regulatory_status        
 #> 2  red_list                 
 #> 3  country                  
-#> 4  province                 
-#> 5  municipality             
-#> 6  bird_assoc_area          
-#> 7  finnish_occurrence_status
-#> 8  habitat_type             
-#> 9  habitat_qualifier        
-#> 10 life_stage               
-#> 11 record_basis             
-#> 12 restriction_level        
-#> 13 restriction_reason       
-#> 14 sex_category             
-#> 15 source                   
-#> 16 taxon_rank               
+#> 4  region                   
+#> 5  bio_province             
+#> 6  municipality             
+#> 7  bird_assoc_area          
+#> 8  finnish_occurrence_status
+#> 9  habitat_type             
+#> 10 habitat_qualifier        
+#> 11 life_stage               
+#> 12 record_basis             
+#> 13 restriction_level        
+#> 14 restriction_reason       
+#> 15 sex_category             
+#> 16 source                   
+#> 17 taxon_rank               
 
 ```
 

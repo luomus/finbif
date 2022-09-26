@@ -87,15 +87,17 @@ Filters related to location of record include:
 \itemize{
 \item \code{locality} Character vector.
 Filter by name of locality. Will first try to match strings to the
-countries, provinces, and municipalities (see below) in FinBIF, if none of
-these locality types match exactly then will return records with verbatim
-locality matches in the original records.
+countries, bio-provinces, and municipalities (see below) in FinBIF, if none
+of these locality types match exactly then will return records with
+verbatim locality matches in the original records.
 \item \code{country} Character vector.
 Filter by country. Use \code{finbif_metadata()} to see country names and ISO
 codes (2 and 3 character) used in FinBIF.
-\item \code{province} Character vector.
-Filter by province. Use \code{finbif_metadata()} to see province names and
-codes.
+\item \code{region} Character vector.
+Filter by region. Use \code{finbif_metadata()} to see region names and codes.
+\item \code{bio_province} Character vector.
+Filter by bio-province. Use \code{finbif_metadata()} to see bio-province names
+and codes.
 \item \code{municipality} Character vector.
 Filter by municipality. Use \code{finbif_metadata()} to see municipality
 names.

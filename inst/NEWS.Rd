@@ -2,6 +2,18 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.7.0.9000}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Region is now a selectable variable for \code{finbif_occurrence}
+        and can also be used to filter records.
+    }
+  }
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item For the sake of clarity "province" is now referred to as
+        "bio-province".
+    }
+  }
 }
 
 \section{finbif version 0.7.0}{

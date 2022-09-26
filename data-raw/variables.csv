@@ -24,8 +24,9 @@ unit.linkings.taxon.taxonRank,taxon_rank_id,taxonRankID,FALSE,FALSE,character,ur
 computed_var_from_id_taxon_rank,taxon_rank,taxonRank,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.abundanceString,abundance_verbatim,verbatimAbundance,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.countryDisplayname,country_display,countryDisplay,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-gathering.interpretations.biogeographicalProvinceDisplayname,province,stateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+gathering.interpretations.biogeographicalProvinceDisplayname,bio_province,bioStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 computed_var_from_id_municipality,municipality,county,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+computed_var_region,region,stateProvince,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.wgs84WKT,footprint_wgs84,footprintWKT,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.linelengthInMeters,line_length_m,lineLengthMeters,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.boundingBoxAreaInSquareMeters,area_m2,areaMetersSquared,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
@@ -142,7 +143,7 @@ document.secureLevel,restriction_level,documentInformationWithheld,FALSE,FALSE,c
 document.secureReasons,restriction_reasons,documentInformationWithheldReasons,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.secured,restriction,informationRestricted,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.sourceId,source_id,sourceID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-gathering.biogeographicalProvince,province_verbatim,verbatimStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+gathering.biogeographicalProvince,bio_province_verbatim,verbatimBioStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.conversions.century,century,century,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.day,day,day,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
 gathering.conversions.dayOfYearBegin,ordinal_day_start,startDayOfYear,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
@@ -199,14 +200,14 @@ gathering.facts.integerValue,event_fact_integer,eventFactInteger,FALSE,FALSE,int
 gathering.facts.value,event_fact_value,eventFactValue,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.gatheringOrder,event_order,eventOrder,FALSE,FALSE,integer,integer,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.higherGeography,higher_geography,higherGeography,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
-gathering.interpretations.biogeographicalProvince,province_id,stateProvinceID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-gathering.interpretations.biogeographicalProvinces,province_ids,stateProvinceIDs,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+gathering.interpretations.biogeographicalProvince,bio_province_id,bioStateProvinceID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+gathering.interpretations.biogeographicalProvinces,bio_province_ids,bioStateProvinceIDs,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.country,country_id,countryID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 computed_var_from_id_country,country,country,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.finnishMunicipalities,municipality_ids,countyIDs,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.finnishMunicipality,municipality_id,countyID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.municipalityDisplayname,municipality_name,countyName,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-gathering.interpretations.sourceOfBiogeographicalProvince,province_source,stateProvinceSource,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+gathering.interpretations.sourceOfBiogeographicalProvince,bio_province_source,bioStateProvinceSource,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.sourceOfCoordinates,coordinates_source,georeferenceSources,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.sourceOfCountry,country_source,countrySource,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.sourceOfFinnishMunicipality,municipality_source,countySource,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
@@ -225,7 +226,7 @@ gathering.media.squareThumbnailURL,event_thumbnail_square,eventAssociatedMediaSq
 gathering.media.thumbnailURL,event_thumbnail,eventAssociatedMediaThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.mediaCount,event_media_count,eventAssociatedMediaCount,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.municipality,municipality_verbatim,verbatimCounty,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-gathering.province,province_verbatim2,verbatimStateProvince2,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+gathering.province,region_verbatim,verbatimStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.notes,event_notes,eventRemarks,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.observerUserIds,observers_ids,recordedByIDs,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.quality.issue.issue,event_issue,eventIssue,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE

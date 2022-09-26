@@ -159,6 +159,8 @@ finbif_occurrence <- function(
 
   df <- compute_red_list_status(df, select_, dwc)
 
+  df <- compute_region(df, select_, dwc)
+
   df <- extract_facts(df, facts, dwc)
 
   select_ <- c(select_, name_chr_vec(facts))
@@ -714,6 +716,25 @@ compute_red_list_status <- function(df, select_, dwc, add = TRUE) {
         df[[red_list_status_year]]
       )
     )
+
+  }
+
+  df
+
+}
+
+compute_region <- function(df, select_, dwc, add = TRUE) {
+
+  type <- col_type_string(dwc)
+
+  region <- var_names[["computed_var_region", type]]
+
+  municipality_id <-
+    var_names[["gathering.interpretations.finnishMunicipality", type]]
+
+  if (region %in% select_ && add) {
+
+    df[[region]] <- municipality[df[[municipality_id]], "region"]
 
   }
 

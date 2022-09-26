@@ -142,15 +142,17 @@ and not include records of lower taxonomic levels.</p></li>
 
 <p>Filters related to location of record include:</p><ul><li><p><code>locality</code> Character vector.
 Filter by name of locality. Will first try to match strings to the
-countries, provinces, and municipalities (see below) in FinBIF, if none of
-these locality types match exactly then will return records with verbatim
-locality matches in the original records.</p></li>
+countries, bio-provinces, and municipalities (see below) in FinBIF, if none
+of these locality types match exactly then will return records with
+verbatim locality matches in the original records.</p></li>
 <li><p><code>country</code> Character vector.
 Filter by country. Use <code><a href="finbif_metadata.html">finbif_metadata()</a></code> to see country names and ISO
 codes (2 and 3 character) used in FinBIF.</p></li>
-<li><p><code>province</code> Character vector.
-Filter by province. Use <code><a href="finbif_metadata.html">finbif_metadata()</a></code> to see province names and
-codes.</p></li>
+<li><p><code>region</code> Character vector.
+Filter by region. Use <code><a href="finbif_metadata.html">finbif_metadata()</a></code> to see region names and codes.</p></li>
+<li><p><code>bio_province</code> Character vector.
+Filter by bio-province. Use <code><a href="finbif_metadata.html">finbif_metadata()</a></code> to see bio-province names
+and codes.</p></li>
 <li><p><code>municipality</code> Character vector.
 Filter by municipality. Use <code><a href="finbif_metadata.html">finbif_metadata()</a></code> to see municipality
 names.</p></li>

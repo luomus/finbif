@@ -7,7 +7,9 @@ test_that(
 
     expect_s3_class(finbif_metadata("country"), "data.frame")
 
-    expect_s3_class(finbif_metadata("province"), "data.frame")
+    expect_s3_class(finbif_metadata("region"), "data.frame")
+
+    expect_s3_class(finbif_metadata("bio_province"), "data.frame")
 
     expect_s3_class(finbif_metadata("municipality"), "data.frame")
 

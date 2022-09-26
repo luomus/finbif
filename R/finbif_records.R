@@ -359,6 +359,16 @@ infer_computed_vars <- function(select, var_type) {
 
   }
 
+  region_vars <- c("region", "stateProvince")
+
+  if (any(region_vars %in% select)) {
+
+    region_vars <- "gathering.interpretations.finnishMunicipality"
+
+    select <- unique(c(select, var_names[region_vars, var_type]))
+
+  }
+
   select
 
 }

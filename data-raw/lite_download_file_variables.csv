@@ -5,7 +5,7 @@ result.unit.taxonVerbatim,fmtTxnNm,formatted_taxon_name,displayTaxonName,FALSE,c
 result.unit.abundanceString,abundVbtm,abundance_verbatim,verbatimAbundance,FALSE,character,
 result.gathering.displayDateTime,fmtDateTme,formatted_date_time,eventDateTimeDisplay,FALSE,character,
 result.gathering.country,country,country,country,FALSE,character,
-result.gathering.biogeographicalProvince,prov,province,stateProvince,FALSE,character,
+result.gathering.biogeographicalProvince,bioProv,bio_province,bioStateProvince,FALSE,character,
 result.gathering.locality,locality,locality,locality,FALSE,character,
 result.document.collectionId,collectNm,collection_name,collectionName,FALSE,character,
 result.document.documentId,documentID,document_id,catalogNumber,FALSE,character,

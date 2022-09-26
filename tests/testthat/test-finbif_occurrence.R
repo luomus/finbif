@@ -8,7 +8,7 @@ test_that(
     expect_s3_class(
       finbif_occurrence(
         species = "Rangifer tarandus fennicus", check_taxa = FALSE,
-        select = "municipality", sample = TRUE
+        select = c("municipality", "region"), sample = TRUE
       ),
       "finbif_occ"
     )
@@ -35,7 +35,7 @@ test_that(
       with_progress <- suppressMessages(
         finbif_occurrence(
           "Pteromys volans",
-          filter = c(province = "Uusimaa"),
+          filter = c(bio_province = "Uusimaa"),
           select = c("default_vars", "duration"),
           sample = TRUE, n = 5000, cache = FALSE, date_time_method = "none"
         )

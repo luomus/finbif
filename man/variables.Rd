@@ -149,13 +149,14 @@ Well-Known Text (WKT) representation of the geographic shape defining the
 location of the record in either EUREF, YKJ or WGS84 coordinate systems.
 \item \code{country} Character.
 The country of the record's location.
-\item \code{province} Character.
-The administrative area directly below the level of country. For data from
-Finland FinBIF uses the concept of
+\item \code{region} Character.
+The administrative area directly below the level of country.
+\item \code{bio_province} Character.
+For data from Finland FinBIF uses the concept of
 \href{https://laji.fi/en/theme/emk}{Biogeographical Province}. See link for
 details.
 \item \code{municipality}. Character.
-Administrative level below province.
+Administrative level below region
 \item \code{higher_geography} Character.
 Geographic place name that is at higher level than country.
 \item \code{line_length_m} Integer.
