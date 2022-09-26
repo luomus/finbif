@@ -734,7 +734,7 @@ compute_region <- function(df, select_, dwc, add = TRUE) {
 
   if (region %in% select_ && add) {
 
-    df[[region]] <- municipality[df[[municipality_id]], "region"]
+    df[[region]] <- municipality[basename(df[[municipality_id]]), "region"]
 
   }
 
