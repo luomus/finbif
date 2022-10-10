@@ -61,7 +61,7 @@ common_name("Bubo bubo", "se")
 # Get scientific name of "Otter"
 scientific_name("Otter")
 
-# Get scientific name of "Otter"
+# Get taxon identifier of "Otter"
 taxon_id("Otter")
 
 }
