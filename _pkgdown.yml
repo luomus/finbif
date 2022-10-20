@@ -41,6 +41,7 @@ reference:
     desc: >
       Getting records from finbif
     contents:
+      - finbif_last_mod
       - finbif_occurrence
       - finbif_occurrence_load
       - finbif_records

@@ -854,3 +854,28 @@ extract_facts <- function(df, facts, dwc) {
   df
 
 }
+
+#' Get last modified date for FinBIF occurrence records
+#'
+#' Get last modified date for filtered occurrence data from FinBIF.
+#'
+#' @aliases fb_last_mod
+#'
+#' @inheritParams finbif_occurrence
+#' @return A `Date` object
+#' @examples \dontrun{
+#'
+#' # Get last modified date for Whooper Swan occurrence records from Finland
+#' finbif_last_mod("Cygnus cygnus", filter = c(country = "Finland"))
+#'
+#' }
+#' @export
+finbif_last_mod <- function(..., filter) {
+
+  res <- finbif_occurrence(
+    ..., filter = filter, select = "load_date", order_by = "-load_date", n = 1L
+  )
+
+  as.Date(res[["load_date"]][[1]])
+
+}
