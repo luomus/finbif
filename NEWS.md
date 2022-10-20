@@ -1,3 +1,10 @@
+# finbif 0.7.0.9001
+
+#### NEW FEATURES
+
+  - New function `finbif_mod_date` to get last modified date for FinBIF
+    occurrence data.
+
 # finbif 0.7.0.9000
 
 #### NEW FEATURES

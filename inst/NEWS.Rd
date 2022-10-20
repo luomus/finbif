@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.7.0.9001}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New function \code{finbif_mod_date} to get last modified date for
+        FinBIF occurrence data.
+    }
+  }
+}
+
 \section{finbif version 0.7.0.9000}{
   \subsection{NEW FEATURES}{
     \itemize{
