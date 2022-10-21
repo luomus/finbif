@@ -1,3 +1,5 @@
+options(finbif_rate_limit = Inf)
+
 has_dev_token <- !identical(nchar(Sys.getenv("FINBIF_DEV_ACCESS_TOKEN")), 0L)
 
 not_cran <- identical(Sys.getenv("NOT_CRAN"), "true")
