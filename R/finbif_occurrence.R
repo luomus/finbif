@@ -876,6 +876,14 @@ finbif_last_mod <- function(..., filter) {
     ..., filter = filter, select = "load_date", order_by = "-load_date", n = 1L
   )
 
-  as.Date(res[["load_date"]][[1]])
+  ans <- as.Date(character())
+
+  if (nrow(res) > 0L) {
+
+    ans <- as.Date(res[["load_date"]][[1L]])
+
+  }
+
+  ans
 
 }
