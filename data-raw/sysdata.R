@@ -24,6 +24,7 @@ source("data-raw/restriction.R")
 source("data-raw/misc.R")
 source("data-raw/location_tag.R")
 source("data-raw/complete_list_type.R")
+source("data-raw/atlas.R")
 usethis::use_data(
   var_names,
   var_names_test,
@@ -65,6 +66,8 @@ usethis::use_data(
   complete_list_type,
   supported_langs,
   location_tag,
+  atlas_code,
+  atlas_class,
   internal = TRUE,
   overwrite = TRUE
 )

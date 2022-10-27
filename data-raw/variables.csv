@@ -613,8 +613,6 @@ missing_var_coordinates_1_center_ykj,coordinates_1_center_ykj,decimalCoordinates
 missing_var_coordinates_1_ykj,coordinates_1_ykj,decimalCoordinatesGrid1YKJ,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_collection_name,collection_name,collectionName,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 missing_var_invasive_control_class,invasive_control_class,invasiveControlClass,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-missing_var_atlas_class_display,atlas_class_display,atlasClassDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-missing_var_atlas_code_display,atlas_code_display,atlasCodeDisplay,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.randomKey,document_key,documentKey,FALSE,FALSE,character,character,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.occurrenceCountFinland,record_annotation_identification_total_finnish_records,occurrenceAnnotationIdentificationCountFinnish,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.identification.linkings.taxon.primaryHabitat.habitat,record_annotation_identification_primary_habitat_id,occurrenceAnnotationIdentificationPrimaryHabitatID,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -649,8 +647,10 @@ unit.annotations.identification.linkings.taxon.administrativeStatuses,record_ann
 unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.administrativeStatuses,record_pre_annotation_taxon_regulatory_status_id,occurrencePreAnnotationTaxonRegulatoryStatusID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.linkings.taxon.administrativeStatuses,record_identifications_taxon_regulatory_status_id,occurrenceIdentificationsTaxonRegulatoryStatusID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.administrativeStatuses,type_specimen_regulatory_status_id,typeSpecimenRegulatoryStatusID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.atlasClass,atlas_class,atlasClass,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.atlasCode,atlas_code,atlasCode,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.atlasClass,atlas_class_id,atlasClassID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.atlasCode,atlas_code_id,atlasCodeID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+computed_var_from_id_atlas_class,atlas_class,atlasClass,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+computed_var_from_id_atlas_code,atlas_code,atlasCode,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.prefix,document_prefix,documentPrefix,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.dataSource,data_source,dataSource,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.siteStatus,site_status,siteStatus,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE

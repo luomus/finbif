@@ -128,8 +128,8 @@ Unit.Quality.Taxon.Message,recQlMsg,record_quality_message,occurrenceQualityMess
 Document.Quality.CollectionReliabilityRating,collectQl,collection_quality,collectionQuality,Document.Linkings.CollectionQuality,character
 Unit.InvasiveControl,invasCntrl,invasive_control,invasiveControlled,Unit.Interpretations.InvasiveControl,logical
 Unit.PlantStatusCode,plntStatCd,plant_status_code,plantStatusCode,FALSE,character
-Unit.AtlasCode,atlasCode,atlas_code,atlasCode,FALSE,character
-Unit.AtlasClass,atlasCls,atlas_class,atlasClass,FALSE,character
+Unit.AtlasCode,atlasCdeID,atlas_code_id,atlasCodeID,FALSE,character
+Unit.AtlasClass,atlasClsID,atlas_class_id,atlasClassID,FALSE,character
 Gathering.StateLand,stateLand,state_land,stateLand,FALSE,character
 Document.OriginalDataSource,dataSource,data_source,dataSource,FALSE,character
 Document.MonitoringSiteType,siteType,site_type,siteType,FALSE,character
