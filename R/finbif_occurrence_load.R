@@ -142,7 +142,7 @@ finbif_occurrence_load <- function(
     df, select[["user"]], dwc, locale, !select[["all"]]
   )
 
-  df <- compute_abundance(df, select[["user"]], dwc, !select[["all"]])
+  df <- compute_abundance(df, select[["user"]], dwc, locale, !select[["all"]])
 
   df <- compute_citation(df, select[["user"]], dwc, record_id, !select[["all"]])
 

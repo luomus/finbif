@@ -149,7 +149,7 @@ finbif_occurrence <- function(
 
   df <- compute_epsg(df, select_, dwc)
 
-  df <- compute_abundance(df, select_, dwc)
+  df <- compute_abundance(df, select_, dwc, locale)
 
   df <- compute_citation(df, select_, dwc, record_id)
 
@@ -565,7 +565,7 @@ compute_epsg <- function(df, select_, dwc, add = TRUE) {
 
 #' @noRd
 
-compute_abundance <- function(df, select_, dwc, add = TRUE) {
+compute_abundance <- function(df, select_, dwc, locale, add = TRUE) {
 
   type <- col_type_string(dwc)
 
@@ -593,8 +593,15 @@ compute_abundance <- function(df, select_, dwc, add = TRUE) {
 
     if (occurrence_status_ %in% select_) {
 
+      status <- switch(
+        locale,
+        fi = c("paikalla", "poissa"),
+        sv = c("n\u00e4rvarande", "fr\u00e5nvarande"),
+        c("present", "absent")
+      )
+
       occurrence_status <- ifelse(
-        is.na(abundance) | abundance > 0L, "present", "absent"
+        is.na(abundance) | abundance > 0L, status[[1L]], status[[2L]]
       )
 
       df[[occurrence_status_]] <- occurrence_status
