@@ -427,7 +427,7 @@ test_that(
     skip_on_cran()
 
     expect_s3_class(
-      fb_occurrence(
+      finbif_occurrence(
         select = "record_id", filter = c(collection = "HR.48"),
         facts = "weightInGrams", sample = TRUE
       ),
@@ -439,3 +439,31 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_extract_facts"))
+
+suppressMessages(insert_cassette("finbif_localise_enums"))
+
+test_that(
+  "can localise enums", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(select = "abundance_unit", aggregate = "records"),
+      "finbif_occ"
+    )
+
+    expect_s3_class(finbif_occurrence(select = "abundance_unit"), "finbif_occ")
+
+    expect_s3_class(
+      finbif_occurrence(
+        filter = list(restriction_reason = "Pesintäaika"),
+        select = "restriction_reason"
+      ),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_localise_enums"))

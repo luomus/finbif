@@ -237,7 +237,7 @@ Variables related to restricted records include:
 Has the record been restricted in some way (e.g., geospatially aggregated).
 \item \code{restriction_level} Character.
 What level of restriction has been applied to the record.
-\item \code{restriction_reasons} List.
+\item \code{restriction_reason} List.
 List of reasons restriction has been applied.
 }
 }

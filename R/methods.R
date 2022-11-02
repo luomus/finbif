@@ -21,7 +21,7 @@
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
 as.data.frame.finbif_records <- function(
-  x,  ..., locale = getOption("finbif_locale")
+  x, ..., locale = getOption("finbif_locale")
 ) {
 
   cols <- attr(x, "select")
@@ -50,21 +50,35 @@ as.data.frame.finbif_records <- function(
   lst <- lapply(
     cols,
     function(col) {
-      type      <- var_names[col, "type"]
+      type      <- var_names[[col, "type"]]
       type_na   <- methods::as(NA, type)
-      single    <- var_names[col, "single"]
-      localised <- var_names[col, "localised"]
+      single    <- var_names[[col, "single"]]
+      localised <- var_names[[col, "localised"]]
       if (aggregated) {
         # unit/aggregate always returns data as a single string
         ans <- vapply(x, getElement, NA_character_, col)
         ans <- ifelse(ans == "", NA_character_, ans)
+        if (localised) ans <- localise_labels(ans, col, var_names, locale)
         return(methods::as(ans, type))
       }
-      col <- strsplit(col, "\\.")[[1L]]
-      if (single) return(vapply(x, get_el_recurse, type_na, col, type))
-      ans <- lapply(x, get_el_recurse, col, type)
+      col_els <- strsplit(col, "\\.")[[1L]]
+      if (single) {
+        ans <- vapply(x, get_el_recurse, type_na, col_els, type)
+        if (localised) ans <- localise_labels(ans, col, var_names, locale)
+        return(ans)
+      }
+      ans <- lapply(x, get_el_recurse, col_els, type)
       ans <- lapply(ans, unlist)
-      if (localised) ans <- vapply(ans, with_locale, type_na, locale)
+      if (localised) {
+        has_locale <- any(
+          vapply(ans, function(x) any(names(x) %in% supported_langs), NA)
+        )
+        if (has_locale) {
+          ans <- vapply(ans, with_locale, type_na, locale)
+        } else {
+          ans <- lapply(ans, localise_labels, col, var_names, locale)
+        }
+      }
       ans
     }
   )
@@ -86,6 +100,19 @@ as.data.frame.finbif_records <- function(
   }
 
   structure(df[cols], url = url, time = time)
+
+}
+
+#' @noRd
+localise_labels <- function(x, col, var_names, locale) {
+
+  labels <- get(var_names[[col, "translated_var"]])
+
+  label_col <- max(c(1L, which(names(labels) == paste0("name_", locale))))
+
+  localised_labels <- ifelse(is.na(x), x, labels[x, label_col])
+
+  ifelse(is.na(localised_labels), x, localised_labels)
 
 }
 

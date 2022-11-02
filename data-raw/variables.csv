@@ -15,7 +15,7 @@ unit.quality.documentGatheringUnitQualityIssues,any_issues,hasIssues,TRUE,TRUE,l
 unit.interpretations.needsCheck,requires_verification,requiresVerification,TRUE,TRUE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.interpretations.needsIdentification,requires_identification,requiresIdentification,TRUE,TRUE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.interpretations.reliability,record_reliability,occurrenceReliability,TRUE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
-unit.interpretations.recordQuality,record_quality,occurrenceQuality,TRUE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.interpretations.recordQuality,record_quality,occurrenceQuality,TRUE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE
 computed_var_duration,duration,samplingEffort,FALSE,FALSE,double,date,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 computed_var_date_time_ISO8601,date_time_ISO8601,eventDate,FALSE,FALSE,double,date,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 computed_var_epsg,epsg,geodeticDatum,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -59,7 +59,7 @@ unit.individualCountFemale,female_abundance,individualCountFemale,FALSE,FALSE,in
 unit.individualCountMale,male_abundance,individualCountMale,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.interpretations.annotatedTaxonId,annotated_taxon_id,annotatedTaxonID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.interpretations.pairCount,pair_abundance,pairCount,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
-unit.lifeStage,life_stage,lifeStage,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.lifeStage,life_stage,lifeStage,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE
 unit.linkings.originalTaxon.checklist,orig_taxon_checklist,originalTaxonChecklist,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.linkings.originalTaxon.cursiveName,orig_scientific_name_italicised,originalScientificNameItalicised,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.linkings.originalTaxon.finnish,orig_taxon_finnish,originalTaxonNameFinnish,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
@@ -95,13 +95,13 @@ unit.notes,record_notes,occurrenceRemarks,FALSE,FALSE,character,character,TRUE,T
 unit.quality.issue.issue,record_issue,occurrenceIssue,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.quality.issue.message,record_issue_message,occurrenceIssueRemarks,FALSE,TRUE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.quality.issue.source,record_issue_source,occurrenceIssueSource,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
-unit.recordBasis,record_basis,basisOfRecord,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.recordBasis,record_basis,basisOfRecord,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE
 unit.referencePublication,reference_publication,references,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.reportedInformalTaxonGroup,reported_informal_groups_id,verbatimInformalTaxonGroupsID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 computed_var_from_id_reported_informal_groups,reported_informal_groups,verbatimInformalTaxonGroups,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.reportedTaxonConfidence,reported_taxon_confidence,identificationQualifer,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.reportedTaxonId,reported_taxon_id,verbatimTaxonID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
-unit.sex,sex,sex,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.sex,sex,sex,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE
 unit.superRecordBasis,superrecord_basis,basisOfSuperRecord,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.taxonVerbatim,reported_name,verbatimIdentification,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.typeSpecimen,type_specimen,typeStatus,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
@@ -140,7 +140,7 @@ document.quality.issue.issue,document_issue,documentIssue,FALSE,TRUE,character,f
 document.quality.issue.message,document_issue_message,documentIssueRemarks,FALSE,TRUE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 document.quality.issue.source,document_issue_source,documentIssueSource,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.secureLevel,restriction_level,documentInformationWithheld,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.secureReasons,restriction_reasons,documentInformationWithheldReasons,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+document.secureReasons,restriction_reason,documentInformationWithheldReason,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE
 document.secured,restriction,informationRestricted,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.sourceId,source_id,sourceID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 gathering.biogeographicalProvince,bio_province_verbatim,verbatimBioStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
@@ -299,7 +299,7 @@ document.annotations.deletedByPerson,document_annotation_deleted_by_id,documentA
 document.annotations.deletedByPersonName,document_annotation_deleted_by_name,documentAnnotationDeletedByName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.annotations.deletedDateTime,document_annotation_deleted_time,documentAnnotationDeletedTime,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.annotations.removedTags,document_annotation_tags_removed,documentAnnotationTagsRemoved,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-document.linkings.collectionQuality,collection_quality,collectionQuality,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.linkings.collectionQuality,collection_quality,collectionQuality,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE
 document.media.mp3URL,document_media_mp3,documentAssociatedMediaMP3,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.media.wavURL,document_media_wav,documentAssociatedMediaWAV,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.sourceTags,document_source_tags,documentSourceTags,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -530,7 +530,7 @@ unit.linkings.originalTaxon.kingdomScientificName,orig_taxon_kingdom,originalTax
 unit.linkings.taxon.sensitive,sensitive,sensitive,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.conversions.eurefCenterPoint.lat,lat_euref,decimalLatitudeEUREF,FALSE,FALSE,double,double,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.eurefCenterPoint.lon,lon_euref,decimalLongitudeEUREF,FALSE,FALSE,double,double,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
-unit.abundanceUnit,abundance_unit,abundanceUnit,FALSE,FALSE,character,factor,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.abundanceUnit,abundance_unit,abundanceUnit,FALSE,FALSE,character,factor,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE
 unit.annotations.identification.author,record_annotation_identification_author,occurrenceAnnotationIdentificationAuthor,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.identification.facts.decimalValue,record_annotation_identification_fact_decimal,occurrenceAnnotationIdentificationFactDecimal,FALSE,FALSE,double,double,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.identification.facts.fact,record_annotation_identification_fact_name,occurrenceAnnotationIdentificationFactName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE

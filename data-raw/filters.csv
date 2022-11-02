@@ -72,7 +72,7 @@ editorOrObserverId,editor_or_observer_id,uri,FALSE,",",FALSE
 editorOrObserverIdIsNot,editor_or_observer_id_neg,uri,FALSE,",",FALSE
 teamMember,event_observer_name,character,FALSE,",",TRUE
 teamMemberId,event_observer_id,character,FALSE,",",TRUE
-secureReason,restriction_reason,factor,FALSE,",",TRUE
+secureReason,restriction_reason,factor,TRUE,",",TRUE
 secureLevel,restriction_level,factor,FALSE,",",TRUE
 secured,restricted,logical,FALSE,",",TRUE
 annotated,annotated,logical,FALSE,",",TRUE

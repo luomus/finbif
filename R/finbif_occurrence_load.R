@@ -114,13 +114,15 @@ finbif_occurrence_load <- function(
 
   }
 
+  file_vars <- attr(df, "file_vars")
+
+  df <- localise_enums(df, file_vars, locale)
+
   n_recs <- attr(df, "nrow")
 
   url <- attr(df, "url")
 
   names(df) <- fix_issue_vars(names(df))
-
-  file_vars <- attr(df, "file_vars")
 
   fact_types <- select_facts(fact_types, attr(file_vars, "lite"))
 
@@ -408,6 +410,23 @@ attempt_read <- function(
     df
 
   }
+
+}
+
+#' @noRd
+localise_enums <- function(df, file_vars, locale) {
+
+  for (i in names(df)) {
+
+    if (isTRUE(file_vars[[i, "localised"]])) {
+
+      df[[i]] <- localise_labels(df[[i]], i, file_vars, locale)
+
+    }
+
+  }
+
+  df
 
 }
 

@@ -17,14 +17,12 @@ source("data-raw/municipalities.R")
 source("data-raw/bird_association_area.R")
 source("data-raw/finnish_occurrence.R")
 source("data-raw/sources.R")
-source("data-raw/record_basis.R")
-source("data-raw/life_stage.R")
-source("data-raw/sex.R")
 source("data-raw/restriction.R")
 source("data-raw/misc.R")
 source("data-raw/location_tag.R")
 source("data-raw/complete_list_type.R")
 source("data-raw/atlas.R")
+source("data-raw/enums.R")
 usethis::use_data(
   var_names,
   var_names_test,
@@ -68,6 +66,7 @@ usethis::use_data(
   location_tag,
   atlas_code,
   atlas_class,
+  abundance_unit,
   internal = TRUE,
   overwrite = TRUE
 )

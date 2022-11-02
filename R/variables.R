@@ -217,7 +217,7 @@
 #'   Has the record been restricted in some way (e.g., geospatially aggregated).
 #' - `restriction_level` Character.
 #'   What level of restriction has been applied to the record.
-#' - `restriction_reasons` List.
+#' - `restriction_reason` List.
 #'   List of reasons restriction has been applied.
 #'
 #' @section Data quality:

@@ -160,6 +160,15 @@ test_that(
       )
     )
 
+    expect_snapshot_value(
+      capture.output(
+        print(
+          finbif_occurrence_load("HBF.6968.zip", select = "all")
+        )
+      ),
+      style = "json2"
+    )
+
   }
 
 )
