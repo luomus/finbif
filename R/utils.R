@@ -31,11 +31,10 @@ get_next_lowest_factor <- function(x, y) {
 }
 
 #' @noRd
-#' @importFrom methods as
 #' @importFrom utils hasName
 get_el_recurse <- function(obj, nms, type) {
 
-  type_na <- methods::as(NA, type)
+  type_na <- cast_to_type(NA, type)
 
   if (length(nms) < 1L) {
     return(
@@ -234,6 +233,21 @@ concat_string <- function(x) {
     NA_character_
 
   }
+
+}
+
+#' @noRd
+cast_to_type <- function(x, type) {
+
+  f <- switch(
+    type,
+    character = as.character,
+    double = as.double,
+    integer = as.integer,
+    logical = as.logical
+  )
+
+  f(x)
 
 }
 

@@ -57,7 +57,6 @@
 #' @importFrom digest digest
 #' @importFrom httr progress RETRY status_code write_disk
 #' @importFrom utils hasName head read.delim tail unzip write.table
-#' @importFrom methods as
 #' @importFrom tools file_ext
 #' @export
 
@@ -177,7 +176,7 @@ finbif_occurrence_load <- function(
 
       ind <- var_names[[var_type]] == extra_var
 
-      df[[extra_var]] <- methods::as(
+      df[[extra_var]] <- cast_to_type(
         rep_len(NA, nrow(df)), var_names[ind, "type"]
       )
 
@@ -627,7 +626,7 @@ add_nas <- function(df, nm, var_type, file_vars) {
 
     }
 
-    ans <- methods::as(ans, file_vars[ind, "type"])
+    ans <- cast_to_type(ans, file_vars[ind, "type"])
 
   }
 
@@ -793,7 +792,7 @@ dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, skip, ...) {
 
   for (i in seq_along(df)) {
 
-    df[[i]] <- suppressWarnings(methods::as(df[[i]], classes[[i]]))
+    df[[i]] <- cast_to_type(df[[i]], classes[[i]])
 
   }
 
@@ -859,7 +858,7 @@ rd_read <- function(file, tsv, n, select, keep_tsv, skip) {
 
     for (i in seq_along(df)) {
 
-      df[[i]] <- suppressWarnings(methods::as(df[[i]], classes[[i]]))
+      df[[i]] <- cast_to_type(df[[i]], classes[[i]])
 
     }
 

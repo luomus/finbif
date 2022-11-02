@@ -36,7 +36,6 @@ Imports:
     httr,
     lubridate,
     lutz,
-    methods,
     tools,
     utils
 Roxygen: list(markdown = TRUE)

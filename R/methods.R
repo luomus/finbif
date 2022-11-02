@@ -17,7 +17,6 @@
 #' resp <- finbif_records()
 #' df <- as.data.frame(resp)
 #' }
-#' @importFrom methods as
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
 as.data.frame.finbif_records <- function(
@@ -51,7 +50,7 @@ as.data.frame.finbif_records <- function(
     cols,
     function(col) {
       type      <- var_names[[col, "type"]]
-      type_na   <- methods::as(NA, type)
+      type_na   <- cast_to_type(NA, type)
       single    <- var_names[[col, "single"]]
       localised <- var_names[[col, "localised"]]
       if (aggregated) {
@@ -59,7 +58,7 @@ as.data.frame.finbif_records <- function(
         ans <- vapply(x, getElement, NA_character_, col)
         ans <- ifelse(ans == "", NA_character_, ans)
         if (localised) ans <- localise_labels(ans, col, var_names, locale)
-        return(methods::as(ans, type))
+        return(cast_to_type(ans, type))
       }
       col_els <- strsplit(col, "\\.")[[1L]]
       if (single) {
