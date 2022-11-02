@@ -1,3 +1,13 @@
+# finbif 0.7.0.9002
+
+#### MINOR IMPROVEMENTS
+
+  - Many variables, including `sex`, `life_stage` and `record_quality`
+    are now localised.
+
+  - The variable `restriction_reasons` is now referred to in the
+    singular as `restriction_reason`.
+
 # finbif 0.7.0.9001
 
 #### NEW FEATURES

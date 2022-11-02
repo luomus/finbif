@@ -1,6 +1,17 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.7.0.9002}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Many variables, including \code{sex}, \code{life_stage} and
+        \code{record_quality} are now localised.
+      \item The variable \code{restriction_reasons} is now referred to in the
+        singular as \code{restriction_reason}.
+    }
+  }
+}
+
 \section{finbif version 0.7.0.9001}{
   \subsection{NEW FEATURES}{
     \itemize{
