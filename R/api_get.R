@@ -1,7 +1,6 @@
 #' @noRd
 #' @importFrom digest digest
 #' @importFrom httr accept_json content RETRY http_type user_agent status_code
-#' @importFrom jsonlite fromJSON
 #' @importFrom utils packageVersion
 
 api_get <- function(path, query, cache) {
@@ -93,9 +92,7 @@ api_get <- function(path, query, cache) {
     stop("API did not return json", call. = FALSE)
   }
 
-  parsed <- jsonlite::fromJSON(
-    httr::content(resp, "text", encoding = "UTF-8"), simplifyVector = FALSE
-  )
+  parsed <- httr::content(resp)
 
   if (httr::status_code(resp) != 200L) {
     ans <- NULL

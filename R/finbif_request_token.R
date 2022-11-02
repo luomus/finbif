@@ -12,7 +12,6 @@
 #'   not then, invisibly, a `finbif_api` object containing the response from
 #'   the FinBIF server.
 #' @importFrom httr accept_json content http_type RETRY user_agent status_code
-#' @importFrom jsonlite fromJSON
 #' @importFrom utils packageVersion
 #' @examples \dontrun{
 #'
@@ -63,9 +62,7 @@ finbif_request_token <- function(email, quiet = FALSE) {
     terminate_on = 404L
   )
 
-  parsed <- jsonlite::fromJSON(
-    httr::content(resp, "text", encoding = "UTF-8"), simplifyVector = FALSE
-  )
+  parsed <- httr::content(resp)
 
   status <- httr::status_code(resp)
 

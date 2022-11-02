@@ -34,7 +34,6 @@ Imports:
     digest,
     graphics,
     httr,
-    jsonlite,
     lubridate,
     lutz,
     methods,

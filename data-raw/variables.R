@@ -5,7 +5,7 @@ var_names <- read.csv(
 )
 
 vars <- httr::GET(Sys.getenv("WAREHOUSE_SWAGGER_URL"))
-vars <- jsonlite::fromJSON(httr::content(vars, "text"), simplifyVector = FALSE)
+vars <- httr::content(vars)
 vars <- vars[["paths"]]
 select_order_vars <-
   vars[["/query/unit/list"]][["get"]][["parameters"]]

@@ -22,7 +22,6 @@
 #' collections <- finbif_collections()
 #' }
 #' @importFrom utils hasName
-#' @importFrom jsonlite fromJSON
 #' @export
 
 finbif_collections <- function(
@@ -34,8 +33,7 @@ finbif_collections <- function(
 
   swagger <- get_swagger(cache)
 
-  swagger <-
-    jsonlite::fromJSON(httr::content(swagger, "text"), simplifyVector = FALSE)
+  swagger <- httr::content(swagger)
 
   col_md_nms <- names(swagger[["definitions"]][["Collection"]][["properties"]])
 

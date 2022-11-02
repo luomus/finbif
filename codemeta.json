@@ -247,18 +247,6 @@
     },
     "5": {
       "@type": "SoftwareApplication",
-      "identifier": "jsonlite",
-      "name": "jsonlite",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=jsonlite"
-    },
-    "6": {
-      "@type": "SoftwareApplication",
       "identifier": "lubridate",
       "name": "lubridate",
       "provider": {
@@ -269,7 +257,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lubridate"
     },
-    "7": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "lutz",
       "name": "lutz",
@@ -281,17 +269,17 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lutz"
     },
-    "8": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "methods",
       "name": "methods"
     },
-    "9": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "tools",
       "name": "tools"
     },
-    "10": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -301,7 +289,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "fileSize": "4264.724KB",
+  "fileSize": "4264.371KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
