@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.7.0.9003}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed bug that caused locale to be set incorrectly for multipage
+        requests.
+    }
+  }
+}
+
 \section{finbif version 0.7.0.9002}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{

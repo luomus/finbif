@@ -1,3 +1,10 @@
+# finbif 0.7.0.9003
+
+#### BUG FIXES
+
+  - Fixed bug that caused locale to be set incorrectly for multipage
+    requests.
+
 # finbif 0.7.0.9002
 
 #### MINOR IMPROVEMENTS

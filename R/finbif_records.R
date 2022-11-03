@@ -431,7 +431,8 @@ request <- function(
     }
 
     resp <- get_extra_pages(
-      resp, n, max_size, quiet, path, query, cache, select, aggregate, df
+      resp, n, max_size, quiet, path, query, cache, select, aggregate, df,
+      locale
     )
 
     if (sample) {
@@ -469,7 +470,7 @@ records_obj <- function(path, query, cache, select, aggregate) {
 # record pagination ------------------------------------------------------------
 
 get_extra_pages <- function(
-  resp, n, max_size, quiet, path, query, cache, select, aggregate, df
+  resp, n, max_size, quiet, path, query, cache, select, aggregate, df, locale
 ) {
 
   multipage <- n > max_size
@@ -509,7 +510,7 @@ get_extra_pages <- function(
       res <- future::future(records_obj(path, query, cache, select, aggregate))
     }
 
-    if (df) attr(resp[[i]], "df") <- as.data.frame(resp[[i]])
+    if (df) attr(resp[[i]], "df") <- as.data.frame(resp[[i]], locale = locale)
 
     i <- i + 1L
 
