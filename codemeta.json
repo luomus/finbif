@@ -271,16 +271,6 @@
     },
     "7": {
       "@type": "SoftwareApplication",
-      "identifier": "methods",
-      "name": "methods"
-    },
-    "8": {
-      "@type": "SoftwareApplication",
-      "identifier": "tools",
-      "name": "tools"
-    },
-    "9": {
-      "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
@@ -289,7 +279,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "fileSize": "4264.371KB",
+  "fileSize": "4264.324KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

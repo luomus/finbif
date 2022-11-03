@@ -131,10 +131,9 @@ det_datetime_method <- function(method, n) {
 }
 
 #' @noRd
-#' @importFrom tools file_ext
 open_tsv_connection <- function(file, tsv, mode = "rt") {
 
-  if (!identical(tools::file_ext(file), "tsv")) {
+  if (!grepl("\\.tsv$", file)) {
 
     con <- unz(file, tsv, mode)
 

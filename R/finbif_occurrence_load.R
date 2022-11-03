@@ -57,7 +57,6 @@
 #' @importFrom digest digest
 #' @importFrom httr progress RETRY status_code write_disk
 #' @importFrom utils hasName head read.delim tail unzip write.table
-#' @importFrom tools file_ext
 #' @export
 
 finbif_occurrence_load <- function(
@@ -389,14 +388,18 @@ attempt_read <- function(
 
       input <- as.character(file)
 
-      df <- switch(
-        tools::file_ext(input),
-        tsv = dt_read(select, n, quiet, dt, input = input, skip = skip),
-        dt_read(
+      if (grepl("\\.tsv$", input)) {
+
+        df <- dt_read(select, n, quiet, dt, input = input, skip = skip)
+
+      } else {
+
+        df <- dt_read(
           select, n, quiet, dt, keep_tsv, skip,
           zip = list(input = input, tsv = tsv)
         )
-      )
+
+      }
 
     } else {
 
@@ -809,7 +812,7 @@ rd_read <- function(file, tsv, n, select, keep_tsv, skip) {
 
   quote <- ""
 
-  if (keep_tsv && !identical(tools::file_ext(file), "tsv")) {
+  if (keep_tsv && !grepl("\\.tsv$", file)) {
 
     unzip <- "internal"
 
@@ -1132,9 +1135,17 @@ infer_file_vars <- function(cols) {
 #' @noRd
 preprocess_data_file <- function(file) {
 
-  ext <- tools::file_ext(file)
+  if (grepl("\\.ods$", file)) {
 
-  file <- switch(ext, ods = from_ods(file), xlsx = from_xlsx(file), file)
+    file <- from_ods(file)
+
+  }
+
+  if (grepl("\\.xlsx$", file)) {
+
+    file <- from_xlsx(file)
+
+  }
 
   file
 
