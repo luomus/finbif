@@ -10,7 +10,7 @@ finbif_collections(
   select,
   subcollections = TRUE,
   supercollections = FALSE,
-  lang = c("en", "fi", "sv"),
+  locale = getOption("finbif_locale"),
   nmin = 0,
   cache = getOption("finbif_use_cache")
 )
@@ -26,7 +26,8 @@ collections.}
 
 \item{supercollections}{Logical. Return lowest level collection metadata.}
 
-\item{lang}{Character. Language of data returned. One of "en", "fi", or "sv".}
+\item{locale}{Character. Language of data returned. One of "en", "fi", or
+"sv".}
 
 \item{nmin}{Integer. Filter collections by number of records. Only return
 information on collections with greater than value specified. If \code{NA} then

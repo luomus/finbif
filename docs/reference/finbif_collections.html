@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
 <span>  <span class="va">select</span>,</span>
 <span>  subcollections <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  supercollections <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  lang <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"en"</span>, <span class="st">"fi"</span>, <span class="st">"sv"</span><span class="op">)</span>,</span>
+<span>  locale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"finbif_locale"</span><span class="op">)</span>,</span>
 <span>  nmin <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  cache <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"finbif_use_cache"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -95,8 +95,9 @@ collections.</p></dd>
 <dd><p>Logical. Return lowest level collection metadata.</p></dd>
 
 
-<dt>lang</dt>
-<dd><p>Character. Language of data returned. One of "en", "fi", or "sv".</p></dd>
+<dt>locale</dt>
+<dd><p>Character. Language of data returned. One of "en", "fi", or
+"sv".</p></dd>
 
 
 <dt>nmin</dt>

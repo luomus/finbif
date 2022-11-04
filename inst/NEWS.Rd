@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.7.0.9004}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item For consistency, \code{lang} argument to \code{finbif_collections}
+        has been changed to \code{locale}.
+    }
+  }
+}
+
 \section{finbif version 0.7.0.9003}{
   \subsection{BUG FIXES}{
     \itemize{

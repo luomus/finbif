@@ -80,7 +80,7 @@ finbif_records <- function(
 
     } else {
 
-      parsed_filters <- parse_filters(filter, aggregate)
+      parsed_filters <- parse_filters(filter, aggregate, locale)
 
       query <- lapply(parsed_filters, paste, collapse = ",")
 
@@ -526,7 +526,7 @@ get_extra_pages <- function(
 
 # parsing filters --------------------------------------------------------------
 
-parse_filters <- function(filter, aggregate) {
+parse_filters <- function(filter, aggregate, locale) {
 
   filter <- as.list(filter)
   finbif_filter_names <- translate(names(filter), "filter_names")
@@ -561,7 +561,7 @@ parse_filters <- function(filter, aggregate) {
         env <- list()
 
         env[[names(filter)[[i]]]] <- finbif_collections(
-          select = NA, supercollections = TRUE, nmin = NA
+          select = NA, supercollections = TRUE, nmin = NA, locale = locale
         )
 
         for (cl in c("id", "collection_name", "abbreviation")) {

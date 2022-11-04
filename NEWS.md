@@ -1,3 +1,10 @@
+# finbif 0.7.0.9004
+
+#### MINOR IMPROVEMENTS
+
+  - For consistency, `lang` argument to `finbif_collections` has been
+    changed to `locale`.
+
 # finbif 0.7.0.9003
 
 #### BUG FIXES

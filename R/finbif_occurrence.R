@@ -462,7 +462,7 @@ compute_vars_from_id <- function(df, select_, dwc, locale, add = TRUE) {
 
         metadata <- finbif_collections(
           select = ptrn, subcollections = TRUE,
-          supercollections = TRUE, nmin = NA
+          supercollections = TRUE, nmin = NA, locale = locale
         )
 
       } else {

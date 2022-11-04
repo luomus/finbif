@@ -10,7 +10,8 @@
 #' @param subcollections Logical. Return subcollection metadata of higher level
 #'   collections.
 #' @param supercollections Logical. Return lowest level collection metadata.
-#' @param lang Character. Language of data returned. One of "en", "fi", or "sv".
+#' @param locale Character. Language of data returned. One of "en", "fi", or
+#'   "sv".
 #' @param nmin Integer. Filter collections by number of records. Only return
 #'   information on collections with greater than value specified. If `NA` then
 #'   return information on all collections.
@@ -26,10 +27,11 @@
 
 finbif_collections <- function(
   filter, select, subcollections = TRUE, supercollections = FALSE,
-  lang = c("en", "fi", "sv"), nmin = 0, cache = getOption("finbif_use_cache")
+  locale = getOption("finbif_locale"), nmin = 0,
+  cache = getOption("finbif_use_cache")
 ) {
 
-  lang <- match.arg(lang)
+  locale <- switch(locale, sv = locale, fi = locale, "en")
 
   swagger <- get_swagger(cache)
 
@@ -38,7 +40,7 @@ finbif_collections <- function(
   col_md_nms <- names(swagger[["definitions"]][["Collection"]][["properties"]])
 
   col_md <- get_collections(
-    list(lang = lang), "collections", col_md_nms, "id", cache
+    list(lang = locale), "collections", col_md_nms, "id", cache
   )
 
   col_count_nms <- names(
