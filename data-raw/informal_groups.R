@@ -41,11 +41,14 @@ informal_groups <- lapply(
   informal_groups, stats::setNames, c("tree", "name", "id")
 )
 
+ord <- informal_groups[[1]][["id"]]
+
 informal_groups <- mapply(
   function(x, y) {
     row.names(x) <- make.unique(x[["id"]], ".DUPLICATE.")
     x[["id"]] <- NULL
     x[["tree"]] <- substring(x[["tree"]], 5L)
+    x[["tree"]] <- sub("°", "¦", x[["tree"]])
     names(x) <- paste(names(x), y, sep = "_")
     x
   },
@@ -54,6 +57,9 @@ informal_groups <- mapply(
   SIMPLIFY = FALSE,
   USE.NAMES = FALSE
 )
+
+informal_groups[[2]] <- informal_groups[[2]][ord, ]
+informal_groups[[3]] <- informal_groups[[3]][ord, ]
 
 informal_groups <- do.call(cbind, informal_groups)
 
