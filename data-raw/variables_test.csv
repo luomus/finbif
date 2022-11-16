@@ -683,4 +683,4 @@ unit.types.linkings.taxon.nameSwedish,type_specimen_common_name_swedish,typeSpec
 unit.linkings.originalTaxon.redListStatusGroup,orig_red_list_status_group_id,originalTaxonRedListStatusGroupID,FALSE,FALSE,character,factor,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.redListStatusGroup,taxon_red_list_status_group_id,taxonRedListStatusGroupID,FALSE,FALSE,character,factor,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.referenceURL,document_reference_url,documentReferenceURL,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.externalMediaCount,record_external_media_count,occurrenceExternalAssociatedMediaCount,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.externalMediaCount,record_external_media_count,occurrenceExternalAssociatedMediaCount,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
