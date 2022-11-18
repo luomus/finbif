@@ -305,45 +305,52 @@ get_date_time <- function(
   df, date, month, day, hour, minute, lat, lon, method, tzone
 ) {
 
-  date_time <- lubridate::ymd(df[[date]])
-  date_time <- lubridate::as_datetime(date_time)
+  date_time <- as.POSIXct(character(), tz = tzone)
 
-  # When there is no hour assume the hour is midday (i.e., don't assume
-  # midnight)
-  lubridate::hour(date_time) <- 12L
+  if (nrow(df) > 0L) {
 
-  if (!is.null(df[[hour]])) {
-    lubridate::hour(date_time) <- ifelse(
-      is.na(df[[hour]]), lubridate::hour(date_time), df[[hour]]
-    )
+    date_time <- lubridate::ymd(df[[date]])
+    date_time <- lubridate::as_datetime(date_time)
+
+    # When there is no hour assume the hour is midday (i.e., don't assume
+    # midnight)
+    lubridate::hour(date_time) <- 12L
+
+    if (!is.null(df[[hour]])) {
+      lubridate::hour(date_time) <- ifelse(
+        is.na(df[[hour]]), lubridate::hour(date_time), df[[hour]]
+      )
+    }
+
+    if (!is.null(df[[minute]])) {
+      lubridate::minute(date_time) <- ifelse(
+        is.na(df[[minute]]), lubridate::minute(date_time), df[[minute]]
+      )
+    }
+
+    method <- match.arg(method, c("none", "fast", "accurate"), TRUE)
+
+    if (identical(method, "none")) {
+
+      tz_in <- "Europe/Helsinki"
+      date_time <- lubridate::force_tz(date_time, tz_in)
+      date_time <- lubridate::with_tz(date_time, tzone)
+
+    } else {
+
+      tz_in <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
+      date_time <- lubridate::force_tzs(
+        date_time, tzones = ifelse(is.na(tz_in), tzone, tz_in),
+        tzone_out = tzone
+      )
+
+    }
+
+    ind <- is.na(df[[month]]) | is.na(df[[day]])
+
+    date_time[ind] <- lubridate::as_datetime(NA_integer_, tz = tzone)
+
   }
-
-  if (!is.null(df[[minute]])) {
-    lubridate::minute(date_time) <- ifelse(
-      is.na(df[[minute]]), lubridate::minute(date_time), df[[minute]]
-    )
-  }
-
-  method <- match.arg(method, c("none", "fast", "accurate"), TRUE)
-
-  if (identical(method, "none")) {
-
-    tz_in <- "Europe/Helsinki"
-    date_time <- lubridate::force_tz(date_time, tz_in)
-    date_time <- lubridate::with_tz(date_time, tzone)
-
-  } else {
-
-    tz_in <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
-    date_time <- lubridate::force_tzs(
-      date_time, tzones = ifelse(is.na(tz_in), tzone, tz_in), tzone_out = tzone
-    )
-
-  }
-
-  ind <- is.na(df[[month]]) | is.na(df[[day]])
-
-  date_time[ind] <- lubridate::as_datetime(NA_integer_, tz = tzone)
 
   date_time
 
