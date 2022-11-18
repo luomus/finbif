@@ -136,3 +136,4 @@ Document.MonitoringSiteType,siteType,site_type,siteType,FALSE,character,FALSE
 Document.MonitoringSiteStatus,siteStatus,site_status,siteStatus,FALSE,character,FALSE
 Taxon.Lajiturva,thrtStat,threatened_status,threatenedStatus,FALSE,character,FALSE
 Taxon.StatusesFI,regStatFI,regulatory_status_finnish,regulatoryStatusFinnish,FALSE,character,FALSE
+Unit.Interpretations.Tags,tags,record_derived_tags,occurrenceDerivedTags,FALSE,character,FALSE
