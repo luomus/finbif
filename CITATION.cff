@@ -1,20 +1,20 @@
 # YAML 1.2
 ---
-version: "0.7.0.9000"
-date-released: 2022-09-13
+version: "0.7.0.9004"
+date-released: 2022-11-18
 title: finbif
 abstract: |
-    "The `finbif` R package is a programmatic interface to the
-    [Finnish Biodiversity Information Facility (FinBIF) API](https://api.laji.fi).
-    FinBIF aggregates Finnish biodiversity data from multiple sources in a single
-    open access portal for researchers, citizen scientists, industry and government.
+    "The `finbif` R package is a programmatic interface to the [Finnish
+    Biodiversity Information Facility (FinBIF) API](https://api.laji.fi). FinBIF
+    aggregates Finnish biodiversity data from multiple sources in a single open
+    access portal for researchers, citizen scientists, industry and government.
     FinBIF allows users of biodiversity information to find, access, combine and
     visualise data on Finnish plants, animals and microorganisms. The `finbif`
     R package makes the publicly available data in FinBIF easily accessible to
     programmers. Biodiversity information is available on taxonomy and taxon
-    occurrence. Occurrence data can be filtered by taxon, time, location and other
-    variables. The data accessed are conveniently preformatted for subsequent
-    analyses."
+    occurrence. Occurrence data can be filtered by taxon, time, location and
+    other variables. The data accessed are conveniently preformatted for
+    subsequent analyses."
 authors:
   -
     affiliation: "Finnish Museum of Natural History - Luomus"
@@ -51,7 +51,7 @@ preferred-citation:
   type: manual
   year: 2022
   doi: "10.5281/zenodo.3612814"
-  notes: "R package version 0.7.0.9000"
+  notes: "R package version 0.7.0.9004"
   url: "https://luomus.github.io/finbif/articles/finbif.html"
 message: "If you use this software, please cite it using these metadata."
 ...

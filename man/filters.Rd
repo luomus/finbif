@@ -101,6 +101,8 @@ and codes.
 \item \code{municipality} Character vector.
 Filter by municipality. Use \code{finbif_metadata()} to see municipality
 names.
+\item \code{location_tag} Character vector
+Filter by tags associated with a location (e.g., \code{"farmland"}).
 \item \code{bird_assoc_area} Character vector.
 Filter by BirdLife Finland association area. Use \code{finbif_metadata()}
 to see association names and codes.

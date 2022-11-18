@@ -93,6 +93,8 @@
 #' - `municipality` Character vector.
 #'   Filter by municipality. Use `finbif_metadata()` to see municipality
 #'   names.
+#' - `location_tag` Character vector
+#'   Filter by tags associated with a location (e.g., `"farmland"`).
 #' - `bird_assoc_area` Character vector.
 #'   Filter by BirdLife Finland association area. Use `finbif_metadata()`
 #'   to see association names and codes.

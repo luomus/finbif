@@ -157,11 +157,13 @@ Was the taxon considered Finnish before (if any) annotation?</p></li>
     
 
 <p>Variables related to abundance, sex and life history include:</p><ul><li><p><code>abundance</code> Integer.
+Number of individuals recorded.</p></li>
+<li><p><code>abundance_interpreted</code> Integer.
 Number of individuals recorded or inferred from the record. Note that many
-records with <code>abundance = 1</code> only indicate the record is of one individual
-and may not necessarily imply that this was the abundance at that specified
-place and time (e.g., a preserved museum specimen consisting of a single
-individual).</p></li>
+records with <code>abundance_interpreted == 1L</code> only indicate the record is of
+one individual and may not necessarily imply that this was the abundance at
+that specified place and time (e.g., a preserved museum specimen consisting
+of a single individual).</p></li>
 <li><p><code>{female|male}_abundance</code> Integer.
 Number of female or male individuals recorded.</p></li>
 <li><p><code>pair_abundance</code> Integer.
@@ -216,6 +218,11 @@ The length of linear locations (e.g., line transect surveys).</p></li>
 The size of record's location in meters squared.</p></li>
 <li><p><code>is_breeding_location</code> Logical.
 Whether or not the occurrence is recorded at a known breeding location.</p></li>
+<li><p><code>location_id</code> Character.
+A location ID in the form of a URI.</p></li>
+<li><p><code>section</code> Integer.
+A numeric identifier for a sub-location of a location (e.g., a specific
+part of a transect that undergoes repeated surveys.)</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="time">Time<a class="anchor" aria-label="anchor" href="#time"></a></h2>

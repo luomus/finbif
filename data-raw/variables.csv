@@ -5,7 +5,7 @@ computed_var_scientific_name,scientific_name,scientificName,TRUE,FALSE,character
 unit.linkings.taxon.scientificName,scientific_name_interpreted,scientificNameInterpreted,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 computed_var_abundance,abundance,individualCount,TRUE,FALSE,integer,integer,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 computed_var_occurrence_status,occurrence_status,occurrenceStatus,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.interpretations.individualCount,abundance_interpreted,individualCountInterpreted,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.interpretations.individualCount,abundance_interpreted,individualCountInterpreted,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.wgs84CenterPoint.lat,lat_wgs84,decimalLatitude,TRUE,FALSE,double,double,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
 gathering.conversions.wgs84CenterPoint.lon,lon_wgs84,decimalLongitude,TRUE,FALSE,double,double,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
 computed_var_date_time,date_time,eventDateTime,TRUE,FALSE,double,date,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
@@ -133,7 +133,7 @@ document.media.squareThumbnailURL,document_thumbnail_square,documentAssociatedMe
 document.media.thumbnailURL,document_thumbnail,documentAssociatedMediaThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.mediaCount,document_media_count,documentAssociatedMediaCount,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.modifiedDate,modified_date,documentModified,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.namedPlaceId,location_id,locationID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlaceId,location_id,locationID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.notes,document_notes,documentRemarks,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
 document.partial,is_partial,documentPartialStatus,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.quality.issue.issue,document_issue,documentIssue,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
@@ -241,7 +241,7 @@ gathering.quality.timeIssue.source,time_issue_source,timeIssueSource,FALSE,TRUE,
 gathering.taxonCensus.taxonId,taxon_census_id,taxonCensusID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.taxonCensus.type,taxon_census_type,taxonCensusType,FALSE,FALSE,character,factor,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.team,team,recordedBy,FALSE,FALSE,character,character,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-gathering.gatheringSection,section,eventSection,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+gathering.gatheringSection,section,eventSection,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 document.annotations.annotationByPerson,document_annotation_person_id,documentAnnotationRecordedByID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.annotations.annotationByPersonName,document_annotation_person_name,documentAnnotationRecordedBy,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.annotations.annotationBySystem,document_annotation_system_id,documentAnnotationSystemID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE

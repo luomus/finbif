@@ -104,11 +104,13 @@ Was the taxon considered Finnish before (if any) annotation?
 Variables related to abundance, sex and life history include:
 \itemize{
 \item \code{abundance} Integer.
+Number of individuals recorded.
+\item \code{abundance_interpreted} Integer.
 Number of individuals recorded or inferred from the record. Note that many
-records with \code{abundance = 1} only indicate the record is of one individual
-and may not necessarily imply that this was the abundance at that specified
-place and time (e.g., a preserved museum specimen consisting of a single
-individual).
+records with \code{abundance_interpreted == 1L} only indicate the record is of
+one individual and may not necessarily imply that this was the abundance at
+that specified place and time (e.g., a preserved museum specimen consisting
+of a single individual).
 \item \verb{\{female|male\}_abundance} Integer.
 Number of female or male individuals recorded.
 \item \code{pair_abundance} Integer.
@@ -165,6 +167,11 @@ The length of linear locations (e.g., line transect surveys).
 The size of record's location in meters squared.
 \item \code{is_breeding_location} Logical.
 Whether or not the occurrence is recorded at a known breeding location.
+\item \code{location_id} Character.
+A location ID in the form of a URI.
+\item \code{section} Integer.
+A numeric identifier for a sub-location of a location (e.g., a specific
+part of a transect that undergoes repeated surveys.)
 }
 }
 
