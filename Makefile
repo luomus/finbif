@@ -37,14 +37,14 @@ dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('knitr', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('ows4R', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('pkgdown', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('readODS', quietly = TRUE))"
+> ${RSCRIPT} -e "stopifnot(requireNamespace('readODS', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('readxl', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('rmarkdown', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('sf', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('stats', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('testthat', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('tidyr', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('usethis', quietly = TRUE))"
+> ${RSCRIPT} -e "stopifnot(requireNamespace('usethis', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('vcr', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('webfakes', quietly = TRUE))";
 .PHONY: dev_deps
