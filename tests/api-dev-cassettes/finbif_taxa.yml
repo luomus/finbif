@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/taxa/search?query=Parus%20major&matchType=exact&limit=1&access_token=<finbif_dev_token>
+    uri: https://apitest.laji.fi/v0/taxa/search?query=Parus%20major&matchType=exact&limit=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 14 Apr 2020 13:34:52 GMT
+      date: Fri, 18 Nov 2022 08:27:19 GMT
       content-type: application/json; charset=utf-8
-      content-length: '405'
+      content-length: '440'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"195-P6bgBaNhBSWRmP37cQN4jJ0ABrY"
+      etag: W/"1b8-o6dqhOHbZkmwqzsCrVhRgBgjckA"
       vary: Accept-Encoding
       cache-control: public
       x-frame-options: DENY
@@ -30,8 +30,10 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: ASCII-8BIT
+      encoding: ''
       file: no
-      string: W3sibWF0Y2hpbmdOYW1lIjoiUGFydXMgbWFqb3IiLCJuYW1lVHlwZSI6Ik1YLnNjaWVudGlmaWNOYW1lIiwiaWQiOiJNWC4zNDU2NyIsInNjaWVudGlmaWNOYW1lIjoiUGFydXMgbWFqb3IiLCJzY2llbnRpZmljTmFtZUF1dGhvcnNoaXAiOiJMaW5uYWV1cywgMTc1OCIsInRheG9uUmFuayI6Ik1YLnNwZWNpZXMiLCJjdXJzaXZlTmFtZSI6dHJ1ZSwiZmlubmlzaCI6dHJ1ZSwic3BlY2llcyI6dHJ1ZSwidmVybmFjdWxhck5hbWUiOnsic3YiOiJ0YWxnb3hlIiwiZmkiOiJ0YWxpdGlhaW5lbiIsImVuIjoiR3JlYXQgVGl0In0sImluZm9ybWFsR3JvdXBzIjpbeyJpZCI6Ik1WTC4xIiwibmFtZSI6eyJzdiI6IkbDpWdsYXIiLCJlbiI6IkJpcmRzIiwiZmkiOiJMaW5udXQifX1dLCJ0eXBlIjoiZXhhY3RNYXRjaGVzIn1d
-  recorded_at: 2020-04-14 13:34:52 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+      string: '[{"matchingName":"Parus major","nameType":"MX.scientificName","id":"MX.34567","scientificName":"Parus
+        major","scientificNameAuthorship":"Linnaeus, 1758","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"fi":"talitiainen","en":"Great
+        Tit","sv":"talgoxe"},"informalGroups":[{"id":"MVL.1","name":{"sv":"Fåglar","en":"Birds","fi":"Linnut"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
+  recorded_at: 2022-11-18 08:27:19 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
