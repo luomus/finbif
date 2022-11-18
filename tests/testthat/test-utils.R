@@ -35,3 +35,12 @@ test_that(
 
   }
 )
+
+test_that(
+  "concatenating NA works", {
+
+    expect_equal(concat_string(NA_character_), NA_character_)
+
+  }
+)
+

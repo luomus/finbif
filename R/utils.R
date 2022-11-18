@@ -223,9 +223,11 @@ remove_domain <- function(x, domain = "tun.fi", protocol =  "http") {
 #' @noRd
 concat_string <- function(x) {
 
-  if (any(!is.na(x))) {
+  idx <- !is.na(x)
 
-    paste(x, collapse = "; ")
+  if (any(idx)) {
+
+    paste(x[idx], collapse = "; ")
 
   } else {
 
