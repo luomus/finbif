@@ -136,7 +136,9 @@ finbif_occurrence_load <- function(
 
   df <- expand_lite_cols(df, !select[["all"]])
 
-  names(df) <- file_vars[names(df), var_type]
+  nms <- file_vars[names(df), var_type]
+
+  names(df) <- ifelse(is.na(nms), names(df), nms)
 
   df <- compute_vars_from_id(
     df, select[["user"]], dwc, locale, !select[["all"]]
@@ -256,6 +258,12 @@ finbif_occurrence_load <- function(
     short_fcts <- paste0("f", seq_along(short_fcts), short_fcts)
 
     short_nms[is.na(short_nms)] <- short_fcts
+
+    missing <- which(short_nms == "f")
+
+    short_nms[missing] <- abbreviate(
+      gsub("[^A-Za-z]", "", names(df)[missing]), 10L
+    )
 
     names(df) <- short_nms
 
@@ -420,7 +428,7 @@ localise_enums <- function(df, file_vars, locale) {
 
   for (i in names(df)) {
 
-    if (isTRUE(file_vars[[i, "localised"]])) {
+    if (i %in% row.names(file_vars) && isTRUE(file_vars[[i, "localised"]])) {
 
       df[[i]] <- localise_labels(df[[i]], i, file_vars, locale)
 
@@ -1110,15 +1118,15 @@ infer_file_vars <- function(cols) {
     file_vars <- lite_download_file_vars
 
     locale <- lapply(lite_download_file_vars, intersect, cols)
-    locale <- lapply(locale, sort)
-    locale <- vapply(locale, identical, logical(1L), sort(cols))
+    locale <- vapply(locale, length, integer(1L))
+    locale <- which(locale == max(locale))
 
     stopifnot(
       "File has field names incompatible with this {finbif} R package version" =
-        any(locale)
-    )
+        length(locale) == 1L
+     )
 
-    locale <- names(which(locale))[[1L]]
+    locale <- names(locale)[[1L]]
 
     rownames(file_vars) <- file_vars[[locale]]
 

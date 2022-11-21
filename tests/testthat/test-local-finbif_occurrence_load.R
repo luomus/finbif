@@ -239,3 +239,19 @@ test_that(
 
   }
 )
+
+test_that(
+  "importing files with unknown columns works", {
+
+    expect_snapshot_value(
+      finbif_occurrence_load("HBF.49382.zip", tzone = "Etc/UTC"),
+      style = "json2"
+    )
+
+    expect_snapshot_value(
+      finbif_occurrence_load("laji-data-new-col.tsv", tzone = "Etc/UTC"),
+      style = "json2"
+    )
+
+  }
+)
