@@ -42,7 +42,7 @@ api_get <- function(obj) {
 
       if (!is.null(cached_obj)) return(cached_obj)
 
-      on.exit(if (!is.null(obj)) set_cache(obj, hash))
+      on.exit(if (!is.null(obj)) set_cache(list(data = obj, hash = hash)))
 
     } else {
 

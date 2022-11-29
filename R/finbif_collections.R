@@ -230,7 +230,7 @@ get_swagger <- function(cache) {
 
         if (!is.null(ans)) {
 
-          set_cache(ans, hash)
+          set_cache(list(data = ans, hash = hash))
 
         }
 

@@ -524,7 +524,7 @@ get_zip <- function(url, quiet, cache, write_file) {
 
         if (!is.null(write_file)) {
 
-          set_cache(write_file, hash)
+          set_cache(list(data = write_file, hash = hash))
 
         }
 
