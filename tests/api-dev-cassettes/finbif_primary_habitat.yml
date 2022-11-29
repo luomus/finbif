@@ -27,8 +27,41 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":349741,"pageSize":10,"total":3497401,"results":[{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatM"}}},"unitId":"http://tun.fi/JX.294749#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVs"}}},"unitId":"http://tun.fi/JX.294736#3"}},{"unit":{"unitId":"http://tun.fi/JX.294707#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatM"}}},"unitId":"http://tun.fi/JX.294706#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVs"}}},"unitId":"http://tun.fi/JX.294654#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVsr"}}},"unitId":"http://tun.fi/JX.294629#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIv"}}},"unitId":"http://tun.fi/JX.294621#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIv"}}},"unitId":"http://tun.fi/JX.294617#3"}},{"unit":{"unitId":"http://tun.fi/KE.176/62ff4f0d2d0e2114ba6c737d#Unit1"}},{"unit":{"unitId":"http://tun.fi/KE.176/62ff4d6c2d0e251981cce4d3#Unit1"}}]}'
-  recorded_at: 2022-09-12 07:42:59 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-29 09:01:35 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.primaryHabitat.habitat&page=1&pageSize=10&personEmail=noreply%40laji.fi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 29 Nov 2022 09:01:35 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":234882,"pageSize":10,"total":2348814,"results":[{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.295460#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIv"}}},"unitId":"http://tun.fi/JX.295449#5"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.295434#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.295324#24"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatM"}}},"unitId":"http://tun.fi/JX.295324#12"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIp"}}},"unitId":"http://tun.fi/JX.295324#9"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatM"}}},"unitId":"http://tun.fi/JX.295324#15"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatM"}}},"unitId":"http://tun.fi/JX.295324#18"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.295324#6"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.295324#3"}}]}'
+  recorded_at: 2022-11-29 09:01:35 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
