@@ -579,7 +579,7 @@ parse_filters <- function(filter, aggregate, locale) {
       # Coordinates filter must have a system defined
       check_coordinates(finbif_filter_names[[i]], filter[["coordinates"]])
 
-      filter[[i]] <- do.call(coords, as.list(filter[[i]]))
+      filter[[i]] <- coords(filter[[i]])
 
     }
 
