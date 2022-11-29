@@ -21,9 +21,11 @@ test_that(
     expect_error(
       suppressMessages(
         api_get(
-          path = "warehouse/query/unit/list",
-          query = list(page = 1, pageSize = 1, selected = "not_a_var"),
-          cache = TRUE
+          list(
+            path = "warehouse/query/unit/list",
+            query = list(page = 1, pageSize = 1, selected = "not_a_var"),
+            cache = TRUE
+          )
         )
       ),
       "API request failed"
@@ -39,11 +41,13 @@ test_that(
 
     expect_error(
       api_get(
-        path = "warehouse/query/unit/list",
-        query = list(
-          format = "xml", page = 1, pageSize = 1, selected = "unit.unitId"
-        ),
-        cache = TRUE
+        list(
+          path = "warehouse/query/unit/list",
+          query = list(
+            format = "xml", page = 1, pageSize = 1, selected = "unit.unitId"
+          ),
+          cache = TRUE
+        )
       ),
       "API did not return json"
     )
@@ -64,9 +68,11 @@ test_that(
 
     expect_s3_class(
       api_get(
-        path = "warehouse/query/unit/list",
-        query = list(page = 1, pageSize = 1, selected = "unit.unitId"),
-        cache = TRUE
+        list(
+          path = "warehouse/query/unit/list",
+          query = list(page = 1, pageSize = 1, selected = "unit.unitId"),
+          cache = TRUE
+        )
       ),
       "finbif_api"
     )

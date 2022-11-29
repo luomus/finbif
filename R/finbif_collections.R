@@ -140,9 +140,19 @@ get_collections <- function(qry, path, nms, id, cache) {
   total <- 1L
 
   while (total > qry[["page"]] * qry[["pageSize"]]) {
+
     qry[["page"]] <- qry[["page"]] + 1L
-    collections[[qry[["page"]]]] <- api_get(path, qry, cache)
+
+    collections[[qry[["page"]]]] <- api_get(
+      list(
+        path = path,
+        query = qry,
+        cache = cache
+      )
+    )
+
     total <- collections[[qry[["page"]]]][["content"]][["total"]]
+
   }
 
   for (i in c("content", "results")) {

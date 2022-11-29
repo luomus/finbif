@@ -46,7 +46,7 @@ finbif_taxa <- function(
   type <- match.arg(type)
   query <- list(query = name, matchType = type, limit = n)
   structure(
-    api_get(path, query, cache),
+    api_get(list(path = path, query = query, cache = cache)),
     class = c("finbif_taxa", "finbif_api")
   )
 }

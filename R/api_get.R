@@ -3,7 +3,7 @@
 #' @importFrom httr accept_json content RETRY http_type user_agent status_code
 #' @importFrom utils packageVersion
 
-api_get <- function(path, query, cache) {
+api_get <- function(obj) {
 
   finbif_access_token <- token()
 
@@ -18,19 +18,40 @@ api_get <- function(path, query, cache) {
   }
 
   url <- getOption("finbif_api_url")
+
   version <- getOption("finbif_api_version")
 
-  if (cache) {
-    hash <- digest::digest(list(sub(".*://", "", url), version, path, query))
+  hash <- NULL
+
+  if (obj[["cache"]]) {
+
+    hash <- digest::digest(
+      list(
+        sub(".*://", "", url),
+        version,
+        obj[["path"]],
+        obj[["query"]]
+      )
+    )
+
     fcp <- getOption("finbif_cache_path")
+
     if (is.null(fcp)) {
-      ans <- get_cache(hash)
-      if (!is.null(ans)) return(ans)
-      on.exit(if (!is.null(ans)) set_cache(ans, hash))
+
+      cached_obj <- get_cache(hash)
+
+      if (!is.null(cached_obj)) return(cached_obj)
+
+      on.exit(if (!is.null(obj)) set_cache(obj, hash))
+
     } else {
+
       cache_file <- file.path(fcp, paste0("finbif_cache_file_", hash))
+
       if (file.exists(cache_file)) return(readRDS(cache_file))
-      on.exit(if (!is.null(ans)) saveRDS(ans, cache_file))
+
+      on.exit(if (!is.null(obj)) saveRDS(obj, cache_file))
+
     }
   }
 
@@ -40,16 +61,21 @@ api_get <- function(path, query, cache) {
   )
 
   email <- getOption("finbif_email")
-  if (!is.null(email)) query <- c(query, list(personEmail = email))
+
+  if (!is.null(email)) {
+
+    obj[["query"]] <- c(obj[["query"]], list(personEmail = email))
+
+  }
 
   finbif_restricted_access_token <- Sys.getenv(
     "FINBIF_RESTRICTED_ACCESS_TOKEN", "unset"
   )
 
-  query <- switch(
+  obj[["query"]] <- switch(
     finbif_restricted_access_token,
-    unset = query,
-    c(query, list(permissionToken = finbif_restricted_access_token))
+    unset = obj[["query"]],
+    c(obj[["query"]], list(permissionToken = finbif_restricted_access_token))
   )
 
   # Pausing between requests is important if many request will be made
@@ -63,10 +89,10 @@ api_get <- function(path, query, cache) {
 
   resp <- httr::RETRY(
     "GET",
-    sprintf("%s/%s/%s", url, version, path),
+    sprintf("%s/%s/%s", url, version, obj[["path"]]),
     httr::user_agent(paste0(agent, ":", get_calling_function("finbif"))),
     httr::accept_json(),
-    query = c(query, list(access_token = finbif_access_token)),
+    query = c(obj[["query"]], list(access_token = finbif_access_token)),
     times = getOption("finbif_retry_times"),
     pause_base = getOption("finbif_retry_pause_base"),
     pause_cap = getOption("finbif_retry_pause_cap"),
@@ -88,14 +114,19 @@ api_get <- function(path, query, cache) {
   resp[["request"]][["url"]] <- notoken
 
   if (httr::http_type(resp) != "application/json") {
-    ans <- NULL
+
+    obj <- NULL
+
     stop("API did not return json", call. = FALSE)
+
   }
 
   parsed <- httr::content(resp)
 
   if (httr::status_code(resp) != 200L) {
-    ans <- NULL
+
+    obj <- NULL
+
     stop(
       sprintf(
         "API request failed [%s]\n%s>",
@@ -106,15 +137,11 @@ api_get <- function(path, query, cache) {
     )
   }
 
-  ans <- structure(
-    list(
-      content = parsed, path = path, response = resp,
-      hash = if (exists("hash")) hash
-    ),
-    class = "finbif_api"
-  )
+  obj[["content"]] <- parsed
+  obj[["resp"]] <- resp
+  obj[["hash"]] <- hash
 
-  ans
+  structure(obj, class = "finbif_api")
 
 }
 

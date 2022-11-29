@@ -388,7 +388,7 @@ request <- function(
     query[["selected"]] <- NULL
     query[["orderBy"]]  <- NULL
     path <- paste0(path, "unit/count")
-    return(api_get(path, query, cache))
+    return(api_get(list(path = path, query = query, cache = cache)))
 
   }
 
@@ -398,7 +398,7 @@ request <- function(
 
     query[["page"]] <- 1L
     query[["pageSize"]] <- 1L
-    resp <- api_get(path, query, cache)
+    resp <- api_get(list(path = path, query = query, cache = cache))
     resp[["content"]] <- list(total = resp[["content"]][["total"]])
     return(resp)
 
@@ -460,7 +460,7 @@ request <- function(
 
 records_obj <- function(path, query, cache, select, aggregate) {
   structure(
-    api_get(path, query, cache),
+    api_get(list(path = path, query = query, cache = cache)),
     class = c("finbif_records", "finbif_api"),
     select = unique(select),
     aggregate = aggregate
