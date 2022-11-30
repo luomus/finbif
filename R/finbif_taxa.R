@@ -51,33 +51,30 @@ finbif_taxa <- function(
   )
 }
 
-taxon_attribute <- function(x, ...) UseMethod("taxon_attribute")
-
-taxon_attribute.default <- function(x, which, locale, ...) {
-  x <- finbif_taxa(x, n = 1, type = "exact")
-  taxon_attribute(x, which, locale)
-}
-
-taxon_attribute.finbif_taxa <- function(x, which, locale, ...) {
-  x <- x[["content"]]
-  x <- x[[1L]]
-  with_locale(x[[which]], locale)
+taxon_attribute <- function(obj) {
+  taxon <- finbif_taxa(obj[["taxon"]], n = 1, type = "exact")
+  taxon <- taxon[["content"]]
+  taxon <- taxon[[1L]]
+  with_locale(taxon[[obj[["which"]]]], obj[["locale"]])
 }
 
 #' @export
 #' @rdname finbif_taxa
 common_name <- function(name, locale = getOption("finbif_locale")) {
-  taxon_attribute(name, "vernacularName", locale)
+  obj <- list(taxon = name, which = "vernacularName", locale = locale)
+  taxon_attribute(obj)
 }
 
 #' @export
 #' @rdname finbif_taxa
 scientific_name <- function(name) {
-  taxon_attribute(name, "scientificName")
+  obj <- list(taxon = name, which = "scientificName")
+  taxon_attribute(obj)
 }
 
 #' @export
 #' @rdname finbif_taxa
 taxon_id <- function(name) {
-  taxon_attribute(name, "id")
+  obj <- list(taxon = name, which = "id")
+  taxon_attribute(obj)
 }
