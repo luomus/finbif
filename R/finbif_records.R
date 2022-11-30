@@ -585,9 +585,7 @@ parse_filters <- function(filter, aggregate, locale) {
 
     if (identical(filter_names[finbif_filter_names[[i]], "class"], "date")) {
 
-      filter[[i]] <- do.call(
-        dates, c(list(names(filter)[[i]]), as.list(filter[[i]]))
-      )
+      filter[[i]] <- dates(c(list(filter = names(filter)[[i]]), filter[[i]]))
 
     }
 
