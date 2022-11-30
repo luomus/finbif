@@ -18,16 +18,25 @@
 #' hist_xy(matrix(runif(50), 25), list(seq(0, 1, .2), seq(0, 1, .2)))
 #' @export
 hist_xy <- function(xy, breaks) {
-  xy <- as.data.frame(xy)
-  colnames(xy) <- c("x", "y")
-  freq <- mapply(in_intervals, xy, breaks, SIMPLIFY = FALSE)
-  list(x = breaks[[1]], y = breaks[[2]], z = table(freq))
-}
 
-#' @noRd
-in_intervals <- function(x, breaks) {
-  n <- length(breaks) - 1L
-  factor(findInterval(x, breaks), seq_len(n))
+  nms <- c("x", "y")
+
+  xy <- as.data.frame(xy)
+  xy <- structure(xy, names = nms)
+
+  breaks <- structure(breaks, names = nms)
+
+  levels <- vapply(breaks, length, 0L)
+  levels <- levels - 1L
+  levels <- lapply(levels, seq_len)
+
+  z <- mapply(findInterval, xy, breaks, SIMPLIFY = FALSE)
+  z <- mapply(factor, z, levels, SIMPLIFY = FALSE)
+  z <- table(z)
+  z <- list(z = z)
+
+  c(breaks, z)
+
 }
 
 #' Create XY Breakpoints
