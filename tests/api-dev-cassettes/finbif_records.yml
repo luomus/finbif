@@ -31,7 +31,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":3,"pageSize":10,"total":22,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"COMMUNITY_VERIFIED","reliability":"RELIABLE"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.3211/56675428-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":66.53408,"lon":25.53035}},"eventDate":{"begin":"2020-08-15","end":"2020-08-15"},"interpretations":{"coordinateAccuracy":16}}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
@@ -44,8 +44,8 @@ http_interactions:
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.3211/55146663-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.87961,"lon":29.00744}},"eventDate":{"begin":"2020-08-02","end":"2020-08-02"},"interpretations":{"coordinateAccuracy":238}}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.3211/55123581-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":64.80745,"lon":24.56991}},"eventDate":{"begin":"2020-08-01","end":"2020-08-01"},"interpretations":{"coordinateAccuracy":100}}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.13697#43"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":69.195185,"lon":27.88662}},"eventDate":{"begin":"2017-08-19","end":"2017-08-19"},"interpretations":{"coordinateAccuracy":5000}}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://api.laji.fi/explorer/swagger.json
@@ -77,7 +77,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"swagger":"2.0","info":{"title":"API documentation","description":"\nAccess
         token is needed to use this API. To get a token, send a POST request with
@@ -4713,8 +4713,8 @@ http_interactions:
         is unknown."}}},"reserve":{"required":["reserver","until"],"properties":{"reserver":{"type":"string","description":"QName
         for MA.person"},"until":{"type":"string","description":"date string using
         ISO8601 format"}}}}}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.42&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cunit.interpretations.individualCount%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cgathering.interpretations.coordinateAccuracy%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd&orderBy=gathering.eventDate.begin%20DESC&page=1&pageSize=10&access_token=<finbif_token>
@@ -4747,7 +4747,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2997,"pageSize":10,"total":29966,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464682"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
@@ -4760,8 +4760,8 @@ http_interactions:
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464685"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         planiusculus"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464700"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Scymnus
         suturalis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464658"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://api.laji.fi/explorer/swagger.json
@@ -4793,7 +4793,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"swagger":"2.0","info":{"title":"API documentation","description":"\nAccess
         token is needed to use this API. To get a token, send a POST request with
@@ -9429,8 +9429,8 @@ http_interactions:
         is unknown."}}},"reserve":{"required":["reserver","until"],"properties":{"reserver":{"type":"string","description":"QName
         for MA.person"},"until":{"type":"string","description":"date string using
         ISO8601 format"}}}}}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.101%2CHR.102%2CHR.103%2CHR.104%2CHR.1130&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cunit.interpretations.individualCount%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cgathering.interpretations.coordinateAccuracy%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd&page=1&pageSize=10&access_token=<finbif_token>
@@ -9463,7 +9463,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":1095,"pageSize":10,"total":10945,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464682"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
@@ -9475,8 +9475,8 @@ http_interactions:
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464679"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464673"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464670"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/count?primaryHabitat=MKV.habitatM&ykj100km=67%3A32&access_token=<finbif_token>
@@ -9509,11 +9509,11 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"total":164045}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/aggregate?aggregateBy=unit.linkings.taxon.scientificName&page=1&pageSize=1&access_token=<finbif_token>
@@ -9546,12 +9546,12 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":21549,"pageSize":1,"total":21549,"results":[{"aggregateBy":{"unit.linkings.taxon.scientificName":"Parus
         major"},"count":54916}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?primaryHabitat=MKV.habitatM%5BMKV.habitatSpecificTypeV%2CMKV.habitatSpecificTypeH%5D&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd&page=1&pageSize=10&access_token=<finbif_token>
@@ -9580,7 +9580,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":19,"results":[{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.3211/56531613-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":66.3721,"lon":29.29232}},"eventDate":{"begin":"2020-08-15","end":"2020-08-15"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
@@ -9593,8 +9593,8 @@ http_interactions:
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1035805#13"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":60.501624,"lon":22.253718}},"eventDate":{"begin":"2011-08-14","end":"2011-08-14"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/hatikka:1035805#18"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":60.501624,"lon":22.253718}},"eventDate":{"begin":"2011-08-14","end":"2011-08-14"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.921/LGE.342001/814011"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":66.762947,"lon":28.92304}},"eventDate":{"begin":"2005-09-06","end":"2005-09-06"}}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.42&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd&orderBy=gathering.eventDate.begin%20DESC&page=1&pageSize=10&access_token=<finbif_token>
@@ -9623,7 +9623,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2998,"pageSize":10,"total":29977,"results":[{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464673"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
@@ -9635,8 +9635,8 @@ http_interactions:
         planiusculus"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464697"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464676"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464670"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"}}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.101%2CHR.102%2CHR.103%2CHR.104%2CHR.1130&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd&page=1&pageSize=10&access_token=<finbif_token>
@@ -9665,7 +9665,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":1092,"pageSize":10,"total":10911,"results":[{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464664"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Ceutorhynchus
         hampei"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464661"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Kateretes
@@ -9677,8 +9677,8 @@ http_interactions:
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464670"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464682"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"}}},{"unit":{"interpretations":{"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Scymnus
         suturalis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464658"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"}}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?primaryHabitat=MKV.habitatM%5BMKV.habitatSpecificTypeV%2CMKV.habitatSpecificTypeH%5D&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
@@ -9707,7 +9707,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":19,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.3211/56531613-U"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":66.3721,"lon":29.29232}},"eventDate":{"begin":"2020-08-15","end":"2020-08-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.901"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
@@ -9720,8 +9720,8 @@ http_interactions:
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1035805#13"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":60.501624,"lon":22.253718}},"eventDate":{"begin":"2011-08-14","end":"2011-08-14"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/hatikka:1035805#18"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":60.501624,"lon":22.253718}},"eventDate":{"begin":"2011-08-14","end":"2011-08-14"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.921/LGE.342001/814011"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":66.762947,"lon":28.92304}},"eventDate":{"begin":"2005-09-06","end":"2005-09-06"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.42&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId&orderBy=gathering.eventDate.begin%20DESC&page=1&pageSize=10&access_token=<finbif_token>
@@ -9750,7 +9750,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2998,"pageSize":10,"total":29977,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464673"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
@@ -9762,8 +9762,8 @@ http_interactions:
         planiusculus"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464697"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464676"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464670"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.101%2CHR.102%2CHR.103%2CHR.104%2CHR.1130&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
@@ -9792,7 +9792,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":1092,"pageSize":10,"total":10911,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464664"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Ceutorhynchus
         hampei"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464661"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Kateretes
@@ -9804,8 +9804,8 @@ http_interactions:
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464670"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464682"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Scymnus
         suturalis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464658"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?primaryHabitat=MKV.habitatM%5BMKV.habitatSpecificTypeV%2CMKV.habitatSpecificTypeH%5D&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
@@ -9834,7 +9834,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":19,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.3211/56531613-U"},"gathering":{"conversions":{"day":15,"month":8,"wgs84CenterPoint":{"lat":66.3721,"lon":29.29232}},"eventDate":{"begin":"2020-08-15","end":"2020-08-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.901"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
@@ -9847,8 +9847,8 @@ http_interactions:
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.8_1035805#13"},"gathering":{"conversions":{"day":14,"month":8,"wgs84CenterPoint":{"lat":60.501624,"lon":22.253718}},"eventDate":{"begin":"2011-08-14","end":"2011-08-14"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/hatikka:1035805#18"},"gathering":{"conversions":{"day":14,"month":8,"wgs84CenterPoint":{"lat":60.501624,"lon":22.253718}},"eventDate":{"begin":"2011-08-14","end":"2011-08-14"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/KE.921/LGE.342001/814011"},"gathering":{"conversions":{"day":6,"month":9,"wgs84CenterPoint":{"lat":66.762947,"lon":28.92304}},"eventDate":{"begin":"2005-09-06","end":"2005-09-06"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.42&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId&orderBy=gathering.eventDate.begin%20DESC&page=1&pageSize=10&access_token=<finbif_token>
@@ -9877,7 +9877,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2998,"pageSize":10,"total":29977,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464673"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
@@ -9889,8 +9889,8 @@ http_interactions:
         planiusculus"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464697"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464676"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464670"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.101%2CHR.102%2CHR.103%2CHR.104%2CHR.1130&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
@@ -9919,7 +9919,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":1092,"pageSize":10,"total":10911,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464664"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Ceutorhynchus
         hampei"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464661"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Kateretes
@@ -9931,8 +9931,8 @@ http_interactions:
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464670"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         tristis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464682"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Scymnus
         suturalis"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://id.luomus.fi/MY.2464658"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?primaryHabitat=MKV.habitatM%5BMKV.habitatSpecificTypeV%2CMKV.habitatSpecificTypeH%5D&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId%2Cunit.taxonVerbatim&page=1&pageSize=10&access_token=<finbif_token>
@@ -9961,7 +9961,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":19,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Hydnellum
@@ -9983,8 +9983,8 @@ http_interactions:
         caeruleum","unitId":"http://tun.fi/hatikka:1035805#18"},"gathering":{"conversions":{"day":14,"month":8,"wgs84CenterPoint":{"lat":60.501624,"lon":22.253718}},"eventDate":{"begin":"2011-08-14","end":"2011-08-14"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Hydnellum
         caeruleum","unitId":"http://tun.fi/KE.921/LGE.342001/814011"},"gathering":{"conversions":{"day":6,"month":9,"wgs84CenterPoint":{"lat":66.762947,"lon":28.92304}},"eventDate":{"begin":"2005-09-06","end":"2005-09-06"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.42&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId%2Cunit.taxonVerbatim&orderBy=gathering.eventDate.begin%20DESC&page=1&pageSize=10&access_token=<finbif_token>
@@ -10013,7 +10013,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2998,"pageSize":10,"total":29978,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Kateretes
         rufilabris"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Kateretes
@@ -10036,8 +10036,8 @@ http_interactions:
         tristis","unitId":"http://id.luomus.fi/MY.2464688"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         planiusculus"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Meligethes
         planiusculus","unitId":"http://id.luomus.fi/MY.2464706"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.101%2CHR.102%2CHR.103%2CHR.104%2CHR.1130&selected=unit.unitId%2Cunit.linkings.taxon.scientificName%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId%2Cunit.taxonVerbatim&page=1&pageSize=10&access_token=<finbif_token>
@@ -10066,7 +10066,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":1092,"pageSize":10,"total":10911,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Ceutorhynchus
         canaliculatus","unitId":"http://id.luomus.fi/MY.2464664"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Ceutorhynchus
@@ -10088,8 +10088,8 @@ http_interactions:
         tristis","unitId":"http://id.luomus.fi/MY.2464676"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Scymnus
         suturalis"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Scymnus
         suturalis","unitId":"http://id.luomus.fi/MY.2464658"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?primaryHabitat=MKV.habitatM%5BMKV.habitatSpecificTypeV%2CMKV.habitatSpecificTypeH%5D&selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim&page=1&pageSize=10&access_token=<finbif_token>
@@ -10118,7 +10118,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":19,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Hydnellum
@@ -10140,8 +10140,8 @@ http_interactions:
         caeruleum","unitId":"http://tun.fi/hatikka:1035805#18"},"gathering":{"conversions":{"day":14,"month":8,"wgs84CenterPoint":{"lat":60.501624,"lon":22.253718}},"eventDate":{"begin":"2011-08-14","end":"2011-08-14"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Hydnellum
         caeruleum","unitId":"http://tun.fi/KE.921/LGE.342001/814011"},"gathering":{"conversions":{"day":6,"month":9,"wgs84CenterPoint":{"lat":66.762947,"lon":28.92304}},"eventDate":{"begin":"2005-09-06","end":"2005-09-06"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.42&selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim&orderBy=gathering.eventDate.begin%20DESC&page=1&pageSize=10&access_token=<finbif_token>
@@ -10170,7 +10170,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2998,"pageSize":10,"total":29978,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Kateretes
         rufilabris"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Kateretes
@@ -10193,8 +10193,8 @@ http_interactions:
         tristis","unitId":"http://id.luomus.fi/MY.2464688"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         planiusculus"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Meligethes
         planiusculus","unitId":"http://id.luomus.fi/MY.2464706"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.101%2CHR.102%2CHR.103%2CHR.104%2CHR.1130&selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cdocument.sourceId%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim&page=1&pageSize=10&access_token=<finbif_token>
@@ -10223,7 +10223,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":1092,"pageSize":10,"total":10911,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Ceutorhynchus
         canaliculatus","unitId":"http://id.luomus.fi/MY.2464664"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Ceutorhynchus
@@ -10245,8 +10245,8 @@ http_interactions:
         tristis","unitId":"http://id.luomus.fi/MY.2464676"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Scymnus
         suturalis"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Scymnus
         suturalis","unitId":"http://id.luomus.fi/MY.2464658"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?primaryHabitat=MKV.habitatM%5BMKV.habitatSpecificTypeV%2CMKV.habitatSpecificTypeH%5D&selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
@@ -10275,7 +10275,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":4,"pageSize":10,"total":36,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Hydnellum
@@ -10297,8 +10297,8 @@ http_interactions:
         caeruleum","unitId":"http://tun.fi/KE.921/LGE.302542/712557"},"gathering":{"conversions":{"day":17,"month":9,"wgs84CenterPoint":{"lat":69.190878,"lon":27.53283}},"eventDate":{"begin":"2013-09-17","end":"2013-09-17"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Hydnellum
         caeruleum","unitId":"http://tun.fi/KE.921/LGE.302411/711985"},"gathering":{"conversions":{"day":2,"month":9,"wgs84CenterPoint":{"lat":67.692789,"lon":24.214533}},"eventDate":{"begin":"2013-09-02","end":"2013-09-02"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.42&selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cdocument.sourceId&orderBy=gathering.eventDate.begin%20DESC&page=1&pageSize=10&access_token=<finbif_token>
@@ -10327,7 +10327,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2998,"pageSize":10,"total":29978,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Kateretes
         rufilabris"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Kateretes
@@ -10350,8 +10350,8 @@ http_interactions:
         tristis","unitId":"http://id.luomus.fi/MY.2464688"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         planiusculus"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Meligethes
         planiusculus","unitId":"http://id.luomus.fi/MY.2464706"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.101%2CHR.102%2CHR.103%2CHR.104%2CHR.1130&selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
@@ -10380,7 +10380,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":1092,"pageSize":10,"total":10911,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Ceutorhynchus
         canaliculatus","unitId":"http://id.luomus.fi/MY.2464664"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Ceutorhynchus
@@ -10402,5 +10402,48 @@ http_interactions:
         tristis","unitId":"http://id.luomus.fi/MY.2464676"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Scymnus
         suturalis"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Scymnus
         suturalis","unitId":"http://id.luomus.fi/MY.2464658"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2022-09-08 11:04:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/collections?lang=en&page=1&pageSize=1000&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 404
+      category: Client error
+      reason: Not Found
+      message: 'Client error: (404) Not Found'
+    headers:
+      date: Wed, 30 Nov 2022 06:51:43 GMT
+      content-type: text/html;charset=utf-8
+      transfer-encoding: chunked
+      content-language: en
+      via: 1.0 staging.laji.fi
+      content-encoding: gzip
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '<html><head><title>Apache Tomcat/7.0.76 - Error report</title><style><!--H1
+        {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;}
+        H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;}
+        H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;}
+        BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;}
+        B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;}
+        P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A
+        {color : black;}A.name {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP
+        Status 404 - </h1><HR size="1" noshade="noshade"><p><b>type</b> Status report</p><p><b>message</b>
+        <u></u></p><p><b>description</b> <u>The requested resource is not available.</u></p><HR
+        size="1" noshade="noshade"><h3>Apache Tomcat/7.0.76</h3></body></html>'
+  recorded_at: 2022-11-30 06:51:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

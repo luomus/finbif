@@ -39,21 +39,32 @@ finbif_collections <- function(
 
   col_md_nms <- names(swagger[["definitions"]][["Collection"]][["properties"]])
 
-  col_md <- get_collections(
-    list(lang = locale), "collections", col_md_nms, "id", cache
+  col_md <- list(
+    qry = list(lang = locale),
+    path = "collections",
+    nms = col_md_nms,
+    id = "id",
+    cache = cache
   )
+
+  col_md <- get_collections(col_md)
 
   col_count_nms <- names(
     swagger[["definitions"]][["DwQuery_AggregateRow"]][["properties"]]
   )
-  col_count <- get_collections(
-    list(
+
+  col_counts <- list(
+    qry = list(
       aggregateBy = "document.collectionId", onlyCount = FALSE,
       pessimisticDateRangeHandling = TRUE
     ),
-    paste0(getOption("finbif_warehouse_query"), "unit/aggregate"),
-    col_count_nms, "aggregateBy", cache
+    path = paste0(getOption("finbif_warehouse_query"), "unit/aggregate"),
+    nms = col_count_nms,
+    id = "aggregateBy",
+    cache = cache
   )
+
+  col_count <- get_collections(col_counts)
 
   collections <- merge(
     col_md, col_count, by.x = "id", by.y = "aggregate_by", all.x = TRUE
@@ -134,8 +145,9 @@ finbif_collections <- function(
 
 }
 
-get_collections <- function(qry, path, nms, id, cache) {
-  qry <- c(qry, list(page = 0L, pageSize = 1000L))
+get_collections <- function(obj) {
+  nms <- obj[["nms"]]
+  qry <- c(obj[["qry"]], list(page = 0L, pageSize = 1000L))
   collections <- list()
   total <- 1L
 
@@ -145,9 +157,9 @@ get_collections <- function(qry, path, nms, id, cache) {
 
     collections[[qry[["page"]]]] <- api_get(
       list(
-        path = path,
+        path = obj[["path"]],
         query = qry,
-        cache = cache
+        cache = obj[["cache"]]
       )
     )
 
@@ -189,8 +201,8 @@ get_collections <- function(qry, path, nms, id, cache) {
 
   collections[nms[["TRUE"]]] <- list_cols
 
-  collections[[id]] <- gsub(
-    "^http:\\/\\/tun\\.fi\\/", "", collections[[id]]
+  collections[[obj[["id"]]]] <- gsub(
+    "^http:\\/\\/tun\\.fi\\/", "", collections[[obj[["id"]]]]
   )
 
   names(collections) <- sub("\\.", "_", names(collections))
