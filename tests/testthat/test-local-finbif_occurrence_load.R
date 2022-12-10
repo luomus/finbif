@@ -21,9 +21,9 @@ if (requireNamespace("webfakes", quietly = TRUE)) {
     }
   )
 
-  api <- local_app_process(app, .local_envir = teardown_env(), port = 36761)
+  api <- local_app_process(app, .local_envir = teardown_env())
 
-  options(finbif_dl_url = api[["url"]]())
+  options(finbif_dl_url = sub("/$", "", api[["url"]]()))
 
 } else {
 
@@ -67,7 +67,7 @@ test_that(
       finbif_occurrence_load(file, quiet = TRUE, tzone = "Etc/UTC")[
         seq(nrows),
       ],
-      style = "json2"
+      style = "json2", ignore_attr = "url"
     )
 
     expect_snapshot_value(
@@ -89,7 +89,7 @@ test_that(
       )
     )
 
-    expect_snapshot_value(with_progress, style = "json2")
+    expect_snapshot_value(with_progress, style = "json2", ignore_attr = "url")
 
     file_full <- paste0("http://tun.fi/HBF.", file)
 

@@ -506,7 +506,7 @@ get_zip <- function(url, quiet, cache, write_file) {
 
   if (cache) {
 
-    hash <- digest::digest(url)
+    hash <- digest::digest(sub(":\\d+", "", url))
 
     fcp <- getOption("finbif_cache_path")
 
