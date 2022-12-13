@@ -112,3 +112,5 @@ polygonId,polygon_id,uri,FALSE,",",FALSE
 namedPlaceTag,location_tag,character,TRUE,",",TRUE
 completeListTaxonId,complete_list_taxon_id,uri,FALSE,",",TRUE
 completeListType,complete_list_type,character,TRUE,",",TRUE
+higherTaxon,higher_taxon,logical,FALSE,",",FALSE
+alive,is_alive,logical,FALSE,",",FALSE

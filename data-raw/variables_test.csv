@@ -27,7 +27,7 @@ gathering.interpretations.countryDisplayname,country_display,countryDisplay,FALS
 gathering.interpretations.biogeographicalProvinceDisplayname,bio_province,bioStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 computed_var_from_id_municipality,municipality,county,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 computed_var_region,region,stateProvince,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
-gathering.conversions.wgs84WKT,footprint_wgs84,footprintWKT,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+gathering.conversions.wgs84WKT,footprint_wgs84,footprintWKT,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.linelengthInMeters,line_length_m,lineLengthMeters,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.boundingBoxAreaInSquareMeters,area_m2,areaMetersSquared,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.eventDate.begin,date_start,eventDateStart,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
@@ -106,7 +106,8 @@ unit.superRecordBasis,superrecord_basis,basisOfSuperRecord,FALSE,FALSE,character
 unit.taxonVerbatim,reported_name,verbatimIdentification,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.typeSpecimen,type_specimen,typeStatus,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.unitOrder,record_order,occurrenceOrder,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.wild,is_wild,occurrenceIsWild,FALSE,FALSE,character,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.wild,is_wild,occurrenceIsWild,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.alive,is_alive,isAlive,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 document.createdDate,date_created,documentCreatedDate,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.documentId,document_id,catalogNumber,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.editorUserIds,editor_user_ids,editorUserID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
@@ -153,7 +154,7 @@ gathering.conversions.euref.latMax,lat_max_euref,decimalLatitudeMaxEUREF,FALSE,F
 gathering.conversions.euref.latMin,lat_min_euref,decimalLatitudeMinEUREF,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.euref.lonMax,lon_max_euref,decimalLongitudeMaxEUREF,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.euref.lonMin,lon_min_euref,decimalLongitudeMinEUREF,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
-gathering.conversions.eurefWKT,footprint_euref,footprintWKT_EUREF,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+gathering.conversions.eurefWKT,footprint_euref,footprintWKT_EUREF,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.month,month,month,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
 gathering.conversions.seasonBegin,season_start,seasonStart,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.seasonEnd,season_end,seasonEnd,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
@@ -190,7 +191,7 @@ gathering.conversions.ykj50km.lat,lat_50_ykj,decimalLatitudeGrid50YKJ,FALSE,FALS
 gathering.conversions.ykj50km.lon,lon_50_ykj,decimalLongitudeGrid50YKJ,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.conversions.ykj50kmCenter.lat,lat_50_center_ykj,decimalLatitudeGrid50CenterYKJ,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.conversions.ykj50kmCenter.lon,lon_50_center_ykj,decimalLongitudeGrid50CenterYKJ,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-gathering.conversions.ykjWKT,footprint_ykj,footprintWKT_YKJ,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+gathering.conversions.ykjWKT,footprint_ykj,footprintWKT_YKJ,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 gathering.coordinatesVerbatim,coordinates_verbatim,verbatimCoordinates,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.country,country_verbatim,verbatimCountry,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.displayDateTime,formatted_date_time,eventDateTimeDisplay,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
@@ -375,6 +376,7 @@ document.linkings.editors,editors,editors,FALSE,FALSE,character,uri,TRUE,FALSE,F
 document.namedPlace.birdAssociationAreaId,bird_assoc_area_id,birdAssociationAreaId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.collectionId,location_collection_id,locationCollectionId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.id,location_id2,locationID2,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.alternativeIds,location_ids,locationIDs,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.municipalityId,location_municipality_id,locationCountyID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.ykj10km.lat,location_lat_10_ykj,locationDecimalLatitudeGrid10YKJ,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.ykj10km.lon,location_lon_10_ykj,locationDecimalLongitudeGrid10YKJ,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
@@ -684,3 +686,9 @@ unit.linkings.originalTaxon.redListStatusGroup,orig_red_list_status_group_id,ori
 unit.linkings.taxon.redListStatusGroup,taxon_red_list_status_group_id,taxonRedListStatusGroupID,FALSE,FALSE,character,factor,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.referenceURL,document_reference_url,documentReferenceURL,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.externalMediaCount,record_external_media_count,occurrenceExternalAssociatedMediaCount,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.identification.linkings.taxon.taxonConceptIds,record_annotation_taxon_concept_ids,occurrenceAnnotationIdentificationTaxonConceptID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.taxonConceptIds,record_pre_annotation_taxon_concept_ids,occurrencePreAnnotationTaxonConceptID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.identifications.linkings.taxon.taxonConceptIds,record_identifications_taxon_concept_ids,occurrenceIdentificationsTaxonConceptID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.originalTaxon.taxonConceptIds,orig_taxon_concept_ids,originalTaxonConceptID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.taxon.taxonConceptIds,taxon_concept_ids,taxonConceptID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.types.linkings.taxon.taxonConceptIds,type_specimen_taxon_concept_ids,typeSpecimenTaxonConceptID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
