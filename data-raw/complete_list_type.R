@@ -1,6 +1,8 @@
 source("data-raw/utils.R")
 metadata_ranges <-
-  finbif:::api_get("metadata/ranges", list(), FALSE)[["content"]]
+  finbif:::api_get(
+    list(path = "metadata/ranges", query = list(), cache = FALSE)
+  )[["content"]]
 complete_list_type <- lapply(
   metadata_ranges[["MY.completeListTypeEnum"]],  as.data.frame,
   stringsAsFactors = FALSE

@@ -1,7 +1,10 @@
 source("data-raw/utils.R")
 n <- 1000L
-source <-
-  finbif:::api_get("sources", list(lang = "multi", pageSize = n), FALSE)
+source <- finbif:::api_get(
+  list(
+    path = "sources",query = list(lang = "multi", pageSize = n), cache = FALSE
+  )
+)
 stopifnot(n > source[["content"]][["total"]])
 source <- source[["content"]][["results"]]
 source <- lapply(source, as.data.frame, stringsAsFactors = FALSE)

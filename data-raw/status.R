@@ -98,7 +98,9 @@ class(red_list_status[["translated_status_code"]]) <- "translation"
 class(red_list_status[["translated_status"]]) <- "translation"
 
 metadata_ranges <-
-  finbif:::api_get("metadata/ranges", list(), FALSE)[["content"]]
+  finbif:::api_get(
+    list(path = "metadata/ranges", query = list(), cache = FALSE)
+  )[["content"]]
 
 admin_status <-
   sapply(metadata_ranges[["MX.adminStatusEnum"]], getElement, "id")
@@ -114,7 +116,11 @@ stopifnot(
 )
 
 threatened_status <- finbif:::api_get(
-  "metadata/ranges/MX.threatenedStatusEnum", list(lang = "multi"), FALSE
+  list(
+    path = "metadata/ranges/MX.threatenedStatusEnum",
+    query = list(lang = "multi"),
+    cache = FALSE
+  )
 )
 
 threatened_status <- lapply(

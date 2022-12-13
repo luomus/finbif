@@ -1,8 +1,11 @@
 source("data-raw/utils.R")
 n <- 1000L
 region <- finbif:::api_get(
-  "areas", list(type = "province", lang = "multi", page = 1L, pageSize = n),
-  FALSE
+  list(
+    path = "areas",
+    query = list(type = "province", lang = "multi", page = 1L, pageSize = n),
+    cache = FALSE
+  )
 )
 stopifnot(n > region[["content"]][["total"]])
 region <- region[["content"]][["results"]]

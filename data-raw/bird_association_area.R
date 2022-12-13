@@ -36,9 +36,13 @@ class(bird_assoc_area[["code"]]) <- "translation"
 
 n <- 1000
 baa <- finbif:::api_get(
-  "areas",
-  list(type = "birdAssociationArea", lang = "multi", page = 1L, pageSize = n),
-  FALSE
+  list(
+    path = "areas",
+    query = list(
+      type = "birdAssociationArea", lang = "multi", page = 1L, pageSize = n
+    ),
+    cache = FALSE
+  )
 )
 
 stopifnot(n > baa[["content"]][["total"]])

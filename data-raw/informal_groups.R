@@ -4,7 +4,11 @@ informal_groups <- lapply(
   langs,
   function(x) {
     finbif:::api_get(
-      "informal-taxon-groups/tree", list(pageSize = 1000, lang = x), FALSE
+      list(
+        path = "informal-taxon-groups/tree",
+        query = list(pageSize = 1000, lang = x),
+        cache = FALSE
+      )
     )
   }
 )

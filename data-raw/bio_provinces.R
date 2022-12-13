@@ -1,11 +1,13 @@
 source("data-raw/utils.R")
 n <- 1000L
 bio_province <- finbif:::api_get(
-  "areas",
   list(
-    type = "biogeographicalProvince", lang = "multi", page = 1L, pageSize = n
-  ),
-  FALSE
+    path = "areas",
+    query = list(
+      type = "biogeographicalProvince", lang = "multi", page = 1L, pageSize = n
+    ),
+    cache = FALSE
+  )
 )
 stopifnot(n > bio_province[["content"]][["total"]])
 bio_province <- bio_province[["content"]][["results"]]

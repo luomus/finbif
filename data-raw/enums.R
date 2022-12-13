@@ -1,10 +1,14 @@
 source("data-raw/utils.R")
 
 metadata_ranges <-
-  finbif:::api_get("metadata/ranges", list(), FALSE)[["content"]]
+  finbif:::api_get(
+    list(path = "metadata/ranges", query = list(), cache = FALSE)
+  )[["content"]]
 
 labels <-
-  finbif:::api_get("warehouse/enumeration-labels", list(), FALSE)[["content"]]
+  finbif:::api_get(
+    list(path = "warehouse/enumeration-labels", query = list(), cache = FALSE)
+  )[["content"]]
 
 labels <- reduce_merge(labels[["results"]])
 

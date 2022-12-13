@@ -1,5 +1,7 @@
 metadata_ranges <-
-  finbif:::api_get("metadata/ranges", list(), FALSE)[["content"]]
+  finbif:::api_get(
+    list(path = "metadata/ranges", query = list(), cache = FALSE)
+  )[["content"]]
 
 taxon_rank <- metadata_ranges[["MX.taxonRankEnum"]]
 taxon_rank <- matrix(unlist(taxon_rank), ncol = 2L, byrow = TRUE)

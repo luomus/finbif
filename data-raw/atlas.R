@@ -1,6 +1,8 @@
 source("data-raw/utils.R")
 metadata_ranges <-
-  finbif:::api_get("metadata/ranges", list(lang = "multi"), FALSE)[["content"]]
+  finbif:::api_get(
+    list(path = "metadata/ranges", query = list(lang = "multi"), cache = FALSE)
+  )[["content"]]
 atlas_code <- lapply(
   metadata_ranges[["MY.atlasCodeEnum"]],  as.data.frame,
   stringsAsFactors = FALSE

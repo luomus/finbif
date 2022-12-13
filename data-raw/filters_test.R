@@ -10,7 +10,9 @@ Sys.setenv(FINBIF_ACCESS_TOKEN = Sys.getenv("FINBIF_DEV_ACCESS_TOKEN"))
 options(finbif_api_url = "https://apitest.laji.fi")
 
 filters <- names(
-  finbif:::api_get("warehouse/filters", list(), FALSE)[["content"]]
+  finbif:::api_get(
+    list(path = "warehouse/filters", query = list(), cache = FALSE)
+  )[["content"]]
 )
 
 stopifnot(

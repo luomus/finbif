@@ -1,8 +1,13 @@
 source("data-raw/utils.R")
 n <- 1000L
 municipality <- finbif:::api_get(
-  "areas", list(type = "municipality", lang = "multi", page = 1L, pageSize = n),
-  FALSE
+  list(
+    path = "areas",
+    query = list(
+      type = "municipality", lang = "multi", page = 1L, pageSize = n
+    ),
+    cache = FALSE
+  )
 )
 stopifnot(n > municipality[["content"]][["total"]])
 municipality <- municipality[["content"]][["results"]]

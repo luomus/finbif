@@ -1,6 +1,8 @@
 source("data-raw/utils.R")
 metadata_ranges <-
-  finbif:::api_get("metadata/ranges", list(), FALSE)[["content"]]
+  finbif:::api_get(
+    list(path = "metadata/ranges", query = list(), cache = FALSE)
+  )[["content"]]
 location_tag <- lapply(
   metadata_ranges[["MNP.tagEnum"]],  as.data.frame, stringsAsFactors = FALSE
 )

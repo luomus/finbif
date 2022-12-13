@@ -1,11 +1,15 @@
 source("data-raw/utils.R")
-enums <- finbif:::api_get("warehouse/enumeration-labels", list(), FALSE)
+enums <- finbif:::api_get(
+  list(path = "warehouse/enumeration-labels", query = list(), cache = FALSE)
+)
 enums <- enums[["content"]][["results"]]
 enums <- lapply(enums, as.data.frame, stringsAsFactors = FALSE)
 enums <- reduce_merge(enums)
 
 metadata_ranges <-
-  finbif:::api_get("metadata/ranges", list(), FALSE)[["content"]]
+  finbif:::api_get(
+    list(path = "metadata/ranges", query = list(), cache = FALSE)
+  )[["content"]]
 
 restriction_level <- lapply(
   metadata_ranges[["MX.secureLevels"]], as.data.frame, stringsAsFactors = FALSE
