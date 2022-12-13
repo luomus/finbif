@@ -339,6 +339,7 @@ infer_computed_vars <- function(select, var_type) {
 
     scientific_name_vars <- c(
       "unit.linkings.taxon.scientificName", "unit.taxonVerbatim",
+      "unit.linkings.taxon.scientificNameAuthorship", "unit.author",
       "document.sourceId"
     )
 

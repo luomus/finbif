@@ -691,18 +691,41 @@ compute_scientific_name <- function(df, select_, dwc, add = TRUE) {
 
   verbatim <- var_names[["unit.taxonVerbatim", type]]
 
+  author <- var_names[["unit.linkings.taxon.scientificNameAuthorship", type]]
+
+  verbatim_author <- var_names[["unit.author", type]]
+
   source <- var_names[["document.sourceId", type]]
 
   if (scientific %in% select_ && add) {
 
     df[[scientific]] <- ifelse(
       is.na(df[[scientific_]]) & df[[source]] == "http://tun.fi/KE.3",
-      df[[verbatim]], df[[scientific_]]
+      add_authors(df[[verbatim]], df[[verbatim_author]]),
+      add_authors(df[[scientific_]], df[[author]])
     )
 
   }
 
   df
+
+}
+
+#' @noRd
+
+add_authors <- function(names, authors) {
+
+  authors <- ifelse(
+    nchar(authors) > 1L,
+    ifelse(
+      !grepl("\\(", authors) & !grepl("\\)", authors),
+      paste0(" (", authors, ")"),
+      paste0(" ", authors)
+    ),
+    ""
+  )
+
+  ifelse(is.na(names), names, paste0(names, authors))
 
 }
 
