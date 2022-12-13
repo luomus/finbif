@@ -2,7 +2,7 @@ source("data-raw/utils.R")
 n <- 1000L
 source <- finbif:::api_get(
   list(
-    path = "sources",query = list(lang = "multi", pageSize = n), cache = FALSE
+    path = "sources", query = list(lang = "multi", pageSize = n), cache = FALSE
   )
 )
 stopifnot(n > source[["content"]][["total"]])
