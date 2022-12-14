@@ -1,5 +1,5 @@
 pandoc: 2.19.2
-pkgdown: 2.0.6
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   finbif: finbif.html
@@ -8,5 +8,5 @@ articles:
   v04_metadata: v04_metadata.html
   v05_filtering: v05_filtering.html
   v06_plotting: v06_plotting.html
-last_built: 2022-11-29T08:43Z
+last_built: 2022-12-14T23:49Z
 
