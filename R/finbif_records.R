@@ -123,8 +123,15 @@ finbif_records <- function(
       order_by <- sub("^-", "", order_by)
       order_vars <- var_names[var_names[["order"]], var_type, drop = FALSE]
       class(order_vars[[var_type]]) <- class(var_names[[var_type]])
-      order_by <-
-        translate(order_by, "order_vars", list(order_vars = order_vars))
+
+      order_by <- translate(
+        list(
+          x = order_by,
+          translation = "order_vars",
+          env = list(order_vars = order_vars)
+        )
+      )
+
       order_by <- order_by_computed_var(order_by)
       order_by[desc_order] <- paste(order_by[desc_order], "DESC")
       query[["orderBy"]] <- paste(order_by, collapse = ",")
@@ -275,7 +282,11 @@ infer_selection <- function(fb_records_obj) {
     class(select_vars[[var_type]]) <- class(var_names[[var_type]])
 
     select <- translate(
-      select, "select_vars", list(select_vars = select_vars)
+      list(
+        x = select,
+        translation = "select_vars",
+        env = list(select_vars = select_vars)
+      )
     )
 
     vars_computed_from_id <- grepl("^computed_var_from_id", select)
@@ -290,8 +301,13 @@ infer_selection <- function(fb_records_obj) {
         computed_var <- vars_computed_from_id[i, var_type]
         suffix <- switch(var_type, translated_var = "_id", dwc = "ID")
         id_var <- paste0(computed_var, suffix)
+
         select[[ind]] <- translate(
-          id_var, "select_vars", list(select_vars = select_vars)
+          list(
+            x = id_var,
+            translation = "select_vars",
+            env = list(select_vars = select_vars)
+          )
         )
 
       }
@@ -561,7 +577,10 @@ parse_filters <- function(fb_records_obj) {
   locale <- fb_records_obj[["locale"]]
 
   filter <- as.list(filter)
-  finbif_filter_names <- translate(names(filter), "filter_names")
+
+  finbif_filter_names <- translate(
+    list(x = names(filter), translation = "filter_names", env = -1)
+  )
 
   cond <- switch(aggregate[[1L]], events = TRUE, documents = TRUE, FALSE)
 
@@ -579,7 +598,11 @@ parse_filters <- function(fb_records_obj) {
     if (is.na(finbif_filter_names[[i]])) next
 
     if (filter_names[finbif_filter_names[[i]], "translated_values"]) {
-      filter[[i]] <- translate(filter[[i]], names(filter)[[i]])
+
+      filter[[i]] <- translate(
+        list(x = filter[[i]], translation = names(filter)[[i]], env = -1)
+      )
+
     }
 
     if (grepl("^(not_){0,1}collection$", names(filter)[[i]])) { # nolint
@@ -600,7 +623,9 @@ parse_filters <- function(fb_records_obj) {
           class(env[[names(filter)[[i]]]][[cl]]) <- "translation"
         }
 
-        filter[[i]] <- translate(filter[[i]], names(filter)[[i]], env)
+        filter[[i]] <- translate(
+          list(x = filter[[i]], translation = names(filter)[[i]], env = env)
+        )
 
       }
 
@@ -646,16 +671,32 @@ check_coordinates <- function(filter_names, filter) {
 
 # translation ------------------------------------------------------------------
 
-translate <- function(x, translation, pos = -1) {
+translate <- function(translation_obj) {
+
+  x <- translation_obj[["x"]]
+  translation <- translation_obj[["translation"]]
+  pos <- translation_obj[["env"]]
 
   trsltn <- get(translation, pos)
 
   # Some filters have multi-level values to translate (e.g., primary_habitat)
   if (is.list(x)) {
 
-    names(x) <- translate(names(x), names(trsltn)[[1L]], trsltn)
-    x <- lapply(x, translate, names(trsltn)[[2L]], trsltn)
+    names(x) <- translate(
+      list(x = names(x), translation = names(trsltn)[[1L]], env = trsltn)
+    )
+
+    x <- lapply(
+      x,
+      function(x) {
+
+        translate(list(x = x, translation = names(trsltn)[[2L]], env = trsltn))
+
+      }
+    )
+
     x <- lapply(x, paste, collapse = ",")
+
     sprintf("%s%s", names(x), ifelse(x == "", x, sprintf("[%s]", x)))
 
   } else {
