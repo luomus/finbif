@@ -53,21 +53,20 @@
 #' @export
 
 finbif_records <- function(
-  filter = NULL, select = NULL, order_by, aggregate, sample = FALSE, n = 10,
-  page = 1, count_only = FALSE, quiet = getOption("finbif_hide_progress"),
+  filter = NULL, select = NULL, order_by = NULL, aggregate = "none",
+  sample = FALSE, n = 10, page = 1, count_only = FALSE,
+  quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"), dwc = FALSE, seed = NULL, df = FALSE,
   exclude_na = FALSE, locale = getOption("finbif_locale"), include_facts = FALSE
 ) {
 
-  max_size <- getOption("finbif_max_page_size")
-
-  var_type <- col_type_string(dwc)
-
   fb_records_obj <- list(
     filter = filter,
     select = select,
+    order_by = order_by,
+    aggregate = aggregate,
     sample = sample,
-    n = as.integer(n),
+    n = n,
     page = page,
     count_only = count_only,
     quiet = quiet,
@@ -77,11 +76,44 @@ finbif_records <- function(
     df = df,
     exclude_na = exclude_na,
     locale = locale,
-    include_facts = include_facts,
-    max_size = max_size,
-    nmax = getOption("finbif_max_queries") * max_size,
-    var_type = var_type
+    include_facts = include_facts
   )
+
+  records(fb_records_obj)
+
+}
+
+records <- function(fb_records_obj) {
+
+  aggregate <- fb_records_obj[["aggregate"]]
+
+  filter <- fb_records_obj[["filter"]]
+
+  order_by <- fb_records_obj[["order_by"]]
+
+  var_type <- fb_records_obj[["var_type"]]
+
+  seed <- fb_records_obj[["seed"]]
+
+  sample <- fb_records_obj[["sample"]]
+
+  df <- fb_records_obj[["df"]]
+
+  count_only <- fb_records_obj[["count_only"]]
+
+  locale <- fb_records_obj[["locale"]]
+
+  max_size <- getOption("finbif_max_page_size")
+
+  fb_records_obj[["max_size"]] <- max_size
+
+  fb_records_obj[["nmax"]] <- getOption("finbif_max_queries") * max_size
+
+  var_type <- col_type_string(fb_records_obj[["dwc"]])
+
+  fb_records_obj[["var_type"]] <- var_type
+
+  fb_records_obj[["n"]] <- as.integer(fb_records_obj[["n"]])
 
   defer_errors({
 
@@ -125,11 +157,7 @@ finbif_records <- function(
 
     # order ====================================================================
 
-    if (missing(order_by)) {
-
-      query[["orderBy"]] <- NULL
-
-    } else {
+    if (!is.null(order_by)) {
 
       desc_order <- grepl("^-", order_by)
       order_by <- sub("^-", "", order_by)
@@ -178,12 +206,6 @@ finbif_records <- function(
 # aggregation ------------------------------------------------------------------
 
 infer_aggregation <- function(aggregate) {
-
-  if (missing(aggregate)) {
-
-    aggregate <- "none"
-
-  }
 
   aggregate <- match.arg(
     aggregate,
@@ -518,12 +540,17 @@ request <- function(fb_records_obj) {
     sample_after_request <- n_tot < max_size * 3L || n / n_tot > .5
 
     if (sample && sample_after_request) {
-      all_records <- finbif_records(
-        filter, select_, sample = FALSE, n = n_tot, quiet = quiet,
-        cache = cache, dwc = dwc, df = df, exclude_na = exclude_na,
-        locale = locale, include_facts = include_facts
-      )
+
+      fb_records_obj[["select"]] <- select_
+
+      fb_records_obj[["sample"]] <- FALSE
+
+      fb_records_obj[["n"]] <- n_tot
+
+      all_records <- records(fb_records_obj)
+
       return(record_sample(all_records, n, cache))
+
     }
 
     resp <- get_extra_pages(
@@ -537,7 +564,7 @@ request <- function(fb_records_obj) {
 
       resp <- handle_duplicates(
         resp, filter, select_, max_size, cache, n, seed, dwc, df, exclude_na,
-        locale, include_facts
+        locale, include_facts, count_only
       )
 
     }
@@ -826,7 +853,7 @@ record_sample <- function(x, n, cache) {
 
 handle_duplicates <- function(
   x, filter, select, max_size, cache, n, seed, dwc, df, exclude_na, locale,
-  include_facts
+  include_facts, count_only
 ) {
 
   ids <- lapply(
@@ -847,17 +874,28 @@ handle_duplicates <- function(
 
   if (length(ids) - length(duplicates) < n) {
 
-    new_records <- finbif_records(
-      filter, select, sample = TRUE, n = max_size, cache = cache, dwc = dwc,
-      seed = seed, df = df, exclude_na = exclude_na, locale = locale,
-      include_facts = include_facts
+    fb_records_obj <- list(
+      filter = filter,
+      select = select,
+      sample = TRUE,
+      n = max_size,
+      cache = cache,
+      dwc = dwc,
+      seed = seed,
+      df = df,
+      exclude_na = exclude_na,
+      locale = locale,
+      include_facts = include_facts,
+      count_only = count_only
     )
+
+    new_records <- records(fb_records_obj)
 
     x[[length(x) + 1L]] <- new_records[[1L]]
 
     x <- handle_duplicates(
       x, filter, select, max_size, cache, n, seed + 1L, dwc, df, exclude_na,
-      locale, include_facts
+      locale, include_facts, count_only
     )
 
   }

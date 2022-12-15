@@ -55,8 +55,9 @@
 #' @export
 
 finbif_occurrence <- function(
-  ..., filter = NULL, select = NULL, order_by, aggregate, sample = FALSE, n = 10,
-  page = 1, count_only = FALSE, quiet = getOption("finbif_hide_progress"),
+  ..., filter = NULL, select = NULL, order_by = NULL, aggregate = "none",
+  sample = FALSE, n = 10, page = 1, count_only = FALSE,
+  quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   check_taxa = TRUE, on_check_fail = c("warn", "error"),
   tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"),
@@ -80,7 +81,9 @@ finbif_occurrence <- function(
     if (is.null(names(filter))) {
 
       stopifnot(
-        "only one filter set can be used with aggregation" = missing(aggregate)
+        "only one filter set can be used with aggregation" = identical(
+          aggregate, "none"
+        )
       )
 
       multi_request <- multi_req(
@@ -98,13 +101,29 @@ finbif_occurrence <- function(
 
   include_facts <- !missing(facts)
 
+  fb_records_obj <- list(
+    filter = filter,
+    select = select,
+    order_by = order_by,
+    aggregate = aggregate,
+    sample = sample,
+    page = page,
+    count_only = count_only,
+    quiet = quiet,
+    cache = cache,
+    dwc = dwc,
+    df = TRUE,
+    seed = seed,
+    exclude_na = exclude_na,
+    locale = locale,
+    include_facts = include_facts
+  )
+
   if (!is.finite(n) || is.factor(n) || n < 0) {
 
-    n <- finbif_records(
-      filter, select, order_by, aggregate, sample,
-      n = getOption("finbif_max_page_size"), page, count_only, quiet,
-      cache, dwc, df = TRUE, seed, exclude_na, locale, include_facts
-    )
+    fb_records_obj[["n"]] <- getOption("finbif_max_page_size")
+
+    n <- records(fb_records_obj)
 
     n <- attr(n, "nrec_avl")
 
@@ -112,10 +131,9 @@ finbif_occurrence <- function(
 
   }
 
-  records <- finbif_records(
-    filter, select, order_by, aggregate, sample, n, page, count_only, quiet,
-    cache, dwc, df = TRUE, seed, exclude_na, locale, include_facts
-  )
+  fb_records_obj[["n"]] <- n
+
+  records <- records(fb_records_obj)
 
   aggregate <- attr(records, "aggregate", TRUE)
 
