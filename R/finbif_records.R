@@ -538,13 +538,19 @@ request <- function(fb_records_obj) {
     max_size = max_size,
     quiet = quiet,
     path = path,
+    filter = filter,
     query = query,
     nrec_dnld = n,
     nrec_avl = n_tot,
+    seed = seed,
     select = unique(select),
     select_user = select_,
     locale = locale,
     df = df,
+    dwc = dwc,
+    exclude_na = exclude_na,
+    include_facts = include_facts,
+    count_only = count_only,
     record_id = record_id_selected,
     aggregate = aggregate,
     cache = cache
@@ -577,12 +583,9 @@ request <- function(fb_records_obj) {
 
     if (sample) {
 
-      if (is.null(seed)) seed <- 1L
+      if (is.null(seed)) attr(fb_records_list, "seed") <- 1L
 
-      fb_records_list <- handle_duplicates(
-        fb_records_list, filter, select_, max_size, cache, n, seed, dwc, df,
-        exclude_na, locale, include_facts, count_only
-      )
+      fb_records_list <- handle_duplicates(fb_records_list)
 
     }
 
@@ -896,18 +899,41 @@ record_sample <- function(fb_records_list) {
 
 # handle duplicates ------------------------------------------------------------
 
-handle_duplicates <- function(
-  x, filter, select, max_size, cache, n, seed, dwc, df, exclude_na, locale,
-  include_facts, count_only
-) {
+handle_duplicates <- function(fb_records_list) {
+
+  filter <- attr(fb_records_list, "filter")
+
+  select <- attr(fb_records_list, "select_user")
+
+  max_size <- attr(fb_records_list, "max_size")
+
+  cache <- attr(fb_records_list, "cache")
+
+  n <- attr(fb_records_list, "nrec_dnld")
+
+  seed <- attr(fb_records_list, "seed")
+
+  dwc <- attr(fb_records_list, "dwc")
+
+  df <- attr(fb_records_list, "df")
+
+  exclude_na <- attr(fb_records_list, "exclude_na")
+
+  locale <- attr(fb_records_list, "locale")
+
+  include_facts <- attr(fb_records_list, "include_facts")
+
+  count_only <- attr(fb_records_list, "count_only")
 
   ids <- lapply(
-    x,
+    fb_records_list,
     function(x) {
+
       vapply(
         x[["content"]][["results"]], get_el_recurse, NA_character_,
         c("unit", "unitId"), "character"
       )
+
     }
   )
 
@@ -915,7 +941,7 @@ handle_duplicates <- function(
 
   duplicates <- which(duplicated(ids))
 
-  x <- remove_records(x, duplicates)
+  fb_records_list <- remove_records(fb_records_list, duplicates)
 
   if (length(ids) - length(duplicates) < n) {
 
@@ -936,16 +962,13 @@ handle_duplicates <- function(
 
     new_records <- records(fb_records_obj)
 
-    x[[length(x) + 1L]] <- new_records[[1L]]
+    fb_records_list[[length(fb_records_list) + 1L]] <- new_records[[1L]]
 
-    x <- handle_duplicates(
-      x, filter, select, max_size, cache, n, seed + 1L, dwc, df, exclude_na,
-      locale, include_facts, count_only
-    )
+    fb_records_list <- handle_duplicates(fb_records_list)
 
   }
 
-  remove_records(x, n = n)
+  remove_records(fb_records_list, n = n)
 
 }
 
