@@ -138,7 +138,7 @@ api_get <- function(obj) {
   }
 
   obj[["content"]] <- parsed
-  obj[["resp"]] <- resp
+  obj[["response"]] <- resp
   obj[["hash"]] <- hash
 
   structure(obj, class = "finbif_api")
