@@ -85,7 +85,13 @@ finbif_records <- function(
 
     } else {
 
-      parsed_filters <- parse_filters(filter, aggregate, locale)
+      fb_records_obj[["filter"]] <- filter
+
+      fb_records_obj[["aggregate"]] <- aggregate
+
+      fb_records_obj[["locale"]] <- locale
+
+      parsed_filters <- parse_filters(fb_records_obj)
 
       query <- lapply(parsed_filters, paste, collapse = ",")
 
@@ -532,7 +538,13 @@ get_extra_pages <- function(
 
 # parsing filters --------------------------------------------------------------
 
-parse_filters <- function(filter, aggregate, locale) {
+parse_filters <- function(fb_records_obj) {
+
+  filter <- fb_records_obj[["filter"]]
+
+  aggregate <- fb_records_obj[["aggregate"]]
+
+  locale <- fb_records_obj[["locale"]]
 
   filter <- as.list(filter)
   finbif_filter_names <- translate(names(filter), "filter_names")
