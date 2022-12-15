@@ -55,8 +55,8 @@
 #' @export
 
 finbif_occurrence <- function(
-  ..., filter, select, order_by, aggregate, sample = FALSE, n = 10, page = 1,
-  count_only = FALSE, quiet = getOption("finbif_hide_progress"),
+  ..., filter, select = NULL, order_by, aggregate, sample = FALSE, n = 10,
+  page = 1, count_only = FALSE, quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   check_taxa = TRUE, on_check_fail = c("warn", "error"),
   tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"), seed,
@@ -243,7 +243,7 @@ compute_date_time <- function(
     "duration", "samplingEffort"
   )
 
-  if (missing(select)) {
+  if (is.null(select)) {
 
     date_time <- identical("none", aggregate)
 

@@ -53,7 +53,7 @@
 #' @export
 
 finbif_records <- function(
-  filter, select, order_by, aggregate, sample = FALSE, n = 10, page = 1,
+  filter, select = NULL, order_by, aggregate, sample = FALSE, n = 10, page = 1,
   count_only = FALSE, quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"), dwc = FALSE, seed, df = FALSE,
   exclude_na = FALSE, locale = getOption("finbif_locale"), include_facts = FALSE
@@ -77,6 +77,8 @@ finbif_records <- function(
 
     aggregate <- infer_aggregation(aggregate)
 
+    fb_records_obj[["aggregate"]] <- aggregate
+
     # filter ===================================================================
 
     if (missing(filter)) {
@@ -86,8 +88,6 @@ finbif_records <- function(
     } else {
 
       fb_records_obj[["filter"]] <- filter
-
-      fb_records_obj[["aggregate"]] <- aggregate
 
       fb_records_obj[["locale"]] <- locale
 
@@ -99,7 +99,13 @@ finbif_records <- function(
 
     # select ===================================================================
 
-    select <- infer_selection(aggregate, select, include_facts, var_type)
+    fb_records_obj[["select"]] <- select
+
+    fb_records_obj[["include_facts"]] <- include_facts
+
+    fb_records_obj[["var_type"]] <- var_type
+
+    select <- infer_selection(fb_records_obj)
 
     select_param <- switch(aggregate[[1L]], none = "selected", "aggregateBy")
 
@@ -182,7 +188,15 @@ infer_aggregation <- function(aggregate) {
 
 # selection --------------------------------------------------------------------
 
-infer_selection <- function(aggregate, select, include_facts, var_type) {
+infer_selection <- function(fb_records_obj) {
+
+  aggregate <- fb_records_obj[["aggregate"]]
+
+  select <- fb_records_obj[["select"]]
+
+  include_facts <- fb_records_obj[["include_facts"]]
+
+  var_type <- fb_records_obj[["var_type"]]
 
   date_time_vars <- var_names[var_names[["date"]], ]
 
@@ -202,7 +216,7 @@ infer_selection <- function(aggregate, select, include_facts, var_type) {
     "aggregate"
   )
 
-  if (missing(select)) {
+  if (is.null(select)) {
 
     select <- row.names(default_vars)
     select_ <- default_vars[[var_type]]

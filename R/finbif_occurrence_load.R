@@ -60,13 +60,15 @@
 #' @export
 
 finbif_occurrence_load <- function(
-  file, select, n = -1, count_only = FALSE,
+  file, select = NULL, n = -1, count_only = FALSE,
   quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   tzone = getOption("finbif_tz"), write_file = tempfile(), dt, keep_tsv = FALSE,
   facts = list(), type_convert_facts = TRUE, drop_na = FALSE,
   drop_facts_na = drop_na, locale = getOption("finbif_locale"), skip = 0
 ) {
+
+  fb_records_obj <- list()
 
   file <- preprocess_data_file(file)
 
@@ -76,7 +78,7 @@ finbif_occurrence_load <- function(
   short <- FALSE
   deselect <- character()
 
-  if (!missing(select) && any(c("all", "short") %in% select)) {
+  if (!is.null(select) && any(c("all", "short") %in% select)) {
 
     short <- identical(select[[1L]], "short")
 
@@ -90,7 +92,19 @@ finbif_occurrence_load <- function(
 
   }
 
-  defer_errors(select <- infer_selection("none", select, FALSE, var_type))
+  defer_errors({
+
+    fb_records_obj[["aggregate"]] <- "none"
+
+    fb_records_obj[["select"]] <- select
+
+    fb_records_obj[["include_facts"]] <- FALSE
+
+    fb_records_obj[["var_type"]] <- var_type
+
+    select <- infer_selection(fb_records_obj)
+
+  })
 
   fact_types <- names(which(vapply(facts, length, integer(1L)) > 0L))
 
