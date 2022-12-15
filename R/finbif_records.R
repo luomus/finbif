@@ -285,7 +285,9 @@ infer_selection <- function(fb_records_obj) {
 
     }
 
-    select <- infer_computed_vars(select, var_type)
+    fb_records_obj[["select"]] <- select
+
+    select <- infer_computed_vars(fb_records_obj)
 
     select_vars <- var_names[var_names[[select_type]], var_type, drop = FALSE]
 
@@ -342,7 +344,11 @@ infer_selection <- function(fb_records_obj) {
 
 }
 
-infer_computed_vars <- function(select, var_type) {
+infer_computed_vars <- function(fb_records_obj) {
+
+  select <- fb_records_obj[["select"]]
+
+  var_type <- fb_records_obj[["var_type"]]
 
   abundance_vars <- c(
     "abundance", "individualCount", "occurrence_status", "occurrenceStatus"
