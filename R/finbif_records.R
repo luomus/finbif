@@ -486,6 +486,8 @@ request <- function(fb_records_obj) {
 
   path <- paste0(path, select_endpoint(aggregate))
 
+  fb_records_obj[["path"]] <- path
+
   if (count_only) {
 
     query[["page"]] <- 1L
@@ -501,7 +503,9 @@ request <- function(fb_records_obj) {
   query[["page"]] <- page
   query[["pageSize"]] <- min(n, max_size)
 
-  resp <- list(records_obj(path, query, cache, select, aggregate))
+  fb_records_obj[["query"]] <- query
+
+  resp <- list(records_obj(fb_records_obj))
 
   n_tot <- resp[[1L]][["content"]][["total"]]
   n <- min(n, n_tot)
@@ -550,13 +554,15 @@ request <- function(fb_records_obj) {
 
 # construct request ------------------------------------------------------------
 
-records_obj <- function(path, query, cache, select, aggregate) {
+records_obj <- function(fb_records_obj) {
+
   structure(
-    api_get(list(path = path, query = query, cache = cache)),
+    api_get(fb_records_obj),
     class = c("finbif_records", "finbif_api"),
-    select = unique(select),
-    aggregate = aggregate
+    select = unique(fb_records_obj[["select_query"]]),
+    aggregate = fb_records_obj[["aggregate"]]
   )
+
 }
 
 # record pagination ------------------------------------------------------------
@@ -564,6 +570,13 @@ records_obj <- function(path, query, cache, select, aggregate) {
 get_extra_pages <- function(
   resp, n, max_size, quiet, path, query, cache, select, aggregate, df, locale
 ) {
+
+  fb_records_obj <- list(
+    path = path,
+    cache = cache,
+    select_query = select,
+    aggregate = aggregate
+  )
 
   multipage <- n > max_size
 
@@ -596,10 +609,12 @@ get_extra_pages <- function(
 
     }
 
-    delayedAssign("res", records_obj(path, query, cache, select, aggregate))
+    fb_records_obj[["query"]] <- query
+
+    delayedAssign("res", records_obj(fb_records_obj))
 
     if (has_future) {
-      res <- future::future(records_obj(path, query, cache, select, aggregate))
+      res <- future::future(records_obj(fb_records_obj))
     }
 
     if (df) attr(resp[[i]], "df") <- as.data.frame(resp[[i]], locale = locale)
