@@ -59,6 +59,8 @@ finbif_records <- function(
   exclude_na = FALSE, locale = getOption("finbif_locale"), include_facts = FALSE
 ) {
 
+  fb_records_obj <- list()
+
   max_size <- getOption("finbif_max_page_size")
   nmax     <- getOption("finbif_max_queries") * max_size
   n        <- as.integer(n)
@@ -66,7 +68,10 @@ finbif_records <- function(
 
   defer_errors({
 
-    check_n(n, nmax)
+    fb_records_obj[["n"]] <- n
+    fb_records_obj[["nmax"]] <- nmax
+
+    check_n(fb_records_obj)
 
     # aggregation ==============================================================
 
@@ -757,7 +762,10 @@ remove_records <- function(x, records, n) {
 
 # utils ------------------------------------------------------------------------
 
-check_n <- function(n, nmax) {
+check_n <- function(fb_records_obj) {
+
+  n <- fb_records_obj[["n"]]
+  nmax <- fb_records_obj[["nmax"]]
 
   if (n > nmax) {
     deferrable_error(paste("Cannot download more than", nmax, "records"))
