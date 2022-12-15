@@ -521,7 +521,6 @@ request <- function(fb_records_obj) {
   }
 
   query[["taxonCounts"]] <- taxa_counts(aggregate)
-
   query[["page"]] <- page
   query[["pageSize"]] <- min(n, max_size)
 
@@ -530,15 +529,22 @@ request <- function(fb_records_obj) {
   resp <- records_obj(fb_records_obj)
 
   n_tot <- resp[["content"]][["total"]]
+
   n <- min(n, n_tot)
 
-  resp <- structure(
+  fb_records_list <- structure(
     list(resp),
     class = c("finbif_records_list", "finbif_api_list"),
+    max_size = max_size,
+    quiet = quiet,
+    path = path,
+    query = query,
     nrec_dnld = n,
     nrec_avl = n_tot,
     select = unique(select),
     select_user = select_,
+    locale = locale,
+    df = df,
     record_id = record_id_selected,
     aggregate = aggregate,
     cache = cache
@@ -567,25 +573,22 @@ request <- function(fb_records_obj) {
 
     }
 
-    resp <- get_extra_pages(
-      resp, n, max_size, quiet, path, query, cache, select, aggregate, df,
-      locale
-    )
+    fb_records_list <- get_extra_pages(fb_records_list)
 
     if (sample) {
 
       if (is.null(seed)) seed <- 1L
 
-      resp <- handle_duplicates(
-        resp, filter, select_, max_size, cache, n, seed, dwc, df, exclude_na,
-        locale, include_facts, count_only
+      fb_records_list <- handle_duplicates(
+        fb_records_list, filter, select_, max_size, cache, n, seed, dwc, df,
+        exclude_na, locale, include_facts, count_only
       )
 
     }
 
   }
 
-  resp
+  fb_records_list
 
 }
 
@@ -604,9 +607,27 @@ records_obj <- function(fb_records_obj) {
 
 # record pagination ------------------------------------------------------------
 
-get_extra_pages <- function(
-  resp, n, max_size, quiet, path, query, cache, select, aggregate, df, locale
-) {
+get_extra_pages <- function(fb_records_list) {
+
+  n <- attr(fb_records_list, "nrec_dnld")
+
+  max_size <- attr(fb_records_list, "max_size")
+
+  quiet <- attr(fb_records_list, "quiet")
+
+  path <- attr(fb_records_list, "path")
+
+  query <- attr(fb_records_list, "query")
+
+  cache <- attr(fb_records_list, "cache")
+
+  select <- attr(fb_records_list, "select")
+
+  aggregate <- attr(fb_records_list, "aggregate")
+
+  df <- attr(fb_records_list, "df")
+
+  locale <- attr(fb_records_list, "locale")
 
   fb_records_obj <- list(
     path = path,
@@ -651,20 +672,28 @@ get_extra_pages <- function(
     delayedAssign("res", records_obj(fb_records_obj))
 
     if (has_future) {
+
       res <- future::future(records_obj(fb_records_obj))
+
     }
 
-    if (df) attr(resp[[i]], "df") <- as.data.frame(resp[[i]], locale = locale)
+    if (df) {
+
+       attr(fb_records_list[[i]], "df") <- as.data.frame(
+        fb_records_list[[i]], locale = locale
+       )
+
+    }
 
     i <- i + 1L
 
-    resp[[i]] <- value(res)
+    fb_records_list[[i]] <- value(res)
 
     query[["page"]] <- query[["page"]] + 1L
 
   }
 
-  resp
+  fb_records_list
 
 }
 
