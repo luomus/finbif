@@ -55,13 +55,13 @@
 #' @export
 
 finbif_occurrence <- function(
-  ..., filter, select = NULL, order_by, aggregate, sample = FALSE, n = 10,
+  ..., filter = NULL, select = NULL, order_by, aggregate, sample = FALSE, n = 10,
   page = 1, count_only = FALSE, quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
   check_taxa = TRUE, on_check_fail = c("warn", "error"),
-  tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"), seed,
-  drop_na = FALSE, aggregate_counts = TRUE, exclude_na = FALSE, unlist = FALSE,
-  facts
+  tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"),
+  seed = NULL, drop_na = FALSE, aggregate_counts = TRUE, exclude_na = FALSE,
+  unlist = FALSE, facts
 ) {
 
   taxa <- select_taxa(
@@ -71,7 +71,7 @@ finbif_occurrence <- function(
 
   date_time_method <- det_datetime_method(date_time_method, n = n)
 
-  if (missing(filter) || is.null(filter)) {
+  if (is.null(filter)) {
 
     filter <- NULL
 

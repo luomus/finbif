@@ -53,23 +53,37 @@
 #' @export
 
 finbif_records <- function(
-  filter, select = NULL, order_by, aggregate, sample = FALSE, n = 10, page = 1,
-  count_only = FALSE, quiet = getOption("finbif_hide_progress"),
-  cache = getOption("finbif_use_cache"), dwc = FALSE, seed, df = FALSE,
+  filter = NULL, select = NULL, order_by, aggregate, sample = FALSE, n = 10,
+  page = 1, count_only = FALSE, quiet = getOption("finbif_hide_progress"),
+  cache = getOption("finbif_use_cache"), dwc = FALSE, seed = NULL, df = FALSE,
   exclude_na = FALSE, locale = getOption("finbif_locale"), include_facts = FALSE
 ) {
 
-  fb_records_obj <- list()
-
   max_size <- getOption("finbif_max_page_size")
-  nmax     <- getOption("finbif_max_queries") * max_size
-  n        <- as.integer(n)
+
   var_type <- col_type_string(dwc)
 
-  defer_errors({
+  fb_records_obj <- list(
+    filter = filter,
+    select = select,
+    sample = sample,
+    n = as.integer(n),
+    page = page,
+    count_only = count_only,
+    quiet = quiet,
+    cache = cache,
+    dwc = dwc,
+    seed = seed,
+    df = df,
+    exclude_na = exclude_na,
+    locale = locale,
+    include_facts = include_facts,
+    max_size = max_size,
+    nmax = getOption("finbif_max_queries") * max_size,
+    var_type = var_type
+  )
 
-    fb_records_obj[["n"]] <- n
-    fb_records_obj[["nmax"]] <- nmax
+  defer_errors({
 
     check_n(fb_records_obj)
 
@@ -81,15 +95,11 @@ finbif_records <- function(
 
     # filter ===================================================================
 
-    if (missing(filter)) {
+    if (is.null(filter)) {
 
       query <- list()
 
     } else {
-
-      fb_records_obj[["filter"]] <- filter
-
-      fb_records_obj[["locale"]] <- locale
 
       parsed_filters <- parse_filters(fb_records_obj)
 
@@ -99,15 +109,17 @@ finbif_records <- function(
 
     # select ===================================================================
 
-    fb_records_obj[["select"]] <- select
-
-    fb_records_obj[["include_facts"]] <- include_facts
-
-    fb_records_obj[["var_type"]] <- var_type
-
     select <- infer_selection(fb_records_obj)
 
+    fb_records_obj[["select_query"]] <- select[["query"]]
+
+    fb_records_obj[["select_user"]] <- select[["user"]]
+
+    fb_records_obj[["record_id_selected"]] <- select[["record_id_selected"]]
+
     select_param <- switch(aggregate[[1L]], none = "selected", "aggregateBy")
+
+    fb_records_obj[["select_param"]] <- select_param
 
     query[[select_param]] <- paste(select[["query"]], collapse = ",")
 
@@ -140,7 +152,7 @@ finbif_records <- function(
 
     if (sample) {
       query[["orderBy"]] <- paste(
-        if (missing(seed)) "RANDOM" else paste0("RANDOM:", as.integer(seed)),
+        if (is.null(seed)) "RANDOM" else paste0("RANDOM:", as.integer(seed)),
         query[["orderBy"]],
         sep = c("", ",")[[length(query[["orderBy"]]) + 1L]]
       )
@@ -148,13 +160,11 @@ finbif_records <- function(
 
   })
 
-  query <- na_exclude(query, exclude_na, select_param)
+  fb_records_obj[["query"]] <- query
 
-  ans <- request(
-    filter, select[["query"]], sample, n, page, count_only, quiet, cache, query,
-    max_size, select[["user"]], select[["record_id_selected"]], dwc, aggregate,
-    df, seed, exclude_na, locale, include_facts
-  )
+  fb_records_obj <- na_exclude(fb_records_obj)
+
+  ans <- request(fb_records_obj)
 
   if (df && !count_only) {
     ind <- length(ans)
@@ -417,11 +427,45 @@ infer_computed_vars <- function(select, var_type) {
 
 # request ----------------------------------------------------------------------
 
-request <- function(
-  filter, select, sample, n, page, count_only, quiet, cache, query, max_size,
-  select_, record_id_selected, dwc, aggregate, df, seed, exclude_na, locale,
-  include_facts
-) {
+request <- function(fb_records_obj) {
+
+  filter <- fb_records_obj[["filter"]]
+
+  select <- fb_records_obj[["select_query"]]
+
+  sample <- fb_records_obj[["sample"]]
+
+  n <- fb_records_obj[["n"]]
+
+  page <- fb_records_obj[["page"]]
+
+  count_only <- fb_records_obj[["count_only"]]
+
+  quiet <- fb_records_obj[["quiet"]]
+
+  cache <- fb_records_obj[["cache"]]
+
+  query <- fb_records_obj[["query"]]
+
+  max_size <- fb_records_obj[["max_size"]]
+
+  select_ <- fb_records_obj[["select_user"]]
+
+  record_id_selected <- fb_records_obj[["record_id_selected"]]
+
+  dwc <- fb_records_obj[["dwc"]]
+
+  aggregate <- fb_records_obj[["aggregate"]]
+
+  df <- fb_records_obj[["df"]]
+
+  seed <- fb_records_obj[["seed"]]
+
+  exclude_na <- fb_records_obj[["exclude_na"]]
+
+  locale <- fb_records_obj[["locale"]]
+
+  include_facts <- fb_records_obj[["include_facts"]]
 
   path <- getOption("finbif_warehouse_query")
 
@@ -479,7 +523,7 @@ request <- function(
 
     if (sample) {
 
-      if (missing(seed)) seed <- 1L
+      if (is.null(seed)) seed <- 1L
 
       resp <- handle_duplicates(
         resp, filter, select_, max_size, cache, n, seed, dwc, df, exclude_na,
@@ -879,7 +923,13 @@ order_by_computed_var <- function(order_by) {
 
 }
 
-na_exclude <- function(query, exclude_na, select_param) {
+na_exclude <- function(fb_records_obj) {
+
+  query <- fb_records_obj[["query"]]
+
+  exclude_na <- fb_records_obj[["exclude_na"]]
+
+  select_param <- fb_records_obj[["select_param"]]
 
   if (exclude_na) {
 
@@ -887,6 +937,8 @@ na_exclude <- function(query, exclude_na, select_param) {
 
   }
 
-  query
+  fb_records_obj[["query"]] <- query
+
+  fb_records_obj
 
 }
