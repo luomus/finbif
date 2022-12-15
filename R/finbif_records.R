@@ -527,10 +527,22 @@ request <- function(fb_records_obj) {
 
   fb_records_obj[["query"]] <- query
 
-  resp <- list(records_obj(fb_records_obj))
+  resp <- records_obj(fb_records_obj)
 
-  n_tot <- resp[[1L]][["content"]][["total"]]
+  n_tot <- resp[["content"]][["total"]]
   n <- min(n, n_tot)
+
+  resp <- structure(
+    list(resp),
+    class = c("finbif_records_list", "finbif_api_list"),
+    nrec_dnld = n,
+    nrec_avl = n_tot,
+    select = unique(select),
+    select_user = select_,
+    record_id = record_id_selected,
+    aggregate = aggregate,
+    cache = cache
+  )
 
   if (n > max_size) {
 
@@ -547,9 +559,11 @@ request <- function(fb_records_obj) {
 
       fb_records_obj[["n"]] <- n_tot
 
-      all_records <- records(fb_records_obj)
+      fb_records_list <- records(fb_records_obj)
 
-      return(record_sample(all_records, n, cache))
+      attr(fb_records_list, "nrec_dnld") <- n
+
+      return(record_sample(fb_records_list))
 
     }
 
@@ -571,11 +585,7 @@ request <- function(fb_records_obj) {
 
   }
 
-  structure(
-    resp, class = c("finbif_records_list", "finbif_api_list"), nrec_dnld = n,
-    nrec_avl = n_tot, select = unique(select), select_user = select_,
-    record_id = record_id_selected, aggregate = aggregate, cache = cache
-  )
+  resp
 
 }
 
@@ -823,20 +833,26 @@ translate <- function(translation_obj) {
 
 # sample records ---------------------------------------------------------------
 
-record_sample <- function(x, n, cache) {
+record_sample <- function(fb_records_list) {
 
-  n_tot  <- attr(x, "nrec_dnld")
-  select <- attr(x, "select")
-  record_id <- attr(x, "record_id")
+  n  <- attr(fb_records_list, "nrec_dnld")
+  n_tot <- attr(fb_records_list, "nrec_avl")
+  select <- attr(fb_records_list, "select")
+  record_id <- attr(fb_records_list, "record_id")
+  cache <- attr(fb_records_list, "cache")
 
   if (cache) {
-    records <- sample_with_seed(n_tot, n_tot - n, gen_seed(x))
+
+    records <- sample_with_seed(n_tot, n_tot - n, gen_seed(fb_records_list))
+
   } else {
+
     records <- sample.int(n_tot, n_tot - n)
+
   }
 
   structure(
-    remove_records(x, records),
+    remove_records(fb_records_list, records),
     class = c(
       "finbif_records_sample_list", "finbif_records_list", "finbif_api_list"
     ),
