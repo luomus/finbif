@@ -156,10 +156,7 @@ finbif_occurrence <- function(
 
   pb_head("Processing data", quiet = quiet)
 
-  df   <- as.data.frame(records, locale = locale, quiet = quiet)
-  url  <- attr(df, "url", TRUE)
-  time <- attr(df, "time", TRUE)
-  record_id <- attr(df, "record_id", TRUE)
+  df <- as.data.frame(records, locale = locale, quiet = quiet)
 
   n_col_nms <- grep("^n_", names(df), value = TRUE)
 
@@ -173,6 +170,8 @@ finbif_occurrence <- function(
 
   fb_occurrence_df <- structure(
     df,
+    nrec_dnld = attr(records, "nrec_dnld", TRUE),
+    nrec_avl  = attr(records, "nrec_avl", TRUE),
     select_user = select,
     column_names = select_,
     aggregate = aggregate,
@@ -181,8 +180,8 @@ finbif_occurrence <- function(
     tzone = tzone,
     locale = locale,
     include_new_cols = TRUE,
-    record_id = record_id,
-    facts = facts
+    facts = facts,
+    unlist = unlist
   )
 
   fb_occurrence_df <- compute_date_time(fb_occurrence_df)
@@ -203,23 +202,25 @@ finbif_occurrence <- function(
 
   fb_occurrence_df <- compute_region(fb_occurrence_df)
 
-  df <- extract_facts(fb_occurrence_df)
+  fb_occurrence_df <- extract_facts(fb_occurrence_df)
 
   select_ <- c(select_, name_chr_vec(as.character(facts)))
 
-  df <- structure(
-    df[select_],
-    class     = c("finbif_occ", "data.frame"),
-    nrec_dnld = attr(records, "nrec_dnld", TRUE),
-    nrec_avl  = attr(records, "nrec_avl", TRUE),
-    url       = url,
-    time      = time,
-    dwc       = dwc,
-    column_names = select_,
-    record_id = record_id
+  fb_occurrence_attr <- attributes(fb_occurrence_df)
+
+  fb_occurrence_df <- fb_occurrence_df[select_]
+
+  mostattributes(fb_occurrence_df) <- fb_occurrence_attr
+
+  attr(fb_occurrence_df, "select_user") <- select_
+
+  fb_occurrence_df <- unlist_cols(fb_occurrence_df)
+
+  fb_occurrence_df <- structure(
+    fb_occurrence_df, class = c("finbif_occ", "data.frame")
   )
 
-  df <- unlist_cols(df, select_, unlist)
+  df <- fb_occurrence_df
 
   names(df) <- names(select_)
 
@@ -986,7 +987,13 @@ multi_req <- function(fb_occurrence_obj) {
 
 #' @noRd
 
-unlist_cols <- function(df, cols, unlist) {
+unlist_cols <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  cols <- attr(fb_occurrence_df, "select_user", TRUE)
+
+  unlist <- attr(fb_occurrence_df, "unlist", TRUE)
 
   if (unlist) {
 
