@@ -311,7 +311,9 @@ finbif_occurrence_load <- function(
 
   attr(df, "column_names") <- select[["user"]]
 
-  drop_na_col(df, drop_na)
+  attr(df, "drop_na") <- drop_na
+
+  drop_na_col(df)
 
 }
 

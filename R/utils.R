@@ -3,9 +3,10 @@
 #' @noRd
 #' @description Drop columns from a data.frame where all elements are missing.
 #' @param df A `finbif_occ` object.
-#' @param which Logical. A vector indicating which columns to check for missing
 #'   data. Values recycled to length of `df`. Defaults to all columns.
-drop_na_col <- function(df, which = TRUE) {
+drop_na_col <- function(df) {
+
+  which <- attr(df, "drop_na", TRUE)
 
   which <- rep_len(which, length(df))
 

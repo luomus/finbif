@@ -170,6 +170,7 @@ finbif_occurrence <- function(
 
   fb_occurrence_df <- structure(
     df,
+    class = c("finbif_occ", "data.frame"),
     nrec_dnld = attr(records, "nrec_dnld", TRUE),
     nrec_avl  = attr(records, "nrec_avl", TRUE),
     select_user = select,
@@ -181,7 +182,8 @@ finbif_occurrence <- function(
     locale = locale,
     include_new_cols = TRUE,
     facts = facts,
-    unlist = unlist
+    unlist = unlist,
+    drop_na = drop_na
   )
 
   fb_occurrence_df <- compute_date_time(fb_occurrence_df)
@@ -206,25 +208,17 @@ finbif_occurrence <- function(
 
   select_ <- c(select_, name_chr_vec(as.character(facts)))
 
-  fb_occurrence_attr <- attributes(fb_occurrence_df)
-
   fb_occurrence_df <- fb_occurrence_df[select_]
-
-  mostattributes(fb_occurrence_df) <- fb_occurrence_attr
 
   attr(fb_occurrence_df, "select_user") <- select_
 
   fb_occurrence_df <- unlist_cols(fb_occurrence_df)
 
-  fb_occurrence_df <- structure(
-    fb_occurrence_df, class = c("finbif_occ", "data.frame")
-  )
+  fb_occurrence_df <- drop_na_col(fb_occurrence_df)
 
-  df <- fb_occurrence_df
+  names(fb_occurrence_df) <- names(select_)
 
-  names(df) <- names(select_)
-
-  drop_na_col(df, drop_na)
+  fb_occurrence_df
 
 }
 
@@ -373,6 +367,8 @@ get_date_time <- function(
   df, date, month, day, hour, minute, lat, lon, method, tzone
 ) {
 
+  df <- as.data.frame(df)
+
   date_time <- as.POSIXct(character(), tz = tzone)
 
   if (nrow(df) > 0L) {
@@ -431,6 +427,8 @@ get_duration <- function(
   method, tzone
 ) {
 
+  df <- as.data.frame(df)
+
   date_time_end <- get_date_time(
     df, date, month, day, hour_end, minute, lat, lon, method, tzone
   )
@@ -461,6 +459,8 @@ get_iso8601 <- function(
   df, date_time, month, day, date_start, hour_start, minute_start, date_end,
   hour_end, minute_end, lat, lon, method, tzone
 ) {
+
+  df <- as.data.frame(df)
 
   date_time_end <- get_date_time(
     df, date_end, month, day, hour_end, minute_end, lat, lon, method, tzone
