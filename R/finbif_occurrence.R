@@ -27,7 +27,7 @@
 #'   using aggregation.
 #' @param unlist Logical. Should variables that contain non atomic data be
 #'  concatenated into a string separated by ";"?
-#' @param facts Character vectors. Extra variables to be extracted from record,
+#' @param facts Character vector. Extra variables to be extracted from record,
 #'  event and document "facts".
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
@@ -58,52 +58,60 @@ finbif_occurrence <- function(
   ..., filter = NULL, select = NULL, order_by = NULL, aggregate = "none",
   sample = FALSE, n = 10, page = 1, count_only = FALSE,
   quiet = getOption("finbif_hide_progress"),
-  cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method,
+  cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method = NULL,
   check_taxa = TRUE, on_check_fail = c("warn", "error"),
   tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"),
   seed = NULL, drop_na = FALSE, aggregate_counts = TRUE, exclude_na = FALSE,
-  unlist = FALSE, facts
+  unlist = FALSE, facts = NULL
 ) {
 
   fb_occurrence_obj <- list(
     taxa = c(...),
+    filter = filter,
+    select = select,
+    order_by = order_by,
+    sample = sample,
+    n = n,
+    page = page,
+    count_only = count_only,
+    quiet = quiet,
     cache = cache,
+    dwc = dwc,
+    date_time_method = date_time_method,
+    tzone = tzone,
+    locale = locale,
+    exclude_na = exclude_na,
+    unlist = unlist,
+    facts = facts,
     check_taxa = check_taxa,
     on_check_fail = match.arg(on_check_fail)
   )
 
   taxa <- select_taxa(fb_occurrence_obj)
 
+  fb_occurrence_obj[["taxa"]] <- taxa
+
   date_time_method <- det_datetime_method(date_time_method, n = n)
 
-  if (is.null(filter)) {
+  fb_occurrence_obj[["date_time_method"]] <- date_time_method
 
-    filter <- NULL
+  if (!is.null(filter) && is.null(names(filter))) {
 
-  } else {
-
-    if (is.null(names(filter))) {
-
-      stopifnot(
-        "only one filter set can be used with aggregation" = identical(
-          aggregate, "none"
-        )
+    stopifnot(
+      "only one filter set can be used with aggregation" = identical(
+        aggregate, "none"
       )
+    )
 
-      multi_request <- multi_req(
-        taxa, filter, select, order_by, sample, n, page, count_only, quiet,
-        cache, dwc, date_time_method, tzone, locale, exclude_na, unlist, facts
-      )
+    multi_request <- multi_req(fb_occurrence_obj)
 
-      return(multi_request)
-
-    }
+    return(multi_request)
 
   }
 
   filter <- c(taxa, filter)
 
-  include_facts <- !missing(facts)
+  include_facts <- !is.null(facts)
 
   fb_records_obj <- list(
     filter = filter,
@@ -185,7 +193,7 @@ finbif_occurrence <- function(
 
   df <- extract_facts(df, facts, dwc)
 
-  select_ <- c(select_, name_chr_vec(facts))
+  select_ <- c(select_, name_chr_vec(as.character(facts)))
 
   df <- structure(
     df[select_],
@@ -808,10 +816,41 @@ compute_region <- function(df, select_, dwc, add = TRUE) {
 
 #' @noRd
 
-multi_req <- function(
-  taxa, filter, select, order_by, sample, n, page, count_only, quiet, cache,
-  dwc, date_time_method, tzone, locale, exclude_na, unlist, facts
-) {
+multi_req <- function(fb_occurrence_obj) {
+
+  taxa <- fb_occurrence_obj[["taxa"]]
+
+  filter <- fb_occurrence_obj[["filter"]]
+
+  select <- fb_occurrence_obj[["select"]]
+
+  order_by <- fb_occurrence_obj[["order_by"]]
+
+  sample <- fb_occurrence_obj[["sample"]]
+
+  n <- fb_occurrence_obj[["n"]]
+
+  page <- fb_occurrence_obj[["page"]]
+
+  count_only <- fb_occurrence_obj[["count_only"]]
+
+  quiet <- fb_occurrence_obj[["quiet"]]
+
+  cache <- fb_occurrence_obj[["cache"]]
+
+  dwc <- fb_occurrence_obj[["dwc"]]
+
+  date_time_method <- fb_occurrence_obj[["date_time_method"]]
+
+  tzone <- fb_occurrence_obj[["tzone"]]
+
+  locale <- fb_occurrence_obj[["locale"]]
+
+  exclude_na <- fb_occurrence_obj[["exclude_na"]]
+
+  unlist <- fb_occurrence_obj[["unlist"]]
+
+  facts <- fb_occurrence_obj[["facts"]]
 
   ans <- vector("list", length(filter))
 
@@ -877,7 +916,7 @@ unlist_cols <- function(df, cols, unlist) {
 
 extract_facts <- function(df, facts, dwc) {
 
-  if (!missing(facts)) {
+  if (!is.null(facts)) {
 
     names <- c(
       "unit.facts.fact", "gathering.facts.fact", "document.facts.fact"

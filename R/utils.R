@@ -112,7 +112,7 @@ col_type_string <- function(dwc) {
 #' @noRd
 det_datetime_method <- function(method, n) {
 
-  if (missing(method)) {
+  if (is.null(method)) {
 
     method <- "none"
 
