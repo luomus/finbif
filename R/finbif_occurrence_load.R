@@ -163,14 +163,15 @@ finbif_occurrence_load <- function(
     date_time_method = date_time_method,
     tzone = tzone,
     locale = locale,
-    include_new_cols = !select[["all"]]
+    include_new_cols = !select[["all"]],
+    record_id = record_id
   )
 
-  df <- compute_vars_from_id(fb_occurrence_df)
+  fb_occurrence_df <- compute_vars_from_id(fb_occurrence_df)
 
-  df <- compute_abundance(df, select[["user"]], dwc, locale, !select[["all"]])
+  fb_occurrence_df <- compute_abundance(fb_occurrence_df)
 
-  df <- compute_citation(df, select[["user"]], dwc, record_id, !select[["all"]])
+  df <- compute_citation(fb_occurrence_df)
 
   df <- coordinates_uncertainty(df, select[["user"]], dwc, !select[["all"]])
 

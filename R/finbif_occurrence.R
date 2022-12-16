@@ -180,18 +180,19 @@ finbif_occurrence <- function(
     date_time_method = date_time_method,
     tzone = tzone,
     locale = locale,
-    include_new_cols = TRUE
+    include_new_cols = TRUE,
+    record_id = record_id
   )
 
   fb_occurrence_df <- compute_date_time(fb_occurrence_df)
 
   fb_occurrence_df <- compute_vars_from_id(fb_occurrence_df)
 
-  df <- compute_epsg(fb_occurrence_df)
+  fb_occurrence_df <- compute_epsg(fb_occurrence_df)
 
-  df <- compute_abundance(df, select_, dwc, locale)
+  fb_occurrence_df <- compute_abundance(fb_occurrence_df)
 
-  df <- compute_citation(df, select_, dwc, record_id)
+  df <- compute_citation(fb_occurrence_df)
 
   df <- coordinates_uncertainty(df, select_, dwc)
 
@@ -655,7 +656,17 @@ compute_epsg <- function(fb_occurrence_df) {
 
 #' @noRd
 
-compute_abundance <- function(df, select_, dwc, locale, add = TRUE) {
+compute_abundance <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  locale <- attr(fb_occurrence_df, "locale", TRUE)
+
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   type <- col_type_string(dwc)
 
@@ -706,7 +717,17 @@ compute_abundance <- function(df, select_, dwc, locale, add = TRUE) {
 
 #' @noRd
 
-compute_citation <- function(df, select_, dwc, record_id, add = TRUE) {
+compute_citation <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  record_id <- attr(fb_occurrence_df, "record_id", TRUE)
+
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   type <- col_type_string(dwc)
 
