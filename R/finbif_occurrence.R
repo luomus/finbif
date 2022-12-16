@@ -171,9 +171,17 @@ finbif_occurrence <- function(
 
   select_ <-  name_chr_vec(c(select_, n_col_nms[aggregate_counts]))
 
-  df <- compute_date_time(
-    df, select, select_, aggregate, dwc, date_time_method, tzone
+  fb_occurrence_df <- structure(
+    df,
+    select_user = select,
+    column_names = select_,
+    aggregate = aggregate,
+    dwc = dwc,
+    date_time_method = date_time_method,
+    tzone = tzone
   )
+
+  df <- compute_date_time(fb_occurrence_df)
 
   df <- compute_vars_from_id(df, select_, dwc, locale)
 
@@ -277,9 +285,21 @@ select_taxa <- function(fb_occurrence_obj) {
 
 #' @noRd
 
-compute_date_time <- function(
-  df, select, select_, aggregate, dwc, date_time_method, tzone
-) {
+compute_date_time <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  select <- attr(fb_occurrence_df, "select_user", TRUE)
+
+  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+
+  aggregate <- attr(fb_occurrence_df, "aggregate", TRUE)
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  date_time_method <- attr(fb_occurrence_df, "date_time_method", TRUE)
+
+  tzone <- attr(fb_occurrence_df, "tzone", TRUE)
 
   vars <- c(
     "date_time", "eventDateTime", "date_time_ISO8601", "eventDate",
