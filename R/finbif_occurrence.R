@@ -196,9 +196,9 @@ finbif_occurrence <- function(
 
   fb_occurrence_df <- compute_coordinates_uncertainty(fb_occurrence_df)
 
-  df <- compute_scientific_name(fb_occurrence_df)
+  fb_occurrence_df <- compute_scientific_name(fb_occurrence_df)
 
-  df <- compute_red_list_status(df, select_, dwc)
+  df <- compute_red_list_status(fb_occurrence_df)
 
   df <- compute_region(df, select_, dwc)
 
@@ -843,7 +843,15 @@ add_authors <- function(names, authors) {
 
 #' @noRd
 
-compute_red_list_status <- function(df, select_, dwc, add = TRUE) {
+compute_red_list_status <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   type <- col_type_string(dwc)
 
