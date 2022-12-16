@@ -65,10 +65,14 @@ finbif_occurrence <- function(
   unlist = FALSE, facts
 ) {
 
-  taxa <- select_taxa(
-    ..., cache = cache, check_taxa = check_taxa,
+  fb_occurrence_obj <- list(
+    taxa = c(...),
+    cache = cache,
+    check_taxa = check_taxa,
     on_check_fail = match.arg(on_check_fail)
   )
+
+  taxa <- select_taxa(fb_occurrence_obj)
 
   date_time_method <- det_datetime_method(date_time_method, n = n)
 
@@ -205,9 +209,16 @@ finbif_occurrence <- function(
 
 #' @noRd
 
-select_taxa <- function(..., cache, check_taxa, on_check_fail) {
+select_taxa <- function(fb_occurrence_obj) {
 
-  taxa <- c(...)
+  taxa <- fb_occurrence_obj[["taxa"]]
+
+  cache <- fb_occurrence_obj[["cache"]]
+
+  check_taxa <- fb_occurrence_obj[["check_taxa"]]
+
+  on_check_fail <- fb_occurrence_obj[["on_check_fail"]]
+
   ntaxa <- length(taxa)
 
   if (identical(ntaxa, 0L)) return(NULL)
@@ -217,9 +228,15 @@ select_taxa <- function(..., cache, check_taxa, on_check_fail) {
   if (check_taxa) {
 
     if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
+
       taxa <- unlist(finbif_check_taxa(taxa, cache = cache))
+
     } else {
-      taxa <- unlist(finbif_check_taxa(..., cache = cache))
+
+      taxa <- do.call(finbif_check_taxa, c(as.list(taxa), list(cache = cache)))
+
+      taxa <- unlist(taxa)
+
     }
 
     taxa_invalid <- is.na(taxa)
