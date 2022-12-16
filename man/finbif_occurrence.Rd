@@ -7,10 +7,10 @@
 \usage{
 finbif_occurrence(
   ...,
-  filter,
-  select,
-  order_by,
-  aggregate,
+  filter = NULL,
+  select = NULL,
+  order_by = NULL,
+  aggregate = "none",
   sample = FALSE,
   n = 10,
   page = 1,
@@ -18,17 +18,17 @@ finbif_occurrence(
   quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"),
   dwc = FALSE,
-  date_time_method,
+  date_time_method = NULL,
   check_taxa = TRUE,
   on_check_fail = c("warn", "error"),
   tzone = getOption("finbif_tz"),
   locale = getOption("finbif_locale"),
-  seed,
+  seed = NULL,
   drop_na = FALSE,
   aggregate_counts = TRUE,
   exclude_na = FALSE,
   unlist = FALSE,
-  facts
+  facts = NULL
 )
 }
 \arguments{
@@ -110,7 +110,7 @@ non-NA values only be returned.}
 \item{unlist}{Logical. Should variables that contain non atomic data be
 concatenated into a string separated by ";"?}
 
-\item{facts}{Character vectors. Extra variables to be extracted from record,
+\item{facts}{Character vector. Extra variables to be extracted from record,
 event and document "facts".}
 }
 \value{

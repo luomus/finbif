@@ -6,10 +6,10 @@
 \title{Get FinBIF records}
 \usage{
 finbif_records(
-  filter,
-  select,
-  order_by,
-  aggregate,
+  filter = NULL,
+  select = NULL,
+  order_by = NULL,
+  aggregate = "none",
   sample = FALSE,
   n = 10,
   page = 1,
@@ -17,7 +17,7 @@ finbif_records(
   quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"),
   dwc = FALSE,
-  seed,
+  seed = NULL,
   df = FALSE,
   exclude_na = FALSE,
   locale = getOption("finbif_locale"),

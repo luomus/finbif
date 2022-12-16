@@ -7,13 +7,13 @@
 \usage{
 finbif_occurrence_load(
   file,
-  select,
+  select = NULL,
   n = -1,
   count_only = FALSE,
   quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"),
   dwc = FALSE,
-  date_time_method,
+  date_time_method = NULL,
   tzone = getOption("finbif_tz"),
   write_file = tempfile(),
   dt,
