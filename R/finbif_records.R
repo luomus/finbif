@@ -285,7 +285,7 @@ infer_selection <- function(fb_records_obj) {
       select == "default_vars", list(default_vars[[var_type]]), select
     )
     select <- unlist(select)
-    select <- select[!select %in% deselect]
+    select <- select[!duplicated(select) & !select %in% deselect]
     select_ <- select
 
     record_id_selected <- var_names["unit.unitId", var_type] %in% select
