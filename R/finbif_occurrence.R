@@ -169,7 +169,7 @@ finbif_occurrence <- function(
 
   select_ <- attr(records, "select_user")
 
-  select_ <-  name_chr_vec(c(select_, n_col_nms[aggregate_counts]))
+  select_ <- name_chr_vec(c(select_, n_col_nms[aggregate_counts]))
 
   fb_occurrence_df <- structure(
     df,
@@ -185,9 +185,9 @@ finbif_occurrence <- function(
 
   fb_occurrence_df <- compute_date_time(fb_occurrence_df)
 
-  df <- compute_vars_from_id(fb_occurrence_df)
+  fb_occurrence_df <- compute_vars_from_id(fb_occurrence_df)
 
-  df <- compute_epsg(df, select_, dwc)
+  df <- compute_epsg(fb_occurrence_df)
 
   df <- compute_abundance(df, select_, dwc, locale)
 
@@ -601,7 +601,15 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
 #' @noRd
 
-compute_epsg <- function(df, select_, dwc, add = TRUE) {
+compute_epsg <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  select_ <- attr(fb_occurrence_df, "column_names")
+
+  dwc <- attr(fb_occurrence_df, "dwc")
+
+  add <- attr(fb_occurrence_df, "include_new_cols")
 
   select_ <- match(select_, var_names[, col_type_string(dwc)])
 
