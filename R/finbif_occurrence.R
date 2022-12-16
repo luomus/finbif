@@ -181,7 +181,8 @@ finbif_occurrence <- function(
     tzone = tzone,
     locale = locale,
     include_new_cols = TRUE,
-    record_id = record_id
+    record_id = record_id,
+    facts = facts
   )
 
   fb_occurrence_df <- compute_date_time(fb_occurrence_df)
@@ -198,11 +199,11 @@ finbif_occurrence <- function(
 
   fb_occurrence_df <- compute_scientific_name(fb_occurrence_df)
 
-  df <- compute_red_list_status(fb_occurrence_df)
+  fb_occurrence_df <- compute_red_list_status(fb_occurrence_df)
 
-  df <- compute_region(df, select_, dwc)
+  fb_occurrence_df <- compute_region(fb_occurrence_df)
 
-  df <- extract_facts(df, facts, dwc)
+  df <- extract_facts(fb_occurrence_df)
 
   select_ <- c(select_, name_chr_vec(as.character(facts)))
 
@@ -880,7 +881,15 @@ compute_red_list_status <- function(fb_occurrence_df) {
 
 }
 
-compute_region <- function(df, select_, dwc, add = TRUE) {
+compute_region <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   type <- col_type_string(dwc)
 
@@ -999,7 +1008,13 @@ unlist_cols <- function(df, cols, unlist) {
 
 #' @noRd
 
-extract_facts <- function(df, facts, dwc) {
+extract_facts <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  facts <- attr(fb_occurrence_df, "facts", TRUE)
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   if (!is.null(facts)) {
 
