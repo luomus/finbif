@@ -154,9 +154,19 @@ finbif_occurrence_load <- function(
 
   names(df) <- ifelse(is.na(nms), names(df), nms)
 
-  df <- compute_vars_from_id(
-    df, select[["user"]], dwc, locale, !select[["all"]]
+  fb_occurrence_df <- structure(
+    df,
+    select_user = select[["user"]],
+    column_names = select[["user"]],
+    aggregate = "none",
+    dwc = dwc,
+    date_time_method = date_time_method,
+    tzone = tzone,
+    locale = locale,
+    include_new_cols = !select[["all"]]
   )
+
+  df <- compute_vars_from_id(fb_occurrence_df)
 
   df <- compute_abundance(df, select[["user"]], dwc, locale, !select[["all"]])
 

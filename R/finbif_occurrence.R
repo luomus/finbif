@@ -178,12 +178,14 @@ finbif_occurrence <- function(
     aggregate = aggregate,
     dwc = dwc,
     date_time_method = date_time_method,
-    tzone = tzone
+    tzone = tzone,
+    locale = locale,
+    include_new_cols = TRUE
   )
 
-  df <- compute_date_time(fb_occurrence_df)
+  fb_occurrence_df <- compute_date_time(fb_occurrence_df)
 
-  df <- compute_vars_from_id(df, select_, dwc, locale)
+  df <- compute_vars_from_id(fb_occurrence_df)
 
   df <- compute_epsg(df, select_, dwc)
 
@@ -514,7 +516,17 @@ get_iso8601 <- function(
 
 #' @noRd
 
-compute_vars_from_id <- function(df, select_, dwc, locale, add = TRUE) {
+compute_vars_from_id <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  select_ <- attr(fb_occurrence_df, "column_names")
+
+  dwc <- attr(fb_occurrence_df, "dwc")
+
+  locale <- attr(fb_occurrence_df, "locale")
+
+  add <- attr(fb_occurrence_df, "include_new_cols")
 
   candidates <- setdiff(select_, names(df))
 
