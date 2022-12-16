@@ -194,9 +194,9 @@ finbif_occurrence <- function(
 
   fb_occurrence_df <- compute_citation(fb_occurrence_df)
 
-  df <- compute_coordinates_uncertainty(fb_occurrence_df)
+  fb_occurrence_df <- compute_coordinates_uncertainty(fb_occurrence_df)
 
-  df <- compute_scientific_name(df, select_, dwc)
+  df <- compute_scientific_name(fb_occurrence_df)
 
   df <- compute_red_list_status(df, select_, dwc)
 
@@ -793,7 +793,15 @@ compute_coordinates_uncertainty <- function(fb_occurrence_df) {
 
 #' @noRd
 
-compute_scientific_name <- function(df, select_, dwc, add = TRUE) {
+compute_scientific_name <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   type <- col_type_string(dwc)
 
