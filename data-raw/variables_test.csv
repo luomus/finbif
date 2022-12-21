@@ -107,7 +107,7 @@ unit.taxonVerbatim,reported_name,verbatimIdentification,FALSE,FALSE,character,ch
 unit.typeSpecimen,type_specimen,typeStatus,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.unitOrder,record_order,occurrenceOrder,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.wild,is_wild,occurrenceIsWild,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
-unit.alive,is_alive,isAlive,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.alive,is_alive,isAlive,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.createdDate,date_created,documentCreatedDate,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.documentId,document_id,catalogNumber,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.editorUserIds,editor_user_ids,editorUserID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
@@ -692,3 +692,7 @@ unit.identifications.linkings.taxon.taxonConceptIds,record_identifications_taxon
 unit.linkings.originalTaxon.taxonConceptIds,orig_taxon_concept_ids,originalTaxonConceptID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.taxonConceptIds,taxon_concept_ids,taxonConceptID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.taxonConceptIds,type_specimen_taxon_concept_ids,typeSpecimenTaxonConceptID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.originalTaxon.virva,orig_taxon_virva,originalTaxonVirva,FALSE,FALSE,logical,logical,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.taxon.virva,taxon_Virva,taxonVirva,FALSE,FALSE,logical,logical,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.interpretations.virva,virva,virva,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+
