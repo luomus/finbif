@@ -240,6 +240,12 @@ concat_string <- function(x) {
 #' @noRd
 cast_to_type <- function(x, type) {
 
+  if (length(type) != 1L) {
+
+    type <- "character"
+
+  }
+
   f <- switch(
     type,
     character = as.character,

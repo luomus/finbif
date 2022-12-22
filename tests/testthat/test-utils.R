@@ -43,3 +43,11 @@ test_that(
 
   }
 )
+
+test_that(
+  "default type is character", {
+
+    expect_type(cast_to_type(1, NULL), "character")
+
+  }
+)
