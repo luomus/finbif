@@ -9,7 +9,7 @@
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/finbif?color=brightgreen)](https://cran.r-project.org/package=finbif)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3612814.svg)](https://doi.org/10.5281/zenodo.3612814)
 [![Build Status](https://github.com/luomus/finbif/workflows/R-CMD-check/badge.svg?branch=dev)](https://github.com/luomus/finbif/actions)
-[![codecov](https://codecov.io/gh/luomus/finbif/branch/dev/graph/badge.svg)](https://codecov.io/github/luomus/finbif/branch/dev)
+[![codecov](https://codecov.io/gh/luomus/finbif/branch/dev/graph/badge.svg)](https://app.codecov.io/github/luomus/finbif/branch/dev)
 <!-- badges: end -->
 
 The `finbif` R package is a programmatic interface to the
@@ -88,8 +88,8 @@ FinBIF itself and the contributed datasets please visit this link:
 
 To cite the finbif R package in publications please use:
 
-  Morris, William K. (2022). Introduction to the finbif package. R
-  package version 0.7.1, https://doi.org/10.5281/zenodo.3612814
+  Morris, William K. (2023). Introduction to the finbif package. R
+  package version 0.7.1.9000, https://doi.org/10.5281/zenodo.3612814
 
 ----
 

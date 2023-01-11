@@ -49,7 +49,7 @@ preferred-citation:
       orcid: "https://orcid.org/0000-0002-8686-4154"
   title: Introduction to the finbif package
   type: manual
-  year: 2022
+  year: 2023
   doi: "10.5281/zenodo.3612814"
   notes: "R package version 0.7.1.9000"
   url: "https://luomus.github.io/finbif/articles/finbif.html"
