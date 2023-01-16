@@ -51,3 +51,11 @@ test_that(
 
   }
 )
+
+test_that(
+  "name_chr_vec with no args returns NULL", {
+
+    expect_equal(name_chr_vec(), NULL)
+
+  }
+)

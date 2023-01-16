@@ -197,11 +197,18 @@ finbif_occurrence_load <- function(
       column_names = select[["user"]],
       aggregate = "none",
       dwc = dwc,
+      date_time = select[["date_time_selected"]],
       date_time_method = date_time_method,
       tzone = tzone
     )
 
-    df <- compute_date_time(fb_occurrence_df)
+    fb_occurrence_df <- date_times(fb_occurrence_df)
+
+    fb_occurrence_df <- compute_date_time(fb_occurrence_df)
+
+    fb_occurrence_df <- compute_duration(fb_occurrence_df)
+
+    df <- compute_iso8601(fb_occurrence_df)
 
     df <- any_issues(df, select[["user"]], var_type)
 

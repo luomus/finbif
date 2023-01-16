@@ -149,6 +149,8 @@ records <- function(fb_records_obj) {
 
     fb_records_obj[["record_id_selected"]] <- select[["record_id_selected"]]
 
+    fb_records_obj[["date_time_selected"]] <- select[["date_time_selected"]]
+
     select_param <- switch(aggregate[[1L]], none = "selected", "aggregateBy")
 
     fb_records_obj[["select_param"]] <- select_param
@@ -260,6 +262,7 @@ infer_selection <- function(fb_records_obj) {
     select <- row.names(default_vars)
     select_ <- default_vars[[var_type]]
     record_id_selected <- FALSE
+    date_time_selected <- FALSE
 
     if (identical(aggregate, "none")) {
       # Missing 'select' implies default selection which implies date-time,
@@ -274,6 +277,7 @@ infer_selection <- function(fb_records_obj) {
         )
       )
       record_id_selected <- TRUE
+      date_time_selected <- TRUE
     }
 
   } else {
@@ -301,7 +305,9 @@ infer_selection <- function(fb_records_obj) {
       "duration", "samplingEffort"
     )
 
-    if (any(vars %in% select)) {
+    date_time_selected <- any(vars %in% select)
+
+    if (date_time_selected) {
 
       select <- unique(c(select, date_time_vars[[var_type]]))
 
@@ -362,7 +368,10 @@ infer_selection <- function(fb_records_obj) {
   # Can't query the server for vars that are computed after download
   select <- unique(select[!grepl("^computed_var", select)])
 
-  list(query = select, user = select_, record_id_selected = record_id_selected)
+  list(
+    query = select, user = select_, record_id_selected = record_id_selected,
+    date_time_selected = date_time_selected
+  )
 
 }
 
@@ -481,6 +490,8 @@ request <- function(fb_records_obj) {
 
   record_id_selected <- fb_records_obj[["record_id_selected"]]
 
+  date_time_selected <- fb_records_obj[["date_time_selected"]]
+
   dwc <- fb_records_obj[["dwc"]]
 
   aggregate <- fb_records_obj[["aggregate"]]
@@ -552,6 +563,7 @@ request <- function(fb_records_obj) {
     include_facts = include_facts,
     count_only = count_only,
     record_id = record_id_selected,
+    date_time = date_time_selected,
     aggregate = aggregate,
     cache = cache
   )

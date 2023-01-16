@@ -177,6 +177,7 @@ finbif_occurrence <- function(
     column_names = select_,
     aggregate = aggregate,
     dwc = dwc,
+    date_time = attr(records, "date_time", TRUE),
     date_time_method = date_time_method,
     tzone = tzone,
     locale = locale,
@@ -186,7 +187,13 @@ finbif_occurrence <- function(
     drop_na = drop_na
   )
 
+  fb_occurrence_df <- date_times(fb_occurrence_df)
+
   fb_occurrence_df <- compute_date_time(fb_occurrence_df)
+
+  fb_occurrence_df <- compute_duration(fb_occurrence_df)
+
+  fb_occurrence_df <- compute_iso8601(fb_occurrence_df)
 
   fb_occurrence_df <- compute_vars_from_id(fb_occurrence_df)
 
@@ -284,133 +291,131 @@ select_taxa <- function(fb_occurrence_obj) {
 
 #' @noRd
 
-compute_date_time <- function(fb_occurrence_df) {
+date_times <- function(fb_occurrence_df) {
 
-  df <- fb_occurrence_df
-
-  select <- attr(fb_occurrence_df, "select_user", TRUE)
-
-  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
-
-  aggregate <- attr(fb_occurrence_df, "aggregate", TRUE)
+  df <- as.data.frame(fb_occurrence_df)
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  date_time_method <- attr(fb_occurrence_df, "date_time_method", TRUE)
+  vtype <- col_type_string(dwc)
+
+  date_start <- var_names["gathering.eventDate.begin", vtype]
+
+  hour_start <- var_names["gathering.hourBegin", vtype]
+
+  minute_start <- var_names["gathering.minutesBegin", vtype]
+
+  date_end <- var_names["gathering.eventDate.end", vtype]
+
+  hour_end <- var_names["gathering.hourEnd", vtype]
+
+  minute_end <- var_names["gathering.minutesEnd", vtype]
+
+  lat <- var_names["gathering.conversions.wgs84CenterPoint.lat", vtype]
+
+  lon <- var_names["gathering.conversions.wgs84CenterPoint.lon", vtype]
 
   tzone <- attr(fb_occurrence_df, "tzone", TRUE)
 
-  vars <- c(
-    "date_time", "eventDateTime", "date_time_ISO8601", "eventDate",
-    "duration", "samplingEffort"
-  )
+  method <- attr(fb_occurrence_df, "date_time_method", TRUE)
 
-  if (is.null(select)) {
+  if (attr(fb_occurrence_df, "date_time", TRUE)) {
 
-    date_time <- identical("none", aggregate)
+    date_time_start <- list(
+      date = df[[date_start]],
+      hour = df[[hour_start]],
+      minute = df[[minute_start]],
+      lat = df[[lat]],
+      lon = df[[lon]],
+      tzone = tzone,
+      method = method
+    )
 
-  } else {
+    date_time_end <- list(
+      date = df[[date_end]],
+      hour = df[[hour_end]],
+      minute = df[[minute_end]],
+      lat = df[[lat]],
+      lon = df[[lon]],
+      tzone = tzone,
+      method = method
+    )
 
-    if (identical("none", aggregate)) vars <- c(vars, "default_vars")
-    date_time <- any(vars %in% select)
+    fb_occurrence_df <- structure(
+      fb_occurrence_df,
+      date_time_start = date_time(date_time_start),
+      date_time_end = date_time(date_time_end)
+    )
 
   }
 
-  if (date_time) {
-    if (dwc) {
-      df[["eventDateTime"]] <- get_date_time(
-        df, "eventDateStart", "month", "day", "hourStart", "minuteStart",
-        "decimalLatitude", "decimalLongitude", date_time_method, tzone
-      )
-      if ("samplingEffort" %in% select_) {
-        df[["samplingEffort"]] <- get_duration(
-          df, "eventDateTime", "eventDateEnd", "month", "day", "hourStart",
-          "hourEnd", "minuteEnd", "decimalLatitude", "decimalLongitude",
-          date_time_method, tzone
-        )
-      }
-      if ("eventDate" %in% select_) {
-        df[["eventDate"]] <- get_iso8601(
-          df, "eventDateTime", "month", "day", "eventDateStart", "hourStart",
-          "minuteStart", "eventDateEnd", "hourEnd", "minuteEnd",
-          "decimalLatitude", "decimalLongitude", date_time_method, tzone
-        )
-      }
-    } else {
-      df[["date_time"]] <- get_date_time(
-        df, "date_start", "month", "day", "hour_start", "minute_start",
-        "lat_wgs84", "lon_wgs84", date_time_method, tzone
-      )
-      if ("duration" %in% select_) {
-        df[["duration"]] <- get_duration(
-          df, "date_time", "date_end", "month", "day", "hour_start", "hour_end",
-          "minute_end", "lat_wgs84", "lon_wgs84", date_time_method, tzone
-        )
-      }
-      if ("date_time_ISO8601" %in% select_) {
-        df[["date_time_ISO8601"]] <- get_iso8601(
-          df, "date_time", "month", "day", "date_start", "hour_start",
-          "minute_start", "date_end", "hour_end", "minute_end", "lat_wgs84",
-          "lon_wgs84", date_time_method, tzone
-        )
-      }
-    }
-  }
-
-  df
+  fb_occurrence_df
 
 }
 
 #' @noRd
 
-get_date_time <- function(
-  df, date, month, day, hour, minute, lat, lon, method, tzone
-) {
+date_time <- function(date_time_obj) {
 
-  df <- as.data.frame(df)
+  tzone <- date_time_obj[["tzone"]]
 
   date_time <- as.POSIXct(character(), tz = tzone)
 
-  if (nrow(df) > 0L) {
+  if (length(date_time_obj[["date"]]) > 0L) {
 
-    date_time <- lubridate::ymd(df[[date]])
+    date_time <- lubridate::ymd(date_time_obj[["date"]])
+
     date_time <- lubridate::as_datetime(date_time)
 
     # When there is no hour assume the hour is midday (i.e., don't assume
     # midnight)
     lubridate::hour(date_time) <- 12L
 
-    if (!is.null(df[[hour]])) {
+    if (!is.null(date_time_obj[["hour"]])) {
+
       lubridate::hour(date_time) <- ifelse(
-        is.na(df[[hour]]), lubridate::hour(date_time), df[[hour]]
+        is.na(date_time_obj[["hour"]]),
+        lubridate::hour(date_time),
+        date_time_obj[["hour"]]
       )
+
     }
 
-    if (!is.null(df[[minute]])) {
+    if (!is.null(date_time_obj[["minute"]])) {
+
       lubridate::minute(date_time) <- ifelse(
-        is.na(df[[minute]]), lubridate::minute(date_time), df[[minute]]
+        is.na(date_time_obj[["minute"]]),
+        lubridate::minute(date_time),
+        date_time_obj[["minute"]]
       )
+
     }
 
-    method <- match.arg(method, c("none", "fast", "accurate"), TRUE)
-
-    if (identical(method, "none")) {
+    if (identical(date_time_obj[["method"]], "none")) {
 
       tz_in <- "Europe/Helsinki"
+
       date_time <- lubridate::force_tz(date_time, tz_in)
       date_time <- lubridate::with_tz(date_time, tzone)
 
     } else {
 
-      tz_in <- lutz::tz_lookup_coords(df[[lat]], df[[lon]], method, FALSE)
+      tz_in <- lutz::tz_lookup_coords(
+        date_time_obj[["lat"]],
+        date_time_obj[["lon"]],
+        date_time_obj[["method"]],
+        FALSE
+      )
+
       date_time <- lubridate::force_tzs(
-        date_time, tzones = ifelse(is.na(tz_in), tzone, tz_in),
+        date_time,
+        tzones = ifelse(is.na(tz_in), tzone, tz_in),
         tzone_out = tzone
       )
 
     }
 
-    ind <- is.na(df[[month]]) | is.na(df[[day]])
+    ind <- is.na(date_time_obj[["month"]]) | is.na(date_time_obj[["day"]])
 
     date_time[ind] <- lubridate::as_datetime(NA_integer_, tz = tzone)
 
@@ -422,98 +427,170 @@ get_date_time <- function(
 
 #' @noRd
 
-get_duration <- function(
-  df, date_time, date, month, day, hour_start, hour_end, minute, lat, lon,
-  method, tzone
-) {
+compute_date_time <- function(fb_occurrence_df) {
 
-  df <- as.data.frame(df)
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  date_time_end <- get_date_time(
-    df, date, month, day, hour_end, minute, lat, lon, method, tzone
-  )
+  vtype <- col_type_string(dwc)
 
-  ind <-
-    is.na(df[[hour_start]]) |
-    is.na(df[[hour_end]])   |
-    is.na(df[[date_time]])  |
-    is.na(date_time_end)
+  date_time_var <- var_names["computed_var_date_time", vtype]
 
-  na_interval <- lubridate::as.interval(rep_len(NA_integer_, length(ind)))
+  column_names <- attr(fb_occurrence_df, "column_names", TRUE)
 
-  ans <- na_interval
+  if (date_time_var %in% column_names) {
 
-  ans[!ind] <- lubridate::interval(df[!ind, date_time], date_time_end[!ind])
+    fb_occurrence_df[[date_time_var]] <- attr(
+      fb_occurrence_df, "date_time_start", TRUE
+    )
 
-  ind <- !is.na(ans) & ans == 0
+  }
 
-  ans[ind] <- na_interval[ind]
-
-  lubridate::as.duration(ans)
+  fb_occurrence_df
 
 }
 
 #' @noRd
 
-get_iso8601 <- function(
-  df, date_time, month, day, date_start, hour_start, minute_start, date_end,
-  hour_end, minute_end, lat, lon, method, tzone
-) {
+compute_duration <- function(fb_occurrence_df) {
 
-  df <- as.data.frame(df)
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  date_time_end <- get_date_time(
-    df, date_end, month, day, hour_end, minute_end, lat, lon, method, tzone
-  )
+  vtype <- col_type_string(dwc)
 
-  ind <- is.na(df[[date_time]]) | is.na(date_time_end)
+  duration_var <- var_names["computed_var_duration", vtype]
 
-  ans <- lubridate::interval(
-    rep_len("1970-01-01/1970-01-01", length(ind)), tzone = tzone
-  )
+  column_names <- attr(fb_occurrence_df, "column_names", TRUE)
 
-  ans[!ind] <- lubridate::interval(df[!ind, date_time], date_time_end[!ind])
+  if (duration_var %in% column_names) {
 
-  ans[ind] <- lubridate::as.interval(NA_integer_)
+    hour_start <- var_names["gathering.hourBegin", vtype]
 
-  ans <- lubridate::format_ISO8601(ans, usetz = TRUE)
+    hour_end <- var_names["gathering.hourEnd", vtype]
 
-  ans <- ifelse(
-    is.na(df[[minute_start]]) & is.na(df[[hour_start]]) |
-      is.na(df[[minute_end]]) & is.na(df[[hour_end]]),
-    lubridate::format_ISO8601(
-      lubridate::interval(
-        lubridate::ymd(df[[date_start]]), lubridate::ymd(df[[date_end]])
+    date_time_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
+
+    date_time_end <- attr(fb_occurrence_df, "date_time_end", TRUE)
+
+    ind <- is.na(fb_occurrence_df[[hour_start]])
+
+    ind <- ind | is.na(fb_occurrence_df[[hour_end]])
+
+    ind <- ind | is.na(date_time_start)
+
+    ind <- ind | is.na(date_time_end)
+
+    na_interval <- lubridate::as.interval(rep_len(NA_integer_, length(ind)))
+
+    duration <- na_interval
+
+    duration[!ind] <- lubridate::interval(
+      date_time_start[!ind], date_time_end[!ind]
+    )
+
+    ind <- !is.na(duration) & duration == 0
+
+    duration[ind] <- na_interval[ind]
+
+    fb_occurrence_df[[duration_var]] <- lubridate::as.duration(duration)
+
+  }
+
+  fb_occurrence_df
+
+}
+
+#' @noRd
+
+compute_iso8601 <- function(fb_occurrence_df) {
+
+  df <- as.data.frame(fb_occurrence_df)
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  vtype <- col_type_string(dwc)
+
+  date_start <- var_names["gathering.eventDate.begin", vtype]
+
+  hour_start <- var_names["gathering.hourBegin", vtype]
+
+  minute_start <- var_names["gathering.minutesBegin", vtype]
+
+  date_end <- var_names["gathering.eventDate.end", vtype]
+
+  hour_end <- var_names["gathering.hourEnd", vtype]
+
+  minute_end <- var_names["gathering.minutesEnd", vtype]
+
+  iso8601_var <- var_names["computed_var_date_time_ISO8601", vtype]
+
+  column_names <- attr(fb_occurrence_df, "column_names", TRUE)
+
+  if (iso8601_var %in% column_names) {
+
+    tzone <- attr(fb_occurrence_df, "tzone", TRUE)
+
+    date_time_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
+
+    date_time_end <- attr(fb_occurrence_df, "date_time_end", TRUE)
+
+    ind <- is.na(date_time_start) | is.na(date_time_end)
+
+    iso8601 <- lubridate::interval(
+      rep_len("1970-01-01/1970-01-01", length(ind)), tzone = tzone
+    )
+
+    iso8601[!ind] <- lubridate::interval(
+      date_time_start[!ind], date_time_end[!ind]
+    )
+
+    iso8601[ind] <- lubridate::as.interval(NA_integer_)
+
+    iso8601 <- lubridate::format_ISO8601(iso8601, usetz = TRUE)
+
+    no_start_time <- is.na(df[[minute_start]]) & is.na(df[[hour_start]])
+
+    no_end_time <-  is.na(df[[minute_end]]) & is.na(df[[hour_end]])
+
+    iso8601 <- ifelse(
+      no_start_time | no_end_time,
+      lubridate::format_ISO8601(
+        lubridate::interval(
+          lubridate::ymd(df[[date_start]]), lubridate::ymd(df[[date_end]])
+        ),
+        usetz = TRUE
       ),
-      usetz = TRUE
-    ),
-    ans
-  )
+      iso8601
+    )
 
-  ans <- ifelse(
-    ((is.na(df[[minute_end]]) & is.na(df[[hour_end]])) &
-      (is.na(df[[date_end]]) | df[[date_start]] == df[[date_end]])) |
-        df[[date_time]] == date_time_end,
-    lubridate::format_ISO8601(df[[date_time]], usetz = TRUE),
-    ans
-  )
+    no_duration <- date_time_start == date_time_end
 
-  ans <- ifelse(
-    (is.na(df[[minute_start]]) & is.na(df[[hour_start]])) &
-      (is.na(df[[date_end]]) | df[[date_start]] == df[[date_end]]),
-    lubridate::format_ISO8601(lubridate::ymd(df[[date_start]]), usetz = TRUE),
-    ans
-  )
+    dates_equal <- df[[date_start]] == df[[date_end]]
 
-  ifelse(
-    is.na(ans),
-    ifelse(
-      df[[date_start]] == df[[date_end]],
-      df[[date_start]],
-      paste(df[[date_start]], df[[date_end]], sep = "/")
-    ),
-    ans
-  )
+    iso8601 <- ifelse(
+      (no_end_time & (is.na(df[[date_end]]) | dates_equal)) | no_duration,
+      lubridate::format_ISO8601(date_time_start, usetz = TRUE),
+      iso8601
+    )
+
+    iso8601 <- ifelse(
+      no_start_time & (is.na(df[[date_end]]) | dates_equal),
+      lubridate::format_ISO8601(lubridate::ymd(df[[date_start]]), usetz = TRUE),
+      iso8601
+    )
+
+    fb_occurrence_df[[iso8601_var]] <- ifelse(
+      is.na(iso8601),
+      ifelse(
+        dates_equal,
+        df[[date_start]],
+        paste(df[[date_start]], df[[date_end]], sep = "/")
+      ),
+      iso8601
+    )
+
+  }
+
+  fb_occurrence_df
 
 }
 
