@@ -70,6 +70,7 @@ finbif_occurrence <- function(
     filter = filter,
     select = select,
     order_by = order_by,
+    aggregate = aggregate,
     sample = sample,
     n = n,
     page = page,
@@ -78,22 +79,51 @@ finbif_occurrence <- function(
     cache = cache,
     dwc = dwc,
     date_time_method = date_time_method,
+    check_taxa = check_taxa,
+    on_check_fail = match.arg(on_check_fail),
     tzone = tzone,
     locale = locale,
+    seed = seed,
+    drop_na = drop_na,
+    aggregate_counts = aggregate_counts,
     exclude_na = exclude_na,
     unlist = unlist,
-    facts = facts,
-    check_taxa = check_taxa,
-    on_check_fail = match.arg(on_check_fail)
+    facts = facts
   )
+
+  occurrence(fb_occurrence_obj)
+
+}
+
+occurrence <- function(fb_occurrence_obj) {
 
   taxa <- select_taxa(fb_occurrence_obj)
 
   fb_occurrence_obj[["taxa"]] <- taxa
 
-  date_time_method <- det_datetime_method(date_time_method, n = n)
+  n <- fb_occurrence_obj[["n"]]
+
+  date_time_method <- det_datetime_method(
+    fb_occurrence_obj[["date_time_method"]], n = n
+  )
 
   fb_occurrence_obj[["date_time_method"]] <- date_time_method
+
+  filter <- fb_occurrence_obj[["filter"]]
+
+  aggregate <- fb_occurrence_obj[["aggregate"]]
+
+  select <- fb_occurrence_obj[["select"]]
+
+  count_only <- fb_occurrence_obj[["count_only"]]
+
+  quiet <- fb_occurrence_obj[["quiet"]]
+
+  dwc <- fb_occurrence_obj[["dwc"]]
+
+  locale <- fb_occurrence_obj[["locale"]]
+
+  facts <- fb_occurrence_obj[["facts"]]
 
   if (!is.null(filter) && is.null(names(filter))) {
 
@@ -116,17 +146,17 @@ finbif_occurrence <- function(
   fb_records_obj <- list(
     filter = filter,
     select = select,
-    order_by = order_by,
+    order_by = fb_occurrence_obj[["order_by"]],
     aggregate = aggregate,
-    sample = sample,
-    page = page,
+    sample = fb_occurrence_obj[["sample"]],
+    page = fb_occurrence_obj[["page"]],
     count_only = count_only,
     quiet = quiet,
-    cache = cache,
+    cache = fb_occurrence_obj[["cache"]],
     dwc = dwc,
     df = TRUE,
-    seed = seed,
-    exclude_na = exclude_na,
+    seed = fb_occurrence_obj[["seed"]],
+    exclude_na = fb_occurrence_obj[["exclude_na"]],
     locale = locale,
     include_facts = include_facts
   )
@@ -166,7 +196,9 @@ finbif_occurrence <- function(
 
   select_ <- attr(records, "select_user")
 
-  select_ <- name_chr_vec(c(select_, n_col_nms[aggregate_counts]))
+  select_ <- name_chr_vec(
+    c(select_, n_col_nms[fb_occurrence_obj[["aggregate_counts"]]])
+  )
 
   fb_occurrence_df <- structure(
     df,
@@ -179,12 +211,12 @@ finbif_occurrence <- function(
     dwc = dwc,
     date_time = attr(records, "date_time", TRUE),
     date_time_method = date_time_method,
-    tzone = tzone,
+    tzone = fb_occurrence_obj[["tzone"]],
     locale = locale,
     include_new_cols = TRUE,
     facts = facts,
-    unlist = unlist,
-    drop_na = drop_na
+    unlist = fb_occurrence_obj[["unlist"]],
+    drop_na = fb_occurrence_obj[["drop_na"]]
   )
 
   fb_occurrence_df <- date_times(fb_occurrence_df)
@@ -900,8 +932,12 @@ compute_scientific_name <- function(fb_occurrence_df) {
 
     df[[scientific]] <- ifelse(
       is.na(df[[scientific_]]) & df[[source]] == "http://tun.fi/KE.3",
-      add_authors(df[[verbatim]], df[[verbatim_author]]),
-      add_authors(df[[scientific_]], df[[author]])
+      add_authors(
+        list(names = df[[verbatim]], authors = df[[verbatim_author]])
+      ),
+      add_authors(
+        list(names = df[[scientific_]], authors = df[[author]])
+      )
     )
 
   }
@@ -912,7 +948,11 @@ compute_scientific_name <- function(fb_occurrence_df) {
 
 #' @noRd
 
-add_authors <- function(names, authors) {
+add_authors <- function(names_obj) {
+
+  names <- names_obj[["names"]]
+
+  authors <- names_obj[["authors"]]
 
   authors <- ifelse(nchar(authors) > 1L, paste0(" ", authors), "")
 
@@ -990,67 +1030,36 @@ compute_region <- function(fb_occurrence_df) {
 
 multi_req <- function(fb_occurrence_obj) {
 
-  taxa <- fb_occurrence_obj[["taxa"]]
-
-  filter <- fb_occurrence_obj[["filter"]]
-
-  select <- fb_occurrence_obj[["select"]]
-
-  order_by <- fb_occurrence_obj[["order_by"]]
-
-  sample <- fb_occurrence_obj[["sample"]]
-
-  n <- fb_occurrence_obj[["n"]]
-
-  page <- fb_occurrence_obj[["page"]]
-
-  count_only <- fb_occurrence_obj[["count_only"]]
-
-  quiet <- fb_occurrence_obj[["quiet"]]
-
-  cache <- fb_occurrence_obj[["cache"]]
-
-  dwc <- fb_occurrence_obj[["dwc"]]
-
-  date_time_method <- fb_occurrence_obj[["date_time_method"]]
-
-  tzone <- fb_occurrence_obj[["tzone"]]
-
-  locale <- fb_occurrence_obj[["locale"]]
-
-  exclude_na <- fb_occurrence_obj[["exclude_na"]]
-
-  unlist <- fb_occurrence_obj[["unlist"]]
-
-  facts <- fb_occurrence_obj[["facts"]]
-
   ans <- vector("list", length(filter))
 
-  rep_args <- c(
+  rep_attr <- c(
     "sample", "n", "page", "quiet", "cache", "date_time_method", "tzone",
     "locale", "exclude_na"
   )
 
-  for (arg in rep_args) {
+  for (attr in rep_attr) {
 
-    assign(arg, rep_len(get(arg), length(ans)))
+    fb_occurrence_obj[[attr]] <- rep_len(fb_occurrence_obj[[attr]], length(ans))
 
   }
+
+  fb_occurrence_obj_i <- fb_occurrence_obj
+
+  fb_occurrence_obj_i[["check_taxa"]] <- FALSE
 
   for (i in seq_along(ans)) {
 
-    ans[[i]] <- finbif_occurrence(
-      taxa, filter = filter[[i]], select = select, order_by = order_by,
-      sample = sample[[i]], n = n[[i]], page = page[[i]],
-      count_only = count_only, quiet = quiet[[i]], cache = cache[[i]],
-      dwc = dwc, date_time_method = date_time_method[[i]], check_taxa = FALSE,
-      tzone = tzone[[i]], locale = locale[[i]], exclude_na = exclude_na[[i]],
-      unlist = unlist, facts = facts
-    )
+    for (j in c("filter", rep_attr)) {
+
+      fb_occurrence_obj_i[[j]] <- fb_occurrence_obj[[j]][[i]]
+
+    }
+
+    ans[[i]] <- occurrence(fb_occurrence_obj_i)
 
   }
 
-  if (!count_only) {
+  if (!fb_occurrence_obj[["count_only"]]) {
 
     ans <- do.call(rbind, ans)
     dups <- duplicated(attr(ans, "record_id"))
