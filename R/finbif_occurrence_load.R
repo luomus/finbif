@@ -140,7 +140,9 @@ finbif_occurrence_load <- function(
 
   file_vars <- attr(df, "file_vars")
 
-  df <- localise_enums(df, file_vars, locale)
+  attr(df, "locale") <- locale
+
+  df <- localise_enums(df)
 
   n_recs <- attr(df, "nrow")
 
@@ -487,7 +489,11 @@ attempt_read <- function(
 }
 
 #' @noRd
-localise_enums <- function(df, file_vars, locale) {
+localise_enums <- function(df) {
+
+  file_vars <- attr(df, "file_vars", TRUE)
+
+  locale <- attr(df, "locale", TRUE)
 
   for (i in names(df)) {
 
