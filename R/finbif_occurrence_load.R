@@ -68,9 +68,24 @@ finbif_occurrence_load <- function(
   drop_facts_na = drop_na, locale = getOption("finbif_locale"), skip = 0
 ) {
 
-  fb_records_obj <- list()
+  if (missing(dt)) {
 
-  file <- preprocess_data_file(file)
+    dt <- NULL
+
+  }
+
+  fb_records_obj <- list(
+    file = preprocess_data_file(file),
+    n = as.integer(n),
+    count_only = count_only,
+    quiet = quiet,
+    cache = cache,
+    write_file = write_file,
+    dt = dt,
+    keep_tsv = keep_tsv,
+    skip = skip,
+    facts = "none"
+  )
 
   var_type <- col_type_string(dwc)
 
@@ -113,12 +128,9 @@ finbif_occurrence_load <- function(
   select[["type"]] <- var_type
   select[["facts"]] <- fact_types
 
-  n <- as.integer(n)
+  fb_records_obj[["select"]] <- select
 
-  df <- read_finbif_tsv(
-    file, select, n, count_only, quiet, cache, write_file, dt, keep_tsv,
-    skip = skip
-  )
+  df <- read_finbif_tsv(fb_records_obj)
 
   if (count_only) {
 
@@ -208,9 +220,9 @@ finbif_occurrence_load <- function(
 
     fb_occurrence_df <- compute_duration(fb_occurrence_df)
 
-    df <- compute_iso8601(fb_occurrence_df)
+    fb_occurrence_df <- compute_iso8601(fb_occurrence_df)
 
-    df <- any_issues(df, select[["user"]], var_type)
+    df <- any_issues(fb_occurrence_df)
 
     for (extra_var in setdiff(select[["user"]], names(df))) {
 
@@ -245,20 +257,15 @@ finbif_occurrence_load <- function(
       "Invalid fact type" = fact_type %in% c("record", "event", "document")
     )
 
-    facts_df <- try(
-      read_finbif_tsv(
-        file,
-        select = list(
-          all = TRUE,
-          deselect = character(),
-          type = "translated_var"
-        ),
-        n = -1L,
-        count_only, quiet, cache, write_file, dt, keep_tsv,
-        facts = fact_type
-      ),
-      silent = TRUE
+    fb_records_obj[["select"]] <- list(
+      all = TRUE, deselect = character(), type = "translated_var"
     )
+
+    fb_records_obj[["n"]] <- -1L
+
+    fb_records_obj[["facts"]] <- fact_type
+
+    facts_df <- try(read_finbif_tsv(fb_records_obj), silent = TRUE)
 
     id <- switch(
       fact_type,
@@ -325,14 +332,29 @@ finbif_occurrence_load <- function(
 }
 
 #' @noRd
-read_finbif_tsv <- function(
-  file,
-  select = list(all = TRUE, deselect = character(), type = "translated_var"),
-  n = -1L, count_only = FALSE, quiet = FALSE, cache = TRUE,
-  write_file = tempfile(), dt, keep_tsv, facts = "none", skip = 0
-) {
+read_finbif_tsv <- function(fb_occurrenc_obj) {
 
-  file <- as.character(file)
+  file <- as.character(fb_occurrenc_obj[["file"]])
+
+  select <- fb_occurrenc_obj[["select"]]
+
+  n <- fb_occurrenc_obj[["n"]]
+
+  count_only <- fb_occurrenc_obj[["count_only"]]
+
+  quiet <- fb_occurrenc_obj[["quiet"]]
+
+  cache <- fb_occurrenc_obj[["cache"]]
+
+  write_file <- fb_occurrenc_obj[["write_file"]]
+
+  dt <- fb_occurrenc_obj[["dt"]]
+
+  keep_tsv <- fb_occurrenc_obj[["keep_tsv"]]
+
+  facts <- fb_occurrenc_obj[["facts"]]
+
+  skip <- fb_occurrenc_obj[["skip"]]
 
   ptrn <- "^https?://.+?/HBF\\."
 
@@ -405,7 +427,7 @@ attempt_read <- function(
   file, tsv, select, count_only, n, quiet, dt, keep_tsv, skip
 ) {
 
-  if (missing(dt)) {
+  if (is.null(dt)) {
 
     use_dt <- TRUE
 
@@ -687,10 +709,18 @@ add_nas <- function(df, nm, var_type, file_vars) {
 }
 
 #' @noRd
-any_issues <- function(df, select_user, var_type) {
+any_issues <- function(fb_occurrence_df) {
+
+  df <- fb_occurrence_df
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  var_type <- col_type_string(dwc)
 
   vnms <- var_names[var_type]
   any_issue <- vnms["unit.quality.documentGatheringUnitQualityIssues", ]
+
+  select_user <- attr(fb_occurrence_df, "select_user", TRUE)
 
   if (!utils::hasName(df, any_issue) && any_issue %in% select_user) {
 
