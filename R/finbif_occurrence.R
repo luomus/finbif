@@ -1030,7 +1030,7 @@ compute_region <- function(fb_occurrence_df) {
 
 multi_req <- function(fb_occurrence_obj) {
 
-  ans <- vector("list", length(filter))
+  ans <- vector("list", length(fb_occurrence_obj[["filter"]]))
 
   rep_attr <- c(
     "sample", "n", "page", "quiet", "cache", "date_time_method", "tzone",
