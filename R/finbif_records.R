@@ -273,6 +273,7 @@ infer_selection <- function(fb_records_obj) {
           "unit.interpretations.individualCount", "unit.abundanceString",
           "gathering.interpretations.coordinateAccuracy",
           "unit.linkings.taxon.scientificName", "unit.taxonVerbatim",
+          "unit.linkings.taxon.scientificNameAuthorship", "unit.author",
           "document.sourceId"
         )
       )

@@ -2,6 +2,11 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.7.1.9000}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fix bug when processing scientific names without authors.
+    }
+  }
 }
 
 \section{finbif version 0.7.1}{

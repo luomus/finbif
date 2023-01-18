@@ -1,3 +1,9 @@
+# finbif 0.7.1.9000
+
+#### BUG FIXES
+
+  - Fix bug when processing scientific names without authors.
+
 # finbif 0.7.1
 
 #### NEW FEATURES

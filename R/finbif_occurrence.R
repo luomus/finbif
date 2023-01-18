@@ -954,7 +954,9 @@ add_authors <- function(names_obj) {
 
   authors <- names_obj[["authors"]]
 
-  authors <- ifelse(nchar(authors) > 1L, paste0(" ", authors), "")
+  authors <- ifelse(
+    nchar(authors) > 1L & !is.na(authors), paste0(" ", authors), ""
+  )
 
   ifelse(is.na(names), names, paste0(names, authors))
 
