@@ -340,6 +340,8 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
   file <- as.character(fb_occurrenc_obj[["file"]])
 
+  fb_occurrenc_obj[["file"]] <- file
+
   select <- fb_occurrenc_obj[["select"]]
 
   n <- fb_occurrenc_obj[["n"]]
@@ -388,15 +390,26 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
   )
 
   file <- gsub("rows_", tsv_prefix, file)
+
+  fb_occurrenc_obj[["file"]] <- file
+
   tsv <- paste0(tsv_prefix, tsv)
+
+  fb_occurrenc_obj[["tsv"]] <- tsv
 
   if (grepl("^[0-9]*$", file)) {
 
     url <- sprintf("%s/HBF.%s", getOption("finbif_dl_url"), file)
 
+    fb_occurrenc_obj[["url"]] <- url
+
     tsv <- sprintf("%sHBF.%s.tsv", tsv_prefix, file)
 
-    file <- get_zip(url, quiet, cache, write_file)
+    fb_occurrenc_obj[["tsv"]] <- tsv
+
+    fb_occurrenc_obj <- get_zip(fb_occurrenc_obj)
+
+    file <- fb_occurrenc_obj[["file"]]
 
   } else {
 
@@ -404,9 +417,7 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
   }
 
-  df <- attempt_read(
-    file, tsv, select, count_only, n, quiet, dt, keep_tsv, skip
-  )
+  df <- attempt_read(fb_occurrenc_obj)
 
   if (count_only) {
 
@@ -427,9 +438,25 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 }
 
 #' @noRd
-attempt_read <- function(
-  file, tsv, select, count_only, n, quiet, dt, keep_tsv, skip
-) {
+attempt_read <- function(fb_occurrence_obj) {
+
+  file <- fb_occurrence_obj[["file"]]
+
+  tsv <- fb_occurrence_obj[["tsv"]]
+
+  select <- fb_occurrence_obj[["select"]]
+
+  count_only <- fb_occurrence_obj[["count_only"]]
+
+  n <- fb_occurrence_obj[["n"]]
+
+  quiet <- fb_occurrence_obj[["quiet"]]
+
+  dt <- fb_occurrence_obj[["dt"]]
+
+  keep_tsv <- fb_occurrence_obj[["keep_tsv"]]
+
+  skip <- fb_occurrence_obj[["skip"]]
 
   if (is.na(dt)) {
 
@@ -581,7 +608,15 @@ new_vars <- function(df) {
 }
 
 #' @noRd
-get_zip <- function(url, quiet, cache, write_file) {
+get_zip <- function(fb_occurrenc_obj) {
+
+  url <- fb_occurrenc_obj[["url"]]
+
+  quiet <- fb_occurrenc_obj[["quiet"]]
+
+  cache <- fb_occurrenc_obj[["cache"]]
+
+  write_file <- fb_occurrenc_obj[["write_file"]]
 
   if (cache) {
 
@@ -595,7 +630,9 @@ get_zip <- function(url, quiet, cache, write_file) {
 
       if (!is.null(cache_file)) {
 
-        return(cache_file)
+        fb_occurrenc_obj[["file"]] <- cache_file
+
+        return(fb_occurrenc_obj)
 
       }
 
@@ -615,7 +652,9 @@ get_zip <- function(url, quiet, cache, write_file) {
 
       if (file.exists(write_file)) {
 
-        return(write_file)
+        fb_occurrenc_obj[["file"]] <- write_file
+
+        return(fb_occurrenc_obj)
 
       }
 
@@ -687,7 +726,9 @@ get_zip <- function(url, quiet, cache, write_file) {
 
   }
 
-  write_file
+  fb_occurrenc_obj[["file"]] <- write_file
+
+  fb_occurrenc_obj
 
 }
 
