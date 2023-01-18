@@ -283,7 +283,9 @@ finbif_occurrence_load <- function(
       names(fb_occurrence_df[select[["user"]]]), setdiff(names(facts_df), id)
     )
 
-    fb_occurrence_df <- bind_facts(fb_occurrence_df, facts_df)
+    attr(fb_occurrence_df, "facts_df") <- facts_df
+
+    fb_occurrence_df <- bind_facts(fb_occurrence_df)
 
   }
 
@@ -1096,13 +1098,15 @@ spread_facts <-  function(facts) {
 }
 
 #' @noRd
-bind_facts <- function(x, facts) {
+bind_facts <- function(x) {
 
   stopifnot(
     "Package {dplyr} is required for this functionality" = has_pkgs("dplyr")
   )
 
-  id <- attr(facts, "id")
+  facts <- attr(x, "facts_df", TRUE)
+
+  id <- attr(facts, "id", TRUE)
 
   stopifnot(
     "Cannot bind facts. ID column missing from data" = utils::hasName(x, id)

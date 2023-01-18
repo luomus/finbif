@@ -1814,6 +1814,53 @@
           "attributes": {},
           "value": [false]
         },
+        "facts_df": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "record_fact__imageUrl", "record_fact__imageCount", "record_fact__areaInSqMeters"]
+            },
+            "id": {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id"]
+            },
+            "row.names": {
+              "type": "integer",
+              "attributes": {},
+              "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+            },
+            "class": {
+              "type": "character",
+              "attributes": {},
+              "value": ["data.frame"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["http://tun.fi/HR.3211/46203100-U", "http://tun.fi/HR.3211/50140548-U", "http://tun.fi/HR.3211/50388615-U", "http://tun.fi/HR.3211/50664852-U", "http://tun.fi/HR.3211/51077474-U", "http://tun.fi/HR.3211/51080297-U", "http://tun.fi/HR.3211/51197631-U", "http://tun.fi/HR.3211/53359875-U", "http://tun.fi/HR.3211/53713677-U", "http://tun.fi/HR.3211/58001727-U", "http://tun.fi/HR.3211/58007968-U", "http://tun.fi/HR.3211/62191237-U", "http://tun.fi/HR.3211/63462257-U", "http://tun.fi/HR.3211/65514788-U", "http://tun.fi/HR.3211/65628104-U", "http://tun.fi/KE.176/5e4a87372d0ea272a10b53cb#Unit1", "http://tun.fi/KE.176/5e982a0e2d0eb7927667c77e#Unit1", "http://tun.fi/KE.176/5ede8d5d2d0e5b1e1b945a73#Unit1", "http://tun.fi/KE.176/5ee23122d5de734ab332ea8d#Unit1", "http://tun.fi/KE.176/5ee2a172d5de734ab332eaab#Unit1", "http://tun.fi/KE.176/5ee8698dd5de734ab332eb92#Unit1", "http://tun.fi/KE.176/5efa3ac1d5de734ab332ef37#Unit1", "http://tun.fi/KE.176/5efb17fdd5de734ab332ef58#Unit1", "http://tun.fi/KE.176/5f02197bd5de1746770e9c9b#Unit1", "http://tun.fi/KE.176/5f04cc79d5de584b628fdefa#Unit1", "http://tun.fi/KE.176/5f0ad7dbd5de584b628fe03b#Unit1", "http://tun.fi/KE.176/5f0db88ad5de584b628fe122#Unit1", "http://tun.fi/KE.176/5f0ddad3d5de584b628fe132#Unit1", "http://tun.fi/KE.176/5f1006e1d5de584b628fe1ad#Unit1", "http://tun.fi/KE.176/5f100911d5de584b628fe1b2#Unit1", "http://tun.fi/KE.176/5f15bbc7d5de584b628fe321#Unit1", "http://tun.fi/KE.176/5f19dee7d5de584b628fe45d#Unit1", "http://tun.fi/KE.176/5f210c86d5de584b628fe839#Unit1", "http://tun.fi/KE.176/5f2192e0d5de584b628fe878#Unit1", "http://tun.fi/KE.176/5f277581d5de584b628fe9fd#Unit1", "http://tun.fi/KE.176/5f305759d5de9c735c606a1b#Unit1", "http://tun.fi/KE.176/5f30dbacd5de9c735c606a23#Unit1", "http://tun.fi/KE.176/5f3559b3d5de9c735c606b2b#Unit1", "http://tun.fi/KE.176/5f3e0c70d5de9c735c606ce8#Unit1", "http://tun.fi/KE.176/5f438575d5de9c735c606de9#Unit1", "http://tun.fi/KE.176/5f4df240d5de9c735c606fbf#Unit1", "http://tun.fi/KE.176/5f4f2682d5de8b5d17dca00d#Unit1", "http://tun.fi/KE.176/5f4f2c84d5de8b5d17dca00e#Unit1", "http://tun.fi/KE.176/5f4f2d3dd5de8b5d17dca00f#Unit1", "http://tun.fi/KE.176/5f4f2f78d5de8b5d17dca010#Unit1", "http://tun.fi/KE.176/5f4f30c4d5de8b5d17dca012#Unit1", "http://tun.fi/KE.176/5f686226d5de8b5d17dca343#Unit1", "http://tun.fi/KE.176/5f93eb71d5de7afc46e70d98#Unit1", "http://tun.fi/KE.176/5f9aff4fd5de7afc46e70df5#Unit1", "http://tun.fi/KE.176/5f9aff51d5de7afc46e70df6#Unit1", "http://tun.fi/KE.176/5f9aff52d5de7afc46e70df7#Unit1", "http://tun.fi/KE.176/5f9aff52d5de7afc46e70df8#Unit1", "http://tun.fi/KE.176/5f9aff52d5de7afc46e70df9#Unit1"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["https://www.inaturalist.org/photos/73281424", "https://www.inaturalist.org/photos/79619138, https://www.inaturalist.org/photos/79619123", "https://www.inaturalist.org/photos/80011503", "https://www.inaturalist.org/photos/80657511, https://www.inaturalist.org/photos/80657537, https://www.inaturalist.org/photos/80657563", "https://www.inaturalist.org/photos/81137083", "https://www.inaturalist.org/photos/81141709", "https://www.inaturalist.org/photos/81329105", "https://www.inaturalist.org/photos/84864533, https://www.inaturalist.org/photos/84864563", "https://www.inaturalist.org/photos/85444303, https://www.inaturalist.org/photos/85444322", "https://www.inaturalist.org/photos/92566295", "https://www.inaturalist.org/photos/92576870", "https://www.inaturalist.org/photos/99613626", "https://www.inaturalist.org/photos/101852051, https://www.inaturalist.org/photos/101851735", "https://www.inaturalist.org/photos/105462921, https://www.inaturalist.org/photos/105462931", "https://www.inaturalist.org/photos/105662989", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+            },
+            {
+              "type": "integer",
+              "attributes": {},
+              "value": [1, 2, 1, 3, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
+            },
+            {
+              "type": "double",
+              "attributes": {},
+              "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", 1000, 30, 200, 0.5, 40, 600, 1, 70, 1.5, 600, 50, 10, 6, 1000, 400, 100, 10, 180, 100, 100, 200, 10, 20, 20, 200, 20, 20, 20, 5, 6000, 20, 50, 10, 20, 20, 20, 20, 20]
+            }
+          ]
+        },
         "drop_na": {
           "type": "logical",
           "attributes": {},
