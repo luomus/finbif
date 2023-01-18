@@ -512,7 +512,7 @@ attempt_read <- function(fb_occurrence_obj) {
 
     } else {
 
-      df <- rd_read(file, tsv, n, select, keep_tsv, skip)
+      df <- rd_read(fb_occurrence_obj)
 
     }
 
@@ -975,7 +975,19 @@ dt_read <- function(fb_occurrence_obj) {
 }
 
 #' @noRd
-rd_read <- function(file, tsv, n, select, keep_tsv, skip) {
+rd_read <- function(fb_occurrence_obj) {
+
+  file <- fb_occurrence_obj[["file"]]
+
+  tsv <- fb_occurrence_obj[["tsv"]]
+
+  n <- fb_occurrence_obj[["n"]]
+
+  select <- fb_occurrence_obj[["select"]]
+
+  keep_tsv <- fb_occurrence_obj[["keep_tsv"]]
+
+  skip <- fb_occurrence_obj[["skip"]]
 
   quote <- ""
 
