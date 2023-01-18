@@ -134,6 +134,8 @@ finbif_occurrence_load <- function(
 
   file_vars <- attr(df, "file_vars")
 
+  select[["lite"]] <- attr(file_vars, "lite")
+
   attr(df, "locale") <- locale
 
   df <- localise_enums(df)
@@ -144,9 +146,7 @@ finbif_occurrence_load <- function(
 
   names(df) <- fix_issue_vars(names(df))
 
-  fact_types <- select_facts(fact_types, attr(file_vars, "lite"))
-
-  select[["facts"]] <- fact_types
+  select <- select_facts(select)
 
   df <- new_vars(df, deselect, file_vars, !select[["all"]])
 
@@ -967,11 +967,16 @@ deselect <- function(select, file_vars) {
 
 }
 
-select_facts <- function(fact_types, file_type_lite) {
+#' @noRd
+select_facts <- function(select) {
 
-  if (file_type_lite) fact_types <- NULL
+  if (select[["lite"]]) {
 
-  fact_types
+    select[["facts"]] <- NULL
+
+  }
+
+  select
 
 }
 
