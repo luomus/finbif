@@ -464,6 +464,8 @@ attempt_read <- function(fb_occurrence_obj) {
 
     dt <- FALSE
 
+    fb_occurrence_obj[["dt"]] <- dt
+
   } else {
 
     use_dt <- dt
@@ -492,14 +494,19 @@ attempt_read <- function(fb_occurrence_obj) {
 
       if (grepl("\\.tsv$", input)) {
 
-        df <- dt_read(select, n, quiet, dt, input = input, skip = skip)
+        fb_occurrence_obj[["keep_tsv"]] <- FALSE
+
+        fb_occurrence_obj[["dt_args"]] <- list(input = input)
+
+        df <- dt_read(fb_occurrence_obj)
 
       } else {
 
-        df <- dt_read(
-          select, n, quiet, dt, keep_tsv, skip,
+        fb_occurrence_obj[["dt_args"]] <- list(
           zip = list(input = input, tsv = tsv)
         )
+
+        df <- dt_read(fb_occurrence_obj)
 
       }
 
@@ -809,13 +816,27 @@ any_issues <- function(fb_occurrence_df) {
 }
 
 #' @noRd
-dt_read <- function(select, n, quiet, dt, keep_tsv = FALSE, skip, ...) {
+dt_read <- function(fb_occurrence_obj) {
+
+  select <- fb_occurrence_obj[["select"]]
+
+  n <- fb_occurrence_obj[["n"]]
+
+  quiet <- fb_occurrence_obj[["quiet"]]
+
+  dt <- fb_occurrence_obj[["dt"]]
+
+  keep_tsv <- fb_occurrence_obj[["keep_tsv"]]
+
+  skip <- fb_occurrence_obj[["skip"]]
 
   args <- list(
-    ..., nrows = 0, showProgress = !quiet, data.table = dt, na.strings = "",
+    nrows = 0, showProgress = !quiet, data.table = dt, na.strings = "",
     quote = "", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE,
     skip = 0L
   )
+
+  args <- c(fb_occurrence_obj[["dt_args"]], args)
 
   if (utils::hasName(args, "zip")) {
 
