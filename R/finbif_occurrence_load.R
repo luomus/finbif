@@ -181,7 +181,7 @@ finbif_occurrence_load <- function(
 
   fb_occurrence_df <- compute_citation(fb_occurrence_df)
 
-  fb_occurrence_df <- compute_coordinates_uncertainty(fb_occurrence_df)
+  fb_occurrence_df <- compute_coordinate_uncertainty(fb_occurrence_df)
 
   df <- compute_scientific_name(fb_occurrence_df)
 
