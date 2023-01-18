@@ -1397,12 +1397,16 @@ expand_lite_cols <- function(df) {
 
     if (utils::hasName(df, col_nm) && !all(is.na(df[[col_nm]]))) {
 
+      df_col <- df[[col_nm]]
+
+      attr(df_col, "locale") <- attr(file_vars, "locale", TRUE)
+
       split_cols <- switch(
         type,
-        taxon = split_taxa_col(df[[col_nm]], attr(file_vars, "locale")),
-        date_time = split_dt_col(df[[col_nm]]),
-        coordinates_euref = split_coord_euref_col(df[[col_nm]]),
-        coords = split_coord_col(df[[col_nm]]),
+        taxon = split_taxa_col(df_col),
+        date_time = split_dt_col(df_col),
+        coordinates_euref = split_coord_euref_col(df_col),
+        coords = split_coord_col(df_col),
       )
 
       new_cols <- switch(
@@ -1449,7 +1453,9 @@ expand_lite_cols <- function(df) {
 }
 
 #' @noRd
-split_taxa_col <- function(col, locale) {
+split_taxa_col <- function(col) {
+
+  locale <- attr(col, "locale", TRUE)
 
   split_cols <- split_col(col, " \u2014 ")
 
