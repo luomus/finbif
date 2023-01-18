@@ -715,7 +715,9 @@ compute_scientific_name <- function(df, select_, dwc, add = TRUE) {
 
 add_authors <- function(names, authors) {
 
-  authors <- ifelse(nchar(authors) > 1L, paste0(" ", authors), "")
+  authors <- ifelse(
+    nchar(authors) > 1L & !is.na(authors), paste0(" ", authors), ""
+  )
 
   ifelse(is.na(names), names, paste0(names, authors))
 

@@ -206,6 +206,7 @@ infer_selection <- function(aggregate, select, include_facts, var_type) {
           "unit.interpretations.individualCount", "unit.abundanceString",
           "gathering.interpretations.coordinateAccuracy",
           "unit.linkings.taxon.scientificName", "unit.taxonVerbatim",
+          "unit.linkings.taxon.scientificNameAuthorship", "unit.author",
           "document.sourceId"
         )
       )
