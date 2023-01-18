@@ -124,48 +124,48 @@ finbif_occurrence_load <- function(
 
   fb_records_obj[["select"]] <- select
 
-  df <- read_finbif_tsv(fb_records_obj)
+  fb_occurrence_df <- read_finbif_tsv(fb_records_obj)
 
   if (count_only) {
 
-    return(df)
+    return(fb_occurrence_df)
 
   }
 
-  file_vars <- attr(df, "file_vars")
+  file_vars <- attr(fb_occurrence_df, "file_vars")
 
   select[["lite"]] <- attr(file_vars, "lite")
 
-  attr(df, "locale") <- locale
+  attr(fb_occurrence_df, "locale") <- locale
 
-  df <- localise_enums(df)
+  fb_occurrence_df <- localise_enums(fb_occurrence_df)
 
-  n_recs <- attr(df, "nrow")
+  n_recs <- attr(fb_occurrence_df, "nrow")
 
-  url <- attr(df, "url")
+  url <- attr(fb_occurrence_df, "url")
 
-  names(df) <- fix_issue_vars(names(df))
+  names(fb_occurrence_df) <- fix_issue_vars(names(fb_occurrence_df))
 
   select <- select_facts(select)
 
-  attr(df, "select") <- select
+  attr(fb_occurrence_df, "select") <- select
 
-  df <- new_vars(df)
+  fb_occurrence_df <- new_vars(fb_occurrence_df)
 
   record_id <- file_vars[["translated_var"]] == "record_id"
 
   record_id <- rownames(file_vars[record_id, ])
 
-  record_id <- df[[record_id]]
+  record_id <- fb_occurrence_df[[record_id]]
 
-  df <- expand_lite_cols(df)
+  fb_occurrence_df <- expand_lite_cols(fb_occurrence_df)
 
-  nms <- file_vars[names(df), var_type]
+  nms <- file_vars[names(fb_occurrence_df), var_type]
 
-  names(df) <- ifelse(is.na(nms), names(df), nms)
+  names(fb_occurrence_df) <- ifelse(is.na(nms), names(fb_occurrence_df), nms)
 
   fb_occurrence_df <- structure(
-    df,
+    fb_occurrence_df,
     select_user = select[["user"]],
     column_names = select[["user"]],
     aggregate = "none",
@@ -185,24 +185,20 @@ finbif_occurrence_load <- function(
 
   fb_occurrence_df <- compute_coordinate_uncertainty(fb_occurrence_df)
 
-  df <- compute_scientific_name(fb_occurrence_df)
+  fb_occurrence_df <- compute_scientific_name(fb_occurrence_df)
 
-  for (i in names(df)) {
-
-    df[[i]] <- add_nas(df, i, var_type, file_vars)
-
-  }
+  fb_occurrence_df <- add_nas(fb_occurrence_df)
 
   if (select[["all"]]) {
 
-    select[["user"]] <- names(df)
+    select[["user"]] <- names(fb_occurrence_df)
 
   } else {
 
     date_time_method <- det_datetime_method(date_time_method, n_recs)
 
     fb_occurrence_df <- structure(
-      df,
+      fb_occurrence_df,
       select_user = select[["user"]],
       column_names = select[["user"]],
       aggregate = "none",
@@ -220,26 +216,26 @@ finbif_occurrence_load <- function(
 
     fb_occurrence_df <- compute_iso8601(fb_occurrence_df)
 
-    df <- any_issues(fb_occurrence_df)
+    fb_occurrence_df <- any_issues(fb_occurrence_df)
 
-    for (extra_var in setdiff(select[["user"]], names(df))) {
+    for (extra_var in setdiff(select[["user"]], names(fb_occurrence_df))) {
 
       ind <- var_names[[var_type]] == extra_var
 
-      df[[extra_var]] <- cast_to_type(
-        rep_len(NA, nrow(df)), var_names[ind, "type"]
+      fb_occurrence_df[[extra_var]] <- cast_to_type(
+        rep_len(NA, nrow(fb_occurrence_df)), var_names[ind, "type"]
       )
 
     }
 
   }
 
-  attr(df, "file_cols") <- NULL
-  attr(df, "file_vars") <- NULL
+  attr(fb_occurrence_df, "file_cols") <- NULL
+  attr(fb_occurrence_df, "file_vars") <- NULL
 
-  df <- structure(
-    df,
-    class     = c("finbif_occ", class(df)),
+  fb_occurrence_df <- structure(
+    fb_occurrence_df,
+    class     = c("finbif_occ", class(fb_occurrence_df)),
     nrec_dnld = n_recs,
     nrec_avl  = n_recs,
     url       = url,
@@ -278,18 +274,18 @@ finbif_occurrence_load <- function(
     )
 
     select[["user"]] <- c(
-      names(df[select[["user"]]]), setdiff(names(facts_df), id)
+      names(fb_occurrence_df[select[["user"]]]), setdiff(names(facts_df), id)
     )
 
-    df <- bind_facts(df, facts_df)
+    fb_occurrence_df <- bind_facts(fb_occurrence_df, facts_df)
 
   }
 
   if (short) {
 
-    short_nms <- short_nms(file_vars, var_type)[names(df)]
+    short_nms <- short_nms(file_vars, var_type)[names(fb_occurrence_df)]
 
-    short_fcts <- grep("_fact__", names(df), value = TRUE)
+    short_fcts <- grep("_fact__", names(fb_occurrence_df), value = TRUE)
 
     short_fcts <- sub("^.*_fact__", "", short_fcts)
 
@@ -306,26 +302,26 @@ finbif_occurrence_load <- function(
     missing <- which(short_nms == "f")
 
     short_nms[missing] <- abbreviate(
-      gsub("[^A-Za-z]", "", names(df)[missing]), 10L
+      gsub("[^A-Za-z]", "", names(fb_occurrence_df)[missing]), 10L
     )
 
-    names(df) <- short_nms
+    names(fb_occurrence_df) <- short_nms
 
-    select[["user"]] <- names(df)
+    select[["user"]] <- names(fb_occurrence_df)
 
   }
 
   select[["user"]] <- name_chr_vec(select[["user"]])
 
-  df <- df[, select[["user"]], drop = FALSE]
+  fb_occurrence_df <- fb_occurrence_df[, select[["user"]], drop = FALSE]
 
-  names(df) <- names(select[["user"]])
+  names(fb_occurrence_df) <- names(select[["user"]])
 
-  attr(df, "column_names") <- select[["user"]]
+  attr(fb_occurrence_df, "column_names") <- select[["user"]]
 
-  attr(df, "drop_na") <- drop_na
+  attr(fb_occurrence_df, "drop_na") <- drop_na
 
-  drop_na_col(df)
+  drop_na_col(fb_occurrence_df)
 
 }
 
@@ -686,35 +682,45 @@ get_zip <- function(url, quiet, cache, write_file) {
 }
 
 #' @noRd
-add_nas <- function(df, nm, var_type, file_vars) {
+add_nas <- function(df) {
 
-  ans <- df[[nm]]
+  dwc <- attr(df, "dwc", TRUE)
 
-  if (all(is.na(ans))) {
+  var_type <- var_type <- col_type_string(dwc)
 
-    ind <- file_vars[[var_type]] == nm
+  file_vars <- attr(df, "file_vars", TRUE)
 
-    l <- length(which(ind))
+  for (nm in names(df)) {
 
-    if (l > 1L) {
+    ans <- df[[nm]]
 
-      ind <- ind & file_vars[["superseeded"]] == "FALSE"
-
-    }
-
-    if (l < 1L) {
-
-      file_vars <- var_names
+    if (all(is.na(ans))) {
 
       ind <- file_vars[[var_type]] == nm
 
-    }
+      l <- length(which(ind))
 
-    ans <- cast_to_type(ans, file_vars[ind, "type"])
+      if (l > 1L) {
+
+        ind <- ind & file_vars[["superseeded"]] == "FALSE"
+
+      }
+
+      if (l < 1L) {
+
+        file_vars <- var_names
+
+        ind <- file_vars[[var_type]] == nm
+
+      }
+
+      df[[nm]] <- cast_to_type(ans, file_vars[ind, "type"])
+
+    }
 
   }
 
-  ans
+  df
 
 }
 
