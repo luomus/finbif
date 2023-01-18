@@ -7,7 +7,10 @@ api_get <- function(obj) {
 
   finbif_access_token <- token()
 
-  if (is.null(finbif_access_token)) {
+  finbif_access_token_null <- is.null(finbif_access_token)
+
+  if (finbif_access_token_null) {
+
     stop(
       "Access token for FinBIF has not been set. Use finbif_get_token() to \n",
       "have an access token sent to your email address. Then set it as the \n",
@@ -15,6 +18,7 @@ api_get <- function(obj) {
       "Sys.setenv(FINBIF_ACCESS_TOKEN = \"<access_token_sent_to_your_email>\")",
       call. = FALSE
     )
+
   }
 
   url <- getOption("finbif_api_url")
@@ -23,16 +27,19 @@ api_get <- function(obj) {
 
   hash <- NULL
 
-  if (obj[["cache"]]) {
+  cache <- obj[["cache"]]
 
-    hash <- digest::digest(
-      list(
-        sub(".*://", "", url),
-        version,
-        obj[["path"]],
-        obj[["query"]]
-      )
-    )
+  query <- obj[["query"]]
+
+  path <- obj[["path"]]
+
+  if (cache) {
+
+    url_sans_protocol <- sub(".*://", "", url)
+
+    query_list <- list(url_sans_protocol, version, path, query)
+
+    hash <- digest::digest(query_list)
 
     fcp <- getOption("finbif_cache_path")
 
@@ -40,17 +47,55 @@ api_get <- function(obj) {
 
       cached_obj <- get_cache(hash)
 
-      if (!is.null(cached_obj)) return(cached_obj)
+      has_cached_obj <- !is.null(cached_obj)
 
-      on.exit(if (!is.null(obj)) set_cache(list(data = obj, hash = hash)))
+      if (has_cached_obj) {
+
+        return(cached_obj)
+
+      }
+
+      on.exit({
+
+        has_obj <- !is.null(obj)
+
+        if (has_obj) {
+
+          cache_object <- list(data = obj, hash = hash)
+
+          set_cache(cache_object)
+
+        }
+
+      })
 
     } else {
 
-      cache_file <- file.path(fcp, paste0("finbif_cache_file_", hash))
+      cache_file_name <- paste0("finbif_cache_file_", hash)
 
-      if (file.exists(cache_file)) return(readRDS(cache_file))
+      cache_file_path <- file.path(fcp, cache_file_name)
 
-      on.exit(if (!is.null(obj)) saveRDS(obj, cache_file))
+      cache_file_exists <- file.exists(cache_file_path)
+
+      if (cache_file_exists) {
+
+        cached_obj <- readRDS(cache_file_path)
+
+        return(cached_obj)
+
+      }
+
+      on.exit({
+
+        has_obj <- !is.null(obj)
+
+        if (has_obj) {
+
+          saveRDS(obj, cache_file_path)
+
+        }
+
+      })
 
     }
   }
@@ -62,9 +107,13 @@ api_get <- function(obj) {
 
   email <- getOption("finbif_email")
 
-  if (!is.null(email)) {
+  has_email <- !is.null(email)
 
-    obj[["query"]] <- c(obj[["query"]], list(personEmail = email))
+  if (has_email) {
+
+    email_par <- list(personEmail = email)
+
+    query <- c(query, email_par)
 
   }
 
@@ -72,48 +121,93 @@ api_get <- function(obj) {
     "FINBIF_RESTRICTED_ACCESS_TOKEN", "unset"
   )
 
-  obj[["query"]] <- switch(
+  finbif_restricted_access_token_par <- list(
+    permissionToken = finbif_restricted_access_token
+  )
+
+  query_with_finbif_restricted_access_token <- c(
+    query, finbif_restricted_access_token_par
+  )
+
+  query <- switch(
     finbif_restricted_access_token,
-    unset = obj[["query"]],
-    c(obj[["query"]], list(permissionToken = finbif_restricted_access_token))
+    unset = query,
+    query_with_finbif_restricted_access_token
   )
 
   # Pausing between requests is important if many request will be made
-  Sys.sleep(1 / getOption("finbif_rate_limit"))
+  rate_limit <- getOption("finbif_rate_limit")
 
-  agent <- paste0(
-    "https://github.com/luomus/finbif#", utils::packageVersion("finbif")
-  )
+  sleep <- 1 / rate_limit
+
+  Sys.sleep(sleep)
+
+  url_path <- sprintf("%s/%s/%s", url, version, path)
+
+  pkg_version <- utils::packageVersion("finbif")
+
+  calling_fun <- get_calling_function("finbif")
+
+  agent <- paste0("https://github.com/luomus/finbif#", pkg_version)
+
+  agent <- paste0(agent, ":", calling_fun)
 
   agent <- Sys.getenv("FINBIF_USER_AGENT", agent)
 
+  agent <- httr::user_agent(agent)
+
+  accept <- httr::accept_json()
+
+  finbif_access_token_par <- list(access_token = finbif_access_token)
+
+  query <- c(query, finbif_access_token_par)
+
+  times <- getOption("finbif_retry_times")
+
+  pause_base <- getOption("finbif_retry_pause_base")
+
+  pause_cap <- getOption("finbif_retry_pause_cap")
+
+  pause_min <- getOption("finbif_retry_pause_min")
+
   resp <- httr::RETRY(
-    "GET",
-    sprintf("%s/%s/%s", url, version, obj[["path"]]),
-    httr::user_agent(paste0(agent, ":", get_calling_function("finbif"))),
-    httr::accept_json(),
-    query = c(obj[["query"]], list(access_token = finbif_access_token)),
-    times = getOption("finbif_retry_times"),
-    pause_base = getOption("finbif_retry_pause_base"),
-    pause_cap = getOption("finbif_retry_pause_cap"),
-    pause_min = getOption("finbif_retry_pause_min"),
+    verb = "GET",
+    url = url_path,
+    agent,
+    accept,
+    query = query,
+    times = times,
+    pause_base = pause_base,
+    pause_cap = pause_cap,
+    pause_min = pause_min,
     terminate_on = 404L
   )
 
-  notoken <- sub(
-    paste0("&access_token=", finbif_access_token), "", resp[["url"]]
+  resp_url <- resp[["url"]]
+
+  finbif_access_token_str <- paste0("&access_token=", finbif_access_token)
+
+  notoken <- gsub(finbif_access_token_str, "", resp_url)
+
+  email_str <- paste0("&personEmail=", email)
+
+  notoken <- gsub(email_str, "", notoken)
+
+  finbif_restricted_access_token_str <- paste0(
+    "&permissionToken=", finbif_restricted_access_token
   )
 
-  notoken <- sub(paste0("&personEmail=", email), "", notoken)
-
-  notoken <- sub(
-    paste0("&permissionToken=", finbif_restricted_access_token), "", notoken
-  )
+  notoken <- gsub(finbif_restricted_access_token_str, "", notoken)
 
   resp[["url"]] <- notoken
+
   resp[["request"]][["url"]] <- notoken
 
-  if (httr::http_type(resp) != "application/json") {
+  resp_type <- httr::http_type(resp)
+
+  resp_not_json <- !identical(resp_type, "application/json")
+
+  if (resp_not_json) {
 
     obj <- NULL
 
@@ -123,22 +217,28 @@ api_get <- function(obj) {
 
   parsed <- httr::content(resp)
 
-  if (httr::status_code(resp) != 200L) {
+  status_code <- httr::status_code(resp)
+
+  status_code_error <- !identical(status_code, 200L)
+
+  if (status_code_error) {
 
     obj <- NULL
 
-    stop(
-      sprintf(
-        "API request failed [%s]\n%s>",
-        httr::status_code(resp),
-        parsed[["message"]]
-      ),
-      call. = FALSE
+    err_msg_body <- parsed[["message"]]
+
+    err_msg <- sprintf(
+      "API request failed [%s]\n%s>", status_code, err_msg_body
     )
+
+    stop(err_msg, call. = FALSE)
+
   }
 
   obj[["content"]] <- parsed
+
   obj[["response"]] <- resp
+
   obj[["hash"]] <- hash
 
   structure(obj, class = "finbif_api")
