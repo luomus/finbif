@@ -857,6 +857,8 @@ dt_read <- function(fb_occurrence_obj) {
 
   file_vars <- infer_file_vars(cols)
 
+  select[["file_vars"]] <- file_vars
+
   if (attr(file_vars, "lite")) {
 
     args[["quote"]] <- "\""
@@ -865,7 +867,7 @@ dt_read <- function(fb_occurrence_obj) {
 
   if (select[["all"]]) {
 
-    args[["select"]] <- which(!cols %in% deselect(select, file_vars))
+    args[["select"]] <- which(!cols %in% deselect(select))
 
   } else {
 
@@ -993,6 +995,8 @@ rd_read <- function(fb_occurrence_obj) {
 
   file_vars <- infer_file_vars(cols)
 
+  select[["file_vars"]] <- file_vars
+
   if (attr(file_vars, "lite")) {
 
     quote <- "\""
@@ -1024,7 +1028,7 @@ rd_read <- function(fb_occurrence_obj) {
 
   }
 
-  idx <- !cols %in% deselect(select, file_vars)
+  idx <- !cols %in% deselect(select)
 
   df <- df[idx]
 
@@ -1037,8 +1041,9 @@ rd_read <- function(fb_occurrence_obj) {
 }
 
 #' @noRd
-deselect <- function(select, file_vars) {
+deselect <- function(select) {
 
+  file_vars <- select[["file_vars"]]
   deselect <- var_names[select[["deselect"]], select[["type"]]]
   deselect <- file_vars[[select[["type"]]]] %in% deselect
   row.names(file_vars[deselect, ])
