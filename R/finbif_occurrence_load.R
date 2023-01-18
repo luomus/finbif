@@ -148,7 +148,9 @@ finbif_occurrence_load <- function(
 
   select <- select_facts(select)
 
-  df <- new_vars(df, deselect, file_vars, !select[["all"]])
+  attr(df, "select") <- select
+
+  df <- new_vars(df)
 
   record_id <- file_vars[["translated_var"]] == "record_id"
 
@@ -525,7 +527,15 @@ fix_issue_vars <- function(x) {
 }
 
 #' @noRd
-new_vars <- function(df, deselect, file_vars, add = TRUE) {
+new_vars <- function(df) {
+
+  file_vars <- attr(df, "file_vars", TRUE)
+
+  select <- attr(df, "select", TRUE)
+
+  deselect <- select[["deselect"]]
+
+  add <- !select[["all"]]
 
   if (is.null(attr(df, "file_cols"))) {
 

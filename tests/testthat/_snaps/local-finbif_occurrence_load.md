@@ -11,12 +11,69 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["http://127.0.0.1:35239/HBF.49381"]
+          "value": ["http://127.0.0.1:42599/HBF.49381"]
         },
         "nrow": {
           "type": "integer",
           "attributes": {},
           "value": [335]
+        },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            }
+          ]
         },
         "select_user": {
           "type": "character",
@@ -48,11 +105,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -237,6 +289,63 @@
           "attributes": {},
           "value": [335]
         },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            }
+          ]
+        },
         "select_user": {
           "type": "character",
           "attributes": {},
@@ -267,11 +376,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -449,12 +553,69 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["http://127.0.0.1:37215/HBF.49381"]
+          "value": ["http://127.0.0.1:42599/HBF.49381"]
         },
         "nrow": {
           "type": "integer",
           "attributes": {},
           "value": [335]
+        },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            }
+          ]
         },
         "select_user": {
           "type": "character",
@@ -486,11 +647,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -673,7 +829,64 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["http://127.0.0.1:37215/HBF.49381"]
+          "value": ["http://127.0.0.1:42599/HBF.49381"]
+        },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            }
+          ]
         },
         "select_user": {
           "type": "character",
@@ -705,11 +918,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -887,12 +1095,69 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["http://127.0.0.1:37215/HBF.49381"]
+          "value": ["http://127.0.0.1:42599/HBF.49381"]
         },
         "nrow": {
           "type": "integer",
           "attributes": {},
           "value": [335]
+        },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            }
+          ]
         },
         "select_user": {
           "type": "character",
@@ -924,11 +1189,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -1113,6 +1373,63 @@
           "attributes": {},
           "value": [335]
         },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            }
+          ]
+        },
         "select_user": {
           "type": "character",
           "attributes": {},
@@ -1143,11 +1460,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -1331,6 +1643,68 @@
           "type": "character",
           "attributes": {},
           "value": ["HBF.49381.zip"]
+        },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "facts", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            }
+          ]
         },
         "select_user": {
           "type": "character",
@@ -1362,11 +1736,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -1590,6 +1959,63 @@
           "attributes": {},
           "value": [1051]
         },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            }
+          ]
+        },
         "select_user": {
           "type": "character",
           "attributes": {},
@@ -1620,11 +2046,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -1809,6 +2230,63 @@
           "attributes": {},
           "value": [1225]
         },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            }
+          ]
+        },
         "select_user": {
           "type": "character",
           "attributes": {},
@@ -1839,11 +2317,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -2021,12 +2494,69 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpuEuJs2/file584869cedd0b.tsv"]
+          "value": ["/tmp/Rtmps8wUpN/file55a632160fd4.tsv"]
         },
         "nrow": {
           "type": "integer",
           "attributes": {},
           "value": [32]
+        },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            }
+          ]
         },
         "select_user": {
           "type": "character",
@@ -2058,11 +2588,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -2240,12 +2765,69 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpuEuJs2/file58481020ecf7.tsv"]
+          "value": ["/tmp/Rtmps8wUpN/file55a64cf11da7.tsv"]
         },
         "nrow": {
           "type": "integer",
           "attributes": {},
           "value": [32]
+        },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            }
+          ]
         },
         "select_user": {
           "type": "character",
@@ -2277,11 +2859,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -2466,6 +3043,63 @@
           "attributes": {},
           "value": [335]
         },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            }
+          ]
+        },
         "select_user": {
           "type": "character",
           "attributes": {},
@@ -2496,11 +3130,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
@@ -2685,6 +3314,63 @@
           "attributes": {},
           "value": [1051]
         },
+        "locale": {
+          "type": "character",
+          "attributes": {},
+          "value": ["en"]
+        },
+        "select": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "document.sourceId"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": []
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [false]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["translated_var"]
+            },
+            {
+              "type": "logical",
+              "attributes": {},
+              "value": [true]
+            }
+          ]
+        },
         "select_user": {
           "type": "character",
           "attributes": {},
@@ -2715,11 +3401,6 @@
           "type": "character",
           "attributes": {},
           "value": ["Etc/UTC"]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
         },
         "include_new_cols": {
           "type": "logical",
