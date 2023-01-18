@@ -87,7 +87,7 @@ finbif_occurrence_load <- function(
   short <- FALSE
   deselect <- character()
 
-  if (!is.null(select) && any(c("all", "short") %in% select)) {
+  if (any(c("all", "short") %in% select)) {
 
     short <- identical(select[[1L]], "short")
 
