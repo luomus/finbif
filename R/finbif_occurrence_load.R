@@ -692,7 +692,7 @@ add_nas <- function(df) {
 
   dwc <- attr(df, "dwc", TRUE)
 
-  var_type <- var_type <- col_type_string(dwc)
+  var_type <- col_type_string(dwc)
 
   file_vars <- attr(df, "file_vars", TRUE)
 
