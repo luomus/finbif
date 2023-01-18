@@ -134,6 +134,8 @@ finbif_occurrence_load <- function(
 
   file_vars <- attr(fb_occurrence_df, "file_vars")
 
+  attr(file_vars, "var_type") <- var_type
+
   select[["lite"]] <- attr(file_vars, "lite")
 
   attr(fb_occurrence_df, "locale") <- locale
@@ -291,7 +293,7 @@ finbif_occurrence_load <- function(
 
   if (short) {
 
-    short_nms <- short_nms(file_vars, var_type)[names(fb_occurrence_df)]
+    short_nms <- short_nms(file_vars)[names(fb_occurrence_df)]
 
     short_fcts <- grep("_fact__", names(fb_occurrence_df), value = TRUE)
 
@@ -1125,7 +1127,9 @@ bind_facts <- function(x) {
 }
 
 #' @noRd
-short_nms <- function(file_vars, var_type) {
+short_nms <- function(file_vars) {
+
+  var_type <- attr(file_vars, "var_type", TRUE)
 
   short_nms <- c(file_vars[["shrtnm"]], "abund", "crdUncert", "sciNm")
 
