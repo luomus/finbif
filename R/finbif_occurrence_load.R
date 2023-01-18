@@ -268,10 +268,16 @@ finbif_occurrence_load <- function(
       document = file_vars[["Document.DocumentID", var_type]]
     )
 
-    facts_df <- spread_facts(
-      facts_df, facts[[fact_type]], fact_type, id, type_convert_facts,
-      drop_facts_na
+    facts_df <- structure(
+      facts_df,
+      facts = facts[[fact_type]],
+      fact_type = fact_type,
+      id = id,
+      type_convert_facts = type_convert_facts,
+      drop_facts_na = drop_facts_na
     )
+
+    facts_df <- spread_facts(facts_df)
 
     select[["user"]] <- c(
       names(fb_occurrence_df[select[["user"]]]), setdiff(names(facts_df), id)
@@ -997,9 +1003,17 @@ select_facts <- function(select) {
 }
 
 #' @noRd
-spread_facts <-  function(
-  facts, select, type, id, type_convert_facts, drop_facts_na
-) {
+spread_facts <-  function(facts) {
+
+  select <- attr(facts, "facts", TRUE)
+
+  type <- attr(facts, "fact_type", TRUE)
+
+  id <- attr(facts, "id", TRUE)
+
+  type_convert_facts <- attr(facts, "type_convert_facts", TRUE)
+
+  drop_facts_na <- attr(facts, "drop_facts_na", TRUE)
 
   if (inherits(facts, "try-error")) {
 
