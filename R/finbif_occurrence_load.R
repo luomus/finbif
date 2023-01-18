@@ -63,16 +63,10 @@ finbif_occurrence_load <- function(
   file, select = NULL, n = -1, count_only = FALSE,
   quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method = NULL,
-  tzone = getOption("finbif_tz"), write_file = tempfile(), dt, keep_tsv = FALSE,
-  facts = list(), type_convert_facts = TRUE, drop_na = FALSE,
+  tzone = getOption("finbif_tz"), write_file = tempfile(), dt = NA,
+  keep_tsv = FALSE, facts = list(), type_convert_facts = TRUE, drop_na = FALSE,
   drop_facts_na = drop_na, locale = getOption("finbif_locale"), skip = 0
 ) {
-
-  if (missing(dt)) {
-
-    dt <- NULL
-
-  }
 
   fb_records_obj <- list(
     file = preprocess_data_file(file),
@@ -429,7 +423,7 @@ attempt_read <- function(
   file, tsv, select, count_only, n, quiet, dt, keep_tsv, skip
 ) {
 
-  if (is.null(dt)) {
+  if (is.na(dt)) {
 
     use_dt <- TRUE
 

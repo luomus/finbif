@@ -16,7 +16,7 @@ finbif_occurrence_load(
   date_time_method = NULL,
   tzone = getOption("finbif_tz"),
   write_file = tempfile(),
-  dt,
+  dt = NA,
   keep_tsv = FALSE,
   facts = list(),
   type_convert_facts = TRUE,
