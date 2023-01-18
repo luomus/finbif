@@ -342,25 +342,11 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
   fb_occurrenc_obj[["file"]] <- file
 
-  select <- fb_occurrenc_obj[["select"]]
-
   n <- fb_occurrenc_obj[["n"]]
 
   count_only <- fb_occurrenc_obj[["count_only"]]
 
-  quiet <- fb_occurrenc_obj[["quiet"]]
-
-  cache <- fb_occurrenc_obj[["cache"]]
-
-  write_file <- fb_occurrenc_obj[["write_file"]]
-
-  dt <- fb_occurrenc_obj[["dt"]]
-
-  keep_tsv <- fb_occurrenc_obj[["keep_tsv"]]
-
   facts <- fb_occurrenc_obj[["facts"]]
-
-  skip <- fb_occurrenc_obj[["skip"]]
 
   ptrn <- "^https?://.+?/HBF\\."
 
@@ -444,19 +430,11 @@ attempt_read <- function(fb_occurrence_obj) {
 
   tsv <- fb_occurrence_obj[["tsv"]]
 
-  select <- fb_occurrence_obj[["select"]]
-
   count_only <- fb_occurrence_obj[["count_only"]]
 
   n <- fb_occurrence_obj[["n"]]
 
-  quiet <- fb_occurrence_obj[["quiet"]]
-
   dt <- fb_occurrence_obj[["dt"]]
-
-  keep_tsv <- fb_occurrence_obj[["keep_tsv"]]
-
-  skip <- fb_occurrence_obj[["skip"]]
 
   if (is.na(dt)) {
 
