@@ -158,7 +158,7 @@ finbif_occurrence_load <- function(
 
   record_id <- df[[record_id]]
 
-  df <- expand_lite_cols(df, !select[["all"]])
+  df <- expand_lite_cols(df)
 
   nms <- file_vars[names(df), var_type]
 
@@ -1282,7 +1282,11 @@ write_tsv <- function(df) {
 }
 
 #' @noRd
-expand_lite_cols <- function(df, add = TRUE) {
+expand_lite_cols <- function(df) {
+
+  select <- attr(df, "select", TRUE)
+
+  add <- !select[["all"]]
 
   file_vars <- attr(df, "file_vars")
 
