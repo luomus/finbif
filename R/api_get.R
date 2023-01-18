@@ -100,9 +100,10 @@ api_get <- function(obj) {
     }
   }
 
+  allow <- getOption("finbif_allow_query")
+
   stopifnot(
-    "Request not cached and option:finbif_allow_query = FALSE" =
-      getOption("finbif_allow_query")
+    "Request not cached and option:finbif_allow_query = FALSE" = allow
   )
 
   email <- getOption("finbif_email")
