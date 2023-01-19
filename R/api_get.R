@@ -5,11 +5,11 @@
 
 api_get <- function(obj) {
 
-  finbif_access_token <- token()
+  fb_access_token <- token()
 
-  finbif_access_token_null <- is.null(finbif_access_token)
+  fb_access_token_null <- is.null(fb_access_token)
 
-  if (finbif_access_token_null) {
+  if (fb_access_token_null) {
 
     stop(
       "Access token for FinBIF has not been set. Use finbif_get_token() to \n",
@@ -98,13 +98,12 @@ api_get <- function(obj) {
       })
 
     }
+
   }
 
   allow <- getOption("finbif_allow_query")
 
-  stopifnot(
-    "Request not cached and option:finbif_allow_query = FALSE" = allow
-  )
+  stopifnot("Request not cached and option:finbif_allow_query = FALSE" = allow)
 
   email <- getOption("finbif_email")
 
@@ -118,22 +117,18 @@ api_get <- function(obj) {
 
   }
 
-  finbif_restricted_access_token <- Sys.getenv(
+  fb_restricted_access_token <- Sys.getenv(
     "FINBIF_RESTRICTED_ACCESS_TOKEN", "unset"
   )
 
-  finbif_restricted_access_token_par <- list(
-    permissionToken = finbif_restricted_access_token
+  fb_restricted_access_token_par <- list(
+    permissionToken = fb_restricted_access_token
   )
 
-  query_with_finbif_restricted_access_token <- c(
-    query, finbif_restricted_access_token_par
-  )
+  query_w_fb_restricted_access <- c(query, fb_restricted_access_token_par)
 
   query <- switch(
-    finbif_restricted_access_token,
-    unset = query,
-    query_with_finbif_restricted_access_token
+    fb_restricted_access_token, unset = query, query_w_fb_restricted_access
   )
 
   # Pausing between requests is important if many request will be made
@@ -159,9 +154,9 @@ api_get <- function(obj) {
 
   accept <- httr::accept_json()
 
-  finbif_access_token_par <- list(access_token = finbif_access_token)
+  fb_access_token_par <- list(access_token = fb_access_token)
 
-  query <- c(query, finbif_access_token_par)
+  query <- c(query, fb_access_token_par)
 
   times <- getOption("finbif_retry_times")
 
@@ -186,19 +181,19 @@ api_get <- function(obj) {
 
   resp_url <- resp[["url"]]
 
-  finbif_access_token_str <- paste0("&access_token=", finbif_access_token)
+  fb_access_token_str <- paste0("&access_token=", fb_access_token)
 
-  notoken <- gsub(finbif_access_token_str, "", resp_url)
+  notoken <- gsub(fb_access_token_str, "", resp_url)
 
   email_str <- paste0("&personEmail=", email)
 
   notoken <- gsub(email_str, "", notoken)
 
-  finbif_restricted_access_token_str <- paste0(
-    "&permissionToken=", finbif_restricted_access_token
+  fb_restricted_access_token_str <- paste0(
+    "&permissionToken=", fb_restricted_access_token
   )
 
-  notoken <- gsub(finbif_restricted_access_token_str, "", notoken)
+  notoken <- gsub(fb_restricted_access_token_str, "", notoken)
 
   resp[["url"]] <- notoken
 
@@ -292,13 +287,11 @@ get_calling_function <- function(pkg) {
 
   n_args <- length(args)
 
-  no_args <- identical(n_args, 0L)
+  has_args <- n_args > 0L
 
-  if (no_args) {
+  arg_nm_strs <- ""
 
-    arg_nm_strs <- ""
-
-  } else {
+  if (has_args) {
 
     type <- vapply(args, typeof, "")
 
