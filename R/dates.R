@@ -172,21 +172,34 @@ parse_date <- function(date) {
 }
 
 #' @noRd
+
 format_date <- function(obj) {
 
-  if (inherits(obj[["begin"]], "Date")) {
+  begin <- obj[["begin"]]
 
-    obj[["begin"]] <- format.Date(obj[["begin"]], obj[["format"]])
+  begin_is_date <- inherits(begin, "Date")
+
+  end <- obj[["end"]]
+
+  end_is_date <- inherits(end, "Date")
+
+  format <- obj[["format"]]
+
+  if (begin_is_date) {
+
+    begin <- format.Date(begin, format)
 
   }
 
-  if (inherits(obj[["end"]], "Date")) {
+  if (end_is_date) {
 
-    obj[["end"]] <- format.Date(obj[["end"]], obj[["format"]])
+    end <- format.Date(end, format)
 
   }
 
-  paste(c(obj[["begin"]], obj[["end"]]), collapse = "/")
+  dates <- c(begin, end)
+
+  paste(dates, collapse = "/")
 
 }
 
