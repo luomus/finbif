@@ -62,7 +62,7 @@ dates <- function(obj) {
 }
 
 #' @noRd
-#' @importFrom lubridate int_end int_start
+#' @importFrom lubridate as_date int_end int_start period rollback
 
 date_range_ymd <- function(obj) {
 
@@ -114,7 +114,61 @@ date_range_ymd <- function(obj) {
 
   }
 
-  date_range_ymd2(obj)
+  begin_is_year <- inherits(begin, "y")
+
+  if (begin_is_year) {
+
+    obj[["begin"]] <- paste0(begin, "-01")
+
+    ans <- date_range_ymd(obj)
+
+    return(ans)
+
+  }
+
+  end_is_year <- inherits(end, "y")
+
+  if (end_is_year) {
+
+    obj[["end"]] <- paste0(end, "-12")
+
+    ans <- date_range_ymd(obj)
+
+    return(ans)
+
+  }
+
+  begin_is_year_month <- inherits(begin, "ym")
+
+  if (begin_is_year_month) {
+
+    obj[["begin"]] <- paste0(begin, "-01")
+
+    ans <- date_range_ymd(obj)
+
+    return(ans)
+
+  }
+
+  end_is_year_month <- inherits(end, "ym")
+
+  if (end_is_year_month) {
+
+    end <- paste0(end, "-01")
+
+    end <- lubridate::as_date(end)
+
+    month <- lubridate::period(month = 1L)
+
+    end <- end + month
+
+    obj[["end"]] <- lubridate::rollback(end)
+
+    ans <- date_range_ymd(obj)
+
+    return(ans)
+
+  }
 
 }
 
@@ -204,47 +258,7 @@ format_date <- function(obj) {
 }
 
 #' @noRd
-date_range_ymd2 <- function(obj) {
 
-  if (inherits(obj[["begin"]], "y")) {
-
-    obj[["begin"]] <- paste0(obj[["begin"]], "-01")
-
-    return(date_range_ymd(obj))
-
-  }
-
-  if (inherits(obj[["end"]], "y")) {
-
-    obj[["end"]] <- paste0(obj[["end"]], "-12")
-
-    return(date_range_ymd(obj))
-
-  }
-
-  if (inherits(obj[["begin"]], "ym")) {
-
-    obj[["begin"]] <- paste0(obj[["begin"]], "-01")
-
-    return(date_range_ymd(obj))
-
-  }
-
-  if (inherits(obj[["end"]], "ym")) {
-
-    obj[["end"]] <- paste0(obj[["end"]], "-01")
-
-    obj[["end"]] <- lubridate::rollback(
-      lubridate::as_date(obj[["end"]]) + lubridate::period(month = 1L)
-    )
-
-    return(date_range_ymd(obj))
-
-  }
-
-}
-
-#' @noRd
 date_range_ym  <- function(obj) {
 
   obj[["format"]] <- "%Y-%m"
