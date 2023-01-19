@@ -62,33 +62,55 @@ dates <- function(obj) {
 }
 
 #' @noRd
+#' @importFrom lubridate int_end int_start
+
 date_range_ymd <- function(obj) {
 
-  if (inherits(obj[["begin"]], "Interval")) {
+  begin <- obj[["begin"]]
 
-    obj[["end"]] <- lubridate::int_end(obj[["begin"]])
+  end <- obj[["end"]]
 
-    obj[["begin"]] <- lubridate::int_start(obj[["begin"]])
+  is_interval <- inherits(begin, "Interval")
 
-    return(date_range_ymd(obj))
+  if (is_interval) {
+
+    obj[["begin"]] <- lubridate::int_start(begin)
+
+    obj[["end"]] <- lubridate::int_end(begin)
+
+    ans <- date_range_ymd(obj)
+
+    return(ans)
 
   }
 
-  obj[["begin"]]  <- parse_date(obj[["begin"]])
+  begin <- parse_date(begin)
 
-  obj[["end"]] <- parse_date(obj[["end"]])
+  obj[["begin"]] <- begin
 
-  cond <- c(
-    identical(obj[["begin"]], ""),
-    identical(obj[["end"]], ""),
-    is.null(obj[["begin"]]),
-    is.null(obj[["end"]]),
-    inherits(obj[["begin"]], class(obj[["end"]]))
-  )
+  end <- parse_date(end)
 
-  if (any(cond)) {
+  obj[["end"]] <- end
 
-    return(format_date(obj))
+  no_begin <- identical(begin, "")
+
+  no_end <- identical(end, "")
+
+  null_begin <- is.null(begin)
+
+  null_end <- is.null(end)
+
+  end_class <- class(end)
+
+  same_class <- inherits(begin, end_class)
+
+  cond <- any(no_begin, no_end, null_begin, null_end, same_class)
+
+  if (cond) {
+
+    ans <- format_date(obj)
+
+    return(ans)
 
   }
 
