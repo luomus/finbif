@@ -49,7 +49,7 @@ dates <- function(obj) {
     filter,
     date_range_ymd = date_range_ymd(obj),
     date_range_ym  = date_range_ym(obj),
-    date_range_d   = date_range_d(obj),
+    date_range_d   = date_range_md(obj),
     date_range_md  = date_range_md(obj),
     last_import_date_min = parse_date(begin),
     last_import_date_max = parse_date(begin),
@@ -268,23 +268,19 @@ date_range_ym  <- function(obj) {
 }
 
 #' @noRd
-date_range_d <- function(obj) {
+
+date_range_md <- function(obj) {
 
   begin <- obj[["begin"]]
 
   end <- obj[["end"]]
 
-  paste(begin, end, sep = "/")
+  dates <- c(begin, end)
 
-}
+  dates <- sub("-", "", dates)
 
-#' @noRd
-date_range_md <- function(obj) {
+  dates <- as.integer(dates)
 
-  obj[["begin"]] <- as.integer(sub("-", "", obj[["begin"]]))
-
-  obj[["end"]] <- as.integer(sub("-", "", obj[["end"]]))
-
-  paste(obj[["begin"]], obj[["end"]], sep = "/")
+  paste(dates, collapse = "/")
 
 }
