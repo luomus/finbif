@@ -119,30 +119,53 @@ date_range_ymd <- function(obj) {
 }
 
 #' @noRd
-parse_date <- function(x) {
+#' @importFrom lubridate as_date
 
-  if (is.null(x) || identical(as.character(x), "")) {
+parse_date <- function(date) {
 
-    return(x)
+  date_null <- is.null(date)
 
-  }
+  date_chr <- as.character(date)
 
-  if (grepl("^\\d{4}$", x)) {
+  date_empty <- identical(date_chr, "")
 
-    return(structure(x, class = "y"))
+  no_date <- date_null || date_empty
 
-  }
+  if (no_date) {
 
-  if (grepl("^\\d{4}-\\d{2}$", x)) {
-
-    return(structure(x, class = "ym"))
+    return(date)
 
   }
 
-  tryCatch(
-    lubridate::as_date(x),
+  is_year <- grepl("^\\d{4}$", date)
+
+  if (is_year) {
+
+    ans <- structure(date, class = "y")
+
+    return(ans)
+
+  }
+
+  is_year_month <- grepl("^\\d{4}-\\d{2}$", date)
+
+  if (is_year_month) {
+
+    ans <- structure(date, class = "ym")
+
+    return(ans)
+
+  }
+
+  tryCatch({
+
+     lubridate::as_date(date)
+
+    },
     warning = function(w) {
+
       deferrable_error("Can not parse one or more specified dates")
+
     }
   )
 
