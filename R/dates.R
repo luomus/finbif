@@ -270,7 +270,11 @@ date_range_ym  <- function(obj) {
 #' @noRd
 date_range_d <- function(obj) {
 
-  paste(obj[["begin"]], obj[["end"]], sep = "/")
+  begin <- obj[["begin"]]
+
+  end <- obj[["end"]]
+
+  paste(begin, end, sep = "/")
 
 }
 
