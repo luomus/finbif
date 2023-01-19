@@ -22,12 +22,15 @@
 #' # Get collection metadata
 #' collections <- finbif_collections()
 #' }
-#' @importFrom utils hasName
 #' @export
 
 finbif_collections <- function(
-  filter, select, subcollections = TRUE, supercollections = FALSE,
-  locale = getOption("finbif_locale"), nmin = 0,
+  filter,
+  select,
+  subcollections = TRUE,
+  supercollections = FALSE,
+  locale = getOption("finbif_locale"),
+  nmin = 0,
   cache = getOption("finbif_use_cache")
 ) {
 
@@ -37,111 +40,215 @@ finbif_collections <- function(
 
   swagger <- httr::content(swagger)
 
-  col_md_nms <- names(swagger[["definitions"]][["Collection"]][["properties"]])
+  swagger <- swagger[["definitions"]]
+
+  col_md_nms <- swagger[["Collection"]]
+
+  col_md_nms <- col_md_nms[["properties"]]
+
+  col_md_nms <- names(col_md_nms)
+
+  qry <- list(lang = locale)
 
   col_md <- list(
-    qry = list(lang = locale),
-    path = "collections",
-    nms = col_md_nms,
-    id = "id",
-    cache = cache
+    qry = qry, path = "collections", nms = col_md_nms, id = "id", cache = cache
   )
 
   col_md <- get_collections(col_md)
 
-  col_count_nms <- names(
-    swagger[["definitions"]][["DwQuery_AggregateRow"]][["properties"]]
+  col_count_nms <- swagger[["DwQuery_AggregateRow"]]
+
+  col_count_nms <- col_count_nms[["properties"]]
+
+  col_count_nms <- names(col_count_nms)
+
+  qry <- list(
+    aggregateBy = "document.collectionId",
+    onlyCount = FALSE,
+    pessimisticDateRangeHandling = TRUE
   )
 
+  finbif_warehouse_query <- getOption("finbif_warehouse_query")
+
+  path <- paste0(finbif_warehouse_query, "unit/aggregate")
+
   col_counts <- list(
-    qry = list(
-      aggregateBy = "document.collectionId", onlyCount = FALSE,
-      pessimisticDateRangeHandling = TRUE
-    ),
-    path = paste0(getOption("finbif_warehouse_query"), "unit/aggregate"),
+    qry = qry,
+    path = path,
     nms = col_count_nms,
     id = "aggregateBy",
     cache = cache
   )
 
-  col_count <- get_collections(col_counts)
+  col_counts <- get_collections(col_counts)
 
   collections <- merge(
-    col_md, col_count, by.x = "id", by.y = "aggregate_by", all.x = TRUE
+    col_md, col_counts, by.x = "id", by.y = "aggregate_by", all.x = TRUE
   )
 
-  collections[["data_description"]] <- collections[["description"]]
+  descriptions <- collections[["description"]]
+
+  collections[["data_description"]] <- descriptions
+
+  data_quality_description <- collections[["data_quality_description"]]
+
+  na_data_quality_description <- is.na(data_quality_description)
+
+  descriptions_with_quality <- paste(
+    descriptions, data_quality_description, sep = "\nData quality: "
+  )
 
   collections[["description"]] <- ifelse(
-    is.na(collections[["data_quality_description"]]),
-    collections[["description"]],
-    do.call(
-      paste,
-      list(
-        collections[["description"]],
-        collections[["data_quality_description"]],
-        sep = "\nData quality: "
-      )
-    )
+    na_data_quality_description, descriptions, descriptions_with_quality
   )
 
-  row.names(collections) <- collections[["id"]]
-  # Sometimes collections dont have a "has_children" field
-  ind <- collections[["has_children"]]
-  ind <- ind & !is.na(ind)
-  parent_collections <- row.names(collections)[ind]
+  collection_ids <- collections[["id"]]
+
+  row.names(collections) <- collection_ids
+
+  # Sometimes collections don't have a "has_children" field
+  has_children <- collections[["has_children"]]
+
+  has_children_not_na <- !is.na(has_children)
+
+  has_children_and_not_na <- has_children & has_children_not_na
+
+  parent_collections <- collection_ids[has_children_and_not_na]
+
+  collections_part_of <- collections[["is_part_of"]]
 
   for (collection in parent_collections) {
-    if (is.na(collections[collection, "count"]))
-      collections[collection, "count"] <- sum(
-        collections[collections[["is_part_of"]] == collection, "count"],
-        na.rm = TRUE
-      )
+
+    collection_count <- collections[collection, "count"]
+
+    collection_count_na <- is.na(collection_count)
+
+    if (collection_count_na) {
+
+      collection_part_of <- collections_part_of == collection
+
+      collection_part_of_counts <- collections[collection_part_of, "count"]
+
+      collection_count <- sum(collection_part_of_counts, na.rm = TRUE)
+
+      collections[collection, "count"] <- collection_count
+
+    }
+
   }
 
-  if (!is.na(nmin)) {
-    collections <- collections[
-      !is.na(collections[["count"]]) & collections[["count"]] > nmin,
-    ]
+  has_nmin <- !is.na(nmin)
+
+  if (has_nmin) {
+
+    collections_count <- collections[["count"]]
+
+    has_count <- !is.na(collections_count)
+
+    collection_count_enough <- collections_count > nmin
+
+    include_rows <- has_count & collection_count_enough
+
+    collections <- collections[include_rows, ]
+
   }
 
   if (!subcollections) {
-    collections <- collections[is.na(collections[["is_part_of"]]), ]
+
+    include_rows <- is.na(collections_part_of)
+
+    collections <- collections[include_rows, ]
+
   }
 
   if (!supercollections) {
-    collections <- collections[!collections[["has_children"]], ]
+
+    collections <- collections[!has_children, ]
+
   }
 
-  if (missing(filter)) {
-    rows <- rep_len(TRUE, nrow(collections))
-  } else {
+  n_collections <- nrow(collections)
+
+  rows <- rep_len(TRUE, n_collections)
+
+  has_filter <- !missing(filter)
+
+  parent_frame <- parent.frame()
+
+  if (has_filter) {
+
     call <- substitute(filter)
-    rows <- eval(call, collections, parent.frame())
-    if (!is.logical(rows)) {
-       deferrable_error("'Collections filter must be logical")
+
+    rows <- eval(call, collections, parent_frame)
+
+    rows_are_logical <- !is.logical(rows)
+
+    if (rows_are_logical) {
+
+      deferrable_error("Collections filter must be a logical vector")
+
     }
-    rows <- rows & !is.na(rows)
+
+    rows_not_na <- !is.na(rows)
+
+    rows <- rows & rows_not_na
+
   }
 
-  if (missing(select)) {
-    cols <- c(
-      "collection_name", "abbreviation", "description", "online_url",
-      "has_children", "is_part_of", "data_quality", "methods",
-      "collection_type", "taxonomic_coverage", "geographic_coverage",
-      "temporal_coverage", "secure_level", "count"
-    )
-  } else {
-    col_ind <- as.list(seq_along(collections))
-    names(col_ind) <- names(collections)
-    cols <- eval(substitute(select), col_ind, parent.frame())
-    if (all(is.na(cols)) || is.null(cols)) cols <- TRUE
-  }
+  has_select <- !missing(select)
 
-  structure(
-    collections[rows, cols, drop = FALSE],
-    class = c("finbif_collections", "finbif_metadata_df", "data.frame")
+  cols <- c(
+    "collection_name",
+    "abbreviation",
+    "description",
+    "online_url",
+    "has_children",
+    "is_part_of",
+    "data_quality",
+    "methods",
+    "collection_type",
+    "taxonomic_coverage",
+    "geographic_coverage",
+    "temporal_coverage",
+    "secure_level",
+    "count"
   )
+
+  if (has_select)  {
+
+    cols_seq <- seq_along(collections)
+
+    cols_seq <- as.list(cols_seq)
+
+    col_names <- names(collections)
+
+    names(cols_seq) <- col_names
+
+    call <- substitute(select)
+
+    cols <- eval(call, cols_seq, parent_frame)
+
+    na_cols <- is.na(cols)
+
+    all_cols_na <- all(na_cols)
+
+    cols_null <- is.null(cols)
+
+    cond <- all_cols_na || cols_null
+
+    if (cond) {
+
+      cols <- TRUE
+
+    }
+
+  }
+
+  collections <- collections[rows, cols, drop = FALSE]
+
+  class <- c("finbif_collections", "finbif_metadata_df", "data.frame")
+
+  structure(collections, class = class)
 
 }
 
