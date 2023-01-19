@@ -31,25 +31,95 @@
 #' }
 #' @export
 
-finbif_check_taxa <- function(taxa, cache = getOption("finbif_use_cache")) {
-  taxa <- as.list(taxa)
-  out <- taxa
-  for (i in seq_along(taxa)) {
-    rank <- tolower(names(taxa)[[i]])
-    names(out[[i]]) <- taxa[[i]]
-    for (j in seq_along(taxa[[i]])) {
-      resp <- finbif_taxa(taxa[[i]][[j]], cache = cache)
-      if (length(resp[["content"]])) {
-        rank_ <- tolower(gsub("MX.", "", resp[["content"]][[1]][["taxonRank"]]))
-        if (identical(rank, rank_) || identical(rank, character())) {
-          out[[i]][[j]] <- resp[["content"]][[1]][["id"]]
-        } else {
-          out[[i]][[j]] <- NA_character_
-        }
-      } else {
-        out[[i]][[j]] <- NA_character_
-      }
+finbif_check_taxa <- function(
+  taxa,
+  cache = getOption("finbif_use_cache")
+) {
+
+  taxa_list <- as.list(taxa)
+
+  taxa_list_names <- names(taxa_list)
+
+  taxa_list_names <- tolower(taxa_list_names)
+
+  taxa_list_names_length <- length(taxa_list_names)
+
+  has_names <- taxa_list_names_length > 0L
+
+  taxa_list_seq <- seq_along(taxa_list)
+
+  for (i in taxa_list_seq) {
+
+    taxa_list_name <- character()
+
+    if (has_names) {
+
+      taxa_list_name <- taxa_list_names[[i]]
+
     }
+
+    taxa_list_name_length <- length(taxa_list_name)
+
+    no_name <- identical(taxa_list_name_length, 0L)
+
+    taxa_i <- taxa_list[[i]]
+
+    taxa_names <- taxa_i
+
+    taxa_seq <- seq_along(taxa_i)
+
+    for (j in taxa_seq) {
+
+      id <- NA_character_
+
+      taxon <- taxa_i[[j]]
+
+      resp <- finbif_taxa(taxon, cache = cache)
+
+      content <- resp[["content"]]
+
+      content_length <- length(content)
+
+      has_content <- content_length > 0L
+
+      if (has_content) {
+
+        content <- content[[1L]]
+
+        taxon_rank <- content[["taxonRank"]]
+
+        taxon_rank <- sub("MX.", "", taxon_rank)
+
+        has_correct_rank <- identical(taxa_list_name, taxon_rank)
+
+        cond <- has_correct_rank || no_name
+
+        if (cond) {
+
+          id <- content[["id"]]
+
+        }
+
+      }
+
+      taxa_i[[j]] <- id
+
+    }
+
+    names(taxa_i) <- taxa_names
+
+    taxa_list[[i]] <- taxa_i
+
   }
-  structure(out, class = c("list", "finbif_taxa_list"))
+
+  if (has_names) {
+
+    names(taxa_list) <- taxa_list_names
+
+  }
+
+  class <- c("list", "finbif_taxa_list")
+
+  structure(taxa_list, class = class)
+
 }
