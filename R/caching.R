@@ -30,7 +30,9 @@ cache_location <- new.env()
 
 get_cache <- function(hash) {
 
-  if (exists(hash, envir = cache_location)) {
+  hash_exists <- exists(hash, envir = cache_location)
+
+  if (hash_exists) {
 
     get(hash, envir = cache_location)
 
@@ -40,6 +42,10 @@ get_cache <- function(hash) {
 
 set_cache <- function(obj) {
 
-  assign(obj[["hash"]], obj[["data"]], envir = cache_location)
+  hash <- obj[["hash"]]
+
+  data <- obj[["data"]]
+
+  assign(hash, data, envir = cache_location)
 
 }
