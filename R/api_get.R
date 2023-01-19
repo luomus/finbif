@@ -246,31 +246,72 @@ api_get <- function(obj) {
 
 }
 
+#' @noRd
+
 get_calling_function <- function(pkg) {
 
-  for (call in sys.calls()) {
-    fun <- try(as.character(call[[1L]]), silent = TRUE)
-    if (inherits(fun, "character")) {
-      fun <- fun[[length(fun)]]
-      if (fun %in% ls(getNamespace(pkg))) break
+  calls <- sys.calls()
+
+  for (call in calls) {
+
+    fun <- try({
+
+        f <- call[[1L]]
+
+        as.character(f)
+
+      },
+      silent = TRUE
+    )
+
+    no_error <- inherits(fun, "character")
+
+    if (no_error) {
+
+      len <- length(fun)
+
+      fun <- fun[[len]]
+
+      ns <- getNamespace(pkg)
+
+      nms <- ls(ns)
+
+      in_ns <- fun %in% nms
+
+      if (in_ns) {
+
+        break
+
+      }
+
     }
+
   }
 
-  args <- names(call)[-1L]
+  args <- call[-1L]
 
-  if (!length(args)) {
+  n_args <- length(args)
 
-    values <- ""
+  no_args <- identical(n_args, 0L)
+
+  if (no_args) {
+
+    arg_nm_strs <- ""
 
   } else {
 
-    values <- call[-1L]
-    type   <- vapply(values, typeof, character(1L))
-    len    <- vapply(values, length, integer(1L))
-    values <- paste0(args, "=", type, "<", len, ">")
+    type <- vapply(args, typeof, "")
+
+    len <- vapply(args, length, 0L)
+
+    arg_nms <- names(args)
+
+    arg_nm_strs <- paste0(arg_nms, "=", type, "<", len, ">")
 
   }
 
-  paste0(fun, "(", paste(values, collapse = ","), ")")
+  arg_nm_str <- paste(arg_nm_strs, collapse = ",")
+
+  paste0(fun, "(", arg_nm_str, ")")
 
 }
