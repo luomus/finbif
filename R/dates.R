@@ -1,39 +1,60 @@
 #' @noRd
 #' @importFrom lubridate as_date period rollback int_end int_start
+
 dates <- function(obj) {
 
-  if (length(obj) < 2L) {
+  obj_len <- length(obj)
+
+  if (obj_len < 2L) {
 
     deferrable_error("Need to specify at least one of 'begin' or 'end' date")
 
   }
 
-  if (is.null(obj[["end"]]) && identical(length(obj), 3L)) {
+  end <- obj[["end"]]
 
-    obj[["begin"]] <- obj[[2L]]
+  no_end_name <- is.null(end)
 
-    obj[["end"]] <- obj[[3L]]
+  no_end <- identical(obj_len, 2L)
+
+  end_not_named <- no_end_name && !no_end
+
+  if (end_not_named) {
+
+    begin <- obj[[2L]]
+
+    obj[["begin"]] <- begin
+
+    end <- obj[[3L]]
 
   }
 
-  if (is.null(obj[["end"]]) && identical(length(obj), 2L)) {
+  obj[["end"]] <- end
 
-    obj[["begin"]] <- obj[[2L]]
+  no_end <- no_end && no_end_name
+
+  if (no_end) {
+
+    begin <- obj[[2L]]
+
+    obj[["begin"]] <- begin
 
   }
 
   obj[["format"]] <- "%Y-%m-%d"
 
+  filter <- obj[["filter"]]
+
   ans <- switch(
-    obj[["filter"]],
+    filter,
     date_range_ymd = date_range_ymd(obj),
     date_range_ym  = date_range_ym(obj),
     date_range_d   = date_range_d(obj),
     date_range_md  = date_range_md(obj),
-    last_import_date_min = parse_date(obj[["begin"]]),
-    last_import_date_max = parse_date(obj[["begin"]]),
-    first_import_date_min = parse_date(obj[["begin"]]),
-    first_import_date_max = parse_date(obj[["begin"]])
+    last_import_date_min = parse_date(begin),
+    last_import_date_max = parse_date(begin),
+    first_import_date_min = parse_date(begin),
+    first_import_date_max = parse_date(begin)
   )
 
   paste(ans)
