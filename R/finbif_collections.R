@@ -252,72 +252,135 @@ finbif_collections <- function(
 
 }
 
-get_collections <- function(obj) {
-  nms <- obj[["nms"]]
-  qry <- c(obj[["qry"]], list(page = 0L, pageSize = 1000L))
-  collections <- list()
-  total <- 1L
+get_collections <- function(col_obj) {
 
-  while (total > qry[["page"]] * qry[["pageSize"]]) {
+  nms <- col_obj[["nms"]]
 
-    qry[["page"]] <- qry[["page"]] + 1L
+  qry <- col_obj[["qry"]]
 
-    collections[[qry[["page"]]]] <- api_get(
-      list(
-        path = obj[["path"]],
-        query = qry,
-        cache = obj[["cache"]]
-      )
-    )
+  path <- col_obj[["path"]]
 
-    total <- collections[[qry[["page"]]]][["content"]][["total"]]
+  cache <- col_obj[["cache"]]
+
+  page <- 0L
+
+  page_size <- 1000L
+
+  page_args <- list(page = page, pageSize = page_size)
+
+  qry <- c(qry, page_args)
+
+  collections_list <- list()
+
+  cond <- TRUE
+
+  while (cond) {
+
+    page <- page + 1L
+
+    qry[["page"]] <- page
+
+    query_obj <- list(path = path, query = qry, cache = cache)
+
+    resp <- api_get(query_obj)
+
+    collections_list[[page]] <- resp
+
+    content <- resp[["content"]]
+
+    total <- content[["total"]]
+
+    cond <- total > page * page_size
 
   }
 
-  for (i in c("content", "results")) {
-    collections <- lapply(collections, getElement, i)
+  elements <- c("content", "results")
+
+  for (i in elements) {
+
+    collections_list <- lapply(collections_list, getElement, i)
+
   }
 
-  collections <- do.call(c, collections)
+  collections_list <- do.call(c, collections_list)
 
-  collections <- lapply(
-    seq_along(nms),
-    function(i) {
-      lapply(
-        collections,
-        function(x) {
-          ans <- getElement(x, nms[i])
-          if (is.null(ans)) NA else ans
-        }
-      )
+  N <- seq_along(collections_list)
+
+  for (i in N) {
+
+    collections_i <- collections_list[[i]]
+
+    for (nm in nms) {
+
+      ans <- collections_i[[nm]]
+
+      ans_is_null <- is.null(ans)
+
+      if (ans_is_null) {
+
+        ans <- NA
+
+      }
+
+      collections_i[[nm]] <- ans
+
     }
-  )
 
-  names(collections) <- nms
+    collections_list[[i]] <- collections_i
 
-  lth_of_els <- lapply(collections, function(x) max(unlist(lapply(x, length))))
-  nms <- split(nms, lth_of_els > 1L)
+  }
 
-  list_cols <- collections[nms[["TRUE"]]]
+  collections <- list()
 
-  collections <- lapply(collections[nms[["FALSE"]]], unlist)
+  for (nm in nms) {
+
+    collections_nm <- lapply(collections_list, getElement, nm)
+
+    collections[[nm]] <- collections_nm
+
+  }
+
+  lth_of_els <- lapply(collections, lapply, length)
+
+  lth_of_els <- lapply(lth_of_els, unlist)
+
+  lth_of_els <- vapply(lth_of_els, max, 0L)
+
+  mt_one_el <- lth_of_els > 1L
+
+  nms <- split(nms, mt_one_el)
+
+  nms_mt_one_el <- nms[["TRUE"]]
+
+  list_cols <- collections[nms_mt_one_el, drop = FALSE]
+
+  nms_one_el <- nms[["FALSE"]]
+
+  one_el_cols <- collections[nms_one_el, drop = FALSE]
+
+  collections <- lapply(one_el_cols, unlist)
 
   collections <- as.data.frame(
-    collections, col.names = nms[["FALSE"]], stringsAsFactors = FALSE
+    collections, col.names = nms_one_el, stringsAsFactors = FALSE
   )
 
-  collections[nms[["TRUE"]]] <- list_cols
+  collections[nms_mt_one_el] <- list_cols
 
-  collections[[obj[["id"]]]] <- gsub(
-    "^http:\\/\\/tun\\.fi\\/", "", collections[[obj[["id"]]]]
-  )
+  id <- col_obj[["id"]]
 
-  names(collections) <- sub("\\.", "_", names(collections))
-  names(collections) <- gsub(
-    "([a-z])([A-Z])", "\\1_\\L\\2", names(collections), perl = TRUE
-  )
+  collections_id <- collections[[id]]
 
-  collections
+  collections_id <- gsub("^http:\\/\\/tun\\.fi\\/", "", collections_id)
+
+  collections[[id]] <- collections_id
+
+  col_names <- names(collections)
+
+  col_names <- sub("\\.", "_", col_names)
+
+  col_names <- gsub("([a-z])([A-Z])", "\\1_\\L\\2", col_names, perl = TRUE)
+
+  structure(collections, names = col_names)
 
 }
 
