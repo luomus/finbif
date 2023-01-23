@@ -14,5 +14,6 @@ Remove cached API requests from FinBIF.
 \dontrun{
 
 finbif_clear_cache()
+
 }
 }
