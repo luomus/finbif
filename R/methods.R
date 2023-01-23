@@ -375,36 +375,115 @@ as.data.frame.finbif_records_list <- function(
 
 #' @noRd
 #' @export
-`[.finbif_occ` <- function(x, i, j, drop = FALSE) {
+`[.finbif_occ` <- function(
+  x,
+  i,
+  j,
+  drop = FALSE
+) {
 
-  mdrop  <- missing(drop)
-  n_args <- nargs() - !mdrop
-  has_i  <- !missing(i)
-  has_j  <- !missing(j)
+  n_args <- nargs()
 
-  rows <- seq_len(nrow(x))
-  cols <- seq_len(ncol(x))
+  has_drop <- !missing(drop)
 
-  if (n_args < 3L) {
-    if (has_i) cols <- i
-  } else {
-    if (has_j) cols <- j
-    if (has_i) {
-      if (is.logical(i)) i <- which(rep_len(i, nrow(x)))
-      rows <- i
-    }
+  if (has_drop) {
+
+    n_args <- n_args - 1L
+
   }
 
-  ans <- if (has_j) NextMethod("[", drop = drop) else NextMethod("[")
-  ans <- structure(
-    as.data.frame(ans, stringsAsFactors = FALSE), class = class(x)
-  )
+  has_i  <- !missing(i)
+
+  has_j  <- !missing(j)
+
+  nrows <- nrow(x)
+
+  ncols <- ncol(x)
+
+  rows <- seq_len(nrows)
+
+  cols <- seq_len(ncols)
+
+  lt3 <- n_args < 3L
+
+  if (lt3) {
+
+    if (has_i) {
+
+      cols <- i
+
+    }
+
+  } else {
+
+    if (has_j) {
+
+      cols <- j
+
+    }
+
+    if (has_i) {
+
+      i_is_bool <- is.logical(i)
+
+      if (i_is_bool ) {
+
+        i <- rep_len(i, nrows)
+
+        i <- which(i)
+
+      }
+
+      rows <- i
+
+    }
+
+  }
+
+  if (has_j) {
+
+    ans <- NextMethod("[", drop = drop)
+
+  } else {
+
+    ans <- NextMethod("[")
+
+  }
+
+  ans <- as.data.frame(ans, stringsAsFactors = FALSE)
+
+  class <- class(x)
+
+  ans <- structure(ans, class = class)
+
   attr <- attributes(x)
-  attr[["row.names"]] <- as.integer(rows)
-  attr[["record_id"]] <- attr[["record_id"]][as.integer(rows)]
+
+  rows <- as.integer(rows)
+
+  attr[["row.names"]] <- rows
+
+  id <- attr[["record_id"]]
+
+  id <- id[rows]
+
+  attr[["record_id"]] <- id
+
   mostattributes(ans) <- attr
-  names(ans) <- if (is.character(cols)) cols else names(x)[cols]
+
+  nms <- names(x)
+
+  cols_not_nms <- !is.character(cols)
+
+  if (cols_not_nms) {
+
+    cols <- nms[cols]
+
+  }
+
+  names(ans) <- cols
+
   ans
+
 }
 
 # rbind methods ----------------------------------------------------------------
