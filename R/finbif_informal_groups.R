@@ -18,40 +18,115 @@
 #'
 #' # Display the informal taxonomic groups used by FinBIF
 #' finbif_informal_groups()
+#'
 #' }
 #' @export
 
 finbif_informal_groups <- function(
-  group, limit = 50, quiet = FALSE, locale = getOption("finbif_locale")
+  group,
+  limit = 50,
+  quiet = FALSE,
+  locale = getOption("finbif_locale")
 ) {
 
-  df_names <- informal_groups[, grep("^name_", names(informal_groups))]
-  names(df_names) <- sub("^name_", "", names(df_names))
-  df_names <- with_locale(df_names, locale)
+  cols <- names(informal_groups)
 
-  df_trees <- informal_groups[, grep("^tree_", names(informal_groups))]
-  names(df_trees) <- sub("^tree_", "", names(df_trees))
-  df_trees <- with_locale(df_trees, locale)
+  nm_cols <- grep("^name_", cols, value = TRUE)
 
-  if (!missing(group)) {
+  nm_df <- informal_groups[, nm_cols, drop = FALSE]
+
+  locales <- sub("^name_", "", nm_cols)
+
+  names(nm_df) <- locales
+
+  nms <- with_locale(nm_df, locale)
+
+  tree_cols <- grep("^tree", cols, value = TRUE)
+
+  tree_df <- informal_groups[, tree_cols, drop = FALSE]
+
+  names(tree_df) <- locales
+
+  trees <- with_locale(tree_df, locale)
+
+  has_group_arg <- !missing(group)
+
+  if (has_group_arg) {
+
     group <- to_sentence_case(group)
-    stopifnot(group %in% df_names)
-    begin <- which(df_names == group)
-    lvl <- regexpr("\\w", df_trees)
-    end <- which(lvl == lvl[begin] & seq_along(lvl) > begin)[1L] - 1L
-    df_names <- df_names[seq.int(begin, end)]
-    df_trees <- df_trees[seq.int(begin, end)]
+
+    has_group <- group %in% nms
+
+    stopifnot(has_group)
+
+    is_group_nm <- nms == group
+
+    begin <- which(is_group_nm)
+
+    lvl <- regexpr("\\w", trees)
+
+    lvl_begin <- lvl[begin]
+
+    lvl_seq <- seq_along(lvl)
+
+    is_lvl_begin <- lvl == lvl_begin
+
+    after_lvl_begin <- lvl_seq > begin
+
+    is_and_after_lvl <- is_lvl_begin & after_lvl_begin
+
+    end <- which(is_and_after_lvl)
+
+    end <- end[1L]
+
+    end <- end - 1L
+
+    begin_end_seq <- seq.int(begin, end)
+
+    nms <- nms[begin_end_seq]
+
+    trees <- trees[begin_end_seq]
+
   }
-  n <- length(df_names)
+
+  n <- length(nms)
+
   limit <- min(limit, n)
-  if (!quiet) {
-    cat(df_trees[seq_len(limit)], sep = "\n")
+
+  limit <- as.integer(limit)
+
+  verbose <- !quiet
+
+  if (verbose) {
+
+    seq_limit <- seq_len(limit)
+
+    trees_limit <- trees[seq_limit]
+
+    cat(trees_limit, sep = "\n")
+
     extra <- n - limit
-    if (extra > 0L) {
-      cat(
-        "...", extra, " more group", if (extra == 1) "" else "s", "\n", sep = ""
-      )
+
+    has_extra <- extra > 0L
+
+    if (has_extra) {
+
+      has_extras <- extra > 1L
+
+      s <- ""
+
+      if (has_extras) {
+
+        s <- "s"
+
+      }
+
+      cat("...", extra, " more group", s, sep = "")
+
     }
+
   }
-  invisible(df_names)
+
+  invisible(nms)
+
 }
