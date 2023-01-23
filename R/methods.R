@@ -76,87 +76,13 @@ as.data.frame.finbif_records <- function(
 
   }
 
-  lst <- list()
+  attr(x, "select") <- cols
 
-  for (col in cols) {
+  attr(x, "locale") <- locale
 
-    type  <- var_names[[col, "type"]]
+  attr(x, "aggregated") <- aggregated
 
-    type_na <- cast_to_type(NA, type)
-
-    single <- var_names[[col, "single"]]
-
-    localised <- var_names[[col, "localised"]]
-
-    if (aggregated) {
-
-      ans <- vapply(x, getElement, NA_character_, col)
-
-      ans_empty <- ans == ""
-
-      ans <- ifelse(ans_empty, NA_character_, ans)
-
-      if (localised) {
-
-        ans <- localise_labels(ans, col, var_names, locale)
-
-      }
-
-      ans <- cast_to_type(ans, type)
-
-    } else {
-
-      col_els <- strsplit(col, "\\.")
-
-      col_els <- col_els[[1L]]
-
-      if (single) {
-
-        ans <- vapply(x, get_el_recurse, type_na, col_els, type)
-
-        if (localised) {
-
-          ans <- localise_labels(ans, col, var_names, locale)
-
-        }
-
-      } else {
-
-        ans <- lapply(x, get_el_recurse, col_els, type)
-
-        ans <- lapply(ans, unlist)
-
-        if (localised) {
-
-          langs <- lapply(ans, names)
-
-          langs <- unlist(langs)
-
-          has_locale <- langs %in% supported_langs
-
-          has_locale <- any(has_locale)
-
-          if (has_locale) {
-
-            ans <- vapply(ans, with_locale, type_na, locale)
-
-          } else {
-
-            ans <- lapply(ans, localise_labels, col, var_names, locale)
-
-          }
-
-        }
-
-      }
-
-    }
-
-    lst[[col]] <- ans
-
-  }
-
-  names(lst) <- cols
+  lst <- process_cols(x)
 
   single_col <- var_names[cols, "single"]
 
@@ -201,15 +127,150 @@ as.data.frame.finbif_records <- function(
 }
 
 #' @noRd
-localise_labels <- function(x, col, var_names, locale) {
 
-  labels <- get(var_names[[col, "translated_var"]])
+process_cols <- function(x) {
 
-  label_col <- max(c(1L, which(names(labels) == paste0("name_", locale))))
+  cols <- attr(x, "select")
 
-  localised_labels <- ifelse(is.na(x), x, labels[x, label_col])
+  locale <- attr(x, "locale")
 
-  ifelse(is.na(localised_labels), x, localised_labels)
+  aggregated <- attr(x, "aggregated")
+
+  col_list <- list()
+
+  for (col in cols) {
+
+    type  <- var_names[[col, "type"]]
+
+    type_na <- cast_to_type(NA, type)
+
+    single <- var_names[[col, "single"]]
+
+    localised <- var_names[[col, "localised"]]
+
+    labels_obj <- list(col = col, var_names = var_names, locale = locale)
+
+    if (aggregated) {
+
+      ans <- vapply(x, getElement, NA_character_, col)
+
+      ans_empty <- ans == ""
+
+      ans <- ifelse(ans_empty, NA_character_, ans)
+
+      if (localised) {
+
+        labels_obj[["labels"]] <- ans
+
+        ans <- localise_labels(labels_obj)
+
+      }
+
+      ans <- cast_to_type(ans, type)
+
+    } else {
+
+      col_els <- strsplit(col, "\\.")
+
+      col_els <- col_els[[1L]]
+
+      if (single) {
+
+        ans <- vapply(x, get_el_recurse, type_na, col_els, type)
+
+        if (localised) {
+
+          labels_obj[["labels"]] <- ans
+
+          ans <- localise_labels(labels_obj)
+
+        }
+
+      } else {
+
+        ans <- lapply(x, get_el_recurse, col_els, type)
+
+        ans <- lapply(ans, unlist)
+
+        if (localised) {
+
+          langs <- lapply(ans, names)
+
+          langs <- unlist(langs)
+
+          has_locale <- langs %in% supported_langs
+
+          has_locale <- any(has_locale)
+
+          if (has_locale) {
+
+            ans <- vapply(ans, with_locale, type_na, locale)
+
+          } else {
+
+            ans_seq <- seq_along(ans)
+
+            for (i in ans_seq) {
+
+              labels <- ans[[i]]
+
+              labels_obj[["labels"]] <- labels
+
+              labels <- localise_labels(labels_obj)
+
+              ans[[i]] <- labels
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+    col_list[[col]] <- ans
+
+  }
+
+  col_list
+
+}
+
+#' @noRd
+
+localise_labels <- function(labels_obj) {
+
+  obj_labels <- labels_obj[["labels"]]
+
+  col <- labels_obj[["col"]]
+
+  var_names <- labels_obj[["var_names"]]
+
+  locale <- labels_obj[["locale"]]
+
+  translated_var <- var_names[[col, "translated_var"]]
+
+  new_labels <- get(translated_var)
+
+  locale_col <- paste0("name_", locale)
+
+  new_label_names <- names(new_labels)
+
+  label_col <- which(new_label_names == locale_col)
+
+  label_col <- max(1L, label_col)
+
+  labels_na <- is.na(obj_labels)
+
+  localised_labels <- new_labels[obj_labels, label_col]
+
+  localised_labels <- ifelse(labels_na, obj_labels, localised_labels)
+
+  localised_labels_na <- is.na(localised_labels)
+
+  ifelse(localised_labels_na, obj_labels, localised_labels)
 
 }
 
