@@ -37,5 +37,6 @@ Display the informal taxonomic groups used in the FinBIF database.
 
 # Display the informal taxonomic groups used by FinBIF
 finbif_informal_groups()
+
 }
 }
