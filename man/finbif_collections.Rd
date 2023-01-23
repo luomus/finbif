@@ -46,5 +46,6 @@ Get information on collections in the FinBIF database.
 
 # Get collection metadata
 collections <- finbif_collections()
+
 }
 }
