@@ -16,8 +16,8 @@
 #' # and convert to a `data.frame`
 #' resp <- finbif_records()
 #' df <- as.data.frame(resp)
+#'
 #' }
-#' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
 
 as.data.frame.finbif_records <- function(
@@ -275,47 +275,97 @@ localise_labels <- function(labels_obj) {
 }
 
 #' @rdname as.data.frame.finbif_records
+#' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
+
 as.data.frame.finbif_records_list <- function(
-  x, ..., locale = getOption("finbif_locale"), quiet = TRUE
+  x,
+  ...,
+  locale = getOption("finbif_locale"),
+  quiet = TRUE
 ) {
 
   n <- length(x)
+
   if (!quiet) {
+
     pb <- utils::txtProgressBar(0L, n, style = 3L)
-    on.exit(close(pb))
+
+    on.exit({
+
+      close(pb)
+
+    })
+
   }
 
-  df <- lapply(
-    seq_len(n),
-    function(i) {
-      if (!quiet) utils::setTxtProgressBar(pb, i)
-      x_df <- attr(x[[i]], "df")
-      if (is.null(x_df)) {
-        as.data.frame(x[[i]], locale = locale)
-      } else {
-        x_df
-      }
-    }
-  )
+  df <- list()
 
-  url  <- do.call(c, lapply(df, attr, "url", TRUE))
-  time <- do.call(c, lapply(df, attr, "time", TRUE))
+  sq <- seq_len(n)
+
+  for (i in sq) {
+
+    if (!quiet) {
+
+      utils::setTxtProgressBar(pb, i)
+
+    }
+
+    xi <- x[[i]]
+
+    dfi <- attr(xi, "df")
+
+    df_null <- is.null(dfi)
+
+    if (df_null) {
+
+      dfi <- as.data.frame(xi, locale = locale)
+
+    }
+
+    df[[i]] <- dfi
+
+  }
+
+  url <- vapply(df, attr, "", "url", TRUE)
+
+  time <- lapply(df, attr, "time", TRUE)
+
+  time <- do.call(c, time)
 
   df <- do.call(rbind, df)
 
   record_id <- df[["unit.unitId"]]
 
-  if (inherits(x, "finbif_records_sample_list")) {
-    records <- if (attr(x, "cache")) {
-      sample_with_seed(nrow(df), nrow(df), gen_seed(x))
-    } else {
-      sample.int(nrow(df))
+  is_sample_list <- inherits(x, "finbif_records_sample_list")
+
+  if (is_sample_list) {
+
+    nrows <- nrow(df)
+
+    records <- sample.int(nrows)
+
+    is_cached <- attr(x, "cache")
+
+    if (is_cached) {
+
+      seed <- gen_seed(x)
+
+      records <- sample_with_seed(nrows, nrows, seed)
+
     }
+
     df <- df[records, ]
+
   }
 
-  if (!attr(x, "record_id")) df[["unit.unitId"]] <- NULL
+  no_id <- !attr(x, "record_id")
+
+  if (no_id) {
+
+    df[["unit.unitId"]] <- NULL
+
+  }
 
   structure(df, url = url, time = time, record_id = record_id)
 
