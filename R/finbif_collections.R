@@ -306,9 +306,9 @@ get_collections <- function(col_obj) {
 
   collections_list <- do.call(c, collections_list)
 
-  N <- seq_along(collections_list)
+  collections_seq <- seq_along(collections_list)
 
-  for (i in N) {
+  for (i in collections_seq) {
 
     collections_i <- collections_list[[i]]
 
