@@ -390,7 +390,9 @@ get_collections <- function(col_obj) {
 
 get_swagger <- function(cache) {
 
-  url <- paste0(getOption("finbif_api_url"), "/explorer/swagger.json")
+  fb_api_url <- getOption("finbif_api_url")
+
+  url <- paste0(fb_api_url, "/explorer/swagger.json")
 
   if (cache) {
 
@@ -398,64 +400,78 @@ get_swagger <- function(cache) {
 
     fcp <- getOption("finbif_cache_path")
 
-    if (is.null(fcp)) {
+    fcp_is_null <- is.null(fcp)
 
-      ans <- get_cache(hash)
+    if (fcp_is_null) {
 
-      if (!is.null(ans)) {
+      cache <- get_cache(hash)
 
-        return(ans)
+      has_cache <- !is.null(cache)
+
+      if (has_cache) {
+
+        return(cache)
 
       }
 
-      on.exit(
+      on.exit({
 
-        if (!is.null(ans)) {
+        cache_obj <- list(data = ans, hash = hash)
 
-          set_cache(list(data = ans, hash = hash))
+        set_cache(cache_obj)
 
-        }
-
-      )
+      })
 
     } else {
 
-      cache_file <- file.path(fcp, paste0("finbif_cache_file_", hash))
+      file_nm <- paste0("finbif_cache_file_", hash)
 
-      if (file.exists(cache_file)) {
+      cache_file <- file.path(fcp, file_nm)
 
-        return(readRDS(cache_file))
+      has_cache_file <- file.exists(cache_file)
+
+      if (has_cache_file) {
+
+        cache <- readRDS(cache_file)
+
+        return(cache)
 
       }
 
-      on.exit(
+      on.exit({
 
-        if (!is.null(ans)) {
+        saveRDS(ans, cache_file)
 
-          saveRDS(ans, cache_file)
-
-        }
-
-      )
+      })
 
     }
 
   }
 
-  stopifnot(
-    "Request not cached and option:finbif_allow_query = FALSE" =
-      getOption("finbif_allow_query")
-  )
+  allow <- getOption("finbif_allow_query")
 
-  Sys.sleep(1 / getOption("finbif_rate_limit"))
+  stopifnot("Request not cached and option:finbif_allow_query = FALSE" = allow)
 
-  ans <- httr::RETRY(
-    "GET",
+  rate_limit <- getOption("finbif_rate_limit")
+
+  sleep <- 1 / rate_limit
+
+  Sys.sleep(sleep)
+
+  times <- getOption("finbif_retry_times")
+
+  pause_base <- getOption("finbif_retry_pause_base")
+
+  pause_cap <- getOption("finbif_retry_pause_cap")
+
+  pause_min <- getOption("finbif_retry_pause_min")
+
+  ans <- httr::RETRY("GET",
     url,
-    times = getOption("finbif_retry_times"),
-    pause_base = getOption("finbif_retry_pause_base"),
-    pause_cap = getOption("finbif_retry_pause_cap"),
-    pause_min = getOption("finbif_retry_pause_min"),
+    times = times,
+    pause_base = pause_base,
+    pause_cap = pause_cap,
+    pause_min = pause_min,
     terminate_on = 404L
   )
 
