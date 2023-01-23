@@ -19,86 +19,184 @@
 #' }
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
+
 as.data.frame.finbif_records <- function(
-  x, ..., locale = getOption("finbif_locale")
+  x,
+  ...,
+  locale = getOption("finbif_locale")
 ) {
 
   cols <- attr(x, "select")
-  url  <- x[["response"]][["url"]]
-  time <- x[["response"]][["date"]]
+
+  resp <- x[["response"]]
+
+  url  <- resp[["url"]]
+
+  time <- resp[["date"]]
 
   aggregation <- attr(x, "aggregate")
+
   aggregated <- !identical(aggregation, "none")
-  x <- x[["content"]][["results"]]
+
+  x <- x[["content"]]
+
+  x <- x[["results"]]
 
   if (aggregated) {
+
     aggregations <- c(
-      records = "count", species = "speciesCount", taxa = "taxonCount",
-      events = "count", documents = "count"
+      records = "count",
+      species = "speciesCount",
+      taxa = "taxonCount",
+      events = "count",
+      documents = "count"
     )
+
     aggregations <- aggregations[aggregation]
+
+    aggregation_nms <- names(aggregations)
+
     counts <- list()
-    for (i in seq_along(aggregations)) {
-      counts[[names(aggregations)[[i]]]] <- vapply(
-        x, getElement, integer(1L), aggregations[[i]]
-      )
+
+    aggregations_seq <- seq_along(aggregations)
+
+    for (i in aggregations_seq) {
+
+      aggregation_i <- aggregations[[i]]
+
+      aggregation_nm <- aggregation_nms[[i]]
+
+      count <- vapply(x, getElement, 0L, aggregation_i)
+
+      counts[[aggregation_nm]] <- count
+
     }
+
     x <- lapply(x, getElement, "aggregateBy")
+
   }
 
-  lst <- lapply(
-    cols,
-    function(col) {
-      type      <- var_names[[col, "type"]]
-      type_na   <- cast_to_type(NA, type)
-      single    <- var_names[[col, "single"]]
-      localised <- var_names[[col, "localised"]]
-      if (aggregated) {
-        # unit/aggregate always returns data as a single string
-        ans <- vapply(x, getElement, NA_character_, col)
-        ans <- ifelse(ans == "", NA_character_, ans)
-        if (localised) ans <- localise_labels(ans, col, var_names, locale)
-        return(cast_to_type(ans, type))
-      }
-      col_els <- strsplit(col, "\\.")[[1L]]
-      if (single) {
-        ans <- vapply(x, get_el_recurse, type_na, col_els, type)
-        if (localised) ans <- localise_labels(ans, col, var_names, locale)
-        return(ans)
-      }
-      ans <- lapply(x, get_el_recurse, col_els, type)
-      ans <- lapply(ans, unlist)
+  lst <- list()
+
+  for (col in cols) {
+
+    type  <- var_names[[col, "type"]]
+
+    type_na <- cast_to_type(NA, type)
+
+    single <- var_names[[col, "single"]]
+
+    localised <- var_names[[col, "localised"]]
+
+    if (aggregated) {
+
+      ans <- vapply(x, getElement, NA_character_, col)
+
+      ans_empty <- ans == ""
+
+      ans <- ifelse(ans_empty, NA_character_, ans)
+
       if (localised) {
-        has_locale <- any(
-          vapply(ans, function(x) any(names(x) %in% supported_langs), NA)
-        )
-        if (has_locale) {
-          ans <- vapply(ans, with_locale, type_na, locale)
-        } else {
-          ans <- lapply(ans, localise_labels, col, var_names, locale)
-        }
+
+        ans <- localise_labels(ans, col, var_names, locale)
+
       }
-      ans
+
+      ans <- cast_to_type(ans, type)
+
+    } else {
+
+      col_els <- strsplit(col, "\\.")
+
+      col_els <- col_els[[1L]]
+
+      if (single) {
+
+        ans <- vapply(x, get_el_recurse, type_na, col_els, type)
+
+        if (localised) {
+
+          ans <- localise_labels(ans, col, var_names, locale)
+
+        }
+
+      } else {
+
+        ans <- lapply(x, get_el_recurse, col_els, type)
+
+        ans <- lapply(ans, unlist)
+
+        if (localised) {
+
+          langs <- lapply(ans, names)
+
+          langs <- unlist(langs)
+
+          has_locale <- langs %in% supported_langs
+
+          has_locale <- any(has_locale)
+
+          if (has_locale) {
+
+            ans <- vapply(ans, with_locale, type_na, locale)
+
+          } else {
+
+            ans <- lapply(ans, localise_labels, col, var_names, locale)
+
+          }
+
+        }
+
+      }
+
     }
-  )
+
+    lst[[col]] <- ans
+
+  }
 
   names(lst) <- cols
-  cols_split <- split(cols, var_names[cols, "single"])
-  cols_split[["TRUE"]] <- c("ind", cols_split[["TRUE"]])
-  lst <- c(list(ind = seq_along(x)), lst)
-  df <- as.data.frame(lst[cols_split[["TRUE"]]], stringsAsFactors = FALSE)
-  df[cols_split[["FALSE"]]] <- lst[cols_split[["FALSE"]]]
-  df[["ind"]] <- NULL
+
+  single_col <- var_names[cols, "single"]
+
+  cols_split <- split(cols, single_col)
+
+  cols_single <- cols_split[["TRUE"]]
+
+  lst_single <- lst[cols_single, drop = FALSE]
+
+  df <- as.data.frame(lst_single, stringsAsFactors = FALSE)
+
+  cols_list <- cols_split[["FALSE"]]
+
+  lst_list <- lst[cols_list, drop = FALSE]
+
+  df[cols_list] <- lst_list
 
   if (aggregated) {
+
     aggregation_cols <- paste0("n_", aggregation)
+
     cols <- c(cols, aggregation_cols)
-    for (i in seq_along(aggregation)) {
-      df[[aggregation_cols[[i]]]] <- counts[[i]]
+
+    aggregation_sq <- seq_along(aggregation)
+
+    for (i in aggregation_sq) {
+
+      counts_i <- counts[[i]]
+
+      aggregation_col_i <- aggregation_cols[[i]]
+
+      df[[aggregation_col_i]] <- counts_i
+
     }
+
   }
 
-  structure(df[cols], url = url, time = time)
+  df <- df[cols]
+
+  structure(df, url = url, time = time)
 
 }
 
