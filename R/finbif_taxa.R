@@ -39,42 +39,86 @@
 #' @export
 
 finbif_taxa <- function(
-  name, n = 1, type = c("exact", "partial", "likely"),
+  name,
+  n = 1,
+  type = c("exact", "partial", "likely"),
   cache = getOption("finbif_use_cache")
 ) {
+
   path <- "taxa/search"
+
   type <- match.arg(type)
+
   query <- list(query = name, matchType = type, limit = n)
-  structure(
-    api_get(list(path = path, query = query, cache = cache)),
-    class = c("finbif_taxa", "finbif_api")
-  )
+
+  req <- list(path = path, query = query, cache = cache)
+
+  res <- api_get(req)
+
+  class <- c("finbif_taxa", "finbif_api")
+
+  structure(res, class = class)
+
 }
+
+#' @noRd
 
 taxon_attribute <- function(obj) {
-  taxon <- finbif_taxa(obj[["taxon"]], n = 1, type = "exact")
+
+  taxon <- obj[["taxon"]]
+
+  attribute <- obj[["attribute"]]
+
+  locale <- obj[["locale"]]
+
+  taxon <- finbif_taxa(taxon, n = 1, type = "exact")
+
   taxon <- taxon[["content"]]
+
   taxon <- taxon[[1L]]
-  with_locale(taxon[[obj[["which"]]]], obj[["locale"]])
+
+  ans <- taxon[[attribute]]
+
+  with_locale(ans, locale)
+
 }
 
 #' @export
 #' @rdname finbif_taxa
-common_name <- function(name, locale = getOption("finbif_locale")) {
-  obj <- list(taxon = name, which = "vernacularName", locale = locale)
+
+common_name <- function(
+  name,
+  locale = getOption("finbif_locale")
+) {
+
+  obj <- list(taxon = name, attribute = "vernacularName", locale = locale)
+
   taxon_attribute(obj)
+
 }
 
 #' @export
 #' @rdname finbif_taxa
-scientific_name <- function(name) {
-  obj <- list(taxon = name, which = "scientificName")
+
+scientific_name <- function(
+  name
+) {
+
+  obj <- list(taxon = name, attribute = "scientificName")
+
   taxon_attribute(obj)
+
 }
 
 #' @export
 #' @rdname finbif_taxa
-taxon_id <- function(name) {
-  obj <- list(taxon = name, which = "id")
+
+taxon_id <- function(
+  name
+) {
+
+  obj <- list(taxon = name, attribute = "id")
+
   taxon_attribute(obj)
+
 }
