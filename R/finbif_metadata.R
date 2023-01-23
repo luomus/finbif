@@ -10,10 +10,11 @@
 #' @return A data.frame.
 #' @examples
 #' finbif_metadata("red_list")
-#' @importFrom utils head
 #' @export
 
-finbif_metadata <- function(which) {
+finbif_metadata <- function(
+  which
+) {
 
   metadata_name <- c(
     "regulatory_status",
@@ -35,15 +36,18 @@ finbif_metadata <- function(which) {
     "taxon_rank"
   )
 
+  has_which <- !missing(which)
 
-  if (missing(which)) {
+  ans <- data.frame(metadata_name)
 
-    ans <- data.frame(metadata_name)
+  if (has_which) {
 
-  } else {
+    no_which <- !which %in% metadata_name
 
-    if (!which %in% metadata_name) {
-      stop(which, " not found in FinBIF metadata.")
+    if (no_which) {
+
+      stop(which, " not found in FinBIF metadata.", call. = FALSE)
+
     }
 
     ans <- switch(
@@ -69,186 +73,328 @@ finbif_metadata <- function(which) {
 
   }
 
-  class(ans) <- c("finbif_metadata_df", "data.frame")
+  class <- c("finbif_metadata_df", "data.frame")
 
-  ans
+  structure(ans, class = class)
 
 }
 
-md_regulatory_status <- function() {
+#' @noRd
 
-  df <- regulatory_status
+md_regulatory_status <- function() {
 
   locale <- getOption("finbif_locale")
 
   col <- paste0("description_", locale)
 
-  if (!col %in% names(df)) {
+  col_names <- names(regulatory_status)
+
+  no_locale <- !col %in% col_names
+
+  if (no_locale) {
 
     col <- "description_en"
 
   }
 
-  df <- df[order(df[[col]]), c("status_code", col)]
+  descriptions <- regulatory_status[[col]]
 
-  structure(df, row.names = seq_len(nrow(df)))
+  ind <- order(descriptions)
+
+  cols <- c("status_code", col)
+
+  regulatory_status <- regulatory_status[ind, cols]
+
+  obj <- list(df = regulatory_status, names = cols)
+
+  md(obj)
 
 }
+
+#' @noRd
 
 md_red_list <- function() {
-  df <- red_list_status
-  df <- df[order(df[["translated_status"]]), ]
-  structure(
-    df, row.names = seq_len(nrow(df)), names = c("status_name", "status_code")
-  )
+
+  statuses <- red_list_status[["translated_status"]]
+
+  ind <- order(statuses)
+
+  red_list_status <- red_list_status[ind, ]
+
+  col_names <- c("status_name", "status_code")
+
+  obj <- list(df = red_list_status, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_countries <- function() {
-  structure(
-    country,
-    row.names = seq_len(nrow(country)),
-    names = c("english_name", "finnish_name", "alpha_code_2", "alpha_code_3")
-  )
+
+  col_names <- c("english_name", "finnish_name", "alpha_code_2", "alpha_code_3")
+
+  obj <- list(df = country, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_regions <- function() {
-  structure(
-    region,
-    row.names = seq_len(nrow(region)),
-    names = c("english_name", "finnish_name", "swedish_name")
-  )
+
+  col_names <- c("english_name", "finnish_name", "swedish_name")
+
+  obj <- list(df = region, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_bio_provinces <- function() {
-  structure(
-    bio_province, row.names = seq_len(nrow(bio_province)),
-    names = c("english_name", "finnish_name", "alpha_code", "country")
-  )
+
+  col_names <- c("english_name", "finnish_name", "alpha_code", "country")
+
+  obj <- list(df = bio_province, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_municipalities <- function() {
-  structure(
-    municipality, row.names = seq_len(nrow(municipality)),
-    names = c("finnish_name", "country")
-  )
+
+  col_names <- c("finnish_name", "country")
+
+  obj <- list(df = municipality, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_bird_assoc_areas <- function() {
-  structure(
-    bird_assoc_area, row.names = seq_len(nrow(bird_assoc_area)),
-    names = c("finnish_name", "area_code")
-  )
+
+  col_names <- c("finnish_name", "area_code")
+
+  obj <- list(df = bird_assoc_area, names = col_names)
+
+  md(obj)
+
 }
 
+#' @noRd
+
 md_finnish_occurrence_status <- function() {
-  structure(
-    finnish_occurrence_status,
-    row.names = seq_len(nrow(finnish_occurrence_status)),
-    names = c("status_description", "status_name")
-  )
+
+  col_names <- c("status_description", "status_name")
+
+  obj <- list(df = finnish_occurrence_status, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_habitat_types <- function() {
 
-  df <- primary_habitat[["habitat_types"]]
+  habitat_types <- primary_habitat[["habitat_types"]]
 
   locale <- getOption("finbif_locale")
 
   col <- paste0("name_", locale)
 
-  if (!col %in% names(df)) {
+  col_names <- names(habitat_types)
+
+  no_locale <- !col %in% col_names
+
+  if (no_locale) {
 
     col <- "name_en"
 
   }
 
-  df <- df[order(df[[col]]), c("code", col)]
+  nms <- habitat_types[[col]]
 
-  structure(
-    df, row.names = seq_len(nrow(df)),
-    names = c("habitat_code", "habitat_description")
-  )
+  ind <- order(nms)
+
+  cols <- c("code", col)
+
+  habitat_types <- habitat_types[ind, cols]
+
+  col_names <- c("habitat_code", "habitat_description")
+
+  obj <- list(df = habitat_types, names = col_names)
+
+  md(obj)
 
 }
+
+#' @noRd
 
 md_habitat_qualifiers <- function() {
 
-  df <- primary_habitat[["specific_habitat_types"]]
+  specific_habitat_types <- primary_habitat[["specific_habitat_types"]]
 
   locale <- getOption("finbif_locale")
 
   col <- paste0("name_", locale)
 
-  if (!col %in% names(df)) {
+  col_names <- names(specific_habitat_types)
+
+  no_locale <- !col %in% col_names
+
+  if (no_locale) {
 
     col <- "name_en"
 
   }
 
-  df <- df[order(df[[col]]), c("code", col)]
+  nms <- specific_habitat_types[[col]]
 
-  structure(
-    df, row.names = seq_len(nrow(df)),
-    names = c("qualifier_code", "qualifier_description")
-  )
+  ind <- order(nms)
+
+  cols <- c("code", col)
+
+  specific_habitat_types <- specific_habitat_types[ind, cols]
+
+  col_names <- c("qualifier_code", "qualifier_description")
+
+  obj <- list(df = specific_habitat_types, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_life_stages <- function() {
-  structure(
-    life_stage,
-    row.names = seq_len(nrow(life_stage)),
-    names =  c("english_name", "finnish_name", "swedish_name")
-  )
+
+  col_names <- c("english_name", "finnish_name", "swedish_name")
+
+  obj <- list(df = life_stage, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_record_basis <- function() {
-  structure(
-    record_basis[c("name_en", "name_fi", "name_sv")],
-    row.names = seq_len(nrow(record_basis)),
-    names =  c("english_name", "finnish_name", "swedish_name")
-  )
+
+  cols <- c("name_en", "name_fi", "name_sv")
+
+  df <- record_basis[cols]
+
+  col_names <- c("english_name", "finnish_name", "swedish_name")
+
+  obj <- list(df = df, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_restriction_reasons <- function() {
-  structure(
-    restriction_reason,
-    row.names = seq_len(nrow(restriction_reason)),
-    names = c(
-      "label", "english_description", "finnish_description",
-      "swedish_description"
-    )
+
+  col_names <- c(
+    "label", "english_description", "finnish_description", "swedish_description"
   )
+
+  obj <- list(df = restriction_reason, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_restriction_levels <- function() {
-  structure(
-    restriction_level[c("value", "enumeration")],
-    row.names = seq_len(nrow(restriction_level)),
-    names = c("level_description", "level_name")
-  )
+
+  cols <- c("value", "enumeration")
+
+  df <- restriction_level[cols]
+
+  col_names <- c("level_description", "level_name")
+
+  obj <- list(df = df, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_sex_categories <- function() {
-  structure(
-    sex[order(sex[["name_en"]]), ],
-    row.names = seq_len(nrow(sex)),
-    names = c("code", "english_name", "finnish_name", "swedish_name")
-  )
+
+  col <- "name_en"
+
+  nms <- sex[[col]]
+
+  ind <- order(nms)
+
+  df <- sex[ind, ]
+
+  col_names <- c("code", "english_name", "finnish_name", "swedish_name")
+
+  obj <- list(df = df, names = col_names)
+
+  md(obj)
+
 }
+
+#' @noRd
 
 md_sources <- function() {
-  structure(
-    source[c("id", "name_en", "description_en", "name_fi", "description_fi")],
-    row.names = seq_len(nrow(source)),
-    names = c(
-      "source_id", "english_name", "english_description", "finnish_name",
-      "finnish_description"
-    )
- )
+
+  cols <- c("id", "name_en", "description_en", "name_fi", "description_fi")
+
+  df <- source[cols]
+
+  col_names <- c(
+    "source_id",
+    "english_name",
+    "english_description",
+    "finnish_name",
+    "finnish_description"
+  )
+
+  obj <- list(df = df, names = col_names)
+
+  md(obj)
+
 }
 
+#' @noRd
+
 md_taxon_ranks <- function() {
-  structure(
-    taxon_rank, row.names = seq_len(nrow(taxon_rank)), names = c("rank_name")
-  )
+
+  obj <- list(df = taxon_rank, names = "rank_name")
+
+  md(obj)
+
+}
+
+#' @noRd
+
+md <- function(obj) {
+
+  df <- obj[["df"]]
+
+  n_rows <- nrow(df)
+
+  row_names <- seq_len(n_rows)
+
+  col_names <- obj[["names"]]
+
+  structure(df, row.names = row_names, names = col_names)
+
 }
