@@ -1,6 +1,6 @@
 #' @noRd
 #' @importFrom digest digest
-#' @importFrom httr accept_json content RETRY http_type user_agent status_code
+#' @importFrom httr accept_json content http_type RETRY status_code user_agent
 #' @importFrom utils packageVersion
 
 api_get <- function(obj) {
