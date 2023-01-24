@@ -375,6 +375,7 @@ as.data.frame.finbif_records_list <- function(
 
 #' @noRd
 #' @export
+
 `[.finbif_occ` <- function(
   x,
   i,
@@ -490,14 +491,25 @@ as.data.frame.finbif_records_list <- function(
 
 #' @noRd
 #' @export
-rbind.finbif_occ <- function(...) {
+
+rbind.finbif_occ <- function(
+  ...
+) {
 
   ans <- rbind.data.frame(...)
 
   l <- list(...)
 
-  for (i in c("nrec_dnld", "nrec_avl", "url", "time", "record_id")) {
-    attr(ans, i) <- unlist(lapply(l, attr, i))
+  attrs <- c("nrec_dnld", "nrec_avl", "url", "time", "record_id")
+
+  for (i in attrs) {
+
+    a <- lapply(l, attr, i)
+
+    a <- unlist(a)
+
+    attr(ans, i) <- a
+
   }
 
   ans
