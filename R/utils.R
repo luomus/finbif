@@ -220,7 +220,12 @@ truncate_string_to_unique <- function(x) {
 }
 
 #' @noRd
-value <- function(obj) obj
+
+value <- function(obj) {
+
+  obj
+
+}
 
 #' @noRd
 col_type_string <- function(dwc) {
