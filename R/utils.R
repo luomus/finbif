@@ -124,13 +124,27 @@ get_el_recurse <- function(obj, nms, type) {
 }
 
 #' @noRd
+
 pb_head <- function(msg, quiet = FALSE) {
-  gap <- nchar(msg) + 15L
+
+  nchars <- nchar(msg)
+
+  gap <- nchars + 15L
+
+  width <- getOption("width")
+
+  diff <- width - gap
+
+  diff <- max(0L, diff)
+
+  body <- rep("=", diff)
+
   if (!quiet) {
-    message(
-      "  |=== ", msg, " ", rep("=", max(0L, getOption("width") - gap)), "|"
-    )
+
+    message("  |=== ", msg, " ", body, "|")
+
   }
+
 }
 
 #' @noRd
