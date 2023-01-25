@@ -43,12 +43,28 @@ to_sentence_case <- function(string) {
 }
 
 #' @noRd
+
 get_next_lowest_factor <- function(x, y) {
-  if (x %% y) get_next_lowest_factor(x, y - 1L) else y
+
+  mod <- x %% y
+
+  end <- identical(mod, 0L)
+
+  if (end) {
+
+    return(y)
+
+  }
+
+  y <- y - 1L
+
+  get_next_lowest_factor(x, y)
+
 }
 
 #' @noRd
 #' @importFrom utils hasName
+
 get_el_recurse <- function(obj, nms, type) {
 
   type_na <- cast_to_type(NA, type)
