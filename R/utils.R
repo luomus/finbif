@@ -148,9 +148,23 @@ pb_head <- function(msg, quiet = FALSE) {
 }
 
 #' @noRd
+
 truncate_string <- function(x, sl = 20L) {
+
   x <- as.character(x)
-  ifelse(nchar(x) > sl, sprintf("%s\u2026", substr(x, 1L, sl - 1L)), x)
+
+  nchars <- nchar(x)
+
+  too_many_chars <- nchars > sl
+
+  sl <- sl - 1L
+
+  x_sl <- substr(x, 1L, sl)
+
+  x_sl <- sprintf("%s\u2026", x_sl)
+
+  ifelse(too_many_chars, x_sl, x)
+
 }
 
 #' @noRd
