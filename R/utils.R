@@ -426,9 +426,14 @@ concat_string <- function(x) {
 }
 
 #' @noRd
+
 cast_to_type <- function(x, type) {
 
-  if (length(type) != 1L) {
+  l <- length(type)
+
+  cond <- !identical(l, 1L)
+
+  if (cond) {
 
     type <- "character"
 
