@@ -396,9 +396,10 @@ name_chr_vec <- function(x, unique = TRUE, na.rm = TRUE) { # nolint
 }
 
 #' @noRd
-remove_domain <- function(x, domain = "tun.fi", protocol =  "http") {
 
-  sub(sprintf("^%s://%s/", protocol, domain), "", x)
+remove_domain <- function(x) {
+
+  sub("^http://tun.fi/", "", x)
 
 }
 
