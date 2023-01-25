@@ -27,8 +27,19 @@ drop_na_col <- function(df) {
 }
 
 #' @noRd
+
 to_sentence_case <- function(string) {
-  paste0(substring(toupper(string), 1L, 1L), substring(tolower(string), 2L))
+
+  upper <- toupper(string)
+
+  first <- substring(upper, 1L, 1L)
+
+  lower <- tolower(string)
+
+  rest <- substring(lower, 2L)
+
+  paste0(first, rest)
+
 }
 
 #' @noRd
