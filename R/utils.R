@@ -404,19 +404,24 @@ remove_domain <- function(x) {
 }
 
 #' @noRd
+
 concat_string <- function(x) {
 
-  idx <- !is.na(x)
+  ans <- NA_character_
 
-  if (any(idx)) {
+  not_na <- !is.na(x)
 
-    paste(x[idx], collapse = "; ")
+  any_not_na <- any(not_na)
 
-  } else {
+  if (any_not_na) {
 
-    NA_character_
+    x_not_na <- x[not_na]
+
+    ans <- paste(x_not_na, collapse = "; ")
 
   }
+
+  ans
 
 }
 
