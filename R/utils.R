@@ -454,31 +454,67 @@ cast_to_type <- function(x, type) {
 # random sampling --------------------------------------------------------------
 
 #' @noRd
+
 sample_with_seed <- function(n, size, seed) {
-  if (exists(".Random.seed", 1L)) {
+
+  on.exit({
+
+    rm(".Random.seed", pos = 1L)
+
+  })
+
+  has_seed <- exists(".Random.seed", 1L)
+
+  if (has_seed) {
+
     oldseed <- get(".Random.seed", 1L)
-    on.exit(assign(".Random.seed", oldseed, 1L))
-  } else {
-    on.exit(rm(".Random.seed", pos = 1L))
+
+    on.exit({
+
+      assign(".Random.seed", oldseed, 1L)
+
+    })
+
   }
+
   args <- list(seed, "default", "default")
-  if (getRversion() >= "3.6.0") args <- c(args, "default")
+
+  if (getRversion() >= "3.6.0") {
+
+    args <- c(args, "default")
+
+  }
+
   do.call(set.seed, args)
+
   sample.int(n, size)
+
 }
 
 #' @noRd
-gen_seed <- function(x, ...) UseMethod("gen_seed", x)
+
+gen_seed <- function(x, ...) {
+
+  UseMethod("gen_seed", x)
+
+}
 
 #' @importFrom digest digest
 #' @export
 #' @noRd
+
 gen_seed.finbif_records_list <- function(x, ...) {
+
   hash <- lapply(x, getElement, "hash")
+
   hash <- do.call(paste0, hash)
+
   hash <- digest::digest(hash)
+
   hash <- substr(hash, 1L, 7L)
+
   strtoi(hash, 16L)
+
 }
 
 # errors -----------------------------------------------------------------------
