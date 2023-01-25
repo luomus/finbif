@@ -1,21 +1,26 @@
 # misc -------------------------------------------------------------------------
 
 #' @noRd
-#' @description Drop columns from a data.frame where all elements are missing.
-#' @param df A `finbif_occ` object.
-#'   data. Values recycled to length of `df`. Defaults to all columns.
+
 drop_na_col <- function(df) {
+
+  ncols <- length(df)
 
   which <- attr(df, "drop_na", TRUE)
 
-  which <- rep_len(which, length(df))
+  column_names <- attr(df, "column_names")
+
+  which <- rep_len(which, ncols)
 
   is_na <- lapply(df, is.na)
-  is_na <- vapply(is_na, all, logical(1L))
+
+  is_na <- vapply(is_na, all, NA)
 
   cond <- !is_na | !which
 
-  attr(df, "column_names") <- attr(df, "column_names")[cond]
+  column_names <- column_names[cond]
+
+  attr(df, "column_names") <- column_names
 
   df[, cond, drop = FALSE]
 
