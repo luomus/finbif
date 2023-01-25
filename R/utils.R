@@ -69,15 +69,39 @@ get_el_recurse <- function(obj, nms, type) {
 
   type_na <- cast_to_type(NA, type)
 
-  if (length(nms) < 1L) {
-    return(
-      if (is.null(obj) || identical(obj, "")) type_na else obj
-    )
+  many_names <- length(nms) < 1L
+
+  if (many_names) {
+
+    is_null <- is.null(obj)
+
+    is_empty <- identical(obj, "")
+
+    to_na <- is_null || is_empty
+
+    if (to_na) {
+
+      obj <- type_na
+
+    }
+
+    return(obj)
+
   }
 
   nm <- nms[[1L]]
 
-  if (is.null(names(obj)) && any(vapply(obj, utils::hasName, NA, nm))) {
+  obj_nms <- names(obj)
+
+  obj_nms_is_null <- is.null(obj_nms)
+
+  has_nm <- vapply(obj, utils::hasName, NA, nm)
+
+  any_has_nm <- any(has_nm)
+
+  unlist_obj <- obj_nms_is_null && any_has_nm
+
+  if (unlist_obj) {
 
     obj <- lapply(obj, getElement, nm)
 
@@ -93,7 +117,9 @@ get_el_recurse <- function(obj, nms, type) {
 
   }
 
-  get_el_recurse(obj, nms[-1L], type)
+  nms <- nms[-1L]
+
+  get_el_recurse(obj, nms, type)
 
 }
 
