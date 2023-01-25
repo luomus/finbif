@@ -1128,7 +1128,7 @@ spread_facts <-  function(facts) {
     )
 
     facts <- tidyr::pivot_wider(
-      facts, 1L, names_from = 2L, values_from = 3L, values_fn = list,
+      facts, id_cols = 1L, names_from = 2L, values_from = 3L, values_fn = list,
       values_fill = list(NA)
     )
 
