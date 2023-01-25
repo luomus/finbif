@@ -344,35 +344,52 @@ has_pkgs <- function(...) {
 }
 
 #' @noRd
+
 name_chr_vec <- function(x, unique = TRUE, na.rm = TRUE) { # nolint
 
-  if (missing(x)) return(NULL)
+  no_x <- missing(x)
 
-  stopifnot(inherits(x, "character"))
+  if (no_x) {
+
+    return(NULL)
+
+  }
+
+  is_char <- inherits(x, "character")
+
+  stopifnot("'x' is not a character vector" = is_char)
 
   if (na.rm) {
 
-    x <- x[!is.na(x)]
+    not_na <- !is.na(x)
+
+    x <- x[not_na]
 
   }
 
   nms <- names(x)
 
-  if (is.null(nms)) {
+  no_nms <- is.null(nms)
 
-    names(x) <- x
+  if (no_nms) {
+
+    nms <- x
 
   } else {
 
-    names(x) <- ifelse(nms == "", x, nms)
+    empty_names <- nms == ""
+
+    nms <- ifelse(empty_names, x, nms)
 
   }
 
   if (unique) {
 
-    names(x) <- make.unique(names(x))
+    nms <- make.unique(nms)
 
   }
+
+  names(x) <- nms
 
   x
 
