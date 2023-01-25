@@ -23,6 +23,10 @@ test_that(
 
     expect_type(finbif_check_taxa(list(genus = "Parus major")), "list")
 
+    not_found <- finbif_check_taxa("Moomin")
+
+    expect_output(print(not_found), "Not found")
+
   }
 )
 
