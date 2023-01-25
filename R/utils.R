@@ -228,12 +228,19 @@ value <- function(obj) {
 }
 
 #' @noRd
+
 col_type_string <- function(dwc) {
+
+  ans <- "translated_var"
+
   if (dwc) {
-    "dwc"
-  } else {
-    "translated_var"
+
+    ans <- "dwc"
+
   }
+
+  ans
+
 }
 
 #' @noRd
