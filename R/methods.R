@@ -1094,15 +1094,41 @@ print_extras <- function(obj) {
 #' @noRd
 #' @importFrom graphics grid plot.default
 #' @export
+
 plot.finbif_occ <- function(
-  x, ..., xlab = "Longitude", ylab = "Latitude",
+  x,
+  ...,
+  xlab = "Longitude",
+  ylab = "Latitude",
   panel.first = grid(lwd = 2), # nolint
-  asp = 1 / cos(mean(range(x["lat_wgs84"])) * pi / 180), pch = 19, cex = .5,
+  asp = 1 / cos(mean(range(x["lat_wgs84"])) * pi / 180),
+  pch = 19,
+  cex = .5,
   las = 1
 ) {
-  stopifnot(exists("lon_wgs84", x) && exists("lat_wgs84", x))
+
+  has_lon <- exists("lon_wgs84", x)
+
+  has_lat <- exists("lat_wgs84", x)
+
+  has_coords <- has_lon && has_lat
+
+  stopifnot("Missing coordinates" = has_coords)
+
+  coord_nms <- c("lon_wgs84", "lat_wgs84")
+
+  coords <- x[coord_nms]
+
   graphics::plot.default(
-    x[c("lon_wgs84", "lat_wgs84")], ..., xlab = xlab, ylab = ylab,
-    panel.first = panel.first, asp = asp, cex = .5, las = 1, pch = pch
+    coords,
+    ...,
+    xlab = xlab,
+    ylab = ylab,
+    panel.first = panel.first,
+    asp = asp,
+    cex = .5,
+    las = 1,
+    pch = pch
   )
+
 }
