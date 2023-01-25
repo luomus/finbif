@@ -294,13 +294,18 @@ open_tsv_connection <- function(file, tsv, mode = "rt") {
 }
 
 #' @noRd
-nlines <- function(file, tsv) {
 
-  on.exit(close(con))
+nlines <- function(file, tsv) {
 
   con <- open_tsv_connection(file, tsv, "rb")
 
-  n <- 0L
+  on.exit({
+
+    close(con)
+
+  })
+
+  n <- -1L
 
   cond <- TRUE
 
@@ -308,13 +313,22 @@ nlines <- function(file, tsv) {
 
     chunk <- readBin(con, "raw", 65536L)
 
-    n <- n + sum(chunk == as.raw(10L))
+    raw10 <- as.raw(10L)
 
-    cond <- !identical(chunk, raw(0L))
+    chunk_10 <- chunk == raw10
+
+    subtotal <- sum(chunk_10)
+
+    n <- n + subtotal
+
+    empty <- raw(0L)
+
+    cond <- !identical(chunk, empty)
 
   }
 
-  n - 1L
+  n
+
 }
 
 #' @noRd
