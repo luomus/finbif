@@ -244,13 +244,24 @@ col_type_string <- function(dwc) {
 }
 
 #' @noRd
+
 det_datetime_method <- function(method, n) {
 
-  if (is.null(method)) {
+  is_null <- is.null(method)
+
+  if (is_null) {
 
     method <- "none"
 
-    n <- sum(ifelse(is.numeric(n) & n >= 0L, n, Inf))
+    is_num <- is.numeric(n)
+
+    is_pos <- n >= 0L
+
+    cond <- is_num & is_pos
+
+    n <- ifelse(cond, n, Inf)
+
+    n <- sum(n)
 
     if (n < 1e5) {
 
@@ -265,19 +276,20 @@ det_datetime_method <- function(method, n) {
 }
 
 #' @noRd
+
 open_tsv_connection <- function(file, tsv, mode = "rt") {
 
-  if (!grepl("\\.tsv$", file)) {
+  nchars <- nchar(file)
 
-    con <- unz(file, tsv, mode)
+  start <- nchars - 3L
 
-  } else {
+  ext <- substring(file, start, nchars)
 
-    con <- file(file, mode)
-
-  }
-
-  con
+  switch(
+    ext,
+    .tsv = file(file, mode),
+    unz(file, tsv, mode)
+  )
 
 }
 
