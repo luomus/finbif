@@ -168,20 +168,55 @@ truncate_string <- function(x, sl = 20L) {
 }
 
 #' @noRd
+
 truncate_string_to_unique <- function(x) {
+
   ind <- !is.na(x)
+
   y <- x[ind]
+
   i <- 0L
-  all_equal <- TRUE
-  while (all_equal && length(unique(y)) > 1L) {
+
+  cond <- TRUE
+
+  while (cond) {
+
     substr(y, i, i) <- " "
+
     i <- i + 1L
+
     j <- substr(y, i, i)
-    all_equal <- all(j == j[[1L]])
+
+    j1 <- j[[1L]]
+
+    equal <- j == j1
+
+    all_equal <- all(equal)
+
+    unique_y <- unique(y)
+
+    n_unique_y <- length(unique_y)
+
+    more_than_one <- n_unique_y > 1L
+
+    cond <- all_equal && more_than_one
+
   }
+
   y <- trimws(y)
-  x[ind] <- ifelse(x[ind] == y, y, paste0("\u2026", y))
+
+  x_ind <- x[ind]
+
+  unchanged <- x_ind == y
+
+  changed <- paste0("\u2026", y)
+
+  x_ind <- ifelse(unchanged, y, changed)
+
+  x[ind] <- x_ind
+
   x
+
 }
 
 #' @noRd
