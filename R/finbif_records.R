@@ -304,9 +304,13 @@ infer_aggregation <- function(aggregate) {
 
 # selection --------------------------------------------------------------------
 
+#' @noRd
+
 infer_selection <- function(fb_records_obj) {
 
   aggregate <- fb_records_obj[["aggregate"]]
+
+  aggregate <- aggregate[[1L]]
 
   select <- fb_records_obj[["select"]]
 
@@ -314,78 +318,130 @@ infer_selection <- function(fb_records_obj) {
 
   var_type <- fb_records_obj[["var_type"]]
 
-  date_time_vars <- var_names[var_names[["date"]], ]
+  is_date_time_vars <- var_names[["date"]]
+
+  date_time_vars <- var_names[is_date_time_vars, ]
+
+  date_time_var_names <- row.names(date_time_vars)
+
+  is_default_vars <- var_names[["default_var"]]
 
   default_vars <- switch(
-    aggregate[[1L]],
-    none = var_names[var_names[["default_var"]], ],
+    aggregate,
+    none = var_names[is_default_vars, ],
     events = var_names["gathering.gatheringId", ],
     documents = var_names["document.documentId", ],
     var_names["unit.linkings.taxon.scientificName", ]
   )
 
-  select_type <- switch(
-    aggregate[[1L]],
-    none = "select",
-    events = "aggregate_events",
-    documents = "aggregate_documents",
-    "aggregate"
-  )
+  select_null <- is.null(select)
 
-  if (is.null(select)) {
+  aggregate_none <- identical(aggregate, "none")
+
+  if (select_null) {
 
     select <- row.names(default_vars)
-    select_ <- default_vars[[var_type]]
+
+    select_user <- default_vars[[var_type]]
+
     record_id_selected <- FALSE
+
     date_time_selected <- FALSE
 
-    if (identical(aggregate, "none")) {
+    if (aggregate_none) {
+
       # Missing 'select' implies default selection which implies date-time,
       # abundance, coord uncertainty and scientific name calc needed
-      select <- unique(
-        c(
-          select, row.names(date_time_vars),
-          "unit.interpretations.individualCount", "unit.abundanceString",
-          "gathering.interpretations.coordinateAccuracy",
-          "unit.linkings.taxon.scientificName", "unit.taxonVerbatim",
-          "unit.linkings.taxon.scientificNameAuthorship", "unit.author",
-          "document.sourceId"
-        )
+
+      select <- c(
+        select,
+        date_time_var_names,
+        "unit.interpretations.individualCount",
+        "unit.abundanceString",
+        "gathering.interpretations.coordinateAccuracy",
+        "unit.linkings.taxon.scientificName",
+        "unit.taxonVerbatim",
+        "unit.linkings.taxon.scientificNameAuthorship",
+        "unit.author",
+        "document.sourceId"
       )
+
+      select <- unique(select)
+
       record_id_selected <- TRUE
+
       date_time_selected <- TRUE
+
     }
 
   } else {
 
-    deselect <- substring(grep("^-", select, value = TRUE), 2L)
-    if (identical(length(deselect), length(select))) select <- "default_vars"
-    select <- grep("^-", select, value = TRUE, invert = TRUE)
-    select <- ifelse(
-      select == "default_vars", list(default_vars[[var_type]]), select
-    )
-    select <- unlist(select)
-    select <- select[!duplicated(select) & !select %in% deselect]
-    select_ <- select
+    deselect <- grep("^-", select, value = TRUE)
 
-    record_id_selected <- var_names["unit.unitId", var_type] %in% select
+    deselect <- substring(deselect, 2L)
 
-    if (!record_id_selected && identical(aggregate, "none")) {
+    n_deselect <- length(deselect)
 
-      select <- c(var_names["unit.unitId", var_type], select)
+    n_select <- length(select)
+
+    all_deselect <- identical(n_deselect, n_select)
+
+    if (all_deselect) {
+
+      select <- "default_vars"
 
     }
 
-    vars <- c(
-      "date_time", "eventDateTime", "date_time_ISO8601", "eventDate",
-      "duration", "samplingEffort"
+    select <- grep("^-", select, value = TRUE, invert = TRUE)
+
+    default_vars <- default_vars[[var_type]]
+
+    default_vars <- list(default_vars)
+
+    select <- ifelse(select == "default_vars", default_vars, select)
+
+    select <- unlist(select)
+
+    unique_select <- !duplicated(select)
+
+    select_ind <- !select %in% deselect
+
+    select_ind <- select_ind & unique_select
+
+    select <- select[select_ind]
+
+    select_user <- select
+
+    record_id <- var_names["unit.unitId", var_type]
+
+    record_id_selected <- record_id %in% select
+
+    needs_record_id <- !record_id_selected && aggregate_none
+
+    if (needs_record_id) {
+
+      select <- c(record_id, select)
+
+    }
+
+    date_time_var_translations <- c(
+      "date_time",
+      "eventDateTime",
+      "date_time_ISO8601",
+      "eventDate",
+      "duration",
+      "samplingEffort"
     )
 
-    date_time_selected <- any(vars %in% select)
+    date_time_selected <- date_time_var_translations %in% select
+
+    date_time_selected <- any(date_time_selected)
 
     if (date_time_selected) {
 
-      select <- unique(c(select, date_time_vars[[var_type]]))
+      date_time_vars_selection <- date_time_vars[[var_type]]
+
+      select <- c(select, date_time_vars_selection)
 
     }
 
@@ -393,38 +449,61 @@ infer_selection <- function(fb_records_obj) {
 
     select <- infer_computed_vars(fb_records_obj)
 
-    select_vars <- var_names[var_names[[select_type]], var_type, drop = FALSE]
-
-    class(select_vars[[var_type]]) <- class(var_names[[var_type]])
-
-    select <- translate(
-      list(
-        x = select,
-        translation = "select_vars",
-        env = list(select_vars = select_vars)
-      )
+    select_type <- switch(
+      aggregate,
+      none = "select",
+      events = "aggregate_events",
+      documents = "aggregate_documents",
+      "aggregate"
     )
+
+    select_type_rows <- var_names[[select_type]]
+
+    select_vars <- var_names[select_type_rows, var_type, drop = FALSE]
+
+    select_vars[] <- lapply(select_vars, structure, class = "translation")
+
+    select_vars <- list(select_vars = select_vars)
+
+    select_vars <- list(
+      x = select, translation = "select_vars", env = select_vars
+    )
+
+    select <- translate(select_vars)
 
     vars_computed_from_id <- grepl("^computed_var_from_id", select)
 
-    if (any(vars_computed_from_id)) {
+    any_vars_computed_from_id <- any(vars_computed_from_id)
 
-      vars_computed_from_id <- var_names[select[vars_computed_from_id], ]
+    if (any_vars_computed_from_id) {
 
-      for (i in seq_len(nrow(vars_computed_from_id))) {
+      select_computed <- select[vars_computed_from_id]
 
-        ind <- match(row.names(vars_computed_from_id)[[i]], select)
+      vars_computed_from_id <- var_names[select_computed, ]
+
+      n_computed <- nrow(vars_computed_from_id)
+
+      computed_sq <- seq_len(n_computed)
+
+      for (i in computed_sq) {
+
+        computed_names <- row.names(vars_computed_from_id)
+
+        computed_name_i <- computed_names[[i]]
+
+        ind <- match(computed_name_i, select)
+
         computed_var <- vars_computed_from_id[i, var_type]
+
         suffix <- switch(var_type, translated_var = "_id", dwc = "ID")
+
         id_var <- paste0(computed_var, suffix)
 
-        select[[ind]] <- translate(
-          list(
-            x = id_var,
-            translation = "select_vars",
-            env = list(select_vars = select_vars)
-          )
-        )
+        select_vars[["x"]] <- id_var
+
+        select_i <- translate(select_vars)
+
+        select[[ind]] <- select_i
 
       }
 
@@ -435,17 +514,29 @@ infer_selection <- function(fb_records_obj) {
   if (include_facts) {
 
     select <- c(
-      select, "unit.facts.fact", "unit.facts.value", "gathering.facts.fact",
-      "gathering.facts.value", "document.facts.fact", "document.facts.value"
+      select,
+      "unit.facts.fact",
+      "unit.facts.value",
+      "gathering.facts.fact",
+      "gathering.facts.value",
+      "document.facts.fact",
+      "document.facts.value"
     )
 
   }
 
   # Can't query the server for vars that are computed after download
-  select <- unique(select[!grepl("^computed_var", select)])
+
+  uncomputed <- !grepl("^computed_var", select)
+
+  select <- select[uncomputed]
+
+  select <- unique(select)
 
   list(
-    query = select, user = select_, record_id_selected = record_id_selected,
+    query = select,
+    user = select_user,
+    record_id_selected = record_id_selected,
     date_time_selected = date_time_selected
   )
 
