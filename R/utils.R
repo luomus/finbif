@@ -207,15 +207,13 @@ truncate_string_to_unique <- function(x) {
 
     i <- i + 1L
 
-    j <- substr(y, i, i)
-
     unique_y <- unique(y)
 
     n_unique_y <- length(unique_y)
 
     more_than_one <- n_unique_y > 1L
 
-    cond <-  more_than_one && all(j == j[[1L]])
+    cond <- more_than_one && char_all_equal(y, i)
 
   }
 
@@ -232,6 +230,20 @@ truncate_string_to_unique <- function(x) {
   x[ind] <- x_ind
 
   x
+
+}
+
+#' @noRd
+
+char_all_equal <- function(x, i) {
+
+  chars <- substr(x, i, i)
+
+  char <- chars[[1L]]
+
+  equal <- chars == char
+
+  all(equal)
 
 }
 
