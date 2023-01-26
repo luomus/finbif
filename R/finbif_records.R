@@ -542,6 +542,8 @@ infer_selection <- function(fb_records_obj) {
 
 }
 
+#' @noRd
+
 infer_computed_vars <- function(fb_records_obj) {
 
   select <- fb_records_obj[["select"]]
@@ -549,79 +551,100 @@ infer_computed_vars <- function(fb_records_obj) {
   var_type <- fb_records_obj[["var_type"]]
 
   abundance_vars <- c(
-    "abundance", "individualCount", "occurrence_status", "occurrenceStatus"
+    "abundance",
+    "individualCount",
+    "occurrence_status",
+    "occurrenceStatus"
   )
 
-  if (any(abundance_vars %in% select)) {
-
-    abundance_vars <- c(
-      "unit.interpretations.individualCount", "unit.abundanceString"
-    )
-
-    select <- unique(c(select, var_names[abundance_vars, var_type]))
-
-  }
-
-  coordinates_uncertainty_vars <- c(
-    "coordinates_uncertainty", "coordinateUncertaintyInMeters"
+  abundance_var_names <- c(
+    "unit.interpretations.individualCount",
+    "unit.abundanceString"
   )
 
-  if (any(coordinates_uncertainty_vars %in% select)) {
+  abundance <- list(vars = abundance_vars, v_names = abundance_var_names)
 
-    coordinates_uncertainty_vars <- c(
-      "gathering.interpretations.coordinateAccuracy", "document.sourceId"
-    )
+  cu_vars <- c(
+    "coordinates_uncertainty",
+    "coordinateUncertaintyInMeters"
+  )
 
-    select <- unique(
-      c(select, var_names[coordinates_uncertainty_vars, var_type])
-    )
+  cu_var_names <- c(
+    "gathering.interpretations.coordinateAccuracy",
+    "document.sourceId"
+  )
 
-  }
+  cu <- list(vars = cu_vars, v_names = cu_var_names)
 
-  citation_vars <- c("citation", "bibliographicCitation")
+  citation_vars <- c(
+    "citation",
+    "bibliographicCitation"
+  )
 
-  if (any(citation_vars %in% select)) {
+  citation_var_names <- c(
+    "document.documentId",
+    "document.sourceId"
+  )
 
-    citation_vars <- c("document.documentId", "document.sourceId")
+  citation <- list(vars = citation_vars, v_names = citation_var_names)
 
-    select <- unique(c(select, var_names[citation_vars, var_type]))
+  sn_vars <- c(
+    "scientific_name",
+    "scientificName"
+  )
 
-  }
+  sn_var_names <- c(
+    "unit.linkings.taxon.scientificName",
+    "unit.taxonVerbatim",
+    "unit.linkings.taxon.scientificNameAuthorship",
+    "unit.author",
+    "document.sourceId"
+  )
 
-  scientific_name_vars <- c("scientific_name", "scientificName")
+  sn <- list(vars = sn_vars, v_names = sn_var_names)
 
-  if (any(scientific_name_vars %in% select)) {
+  red_list_vars <- c(
+    "red_list_status",
+    "redListStatus"
+  )
 
-    scientific_name_vars <- c(
-      "unit.linkings.taxon.scientificName", "unit.taxonVerbatim",
-      "unit.linkings.taxon.scientificNameAuthorship", "unit.author",
-      "document.sourceId"
-    )
+  red_list_var_names <- c(
+    "unit.linkings.taxon.latestRedListStatusFinland.status",
+    "unit.linkings.taxon.latestRedListStatusFinland.year"
+  )
 
-    select <- unique(c(select, var_names[scientific_name_vars, var_type]))
+  red_list <- list(vars = red_list_vars, v_names = red_list_var_names)
 
-  }
+  region_vars <- c(
+    "region",
+    "stateProvince"
+  )
 
-  red_list_vars <- c("red_list_status", "redListStatus")
+  region_var_names <- c(
+    "gathering.interpretations.finnishMunicipality"
+  )
 
-  if (any(red_list_vars %in% select)) {
+  region <- list(vars = region_vars, v_names = region_var_names)
 
-    red_list_vars <- c(
-      "unit.linkings.taxon.latestRedListStatusFinland.status",
-      "unit.linkings.taxon.latestRedListStatusFinland.year"
-    )
+  computed_var_list <- list(abundance, cu, citation, sn, red_list, region)
 
-    select <- unique(c(select, var_names[red_list_vars, var_type]))
+  for (i in computed_var_list) {
 
-  }
+    vars_i <- i[["vars"]]
 
-  region_vars <- c("region", "stateProvince")
+    v_names_i <- i[["v_names"]]
 
-  if (any(region_vars %in% select)) {
+    cond <- vars_i %in% select
 
-    region_vars <- "gathering.interpretations.finnishMunicipality"
+    cond <- any(cond)
 
-    select <- unique(c(select, var_names[region_vars, var_type]))
+    if (cond) {
+
+      inferred <- var_names[v_names_i, var_type]
+
+      select <- c(select, inferred)
+
+    }
 
   }
 
