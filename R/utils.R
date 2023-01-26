@@ -209,19 +209,13 @@ truncate_string_to_unique <- function(x) {
 
     j <- substr(y, i, i)
 
-    j1 <- j[[1L]]
-
-    equal <- j == j1
-
-    all_equal <- all(equal)
-
     unique_y <- unique(y)
 
     n_unique_y <- length(unique_y)
 
     more_than_one <- n_unique_y > 1L
 
-    cond <- all_equal && more_than_one
+    cond <-  more_than_one && all(j == j[[1L]])
 
   }
 
