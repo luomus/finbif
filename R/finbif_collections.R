@@ -230,13 +230,7 @@ finbif_collections <- function(
 
     cols <- eval(call, cols_seq, parent_frame)
 
-    na_cols <- is.na(cols)
-
-    all_cols_na <- all(na_cols)
-
-    cols_null <- is.null(cols)
-
-    cond <- all_cols_na || cols_null
+    cond <- is.null(cols) || all_na(cols)
 
     if (cond) {
 
@@ -253,6 +247,8 @@ finbif_collections <- function(
   structure(collections, class = class)
 
 }
+
+#' @noRd
 
 get_collections <- function(col_obj) {
 

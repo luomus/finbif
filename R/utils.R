@@ -484,6 +484,16 @@ cast_to_type <- function(
 
 }
 
+#' @noRd
+
+all_na <- function(x) {
+
+  na <- is.na(x)
+
+  all(na)
+
+}
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd
