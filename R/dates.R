@@ -177,13 +177,7 @@ date_range_ymd <- function(obj) {
 
 parse_date <- function(date) {
 
-  date_null <- is.null(date)
-
-  date_chr <- as.character(date)
-
-  date_empty <- identical(date_chr, "")
-
-  no_date <- date_null || date_empty
+  no_date <- is.null(date) || date_empty(date)
 
   if (no_date) {
 
@@ -222,6 +216,16 @@ parse_date <- function(date) {
 
     }
   )
+
+}
+
+#' @noRd
+
+date_empty <- function(date) {
+
+  date <- as.character(date)
+
+  identical(date, "")
 
 }
 
