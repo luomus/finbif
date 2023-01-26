@@ -32,5 +32,6 @@ Converts the result of a FinBIF query to a \code{data.frame}.
 # and convert to a `data.frame`
 resp <- finbif_records()
 df <- as.data.frame(resp)
+
 }
 }
