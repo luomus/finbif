@@ -993,11 +993,9 @@ print_extras <- function(obj) {
 
   dsply_cols <- obj[["dc"]]
 
-  no_rows <- extra_rows == 0L
+  no_cols <- identical(extra_cols, 0L)
 
-  no_cols <- extra_cols == 0L
-
-  no_data <- no_rows && no_cols
+  no_data <- no_cols && identical(extra_rows, 0L)
 
   if (no_data) {
 
