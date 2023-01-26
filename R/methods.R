@@ -913,9 +913,7 @@ format_cols <- function(obj) {
 
         }
 
-        is_char <- identical(class, "character")
-
-        is_char <- is_char || is_uri
+        is_char <- is_uri || identical(class, "character")
 
         if (is_char) {
 
