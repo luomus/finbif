@@ -53,11 +53,22 @@
 #' @export
 
 finbif_records <- function(
-  filter = NULL, select = NULL, order_by = NULL, aggregate = "none",
-  sample = FALSE, n = 10, page = 1, count_only = FALSE,
+  filter = NULL,
+  select = NULL,
+  order_by = NULL,
+  aggregate = "none",
+  sample = FALSE,
+  n = 10,
+  page = 1,
+  count_only = FALSE,
   quiet = getOption("finbif_hide_progress"),
-  cache = getOption("finbif_use_cache"), dwc = FALSE, seed = NULL, df = FALSE,
-  exclude_na = FALSE, locale = getOption("finbif_locale"), include_facts = FALSE
+  cache = getOption("finbif_use_cache"),
+  dwc = FALSE,
+  seed = NULL,
+  df = FALSE,
+  exclude_na = FALSE,
+  locale = getOption("finbif_locale"),
+  include_facts = FALSE
 ) {
 
   fb_records_obj <- list(
