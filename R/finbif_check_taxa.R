@@ -86,13 +86,9 @@ finbif_check_taxa <- function(
 
         content <- content[[1L]]
 
-        taxon_rank <- content[["taxonRank"]]
+        check_rank_obj <- list(name = taxa_list_name, rank = content)
 
-        taxon_rank <- sub("MX.", "", taxon_rank)
-
-        has_correct_rank <- identical(taxa_list_name, taxon_rank)
-
-        cond <- has_correct_rank || no_name
+        cond <- no_name || check_rank(check_rank_obj)
 
         if (cond) {
 
@@ -121,5 +117,21 @@ finbif_check_taxa <- function(
   class <- c("list", "finbif_taxa_list")
 
   structure(taxa_list, class = class)
+
+}
+
+#' @noRd
+
+check_rank <- function(obj) {
+
+  name <- obj[["name"]]
+
+  rank <- obj[["rank"]]
+
+  rank <- rank[["taxonRank"]]
+
+  rank <- sub("MX.", "", rank)
+
+  identical(name, rank)
 
 }
