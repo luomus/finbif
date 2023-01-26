@@ -273,17 +273,26 @@ records <- function(fb_records_obj) {
 
 # aggregation ------------------------------------------------------------------
 
+#' @noRd
+
 infer_aggregation <- function(aggregate) {
 
-  aggregate <- match.arg(
-    aggregate,
-    c("none", "records", "species", "taxa", "events", "documents"),
-    TRUE
-  )
+  events_and_docs <- c("events", "documents")
 
-  cond <- any(c("events", "documents") %in% aggregate) && length(aggregate) > 1L
+  aggregations <- c("none", "records", "species", "taxa", events_and_docs)
+
+  aggregate <- match.arg(aggregate, aggregations, TRUE)
+
+  has_events_or_docs <- events_and_docs %in% aggregate
+
+  l <- length(aggregate)
+
+  more_than_one <- l > 1L
+
+  cond <- more_than_one && any(has_events_or_docs)
 
   if (cond) {
+
     deferrable_error(
       "Chosen aggregation cannot by combined with other aggregations"
     )
