@@ -662,11 +662,29 @@ conditionMessage.dfrd_errors <- function(c) {
 # variable names ---------------------------------------------------------------
 
 #' @noRd
-to_ <- function(x, from, to) {
-  x      <- unlist(x)
-  ind    <- !x %in% c(var_names[[to]], "default_vars")
-  x[ind] <- var_names[match(x[ind], var_names[[from]]), to]
+
+to <- function(x, from, to) {
+
+  x <- unlist(x)
+
+  vars_to <- var_names[[to]]
+
+  vars_from <- var_names[[from]]
+
+  vars_to <- c(vars_to, "default_vars")
+
+  ind <- !x %in% vars_to
+
+  xx <- x[ind]
+
+  xx <- match(xx, vars_from)
+
+  xx <- var_names[xx, to]
+
+  x[ind] <- xx
+
   x
+
 }
 
 #' Convert variable names
@@ -687,19 +705,38 @@ to_ <- function(x, from, to) {
 #'
 #' to_dwc("record_id", "date_time", "scientific_name")
 #' @export
-to_dwc <- function(...) to_(list(...), "translated_var", "dwc")
+
+to_dwc <- function(...) {
+
+  l <- list(...)
+
+  to(l, "translated_var", "dwc")
+
+}
 
 #' @rdname to_dwc
 #' @export
-to_native <- function(...) to_(list(...), "dwc", "translated_var")
+
+to_native <- function(...) {
+
+  l <- list(...)
+
+  to(l, "dwc", "translated_var")
+
+}
 
 #' @rdname to_dwc
 #' @export
+
 from_schema <- function(
-  ..., to = c("native", "dwc", "short"), file = c("none", "citable", "lite")
+  ...,
+  to = c("native", "dwc", "short"),
+  file = c("none", "citable", "lite")
 ) {
 
-  nms <- make.names(c(...))
+  nms <- c(...)
+
+  nms <- make.names(nms)
 
   file <- match.arg(file)
 
