@@ -1105,11 +1105,7 @@ plot.finbif_occ <- function(
   las = 1
 ) {
 
-  has_lon <- exists("lon_wgs84", x)
-
-  has_lat <- exists("lat_wgs84", x)
-
-  has_coords <- has_lon && has_lat
+  has_coords <- exists("lon_wgs84", x) && exists("lat_wgs84", x)
 
   stopifnot("Missing coordinates" = has_coords)
 
