@@ -521,29 +521,83 @@ gen_seed.finbif_records_list <- function(x, ...) {
 # modified from https://github.com/reside-ic/defer/blob/master/R/defer.R
 
 #' @noRd
+
 deferrable_error <- function(message) {
+
   withRestarts({
+
       calls <- sys.calls()
-      call <- calls[[max(length(calls) - 1L, 1L)]]
-      stop(error(message, "deferrable_error", call = call, calls = calls))
+
+      calls_len <- length(calls)
+
+      i <- calls_len - 1L
+
+      i <- max(i, 1L)
+
+      call <- calls[[i]]
+
+      err <- error(message, "deferrable_error", call = call, calls = calls)
+
+      stop(err)
+
     },
-    continue_deferrable_error = function(...) NULL
+    continue_deferrable_error = continue
   )
+
 }
 
 #' @noRd
+
+continue <- function(...) {
+
+  NULL
+
+}
+
+#' @noRd
+
 defer_errors <- function(expr, handler = stop) {
+
   errors <- list()
 
   calls <- sys.calls()
+
   value <- withCallingHandlers(
     expr,
     deferrable_error = function(e) {
-      if (identical(calls[], e[["calls"]][seq_along(calls)])) {
-        e[["calls"]] <- e[["calls"]][-seq_len(length(calls) + 1L)]
+
+      sq <- seq_along(calls)
+
+      calls_obj <- calls[]
+
+      e_calls <- e[["calls"]]
+
+      e_calls_obj <- e_calls[sq]
+
+      cond <- identical(calls_obj, e_calls_obj)
+
+      if (cond) {
+
+        l <- length(calls)
+
+        l <- l + 1L
+
+        ind <- seq_len(l)
+
+        ind <- ind * -1L
+
+        e_calls <- e_calls[ind]
+
+        e[["calls"]] <- e_calls
+
       }
-      errors <<- c(errors, list(e))
+
+      e_list <- list(e)
+
+      errors <<- c(errors, e_list)
+
       invokeRestart("continue_deferrable_error")
+
     }
   )
 
@@ -551,32 +605,58 @@ defer_errors <- function(expr, handler = stop) {
 }
 
 #' @noRd
+
 deferred_errors <- function(errors, handler, calls, value = NULL) {
-  if (length(errors)) {
+
+  l <- length(errors)
+
+  if (l) {
+
     err <- list(errors = errors, value = value)
-    class(err) <- c("dfrd_errors", "error", "condition")
+
+    class <- c("dfrd_errors", "error", "condition")
+
+    class(err) <- class
+
     handler(err)
+
   } else {
+
     value
+
   }
+
 }
 
 #' @noRd
+
 error <- function(message, class, ...) {
-  structure(
-    list(message = message, ...), class = c(class, "error", "condition")
-  )
+
+  message <- list(message = message, ...)
+
+  class <- c(class, "error", "condition")
+
+  structure(message, class = class)
+
 }
 
 #' @export
 #' @noRd
+
 conditionMessage.dfrd_errors <- function(c) {
-  errors <- vapply(c[["errors"]], "[[", character(1), "message")
+
+  errors <- c[["errors"]]
+
+  errors <- vapply(errors, getElement, "", "message")
+
   n <- length(errors)
-  sprintf(
-    "%d %s occurred:\n%s", n, ngettext(n, "error", "errors"),
-    paste0("  - ", errors, collapse = "\n")
-  )
+
+  n_errors <- ngettext(n, "error", "errors")
+
+  errors <- paste0("  - ", errors, collapse = "\n")
+
+  sprintf("%d %s occurred:\n%s", n, n_errors, errors)
+
 }
 
 # variable names ---------------------------------------------------------------
