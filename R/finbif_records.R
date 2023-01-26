@@ -48,6 +48,7 @@
 #'
 #' # Get the last 100 records from FinBIF
 #' finbif_records(n = 100)
+#'
 #' }
 #' @importFrom utils hasName txtProgressBar setTxtProgressBar
 #' @export
@@ -94,6 +95,8 @@ finbif_records <- function(
 
 }
 
+#' @noRd
+
 records <- function(fb_records_obj) {
 
   aggregate <- fb_records_obj[["aggregate"]]
@@ -118,13 +121,23 @@ records <- function(fb_records_obj) {
 
   fb_records_obj[["max_size"]] <- max_size
 
-  fb_records_obj[["nmax"]] <- getOption("finbif_max_queries") * max_size
+  max_queries <- getOption("finbif_max_queries")
 
-  var_type <- col_type_string(fb_records_obj[["dwc"]])
+  nmax <- max_queries * max_size
+
+  fb_records_obj[["nmax"]] <- nmax
+
+  dwc <- fb_records_obj[["dwc"]]
+
+  var_type <- col_type_string(dwc)
 
   fb_records_obj[["var_type"]] <- var_type
 
-  fb_records_obj[["n"]] <- as.integer(fb_records_obj[["n"]])
+  n <- fb_records_obj[["n"]]
+
+  n <- as.integer(n)
+
+  fb_records_obj[["n"]] <- n
 
   defer_errors({
 
@@ -138,11 +151,11 @@ records <- function(fb_records_obj) {
 
     # filter ===================================================================
 
-    if (is.null(filter)) {
+    query <- list()
 
-      query <- list()
+    has_filter <- !is.null(filter)
 
-    } else {
+    if (has_filter) {
 
       parsed_filters <- parse_filters(fb_records_obj)
 
@@ -154,50 +167,81 @@ records <- function(fb_records_obj) {
 
     select <- infer_selection(fb_records_obj)
 
-    fb_records_obj[["select_query"]] <- select[["query"]]
+    select_query <- select[["query"]]
 
-    fb_records_obj[["select_user"]] <- select[["user"]]
+    fb_records_obj[["select_query"]] <- select_query
 
-    fb_records_obj[["record_id_selected"]] <- select[["record_id_selected"]]
+    select_user <- select[["user"]]
 
-    fb_records_obj[["date_time_selected"]] <- select[["date_time_selected"]]
+    fb_records_obj[["select_user"]] <- select_user
 
-    select_param <- switch(aggregate[[1L]], none = "selected", "aggregateBy")
+    record_id_selected <- select[["record_id_selected"]]
+
+    fb_records_obj[["record_id_selected"]] <- record_id_selected
+
+    date_time_selected <- select[["date_time_selected"]]
+
+    fb_records_obj[["date_time_selected"]] <- date_time_selected
+
+    aggregate <- aggregate[[1L]]
+
+    select_param <- switch(aggregate, none = "selected", "aggregateBy")
 
     fb_records_obj[["select_param"]] <- select_param
 
-    query[[select_param]] <- paste(select[["query"]], collapse = ",")
+    query[[select_param]] <- paste(select_query, collapse = ",")
 
     # order ====================================================================
 
-    if (!is.null(order_by)) {
+    has_order <- !is.null(order_by)
+
+    if (has_order) {
 
       desc_order <- grepl("^-", order_by)
-      order_by <- sub("^-", "", order_by)
-      order_vars <- var_names[var_names[["order"]], var_type, drop = FALSE]
-      class(order_vars[[var_type]]) <- class(var_names[[var_type]])
 
-      order_by <- translate(
-        list(
-          x = order_by,
-          translation = "order_vars",
-          env = list(order_vars = order_vars)
-        )
+      order_by <- sub("^-", "", order_by)
+
+      var_names_order <- var_names[["order"]]
+
+      order_vars <- var_names[var_names_order, var_type, drop = FALSE]
+
+      order_vars[] <- lapply(order_vars, structure, class = "translation")
+
+      order_vars <- list(order_vars = order_vars)
+
+      order_vars <- list(
+        x = order_by, translation = "order_vars", env = order_vars
       )
 
+      order_by <- translate(order_vars)
+
       order_by <- order_by_computed_var(order_by)
-      order_by[desc_order] <- paste(order_by[desc_order], "DESC")
-      query[["orderBy"]] <- paste(order_by, collapse = ",")
+
+      order_by_desc <- order_by[desc_order]
+
+      order_by_desc <- paste(order_by_desc, "DESC")
+
+      order_by[desc_order] <- order_by_desc
+
+      order_by <- paste(order_by, collapse = ",")
 
     }
 
     if (sample) {
-      query[["orderBy"]] <- paste(
-        if (is.null(seed)) "RANDOM" else paste0("RANDOM:", as.integer(seed)),
-        query[["orderBy"]],
-        sep = c("", ",")[[length(query[["orderBy"]]) + 1L]]
-      )
+
+      seed <- as.integer(seed)
+
+      seed <- c("RANDOM", seed)
+
+      seed <- paste(seed, collapse = ":")
+
+      order_by <- c(seed, order_by)
+
+      order_by <- paste(order_by, collapse = ",")
+
     }
+
+    query[["orderBy"]] <- order_by
 
   })
 
@@ -207,9 +251,20 @@ records <- function(fb_records_obj) {
 
   ans <- request(fb_records_obj)
 
-  if (df && !count_only) {
+  df <- df && !count_only
+
+  if (df) {
+
     ind <- length(ans)
-    attr(ans[[ind]], "df") <- as.data.frame(ans[[ind]], locale = locale)
+
+    last <- ans[[ind]]
+
+    last_df <- as.data.frame(last, locale = locale)
+
+    attr(last, "df") <- last_df
+
+    ans[[ind]] <- last
+
   }
 
   ans
