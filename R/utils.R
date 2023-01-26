@@ -758,22 +758,53 @@ from_schema <- function(
 # localization -----------------------------------------------------------------
 
 #' @noRd
+
 get_locale <- function() {
+
   ans <- supported_langs[[1L]]
-  sys_lang <- c(Sys.getenv(c("LANGUAGE", "LANG")), Sys.getlocale("LC_COLLATE"))
+
+  env <- c("LANGUAGE", "LANG")
+
+  env <- Sys.getenv(env)
+
+  collate <- Sys.getlocale("LC_COLLATE")
+
+  sys_lang <- c(env, collate)
 
   for (l in sys_lang) {
-    l <- regmatches(l, regexpr(".+?(?=[[:punct:]])", l, perl = TRUE))
-    if (length(l)) {
-      if (l %in% supported_langs) {
+
+    reg <- regexpr(".+?(?=[[:punct:]])", l, perl = TRUE)
+
+    l <- regmatches(l, reg)
+
+    len <- length(l)
+
+    if (len) {
+
+      cond <- l %in% supported_langs
+
+      if (cond) {
+
         ans <- l
+
         break
+
       }
-      if (l %in% names(supported_langs)) {
+
+      lang_nms <- names(supported_langs)
+
+      cond <- l %in% lang_nms
+
+      if (cond) {
+
         ans <- supported_langs[[l]]
+
         break
+
       }
+
     }
+
   }
 
   ans
@@ -781,8 +812,42 @@ get_locale <- function() {
 }
 
 #' @noRd
-with_locale <- function(x, locale = getOption("finbif_locale")) {
-  if (identical(length(x), 0L)) return(NA_character_)
-  if (identical(length(x), 1L)) return(x[[1L]])
-  x[[intersect(c(locale, setdiff(supported_langs, locale)), names(x))[[1L]]]]
+
+with_locale <- function(
+  x,
+  locale = getOption("finbif_locale")
+) {
+
+  l <- length(x)
+
+  ans <- NA_character_
+
+  cond <- identical(l, 1L)
+
+  if (cond) {
+
+    ans <- x[[1L]]
+
+  }
+
+  cond <- l > 1L
+
+  if (cond) {
+
+    nms <- names(x)
+
+    locales <- setdiff(supported_langs, locale)
+
+    locales <- c(locale, locales)
+
+    ind <- intersect(locales, nms)
+
+    ind <- ind[[1L]]
+
+    ans <- x[[ind]]
+
+  }
+
+  ans
+
 }
