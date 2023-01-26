@@ -44,7 +44,10 @@ to_sentence_case <- function(string) {
 
 #' @noRd
 
-get_next_lowest_factor <- function(x, y) {
+get_next_lowest_factor <- function(
+  x,
+  y
+) {
 
   mod <- x %% y
 
@@ -65,7 +68,11 @@ get_next_lowest_factor <- function(x, y) {
 #' @noRd
 #' @importFrom utils hasName
 
-get_el_recurse <- function(obj, nms, type) {
+get_el_recurse <- function(
+  obj,
+  nms,
+  type
+) {
 
   type_na <- cast_to_type(NA, type)
 
@@ -125,7 +132,10 @@ get_el_recurse <- function(obj, nms, type) {
 
 #' @noRd
 
-pb_head <- function(msg, quiet = FALSE) {
+pb_head <- function(
+  msg,
+  quiet = FALSE
+) {
 
   nchars <- nchar(msg)
 
@@ -149,7 +159,10 @@ pb_head <- function(msg, quiet = FALSE) {
 
 #' @noRd
 
-truncate_string <- function(x, sl = 20L) {
+truncate_string <- function(
+  x,
+  sl = 20L
+) {
 
   x <- as.character(x)
 
@@ -245,7 +258,10 @@ col_type_string <- function(dwc) {
 
 #' @noRd
 
-det_datetime_method <- function(method, n) {
+det_datetime_method <- function(
+  method,
+  n
+) {
 
   is_null <- is.null(method)
 
@@ -277,7 +293,11 @@ det_datetime_method <- function(method, n) {
 
 #' @noRd
 
-open_tsv_connection <- function(file, tsv, mode = "rt") {
+open_tsv_connection <- function(
+  file,
+  tsv,
+  mode = "rt"
+) {
 
   nchars <- nchar(file)
 
@@ -295,7 +315,10 @@ open_tsv_connection <- function(file, tsv, mode = "rt") {
 
 #' @noRd
 
-nlines <- function(file, tsv) {
+nlines <- function(
+  file,
+  tsv
+) {
 
   con <- open_tsv_connection(file, tsv, "rb")
 
@@ -345,7 +368,11 @@ has_pkgs <- function(...) {
 
 #' @noRd
 
-name_chr_vec <- function(x, unique = TRUE, na.rm = TRUE) { # nolint
+name_chr_vec <- function(
+  x,
+  unique = TRUE,
+  na.rm = TRUE # nolint
+) {
 
   no_x <- missing(x)
 
@@ -427,7 +454,10 @@ concat_string <- function(x) {
 
 #' @noRd
 
-cast_to_type <- function(x, type) {
+cast_to_type <- function(
+  x,
+  type
+) {
 
   l <- length(type)
 
@@ -455,7 +485,11 @@ cast_to_type <- function(x, type) {
 
 #' @noRd
 
-sample_with_seed <- function(n, size, seed) {
+sample_with_seed <- function(
+  n,
+  size,
+  seed
+) {
 
   on.exit({
 
@@ -493,7 +527,10 @@ sample_with_seed <- function(n, size, seed) {
 
 #' @noRd
 
-gen_seed <- function(x, ...) {
+gen_seed <- function(
+  x,
+  ...
+) {
 
   UseMethod("gen_seed", x)
 
@@ -503,7 +540,10 @@ gen_seed <- function(x, ...) {
 #' @export
 #' @noRd
 
-gen_seed.finbif_records_list <- function(x, ...) {
+gen_seed.finbif_records_list <- function(
+  x,
+  ...
+) {
 
   hash <- lapply(x, getElement, "hash")
 
@@ -556,7 +596,10 @@ continue <- function(...) {
 
 #' @noRd
 
-defer_errors <- function(expr, handler = stop) {
+defer_errors <- function(
+  expr,
+  handler = stop
+) {
 
   errors <- list()
 
@@ -606,7 +649,12 @@ defer_errors <- function(expr, handler = stop) {
 
 #' @noRd
 
-deferred_errors <- function(errors, handler, calls, value = NULL) {
+deferred_errors <- function(
+  errors,
+  handler,
+  calls,
+  value = NULL
+) {
 
   l <- length(errors)
 
@@ -630,7 +678,11 @@ deferred_errors <- function(errors, handler, calls, value = NULL) {
 
 #' @noRd
 
-error <- function(message, class, ...) {
+error <- function(
+  message,
+  class,
+  ...
+) {
 
   message <- list(message = message, ...)
 
@@ -663,7 +715,11 @@ conditionMessage.dfrd_errors <- function(c) {
 
 #' @noRd
 
-to <- function(x, from, to) {
+to <- function(
+  x,
+  from,
+  to
+) {
 
   x <- unlist(x)
 
