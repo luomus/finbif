@@ -66,7 +66,6 @@ get_next_lowest_factor <- function(
 }
 
 #' @noRd
-#' @importFrom utils hasName
 
 get_el_recurse <- function(
   obj,
@@ -76,17 +75,15 @@ get_el_recurse <- function(
 
   type_na <- cast_to_type(NA, type)
 
-  many_names <- length(nms) < 1L
+  l <- length(nms)
 
-  if (many_names) {
+  no_names <- identical(l, 0L)
 
-    is_null <- is.null(obj)
+  if (no_names) {
 
-    is_empty <- identical(obj, "")
+    no_obj <- is.null(obj) || identical(obj, "")
 
-    to_na <- is_null || is_empty
-
-    if (to_na) {
+    if (no_obj) {
 
       obj <- type_na
 
@@ -98,35 +95,47 @@ get_el_recurse <- function(
 
   nm <- nms[[1L]]
 
-  obj_nms <- names(obj)
+  nms <- nms[-1L]
 
-  obj_nms_is_null <- is.null(obj_nms)
+  next_obj <- getElement(obj, nm)
 
-  has_nm <- vapply(obj, utils::hasName, NA, nm)
+  obj_names <- names(obj)
 
-  any_has_nm <- any(has_nm)
+  no_names <- is.null(obj_names)
 
-  unlist_obj <- obj_nms_is_null && any_has_nm
+  has_name <- FALSE
 
-  if (unlist_obj) {
+  if (no_names) {
 
-    obj <- lapply(obj, getElement, nm)
+    for (i in obj) {
 
-    null_elements <- vapply(obj, is.null, NA)
+      i_names <- names(i)
 
-    obj[null_elements] <- type_na
+      has_name <- nm %in% i_names
 
-    obj <- unlist(obj, recursive = FALSE)
+      if (has_name) {
 
-  } else {
+        break
 
-    obj <- getElement(obj, nm)
+      }
+
+    }
 
   }
 
-  nms <- nms[-1L]
+  if (has_name) {
 
-  get_el_recurse(obj, nms, type)
+    next_obj <- lapply(obj, getElement, nm)
+
+    null_elements <- vapply(next_obj, is.null, NA)
+
+    next_obj[null_elements] <- type_na
+
+    next_obj <- unlist(next_obj, recursive = FALSE)
+
+  }
+
+  get_el_recurse(next_obj, nms, type)
 
 }
 
