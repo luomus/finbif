@@ -877,12 +877,17 @@ gt_max_size3 <- function(n) {
 
 records_obj <- function(fb_records_obj) {
 
-  structure(
-    api_get(fb_records_obj),
-    class = c("finbif_records", "finbif_api"),
-    select = unique(fb_records_obj[["select_query"]]),
-    aggregate = fb_records_obj[["aggregate"]]
-  )
+  response <- api_get(fb_records_obj)
+
+  class <- c("finbif_records", "finbif_api")
+
+  select <- fb_records_obj[["select_query"]]
+
+  select <- unique(select)
+
+  aggregate <- fb_records_obj[["aggregate"]]
+
+  structure(response, class = class, select = select, aggregate = aggregate)
 
 }
 
