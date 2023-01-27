@@ -1225,59 +1225,121 @@ check_coordinates <- function(obj) {
 
 # translation ------------------------------------------------------------------
 
+#' @noRd
+
 translate <- function(translation_obj) {
 
   x <- translation_obj[["x"]]
+
   translation <- translation_obj[["translation"]]
+
   pos <- translation_obj[["env"]]
 
   trsltn <- get(translation, pos)
 
   # Some filters have multi-level values to translate (e.g., primary_habitat)
-  if (is.list(x)) {
 
-    names(x) <- translate(
-      list(x = names(x), translation = names(trsltn)[[1L]], env = trsltn)
-    )
+  is_list <- is.list(x)
 
-    x <- lapply(
-      x,
-      function(x) {
+  if (is_list) {
 
-        translate(list(x = x, translation = names(trsltn)[[2L]], env = trsltn))
+    nms <- names(x)
 
-      }
-    )
+    translation_names <- names(trsltn)
+
+    translation_names1 <- translation_names[[1L]]
+
+    nms <- list(x = nms, translation = translation_names1, env = trsltn)
+
+    nms <- translate(nms)
+
+    names(x) <- nms
+
+    translation_names2 <- translation_names[[2L]]
+
+    x <- lapply(x, list, translation_names2, trsltn)
+
+    translation_obj_names <- c("x", "translation", "env")
+
+    x <- lapply(x, structure, names = translation_obj_names)
+
+    x <- lapply(x, translate)
 
     x <- lapply(x, paste, collapse = ",")
 
-    sprintf("%s%s", names(x), ifelse(x == "", x, sprintf("[%s]", x)))
+    nms <- names(x)
+
+    empty <- x == ""
+
+    unempty_x <- sprintf("[%s]", x)
+
+    x <- ifelse(empty, x, unempty_x)
+
+    sprintf("%s%s", nms, x)
 
   } else {
 
-    ind <- rep(NA_integer_, length(x))
+    n <- length(x)
+
+    ind <- rep(NA_integer_, n)
 
     # multilevel filters have data.frames a level below
-    if (!is.data.frame(trsltn)) trsltn <- trsltn[[1L]]
+
+    not_df <- !is.data.frame(trsltn)
+
+    if (not_df) {
+
+      trsltn <- trsltn[[1L]]
+
+    }
 
     for (i in trsltn) {
-      if (inherits(i, "translation")) {
-        ind_ <- match(tolower(x), tolower(i))
-        ind <- ifelse(is.na(ind_), ind, ind_)
+
+      is_translation <- inherits(i, "translation")
+
+      if (is_translation) {
+
+        x_low <- tolower(x)
+
+        i_low <- tolower(i)
+
+        matched <- match(x_low, i_low)
+
+        matched_na <- is.na(matched)
+
+        ind <- ifelse(matched_na, ind, matched)
+
       }
+
     }
 
-    if (anyNA(ind)) {
-      for (err in x[is.na(ind)]) {
-        deferrable_error(
-          paste0("Invalid name in ", gsub("_", " ", translation), ": ", err)
-        )
+    any_na <- anyNA(ind)
+
+    if (any_na) {
+
+      na_ind <- is.na(ind)
+
+      x_na <- x[na_ind]
+
+      for (err in x_na) {
+
+        translation <- gsub("_", " ", translation)
+
+        invalid <- paste0("Invalid name in ", translation, ": ", err)
+
+        deferrable_error(invalid)
+
       }
+
     }
 
-    ans <- row.names(trsltn)[ind]
+    ans <- row.names(trsltn)
 
-    ans[!grepl("DUPLICATE", ans)]
+    ans <- ans[ind]
+
+    unique <- !grepl("DUPLICATE", ans)
+
+    ans[unique]
 
   }
 
