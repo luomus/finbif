@@ -50,7 +50,6 @@
 #' finbif_records(n = 100)
 #'
 #' }
-#' @importFrom utils hasName
 #' @export
 
 finbif_records <- function(
@@ -1048,6 +1047,8 @@ get_extra_pages <- function(fb_records_list) {
 
 # parsing filters --------------------------------------------------------------
 
+#' @noRd
+
 parse_filters <- function(fb_records_obj) {
 
   filter <- fb_records_obj[["filter"]]
@@ -1058,13 +1059,23 @@ parse_filters <- function(fb_records_obj) {
 
   filter <- as.list(filter)
 
-  finbif_filter_names <- translate(
-    list(x = names(filter), translation = "filter_names", env = -1)
+  finbif_filter_names <- names(filter)
+
+  finbif_filter_names <- list(
+    x = finbif_filter_names, translation = "filter_names", env = -1
   )
 
-  cond <- switch(aggregate[[1L]], events = TRUE, documents = TRUE, FALSE)
+  finbif_filter_names <- translate(finbif_filter_names)
 
-  cond <- cond && any(c("taxonId", "target") %in% finbif_filter_names)
+  aggregate <- aggregate[[1L]]
+
+  taxon_filters <- c("taxonId", "target")
+
+  is_taxon_filter <- finbif_filter_names %in% taxon_filters
+
+  cond <- any(is_taxon_filter)
+
+  cond <- cond && switch(aggregate, events = TRUE, documents = TRUE, FALSE)
 
   if (cond) {
 
@@ -1072,63 +1083,105 @@ parse_filters <- function(fb_records_obj) {
 
   }
 
-  for (i in seq_along(filter)) {
+  filter_sq <- seq_along(filter)
+
+  cols <- c("id", "collection_name", "abbreviation")
+
+  for (i in filter_sq) {
+
+    filter_name_i <- finbif_filter_names[[i]]
 
     # the filter might not exist
-    if (is.na(finbif_filter_names[[i]])) next
 
-    if (filter_names[finbif_filter_names[[i]], "translated_values"]) {
+    name_na <- is.na(filter_name_i)
 
-      filter[[i]] <- translate(
-        list(x = filter[[i]], translation = names(filter)[[i]], env = -1)
-      )
+    if (name_na) {
+
+      next
 
     }
 
-    if (grepl("^(not_){0,1}collection$", names(filter)[[i]])) { # nolint
+    nms <- names(filter)
 
-      if (inherits(filter[[i]], "finbif_collections")) {
+    nm_i <- nms[[i]]
 
-        filter[[i]] <- row.names(filter[[i]])
+    filter_i <- filter[[i]]
+
+    requires_translation <- filter_names[[filter_name_i, "translated_values"]]
+
+    if (requires_translation) {
+
+      filter_i <- list(x = filter_i, translation = nm_i, env = -1)
+
+      filter_i <- translate(filter_i)
+
+    }
+
+    is_collection_filter <- grepl("^(not_){0,1}collection$", nm_i) # nolint
+
+    if (is_collection_filter) {
+
+      is_collection <- inherits(filter_i, "finbif_collections")
+
+      if (is_collection) {
+
+        filter_i <- row.names(filter_i)
 
       } else {
 
         env <- list()
 
-        env[[names(filter)[[i]]]] <- finbif_collections(
-          select = NA, supercollections = TRUE, nmin = NA, locale = locale
+        collections <- finbif_collections(
+          select = cols, supercollections = TRUE, nmin = NA, locale = locale
         )
 
-        for (cl in c("id", "collection_name", "abbreviation")) {
-          class(env[[names(filter)[[i]]]][[cl]]) <- "translation"
-        }
+        collections[] <- lapply(collections, structure, class = "translation")
 
-        filter[[i]] <- translate(
-          list(x = filter[[i]], translation = names(filter)[[i]], env = env)
-        )
+        env[[nm_i]] <- collections
+
+        filter_i <- list(x = filter_i, translation = nm_i, env = env)
+
+        filter_i <- translate(filter_i)
 
       }
 
     }
 
-    if (identical(filter_names[finbif_filter_names[[i]], "class"], "coords")) {
+    class <- filter_names[[filter_name_i, "class"]]
+
+    is_coords <- identical(class, "coords")
+
+    if (is_coords) {
 
       # Coordinates filter must have a system defined
-      check_coordinates(finbif_filter_names[[i]], filter[["coordinates"]])
 
-      filter[[i]] <- coords(filter[[i]])
+      coordinates_filter <- filter[["coordinates"]]
+
+      coordinates_obj <- list(name = filter_name_i, filter = coordinates_filter)
+
+      check_coordinates(coordinates_obj)
+
+      filter_i <- coords(filter_i)
 
     }
 
-    if (identical(filter_names[finbif_filter_names[[i]], "class"], "date")) {
+    is_date <- identical(class, "date")
 
-      filter[[i]] <- dates(c(list(filter = names(filter)[[i]]), filter[[i]]))
+    if (is_date) {
+
+      date_filter <- list(filter = nm_i)
+
+      date_filter <- c(date_filter, filter_i)
+
+      filter_i <- dates(date_filter)
 
     }
 
-    filter[[i]] <- paste(
-      filter[[i]], collapse = filter_names[finbif_filter_names[[i]], "sep"]
-    )
+    sep <- filter_names[filter_name_i, "sep"]
+
+    filter_i <- paste(filter_i, collapse = sep)
+
+    filter[[i]] <- filter_i
 
   }
 
@@ -1138,14 +1191,35 @@ parse_filters <- function(fb_records_obj) {
 
 }
 
-check_coordinates <- function(filter_names, filter) {
+#' @noRd
 
-  cond <- !is.null(names(filter)) && !identical(names(filter[[3]]), "")
-  cond <- !utils::hasName(filter, "system") && cond
-  cond <- length(filter) < 3L || cond
-  cond <- identical(filter_names, "coordinates") && cond
+check_coordinates <- function(obj) {
 
-  if (cond) deferrable_error("Invalid coordinates: system not specified")
+  name <- obj[["name"]]
+
+  filter <- obj[["filter"]]
+
+  n_filters <- length(filter)
+
+  nms <- names(filter)
+
+  empty_names <- nms == ""
+
+  has_names <- !is.null(nms)
+
+  cond <- has_names && !empty_names[[3L]]
+
+  cond <- cond && !"system" %in% names
+
+  cond <- cond || n_filters < 3L
+
+  cond <- cond && identical(name, "coordinates")
+
+  if (cond) {
+
+    deferrable_error("Invalid coordinates: system not specified")
+
+  }
 
 }
 
