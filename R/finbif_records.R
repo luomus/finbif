@@ -676,7 +676,7 @@ request <- function(fb_records_obj) {
 
   max_size <- fb_records_obj[["max_size"]]
 
-  select_ <- fb_records_obj[["select_user"]]
+  select_user <- fb_records_obj[["select_user"]]
 
   record_id_selected <- fb_records_obj[["record_id_selected"]]
 
@@ -698,44 +698,81 @@ request <- function(fb_records_obj) {
 
   path <- getOption("finbif_warehouse_query")
 
-  if (count_only && identical(aggregate, "none")) {
+  count_records <- count_only && identical(aggregate, "none")
+
+  if (count_records) {
 
     query[["selected"]] <- NULL
+
     query[["orderBy"]]  <- NULL
+
     path <- paste0(path, "unit/count")
-    return(api_get(list(path = path, query = query, cache = cache)))
+
+    request_obj <- list(path = path, query = query, cache = cache)
+
+    resp <- api_get(request_obj)
+
+    return(resp)
 
   }
 
-  path <- paste0(path, select_endpoint(aggregate))
+  endpoint <- select_endpoint(aggregate)
+
+  path <- paste0(path, endpoint)
 
   fb_records_obj[["path"]] <- path
 
   if (count_only) {
 
     query[["page"]] <- 1L
+
     query[["pageSize"]] <- 1L
-    resp <- api_get(list(path = path, query = query, cache = cache))
-    resp[["content"]] <- list(total = resp[["content"]][["total"]])
+
+    request_obj <- list(path = path, query = query, cache = cache)
+
+    resp <- api_get(request_obj)
+
+    n_tot <- resp[["content"]]
+
+    n_tot <- n_tot[["total"]]
+
+    n_tot <- list(total = n_tot)
+
+    resp[["content"]] <- n_tot
+
     return(resp)
 
   }
 
-  query[["taxonCounts"]] <- taxa_counts(aggregate)
+  taxon_counts <- taxa_counts(aggregate)
+
+  page_size <- min(n, max_size)
+
+  query[["taxonCounts"]] <- taxon_counts
+
   query[["page"]] <- page
-  query[["pageSize"]] <- min(n, max_size)
+
+  query[["pageSize"]] <- page_size
 
   fb_records_obj[["query"]] <- query
 
   resp <- records_obj(fb_records_obj)
 
-  n_tot <- resp[["content"]][["total"]]
+  n_tot <- resp[["content"]]
+
+  n_tot <- n_tot[["total"]]
 
   n <- min(n, n_tot)
 
+  resp <- list(resp)
+
+  class <- c("finbif_records_list", "finbif_api_list")
+
+  select <- unique(select)
+
   fb_records_list <- structure(
-    list(resp),
-    class = c("finbif_records_list", "finbif_api_list"),
+    resp,
+    class = class,
     max_size = max_size,
     quiet = quiet,
     path = path,
@@ -744,8 +781,8 @@ request <- function(fb_records_obj) {
     nrec_dnld = n,
     nrec_avl = n_tot,
     seed = seed,
-    select = unique(select),
-    select_user = select_,
+    select = select,
+    select_user = select_user,
     locale = locale,
     df = df,
     dwc = dwc,
@@ -758,16 +795,19 @@ request <- function(fb_records_obj) {
     cache = cache
   )
 
-  if (n > max_size) {
+  need_more_pages <- n > max_size
+
+  if (need_more_pages) {
 
     # If random sampling and requesting few records or a large proportion of the
     # total number of records, it makes more sense to just get all the records
     # and sample afterwards to avoid coping with duplicates due to pagination.
-    sample_after_request <- n_tot < max_size * 3L || n / n_tot > .5
 
-    if (sample && sample_after_request) {
+    sample_after_request <-  sample && sample_after(fb_records_list)
 
-      fb_records_obj[["select"]] <- select_
+    if (sample_after_request) {
+
+      fb_records_obj[["select"]] <- select_user
 
       fb_records_obj[["sample"]] <- FALSE
 
@@ -777,7 +817,9 @@ request <- function(fb_records_obj) {
 
       attr(fb_records_list, "nrec_dnld") <- n
 
-      return(record_sample(fb_records_list))
+      sampled_records <- record_sample(fb_records_list)
+
+      return(sampled_records)
 
     }
 
@@ -785,7 +827,13 @@ request <- function(fb_records_obj) {
 
     if (sample) {
 
-      if (is.null(seed)) attr(fb_records_list, "seed") <- 1L
+      no_seed <- is.null(seed)
+
+      if (no_seed) {
+
+        attr(fb_records_list, "seed") <- 1L
+
+      }
 
       fb_records_list <- handle_duplicates(fb_records_list)
 
@@ -794,6 +842,34 @@ request <- function(fb_records_obj) {
   }
 
   fb_records_list
+
+}
+
+#' @noRd
+
+sample_after <- function(fb_records_list) {
+
+  n <- attr(fb_records_list, "nrec_dnld", TRUE)
+
+  n_tot <- attr(fb_records_list, "nrec_avl", TRUE)
+
+  ratio <- n / n_tot
+
+  cond <- ratio > .5
+
+  cond || gt_max_size3(n_tot)
+
+}
+
+#' @noRd
+
+gt_max_size3 <- function(n) {
+
+  max_size <- getOption("finbif_max_page_size")
+
+  max_size3 <- max_size * 3L
+
+  n < max_size3
 
 }
 
