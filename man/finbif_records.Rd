@@ -89,5 +89,6 @@ Download records from FinBIF.
 
 # Get the last 100 records from FinBIF
 finbif_records(n = 100)
+
 }
 }
