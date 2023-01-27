@@ -50,7 +50,7 @@
 #' finbif_records(n = 100)
 #'
 #' }
-#' @importFrom utils hasName txtProgressBar setTxtProgressBar
+#' @importFrom utils hasName
 #' @export
 
 finbif_records <- function(
@@ -654,6 +654,8 @@ infer_computed_vars <- function(fb_records_obj) {
 
 # request ----------------------------------------------------------------------
 
+#' @noRd
+
 request <- function(fb_records_obj) {
 
   filter <- fb_records_obj[["filter"]]
@@ -875,6 +877,8 @@ gt_max_size3 <- function(n) {
 
 # construct request ------------------------------------------------------------
 
+#' @noRd
+
 records_obj <- function(fb_records_obj) {
 
   response <- api_get(fb_records_obj)
@@ -893,65 +897,112 @@ records_obj <- function(fb_records_obj) {
 
 # record pagination ------------------------------------------------------------
 
+#' @noRd
+#' @importFrom utils txtProgressBar setTxtProgressBar
+
 get_extra_pages <- function(fb_records_list) {
 
-  n <- attr(fb_records_list, "nrec_dnld")
+  n <- attr(fb_records_list, "nrec_dnld", TRUE)
 
-  max_size <- attr(fb_records_list, "max_size")
+  max_size <- attr(fb_records_list, "max_size", TRUE)
 
-  quiet <- attr(fb_records_list, "quiet")
+  quiet <- attr(fb_records_list, "quiet", TRUE)
 
-  path <- attr(fb_records_list, "path")
+  path <- attr(fb_records_list, "path", TRUE)
 
-  query <- attr(fb_records_list, "query")
+  query <- attr(fb_records_list, "query", TRUE)
 
-  cache <- attr(fb_records_list, "cache")
+  cache <- attr(fb_records_list, "cache", TRUE)
 
-  select <- attr(fb_records_list, "select")
+  select <- attr(fb_records_list, "select", TRUE)
 
-  aggregate <- attr(fb_records_list, "aggregate")
+  aggregate <- attr(fb_records_list, "aggregate", TRUE)
 
-  df <- attr(fb_records_list, "df")
+  df <- attr(fb_records_list, "df", TRUE)
 
-  locale <- attr(fb_records_list, "locale")
+  locale <- attr(fb_records_list, "locale", TRUE)
 
   fb_records_obj <- list(
-    path = path,
-    cache = cache,
-    select_query = select,
-    aggregate = aggregate
+    path = path, cache = cache, select_query = select, aggregate = aggregate
   )
 
   multipage <- n > max_size
 
-  if (multipage && !quiet) {
+  use_pb <- multipage && !quiet
+
+  if (use_pb) {
+
     pb_head("Fetching data")
-    pb <- utils::txtProgressBar(0L, floor(n / max_size), style = 3L)
-    on.exit(close(pb))
+
+    ratio <- n / max_size
+
+    max <- floor(ratio)
+
+    pb <- utils::txtProgressBar(0L, max, style = 3L)
+
+    on.exit({
+
+      close(pb)
+
+    })
+
   }
 
   i <- 1L
-  query[["page"]] <- query[["page"]] + 1L
-  n_pages <- n %/% query[["pageSize"]]
+
+  page <- query[["page"]]
+
+  page <- page + 1L
+
+  page_size <- query[["pageSize"]]
+
+  n_pages <- n %/% page_size
 
   has_future <- has_pkgs("future")
 
-  if (has_future) value <- future::value
+  if (has_future) {
+
+    value <- future::value
+
+  }
 
   while (multipage) {
 
-    if (!quiet) utils::setTxtProgressBar(pb, i)
+    if (!quiet) {
 
-    if (query[["page"]] > n_pages) {
-
-      excess_records <- n %% query[["pageSize"]]
-      last_record <- query[["pageSize"]] * n_pages
-      if (last_record == n) break
-      query[["pageSize"]] <- get_next_lowest_factor(last_record, excess_records)
-      query[["page"]] <- last_record / query[["pageSize"]] + 1L
-      n_pages <- n %/% query[["pageSize"]]
+      utils::setTxtProgressBar(pb, i)
 
     }
+
+    no_more_pages <- page > n_pages
+
+    if (no_more_pages) {
+
+      excess_records <- n %% page_size
+
+      last_record <- page_size * n_pages
+
+      no_more_records <- identical(last_record, n)
+
+      if (no_more_records) {
+
+        break
+
+      }
+
+      page_size <- get_next_lowest_factor(last_record, excess_records)
+
+      page <- last_record / page_size
+
+      page <- page + 1L
+
+      n_pages <- n %/% page_size
+
+    }
+
+    query[["page"]] <- page
+
+    query[["pageSize"]] <- page_size
 
     fb_records_obj[["query"]] <- query
 
@@ -959,23 +1010,35 @@ get_extra_pages <- function(fb_records_list) {
 
     if (has_future) {
 
-      res <- future::future(records_obj(fb_records_obj))
+      res <- future::future({
+
+        records_obj(fb_records_obj)
+
+      })
 
     }
 
     if (df) {
 
-       attr(fb_records_list[[i]], "df") <- as.data.frame(
-        fb_records_list[[i]], locale = locale
-       )
+      fb_records_list_i <- fb_records_list[[i]]
+
+      # More performant to convert to data.frame directly from list
+
+      fb_records_df_i <- as.data.frame(fb_records_list[[i]], locale = locale)
+
+      attr(fb_records_list_i, "df") <- fb_records_df_i
+
+      fb_records_list[[i]] <- fb_records_list_i
 
     }
 
     i <- i + 1L
 
-    fb_records_list[[i]] <- value(res)
+    res <- value(res)
 
-    query[["page"]] <- query[["page"]] + 1L
+    fb_records_list[[i]] <- res
+
+    page <- page + 1L
 
   }
 
