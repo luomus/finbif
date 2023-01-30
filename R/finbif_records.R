@@ -1347,31 +1347,43 @@ translate <- function(translation_obj) {
 
 # sample records ---------------------------------------------------------------
 
+#'@noRd
+
 record_sample <- function(fb_records_list) {
 
-  n  <- attr(fb_records_list, "nrec_dnld")
-  n_tot <- attr(fb_records_list, "nrec_avl")
-  select <- attr(fb_records_list, "select")
-  record_id <- attr(fb_records_list, "record_id")
-  cache <- attr(fb_records_list, "cache")
+  n  <- attr(fb_records_list, "nrec_dnld", TRUE)
+
+  n_tot <- attr(fb_records_list, "nrec_avl", TRUE)
+
+  select <- attr(fb_records_list, "select", TRUE)
+
+  record_id <- attr(fb_records_list, "record_id", TRUE)
+
+  cache <- attr(fb_records_list, "cache", TRUE)
+
+  size <- n_tot - n
+
+  remove <- sample.int(n_tot, size)
 
   if (cache) {
 
-    attr(fb_records_list, "remove") <- sample_with_seed(
-      n_tot, n_tot - n, gen_seed(fb_records_list)
-    )
+    seed <- gen_seed(fb_records_list)
 
-  } else {
-
-    attr(fb_records_list, "remove") <- sample.int(n_tot, n_tot - n)
+    remove <- sample_with_seed(n_tot, size, seed)
 
   }
 
+  attr(fb_records_list, "remove") <- remove
+
+  class <- c(
+    "finbif_records_sample_list", "finbif_records_list", "finbif_api_list"
+  )
+
+  ans <- remove_records(fb_records_list)
+
   structure(
-    remove_records(fb_records_list),
-    class = c(
-      "finbif_records_sample_list", "finbif_records_list", "finbif_api_list"
-    ),
+    ans,
+    class = class,
     nrec_dnld = n,
     nrec_avl = n_tot,
     select = select,
