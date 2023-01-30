@@ -1594,36 +1594,69 @@ remove_records <- function(fb_records_list) {
 
 # utils ------------------------------------------------------------------------
 
+#' @noRd
+
 check_n <- function(fb_records_obj) {
 
   n <- fb_records_obj[["n"]]
+
   nmax <- fb_records_obj[["nmax"]]
 
-  if (n > nmax) {
-    deferrable_error(paste("Cannot download more than", nmax, "records"))
+  more_than_nmax <- n > nmax
+
+  if (more_than_nmax) {
+
+    msg <- paste("Cannot download more than", nmax, "records")
+
+    deferrable_error(msg)
+
   }
 
-  if (n < 1L) {
-    deferrable_error(paste("Cannot request less than 1 record"))
+  less_than_one <- n < 1L
+
+  if (less_than_one) {
+
+    deferrable_error("Cannot request less than 1 record")
+
   }
 
 }
 
+#' @noRd
+
 select_endpoint <- function(aggregate) {
+
+  aggregate <- aggregate[[1L]]
+
   switch(
-    aggregate[[1L]],
+    aggregate,
     none = "unit/list",
     events = "gathering/aggregate",
     documents = "document/aggregate",
     "unit/aggregate"
   )
+
 }
+
+#' @noRd
 
 taxa_counts <- function(aggregate) {
 
-  if (any(aggregate %in% c("species", "taxa"))) "true"
+  taxa_counts <- c("species", "taxa")
+
+  has_taxa_count <- aggregate %in% taxa_counts
+
+  has_any_taxa_counts <- any(has_taxa_count)
+
+  if (has_any_taxa_counts) {
+
+    "true"
+
+  }
 
 }
+
+#' @noRd
 
 order_by_computed_var <- function(order_by) {
 
@@ -1634,15 +1667,23 @@ order_by_computed_var <- function(order_by) {
     coordinates_uncertainty = "gathering.interpretations.coordinateAccuracy"
   )
 
-  names(lt) <- paste0("computed_var_", names(lt))
+  nms <- names(lt)
+
+  nms <- paste0("computed_var_", nms)
+
+  names(lt) <- nms
 
   ans <- lt[order_by]
 
-  ans <- ifelse(is.na(ans), order_by, ans)
+  is_na <- is.na(ans)
+
+  ans <- ifelse(is_na, order_by, ans)
 
   as.character(ans)
 
 }
+
+#' @noRd
 
 na_exclude <- function(fb_records_obj) {
 
@@ -1654,7 +1695,9 @@ na_exclude <- function(fb_records_obj) {
 
   if (exclude_na) {
 
-    query[["hasValue"]] <- query[[select_param]]
+    has_value <- query[[select_param]]
+
+    query[["hasValue"]] <- has_value
 
   }
 
