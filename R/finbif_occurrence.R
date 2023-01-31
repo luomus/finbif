@@ -1419,30 +1419,39 @@ compute_red_list_status <- function(fb_occurrence_df) {
 
 }
 
+#' @noRd
+
 compute_region <- function(fb_occurrence_df) {
 
-  df <- fb_occurrence_df
-
-  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  type <- col_type_string(dwc)
+  vtype <- col_type_string(dwc)
 
-  region <- var_names[["computed_var_region", type]]
+  region_var <- var_names[["computed_var_region", vtype]]
 
-  municipality_id <-
-    var_names[["gathering.interpretations.finnishMunicipality", type]]
+  add <- add && region_var %in% select_user
 
-  if (region %in% select_ && add) {
+  if (add) {
 
-    df[[region]] <- municipality[basename(df[[municipality_id]]), "region"]
+    municipality_id <- "gathering.interpretations.finnishMunicipality"
+
+    municipality_id <-  var_names[[municipality_id, vtype]]
+
+    municipality_id <- fb_occurrence_df[[municipality_id]]
+
+    municipality_id <- basename(municipality_id)
+
+    region <- municipality[municipality_id, "region"]
+
+    fb_occurrence_df[[region_var]] <- region
 
   }
 
-  df
+  fb_occurrence_df
 
 }
 
