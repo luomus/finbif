@@ -1039,53 +1039,77 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
 compute_epsg <- function(fb_occurrence_df) {
 
-  df <- fb_occurrence_df
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  select_ <- attr(fb_occurrence_df, "column_names")
+  if (add) {
 
-  dwc <- attr(fb_occurrence_df, "dwc")
+    select_user <- attr(fb_occurrence_df, "column_names", TRUE)
 
-  add <- attr(fb_occurrence_df, "include_new_cols")
+    dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  select_ <- match(select_, var_names[, col_type_string(dwc)])
+    vtype <- col_type_string(dwc)
 
-  select_ <- row.names(var_names[select_, ])
+    var_names_type <- var_names[, vtype]
 
-  crs <- c(computed_var_epsg = "", computed_var_fp_epsg = "footprint")
+    select_user <- match(select_user, var_names_type)
 
-  for (i in seq_along(crs)[add]) {
+    select_user <- var_names[select_user, ]
 
-    epsg <- c("euref", "ykj", "wgs84")
+    select_user <- row.names(select_user)
 
-    names(epsg) <- epsg
+    crs <- c(computed_var_epsg = "", computed_var_fp_epsg = "footprint")
 
-    epsg[] <- paste0(crs[[i]], "_", epsg, "$")
+    crs_nms <- names(crs)
 
-    epsg <- lapply(epsg, grepl, var_names[select_, "translated_var"])
+    sq <- seq_along(crs)
 
-    epsg <- lapply(epsg, c, TRUE)
+    for (i in sq) {
 
-    epsg <- lapply(epsg, which)
+      epsg <- c("euref", "ykj", "wgs84")
 
-    epsg <- vapply(epsg, min, integer(1L), USE.NAMES = TRUE)
+      names(epsg) <- epsg
 
-    epsg <- names(which.min(epsg))
+      crs_i <- crs[[i]]
 
-    epsg <- switch(
-      epsg,
-      euref = "EPSG:3067",
-      ykj = "EPSG:2393",
-      wgs84 = "EPSG:4326",
-      NA_character_
-    )
+      crs_nm_i <- crs_nms[[i]]
 
-    epsg <- rep_len(epsg, nrow(df))
+      epsg[] <- paste0(crs_i, "_", epsg, "$")
 
-    df[[var_names[[names(crs)[[i]], col_type_string(dwc)]]]] <- epsg
+      var_names_i <- var_names[select_user, "translated_var"]
+
+      epsg <- lapply(epsg, grepl, var_names_i)
+
+      epsg <- lapply(epsg, c, TRUE)
+
+      epsg <- lapply(epsg, which)
+
+      epsg <- vapply(epsg, min, 0L, USE.NAMES = TRUE)
+
+      epsg <- which.min(epsg)
+
+      epsg <- names(epsg)
+
+      epsg <- switch(
+        epsg,
+        euref = "EPSG:3067",
+        ykj = "EPSG:2393",
+        wgs84 = "EPSG:4326",
+        NA_character_
+      )
+
+      n <- nrow(fb_occurrence_df)
+
+      epsg <- rep_len(epsg, n)
+
+      crs_nm <- var_names[[crs_nm_i, vtype]]
+
+      fb_occurrence_df[[crs_nm]] <- epsg
+
+    }
 
   }
 
-  df
+  fb_occurrence_df
 
 }
 
