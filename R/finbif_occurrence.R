@@ -783,6 +783,7 @@ compute_duration <- function(fb_occurrence_df) {
 }
 
 #' @noRd
+#' @importFrom lubridate as.interval format_ISO8601 interval ymd
 
 compute_iso8601 <- function(fb_occurrence_df) {
 
@@ -808,7 +809,9 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
   column_names <- attr(fb_occurrence_df, "column_names", TRUE)
 
-  if (iso8601_var %in% column_names) {
+  has_iso8601 <- iso8601_var %in% column_names
+
+  if (has_iso8601) {
 
     tzone <- attr(fb_occurrence_df, "tzone", TRUE)
 
@@ -816,60 +819,101 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
     date_time_end <- attr(fb_occurrence_df, "date_time_end", TRUE)
 
-    ind <- is.na(date_time_start) | is.na(date_time_end)
+    date_time_start_is_na <- is.na(date_time_start)
 
-    iso8601 <- lubridate::interval(
-      rep_len("1970-01-01/1970-01-01", length(ind)), tzone = tzone
+    date_time_end_is_na <- is.na(date_time_end)
+
+    duration_is_na <- date_time_start_is_na | date_time_end_is_na
+
+    duration_length <- length(duration_is_na)
+
+    iso8601 <- rep_len("1970-01-01/1970-01-01", duration_length)
+
+    iso8601 <- lubridate::interval(iso8601, tzone = tzone)
+
+    date_time_start_not_na <- date_time_start[!date_time_start_is_na]
+
+    date_time_end_not_na <- date_time_end[!date_time_end_is_na]
+
+    iso8601_not_na <- lubridate::interval(
+      date_time_start_not_na, date_time_end_not_na
     )
 
-    iso8601[!ind] <- lubridate::interval(
-      date_time_start[!ind], date_time_end[!ind]
-    )
+    iso8601_na <- lubridate::as.interval(NA_integer_)
 
-    iso8601[ind] <- lubridate::as.interval(NA_integer_)
+    iso8601[!duration_is_na] <- iso8601_not_na
+
+    iso8601[duration_is_na] <- iso8601_na
 
     iso8601 <- lubridate::format_ISO8601(iso8601, usetz = TRUE)
 
-    no_start_time <- is.na(df[[minute_start]]) & is.na(df[[hour_start]])
+    hour_start <- df[[hour_start]]
 
-    no_end_time <-  is.na(df[[minute_end]]) & is.na(df[[hour_end]])
+    minute_start <- df[[minute_start]]
 
-    iso8601 <- ifelse(
-      no_start_time | no_end_time,
-      lubridate::format_ISO8601(
-        lubridate::interval(
-          lubridate::ymd(df[[date_start]]), lubridate::ymd(df[[date_end]])
-        ),
-        usetz = TRUE
-      ),
-      iso8601
-    )
+    hour_end <- df[[hour_end]]
+
+    minute_end <- df[[minute_end]]
+
+    hour_start_is_na <- is.na(hour_start)
+
+    minute_start_is_na <- is.na(minute_start)
+
+    no_start_time <- hour_start_is_na & minute_start_is_na
+
+    hour_end_is_na <- is.na(hour_end)
+
+    minute_end_is_na <- is.na(minute_end)
+
+    no_end_time <-  hour_end_is_na & minute_end_is_na
+
+    no_time <- no_start_time | no_end_time
+
+    date_start <- df[[date_start]]
+
+    date_end <- df[[date_end]]
+
+    date_start_ymd <- lubridate::ymd(date_start)
+
+    date_end_ymd <- lubridate::ymd(date_end)
+
+    interval <- lubridate::interval(date_start_ymd, date_end_ymd)
+
+    format_interval <- lubridate::format_ISO8601(interval, usetz = TRUE)
+
+    iso8601 <- ifelse(no_time, format_interval, iso8601)
 
     no_duration <- date_time_start == date_time_end
 
-    dates_equal <- df[[date_start]] == df[[date_end]]
+    dates_equal <- date_start == date_end
 
-    iso8601 <- ifelse(
-      (no_end_time & (is.na(df[[date_end]]) | dates_equal)) | no_duration,
-      lubridate::format_ISO8601(date_time_start, usetz = TRUE),
-      iso8601
-    )
+    date_end_is_na <- is.na(date_end)
 
-    iso8601 <- ifelse(
-      no_start_time & (is.na(df[[date_end]]) | dates_equal),
-      lubridate::format_ISO8601(lubridate::ymd(df[[date_start]]), usetz = TRUE),
-      iso8601
-    )
+    no_end_date <- date_end_is_na | dates_equal
 
-    fb_occurrence_df[[iso8601_var]] <- ifelse(
-      is.na(iso8601),
-      ifelse(
-        dates_equal,
-        df[[date_start]],
-        paste(df[[date_start]], df[[date_end]], sep = "/")
-      ),
-      iso8601
-    )
+    no_end <- no_end_time & no_end_date
+
+    use_start <- no_end | no_duration
+
+    format_start <- lubridate::format_ISO8601(date_time_start, usetz = TRUE)
+
+    iso8601 <- ifelse(use_start, format_start, iso8601)
+
+    use_start_ymd <- no_start_time & no_end_date
+
+    format_start_ymd <- lubridate::format_ISO8601(date_start_ymd, usetz = TRUE)
+
+    iso8601 <- ifelse(use_start_ymd, format_start_ymd, iso8601)
+
+    iso8601_is_na <- is.na(iso8601)
+
+    date_interval <- paste(date_start, date_end, sep = "/")
+
+    date_interval <- ifelse(dates_equal, date_start, date_interval)
+
+    iso8601 <- ifelse(iso8601_is_na, date_interval, iso8601)
+
+    fb_occurrence_df[[iso8601_var]] <- iso8601
 
   }
 
