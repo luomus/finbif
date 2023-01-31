@@ -82,7 +82,7 @@ finbif_occurrence <- function(
 
   taxa <- c(...)
 
-  on_check_fail = match.arg(on_check_fail)
+  on_check_fail <- match.arg(on_check_fail)
 
   fb_occurrence_obj <- list(
     taxa = taxa,
