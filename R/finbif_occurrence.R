@@ -1459,39 +1459,70 @@ compute_region <- function(fb_occurrence_df) {
 
 multi_req <- function(fb_occurrence_obj) {
 
-  ans <- vector("list", length(fb_occurrence_obj[["filter"]]))
+  filters <- fb_occurrence_obj[["filter"]]
 
-  rep_attr <- c(
-    "sample", "n", "page", "quiet", "cache", "date_time_method", "tzone",
-    "locale", "exclude_na"
+  n_filters <- length(filters)
+
+  ans <- vector("list", n_filters)
+
+  rep_args <- c(
+    "sample",
+    "n",
+    "page",
+    "quiet",
+    "cache",
+    "date_time_method",
+    "tzone",
+    "locale",
+    "exclude_na"
   )
 
-  for (attr in rep_attr) {
+  for (arg in rep_args) {
 
-    fb_occurrence_obj[[attr]] <- rep_len(fb_occurrence_obj[[attr]], length(ans))
+    fb_occurrence_obj_arg <- fb_occurrence_obj[[arg]]
+
+    fb_occurrence_obj_arg <- rep_len(fb_occurrence_obj_arg, n_filters)
+
+    fb_occurrence_obj[[arg]] <- fb_occurrence_obj_arg
 
   }
 
-  fb_occurrence_obj_i <- fb_occurrence_obj
+  fb_occurrence_obj_filter <- fb_occurrence_obj
 
-  fb_occurrence_obj_i[["check_taxa"]] <- FALSE
+  fb_occurrence_obj_filter[["check_taxa"]] <- FALSE
 
-  for (i in seq_along(ans)) {
+  filter_sq <- seq_len(n_filters)
 
-    for (j in c("filter", rep_attr)) {
+  for (filter in filter_sq) {
 
-      fb_occurrence_obj_i[[j]] <- fb_occurrence_obj[[j]][[i]]
+    args <- c("filter", rep_args)
+
+    for (arg in args) {
+
+      fb_occurrence_obj_arg <- fb_occurrence_obj[[arg]]
+
+      fb_occurrence_obj_arg_filter <- fb_occurrence_obj_arg[[filter]]
+
+      fb_occurrence_obj_filter[[arg]] <- fb_occurrence_obj_arg_filter
 
     }
 
-    ans[[i]] <- occurrence(fb_occurrence_obj_i)
+    resp <- occurrence(fb_occurrence_obj_filter)
+
+    ans[[filter]] <- resp
 
   }
 
-  if (!fb_occurrence_obj[["count_only"]]) {
+  count_only <- fb_occurrence_obj[["count_only"]]
+
+  if (!count_only) {
 
     ans <- do.call(rbind, ans)
-    dups <- duplicated(attr(ans, "record_id"))
+
+    record_id <- attr(ans, "record_id")
+
+    dups <- duplicated(record_id)
+
     ans <- ans[!dups, ]
 
   }
