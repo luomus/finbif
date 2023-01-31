@@ -197,7 +197,9 @@ finbif_occurrence_load <- function(
 
   } else {
 
-    date_time_method <- det_datetime_method(date_time_method, n_recs)
+    datetime_obj <- list(date_time_method = date_time_method, n = n_recs)
+
+    datetime_obj <- det_datetime_method(datetime_obj)
 
     fb_occurrence_df <- structure(
       fb_occurrence_df,
@@ -206,7 +208,7 @@ finbif_occurrence_load <- function(
       aggregate = "none",
       dwc = dwc,
       date_time = select[["date_time_selected"]],
-      date_time_method = date_time_method,
+      date_time_method = datetime_obj[["date_time_method"]],
       tzone = tzone
     )
 

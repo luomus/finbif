@@ -273,41 +273,6 @@ col_type_string <- function(dwc) {
 
 #' @noRd
 
-det_datetime_method <- function(
-  method,
-  n
-) {
-
-  is_null <- is.null(method)
-
-  if (is_null) {
-
-    method <- "none"
-
-    is_num <- is.numeric(n)
-
-    is_pos <- n >= 0L
-
-    cond <- is_num & is_pos
-
-    n <- ifelse(cond, n, Inf)
-
-    n <- sum(n)
-
-    if (n < 1e5) {
-
-      method <- "fast"
-
-    }
-
-  }
-
-  method
-
-}
-
-#' @noRd
-
 open_tsv_connection <- function(
   file,
   tsv,

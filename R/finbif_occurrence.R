@@ -114,6 +114,8 @@ finbif_occurrence <- function(
 
 }
 
+#' @noRd
+
 occurrence <- function(fb_occurrence_obj) {
 
   taxa <- select_taxa(fb_occurrence_obj)
@@ -122,11 +124,9 @@ occurrence <- function(fb_occurrence_obj) {
 
   n <- fb_occurrence_obj[["n"]]
 
-  date_time_method <- det_datetime_method(
-    fb_occurrence_obj[["date_time_method"]], n = n
-  )
+  fb_occurrence_obj <- det_datetime_method(fb_occurrence_obj)
 
-  fb_occurrence_obj[["date_time_method"]] <- date_time_method
+  date_time_method <- fb_occurrence_obj[["date_time_method"]]
 
   filter <- fb_occurrence_obj[["filter"]]
 
@@ -277,6 +277,46 @@ occurrence <- function(fb_occurrence_obj) {
   names(fb_occurrence_df) <- names(select_)
 
   fb_occurrence_df
+
+}
+
+#' @noRd
+
+det_datetime_method <- function(obj) {
+
+  n <- obj[["n"]]
+
+  method <- obj[["date_time_method"]]
+
+  is_null <- is.null(method)
+
+  if (is_null) {
+
+    method <- "none"
+
+    is_num <- is.numeric(n)
+
+    is_pos <- n >= 0L
+
+    cond <- is_num & is_pos
+
+    n <- ifelse(cond, n, Inf)
+
+    n <- sum(n)
+
+    n_small <- n < 1e5L
+
+    if (n_small) {
+
+      method <- "fast"
+
+    }
+
+  }
+
+  obj[["date_time_method"]] <- method
+
+  obj
 
 }
 
