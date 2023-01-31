@@ -1199,37 +1199,41 @@ compute_abundance <- function(fb_occurrence_df) {
 
 compute_citation <- function(fb_occurrence_df) {
 
-  df <- fb_occurrence_df
-
-  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  record_id <- attr(fb_occurrence_df, "record_id", TRUE)
-
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  type <- col_type_string(dwc)
+  vtype <- col_type_string(dwc)
 
-  citation <- var_names[["computed_var_citation", type]]
+  citation_var <- var_names[["computed_var_citation", vtype]]
 
-  source <- var_names[["document.sourceId", type]]
+  add <- add && citation_var %in% select_user
 
-  document_id <- var_names[["document.documentId", type]]
+  if (add) {
 
-  if (citation %in% select_ && add) {
+    record_id <- attr(fb_occurrence_df, "record_id", TRUE)
 
-    df[[citation]] <- ifelse(
-      df[[source]] == "http://tun.fi/KE.3",
-      df[[document_id]],
-      record_id
-    )
+    source_var <- var_names[["document.sourceId", vtype]]
 
-    df[[citation]] <- paste(df[[citation]], "Source: FinBIF")
+    source <- fb_occurrence_df[[source_var]]
+
+    source_is_kotka <- source == "http://tun.fi/KE.3"
+
+    document_id_var <- var_names[["document.documentId", vtype]]
+
+    document_id <- fb_occurrence_df[[document_id_var]]
+
+    citation <- ifelse(source_is_kotka, document_id, record_id)
+
+    citation <- paste(citation, "Source: FinBIF")
+
+    fb_occurrence_df[[citation_var]] <- citation
 
   }
 
-  df
+  fb_occurrence_df
 
 }
 
