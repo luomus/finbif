@@ -1287,43 +1287,61 @@ compute_coordinate_uncertainty <- function(fb_occurrence_df) {
 
 compute_scientific_name <- function(fb_occurrence_df) {
 
-  df <- fb_occurrence_df
-
-  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  type <- col_type_string(dwc)
+  vtype <- col_type_string(dwc)
 
-  scientific <- var_names[["computed_var_scientific_name", type]]
+  sci_name_var <- var_names[["computed_var_scientific_name", vtype]]
 
-  scientific_ <- var_names[["unit.linkings.taxon.scientificName", type]]
+  add <- add && sci_name_var %in% select_user
 
-  verbatim <- var_names[["unit.taxonVerbatim", type]]
+  if (add) {
 
-  author <- var_names[["unit.linkings.taxon.scientificNameAuthorship", type]]
+    sci_name_interp <- var_names[["unit.linkings.taxon.scientificName", vtype]]
 
-  verbatim_author <- var_names[["unit.author", type]]
+    sci_name_interps <- fb_occurrence_df[[sci_name_interp]]
 
-  source <- var_names[["document.sourceId", type]]
+    verbatim <- var_names[["unit.taxonVerbatim", vtype]]
 
-  if (scientific %in% select_ && add) {
+    verbatims <- fb_occurrence_df[[verbatim]]
 
-    df[[scientific]] <- ifelse(
-      is.na(df[[scientific_]]) & df[[source]] == "http://tun.fi/KE.3",
-      add_authors(
-        list(names = df[[verbatim]], authors = df[[verbatim_author]])
-      ),
-      add_authors(
-        list(names = df[[scientific_]], authors = df[[author]])
-      )
-    )
+    author <- var_names[["unit.linkings.taxon.scientificNameAuthorship", vtype]]
+
+    authors <- fb_occurrence_df[[author]]
+
+    verbatim_author <- var_names[["unit.author", vtype]]
+
+    verbatim_authors <- fb_occurrence_df[[verbatim_author]]
+
+    source_var <- var_names[["document.sourceId", vtype]]
+
+    source <- fb_occurrence_df[[source_var]]
+
+    source_is_kotka <- source == "http://tun.fi/KE.3"
+
+    unlinked <- is.na(sci_name_interps)
+
+    use_verbatim <- source_is_kotka & unlinked
+
+    with_verbatim <- list(names = verbatims, authors = verbatim_authors)
+
+    with_verbatim <- add_authors(with_verbatim)
+
+    without_verbatim <- list(names = sci_name_interps, authors = authors)
+
+    without_verbatim <- add_authors(without_verbatim)
+
+    sci_name <- ifelse(use_verbatim, with_verbatim, without_verbatim)
+
+    fb_occurrence_df[[sci_name_var]] <- sci_name
 
   }
 
-  df
+  fb_occurrence_df
 
 }
 
@@ -1335,11 +1353,23 @@ add_authors <- function(names_obj) {
 
   authors <- names_obj[["authors"]]
 
-  authors <- ifelse(
-    nchar(authors) > 1L & !is.na(authors), paste0(" ", authors), ""
-  )
+  nchars <- nchar(authors)
 
-  ifelse(is.na(names), names, paste0(names, authors))
+  has_chars <- nchars > 0L
+
+  has_authors <- !is.na(authors)
+
+  has_authors <- has_authors & has_chars
+
+  authors <- paste0(" ", authors)
+
+  authors <- ifelse(has_authors, authors, "")
+
+  with_authors <- paste0(names, authors)
+
+  names_na <- is.na(names)
+
+  ifelse(names_na, names, with_authors)
 
 }
 
