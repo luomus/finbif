@@ -519,32 +519,54 @@ date_times <- function(fb_occurrence_df) {
 
   method <- attr(fb_occurrence_df, "date_time_method", TRUE)
 
-  if (attr(fb_occurrence_df, "date_time", TRUE)) {
+  date_time <- attr(fb_occurrence_df, "date_time", TRUE)
+
+  if (date_time) {
+
+    date_start <- df[[date_start]]
+
+    hour_start <-  df[[hour_start]]
+
+    minute_start <-  df[[minute_start]]
+
+    date_end <- df[[date_end]]
+
+    hour_end <-  df[[hour_end]]
+
+    minute_end <-  df[[minute_end]]
+
+    lat <- df[[lat]]
+
+    lon <- df[[lon]]
 
     date_time_start <- list(
-      date = df[[date_start]],
-      hour = df[[hour_start]],
-      minute = df[[minute_start]],
-      lat = df[[lat]],
-      lon = df[[lon]],
+      date = date_start,
+      hour = hour_start,
+      minute = minute_start,
+      lat = lat,
+      lon = lon,
       tzone = tzone,
       method = method
     )
 
     date_time_end <- list(
-      date = df[[date_end]],
-      hour = df[[hour_end]],
-      minute = df[[minute_end]],
-      lat = df[[lat]],
-      lon = df[[lon]],
+      date = date_end,
+      hour = hour_end,
+      minute = minute_end,
+      lat = lat,
+      lon = lon,
       tzone = tzone,
       method = method
     )
 
+    date_time_start <- date_time(date_time_start)
+
+    date_time_end <- date_time(date_time_end)
+
     fb_occurrence_df <- structure(
       fb_occurrence_df,
-      date_time_start = date_time(date_time_start),
-      date_time_end = date_time(date_time_end)
+      date_time_start = date_time_start,
+      date_time_end = date_time_end
     )
 
   }
