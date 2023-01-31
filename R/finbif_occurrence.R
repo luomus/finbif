@@ -925,9 +925,7 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
 compute_vars_from_id <- function(fb_occurrence_df) {
 
-  df <- fb_occurrence_df
-
-  select_ <- attr(fb_occurrence_df, "column_names")
+  select_user <- attr(fb_occurrence_df, "column_names")
 
   dwc <- attr(fb_occurrence_df, "dwc")
 
@@ -935,74 +933,107 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
   add <- attr(fb_occurrence_df, "include_new_cols")
 
-  candidates <- setdiff(select_, names(df))
+  colnames <- names(fb_occurrence_df)
 
-  suffix <- switch(col_type_string(dwc), translated_var = "_id", dwc = "ID")
+  cols <- setdiff(select_user, colnames)
 
-  for (k in seq_along(candidates)) {
+  vtype <- col_type_string(dwc)
 
-    id_var_name <- paste0(candidates[[k]], suffix)
+  suffix <- switch(vtype, translated_var = "_id", dwc = "ID")
 
-    if (utils::hasName(df, id_var_name) && add) {
+  sq <- seq_along(cols)
 
-      if (identical(id_var_name, "collection_id")) {
+  for (i in sq) {
+
+    col_i <- cols[[i]]
+
+    id_var_name <- paste0(col_i, suffix)
+
+    add <- add && id_var_name %in% colnames
+
+    if (add) {
+
+      is_collection <- identical(id_var_name, "collection_id")
+
+      if (is_collection) {
 
         ptrn <- "collection_name"
 
         metadata <- finbif_collections(
-          select = ptrn, subcollections = TRUE,
-          supercollections = TRUE, nmin = NA, locale = locale
+          select = ptrn,
+          subcollections = TRUE,
+          supercollections = TRUE,
+          nmin = NA,
+          locale = locale
         )
 
       } else {
 
         ptrn <- "^name_|^description_"
 
-        metadata <- get(to_native(candidates[[k]]))
+        col_i_native <- to_native(col_i)
 
-        if (!inherits(metadata, "data.frame")) {
+        metadata <- get(col_i_native)
 
-          r <- unlist(lapply(metadata, row.names))
+        not_df <- !inherits(metadata, "data.frame")
 
-          metadata <- do.call(rbind, c(metadata, make.row.names = FALSE))
+        if (not_df) {
 
-          row.names(metadata) <- r
+          rownames <- lapply(metadata, row.names)
+
+          rownames <- unlist(rownames)
+
+          args <- c(metadata, make.row.names = FALSE)
+
+          metadata <- do.call(rbind, args)
+
+          row.names(metadata) <- rownames
 
         }
 
       }
 
-      id_var <- df[[id_var_name]]
+      id_var <- fb_occurrence_df[[id_var_name]]
 
-      j <- grep(ptrn, names(metadata))
+      nms <- names(metadata)
 
-      names(metadata) <- gsub(ptrn, "", names(metadata))
+      ind <- grep(ptrn, nms)
 
-      i <- lapply(id_var, remove_domain)
+      nms <- gsub(ptrn, "", nms)
 
-      var <- lapply(i, function(i) metadata[i, j, drop = FALSE])
+      names(metadata) <- nms
 
-      var <- lapply(var, apply, 1L, as.list)
+      id <- lapply(id_var, vapply, remove_domain, "")
 
-      var <- lapply(var, vapply, with_locale, NA_character_, locale)
+      metadata <- metadata[, ind, drop = FALSE]
 
-      df[[candidates[[k]]]] <- mapply(
-        function(x, y) unname(ifelse(is.na(x), y, x)),
-        var, id_var,
-        SIMPLIFY = FALSE, USE.NAMES = FALSE
+      var <- lapply(id, get_rows, metadata)
+
+      var <- lapply(var, apply, 1L, with_locale, locale)
+
+      var <- lapply(var, unname)
+
+      var_is_na <- lapply(var, is.na)
+
+      df_col_i <- mapply(
+        ifelse, var_is_na, id_var, var, SIMPLIFY = FALSE, USE.NAMES = FALSE
       )
 
-      if (!is.list(id_var)) {
+      unlist <- !is.list(id_var)
 
-        df[[candidates[[k]]]] <- unlist(df[[candidates[[k]]]])
+      if (unlist) {
+
+        df_col_i <- unlist(df_col_i)
 
       }
+
+      fb_occurrence_df[[col_i]] <- df_col_i
 
     }
 
   }
 
-  df
+  fb_occurrence_df
 
 }
 

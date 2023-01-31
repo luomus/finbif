@@ -471,6 +471,17 @@ all_na <- function(x) {
 
 }
 
+#' @noRd
+
+get_rows <- function(
+  rows,
+  df
+) {
+
+  df[rows, , drop = FALSE]
+
+}
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd
