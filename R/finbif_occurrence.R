@@ -144,12 +144,18 @@ occurrence <- function(fb_occurrence_obj) {
 
   facts <- fb_occurrence_obj[["facts"]]
 
-  if (!is.null(filter) && is.null(names(filter))) {
+  filter_names <- names(filter)
+
+  no_filter_names <- is.null(filter_names)
+
+  multi_filter <- no_filter_names && !is.null(filter)
+
+  if (multi_filter) {
+
+    aggregate_none <- identical(aggregate, "none")
 
     stopifnot(
-      "only one filter set can be used with aggregation" = identical(
-        aggregate, "none"
-      )
+      "Only one filter set can be used with aggregation" = aggregate_none
     )
 
     multi_request <- multi_req(fb_occurrence_obj)
@@ -162,33 +168,53 @@ occurrence <- function(fb_occurrence_obj) {
 
   include_facts <- !is.null(facts)
 
+  order_by <- fb_occurrence_obj[["order_by"]]
+
+  sample <- fb_occurrence_obj[["sample"]]
+
+  page <- fb_occurrence_obj[["page"]]
+
+  cache <- fb_occurrence_obj[["cache"]]
+
+  seed <- fb_occurrence_obj[["seed"]]
+
+  exclude_na <- fb_occurrence_obj[["exclude_na"]]
+
   fb_records_obj <- list(
     filter = filter,
     select = select,
-    order_by = fb_occurrence_obj[["order_by"]],
+    order_by = order_by,
     aggregate = aggregate,
-    sample = fb_occurrence_obj[["sample"]],
-    page = fb_occurrence_obj[["page"]],
+    sample = sample,
+    page = page,
     count_only = count_only,
     quiet = quiet,
-    cache = fb_occurrence_obj[["cache"]],
+    cache = cache,
     dwc = dwc,
     df = TRUE,
-    seed = fb_occurrence_obj[["seed"]],
-    exclude_na = fb_occurrence_obj[["exclude_na"]],
+    seed = seed,
+    exclude_na = exclude_na,
     locale = locale,
     include_facts = include_facts
   )
 
-  if (!is.finite(n) || is.factor(n) || n < 0) {
+  needs_n <- n < 0
 
-    fb_records_obj[["n"]] <- getOption("finbif_max_page_size")
+  needs_n <- needs_n || is.factor(n)
+
+  needs_n <- needs_n || !is.finite(n)
+
+  if (needs_n) {
+
+    max_page_size <- getOption("finbif_max_page_size")
+
+    fb_records_obj[["n"]] <- max_page_size
 
     n <- records(fb_records_obj)
 
     n <- attr(n, "nrec_avl")
 
-    n <- pmax(n, getOption("finbif_max_page_size"))
+    n <- pmax(n, max_page_size)
 
   }
 
@@ -198,44 +224,81 @@ occurrence <- function(fb_occurrence_obj) {
 
   aggregate <- attr(records, "aggregate", TRUE)
 
-  if (count_only) return(records[["content"]][["total"]])
+  if (count_only) {
+
+    ans <- records[["content"]]
+
+    ans <- ans[["total"]]
+
+    return(ans)
+
+  }
 
   # Don't need a processing progress bar if only one page of records
+
   quiet <- quiet || length(records) < 2L
 
   pb_head("Processing data", quiet = quiet)
 
   df <- as.data.frame(records, locale = locale, quiet = quiet)
 
-  n_col_nms <- grep("^n_", names(df), value = TRUE)
+  colnames <- names(df)
 
-  ind <- !names(df) %in% n_col_nms
+  n_col_nms <- grep("^n_", colnames, value = TRUE)
 
-  names(df)[ind] <- var_names[names(df)[ind], col_type_string(dwc)]
+  ind <- !colnames %in% n_col_nms
 
-  select_ <- attr(records, "select_user")
+  vtype <- col_type_string(dwc)
 
-  select_ <- name_chr_vec(
-    c(select_, n_col_nms[fb_occurrence_obj[["aggregate_counts"]]])
-  )
+  non_count_cols <- colnames[ind]
+
+  non_count_cols <- var_names[non_count_cols, vtype]
+
+  colnames[ind] <- non_count_cols
+
+  names(df) <- colnames
+
+  select_user <- attr(records, "select_user")
+
+  aggregate_counts <- fb_occurrence_obj[["aggregate_counts"]]
+
+  n_col_nms <- n_col_nms[aggregate_counts]
+
+  select_user <- c(select_user, n_col_nms)
+
+  select_user <- name_chr_vec(select_user)
+
+  class <- c("finbif_occ", "data.frame")
+
+  nrec_dnld <- attr(records, "nrec_dnld", TRUE)
+
+  nrec_avl <- attr(records, "nrec_avl", TRUE)
+
+  date_time <- attr(records, "date_time", TRUE)
+
+  tzone <- fb_occurrence_obj[["tzone"]]
+
+  unlist <- fb_occurrence_obj[["unlist"]]
+
+  drop_na <- fb_occurrence_obj[["drop_na"]]
 
   fb_occurrence_df <- structure(
     df,
-    class = c("finbif_occ", "data.frame"),
-    nrec_dnld = attr(records, "nrec_dnld", TRUE),
-    nrec_avl  = attr(records, "nrec_avl", TRUE),
+    class = class,
+    nrec_dnld = nrec_dnld,
+    nrec_avl  = nrec_avl,
     select_user = select,
-    column_names = select_,
+    column_names = select_user,
     aggregate = aggregate,
     dwc = dwc,
-    date_time = attr(records, "date_time", TRUE),
+    date_time = date_time,
     date_time_method = date_time_method,
-    tzone = fb_occurrence_obj[["tzone"]],
+    tzone = tzone,
     locale = locale,
     include_new_cols = TRUE,
     facts = facts,
-    unlist = fb_occurrence_obj[["unlist"]],
-    drop_na = fb_occurrence_obj[["drop_na"]]
+    unlist = unlist,
+    drop_na = drop_na
   )
 
   fb_occurrence_df <- date_times(fb_occurrence_df)
@@ -264,17 +327,21 @@ occurrence <- function(fb_occurrence_obj) {
 
   fb_occurrence_df <- extract_facts(fb_occurrence_df)
 
-  select_ <- c(select_, name_chr_vec(as.character(facts)))
+  facts <- as.character(facts)
 
-  fb_occurrence_df <- fb_occurrence_df[select_]
+  facts <- name_chr_vec(facts)
 
-  attr(fb_occurrence_df, "select_user") <- select_
+  select_user <- c(select_user, facts)
+
+  fb_occurrence_df <- fb_occurrence_df[select_user]
+
+  attr(fb_occurrence_df, "select_user") <- select_user
 
   fb_occurrence_df <- unlist_cols(fb_occurrence_df)
 
   fb_occurrence_df <- drop_na_col(fb_occurrence_df)
 
-  names(fb_occurrence_df) <- names(select_)
+  names(fb_occurrence_df) <- names(select_user)
 
   fb_occurrence_df
 
