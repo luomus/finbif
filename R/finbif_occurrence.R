@@ -48,7 +48,6 @@
 #' )
 #'
 #' }
-#' @importFrom utils hasName
 #' @importFrom lubridate as_datetime as.duration as.interval force_tzs
 #' @importFrom lubridate format_ISO8601 hour interval minute ymd
 #' @importFrom lutz tz_lookup_coords
@@ -576,70 +575,103 @@ date_times <- function(fb_occurrence_df) {
 }
 
 #' @noRd
+#' @importFrom lubridate as_datetime force_tz hour minute with_tz ymd
+#' @importFrom lutz tz_lookup_coords
 
 date_time <- function(date_time_obj) {
 
   tzone <- date_time_obj[["tzone"]]
 
-  date_time <- as.POSIXct(character(), tz = tzone)
+  date_time <- character()
 
-  if (length(date_time_obj[["date"]]) > 0L) {
+  date_time <- as.POSIXct(date_time, tz = tzone)
 
-    date_time <- lubridate::ymd(date_time_obj[["date"]])
+  date <- date_time_obj[["date"]]
+
+  date_length <- length(date)
+
+  date_has_length <- date_length > 0L
+
+  if (date_has_length) {
+
+    date_time <- lubridate::ymd(date)
 
     date_time <- lubridate::as_datetime(date_time)
 
     # When there is no hour assume the hour is midday (i.e., don't assume
     # midnight)
-    lubridate::hour(date_time) <- 12L
 
-    if (!is.null(date_time_obj[["hour"]])) {
+    hour <- date_time_obj[["hour"]]
 
-      lubridate::hour(date_time) <- ifelse(
-        is.na(date_time_obj[["hour"]]),
-        lubridate::hour(date_time),
-        date_time_obj[["hour"]]
-      )
+    has_hour <- !is.null(hour)
 
-    }
+    if (has_hour) {
 
-    if (!is.null(date_time_obj[["minute"]])) {
+      hour_is_na <- is.na(hour)
 
-      lubridate::minute(date_time) <- ifelse(
-        is.na(date_time_obj[["minute"]]),
-        lubridate::minute(date_time),
-        date_time_obj[["minute"]]
-      )
+      date_time_hour <- ifelse(hour_is_na, 12L, hour)
 
     }
 
-    if (identical(date_time_obj[["method"]], "none")) {
+    lubridate::hour(date_time) <- date_time_hour
+
+    minute <- date_time_obj[["minute"]]
+
+    has_minute <- !is.null(minute)
+
+    if (has_minute) {
+
+      date_time_minute <- lubridate::minute(date_time)
+
+      minute_is_na <- is.na(minute)
+
+      date_time_minute <- ifelse(minute_is_na, date_time_minute, minute)
+
+      lubridate::minute(date_time) <- date_time_minute
+
+    }
+
+    method <- date_time_obj[["method"]]
+
+    no_method <- identical(method, "none")
+
+    if (no_method) {
 
       tz_in <- "Europe/Helsinki"
 
       date_time <- lubridate::force_tz(date_time, tz_in)
+
       date_time <- lubridate::with_tz(date_time, tzone)
 
     } else {
 
-      tz_in <- lutz::tz_lookup_coords(
-        date_time_obj[["lat"]],
-        date_time_obj[["lon"]],
-        date_time_obj[["method"]],
-        FALSE
-      )
+      lat <- date_time_obj[["lat"]]
 
-      date_time <- lubridate::force_tzs(
-        date_time,
-        tzones = ifelse(is.na(tz_in), tzone, tz_in),
-        tzone_out = tzone
-      )
+      lon <- date_time_obj[["lon"]]
+
+      tz_in <- lutz::tz_lookup_coords(lat, lon, method, FALSE)
+
+      tz_in_is_na <- is.na(tz_in)
+
+      tzones <- ifelse(tz_in_is_na, tzone, tz_in)
+
+      date_time <- lubridate::force_tzs(date_time, tzones, tzone)
 
     }
 
-    ind <- is.na(date_time_obj[["month"]]) | is.na(date_time_obj[["day"]])
+    month <- date_time_obj[["month"]]
 
-    date_time[ind] <- lubridate::as_datetime(NA_integer_, tz = tzone)
+    is_na_month <- is.na(month)
+
+    day <- date_time_obj[["day"]]
+
+    is_na_day <- is.na(day)
+
+    is_na_month_day <- is_na_month | is_na_day
+
+    na_month_day <- lubridate::as_datetime(NA_integer_, tz = tzone)
+
+    date_time[is_na_month_day] <- na_month_day
 
   }
 
