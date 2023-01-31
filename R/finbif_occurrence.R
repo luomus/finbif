@@ -55,18 +55,37 @@
 #' @export
 
 finbif_occurrence <- function(
-  ..., filter = NULL, select = NULL, order_by = NULL, aggregate = "none",
-  sample = FALSE, n = 10, page = 1, count_only = FALSE,
+  ...,
+  filter = NULL,
+  select = NULL,
+  order_by = NULL,
+  aggregate = "none",
+  sample = FALSE,
+  n = 10,
+  page = 1,
+  count_only = FALSE,
   quiet = getOption("finbif_hide_progress"),
-  cache = getOption("finbif_use_cache"), dwc = FALSE, date_time_method = NULL,
-  check_taxa = TRUE, on_check_fail = c("warn", "error"),
-  tzone = getOption("finbif_tz"), locale = getOption("finbif_locale"),
-  seed = NULL, drop_na = FALSE, aggregate_counts = TRUE, exclude_na = FALSE,
-  unlist = FALSE, facts = NULL
+  cache = getOption("finbif_use_cache"),
+  dwc = FALSE,
+  date_time_method = NULL,
+  check_taxa = TRUE,
+  on_check_fail = c("warn", "error"),
+  tzone = getOption("finbif_tz"),
+  locale = getOption("finbif_locale"),
+  seed = NULL,
+  drop_na = FALSE,
+  aggregate_counts = TRUE,
+  exclude_na = FALSE,
+  unlist = FALSE,
+  facts = NULL
 ) {
 
+  taxa <- c(...)
+
+  on_check_fail = match.arg(on_check_fail)
+
   fb_occurrence_obj <- list(
-    taxa = c(...),
+    taxa = taxa,
     filter = filter,
     select = select,
     order_by = order_by,
@@ -80,7 +99,7 @@ finbif_occurrence <- function(
     dwc = dwc,
     date_time_method = date_time_method,
     check_taxa = check_taxa,
-    on_check_fail = match.arg(on_check_fail),
+    on_check_fail = on_check_fail,
     tzone = tzone,
     locale = locale,
     seed = seed,
