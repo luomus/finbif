@@ -1377,38 +1377,45 @@ add_authors <- function(names_obj) {
 
 compute_red_list_status <- function(fb_occurrence_df) {
 
-  df <- fb_occurrence_df
-
-  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  type <- col_type_string(dwc)
+  vtype <- col_type_string(dwc)
 
-  red_list_status <- var_names[["computed_var_red_list_status", type]]
+  red_list_var <- var_names[["computed_var_red_list_status", vtype]]
 
-  red_list_status_id <-
-    var_names[["unit.linkings.taxon.latestRedListStatusFinland.status", type]]
+  add <- add && red_list_var %in% select_user
 
-  red_list_status_year <-
-    var_names[["unit.linkings.taxon.latestRedListStatusFinland.year", type]]
+  if (add) {
 
-  if (red_list_status %in% select_ && add) {
+    red_list_id <- "unit.linkings.taxon.latestRedListStatusFinland.status"
 
-    df[[red_list_status]] <- ifelse(
-      is.na(df[[red_list_status_id]]),
-      NA_character_,
-      paste(
-        sub("http://tun.fi/MX.iucn", "", df[[red_list_status_id]]),
-        df[[red_list_status_year]]
-      )
-    )
+    red_list_id <-  var_names[[red_list_id, vtype]]
+
+    red_list_id <- fb_occurrence_df[[red_list_id]]
+
+    red_list_year <- "unit.linkings.taxon.latestRedListStatusFinland.year"
+
+    red_list_year <- var_names[[red_list_year, vtype]]
+
+    red_list_year <- fb_occurrence_df[[red_list_year]]
+
+    red_list_na <- is.na(red_list_id)
+
+    red_list_id <- sub("http://tun.fi/MX.iucn", "", red_list_id)
+
+    red_list_id <- paste(red_list_id, red_list_year)
+
+    red_list_id <- ifelse(red_list_na, NA_character_, red_list_id)
+
+    fb_occurrence_df[[red_list_var]] <- red_list_id
 
   }
 
-  df
+  fb_occurrence_df
 
 }
 
