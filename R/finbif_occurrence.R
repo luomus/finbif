@@ -1241,37 +1241,45 @@ compute_citation <- function(fb_occurrence_df) {
 
 compute_coordinate_uncertainty <- function(fb_occurrence_df) {
 
-  df <- fb_occurrence_df
-
-  select_ <- attr(fb_occurrence_df, "column_names", TRUE)
+  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  type <- col_type_string(dwc)
+  vtype <- col_type_string(dwc)
 
-  coord_uncert_ <- var_names[["computed_var_coordinates_uncertainty", type]]
+  coord_uncert_var <- var_names[["computed_var_coordinates_uncertainty", vtype]]
 
-  coord_uncert_i <- var_names[[
-    "gathering.interpretations.coordinateAccuracy", type
-  ]]
+  add <- add && coord_uncert_var %in% select_user
 
-  source <- var_names[["document.sourceId", type]]
+  if (add) {
 
-  if (coord_uncert_ %in% select_ && add) {
+    interpreted_var <- "gathering.interpretations.coordinateAccuracy"
 
-    coord_uncert <- ifelse(
-      df[[source]] == "http://tun.fi/KE.3" & df[[coord_uncert_i]] == 1,
-      NA_real_,
-      df[[coord_uncert_i]]
-    )
+    interpreted_var <- var_names[[interpreted_var, vtype]]
 
-    df[[coord_uncert_]] <- as.numeric(coord_uncert)
+    interpreted <- fb_occurrence_df[[interpreted_var]]
+
+    source_var <- var_names[["document.sourceId", vtype]]
+
+    source <- fb_occurrence_df[[source_var]]
+
+    source_is_kotka <- source == "http://tun.fi/KE.3"
+
+    interpreted_one <- interpreted == 1
+
+    is_na <- source_is_kotka & interpreted_one
+
+    coord_uncert <- ifelse(is_na, NA_real_, interpreted)
+
+    coord_uncert <- as.numeric(coord_uncert)
+
+    fb_occurrence_df[[coord_uncert_var]] <- coord_uncert
 
   }
 
-  df
+  fb_occurrence_df
 
 }
 
