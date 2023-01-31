@@ -787,23 +787,9 @@ compute_duration <- function(fb_occurrence_df) {
 
 compute_iso8601 <- function(fb_occurrence_df) {
 
-  df <- as.data.frame(fb_occurrence_df)
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   vtype <- col_type_string(dwc)
-
-  date_start <- var_names["gathering.eventDate.begin", vtype]
-
-  hour_start <- var_names["gathering.hourBegin", vtype]
-
-  minute_start <- var_names["gathering.minutesBegin", vtype]
-
-  date_end <- var_names["gathering.eventDate.end", vtype]
-
-  hour_end <- var_names["gathering.hourEnd", vtype]
-
-  minute_end <- var_names["gathering.minutesEnd", vtype]
 
   iso8601_var <- var_names["computed_var_date_time_ISO8601", vtype]
 
@@ -812,6 +798,20 @@ compute_iso8601 <- function(fb_occurrence_df) {
   has_iso8601 <- iso8601_var %in% column_names
 
   if (has_iso8601) {
+
+    df <- as.data.frame(fb_occurrence_df)
+
+    date_start <- var_names["gathering.eventDate.begin", vtype]
+
+    hour_start <- var_names["gathering.hourBegin", vtype]
+
+    minute_start <- var_names["gathering.minutesBegin", vtype]
+
+    date_end <- var_names["gathering.eventDate.end", vtype]
+
+    hour_end <- var_names["gathering.hourEnd", vtype]
+
+    minute_end <- var_names["gathering.minutesEnd", vtype]
 
     tzone <- attr(fb_occurrence_df, "tzone", TRUE)
 
@@ -831,13 +831,11 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
     iso8601 <- lubridate::interval(iso8601, tzone = tzone)
 
-    date_time_start_not_na <- date_time_start[!date_time_start_is_na]
+    start_not_na <- date_time_start[!date_time_start_is_na]
 
-    date_time_end_not_na <- date_time_end[!date_time_end_is_na]
+    end_not_na <- date_time_end[!date_time_end_is_na]
 
-    iso8601_not_na <- lubridate::interval(
-      date_time_start_not_na, date_time_end_not_na
-    )
+    iso8601_not_na <- lubridate::interval(start_not_na, end_not_na)
 
     iso8601_na <- lubridate::as.interval(NA_integer_)
 
