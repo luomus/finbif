@@ -401,44 +401,86 @@ select_taxa <- function(fb_occurrence_obj) {
 
   ntaxa <- length(taxa)
 
-  if (identical(ntaxa, 0L)) return(NULL)
+  no_taxa <- identical(ntaxa, 0L)
 
-  ans <- list(taxon_name = paste(taxa, collapse = ","))
+  if (no_taxa) {
+
+    return(NULL)
+
+  }
+
+  taxon_name <- paste(taxa, collapse = ",")
+
+  ans <- list(taxon_name = taxon_name)
 
   if (check_taxa) {
 
-    if (ntaxa > 1L || !utils::hasName(taxa, "taxa")) {
+    taxa_names <- names(taxa)
 
-      taxa <- unlist(finbif_check_taxa(taxa, cache = cache))
+    no_taxa_name <- !"taxa" %in% taxa_names
+
+    cond <- no_taxa_name || ntaxa > 1L
+
+    if (cond) {
+
+      taxa <- finbif_check_taxa(taxa, cache = cache)
 
     } else {
 
-      taxa <- do.call(finbif_check_taxa, c(as.list(taxa), list(cache = cache)))
+      cache <- list(cache = cache)
 
-      taxa <- unlist(taxa)
+      taxa <- as.list(taxa)
+
+      taxa <- c(taxa, cache)
+
+      taxa <- do.call(finbif_check_taxa, taxa)
 
     }
 
-    taxa_invalid <- is.na(taxa)
-    taxa_valid  <- !taxa_invalid
+    taxa <- unlist(taxa)
 
-    if (any(taxa_invalid)) {
-      msg  <- paste(
+    taxa_invalid <- is.na(taxa)
+
+    any_taxa_invalid <- any(taxa_invalid)
+
+    if (any_taxa_invalid) {
+
+      invalid_taxa <- taxa[taxa_invalid]
+
+      invalid_taxa_names <- names(invalid_taxa)
+
+      msg <- sub("\\.", " - ", invalid_taxa_names)
+
+      msg <- paste(msg, collapse = ", ")
+
+      msg <- paste(
         "Cannot find the following taxa in the FinBIF taxonomy.",
         "Please check you are using accepted names and not synonyms or",
         "other names for the taxa you are selecting:\n",
-        paste(sub("\\.", " - ", names(taxa[taxa_invalid])), collapse = ", "),
+        msg,
         sep = "\n"
       )
+
       switch(
         on_check_fail,
         warn  = warning(msg, call. = FALSE),
         error = stop(msg, call. = FALSE)
       )
+
     }
 
-    if (any(taxa_valid)) {
-      ans <- list(taxon_id = paste(taxa[taxa_valid], collapse = ","))
+    taxa_valid <- !taxa_invalid
+
+    any_taxa_valid <- any(taxa_valid)
+
+    if (any_taxa_valid) {
+
+      valid_taxa <- taxa[taxa_valid]
+
+      valid_taxa <- paste(valid_taxa, collapse = ",")
+
+      ans <- list(taxon_id = valid_taxa)
+
     }
 
   }
