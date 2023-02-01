@@ -73,8 +73,6 @@ get_el_recurse <- function(
   type
 ) {
 
-  type_na <- cast_to_type(NA, type)
-
   l <- length(nms)
 
   no_names <- identical(l, 0L)
@@ -85,7 +83,7 @@ get_el_recurse <- function(
 
     if (no_obj) {
 
-      obj <- type_na
+      obj <- cast_to_type(NA, type)
 
     }
 
@@ -128,6 +126,8 @@ get_el_recurse <- function(
     next_obj <- lapply(obj, getElement, nm)
 
     null_elements <- vapply(next_obj, is.null, NA)
+
+    type_na <- cast_to_type(NA, type)
 
     next_obj[null_elements] <- type_na
 
