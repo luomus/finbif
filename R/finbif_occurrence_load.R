@@ -653,17 +653,31 @@ localise_enums <- function(df) {
 
   file_vars <- attr(df, "file_vars", TRUE)
 
+  filed_var_names <- row.names(file_vars)
+
   locale <- attr(df, "locale", TRUE)
 
-  for (i in names(df)) {
+  df_names <- names(df)
 
-    if (i %in% row.names(file_vars) && isTRUE(file_vars[[i, "localised"]])) {
+  for (nm in df_names) {
+
+    localised <- file_vars[[nm, "localised"]]
+
+    localised <- isTRUE(localised)
+
+    localised <- localised && nm %in% filed_var_names
+
+    if (localised) {
+
+      dfnm <- df[[nm]]
 
       labels_obj <- list(
-        labels = df[[i]], col = i, var_names = file_vars, locale =  locale
+        labels = dfnm, col = nm, var_names = file_vars, locale = locale
       )
 
-      df[[i]] <- localise_labels(labels_obj)
+      dfnm <- localise_labels(labels_obj)
+
+      df[[nm]] <- dfnm
 
     }
 
