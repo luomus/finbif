@@ -1652,7 +1652,6 @@ extract_fact <- function(
 
 }
 
-
 #' Get last modified date for FinBIF occurrence records
 #'
 #' Get last modified date for filtered occurrence data from FinBIF.
@@ -1668,17 +1667,31 @@ extract_fact <- function(
 #'
 #' }
 #' @export
-finbif_last_mod <- function(..., filter) {
+
+finbif_last_mod <- function(
+  ...,
+  filter
+) {
 
   res <- finbif_occurrence(
     ..., filter = filter, select = "load_date", order_by = "-load_date", n = 1L
   )
 
-  ans <- as.Date(character())
+  ans <- character()
 
-  if (nrow(res) > 0L) {
+  ans <- as.Date(ans)
 
-    ans <- as.Date(res[["load_date"]][[1L]])
+  nrows <- nrow(res)
+
+  has_rows <- nrows > 0L
+
+  if (has_rows) {
+
+    ans <- res[["load_date"]]
+
+    ans <- ans[[1L]]
+
+    ans <- as.Date(ans)
 
   }
 
