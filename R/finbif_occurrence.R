@@ -1569,41 +1569,53 @@ unlist_cols <- function(fb_occurrence_df) {
 
 extract_facts <- function(fb_occurrence_df) {
 
-  df <- fb_occurrence_df
-
   facts <- attr(fb_occurrence_df, "facts", TRUE)
 
-  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+  has_facts <- !is.null(facts)
 
-  if (!is.null(facts)) {
+  if (has_facts) {
 
-    names <- c(
-      "unit.facts.fact", "gathering.facts.fact", "document.facts.fact"
-    )
+    dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-    values <- c(
+    vtype <- col_type_string(dwc)
+
+    nms <- c("unit.facts.fact", "gathering.facts.fact", "document.facts.fact")
+
+    vls <- c(
       "unit.facts.value", "gathering.facts.value", "document.facts.value"
     )
 
-    df[facts] <- NA_character_
+    fb_occurrence_df[facts] <- NA_character_
+
+    levels <- seq_len(3L)
 
     for (fact in facts) {
 
-      for (level in 1L:3L) {
+      for (level in levels) {
 
-        idx <- lapply(
-          df[[var_names[[names[[level]], col_type_string(dwc)]]]], `==`, fact
-        )
+        levels_nms <- nms[[level]]
 
-        vk <- mapply(
-          function(v, k) ifelse(length(v[k]) > 0L, v[k], NA_character_),
-          df[[var_names[[values[[level]], col_type_string(dwc)]]]],
-          idx
-        )
+        fact_name <- var_names[[levels_nms, vtype]]
 
-        if (!all(is.na(vk))) {
+        fact_col <- fb_occurrence_df[[fact_name]]
 
-          df[[fact]] <- vk
+        is_fact <- lapply(fact_col, "==", fact)
+
+        level_vls <- vls[[level]]
+
+        values_name <- var_names[[level_vls, vtype]]
+
+        values_col <- fb_occurrence_df[[values_name]]
+
+        fact_values <- mapply(extract_fact, values_col, is_fact)
+
+        fact_value_is_na <- is.na(fact_values)
+
+        has_value <- !all(fact_value_is_na)
+
+        if (has_value) {
+
+          fb_occurrence_df[[fact]] <- fact_values
 
         }
 
@@ -1613,9 +1625,33 @@ extract_facts <- function(fb_occurrence_df) {
 
   }
 
-  df
+  fb_occurrence_df
 
 }
+
+#' @noRd
+
+extract_fact <- function(
+  x,
+  i
+) {
+
+  xi <- x[i]
+
+  l <- length(xi)
+
+  is_na <- identical(l, 0L)
+
+  if (is_na) {
+
+    xi <- NA_character_
+
+  }
+
+  xi
+
+}
+
 
 #' Get last modified date for FinBIF occurrence records
 #'
