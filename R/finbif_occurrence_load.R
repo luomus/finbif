@@ -470,11 +470,8 @@ finbif_occurrence_load <- function(
 }
 
 #' @noRd
+
 read_finbif_tsv <- function(fb_occurrenc_obj) {
-
-  file <- as.character(fb_occurrenc_obj[["file"]])
-
-  fb_occurrenc_obj[["file"]] <- file
 
   n <- fb_occurrenc_obj[["n"]]
 
@@ -483,6 +480,10 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
   facts <- fb_occurrenc_obj[["facts"]]
 
   ptrn <- "^https?://.+?/HBF\\."
+
+  file <- fb_occurrenc_obj[["file"]]
+
+  file <- as.character(file)
 
   is_url <- grepl(ptrn, file)
 
@@ -493,6 +494,7 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
   }
 
   tsv <- basename(file)
+
   tsv <- gsub("zip", "tsv", tsv)
 
   tsv_prefix <- switch(
@@ -503,7 +505,9 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
     document = "document_facts_",
   )
 
-  valid_facts <- facts %in% c("none", "record", "event", "document")
+  fact_types <- c("none", "record", "event", "document")
+
+  valid_facts <- facts %in% fact_types
 
   stopifnot(
     "Facts can only be of types: record, event and/or document" = valid_facts
@@ -517,9 +521,13 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
   fb_occurrenc_obj[["tsv"]] <- tsv
 
-  if (grepl("^[0-9]*$", file)) {
+  is_number <- grepl("^[0-9]*$", file)
 
-    url <- sprintf("%s/HBF.%s", getOption("finbif_dl_url"), file)
+  if (is_number) {
+
+    finbif_dl_url <- getOption("finbif_dl_url")
+
+    url <- sprintf("%s/HBF.%s", finbif_dl_url, file)
 
     fb_occurrenc_obj[["url"]] <- url
 
@@ -547,7 +555,9 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
   attr(df, "url") <- url
 
-  if (identical(n, -1L)) {
+  n_all <- identical(n, -1L)
+
+  if (n_all) {
 
     attr(df, "nrow") <- nrow(df)
 
