@@ -1107,38 +1107,68 @@ dt_read <- function(fb_occurrence_obj) {
 
   skip <- fb_occurrence_obj[["skip"]]
 
+  dt_args <- fb_occurrence_obj[["dt_args"]]
+
   args <- list(
-    nrows = 0, showProgress = !quiet, data.table = dt, na.strings = "",
-    quote = "", sep = "\t", fill = TRUE, check.names = FALSE, header = TRUE,
+    nrows = 0,
+    showProgress = !quiet,
+    data.table = dt,
+    na.strings = "",
+    quote = "",
+    sep = "\t",
+    fill = TRUE,
+    check.names = FALSE,
+    header = TRUE,
     skip = 0L
   )
 
-  args <- c(fb_occurrence_obj[["dt_args"]], args)
+  args <- c(dt_args, args)
 
-  if (utils::hasName(args, "zip")) {
+  arg_names <- names(args)
+
+  has_zip <- "zip" %in% arg_names
+
+  if (has_zip) {
 
     unzip <- "internal"
 
-    if (!is.null(getOption("unzip")) && !identical(getOption("unzip"), "")) {
+    option_unzip <- getOption("unzip")
 
-      unzip <- getOption("unzip")
+    no_unzip <- is.null(unzip)
+
+    no_unzip <- no_unzip || identical(unzip, "")
+
+    if (!no_unzip) {
+
+      unzip <- option_unzip
 
     }
 
-    args[["input"]] <- sprintf(
-      "%s/%s", dirname(args[["zip"]][["input"]]), args[["zip"]][["tsv"]]
-    )
+    args_zip <- args[["zip"]]
 
-    if (!file.exists(args[["input"]])) {
+    zip_input <- args_zip[["input"]]
 
-      utils::unzip(
-        args[["zip"]][["input"]], files = args[["zip"]][["tsv"]],
-        exdir = dirname(args[["zip"]][["input"]]), unzip = unzip
-      )
+    zip_tsv <- args_zip[["tsv"]]
+
+    dir <- dirname(zip_input)
+
+    args_input <- sprintf("%s/%s", dir, zip_tsv)
+
+    args[["input"]] <- args_input
+
+    input_exists <- file.exists(args_input)
+
+    if (!input_exists) {
+
+      utils::unzip(zip_input, files = zip_tsv, exdir = dir, unzip = unzip)
 
       if (!keep_tsv) {
 
-        on.exit(unlink(args[["input"]]))
+        on.exit({
+
+          unlink(args_input)
+
+        })
 
       }
 
@@ -1149,63 +1179,100 @@ dt_read <- function(fb_occurrence_obj) {
   }
 
   cols <- do.call(data.table::fread, args)
+
   cols <- names(cols)
+
   cols <- make.names(cols)
+
   cols <- make.unique(cols)
+
   cols <- fix_issue_vars(cols)
 
   file_vars <- infer_file_vars(cols)
 
   select[["file_vars"]] <- file_vars
 
-  if (attr(file_vars, "lite")) {
+  lite <- attr(file_vars, "lite", TRUE)
+
+  if (lite) {
 
     args[["quote"]] <- "\""
 
   }
 
-  if (select[["all"]]) {
+  select_all <- select[["all"]]
 
-    args[["select"]] <- which(!cols %in% deselect(select))
+  if (select_all) {
+
+    deselect <- deselect(select)
+
+    args_select <- !cols %in% deselect
+
+    args_select <- which(args_select)
+
+    args[["select"]] <- args_select
 
   } else {
 
+    select_query <- select[["query"]]
+
     iss <- "unit.quality.documentGatheringUnitQualityIssues"
-    iss <- iss %in% select[["query"]]
+
+    iss <- iss %in% select_query
 
     if (iss) {
-      select[["query"]] <- c(
-        select[["query"]],
+
+      select_query <- c(
+        select_query,
         "unit.quality.issue.issue",
         "gathering.quality.issue.issue",
         "gathering.quality.timeIssue.issue",
         "gathering.quality.locationIssue.issue"
       )
+
+      select[["query"]] <- select_query
+
     }
 
-    select_vars <-  var_names[select[["query"]], select[["type"]]]
+    select_type <- select[["type"]]
 
-    select_vars <- file_vars[[select[["type"]]]] %in% select_vars
+    select_vars <-  var_names[select_query, select_type]
+
+    file_vars_type <- file_vars[[select_type]]
+
+    select_vars <- file_vars_type %in% select_vars
 
     expand_vars <- c(
-      "formatted_taxon_name", "formatted_date_time",
-      "coordinates_euref", "coordinates_1_ykj", "coordinates_10_ykj",
-      "coordinates_1_center_ykj", "coordinates_10_center_ykj"
+      "formatted_taxon_name",
+      "formatted_date_time",
+      "coordinates_euref",
+      "coordinates_1_ykj",
+      "coordinates_10_ykj",
+      "coordinates_1_center_ykj",
+      "coordinates_10_center_ykj"
     )
 
-    expand_vars <- file_vars[["translated_var"]] %in% expand_vars
+    translated_vars <- file_vars[["translated_var"]]
 
-    select_vars <- switch(
-      attr(file_vars, "locale"),
-      none = select_vars,
-      select_vars | expand_vars
-    )
+    expand_vars <- translated_vars %in% expand_vars
 
-    select_vars <- row.names(file_vars[select_vars, ])
+    expand_vars <- expand_vars | select_vars
 
-    args[["select"]] <- which(cols %in% select_vars)
+    locale <- attr(file_vars, "locale", TRUE)
 
-    for (ftype in select[["facts"]]) {
+    select_vars <- switch(locale, none = select_vars, expand_vars)
+
+    file_vars_select <- file_vars[select_vars, ]
+
+    select_vars <- row.names(file_vars_select)
+
+    args_select <- cols %in% select_vars
+
+    args_select <- which(args_select)
+
+    select_facts <- select[["facts"]]
+
+    for (ftype in select_facts) {
 
       id_col <- switch(
         ftype,
@@ -1214,34 +1281,57 @@ dt_read <- function(fb_occurrence_obj) {
         document = "Document.DocumentID"
       )
 
-      id_col <- which(cols %in% id_col)
+      id_col <- cols %in% id_col
 
-      args[["select"]]  <- c(args[["select"]], id_col)
+      id_col <- which(id_col)
+
+      args_select  <- c(args_select, id_col)
 
     }
 
-    args[["select"]] <- sort(unique(args[["select"]]))
+    args_select <- unique(args_select)
+
+    args_select <- sort(args_select)
+
+    args[["select"]] <- args_select
 
   }
 
   args[["nrows"]] <- as.double(n)
+
   args[["check.names"]] <- TRUE
-  args[["skip"]] <- skip + 1L
+
+  skip <- skip + 1L
+
+  args[["skip"]] <- skip
+
   args[["header"]] <- FALSE
 
   df <- do.call(data.table::fread, args)
 
-  names(df) <- cols[args[["select"]]]
+  nms <- cols[args_select]
+
+  names(df) <- nms
 
   classes <- file_vars[cols, "type"]
 
-  classes <- classes[args[["select"]]]
+  classes <- classes[args_select]
 
-  classes <- ifelse(is.na(classes), "character", classes)
+  na_classes <- is.na(classes)
 
-  for (i in seq_along(df)) {
+  classes <- ifelse(na_classes, "character", classes)
 
-    df[[i]] <- cast_to_type(df[[i]], classes[[i]])
+  sq_df <- seq_along(df)
+
+  for (i in sq_df) {
+
+    dfi <- df[[i]]
+
+    class_i <- classes[[i]]
+
+    dfi <- cast_to_type(dfi, class_i)
+
+    dfi <- df[[i]]
 
   }
 
