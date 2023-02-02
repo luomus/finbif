@@ -54,9 +54,7 @@
 #' finbif_occurrence_load(49381)
 #'
 #' }
-#' @importFrom digest digest
-#' @importFrom httr progress RETRY status_code write_disk
-#' @importFrom utils hasName head read.delim tail unzip write.table
+#' @importFrom utils head read.delim tail unzip write.table
 #' @export
 
 finbif_occurrence_load <- function(
@@ -788,6 +786,9 @@ new_vars <- function(df) {
 }
 
 #' @noRd
+#' @importFrom digest digest
+#' @importFrom httr RETRY progress status_code write_disk
+
 get_zip <- function(fb_occurrenc_obj) {
 
   url <- fb_occurrenc_obj[["url"]]
@@ -800,15 +801,21 @@ get_zip <- function(fb_occurrenc_obj) {
 
   if (cache) {
 
-    hash <- digest::digest(sub(":\\d+", "", url))
+    hash <- sub(":\\d+", "", url)
+
+    hash <- digest::digest(hash)
 
     fcp <- getOption("finbif_cache_path")
 
-    if (is.null(fcp)) {
+    fcp_is_null <- is.null(fcp)
+
+    if (fcp_is_null) {
 
       cache_file <- get_cache(hash)
 
-      if (!is.null(cache_file)) {
+      has_cache_file <- !is.null(cache_file)
+
+      if (has_cache_file) {
 
         fb_occurrenc_obj[["file"]] <- cache_file
 
@@ -818,9 +825,13 @@ get_zip <- function(fb_occurrenc_obj) {
 
       on.exit({
 
-        if (!is.null(write_file)) {
+        has_write_file <- !is.null(write_file)
 
-          set_cache(list(data = write_file, hash = hash))
+        if (has_write_file) {
+
+          cache_obj <- list(data = write_file, hash = hash)
+
+          set_cache(cache_obj)
 
         }
 
@@ -828,9 +839,13 @@ get_zip <- function(fb_occurrenc_obj) {
 
     } else {
 
-      write_file <- file.path(fcp, paste0("finbif_cache_file_", hash))
+      file_name <- paste0("finbif_cache_file_", hash)
 
-      if (file.exists(write_file)) {
+      write_file <- file.path(fcp, file_name)
+
+      write_file_exists <- file.exists(write_file)
+
+      if (write_file_exists) {
 
         fb_occurrenc_obj[["file"]] <- write_file
 
@@ -850,33 +865,48 @@ get_zip <- function(fb_occurrenc_obj) {
 
   }
 
-  stopifnot(
-    "Request not cached and option:finbif_allow_query = FALSE" =
-      getOption("finbif_allow_query")
-  )
+  allow <- getOption("finbif_allow_query")
 
-  Sys.sleep(1 / getOption("finbif_rate_limit"))
+  stopifnot("Request not cached and option:finbif_allow_query = FALSE" = allow)
+
+  rate_limit <- getOption("finbif_rate_limit")
+
+  sleep <- 1 / rate_limit
+
+  Sys.sleep(sleep)
 
   query <- list()
 
   auth <- Sys.getenv("FINBIF_RESTRICTED_FILE_ACCESS_TOKEN")
 
-  if (!identical(auth, "")) {
+  has_auth <- !identical(auth, "")
+
+  if (has_auth) {
 
     query <- list(personToken = auth)
 
   }
 
+  write_disk <- httr::write_disk(write_file, overwrite = TRUE)
+
+  times <- getOption("finbif_retry_times")
+
+  pause_base <- getOption("finbif_retry_pause_base")
+
+  pause_cap <- getOption("finbif_retry_pause_cap")
+
+  pause_min <- getOption("finbif_retry_pause_min")
+
   resp <- httr::RETRY(
     "GET",
-    url,
-    httr::write_disk(write_file, overwrite = TRUE),
+    url = url,
+    write_disk,
     progress,
     query = query,
-    times = getOption("finbif_retry_times"),
-    pause_base = getOption("finbif_retry_pause_base"),
-    pause_cap = getOption("finbif_retry_pause_cap"),
-    pause_min = getOption("finbif_retry_pause_min"),
+    times = times,
+    pause_base = pause_base,
+    pause_cap = pause_cap,
+    pause_min = pause_min,
     quiet = quiet,
     terminate_on = 404L
   )
@@ -887,22 +917,29 @@ get_zip <- function(fb_occurrenc_obj) {
 
   fl <- as.integer(fl)
 
-  if (isTRUE(fs > fl)) {
+  too_large <- isTRUE(fs > fl)
+
+  if (too_large) {
 
     stop("File download too large; err_name: too_large", call. = FALSE)
 
   }
 
-  if (!quiet) message("")
+  if (!quiet) {
+
+    message("")
+
+  }
 
   code <- httr::status_code(resp)
 
-  if (!identical(code, 200L)) {
+  has_error <- !identical(code, 200L)
 
-    stop(
-      sprintf("File request failed [%s]; err_name: request_failed", code),
-      call. = FALSE
-    )
+  if (has_error) {
+
+    msg <- sprintf("File request failed [%s]; err_name: request_failed", code)
+
+    stop(msg, call. = FALSE)
 
   }
 
@@ -913,39 +950,58 @@ get_zip <- function(fb_occurrenc_obj) {
 }
 
 #' @noRd
+
 add_nas <- function(df) {
 
   dwc <- attr(df, "dwc", TRUE)
 
   var_type <- col_type_string(dwc)
 
-  file_vars <- attr(df, "file_vars", TRUE)
+  nms <- names(df)
 
-  for (nm in names(df)) {
+  for (nm in nms) {
 
     ans <- df[[nm]]
 
-    if (all(is.na(ans))) {
+    is_na <- is.na(ans)
 
-      ind <- file_vars[[var_type]] == nm
+    all_na <- all(is_na)
 
-      l <- length(which(ind))
+    if (all_na) {
 
-      if (l > 1L) {
+      file_vars <- attr(df, "file_vars", TRUE)
 
-        ind <- ind & file_vars[["superseeded"]] == "FALSE"
+      file_var_type <- file_vars[[var_type]]
 
-      }
+      ind <- file_var_type == nm
 
-      if (l < 1L) {
+      ind_int <- which(ind)
+
+      superseeded <- file_vars[["superseeded"]]
+
+      not_superseeded <- superseeded == "FALSE"
+
+      ind <- ind & not_superseeded
+
+      l <- length(ind_int)
+
+      no_nm <- identical(l, 0L)
+
+      if (no_nm) {
 
         file_vars <- var_names
 
-        ind <- file_vars[[var_type]] == nm
+        file_var_type <- file_vars[[var_type]]
+
+        ind <- file_var_type == nm
 
       }
 
-      df[[nm]] <- cast_to_type(ans, file_vars[ind, "type"])
+      type <- file_vars[ind, "type"]
+
+      df_nm <- cast_to_type(ans, type)
+
+      df[[nm]] <- df_nm
 
     }
 
@@ -956,39 +1012,87 @@ add_nas <- function(df) {
 }
 
 #' @noRd
-any_issues <- function(fb_occurrence_df) {
 
-  df <- fb_occurrence_df
+any_issues <- function(fb_occurrence_df) {
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   var_type <- col_type_string(dwc)
 
-  vnms <- var_names[var_type]
-  any_issue <- vnms["unit.quality.documentGatheringUnitQualityIssues", ]
+  any_issue <- "unit.quality.documentGatheringUnitQualityIssues"
+
+  any_issue <- var_names[[any_issue, var_type]]
 
   select_user <- attr(fb_occurrence_df, "select_user", TRUE)
 
-  if (!utils::hasName(df, any_issue) && any_issue %in% select_user) {
+  df_nms <- names(fb_occurrence_df)
 
-    rec_iss <- !is.na(df[[vnms["unit.quality.issue.issue", ]]])
-    ev_iss  <- !is.na(df[[vnms["gathering.quality.issue.issue", ]]])
-    tm_iss  <- !is.na(df[[vnms["gathering.quality.timeIssue.issue", ]]])
-    loc_iss <- !is.na(df[[vnms["gathering.quality.locationIssue.issue", ]]])
+  needs_any_issue <- any_issue %in% select_user
 
-    iss <- rec_iss | ev_iss | tm_iss | loc_iss
+  needs_any_issue <- needs_any_issue && !any_issue %in% df_nms
 
-    if (length(iss) < 1L && nrow(df) > 0L) iss <- NA
+  if (needs_any_issue) {
 
-    df[[any_issue]] <- iss
+    issue <- logical()
+
+    nrows <- nrow(fb_occurrence_df)
+
+    has_rows <- nrows > 0L
+
+    if (has_rows) {
+
+      issue <- FALSE
+
+      issue_cols <- c(
+        "unit.quality.issue.issue",
+        "gathering.quality.issue.issue",
+        "gathering.quality.timeIssue.issue",
+        "gathering.quality.locationIssue.issue"
+      )
+
+      has_an_issue_col <- FALSE
+
+      for (i in issue_cols) {
+
+        issue_col <- var_names[[i, var_type]]
+
+        issue_col <- fb_occurrence_df[[issue_col]]
+
+        issue_col_len <- length(issue_col)
+
+        has_issue_col <- issue_col_len > 0L
+
+        if (has_issue_col) {
+
+          issue_col <- !is.na(issue_col)
+
+          issue <- issue | issue_col
+
+        }
+
+        has_an_issue_col <- has_an_issue_col | has_issue_col
+
+      }
+
+      if (!has_an_issue_col) {
+
+        issue <- NA
+
+      }
+
+    }
+
+    fb_occurrence_df[[any_issue]] <- issue
 
   }
 
-  df
+  fb_occurrence_df
 
 }
 
 #' @noRd
+#' @importFrom utils unzip
+
 dt_read <- function(fb_occurrence_obj) {
 
   select <- fb_occurrence_obj[["select"]]
