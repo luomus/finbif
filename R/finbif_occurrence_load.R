@@ -1655,19 +1655,22 @@ spread_facts <-  function(facts) {
 }
 
 #' @noRd
+
 bind_facts <- function(x) {
 
-  stopifnot(
-    "Package {dplyr} is required for this functionality" = has_pkgs("dplyr")
-  )
+  has_dplyr <- has_pkgs("dplyr")
+
+  stopifnot( "Package {dplyr} is required for this functionality" = has_dplyr)
 
   facts <- attr(x, "facts_df", TRUE)
 
   id <- attr(facts, "id", TRUE)
 
-  stopifnot(
-    "Cannot bind facts. ID column missing from data" = utils::hasName(x, id)
-  )
+  nms <- names(x)
+
+  has_id <- id %in% nms
+
+  stopifnot("Cannot bind facts. ID column missing from data" = has_id)
 
   attr <- attributes(x)
 
