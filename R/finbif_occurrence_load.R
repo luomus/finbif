@@ -1715,17 +1715,22 @@ short_nms <- function(file_vars) {
 }
 
 #' @noRd
+
 unlist_col <- function(col) {
 
-  col_ <- unlist(col)
+  col_unlisted <- unlist(col)
 
-  l1 <- length(col)
+  col_len <- length(col)
 
-  l2 <- length(col_)
+  col_unlisted_len <- length(col_unlisted)
 
-  cond <- identical(l1, l2)
+  len_eql <- identical(col_len, col_unlisted_len)
 
-  if (cond) col <- col_
+  if (len_eql) {
+
+    col <- col_unlisted
+
+  }
 
   col
 
