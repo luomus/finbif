@@ -54,7 +54,6 @@
 #' finbif_occurrence_load(49381)
 #'
 #' }
-#' @importFrom utils head read.delim tail unzip write.table
 #' @export
 
 finbif_occurrence_load <- function(
@@ -1126,23 +1125,11 @@ dt_read <- function(fb_occurrence_obj) {
 
   arg_names <- names(args)
 
-  has_zip <- "zip" %in% arg_names
+  use_zip <- "zip" %in% arg_names
 
-  if (has_zip) {
+  if (use_zip) {
 
-    unzip <- "internal"
-
-    option_unzip <- getOption("unzip")
-
-    no_unzip <- is.null(unzip)
-
-    no_unzip <- no_unzip || identical(unzip, "")
-
-    if (!no_unzip) {
-
-      unzip <- option_unzip
-
-    }
+    unzip <- op_unzip()
 
     args_zip <- args[["zip"]]
 
@@ -1344,6 +1331,8 @@ dt_read <- function(fb_occurrence_obj) {
 }
 
 #' @noRd
+#' @importFrom utils read.delim unzip
+
 rd_read <- function(fb_occurrence_obj) {
 
   file <- fb_occurrence_obj[["file"]]
@@ -1360,17 +1349,15 @@ rd_read <- function(fb_occurrence_obj) {
 
   quote <- ""
 
-  if (keep_tsv && !grepl("\\.tsv$", file)) {
+  use_unzip <- keep_tsv && !grepl("\\.tsv$", file)
 
-    unzip <- "internal"
+  if (use_unzip) {
 
-    if (!is.null(getOption("unzip")) && !identical(getOption("unzip"), "")) {
+    unzip <- op_unzip()
 
-      unzip <- getOption("unzip")
+    dir <- dirname(file)
 
-    }
-
-    utils::unzip(file, tsv, exdir = dirname(file), unzip = unzip)
+    utils::unzip(file, tsv, exdir = dir, unzip = unzip)
 
   }
 
@@ -1380,19 +1367,27 @@ rd_read <- function(fb_occurrence_obj) {
     con, nrows = 1L, na.strings = "", quote = quote, skip = 0L
   )
 
-  cols <- fix_issue_vars(names(df))
+  df_names <- names(df)
+
+  cols <- fix_issue_vars(df_names)
 
   file_vars <- infer_file_vars(cols)
 
   select[["file_vars"]] <- file_vars
 
-  if (attr(file_vars, "lite")) {
+  lite <- attr(file_vars, "lite", TRUE)
+
+  if (lite) {
 
     quote <- "\""
 
   }
 
-  if (identical(as.integer(n), 0L)) {
+  n_int <- as.integer(n)
+
+  is_zero <- identical(n_int, 0L)
+
+  if (is_zero) {
 
     df <- df[0L, ]
 
@@ -1400,32 +1395,82 @@ rd_read <- function(fb_occurrence_obj) {
 
     con <- open_tsv_connection(file, tsv, "")
 
+    skip <- skip + 1L
+
+    nrows <- abs(n)
+
+    nrows <- max(nrows, 1L)
+
+    sign <- sign(n)
+
+    nrows <- nrows * sign
+
     df <- utils::read.delim(
-      con, header = FALSE, quote = quote, na.strings = "",
-      nrows = max(abs(n), 1L) * sign(n), skip = skip + 1L
+      con,
+      header = FALSE,
+      quote = quote,
+      na.strings = "",
+      nrows = nrows,
+      skip = skip
     )
 
     classes <- file_vars[cols, "type"]
 
-    classes <- ifelse(is.na(classes), "character", classes)
+    na_classes <- is.na(classes)
 
-    for (i in seq_along(df)) {
+    classes <- ifelse(na_classes, "character", classes)
 
-      df[[i]] <- cast_to_type(df[[i]], classes[[i]])
+    sq_df <- seq_along(df)
+
+    for (i in sq_df) {
+
+      dfi <- df[[i]]
+
+      class_i <- classes[[i]]
+
+      dfi <- cast_to_type(dfi, class_i)
+
+      dfi <- df[[i]]
 
     }
 
   }
 
-  idx <- !cols %in% deselect(select)
+  deselect <- deselect(select)
+
+  idx <- !cols %in% deselect
 
   df <- df[idx]
 
-  names(df) <- cols[idx]
+  df_names <- cols[idx]
+
+  names(df) <- df_names
 
   attr(df, "file_vars") <- file_vars
 
   df
+
+}
+
+#' @noRd
+
+op_unzip <- function() {
+
+  unzip <- "internal"
+
+  option_unzip <- getOption("unzip")
+
+  no_unzip <- is.null(unzip)
+
+  no_unzip <- no_unzip || identical(unzip, "")
+
+  if (!no_unzip) {
+
+    unzip <- option_unzip
+
+  }
+
+  unzip
 
 }
 
