@@ -1685,23 +1685,30 @@ bind_facts <- function(x) {
 }
 
 #' @noRd
+
 short_nms <- function(file_vars) {
 
   var_type <- attr(file_vars, "var_type", TRUE)
 
-  short_nms <- c(file_vars[["shrtnm"]], "abund", "crdUncert", "sciNm")
+  short_nms <- file_vars[["shrtnm"]]
+
+  short_nms <- c(short_nms, "abund", "crdUncert", "sciNm")
+
+  translated_var <- c("abundance", "coordinates_uncertainty", "scientific_name")
+
+  dwc <- c("individualCount", "coordinateUncertaintyInMeters", "scientificName")
 
   nms <- switch(
     var_type,
-    translated_var = c(
-      "abundance", "coordinates_uncertainty", "scientific_name"
-    ),
-    dwc = c(
-      "individualCount", "coordinateUncertaintyInMeters", "scientificName"
-    )
+    translated_var = translated_var,
+    dwc = dwc
   )
 
-  names(short_nms) <- c(file_vars[[var_type]], nms)
+  file_vars_type <- file_vars[[var_type]]
+
+  nms <- c(file_vars_type, nms)
+
+  names(short_nms) <- nms
 
   short_nms
 
