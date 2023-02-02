@@ -1475,6 +1475,7 @@ op_unzip <- function() {
 }
 
 #' @noRd
+
 deselect <- function(select) {
 
   file_vars <- select[["file_vars"]]
@@ -1496,9 +1497,12 @@ deselect <- function(select) {
 }
 
 #' @noRd
+
 select_facts <- function(select) {
 
-  if (select[["lite"]]) {
+  lite <- select[["lite"]]
+
+  if (lite) {
 
     select[["facts"]] <- NULL
 
@@ -1509,6 +1513,7 @@ select_facts <- function(select) {
 }
 
 #' @noRd
+
 spread_facts <-  function(facts) {
 
   select <- attr(facts, "facts", TRUE)
@@ -1521,7 +1526,9 @@ spread_facts <-  function(facts) {
 
   drop_facts_na <- attr(facts, "drop_facts_na", TRUE)
 
-  if (inherits(facts, "try-error")) {
+  is_error <- inherits(facts, "try-error")
+
+  if (is_error) {
 
     facts <- data.frame(
       Parent = NA_character_,
@@ -1535,51 +1542,95 @@ spread_facts <-  function(facts) {
 
   missing_facts <- character()
 
-  ind <- match(select, facts[[2L]])
+  select_facts <- facts[[2L]]
 
-  id_col <- names(facts) == "Parent"
+  ind <- match(select, select_facts)
 
-  names(facts)[id_col] <- id
+  fact_names <- names(facts)
 
-  if (anyNA(ind)) {
+  id_col <- fact_names == "Parent"
 
-    missing_facts <- select[is.na(ind)]
+  fact_names[id_col] <- id
+
+  names(facts) <- fact_names
+
+  na_ind <- is.na(ind)
+
+  any_na_ind <- any(na_ind)
+
+  if (any_na_ind) {
+
+    missing_facts <- select[na_ind]
+
+    warning <- paste(missing_facts, collapse = ", ")
 
     warning(
-      "Selected fact(s) - ", paste(missing_facts, collapse = ", "),
-      " - could not be found in dataset", call. = FALSE
+      "Selected fact(s) - ",
+      warning,
+      " - could not be found in dataset",
+      call. = FALSE
     )
 
-    missing_facts <- missing_facts[!isTRUE(drop_facts_na)]
+    drop <- !isTRUE(drop_facts_na)
+
+    missing_facts <- missing_facts[drop]
 
   }
 
-  if (!all(is.na(ind))) {
+  any_ind_not_na <- !all(na_ind)
 
-    select <- select[!is.na(ind)]
+  if (any_ind_not_na) {
 
-    ind <- which(facts[[2L]] %in% select)
+    select <- select[!na_ind]
+
+    ind <- select_facts %in% select
+
+    ind <- which(ind)
 
     facts <- facts[ind, ]
 
-    facts[[2L]] <- paste(type, "fact_", facts[[2L]], sep = "_")
+    select_facts <- facts[[2L]]
 
-    stopifnot(
-      "Package {tidyr} is required for this functionality" = has_pkgs("tidyr")
-    )
+    select_facts <- paste(type, "fact_", select_facts, sep = "_")
+
+    facts[[2L]] <- select_facts
+
+    has_tidyr <- has_pkgs("tidyr")
+
+    stopifnot("Package {tidyr} is required for this functionality" = has_tidyr)
+
+    values_fill <- list(NA)
 
     facts <- tidyr::pivot_wider(
-      facts, id_cols = 1L, names_from = 2L, values_from = 3L, values_fn = list,
-      values_fill = list(NA)
+      facts,
+      id_cols = 1L,
+      names_from = 2L,
+      values_from = 3L,
+      values_fn = list,
+      values_fill = values_fill
     )
 
-    fact_cols <- names(facts) != id
+    fact_names <- names(facts)
 
-    facts[fact_cols] <- lapply(facts[fact_cols], unlist_col)
+    fact_cols <- fact_names != id
 
-    fact_cols[fact_cols] <- rep_len(type_convert_facts, length(select))
+    facts_cols <- facts[fact_cols]
 
-    facts[fact_cols] <- lapply(facts[fact_cols], convert_col_type)
+    facts_cols <- lapply(facts_cols, unlist_col)
+
+    facts[fact_cols] <- facts_cols
+
+    n <- length(select)
+
+    type_convert_facts <- rep_len(type_convert_facts, n)
+
+    fact_cols[fact_cols] <- type_convert_facts
+
+    facts_cols <- facts[fact_cols]
+
+    facts_cols <- lapply(facts_cols, convert_col_type)
+
+    facts[fact_cols] <- facts_cols
 
     facts <- as.data.frame(facts)
 
@@ -1591,7 +1642,9 @@ spread_facts <-  function(facts) {
 
   for (mf in missing_facts) {
 
-    facts[[paste(type, "fact_", mf, sep = "_")]] <- NA_character_
+    mfacts <- paste(type, "fact_", mf, sep = "_")
+
+    facts[[mfacts]] <- NA_character_
 
   }
 
