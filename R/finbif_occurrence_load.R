@@ -1804,22 +1804,43 @@ infer_file_vars <- function(cols) {
 
   locale <- "none"
 
-  if (length(cols) < 100L && !"Fact" %in% cols) {
+  n_cols <- length(cols)
+
+  small_n_cols <- n_cols < 100L
+
+  is_fact_df <- "Fact" %in% cols
+
+  lite <- small_n_cols && !is_fact_df
+
+  if (lite) {
 
     file_vars <- lite_download_file_vars
 
     locale <- lapply(lite_download_file_vars, intersect, cols)
-    locale <- vapply(locale, length, integer(1L))
-    locale <- which(locale == max(locale))
+
+    locale <- vapply(locale, length, 0L)
+
+    mx <- max(locale)
+
+    locale <- locale == mx
+
+    locale <- which(locale)
+
+    locale_length <- length(locale)
+
+    one_locale <- identical(locale_length, 1L)
 
     stopifnot(
-      "File has field names incompatible with this {finbif} R package version" =
-        length(locale) == 1L
-     )
+      "Field names incompatible with this {finbif} package version" = one_locale
+    )
 
-    locale <- names(locale)[[1L]]
+    locale_nms <- names(locale)
 
-    rownames(file_vars) <- file_vars[[locale]]
+    locale <- locale_nms[[1L]]
+
+    file_vars_locale <- file_vars[[locale]]
+
+    rownames(file_vars) <- file_vars_locale
 
     attr(file_vars, "lite") <- TRUE
 
