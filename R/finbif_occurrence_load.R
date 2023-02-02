@@ -592,7 +592,7 @@ attempt_read <- function(fb_occurrence_obj) {
 
   if (count_only) {
 
-    nlines(file, tsv)
+    nlines(fb_occurrence_obj)
 
   } else {
 
@@ -602,7 +602,7 @@ attempt_read <- function(fb_occurrence_obj) {
 
     if (has_n) {
 
-      n_rows <- nlines(file, tsv)
+      n_rows <- nlines(fb_occurrence_obj)
 
     }
 
@@ -1361,7 +1361,9 @@ rd_read <- function(fb_occurrence_obj) {
 
   }
 
-  con <- open_tsv_connection(file, tsv, "")
+  connection_obj <- list(file = file, tsv = tsv, mode = "")
+
+  con <- open_tsv_connection(connection_obj)
 
   df <- utils::read.delim(
     con, nrows = 1L, na.strings = "", quote = quote, skip = 0L
@@ -1393,7 +1395,9 @@ rd_read <- function(fb_occurrence_obj) {
 
   } else {
 
-    con <- open_tsv_connection(file, tsv, "")
+    connection_obj <- list(file = file, tsv = tsv, mode = "")
+
+    con <- open_tsv_connection(connection_obj)
 
     skip <- skip + 1L
 
@@ -1660,7 +1664,7 @@ bind_facts <- function(x) {
 
   has_dplyr <- has_pkgs("dplyr")
 
-  stopifnot( "Package {dplyr} is required for this functionality" = has_dplyr)
+  stopifnot("Package {dplyr} is required for this functionality" = has_dplyr)
 
   facts <- attr(x, "facts_df", TRUE)
 
@@ -1853,28 +1857,94 @@ infer_file_vars <- function(cols) {
 }
 
 #' @noRd
+
 preprocess_data_file <- function(file) {
 
-  if (grepl("\\.ods$", file)) {
+  ext <- get_ext(file)
 
-    file <- from_ods(file)
-
-  }
-
-  if (grepl("\\.xlsx$", file)) {
-
-    file <- from_xlsx(file)
-
-  }
-
-  file
+  switch(ext, .ods = from_ods(file), xlsx = from_xlsx(file), file)
 
 }
 
 #' @noRd
+
+nlines <- function(fb_occurrence_obj) {
+
+  file <- fb_occurrence_obj[["file"]]
+
+  tsv <- fb_occurrence_obj[["tsv"]]
+
+  connection_obj <- list(file = file, tsv = tsv, mode = "rb")
+
+  con <- open_tsv_connection(connection_obj)
+
+  on.exit({
+
+    close(con)
+
+  })
+
+  n <- -1L
+
+  cond <- TRUE
+
+  while (cond) {
+
+    chunk <- readBin(con, "raw", 65536L)
+
+    raw10 <- as.raw(10L)
+
+    chunk_10 <- chunk == raw10
+
+    subtotal <- sum(chunk_10)
+
+    n <- n + subtotal
+
+    empty <- raw(0L)
+
+    cond <- !identical(chunk, empty)
+
+  }
+
+  n
+
+}
+
+#' @noRd
+
+open_tsv_connection <- function(connection_obj) {
+
+  file <- connection_obj[["file"]]
+
+  tsv <- connection_obj[["tsv"]]
+
+  mode <- connection_obj[["mode"]]
+
+  ext <- get_ext(file)
+
+  switch(ext, .tsv = file(file, mode), unz(file, tsv, mode))
+
+}
+
+#' @noRd
+
+get_ext <- function(file) {
+
+  nchars <- nchar(file)
+
+  start <- nchars - 3L
+
+  substring(file, start, nchars)
+
+}
+
+#' @noRd
+
 from_ods <- function(file) {
 
-  stopifnot("Package {readODS} required for ODS files" = has_pkgs("readODS"))
+  has_read_ods <- has_pkgs("readODS")
+
+  stopifnot("Package {readODS} required for ODS files" = has_read_ods)
 
   df <- readODS::read_ods(file, col_types = NA)
 
@@ -1883,12 +1953,18 @@ from_ods <- function(file) {
 }
 
 #' @noRd
+
 from_xlsx <- function(file) {
 
-  stopifnot("Package {readxl} required for Excel files" = has_pkgs("readxl"))
+  has_readxl <- has_pkgs("readxl")
+
+  stopifnot("Package {readxl} required for Excel files" = has_readxl)
 
   df <- readxl::read_xlsx(
-    file, progress = FALSE, col_types = "text", trim_ws = FALSE,
+    file,
+    progress = FALSE,
+    col_types = "text",
+    trim_ws = FALSE,
     .name_repair = "minimal"
   )
 
@@ -1897,11 +1973,15 @@ from_xlsx <- function(file) {
 }
 
 #' @noRd
+#' @importFrom utils write.table
+
 write_tsv <- function(df) {
 
   file <- tempfile(fileext = ".tsv")
 
-  write.table(df, file, quote = FALSE, sep = "\t", na = "", row.names = FALSE)
+  utils::write.table(
+    df, file, quote = FALSE, sep = "\t", na = "", row.names = FALSE
+  )
 
   file
 

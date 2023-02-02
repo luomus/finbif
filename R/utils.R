@@ -273,69 +273,6 @@ col_type_string <- function(dwc) {
 
 #' @noRd
 
-open_tsv_connection <- function(
-  file,
-  tsv,
-  mode = "rt"
-) {
-
-  nchars <- nchar(file)
-
-  start <- nchars - 3L
-
-  ext <- substring(file, start, nchars)
-
-  switch(
-    ext,
-    .tsv = file(file, mode),
-    unz(file, tsv, mode)
-  )
-
-}
-
-#' @noRd
-
-nlines <- function(
-  file,
-  tsv
-) {
-
-  con <- open_tsv_connection(file, tsv, "rb")
-
-  on.exit({
-
-    close(con)
-
-  })
-
-  n <- -1L
-
-  cond <- TRUE
-
-  while (cond) {
-
-    chunk <- readBin(con, "raw", 65536L)
-
-    raw10 <- as.raw(10L)
-
-    chunk_10 <- chunk == raw10
-
-    subtotal <- sum(chunk_10)
-
-    n <- n + subtotal
-
-    empty <- raw(0L)
-
-    cond <- !identical(chunk, empty)
-
-  }
-
-  n
-
-}
-
-#' @noRd
-
 has_pkgs <- function(...) {
 
   pkgs <- list(...)
