@@ -1478,9 +1478,20 @@ op_unzip <- function() {
 deselect <- function(select) {
 
   file_vars <- select[["file_vars"]]
-  deselect <- var_names[select[["deselect"]], select[["type"]]]
-  deselect <- file_vars[[select[["type"]]]] %in% deselect
-  row.names(file_vars[deselect, ])
+
+  type <- select[["type"]]
+
+  file_vars_type <- file_vars[[type]]
+
+  deselect <- select[["deselect"]]
+
+  deselect <- var_names[deselect, type]
+
+  deselect <- file_vars_type %in% deselect
+
+  deselect <- file_vars[deselect, ]
+
+  row.names(deselect)
 
 }
 
