@@ -1783,15 +1783,19 @@ convert_col_type <- function(col) {
 }
 
 #' @noRd
+
 paste_col <- function(x) {
 
-  x[is.na(x)] <- ""
+  is_na <- is.na(x)
+
+  x[is_na] <- ""
 
   paste(x, collapse = ", ")
 
 }
 
 #' @noRd
+
 infer_file_vars <- function(cols) {
 
   file_vars <- cite_file_vars
