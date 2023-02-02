@@ -718,6 +718,7 @@ fix_issue_vars <- function(x) {
 }
 
 #' @noRd
+
 new_vars <- function(df) {
 
   file_vars <- attr(df, "file_vars", TRUE)
@@ -728,34 +729,55 @@ new_vars <- function(df) {
 
   add <- !select[["all"]]
 
-  if (is.null(attr(df, "file_cols"))) {
+  file_cols <- attr(df, "file_cols", TRUE)
 
-    attr(df, "file_cols") <- names(df)
+  no_file_cols <- is.null(file_cols)
+
+  if (no_file_cols) {
+
+    file_cols <- names(df)
+
+    attr(df, "file_cols") <- file_cols
 
   }
 
-  nms_df <- attr(df, "file_cols")
+  superseeded <- file_vars[["superseeded"]]
 
-  ind <- file_vars[["superseeded"]] == "FALSE"
+  ind <- superseeded == "FALSE"
 
-  ss <- rownames(file_vars[!ind, ])
-  ss <- intersect(ss, nms_df)
+  ss <- file_vars[!ind, ]
+
+  ss <- rownames(ss)
+
+  ss <- intersect(ss, file_cols)
+
   ss <- file_vars[ss, "superseeded"]
 
   deselect <- var_names[deselect, "translated_var"]
-  deselect <- file_vars[["translated_var"]] %in% deselect
+
+  translated_vars <- file_vars[["translated_var"]]
+
+  deselect <- translated_vars %in% deselect
 
   ind <- ind & !deselect
 
-  nms <- row.names(file_vars[ind, ])
+  nms <- file_vars[ind, ]
 
-  new_vars <- setdiff(nms, c(nms_df, ss))
+  nms <- row.names(nms)
+
+  file_cols <- c(file_cols, ss)
+
+  new_vars <- setdiff(nms, file_cols)
 
   if (add) {
 
+    nrows <- nrow(df)
+
+    dfi <- rep_len(NA, nrows)
+
     for (i in new_vars) {
 
-      df[[i]] <- rep_len(NA, nrow(df))
+      df[[i]] <- dfi
 
     }
 
