@@ -1988,78 +1988,142 @@ write_tsv <- function(df) {
 }
 
 #' @noRd
+
 expand_lite_cols <- function(df) {
 
   select <- attr(df, "select", TRUE)
 
   add <- !select[["all"]]
 
-  file_vars <- attr(df, "file_vars")
+  if (add) {
 
-  cols <- c(
-    "formatted_taxon_name", "formatted_date_time",
-    "coordinates_euref", "coordinates_1_ykj", "coordinates_10_ykj",
-    "coordinates_1_center_ykj", "coordinates_10_center_ykj"
-  )
-
-  cols <- which(file_vars[["translated_var"]] %in% cols[add])
-
-  for (col in cols) {
-
-    col_nm <- rownames(file_vars[col, ])
-
-    type <- switch(
-      file_vars[[col, "translated_var"]],
-      formatted_taxon_name = "taxon",
-      formatted_date_time = "date_time",
-      coordinates_euref = "coordinates_euref",
-      "coords"
+    formatted_taxon_name <- c(
+      "scientific_name_interpreted",
+      "common_name_english",
+      "common_name_finnish",
+      "common_name_swedish"
     )
 
-    if (utils::hasName(df, col_nm) && !all(is.na(df[[col_nm]]))) {
+    formatted_date_time <- c(
+      "date_start",
+      "date_end",
+      "hour_start",
+      "hour_end",
+      "minute_start",
+      "minute_end"
+    )
+
+    coordinates_euref <- c(
+      "lat_min_euref",
+      "lat_max_euref",
+      "lon_min_euref",
+      "lon_max_euref"
+    )
+
+    coordinates_1_ykj <- c("lon_1_ykj", "lat_1_ykj")
+
+    coordinates_10_ykj <- c("lon_10_ykj", "lat_10_ykj")
+
+    coordinates_1_center_ykj <- c("lon_1_center_ykj", "lat_1_center_ykj")
+
+    coordinates_10_center_ykj <- c("lon_10_center_ykj", "lat_10_center_ykj")
+
+    df_names <- names(df)
+
+    file_vars <- attr(df, "file_vars", TRUE)
+
+    locale <- attr(file_vars, "locale", TRUE)
+
+    translated_vars <- file_vars[["translated_var"]]
+
+    cols <- c(
+      "formatted_taxon_name",
+      "formatted_date_time",
+      "coordinates_euref",
+      "coordinates_1_ykj",
+      "coordinates_10_ykj",
+      "coordinates_1_center_ykj",
+      "coordinates_10_center_ykj"
+    )
+
+    cols <- translated_vars %in% cols
+
+    cols <- which(cols)
+
+    for (col in cols) {
+
+      col_nm <- file_vars[col, ]
+
+      col_nm <- rownames(col_nm)
+
+      has_col_nm <- col_nm %in% df_names
 
       df_col <- df[[col_nm]]
 
-      attr(df_col, "locale") <- attr(file_vars, "locale", TRUE)
+      df_col_na <- is.na(df_col)
 
-      split_cols <- switch(
-        type,
-        taxon = split_taxa_col(df_col),
-        date_time = split_dt_col(df_col),
-        coordinates_euref = split_coord_euref_col(df_col),
-        coords = split_coord_col(df_col),
-      )
+      expand <- has_col_nm && !all(df_col_na)
 
-      new_cols <- switch(
-        file_vars[[col, "translated_var"]],
-        formatted_taxon_name = c(
-          "scientific_name_interpreted", "common_name_english",
-          "common_name_finnish", "common_name_swedish"
-        ),
-        formatted_date_time = c(
-          "date_start", "date_end", "hour_start", "hour_end",
-          "minute_start", "minute_end"
-        ),
-        coordinates_euref = c(
-          "lat_min_euref", "lat_max_euref", "lon_min_euref", "lon_max_euref"
-        ),
-        coordinates_1_ykj = c("lon_1_ykj", "lat_1_ykj"),
-        coordinates_10_ykj = c("lon_10_ykj", "lat_10_ykj"),
-        coordinates_1_center_ykj = c("lon_1_center_ykj", "lat_1_center_ykj"),
-        coordinates_10_center_ykj = c("lon_10_center_ykj", "lat_10_center_ykj")
-      )
+      if (expand) {
 
-      new_cols <- file_vars[["translated_var"]] %in% new_cols
-      new_cols <- rownames(file_vars[new_cols, ])
+        attr(df_col, "locale") <- locale
 
-      for (i in seq_along(new_cols)) {
+        translated_var <- file_vars[[col, "translated_var"]]
 
-        cond <- is.null(df[[new_cols[[i]]]])
-        cond <- cond || all(is.na(df[[new_cols[[i]]]]))
+        type <- switch(
+          translated_var,
+          formatted_taxon_name = "taxon",
+          formatted_date_time = "date_time",
+          coordinates_euref = "coordinates_euref",
+          "coords"
+        )
 
-        if (cond) {
+        split_cols <- switch(
+          type,
+          taxon = split_taxa_col(df_col),
+          date_time = split_dt_col(df_col),
+          coordinates_euref = split_coord_euref_col(df_col),
+          coords = split_coord_col(df_col),
+        )
 
-          df[[new_cols[[i]]]] <- split_cols[[i]]
+        new_cols <- switch(
+          translated_var,
+          formatted_taxon_name = formatted_taxon_name,
+          formatted_date_time = formatted_date_time,
+          coordinates_euref = coordinates_euref,
+          coordinates_1_ykj = coordinates_1_ykj,
+          coordinates_10_ykj = coordinates_10_ykj,
+          coordinates_1_center_ykj = coordinates_1_center_ykj,
+          coordinates_10_center_ykj = coordinates_10_center_ykj
+        )
+
+        new_cols <- translated_vars %in% new_cols
+
+        new_cols <- file_vars[new_cols, ]
+
+        new_cols <- rownames(new_cols)
+
+        sq <- seq_along(new_cols)
+
+        for (i in sq) {
+
+          col <- new_cols[[i]]
+
+          dfi <- df[[col]]
+
+          no_col <- is.null(dfi)
+
+          na_dfi <- is.na(dfi)
+
+          no_col <- no_col || all(na_dfi)
+
+          if (no_col) {
+
+             dfi <- split_cols[[i]]
+
+             df[[col]] <- dfi
+
+          }
 
         }
 
@@ -2074,27 +2138,46 @@ expand_lite_cols <- function(df) {
 }
 
 #' @noRd
+
 split_taxa_col <- function(col) {
 
   locale <- attr(col, "locale", TRUE)
 
-  split_cols <- split_col(col, " \u2014 ")
+  col <- list(col, n = 2L, split = " \u2014 ")
 
-  common_names <- split_col(split_cols[[2L]], " \\(|\\)")
+  split_cols <- split_col(col)
 
-  split_cols <- list(scientific_name = split_cols[[1L]])
+  col1 <- split_cols[[1L]]
 
-  common_names[[1L]] <- ifelse(
-    is.na(common_names[[1L]]), locale, common_names[[1L]]
-  )
+  col2 <- split_cols[[2L]]
+
+  col2 <- list(col2, n = 2L, split = " \\(|\\)")
+
+  common_names <- split_col(col2)
+
+  common_names1 <- common_names[[1L]]
+
+  common_names2 <- common_names[[2L]]
+
+  split_cols <- list(scientific_name = col1)
+
+  common_names_na <- is.na(common_names1)
+
+  common_names1 <- ifelse(common_names_na, locale, common_names1)
 
   locales <- c("en", "fi", "sv")
 
-  for (l in locales) {
+  for (loc in locales) {
 
-    ind <- common_names[[1L]] == l
-    split_cols[[l]] <- NA_character_
-    split_cols[[l]][ind] <- common_names[[2L]][ind]
+    ind <- common_names1 == loc
+
+    col_loc <- NA_character_
+
+    col_loc_values <- common_names2[ind]
+
+    col_loc[ind] <- col_loc_values
+
+    split_cols[[loc]] <- col_loc
 
   }
 
@@ -2103,52 +2186,101 @@ split_taxa_col <- function(col) {
 }
 
 #' @noRd
+
 split_dt_col <- function(col) {
 
-  split_cols <- split_col(col, " - ")
-  split_cols <- lapply(split_cols, split_col, " \\[|\\]")
+  col <- list(col, n = 2L, split = " - ")
 
-  dates <- lapply(split_cols, utils::tail, 1L)
-  dates <- lapply(dates, unlist)
+  col <- split_col(col)
 
-  dates[[1L]] <- ifelse(is.na(dates[[1L]]), dates[[2L]], dates[[1L]])
+  col <- lapply(col, list, n = 2L, split = " \\[|\\]")
 
-  times <- lapply(split_cols, utils::head, 1L)
-  times <- lapply(times, unlist)
-  times <- lapply(times, split_col, "-")
+  col <- lapply(col, split_col)
 
-  start_times <- times[[2L]][[2L]]
-  start_times <- split_col(start_times, ":")
+  dates <- lapply(col, "[[", 2L)
 
-  end_times <- ifelse(
-    is.na(times[[1L]][[1L]]), times[[2L]][[1L]], times[[1L]][[1L]]
-  )
-  end_times <- split_col(end_times, ":")
+  dates1 <- dates[[1L]]
+
+  dates2 <- dates[[2L]]
+
+  dates_na <- is.na(dates1)
+
+  dates1 <- ifelse(dates_na, dates2, dates1)
+
+  times <- lapply(col, "[[", 1L)
+
+  times <- lapply(times, list, n = 2L, split = "-")
+
+  times <- lapply(times, split_col)
+
+  times1 <- times[[1L]]
+
+  times1 <- times1[[1L]]
+
+  times2 <- times[[2L]]
+
+  times2_1 <- times2[[1L]]
+
+  start_times <- times2[[2L]]
+
+  start_times <- list(start_times, n = 2L, split = ":")
+
+  start_times <- split_col(start_times)
+
+  minute_start <- start_times[[1L]]
+
+  minute_start <- as.integer(minute_start)
+
+  hour_start <- start_times[[2L]]
+
+  hour_start <- as.integer(hour_start)
+
+  times_na <- is.na(times1)
+
+  end_times <- ifelse(times_na, times2_1, times1)
+
+  end_times <- list(end_times, n = 2L, split = ":")
+
+  end_times <- split_col(end_times)
+
+  minute_end <- end_times[[1L]]
+
+  minute_end <- as.integer(minute_end)
+
+  hour_end <- end_times[[2L]]
+
+  hour_end <- as.integer(hour_end)
 
   list(
-    date_start = dates[[2L]],
-    date_end = dates[[1L]],
-    hour_start = as.integer(start_times[[2L]]),
-    hour_end = as.integer(end_times[[2L]]),
-    minute_start = as.integer(start_times[[1L]]),
-    minute_end = as.integer(end_times[[1L]])
+    date_start = dates2,
+    date_end = dates1,
+    hour_start = hour_start,
+    hour_end =  hour_end,
+    minute_start = minute_start,
+    minute_end = minute_end
   )
 
 }
 
 #' @noRd
+
 split_coord_col <- function(col) {
 
-  split_cols <- split_col(col, ":")
+  col <- list(col, n = 2L, split = ":")
+
+  split_cols <- split_col(col)
 
   lapply(split_cols, as.numeric)
 
 }
 
 #' @noRd
+
 split_coord_euref_col <- function(col) {
 
-  split_cols <- split_col(col, "\\D", 4L)
+  col <- list(col, n = 4L, split = "\\D")
+
+  split_cols <- split_col(col)
 
   split_cols <- lapply(split_cols, as.numeric)
 
@@ -2157,14 +2289,29 @@ split_coord_euref_col <- function(col) {
 }
 
 #' @noRd
-split_col <- function(col, split, n = 2L) {
 
-  split_cols <- strsplit(as.character(col), split)
+split_col <- function(split_obj) {
+
+  col <- split_obj[[1L]]
+
+  col <- as.character(col)
+
+  n <- split_obj[["n"]]
+
+  sq <- seq_len(n)
+
+  split <- split_obj[["split"]]
+
+  split_cols <- strsplit(col, split)
+
   split_cols <- lapply(split_cols, c, NA_character_)
-  split_cols <- lapply(split_cols, utils::head, n)
+
+  split_cols <- lapply(split_cols, "[", sq)
+
   split_cols <- lapply(split_cols, rev)
+
   split_cols <- do.call(rbind, split_cols)
 
-  lapply(seq_len(n), function(x) split_cols[, x])
+  apply(split_cols, 2L, c, simplify = FALSE)
 
 }
