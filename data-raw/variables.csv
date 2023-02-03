@@ -695,4 +695,5 @@ unit.types.linkings.taxon.taxonConceptIds,type_specimen_taxon_concept_ids,typeSp
 unit.linkings.originalTaxon.virva,orig_taxon_virva,originalTaxonVirva,FALSE,FALSE,logical,logical,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.virva,taxon_Virva,taxonVirva,FALSE,FALSE,logical,logical,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.interpretations.virva,virva,virva,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
-
+unit.identificationBasis,identification_basis,basisOfIndentification,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.samplingMethod,sampling_method,measurementMethod,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE

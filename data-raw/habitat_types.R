@@ -19,7 +19,7 @@ get_habitat_types <- function(x) {
   for (i in row.names(habitat_types)) {
 
     status <- httr::GET(
-      "https://tun.fi", path = i, query = list(format = "json")
+      "http://tun.fi", path = i, query = list(format = "json")
     )
     status <- httr::content(status)
 
