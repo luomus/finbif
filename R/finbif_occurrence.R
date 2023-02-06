@@ -949,9 +949,9 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
     id_var_name <- paste0(col_i, suffix)
 
-    add <- add && id_var_name %in% colnames
+    add_i <- add && id_var_name %in% colnames
 
-    if (add) {
+    if (add_i) {
 
       is_collection <- identical(id_var_name, "collection_id")
 
