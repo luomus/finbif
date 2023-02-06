@@ -1,19 +1,19 @@
-year <- format(Sys.Date(), "%Y")
-note <- sprintf("R package version %s", meta$Version)
-
-citHeader("Data from FinBIF comes from many sources.",
-          "For information on citing FinBIF itself and the contributed",
-          "datasets please visit this link:\n\n",
-          "<https://laji.fi/en/about/2986>",
-          "\n\n",
-          "To cite the finbif R package in publications please use:")
-
-citEntry(
-  entry    = "Manual",
+bibentry(
+  bibtype = "Manual",
   textVersion = paste0(
-    "Morris, William K. (", year, "). Introduction to the finbif package. ",
-    note, ", https://doi.org/10.5281/zenodo.3612814"
+    "Morris, William K. (",
+    format(Sys.Date(), "%Y"),
+    "). Introduction to the finbif package. ",
+    sprintf("R package version %s", meta$Version),
+    ", https://doi.org/10.5281/zenodo.3612814"
   ),
+  header = paste0(
+    "Data from FinBIF comes from many sources.",
+    "For information on citing FinBIF itself and the contributed",
+    "datasets please visit this link:\n\n",
+    "<https://laji.fi/en/about/2986>",
+    "\n\n",
+    "To cite the finbif R package in publications please use:"),
   title    = "Introduction to the finbif package",
   author   = person(
     given = "William K.",
@@ -22,8 +22,8 @@ citEntry(
     email = "willi@mmorris.email",
     comment = c(ORCID = "0000-0002-8686-4154")
   ),
-  year     = year,
-  note     = note,
+  year     = format(Sys.Date(), "%Y"),
+  note     = sprintf("R package version %s", meta$Version),
   url      = "https://luomus.github.io/finbif/articles/finbif.html",
   doi      = "10.5281/zenodo.3612814"
 )

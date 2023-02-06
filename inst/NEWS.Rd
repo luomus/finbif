@@ -1,10 +1,14 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.7.1.9000}{
-  \subsection{BUG FIXES}{
+\section{finbif version 0.7.2.9000}{
+}
+
+\section{finbif version 0.7.2}{
+  \subsection{MINOR IMPROVEMENTS}{
     \itemize{
-      \item Fix bug when processing scientific names without authors.
+      \item Updated deprecated use of tidy::pivot_wider.
+      \item Added new filters and variables from upstream API.
     }
   }
 }

@@ -1,8 +1,10 @@
-# finbif 0.7.1.9000
+# finbif 0.7.2
 
-#### BUG FIXES
+#### MINOR IMPROVEMENTS
 
-  - Fix bug when processing scientific names without authors.
+  - Updated deprecated use of tidy::pivot\_wider.
+
+  - Added new filters and variables from upstream API.
 
 # finbif 0.7.1
 

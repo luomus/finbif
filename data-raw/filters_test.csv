@@ -115,4 +115,5 @@ completeListType,complete_list_type,character,TRUE,",",TRUE
 higherTaxon,higher_taxon,logical,FALSE,",",FALSE
 alive,is_alive,logical,FALSE,",",FALSE
 virva,virva,logical,FALSE,",",FALSE
-
+identificationBasis,FALSE,",",FALSE
+samplingMethod,FALSE,",",FALSE
