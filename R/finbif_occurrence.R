@@ -261,9 +261,11 @@ occurrence <- function(fb_occurrence_obj) {
 
   aggregate_counts <- fb_occurrence_obj[["aggregate_counts"]]
 
-  n_col_nms <- n_col_nms[aggregate_counts]
+  if (aggregate_counts) {
 
-  select_user <- c(select_user, n_col_nms)
+    select_user <- c(select_user, n_col_nms)
+
+  }
 
   select_user <- name_chr_vec(select_user)
 
