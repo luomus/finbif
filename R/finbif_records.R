@@ -401,15 +401,13 @@ infer_selection <- function(fb_records_obj) {
 
     select <- unlist(select)
 
-    unique_select <- !duplicated(select)
-
     select_ind <- !select %in% deselect
-
-    select_ind <- select_ind & unique_select
 
     select <- select[select_ind]
 
     select_user <- select
+
+    select <- unique(select)
 
     record_id <- var_names["unit.unitId", var_type]
 
