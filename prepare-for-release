@@ -6,7 +6,7 @@
 5. Checkout main (git checkout main).
 6. Merge changes (git merge dev) and resolve conflicts, if any, and commit.
 7. Run tests and commit any changes to test assets.
-8. Rebuild README (touch README.Rmd; make)
+8. Rebuild README (touch README.Rmd; make) and commit.
 8. Check winbuilder (`devtools::check_win_devel()`) and rhub
    (`devtools::check_rhub()`).
 9. Update and commit cran-comments.md.
