@@ -365,11 +365,11 @@ finbif_occurrence_load <- function(
       document = document_type
     )
 
-    facts <- facts[[fact_type]]
+    fact_lvl <- facts[[fact_type]]
 
     facts_df <- structure(
       facts_df,
-      facts = facts,
+      facts = fact_lvl,
       fact_type = fact_type,
       id = id,
       type_convert_facts = type_convert_facts,
