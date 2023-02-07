@@ -22,6 +22,10 @@ row.names(atlas_class) <- atlas_class[["id"]]
 atlas_class[["id"]] <- NULL
 names(atlas_class) <- sub("value\\.", "name_", names(atlas_class))
 
+atlas_class <- atlas_class[c("name_en", "name_fi", "name_sv")]
+
+atlas_code <- atlas_code[c("name_en", "name_fi", "name_sv")]
+
 for (i in names(atlas_code)) {
 
   class(atlas_code[[i]]) <- "translation"
