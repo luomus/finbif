@@ -190,6 +190,8 @@ finbif_occurrence_load <- function(
 
   select <- select_facts(select)
 
+  fact_types <- select[["facts"]]
+
   attr(fb_occurrence_df, "select") <- select
 
   fb_occurrence_df <- new_vars(fb_occurrence_df)
