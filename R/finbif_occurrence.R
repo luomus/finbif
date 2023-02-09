@@ -239,9 +239,9 @@ occurrence <- function(fb_occurrence_obj) {
 
   pb_head("Processing data", quiet = quiet)
 
-  df <- as.data.frame(records, locale = locale, quiet = quiet)
+  fb_occurrence_df <- as.data.frame(records, locale = locale, quiet = quiet)
 
-  colnames <- names(df)
+  colnames <- names(fb_occurrence_df)
 
   n_col_nms <- grep("^n_", colnames, value = TRUE)
 
@@ -255,7 +255,7 @@ occurrence <- function(fb_occurrence_obj) {
 
   colnames[ind] <- non_count_cols
 
-  names(df) <- colnames
+  names(fb_occurrence_df) <- colnames
 
   select_user <- attr(records, "select_user")
 
@@ -284,7 +284,7 @@ occurrence <- function(fb_occurrence_obj) {
   drop_na <- fb_occurrence_obj[["drop_na"]]
 
   fb_occurrence_df <- structure(
-    df,
+    fb_occurrence_df,
     class = class,
     nrec_dnld = nrec_dnld,
     nrec_avl  = nrec_avl,
