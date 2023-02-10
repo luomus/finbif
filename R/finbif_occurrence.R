@@ -83,7 +83,7 @@ finbif_occurrence <- function(
 
   on_check_fail <- match.arg(on_check_fail)
 
-  fb_occurrence_obj <- list(
+  fb_records_obj <- list(
     taxa = taxa,
     filter = filter,
     select = select,
@@ -101,6 +101,7 @@ finbif_occurrence <- function(
     on_check_fail = on_check_fail,
     tzone = tzone,
     locale = locale,
+    df = TRUE,
     seed = seed,
     drop_na = drop_na,
     aggregate_counts = aggregate_counts,
@@ -109,39 +110,47 @@ finbif_occurrence <- function(
     facts = facts
   )
 
-  occurrence(fb_occurrence_obj)
+  fb_records_obj <- select_taxa(fb_records_obj)
+
+  fb_records_obj <- det_datetime_method(fb_records_obj)
+
+  occurrence(fb_records_obj)
 
 }
 
 #' @noRd
 
-occurrence <- function(fb_occurrence_obj) {
+occurrence <- function(fb_records_obj) {
 
-  fb_occurrence_obj <- select_taxa(fb_occurrence_obj)
+  filter <- fb_records_obj[["filter"]]
 
-  taxa <- fb_occurrence_obj[["taxa"]]
+  taxa <- fb_records_obj[["taxa"]]
 
-  n <- fb_occurrence_obj[["n"]]
+  n <- fb_records_obj[["n"]]
 
-  fb_occurrence_obj <- det_datetime_method(fb_occurrence_obj)
+  date_time_method <- fb_records_obj[["date_time_method"]]
 
-  date_time_method <- fb_occurrence_obj[["date_time_method"]]
+  aggregate <- fb_records_obj[["aggregate"]]
 
-  filter <- fb_occurrence_obj[["filter"]]
+  select <- fb_records_obj[["select"]]
 
-  aggregate <- fb_occurrence_obj[["aggregate"]]
+  count_only <- fb_records_obj[["count_only"]]
 
-  select <- fb_occurrence_obj[["select"]]
+  quiet <- fb_records_obj[["quiet"]]
 
-  count_only <- fb_occurrence_obj[["count_only"]]
+  dwc <- fb_records_obj[["dwc"]]
 
-  quiet <- fb_occurrence_obj[["quiet"]]
+  locale <- fb_records_obj[["locale"]]
 
-  dwc <- fb_occurrence_obj[["dwc"]]
+  facts <- fb_records_obj[["facts"]]
 
-  locale <- fb_occurrence_obj[["locale"]]
+  aggregate_counts <- fb_records_obj[["aggregate_counts"]]
 
-  facts <- fb_occurrence_obj[["facts"]]
+  tzone <- fb_records_obj[["tzone"]]
+
+  unlist <- fb_records_obj[["unlist"]]
+
+  drop_na <- fb_records_obj[["drop_na"]]
 
   filter_names <- names(filter)
 
@@ -157,7 +166,7 @@ occurrence <- function(fb_occurrence_obj) {
       "Only one filter set can be used with aggregation" = aggregate_none
     )
 
-    multi_request <- multi_req(fb_occurrence_obj)
+    multi_request <- multi_req(fb_records_obj)
 
     return(multi_request)
 
@@ -165,37 +174,11 @@ occurrence <- function(fb_occurrence_obj) {
 
   filter <- c(taxa, filter)
 
+  fb_records_obj[["filter"]] <- filter
+
   include_facts <- !is.null(facts)
 
-  order_by <- fb_occurrence_obj[["order_by"]]
-
-  sample <- fb_occurrence_obj[["sample"]]
-
-  page <- fb_occurrence_obj[["page"]]
-
-  cache <- fb_occurrence_obj[["cache"]]
-
-  seed <- fb_occurrence_obj[["seed"]]
-
-  exclude_na <- fb_occurrence_obj[["exclude_na"]]
-
-  fb_records_obj <- list(
-    filter = filter,
-    select = select,
-    order_by = order_by,
-    aggregate = aggregate,
-    sample = sample,
-    page = page,
-    count_only = count_only,
-    quiet = quiet,
-    cache = cache,
-    dwc = dwc,
-    df = TRUE,
-    seed = seed,
-    exclude_na = exclude_na,
-    locale = locale,
-    include_facts = include_facts
-  )
+  fb_records_obj[["include_facts"]] <- include_facts
 
   needs_n <- n < 0
 
@@ -215,13 +198,11 @@ occurrence <- function(fb_occurrence_obj) {
 
     n <- pmax(n, max_page_size)
 
+    fb_records_obj[["n"]] <- n
+
   }
 
-  fb_records_obj[["n"]] <- n
-
   records <- records(fb_records_obj)
-
-  aggregate <- attr(records, "aggregate", TRUE)
 
   if (count_only) {
 
@@ -232,6 +213,14 @@ occurrence <- function(fb_occurrence_obj) {
     return(ans)
 
   }
+
+  select_user <- attr(records, "select_user", TRUE)
+
+  nrec_dnld <- attr(records, "nrec_dnld", TRUE)
+
+  nrec_avl <- attr(records, "nrec_avl", TRUE)
+
+  date_time <- attr(records, "date_time", TRUE)
 
   # Don't need a processing progress bar if only one page of records
 
@@ -257,10 +246,6 @@ occurrence <- function(fb_occurrence_obj) {
 
   names(fb_occurrence_df) <- colnames
 
-  select_user <- attr(records, "select_user")
-
-  aggregate_counts <- fb_occurrence_obj[["aggregate_counts"]]
-
   if (aggregate_counts) {
 
     select_user <- c(select_user, n_col_nms)
@@ -270,18 +255,6 @@ occurrence <- function(fb_occurrence_obj) {
   select_user <- name_chr_vec(select_user)
 
   class <- c("finbif_occ", "data.frame")
-
-  nrec_dnld <- attr(records, "nrec_dnld", TRUE)
-
-  nrec_avl <- attr(records, "nrec_avl", TRUE)
-
-  date_time <- attr(records, "date_time", TRUE)
-
-  tzone <- fb_occurrence_obj[["tzone"]]
-
-  unlist <- fb_occurrence_obj[["unlist"]]
-
-  drop_na <- fb_occurrence_obj[["drop_na"]]
 
   df_attrs <- attributes(fb_occurrence_df)
 
@@ -356,11 +329,11 @@ occurrence <- function(fb_occurrence_obj) {
 
 #' @noRd
 
-det_datetime_method <- function(obj) {
+det_datetime_method <- function(fb_records_obj) {
 
-  n <- obj[["n"]]
+  n <- fb_records_obj[["n"]]
 
-  method <- obj[["date_time_method"]]
+  method <- fb_records_obj[["date_time_method"]]
 
   is_null <- is.null(method)
 
@@ -388,23 +361,23 @@ det_datetime_method <- function(obj) {
 
   }
 
-  obj[["date_time_method"]] <- method
+  fb_records_obj[["date_time_method"]] <- method
 
-  obj
+  fb_records_obj
 
 }
 
 #' @noRd
 
-select_taxa <- function(fb_occurrence_obj) {
+select_taxa <- function(fb_records_obj) {
 
-  taxa <- fb_occurrence_obj[["taxa"]]
+  taxa <- fb_records_obj[["taxa"]]
 
-  cache <- fb_occurrence_obj[["cache"]]
+  cache <- fb_records_obj[["cache"]]
 
-  check_taxa <- fb_occurrence_obj[["check_taxa"]]
+  check_taxa <- fb_records_obj[["check_taxa"]]
 
-  on_check_fail <- fb_occurrence_obj[["on_check_fail"]]
+  on_check_fail <- fb_records_obj[["on_check_fail"]]
 
   ntaxa <- length(taxa)
 
@@ -488,11 +461,11 @@ select_taxa <- function(fb_occurrence_obj) {
 
     }
 
-    fb_occurrence_obj[["taxa"]] <- ans
+    fb_records_obj[["taxa"]] <- ans
 
   }
 
-  fb_occurrence_obj
+  fb_records_obj
 
 }
 
@@ -1468,9 +1441,9 @@ compute_region <- function(fb_occurrence_df) {
 
 #' @noRd
 
-multi_req <- function(fb_occurrence_obj) {
+multi_req <- function(fb_records_obj) {
 
-  filters <- fb_occurrence_obj[["filter"]]
+  filters <- fb_records_obj[["filter"]]
 
   n_filters <- length(filters)
 
@@ -1490,17 +1463,17 @@ multi_req <- function(fb_occurrence_obj) {
 
   for (arg in rep_args) {
 
-    fb_occurrence_obj_arg <- fb_occurrence_obj[[arg]]
+    fb_records_obj_arg <- fb_records_obj[[arg]]
 
-    fb_occurrence_obj_arg <- rep_len(fb_occurrence_obj_arg, n_filters)
+    fb_records_obj_arg <- rep_len(fb_records_obj_arg, n_filters)
 
-    fb_occurrence_obj[[arg]] <- fb_occurrence_obj_arg
+    fb_records_obj[[arg]] <- fb_records_obj_arg
 
   }
 
-  fb_occurrence_obj_filter <- fb_occurrence_obj
+  fb_records_obj_filter <- fb_records_obj
 
-  fb_occurrence_obj_filter[["check_taxa"]] <- FALSE
+  fb_records_obj_filter[["check_taxa"]] <- FALSE
 
   filter_sq <- seq_len(n_filters)
 
@@ -1510,21 +1483,21 @@ multi_req <- function(fb_occurrence_obj) {
 
     for (arg in args) {
 
-      fb_occurrence_obj_arg <- fb_occurrence_obj[[arg]]
+      fb_records_obj_arg <- fb_records_obj[[arg]]
 
-      fb_occurrence_obj_arg_filter <- fb_occurrence_obj_arg[[filter]]
+      fb_records_obj_arg_filter <- fb_records_obj_arg[[filter]]
 
-      fb_occurrence_obj_filter[[arg]] <- fb_occurrence_obj_arg_filter
+      fb_records_obj_filter[[arg]] <- fb_records_obj_arg_filter
 
     }
 
-    resp <- occurrence(fb_occurrence_obj_filter)
+    resp <- occurrence(fb_records_obj_filter)
 
     ans[[filter]] <- resp
 
   }
 
-  count_only <- fb_occurrence_obj[["count_only"]]
+  count_only <- fb_records_obj[["count_only"]]
 
   if (!count_only) {
 
