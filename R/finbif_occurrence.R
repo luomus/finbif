@@ -283,9 +283,9 @@ occurrence <- function(fb_occurrence_obj) {
 
   drop_na <- fb_occurrence_obj[["drop_na"]]
 
-  fb_occurrence_df <- structure(
-    fb_occurrence_df,
-    class = class,
+  df_attrs <- attributes(fb_occurrence_df)
+
+  new_attrs <- list(
     nrec_dnld = nrec_dnld,
     nrec_avl  = nrec_avl,
     select_user = select,
@@ -302,7 +302,13 @@ occurrence <- function(fb_occurrence_obj) {
     drop_na = drop_na
   )
 
+  df_attrs <- c(df_attrs, new_attrs)
+
+  attributes(fb_occurrence_df) <- df_attrs
+
   fb_occurrence_df <- date_times(fb_occurrence_df)
+
+  class(fb_occurrence_df) <- class
 
   fb_occurrence_df <- compute_date_time(fb_occurrence_df)
 
@@ -494,8 +500,6 @@ select_taxa <- function(fb_occurrence_obj) {
 
 date_times <- function(fb_occurrence_df) {
 
-  df <- as.data.frame(fb_occurrence_df)
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   vtype <- col_type_string(dwc)
@@ -524,21 +528,21 @@ date_times <- function(fb_occurrence_df) {
 
   if (date_time) {
 
-    date_start <- df[[date_start]]
+    date_start <- fb_occurrence_df[[date_start]]
 
-    hour_start <-  df[[hour_start]]
+    hour_start <-  fb_occurrence_df[[hour_start]]
 
-    minute_start <-  df[[minute_start]]
+    minute_start <-  fb_occurrence_df[[minute_start]]
 
-    date_end <- df[[date_end]]
+    date_end <- fb_occurrence_df[[date_end]]
 
-    hour_end <-  df[[hour_end]]
+    hour_end <-  fb_occurrence_df[[hour_end]]
 
-    minute_end <-  df[[minute_end]]
+    minute_end <-  fb_occurrence_df[[minute_end]]
 
-    lat <- df[[lat]]
+    lat <- fb_occurrence_df[[lat]]
 
-    lon <- df[[lon]]
+    lon <- fb_occurrence_df[[lon]]
 
     date_time_start <- list(
       date = date_start,
@@ -564,11 +568,16 @@ date_times <- function(fb_occurrence_df) {
 
     date_time_end <- date_time(date_time_end)
 
-    fb_occurrence_df <- structure(
-      fb_occurrence_df,
+    df_attrs <- attributes(fb_occurrence_df)
+
+    new_attrs <- list(
       date_time_start = date_time_start,
       date_time_end = date_time_end
     )
+
+    df_attrs <- c(df_attrs, new_attrs)
+
+    attributes(fb_occurrence_df) <- df_attrs
 
   }
 
