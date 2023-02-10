@@ -117,9 +117,9 @@ finbif_occurrence <- function(
 
 occurrence <- function(fb_occurrence_obj) {
 
-  taxa <- select_taxa(fb_occurrence_obj)
+  fb_occurrence_obj <- select_taxa(fb_occurrence_obj)
 
-  fb_occurrence_obj[["taxa"]] <- taxa
+  taxa <- fb_occurrence_obj[["taxa"]]
 
   n <- fb_occurrence_obj[["n"]]
 
@@ -408,91 +408,91 @@ select_taxa <- function(fb_occurrence_obj) {
 
   ntaxa <- length(taxa)
 
-  no_taxa <- identical(ntaxa, 0L)
+  has_taxa <- ntaxa > 0L
 
-  if (no_taxa) {
+  if (has_taxa) {
 
-    return(NULL)
+    taxon_name <- paste(taxa, collapse = ",")
+
+    ans <- list(taxon_name = taxon_name)
+
+    if (check_taxa) {
+
+      taxa_names <- names(taxa)
+
+      no_taxa_name <- !"taxa" %in% taxa_names
+
+      cond <- no_taxa_name || ntaxa > 1L
+
+      if (cond) {
+
+        taxa <- finbif_check_taxa(taxa, cache = cache)
+
+      } else {
+
+        cache <- list(cache = cache)
+
+        taxa <- as.list(taxa)
+
+        taxa <- c(taxa, cache)
+
+        taxa <- do.call(finbif_check_taxa, taxa)
+
+      }
+
+      taxa <- unlist(taxa)
+
+      taxa_invalid <- is.na(taxa)
+
+      any_taxa_invalid <- any(taxa_invalid)
+
+      if (any_taxa_invalid) {
+
+        invalid_taxa <- taxa[taxa_invalid]
+
+        invalid_taxa_names <- names(invalid_taxa)
+
+        msg <- sub("\\.", " - ", invalid_taxa_names)
+
+        msg <- paste(msg, collapse = ", ")
+
+        msg <- paste(
+          "Cannot find the following taxa in the FinBIF taxonomy.",
+          "Please check you are using accepted names and not synonyms or",
+          "other names for the taxa you are selecting:\n",
+          msg,
+          sep = "\n"
+        )
+
+        switch(
+          on_check_fail,
+          warn  = warning(msg, call. = FALSE),
+          error = stop(msg, call. = FALSE)
+        )
+
+      }
+
+      taxa_valid <- !taxa_invalid
+
+      any_taxa_valid <- any(taxa_valid)
+
+      if (any_taxa_valid) {
+
+        valid_taxa <- taxa[taxa_valid]
+
+        valid_taxa <- paste(valid_taxa, collapse = ",")
+
+        ans <- list(taxon_id = valid_taxa)
+
+      }
+
+    }
+
+    fb_occurrence_obj[["taxa"]] <- ans
 
   }
 
-  taxon_name <- paste(taxa, collapse = ",")
-
-  ans <- list(taxon_name = taxon_name)
-
-  if (check_taxa) {
-
-    taxa_names <- names(taxa)
-
-    no_taxa_name <- !"taxa" %in% taxa_names
-
-    cond <- no_taxa_name || ntaxa > 1L
-
-    if (cond) {
-
-      taxa <- finbif_check_taxa(taxa, cache = cache)
-
-    } else {
-
-      cache <- list(cache = cache)
-
-      taxa <- as.list(taxa)
-
-      taxa <- c(taxa, cache)
-
-      taxa <- do.call(finbif_check_taxa, taxa)
-
-    }
-
-    taxa <- unlist(taxa)
-
-    taxa_invalid <- is.na(taxa)
-
-    any_taxa_invalid <- any(taxa_invalid)
-
-    if (any_taxa_invalid) {
-
-      invalid_taxa <- taxa[taxa_invalid]
-
-      invalid_taxa_names <- names(invalid_taxa)
-
-      msg <- sub("\\.", " - ", invalid_taxa_names)
-
-      msg <- paste(msg, collapse = ", ")
-
-      msg <- paste(
-        "Cannot find the following taxa in the FinBIF taxonomy.",
-        "Please check you are using accepted names and not synonyms or",
-        "other names for the taxa you are selecting:\n",
-        msg,
-        sep = "\n"
-      )
-
-      switch(
-        on_check_fail,
-        warn  = warning(msg, call. = FALSE),
-        error = stop(msg, call. = FALSE)
-      )
-
-    }
-
-    taxa_valid <- !taxa_invalid
-
-    any_taxa_valid <- any(taxa_valid)
-
-    if (any_taxa_valid) {
-
-      valid_taxa <- taxa[taxa_valid]
-
-      valid_taxa <- paste(valid_taxa, collapse = ",")
-
-      ans <- list(taxon_id = valid_taxa)
-
-    }
-
-  }
-
-  ans
+  fb_occurrence_obj
 
 }
 
