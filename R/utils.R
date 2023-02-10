@@ -2,32 +2,6 @@
 
 #' @noRd
 
-drop_na_col <- function(df) {
-
-  ncols <- length(df)
-
-  which <- attr(df, "drop_na", TRUE)
-
-  column_names <- attr(df, "column_names")
-
-  which <- rep_len(which, ncols)
-
-  is_na <- lapply(df, is.na)
-
-  is_na <- vapply(is_na, all, NA)
-
-  cond <- !is_na | !which
-
-  column_names <- column_names[cond]
-
-  attr(df, "column_names") <- column_names
-
-  df[, cond, drop = FALSE]
-
-}
-
-#' @noRd
-
 to_sentence_case <- function(string) {
 
   upper <- toupper(string)

@@ -125,7 +125,8 @@ test_that(
     expect_warning(
       finbif_occurrence_load(
         zip, n = nrows, tzone = "Etc/UTC",
-        facts = list(record = c("not a fact"))
+        facts = list(record = c("not a fact")),
+        drop_na = TRUE
       ),
       "Selected fact"
     )

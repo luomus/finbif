@@ -132,8 +132,6 @@ occurrence <- function(fb_records_obj) {
 
   aggregate <- fb_records_obj[["aggregate"]]
 
-  select <- fb_records_obj[["select"]]
-
   count_only <- fb_records_obj[["count_only"]]
 
   quiet <- fb_records_obj[["quiet"]]
@@ -259,7 +257,6 @@ occurrence <- function(fb_records_obj) {
   new_attrs <- list(
     nrec_dnld = nrec_dnld,
     nrec_avl  = nrec_avl,
-    select_user = select,
     column_names = select_user,
     aggregate = aggregate,
     dwc = dwc,
@@ -315,7 +312,7 @@ occurrence <- function(fb_records_obj) {
 
   fb_occurrence_df <- fb_occurrence_df[select_user]
 
-  attr(fb_occurrence_df, "select_user") <- select_user
+  attr(fb_occurrence_df, "column_names") <- select_user
 
   fb_occurrence_df <- unlist_cols(fb_occurrence_df)
 
@@ -503,15 +500,15 @@ date_times <- function(fb_occurrence_df) {
 
     date_start <- fb_occurrence_df[[date_start]]
 
-    hour_start <-  fb_occurrence_df[[hour_start]]
+    hour_start <- fb_occurrence_df[[hour_start]]
 
-    minute_start <-  fb_occurrence_df[[minute_start]]
+    minute_start <- fb_occurrence_df[[minute_start]]
 
     date_end <- fb_occurrence_df[[date_end]]
 
-    hour_end <-  fb_occurrence_df[[hour_end]]
+    hour_end <- fb_occurrence_df[[hour_end]]
 
-    minute_end <-  fb_occurrence_df[[minute_end]]
+    minute_end <- fb_occurrence_df[[minute_end]]
 
     lat <- fb_occurrence_df[[lat]]
 
@@ -1521,7 +1518,7 @@ unlist_cols <- function(fb_occurrence_df) {
 
   if (unlist) {
 
-    cols <- attr(fb_occurrence_df, "select_user", TRUE)
+    cols <- attr(fb_occurrence_df, "column_names", TRUE)
 
     for (col in cols) {
 
@@ -1540,6 +1537,64 @@ unlist_cols <- function(fb_occurrence_df) {
       }
 
     }
+
+  }
+
+  fb_occurrence_df
+
+}
+
+#' @noRd
+
+drop_na_col <- function(fb_occurrence_df) {
+
+  drop_which <- attr(fb_occurrence_df, "drop_na", TRUE)
+
+  drop_any <- any(drop_which)
+
+  if (drop_any) {
+
+    ncols <- length(fb_occurrence_df)
+
+    nrows <- nrow(fb_occurrence_df)
+
+    column_names <- attr(fb_occurrence_df, "column_names", TRUE)
+
+    which <- rep_len(drop_which, ncols)
+
+    fb_occurrence_df_attrs <- attributes(fb_occurrence_df)
+
+    cls <- class(fb_occurrence_df)
+
+    fb_occurrence_df_attrs[["class"]] <- cls
+
+    rnms <- seq_len(nrows)
+
+    fb_occurrence_df_attrs[["row.names"]] <- rnms
+
+    attr(fb_occurrence_df, "class") <- "list"
+
+    is_na <- lapply(fb_occurrence_df, is.na)
+
+    is_na <- vapply(is_na, all, NA)
+
+    drop <- is_na & which
+
+    drop_column_names <- column_names[drop]
+
+    column_names <- column_names[!drop]
+
+    fb_occurrence_df_attrs[["column_names"]] <- column_names
+
+    fb_occurrence_df_attrs[["names"]] <- column_names
+
+    for (i in drop_column_names) {
+
+      fb_occurrence_df[[i]] <- NULL
+
+    }
+
+    attributes(fb_occurrence_df) <- fb_occurrence_df_attrs
 
   }
 
