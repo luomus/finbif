@@ -254,8 +254,6 @@ occurrence <- function(fb_records_obj) {
 
   select_user <- name_chr_vec(select_user)
 
-  class <- c("finbif_occ", "data.frame")
-
   df_attrs <- attributes(fb_occurrence_df)
 
   new_attrs <- list(
@@ -281,8 +279,6 @@ occurrence <- function(fb_records_obj) {
 
   fb_occurrence_df <- date_times(fb_occurrence_df)
 
-  class(fb_occurrence_df) <- class
-
   fb_occurrence_df <- compute_date_time(fb_occurrence_df)
 
   fb_occurrence_df <- compute_duration(fb_occurrence_df)
@@ -306,6 +302,10 @@ occurrence <- function(fb_records_obj) {
   fb_occurrence_df <- compute_region(fb_occurrence_df)
 
   fb_occurrence_df <- extract_facts(fb_occurrence_df)
+
+  class <- c("finbif_occ", "data.frame")
+
+  class(fb_occurrence_df) <- class
 
   facts <- as.character(facts)
 
@@ -783,8 +783,6 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
   if (has_iso8601) {
 
-    df <- as.data.frame(fb_occurrence_df)
-
     date_start <- var_names["gathering.eventDate.begin", vtype]
 
     hour_start <- var_names["gathering.hourBegin", vtype]
@@ -829,13 +827,13 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
     iso8601 <- lubridate::format_ISO8601(iso8601, usetz = TRUE)
 
-    hour_start <- df[[hour_start]]
+    hour_start <- fb_occurrence_df[[hour_start]]
 
-    minute_start <- df[[minute_start]]
+    minute_start <- fb_occurrence_df[[minute_start]]
 
-    hour_end <- df[[hour_end]]
+    hour_end <- fb_occurrence_df[[hour_end]]
 
-    minute_end <- df[[minute_end]]
+    minute_end <- fb_occurrence_df[[minute_end]]
 
     hour_start_is_na <- is.na(hour_start)
 
@@ -851,9 +849,9 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
     no_time <- no_start_time | no_end_time
 
-    date_start <- df[[date_start]]
+    date_start <- fb_occurrence_df[[date_start]]
 
-    date_end <- df[[date_end]]
+    date_end <- fb_occurrence_df[[date_end]]
 
     date_start_ymd <- lubridate::ymd(date_start)
 
@@ -1377,7 +1375,7 @@ compute_red_list_status <- function(fb_occurrence_df) {
 
     red_list_id <- "unit.linkings.taxon.latestRedListStatusFinland.status"
 
-    red_list_id <-  var_names[[red_list_id, vtype]]
+    red_list_id <- var_names[[red_list_id, vtype]]
 
     red_list_id <- fb_occurrence_df[[red_list_id]]
 
