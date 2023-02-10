@@ -225,9 +225,9 @@ occurrence <- function(fb_occurrence_obj) {
 
   if (count_only) {
 
-    ans <- records[["content"]]
+    total <- c("content", "total")
 
-    ans <- ans[["total"]]
+    ans <- records[[total]]
 
     return(ans)
 
