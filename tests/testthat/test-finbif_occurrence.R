@@ -25,7 +25,7 @@ test_that(
     expect_s3_class(
       finbif_occurrence(
         "Rangifer tarandus fennicus",
-        select = c("record_id", "date_start", "lat_wgs84", "lon_wgs84"),
+        select = c("record_id", "date_start", "lat_wgs84", "lon_wgs84", "epsg"),
         exclude_na = TRUE
       ),
       "finbif_occ"
