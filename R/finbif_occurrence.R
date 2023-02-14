@@ -1028,13 +1028,15 @@ compute_epsg <- function(fb_occurrence_df) {
 
     vtype <- col_type_string(dwc)
 
-    var_names_type <- var_names[, vtype]
+    var_names_type <- var_names[, vtype, drop = FALSE]
 
-    select_user <- match(select_user, var_names_type)
+    epsg_var <- var_names_type["computed_var_epsg", ]
 
-    select_user <- var_names[select_user, ]
+    fp_epsg_var <- var_names_type["computed_var_fp_epsg", ]
 
-    select_user <- row.names(select_user)
+    epsg_vars <- c(epsg_var, fp_epsg_var)
+
+    has_epsg_vars <- epsg_vars %in% select_user
 
     crs <- c(computed_var_epsg = "", computed_var_fp_epsg = "footprint")
 
@@ -1042,21 +1044,31 @@ compute_epsg <- function(fb_occurrence_df) {
 
     sq <- seq_along(crs)
 
+    sq <- sq[has_epsg_vars]
+
+    var_names_type <- var_names_type[[1L]]
+
+    select_user <- match(select_user, var_names_type)
+
+    select_user <- var_names[select_user, ]
+
+    select_user <- row.names(select_user)
+
+    select_user <- var_names[select_user, "translated_var"]
+
+    n <- nrow(fb_occurrence_df)
+
+    epsgs <- c(euref = "euref", ykj = "ykj",  wgs84 = "wgs84")
+
     for (i in sq) {
-
-      epsg <- c("euref", "ykj", "wgs84")
-
-      names(epsg) <- epsg
 
       crs_i <- crs[[i]]
 
-      crs_nm_i <- crs_nms[[i]]
+      epsg <- epsgs
 
-      epsg[] <- paste0(crs_i, "_", epsg, "$")
+      epsg[] <- paste0(crs_i, "_", epsgs, "$")
 
-      var_names_i <- var_names[select_user, "translated_var"]
-
-      epsg <- lapply(epsg, grepl, var_names_i)
+      epsg <- lapply(epsg, grepl, select_user)
 
       epsg <- lapply(epsg, c, TRUE)
 
@@ -1076,13 +1088,13 @@ compute_epsg <- function(fb_occurrence_df) {
         NA_character_
       )
 
-      n <- nrow(fb_occurrence_df)
-
       epsg <- rep_len(epsg, n)
 
-      crs_nm <- var_names[[crs_nm_i, vtype]]
+      crs_nm_i <- crs_nms[[i]]
 
-      fb_occurrence_df[[crs_nm]] <- epsg
+      crs_nm_i <- var_names[[crs_nm_i, vtype]]
+
+      fb_occurrence_df[[crs_nm_i]] <- epsg
 
     }
 
