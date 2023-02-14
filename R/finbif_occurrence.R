@@ -242,8 +242,6 @@ occurrence <- function(fb_records_obj) {
 
   colnames[ind] <- non_count_cols
 
-  names(fb_occurrence_df) <- colnames
-
   if (aggregate_counts) {
 
     select_user <- c(select_user, n_col_nms)
@@ -271,6 +269,8 @@ occurrence <- function(fb_records_obj) {
   )
 
   df_attrs <- c(df_attrs, new_attrs)
+
+  df_attrs[["names"]] <- colnames
 
   attributes(fb_occurrence_df) <- df_attrs
 
