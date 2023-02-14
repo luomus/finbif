@@ -110,8 +110,6 @@ finbif_occurrence <- function(
     facts = facts
   )
 
-
-
   occurrence(fb_records_obj)
 
 }
