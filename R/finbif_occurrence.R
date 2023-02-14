@@ -110,9 +110,7 @@ finbif_occurrence <- function(
     facts = facts
   )
 
-  fb_records_obj <- select_taxa(fb_records_obj)
 
-  fb_records_obj <- det_datetime_method(fb_records_obj)
 
   occurrence(fb_records_obj)
 
@@ -121,6 +119,10 @@ finbif_occurrence <- function(
 #' @noRd
 
 occurrence <- function(fb_records_obj) {
+
+  fb_records_obj <- select_taxa(fb_records_obj)
+
+  fb_records_obj <- det_datetime_method(fb_records_obj)
 
   filter <- fb_records_obj[["filter"]]
 
