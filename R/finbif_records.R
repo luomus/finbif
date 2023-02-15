@@ -1695,7 +1695,27 @@ na_exclude <- function(fb_records_obj) {
 
     has_value <- query[[select_param]]
 
-    query[["hasValue"]] <- has_value
+    has_value <- strsplit(has_value, ",")
+
+    has_value <- c(hasValue = has_value)
+
+    available_vars <- row.names(var_names)
+
+    ind <- var_names[["aggregate"]]
+
+    ind <- ind | var_names[["aggregate_events"]]
+
+    ind <- ind | var_names[["aggregate_documents"]]
+
+    ind <- ind & var_names[["single"]]
+
+    available_vars <- available_vars[ind]
+
+    has_value <- lapply(has_value, intersect, available_vars)
+
+    has_value <- lapply(has_value, paste, collapse = ",")
+
+    query <- c(query, has_value)
 
   }
 
