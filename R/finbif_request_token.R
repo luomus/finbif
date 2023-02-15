@@ -24,11 +24,11 @@
 
 finbif_request_token <- function(email, quiet = FALSE) {
 
-  finbif_access_token <- token()
+  fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
-  no_token <- !is.null(finbif_access_token)
+  no_token <- identical(fb_access_token, "")
 
-  if (no_token) {
+  if (!no_token) {
 
     message(
       "An access token has already been set. If you want to receive a new \n",

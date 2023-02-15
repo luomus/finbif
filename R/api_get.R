@@ -5,11 +5,11 @@
 
 api_get <- function(obj) {
 
-  fb_access_token <- token()
+  fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
-  fb_access_token_null <- is.null(fb_access_token)
+  no_token <- identical(fb_access_token, "")
 
-  if (fb_access_token_null) {
+  if (no_token) {
 
     stop(
       "Access token for FinBIF has not been set. Use finbif_get_token() to \n",
