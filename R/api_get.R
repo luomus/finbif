@@ -43,7 +43,9 @@ api_get <- function(obj) {
 
     fcp <- getOption("finbif_cache_path")
 
-    if (is.null(fcp)) {
+    no_cache_path <- is.null(fcp)
+
+    if (no_cache_path) {
 
       cached_obj <- get_cache(hash)
 
