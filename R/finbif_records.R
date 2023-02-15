@@ -1207,7 +1207,7 @@ check_coordinates <- function(obj) {
 
   cond <- has_names && !empty_names[[3L]]
 
-  cond <- cond && !"system" %in% names
+  cond <- cond && !"system" %in% nms
 
   cond <- cond || n_filters < 3L
 
