@@ -199,7 +199,9 @@ api_get <- function(obj) {
 
   resp[["url"]] <- notoken
 
-  resp[["request"]][["url"]] <- notoken
+  request_url <- c("request", "url")
+
+  resp[[request_url]] <- notoken
 
   resp_type <- httr::http_type(resp)
 
