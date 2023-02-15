@@ -1,6 +1,6 @@
 #' @noRd
 #' @importFrom digest digest
-#' @importFrom httr accept_json content http_type RETRY status_code user_agent
+#' @importFrom httr content RETRY
 #' @importFrom utils packageVersion
 
 api_get <- function(obj) {
@@ -35,9 +35,7 @@ api_get <- function(obj) {
 
   if (cache) {
 
-    url_sans_protocol <- sub(".*://", "", url)
-
-    query_list <- list(url_sans_protocol, version, path, query)
+    query_list <- list(url, version, path, query)
 
     hash <- digest::digest(query_list)
 
@@ -152,9 +150,13 @@ api_get <- function(obj) {
 
   agent <- Sys.getenv("FINBIF_USER_AGENT", agent)
 
-  agent <- httr::user_agent(agent)
+  agent <- list(useragent = agent)
 
-  accept <- httr::accept_json()
+  accept <- c(Accept = "application/json")
+
+  config <- list(headers = accept, options = agent)
+
+  config <- structure(config, class = "request")
 
   fb_access_token_par <- list(access_token = fb_access_token)
 
@@ -169,10 +171,9 @@ api_get <- function(obj) {
   pause_min <- getOption("finbif_retry_pause_min")
 
   resp <- httr::RETRY(
-    verb = "GET",
-    url = url_path,
-    agent,
-    accept,
+    "GET",
+    url_path,
+    config,
     query = query,
     times = times,
     pause_base = pause_base,
@@ -203,9 +204,13 @@ api_get <- function(obj) {
 
   resp[[request_url]] <- notoken
 
-  resp_type <- httr::http_type(resp)
+  content_type <- c("headers", "content-type")
 
-  resp_not_json <- !identical(resp_type, "application/json")
+  resp_type <- resp[[content_type]]
+
+  resp_type <- gsub("\\s", "", resp_type)
+
+  resp_not_json <- !identical(resp_type, "application/json;charset=utf-8")
 
   if (resp_not_json) {
 
@@ -217,7 +222,7 @@ api_get <- function(obj) {
 
   parsed <- httr::content(resp)
 
-  status_code <- httr::status_code(resp)
+  status_code <- resp[["status_code"]]
 
   status_code_error <- !identical(status_code, 200L)
 

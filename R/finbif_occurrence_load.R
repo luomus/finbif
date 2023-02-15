@@ -788,7 +788,7 @@ new_vars <- function(df) {
 
 #' @noRd
 #' @importFrom digest digest
-#' @importFrom httr RETRY progress status_code write_disk
+#' @importFrom httr RETRY progress write_disk
 
 get_zip <- function(fb_occurrenc_obj) {
 
@@ -900,7 +900,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
   resp <- httr::RETRY(
     "GET",
-    url = url,
+    url,
     write_disk,
     progress,
     query = query,
@@ -932,7 +932,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
   }
 
-  code <- httr::status_code(resp)
+  code <- resp[["status_code"]]
 
   has_error <- !identical(code, 200L)
 

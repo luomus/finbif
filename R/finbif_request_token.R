@@ -11,15 +11,14 @@
 #' @return If an access token has already been set then `NULL` (invisibly) if
 #'   not then, invisibly, a `finbif_api` object containing the response from
 #'   the FinBIF server.
-#' @importFrom httr accept_json content http_type RETRY user_agent status_code
-#' @importFrom utils packageVersion
 #' @examples \dontrun{
 #'
 #' # Request a token for example@email.com
 #' finbif_request_token("example@email.com")
+#'
 #' }
 #' @export
-#' @importFrom httr accept_json content http_type RETRY status_code user_agent
+#' @importFrom httr content RETRY
 #' @importFrom utils packageVersion
 
 finbif_request_token <- function(email, quiet = FALSE) {
@@ -62,9 +61,13 @@ finbif_request_token <- function(email, quiet = FALSE) {
 
   agent <- paste0("https://github.com/luomus/finbif#", pkg_version)
 
-  agent <- httr::user_agent(agent)
+  agent <- list(useragent = agent)
 
-  accept <- httr::accept_json()
+  accept <- c(Accept = "application/json")
+
+  config <- list(headers = accept, options = agent)
+
+  config <- structure(config, class = "request")
 
   body <- list(email = email)
 
@@ -77,10 +80,9 @@ finbif_request_token <- function(email, quiet = FALSE) {
   pause_min <- getOption("finbif_retry_pause_min")
 
   resp <- httr::RETRY(
-    verb = "POST",
-    url = url_path,
-    agent,
-    accept,
+    "POST",
+    url_path,
+    config,
     body = body,
     encode = "json",
     times = times,
@@ -93,7 +95,7 @@ finbif_request_token <- function(email, quiet = FALSE) {
 
   parsed <- httr::content(resp)
 
-  status <- httr::status_code(resp)
+  status <- resp[["status_code"]]
 
   error <- !identical(status, 200L)
 
