@@ -26,7 +26,6 @@ dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('data.tree', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('details', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('devtools', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('dplyr', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('future', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('grDevices', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('jsonlite', quietly = TRUE))";\

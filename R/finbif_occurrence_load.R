@@ -29,8 +29,8 @@
 #'   "fact" files in a local or online FinBIF data archive. Names can include
 #'   one or more of `"record"`, `"event"` or `"document"`. Elements of the list
 #'   are character vectors of the "facts" to be extracted and then joined to the
-#'   return value. Note that this functionality requires that the `{dplyr}` and
-#'   `{tidyr}` packages are available.
+#'   return value. Note that this functionality requires that the `{tidyr}`
+#'   package is available.
 #' @param type_convert_facts Logical. Should facts be converted from character
 #'   to numeric or integer data where applicable?
 #' @param drop_facts_na Logical. Should missing or "all `NA`" facts be dropped?
@@ -1664,10 +1664,6 @@ spread_facts <-  function(facts) {
 
 bind_facts <- function(x) {
 
-  has_dplyr <- has_pkgs("dplyr")
-
-  stopifnot("Package {dplyr} is required for this functionality" = has_dplyr)
-
   facts <- attr(x, "facts_df", TRUE)
 
   id <- attr(facts, "id", TRUE)
@@ -1680,7 +1676,17 @@ bind_facts <- function(x) {
 
   attr <- attributes(x)
 
-  x <- dplyr::left_join(x, facts, by = id)
+  facts_id <- facts[[id]]
+
+  facts[[id]] <- NULL
+
+  records_id <- x[[id]]
+
+  matches <- match(records_id, facts_id)
+
+  facts <- facts[matches, , drop = FALSE]
+
+  x <- cbind(x, facts)
 
   attr[["names"]] <- names(x)
 
