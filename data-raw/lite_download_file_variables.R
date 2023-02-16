@@ -1,5 +1,11 @@
 path <- "/master/projects/laji/src/i18n/"
 
+if (identical(Sys.getenv("BRANCH"), "dev")) {
+
+  path <- "/development/projects/laji/src/i18n/"
+
+}
+
 locales <- sprintf("https://github.com/luomus/laji.git/branches%s", path)
 
 locales <- system2("svn", c("ls", locales), TRUE)

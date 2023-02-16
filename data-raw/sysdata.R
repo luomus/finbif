@@ -1,11 +1,7 @@
 source("data-raw/variables.R")
-source("data-raw/variables_test.R")
 source("data-raw/citable_file_variables.R")
-source("data-raw/citable_file_variables_test.R")
 source("data-raw/lite_download_file_variables.R")
-source("data-raw/lite_download_file_variables_test.R")
 source("data-raw/filters.R")
-source("data-raw/filters_test.R")
 source("data-raw/status.R")
 source("data-raw/informal_groups.R")
 source("data-raw/habitat_types.R")
@@ -25,15 +21,10 @@ source("data-raw/atlas.R")
 source("data-raw/enums.R")
 usethis::use_data(
   var_names,
-  var_names_test,
   has_value,
-  has_value_test,
   cite_file_vars,
-  cite_file_vars_test,
   lite_download_file_vars,
-  lite_download_file_vars_test,
   filter_names,
-  filter_names_test,
   regulatory_status,
   red_list_status,
   threatened_status,

@@ -5,6 +5,13 @@ var_names <- read.csv(
 )
 
 vars <- httr::GET(Sys.getenv("WAREHOUSE_SWAGGER_URL"))
+
+if (identical(Sys.getenv("BRANCH"), "dev")) {
+
+  vars <- httr::GET(Sys.getenv("DEV_WAREHOUSE_SWAGGER_URL"))
+
+}
+
 vars <- httr::content(vars)
 vars <- vars[["paths"]]
 select_order_vars <-
