@@ -573,7 +573,7 @@ print.finbif_taxa_list <- function(
 
   nms <- unlist(x)
 
-  nms <- names(x)
+  nms <- names(nms)
 
   has_ranks <- !is.null(ranks)
 
