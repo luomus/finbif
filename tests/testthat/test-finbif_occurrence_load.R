@@ -79,6 +79,8 @@ test_that(
 
     file.remove(tsv)
 
+    finbif_clear_cache()
+
     options(finbif_cache_path = NULL)
 
     capture.output(
