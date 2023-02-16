@@ -571,7 +571,7 @@ print.finbif_taxa_list <- function(
 
   nms <- unname(x)
 
-  nms <- unlist(x)
+  nms <- unlist(nms)
 
   nms <- names(nms)
 
