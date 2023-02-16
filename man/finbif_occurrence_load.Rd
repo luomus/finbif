@@ -77,8 +77,7 @@ archive or represents a URI. Is ignored if \code{file} is already a TSV. If
 "fact" files in a local or online FinBIF data archive. Names can include
 one or more of \code{"record"}, \code{"event"} or \code{"document"}. Elements of the list
 are character vectors of the "facts" to be extracted and then joined to the
-return value. Note that this functionality requires that the \code{{tidyr}}
-package is available.}
+return value.}
 
 \item{type_convert_facts}{Logical. Should facts be converted from character
 to numeric or integer data where applicable?}

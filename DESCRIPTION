@@ -48,7 +48,6 @@ Suggests:
     readxl,
     rmarkdown,
     testthat (>= 2.1.0),
-    tidyr,
     vcr,
     webfakes
 Config/testthat/edition: 3

@@ -29,8 +29,7 @@
 #'   "fact" files in a local or online FinBIF data archive. Names can include
 #'   one or more of `"record"`, `"event"` or `"document"`. Elements of the list
 #'   are character vectors of the "facts" to be extracted and then joined to the
-#'   return value. Note that this functionality requires that the `{tidyr}`
-#'   package is available.
+#'   return value.
 #' @param type_convert_facts Logical. Should facts be converted from character
 #'   to numeric or integer data where applicable?
 #' @param drop_facts_na Logical. Should missing or "all `NA`" facts be dropped?
@@ -1548,7 +1547,7 @@ spread_facts <-  function(facts) {
 
   missing_facts <- character()
 
-  select_facts <- facts[[2L]]
+  select_facts <- facts[["Fact"]]
 
   ind <- match(select, select_facts)
 
@@ -1595,50 +1594,65 @@ spread_facts <-  function(facts) {
 
     facts <- facts[ind, ]
 
-    select_facts <- facts[[2L]]
+    select_facts <- facts[["Fact"]]
 
     select_facts <- paste(type, "fact_", select_facts, sep = "_")
 
-    facts[[2L]] <- select_facts
+    facts[["Fact"]] <- select_facts
 
-    has_tidyr <- has_pkgs("tidyr")
+    fact_values <- facts[["Value"]]
 
-    stopifnot("Package {tidyr} is required for this functionality" = has_tidyr)
+    fact_ids <- c("Fact", id)
 
-    values_fill <- list(NA)
+    fact_ids <- facts[fact_ids]
 
-    facts <- tidyr::pivot_wider(
-      facts,
-      id_cols = 1L,
-      names_from = 2L,
-      values_from = 3L,
-      values_fn = list,
-      values_fill = values_fill
-    )
+    facts <- tapply(fact_values, fact_ids, c, simplify = FALSE)
 
-    fact_names <- names(facts)
+    fact_dimnames <- dimnames(facts)
 
-    fact_cols <- fact_names != id
+    selected_fact_nms <- paste(type, "fact_", select, sep = "_")
 
-    facts_cols <- facts[fact_cols]
+    fact_nms <- fact_dimnames[["Fact"]]
 
-    facts_cols <- lapply(facts_cols, unlist_col)
+    fact_nms <- intersect(selected_fact_nms, fact_nms)
 
-    facts[fact_cols] <- facts_cols
+    colnames <- c(id, fact_nms)
 
-    n <- length(select)
+    ncols <- length(colnames)
 
-    type_convert_facts <- rep_len(type_convert_facts, n)
+    fact_list <- vector("list", ncols)
 
-    fact_cols[fact_cols] <- type_convert_facts
+    names(fact_list) <- colnames
 
-    facts_cols <- facts[fact_cols]
+    ids <- fact_dimnames[[id]]
 
-    facts_cols <- lapply(facts_cols, convert_col_type)
+    fact_list[[id]] <- ids
 
-    facts[fact_cols] <- facts_cols
+    for (i in fact_nms) {
 
-    facts <- as.data.frame(facts)
+      fact_i <- facts[i, ]
+
+      fact_i <- unname(fact_i)
+
+      fact_null <- vapply(fact_i, is.null, NA)
+
+      fact_i[fact_null] <- NA
+
+      fact_i <- unlist_col(fact_i)
+
+      if (type_convert_facts) {
+
+        fact_i <- convert_col_type(fact_i)
+
+      }
+
+      fact_list[[i]] <- fact_i
+
+    }
+
+    row_names <- seq_along(ids)
+
+    facts <- structure(fact_list, class = "data.frame", row.names = row_names)
 
   } else {
 
