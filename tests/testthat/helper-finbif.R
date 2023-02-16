@@ -18,7 +18,11 @@ if (has_vcr && not_cran) {
 
   cassettes <- "../cassettes"
 
-  is_dev_branch <- identical(Sys.getenv("BRANCH"), "dev")
+  branch <- Sys.getenv("BRANCH")
+
+  gh_ref <- Sys.getenv("GITHUB_REF_NAME")
+
+  is_dev_branch <- identical(branch, "dev") || identical(gh_ref, "dev")
 
   if (is_dev_branch && has_dev_token) {
 
