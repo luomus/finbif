@@ -84,32 +84,8 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "gert",
-      "name": "gert",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=gert"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "grDevices",
       "name": "grDevices"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "here",
-      "name": "here",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=here"
     },
     {
       "@type": "SoftwareApplication",
@@ -279,7 +255,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "fileSize": "5578.408KB",
+  "fileSize": "5832.306KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
