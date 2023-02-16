@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/taxa/search?query=Lutra%20lutra&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/taxa/search?query=Lutra%20lutra&matchType=exact&limit=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,16 +15,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 13 Sep 2022 08:47:29 GMT
+      date: Wed, 31 Aug 2022 05:58:43 GMT
       content-type: application/json; charset=utf-8
       content-length: '406'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"196-res3gGvbFhMO3sJOa7ZcgGynWCE"
+      etag: W/"196-eRTziK34uhG38RdJ10h2jo4w8cc"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -33,6 +33,6 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: '[{"matchingName":"Lutra lutra","nameType":"MX.scientificName","id":"MX.47169","scientificName":"Lutra
-        lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"fi":"saukko","en":"Otter","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"fi":"Nisäkkäät","en":"Mammals","sv":"Däggdjur"}}],"type":"exactMatches"}]'
-  recorded_at: 2022-09-13 08:47:29 GMT
+        lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"sv":"utter","en":"Otter","fi":"saukko"},"informalGroups":[{"id":"MVL.2","name":{"fi":"Nisäkkäät","en":"Mammals","sv":"Däggdjur"}}],"type":"exactMatches"}]'
+  recorded_at: 2022-08-31 05:58:43 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.2

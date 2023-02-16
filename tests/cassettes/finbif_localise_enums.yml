@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/aggregate?aggregateBy=unit.abundanceUnit&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/aggregate?aggregateBy=unit.abundanceUnit&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 24 Nov 2022 08:06:17 GMT
+      date: Tue, 01 Nov 2022 12:10:19 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,12 +29,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":17,"results":[{"aggregateBy":{"unit.abundanceUnit":"INDIVIDUAL_COUNT"},"count":438204},{"aggregateBy":{"unit.abundanceUnit":"TRUNKS"},"count":84873},{"aggregateBy":{"unit.abundanceUnit":"SPROUTS"},"count":28969},{"aggregateBy":{"unit.abundanceUnit":"NESTS"},"count":17045},{"aggregateBy":{"unit.abundanceUnit":"OCCURS_DOES_NOT_OCCUR"},"count":12630},{"aggregateBy":{"unit.abundanceUnit":"BREEDING_SITES"},"count":10024},{"aggregateBy":{"unit.abundanceUnit":"FRUITBODIES"},"count":7747},{"aggregateBy":{"unit.abundanceUnit":"INDIRECT_MARKS"},"count":6914},{"aggregateBy":{"unit.abundanceUnit":"SPOTS"},"count":5942},{"aggregateBy":{"unit.abundanceUnit":"PAIRCOUNT"},"count":5831}]}'
-  recorded_at: 2022-11-24 08:06:48 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":17,"results":[{"aggregateBy":{"unit.abundanceUnit":"INDIVIDUAL_COUNT"},"count":198952},{"aggregateBy":{"unit.abundanceUnit":"TRUNKS"},"count":85275},{"aggregateBy":{"unit.abundanceUnit":"SPROUTS"},"count":27180},{"aggregateBy":{"unit.abundanceUnit":"NESTS"},"count":15949},{"aggregateBy":{"unit.abundanceUnit":"BREEDING_SITES"},"count":9291},{"aggregateBy":{"unit.abundanceUnit":"FRUITBODIES"},"count":7743},{"aggregateBy":{"unit.abundanceUnit":"INDIRECT_MARKS"},"count":6494},{"aggregateBy":{"unit.abundanceUnit":"SPOTS"},"count":6009},{"aggregateBy":{"unit.abundanceUnit":"PAIRCOUNT"},"count":4969},{"aggregateBy":{"unit.abundanceUnit":"SQUARE_M"},"count":3605}]}'
+  recorded_at: 2022-11-29 09:01:36 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.abundanceUnit&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.abundanceUnit&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -47,12 +48,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 24 Nov 2022 08:06:41 GMT
+      date: Tue, 01 Nov 2022 12:10:19 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -60,12 +62,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":4491433,"pageSize":10,"total":44914328,"results":[{"unit":{"unitId":"http://tun.fi/JX.1507677#3"}},{"unit":{"unitId":"http://tun.fi/HR.4412/637ec4472486e_U"}},{"unit":{"unitId":"http://tun.fi/HR.4412/637ec4471cc6b_U"}},{"unit":{"unitId":"http://tun.fi/KE.176/637e9c95d5de18c6b5e4ce5e#Unit1"}},{"unit":{"unitId":"http://tun.fi/JX.1507636#6"}},{"unit":{"unitId":"http://tun.fi/JX.1507636#33"}},{"unit":{"unitId":"http://tun.fi/JX.1507636#39"}},{"unit":{"unitId":"http://tun.fi/JX.1507636#57"}},{"unit":{"unitId":"http://tun.fi/JX.1507636#54"}},{"unit":{"unitId":"http://tun.fi/JX.1507636#21"}}]}'
-  recorded_at: 2022-11-24 08:06:48 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":349704,"pageSize":10,"total":3497040,"results":[{"unit":{"unitId":"http://tun.fi/JX.295060#3"}},{"unit":{"unitId":"http://tun.fi/JX.295051#13"}},{"unit":{"unitId":"http://tun.fi/JX.295051#5"}},{"unit":{"unitId":"http://tun.fi/JX.295051#3"}},{"unit":{"unitId":"http://tun.fi/JX.295051#8"}},{"unit":{"unitId":"http://tun.fi/JX.295052#3"}},{"unit":{"unitId":"http://tun.fi/JX.294916#3"}},{"unit":{"unitId":"http://tun.fi/JX.294914#3"}},{"unit":{"unitId":"http://tun.fi/JX.294914#11"}},{"unit":{"unitId":"http://tun.fi/JX.294914#7"}}]}'
+  recorded_at: 2022-11-29 09:01:36 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?secureReason=BREEDING_SEASON_TAXON_CONSERVATION&selected=unit.unitId%2Cdocument.secureReasons&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?secureReason=BREEDING_SEASON_TAXON_CONSERVATION&selected=unit.unitId%2Cdocument.secureReasons&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -79,12 +81,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 24 Nov 2022 08:06:48 GMT
+      date: Wed, 02 Nov 2022 09:43:16 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -92,6 +95,39 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":52608,"pageSize":10,"total":526078,"results":[{"unit":{"unitId":"http://tun.fi/HR.4412/63725bba66e5b_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/HR.4412/63723f4124170_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/KE.67/12847407#Unit"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD","DEFAULT_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/HR.4412/63723b874170e_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/HR.4412/637240fa1b7f6_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/KE.67/12705319#Unit"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/HR.4412/6372414ca4ecc_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/HR.4412/637242c3609af_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/KE.67/12810980#Unit"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/KE.67/12711175#Unit"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD","BREEDING_SEASON_TAXON_CONSERVATION"]}}]}'
-  recorded_at: 2022-11-24 08:06:48 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":1849,"pageSize":10,"total":18482,"results":[{"unit":{"unitId":"http://tun.fi/A.868F7461-8435-4D21-A82C-6465DE07E0E2#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION","DEFAULT_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.25F63F7C-BF1A-450D-86CA-D82133E828F1#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION","DEFAULT_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.42680C22-3F95-46FD-9486-DD2A5F45B5BD#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.742877E2-BFE5-4EBE-92BB-6E2C98A0373C#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.0DB23045-B4F8-4460-B201-A3BD1E70CFE6#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.CB99F5E5-759F-476A-AC4A-DCD4B611C747#U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.FFB2C56A-E652-488A-A449-9965A76E3D68#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.293671AD-39AE-421A-86C1-7BB1E9349ADD#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.2B352DEF-5AC2-4C79-8E79-F6AADE15A399#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/JX.294628#3"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}}]}'
+  recorded_at: 2022-11-29 09:01:36 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/aggregate?aggregateBy=unit.abundanceUnit&page=1&pageSize=10&personEmail=noreply%40laji.fi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 29 Nov 2022 09:01:36 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":16,"results":[{"aggregateBy":{"unit.abundanceUnit":"INDIVIDUAL_COUNT"},"count":198952},{"aggregateBy":{"unit.abundanceUnit":"TRUNKS"},"count":85275},{"aggregateBy":{"unit.abundanceUnit":"SPROUTS"},"count":27180},{"aggregateBy":{"unit.abundanceUnit":"NESTS"},"count":15949},{"aggregateBy":{"unit.abundanceUnit":"BREEDING_SITES"},"count":9291},{"aggregateBy":{"unit.abundanceUnit":"FRUITBODIES"},"count":7743},{"aggregateBy":{"unit.abundanceUnit":"INDIRECT_MARKS"},"count":6494},{"aggregateBy":{"unit.abundanceUnit":"SPOTS"},"count":6009},{"aggregateBy":{"unit.abundanceUnit":"PAIRCOUNT"},"count":4969},{"aggregateBy":{"unit.abundanceUnit":"SQUARE_M"},"count":3605}]}'
+  recorded_at: 2022-11-29 09:01:36 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2

@@ -151,14 +151,17 @@ test_that(
 
     expect_output(print(finbif_occurrence()), "Records downloaded:")
 
-    if (has_grd && !identical(.Platform$OS.type, "windows")) {
+    if (has_grd) {
 
-      expect_snapshot_file(
-        save_svg(
-          plot(fungi, axes = FALSE, xlab = NA, ylab = NA, panel.first = NULL)
-        ),
-        if (is_main_branch) "fungi.svg" else "fungi-dev.svg"
-      )
+      path <- tempfile(fileext = ".svg")
+
+      grDevices::svg(path, width = 7, height = 7, antialias = "none")
+
+      plot(fungi, axes = FALSE, xlab = NA, ylab = NA, panel.first = NULL)
+
+      dev.off()
+
+      expect_snapshot_file(path, "fungi.svg")
 
     }
 
