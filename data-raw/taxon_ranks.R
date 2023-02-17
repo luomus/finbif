@@ -9,7 +9,7 @@ taxon_rank <- as.data.frame(
   tolower(unique(taxon_rank[, -1L])), row.names = unique(taxon_rank[, 1L]),
   stringsAsFactors = FALSE
 )
-taxon_rank <- stats::setNames(taxon_rank, "name_en")
+names(taxon_rank) <- "name_en"
 class(taxon_rank[["name_en"]]) <- "translation"
 
 orig_taxon_rank <- taxon_rank

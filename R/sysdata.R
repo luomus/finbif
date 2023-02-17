@@ -110,11 +110,7 @@ informal_groups <- function() {
 
 #' @noRd
 
-informal_groups_reported <- function() {
-
-  informal_groups_reported_df
-
-}
+informal_groups_reported <- informal_groups
 
 #' @noRd
 

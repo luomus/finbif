@@ -42,7 +42,7 @@ informal_groups <- lapply(
 informal_groups <- lapply(informal_groups, function(x) x[-1L, ])
 
 informal_groups <- lapply(
-  informal_groups, stats::setNames, c("tree", "name", "id")
+  informal_groups, structure, names = c("tree", "name", "id")
 )
 
 ord <- informal_groups[[1]][["id"]]
@@ -70,5 +70,3 @@ informal_groups <- do.call(cbind, informal_groups)
 class(informal_groups[["name_en"]]) <- "translation"
 class(informal_groups[["name_fi"]]) <- "translation"
 class(informal_groups[["name_sv"]]) <- "translation"
-
-informal_groups_reported <- informal_groups
