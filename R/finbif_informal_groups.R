@@ -29,6 +29,8 @@ finbif_informal_groups <- function(
   locale = getOption("finbif_locale")
 ) {
 
+  informal_groups <- informal_groups()
+
   cols <- names(informal_groups)
 
   nm_cols <- grep("^name_", cols, value = TRUE)

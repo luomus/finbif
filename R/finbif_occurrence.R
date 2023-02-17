@@ -238,6 +238,8 @@ occurrence <- function(fb_records_obj) {
 
   non_count_cols <- colnames[ind]
 
+  var_names <- var_names()
+
   non_count_cols <- var_names[non_count_cols, vtype]
 
   colnames[ind] <- non_count_cols
@@ -474,6 +476,8 @@ date_times <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
+  var_names <- var_names()
+
   date_start <- var_names["gathering.eventDate.begin", vtype]
 
   hour_start <- var_names["gathering.hourBegin", vtype]
@@ -668,6 +672,8 @@ compute_date_time <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
+  var_names <- var_names()
+
   date_time_var <- var_names["computed_var_date_time", vtype]
 
   column_names <- attr(fb_occurrence_df, "column_names", TRUE)
@@ -694,6 +700,8 @@ compute_duration <- function(fb_occurrence_df) {
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   vtype <- col_type_string(dwc)
+
+  var_names <- var_names()
 
   duration_var <- var_names["computed_var_duration", vtype]
 
@@ -771,6 +779,8 @@ compute_iso8601 <- function(fb_occurrence_df) {
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   vtype <- col_type_string(dwc)
+
+  var_names <- var_names()
 
   iso8601_var <- var_names["computed_var_date_time_ISO8601", vtype]
 
@@ -952,6 +962,8 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
         metadata <- get(col_i_native)
 
+        metadata <- metadata()
+
         not_df <- !inherits(metadata, "data.frame")
 
         if (not_df) {
@@ -1027,6 +1039,8 @@ compute_epsg <- function(fb_occurrence_df) {
     dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
     vtype <- col_type_string(dwc)
+
+    var_names <- var_names()
 
     var_names_type <- var_names[, vtype, drop = FALSE]
 
@@ -1116,6 +1130,8 @@ compute_abundance <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
+  var_names <- var_names()
+
   abundance_var <- var_names[["computed_var_abundance", vtype]]
 
   occurrence_status_var <- var_names[["computed_var_occurrence_status", vtype]]
@@ -1198,6 +1214,8 @@ compute_citation <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
+  var_names <- var_names()
+
   citation_var <- var_names[["computed_var_citation", vtype]]
 
   add <- add && citation_var %in% select_user
@@ -1239,6 +1257,8 @@ compute_coordinate_uncertainty <- function(fb_occurrence_df) {
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   vtype <- col_type_string(dwc)
+
+  var_names <- var_names()
 
   coord_uncert_var <- var_names[["computed_var_coordinates_uncertainty", vtype]]
 
@@ -1285,6 +1305,8 @@ compute_scientific_name <- function(fb_occurrence_df) {
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   vtype <- col_type_string(dwc)
+
+  var_names <- var_names()
 
   sci_name_var <- var_names[["computed_var_scientific_name", vtype]]
 
@@ -1376,6 +1398,8 @@ compute_red_list_status <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
+  var_names <- var_names()
+
   red_list_var <- var_names[["computed_var_red_list_status", vtype]]
 
   add <- add && red_list_var %in% select_user
@@ -1422,6 +1446,8 @@ compute_region <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
+  var_names <- var_names()
+
   region_var <- var_names[["computed_var_region", vtype]]
 
   add <- add && region_var %in% select_user
@@ -1435,6 +1461,8 @@ compute_region <- function(fb_occurrence_df) {
     municipality_id <- fb_occurrence_df[[municipality_id]]
 
     municipality_id <- basename(municipality_id)
+
+    municipality <- municipality()
 
     region <- municipality[municipality_id, "region"]
 
@@ -1637,6 +1665,8 @@ extract_facts <- function(fb_occurrence_df) {
     fb_occurrence_df[facts] <- NA_character_
 
     levels <- seq_len(3L)
+
+    var_names <- var_names()
 
     for (fact in facts) {
 

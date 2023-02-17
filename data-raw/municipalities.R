@@ -15,7 +15,7 @@ municipality <-
   lapply(municipality, as.data.frame, stringsAsFactors = FALSE)
 municipality <- reduce_merge(municipality)
 municipality[["country"]] <-
-  finbif:::country[municipality[["isPartOf"]], "name_en"]
+  finbif:::country_df[municipality[["isPartOf"]], "name_en"]
 municipality[["name.en"]] <- ifelse(
   nchar(municipality[["name.en"]]), municipality[["name.en"]],
   municipality[["name.fi"]]

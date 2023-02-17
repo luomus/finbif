@@ -54,8 +54,6 @@ finnish_occurrence_status <- read.csv(
 
 class(finnish_occurrence_status[["code"]]) <- "translation"
 
-finnish_occurrence_status_neg <- finnish_occurrence_status
-
 metadata_ranges <-
   finbif:::api_get(
     list(path = "metadata/ranges", query = list(), cache = FALSE)

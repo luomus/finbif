@@ -13,7 +13,7 @@ stopifnot(n > bio_province[["content"]][["total"]])
 bio_province <- bio_province[["content"]][["results"]]
 bio_province <- lapply(bio_province, as.data.frame, stringsAsFactors = FALSE)
 bio_province <- reduce_merge(bio_province)
-bio_province[["country"]] <- finbif:::country[
+bio_province[["country"]] <- finbif:::country_df[
   bio_province[["isPartOf"]], "name_en"
 ]
 bio_province[["name.en"]] <- ifelse(

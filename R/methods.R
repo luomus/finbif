@@ -84,6 +84,8 @@ as.data.frame.finbif_records <- function(
 
   lst <- process_cols(x)
 
+  var_names <- var_names()
+
   single_col <- var_names[cols, "single"]
 
   cols_split <- split(cols, single_col)
@@ -137,6 +139,8 @@ process_cols <- function(x) {
   aggregated <- attr(x, "aggregated")
 
   col_list <- list()
+
+  var_names <- var_names()
 
   for (col in cols) {
 
@@ -253,6 +257,8 @@ localise_labels <- function(labels_obj) {
   translated_var <- var_names[[col, "translated_var"]]
 
   new_labels <- get(translated_var)
+
+  new_labels <- new_labels()
 
   locale_col <- paste0("name_", locale)
 

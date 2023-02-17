@@ -200,6 +200,8 @@ records <- function(fb_records_obj) {
 
       order_by <- sub("^-", "", order_by)
 
+      var_names <- var_names()
+
       var_names_order <- var_names[["order"]]
 
       order_vars <- var_names[var_names_order, var_type, drop = FALSE]
@@ -316,6 +318,8 @@ infer_selection <- function(fb_records_obj) {
   include_facts <- fb_records_obj[["include_facts"]]
 
   var_type <- fb_records_obj[["var_type"]]
+
+  var_names <- var_names()
 
   is_date_time_vars <- var_names[["date"]]
 
@@ -624,6 +628,8 @@ infer_computed_vars <- function(fb_records_obj) {
   region <- list(vars = region_vars, v_names = region_var_names)
 
   computed_var_list <- list(abundance, cu, citation, sn, red_list, region)
+
+  var_names <- var_names()
 
   for (i in computed_var_list) {
 
@@ -1085,6 +1091,8 @@ parse_filters <- function(fb_records_obj) {
 
   cols <- c("id", "collection_name", "abbreviation")
 
+  filter_names <- filter_names()
+
   for (i in filter_sq) {
 
     filter_name_i <- finbif_filter_names[[i]]
@@ -1234,6 +1242,14 @@ translate <- function(translation_obj) {
   pos <- translation_obj[["env"]]
 
   trsltn <- get(translation, pos)
+
+  is_fun <- is.function(trsltn)
+
+  if (is_fun) {
+
+    trsltn <- trsltn()
+
+  }
 
   # Some filters have multi-level values to translate (e.g., primary_habitat)
 
@@ -1698,6 +1714,8 @@ na_exclude <- function(fb_records_obj) {
     has_value <- strsplit(has_value, ",")
 
     has_value <- c(hasValue = has_value)
+
+    var_names <- var_names()
 
     available_vars <- row.names(var_names)
 

@@ -635,6 +635,8 @@ to <- function(
 
   x <- unlist(x)
 
+  var_names <- var_names()
+
   vars_to <- var_names[[to]]
 
   vars_from <- var_names[[from]]
@@ -710,9 +712,9 @@ from_schema <- function(
 
   vars <- switch(
     file,
-    none = var_names,
-    citable = cite_file_vars,
-    lite = lite_download_file_vars
+    none = var_names(),
+    citable = cite_file_vars(),
+    lite = lite_download_file_vars()
   )
 
   to <- match.arg(to)
