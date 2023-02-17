@@ -1,0 +1,38 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MX.threatenedStatusEnum?lang=multi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Fri, 17 Feb 2023 12:32:44 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '420'
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"1a4-hSxAzhL6rCA56IF0F4xaco7Pnr8"
+      vary: Accept-Encoding
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '[{"id":"MX.threatenedStatusStatutoryProtected","value":{"fi":"Lakisääteinen","en":"Statutory","sv":"Lagstadgad"}},{"id":"MX.threatenedStatusThreatened","value":{"en":"Threatened","fi":"Uhanalainen","sv":"Hotad"}},{"id":"MX.threatenedStatusNearThreatened","value":{"en":"Near
+        Threatened","fi":"Silmälläpidettävä","sv":"Nära hotad"}},{"id":"MX.threatenedStatusOther","value":{"fi":"Muu","en":"Other","sv":"Andra"}}]'
+  recorded_at: 2023-02-17 12:32:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

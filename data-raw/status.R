@@ -114,27 +114,3 @@ redlist_status <- sapply(metadata_ranges[["MX.iucnStatuses"]], getElement, "id")
 stopifnot(
   identical(sort(row.names(red_list_status)), sort(redlist_status))
 )
-
-threatened_status <- finbif:::api_get(
-  list(
-    path = "metadata/ranges/MX.threatenedStatusEnum",
-    query = list(lang = "multi"),
-    cache = FALSE
-  )
-)
-
-threatened_status <- lapply(
-  threatened_status[["content"]], as.data.frame, stringsAsFactors = FALSE
-)
-
-threatened_status <- reduce_merge(threatened_status)
-
-row.names(threatened_status) <- threatened_status[["id"]]
-
-threatened_status[["id"]] <- NULL
-
-names(threatened_status) <- sub("value\\.", "name_", names(threatened_status))
-
-class(threatened_status[["name_en"]]) <- "translation"
-class(threatened_status[["name_fi"]]) <- "translation"
-class(threatened_status[["name_sv"]]) <- "translation"

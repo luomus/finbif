@@ -58,7 +58,45 @@ red_list_status <- function() {
 
 threatened_status <- function() {
 
-  threatened_status_df
+  query <- list(lang = "multi")
+
+  path <- "metadata/ranges/MX.threatenedStatusEnum"
+
+  request <- list(path = path, query = query, cache = TRUE)
+
+  ts_response <- api_get(request)
+
+  ts_response_content <- ts_response[["content"]]
+
+  n_langs <- length(supported_langs)
+
+  sq <- seq_len(n_langs)
+
+  ts_df <- vector("list", n_langs)
+
+  row_names <- vapply(ts_response_content, getElement, "", "id")
+
+  col_names <- paste0("name_", supported_langs)
+
+  ts_df <- structure(ts_df, row.names = row_names, names = col_names)
+
+  sq <- seq_along(supported_langs)
+
+  for (i in sq) {
+
+    lang_i <- supported_langs[[i]]
+
+    el_i <- c("value", lang_i)
+
+    ts_i <- vapply(ts_response_content, get_el_recurse, "", el_i, "character")
+
+    ts_i <- structure(ts_i, class = "translation")
+
+    ts_df[[i]] <- ts_i
+
+  }
+
+  structure(ts_df, class = "data.frame")
 
 }
 

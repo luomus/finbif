@@ -27,7 +27,6 @@ lite_download_file_vars_df <- lite_download_file_vars
 filter_names_df <- filter_names
 regulatory_status_df <- regulatory_status
 red_list_status_df <- red_list_status
-threatened_status_df <- threatened_status
 informal_groups_df <- informal_groups
 informal_groups_reported_df <- informal_groups
 primary_habitat_df <- primary_habitat
@@ -65,7 +64,6 @@ usethis::use_data(
   filter_names_df,
   regulatory_status_df,
   red_list_status_df,
-  threatened_status_df,
   informal_groups_df,
   informal_groups_reported_df,
   primary_habitat_df,
