@@ -27,10 +27,9 @@ used.}
 \item{\code{finbif_tz}}{Character. The timezone used by \code{finbif} functions that
 compute dates and times. Default: \code{Sys.timezone()}}
 \item{\code{finbif_locale}}{Character. One of the supported two-letter ISO 639-1
-language codes. Current supported languages are English, Finnish, Swedish,
-Russian, and Sámi (Northern). By default, the system settings are used to
-set this option if they are set to one of the supported languages,
-otherwise English is used.}
+language codes. Current supported languages are English, Finnish and
+Swedish. By default, the system settings are used to set this option if
+they are set to one of the supported languages, otherwise English is used.}
 \item{\code{finbif_hide_progress}}{Logical. Global option to suppress progress
 indicators for downloading, importing and processing FinBIF records.
 Default: \code{FALSE}}

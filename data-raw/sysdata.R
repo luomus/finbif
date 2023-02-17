@@ -56,6 +56,8 @@ atlas_code_df <- atlas_code
 atlas_class_df <- atlas_class
 abundance_unit_df <- abundance_unit
 
+supported_langs <- c(English = "en", Finnish = "fi", Swedish = "sv")
+
 usethis::use_data(
   var_names_df,
   has_value_df,

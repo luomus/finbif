@@ -38,10 +38,10 @@
 #' @param exclude_na Logical. Should records where all selected variables have
 #'   non-NA values only be returned.
 #' @param locale Character. One of the supported two-letter ISO 639-1 language
-#'   codes. Current supported languages are English, Finnish, Swedish, Russian,
-#'   and Sámi (Northern). For data where more than one language is available
-#'   the language denoted by `locale` will be preferred while falling back to
-#'   the other languages in the order indicated above.
+#'   codes. Current supported languages are English, Finnish and Swedish. For
+#'   data where more than one language is available the language denoted by
+#'   `locale` will be preferred while falling back to the other languages in the
+#'   order indicated above.
 #' @param include_facts Logical. Should all "fact" variables be included?
 #' @return A `finbif_api` or `finbif_api_list` object.
 #' @examples \dontrun{

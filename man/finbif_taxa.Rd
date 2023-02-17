@@ -34,10 +34,10 @@ than \code{finbif_taxa} a \code{finbif_taxa} object.}
 \item{cache}{Logical. Use cached data.}
 
 \item{locale}{Character. One of the supported two-letter ISO 639-1 language
-codes. Current supported languages are English, Finnish, Swedish, Russian,
-and Sámi (Northern). For data where more than one language is available
-the language denoted by \code{locale} will be preferred while falling back to
-the other languages in the order indicated above.}
+codes. Current supported languages are English, Finnish and Swedish. For
+data where more than one language is available the language denoted by
+\code{locale} will be preferred while falling back to the other languages in the
+order indicated above.}
 }
 \value{
 For \code{finbif_taxa} a \code{finbif_taxa} object. Otherwise, a character

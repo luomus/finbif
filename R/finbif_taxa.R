@@ -12,10 +12,10 @@
 #'   `partial` or `likely`.
 #' @param cache Logical. Use cached data.
 #' @param locale Character. One of the supported two-letter ISO 639-1 language
-#'   codes. Current supported languages are English, Finnish, Swedish, Russian,
-#'   and Sámi (Northern). For data where more than one language is available
-#'   the language denoted by `locale` will be preferred while falling back to
-#'   the other languages in the order indicated above.
+#'   codes. Current supported languages are English, Finnish and Swedish. For
+#'   data where more than one language is available the language denoted by
+#'   `locale` will be preferred while falling back to the other languages in the
+#'   order indicated above.
 #' @return For `finbif_taxa` a `finbif_taxa` object. Otherwise, a character
 #'    vector.
 #' @examples \dontrun{

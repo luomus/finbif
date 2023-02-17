@@ -24,11 +24,3 @@ superrecord_basis <- data.frame(
 )
 
 class(superrecord_basis[["options"]]) <- "translation"
-
-supported_langs <- c(
-  English           = "en",
-  Finnish           = "fi",
-  Swedish           = "sv",
-  Russian           = "ru",
-  `Sami (Northern)` = "se"
-)

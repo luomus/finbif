@@ -9,10 +9,10 @@
 #' @param limit Integer. The maximum number informal groups to display.
 #' @param quiet Logical. Return informal group names without displaying them.
 #' @param locale Character. One of the supported two-letter ISO 639-1 language
-#'   codes. Current supported languages are English, Finnish, Swedish, Russian,
-#'   and Sámi (Northern). For data where more than one language is available
-#'   the language denoted by `locale` will be preferred while falling back to
-#'   the other languages in the order indicated above.
+#'   codes. Current supported languages are English, Finnish and Swedish. For
+#'   data where more than one language is available the language denoted by
+#'   `locale` will be preferred while falling back to the other languages in the
+#'   order indicated above.
 #' @return A character vector (invisibly).
 #' @examples \dontrun{
 #'

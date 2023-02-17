@@ -90,10 +90,10 @@ of \code{"warn"} (default) or \code{"error"}.}
 outputted date-time. Defaults to system timezone.}
 
 \item{locale}{Character. One of the supported two-letter ISO 639-1 language
-codes. Current supported languages are English, Finnish, Swedish, Russian,
-and Sámi (Northern). For data where more than one language is available
-the language denoted by \code{locale} will be preferred while falling back to
-the other languages in the order indicated above.}
+codes. Current supported languages are English, Finnish and Swedish. For
+data where more than one language is available the language denoted by
+\code{locale} will be preferred while falling back to the other languages in the
+order indicated above.}
 
 \item{seed}{Integer. Set a seed for randomly sampling records.}
 

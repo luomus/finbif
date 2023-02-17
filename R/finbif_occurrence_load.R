@@ -38,10 +38,10 @@
 #'   all variables explicitly or via recycling. To only drop some
 #'   missing/`NA`-data facts use `drop_na` argument.
 #' @param locale Character. One of the supported two-letter ISO 639-1 language
-#'   codes. Current supported languages are English, Finnish, Swedish, Russian,
-#'   and Sámi (Northern). For data where more than one language is available
-#'   the language denoted by `locale` will be preferred while falling back to
-#'   the other languages in the order indicated above.
+#'   codes. Current supported languages are English, Finnish and Swedish. For
+#'   data where more than one language is available the language denoted by
+#'   `locale` will be preferred while falling back to the other languages in the
+#'   order indicated above.
 #' @param skip Integer. The number of lines of the data file to skip before
 #'   beginning to read data (not including the header).
 #' @inheritParams finbif_records
