@@ -15,8 +15,6 @@ test_that(
 
     expect_s3_class(informal_groups_reported(), "data.frame")
 
-    expect_type(primary_secondary_habitat(), "list")
-
     expect_s3_class(orig_taxon_rank(), "data.frame")
 
     expect_s3_class(finnish_occurrence_status_neg(), "data.frame")

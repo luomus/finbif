@@ -4,7 +4,6 @@ source("data-raw/lite_download_file_variables.R")
 source("data-raw/filters.R")
 source("data-raw/status.R")
 source("data-raw/informal_groups.R")
-source("data-raw/habitat_types.R")
 source("data-raw/taxon_ranks.R")
 source("data-raw/countries.R")
 source("data-raw/regions.R")
@@ -28,8 +27,6 @@ filter_names_df <- filter_names
 regulatory_status_df <- regulatory_status
 red_list_status_df <- red_list_status
 informal_groups_df <- informal_groups
-primary_habitat_df <- primary_habitat
-primary_secondary_habitat_df <- primary_secondary_habitat
 taxon_rank_df <- taxon_rank
 orig_taxon_rank_df <- orig_taxon_rank
 country_df <- country
@@ -66,8 +63,6 @@ usethis::use_data(
   regulatory_status_df,
   red_list_status_df,
   informal_groups_df,
-  primary_habitat_df,
-  primary_secondary_habitat_df,
   taxon_rank_df,
   orig_taxon_rank_df,
   country_df,

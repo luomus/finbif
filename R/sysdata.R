@@ -1,5 +1,53 @@
 #' @noRd
 
+get_sysdata <- function(x) {
+
+  path <- paste0("metadata/ranges/", x)
+
+  query <- list(lang = "multi")
+
+  request <- list(path = path, query = query, cache = TRUE)
+
+  sd_response <- api_get(request)
+
+  sd_response_content <- sd_response[["content"]]
+
+  n_langs <- length(supported_langs)
+
+  sq <- seq_len(n_langs)
+
+  sd_df <- vector("list", n_langs)
+
+  row_names <- vapply(sd_response_content, getElement, "", "id")
+
+  col_names <- paste0("name_", supported_langs)
+
+  sd_df <- structure(sd_df, row.names = row_names, names = col_names)
+
+  sq <- seq_along(supported_langs)
+
+  for (i in sq) {
+
+    lang_i <- supported_langs[[i]]
+
+    el_i <- c("value", lang_i)
+
+    sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
+
+    sd_i <- structure(sd_i, class = "translation")
+
+    sd_df[[i]] <- sd_i
+
+  }
+
+  structure(sd_df, class = "data.frame")
+
+
+}
+
+
+#' @noRd
+
 var_names <- function() {
 
   var_names_df
@@ -58,45 +106,7 @@ red_list_status <- function() {
 
 threatened_status <- function() {
 
-  query <- list(lang = "multi")
-
-  path <- "metadata/ranges/MX.threatenedStatusEnum"
-
-  request <- list(path = path, query = query, cache = TRUE)
-
-  ts_response <- api_get(request)
-
-  ts_response_content <- ts_response[["content"]]
-
-  n_langs <- length(supported_langs)
-
-  sq <- seq_len(n_langs)
-
-  ts_df <- vector("list", n_langs)
-
-  row_names <- vapply(ts_response_content, getElement, "", "id")
-
-  col_names <- paste0("name_", supported_langs)
-
-  ts_df <- structure(ts_df, row.names = row_names, names = col_names)
-
-  sq <- seq_along(supported_langs)
-
-  for (i in sq) {
-
-    lang_i <- supported_langs[[i]]
-
-    el_i <- c("value", lang_i)
-
-    ts_i <- vapply(ts_response_content, get_el_recurse, "", el_i, "character")
-
-    ts_i <- structure(ts_i, class = "translation")
-
-    ts_df[[i]] <- ts_i
-
-  }
-
-  structure(ts_df, class = "data.frame")
+  get_sysdata("MX.threatenedStatusEnum")
 
 }
 
@@ -116,17 +126,41 @@ informal_groups_reported <- informal_groups
 
 primary_habitat <- function() {
 
-  primary_habitat_df
+  ht <- get_sysdata("MKV.habitatEnum")
+
+  ht_row_names <- row.names(ht)
+
+  ht_code <- sub("MKV.habitat", "", ht_row_names)
+
+  ht_code <- structure(ht_code, class = "translation")
+
+  ht_code <- list(code = ht_code)
+
+  ht_code <- structure(ht_code, class = "data.frame", row.names = ht_row_names)
+
+  ht <- cbind(ht_code, ht)
+
+  st <- get_sysdata("MKV.habitatSpecificTypeEnum")
+
+  st_row_names <- row.names(st)
+
+  st_code <- sub("MKV.habitatSpecificType", "", st_row_names)
+
+  st_code <- structure(st_code, class = "translation")
+
+  st_code <- list(code = st_code)
+
+  st_code <- structure(st_code, class = "data.frame", row.names = st_row_names)
+
+  st <- cbind(st_code, st)
+
+  list(habitat_types = ht, specific_habitat_types = st)
 
 }
 
 #' @noRd
 
-primary_secondary_habitat <- function() {
-
-  primary_secondary_habitat_df
-
-}
+primary_secondary_habitat <- primary_habitat
 
 #' @noRd
 
