@@ -42,9 +42,39 @@ get_sysdata <- function(x) {
 
   structure(sd_df, class = "data.frame")
 
-
 }
 
+#' @noRd
+
+get_enumeration <- function(x) {
+
+  path <- "warehouse/enumeration-labels"
+
+  query <- list()
+
+  request <- list(path = path, query = query, cache = TRUE)
+
+  en_response <- api_get(request)
+
+  results <- c("content", "results")
+
+  en_response_results <- en_response[[results]]
+
+  enumerations <- vapply(en_response_results, getElement, "", "enumeration")
+
+  ids <- vapply(en_response_results, getElement, "", "property")
+
+  enumerations <- structure(enumerations, names = ids)
+
+  sd_en_df <- get_sysdata(x)
+
+  id <- row.names(sd_en_df)
+
+  id <- enumerations[id]
+
+  structure(sd_en_df, row.names = id)
+
+}
 
 #' @noRd
 
@@ -242,7 +272,7 @@ source <- function() {
 
 record_basis <- function() {
 
-  record_basis_df
+  get_enumeration("MY.recordBases")
 
 }
 

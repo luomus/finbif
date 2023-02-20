@@ -40,34 +40,6 @@ for (i in cols) {
 
 }
 
-record_basis <- lapply(
-  metadata_ranges[["MY.recordBases"]], as.data.frame,
-  stringsAsFactors = FALSE
-)
-
-record_basis <- reduce_merge(record_basis)
-
-record_basis <- merge(
-  record_basis[1L], labels, by.x = "id", by.y = "property"
-)
-
-record_basis[["id"]] <- NULL
-
-row.names(record_basis) <- record_basis[["enumeration"]]
-record_basis[["enumeration"]] <- NULL
-
-cols <- sub("label\\.", "name_", names(record_basis))
-
-names(record_basis) <- cols
-
-record_basis <- record_basis[sort(cols)]
-
-for (i in cols) {
-
-  class(record_basis[[i]]) <- "translation"
-
-}
-
 sex <- lapply(
   metadata_ranges[["MY.sexes"]], as.data.frame, stringsAsFactors = FALSE
 )

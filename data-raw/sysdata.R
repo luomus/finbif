@@ -33,7 +33,6 @@ municipality_df <- municipality
 bird_assoc_area_df <- bird_assoc_area
 finnish_occurrence_status_df <- finnish_occurrence_status
 source_df <- source
-record_basis_df <- record_basis
 superrecord_basis_df <- superrecord_basis
 life_stage_df <- life_stage
 sex_df <- sex
@@ -67,7 +66,6 @@ usethis::use_data(
   bird_assoc_area_df,
   finnish_occurrence_status_df,
   source_df,
-  record_basis_df,
   superrecord_basis_df,
   life_stage_df,
   sex_df,
