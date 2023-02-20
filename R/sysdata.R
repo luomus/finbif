@@ -154,13 +154,15 @@ informal_groups_reported <- informal_groups
 
 #' @noRd
 
-primary_habitat <- function() {
+get_habitat_types <- function(x) {
 
-  ht <- get_sysdata("MKV.habitatEnum")
+  enum <- paste0(x, "Enum")
+
+  ht <- get_sysdata(enum)
 
   ht_row_names <- row.names(ht)
 
-  ht_code <- sub("MKV.habitat", "", ht_row_names)
+  ht_code <- sub(x, "", ht_row_names)
 
   ht_code <- structure(ht_code, class = "translation")
 
@@ -170,21 +172,17 @@ primary_habitat <- function() {
 
   ht <- cbind(ht_code, ht)
 
-  st <- get_sysdata("MKV.habitatSpecificTypeEnum")
+}
 
-  st_row_names <- row.names(st)
+#' @noRd
 
-  st_code <- sub("MKV.habitatSpecificType", "", st_row_names)
+primary_habitat <- function() {
 
-  st_code <- structure(st_code, class = "translation")
+  habitat_types <- get_habitat_types("MKV.habitat")
 
-  st_code <- list(code = st_code)
+  specific_types <- get_habitat_types("MKV.habitatSpecificType")
 
-  st_code <- structure(st_code, class = "data.frame", row.names = st_row_names)
-
-  st <- cbind(st_code, st)
-
-  list(habitat_types = ht, specific_habitat_types = st)
+  list(habitat_types = habitat_types, specific_habitat_types = specific_types)
 
 }
 
