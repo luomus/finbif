@@ -114,6 +114,7 @@ completeListTaxonId,complete_list_taxon_id,uri,FALSE,",",TRUE
 completeListType,complete_list_type,character,TRUE,",",TRUE
 higherTaxon,higher_taxon,logical,FALSE,",",FALSE
 alive,is_alive,logical,FALSE,",",FALSE
-virva,virva,logical,FALSE,",",FALSE
-identificationBasis,FALSE,",",FALSE
-samplingMethod,FALSE,",",FALSE
+identificationBasis,identification_basis,FALSE,",",FALSE
+samplingMethod,sampling_method,FALSE,",",FALSE
+taxonSetId,taxon_set_id,FALSE,",",FALSE
+timeAccuracy,time_uncertainty,FALSE,",",FALSE

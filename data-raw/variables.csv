@@ -373,7 +373,7 @@ unit.linkings.taxon.latestRedListStatusFinland.status,red_list_status_id,redList
 computed_var_red_list_status,red_list_status,redListStatus,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.latestRedListStatusFinland.year,red_list_year,redListYear,FALSE,FALSE,integer,integer,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.linkings.editors,editors,editors,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.namedPlace.birdAssociationAreaId,bird_assoc_area_id,birdAssociationAreaId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.birdAssociationAreaId,location_bird_assoc_area_id,locationBirdAssociationAreaId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.collectionId,location_collection_id,locationCollectionId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.id,location_id2,locationID2,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.alternativeIds,location_ids,locationIDs,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
@@ -697,3 +697,4 @@ unit.linkings.taxon.virva,taxon_Virva,taxonVirva,FALSE,FALSE,logical,logical,FAL
 unit.interpretations.virva,virva,virva,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identificationBasis,identification_basis,basisOfIndentification,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.samplingMethod,sampling_method,measurementMethod,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+gathering.conversions.birdAssociationArea,bird_assoc_area_id,birdAssociationAreaId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
