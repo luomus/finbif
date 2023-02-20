@@ -166,17 +166,13 @@ primary_secondary_habitat <- primary_habitat
 
 taxon_rank <- function() {
 
-  taxon_rank_df
+  get_sysdata("MX.threatenedStatusEnum")
 
 }
 
 #' @noRd
 
-orig_taxon_rank <- function() {
-
-  orig_taxon_rank_df
-
-}
+orig_taxon_rank <- taxon_rank
 
 #' @noRd
 
