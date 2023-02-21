@@ -72,39 +72,6 @@ for (i in cols) {
 
 }
 
-life_stage <- lapply(
-  metadata_ranges[["MY.lifeStages"]], as.data.frame, stringsAsFactors = FALSE
-)
-
-life_stage <- c(
-  life_stage,
-  lapply(
-    metadata_ranges[["MY.plantLifeStageEnum"]], as.data.frame,
-    stringsAsFactors = FALSE
-  )
-)
-
-life_stage <- reduce_merge(life_stage)
-
-life_stage <- merge(life_stage[1L], labels, by.x = "id", by.y = "property")
-
-life_stage[["id"]] <- NULL
-
-row.names(life_stage) <- life_stage[["enumeration"]]
-life_stage[["enumeration"]] <- NULL
-
-cols <- sub("label\\.", "name_", names(life_stage))
-
-names(life_stage) <- cols
-
-life_stage <- life_stage[sort(cols)]
-
-for (i in cols) {
-
-  class(life_stage[[i]]) <- "translation"
-
-}
-
 record_quality <- lapply(
   metadata_ranges[["MZ.recordQualityEnum"]], as.data.frame,
   stringsAsFactors = FALSE

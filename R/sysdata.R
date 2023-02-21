@@ -34,11 +34,11 @@ get_sysdata <- function(x) {
 
     sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
 
-    sd_i <- structure(sd_i, class = "translation")
-
     sd_df[[i]] <- sd_i
 
   }
+
+  sd_df <- set_translations(sd_df)
 
   structure(sd_df, class = "data.frame")
 
@@ -72,7 +72,23 @@ get_enumeration <- function(x) {
 
   id <- enumerations[id]
 
-  structure(sd_en_df, row.names = id)
+  missing_enums <- is.na(id)
+
+  sd_en_df <- structure(sd_en_df, row.names = id)
+
+  sd_en_df <- sd_en_df[!missing_enums, ]
+
+  set_translations(sd_en_df)
+
+}
+
+#' @noRd
+
+set_translations <- function(x) {
+
+  x[] <- lapply(x, structure, class = "translation")
+
+  x
 
 }
 
@@ -286,7 +302,13 @@ superrecord_basis <- function() {
 
 life_stage <- function() {
 
-  life_stage_df
+  animal_life_stages <- get_enumeration("MY.lifeStages")
+
+  plant_life_stages <- get_enumeration("MY.plantLifeStageEnum")
+
+  life_stages <- rbind(animal_life_stages, plant_life_stages)
+
+  set_translations(life_stages)
 
 }
 
