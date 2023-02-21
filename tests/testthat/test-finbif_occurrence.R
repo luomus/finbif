@@ -151,7 +151,11 @@ test_that(
 
     expect_output(print(finbif_occurrence()), "Records downloaded:")
 
-    if (has_grd && !identical(.Platform$OS.type, "windows")) {
+    has_grd <- requireNamespace("grDevices", quietly = TRUE)
+
+    not_windows <- !identical(.Platform$OS.type, "windows")
+
+    if (has_grd && not_windows) {
 
       path <- tempfile(fileext = ".svg")
 

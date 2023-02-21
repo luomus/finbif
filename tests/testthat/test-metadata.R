@@ -1,6 +1,8 @@
 test_that(
   "return valid data", {
 
+    skip_on_cran()
+
     expect_s3_class(finbif_metadata(), "data.frame")
 
     expect_s3_class(finbif_metadata("red_list"), "data.frame")
@@ -74,8 +76,13 @@ test_that(
 
 test_that(
   "print method works", {
+
+    skip_on_cran()
+
     expect_output(print(finbif_metadata("taxon_rank")), "rank")
+
   }
+
 )
 
 test_that(
