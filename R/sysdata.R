@@ -146,7 +146,88 @@ filter_names <- function() {
 
 regulatory_status <- function() {
 
-  regulatory_status_df
+  status_code <- c(
+    MX.finlex160_1997_appendix4 = "FNLX160_97_4",
+    MX.finlex160_1997_appendix4_specialInterest = "FNLX160_97_4_SI",
+    MX.finlex160_1997_appendix2a = "FNLX160_97_2A",
+    MX.finlex160_1997_appendix2b = "FNLX160_97_2B",
+    MX.finlex160_1997_appendix3a = "FNLX160_97_3A",
+    MX.finlex160_1997_appendix3b = "FNLX160_97_3B",
+    MX.finlex160_1997_appendix3c = "FNLX160_97_3C",
+    MX.habitatsDirectiveAnnexII = "HABDIR2",
+    MX.habitatsDirectiveAnnexIV = "HABDIR4",
+    MX.habitatsDirectiveAnnexV = "HABDIR5",
+    MX.primaryInterestInEU = "PI_EU",
+    MX.habitatsDirectiveAnnexIIExceptionGranted = "HABDIR2E",
+    MX.habitatsDirectiveAnnexIVExceptionGranted = "HABDIR4E",
+    MX.habitatsDirectiveAnnexVExceptionGranted = "HABDIR5E",
+    MX.birdsDirectiveStatusAppendix1 = "BDS1",
+    MX.birdsDirectiveStatusAppendix2A = "BDS2A",
+    MX.birdsDirectiveStatusAppendix2B = "BDS2B",
+    MX.birdsDirectiveStatusAppendix3A = "BDS3A",
+    MX.birdsDirectiveStatusAppendix3B = "BDS3B",
+    MX.finnishEnvironmentInstitute2010protectionPrioritySpecies = "FEI_PPS",
+    MX.finnishEnvironmentInstitute2020conservationProjectSpecies = "FEI_CPS",
+    MX.finnishEnvironmentInstitute2020conservationProjectAapamireSpecies =
+      "FEI_CPAS",
+    MX.gameBird = "GMEB",
+    MX.gameMammal = "GMEM",
+    MX.unprotectedSpecies = "UNP_SP",
+    MX.nationallySignificantInvasiveSpecies = "NS_INVSV",
+    MX.euInvasiveSpeciesList = "EU_INVSV",
+    MX.otherPlantPest = "OPP_INVSV",
+    MX.qualityPlantPest = "QLPP_INVSV",
+    MX.quarantinePlantPest = "QPP_INVSV",
+    MX.nationalInvasiveSpeciesStrategy = "NSS_INVSV",
+    MX.otherInvasiveSpeciesList = "OTH_INVSV",
+    MX.controllingRisksOfInvasiveAlienSpecies = "CRAS_INVSV",
+    MX.finnishEnvironmentInstitute20072010forestSpecies = "FEI_FS",
+    MX.finnishEnvironmentInstitute20192021forestSpecies = "FEI_FS2",
+    MX.cropWildRelative = "CWR",
+    MX.birdsDirectiveStatusMigratoryBirds = "BDSMB",
+    MX.cites_appendixI = "CITES1",
+    MX.cites_appendixII = "CITES2",
+    MX.cites_appendixIII = "CITES3",
+    MX.euRegulation_cites_appendixA = "EU_CITESA",
+    MX.euRegulation_cites_appendixB = "EU_CITESB",
+    MX.finlex160_1997_appendix4_2021 = "FNLX160_97_4_2021",
+    MX.finlex160_1997_appendix4_specialInterest_2021 = "FNLX160_97_4_SI_2021",
+    MX.finlex160_1997_largeBirdsOfPrey = "FNLX160_97_LBP",
+    MX.finlex160_1997_appendix1 = "FNLX160_97_1",
+    MX.finnishEnvironmentInstitute2020protectionPrioritySpecies = "FEI2020PPS",
+    MX.finnishEnvironmentInstitute2020conservationProjectVascularSpecies =
+      "FEI2020CPVPS",
+    MX.habitatsDirectiveAnnexII_FinlandNaturaSpecies = "HABDIR2FN",
+    MX.euRegulation_cites_appendixD = "EU_CITESD"
+  )
+
+  reg_status <- get_sysdata("MX.adminStatusEnum")
+
+  id <- row.names(reg_status)
+
+  status_code <- status_code[id]
+
+  status_code_na <- is.na(status_code)
+
+  missing_status_codes <- id[status_code_na]
+
+  missing_status_codes <- sub("^.*\\.", "", missing_status_codes)
+
+  missing_status_codes <- abbreviate(missing_status_codes, 20L)
+
+  missing_status_codes <- toupper(missing_status_codes)
+
+  status_code[status_code_na] <- missing_status_codes
+
+  status_code <- make.unique(status_code)
+
+  status_code <- structure(status_code, class = "translation")
+
+  status_code <- list(status_code = status_code)
+
+  status_code <- structure(status_code, class = "data.frame", row.names = id)
+
+  cbind(status_code, reg_status)
 
 }
 

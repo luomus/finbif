@@ -85,7 +85,7 @@ md_regulatory_status <- function() {
 
   locale <- getOption("finbif_locale")
 
-  col <- paste0("description_", locale)
+  col <- paste0("name_", locale)
 
   regulatory_status <- regulatory_status()
 
@@ -95,13 +95,13 @@ md_regulatory_status <- function() {
 
   if (no_locale) {
 
-    col <- "description_en"
+    col <- "name_en"
 
   }
 
-  descriptions <- regulatory_status[[col]]
+  names <- regulatory_status[[col]]
 
-  ind <- order(descriptions)
+  ind <- order(names)
 
   cols <- c("status_code", col)
 

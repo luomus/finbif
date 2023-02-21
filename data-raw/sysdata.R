@@ -21,7 +21,6 @@ has_value_df <- has_value
 cite_file_vars_df <- cite_file_vars
 lite_download_file_vars_df <- lite_download_file_vars
 filter_names_df <- filter_names
-regulatory_status_df <- regulatory_status
 red_list_status_df <- red_list_status
 informal_groups_df <- informal_groups
 country_df <- country
@@ -46,7 +45,6 @@ usethis::use_data(
   cite_file_vars_df,
   lite_download_file_vars_df,
   filter_names_df,
-  regulatory_status_df,
   red_list_status_df,
   informal_groups_df,
   country_df,
