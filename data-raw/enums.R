@@ -98,30 +98,3 @@ for (i in cols) {
   class(record_quality[[i]]) <- "translation"
 
 }
-
-collection_quality <- lapply(
-  metadata_ranges[["MY.collectionQualityEnum"]], as.data.frame,
-  stringsAsFactors = FALSE
-)
-
-collection_quality <- reduce_merge(collection_quality)
-
-collection_quality <- merge(
-  collection_quality[1L], labels, by.x = "id", by.y = "property"
-)
-
-collection_quality[["id"]] <- NULL
-
-row.names(collection_quality) <- collection_quality[["enumeration"]]
-
-cols <- sub("label\\.", "name_", names(collection_quality))
-
-names(collection_quality) <- cols
-
-collection_quality <- collection_quality[sort(cols)]
-
-for (i in cols) {
-
-  class(collection_quality[[i]]) <- "translation"
-
-}

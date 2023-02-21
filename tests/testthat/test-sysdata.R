@@ -21,7 +21,13 @@ test_that(
 
     expect_s3_class(quality_issues(), "data.frame")
 
-    expect_s3_class(collection_quality(), "data.frame")
+    vcr::use_cassette("collection_quality", {
+
+      cq <- collection_quality()
+
+    })
+
+    expect_s3_class(cq, "data.frame")
 
     expect_s3_class(record_reliability(), "data.frame")
 

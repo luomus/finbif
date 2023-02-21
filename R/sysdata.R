@@ -358,7 +358,7 @@ quality_issues <- function() {
 
 collection_quality <- function() {
 
-  collection_quality_df
+  get_enumeration("MY.collectionQualityEnum")
 
 }
 
