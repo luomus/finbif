@@ -11,7 +11,6 @@ source("data-raw/municipalities.R")
 source("data-raw/bird_association_area.R")
 source("data-raw/finnish_occurrence.R")
 source("data-raw/sources.R")
-source("data-raw/restriction.R")
 source("data-raw/misc.R")
 source("data-raw/location_tag.R")
 source("data-raw/complete_list_type.R")
@@ -35,7 +34,6 @@ finnish_occurrence_status_df <- finnish_occurrence_status
 source_df <- source
 superrecord_basis_df <- superrecord_basis
 sex_df <- sex
-restriction_level_df <- restriction_level
 quality_issues_df <- quality_issues
 collection_quality_df <- collection_quality
 record_quality_df <- record_quality
@@ -66,7 +64,6 @@ usethis::use_data(
   source_df,
   superrecord_basis_df,
   sex_df,
-  restriction_level_df,
   quality_issues_df,
   collection_quality_df,
   record_quality_df,

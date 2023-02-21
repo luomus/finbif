@@ -342,7 +342,7 @@ restriction_reason <- function() {
 
 restriction_level <- function() {
 
-  restriction_level_df
+  finbif:::get_enumeration("MX.secureLevels")
 
 }
 

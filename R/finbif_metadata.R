@@ -329,13 +329,17 @@ md_record_basis <- function() {
 
 md_restriction_reasons <- function() {
 
+  cols <- c("enumeration", "name_en", "name_fi", "name_sv")
+
   col_names <- c(
     "label", "english_description", "finnish_description", "swedish_description"
   )
 
   restriction_reason <- restriction_reason()
 
-  obj <- list(df = restriction_reason, names = col_names)
+  df <- restriction_reason[cols]
+
+  obj <- list(df = df, names = col_names)
 
   md(obj)
 
@@ -345,13 +349,15 @@ md_restriction_reasons <- function() {
 
 md_restriction_levels <- function() {
 
-  cols <- c("value", "enumeration")
+  cols <- c("enumeration", "name_en", "name_fi", "name_sv")
 
   restriction_level <- restriction_level()
 
   df <- restriction_level[cols]
 
-  col_names <- c("level_description", "level_name")
+  col_names <- c(
+    "label", "english_description", "finnish_description", "swedish_description"
+  )
 
   obj <- list(df = df, names = col_names)
 
