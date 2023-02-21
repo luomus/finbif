@@ -35,7 +35,6 @@ source_df <- source
 superrecord_basis_df <- superrecord_basis
 sex_df <- sex
 quality_issues_df <- quality_issues
-record_quality_df <- record_quality
 record_reliability_df <- record_reliability
 complete_list_type_df <- complete_list_type
 location_tag_df <- location_tag
@@ -64,7 +63,6 @@ usethis::use_data(
   superrecord_basis_df,
   sex_df,
   quality_issues_df,
-  record_quality_df,
   record_reliability_df,
   complete_list_type_df,
   location_tag_df,

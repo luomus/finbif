@@ -71,30 +71,3 @@ for (i in cols) {
   class(sex[[i]]) <- "translation"
 
 }
-
-record_quality <- lapply(
-  metadata_ranges[["MZ.recordQualityEnum"]], as.data.frame,
-  stringsAsFactors = FALSE
-)
-
-record_quality <- reduce_merge(record_quality)
-
-record_quality <- merge(
-  record_quality[1L], labels, by.x = "id", by.y = "property"
-)
-
-record_quality[["id"]] <- NULL
-
-row.names(record_quality) <- record_quality[["enumeration"]]
-
-cols <- sub("label\\.", "name_", names(record_quality))
-
-names(record_quality) <- cols
-
-record_quality <- record_quality[sort(cols)]
-
-for (i in cols) {
-
-  class(record_quality[[i]]) <- "translation"
-
-}

@@ -366,7 +366,7 @@ collection_quality <- function() {
 
 record_quality <- function() {
 
-  record_quality_df
+  get_enumeration("MZ.recordQualityEnum")
 
 }
 
