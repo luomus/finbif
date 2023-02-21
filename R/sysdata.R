@@ -398,7 +398,7 @@ location_tag <- function() {
 
 atlas_code <- function() {
 
-  atlas_code_df
+  get_sysdata("MY.atlasCodeEnum")
 
 }
 
@@ -406,7 +406,7 @@ atlas_code <- function() {
 
 atlas_class <- function() {
 
-  atlas_class_df
+  get_sysdata("MY.atlasClassEnum")
 
 }
 

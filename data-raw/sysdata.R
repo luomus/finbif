@@ -14,7 +14,6 @@ source("data-raw/sources.R")
 source("data-raw/misc.R")
 source("data-raw/location_tag.R")
 source("data-raw/complete_list_type.R")
-source("data-raw/atlas.R")
 source("data-raw/enums.R")
 
 var_names_df <- var_names
@@ -38,8 +37,6 @@ quality_issues_df <- quality_issues
 record_reliability_df <- record_reliability
 complete_list_type_df <- complete_list_type
 location_tag_df <- location_tag
-atlas_code_df <- atlas_code
-atlas_class_df <- atlas_class
 abundance_unit_df <- abundance_unit
 
 supported_langs <- c(English = "en", Finnish = "fi", Swedish = "sv")
@@ -66,8 +63,6 @@ usethis::use_data(
   record_reliability_df,
   complete_list_type_df,
   location_tag_df,
-  atlas_code_df,
-  atlas_class_df,
   abundance_unit_df,
   supported_langs,
   internal = TRUE,

@@ -35,9 +35,21 @@ test_that(
 
     expect_s3_class(location_tag(), "data.frame")
 
-    expect_s3_class(atlas_code(), "data.frame")
+    vcr::use_cassette("atlas_code", {
 
-    expect_s3_class(atlas_class(), "data.frame")
+      aco <- atlas_code()
+
+    })
+
+    expect_s3_class(aco, "data.frame")
+
+    vcr::use_cassette("atlas_class", {
+
+      acl <- atlas_class()
+
+    })
+
+    expect_s3_class(acl, "data.frame")
 
   }
 )
