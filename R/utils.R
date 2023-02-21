@@ -267,6 +267,8 @@ name_chr_vec <- function(
 
   no_x <- missing(x)
 
+  no_x <- no_x || is.null(x)
+
   if (no_x) {
 
     return(NULL)
