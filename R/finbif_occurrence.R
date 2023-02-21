@@ -306,8 +306,6 @@ occurrence <- function(fb_records_obj) {
 
   class(fb_occurrence_df) <- class
 
-  facts <- as.character(facts)
-
   facts <- name_chr_vec(facts)
 
   select_user <- c(select_user, facts)
