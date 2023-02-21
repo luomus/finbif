@@ -35,7 +35,6 @@ finnish_occurrence_status_df <- finnish_occurrence_status
 source_df <- source
 superrecord_basis_df <- superrecord_basis
 sex_df <- sex
-restriction_reason_df <- restriction_reason
 restriction_level_df <- restriction_level
 quality_issues_df <- quality_issues
 collection_quality_df <- collection_quality
@@ -67,7 +66,6 @@ usethis::use_data(
   source_df,
   superrecord_basis_df,
   sex_df,
-  restriction_reason_df,
   restriction_level_df,
   quality_issues_df,
   collection_quality_df,

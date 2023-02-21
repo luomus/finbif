@@ -72,11 +72,21 @@ get_enumeration <- function(x) {
 
   id <- enumerations[id]
 
-  missing_enums <- is.na(id)
+  non_missing_enums <- !is.na(id)
 
   sd_en_df <- structure(sd_en_df, row.names = id)
 
-  sd_en_df <- sd_en_df[!missing_enums, ]
+  sd_en_df <- sd_en_df[non_missing_enums, ]
+
+  id <- id[non_missing_enums]
+
+  enumeration <- tolower(id)
+
+  enumeration <- list(enumeration = enumeration)
+
+  enumeration <- structure(enumeration, class = "data.frame", row.names = id)
+
+  sd_en_df <- cbind(enumeration, sd_en_df)
 
   set_translations(sd_en_df)
 
@@ -186,7 +196,7 @@ get_habitat_types <- function(x) {
 
   ht_code <- structure(ht_code, class = "data.frame", row.names = ht_row_names)
 
-  ht <- cbind(ht_code, ht)
+  cbind(ht_code, ht)
 
 }
 
@@ -324,7 +334,7 @@ sex <- function() {
 
 restriction_reason <- function() {
 
-  restriction_reason_df
+  get_enumeration("MZ.secureReason")
 
 }
 

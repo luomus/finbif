@@ -125,34 +125,3 @@ for (i in cols) {
   class(collection_quality[[i]]) <- "translation"
 
 }
-
-restriction_reason <- lapply(
-  metadata_ranges[["MZ.secureReason"]], as.data.frame,
-  stringsAsFactors = FALSE
-)
-
-restriction_reason <- reduce_merge(restriction_reason)
-
-restriction_reason <- merge(
-  restriction_reason[1L], labels, by.x = "id", by.y = "property"
-)
-
-restriction_reason[["id"]] <- NULL
-
-row.names(restriction_reason) <- restriction_reason[["enumeration"]]
-
-restriction_reason[["enumeration"]] <- tolower(
-  restriction_reason[["enumeration"]]
-)
-
-cols <- sub("label\\.", "name_", names(restriction_reason))
-
-names(restriction_reason) <- cols
-
-restriction_reason <- restriction_reason[sort(cols)]
-
-for (i in cols) {
-
-  class(restriction_reason[[i]]) <- "translation"
-
-}
