@@ -93,13 +93,16 @@ test_that(
 
     file_full <- paste0("http://tun.fi/HBF.", file)
 
-    expect_snapshot_value(
-     finbif_occurrence_load(
-       file_full, n = 0, tzone = "Etc/UTC", write_file = file_path, dt = FALSE,
-       keep_tsv = TRUE
-     ),
-     style = "json2", ignore_attr = "url"
-    )
+    vcr::use_cassette("zero_row_file", {
+
+      zero_row_file <- finbif_occurrence_load(
+        file_full, n = 0, tzone = "Etc/UTC", write_file = file_path, dt = FALSE,
+        keep_tsv = TRUE
+      )
+
+    })
+
+    expect_snapshot_value(zero_row_file, style = "json2", ignore_attr = "url")
 
     expect_snapshot_value(
       finbif_occurrence_load(

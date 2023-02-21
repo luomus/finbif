@@ -19,17 +19,41 @@ test_that(
 
     expect_s3_class(finbif_metadata("source"), "data.frame")
 
-    expect_s3_class(finbif_metadata("record_basis"), "data.frame")
+    vcr::use_cassette("record_basis_metadata", {
+
+      rbmd <- finbif_metadata("record_basis")
+
+    })
+
+    expect_s3_class(rbmd, "data.frame")
 
     expect_s3_class(finbif_metadata("sex_category"), "data.frame")
 
     expect_s3_class(finbif_metadata("restriction_reason"), "data.frame")
 
-    expect_s3_class(finbif_metadata("restriction_level"), "data.frame")
+    vcr::use_cassette("restriction_level_metadata", {
 
-    expect_s3_class(finbif_metadata("life_stage"), "data.frame")
+      rlmd <- finbif_metadata("restriction_level")
 
-    expect_s3_class(finbif_metadata("taxon_rank"), "data.frame")
+    })
+
+    expect_s3_class(rlmd, "data.frame")
+
+    vcr::use_cassette("life_stage_metadata", {
+
+      lsmd <- finbif_metadata("life_stage")
+
+    })
+
+    expect_s3_class(lsmd, "data.frame")
+
+    vcr::use_cassette("taxon_rank_metadata", {
+
+      trmd <- finbif_metadata("taxon_rank")
+
+    })
+
+    expect_s3_class(trmd, "data.frame")
 
     options(finbif_locale = "ru")
 
@@ -56,6 +80,6 @@ test_that(
 
 test_that(
   "returns errors appropriately", {
-    expect_error(finbif_metadata("notmetdata"))
+    expect_error(finbif_metadata("notmetadata"))
   }
 )

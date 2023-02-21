@@ -1,0 +1,47 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MX.secureLevels?lang=multi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 21 Feb 2023 09:35:16 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '889'
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"379-2Bu2UDa2fYeoFW0eLiHxmfHBt4E"
+      vary: Accept-Encoding
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '[{"id":"MX.secureLevelNone","value":{"en":"None","sv":"Inte skyddad","fi":"Ei
+        karkeistettu"}},{"id":"MX.secureLevelKM1","value":{"en":"1 km","sv":"1 km","fi":"1
+        km"}},{"id":"MX.secureLevelKM5","value":{"fi":"5 km","sv":"5 km","en":"5 km"}},{"id":"MX.secureLevelKM10","value":{"en":"10
+        km","sv":"10 km","fi":"10 km"}},{"id":"MX.secureLevelKM25","value":{"fi":"25
+        km","sv":"25 km","en":"25 km"}},{"id":"MX.secureLevelKM50","value":{"en":"50
+        km","fi":"50 km","sv":"50 km"}},{"id":"MX.secureLevelKM100","value":{"en":"100
+        km","sv":"100 km","fi":"100 km"}},{"id":"MX.secureLevelHighest","value":{"fi":"Täyssalaus","en":"Fully
+        hidden","sv":"Helt dold"}},{"id":"MX.secureLevelNoShow","value":{"fi":"Ei
+        näytetä ollenkaan - käytetään lähinnä spammin estämiseksi","sv":"Visas inte
+        alls - används huvudsakligen att stoppa skräppost","en":"Not shown at all
+        - used mainly to prevent spam"}}]'
+  recorded_at: 2023-02-21 09:35:16 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

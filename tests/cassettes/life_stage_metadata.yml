@@ -1,0 +1,88 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.lifeStages?lang=multi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 21 Feb 2023 09:35:16 GMT
+      content-type: application/json; charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"70f-2Gz7+fHM6Pn8YRcgGF5Vg8JWlQU"
+      vary: Accept-Encoding
+      content-encoding: gzip
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '[{"id":"MY.lifeStageEgg","value":{"fi":"muna","en":"egg","sv":"ägg"}},{"id":"MY.lifeStageLarva","value":{"en":"larva","fi":"toukka","sv":"larv"}},{"id":"MY.lifeStagePupa","value":{"en":"pupa","sv":"puppa","fi":"kotelo"}},{"id":"MY.lifeStageJuvenile","value":{"fi":"nuori","sv":"juvenil","en":"juvenile"}},{"id":"MY.lifeStageNymph","value":{"sv":"nymf","en":"nymph","fi":"nymfi"}},{"id":"MY.lifeStageSubimago","value":{"fi":"subimago","en":"subimago","sv":"subimago"}},{"id":"MY.lifeStageImmature","value":{"en":"immature","fi":"keskenkasvuinen","sv":"omogen"}},{"id":"MY.lifeStageAdult","value":{"en":"adult","fi":"aikuinen","sv":"vuxen"}},{"id":"MY.lifeStageFertile","value":{"en":"fertile","sv":"fertil","fi":"fertiili"}},{"id":"MY.lifeStageSterile","value":{"fi":"steriili","sv":"steril","en":"sterile"}},{"id":"MY.lifeStageTadpole","value":{"sv":"grodyngel","fi":"nuijapää","en":"tadpole"}},{"id":"MY.lifeStageEmbryo","value":{"en":"embryo
+        or fetus","fi":"alkio tai sikiö","sv":"embryo eller foster"}},{"id":"MY.lifeStageSubadult","value":{"fi":"esiaikuinen","en":"subadult","sv":"subadult"}},{"id":"MY.lifeStageMature","value":{"en":"mature","sv":"könsmogen","fi":"sukukypsä"}},{"id":"MY.lifeStagePullus","value":{"fi":"poikanen
+        (linnut)","en":"pullus","sv":"unge (fåglar)"}},{"id":"MY.lifeStageHatchedEgg","value":{"en":"hatched
+        egg","fi":"kuoriutunut muna","sv":"kläckt ägg"}},{"id":"MY.lifeStageHatchedPupa","value":{"sv":"kläckt
+        ägg","fi":"kuoriutunut kotelo","en":"hatched pupa"}},{"id":"MY.lifeStageGall","value":{"fi":"äkämä","en":"gall","sv":"gallbildning"}},{"id":"MY.lifeStageMarks","value":{"fi":"jäljet
+        (syömäjäljet tms.)","sv":"spår","en":"marks (feeding marks etc.)"}},{"id":"MY.lifeStageTriungulin","value":{"sv":"triunguliini","fi":"triunguliini","en":"triungulin"}}]'
+  recorded_at: 2023-02-21 09:35:16 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.plantLifeStageEnum?lang=multi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 21 Feb 2023 09:35:16 GMT
+      content-type: application/json; charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"4d6-qqO1E0/L2bqm26Sy1ZWPlyNwA9Y"
+      vary: Accept-Encoding
+      content-encoding: gzip
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '[{"id":"MY.plantLifeStageSterile","value":{"en":"sterile","sv":"steril","fi":"steriili"}},{"id":"MY.plantLifeStageFertile","value":{"en":"fertile","fi":"fertiili","sv":"bördig"}},{"id":"MY.plantLifeStageSeed","value":{"sv":"frö
+        / spor / frukt","fi":"siemen / itiö / hedelmä","en":"seed / spore / fruit"}},{"id":"MY.plantLifeStageSprout","value":{"sv":"skott","en":"sprout","fi":"verso"}},{"id":"MY.plantLifeStageBud","value":{"fi":"nuppu","en":"bud","sv":"knopp"}},{"id":"MY.plantLifeStageFlower","value":{"fi":"kukka","en":"flower","sv":"blomma"}},{"id":"MY.plantLifeStageWitheredFlower","value":{"sv":"vissnad
+        blomma","en":"withered flower","fi":"kuihtunut kukka"}},{"id":"MY.plantLifeStageRipeningFruit","value":{"fi":"kypsyviä
+        siemeniä / hedelmiä / itiöitä","en":"ripening seed / fruit / spore","sv":"mognande
+        frö / frukt / spor"}},{"id":"MY.plantLifeStageRipeFruit","value":{"fi":"kypsiä
+        siemeniä / hedelmiä / itiöitä","en":"ripe seed / fruit / spore","sv":"mogen
+        frö / frukt / spor"}},{"id":"MY.plantLifeStageDeadSprout","value":{"en":"dead
+        sprout","fi":"kuollut verso","sv":"död skott"}},{"id":"MY.plantLifeStageSubterranean","value":{"en":"subterranean","fi":"mukula
+        / sipuli / juuri","sv":"knöl / lök / rot"}}]'
+  recorded_at: 2023-02-21 09:35:16 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
