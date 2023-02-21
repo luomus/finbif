@@ -164,14 +164,17 @@ test_that(
       )
     )
 
-    expect_snapshot_value(
-      capture.output(
+    vcr::use_cassette("dl_select_all", {
+
+      dl_select_all <- capture.output(
         print(
           finbif_occurrence_load("HBF.6968.zip", select = "all")
         )
-      ),
-      style = "json2"
-    )
+      )
+
+    })
+
+    expect_snapshot_value(dl_select_all, style = "json2")
 
   }
 

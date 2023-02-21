@@ -12,34 +12,6 @@ labels <-
 
 labels <- reduce_merge(labels[["results"]])
 
-abundance_unit <- lapply(
-  metadata_ranges[["MY.abundanceUnitEnum"]], as.data.frame,
-  stringsAsFactors = FALSE
-)
-
-abundance_unit <- reduce_merge(abundance_unit)
-
-abundance_unit <- merge(
-  abundance_unit[1L], labels, by.x = "id", by.y = "property"
-)
-
-abundance_unit[["id"]] <- NULL
-
-row.names(abundance_unit) <- abundance_unit[["enumeration"]]
-abundance_unit[["enumeration"]] <- NULL
-
-cols <- sub("label\\.", "name_", names(abundance_unit))
-
-names(abundance_unit) <- cols
-
-abundance_unit <- abundance_unit[sort(cols)]
-
-for (i in cols) {
-
-  class(abundance_unit[[i]]) <- "translation"
-
-}
-
 sex <- lapply(
   metadata_ranges[["MY.sexes"]], as.data.frame, stringsAsFactors = FALSE
 )

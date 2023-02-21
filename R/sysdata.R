@@ -414,6 +414,6 @@ atlas_class <- function() {
 
 abundance_unit <- function() {
 
-  abundance_unit_df
+  get_sysdata("MY.abundanceUnitEnum")
 
 }

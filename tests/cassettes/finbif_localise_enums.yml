@@ -30,7 +30,7 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":17,"results":[{"aggregateBy":{"unit.abundanceUnit":"INDIVIDUAL_COUNT"},"count":198952},{"aggregateBy":{"unit.abundanceUnit":"TRUNKS"},"count":85275},{"aggregateBy":{"unit.abundanceUnit":"SPROUTS"},"count":27180},{"aggregateBy":{"unit.abundanceUnit":"NESTS"},"count":15949},{"aggregateBy":{"unit.abundanceUnit":"BREEDING_SITES"},"count":9291},{"aggregateBy":{"unit.abundanceUnit":"FRUITBODIES"},"count":7743},{"aggregateBy":{"unit.abundanceUnit":"INDIRECT_MARKS"},"count":6494},{"aggregateBy":{"unit.abundanceUnit":"SPOTS"},"count":6009},{"aggregateBy":{"unit.abundanceUnit":"PAIRCOUNT"},"count":4969},{"aggregateBy":{"unit.abundanceUnit":"SQUARE_M"},"count":3605}]}'
-  recorded_at: 2023-02-21 08:36:12 GMT
+  recorded_at: 2023-02-21 12:55:16 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -63,7 +63,7 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":349704,"pageSize":10,"total":3497040,"results":[{"unit":{"unitId":"http://tun.fi/JX.295060#3"}},{"unit":{"unitId":"http://tun.fi/JX.295051#13"}},{"unit":{"unitId":"http://tun.fi/JX.295051#5"}},{"unit":{"unitId":"http://tun.fi/JX.295051#3"}},{"unit":{"unitId":"http://tun.fi/JX.295051#8"}},{"unit":{"unitId":"http://tun.fi/JX.295052#3"}},{"unit":{"unitId":"http://tun.fi/JX.294916#3"}},{"unit":{"unitId":"http://tun.fi/JX.294914#3"}},{"unit":{"unitId":"http://tun.fi/JX.294914#11"}},{"unit":{"unitId":"http://tun.fi/JX.294914#7"}}]}'
-  recorded_at: 2023-02-21 08:36:12 GMT
+  recorded_at: 2023-02-21 12:55:16 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -96,7 +96,7 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":1849,"pageSize":10,"total":18482,"results":[{"unit":{"unitId":"http://tun.fi/A.868F7461-8435-4D21-A82C-6465DE07E0E2#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION","DEFAULT_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.25F63F7C-BF1A-450D-86CA-D82133E828F1#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION","DEFAULT_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.42680C22-3F95-46FD-9486-DD2A5F45B5BD#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.742877E2-BFE5-4EBE-92BB-6E2C98A0373C#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.0DB23045-B4F8-4460-B201-A3BD1E70CFE6#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.CB99F5E5-759F-476A-AC4A-DCD4B611C747#U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.FFB2C56A-E652-488A-A449-9965A76E3D68#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.293671AD-39AE-421A-86C1-7BB1E9349ADD#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.2B352DEF-5AC2-4C79-8E79-F6AADE15A399#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/JX.294628#3"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}}]}'
-  recorded_at: 2023-02-21 08:36:12 GMT
+  recorded_at: 2023-02-21 12:55:16 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -129,7 +129,7 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":16,"results":[{"aggregateBy":{"unit.abundanceUnit":"INDIVIDUAL_COUNT"},"count":198952},{"aggregateBy":{"unit.abundanceUnit":"TRUNKS"},"count":85275},{"aggregateBy":{"unit.abundanceUnit":"SPROUTS"},"count":27180},{"aggregateBy":{"unit.abundanceUnit":"NESTS"},"count":15949},{"aggregateBy":{"unit.abundanceUnit":"BREEDING_SITES"},"count":9291},{"aggregateBy":{"unit.abundanceUnit":"FRUITBODIES"},"count":7743},{"aggregateBy":{"unit.abundanceUnit":"INDIRECT_MARKS"},"count":6494},{"aggregateBy":{"unit.abundanceUnit":"SPOTS"},"count":6009},{"aggregateBy":{"unit.abundanceUnit":"PAIRCOUNT"},"count":4969},{"aggregateBy":{"unit.abundanceUnit":"SQUARE_M"},"count":3605}]}'
-  recorded_at: 2023-02-21 08:36:12 GMT
+  recorded_at: 2023-02-21 12:55:16 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -386,7 +386,7 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2023-02-21 08:36:12 GMT
+  recorded_at: 2023-02-21 12:55:16 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -445,5 +445,66 @@ http_interactions:
         has hidden time information","sv":"Användaren har dolt tidinformation","fi":"Käyttäjän
         karkeistama aika"}},{"id":"MZ.secureReasonPersonNamesHidden","value":{"en":"Person
         names hidden","sv":"Personnamn dolda","fi":"Henkilönimet piiloitettu"}}]'
-  recorded_at: 2023-02-21 08:36:12 GMT
+  recorded_at: 2023-02-21 12:55:16 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.abundanceUnitEnum?lang=multi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 21 Feb 2023 12:55:16 GMT
+      content-type: application/json; charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"a3b-sUuM7HtrE3OiTh3ZVctIbbw+HxA"
+      vary: Accept-Encoding
+      content-encoding: gzip
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '[{"id":"MY.abundanceUnitIndividualCount","value":{"en":"Individual
+        count","fi":"Yksilömäärä","sv":"Individantal"}},{"id":"MY.abundanceUnitPairCount","value":{"en":"Pair
+        count","sv":"Parantal","fi":"Parimäärä"}},{"id":"MY.abundanceUnitNest","value":{"en":"Nest
+        count","fi":"Pesien lukumäärä","sv":"Nästantal"}},{"id":"MY.abundanceUnitBreedingSite","value":{"en":"Number
+        of breeding sites (rocks, cavities, etc.)","fi":"Lisääntymispaikkojen lukumäärä
+        (kivi, kolo, ym)","sv":"Häckningsplatsantal (stenar, håligheter etc.)"}},{"id":"MY.abundanceUnitColony","value":{"fi":"Yhdyskuntien
+        lukumäärä","en":"Colonies","sv":"Kolonier"}},{"id":"MY.abundanceUnitQueen","value":{"sv":"Drottningar","en":"Number
+        of queens","fi":"Kuningattarien lukumäärä"}},{"id":"MY.abundanceUnitFruitbody","value":{"fi":"Itiöemien
+        lukumäärä","en":"Fruitbodies/sporocarps","sv":"Fruktkroppar"}},{"id":"MY.abundanceUnitSprout","value":{"fi":"Versojen
+        lukumäärä","sv":"Spiror","en":"Sprouts"}},{"id":"MY.abundanceUnitHummock","value":{"fi":"Mättäiden/tuppaiden
+        lukumäärä","en":"Number of hummocks","sv":"Hummocks"}},{"id":"MY.abundanceUnitThallus","value":{"sv":"Tallus","fi":"Sekovarsien
+        lukumäärä","en":"Number of thalli"}},{"id":"MY.abundanceUnitFlower","value":{"fi":"Kukkien
+        lukumäärä","en":"Number of flowers","sv":"Blommor"}},{"id":"MY.abundanceUnitSpot","value":{"sv":"Fläckar","fi":"Laikkujen
+        lukumäärä","en":"Number of spots"}},{"id":"MY.abundanceUnitTrunk","value":{"sv":"Trädstammar","fi":"Runkojen
+        lukumäärä","en":"Number of tree trunks"}},{"id":"MY.abundanceUnitShell","value":{"fi":"Kuorien
+        lukumäärä","en":"Number of shells","sv":"Skal"}},{"id":"MY.abundanceUnitDroppings","value":{"fi":"Jätösten/papanakasojen
+        lukumäärä","en":"Droppings","sv":"Spillning"}},{"id":"MY.abundanceUnitMarks","value":{"sv":"Spår","fi":"(Syömä)jälkien
+        lukumäärä","en":"Marks (feeding marks etc.)"}},{"id":"MY.abundanceUnitIndirect","value":{"fi":"Epäsuorien
+        jälkien lukumäärä","en":"Number of indirect marks/traces","sv":"Indirekta
+        ospecificerade spår"}},{"id":"MY.abundanceUnitSquareDM","value":{"sv":"Kvadrat
+        decimeter (dm^2)","fi":"Neliödesimetri (dm^2)","en":"Square decimeter (dm^2)"}},{"id":"MY.abundanceUnitSquareM","value":{"fi":"Neliömetri
+        (m^2)","en":"Square meter (m^2)","sv":"Kvadratmeter (m^2)"}},{"id":"MY.abundanceUnitRelativeDensity","value":{"sv":"Relativ
+        densitet","fi":"Suhteellinen tiheys","en":"Relative density"}},{"id":"MY.abundanceUnitOccursDoesNotOccur","value":{"en":"Occurs
+        / does not occur","fi":"Esiintyy/ei esiinny","sv":"Forekommer / förekommer
+        inte"}}]'
+  recorded_at: 2023-02-21 12:55:16 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
