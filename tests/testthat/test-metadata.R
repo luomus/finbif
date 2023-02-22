@@ -17,7 +17,13 @@ test_that(
 
     expect_s3_class(finbif_metadata("country"), "data.frame")
 
-    expect_s3_class(finbif_metadata("region"), "data.frame")
+    vcr::use_cassette("region_metadata", {
+
+      rmd <- finbif_metadata("region")
+
+    })
+
+    expect_s3_class(rmd, "data.frame")
 
     expect_s3_class(finbif_metadata("bio_province"), "data.frame")
 

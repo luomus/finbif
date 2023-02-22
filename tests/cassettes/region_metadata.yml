@@ -1,0 +1,48 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/areas?type=province&lang=multi&pageSize=1000&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Wed, 22 Feb 2023 13:41:21 GMT
+      content-type: application/json; charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"acd-h8OYCq9HbNT1RCnspNz8iPEwDRI"
+      vary: Accept-Encoding
+      content-encoding: gzip
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"currentPage":1,"pageSize":1000,"total":19,"results":[{"id":"ML.1227","areaType":"ML.province","name":{"en":"Uusimaa","fi":"Uusimaa","sv":"Nyland"},"provinceCodeNumeric":"01"},{"id":"ML.1228","areaType":"ML.province","name":{"en":"Southwest
+        Finland","fi":"Varsinais-Suomi","sv":"Egentliga Finland"},"provinceCodeNumeric":"02"},{"id":"ML.1229","areaType":"ML.province","name":{"en":"Satakunta","fi":"Satakunta","sv":"Satakunta"},"provinceCodeNumeric":"04"},{"id":"ML.1230","areaType":"ML.province","name":{"en":"Kanta-Häme","fi":"Kanta-Häme","sv":"Egentliga
+        Tavastland"},"provinceCodeNumeric":"05"},{"id":"ML.1231","areaType":"ML.province","name":{"en":"Pirkanmaa","fi":"Pirkanmaa","sv":"Birkaland"},"provinceCodeNumeric":"06"},{"id":"ML.1232","areaType":"ML.province","name":{"en":"Päijät-Häme","fi":"Päijät-Häme","sv":"Päijänne-Tavastland"},"provinceCodeNumeric":"07"},{"id":"ML.1233","areaType":"ML.province","name":{"en":"Kymenlaakso","fi":"Kymenlaakso","sv":"Kymmenedalen"},"provinceCodeNumeric":"08"},{"id":"ML.1234","areaType":"ML.province","name":{"en":"South
+        Karelia","fi":"Etelä-Karjala","sv":"Södra Karelen"},"provinceCodeNumeric":"09"},{"id":"ML.1235","areaType":"ML.province","name":{"en":"South
+        Savo","fi":"Etelä-Savo","sv":"Södra Savolax"},"provinceCodeNumeric":"10"},{"id":"ML.1236","areaType":"ML.province","name":{"en":"North
+        Savo","fi":"Pohjois-Savo","sv":"Norra Savolax"},"provinceCodeNumeric":"11"},{"id":"ML.1237","areaType":"ML.province","name":{"en":"North
+        Karelia","fi":"Pohjois-Karjala","sv":"Norra Karelen"},"provinceCodeNumeric":"12"},{"id":"ML.1238","areaType":"ML.province","name":{"en":"Central
+        Finland","fi":"Keski-Suomi","sv":"Mellersta Finland"},"provinceCodeNumeric":"13"},{"id":"ML.1239","areaType":"ML.province","name":{"en":"South
+        Ostrobothnia","fi":"Etelä-Pohjanmaa","sv":"Södra Österbotten"},"provinceCodeNumeric":"14"},{"id":"ML.1240","areaType":"ML.province","name":{"en":"Ostrobothnia","fi":"Pohjanmaa","sv":"Österbotten"},"provinceCodeNumeric":"15"},{"id":"ML.1241","areaType":"ML.province","name":{"en":"Central
+        Ostrobothnia","fi":"Keski-Pohjanmaa","sv":"Mellersta Österbotten"},"provinceCodeNumeric":"16"},{"id":"ML.1242","areaType":"ML.province","name":{"en":"North
+        Ostrobothnia","fi":"Pohjois-Pohjanmaa","sv":"Norra Österbotten"},"provinceCodeNumeric":"17"},{"id":"ML.1243","areaType":"ML.province","name":{"en":"Kainuu","fi":"Kainuu","sv":"Kajanaland"},"provinceCodeNumeric":"18"},{"id":"ML.1244","areaType":"ML.province","name":{"en":"Lapland","fi":"Lappi","sv":"Lappland"},"provinceCodeNumeric":"19"},{"id":"ML.1245","areaType":"ML.province","name":{"en":"Åland","fi":"Ahvenanmaa","sv":"Åland"},"provinceCodeNumeric":"21"}],"lastPage":1,"@context":"http://schema.laji.fi/context/area.jsonld"}'
+  recorded_at: 2023-02-22 13:41:21 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

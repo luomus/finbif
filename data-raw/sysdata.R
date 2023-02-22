@@ -3,7 +3,6 @@ source("data-raw/citable_file_variables.R")
 source("data-raw/lite_download_file_variables.R")
 source("data-raw/filters.R")
 source("data-raw/informal_groups.R")
-source("data-raw/regions.R")
 source("data-raw/bio_provinces.R")
 source("data-raw/municipalities.R")
 source("data-raw/bird_association_area.R")
@@ -20,7 +19,6 @@ cite_file_vars_df <- cite_file_vars
 lite_download_file_vars_df <- lite_download_file_vars
 filter_names_df <- filter_names
 informal_groups_df <- informal_groups
-region_df <- region
 bio_province_df <- bio_province
 municipality_df <- municipality
 bird_assoc_area_df <- bird_assoc_area
@@ -42,7 +40,6 @@ usethis::use_data(
   lite_download_file_vars_df,
   filter_names_df,
   informal_groups_df,
-  region_df,
   bio_province_df,
   municipality_df,
   bird_assoc_area_df,

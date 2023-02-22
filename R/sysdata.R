@@ -397,7 +397,7 @@ country <- function() {
 
 region <- function() {
 
-  region_df
+  get_areas("province")
 
 }
 
