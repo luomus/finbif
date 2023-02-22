@@ -117,17 +117,31 @@ md_regulatory_status <- function() {
 
 md_red_list <- function() {
 
+  locale <- getOption("finbif_locale")
+
+  col <- paste0("name_", locale)
+
   red_list_status <- red_list_status()
 
-  statuses <- red_list_status[["translated_status"]]
+  col_names <- names(red_list_status)
 
-  ind <- order(statuses)
+  no_locale <- !col %in% col_names
 
-  red_list_status <- red_list_status[ind, ]
+  if (no_locale) {
 
-  col_names <- c("status_name", "status_code")
+    col <- "name_en"
 
-  obj <- list(df = red_list_status, names = col_names)
+  }
+
+  names <- red_list_status[[col]]
+
+  ind <- order(names)
+
+  cols <- c("code", col)
+
+  red_list_status <- red_list_status[ind, cols]
+
+  obj <- list(df = red_list_status, names = cols)
 
   md(obj)
 

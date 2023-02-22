@@ -2,7 +2,6 @@ source("data-raw/variables.R")
 source("data-raw/citable_file_variables.R")
 source("data-raw/lite_download_file_variables.R")
 source("data-raw/filters.R")
-source("data-raw/status.R")
 source("data-raw/informal_groups.R")
 source("data-raw/countries.R")
 source("data-raw/regions.R")
@@ -21,7 +20,6 @@ has_value_df <- has_value
 cite_file_vars_df <- cite_file_vars
 lite_download_file_vars_df <- lite_download_file_vars
 filter_names_df <- filter_names
-red_list_status_df <- red_list_status
 informal_groups_df <- informal_groups
 country_df <- country
 region_df <- region
@@ -45,7 +43,6 @@ usethis::use_data(
   cite_file_vars_df,
   lite_download_file_vars_df,
   filter_names_df,
-  red_list_status_df,
   informal_groups_df,
   country_df,
   region_df,

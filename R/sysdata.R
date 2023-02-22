@@ -34,6 +34,8 @@ get_sysdata <- function(x) {
 
     sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
 
+    sd_i <- sub("^.* – ", "", sd_i)
+
     sd_df[[i]] <- sd_i
 
   }
@@ -99,6 +101,32 @@ set_translations <- function(x) {
   x[] <- lapply(x, structure, class = "translation")
 
   x
+
+}
+
+#' @noRd
+
+get_code <- function(obj) {
+
+  prefix <- obj[["prefix"]]
+
+  suffix <- obj[["suffix"]]
+
+  x <- paste0(prefix, suffix)
+
+  ht <- get_sysdata(x)
+
+  ht_row_names <- row.names(ht)
+
+  ht_code <- sub(prefix, "", ht_row_names)
+
+  ht_code <- structure(ht_code, class = "translation")
+
+  ht_code <- list(code = ht_code)
+
+  ht_code <- structure(ht_code, class = "data.frame", row.names = ht_row_names)
+
+  cbind(ht_code, ht)
 
 }
 
@@ -235,7 +263,9 @@ regulatory_status <- function() {
 
 red_list_status <- function() {
 
-  red_list_status_df
+  red_list <- list(prefix = "MX.iucn", suffix = "Statuses")
+
+  get_code(red_list)
 
 }
 
@@ -261,33 +291,15 @@ informal_groups_reported <- informal_groups
 
 #' @noRd
 
-get_habitat_types <- function(x) {
-
-  enum <- paste0(x, "Enum")
-
-  ht <- get_sysdata(enum)
-
-  ht_row_names <- row.names(ht)
-
-  ht_code <- sub(x, "", ht_row_names)
-
-  ht_code <- structure(ht_code, class = "translation")
-
-  ht_code <- list(code = ht_code)
-
-  ht_code <- structure(ht_code, class = "data.frame", row.names = ht_row_names)
-
-  cbind(ht_code, ht)
-
-}
-
-#' @noRd
-
 primary_habitat <- function() {
 
-  habitat_types <- get_habitat_types("MKV.habitat")
+  habitat_types <- list(prefix = "MKV.habitat", suffix = "Enum")
 
-  specific_types <- get_habitat_types("MKV.habitatSpecificType")
+  habitat_types <- get_code(habitat_types)
+
+  specific_types <-  list(prefix = "MKV.habitatSpecificType", suffix = "Enum")
+
+  specific_types <- get_code(specific_types)
 
   list(habitat_types = habitat_types, specific_habitat_types = specific_types)
 

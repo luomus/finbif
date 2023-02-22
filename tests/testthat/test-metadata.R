@@ -59,7 +59,13 @@ test_that(
 
     options(finbif_locale = "ru")
 
-    expect_s3_class(finbif_metadata("regulatory_status"), "data.frame")
+    vcr::use_cassette("taxon_rank_metadata", {
+
+      rsmd <- finbif_metadata("regulatory_status")
+
+    })
+
+    expect_s3_class(rsmd, "data.frame")
 
     expect_s3_class(finbif_metadata("habitat_type"), "data.frame")
 
