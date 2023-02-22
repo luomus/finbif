@@ -5,6 +5,8 @@ test_that(
 
     expect_s3_class(finbif_metadata(), "data.frame")
 
+    options(finbif_locale = "ru")
+
     expect_s3_class(finbif_metadata("red_list"), "data.frame")
 
     vcr::use_cassette("country_metadata", {
@@ -25,7 +27,13 @@ test_that(
 
     expect_s3_class(rmd, "data.frame")
 
-    expect_s3_class(finbif_metadata("bio_province"), "data.frame")
+    vcr::use_cassette("bio_province_metadata", {
+
+      bpmd <- finbif_metadata("bio_province")
+
+    })
+
+    expect_s3_class(bpmd, "data.frame")
 
     expect_s3_class(finbif_metadata("municipality"), "data.frame")
 
@@ -70,8 +78,6 @@ test_that(
     })
 
     expect_s3_class(trmd, "data.frame")
-
-    options(finbif_locale = "ru")
 
     vcr::use_cassette("regulatory_status_metadata", {
 

@@ -32,7 +32,7 @@ get_sysdata <- function(x) {
 
     sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
 
-    sd_i <- sub("^.* – ", "", sd_i)
+    sd_i <- sub("^.* \u2013 ", "", sd_i)
 
     sd_df[[i]] <- sd_i
 
@@ -144,7 +144,7 @@ get_areas <- function(x) {
 
   alpha <- c("alpha2", "alpha3")
 
-  col_names <- c(col_names, alpha)
+  col_names <- c(col_names, alpha, "alpha")
 
   n_cols <- length(col_names)
 
@@ -162,7 +162,7 @@ get_areas <- function(x) {
 
     sd_i <- vapply(sd_response_results, get_el_recurse, "", el_i, "character")
 
-    sd_i <- sub("^.* – ", "", sd_i)
+    sd_i <- sub("^.* \u2013 ", "", sd_i)
 
     sd_df[[i]] <- sd_i
 
@@ -185,6 +185,22 @@ get_areas <- function(x) {
       sd_df[[j]] <- sd_j
 
     }
+
+  }
+
+  alpha <- c("provinceCodeAlpha", "fi")
+
+  alpha <- vapply(sd_response_results, get_el_recurse, "", alpha, "character")
+
+  all_na_alpha <- all_na(alpha)
+
+  if (all_na_alpha) {
+
+    sd_df[["alpha"]] <- NULL
+
+  } else {
+
+    sd_df[["alpha"]] <- alpha
 
   }
 
@@ -405,7 +421,7 @@ region <- function() {
 
 bio_province <- function() {
 
-  bio_province_df
+  get_areas("biogeographicalProvince")
 
 }
 
