@@ -7,6 +7,14 @@ test_that(
 
     expect_s3_class(finbif_metadata("red_list"), "data.frame")
 
+    vcr::use_cassette("country_metadata", {
+
+      cmd <- finbif_metadata("country")
+
+    })
+
+    expect_s3_class(cmd, "data.frame")
+
     expect_s3_class(finbif_metadata("country"), "data.frame")
 
     expect_s3_class(finbif_metadata("region"), "data.frame")
@@ -59,7 +67,7 @@ test_that(
 
     options(finbif_locale = "ru")
 
-    vcr::use_cassette("taxon_rank_metadata", {
+    vcr::use_cassette("regulatory_status_metadata", {
 
       rsmd <- finbif_metadata("regulatory_status")
 
@@ -85,7 +93,13 @@ test_that(
 
     skip_on_cran()
 
-    expect_output(print(finbif_metadata("taxon_rank")), "rank")
+    vcr::use_cassette("taxon_rank_metadata", {
+
+      trmd <- finbif_metadata("taxon_rank")
+
+    })
+
+    expect_output(print(trmd), "rank")
 
   }
 

@@ -24,8 +24,6 @@ get_sysdata <- function(x) {
 
   sd_df <- structure(sd_df, row.names = row_names, names = col_names)
 
-  sq <- seq_along(supported_langs)
-
   for (i in sq) {
 
     lang_i <- supported_langs[[i]]
@@ -50,11 +48,7 @@ get_sysdata <- function(x) {
 
 get_enumeration <- function(x) {
 
-  path <- "warehouse/enumeration-labels"
-
-  query <- list()
-
-  request <- list(path = path, query = query, cache = TRUE)
+  request <- list(path = "warehouse/enumeration-labels", cache = TRUE)
 
   en_response <- api_get(request)
 
@@ -127,6 +121,76 @@ get_code <- function(obj) {
   ht_code <- structure(ht_code, class = "data.frame", row.names = ht_row_names)
 
   cbind(ht_code, ht)
+
+}
+
+#' @noRd
+
+get_areas <- function(x) {
+
+  query <- list(type = x, lang = "multi", pageSize = 1000L)
+
+  request <- list(path = "areas", query = query, cache = TRUE)
+
+  sd_response <- api_get(request)
+
+  results <- c("content", "results")
+
+  sd_response_results <- sd_response[[results]]
+
+  row_names <- vapply(sd_response_results, getElement, "", "id")
+
+  col_names <- paste0("name_", supported_langs)
+
+  alpha <- c("alpha2", "alpha3")
+
+  col_names <- c(col_names, alpha)
+
+  n_cols <- length(col_names)
+
+  sd_df <- vector("list", n_cols)
+
+  sd_df <- structure(sd_df, row.names = row_names, names = col_names)
+
+  sq <- seq_along(supported_langs)
+
+  for (i in sq) {
+
+    lang_i <- supported_langs[[i]]
+
+    el_i <- c("name", lang_i)
+
+    sd_i <- vapply(sd_response_results, get_el_recurse, "", el_i, "character")
+
+    sd_i <- sub("^.* – ", "", sd_i)
+
+    sd_df[[i]] <- sd_i
+
+  }
+
+  for (j in alpha) {
+
+    el_j <- paste0("countryCodeISO", j)
+
+    sd_j <- vapply(sd_response_results, get_el_recurse, "", el_j, "character")
+
+    all_na_j <- all_na(sd_j)
+
+    if (all_na_j) {
+
+      sd_df[[j]] <- NULL
+
+    } else {
+
+      sd_df[[j]] <- sd_j
+
+    }
+
+  }
+
+  sd_df <- set_translations(sd_df)
+
+  structure(sd_df, class = "data.frame")
 
 }
 
@@ -325,7 +389,7 @@ orig_taxon_rank <- taxon_rank
 
 country <- function() {
 
-  country_df
+  get_areas("country")
 
 }
 
