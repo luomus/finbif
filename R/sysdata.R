@@ -815,17 +815,75 @@ bird_assoc_area <- function() {
 
 finnish_occurrence_status <- function() {
 
-  finnish_occurrence_status_df
+  codes <- c(
+    MX.doesNotOccur = "none",
+    MX.typeOfOccurrenceOccurs = "occurs",
+    MX.typeOfOccurrenceStablePopulation = "stable",
+    MX.typeOfOccurrenceCommon = "common",
+    MX.typeOfOccurrenceRare = "rare",
+    MX.typeOfOccurrenceVeryRare = "very_rare",
+    MX.typeOfOccurrenceVagrant = "vagrant_regular",
+    MX.typeOfOccurrenceRareVagrant = "vagrant_irregular",
+    MX.typeOfOccurrenceMigrant = "migrant",
+    MX.typeOfOccurrenceImport = "import",
+    MX.typeOfOccurrenceAnthropogenic = "introduced",
+    MX.typeOfOccurrenceNotEstablished = "unestablished",
+    MX.typeOfOccurrenceExtirpated = "extinct",
+    MX.typeOfOccurrenceOldRecords = "historic",
+    MX.typeOfOccurrenceUncertain = "uncertain",
+    MX.typeOfOccurrenceMaxReplanted = "reintroduced",
+    MX.typeOfOccurrenceNotEvaluated = "unevaluated",
+    MX.typeOfOccurrenceSpontaneousOldResident = "SOR",
+    MX.typeOfOccurrenceSpontaneousOldFormerlyResidentPossiblyExtinct = "SORPE",
+    MX.typeOfOccurrenceSpontaneousOldFormerlyResidentExtinct = "SORE",
+    MX.typeOfOccurrenceSpontaneousNewResident = "SNR",
+    MX.typeOfOccurrenceSpontaneousNewEphemeral = "SNE",
+    MX.typeOfOccurrenceSpontaneousNewEphemeralOnlyOld = "SNEH",
+    MX.typeOfOccurrenceAlienOldResident = "AOR",
+    MX.typeOfOccurrenceAlienOldFormerlyResidentPossiblyExtinct = "AORPE",
+    MX.typeOfOccurrenceAlienOldExtinct = "AORE",
+    MX.typeOfOccurrenceAlienNewResident = "ANR",
+    MX.typeOfOccurrenceAlienNewEphemeral = "ANE",
+    MX.typeOfOccurrenceAlienNewEphemeralOnlyold = "ANEH",
+    MX.typeOfOccurrenceCompletelyCultivatedOrigin = "cultivation_escape_all",
+    MX.typeOfOccurrenceNotableDegreeCultivatedOrigin = "cultivation_escape",
+    MX.typeOfOccurrenceMaxShortDistanceEscape = "cultivation_escape_short",
+    MX.typeOfOccurrenceSmallDegreeCultivatedOrigin = "cultivation_escape_some",
+    MX.typeOfOccurrenceOnlyCultivated = "cultivation_only",
+    MX.typeOfOccurrenceMaxRelict = "cultivation_relict",
+    MX.typeOfOccurrenceMaxSoilImmigrant = "soil_immigrant",
+    MX.typeOfOccurrenceOccursBasedOnOccurrences = "records_only",
+    MX.typeOfOccurrenceRegularBreeder = "regular_breeder",
+    MX.typeOfOccurrenceIrregularBreeder = "irregular_breeder",
+    MX.typeOfOccurrencePassageMigrant = "passage_migrant",
+    MX.typeOfOccurrenceBirdLifeCategoryA = "BLA",
+    MX.typeOfOccurrenceBirdLifeCategoryB = "BLB",
+    MX.typeOfOccurrenceBirdLifeCategoryC = "BLC",
+    MX.typeOfOccurrenceBirdLifeCategoryD = "BLD",
+    MX.typeOfOccurrenceBirdLifeCategoryE = "BLE"
+  )
+
+  finnish_occurrence <- get_sysdata("MX.typeOfOccurrenceEnum")
+
+  id <- row.names(finnish_occurrence)
+
+  codes <- codes[id]
+
+  codes <- unname(codes)
+
+  codes <- structure(codes, class = "translation", names = NULL)
+
+  codes <- list(code = codes)
+
+  codes <- structure(codes, class = "data.frame", row.names = id)
+
+  cbind(finnish_occurrence, codes)
 
 }
 
 #' @noRd
 
-finnish_occurrence_status_neg <- function() {
-
-  finnish_occurrence_status_df
-
-}
+finnish_occurrence_status_neg <- finnish_occurrence_status
 
 #' @noRd
 

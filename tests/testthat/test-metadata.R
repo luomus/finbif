@@ -17,8 +17,6 @@ test_that(
 
     expect_s3_class(cmd, "data.frame")
 
-    expect_s3_class(finbif_metadata("country"), "data.frame")
-
     vcr::use_cassette("region_metadata", {
 
       rmd <- finbif_metadata("region")
@@ -51,7 +49,13 @@ test_that(
 
     expect_s3_class(baamd, "data.frame")
 
-    expect_s3_class(finbif_metadata("finnish_occurrence_status"), "data.frame")
+    vcr::use_cassette("finnish_occurrence_status_metadata", {
+
+      fosmd <- finbif_metadata("finnish_occurrence_status")
+
+    })
+
+    expect_s3_class(fosmd, "data.frame")
 
     expect_s3_class(finbif_metadata("source"), "data.frame")
 
