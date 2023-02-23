@@ -751,7 +751,9 @@ get_locale <- function() {
 
     len <- length(l)
 
-    if (len) {
+    has_lang <- len > 0L
+
+    if (has_lang) {
 
       cond <- l %in% supported_langs
 
