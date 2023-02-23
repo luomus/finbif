@@ -35,7 +35,13 @@ test_that(
 
     expect_s3_class(bpmd, "data.frame")
 
-    expect_s3_class(finbif_metadata("municipality"), "data.frame")
+    vcr::use_cassette("municipality_metadata", {
+
+      mmd <- finbif_metadata("municipality")
+
+    })
+
+    expect_s3_class(mmd, "data.frame")
 
     expect_s3_class(finbif_metadata("bird_assoc_area"), "data.frame")
 
