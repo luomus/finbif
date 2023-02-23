@@ -57,7 +57,13 @@ test_that(
 
     expect_s3_class(fosmd, "data.frame")
 
-    expect_s3_class(finbif_metadata("source"), "data.frame")
+    vcr::use_cassette("source_metadata", {
+
+      smd <- finbif_metadata("source")
+
+    })
+
+    expect_s3_class(smd, "data.frame")
 
     vcr::use_cassette("record_basis_metadata", {
 

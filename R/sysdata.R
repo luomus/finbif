@@ -889,7 +889,61 @@ finnish_occurrence_status_neg <- finnish_occurrence_status
 
 source <- function() {
 
-  source_df
+  query <- list(lang = "multi", pageSize = 1000L)
+
+  request <- list(path = "sources", query = query, cache = TRUE)
+
+  sd_response <- api_get(request)
+
+  results <- c("content", "results")
+
+  sd_response_results <- sd_response[[results]]
+
+  row_names <- vapply(sd_response_results, getElement, "", "id")
+
+  types <- c("name", "description")
+
+  n_langs <- length(supported_langs)
+
+  col_names <- rep(types, each = n_langs)
+
+  col_names <- paste(col_names, supported_langs, sep = "_")
+
+  col_names <- c("id", col_names)
+
+  n_cols <- length(col_names)
+
+  sd_df <- vector("list", n_cols)
+
+  sd_df <- structure(sd_df, row.names = row_names, names = col_names)
+
+  sd_df[["id"]] <- row_names
+
+  sq <- seq_along(supported_langs)
+
+  for (type in types) {
+
+    for (i in sq) {
+
+      lang_i <- supported_langs[[i]]
+
+      el_i <- c(type, lang_i)
+
+      sd_i <- vapply(sd_response_results, get_el_recurse, "", el_i, "character")
+
+      sd_i <- sub("^.* \u2013 ", "", sd_i)
+
+      col <- paste(type, lang_i, sep = "_")
+
+      sd_df[[col]] <- sd_i
+
+    }
+
+  }
+
+  sd_df <- set_translations(sd_df)
+
+  structure(sd_df, class = "data.frame")
 
 }
 
