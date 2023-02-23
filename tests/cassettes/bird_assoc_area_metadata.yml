@@ -1,0 +1,90 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/areas?type=birdAssociationArea&lang=multi&pageSize=1000&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 23 Feb 2023 13:08:25 GMT
+      content-type: application/json; charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"16d1-1tbd6rDI6bnjQfOcrSZ2JJNd0wg"
+      vary: Accept-Encoding
+      content-encoding: gzip
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"currentPage":1,"pageSize":1000,"total":29,"results":[{"id":"ML.1088","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Ålands
+        Fågelskyddsförening r.f.","en":"","fi":"Ålands Fågelskyddsförening r.f.","sv":""}},{"id":"ML.1089","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Turun
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Turun Lintutieteellinen Yhdistys
+        r.y.","sv":""}},{"id":"ML.1090","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Porin
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Porin Lintutieteellinen Yhdistys
+        r.y.","sv":""}},{"id":"ML.1091","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Helsingin
+        Seudun Lintutieteellinen Yhdistys - Tringa r.y.","en":"","fi":"Helsingin Seudun
+        Lintutieteellinen Yhdistys - Tringa r.y.","sv":""}},{"id":"ML.1092","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Keski-
+        ja Pohjois-Uudenmaan Lintuharrastajat - Apus r.y.","en":"","fi":"Keski- ja
+        Pohjois-Uudenmaan Lintuharrastajat - Apus r.y.","sv":""}},{"id":"ML.1093","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Porvoon
+        Seudun Lintuyhdistys r.y.","en":"","fi":"Porvoon Seudun Lintuyhdistys r.y.","sv":""}},{"id":"ML.1094","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Kymenlaakson
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Kymenlaakson Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1095","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Etelä-Karjalan
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Etelä-Karjalan Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1096","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Lounais-Hämeen
+        Lintuharrastajat r.y.","en":"","fi":"Lounais-Hämeen Lintuharrastajat r.y.","sv":""}},{"id":"ML.1097","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Kanta-Hämeen
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Kanta-Hämeen Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1098","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Päijät-Hämeen
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Päijät-Hämeen Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1099","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Pirkanmaan
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Pirkanmaan Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1101","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Etelä-Savon
+        Lintuharrastajat - Oriolus r.y.","en":"","fi":"Etelä-Savon Lintuharrastajat
+        - Oriolus r.y.","sv":""}},{"id":"ML.1102","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Pohjois-Savon
+        Lintuyhdistys - Kuikka r.y.","en":"","fi":"Pohjois-Savon Lintuyhdistys - Kuikka
+        r.y.","sv":""}},{"id":"ML.1103","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Pohjois-Karjalan
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Pohjois-Karjalan Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1104","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Keski-Suomen
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Keski-Suomen Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1105","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Suomenselän
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Suomenselän Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1106","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Suupohjan
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Suupohjan Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1107","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Merenkurkun
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Merenkurkun Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1108","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Keski-Pohjanmaan
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Keski-Pohjanmaan Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1109","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Pohjois-Pohjanmaan
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Pohjois-Pohjanmaan Lintutieteellinen
+        Yhdistys r.y.","sv":""}},{"id":"ML.1110","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Kainuun
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Kainuun Lintutieteellinen Yhdistys
+        r.y.","sv":""}},{"id":"ML.1111","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Kemi-Tornion
+        Lintuharrastajat - Xenus r.y.","en":"","fi":"Kemi-Tornion Lintuharrastajat
+        - Xenus r.y.","sv":""}},{"id":"ML.1112","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Lapin
+        Lintutieteellinen Yhdistys r.y.","en":"","fi":"Lapin Lintutieteellinen Yhdistys
+        r.y.","sv":""}},{"id":"ML.1113","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Kuusamon
+        lintukerho","en":"","fi":"Kuusamon lintukerho","sv":""}},{"id":"ML.1114","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Lohjan
+        Lintutieteellinen Yhdistys - Hakki r.y.","en":"","fi":"Lohjan Lintutieteellinen
+        Yhdistys - Hakki r.y.","sv":""}},{"id":"ML.1116","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Rauman
+        Seudun Lintuharrastajat r.y.","en":"","fi":"Rauman Seudun Lintuharrastajat
+        r.y.","sv":""}},{"id":"ML.1127","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Suomen
+        ulkopuoliset alueet","en":"","fi":"Suomen ulkopuoliset alueet","sv":""}},{"id":"ML.1267","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Ostrobothnia
+        Australis r.f.","en":"","fi":"Ostrobothnia Australis r.f.","sv":""}}],"lastPage":1,"@context":"http://schema.laji.fi/context/area.jsonld"}'
+  recorded_at: 2023-02-23 13:08:25 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

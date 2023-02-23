@@ -3,7 +3,6 @@ source("data-raw/citable_file_variables.R")
 source("data-raw/lite_download_file_variables.R")
 source("data-raw/filters.R")
 source("data-raw/informal_groups.R")
-source("data-raw/bird_association_area.R")
 source("data-raw/finnish_occurrence.R")
 source("data-raw/sources.R")
 source("data-raw/misc.R")
@@ -17,7 +16,6 @@ cite_file_vars_df <- cite_file_vars
 lite_download_file_vars_df <- lite_download_file_vars
 filter_names_df <- filter_names
 informal_groups_df <- informal_groups
-bird_assoc_area_df <- bird_assoc_area
 finnish_occurrence_status_df <- finnish_occurrence_status
 source_df <- source
 superrecord_basis_df <- superrecord_basis
@@ -36,7 +34,6 @@ usethis::use_data(
   lite_download_file_vars_df,
   filter_names_df,
   informal_groups_df,
-  bird_assoc_area_df,
   finnish_occurrence_status_df,
   source_df,
   superrecord_basis_df,

@@ -43,7 +43,13 @@ test_that(
 
     expect_s3_class(mmd, "data.frame")
 
-    expect_s3_class(finbif_metadata("bird_assoc_area"), "data.frame")
+    vcr::use_cassette("bird_assoc_area_metadata", {
+
+      baamd <- finbif_metadata("bird_assoc_area")
+
+    })
+
+    expect_s3_class(baamd, "data.frame")
 
     expect_s3_class(finbif_metadata("finnish_occurrence_status"), "data.frame")
 

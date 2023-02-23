@@ -761,7 +761,53 @@ municipality <- function() {
 
 bird_assoc_area <- function() {
 
-  bird_assoc_area_df
+  codes <- c(
+    ML.1088 = "AFF",
+    ML.1095 = "EKLY",
+    ML.1101 = "Oriolus",
+    ML.1091 = "Tringa",
+    ML.1110 = "KLY",
+    ML.1097 = "KHLY",
+    ML.1111 = "Xenus",
+    ML.1092 = "Apus",
+    ML.1108 = "KPLY",
+    ML.1104 = "KSLY",
+    ML.1113 = "Kuusamo",
+    ML.1094 = "KyLY",
+    ML.1112 = "LLY",
+    ML.1114 = "Hakki",
+    ML.1096 = "LHLH",
+    ML.1107 = "MLY",
+    ML.1098 = "PHLY",
+    ML.1099 = "PiLY",
+    ML.1103 = "PKLY",
+    ML.1109 = "PPLY",
+    ML.1102 = "Kuikka",
+    ML.1090 = "PLY",
+    ML.1093 = "PSLY",
+    ML.1116 = "RSLH",
+    ML.1127 = "SUA",
+    ML.1105 = "SSLTY",
+    ML.1106 = "SpLY",
+    ML.1089 = "TLY",
+    ML.1267 = "OA"
+  )
+
+  bird_assoc <- get_areas("birdAssociationArea")
+
+  id <- row.names(bird_assoc)
+
+  codes <- codes[id]
+
+  codes <- unname(codes)
+
+  codes <- structure(codes, class = "translation", names = NULL)
+
+  codes <- list(code = codes)
+
+  codes <- structure(codes, class = "data.frame", row.names = id)
+
+  cbind(bird_assoc, codes)
 
 }
 
