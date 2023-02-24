@@ -14,7 +14,6 @@ cite_file_vars_df <- cite_file_vars
 lite_download_file_vars_df <- lite_download_file_vars
 filter_names_df <- filter_names
 informal_groups_df <- informal_groups
-superrecord_basis_df <- superrecord_basis
 sex_df <- sex
 quality_issues_df <- quality_issues
 record_reliability_df <- record_reliability
@@ -30,7 +29,6 @@ usethis::use_data(
   lite_download_file_vars_df,
   filter_names_df,
   informal_groups_df,
-  superrecord_basis_df,
   sex_df,
   quality_issues_df,
   record_reliability_df,

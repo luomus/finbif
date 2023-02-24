@@ -959,7 +959,23 @@ record_basis <- function() {
 
 superrecord_basis <- function() {
 
-  superrecord_basis_df
+  options <- c(
+    "human_observation",
+    "machine_observation",
+    "specimen"
+  )
+
+  options <- structure(options, class = "translation")
+
+  options <- list(options = options)
+
+  rnms <- c(
+    "human_observation_unspecified",
+    "machine_observation_unspecified",
+    "preserved_specimen"
+  )
+
+  structure(options, row.names = rnms, class = "data.frame")
 
 }
 
