@@ -1039,7 +1039,15 @@ restriction_level <- function() {
 
 quality_issues <- function() {
 
-  quality_issues_df
+  options <- c("with_issues", "without_issues", "both")
+
+  options <- structure(options, class = "translation")
+
+  options <- list(options = options)
+
+  rnms <- c("only_issues", "no_issues", "both")
+
+  structure(options, row.names = rnms, class = "data.frame")
 
 }
 
@@ -1067,7 +1075,15 @@ record_quality <- function() {
 
 record_reliability <- function() {
 
-  record_reliability_df
+  options <- c("reliable", "unassessed", "unreliable")
+
+  options <- structure(options, class = "translation")
+
+  options <- list(options = options)
+
+  rnms <- c("reliable", "undefined", "unreliable")
+
+  structure(options, row.names = rnms, class = "data.frame")
 
 }
 
