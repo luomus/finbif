@@ -1,0 +1,42 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MNP.tagEnum?lang=multi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Fri, 24 Feb 2023 08:29:52 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '832'
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"340-pGg+JXi4WLIRGBrDmzcefgPUVRI"
+      vary: Accept-Encoding
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '[{"id":"MNP.tagAccessibilityEasy","value":{"en":"Easy accessibility","fi":"Helppokulkuinen","sv":"Easy
+        gå"}},{"id":"MNP.tagAccessibilityModerate","value":{"en":"Moderate accessibility","fi":"Normaalikulkuinen","sv":"Måttlig
+        gå"}},{"id":"MNP.tagAccessibilityDifficult","value":{"fi":"Vaikeakulkuinen","en":"Difficult
+        accessibility","sv":"Svår gå"}},{"id":"MNP.tagHabitatImportant","value":{"fi":"Tärkeä
+        habitaatti","en":"Important habitat","sv":"Viktig livsmiljö"}},{"id":"MNP.tagCensusRare","value":{"en":"Rarely
+        censused","fi":"Harvoin laskettu","sv":"Sällan censused"}},{"id":"MNP.tagHabitatFarmland","value":{"en":"Farmland","fi":"Pelto","sv":"Odlinglandskap"}},{"id":"MNP.tagHabitatMire","value":{"fi":"Suo","en":"Mire","sv":"Myr"}},{"id":"MNP.tagHabitatMountain","value":{"en":"Mountain","fi":"Tunturi","sv":"Fjäl"}}]'
+  recorded_at: 2023-02-24 08:29:52 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

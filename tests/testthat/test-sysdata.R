@@ -33,7 +33,13 @@ test_that(
 
     expect_s3_class(complete_list_type(), "data.frame")
 
-    expect_s3_class(location_tag(), "data.frame")
+    vcr::use_cassette("location_tag", {
+
+      lt <- location_tag()
+
+    })
+
+    expect_s3_class(lt, "data.frame")
 
     vcr::use_cassette("atlas_code", {
 

@@ -1117,7 +1117,7 @@ complete_list_type <- function() {
 
 location_tag <- function() {
 
-  location_tag_df
+  get_sysdata("MNP.tagEnum")
 
 }
 
