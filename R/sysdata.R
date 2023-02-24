@@ -1091,7 +1091,25 @@ record_reliability <- function() {
 
 complete_list_type <- function() {
 
-  complete_list_type_df
+  options <-c(
+    "all_species_and_all_breeding",
+    "all_species_and_partial_breeding",
+    "incomplete",
+    "all_species"
+  )
+
+  options <- structure(options, class = "translation")
+
+  options <- list(options = options)
+
+  rnms <-c(
+    "MY.completeListTypeCompleteWithBreedingStatus",
+    "MY.completeListTypeComplete",
+    "MY.completeListTypeIncomplete",
+    "MY.completeListTypeCompleteWithBreedingStatus,MY.completeListTypeComplete"
+  )
+
+  structure(options, row.names = rnms, class = "data.frame")
 
 }
 
