@@ -369,7 +369,45 @@ threatened_status <- function() {
 
 informal_groups <- function() {
 
-  informal_groups_df
+  query <- list(lang = "multi", pageSize = 1000L)
+
+  request <- list(path = "informal-taxon-groups", query = query, cache = TRUE)
+
+  sd_response <- api_get(request)
+
+  results <- c("content", "results")
+
+  sd_response_content <- sd_response[[results]]
+
+  n_langs <- length(supported_langs)
+
+  sq <- seq_len(n_langs)
+
+  sd_df <- vector("list", n_langs)
+
+  row_names <- vapply(sd_response_content, getElement, "", "id")
+
+  col_names <- paste0("name_", supported_langs)
+
+  sd_df <- structure(sd_df, row.names = row_names, names = col_names)
+
+  for (i in sq) {
+
+    lang_i <- supported_langs[[i]]
+
+    el_i <- c("name", lang_i)
+
+    sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
+
+    sd_i <- sub("^.* [\u2013|-] ", "", sd_i)
+
+    sd_df[[i]] <- sd_i
+
+  }
+
+  sd_df <- set_translations(sd_df)
+
+  structure(sd_df, class = "data.frame")
 
 }
 

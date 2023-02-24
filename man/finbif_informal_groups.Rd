@@ -7,16 +7,17 @@
 \usage{
 finbif_informal_groups(
   group,
-  limit = 50,
+  limit = 5,
   quiet = FALSE,
   locale = getOption("finbif_locale")
 )
 }
 \arguments{
-\item{group}{Character. Optional, if supplied only display this group and
-its subgroups.}
+\item{group}{Character. Optional, if supplied only display this top-level
+group and its subgroups.}
 
-\item{limit}{Integer. The maximum number informal groups to display.}
+\item{limit}{Integer. The maximum number top-level informal groups (and their
+sub-groups) to display.}
 
 \item{quiet}{Logical. Return informal group names without displaying them.}
 

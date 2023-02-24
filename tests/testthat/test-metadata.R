@@ -119,7 +119,11 @@ test_that(
 
     expect_s3_class(finbif_metadata("habitat_qualifier"), "data.frame")
 
-    capture.output(informal_groups <- finbif_informal_groups())
+    vcr::use_cassette("informal_group_metadata", {
+
+      capture.output(informal_groups <- finbif_informal_groups())
+
+    })
 
     expect_type(informal_groups, "character")
 

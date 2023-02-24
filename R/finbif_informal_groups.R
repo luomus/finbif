@@ -4,9 +4,10 @@
 #'
 #' @aliases fb_informal_groups
 #'
-#' @param group Character. Optional, if supplied only display this group and
-#'  its subgroups.
-#' @param limit Integer. The maximum number informal groups to display.
+#' @param group Character. Optional, if supplied only display this top-level
+#'   group and its subgroups.
+#' @param limit Integer. The maximum number top-level informal groups (and their
+#'   sub-groups) to display.
 #' @param quiet Logical. Return informal group names without displaying them.
 #' @param locale Character. One of the supported two-letter ISO 639-1 language
 #'   codes. Current supported languages are English, Finnish and Swedish. For
@@ -24,94 +25,116 @@
 
 finbif_informal_groups <- function(
   group,
-  limit = 50,
+  limit = 5,
   quiet = FALSE,
   locale = getOption("finbif_locale")
 ) {
 
-  informal_groups <- informal_groups()
+  no_locale <- !locale %in% supported_langs
 
-  cols <- names(informal_groups)
+  if (no_locale) {
 
-  nm_cols <- grep("^name_", cols, value = TRUE)
-
-  nm_df <- informal_groups[, nm_cols, drop = FALSE]
-
-  locales <- sub("^name_", "", nm_cols)
-
-  names(nm_df) <- locales
-
-  nms <- with_locale(nm_df, locale)
-
-  tree_cols <- grep("^tree", cols, value = TRUE)
-
-  tree_df <- informal_groups[, tree_cols, drop = FALSE]
-
-  names(tree_df) <- locales
-
-  trees <- with_locale(tree_df, locale)
-
-  has_group_arg <- !missing(group)
-
-  if (has_group_arg) {
-
-    group <- to_sentence_case(group)
-
-    has_group <- group %in% nms
-
-    stopifnot(has_group)
-
-    is_group_nm <- nms == group
-
-    begin <- which(is_group_nm)
-
-    lvl <- regexpr("\\w", trees)
-
-    lvl_begin <- lvl[begin]
-
-    lvl_seq <- seq_along(lvl)
-
-    is_lvl_begin <- lvl == lvl_begin
-
-    after_lvl_begin <- lvl_seq > begin
-
-    is_and_after_lvl <- is_lvl_begin & after_lvl_begin
-
-    end <- which(is_and_after_lvl)
-
-    end <- end[1L]
-
-    end <- end - 1L
-
-    begin_end_seq <- seq.int(begin, end)
-
-    nms <- nms[begin_end_seq]
-
-    trees <- trees[begin_end_seq]
+    locale <- "en"
 
   }
 
-  n <- length(nms)
+  query = list(pageSize = 1000L, lang = locale)
 
-  limit <- min(limit, n)
+  request <- list(path = "informal-taxon-groups/tree", query, cache = TRUE)
 
-  limit <- as.integer(limit)
+  x <- api_get(request)
 
-  verbose <- !quiet
+  results <- c("content", "results")
 
-  if (verbose) {
+  x <- x[[results]]
 
-    seq_limit <- seq_len(limit)
+  grps <- vapply(x, getElement, "", "name")
 
-    trees_limit <- trees[seq_limit]
+  use_group <- !missing(group)
 
-    cat(trees_limit, sep = "\n")
+  if (use_group) {
 
-    extra <- n - limit
+    groups <- grps == group
 
-    has_extra <- extra > 0L
+    has_group <- any(groups)
 
-    if (has_extra) {
+    stopifnot("Group not found" = has_group)
+
+    grp <- which(groups)
+
+    x <- x[[grp]]
+
+  }
+
+  if (!quiet) {
+
+    obj <- list(x = x, cntr = 0L, limit = limit)
+
+    print_informal_group(obj)
+
+  }
+
+  x <- unlist(x)
+
+  x <- unname(x)
+
+  x <- grep("^MVL\\.", x, invert = TRUE, value = TRUE)
+
+  class(x) <- "translation"
+
+  invisible(x)
+
+}
+
+#' @noRd
+
+print_informal_group <- function(obj) {
+
+  x <- obj[["x"]]
+
+  cntr1 <- obj[["cntr"]]
+
+  limit <- obj[["limit"]]
+
+  times <- max(cntr1 - 1L, 0L)
+
+  pad <- rep("    ", times)
+
+  cntr1 <- cntr1 + 1L
+
+  cntr2 <- 1L
+
+  x_len <- length(x)
+
+  limit <- min(limit, x_len)
+
+  for (i in x) {
+
+    branch <- ""
+
+    is_branch <- cntr1 > 1L
+
+    if (is_branch) {
+
+      branch <- "  --"
+
+    }
+
+    at_limit <- !is_branch && cntr2 > limit
+
+    if (at_limit) {
+
+      sq <- cntr2 - 1L
+
+      sq <- seq_len(sq)
+
+      extras <- x[-sq]
+
+      extras <- unlist(extras)
+
+      extras <- grep("MVL\\.", extras)
+
+      extra <- length(extras)
 
       has_extras <- extra > 1L
 
@@ -125,10 +148,32 @@ finbif_informal_groups <- function(
 
       cat("...", extra, " more group", s, sep = "")
 
+      break
+
+    }
+
+    cntr2 <- cntr2 + 1L
+
+    i_name <- i[["name"]]
+
+    cat(pad, branch, i_name, "\n", sep = "")
+
+    nms <- names(i)
+
+    has_sub <- "hasSubGroup" %in% nms
+
+    if (has_sub) {
+
+      xi <- i[["hasSubGroup"]]
+
+      obj_i <- list(x = xi, cntr = cntr1, limit = limit)
+
+      print_informal_group(obj_i)
+
     }
 
   }
 
-  invisible(nms)
+  invisible()
 
 }
