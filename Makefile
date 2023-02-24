@@ -37,7 +37,6 @@ dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('rmarkdown', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('sf', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('testthat', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('usethis', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('vcr', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('webfakes', quietly = TRUE))";
 .PHONY: dev_deps

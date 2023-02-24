@@ -14,4 +14,3 @@ finland_map <- unlist(finland_map, FALSE)
 finland_map <- lapply(finland_map, rbind, NA)
 finland_map <-
   list(vertices = do.call(rbind, finland_map), bbox = c(19, 59, 32, 71))
-usethis::use_data(finland_map, overwrite = TRUE, compress = "xz")
