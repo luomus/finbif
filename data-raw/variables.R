@@ -118,3 +118,6 @@ class(var_names[["translated_var"]]) <- "translation"
 class(var_names[["dwc"]]) <- "translation"
 class(has_value[["translated_var"]]) <- "translation"
 class(has_value[["dwc"]]) <- "translation"
+
+var_names_df <- var_names
+has_value_df <- has_value

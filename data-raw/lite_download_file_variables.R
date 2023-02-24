@@ -29,27 +29,27 @@ locales <- as.data.frame(locales)
 
 names(locales) <- gsub(".json", "", names(locales))
 
-lite_download_file_vars <- read.csv(
+lite_download_file_vars_df <- read.csv(
   "data-raw/lite_download_file_variables.csv", stringsAsFactors = FALSE,
   strip.white = TRUE, row.names = 1L, comment.char = "#", na.strings = ""
 )
 
-locales <- locales[rownames(lite_download_file_vars), ]
+locales <- locales[rownames(lite_download_file_vars_df), ]
 
 for (l in names(locales)) {
 
   locales[[l]] <- ifelse(
     is.na(locales[[l]]),
-    lite_download_file_vars[["translated_var"]],
+    lite_download_file_vars_df[["translated_var"]],
     locales[[l]]
   )
 
   locales[[l]] <- ifelse(
-    is.na(lite_download_file_vars[["combine_with"]]),
+    is.na(lite_download_file_vars_df[["combine_with"]]),
     locales[[l]],
     paste(
       locales[[l]],
-      locales[lite_download_file_vars[["combine_with"]], l],
+      locales[lite_download_file_vars_df[["combine_with"]], l],
       sep = " + "
     )
   )
@@ -58,4 +58,4 @@ for (l in names(locales)) {
 
 locales <- Map(make.names, locales)
 
-lite_download_file_vars <- cbind(lite_download_file_vars, locales)
+lite_download_file_vars_df <- cbind(lite_download_file_vars_df, locales)

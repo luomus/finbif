@@ -47,3 +47,5 @@ unused_filters <- c("editorId", "editorOrObserverId", "observerId")
 filter_names <- filter_names[-match(unused_filters, rownames(filter_names)), ]
 
 class(filter_names[["translated_filter"]]) <- "translation"
+
+filter_names_df <- filter_names

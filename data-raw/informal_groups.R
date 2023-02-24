@@ -70,3 +70,5 @@ informal_groups <- do.call(cbind, informal_groups)
 class(informal_groups[["name_en"]]) <- "translation"
 class(informal_groups[["name_fi"]]) <- "translation"
 class(informal_groups[["name_sv"]]) <- "translation"
+
+informal_groups_df <- informal_groups
