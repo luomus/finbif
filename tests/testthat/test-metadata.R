@@ -73,7 +73,13 @@ test_that(
 
     expect_s3_class(rbmd, "data.frame")
 
-    expect_s3_class(finbif_metadata("sex_category"), "data.frame")
+    vcr::use_cassette("sex_category_metadata", {
+
+      scmd <- finbif_metadata("sex_category")
+
+    })
+
+    expect_s3_class(scmd, "data.frame")
 
     expect_s3_class(finbif_metadata("restriction_reason"), "data.frame")
 

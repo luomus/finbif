@@ -254,7 +254,7 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2023-02-21 09:32:01 GMT
+  recorded_at: 2023-02-24 07:38:24 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -307,7 +307,7 @@ http_interactions:
         prov","en":"Microbial specimen","fi":"Mikrobinäyte"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","sv":"Litteratur","en":"Literature"}},{"id":"MY.recordBasisMaterialSample","value":{"fi":"Materiaalinäyte","sv":"Materialprov","en":"Material
         sample"}},{"id":"MY.recordBasisSubfossilSpecimenAmberInclusion","value":{"sv":"Bärnsten
         fossil","fi":"Meripihkafossiili","en":"Amber inclusion"}}]'
-  recorded_at: 2023-02-21 09:32:01 GMT
+  recorded_at: 2023-02-24 07:38:24 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -349,7 +349,7 @@ http_interactions:
         egg","fi":"kuoriutunut muna","sv":"kläckt ägg"}},{"id":"MY.lifeStageHatchedPupa","value":{"sv":"kläckt
         ägg","fi":"kuoriutunut kotelo","en":"hatched pupa"}},{"id":"MY.lifeStageGall","value":{"fi":"äkämä","en":"gall","sv":"gallbildning"}},{"id":"MY.lifeStageMarks","value":{"fi":"jäljet
         (syömäjäljet tms.)","sv":"spår","en":"marks (feeding marks etc.)"}},{"id":"MY.lifeStageTriungulin","value":{"sv":"triunguliini","fi":"triunguliini","en":"triungulin"}}]'
-  recorded_at: 2023-02-21 09:32:01 GMT
+  recorded_at: 2023-02-24 07:38:24 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -394,7 +394,7 @@ http_interactions:
         frö / frukt / spor"}},{"id":"MY.plantLifeStageDeadSprout","value":{"en":"dead
         sprout","fi":"kuollut verso","sv":"död skott"}},{"id":"MY.plantLifeStageSubterranean","value":{"en":"subterranean","fi":"mukula
         / sipuli / juuri","sv":"knöl / lök / rot"}}]'
-  recorded_at: 2023-02-21 09:32:01 GMT
+  recorded_at: 2023-02-24 07:38:24 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -454,5 +454,47 @@ http_interactions:
         har dolt tidinformation","fi":"Käyttäjän karkeistama aika","en":"User has
         hidden time information"}},{"id":"MZ.secureReasonPersonNamesHidden","value":{"en":"Person
         names hidden","sv":"Personnamn dolda","fi":"Henkilönimet piiloitettu"}}]'
-  recorded_at: 2023-02-21 09:32:01 GMT
+  recorded_at: 2023-02-24 07:38:24 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.sexes?lang=multi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Fri, 24 Feb 2023 07:38:24 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '670'
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"29e-me+iW8lpqr7cFEhlRsqF4SfDkr8"
+      vary: Accept-Encoding
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '[{"id":"MY.sexM","value":{"fi":"koiras","en":"M - Male","sv":"hane"}},{"id":"MY.sexF","value":{"en":"F
+        - Female","fi":"naaras","sv":"hona"}},{"id":"MY.sexW","value":{"en":"W - Worker","fi":"työläinen","sv":"arbetare"}},{"id":"MY.sexU","value":{"fi":"tuntematon","en":"U
+        - Unknown","sv":"okänd"}},{"id":"MY.sexN","value":{"fi":"soveltumaton","en":"N
+        - Not applicable","sv":"inte tillämpbar"}},{"id":"MY.sexX","value":{"fi":"gynandromorfi","sv":"gynandromorf","en":"X
+        - Gynandromorph"}},{"id":"MY.sexE","value":{"fi":"eri sukupuolia","en":"E
+        - multiple","sv":"olika kön"}},{"id":"MY.sexC","value":{"fi":"ristiriitainen","en":"C
+        - Conflicting","sv":"kontroversiell"}}]'
+  recorded_at: 2023-02-24 07:38:24 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2

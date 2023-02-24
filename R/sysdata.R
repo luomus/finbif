@@ -32,7 +32,7 @@ get_sysdata <- function(x) {
 
     sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
 
-    sd_i <- sub("^.* \u2013 ", "", sd_i)
+    sd_i <- sub("^.* [\u2013|-] ", "", sd_i)
 
     sd_df[[i]] <- sd_i
 
@@ -46,7 +46,11 @@ get_sysdata <- function(x) {
 
 #' @noRd
 
-get_enumeration <- function(x) {
+get_enumeration <- function(obj) {
+
+  enum <- obj[["enum"]]
+
+  get_function <- obj[["fun"]]
 
   request <- list(path = "warehouse/enumeration-labels", cache = TRUE)
 
@@ -62,7 +66,7 @@ get_enumeration <- function(x) {
 
   enumerations <- structure(enumerations, names = ids)
 
-  sd_en_df <- get_sysdata(x)
+  sd_en_df <- get_function(enum)
 
   id <- row.names(sd_en_df)
 
@@ -162,7 +166,7 @@ get_areas <- function(x) {
 
     sd_i <- vapply(sd_response_results, get_el_recurse, "", el_i, "character")
 
-    sd_i <- sub("^.* \u2013 ", "", sd_i)
+    sd_i <- sub("^.* [\u2013|-] ", "", sd_i)
 
     sd_df[[i]] <- sd_i
 
@@ -951,7 +955,9 @@ source <- function() {
 
 record_basis <- function() {
 
-  get_enumeration("MY.recordBases")
+  record_bases <- list(enum = "MY.recordBases", fun = get_sysdata)
+
+  get_enumeration(record_bases)
 
 }
 
@@ -983,9 +989,13 @@ superrecord_basis <- function() {
 
 life_stage <- function() {
 
-  animal_life_stages <- get_enumeration("MY.lifeStages")
+  animal_life_stages <- list(enum = "MY.lifeStages", fun = get_sysdata)
 
-  plant_life_stages <- get_enumeration("MY.plantLifeStageEnum")
+  animal_life_stages <- get_enumeration(animal_life_stages)
+
+  plant_life_stages <- list(enum = "MY.plantLifeStageEnum", fun = get_sysdata)
+
+  plant_life_stages <- get_enumeration(plant_life_stages)
 
   life_stages <- rbind(animal_life_stages, plant_life_stages)
 
@@ -997,7 +1007,11 @@ life_stage <- function() {
 
 sex <- function() {
 
-  sex_df
+  sexes <- list(prefix = "MY.sex", suffix = "es")
+
+  sexes <- list(enum = sexes, fun = get_code)
+
+  get_enumeration(sexes)
 
 }
 
@@ -1005,7 +1019,9 @@ sex <- function() {
 
 restriction_reason <- function() {
 
-  get_enumeration("MZ.secureReason")
+  reasons <- list(enum = "MZ.secureReason", fun = get_sysdata)
+
+  get_enumeration(reasons)
 
 }
 
@@ -1013,7 +1029,9 @@ restriction_reason <- function() {
 
 restriction_level <- function() {
 
-  get_enumeration("MX.secureLevels")
+  levels <- list(enum = "MX.secureLevels", fun = get_sysdata)
+
+  get_enumeration(levels)
 
 }
 
@@ -1029,7 +1047,9 @@ quality_issues <- function() {
 
 collection_quality <- function() {
 
-  get_enumeration("MY.collectionQualityEnum")
+  quality <- list(enum = "MY.collectionQualityEnum", fun = get_sysdata)
+
+  get_enumeration(quality)
 
 }
 
@@ -1037,7 +1057,9 @@ collection_quality <- function() {
 
 record_quality <- function() {
 
-  get_enumeration("MZ.recordQualityEnum")
+  quality <- list(enum = "MZ.recordQualityEnum", fun = get_sysdata)
+
+  get_enumeration(quality)
 
 }
 

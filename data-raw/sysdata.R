@@ -6,7 +6,6 @@ source("data-raw/informal_groups.R")
 source("data-raw/misc.R")
 source("data-raw/location_tag.R")
 source("data-raw/complete_list_type.R")
-source("data-raw/enums.R")
 
 var_names_df <- var_names
 has_value_df <- has_value
@@ -14,7 +13,6 @@ cite_file_vars_df <- cite_file_vars
 lite_download_file_vars_df <- lite_download_file_vars
 filter_names_df <- filter_names
 informal_groups_df <- informal_groups
-sex_df <- sex
 quality_issues_df <- quality_issues
 record_reliability_df <- record_reliability
 complete_list_type_df <- complete_list_type
@@ -29,7 +27,6 @@ usethis::use_data(
   lite_download_file_vars_df,
   filter_names_df,
   informal_groups_df,
-  sex_df,
   quality_issues_df,
   record_reliability_df,
   complete_list_type_df,
