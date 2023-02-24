@@ -1,5 +1,9 @@
 #' @noRd
 
+supported_langs <- c(English = "en", Finnish = "fi", Swedish = "sv")
+
+#' @noRd
+
 get_sysdata <- function(x) {
 
   path <- paste0("metadata/ranges/", x)

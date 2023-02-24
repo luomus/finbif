@@ -11,8 +11,6 @@ lite_download_file_vars_df <- lite_download_file_vars
 filter_names_df <- filter_names
 informal_groups_df <- informal_groups
 
-supported_langs <- c(English = "en", Finnish = "fi", Swedish = "sv")
-
 usethis::use_data(
   var_names_df,
   has_value_df,
@@ -20,7 +18,6 @@ usethis::use_data(
   lite_download_file_vars_df,
   filter_names_df,
   informal_groups_df,
-  supported_langs,
   internal = TRUE,
   overwrite = TRUE
 )
