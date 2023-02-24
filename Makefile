@@ -30,7 +30,6 @@ dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('grDevices', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('jsonlite', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('knitr', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('ows4R', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('pkgdown', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('readODS', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('readxl', quietly = TRUE))";\
