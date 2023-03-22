@@ -14,6 +14,10 @@ coords <- function(obj) {
 
   lon <- obj[["lon"]]
 
+  lat <- paste(lat, collapse = ":")
+
+  lon <- paste(lon, collapse = ":")
+
   ans <- paste(lat, lon, sep = ":")
 
   sys <- obj[["system"]]
