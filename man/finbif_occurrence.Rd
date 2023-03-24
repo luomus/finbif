@@ -50,11 +50,12 @@ descending order append a \code{-} to the front of the variable (e.g.,
 \code{"-date_start"}). Default order is \code{"-date_start"} > \code{"-load_data"} >
 \code{"reported_name"}.}
 
-\item{aggregate}{Character. If missing, returns full records. If one or more
-of \code{"records"}, \code{"species"}, \code{"taxa"}, \code{"events"} or \code{"documents"}
-aggregates combinations of the selected variables by counting records,
-species, taxa, events or documents. Aggregation by events or documents
-cannot be done in combination with any of the other aggregation types.}
+\item{aggregate}{Character. If \code{"none"} (default), returns full records. If
+one or more of \code{"records"}, \code{"species"}, \code{"taxa"}, \code{"individuals"},
+\code{"pairs"}, \code{"events"} or \code{"documents"}; aggregates combinations of the
+selected variables by counting records, species, taxa, indivduals or events
+or documents. Aggregation by events or documents cannot be done in
+combination with any of the other aggregation types.}
 
 \item{sample}{Logical. If \code{TRUE} randomly sample the records from the FinBIF
 database.}

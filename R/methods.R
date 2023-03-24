@@ -48,6 +48,8 @@ as.data.frame.finbif_records <- function(
       records = "count",
       species = "speciesCount",
       taxa = "taxonCount",
+      individuals = "individualCountSum",
+      pairs = "pairCountSum",
       events = "count",
       documents = "count"
     )

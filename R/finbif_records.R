@@ -18,11 +18,12 @@
 #'   descending order append a `-` to the front of the variable (e.g.,
 #'   `"-date_start"`). Default order is `"-date_start"` > `"-load_data"` >
 #'   `"reported_name"`.
-#' @param aggregate Character. If missing, returns full records. If one or more
-#'   of `"records"`, `"species"`, `"taxa"`, `"events"` or `"documents"`
-#'   aggregates combinations of the selected variables by counting records,
-#'   species, taxa, events or documents. Aggregation by events or documents
-#'   cannot be done in combination with any of the other aggregation types.
+#' @param aggregate Character. If `"none"` (default), returns full records. If
+#'   one or more of `"records"`, `"species"`, `"taxa"`, `"individuals"`,
+#'   `"pairs"`, `"events"` or `"documents"`; aggregates combinations of the
+#'   selected variables by counting records, species, taxa, indivduals or events
+#'   or documents. Aggregation by events or documents cannot be done in
+#'   combination with any of the other aggregation types.
 #' @param sample Logical. If `TRUE` randomly sample the records from the FinBIF
 #'   database.
 #' @param n Integer. How many records to download/import.
@@ -280,7 +281,10 @@ infer_aggregation <- function(aggregate) {
 
   events_and_docs <- c("events", "documents")
 
-  aggregations <- c("none", "records", "species", "taxa", events_and_docs)
+  aggregations <- c(
+    "none", "records", "species", "taxa", "individuals", "pairs",
+    events_and_docs
+  )
 
   aggregate <- match.arg(aggregate, aggregations, TRUE)
 
@@ -721,7 +725,7 @@ request <- function(fb_records_obj) {
 
   }
 
-  endpoint <- select_endpoint(aggregate)
+  endpoint <- select_endpoint(fb_records_obj)
 
   path <- paste0(path, endpoint)
 
@@ -749,13 +753,21 @@ request <- function(fb_records_obj) {
 
   }
 
-  taxon_counts <- taxa_counts(aggregate)
-
-  page_size <- min(n, max_size)
+  taxon_counts <- taxa_counts(fb_records_obj)
 
   query[["taxonCounts"]] <- taxon_counts
 
+  individual_counts <- individual_counts(fb_records_obj)
+
+  query[["onlyCount"]] <- individual_counts
+
+  pair_counts <- pair_counts(fb_records_obj)
+
+  query[["pairCounts"]] <- pair_counts
+
   query[["page"]] <- page
+
+  page_size <- min(n, max_size)
 
   query[["pageSize"]] <- page_size
 
@@ -1638,7 +1650,9 @@ check_n <- function(fb_records_obj) {
 
 #' @noRd
 
-select_endpoint <- function(aggregate) {
+select_endpoint <- function(fb_records_obj) {
+
+  aggregate <- fb_records_obj[["aggregate"]]
 
   aggregate <- aggregate[[1L]]
 
@@ -1654,19 +1668,65 @@ select_endpoint <- function(aggregate) {
 
 #' @noRd
 
-taxa_counts <- function(aggregate) {
+taxa_counts <- function(fb_records_obj) {
+
+  aggregate <- fb_records_obj[["aggregate"]]
 
   taxa_counts <- c("species", "taxa")
 
-  has_taxa_count <- aggregate %in% taxa_counts
+  has_taxa_count <- taxa_counts %in% aggregate
 
-  has_any_taxa_counts <- any(has_taxa_count)
+  without_taxa_counts <- !any(has_taxa_count)
 
-  if (has_any_taxa_counts) {
+  ans <- "true"
 
-    "true"
+  if (without_taxa_counts) {
+
+    ans <- NULL
 
   }
+
+  ans
+
+}
+
+#' @noRd
+
+individual_counts <- function(fb_records_obj) {
+
+  aggregate <- fb_records_obj[["aggregate"]]
+
+  without_individual_count <- !"individuals" %in% aggregate
+
+  ans <- "false"
+
+  if (without_individual_count) {
+
+    ans <- NULL
+
+  }
+
+  ans
+
+}
+
+#' @noRd
+
+pair_counts <- function(fb_records_obj) {
+
+  aggregate <- fb_records_obj[["aggregate"]]
+
+  without_pair_count <- !"pairs" %in% aggregate
+
+  ans <- "true"
+
+  if (without_pair_count) {
+
+    ans <- NULL
+
+  }
+
+  ans
 
 }
 
