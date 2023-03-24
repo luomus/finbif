@@ -2,22 +2,6 @@
 
 #' @noRd
 
-to_sentence_case <- function(string) {
-
-  upper <- toupper(string)
-
-  first <- substring(upper, 1L, 1L)
-
-  lower <- tolower(string)
-
-  rest <- substring(lower, 2L)
-
-  paste0(first, rest)
-
-}
-
-#' @noRd
-
 get_next_lowest_factor <- function(
   x,
   y
