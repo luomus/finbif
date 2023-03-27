@@ -1741,7 +1741,12 @@ order_by_computed_var <- function(order_by) {
     scientific_name = "unit.linkings.taxon.scientificName",
     abundance = "unit.interpretations.individualCount",
     date_time = "gathering.eventDate.begin",
-    coordinates_uncertainty = "gathering.interpretations.coordinateAccuracy"
+    coordinates_uncertainty = "gathering.interpretations.coordinateAccuracy",
+    red_list_status = "unit.linkings.taxon.redListStatus",
+    citation = "document.documentId",
+    occurrence_status = "unit.interpretations.individualCount",
+    duration = "gathering.eventDate.begin",
+    region = "gathering.province"
   )
 
   nms <- names(lt)
