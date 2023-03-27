@@ -1025,11 +1025,14 @@ get_extra_pages <- function(fb_records_list) {
 
     if (has_future) {
 
-      res <- future::future({
+      res <- future::future(
+        {
 
-        records_obj(fb_records_obj)
+          records_obj(fb_records_obj)
 
-      })
+        },
+        seed = NULL
+      )
 
     }
 
