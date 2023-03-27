@@ -38,7 +38,7 @@ finbif_informal_groups <- function(
 
   }
 
-  query = list(pageSize = 1000L, lang = locale)
+  query <- list(pageSize = 1000L, lang = locale)
 
   request <- list(path = "informal-taxon-groups/tree", query, cache = TRUE)
 
