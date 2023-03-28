@@ -1,3 +1,19 @@
+# finbif 0.7.2.9000
+
+#### DEPRECATION
+
+  - Mapping utilities `finland_map`, `breaks_xy`, `hist_xy` and the plot
+    method for `finbif_occ` objects have been deprecated as they are
+    out-of-scope.
+
+  - User access to `finbif_records` and its classes and methods is
+    deprecated in favour of `finbif_occurrence`.
+
+#### NEW FEATURES
+
+  - Record aggregations with `finbif_occurrence` can now include
+    "individual" and "pair" sums.
+
 # finbif 0.7.2
 
 #### MINOR IMPROVEMENTS

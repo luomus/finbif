@@ -2,6 +2,21 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.7.2.9000}{
+  \subsection{DEPRECATION}{
+    \itemize{
+      \item Mapping utilities \code{finland_map}, \code{breaks_xy},
+        \code{hist_xy} and the plot method for \code{finbif_occ} objects have
+        been deprecated as they are out-of-scope.
+      \item User access to \code{finbif_records} and its classes and methods is
+        deprecated in favour of \code{finbif_occurrence}.
+    }
+  }
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Record aggregations with \code{finbif_occurrence} can now include
+        "individual" and "pair" sums.
+    }
+  }
 }
 
 \section{finbif version 0.7.2}{
