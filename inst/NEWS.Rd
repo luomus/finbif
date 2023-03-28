@@ -52,7 +52,7 @@
       \item New global option \code{finbif_hide_progress} to suppress progress
         bars when downloading, importing or processing FinBIF records.
       \item For the sake of clarity and consistency the term "administrative
-        status" is now refered to as "regulatory status" throughout.
+        status" is now referred to as "regulatory status" throughout.
       \item Regulatory status, informal taxonomic group and habitat data are now
         localised.
       \item Option \code{unlist} added to \code{finbif_occurrence} that casts

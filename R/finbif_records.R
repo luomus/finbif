@@ -23,8 +23,8 @@
 #' @param aggregate Character. If `"none"` (default), returns full records. If
 #'   one or more of `"records"`, `"species"`, `"taxa"`, `"individuals"`,
 #'   `"pairs"`, `"events"` or `"documents"`; aggregates combinations of the
-#'   selected variables by counting records, species, taxa, indivduals or events
-#'   or documents. Aggregation by events or documents cannot be done in
+#'   selected variables by counting records, species, taxa, individuals or
+#'   events or documents. Aggregation by events or documents cannot be done in
 #'   combination with any of the other aggregation types.
 #' @param sample Logical. If `TRUE` randomly sample the records from the FinBIF
 #'   database.

@@ -49,7 +49,7 @@
     when downloading, importing or processing FinBIF records.
 
   - For the sake of clarity and consistency the term "administrative
-    status" is now refered to as "regulatory status" throughout.
+    status" is now referred to as "regulatory status" throughout.
 
   - Regulatory status, informal taxonomic group and habitat data are now
     localised.

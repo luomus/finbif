@@ -8,8 +8,8 @@ bibentry(
     ", https://doi.org/10.5281/zenodo.3612814"
   ),
   header = paste0(
-    "Data from FinBIF comes from many sources.",
-    "For information on citing FinBIF itself and the contributed",
+    "Data from FinBIF comes from many sources. ",
+    "For information on citing FinBIF itself and the contributed ",
     "datasets please visit this link:\n\n",
     "<https://laji.fi/en/about/2986>",
     "\n\n",
