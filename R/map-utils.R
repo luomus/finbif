@@ -1,6 +1,8 @@
 #' 2-Dimensional Histogram
 #'
-#' Compute a histogram from xy data given set of breakpoints.
+#' Compute a histogram from xy data given set of breakpoints. The finbif package
+#' mapping utilities have been deprecated and will be removed in the next
+#' release.
 #'
 #' @param xy Numeric. A `data.frame`, or object coercible to a `data.frame`
 #'   with `as.data.frame()`, where the columns of the `data.frame` are,
@@ -19,6 +21,13 @@
 #' @export
 
 hist_xy <- function(xy, breaks) {
+
+  msg <- paste0(
+    "The finbif package mapping utilities have been deprecated and will be ",
+    "removed in the next release."
+  )
+
+  deprecation(msg)
 
   nms <- c("x", "y")
 
@@ -48,7 +57,9 @@ hist_xy <- function(xy, breaks) {
 
 #' Create XY Breakpoints
 #'
-#' Creates sets of equally spaced breakpoints for XY coordinate data.
+#' Creates sets of equally spaced breakpoints for XY coordinate data. The finbif
+#' package mapping utilities have been deprecated and will be removed in the
+#' next release.
 #'
 #' @param bbox Numeric vector. A vector of points of the form,
 #'   `c(xmin, ymin, xmax, ymax)` giving the outer limits of the breakpoints when
@@ -63,6 +74,13 @@ hist_xy <- function(xy, breaks) {
 #' @export
 
 breaks_xy <- function(bbox, size) {
+
+  msg <- paste0(
+    "The finbif package mapping utilities have been deprecated and will be ",
+    "removed in the next release."
+  )
+
+  deprecation(msg)
 
   sqx <- c(1L, 3L)
 

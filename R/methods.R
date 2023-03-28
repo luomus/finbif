@@ -93,7 +93,11 @@ as.data.frame.finbif_records <- function(
 
       aggregation_nm <- aggregation_nms[[i]]
 
-      count <- vapply(x, getElement, 0L, aggregation_i)
+      count <- vapply(x, get_el_recurse, 0L, aggregation_i, "integer")
+
+      na_count <- is.na(count)
+
+      count <- ifelse(na_count, 0L, count)
 
       counts[[aggregation_nm]] <- count
 
@@ -1157,6 +1161,13 @@ plot.finbif_occ <- function(
   cex = .5,
   las = 1
 ) {
+
+  msg <- paste0(
+    "The finbif package mapping utilities have been deprecated and will be ",
+    "removed in the next release."
+  )
+
+  deprecation(msg)
 
   has_coords <- exists("lon_wgs84", x) && exists("lat_wgs84", x)
 

@@ -23,7 +23,9 @@ A list with three components:
 }
 }
 \description{
-Compute a histogram from xy data given set of breakpoints.
+Compute a histogram from xy data given set of breakpoints. The finbif package
+mapping utilities have been deprecated and will be removed in the next
+release.
 }
 \examples{
 set.seed(1L)

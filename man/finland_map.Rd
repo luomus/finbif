@@ -20,7 +20,9 @@ Finnish border at the (approximately) 1km scale.}
 finland_map
 }
 \description{
-Vertices of the Finnish border at the (approximately) 1km scale.
+Vertices of the Finnish border at the (approximately) 1km scale. The finbif
+package mapping utilities have been deprecated and will be removed in the
+next release.
 }
 \examples{
 library(finbif)

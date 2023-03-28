@@ -21,7 +21,9 @@ A list with two components:
 }
 }
 \description{
-Creates sets of equally spaced breakpoints for XY coordinate data.
+Creates sets of equally spaced breakpoints for XY coordinate data. The finbif
+package mapping utilities have been deprecated and will be removed in the
+next release.
 }
 \examples{
 breaks_xy(c(5, -45, 67, 100), 10)
