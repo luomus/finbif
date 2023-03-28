@@ -83,7 +83,9 @@ order indicated above.}
 A \code{finbif_api} or \code{finbif_api_list} object.
 }
 \description{
-Download records from FinBIF.
+Download records from FinBIF. The function \code{finbif_records()} and its
+associated classes and methods have been deprecated and user access will be
+removed in the next release of the finbif package.
 }
 \examples{
 \dontrun{

@@ -2,6 +2,22 @@
 
 #' @noRd
 
+deprecation <- function(msg) {
+
+  warn <- Sys.getenv("DEPRECATION_WARNING", TRUE)
+
+  warn <- as.logical(warn)
+
+  if (warn) {
+
+    warning(msg, call. = FALSE)
+
+  }
+
+}
+
+#' @noRd
+
 get_next_lowest_factor <- function(
   x,
   y

@@ -2,7 +2,9 @@
 
 #' Get FinBIF records
 #'
-#' Download records from FinBIF.
+#' Download records from FinBIF. The function `finbif_records()` and its
+#' associated classes and methods have been deprecated and user access will be
+#' removed in the next release of the finbif package.
 #'
 #' @aliases fb_records
 #'
@@ -71,6 +73,14 @@ finbif_records <- function(
   locale = getOption("finbif_locale"),
   include_facts = FALSE
 ) {
+
+  msg <- paste0(
+    "finbif_records() and its associated classes and methods have been ",
+    "deprecated and user access will be removed in the next release of the ",
+    "finbif package."
+  )
+
+  deprecation(msg)
 
   fb_records_obj <- list(
     filter = filter,

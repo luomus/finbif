@@ -2,7 +2,10 @@
 
 #' Coerce a `finbif_records*` object to a `data.frame`
 #'
-#' Converts the result of a FinBIF query to a `data.frame`.
+#' Converts the result of a FinBIF query to a `data.frame`. The function
+#' `finbif_records()` and its associated classes and methods have been
+#' deprecated and user access will be removed in the next release of the finbif
+#' package.
 #'
 #' @param x A `finbif_records*` object.
 #' @param ... Additional arguments. Not used.
@@ -25,6 +28,28 @@ as.data.frame.finbif_records <- function(
   ...,
   locale = getOption("finbif_locale")
 ) {
+
+  msg <- paste0(
+    "finbif_records() and its associated classes and methods have been ",
+    "deprecated and user access will be removed in the next release of the ",
+    "finbif package."
+  )
+
+  pf <- parent.frame()
+
+  not_user <- !identical(pf, .GlobalEnv)
+
+  warn <- Sys.getenv("DEPRECATION_WARNING")
+
+  if (not_user) {
+
+    Sys.setenv(DEPRECATION_WARNING = FALSE)
+
+  }
+
+  deprecation(msg)
+
+  Sys.setenv(DEPRECATION_WARNING = warn)
 
   cols <- attr(x, "select")
 
@@ -292,6 +317,28 @@ as.data.frame.finbif_records_list <- function(
   locale = getOption("finbif_locale"),
   quiet = TRUE
 ) {
+
+  msg <- paste0(
+    "finbif_records() and its associated classes and methods have been ",
+    "deprecated and user access will be removed in the next release of the ",
+    "finbif package."
+  )
+
+  pf <- parent.frame()
+
+  not_user <- !identical(pf, .GlobalEnv)
+
+  warn <- Sys.getenv("DEPRECATION_WARNING")
+
+  if (not_user) {
+
+    Sys.setenv(DEPRECATION_WARNING = FALSE)
+
+  }
+
+  deprecation(msg)
+
+  Sys.setenv(DEPRECATION_WARNING = warn)
 
   n <- length(x)
 

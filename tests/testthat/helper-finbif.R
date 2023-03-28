@@ -1,5 +1,7 @@
 options(finbif_rate_limit = Inf)
 
+Sys.setenv(DEPRECATION_WARNING = FALSE)
+
 has_vcr <- requireNamespace("vcr", quietly = TRUE)
 
 not_cran <- identical(Sys.getenv("NOT_CRAN"), "true")
