@@ -8,8 +8,8 @@
 [![r-universe](https://luomus.r-universe.dev/badges/finbif)](https://luomus.r-universe.dev)
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/finbif?color=brightgreen)](https://cran.r-project.org/package=finbif)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3612814.svg)](https://doi.org/10.5281/zenodo.3612814)
-[![Build Status](https://github.com/luomus/finbif/workflows/R-CMD-check/badge.svg?branch=dev)](https://github.com/luomus/finbif/actions)
-[![codecov](https://codecov.io/gh/luomus/finbif/branch/dev/graph/badge.svg)](https://app.codecov.io/github/luomus/finbif/branch/dev)
+[![Build Status](https://github.com/luomus/finbif/workflows/R-CMD-check/badge.svg?branch=main)](https://github.com/luomus/finbif/actions)
+[![codecov](https://codecov.io/gh/luomus/finbif/branch/main/graph/badge.svg)](https://app.codecov.io/github/luomus/finbif/branch/main)
 <!-- badges: end -->
 
 The `finbif` R package is a programmatic interface to the
@@ -81,15 +81,15 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 
 ## Citation
 
-Data from FinBIF comes from many sources.For information on citing
-FinBIF itself and the contributeddatasets please visit this link:
+Data from FinBIF comes from many sources. For information on citing
+FinBIF itself and the contributed datasets please visit this link:
 
 <https://laji.fi/en/about/2986>
 
 To cite the finbif R package in publications please use:
 
   Morris, William K. (2023). Introduction to the finbif package. R
-  package version 0.7.2.9000, https://doi.org/10.5281/zenodo.3612814
+  package version 0.8.0, https://doi.org/10.5281/zenodo.3612814
 
 ----
 
