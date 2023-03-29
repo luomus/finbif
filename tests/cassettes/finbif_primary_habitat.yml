@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 12 Sep 2022 07:42:59 GMT
+      date: Wed, 29 Mar 2023 06:26:30 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -29,42 +29,9 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":349741,"pageSize":10,"total":3497401,"results":[{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatM"}}},"unitId":"http://tun.fi/JX.294749#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVs"}}},"unitId":"http://tun.fi/JX.294736#3"}},{"unit":{"unitId":"http://tun.fi/JX.294707#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatM"}}},"unitId":"http://tun.fi/JX.294706#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVs"}}},"unitId":"http://tun.fi/JX.294654#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVsr"}}},"unitId":"http://tun.fi/JX.294629#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIv"}}},"unitId":"http://tun.fi/JX.294621#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIv"}}},"unitId":"http://tun.fi/JX.294617#3"}},{"unit":{"unitId":"http://tun.fi/KE.176/62ff4f0d2d0e2114ba6c737d#Unit1"}},{"unit":{"unitId":"http://tun.fi/KE.176/62ff4d6c2d0e251981cce4d3#Unit1"}}]}'
-  recorded_at: 2023-02-17 13:55:17 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
-- request:
-    method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.primaryHabitat.habitat&page=1&pageSize=10&personEmail=noreply%40laji.fi&access_token=<finbif_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Content-Type: ''
-      Accept: application/json
-  response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
-    headers:
-      date: Tue, 29 Nov 2022 09:01:35 GMT
-      content-type: application/json;charset=utf-8
-      transfer-encoding: chunked
-      access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
-      cache-control: no-store
-      x-frame-options: DENY
-      x-xss-protection: 1;mode=block
-      x-content-type-options: nosniff
-      strict-transport-security: max-age=31536000;includeSubDomains;preload
-      referrer-policy: no-referrer-when-downgrade
-    body:
-      encoding: ''
-      file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":234882,"pageSize":10,"total":2348814,"results":[{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.295460#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIv"}}},"unitId":"http://tun.fi/JX.295449#5"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.295434#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.295324#24"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatM"}}},"unitId":"http://tun.fi/JX.295324#12"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIp"}}},"unitId":"http://tun.fi/JX.295324#9"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatM"}}},"unitId":"http://tun.fi/JX.295324#15"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatM"}}},"unitId":"http://tun.fi/JX.295324#18"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.295324#6"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.295324#3"}}]}'
-  recorded_at: 2023-02-17 13:55:17 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+      string: '{"currentPage":1,"nextPage":2,"lastPage":244105,"pageSize":10,"total":2441041,"cacheTimestamp":1680071190,"results":[{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.297813#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.297813#6"}},{"unit":{"unitId":"http://tun.fi/JX.297810#3"}},{"unit":{"unitId":"http://tun.fi/JX.297810#7"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.297774#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.297773#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.297773#9"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.297773#11"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.297773#7"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.297773#5"}}]}'
+  recorded_at: 2023-03-29 06:26:30 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/metadata/ranges/MKV.habitatEnum?lang=multi&access_token=<finbif_token>
@@ -81,13 +48,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 17 Feb 2023 13:55:17 GMT
+      date: Wed, 29 Mar 2023 06:26:30 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"3f0d-N8RNPAuJDcYO0Ia3Mfz5qOV4reE"
+      etag: W/"3fdb-5ojXLw1V2CIWNcXGzn0EPdKe5to"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
@@ -183,24 +150,25 @@ http_interactions:
         – skogar vid strand"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjmt","value":{"fi":"Rjmt
         – tulvametsät","en":"Rjmt – inland flooded forests","sv":"Rjmt – skogar på
         översvämningsbenägna marker"},"altParent":"MKV.habitatRjm"},{"id":"MKV.habitatRjml","value":{"en":"Rjml
-        – inland wooded swamps","sv":"Rjml – skogs-madkärr","fi":"Rjml – metsäluhdat"},"altParent":"MKV.habitatRjm"},{"id":"MKV.habitatRjp","value":{"sv":"Rjp
-        – buskage på strand","en":"Rjp – inland shore scrubs","fi":"Rjp – rantapensaikot"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjn","value":{"sv":"Rjn
-        – ängstränder","en":"Rjn – meadows on lake shores and river banks","fi":"Rjn
-        – niittyrannat"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjl","value":{"fi":"Rjl
+        – inland wooded swamps","sv":"Rjml – skogs-madkärr","fi":"Rjml – metsäluhdat"},"altParent":"MKV.habitatRjm"},{"id":"MKV.habitatRjp","value":{"en":"Rjp
+        – inland shore scrubs","fi":"Rjp – rantapensaikot","sv":"Rjp – buskage på
+        strand"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjn","value":{"fi":"Rjn
+        – niittyrannat","sv":"Rjn – ängstränder","en":"Rjn – meadows on lake shores
+        and river banks"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjl","value":{"fi":"Rjl
         – luhtarannat","en":"Rjl – inland swamp shores","sv":"Rjl – madskärrstränder"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjr","value":{"fi":"Rjr
         – ruovikot","en":"Rjr – inland reedbeds with Phragmites australis","sv":"Rjr
-        – vassar"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjs","value":{"fi":"Rjs
-        – sora-, somerikko- ja kivikkorannat","en":"Rjs – inland gravel-, shingle-
-        and boulder shores","sv":"Rjs – grus-, klappersten- ock blockstränder"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjh","value":{"fi":"Rjh
+        – vassar"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjs","value":{"en":"Rjs
+        – inland gravel-, shingle- and boulder shores","fi":"Rjs – sora-, somerikko-
+        ja kivikkorannat","sv":"Rjs – grus-, klappersten- ock blockstränder"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjh","value":{"fi":"Rjh
         – hietikkorannat","en":"Rjh – sandy lake shores and river banks","sv":"Rjh
         – sandstränder"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjt","value":{"sv":"Rjt
-        – öppna översvämingsbenägna ständer","fi":"Rjt – avoimet tulvarannat","en":"Rjt
-        – inland open alluvial shores"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatK","value":{"sv":"K
-        – Hällmarker samt sten- och blockfält","fi":"K – Kalliot ja kivikot","en":"K
-        – Rock outcrops and boulder fields"}},{"id":"MKV.habitatKk","value":{"fi":"Kk
-        - kalkkikalliot ja -louhokset, myös paljas kalkkimaa","en":"Kk – calcareous
-        rock outcrops and quarries","sv":"Kk – kalkhällar och stenbrott, också bar
-        kalkjord"},"altParent":"MKV.habitatK"},{"id":"MKV.habitatKs","value":{"fi":"Ks
+        – öppna översvämingsbenägna ständer","en":"Rjt – inland open alluvial shores","fi":"Rjt
+        – avoimet tulvarannat"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatK","value":{"sv":"K
+        – Hällmarker samt sten- och blockfält","en":"K – Rock outcrops and boulder
+        fields","fi":"K – Kalliot ja kivikot"}},{"id":"MKV.habitatKk","value":{"sv":"Kk
+        – kalkhällar och stenbrott, också bar kalkjord","en":"Kk – calcareous rock
+        outcrops and quarries","fi":"Kk – kalkkikalliot ja -louhokset, myös paljas
+        kalkkimaa"},"altParent":"MKV.habitatK"},{"id":"MKV.habitatKs","value":{"fi":"Ks
         – serpentiinikalliot ja -maa","en":"Ks – serpentine rock outcrops","sv":"Ks
         – serpentinberg ock -mark"},"altParent":"MKV.habitatK"},{"id":"MKV.habitatKr","value":{"fi":"Kr
         – kalliorotkot, rotkolaaksot ja kurut","en":"Kr – canyons and gorges","sv":"Kr
@@ -210,17 +178,18 @@ http_interactions:
         – silikatrika hällmarker","en":"Km – siliceous rock outcrops","fi":"Km – karut
         ja keskiravinteiset kalliot"},"altParent":"MKV.habitatK"},{"id":"MKV.habitatT","value":{"en":"T
         – Alpine habitats","fi":"T – Tunturipaljakat","sv":"T – Fjäll"}},{"id":"MKV.habitatTk","value":{"fi":"Tk
-        – tunturikankaat","sv":"Tk – fjällhedar","en":"Tk – alpine heaths"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTn","value":{"sv":"Tn
-        – fjällängar","en":"Tn – alpine meadows","fi":"Tn – tunturiniityt"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTu","value":{"en":"Tu
-        – snowbeds","fi":"Tu – lumenviipymät","sv":"Tu – snölegor"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTp","value":{"sv":"Tp
-        – fjällbuskmarker","en":"Tp – alpine heath scrubs","fi":"Tp – tunturikangaspensaikot"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTl","value":{"sv":"Tl
-        – hällmarker och stenjordar på fjäll","fi":"Tl – paljakan kalliot ja kivikot","en":"Tl
-        – alpine rock outcrops and boulder fields"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTll","value":{"fi":"Tll
-        – paljakan karut ja keskiravinteiset kalliot ja kivikot","en":"Tll – alpine
-        siliceous rock outcrops and boulder fields","sv":"Tll – oligotrofa och mesotrofa
-        hällmarker och stenjordar på fjäll"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTlk","value":{"sv":"Tlk
-        – kalkrika hällmarker och stenjordar på fjäll","en":"Tlk – alpine calcareous
-        rock outcrops and boulder fields","fi":"Tlk – paljakan kalkkikalliot ja -kivikot"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTls","value":{"sv":"Tls
+        – tunturikankaat","en":"Tk – alpine heaths","sv":"Tk – fjällhedar"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTn","value":{"sv":"Tn
+        – fjällängar","en":"Tn – alpine meadows","fi":"Tn – tunturiniityt"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTu","value":{"sv":"Tu
+        – snölegor","en":"Tu – snowbeds","fi":"Tu – lumenviipymät"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTp","value":{"sv":"Tp
+        – fjällbuskmarker","en":"Tp – alpine heath scrubs","fi":"Tp – tunturikangaspensaikot"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTl","value":{"en":"Tl
+        – alpine rock outcrops and boulder fields","fi":"Tl – paljakan kalliot ja
+        kivikot","sv":"Tl – hällmarker och stenjordar på fjäll"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTll","value":{"en":"Tll
+        – alpine siliceous rock outcrops and boulder fields","fi":"Tll – paljakan
+        karut ja keskiravinteiset kalliot ja kivikot","sv":"Tll – oligotrofa och mesotrofa
+        hällmarker och stenjordar på fjäll"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTlk","value":{"en":"Tlk
+        – alpine calcareous rock outcrops and boulder fields","sv":"Tlk – kalkrika
+        hällmarker och stenjordar på fjäll","fi":"Tlk – paljakan kalkkikalliot ja
+        -kivikot"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTls","value":{"sv":"Tls
         – serpentinberg och -block på fjäll","fi":"Tls – paljakan serpentiinikalliot
         ja -kivikot","en":"Tls – alpine serpentine rock outcrops and boulder fields"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTlr","value":{"en":"Tlr
         – alpine gorges and canyons","fi":"Tlr – paljakan kalliorotkot, rotkolaaksot
@@ -229,30 +198,32 @@ http_interactions:
         ja tihkupinnat","sv":"Tlä – källor och källpåverkade områden på fjäll"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTs","value":{"sv":"Ts
         – myrmarker på fjäll","fi":"Ts – paljakan suot","en":"Ts – alpine mires"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTj","value":{"sv":"Tj
         – sjöar och tjärnar på fjäll","en":"Tj – alpine ponds and lakes (shores included)","fi":"Tj
-        – paljakan järvet ja lammet (sis. rannat)"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTv","value":{"fi":"Tv
-        - paljakan virtavedet (sis. rannat)","en":"","sv":""},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTa","value":{"fi":"Ta
-        - paljakan lampareet ja allikot","en":"","sv":""},"altParent":"MKV.habitatT"},{"id":"MKV.habitatI","value":{"en":"I
-        – Rural biotopes and cultural habitats","fi":"I – Perinneympäristöt ja muut
-        ihmisen muuttamat ympäristöt","sv":"I – Vårdbiotoper och andra biotoper med
-        mänsklig påverkan"}},{"id":"MKV.habitatIn","value":{"fi":"In – kuivat niityt,
-        kedot ja nummet","en":"In – seminatural dry meadows","sv":"In – torrängar
-        och hedar"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIt","value":{"sv":"It
-        – friska ängar","fi":"It – tuoreet niityt","en":"It – seminatural mesic meadows"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIh","value":{"fi":"Ih
+        – paljakan järvet ja lammet (sis. rannat)"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTv","value":{"en":"Tv
+        – streams in fell area (incl. shores)","sv":"Tv – ström på fjäll (inkl. strand)","fi":"Tv
+        – paljakan virtavedet (sis. rannat)"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTa","value":{"fi":"Ta
+        – paljakan lampareet ja allikot","sv":"Ta – göl på fjäll","en":"Ta – puddles
+        in fell area"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatI","value":{"fi":"I
+        – Perinneympäristöt ja muut ihmisen muuttamat ympäristöt","sv":"I – Vårdbiotoper
+        och andra biotoper med mänsklig påverkan","en":"I – Rural biotopes and cultural
+        habitats"}},{"id":"MKV.habitatIn","value":{"en":"In – seminatural dry meadows","fi":"In
+        – kuivat niityt, kedot ja nummet","sv":"In – torrängar och hedar"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIt","value":{"sv":"It
+        – friska ängar","en":"It – seminatural mesic meadows","fi":"It – tuoreet niityt"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIh","value":{"fi":"Ih
         – hakamaat, lehdesniityt ja metsälaitumet","en":"Ih – wooded pastures, pollard
-        meadows and grazed woodlands","sv":"Ih – hagmarker, hamlingsängar och skogsbeten"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIk","value":{"sv":"Ik
-        – fuktängar (exkl. ängar vid stranden)","en":"Ik – seminatural moist meadows
-        (excluding shore meadows)","fi":"Ik – kosteat niityt (muut kuin rantaniityt)"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIo","value":{"sv":"Io
-        – dike och andra schakt","fi":"Io – ojat ja muut kaivannot","en":"Io – ditches
-        etc."},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIv","value":{"fi":"Iv
-        – viljelymaat","en":"Iv – arable land","sv":"Iv – odlingsmark"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIp","value":{"fi":"Ip
-        - puistot, pihamaat ja puutarhat","en":"","sv":""},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIu","value":{"fi":"Iu
-        – uuselinympäristöt","en":"Iu – open habitats formed and maintained by heavy
-        human influence","sv":"Iu – öppna habitat med mänsklig påverkan"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIr","value":{"fi":"Ir
+        meadows and grazed woodlands","sv":"Ih – hagmarker, hamlingsängar och skogsbeten"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIk","value":{"en":"Ik
+        – seminatural moist meadows (excluding shore meadows)","fi":"Ik – kosteat
+        niityt (muut kuin rantaniityt)","sv":"Ik – fuktängar (exkl. ängar vid stranden)"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIo","value":{"sv":"Io
+        – dike och andra schakt","en":"Io – ditches etc.","fi":"Io – ojat ja muut
+        kaivannot"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIv","value":{"fi":"Iv
+        – viljelymaat","en":"Iv – arable land","sv":"Iv – odlingsmark"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIp","value":{"sv":"Ip
+        – park, gårdsplan, trädgård","en":"Ip – parks, courtyards, gardens","fi":"Ip
+        – puistot, pihamaat ja puutarhat"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIu","value":{"en":"Iu
+        – open habitats formed and maintained by heavy human influence","fi":"Iu –
+        uuselinympäristöt","sv":"Iu – öppna habitat med mänsklig påverkan"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIr","value":{"fi":"Ir
         – rakennukset ja rakenteet","en":"Ir – buildings and constructions","sv":"Ir
         – byggnader och konstruktioner"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatU","value":{"fi":"?
         – Elinympäristö tuntematon","sv":"? – Habitat okänt","en":"? – Habitat unknown"}}]'
-  recorded_at: 2023-02-17 13:55:17 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-03-29 06:26:30 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/metadata/ranges/MKV.habitatSpecificTypeEnum?lang=multi&access_token=<finbif_token>
@@ -269,7 +240,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 17 Feb 2023 13:55:17 GMT
+      date: Wed, 29 Mar 2023 06:26:30 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -308,5 +279,5 @@ http_interactions:
         kalliot/kivikot","sv":"ke – intermediärä-basiska hällmarker samt sten- och
         blockfält"}},{"id":"MKV.habitatSpecificTypeCA","value":{"fi":"ca – kalkkivaikutteinen","en":"ca
         – calcareous effect","sv":"ca – kalkrik"}}]'
-  recorded_at: 2023-02-17 13:55:17 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-03-29 06:26:30 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -15,13 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 24 Feb 2023 08:29:52 GMT
+      date: Wed, 29 Mar 2023 06:26:37 GMT
       content-type: application/json; charset=utf-8
-      content-length: '832'
+      content-length: '943'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"340-pGg+JXi4WLIRGBrDmzcefgPUVRI"
+      etag: W/"3af-7mRphG1RP+ONS/Ex20MX9nQJw34"
       vary: Accept-Encoding
       cache-control: public
       x-frame-options: DENY
@@ -32,11 +32,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MNP.tagAccessibilityEasy","value":{"en":"Easy accessibility","fi":"Helppokulkuinen","sv":"Easy
-        gå"}},{"id":"MNP.tagAccessibilityModerate","value":{"en":"Moderate accessibility","fi":"Normaalikulkuinen","sv":"Måttlig
-        gå"}},{"id":"MNP.tagAccessibilityDifficult","value":{"fi":"Vaikeakulkuinen","en":"Difficult
-        accessibility","sv":"Svår gå"}},{"id":"MNP.tagHabitatImportant","value":{"fi":"Tärkeä
-        habitaatti","en":"Important habitat","sv":"Viktig livsmiljö"}},{"id":"MNP.tagCensusRare","value":{"en":"Rarely
-        censused","fi":"Harvoin laskettu","sv":"Sällan censused"}},{"id":"MNP.tagHabitatFarmland","value":{"en":"Farmland","fi":"Pelto","sv":"Odlinglandskap"}},{"id":"MNP.tagHabitatMire","value":{"fi":"Suo","en":"Mire","sv":"Myr"}},{"id":"MNP.tagHabitatMountain","value":{"en":"Mountain","fi":"Tunturi","sv":"Fjäl"}}]'
-  recorded_at: 2023-02-24 08:29:52 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+      string: '[{"id":"MNP.tagAccessibilityEasy","value":{"fi":"Helppokulkuinen","en":"Easy
+        accessibility","sv":"Easy gå"}},{"id":"MNP.tagAccessibilityModerate","value":{"en":"Moderate
+        accessibility","fi":"Normaalikulkuinen","sv":"Måttlig gå"}},{"id":"MNP.tagAccessibilityDifficult","value":{"fi":"Vaikeakulkuinen","en":"Difficult
+        accessibility","sv":"Svår gå"}},{"id":"MNP.tagHabitatImportant","value":{"en":"Important
+        habitat","fi":"Tärkeä habitaatti","sv":"Viktig livsmiljö"}},{"id":"MNP.tagCensusRare","value":{"fi":"Harvoin
+        laskettu","en":"Rarely censused","sv":"Sällan censused"}},{"id":"MNP.tagHabitatFarmland","value":{"fi":"Pelto","sv":"Odlinglandskap","en":"Farmland"}},{"id":"MNP.tagHabitatMire","value":{"fi":"Suo","en":"Mire","sv":"Myr"}},{"id":"MNP.tagHabitatMountain","value":{"en":"Mountain","sv":"Fjäl","fi":"Tunturi"}},{"id":"MNP.tagSuitable","value":{"fi":"Soveltuu
+        liito-oravalle satelliittikuvan perusteella","en":"","sv":""}}]'
+  recorded_at: 2023-03-29 06:26:37 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 12 Sep 2022 07:46:52 GMT
+      date: Wed, 29 Mar 2023 06:26:29 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -29,42 +29,9 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":349741,"pageSize":10,"total":3497401,"results":[{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.294749#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnNA","year":2019}}},"unitId":"http://tun.fi/JX.294736#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnNA","year":2019}}},"unitId":"http://tun.fi/JX.294707#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.294706#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnNA","year":2019}}},"unitId":"http://tun.fi/JX.294654#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.294629#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.294621#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.294617#3"}},{"unit":{"unitId":"http://tun.fi/KE.176/62ff4f0d2d0e2114ba6c737d#Unit1"}},{"unit":{"unitId":"http://tun.fi/KE.176/62ff4d6c2d0e251981cce4d3#Unit1"}}]}'
-  recorded_at: 2023-02-22 12:26:19 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
-- request:
-    method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.latestRedListStatusFinland.status%2Cunit.linkings.taxon.latestRedListStatusFinland.year&page=1&pageSize=10&personEmail=noreply%40laji.fi&access_token=<finbif_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Content-Type: ''
-      Accept: application/json
-  response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
-    headers:
-      date: Tue, 29 Nov 2022 09:01:35 GMT
-      content-type: application/json;charset=utf-8
-      transfer-encoding: chunked
-      access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
-      cache-control: no-store
-      x-frame-options: DENY
-      x-xss-protection: 1;mode=block
-      x-content-type-options: nosniff
-      strict-transport-security: max-age=31536000;includeSubDomains;preload
-      referrer-policy: no-referrer-when-downgrade
-    body:
-      encoding: ''
-      file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":234882,"pageSize":10,"total":2348814,"results":[{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.295460#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.295449#5"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.295434#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnEN","year":2019}}},"unitId":"http://tun.fi/JX.295324#24"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.295324#12"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.295324#9"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.295324#15"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.295324#18"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.295324#6"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.295324#3"}}]}'
-  recorded_at: 2023-02-22 12:26:19 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+      string: '{"currentPage":1,"nextPage":2,"lastPage":244105,"pageSize":10,"total":2441041,"cacheTimestamp":1680071189,"results":[{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.297813#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.297813#6"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnNT","year":2000}}},"unitId":"http://tun.fi/JX.297810#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnNT","year":2000}}},"unitId":"http://tun.fi/JX.297810#7"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.297774#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.297773#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.297773#9"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.297773#11"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.297773#7"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.297773#5"}}]}'
+  recorded_at: 2023-03-29 06:26:29 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/metadata/ranges/MX.iucnStatuses?lang=multi&access_token=<finbif_token>
@@ -81,13 +48,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 22 Feb 2023 12:26:19 GMT
+      date: Wed, 29 Mar 2023 06:26:29 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"531-gS47FAs+MwyrxNJbgc0CV/r/AUY"
+      etag: W/"531-5qkI0/7r87AQSpGfInQN4o71HcU"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
@@ -105,12 +72,12 @@ http_interactions:
         – Regionally Extinct","fi":"RE – Suomesta hävinneet","sv":"RE – Nationellt
         utdöd"}},{"id":"MX.iucnCR","value":{"fi":"CR – Äärimmäisen uhanalaiset","en":"CR
         – Critically Endangered","sv":"CR – Akut hotad"}},{"id":"MX.iucnEN","value":{"en":"EN
-        – Endangered","fi":"EN – Erittäin uhanalaiset","sv":"EN – Starkt hotad"}},{"id":"MX.iucnVU","value":{"sv":"VU
-        – Sårbar","en":"VU – Vulnerable","fi":"VU – Vaarantuneet"}},{"id":"MX.iucnNT","value":{"sv":"NT
-        – Nära hotad","en":"NT – Near Threatened","fi":"NT – Silmälläpidettävät"}},{"id":"MX.iucnLC","value":{"fi":"LC
+        – Endangered","fi":"EN – Erittäin uhanalaiset","sv":"EN – Starkt hotad"}},{"id":"MX.iucnVU","value":{"en":"VU
+        – Vulnerable","fi":"VU – Vaarantuneet","sv":"VU – Sårbar"}},{"id":"MX.iucnNT","value":{"en":"NT
+        – Near Threatened","fi":"NT – Silmälläpidettävät","sv":"NT – Nära hotad"}},{"id":"MX.iucnLC","value":{"fi":"LC
         – Elinvoimaiset","sv":"LC – Livskraftig","en":"LC – Least Concern"}},{"id":"MX.iucnDD","value":{"en":"DD
-        – Data Deficient","sv":"DD – Kunskapsbrist","fi":"DD – Puutteellisesti tunnetut"}},{"id":"MX.iucnNA","value":{"en":"NA
-        – Not Applicable","sv":"NA – Ej tillämplig","fi":"NA – Arviointiin soveltumattomat"}},{"id":"MX.iucnNE","value":{"fi":"NE
-        – Arvioimatta jätetyt","en":"NE – Not Evaluated","sv":"NE – Ej bedömd"}}]'
-  recorded_at: 2023-02-22 12:26:19 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+        – Data Deficient","sv":"DD – Kunskapsbrist","fi":"DD – Puutteellisesti tunnetut"}},{"id":"MX.iucnNA","value":{"sv":"NA
+        – Ej tillämplig","fi":"NA – Arviointiin soveltumattomat","en":"NA – Not Applicable"}},{"id":"MX.iucnNE","value":{"en":"NE
+        – Not Evaluated","fi":"NE – Arvioimatta jätetyt","sv":"NE – Ej bedömd"}}]'
+  recorded_at: 2023-03-29 06:26:29 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

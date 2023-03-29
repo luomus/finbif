@@ -15,13 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 31 Aug 2022 05:58:43 GMT
+      date: Wed, 29 Mar 2023 06:26:35 GMT
       content-type: application/json; charset=utf-8
-      content-length: '406'
+      content-length: '441'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"196-eRTziK34uhG38RdJ10h2jo4w8cc"
+      etag: W/"1b9-VgaboU8rxXLLaq6zhHxYA1GMY6U"
       vary: Accept-Encoding
       cache-control: public
       x-frame-options: DENY
@@ -30,9 +30,9 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '[{"matchingName":"Lutra lutra","nameType":"MX.scientificName","id":"MX.47169","scientificName":"Lutra
-        lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"sv":"utter","en":"Otter","fi":"saukko"},"informalGroups":[{"id":"MVL.2","name":{"fi":"Nisäkkäät","en":"Mammals","sv":"Däggdjur"}}],"type":"exactMatches"}]'
-  recorded_at: 2022-08-31 05:58:43 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.2
+        lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"fi":"saukko","en":"Otter","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"fi":"Nisäkkäät","en":"Mammals","sv":"Däggdjur"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
+  recorded_at: 2023-03-29 06:26:35 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

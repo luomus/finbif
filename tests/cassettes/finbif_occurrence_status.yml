@@ -1,39 +1,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId&page=1&pageSize=10&access_token=<finbif_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Content-Type: ''
-      Accept: application/json
-  response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
-    headers:
-      date: Tue, 02 Nov 2021 10:49:02 GMT
-      content-type: application/json;charset=utf-8
-      transfer-encoding: chunked
-      access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
-      cache-control: no-store
-      x-frame-options: DENY
-      x-xss-protection: 1;mode=block
-      x-content-type-options: nosniff
-      strict-transport-security: max-age=31536000;includeSubDomains;preload
-      referrer-policy: no-referrer-when-downgrade
-    body:
-      encoding: ''
-      file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":212613,"pageSize":10,"total":2126121,"results":[{"unit":{"unitId":"http://tun.fi/JX.276631#3"}},{"unit":{"unitId":"http://tun.fi/JX.276523#3"}},{"unit":{"unitId":"http://tun.fi/JX.276469#3"}},{"unit":{"unitId":"http://tun.fi/JX.276459#3"}},{"unit":{"unitId":"http://tun.fi/JX.276459#6"}},{"unit":{"unitId":"http://tun.fi/JX.276396#3"}},{"unit":{"unitId":"http://tun.fi/KE.176/614e2ede2d0eb0c0de770371#Unit1"}},{"unit":{"unitId":"http://tun.fi/JX.276371#3"}},{"unit":{"unitId":"http://tun.fi/JX.276373#3"}},{"unit":{"unitId":"http://tun.fi/JX.276372#3"}}]}'
-  recorded_at: 2022-11-29 09:01:32 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
-- request:
-    method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.interpretations.individualCount%2Cunit.abundanceString&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
@@ -48,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 02 Nov 2021 10:53:53 GMT
+      date: Wed, 29 Mar 2023 06:26:27 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -62,39 +29,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":212613,"pageSize":10,"total":2126121,"results":[{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.276631#3"}},{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.276523#3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.276469#3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.276459#3"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2},"unitId":"http://tun.fi/JX.276459#6"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.276396#3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1},"unitId":"http://tun.fi/KE.176/614e2ede2d0eb0c0de770371#Unit1"}},{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.276371#3"}},{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.276373#3"}},{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.276372#3"}}]}'
-  recorded_at: 2022-11-29 09:01:32 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
-- request:
-    method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.interpretations.individualCount%2Cunit.abundanceString&page=1&pageSize=10&personEmail=noreply%40laji.fi&access_token=<finbif_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Content-Type: ''
-      Accept: application/json
-  response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
-    headers:
-      date: Tue, 29 Nov 2022 09:01:32 GMT
-      content-type: application/json;charset=utf-8
-      transfer-encoding: chunked
-      access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
-      cache-control: no-store
-      x-frame-options: DENY
-      x-xss-protection: 1;mode=block
-      x-content-type-options: nosniff
-      strict-transport-security: max-age=31536000;includeSubDomains;preload
-      referrer-policy: no-referrer-when-downgrade
-    body:
-      encoding: ''
-      file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":234882,"pageSize":10,"total":2348814,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.295460#3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.295449#5"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.295434#3"}},{"unit":{"abundanceString":"9","interpretations":{"individualCount":9},"unitId":"http://tun.fi/JX.295324#24"}},{"unit":{"abundanceString":"5","interpretations":{"individualCount":5},"unitId":"http://tun.fi/JX.295324#12"}},{"unit":{"abundanceString":"3","interpretations":{"individualCount":3},"unitId":"http://tun.fi/JX.295324#9"}},{"unit":{"abundanceString":"6","interpretations":{"individualCount":6},"unitId":"http://tun.fi/JX.295324#15"}},{"unit":{"abundanceString":"7","interpretations":{"individualCount":7},"unitId":"http://tun.fi/JX.295324#18"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2},"unitId":"http://tun.fi/JX.295324#6"}},{"unit":{"abundanceString":"1->4","interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.295324#3"}}]}'
-  recorded_at: 2022-11-29 09:01:32 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+      string: '{"currentPage":1,"nextPage":2,"lastPage":244105,"pageSize":10,"total":2441041,"cacheTimestamp":1680071187,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.297813#3"}},{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.297813#6"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2},"unitId":"http://tun.fi/JX.297810#3"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.297810#7"}},{"unit":{"abundanceString":"4","interpretations":{"individualCount":4},"unitId":"http://tun.fi/JX.297774#3"}},{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.297773#3"}},{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.297773#9"}},{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.297773#11"}},{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.297773#7"}},{"unit":{"interpretations":{"individualCount":1},"unitId":"http://tun.fi/JX.297773#5"}}]}'
+  recorded_at: 2023-03-29 06:26:27 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

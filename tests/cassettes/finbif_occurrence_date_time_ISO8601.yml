@@ -1,39 +1,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd&page=1&pageSize=10&access_token=<finbif_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Content-Type: ''
-      Accept: application/json
-  response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
-    headers:
-      date: Mon, 19 Jul 2021 13:42:16 GMT
-      content-type: application/json;charset=utf-8
-      transfer-encoding: chunked
-      access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
-      cache-control: no-store
-      x-frame-options: DENY
-      x-xss-protection: 1;mode=block
-      x-content-type-options: nosniff
-      strict-transport-security: max-age=31536000;includeSubDomains;preload
-      referrer-policy: no-referrer-when-downgrade
-    body:
-      encoding: ''
-      file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":297110,"pageSize":10,"total":2971093,"results":[{"unit":{"unitId":"http://tun.fi/JX.250948#3"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":64.113477,"lon":27.133419}},"eventDate":{"begin":"2021-06-24","end":"2021-06-24"}}},{"unit":{"unitId":"http://tun.fi/JX.250948#7"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":64.113554,"lon":27.133203}},"eventDate":{"begin":"2021-06-24","end":"2021-06-24"}}},{"unit":{"unitId":"http://tun.fi/JX.250207#3"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.694484,"lon":24.936594}},"eventDate":{"begin":"2021-06-22","end":"2021-06-22"}}},{"unit":{"unitId":"http://tun.fi/JX.250205#3"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":63.005626,"lon":23.146113}},"eventDate":{"begin":"2021-06-22","end":"2021-06-22"}}},{"unit":{"unitId":"http://tun.fi/JX.250203#3"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":66.432458,"lon":25.714668}},"eventDate":{"begin":"2021-06-22","end":"2021-06-22"}}},{"unit":{"unitId":"http://tun.fi/JX.250202#3"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":65.001831,"lon":25.523184}},"eventDate":{"begin":"2021-06-22","end":"2021-06-22"}}},{"unit":{"unitId":"http://tun.fi/JX.250196#3"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.749957,"lon":26.797013}},"eventDate":{"begin":"2021-06-22","end":"2021-06-22"}}},{"unit":{"unitId":"http://tun.fi/JX.250194#3"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":61.839002,"lon":21.739943}},"eventDate":{"begin":"2021-06-22","end":"2021-06-22"}}},{"unit":{"unitId":"http://tun.fi/JX.250142#3"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":63.946563,"lon":26.458163}},"eventDate":{"begin":"2021-06-17","end":"2021-06-17"}}},{"unit":{"unitId":"http://tun.fi/JX.250142#18"},"gathering":{"conversions":{"wgs84CenterPoint":{"lat":63.946563,"lon":26.458163}},"eventDate":{"begin":"2021-06-17","end":"2021-06-17"}}}]}'
-  recorded_at: 2022-11-29 09:01:32 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
-- request:
-    method: get
     uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
@@ -48,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 28 Oct 2021 10:49:56 GMT
+      date: Wed, 29 Mar 2023 06:26:27 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -62,39 +29,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":212959,"pageSize":10,"total":2129581,"results":[{"unit":{"unitId":"http://tun.fi/JX.276631#3"},"gathering":{"conversions":{"day":19,"month":10,"wgs84CenterPoint":{"lat":65.60809,"lon":27.764084}},"eventDate":{"begin":"2021-10-19","end":"2021-10-19"}}},{"unit":{"unitId":"http://tun.fi/JX.276577#3"},"gathering":{"conversions":{"day":15,"month":10,"wgs84CenterPoint":{"lat":60.20063,"lon":24.970161}},"eventDate":{"begin":"2021-10-15","end":"2021-10-15"},"hourBegin":16,"minutesBegin":20}},{"unit":{"unitId":"http://tun.fi/JX.276523#3"},"gathering":{"conversions":{"day":14,"month":10,"wgs84CenterPoint":{"lat":64.921254,"lon":26.531036}},"eventDate":{"begin":"2021-10-14","end":"2021-10-14"}}},{"unit":{"unitId":"http://tun.fi/JX.276490#3"},"gathering":{"conversions":{"day":12,"month":10,"wgs84CenterPoint":{"lat":60.242449,"lon":25.091236}},"eventDate":{"begin":"2021-10-12","end":"2021-10-12"},"hourBegin":15,"minutesBegin":2}},{"unit":{"unitId":"http://tun.fi/JX.276490#6"},"gathering":{"conversions":{"day":12,"month":10,"wgs84CenterPoint":{"lat":60.243815,"lon":25.096802}},"eventDate":{"begin":"2021-10-12","end":"2021-10-12"},"hourBegin":15,"minutesBegin":3}},{"unit":{"unitId":"http://tun.fi/JX.276486#3"},"gathering":{"conversions":{"day":7,"month":10,"wgs84CenterPoint":{"lat":60.242256,"lon":25.092248}},"eventDate":{"begin":"2021-10-07","end":"2021-10-07"},"hourBegin":13,"minutesBegin":43}},{"unit":{"unitId":"http://tun.fi/JX.276486#6"},"gathering":{"conversions":{"day":7,"month":10,"wgs84CenterPoint":{"lat":60.241929,"lon":25.094054}},"eventDate":{"begin":"2021-10-07","end":"2021-10-07"},"hourBegin":13,"minutesBegin":45}},{"unit":{"unitId":"http://tun.fi/JX.276485#3"},"gathering":{"conversions":{"day":7,"month":10,"wgs84CenterPoint":{"lat":60.240461,"lon":25.087635}},"eventDate":{"begin":"2021-10-07","end":"2021-10-07"},"hourBegin":13,"hourEnd":13,"minutesBegin":25,"minutesEnd":28}},{"unit":{"unitId":"http://tun.fi/JX.276484#6"},"gathering":{"conversions":{"day":7,"month":10,"wgs84CenterPoint":{"lat":60.2423,"lon":25.091999}},"eventDate":{"begin":"2021-10-07","end":"2021-10-07"},"hourBegin":13,"minutesBegin":19}},{"unit":{"unitId":"http://tun.fi/JX.276484#3"},"gathering":{"conversions":{"day":7,"month":10,"wgs84CenterPoint":{"lat":60.240811,"lon":25.096899}},"eventDate":{"begin":"2021-10-07","end":"2021-10-07"},"hourBegin":13,"minutesBegin":16}}]}'
-  recorded_at: 2022-11-29 09:01:32 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
-- request:
-    method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month&page=1&pageSize=10&personEmail=noreply%40laji.fi&access_token=<finbif_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Content-Type: ''
-      Accept: application/json
-  response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
-    headers:
-      date: Tue, 29 Nov 2022 09:01:32 GMT
-      content-type: application/json;charset=utf-8
-      transfer-encoding: chunked
-      access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
-      cache-control: no-store
-      x-frame-options: DENY
-      x-xss-protection: 1;mode=block
-      x-content-type-options: nosniff
-      strict-transport-security: max-age=31536000;includeSubDomains;preload
-      referrer-policy: no-referrer-when-downgrade
-    body:
-      encoding: ''
-      file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":234882,"pageSize":10,"total":2348814,"results":[{"unit":{"unitId":"http://tun.fi/JX.295460#3"},"gathering":{"conversions":{"day":28,"month":11,"wgs84CenterPoint":{"lat":62.346772,"lon":26.215594}},"eventDate":{"begin":"2022-11-28","end":"2022-11-28"}}},{"unit":{"unitId":"http://tun.fi/JX.295449#5"},"gathering":{"conversions":{"day":25,"month":11,"wgs84CenterPoint":{"lat":60.203926,"lon":24.967376}},"eventDate":{"begin":"2022-11-25","end":"2022-11-25"},"hourBegin":14,"hourEnd":15,"minutesBegin":54,"minutesEnd":17}},{"unit":{"unitId":"http://tun.fi/JX.295434#3"},"gathering":{"conversions":{"day":22,"month":11,"wgs84CenterPoint":{"lat":65.416179,"lon":28.058854}},"eventDate":{"begin":"2022-11-22","end":"2022-11-22"}}},{"unit":{"unitId":"http://tun.fi/JX.295324#24"},"gathering":{"conversions":{"day":21,"month":11,"wgs84CenterPoint":{"lat":65.791262,"lon":28.977882}},"eventDate":{"begin":"2022-11-21","end":"2022-11-21"}}},{"unit":{"unitId":"http://tun.fi/JX.295324#12"},"gathering":{"conversions":{"day":21,"month":11,"wgs84CenterPoint":{"lat":65.791262,"lon":28.977882}},"eventDate":{"begin":"2022-11-21","end":"2022-11-21"}}},{"unit":{"unitId":"http://tun.fi/JX.295324#9"},"gathering":{"conversions":{"day":21,"month":11,"wgs84CenterPoint":{"lat":65.791262,"lon":28.977882}},"eventDate":{"begin":"2022-11-21","end":"2022-11-21"}}},{"unit":{"unitId":"http://tun.fi/JX.295324#15"},"gathering":{"conversions":{"day":21,"month":11,"wgs84CenterPoint":{"lat":65.791262,"lon":28.977882}},"eventDate":{"begin":"2022-11-21","end":"2022-11-21"}}},{"unit":{"unitId":"http://tun.fi/JX.295324#18"},"gathering":{"conversions":{"day":21,"month":11,"wgs84CenterPoint":{"lat":65.791262,"lon":28.977882}},"eventDate":{"begin":"2022-11-21","end":"2022-11-21"}}},{"unit":{"unitId":"http://tun.fi/JX.295324#6"},"gathering":{"conversions":{"day":21,"month":11,"wgs84CenterPoint":{"lat":65.791262,"lon":28.977882}},"eventDate":{"begin":"2022-11-21","end":"2022-11-21"}}},{"unit":{"unitId":"http://tun.fi/JX.295324#3"},"gathering":{"conversions":{"day":21,"month":11,"wgs84CenterPoint":{"lat":65.791262,"lon":28.977882}},"eventDate":{"begin":"2022-11-21","end":"2022-11-21"}}}]}'
-  recorded_at: 2022-11-29 09:01:32 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+      string: '{"currentPage":1,"nextPage":2,"lastPage":244105,"pageSize":10,"total":2441041,"cacheTimestamp":1680071187,"results":[{"unit":{"unitId":"http://tun.fi/JX.297813#3"},"gathering":{"conversions":{"day":29,"month":3,"wgs84CenterPoint":{"lat":60.240532,"lon":25.089788}},"eventDate":{"begin":"2023-03-29","end":"2023-03-29"},"hourBegin":8,"hourEnd":8,"minutesBegin":28,"minutesEnd":28}},{"unit":{"unitId":"http://tun.fi/JX.297813#6"},"gathering":{"conversions":{"day":29,"month":3,"wgs84CenterPoint":{"lat":60.240907,"lon":25.088351}},"eventDate":{"begin":"2023-03-29","end":"2023-03-29"},"hourBegin":8,"hourEnd":8,"minutesBegin":28,"minutesEnd":28}},{"unit":{"unitId":"http://tun.fi/JX.297810#3"},"gathering":{"conversions":{"day":27,"month":3,"wgs84CenterPoint":{"lat":64.469952,"lon":28.796716}},"eventDate":{"begin":"2023-03-27","end":"2023-03-27"}}},{"unit":{"unitId":"http://tun.fi/JX.297810#7"},"gathering":{"conversions":{"day":27,"month":3,"wgs84CenterPoint":{"lat":64.469952,"lon":28.796716}},"eventDate":{"begin":"2023-03-27","end":"2023-03-27"}}},{"unit":{"unitId":"http://tun.fi/JX.297774#3"},"gathering":{"conversions":{"day":22,"month":3,"wgs84CenterPoint":{"lat":60.362837,"lon":23.38034}},"eventDate":{"begin":"2023-03-22","end":"2023-03-22"}}},{"unit":{"unitId":"http://tun.fi/JX.297773#3"},"gathering":{"conversions":{"day":22,"month":3,"wgs84CenterPoint":{"lat":60.232872,"lon":25.143327}},"eventDate":{"begin":"2023-03-22","end":"2023-03-22"}}},{"unit":{"unitId":"http://tun.fi/JX.297773#9"},"gathering":{"conversions":{"day":22,"month":3,"wgs84CenterPoint":{"lat":60.232872,"lon":25.143327}},"eventDate":{"begin":"2023-03-22","end":"2023-03-22"}}},{"unit":{"unitId":"http://tun.fi/JX.297773#11"},"gathering":{"conversions":{"day":22,"month":3,"wgs84CenterPoint":{"lat":60.232872,"lon":25.143327}},"eventDate":{"begin":"2023-03-22","end":"2023-03-22"}}},{"unit":{"unitId":"http://tun.fi/JX.297773#7"},"gathering":{"conversions":{"day":22,"month":3,"wgs84CenterPoint":{"lat":60.232872,"lon":25.143327}},"eventDate":{"begin":"2023-03-22","end":"2023-03-22"}}},{"unit":{"unitId":"http://tun.fi/JX.297773#5"},"gathering":{"conversions":{"day":22,"month":3,"wgs84CenterPoint":{"lat":60.232872,"lon":25.143327}},"eventDate":{"begin":"2023-03-22","end":"2023-03-22"}}}]}'
+  recorded_at: 2023-03-29 06:26:27 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 22 Feb 2023 13:31:23 GMT
+      date: Wed, 29 Mar 2023 06:26:37 GMT
       content-type: application/json; charset=utf-8
       content-length: '420'
       access-control-allow-origin: '*'
@@ -34,5 +34,5 @@ http_interactions:
       file: no
       string: '[{"id":"MX.threatenedStatusStatutoryProtected","value":{"fi":"Lakisääteinen","en":"Statutory","sv":"Lagstadgad"}},{"id":"MX.threatenedStatusThreatened","value":{"en":"Threatened","fi":"Uhanalainen","sv":"Hotad"}},{"id":"MX.threatenedStatusNearThreatened","value":{"en":"Near
         Threatened","fi":"Silmälläpidettävä","sv":"Nära hotad"}},{"id":"MX.threatenedStatusOther","value":{"fi":"Muu","en":"Other","sv":"Andra"}}]'
-  recorded_at: 2023-02-22 13:31:23 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-03-29 06:26:37 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

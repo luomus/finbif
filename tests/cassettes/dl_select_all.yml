@@ -15,13 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 21 Feb 2023 13:52:30 GMT
+      date: Wed, 29 Mar 2023 06:25:28 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"a3b-h2dp8D3NQjg2zlLCnulBc3oc9ZE"
+      etag: W/"a3b-sUuM7HtrE3OiTh3ZVctIbbw+HxA"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
@@ -33,29 +33,30 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MY.abundanceUnitIndividualCount","value":{"fi":"Yksilömäärä","en":"Individual
-        count","sv":"Individantal"}},{"id":"MY.abundanceUnitPairCount","value":{"sv":"Parantal","fi":"Parimäärä","en":"Pair
-        count"}},{"id":"MY.abundanceUnitNest","value":{"en":"Nest count","fi":"Pesien
-        lukumäärä","sv":"Nästantal"}},{"id":"MY.abundanceUnitBreedingSite","value":{"en":"Number
+      string: '[{"id":"MY.abundanceUnitIndividualCount","value":{"en":"Individual
+        count","fi":"Yksilömäärä","sv":"Individantal"}},{"id":"MY.abundanceUnitPairCount","value":{"en":"Pair
+        count","sv":"Parantal","fi":"Parimäärä"}},{"id":"MY.abundanceUnitNest","value":{"en":"Nest
+        count","fi":"Pesien lukumäärä","sv":"Nästantal"}},{"id":"MY.abundanceUnitBreedingSite","value":{"en":"Number
         of breeding sites (rocks, cavities, etc.)","fi":"Lisääntymispaikkojen lukumäärä
-        (kivi, kolo, ym)","sv":"Häckningsplatsantal (stenar, håligheter etc.)"}},{"id":"MY.abundanceUnitColony","value":{"en":"Colonies","fi":"Yhdyskuntien
-        lukumäärä","sv":"Kolonier"}},{"id":"MY.abundanceUnitQueen","value":{"fi":"Kuningattarien
-        lukumäärä","en":"Number of queens","sv":"Drottningar"}},{"id":"MY.abundanceUnitFruitbody","value":{"fi":"Itiöemien
-        lukumäärä","en":"Fruitbodies/sporocarps","sv":"Fruktkroppar"}},{"id":"MY.abundanceUnitSprout","value":{"en":"Sprouts","fi":"Versojen
-        lukumäärä","sv":"Spiror"}},{"id":"MY.abundanceUnitHummock","value":{"en":"Number
-        of hummocks","fi":"Mättäiden/tuppaiden lukumäärä","sv":"Hummocks"}},{"id":"MY.abundanceUnitThallus","value":{"sv":"Tallus","fi":"Sekovarsien
+        (kivi, kolo, ym)","sv":"Häckningsplatsantal (stenar, håligheter etc.)"}},{"id":"MY.abundanceUnitColony","value":{"fi":"Yhdyskuntien
+        lukumäärä","en":"Colonies","sv":"Kolonier"}},{"id":"MY.abundanceUnitQueen","value":{"sv":"Drottningar","en":"Number
+        of queens","fi":"Kuningattarien lukumäärä"}},{"id":"MY.abundanceUnitFruitbody","value":{"fi":"Itiöemien
+        lukumäärä","en":"Fruitbodies/sporocarps","sv":"Fruktkroppar"}},{"id":"MY.abundanceUnitSprout","value":{"fi":"Versojen
+        lukumäärä","sv":"Spiror","en":"Sprouts"}},{"id":"MY.abundanceUnitHummock","value":{"fi":"Mättäiden/tuppaiden
+        lukumäärä","en":"Number of hummocks","sv":"Hummocks"}},{"id":"MY.abundanceUnitThallus","value":{"sv":"Tallus","fi":"Sekovarsien
         lukumäärä","en":"Number of thalli"}},{"id":"MY.abundanceUnitFlower","value":{"fi":"Kukkien
-        lukumäärä","en":"Number of flowers","sv":"Blommor"}},{"id":"MY.abundanceUnitSpot","value":{"en":"Number
-        of spots","fi":"Laikkujen lukumäärä","sv":"Fläckar"}},{"id":"MY.abundanceUnitTrunk","value":{"sv":"Trädstammar","fi":"Runkojen
-        lukumäärä","en":"Number of tree trunks"}},{"id":"MY.abundanceUnitShell","value":{"sv":"Skal","en":"Number
-        of shells","fi":"Kuorien lukumäärä"}},{"id":"MY.abundanceUnitDroppings","value":{"fi":"Jätösten/papanakasojen
-        lukumäärä","en":"Droppings","sv":"Spillning"}},{"id":"MY.abundanceUnitMarks","value":{"en":"Marks
-        (feeding marks etc.)","sv":"Spår","fi":"(Syömä)jälkien lukumäärä"}},{"id":"MY.abundanceUnitIndirect","value":{"en":"Number
-        of indirect marks/traces","fi":"Epäsuorien jälkien lukumäärä","sv":"Indirekta
+        lukumäärä","en":"Number of flowers","sv":"Blommor"}},{"id":"MY.abundanceUnitSpot","value":{"sv":"Fläckar","fi":"Laikkujen
+        lukumäärä","en":"Number of spots"}},{"id":"MY.abundanceUnitTrunk","value":{"sv":"Trädstammar","fi":"Runkojen
+        lukumäärä","en":"Number of tree trunks"}},{"id":"MY.abundanceUnitShell","value":{"fi":"Kuorien
+        lukumäärä","en":"Number of shells","sv":"Skal"}},{"id":"MY.abundanceUnitDroppings","value":{"fi":"Jätösten/papanakasojen
+        lukumäärä","en":"Droppings","sv":"Spillning"}},{"id":"MY.abundanceUnitMarks","value":{"sv":"Spår","fi":"(Syömä)jälkien
+        lukumäärä","en":"Marks (feeding marks etc.)"}},{"id":"MY.abundanceUnitIndirect","value":{"fi":"Epäsuorien
+        jälkien lukumäärä","en":"Number of indirect marks/traces","sv":"Indirekta
         ospecificerade spår"}},{"id":"MY.abundanceUnitSquareDM","value":{"sv":"Kvadrat
         decimeter (dm^2)","fi":"Neliödesimetri (dm^2)","en":"Square decimeter (dm^2)"}},{"id":"MY.abundanceUnitSquareM","value":{"fi":"Neliömetri
-        (m^2)","en":"Square meter (m^2)","sv":"Kvadratmeter (m^2)"}},{"id":"MY.abundanceUnitRelativeDensity","value":{"fi":"Suhteellinen
-        tiheys","en":"Relative density","sv":"Relativ densitet"}},{"id":"MY.abundanceUnitOccursDoesNotOccur","value":{"fi":"Esiintyy/ei
-        esiinny","sv":"Forekommer / förekommer inte","en":"Occurs / does not occur"}}]'
-  recorded_at: 2023-02-21 13:52:30 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+        (m^2)","en":"Square meter (m^2)","sv":"Kvadratmeter (m^2)"}},{"id":"MY.abundanceUnitRelativeDensity","value":{"sv":"Relativ
+        densitet","fi":"Suhteellinen tiheys","en":"Relative density"}},{"id":"MY.abundanceUnitOccursDoesNotOccur","value":{"en":"Occurs
+        / does not occur","fi":"Esiintyy/ei esiinny","sv":"Forekommer / förekommer
+        inte"}}]'
+  recorded_at: 2023-03-29 06:25:28 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -5,13 +5,7 @@ test_that(
 
     expect_s3_class(has_value(), "data.frame")
 
-    vcr::use_cassette("threatened_status", {
-
-      ts <- threatened_status()
-
-    })
-
-    expect_s3_class(ts, "data.frame")
+    expect_s3_class(threatened_status(), "data.frame")
 
     expect_s3_class(informal_groups_reported(), "data.frame")
 

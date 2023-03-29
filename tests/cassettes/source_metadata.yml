@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 23 Feb 2023 14:10:00 GMT
+      date: Wed, 29 Mar 2023 06:26:36 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -73,5 +73,5 @@ http_interactions:
         APP","fi":"LoLIFE APP","sv":"LoLIFE APP"}},{"id":"KE.1062","name":{"en":"Lintuasema
         STAGING","fi":"Lintuasema STAGING","sv":"Lintuasema STAGING"}},{"id":"KE.1081","name":{"en":"eBird","fi":"eBird","sv":"eBird"}},{"id":"KE.1141","name":{"en":"Mobile-Vihko","fi":"Mobile-Vihko","sv":"Mobile-Vihko"}},{"id":"KE.1161","name":{"en":"Laji
         LAN","fi":"Laji LAN","sv":"Laji LAN"}},{"id":"KE.1281","name":{"en":"Tiira.fi","fi":"Tiira.fi","sv":"Tiira.fi"}}],"lastPage":1,"@context":"http://schema.laji.fi/context/informationSystem.jsonld"}'
-  recorded_at: 2023-02-23 14:10:00 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-03-29 06:26:36 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

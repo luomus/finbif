@@ -15,13 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 21 Feb 2023 12:12:34 GMT
+      date: Wed, 29 Mar 2023 06:26:37 GMT
       content-type: application/json; charset=utf-8
       content-length: '588'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"24c-6T0sJwdLnzIcIqR9tihm8VZ7sA0"
+      etag: W/"24c-SDbPYonZx9QR0820ZFipL5f1HgU"
       vary: Accept-Encoding
       cache-control: public
       x-frame-options: DENY
@@ -34,10 +34,10 @@ http_interactions:
       file: no
       string: '[{"id":"MY.collectionQualityEnum3","value":{"fi":"Ammattiaineistot
         / asiantuntijoiden laadunvarmistama","sv":"Professionella dataseten / expertkuraterad","en":"Professional
-        / professionally curated"}},{"id":"MY.collectionQualityEnum2","value":{"fi":"Asiantuntevat
-        harrastajat / asiantuntijoiden laadunvarmistama","en":"Expert hobbyists /
-        expert curated","sv":"Expertentusiaster / expertkuraterad"}},{"id":"MY.collectionQualityEnum1","value":{"fi":"Kansalaishavaintoja
-        / ei laadunvarmistusta","en":"Citizen science / mostly uncurated","sv":"Medborgarvetenskap
-        / ingen kvalitetssäkring"}}]'
-  recorded_at: 2023-02-21 12:12:34 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+        / professionally curated"}},{"id":"MY.collectionQualityEnum2","value":{"en":"Expert
+        hobbyists / expert curated","sv":"Expertentusiaster / expertkuraterad","fi":"Asiantuntevat
+        harrastajat / asiantuntijoiden laadunvarmistama"}},{"id":"MY.collectionQualityEnum1","value":{"fi":"Kansalaishavaintoja
+        / ei laadunvarmistusta","sv":"Medborgarvetenskap / ingen kvalitetssäkring","en":"Citizen
+        science / mostly uncurated"}}]'
+  recorded_at: 2023-03-29 06:26:37 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
