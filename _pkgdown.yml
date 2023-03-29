@@ -46,6 +46,7 @@ reference:
       - finbif_occurrence_load
       - finbif_records
       - filters
+      - from_schema
       - to_dwc
       - to_native
       - variables
