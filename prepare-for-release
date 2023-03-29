@@ -19,5 +19,6 @@
 15. Remove CRAN-SUBMISSION and then commit.
 16. Checkout dev (`git checkout dev`).
 17. Merge main (`git merge main`).
-18. Add dev component to version number, delete cassettes, rerun tests,
-    update cff, news and docs, commit and push.
+18. Add dev component to version number, update cff, news and rerun
+    data-raw/sysdata.R, delete cassettes, rerun tests and make then commit and
+    push.
