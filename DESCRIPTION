@@ -32,7 +32,6 @@ LazyData: true
 Depends: R (>= 3.5.0)
 Imports:
     digest,
-    graphics,
     httr,
     lubridate,
     lutz,
@@ -42,7 +41,6 @@ RoxygenNote: 7.2.3
 Suggests:
     data.table,
     future,
-    grDevices,
     knitr,
     readODS,
     readxl,

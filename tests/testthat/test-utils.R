@@ -59,15 +59,3 @@ test_that(
 
   }
 )
-
-test_that(
-  "deprecation warning works", {
-
-    Sys.setenv(DEPRECATION_WARNING = TRUE)
-
-    expect_warning(deprecation("msg"), "msg")
-
-    Sys.setenv(DEPRECATION_WARNING = FALSE)
-
-  }
-)

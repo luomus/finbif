@@ -151,24 +151,6 @@ test_that(
 
     expect_output(print(finbif_occurrence()), "Records downloaded:")
 
-    has_grd <- requireNamespace("grDevices", quietly = TRUE)
-
-    not_windows <- !identical(.Platform$OS.type, "windows")
-
-    if (has_grd && not_windows) {
-
-      path <- tempfile(fileext = ".svg")
-
-      grDevices::svg(path, width = 7, height = 7, antialias = "none")
-
-      plot(fungi, axes = FALSE, xlab = NA, ylab = NA, panel.first = NULL)
-
-      dev.off()
-
-      expect_snapshot_file(path, "fungi.svg")
-
-    }
-
   }
 )
 
@@ -203,10 +185,52 @@ test_that(
       finbif_occurrence("Birds", aggregate = "events")
     )
 
+    expect_error(finbif_occurrence(n = 0))
+
+    expect_error(finbif_occurrence(n = 1e9))
+
+    expect_error(finbif_occurrence(aggregate = c("records", "events")))
+
+    expect_error(finbif_occurrence(filter = c(not_a_filter = TRUE)))
+
   }
 )
 
 suppressMessages(eject_cassette("finbif_occurrence"))
+
+suppressMessages(insert_cassette("finbif_occurrence_low"))
+
+test_that(
+  "low-level operations work", {
+
+    skip_on_cran()
+
+    expect_type(
+      finbif_occurrence(
+        filter = list(
+          collection = finbif_collections(taxonomic_coverage == "Coleoptera"),
+          primary_habitat = "M",
+          date_range_ymd = c(2000, 2010)
+        ),
+        aggregate = "records",
+        count_only = TRUE,
+        cache = FALSE
+      ),
+      "integer"
+    )
+
+    expect_type(
+      finbif_occurrence(
+        filter = list(primary_habitat = list(M = "V")), count_only = TRUE
+      ),
+      "integer"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_low"))
 
 suppressMessages(insert_cassette("finbif_occurrence_has_media"))
 

@@ -72,11 +72,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "grDevices",
-      "name": "grDevices"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "knitr",
       "name": "knitr",
       "provider": {
@@ -182,11 +177,6 @@
     },
     "3": {
       "@type": "SoftwareApplication",
-      "identifier": "graphics",
-      "name": "graphics"
-    },
-    "4": {
-      "@type": "SoftwareApplication",
       "identifier": "httr",
       "name": "httr",
       "provider": {
@@ -197,7 +187,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=httr"
     },
-    "5": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "lubridate",
       "name": "lubridate",
@@ -209,7 +199,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lubridate"
     },
-    "6": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "lutz",
       "name": "lutz",
@@ -221,7 +211,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lutz"
     },
-    "7": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -231,7 +221,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "fileSize": "5840.058KB",
+  "fileSize": "5317.057KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

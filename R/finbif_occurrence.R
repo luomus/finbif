@@ -6,7 +6,41 @@
 #'
 #' @param ... Character vectors or list of character vectors. Taxa of records
 #'   to download.
-#' @inheritParams finbif_records
+#' @param filter List of named character vectors. Filters to apply to records.
+#' @param select Character vector. Variables to return. If not specified, a
+#'   default set of commonly used variables will be used. Use `"default_vars"`
+#'   as a shortcut for this set. Variables can be deselected by prepending a `-`
+#'   to the variable name. If only deselects are specified the default set of
+#'   variables without the deselection will be returned.
+#' @param order_by Character vector. Variables to order records by before they
+#'   are returned. Most, though not all, variables can be used to order records
+#'   before they are returned. Ordering is ascending by default. To return in
+#'   descending order append a `-` to the front of the variable (e.g.,
+#'   `"-date_start"`). Default order is `"-date_start"` > `"-load_data"` >
+#'   `"reported_name"`.
+#' @param aggregate Character. If `"none"` (default), returns full records. If
+#'   one or more of `"records"`, `"species"`, `"taxa"`, `"individuals"`,
+#'   `"pairs"`, `"events"` or `"documents"`; aggregates combinations of the
+#'   selected variables by counting records, species, taxa, individuals or
+#'   events or documents. Aggregation by events or documents cannot be done in
+#'   combination with any of the other aggregation types.
+#' @param sample Logical. If `TRUE` randomly sample the records from the FinBIF
+#'   database.
+#' @param n Integer. How many records to download/import.
+#' @param page Integer. Which page of records to start downloading from.
+#' @param count_only Logical. Only return the number of records available.
+#' @param quiet Logical. Suppress the progress indicator for multipage
+#'   downloads. Defaults to value of option `finbif_hide_progress`.
+#' @param cache Logical. Use cached data.
+#' @param dwc Logical. Use Darwin Core (or Darwin Core style) variable names.
+#' @param seed Integer. Set a seed for randomly sampling records.
+#' @param exclude_na Logical. Should records where all selected variables have
+#'   non-NA values only be returned.
+#' @param locale Character. One of the supported two-letter ISO 639-1 language
+#'   codes. Current supported languages are English, Finnish and Swedish. For
+#'   data where more than one language is available the language denoted by
+#'   `locale` will be preferred while falling back to the other languages in the
+#'   order indicated above.
 #' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
 #'   `date_time` and/or `duration` variables have been selected. Default is
 #'   `"fast"` when  less than 100,000 records are requested and `"none"` when

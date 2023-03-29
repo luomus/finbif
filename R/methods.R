@@ -1,26 +1,4 @@
-# as.data.frame methods --------------------------------------------------------
-
-#' Coerce a `finbif_records*` object to a `data.frame`
-#'
-#' Converts the result of a FinBIF query to a `data.frame`. The function
-#' `finbif_records()` and its associated classes and methods have been
-#' deprecated and user access will be removed in the next release of the finbif
-#' package.
-#'
-#' @param x A `finbif_records*` object.
-#' @param ... Additional arguments. Not used.
-#' @param locale Character. A locale to use for columns with localised data.
-#' @param quiet Logical. If `TRUE` (default) suppress progress indicator of
-#'   conversion.
-#' @return A `data.frame`.
-#' @examples \dontrun{
-#'
-#' # Download the latest records from FinBIF
-#' # and convert to a `data.frame`
-#' resp <- finbif_records()
-#' df <- as.data.frame(resp)
-#'
-#' }
+#' @noRd
 #' @export
 
 as.data.frame.finbif_records <- function(
@@ -28,28 +6,6 @@ as.data.frame.finbif_records <- function(
   ...,
   locale = getOption("finbif_locale")
 ) {
-
-  msg <- paste0(
-    "finbif_records() and its associated classes and methods have been ",
-    "deprecated and user access will be removed in the next release of the ",
-    "finbif package."
-  )
-
-  pf <- parent.frame()
-
-  not_user <- !identical(pf, .GlobalEnv)
-
-  warn <- Sys.getenv("DEPRECATION_WARNING")
-
-  if (not_user) {
-
-    Sys.setenv(DEPRECATION_WARNING = FALSE)
-
-  }
-
-  deprecation(msg)
-
-  Sys.setenv(DEPRECATION_WARNING = warn)
 
   cols <- attr(x, "select")
 
@@ -311,7 +267,7 @@ localise_labels <- function(labels_obj) {
 
 }
 
-#' @rdname as.data.frame.finbif_records
+#' @noRd
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
 
@@ -321,28 +277,6 @@ as.data.frame.finbif_records_list <- function(
   locale = getOption("finbif_locale"),
   quiet = TRUE
 ) {
-
-  msg <- paste0(
-    "finbif_records() and its associated classes and methods have been ",
-    "deprecated and user access will be removed in the next release of the ",
-    "finbif package."
-  )
-
-  pf <- parent.frame()
-
-  not_user <- !identical(pf, .GlobalEnv)
-
-  warn <- Sys.getenv("DEPRECATION_WARNING")
-
-  if (not_user) {
-
-    Sys.setenv(DEPRECATION_WARNING = FALSE)
-
-  }
-
-  deprecation(msg)
-
-  Sys.setenv(DEPRECATION_WARNING = warn)
 
   n <- length(x)
 
@@ -574,49 +508,6 @@ rbind.finbif_occ <- function(...) {
 }
 
 # print methods ----------------------------------------------------------------
-
-#' @noRd
-#' @export
-
-print.finbif_api <- function(
-  x,
-  ...
-) {
-
-  print_finbif_api(x)
-
-}
-
-#' @noRd
-#' @export
-
-print.finbif_api_list <- function(
-  x,
-  ...
-) {
-
-  x <- x[[1L]]
-
-  print_finbif_api(x)
-
-}
-
-#' @noRd
-#' @importFrom utils str
-
-print_finbif_api <- function(x) {
-
-  path <- x[["path"]]
-
-  content <- x[["content"]]
-
-  cat("<FinBIF ", path, ">\n", sep = "")
-
-  utils::str(content)
-
-  invisible(x)
-
-}
 
 #' @noRd
 #' @export
@@ -1141,52 +1032,5 @@ print_extras <- function(obj) {
   cat("\n")
 
   NULL
-
-}
-
-# plot methods ----------------------------------------------------------------
-
-#' @noRd
-#' @importFrom graphics grid plot.default
-#' @export
-
-plot.finbif_occ <- function(
-  x,
-  ...,
-  xlab = "Longitude",
-  ylab = "Latitude",
-  panel.first = grid(lwd = 2), # nolint
-  asp = 1 / cos(mean(range(x["lat_wgs84"])) * pi / 180),
-  pch = 19,
-  cex = .5,
-  las = 1
-) {
-
-  msg <- paste0(
-    "The finbif package mapping utilities have been deprecated and will be ",
-    "removed in the next release."
-  )
-
-  deprecation(msg)
-
-  has_coords <- exists("lon_wgs84", x) && exists("lat_wgs84", x)
-
-  stopifnot("Missing coordinates" = has_coords)
-
-  coord_nms <- c("lon_wgs84", "lat_wgs84")
-
-  coords <- x[coord_nms]
-
-  graphics::plot.default(
-    coords,
-    ...,
-    xlab = xlab,
-    ylab = ylab,
-    panel.first = panel.first,
-    asp = asp,
-    cex = .5,
-    las = 1,
-    pch = pch
-  )
 
 }

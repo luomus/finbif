@@ -26,7 +26,6 @@ dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('details', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('devtools', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('future', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('grDevices', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('jsonlite', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('knitr', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('pkgdown', quietly = TRUE))";\

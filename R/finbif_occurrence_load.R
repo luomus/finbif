@@ -44,7 +44,6 @@
 #'   order indicated above.
 #' @param skip Integer. The number of lines of the data file to skip before
 #'   beginning to read data (not including the header).
-#' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
 #' @return A `data.frame`, or if `count_only =  TRUE` an integer.
 #' @examples \dontrun{

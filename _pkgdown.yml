@@ -44,27 +44,14 @@ reference:
       - finbif_last_mod
       - finbif_occurrence
       - finbif_occurrence_load
-      - finbif_records
       - filters
       - from_schema
       - to_dwc
       - to_native
       - variables
-  - title: "Methods"
-    desc: >
-      Working with finbif objects
-    contents:
-      - as.data.frame.finbif_records
   - title: "Cache"
     desc: >
       Caching finbif downloads
     contents:
       - caching
       - finbif_clear_cache
-  - title: "Mapping Utilities"
-    desc: >
-      Functions for mapping FinBIF data
-    contents:
-      - finland_map
-      - hist_xy
-      - breaks_xy

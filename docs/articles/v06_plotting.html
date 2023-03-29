@@ -133,7 +133,7 @@
 <span><span class="co">#&gt; [1] 19 59 32 71</span></span></code></pre></div>
 <p>You can use the function <code>breaks_xy</code> in combination with map bounding box to compute break points that a quarter of a degree in both dimensions.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/breaks_xy.html">breaks_xy</a></span><span class="op">(</span><span class="va">finland_map</span><span class="op">$</span><span class="va">bbox</span>, size <span class="op">=</span> <span class="fl">.25</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu">breaks_xy</span><span class="op">(</span><span class="va">finland_map</span><span class="op">$</span><span class="va">bbox</span>, size <span class="op">=</span> <span class="fl">.25</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $x</span></span>
 <span><span class="co">#&gt;  [1] 19.00 19.25 19.50 19.75 20.00 20.25 20.50 20.75 21.00 21.25 21.50 21.75 22.00 22.25 22.50 22.75</span></span>
 <span><span class="co">#&gt; [17] 23.00 23.25 23.50 23.75 24.00 24.25 24.50 24.75 25.00 25.25 25.50 25.75 26.00 26.25 26.50 26.75</span></span>
@@ -151,7 +151,7 @@
 </h3>
 <p>The function <code>hist_xy</code> can be used compute the density of occurrences in the grid-cells defined by a set of break points.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">jay_density</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hist_xy.html">hist_xy</a></span><span class="op">(</span><span class="va">jays</span>, <span class="va">breaks</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">jay_density</span> <span class="op">&lt;-</span> <span class="fu">hist_xy</span><span class="op">(</span><span class="va">jays</span>, <span class="va">breaks</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="image">Image<a class="anchor" aria-label="anchor" href="#image"></a>

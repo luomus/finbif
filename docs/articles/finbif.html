@@ -57,7 +57,6 @@
     <a class="dropdown-item" href="../articles/v03_selecting_variables.html">Selecting and ordering variables</a>
     <a class="dropdown-item" href="../articles/v04_metadata.html">Metadata</a>
     <a class="dropdown-item" href="../articles/v05_filtering.html">Filtering occurrence records</a>
-    <a class="dropdown-item" href="../articles/v06_plotting.html">Plotting FinBIF data</a>
   </div>
 </li>
 <li class="nav-item">
@@ -345,55 +344,6 @@
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
 </div>
-</div>
-<div class="section level2">
-<h2 id="plotting-occurrence-data">Plotting occurrence data<a class="anchor" aria-label="anchor" href="#plotting-occurrence-data"></a>
-</h2>
-<p>The <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> package has a number of inbuilt functions for plotting (see e.g., <code><a href="../reference/breaks_xy.html">breaks_xy()</a></code> and <code><a href="../reference/hist_xy.html">hist_xy()</a></code>). There is also an inbuilt dataset that can be used to plot the border of Finland (<code><a href="../reference/finland_map.html">?finland_map</a></code>). Together these utilities can be used to plot occurrences after they have been downloaded from FinBIF. For example, the following can be used to plot the density of Eurasian Jay occurrences from Finland.</p>
-<details closed><p><summary><span title="">Click to show/hide code.</span></summary></p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Download all the occurrences of Eurasian Jay in Finland</span></span>
-<span><span class="co"># that have coordinates accurate to at least 100m</span></span>
-<span><span class="va">jays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
-<span>  taxa   <span class="op">=</span> <span class="st">"Eurasian Jay"</span>,</span>
-<span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>    coordinates_uncertainty_max <span class="op">=</span> <span class="fl">100</span>,</span>
-<span>    country                     <span class="op">=</span> <span class="st">"Finland"</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  n      <span class="op">=</span> <span class="fl">2e4</span>,</span>
-<span>  quiet  <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Compute the density of occurrences in 1/4 degree cells and plot as a heatmap</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">jays</span>, <span class="va">finland_map</span><span class="op">)</span>,</span>
-<span>  expr <span class="op">=</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span>    <span class="co"># compute a 2d histogram from the occurrences</span></span>
-<span>    <span class="va">breaks</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/breaks_xy.html">breaks_xy</a></span><span class="op">(</span><span class="va">bbox</span>, <span class="fl">.25</span><span class="op">)</span> <span class="co"># breakpoints every 1/4 of a degree</span></span>
-<span>    <span class="va">density</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hist_xy.html">hist_xy</a></span><span class="op">(</span>xy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">lon_wgs84</span>, <span class="va">lat_wgs84</span><span class="op">)</span>, <span class="va">breaks</span><span class="op">)</span></span>
-<span>    <span class="co"># plot the histogram as a heatmap</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span><span class="va">density</span>,</span>
-<span>          asp    <span class="op">=</span> <span class="fl">2.4</span>,</span>
-<span>          breaks <span class="op">=</span> <span class="fl">2</span><span class="op">^</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">12</span><span class="op">)</span>, <span class="co"># breakpoints for the gridcell colours</span></span>
-<span>          col    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">12</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>          xlab   <span class="op">=</span> <span class="st">"Longitude"</span>,</span>
-<span>          ylab   <span class="op">=</span> <span class="st">"Latitude"</span>,</span>
-<span>          panel.first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/grid.html" class="external-link">grid</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>,</span>
-<span>           inset  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.01</span><span class="op">)</span>,</span>
-<span>           legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="fl">2</span><span class="op">^</span><span class="fl">12</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="fl">2</span><span class="op">^</span><span class="fl">6</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="fl">2</span><span class="op">^</span><span class="fl">0</span><span class="op">)</span>,</span>
-<span>           fill   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span>,</span>
-<span>           border <span class="op">=</span> <span class="cn">NA</span>,</span>
-<span>           bty    <span class="op">=</span> <span class="st">"n"</span>,</span>
-<span>           adj    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.25</span><span class="op">)</span>,</span>
-<span>           x.intersp <span class="op">=</span> <span class="fl">.2</span>,</span>
-<span>           y.intersp <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
-<span>    <span class="co"># add the Finnish border</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html" class="external-link">polygon</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">vertices</span>, lwd <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-</details><p><img src="../reference/figures/plot-occurrences-eval-1.png"></p>
 </div>
 <div class="section level2">
 <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>

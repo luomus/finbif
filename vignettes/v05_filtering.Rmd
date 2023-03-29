@@ -16,17 +16,53 @@ before it is downloaded, saving bandwidth and local post-processing time. For
 the full list of filtering options see `?filters`.
 
 ## Location
-Records can be filtered by the name of a location or by a set of coordinates.
+Records can be filtered by the name of a location.
 
 ```r
-filter1 <- c(country = "Finland")
-filter2 <- list(coordinates = list(c(60, 68), c(20, 30), "wgs84"))
-par(mfcol = 1:2)
-plot(finbif_occurrence(filter = filter1, n = 1000), main = "Name")
-plot(finbif_occurrence(filter = filter2, n = 1000), main = "Coordinates")
+finbif_occurrence(filter = c(country = "Finland"))
+#> Records downloaded: 10
+#> Records available: 43683065
+#> A data.frame [10 x 12]
+#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1         …JX.1540644#6 Alauda arvensis Lin…  1         60.4387   22.39332 2023-03-29 12:00:00
+#> 2         …JX.1540639#6 Poecile montanus (C…  2         64.20512  24.62847 2023-03-29 12:00:00
+#> 3        …JX.1540639#15 Poecile montanus (C…  2         64.20512  24.62847 2023-03-29 12:00:00
+#> 4         …JX.1540639#3 Poecile montanus (C…        NA  64.29474  24.62077 2023-03-29 12:00:00
+#> 5        …JX.1540639#21 Dendrocopos major (…  1         64.20512  24.62847 2023-03-29 12:00:00
+#> 6        …JX.1540639#12 Dryocopus martius (…  1         64.20163  24.4228  2023-03-29 12:00:00
+#> 7        …JX.1540639#18 Loxia curvirostra L…  1         64.20512  24.62847 2023-03-29 12:00:00
+#> 8         …JX.1540639#9 Lophophanes cristat…  1         64.20163  24.4228  2023-03-29 12:00:00
+#> 9  …KE.176/64240a1ed5d… Grus grus (Linnaeus…  1         60.41577  22.64869 2023-03-29 12:00:00
+#> 10        …JX.1540533#3 Picus canus J.F. Gm…  1         60.94497  26.38517 2023-03-29 12:00:00
+#> ...with 0 more record and 6 more variables:
+#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#> record_reliability, record_quality
 ```
 
-![](../man/figures/location-filter-1.png)
+Or by a set of coordinates.
+
+```r
+finbif_occurrence(
+  filter = list(coordinates = list(c(60, 68), c(20, 30), "wgs84"))
+)
+#> Records downloaded: 10
+#> Records available: 36571059
+#> A data.frame [10 x 12]
+#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1         …JX.1540644#6 Alauda arvensis Lin…  1         60.4387   22.39332 2023-03-29 12:00:00
+#> 2         …JX.1540639#6 Poecile montanus (C…  2         64.20512  24.62847 2023-03-29 12:00:00
+#> 3        …JX.1540639#15 Poecile montanus (C…  2         64.20512  24.62847 2023-03-29 12:00:00
+#> 4         …JX.1540639#3 Poecile montanus (C…        NA  64.29474  24.62077 2023-03-29 12:00:00
+#> 5        …JX.1540639#21 Dendrocopos major (…  1         64.20512  24.62847 2023-03-29 12:00:00
+#> 6        …JX.1540639#12 Dryocopus martius (…  1         64.20163  24.4228  2023-03-29 12:00:00
+#> 7        …JX.1540639#18 Loxia curvirostra L…  1         64.20512  24.62847 2023-03-29 12:00:00
+#> 8         …JX.1540639#9 Lophophanes cristat…  1         64.20163  24.4228  2023-03-29 12:00:00
+#> 9  …KE.176/64240a1ed5d… Grus grus (Linnaeus…  1         60.41577  22.64869 2023-03-29 12:00:00
+#> 10        …JX.1540533#3 Picus canus J.F. Gm…  1         60.94497  26.38517 2023-03-29 12:00:00
+#> ...with 0 more record and 6 more variables:
+#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#> record_reliability, record_quality
+```
 
 See `?filters` section "Location" for more details
 
