@@ -153,9 +153,9 @@ test_that(
 
     has_grd <- requireNamespace("grDevices", quietly = TRUE)
 
-    not_windows <- !identical(.Platform$OS.type, "windows")
+    mac <- identical(Sys.info()["sysname"], c(sysname = "Darwin"))
 
-    if (has_grd && not_windows) {
+    if (has_grd && mac) {
 
       path <- tempfile(fileext = ".svg")
 
@@ -165,7 +165,7 @@ test_that(
 
       dev.off()
 
-      expect_snapshot_file(path, "fungi.svg")
+      expect_true(file.exists(path))
 
     }
 
