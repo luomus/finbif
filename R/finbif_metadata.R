@@ -8,8 +8,11 @@
 #'  unspecified, function returns the categories of metadata available.
 #'
 #' @return A data.frame.
-#' @examples
+#' @examples \dontrun{
+#'
 #' finbif_metadata("red_list")
+#'
+#' }
 #' @export
 
 finbif_metadata <- function(

@@ -18,5 +18,9 @@ A data.frame.
 Display metadata from the FinBIF database.
 }
 \examples{
+\dontrun{
+
 finbif_metadata("red_list")
+
+}
 }
