@@ -698,3 +698,4 @@ unit.interpretations.virva,virva,virva,FALSE,FALSE,logical,logical,FALSE,TRUE,FA
 unit.identificationBasis,identification_basis,basisOfIndentification,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.samplingMethod,sampling_method,measurementMethod,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.conversions.birdAssociationArea,bird_assoc_area_id,birdAssociationAreaId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+unit.primarySpecimen,primary_specimen,primarySpecimen,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
