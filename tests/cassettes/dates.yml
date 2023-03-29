@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 06:25:25 GMT
+      date: Wed, 29 Mar 2023 09:10:02 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -43,5 +43,5 @@ http_interactions:
         corone cornix","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"cornix","unitId":"http://tun.fi/MHU.22968469"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":62.528315,"lon":22.235059}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.7"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Delichon
         urbicum","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"delurb","unitId":"http://tun.fi/MHU.22968467"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":62.528315,"lon":22.235059}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.7"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Dendrocopos
         major","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"denmaj","unitId":"http://tun.fi/MHU.22968476"},"gathering":{"conversions":{"day":31,"month":12,"wgs84CenterPoint":{"lat":62.43218,"lon":22.056402}},"eventDate":{"begin":"2008-12-31","end":"2008-12-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.7"}}]}'
-  recorded_at: 2023-03-29 06:25:25 GMT
+  recorded_at: 2023-03-29 09:10:02 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

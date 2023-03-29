@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 06:26:32 GMT
+      date: Wed, 29 Mar 2023 09:10:47 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -49,7 +49,7 @@ http_interactions:
         caeruleum","unitId":"http://tun.fi/KE.921/LGE.302411/711985"},"gathering":{"conversions":{"day":2,"month":9,"wgs84CenterPoint":{"lat":67.692786,"lon":24.214534}},"eventDate":{"begin":"2013-09-02","end":"2013-09-02"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.921"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Hydnellum
         caeruleum","scientificNameAuthorship":"(Hornem.) P.Karst."}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Hydnellum
         caeruleum","unitId":"http://tun.fi/KE.921/LGE.251364/492467"},"gathering":{"conversions":{"day":24,"month":8,"wgs84CenterPoint":{"lat":63.216432,"lon":28.360384}},"eventDate":{"begin":"2013-08-24","end":"2013-08-24"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.921"}}]}'
-  recorded_at: 2023-03-29 06:26:34 GMT
+  recorded_at: 2023-03-29 09:10:49 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -67,7 +67,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 06:26:33 GMT
+      date: Wed, 29 Mar 2023 09:10:48 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -112,7 +112,7 @@ http_interactions:
         1841","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Meligethes
         planiusculus","scientificNameAuthorship":"(Heer, 1841)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Meligethes
         planiusculus","unitId":"http://id.luomus.fi/MY.2464706"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2023-03-29 06:26:34 GMT
+  recorded_at: 2023-03-29 09:10:49 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -130,7 +130,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 06:26:33 GMT
+      date: Wed, 29 Mar 2023 09:10:48 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -174,7 +174,7 @@ http_interactions:
         1795","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Scymnus
         suturalis","scientificNameAuthorship":"Thunberg, 1795"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Scymnus
         suturalis","unitId":"http://id.luomus.fi/MY.2464658"},"gathering":{"conversions":{"day":4,"month":8,"wgs84CenterPoint":{"lat":55.6,"lon":21.1}},"eventDate":{"begin":"2016-08-04","end":"2016-08-04"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2023-03-29 06:26:34 GMT
+  recorded_at: 2023-03-29 09:10:49 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -192,7 +192,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 06:26:33 GMT
+      date: Wed, 29 Mar 2023 09:10:49 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -207,7 +207,7 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"total":66822}'
-  recorded_at: 2023-03-29 06:26:34 GMT
+  recorded_at: 2023-03-29 09:10:49 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -225,7 +225,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 06:26:34 GMT
+      date: Wed, 29 Mar 2023 09:10:49 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -241,5 +241,5 @@ http_interactions:
       file: no
       string: '{"currentPage":1,"nextPage":2,"lastPage":21262,"pageSize":1,"total":21262,"cacheTimestamp":1680071194,"results":[{"aggregateBy":{"unit.linkings.taxon.scientificName":"Pteromys
         volans"},"count":58499}]}'
-  recorded_at: 2023-03-29 06:26:34 GMT
+  recorded_at: 2023-03-29 09:10:49 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -15,13 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 06:26:36 GMT
+      date: Wed, 29 Mar 2023 09:10:51 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"b20-8FXFpcQrcOCAzSOyeUQfjx+tOc8"
+      etag: W/"b20-y6uUEVqcPRL0eLchwA5gl2VjACY"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
@@ -33,8 +33,7 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MY.recordBasisPreservedSpecimen","value":{"fi":"Näyte","sv":"Prov","en":"Preserved
-        specimen"}},{"id":"MY.recordBasisHumanObservation","value":{"en":"Observation","fi":"Havaittu","sv":"Observation"}},{"id":"MY.recordBasisHumanObservationSeen","value":{"en":"Seen","sv":"Sett","fi":"Nähty"}},{"id":"MY.recordBasisHumanObservationHeard","value":{"en":"Heard","fi":"Kuultu","sv":"Hörts"}},{"id":"MY.recordBasisHumanObservationHandled","value":{"fi":"Käsitelty
+      string: '[{"id":"MY.recordBasisPreservedSpecimen","value":{"en":"Preserved specimen","fi":"Näyte","sv":"Prov"}},{"id":"MY.recordBasisHumanObservation","value":{"en":"Observation","fi":"Havaittu","sv":"Observation"}},{"id":"MY.recordBasisHumanObservationSeen","value":{"en":"Seen","sv":"Sett","fi":"Nähty"}},{"id":"MY.recordBasisHumanObservationHeard","value":{"en":"Heard","fi":"Kuultu","sv":"Hörts"}},{"id":"MY.recordBasisHumanObservationHandled","value":{"fi":"Käsitelty
         (otettu kiinni, ei näytettä)","en":"Handled (catched, not preserved)","sv":"Behandlad
         (fasttagit, inte bevarad)"}},{"id":"MY.recordBasisHumanObservationPhoto","value":{"en":"Photographed","fi":"Valokuvattu","sv":"Fotograferat"}},{"id":"MY.recordBasisHumanObservationAudio","value":{"en":"Audio
         recording","fi":"Äänitetty","sv":"Ljudsatt"}},{"id":"MY.recordBasisHumanObservationVideo","value":{"en":"Video
@@ -42,14 +41,13 @@ http_interactions:
         observation (fotspår, avföring, etc)","en":"Indirect observation (footprints,
         feces, etc)","fi":"Epäsuora havainto (jäljet, ulosteet, yms)"}},{"id":"MY.recordBasisMachineObservation","value":{"en":"Machine
         observation","fi":"Laitteen tekemä havainto","sv":"Maskinobservation"}},{"id":"MY.recordBasisMachineObservationPhoto","value":{"sv":"Maskinobservation,
-        foto","en":"Machine observation photo","fi":"Laitteen tekemä havainto, valokuva"}},{"id":"MY.recordBasisMachineObservationVideo","value":{"en":"Machine
-        observation video","fi":"Laitteen tekemä havainto, video","sv":"Maskinobservation,
-        video"}},{"id":"MY.recordBasisMachineObservationAudio","value":{"sv":"Maskinobservation,
+        foto","en":"Machine observation photo","fi":"Laitteen tekemä havainto, valokuva"}},{"id":"MY.recordBasisMachineObservationVideo","value":{"sv":"Maskinobservation,
+        video","fi":"Laitteen tekemä havainto, video","en":"Machine observation video"}},{"id":"MY.recordBasisMachineObservationAudio","value":{"sv":"Maskinobservation,
         audio","fi":"Laitteen tekemä havainto, ääni","en":"Machine observation audio"}},{"id":"MY.recordBasisMachineObservationGeologger","value":{"en":"Geologger","fi":"Geopaikannin","sv":"Geologger"}},{"id":"MY.recordBasisMachineObservationSatelliteTransmitter","value":{"sv":"Maskinobservation,
-        satellitpositionering","fi":"Satelliittipaikannus","en":"Satellite positioning"}},{"id":"MY.recordBasisFossilSpecimen","value":{"en":"Fossil","fi":"Fossiili","sv":"Fossil"}},{"id":"MY.recordBasisSubfossilSpecimen","value":{"fi":"Subfossiili","sv":"Subfossil","en":"Subfossil"}},{"id":"MY.recordBasisLivingSpecimen","value":{"en":"Living
-        specimen","fi":"Elävä näyte","sv":"Levande prov"}},{"id":"MY.recordBasisMicrobialSpecimen","value":{"sv":"Mikrobiella
-        prov","en":"Microbial specimen","fi":"Mikrobinäyte"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}},{"id":"MY.recordBasisMaterialSample","value":{"en":"Material
+        satellitpositionering","en":"Satellite positioning","fi":"Satelliittipaikannus"}},{"id":"MY.recordBasisFossilSpecimen","value":{"en":"Fossil","fi":"Fossiili","sv":"Fossil"}},{"id":"MY.recordBasisSubfossilSpecimen","value":{"en":"Subfossil","sv":"Subfossil","fi":"Subfossiili"}},{"id":"MY.recordBasisLivingSpecimen","value":{"en":"Living
+        specimen","fi":"Elävä näyte","sv":"Levande prov"}},{"id":"MY.recordBasisMicrobialSpecimen","value":{"fi":"Mikrobinäyte","sv":"Mikrobiella
+        prov","en":"Microbial specimen"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}},{"id":"MY.recordBasisMaterialSample","value":{"en":"Material
         sample","sv":"Materialprov","fi":"Materiaalinäyte"}},{"id":"MY.recordBasisSubfossilSpecimenAmberInclusion","value":{"sv":"Bärnsten
         fossil","fi":"Meripihkafossiili","en":"Amber inclusion"}}]'
-  recorded_at: 2023-03-29 06:26:36 GMT
+  recorded_at: 2023-03-29 09:10:51 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
