@@ -1,4 +1,4 @@
-# finbif 0.7.2.9000
+# finbif 0.8.0
 
 #### DEPRECATION
 

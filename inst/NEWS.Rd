@@ -1,7 +1,7 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.7.2.9000}{
+\section{finbif version 0.8.0}{
   \subsection{DEPRECATION}{
     \itemize{
       \item Mapping utilities \code{finland_map}, \code{breaks_xy},
