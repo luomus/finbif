@@ -1,24 +1,26 @@
-1. On dev, update the version number to a release version without a dev
-   component.
-2. Update cff file release date, version, and notes (dropping dev component).
-3. Consolidate inst/NEWS.Rd and run make.
-4. Commit changes to DESCRIPTION, codemeta.json, news files and docs.
-5. Checkout main (git checkout main).
-6. Merge changes (git merge dev) and resolve conflicts, if any, and commit.
-7. Run data-raw/sysdata.R and commit changes.
-8. Delete cassettes, run tests and commit changes to test assets.
-9. Rebuild README (touch README.Rmd; make) and commit.
-10. Check winbuilder (`devtools::check_win_devel()`) and rhub
-   (`devtools::check_rhub()`).
-11. Update and commit cran-comments.md.
-12. Release (`devtools::release()`) and wait for CRAN response.
-13. Once CRAN version goes online (news file in particular) rebuild pkgdown
+1.  On dev, update the version number to a release version without a dev
+    component.
+2.  Update cff file release date, version, and notes (dropping dev component).
+3.  Consolidate inst/NEWS.Rd and run make.
+4.  Commit changes to DESCRIPTION, codemeta.json, news files and docs.
+5.  Checkout main (git checkout main).
+6.  Merge changes (git merge dev) and resolve conflicts, if any, and commit.
+7.  Restart R to reset environment variables.
+8.  Run data-raw/sysdata.R and commit changes.
+9.  Delete cassettes, run tests and commit changes to test assets.
+10. Rebuild README (touch README.Rmd; make) and commit.
+11. Check winbuilder (`devtools::check_win_devel()`) and rhub
+    (`devtools::check_rhub()`).
+12. Update and commit cran-comments.md.
+13. Release (`devtools::release()`) and wait for CRAN response.
+14. Once CRAN version goes online (news file in particular) rebuild pkgdown
     docs (touch _pkgdown.yml; make), commit changes and CRAN-SUBMISSION file,
     and push.
-14. On GitHub, tag as new release and copy NEWS.md updates.
-15. Remove CRAN-SUBMISSION and then commit.
-16. Checkout dev (`git checkout dev`).
-17. Merge main (`git merge main`).
-18. Add dev component to version number, update cff, news and rerun
+15. On GitHub, tag as new release and copy NEWS.md updates.
+16. Remove CRAN-SUBMISSION and then commit.
+17. Checkout dev (`git checkout dev`).
+18. Merge main (`git merge main`).
+19. Restart R to reset environment variables.
+20. Add dev component to version number, update cff, news and rerun
     data-raw/sysdata.R, delete cassettes, rerun tests and make then commit and
     push.
