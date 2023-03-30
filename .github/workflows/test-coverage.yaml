@@ -21,6 +21,7 @@ jobs:
       FINBIF_RESTRICTED_FILE_ACCESS_TOKEN: ${{ secrets.FINBIF_RESTRICTED_FILE_ACCESS_TOKEN }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       LANG: en_US.UTF-8
+      COVERAGE: true
 
     steps:
       - uses: actions/checkout@v3

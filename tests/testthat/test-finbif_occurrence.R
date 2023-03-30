@@ -153,9 +153,9 @@ test_that(
 
     has_grd <- requireNamespace("grDevices", quietly = TRUE)
 
-    mac <- identical(Sys.info()["sysname"], c(sysname = "Darwin"))
+    coverage <- identical(Sys.getenv("COVERAGE"), "true")
 
-    if (has_grd && mac) {
+    if (has_grd && coverage) {
 
       path <- tempfile(fileext = ".svg")
 

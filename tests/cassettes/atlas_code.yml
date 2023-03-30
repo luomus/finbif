@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.atlasCodeEnum?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MY.atlasCodeEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 06:26:37 GMT
+      date: Thu, 30 Mar 2023 06:42:21 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"1dbe-64HNxxig/SXH/fVGpdGzkuxcqdw"
+      etag: W/"1dbe-Ag1nQbPOb8IOYnaH88rRVcS0dwI"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -78,46 +78,47 @@ http_interactions:
         Todennäköinen pesintä; Nähty pesä, jossa samanvuotista rakennusmateriaalia
         tai ravintojätettä; ei kuitenkaan varmaa todistetta munista tai poikasista","sv":"66
         Sannolik häckning; Fågel eller par setts bo iakttaget med samma års bobyggnadsmaterial
-        eller födorester; men ej säkra bevis på ägg eller ungar"}},{"id":"MY.atlasCodeEnum7","value":{"en":"7
-        Confirmed breeding; Indirect evidence of verified breeding detected","sv":"7
+        eller födorester; men ej säkra bevis på ägg eller ungar"}},{"id":"MY.atlasCodeEnum7","value":{"sv":"7
         Säker häckning; Indirekt bevis på säker häckning konstaterat","fi":"7 Varma
-        pesintä: havaittu epäsuora todiste varmasta pesinnästä."}},{"id":"MY.atlasCodeEnum71","value":{"en":"71
+        pesintä: havaittu epäsuora todiste varmasta pesinnästä.","en":"7 Confirmed
+        breeding; Indirect evidence of verified breeding detected"}},{"id":"MY.atlasCodeEnum71","value":{"en":"71
         Confirmed breeding; Indirect evidence of verified breeding detected: nest
         found with signs indicating that is has been used in the same year","fi":"71
         Varma pesintä: nähty pesässä saman vuoden munia, kuoria, jäänteitä. Voi olla
         epäonnistunut.","sv":"71 Säker häckning; Indirekt bevis på säker häckning
         konstaterat bo iakttaget där häckning ägt rum detta år, då boet innehöll ägg
-        eller äggskal, lämningar av ungar, rester av fjäderslidor el. dyl"}},{"id":"MY.atlasCodeEnum72","value":{"fi":"72
-        Varma pesintä: käy pesällä pesintään viittaavasti. Munia / poikasia ei havaita
-        (kolo tms.).","en":"72 Confirmed breeding; Indirect evidence of verified breeding
-        detected: a bird seen entering or coming out from the nest in a way that suggests
-        breeding","sv":"72 Säker häckning; Indirekt bevis på säker häckning konstaterat:
-        fågel iakttagen som besöker bo på ett sätt som klart pekar på häckning (ägg
-        eller ungar dock ej sedda; t.ex. fåglar häckande i håligheter eller högt)"}},{"id":"MY.atlasCodeEnum73","value":{"en":"73
+        eller äggskal, lämningar av ungar, rester av fjäderslidor el. dyl"}},{"id":"MY.atlasCodeEnum72","value":{"en":"72
+        Confirmed breeding; Indirect evidence of verified breeding detected: a bird
+        seen entering or coming out from the nest in a way that suggests breeding","sv":"72
+        Säker häckning; Indirekt bevis på säker häckning konstaterat: fågel iakttagen
+        som besöker bo på ett sätt som klart pekar på häckning (ägg eller ungar dock
+        ej sedda; t.ex. fåglar häckande i håligheter eller högt)","fi":"72 Varma pesintä:
+        käy pesällä pesintään viittaavasti. Munia / poikasia ei havaita (kolo tms.)."}},{"id":"MY.atlasCodeEnum73","value":{"en":"73
         Confirmed breeding; Indirect evidence of verified breeding detected: fledglings
-        or young detected so that they can be assumed to have hatched within the grid","fi":"73
-        Varma pesintä: juuri lentokykyiset poikaset tai untuvikot oletettavasti ruudulta.","sv":"73
+        or young detected so that they can be assumed to have hatched within the grid","sv":"73
         Säker häckning; Indirekt bevis på säker häckning konstaterat: nyligen flygga
-        ungar eller dunungar observerade, när dessa kan anses vara födda i rutan"}},{"id":"MY.atlasCodeEnum74","value":{"fi":"74
-        Varma pesintä: emo kantaa ruokaa tai poikasten ulosteita, pesintä oletettavasti
-        ruudulla.","en":"74 Confirmed breeding; Indirect evidence of verified breeding
+        ungar eller dunungar observerade, när dessa kan anses vara födda i rutan","fi":"73
+        Varma pesintä: juuri lentokykyiset poikaset tai untuvikot oletettavasti ruudulta."}},{"id":"MY.atlasCodeEnum74","value":{"sv":"74
+        Säker häckning; Indirekt bevis på säker häckning konstaterat: förälder iakttagen
+        bärande föda till ungar, eller ungars avföring; boet kan antas ligga inom
+        rutan","en":"74 Confirmed breeding; Indirect evidence of verified breeding
         detected: a parent carrying food to nestlings or faeces of nestlings away
-        from the nest","sv":"74 Säker häckning; Indirekt bevis på säker häckning konstaterat:
-        förälder iakttagen bärande föda till ungar, eller ungars avföring; boet kan
-        antas ligga inom rutan"}},{"id":"MY.atlasCodeEnum75","value":{"sv":"75 Säker
-        häckning; Indirekt bevis på säker häckning konstaterat: förälder sedd ruvande
-        i boet","fi":"75 Varma pesintä; Havaittu epäsuora todiste varmasta pesinnästä:
-        nähty pesässä hautova emo","en":"75 Varma pesintä: nähty pesässä hautova emo."}},{"id":"MY.atlasCodeEnum8","value":{"fi":"8
-        Varma pesintä: havaittu suora todiste varmasta pesinnästä.","en":"8 Confirmed
-        breeding; Direct evidence of verified breeding detected","sv":"8 Säker häckning;
-        Direkt bevis på säker häckning konstaterat"}},{"id":"MY.atlasCodeEnum81","value":{"en":"81
-        Confirmed breeding; Direct evidence of a verified breeding detected: begging
-        or other calls of nestlings heard from the nest","fi":"81 Varma pesintä: kuultu
-        poikasten ääntelyä pesässä (kolo / pesä korkealla).","sv":"81 Säker häckning;
-        Direkt bevis på säker häckning konstaterat: ungars läten hörda från boet"}},{"id":"MY.atlasCodeEnum82","value":{"fi":"82
-        Varma pesintä: nähty pesässä munia tai poikasia.","en":"82 Confirmed breeding;
-        Direct evidence of a verified breeding detected: a nest found with eggs or
-        nestlings","sv":"82 Säker häckning; Direkt bevis på säker häckning konstaterat:
-        bo iakttaget med ägg eller ungar"}}]'
-  recorded_at: 2023-03-29 06:26:37 GMT
+        from the nest","fi":"74 Varma pesintä: emo kantaa ruokaa tai poikasten ulosteita,
+        pesintä oletettavasti ruudulla."}},{"id":"MY.atlasCodeEnum75","value":{"fi":"75
+        Varma pesintä; Havaittu epäsuora todiste varmasta pesinnästä: nähty pesässä
+        hautova emo","en":"75 Varma pesintä: nähty pesässä hautova emo.","sv":"75
+        Säker häckning; Indirekt bevis på säker häckning konstaterat: förälder sedd
+        ruvande i boet"}},{"id":"MY.atlasCodeEnum8","value":{"en":"8 Confirmed breeding;
+        Direct evidence of verified breeding detected","sv":"8 Säker häckning; Direkt
+        bevis på säker häckning konstaterat","fi":"8 Varma pesintä: havaittu suora
+        todiste varmasta pesinnästä."}},{"id":"MY.atlasCodeEnum81","value":{"fi":"81
+        Varma pesintä: kuultu poikasten ääntelyä pesässä (kolo / pesä korkealla).","sv":"81
+        Säker häckning; Direkt bevis på säker häckning konstaterat: ungars läten hörda
+        från boet","en":"81 Confirmed breeding; Direct evidence of a verified breeding
+        detected: begging or other calls of nestlings heard from the nest"}},{"id":"MY.atlasCodeEnum82","value":{"sv":"82
+        Säker häckning; Direkt bevis på säker häckning konstaterat: bo iakttaget med
+        ägg eller ungar","fi":"82 Varma pesintä: nähty pesässä munia tai poikasia.","en":"82
+        Confirmed breeding; Direct evidence of a verified breeding detected: a nest
+        found with eggs or nestlings"}}]'
+  recorded_at: 2023-03-30 06:42:21 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
