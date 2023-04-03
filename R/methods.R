@@ -328,7 +328,15 @@ as.data.frame.finbif_records_list <- function(
 
   df <- do.call(rbind, df)
 
-  record_id <- df[["unit.unitId"]]
+  aggregate <- xi[["aggregate"]]
+
+  select_query <- xi[["select_query"]]
+
+  record_id <- switch(aggregate, none = "unit.unitId", select_query)
+
+  record_id <- df[, record_id, drop = FALSE]
+
+  record_id <- do.call(paste, record_id)
 
   is_sample_list <- inherits(x, "finbif_records_sample_list")
 

@@ -2,6 +2,15 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.8.0.9000}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Record aggregations with \code{finbif_occurrence} can now be
+        combined with multi-filter requests. Removing duplicate records or
+        aggregate record combinations can be controlled with the
+        \code{duplicates} argument and adding a column indicating the filter
+        sets can be added with the \code{filter_col} argument.
+    }
+  }
 }
 
 \section{finbif version 0.8.0}{
@@ -125,7 +134,7 @@
   }
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
-      \item For clarity, KKJ coordinate reference system is now refered to as
+      \item For clarity, KKJ coordinate reference system is now referred to as
         YKJ.
       \item When selecting all available variables for download file imports
         using \code{finbif_occurrence_load} "extra" variables will no longer

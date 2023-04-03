@@ -28,7 +28,9 @@ finbif_occurrence(
   aggregate_counts = TRUE,
   exclude_na = FALSE,
   unlist = FALSE,
-  facts = NULL
+  facts = NULL,
+  duplicates = FALSE,
+  filter_col = NULL
 )
 }
 \arguments{
@@ -113,6 +115,14 @@ concatenated into a string separated by ";"?}
 
 \item{facts}{Character vector. Extra variables to be extracted from record,
 event and document "facts".}
+
+\item{duplicates}{Logical. If \code{TRUE}, allow duplicate records/aggregated
+records when making multi-filter set requests. If \code{FALSE} (default)
+duplicate records are removed.}
+
+\item{filter_col}{Character. The name of a column, with values derived from
+the names of the filter sets used when using multiple filters, to include
+when using multiple filter sets. If \code{NULL} (default), no column is included.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

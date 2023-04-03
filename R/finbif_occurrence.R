@@ -63,6 +63,12 @@
 #'  concatenated into a string separated by ";"?
 #' @param facts Character vector. Extra variables to be extracted from record,
 #'  event and document "facts".
+#' @param duplicates Logical. If `TRUE`, allow duplicate records/aggregated
+#'  records when making multi-filter set requests. If `FALSE` (default)
+#'  duplicate records are removed.
+#' @param filter_col Character. The name of a column, with values derived from
+#'  the names of the filter sets used when using multiple filters, to include
+#'  when using multiple filter sets. If `NULL` (default), no column is included.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -110,7 +116,9 @@ finbif_occurrence <- function(
   aggregate_counts = TRUE,
   exclude_na = FALSE,
   unlist = FALSE,
-  facts = NULL
+  facts = NULL,
+  duplicates = FALSE,
+  filter_col = NULL
 ) {
 
   taxa <- c(...)
@@ -141,7 +149,9 @@ finbif_occurrence <- function(
     aggregate_counts = aggregate_counts,
     exclude_na = exclude_na,
     unlist = unlist,
-    facts = facts
+    facts = facts,
+    duplicates = duplicates,
+    filter_col = filter_col
   )
 
   occurrence(fb_records_obj)
@@ -184,19 +194,23 @@ occurrence <- function(fb_records_obj) {
 
   drop_na <- fb_records_obj[["drop_na"]]
 
+  n_filters <- length(filter)
+
   filter_names <- names(filter)
 
-  no_filter_names <- is.null(filter_names)
+  available_filters <- filter_names()
 
-  multi_filter <- no_filter_names && !is.null(filter)
+  available_filters <- available_filters[["translated_filter"]]
+
+  matched_filter_names <- intersect(filter_names, available_filters)
+
+  n_matched_filter_names <- length(matched_filter_names)
+
+  multi_filter <- n_filters > 1L
+
+  multi_filter <- multi_filter && n_matched_filter_names < n_filters
 
   if (multi_filter) {
-
-    aggregate_none <- identical(aggregate, "none")
-
-    stopifnot(
-      "Only one filter set can be used with aggregation" = aggregate_none
-    )
 
     multi_request <- multi_req(fb_records_obj)
 
@@ -1512,6 +1526,28 @@ multi_req <- function(fb_records_obj) {
 
   filters <- fb_records_obj[["filter"]]
 
+  filter_col <- fb_records_obj[["filter_col"]]
+
+  include_filter_col <- !is.null(filter_col)
+
+  filter_set_num <- seq_along(filters)
+
+  filter_set_names <- names(filters)
+
+  filter_names_null <- is.null(filter_set_names)
+
+  if (filter_names_null) {
+
+    filter_set_names <- filter_set_num
+
+  } else {
+
+    names_missing <- filter_set_names == ""
+
+    filter_set_names <- ifelse(names_missing, filter_set_num, filter_set_names)
+
+  }
+
   n_filters <- length(filters)
 
   ans <- vector("list", n_filters)
@@ -1566,15 +1602,37 @@ multi_req <- function(fb_records_obj) {
 
   count_only <- fb_records_obj[["count_only"]]
 
+  duplicates <- fb_records_obj[["duplicates"]]
+
   if (!count_only) {
+
+    if (include_filter_col) {
+
+      for (i in filter_set_num) {
+
+        ans_i <- ans[[i]]
+
+        name_i <- filter_set_names[[i]]
+
+        ans_i[[filter_col]] <- name_i
+
+        ans[[i]] <- ans_i
+
+      }
+
+    }
 
     ans <- do.call(rbind, ans)
 
-    record_id <- attr(ans, "record_id")
+    if (!duplicates) {
 
-    dups <- duplicated(record_id)
+      record_id <- attr(ans, "record_id")
 
-    ans <- ans[!dups, ]
+      dups <- duplicated(record_id)
+
+      ans <- ans[!dups, ]
+
+    }
 
   }
 

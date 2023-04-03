@@ -178,10 +178,6 @@ test_that(
     )
 
     expect_error(
-      finbif_occurrence(filter = list(NULL), aggregate = "records", n = 2e5)
-    )
-
-    expect_error(
       finbif_occurrence("Birds", aggregate = "events")
     )
 
@@ -276,7 +272,13 @@ test_that(
 
     skip_on_cran()
 
+    expect_s3_class(
+      finbif_occurrence(filter = list(a = NULL, NULL), filter_col = "b"),
+      "finbif_occ"
+    )
+
     expect_s3_class(finbif_occurrence(filter = list(NULL, NULL)), "finbif_occ")
+
 
   }
 )

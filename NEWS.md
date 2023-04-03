@@ -1,3 +1,13 @@
+# finbif 0.8.0.9000
+
+#### NEW FEATURES
+
+  - Record aggregations with `finbif_occurrence` can now be combined
+    with multi-filter requests. Removing duplicate records or aggregate
+    record combinations can be controlled with the `duplicates` argument
+    and adding a column indicating the filter sets can be added with the
+    `filter_col` argument.
+
 # finbif 0.8.0
 
 #### DEPRECATION
@@ -117,7 +127,7 @@
 
 #### MINOR IMPROVEMENTS
 
-  - For clarity, KKJ coordinate reference system is now refered to as
+  - For clarity, KKJ coordinate reference system is now referred to as
     YKJ.
 
   - When selecting all available variables for download file imports
