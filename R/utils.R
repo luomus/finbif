@@ -445,8 +445,6 @@ gen_seed.finbif_records_list <- function(
 
   hash <- lapply(x, getElement, "hash")
 
-  hash <- do.call(paste0, hash)
-
   hash <- digest::digest(hash)
 
   hash <- substr(hash, 1L, 7L)
