@@ -51,7 +51,8 @@ sentinels/check: sentinels/pkgdown $(shell find tests -type f)
 sentinels/pkgdown: sentinels/vignettes README.md NEWS.md sentinels/doc _pkgdown.yml
 > echo "options(rmarkdown.html_vignette.check_title = FALSE)" > .Rprofile;\
 > ${RSCRIPT} -e "pkgdown::build_site()";\
-> rm .Rprofile;\
+> rm .Rprofile; \
+> rm -f docs/reference/Rplot001.png;\
 > mkdir -p $(@D);\
 > touch $@
 
