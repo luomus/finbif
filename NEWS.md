@@ -1,3 +1,10 @@
+# finbif 0.8.0.9001
+
+#### BUG FIXES
+
+  - Fix bug triggered when using aggregation with some selected
+    variables.
+
 # finbif 0.8.0.9000
 
 #### NEW FEATURES

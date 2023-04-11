@@ -75,6 +75,14 @@ as.data.frame.finbif_records <- function(
 
   single_col <- var_names[cols, "single"]
 
+  if (aggregated) {
+
+    n_cols <- length(cols)
+
+    single_col <- rep(TRUE, n_cols)
+
+  }
+
   cols_split <- split(cols, single_col)
 
   cols_single <- cols_split[["TRUE"]]

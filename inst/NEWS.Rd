@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.8.0.9001}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fix bug triggered when using aggregation with some selected
+        variables.
+    }
+  }
+}
+
 \section{finbif version 0.8.0.9000}{
   \subsection{NEW FEATURES}{
     \itemize{

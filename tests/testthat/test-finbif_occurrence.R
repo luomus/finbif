@@ -500,3 +500,23 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_localise_enums"))
+
+suppressMessages(insert_cassette("finbuf_aggregate_list_col"))
+
+test_that(
+  "can aggregate list cols", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(
+        select = "record_annotation_created", aggregate = "records"
+      ),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbuf_aggregate_list_col"))
