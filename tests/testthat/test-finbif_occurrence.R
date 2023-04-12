@@ -501,7 +501,7 @@ test_that(
 
 suppressMessages(eject_cassette("finbif_localise_enums"))
 
-suppressMessages(insert_cassette("finbuf_aggregate_list_col"))
+suppressMessages(insert_cassette("finbif_aggregate_list_col"))
 
 test_that(
   "can aggregate list cols", {
@@ -519,4 +519,4 @@ test_that(
 
 )
 
-suppressMessages(eject_cassette("finbuf_aggregate_list_col"))
+suppressMessages(eject_cassette("finbif_aggregate_list_col"))
