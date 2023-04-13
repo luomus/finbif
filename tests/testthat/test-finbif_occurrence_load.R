@@ -83,9 +83,9 @@ test_that(
 
     capture.output(
       with_progress <- suppressMessages(
-        finbif_occurrence_load(
-          file, tzone = "Etc/UTC", write_file = file_path, cache = 1e-9
-        )[seq(nrows), ]
+        finbif_occurrence_load(file, tzone = "Etc/UTC", write_file = file_path)[
+          seq(nrows),
+        ]
       )
     )
 
