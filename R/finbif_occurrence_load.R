@@ -866,7 +866,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
         created <- file.mtime(write_file)
 
-        timeout <- timeout / 3600
+        timeout <- timeout * 3600
 
         current <- Sys.time()
 

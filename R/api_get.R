@@ -95,7 +95,7 @@ api_get <- function(obj) {
 
         created <- file.mtime(cache_file_path)
 
-        timeout <- timeout / 3600
+        timeout <- timeout * 3600
 
         current <- Sys.time()
 
