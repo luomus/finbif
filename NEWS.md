@@ -1,3 +1,11 @@
+# finbif 0.8.0.9003
+
+#### NEW FEATURES
+
+  - Cached data can use a database as a backend by passing a `DBI`
+    database connection object to the package option
+    `finbif_cache_path`.
+
 # finbif 0.8.0.9002
 
 #### NEW FEATURES

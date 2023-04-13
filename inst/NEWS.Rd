@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.8.0.9003}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Cached data can use a database as a backend by passing a \code{DBI}
+        database connection object to the package option
+        \code{finbif_cache_path}.
+    }
+  }
+}
+
 \section{finbif version 0.8.0.9002}{
   \subsection{NEW FEATURES}{
     \itemize{

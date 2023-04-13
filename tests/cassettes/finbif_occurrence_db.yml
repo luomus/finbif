@@ -1,0 +1,731 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 13 Apr 2023 10:21:25 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":244121,"pageSize":10,"total":2441205,"cacheTimestamp":1681381134,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cygnus
+        cygnus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"laulujoutsen","unitId":"http://tun.fi/JX.297875#3"},"gathering":{"conversions":{"day":13,"month":4,"wgs84CenterPoint":{"lat":60.170379,"lon":24.925005}},"eventDate":{"begin":"2023-04-13","end":"2023-04-13"},"hourBegin":11,"hourEnd":11,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":16,"minutesEnd":16},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Larus
+        ridibundus","scientificNameAuthorship":"(Linnaeus, 1766)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"naurulokki","unitId":"http://tun.fi/JX.297875#5"},"gathering":{"conversions":{"day":13,"month":4,"wgs84CenterPoint":{"lat":60.173075,"lon":24.930706}},"eventDate":{"begin":"2023-04-13","end":"2023-04-13"},"hourBegin":11,"hourEnd":11,"interpretations":{"coordinateAccuracy":1},"minutesBegin":16,"minutesEnd":16},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Foo","unitId":"http://tun.fi/JX.297869#5"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.246223,"lon":25.013385}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":45,"minutesEnd":50},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
+        corone","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varis","unitId":"http://tun.fi/JX.297869#8"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.243375,"lon":25.017022}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":45,"minutesEnd":50},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Boo","unitId":"http://tun.fi/JX.297868#8"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.24124,"lon":25.089418}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":1,"minutesEnd":4},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Foo","unitId":"http://tun.fi/JX.297868#5"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.241634,"lon":25.090436}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":1,"minutesEnd":4},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Anas
+        crecca","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"tavi","unitId":"http://tun.fi/JX.297868#3"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.262781,"lon":25.099856}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":1,"minutesEnd":4},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
+        volans","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.297866#3"},"gathering":{"conversions":{"day":11,"month":4,"wgs84CenterPoint":{"lat":60.241717,"lon":25.090972}},"eventDate":{"begin":"2023-04-11","end":"2023-04-11"},"hourBegin":14,"hourEnd":14,"interpretations":{"coordinateAccuracy":1},"minutesBegin":21,"minutesEnd":21},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"3","interpretations":{"individualCount":3,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrgus
+        andromedae","scientificNameAuthorship":"(Wallengren, 1853)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Pyrgus
+        andromedae","unitId":"http://tun.fi/JX.297865#5"},"gathering":{"conversions":{"day":6,"month":4},"eventDate":{"begin":"2023-04-06","end":"2023-04-06"}},"document":{"sourceId":"http://tun.fi/KE.841"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Aglais
+        io","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Aglais
+        io","unitId":"http://tun.fi/JX.297860#111"},"gathering":{"conversions":{"day":6,"month":4,"wgs84CenterPoint":{"lat":65.308241,"lon":28.415041}},"eventDate":{"begin":"2023-04-06","end":"2023-04-06"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.841"}}]}'
+  recorded_at: 2023-04-13 10:21:26 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 13 Apr 2023 10:21:25 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"results":[{"enumeration":"WGS84","property":"MY.coordinateSystemWgs84","label":{"fi":"WGS84
+        ja ETRS89, asteen desimaaleina","en":"WGS84 and ETRS89, decimal degrees","sv":"WGS84
+        och ETRS89, decimalgrader"}},{"enumeration":"EUREF","property":"MY.coordinateSystemEtrs-tm35fin","label":{"fi":"ETRS-TM35FIN-tasokoordinaatit","en":"ETRS-TM35FIN
+        grid","sv":"ETRS-TM35FIN-plankoordinatsystem"}},{"enumeration":"YKJ","property":"MY.coordinateSystemYkj","label":{"fi":"Yhtenäiskoordinaatisto
+        (YKJ)","en":"Uniform grid (YKJ)","sv":"Enhetskoordinatsystemet (EKS)"}},{"enumeration":"IMAGE","property":"MM.image","label":{"fi":"Kuva","en":"Image","sv":"Bild"}},{"enumeration":"AUDIO","property":"MM.audio","label":{"fi":"Äänitallenne","en":"Audio
+        recording","sv":"Ljudinspelning"}},{"enumeration":"VIDEO","property":"MM.video","label":{"fi":"Video","en":"Video","sv":"Video"}},{"enumeration":"MALE","property":"MY.sexM","label":{"fi":"koiras","en":"M
+        - Male","sv":"hane"}},{"enumeration":"FEMALE","property":"MY.sexF","label":{"fi":"naaras","en":"F
+        - Female","sv":"hona"}},{"enumeration":"WORKER","property":"MY.sexW","label":{"fi":"työläinen","en":"W
+        - Worker","sv":"arbetare"}},{"enumeration":"UNKNOWN","property":"MY.sexU","label":{"fi":"tuntematon","en":"U
+        - Unknown","sv":"okänd"}},{"enumeration":"NOT_APPLICABLE","property":"MY.sexN","label":{"fi":"soveltumaton","en":"N
+        - Not applicable","sv":"inte tillämpbar"}},{"enumeration":"GYNANDROMORPH","property":"MY.sexX","label":{"fi":"gynandromorfi","en":"X
+        - Gynandromorph","sv":"gynandromorf"}},{"enumeration":"MULTIPLE","property":"MY.sexE","label":{"fi":"eri
+        sukupuolia","en":"E - multiple","sv":"olika kön"}},{"enumeration":"CONFLICTING","property":"MY.sexC","label":{"fi":"ristiriitainen","en":"C
+        - Conflicting","sv":"kontroversiell"}},{"enumeration":"ADULT","property":"MY.lifeStageAdult","label":{"fi":"aikuinen","en":"adult","sv":"vuxen"}},{"enumeration":"JUVENILE","property":"MY.lifeStageJuvenile","label":{"fi":"nuori","en":"juvenile","sv":"juvenil"}},{"enumeration":"IMMATURE","property":"MY.lifeStageImmature","label":{"fi":"keskenkasvuinen","en":"immature","sv":"omogen"}},{"enumeration":"EGG","property":"MY.lifeStageEgg","label":{"fi":"muna","en":"egg","sv":"ägg"}},{"enumeration":"TADPOLE","property":"MY.lifeStageTadpole","label":{"fi":"nuijapää","en":"tadpole","sv":"grodyngel"}},{"enumeration":"PUPA","property":"MY.lifeStagePupa","label":{"fi":"kotelo","en":"pupa","sv":"puppa"}},{"enumeration":"NYMPH","property":"MY.lifeStageNymph","label":{"fi":"nymfi","en":"nymph","sv":"nymf"}},{"enumeration":"SUBIMAGO","property":"MY.lifeStageSubimago","label":{"fi":"subimago","en":"subimago","sv":"subimago"}},{"enumeration":"LARVA","property":"MY.lifeStageLarva","label":{"fi":"toukka","en":"larva","sv":"larv"}},{"enumeration":"SNAG","property":"MY.lifeStageSnag","label":{"fi":"kelo","en":"snag","sv":"torraka"}},{"enumeration":"EMBRYO","property":"MY.lifeStageEmbryo","label":{"fi":"alkio
+        tai sikiö","en":"embryo or fetus","sv":"embryo eller foster"}},{"enumeration":"SUBADULT","property":"MY.lifeStageSubadult","label":{"fi":"esiaikuinen","en":"subadult","sv":"subadult"}},{"enumeration":"MATURE","property":"MY.lifeStageMature","label":{"fi":"sukukypsä","en":"mature","sv":"könsmogen"}},{"enumeration":"GALL","property":"MY.lifeStageGall","label":{"fi":"äkämä","en":"gall","sv":"gallbildning"}},{"enumeration":"MARKS","property":"MY.lifeStageMarks","label":{"fi":"jäljet
+        (syömäjäljet tms.)","en":"marks (feeding marks etc.)","sv":"spår"}},{"enumeration":"TRIUNGULIN","property":"MY.lifeStageTriungulin","label":{"fi":"triunguliini","en":"triungulin","sv":"triunguliini"}},{"enumeration":"STERILE","property":"MY.plantLifeStageSterile","label":{"fi":"steriili","en":"sterile","sv":"steril"}},{"enumeration":"FERTILE","property":"MY.plantLifeStageFertile","label":{"fi":"fertiili","en":"fertile","sv":"bördig"}},{"enumeration":"SPROUT","property":"MY.plantLifeStageSprout","label":{"fi":"verso","en":"sprout","sv":"skott"}},{"enumeration":"DEAD_SPROUT","property":"MY.plantLifeStageDeadSprout","label":{"fi":"kuollut
+        verso","en":"dead sprout","sv":"död skott"}},{"enumeration":"BUD","property":"MY.plantLifeStageBud","label":{"fi":"nuppu","en":"bud","sv":"knopp"}},{"enumeration":"FLOWER","property":"MY.plantLifeStageFlower","label":{"fi":"kukka","en":"flower","sv":"blomma"}},{"enumeration":"WITHERED_FLOWER","property":"MY.plantLifeStageWitheredFlower","label":{"fi":"kuihtunut
+        kukka","en":"withered flower","sv":"vissnad blomma"}},{"enumeration":"SEED","property":"MY.plantLifeStageSeed","label":{"fi":"siemen
+        / itiö / hedelmä","en":"seed / spore / fruit","sv":"frö / spor / frukt"}},{"enumeration":"RIPENING_FRUIT","property":"MY.plantLifeStageRipeningFruit","label":{"fi":"kypsyviä
+        siemeniä / hedelmiä / itiöitä","en":"ripening seed / fruit / spore","sv":"mognande
+        frö / frukt / spor"}},{"enumeration":"RIPE_FRUIT","property":"MY.plantLifeStageRipeFruit","label":{"fi":"kypsiä
+        siemeniä / hedelmiä / itiöitä","en":"ripe seed / fruit / spore","sv":"mogen
+        frö / frukt / spor"}},{"enumeration":"SUBTERRANEAN","property":"MY.plantLifeStageSubterranean","label":{"fi":"mukula
+        / sipuli / juuri","en":"subterranean","sv":"knöl / lök / rot"}},{"enumeration":"OCCURS_DOES_NOT_OCCUR","property":"MY.abundanceUnitOccursDoesNotOccur","label":{"fi":"Esiintyy/ei
+        esiinny","en":"Occurs / does not occur","sv":"Forekommer / förekommer inte"}},{"enumeration":"INDIVIDUAL_COUNT","property":"MY.abundanceUnitIndividualCount","label":{"fi":"Yksilömäärä","en":"Individual
+        count","sv":"Individantal"}},{"enumeration":"PAIRCOUNT","property":"MY.abundanceUnitPairCount","label":{"fi":"Parimäärä","en":"Pair
+        count","sv":"Parantal"}},{"enumeration":"NESTS","property":"MY.abundanceUnitNest","label":{"fi":"Pesien
+        lukumäärä","en":"Nest count","sv":"Nästantal"}},{"enumeration":"BREEDING_SITES","property":"MY.abundanceUnitBreedingSite","label":{"fi":"Lisääntymispaikkojen
+        lukumäärä (kivi, kolo, ym)","en":"Number of breeding sites (rocks, cavities,
+        etc.)","sv":"Häckningsplatsantal (stenar, håligheter etc.)"}},{"enumeration":"COLONIES","property":"MY.abundanceUnitColony","label":{"fi":"Yhdyskuntien
+        lukumäärä","en":"Colonies","sv":"Kolonier"}},{"enumeration":"QUEENS","property":"MY.abundanceUnitQueen","label":{"fi":"Kuningattarien
+        lukumäärä","en":"Number of queens","sv":"Drottningar"}},{"enumeration":"FRUITBODIES","property":"MY.abundanceUnitFruitbody","label":{"fi":"Itiöemien
+        lukumäärä","en":"Fruitbodies/sporocarps","sv":"Fruktkroppar"}},{"enumeration":"SPROUTS","property":"MY.abundanceUnitSprout","label":{"fi":"Versojen
+        lukumäärä","en":"Sprouts","sv":"Spiror"}},{"enumeration":"HUMMOCKS","property":"MY.abundanceUnitHummock","label":{"fi":"Mättäiden/tuppaiden
+        lukumäärä","en":"Number of hummocks","sv":"Hummocks"}},{"enumeration":"THALLI","property":"MY.abundanceUnitThallus","label":{"fi":"Sekovarsien
+        lukumäärä","en":"Number of thalli","sv":"Tallus"}},{"enumeration":"FLOWERS","property":"MY.abundanceUnitFlower","label":{"fi":"Kukkien
+        lukumäärä","en":"Number of flowers","sv":"Blommor"}},{"enumeration":"SPOTS","property":"MY.abundanceUnitSpot","label":{"fi":"Laikkujen
+        lukumäärä","en":"Number of spots","sv":"Fläckar"}},{"enumeration":"TRUNKS","property":"MY.abundanceUnitTrunk","label":{"fi":"Runkojen
+        lukumäärä","en":"Number of tree trunks","sv":"Trädstammar"}},{"enumeration":"SHELLS","property":"MY.abundanceUnitShell","label":{"fi":"Kuorien
+        lukumäärä","en":"Number of shells","sv":"Skal"}},{"enumeration":"DROPPINGS","property":"MY.abundanceUnitDroppings","label":{"fi":"Jätösten/papanakasojen
+        lukumäärä","en":"Droppings","sv":"Spillning"}},{"enumeration":"FEEDING_MARKS","property":"MY.abundanceUnitMarks","label":{"fi":"(Syömä)jälkien
+        lukumäärä","en":"Marks (feeding marks etc.)","sv":"Spår"}},{"enumeration":"INDIRECT_MARKS","property":"MY.abundanceUnitIndirect","label":{"fi":"Epäsuorien
+        jälkien lukumäärä","en":"Number of indirect marks/traces","sv":"Indirekta
+        ospecificerade spår"}},{"enumeration":"SQUARE_DM","property":"MY.abundanceUnitSquareDM","label":{"fi":"Neliödesimetri
+        (dm^2)","en":"Square decimeter (dm^2)","sv":"Kvadrat decimeter (dm^2)"}},{"enumeration":"SQUARE_M","property":"MY.abundanceUnitSquareM","label":{"fi":"Neliömetri
+        (m^2)","en":"Square meter (m^2)","sv":"Kvadratmeter (m^2)"}},{"enumeration":"RELATIVE_DENSITY","property":"MY.abundanceUnitRelativeDensity","label":{"fi":"Suhteellinen
+        tiheys","en":"Relative density","sv":"Relativ densitet"}},{"enumeration":"PRESERVED_SPECIMEN","property":"MY.recordBasisPreservedSpecimen","label":{"fi":"Näyte","en":"Preserved
+        specimen","sv":"Prov"}},{"enumeration":"LIVING_SPECIMEN","property":"MY.recordBasisLivingSpecimen","label":{"fi":"Elävä
+        näyte","en":"Living specimen","sv":"Levande prov"}},{"enumeration":"FOSSIL_SPECIMEN","property":"MY.recordBasisFossilSpecimen","label":{"fi":"Fossiili","en":"Fossil","sv":"Fossil"}},{"enumeration":"SUBFOSSIL_SPECIMEN","property":"MY.recordBasisSubfossilSpecimen","label":{"fi":"Subfossiili","en":"Subfossil","sv":"Subfossil"}},{"enumeration":"SUBFOSSIL_AMBER_INCLUSION_SPECIMEN","property":"MY.recordBasisSubfossilSpecimenAmberInclusion","label":{"fi":"Meripihkafossiili","en":"Amber
+        inclusion","sv":"Bärnsten fossil"}},{"enumeration":"MICROBIAL_SPECIMEN","property":"MY.recordBasisMicrobialSpecimen","label":{"fi":"Mikrobinäyte","en":"Microbial
+        specimen","sv":"Mikrobiella prov"}},{"enumeration":"HUMAN_OBSERVATION_UNSPECIFIED","property":"MY.recordBasisHumanObservation","label":{"fi":"Havaittu","en":"Observation","sv":"Observation"}},{"enumeration":"HUMAN_OBSERVATION_SEEN","property":"MY.recordBasisHumanObservationSeen","label":{"fi":"Nähty","en":"Seen","sv":"Sett"}},{"enumeration":"HUMAN_OBSERVATION_HEARD","property":"MY.recordBasisHumanObservationHeard","label":{"fi":"Kuultu","en":"Heard","sv":"Hörts"}},{"enumeration":"HUMAN_OBSERVATION_PHOTO","property":"MY.recordBasisHumanObservationPhoto","label":{"fi":"Valokuvattu","en":"Photographed","sv":"Fotograferat"}},{"enumeration":"HUMAN_OBSERVATION_INDIRECT","property":"MY.recordBasisHumanObservationIndirect","label":{"fi":"Epäsuora
+        havainto (jäljet, ulosteet, yms)","en":"Indirect observation (footprints,
+        feces, etc)","sv":"Indirekt observation (fotspår, avföring, etc)"}},{"enumeration":"HUMAN_OBSERVATION_HANDLED","property":"MY.recordBasisHumanObservationHandled","label":{"fi":"Käsitelty
+        (otettu kiinni, ei näytettä)","en":"Handled (catched, not preserved)","sv":"Behandlad
+        (fasttagit, inte bevarad)"}},{"enumeration":"HUMAN_OBSERVATION_VIDEO","property":"MY.recordBasisHumanObservationVideo","label":{"fi":"Videoitu","en":"Video
+        recording","sv":"Videobandad"}},{"enumeration":"HUMAN_OBSERVATION_RECORDED_AUDIO","property":"MY.recordBasisHumanObservationAudio","label":{"fi":"Äänitetty","en":"Audio
+        recording","sv":"Ljudsatt"}},{"enumeration":"MACHINE_OBSERVATION_UNSPECIFIED","property":"MY.recordBasisMachineObservation","label":{"fi":"Laitteen
+        tekemä havainto","en":"Machine observation","sv":"Maskinobservation"}},{"enumeration":"MACHINE_OBSERVATION_PHOTO","property":"MY.recordBasisMachineObservationPhoto","label":{"fi":"Laitteen
+        tekemä havainto, valokuva","en":"Machine observation photo","sv":"Maskinobservation,
+        foto"}},{"enumeration":"MACHINE_OBSERVATION_VIDEO","property":"MY.recordBasisMachineObservationVideo","label":{"fi":"Laitteen
+        tekemä havainto, video","en":"Machine observation video","sv":"Maskinobservation,
+        video"}},{"enumeration":"MACHINE_OBSERVATION_AUDIO","property":"MY.recordBasisMachineObservationAudio","label":{"fi":"Laitteen
+        tekemä havainto, ääni","en":"Machine observation audio","sv":"Maskinobservation,
+        audio"}},{"enumeration":"MACHINE_OBSERVATION_GEOLOGGER","property":"MY.recordBasisMachineObservationGeologger","label":{"fi":"Geopaikannin","en":"Geologger","sv":"Geologger"}},{"enumeration":"MACHINE_OBSERVATION_SATELLITE_TRANSMITTER","property":"MY.recordBasisMachineObservationSatelliteTransmitter","label":{"fi":"Satelliittipaikannus","en":"Satellite
+        positioning","sv":"Maskinobservation, satellitpositionering"}},{"enumeration":"LITERATURE","property":"MY.recordBasisLiterature","label":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}},{"enumeration":"MATERIAL_SAMPLE","property":"MY.recordBasisMaterialSample","label":{"fi":"Materiaalinäyte","en":"Material
+        sample","sv":"Materialprov"}},{"enumeration":"CITABLE","property":"HBF.downloadTypeCitable","label":{"fi":"Viitattavissa
+        (tallennettu Lajitietokeskukseen)","en":"Citable (stored to FinBIF)","sv":"Citable
+        (lagras till FinBIF)"}},{"enumeration":"LIGHTWEIGHT","property":"HBF.downloadTypeLightweight","label":{"fi":"Käyttäjän
+        lataus (ei viitattavissa, ladattavissa)","en":"User download (not citable,
+        reusable)","sv":"Användarnedladdning (inte citerbar, återanvändbar)"}},{"enumeration":"AUTHORITIES_FULL","property":"HBF.downloadTypeAuthoritiesFull","label":{"fi":"Viranomaislataus
+        (tallennettu Lajitietokeskukseen)","en":"Authorities'' download (stored to
+        FinBIF)","sv":"Myndigheternas nedladdning (lagras till FinBIF)"}},{"enumeration":"AUTHORITIES_LIGHTWEIGHT","property":"HBF.downloadTypeAuthoritiesLightweight","label":{"fi":"Viranomaislataus
+        (kopio tallennettu Lajitietokeskukseen)","en":"Authorities'' download (copy
+        stored to FinBIF)","sv":"Myndigheternas nedladdning (kopia lagras till FinBIF)"}},{"enumeration":"AUTHORITIES_API_KEY","property":"HBF.downloadTypeAuthoritiesApiKey","label":{"fi":"Viranomaisen
+        tilaama API-avain","en":"API key applied by authorities","sv":"Myndigheternas
+        API key"}},{"enumeration":"DATA_REQUEST","property":"HBF.downloadTypeDataRequest","label":{"fi":"Data
+        request","en":"Data request","sv":"Data request"}},{"enumeration":"APPROVED_DATA_REQUEST","property":"HBF.downloadTypeApprovedDataRequest","label":{"fi":"Hyväksytty
+        aineistopyyntö","en":"Approved data request","sv":"Godkänd dataförfrågan"}},{"enumeration":"APPROVED_API_KEY_REQUEST","property":"HBF.downloadTypeApprovedApiKeyRequest","label":{"fi":"Hyväksytty
+        aineistopyyntö (API-avain)","en":"Approved data request (API key)","sv":"Godkänd
+        dataförfrågan (API key)"}},{"enumeration":"CSV_FLAT","property":"HBF.csvFlat","label":{"fi":"CSV","en":"CSV","sv":"CSV"}},{"enumeration":"TSV_FLAT","property":"HBF.tsvFlat","label":{"fi":"TSV","en":"TSV","sv":"TSV"}},{"enumeration":"EXCEL_FLAT","property":"HBF.excelFlat","label":{"fi":"Excel","en":"Excel","sv":"Excel"}},{"enumeration":"ODS_FLAT","property":"HBF.odsFlat","label":{"fi":"OpenDocument","en":"OpenDocument","sv":"OpenDocument"}},{"enumeration":"DOCUMENT_FACTS","property":"HBF.documentFacts","label":{"fi":"Tiedonhallinnan
+        lisämuuttujat","en":"Data management additional variables","sv":"Datahantering
+        ytterligare variabler"}},{"enumeration":"DOCUMENT_MEDIA","property":"HBF.documentMedia","label":{"fi":"Dokumentointiin
+        liittyvät kuvat/media","en":"Documentation images/media","sv":"Dokumentation
+        foton/media"}},{"enumeration":"DOCUMENT_EDITORS","property":"HBF.documentEditors","label":{"fi":"Muokkaajat","en":"Editors","sv":"Editors"}},{"enumeration":"DOCUMENT_KEYWORDS","property":"HBF.documentKeywords","label":{"fi":"Asiasanat
+        (ylimääräiset tunnisteet yms)","en":"Keywords (Additional identifiers etc)","sv":"Keywords
+        (Ytterligare kännetecken etc)"}},{"enumeration":"GATHERING_FACTS","property":"HBF.gatheringFacts","label":{"fi":"Paikan
+        ja ajan lisämuuttujat","en":"Gathering additional variables","sv":"Plats och
+        tid ytterligare variabler"}},{"enumeration":"GATHERING_MEDIA","property":"HBF.gatheringMedia","label":{"fi":"Paikkaan
+        liittyvät kuvat/media","en":"Location images/media","sv":"Platsen foton/media"}},{"enumeration":"UNIT_FACTS","property":"HBF.unitFacts","label":{"fi":"Havainnon
+        lisämuuttujat","en":"Observation additional variables","sv":"Observation ytterligare
+        variabler"}},{"enumeration":"UNIT_MEDIA","property":"HBF.unitMedia","label":{"fi":"Havaintoon
+        liittyvät kuvat/media","en":"Observation images/media","sv":"Observation foton/media"}},{"enumeration":"NONE","property":"MX.secureLevelNone","label":{"fi":"Ei
+        karkeistettu","en":"None","sv":"Inte skyddad"}},{"enumeration":"KM1","property":"MX.secureLevelKM1","label":{"fi":"1
+        km","en":"1 km","sv":"1 km"}},{"enumeration":"KM5","property":"MX.secureLevelKM5","label":{"fi":"5
+        km","en":"5 km","sv":"5 km"}},{"enumeration":"KM10","property":"MX.secureLevelKM10","label":{"fi":"10
+        km","en":"10 km","sv":"10 km"}},{"enumeration":"KM25","property":"MX.secureLevelKM25","label":{"fi":"25
+        km","en":"25 km","sv":"25 km"}},{"enumeration":"KM50","property":"MX.secureLevelKM50","label":{"fi":"50
+        km","en":"50 km","sv":"50 km"}},{"enumeration":"KM100","property":"MX.secureLevelKM100","label":{"fi":"100
+        km","en":"100 km","sv":"100 km"}},{"enumeration":"HIGHEST","property":"MX.secureLevelHighest","label":{"fi":"Täyssalaus","en":"Fully
+        hidden","sv":"Helt dold"}},{"enumeration":"NOSHOW","property":"MX.secureLevelNoShow","label":{"fi":"Ei
+        näytetä ollenkaan - käytetään lähinnä spammin estämiseksi","en":"Not shown
+        at all - used mainly to prevent spam","sv":"Visas inte alls - används huvudsakligen
+        att stoppa skräppost"}},{"enumeration":"DEFAULT_TAXON_CONSERVATION","property":"MZ.secureReasonTaxonConservation","label":{"fi":"Lajitiedon
+        sensitiivisyys","en":"Sensitivity of biodiversity data","sv":"Sensitivitet
+        av artdata"}},{"enumeration":"BREEDING_SITE_CONSERVATION","property":"MZ.secureReasonBreedingSiteConservation","label":{"fi":"Lisääntymispaikan
+        sensitiivisyys (esimerkiksi pesä)","en":"Breeding site conservation (for example
+        a nest)","sv":"Bevarande av avelsplatser (till exempel ett bo)"}},{"enumeration":"NATURA_AREA_CONSERVATION","property":"MZ.secureReasonNaturaAreaConservation","label":{"fi":"Lajin
+        paikkatiedot salataan Natura-alueella","en":"Species location is hidden on
+        Natura 2000 site","sv":"Platsinformationen för arten skydds i Natura-området"}},{"enumeration":"WINTER_SEASON_TAXON_CONSERVATION","property":"MZ.secureReasonWinterSeasonTaxonConservation","label":{"fi":"Talvehtimishavainnot","en":"Overwintering
+        observations","sv":"Övervintringsobservationer"}},{"enumeration":"BREEDING_SEASON_TAXON_CONSERVATION","property":"MZ.secureReasonBreedingSeasonTaxonConservation","label":{"fi":"Pesintäaika","en":"Breeding
+        season","sv":"Häckningstid"}},{"enumeration":"CUSTOM","property":"MZ.secureReasonCustom","label":{"fi":"Tiedon
+        tuottajan rajoittama aineisto","en":"Data provider has limited the access
+        to data","sv":"Dataägaren har begränsat tillgången till data"}},{"enumeration":"USER_HIDDEN","property":"MZ.secureReasonUserHidden","label":{"fi":"Käyttäjän
+        karkeistamat nimi- ja/tai paikkatiedot","en":"User has hidden name and/or
+        location information","sv":"Användaren har dolt namn och/eller platsinformation"}},{"enumeration":"USER_HIDDEN_LOCATION","property":"MZ.secureReasonUserHiddenLocation","label":{"fi":"Käyttäjän
+        karkeistamat paikkatiedot","en":"User has hidden location information","sv":"Användaren
+        har dolt platsinformation"}},{"enumeration":"USER_HIDDEN_TIME","property":"MZ.secureReasonUserHiddenTime","label":{"fi":"Käyttäjän
+        karkeistama aika","en":"User has hidden time information","sv":"Användaren
+        har dolt tidinformation"}},{"enumeration":"USER_PERSON_NAMES_HIDDEN","property":"MZ.secureReasonPersonNamesHidden","label":{"fi":"Henkilönimet
+        piiloitettu","en":"Person names hidden","sv":"Personnamn dolda"}},{"enumeration":"ADMIN_HIDDEN","property":"MZ.secureReasonAdminHidden","label":{"fi":"Ylläpitäjän
+        karkeistama","en":"Admin hidden","sv":"Administratör dold"}},{"enumeration":"DATA_QUARANTINE_PERIOD","property":"MZ.secureReasonDataQuarantinePeriod","label":{"fi":"Tutkimusaineiston
+        karenssiaika","en":"Quarantine period of research data","sv":"Karantänperiod
+        av forskningsdata"}},{"enumeration":"ONLY_PRIVATE","property":"MZ.secureReasonOnlyPrivate","label":{"fi":"Tiedon
+        tuottaja on antanut aineiston vain viranomaiskäyttöön","en":"Data provider
+        has given the data only for the authorities","sv":"Dataägaren har endast lämnat
+        uppgifterna till myndigheterna"}},{"enumeration":"COORDINATES","property":"MZ.geoSourceCoordinates","label":{"fi":"Koordinaatit","en":"Coordinates","sv":"Koordinater"}},{"enumeration":"COORDINATE_CENTERPOINT","property":"MZ.geoSourceCoordinateCenterpoint","label":{"fi":"Koordinaattien
+        keskipiste","en":"Coordinate centerpoint","sv":"Koordinera mittpunkten"}},{"enumeration":"FINNISH_MUNICIPALITY","property":"MZ.geoSourceFinnishMunicipality","label":{"fi":"Ilmotetun
+        kunnan perusteella","en":"Name of the municipality","sv":"Kommunens namn"}},{"enumeration":"OLD_FINNISH_MUNICIPALITY","property":"MZ.geoSourceOldFinnishMunicipality","label":{"fi":"Nykyinen
+        kunta vanhan ilmoitetun kunnan perusteella","en":"Current municipality resolved
+        using name of old municipality","sv":"Nuvarande kommun beslutas med namnet
+        på den gamla kommunen"}},{"enumeration":"REPORTED_VALUE","property":"MZ.geoSourceReportedValue","label":{"fi":"Ilmoitettu
+        tieto","en":"Reported value","sv":"Rapporterat värde"}},{"enumeration":"FULL","property":"MY.invasiveControlEffectivenessFull","label":{"fi":"Torjuttu
+        kokonaan","en":"Fully controlled","sv":"Fullt kontrollerad"}},{"enumeration":"PARTIAL","property":"MY.invasiveControlEffectivenessPartial","label":{"fi":"Torjuttu
+        osittain","en":"Partially controlled","sv":"Delvis kontrollerad"}},{"enumeration":"NO_EFFECT","property":"MY.invasiveControlEffectivenessNone","label":{"fi":"Ei
+        torjuttu (ei onnistunut)","en":"Not controlled (didn''t succeed)","sv":"Inte
+        kontrolleras (inte lyckas)"}},{"enumeration":"NOT_FOUND","property":"MY.invasiveControlEffectivenessNotFound","label":{"fi":"Ei
+        löydetty","en":"Not found","sv":"Hittades inte"}},{"enumeration":"SURE","property":"MY.taxonConfidenceSure","label":{"fi":"Varma","en":"Sure","sv":"Säker"}},{"enumeration":"UNSURE","property":"MY.taxonConfidenceUnsure","label":{"fi":"Epävarma","en":"Unsure","sv":"Osäker"}},{"enumeration":"SUBSPECIES_UNSURE","property":"MY.taxonConfidenceSubspeciesUnsure","label":{"fi":"Alalaji
+        epävarma","en":"Subspecies unsure","sv":"Underart osäker"}},{"enumeration":"REPORTED_UNRELIABLE","property":"MZ.qualityIssueReportedUnreliable","label":{"fi":"Havainto
+        on merkitty virheelliseksi","en":"The observation is marked as erroneous","sv":"Observationen
+        markeras som felaktig"}},{"enumeration":"MEDIA_ISSUE","property":"MZ.qualityIssueMedia","label":{"fi":"Kuviin
+        liittyvä ongelma","en":"Issue with media","sv":"Problem med media"}},{"enumeration":"INVALID_CREATED_DATE","property":"MZ.qualityIssueCreatedDate","label":{"fi":"Lisäyspvm
+        on epäkelpo","en":"Issue with created date","sv":"Problem med skapat datum"}},{"enumeration":"INVALID_MODIFIED_DATE","property":"MZ.qualityIssueModifiedDate","label":{"fi":"Muokkauspvm
+        on epäkelpo","en":"Issue with modified date","sv":"Utgåva med modifierat datum"}},{"enumeration":"COORDINATES_COUNTRY_MISMATCH","property":"MZ.qualityIssueCoordinatesCountryMismatch","label":{"fi":"Koordinaatit
+        ja ilmoitetut maa eivät täsmää","en":"Coordinates and reported country mismatch","sv":"Koordinater
+        och rapporterad missförändring mellan länder"}},{"enumeration":"COORDINATES_MUNICIPALITY_MISMATCH","property":"MZ.qualityIssueMunicipalityMismatch","label":{"fi":"Koordinaatit
+        ja ilmoitettu kunta eivät täsmää","en":"Coordinates and reported municipality
+        mismatch","sv":"Koordinater och rapporterade missförhållande mellan kommuner"}},{"enumeration":"INVALID_GEO","property":"MZ.qualityIssueGeo","label":{"fi":"Geoinformaatio
+        (määritelty alue) on epäkelpo","en":"Geoinformation (defined area) is invalid","sv":"Geoinformation
+        (definierat område) är ogiltigt"}},{"enumeration":"INVALID_COORDINATES","property":"MZ.qualityIssueCoordinates","label":{"fi":"Invalid
+        coordinates","en":"Invalid coordinates","sv":"Ogiltiga koordinater"}},{"enumeration":"INVALID_YKJ_COORDINATES","property":"MZ.qualityIssueYkjCoordinates","label":{"fi":"Koordinaatit
+        ovat epäkelvot (yhtenäiskoordinaatit, YKJ)","en":"Coordinate issue (Uniform
+        system, YKJ)","sv":"Koordinatfråga (Uniform system, YKJ)"}},{"enumeration":"INVALID_EUREF_COORDINATES","property":"MZ.qualityIssueEurefCoordinates","label":{"fi":"Koordinaatit
+        ovat epäkelvot (EUREF-FIN, ETRS-TM35FIN)","en":"Coordinate issue (EUREF-FIN,
+        ETRS-TM35FIN)","sv":"Koordinatfråga (EUREF-FIN, ETRS-TM35FIN)"}},{"enumeration":"INVALID_WGS84_COORDINATES","property":"MZ.qualityIssueWgs84Coordinates","label":{"fi":"Koordinaatit
+        ovat epäkelvot (WGS84)","en":"Coordinate issue (WGS84)","sv":"Koordinatfråga
+        (WGS84)"}},{"enumeration":"TOO_LARGE_AREA","property":"MZ.qualityIssueTooLargeArea","label":{"fi":"Liian
+        suuri havaintoalue","en":"Too large area","sv":"För stort område"}},{"enumeration":"DATE_END_BEFORE_BEGIN","property":"MZ.qualityIssueDateEndBeforeBegin","label":{"fi":"Loppupäivä
+        on ennen alkupäivää","en":"End date is before begin date","sv":"Slutdatum
+        är före startdatum"}},{"enumeration":"DATE_END_GIVEN_WITHOUT_BEGIN","property":"MZ.qualityIssueDateEndWithoutBegin","label":{"fi":"Loppupäivä
+        ilmoitetut ilman alkupäivää","en":"End date reported without begin date","sv":"Slutdatum
+        rapporteras utan startdatum"}},{"enumeration":"DATE_IN_FUTURE","property":"MZ.qualityIssueDateInFuture","label":{"fi":"Päivämäärä
+        on tulevaisuudessa","en":"Date is in the future","sv":"Datum är i framtiden"}},{"enumeration":"DATE_TOO_FAR_IN_THE_PAST","property":"MZ.qualityIssueDateTooFarInThePast","label":{"fi":"Päivämäärä
+        on liian kaukana menneisyydessä (kirjoitusvirhe)","en":"Date too far in the
+        past","sv":"Datum för långt tidigare"}},{"enumeration":"INVALID_DATE","property":"MZ.qualityIssueInvalidDate","label":{"fi":"Epäkelpo
+        päivämäärä","en":"Invalid date","sv":"Ogiltigt datum"}},{"enumeration":"RECORD_BASIS_MISSING","property":"MZ.qualityIssueRecordBasisMissing","label":{"fi":"Havaintotapaa
+        ei ole ilmoitettu","en":"Record basis is missing","sv":"Rekordunderlag saknas"}},{"enumeration":"INVALID_HOUR","property":"MZ.qualityIssueInvalidHour","label":{"fi":"Virheellinen
+        tai puutteellinen kellonaika","en":"Invalid or incomplete time","sv":"Ogiltig
+        eller ofullständig tid"}},{"enumeration":"INVALID_MINUTE","property":"MZ.qualityIssueInvalidMinute","label":{"fi":"Virheellinen
+        tai puutteellinen kellonaika","en":"Invalid or incomplete time","sv":"Ogiltig
+        eller ofullständig tid"}},{"enumeration":"TIME_END_BEFORE_BEGIN","property":"MZ.qualityIssueTimeEndBeforeBegin","label":{"fi":"Loppuaika
+        on ennen alkuaikaa","en":"Time end is before begin","sv":"Tidsänden är innan
+        den börjar"}},{"enumeration":"ETL_ISSUE","property":"MZ.qualityIssueDataTransfer","label":{"fi":"Tiedonsiirron
+        ongelma","en":"Data transfer (ETL) issue","sv":"Information om dataöverföring
+        (ETL)"}},{"enumeration":"AUTOMATED_FINBIF_VALIDATION","property":"MZ.qualitySourceValidation","label":{"fi":"Lajitietokeskuksen
+        automaattinen tarkistus","en":"FinBIF data validation","sv":"FinBIF-data validering"}},{"enumeration":"ORIGINAL_DOCUMENT","property":"MZ.qualitySourceOriginalDocument","label":{"fi":"Alkuperäinen
+        lähdeaineisto","en":"Original document","sv":"Orginal dokument"}},{"enumeration":"QUALITY_CONTROL","property":"MZ.qualitySourceQualityControl","label":{"fi":"Laadunvalvonta","en":"Quality
+        control","sv":"Kvalitetskontroll"}},{"enumeration":"NO_ISSUES","property":"MZ.qualityIssueFilterNoIssues","label":{"fi":"Vain
+        virheettömät","en":"No issues","sv":"Inga problem"}},{"enumeration":"BOTH","property":"MZ.qualityIssueFilterBoth","label":{"fi":"Virheelliset
+        ja virheettömät","en":"Issues and no issues","sv":"Med problem och inga problem"}},{"enumeration":"ONLY_ISSUES","property":"MZ.qualityIssueFilterOnlyIssues","label":{"fi":"Vain
+        virheelliset","en":"Only issues","sv":"Endast med problem"}},{"enumeration":"ALL","property":"MZ.annotationTypeFilterAll","label":{"fi":"Kaikki
+        annotaatiot","en":"All annotations","sv":"Alla anteckningar"}},{"enumeration":"COMMENT","property":"MZ.annotationTypeFilterTypeComment","label":{"fi":"Kommentit","en":"Comments","sv":"Kommentarer"}},{"enumeration":"ADMIN","property":"MZ.annotationTypeFilterTypeAdmin","label":{"fi":"Yllläpito","en":"Administration","sv":"Administration"}},{"enumeration":"FORM_ADMIN","property":"MZ.annotationTypeFilterTypeFormAdmin","label":{"fi":"Tutkimuksen
+        kuratointi","en":"Monitoring scheme curation","sv":"Övervakningssystemets
+        kuration"}},{"enumeration":"DW_AUTO","property":"MZ.annotationTypeFilterTypeAuto","label":{"fi":"Automaattiset/konemerkinnät","en":"Automatic/machine
+        markings","sv":"Automatisk/maskinmarkeringar"}},{"enumeration":"USER_CHECK","property":"MZ.annotationTypeFilterTypeCheck","label":{"fi":"Tarkistusmerkinnät","en":"Check
+        markings","sv":"Kontrollera markeringar"}},{"enumeration":"USER_EFFECTIVE","property":"MZ.annotationTypeFilterTypeEffective","label":{"fi":"Laatumerkinnät","en":"Quality
+        markings","sv":"Kvalitetsmarkeringar"}},{"enumeration":"INVASIVE_CONTROL","property":"MAN.typeInvasiveControlEffectiveness","label":{"fi":"Torjunnan
+        tehokkuus","en":"Invasive control effectiveness","sv":"Invasiv kontroll effektivitet"}},{"enumeration":"DELETED","property":"MZ.annotationTypeFilterTypeDeleted","label":{"fi":"Poistetut
+        kommentit","en":"Deleted comments","sv":"Raderade kvalitetsmarkeringar"}},{"enumeration":"WILD","property":"MY.wildWild","label":{"fi":"Luonnonvaraiset","en":"Wild","sv":"Vild"}},{"enumeration":"WILD_UNKNOWN","property":"MY.wildUnknown","label":{"fi":"Ei
+        merkintää","en":"Unknown","sv":"Okänd"}},{"enumeration":"NON_WILD","property":"MY.wildNonWild","label":{"fi":"Ei
+        luonnonvaraiset","en":"Non-wild","sv":"Inte vild"}},{"enumeration":"AMATEUR","property":"MY.collectionQualityEnum1","label":{"fi":"Kansalaishavaintoja
+        / ei laadunvarmistusta","en":"Citizen science / mostly uncurated","sv":"Medborgarvetenskap
+        / ingen kvalitetssäkring"}},{"enumeration":"HOBBYIST","property":"MY.collectionQualityEnum2","label":{"fi":"Asiantuntevat
+        harrastajat / asiantuntijoiden laadunvarmistama","en":"Expert hobbyists /
+        expert curated","sv":"Expertentusiaster / expertkuraterad"}},{"enumeration":"PROFESSIONAL","property":"MY.collectionQualityEnum3","label":{"fi":"Ammattiaineistot
+        / asiantuntijoiden laadunvarmistama","en":"Professional / professionally curated","sv":"Professionella
+        dataseten / expertkuraterad"}},{"enumeration":"EXPERT_VERIFIED","property":"MZ.recordQualityExpertVerified","label":{"fi":"Asiantuntijan
+        varmistama","en":"Expert verified","sv":"Expertkuraterad"}},{"enumeration":"COMMUNITY_VERIFIED","property":"MZ.recordQualityCommunityVerified","label":{"fi":"Yhteisön
+        varmistama","en":"Community verified","sv":"Gemenskapskuraterat"}},{"enumeration":"NEUTRAL","property":"MZ.recordQualityNeutral","label":{"fi":"Ei
+        arvioitu","en":"Unassessed","sv":"Obedömd"}},{"enumeration":"UNCERTAIN","property":"MZ.recordQualityUncertain","label":{"fi":"Epävarma","en":"Uncertain","sv":"Osäker"}},{"enumeration":"ERRONEOUS","property":"MZ.recordQualityErroneous","label":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}},{"enumeration":"RELIABLE","property":"MZ.reliabilityReliable","label":{"fi":"Luotettava","en":"Reliable","sv":"Pålitlig"}},{"enumeration":"UNDEFINED","property":"MZ.reliabilityNeutral","label":{"fi":"Neutraali","en":"Neutral","sv":"Neutral"}},{"enumeration":"UNRELIABLE","property":"MZ.reliabilityUnreliable","label":{"fi":"Epäluotettava","en":"Unreliable","sv":"Opålitliga"}},{"enumeration":"ADMIN_MARKED_SPAM","property":"MMAN.3","label":{"fi":"spam","en":"spam","sv":"spam"}},{"enumeration":"ADMIN_MARKED_COARSE","property":"MMAN.32","label":{"fi":"karkeista","en":"coarse","sv":"grov"}},{"enumeration":"ADMIN_MARKED_NON_WILD","property":"MMAN.33","label":{"fi":"ei-luonnonvarainen","en":"non-wild","sv":"icke-vilda"}},{"enumeration":"EXPERT_TAG_VERIFIED","property":"MMAN.5","label":{"fi":"varmistettu","en":"verified","sv":"verifierad"}},{"enumeration":"EXPERT_TAG_UNCERTAIN","property":"MMAN.8","label":{"fi":"epävarma","en":"uncertain","sv":"osäker"}},{"enumeration":"EXPERT_TAG_ERRONEOUS","property":"MMAN.9","label":{"fi":"virheellinen","en":"erroneous","sv":"felaktig"}},{"enumeration":"COMMUNITY_TAG_VERIFIED","property":"MMAN.52","label":{"fi":"varmistettu
+        (yhteisö)","en":"verified (community)","sv":"verifierad (gemenskapen)"}},{"enumeration":"CHECKED_CANNOT_VERIFY","property":"MMAN.18","label":{"fi":"lajia
+        ei voida määrittää","en":"cannot identify species","sv":"oidentifierbar"}},{"enumeration":"CHANGED_OWNER_MANUAL","property":"MMAN.10","label":{"fi":"muokattu","en":"changed","sv":"ändrats"}},{"enumeration":"CHANGED_DW_AUTO","property":"MMAN.30","label":{"fi":"havaintoa
+        muutettu","en":"observation updated","sv":"observation uppdaterad"}},{"enumeration":"CHECK","property":"MMAN.31","label":{"fi":"tarkista","en":"check","sv":"checka"}},{"enumeration":"CHECK_COORDINATES","property":"MMAN.22","label":{"fi":"tarkista
+        koordinaatit","en":"check coordinates","sv":"kolla koordinater"}},{"enumeration":"CHECK_DATETIME","property":"MMAN.23","label":{"fi":"tarkista
+        ajankohta","en":"check date/time","sv":"kolla datum / tid"}},{"enumeration":"CHECK_LOCATION","property":"MMAN.24","label":{"fi":"tarkista
+        paikka","en":"check location","sv":"kolla plats"}},{"enumeration":"CHECK_OBSERVER","property":"MMAN.25","label":{"fi":"tarkista
+        havainnoija","en":"check observer","sv":"kolla observatören"}},{"enumeration":"CHECK_TAXON","property":"MMAN.26","label":{"fi":"tarkista
+        määritys","en":"check identification","sv":"kolla identifiering"}},{"enumeration":"CHECK_WILDNESS","property":"MMAN.29","label":{"fi":"tarkista
+        luonnonvaraisuus","en":"check wildness","sv":"kolla vildhet"}},{"enumeration":"CHECK_DUPLICATE","property":"MMAN.28","label":{"fi":"tarkista
+        duplikaatti","en":"check duplicate","sv":"kolla duplikatet"}},{"enumeration":"CHECK_NEEDS_INFO","property":"MMAN.20","label":{"fi":"tarvitsee
+        lisätietoa","en":"needs info","sv":"behöver info"}},{"enumeration":"CHECK_SPAM","property":"MMAN.34","label":{"fi":"tarkista
+        spam","en":"check spam","sv":"kolla spam"}},{"enumeration":"CHECK_BREEDING_INDEX","property":"MMAN.53","label":{"fi":"tarkista
+        pesimävarmuusindeksi","en":"check breeding index","sv":"kolla häckningssäkerhetsindexet"}},{"enumeration":"AUTO_DISTRIBUTION_CHECK","property":"MMAN.54","label":{"fi":"tarkista
+        levinneisyys (autom. validointi)","en":"check distribution (autom. validation)","sv":"kolla
+        utbrednings (automatisk validering)"}},{"enumeration":"AUTO_PERIOD_CHECK","property":"MMAN.55","label":{"fi":"tarkista
+        esiintymisaika (autom. validointi)","en":"check period (autom. validation)","sv":"kolla
+        period (automatisk validering)"}},{"enumeration":"AUTO_VALIDATIONS_PASS","property":"MMAN.56","label":{"fi":"läpäisee
+        automaattiset validoinnit","en":"passes automatic validations","sv":"klarar
+        automatiska valideringar"}},{"enumeration":"FORMADMIN_CENSUS_COUNT_ERROR","property":"MMAN.11","label":{"fi":"laskennan
+        kokonaismäärä epäilyttävä","en":"census total count incorrect","sv":"census
+        totalt räknat fel"}},{"enumeration":"FORMADMIN_CENSUS_INNER_COUNT_ERROR","property":"MMAN.12","label":{"fi":"pääsaran
+        luvut epäilyttäviä","en":"census inner count incorrect","sv":"census inre
+        räkning fel"}},{"enumeration":"FORMADMIN_CENSUS_OTHER_ERROR","property":"MMAN.13","label":{"fi":"epäilyttävä
+        laskenta","en":"census unreliable","sv":"census otillförlitlig"}},{"enumeration":"FORMADMIN_VERIFIED","property":"MMAN.50","label":{"fi":"varmistettu
+        (aineiston omistaja)","en":"verified by curator","sv":"verifierad av kurator"}},{"enumeration":"FORMADMIN_UNCERTAIN","property":"MMAN.51","label":{"fi":"curator
+        uncertain","en":"curator uncertain","sv":"curator uncertain"}},{"enumeration":"INVASIVE_FULL","property":"MMAN.14","label":{"fi":"torjuttu
+        kokonaan","en":"invasive fully controlled","sv":"invasive fullt kontrollerad"}},{"enumeration":"INVASIVE_PARTIAL","property":"MMAN.15","label":{"fi":"torjuttu
+        osittain","en":"invasive partially controlled","sv":"invasive delvis kontrollerad"}},{"enumeration":"INVASIVE_NO_EFFECT","property":"MMAN.16","label":{"fi":"ei
+        torjuttu","en":"invasive not controlled","sv":"invasive Inte kontrolleras"}},{"enumeration":"INVASIVE_NOT_FOUND","property":"MMAN.17","label":{"fi":"torjuttavaa
+        ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
+        (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
+        (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
+  recorded_at: 2023-04-13 10:21:26 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MZ.recordQualityEnum?lang=multi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 13 Apr 2023 10:21:25 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '551'
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"227-X4xlY3SOpC79HQ2BulVJUbaL7Ck"
+      vary: Accept-Encoding
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '[{"id":"MZ.recordQualityExpertVerified","value":{"sv":"Expertkuraterad","en":"Expert
+        verified","fi":"Asiantuntijan varmistama"}},{"id":"MZ.recordQualityCommunityVerified","value":{"en":"Community
+        verified","fi":"Yhteisön varmistama","sv":"Gemenskapskuraterat"}},{"id":"MZ.recordQualityNeutral","value":{"en":"Unassessed","fi":"Ei
+        arvioitu","sv":"Obedömd"}},{"id":"MZ.recordQualityUncertain","value":{"en":"Uncertain","fi":"Epävarma","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}]'
+  recorded_at: 2023-04-13 10:21:26 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 13 Apr 2023 10:21:26 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":244121,"pageSize":10,"total":2441205,"cacheTimestamp":1681381134,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cygnus
+        cygnus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"laulujoutsen","unitId":"http://tun.fi/JX.297875#3"},"gathering":{"conversions":{"day":13,"month":4,"wgs84CenterPoint":{"lat":60.170379,"lon":24.925005}},"eventDate":{"begin":"2023-04-13","end":"2023-04-13"},"hourBegin":11,"hourEnd":11,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":16,"minutesEnd":16},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Larus
+        ridibundus","scientificNameAuthorship":"(Linnaeus, 1766)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"naurulokki","unitId":"http://tun.fi/JX.297875#5"},"gathering":{"conversions":{"day":13,"month":4,"wgs84CenterPoint":{"lat":60.173075,"lon":24.930706}},"eventDate":{"begin":"2023-04-13","end":"2023-04-13"},"hourBegin":11,"hourEnd":11,"interpretations":{"coordinateAccuracy":1},"minutesBegin":16,"minutesEnd":16},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Foo","unitId":"http://tun.fi/JX.297869#5"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.246223,"lon":25.013385}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":45,"minutesEnd":50},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
+        corone","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varis","unitId":"http://tun.fi/JX.297869#8"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.243375,"lon":25.017022}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":45,"minutesEnd":50},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Boo","unitId":"http://tun.fi/JX.297868#8"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.24124,"lon":25.089418}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":1,"minutesEnd":4},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Foo","unitId":"http://tun.fi/JX.297868#5"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.241634,"lon":25.090436}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":1,"minutesEnd":4},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Anas
+        crecca","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"tavi","unitId":"http://tun.fi/JX.297868#3"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.262781,"lon":25.099856}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":1,"minutesEnd":4},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
+        volans","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.297866#3"},"gathering":{"conversions":{"day":11,"month":4,"wgs84CenterPoint":{"lat":60.241717,"lon":25.090972}},"eventDate":{"begin":"2023-04-11","end":"2023-04-11"},"hourBegin":14,"hourEnd":14,"interpretations":{"coordinateAccuracy":1},"minutesBegin":21,"minutesEnd":21},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"3","interpretations":{"individualCount":3,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrgus
+        andromedae","scientificNameAuthorship":"(Wallengren, 1853)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Pyrgus
+        andromedae","unitId":"http://tun.fi/JX.297865#5"},"gathering":{"conversions":{"day":6,"month":4},"eventDate":{"begin":"2023-04-06","end":"2023-04-06"}},"document":{"sourceId":"http://tun.fi/KE.841"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Aglais
+        io","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Aglais
+        io","unitId":"http://tun.fi/JX.297860#111"},"gathering":{"conversions":{"day":6,"month":4,"wgs84CenterPoint":{"lat":65.308241,"lon":28.415041}},"eventDate":{"begin":"2023-04-06","end":"2023-04-06"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.841"}}]}'
+  recorded_at: 2023-04-13 10:21:26 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 13 Apr 2023 10:21:26 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"results":[{"enumeration":"WGS84","property":"MY.coordinateSystemWgs84","label":{"fi":"WGS84
+        ja ETRS89, asteen desimaaleina","en":"WGS84 and ETRS89, decimal degrees","sv":"WGS84
+        och ETRS89, decimalgrader"}},{"enumeration":"EUREF","property":"MY.coordinateSystemEtrs-tm35fin","label":{"fi":"ETRS-TM35FIN-tasokoordinaatit","en":"ETRS-TM35FIN
+        grid","sv":"ETRS-TM35FIN-plankoordinatsystem"}},{"enumeration":"YKJ","property":"MY.coordinateSystemYkj","label":{"fi":"Yhtenäiskoordinaatisto
+        (YKJ)","en":"Uniform grid (YKJ)","sv":"Enhetskoordinatsystemet (EKS)"}},{"enumeration":"IMAGE","property":"MM.image","label":{"fi":"Kuva","en":"Image","sv":"Bild"}},{"enumeration":"AUDIO","property":"MM.audio","label":{"fi":"Äänitallenne","en":"Audio
+        recording","sv":"Ljudinspelning"}},{"enumeration":"VIDEO","property":"MM.video","label":{"fi":"Video","en":"Video","sv":"Video"}},{"enumeration":"MALE","property":"MY.sexM","label":{"fi":"koiras","en":"M
+        - Male","sv":"hane"}},{"enumeration":"FEMALE","property":"MY.sexF","label":{"fi":"naaras","en":"F
+        - Female","sv":"hona"}},{"enumeration":"WORKER","property":"MY.sexW","label":{"fi":"työläinen","en":"W
+        - Worker","sv":"arbetare"}},{"enumeration":"UNKNOWN","property":"MY.sexU","label":{"fi":"tuntematon","en":"U
+        - Unknown","sv":"okänd"}},{"enumeration":"NOT_APPLICABLE","property":"MY.sexN","label":{"fi":"soveltumaton","en":"N
+        - Not applicable","sv":"inte tillämpbar"}},{"enumeration":"GYNANDROMORPH","property":"MY.sexX","label":{"fi":"gynandromorfi","en":"X
+        - Gynandromorph","sv":"gynandromorf"}},{"enumeration":"MULTIPLE","property":"MY.sexE","label":{"fi":"eri
+        sukupuolia","en":"E - multiple","sv":"olika kön"}},{"enumeration":"CONFLICTING","property":"MY.sexC","label":{"fi":"ristiriitainen","en":"C
+        - Conflicting","sv":"kontroversiell"}},{"enumeration":"ADULT","property":"MY.lifeStageAdult","label":{"fi":"aikuinen","en":"adult","sv":"vuxen"}},{"enumeration":"JUVENILE","property":"MY.lifeStageJuvenile","label":{"fi":"nuori","en":"juvenile","sv":"juvenil"}},{"enumeration":"IMMATURE","property":"MY.lifeStageImmature","label":{"fi":"keskenkasvuinen","en":"immature","sv":"omogen"}},{"enumeration":"EGG","property":"MY.lifeStageEgg","label":{"fi":"muna","en":"egg","sv":"ägg"}},{"enumeration":"TADPOLE","property":"MY.lifeStageTadpole","label":{"fi":"nuijapää","en":"tadpole","sv":"grodyngel"}},{"enumeration":"PUPA","property":"MY.lifeStagePupa","label":{"fi":"kotelo","en":"pupa","sv":"puppa"}},{"enumeration":"NYMPH","property":"MY.lifeStageNymph","label":{"fi":"nymfi","en":"nymph","sv":"nymf"}},{"enumeration":"SUBIMAGO","property":"MY.lifeStageSubimago","label":{"fi":"subimago","en":"subimago","sv":"subimago"}},{"enumeration":"LARVA","property":"MY.lifeStageLarva","label":{"fi":"toukka","en":"larva","sv":"larv"}},{"enumeration":"SNAG","property":"MY.lifeStageSnag","label":{"fi":"kelo","en":"snag","sv":"torraka"}},{"enumeration":"EMBRYO","property":"MY.lifeStageEmbryo","label":{"fi":"alkio
+        tai sikiö","en":"embryo or fetus","sv":"embryo eller foster"}},{"enumeration":"SUBADULT","property":"MY.lifeStageSubadult","label":{"fi":"esiaikuinen","en":"subadult","sv":"subadult"}},{"enumeration":"MATURE","property":"MY.lifeStageMature","label":{"fi":"sukukypsä","en":"mature","sv":"könsmogen"}},{"enumeration":"GALL","property":"MY.lifeStageGall","label":{"fi":"äkämä","en":"gall","sv":"gallbildning"}},{"enumeration":"MARKS","property":"MY.lifeStageMarks","label":{"fi":"jäljet
+        (syömäjäljet tms.)","en":"marks (feeding marks etc.)","sv":"spår"}},{"enumeration":"TRIUNGULIN","property":"MY.lifeStageTriungulin","label":{"fi":"triunguliini","en":"triungulin","sv":"triunguliini"}},{"enumeration":"STERILE","property":"MY.plantLifeStageSterile","label":{"fi":"steriili","en":"sterile","sv":"steril"}},{"enumeration":"FERTILE","property":"MY.plantLifeStageFertile","label":{"fi":"fertiili","en":"fertile","sv":"bördig"}},{"enumeration":"SPROUT","property":"MY.plantLifeStageSprout","label":{"fi":"verso","en":"sprout","sv":"skott"}},{"enumeration":"DEAD_SPROUT","property":"MY.plantLifeStageDeadSprout","label":{"fi":"kuollut
+        verso","en":"dead sprout","sv":"död skott"}},{"enumeration":"BUD","property":"MY.plantLifeStageBud","label":{"fi":"nuppu","en":"bud","sv":"knopp"}},{"enumeration":"FLOWER","property":"MY.plantLifeStageFlower","label":{"fi":"kukka","en":"flower","sv":"blomma"}},{"enumeration":"WITHERED_FLOWER","property":"MY.plantLifeStageWitheredFlower","label":{"fi":"kuihtunut
+        kukka","en":"withered flower","sv":"vissnad blomma"}},{"enumeration":"SEED","property":"MY.plantLifeStageSeed","label":{"fi":"siemen
+        / itiö / hedelmä","en":"seed / spore / fruit","sv":"frö / spor / frukt"}},{"enumeration":"RIPENING_FRUIT","property":"MY.plantLifeStageRipeningFruit","label":{"fi":"kypsyviä
+        siemeniä / hedelmiä / itiöitä","en":"ripening seed / fruit / spore","sv":"mognande
+        frö / frukt / spor"}},{"enumeration":"RIPE_FRUIT","property":"MY.plantLifeStageRipeFruit","label":{"fi":"kypsiä
+        siemeniä / hedelmiä / itiöitä","en":"ripe seed / fruit / spore","sv":"mogen
+        frö / frukt / spor"}},{"enumeration":"SUBTERRANEAN","property":"MY.plantLifeStageSubterranean","label":{"fi":"mukula
+        / sipuli / juuri","en":"subterranean","sv":"knöl / lök / rot"}},{"enumeration":"OCCURS_DOES_NOT_OCCUR","property":"MY.abundanceUnitOccursDoesNotOccur","label":{"fi":"Esiintyy/ei
+        esiinny","en":"Occurs / does not occur","sv":"Forekommer / förekommer inte"}},{"enumeration":"INDIVIDUAL_COUNT","property":"MY.abundanceUnitIndividualCount","label":{"fi":"Yksilömäärä","en":"Individual
+        count","sv":"Individantal"}},{"enumeration":"PAIRCOUNT","property":"MY.abundanceUnitPairCount","label":{"fi":"Parimäärä","en":"Pair
+        count","sv":"Parantal"}},{"enumeration":"NESTS","property":"MY.abundanceUnitNest","label":{"fi":"Pesien
+        lukumäärä","en":"Nest count","sv":"Nästantal"}},{"enumeration":"BREEDING_SITES","property":"MY.abundanceUnitBreedingSite","label":{"fi":"Lisääntymispaikkojen
+        lukumäärä (kivi, kolo, ym)","en":"Number of breeding sites (rocks, cavities,
+        etc.)","sv":"Häckningsplatsantal (stenar, håligheter etc.)"}},{"enumeration":"COLONIES","property":"MY.abundanceUnitColony","label":{"fi":"Yhdyskuntien
+        lukumäärä","en":"Colonies","sv":"Kolonier"}},{"enumeration":"QUEENS","property":"MY.abundanceUnitQueen","label":{"fi":"Kuningattarien
+        lukumäärä","en":"Number of queens","sv":"Drottningar"}},{"enumeration":"FRUITBODIES","property":"MY.abundanceUnitFruitbody","label":{"fi":"Itiöemien
+        lukumäärä","en":"Fruitbodies/sporocarps","sv":"Fruktkroppar"}},{"enumeration":"SPROUTS","property":"MY.abundanceUnitSprout","label":{"fi":"Versojen
+        lukumäärä","en":"Sprouts","sv":"Spiror"}},{"enumeration":"HUMMOCKS","property":"MY.abundanceUnitHummock","label":{"fi":"Mättäiden/tuppaiden
+        lukumäärä","en":"Number of hummocks","sv":"Hummocks"}},{"enumeration":"THALLI","property":"MY.abundanceUnitThallus","label":{"fi":"Sekovarsien
+        lukumäärä","en":"Number of thalli","sv":"Tallus"}},{"enumeration":"FLOWERS","property":"MY.abundanceUnitFlower","label":{"fi":"Kukkien
+        lukumäärä","en":"Number of flowers","sv":"Blommor"}},{"enumeration":"SPOTS","property":"MY.abundanceUnitSpot","label":{"fi":"Laikkujen
+        lukumäärä","en":"Number of spots","sv":"Fläckar"}},{"enumeration":"TRUNKS","property":"MY.abundanceUnitTrunk","label":{"fi":"Runkojen
+        lukumäärä","en":"Number of tree trunks","sv":"Trädstammar"}},{"enumeration":"SHELLS","property":"MY.abundanceUnitShell","label":{"fi":"Kuorien
+        lukumäärä","en":"Number of shells","sv":"Skal"}},{"enumeration":"DROPPINGS","property":"MY.abundanceUnitDroppings","label":{"fi":"Jätösten/papanakasojen
+        lukumäärä","en":"Droppings","sv":"Spillning"}},{"enumeration":"FEEDING_MARKS","property":"MY.abundanceUnitMarks","label":{"fi":"(Syömä)jälkien
+        lukumäärä","en":"Marks (feeding marks etc.)","sv":"Spår"}},{"enumeration":"INDIRECT_MARKS","property":"MY.abundanceUnitIndirect","label":{"fi":"Epäsuorien
+        jälkien lukumäärä","en":"Number of indirect marks/traces","sv":"Indirekta
+        ospecificerade spår"}},{"enumeration":"SQUARE_DM","property":"MY.abundanceUnitSquareDM","label":{"fi":"Neliödesimetri
+        (dm^2)","en":"Square decimeter (dm^2)","sv":"Kvadrat decimeter (dm^2)"}},{"enumeration":"SQUARE_M","property":"MY.abundanceUnitSquareM","label":{"fi":"Neliömetri
+        (m^2)","en":"Square meter (m^2)","sv":"Kvadratmeter (m^2)"}},{"enumeration":"RELATIVE_DENSITY","property":"MY.abundanceUnitRelativeDensity","label":{"fi":"Suhteellinen
+        tiheys","en":"Relative density","sv":"Relativ densitet"}},{"enumeration":"PRESERVED_SPECIMEN","property":"MY.recordBasisPreservedSpecimen","label":{"fi":"Näyte","en":"Preserved
+        specimen","sv":"Prov"}},{"enumeration":"LIVING_SPECIMEN","property":"MY.recordBasisLivingSpecimen","label":{"fi":"Elävä
+        näyte","en":"Living specimen","sv":"Levande prov"}},{"enumeration":"FOSSIL_SPECIMEN","property":"MY.recordBasisFossilSpecimen","label":{"fi":"Fossiili","en":"Fossil","sv":"Fossil"}},{"enumeration":"SUBFOSSIL_SPECIMEN","property":"MY.recordBasisSubfossilSpecimen","label":{"fi":"Subfossiili","en":"Subfossil","sv":"Subfossil"}},{"enumeration":"SUBFOSSIL_AMBER_INCLUSION_SPECIMEN","property":"MY.recordBasisSubfossilSpecimenAmberInclusion","label":{"fi":"Meripihkafossiili","en":"Amber
+        inclusion","sv":"Bärnsten fossil"}},{"enumeration":"MICROBIAL_SPECIMEN","property":"MY.recordBasisMicrobialSpecimen","label":{"fi":"Mikrobinäyte","en":"Microbial
+        specimen","sv":"Mikrobiella prov"}},{"enumeration":"HUMAN_OBSERVATION_UNSPECIFIED","property":"MY.recordBasisHumanObservation","label":{"fi":"Havaittu","en":"Observation","sv":"Observation"}},{"enumeration":"HUMAN_OBSERVATION_SEEN","property":"MY.recordBasisHumanObservationSeen","label":{"fi":"Nähty","en":"Seen","sv":"Sett"}},{"enumeration":"HUMAN_OBSERVATION_HEARD","property":"MY.recordBasisHumanObservationHeard","label":{"fi":"Kuultu","en":"Heard","sv":"Hörts"}},{"enumeration":"HUMAN_OBSERVATION_PHOTO","property":"MY.recordBasisHumanObservationPhoto","label":{"fi":"Valokuvattu","en":"Photographed","sv":"Fotograferat"}},{"enumeration":"HUMAN_OBSERVATION_INDIRECT","property":"MY.recordBasisHumanObservationIndirect","label":{"fi":"Epäsuora
+        havainto (jäljet, ulosteet, yms)","en":"Indirect observation (footprints,
+        feces, etc)","sv":"Indirekt observation (fotspår, avföring, etc)"}},{"enumeration":"HUMAN_OBSERVATION_HANDLED","property":"MY.recordBasisHumanObservationHandled","label":{"fi":"Käsitelty
+        (otettu kiinni, ei näytettä)","en":"Handled (catched, not preserved)","sv":"Behandlad
+        (fasttagit, inte bevarad)"}},{"enumeration":"HUMAN_OBSERVATION_VIDEO","property":"MY.recordBasisHumanObservationVideo","label":{"fi":"Videoitu","en":"Video
+        recording","sv":"Videobandad"}},{"enumeration":"HUMAN_OBSERVATION_RECORDED_AUDIO","property":"MY.recordBasisHumanObservationAudio","label":{"fi":"Äänitetty","en":"Audio
+        recording","sv":"Ljudsatt"}},{"enumeration":"MACHINE_OBSERVATION_UNSPECIFIED","property":"MY.recordBasisMachineObservation","label":{"fi":"Laitteen
+        tekemä havainto","en":"Machine observation","sv":"Maskinobservation"}},{"enumeration":"MACHINE_OBSERVATION_PHOTO","property":"MY.recordBasisMachineObservationPhoto","label":{"fi":"Laitteen
+        tekemä havainto, valokuva","en":"Machine observation photo","sv":"Maskinobservation,
+        foto"}},{"enumeration":"MACHINE_OBSERVATION_VIDEO","property":"MY.recordBasisMachineObservationVideo","label":{"fi":"Laitteen
+        tekemä havainto, video","en":"Machine observation video","sv":"Maskinobservation,
+        video"}},{"enumeration":"MACHINE_OBSERVATION_AUDIO","property":"MY.recordBasisMachineObservationAudio","label":{"fi":"Laitteen
+        tekemä havainto, ääni","en":"Machine observation audio","sv":"Maskinobservation,
+        audio"}},{"enumeration":"MACHINE_OBSERVATION_GEOLOGGER","property":"MY.recordBasisMachineObservationGeologger","label":{"fi":"Geopaikannin","en":"Geologger","sv":"Geologger"}},{"enumeration":"MACHINE_OBSERVATION_SATELLITE_TRANSMITTER","property":"MY.recordBasisMachineObservationSatelliteTransmitter","label":{"fi":"Satelliittipaikannus","en":"Satellite
+        positioning","sv":"Maskinobservation, satellitpositionering"}},{"enumeration":"LITERATURE","property":"MY.recordBasisLiterature","label":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}},{"enumeration":"MATERIAL_SAMPLE","property":"MY.recordBasisMaterialSample","label":{"fi":"Materiaalinäyte","en":"Material
+        sample","sv":"Materialprov"}},{"enumeration":"CITABLE","property":"HBF.downloadTypeCitable","label":{"fi":"Viitattavissa
+        (tallennettu Lajitietokeskukseen)","en":"Citable (stored to FinBIF)","sv":"Citable
+        (lagras till FinBIF)"}},{"enumeration":"LIGHTWEIGHT","property":"HBF.downloadTypeLightweight","label":{"fi":"Käyttäjän
+        lataus (ei viitattavissa, ladattavissa)","en":"User download (not citable,
+        reusable)","sv":"Användarnedladdning (inte citerbar, återanvändbar)"}},{"enumeration":"AUTHORITIES_FULL","property":"HBF.downloadTypeAuthoritiesFull","label":{"fi":"Viranomaislataus
+        (tallennettu Lajitietokeskukseen)","en":"Authorities'' download (stored to
+        FinBIF)","sv":"Myndigheternas nedladdning (lagras till FinBIF)"}},{"enumeration":"AUTHORITIES_LIGHTWEIGHT","property":"HBF.downloadTypeAuthoritiesLightweight","label":{"fi":"Viranomaislataus
+        (kopio tallennettu Lajitietokeskukseen)","en":"Authorities'' download (copy
+        stored to FinBIF)","sv":"Myndigheternas nedladdning (kopia lagras till FinBIF)"}},{"enumeration":"AUTHORITIES_API_KEY","property":"HBF.downloadTypeAuthoritiesApiKey","label":{"fi":"Viranomaisen
+        tilaama API-avain","en":"API key applied by authorities","sv":"Myndigheternas
+        API key"}},{"enumeration":"DATA_REQUEST","property":"HBF.downloadTypeDataRequest","label":{"fi":"Data
+        request","en":"Data request","sv":"Data request"}},{"enumeration":"APPROVED_DATA_REQUEST","property":"HBF.downloadTypeApprovedDataRequest","label":{"fi":"Hyväksytty
+        aineistopyyntö","en":"Approved data request","sv":"Godkänd dataförfrågan"}},{"enumeration":"APPROVED_API_KEY_REQUEST","property":"HBF.downloadTypeApprovedApiKeyRequest","label":{"fi":"Hyväksytty
+        aineistopyyntö (API-avain)","en":"Approved data request (API key)","sv":"Godkänd
+        dataförfrågan (API key)"}},{"enumeration":"CSV_FLAT","property":"HBF.csvFlat","label":{"fi":"CSV","en":"CSV","sv":"CSV"}},{"enumeration":"TSV_FLAT","property":"HBF.tsvFlat","label":{"fi":"TSV","en":"TSV","sv":"TSV"}},{"enumeration":"EXCEL_FLAT","property":"HBF.excelFlat","label":{"fi":"Excel","en":"Excel","sv":"Excel"}},{"enumeration":"ODS_FLAT","property":"HBF.odsFlat","label":{"fi":"OpenDocument","en":"OpenDocument","sv":"OpenDocument"}},{"enumeration":"DOCUMENT_FACTS","property":"HBF.documentFacts","label":{"fi":"Tiedonhallinnan
+        lisämuuttujat","en":"Data management additional variables","sv":"Datahantering
+        ytterligare variabler"}},{"enumeration":"DOCUMENT_MEDIA","property":"HBF.documentMedia","label":{"fi":"Dokumentointiin
+        liittyvät kuvat/media","en":"Documentation images/media","sv":"Dokumentation
+        foton/media"}},{"enumeration":"DOCUMENT_EDITORS","property":"HBF.documentEditors","label":{"fi":"Muokkaajat","en":"Editors","sv":"Editors"}},{"enumeration":"DOCUMENT_KEYWORDS","property":"HBF.documentKeywords","label":{"fi":"Asiasanat
+        (ylimääräiset tunnisteet yms)","en":"Keywords (Additional identifiers etc)","sv":"Keywords
+        (Ytterligare kännetecken etc)"}},{"enumeration":"GATHERING_FACTS","property":"HBF.gatheringFacts","label":{"fi":"Paikan
+        ja ajan lisämuuttujat","en":"Gathering additional variables","sv":"Plats och
+        tid ytterligare variabler"}},{"enumeration":"GATHERING_MEDIA","property":"HBF.gatheringMedia","label":{"fi":"Paikkaan
+        liittyvät kuvat/media","en":"Location images/media","sv":"Platsen foton/media"}},{"enumeration":"UNIT_FACTS","property":"HBF.unitFacts","label":{"fi":"Havainnon
+        lisämuuttujat","en":"Observation additional variables","sv":"Observation ytterligare
+        variabler"}},{"enumeration":"UNIT_MEDIA","property":"HBF.unitMedia","label":{"fi":"Havaintoon
+        liittyvät kuvat/media","en":"Observation images/media","sv":"Observation foton/media"}},{"enumeration":"NONE","property":"MX.secureLevelNone","label":{"fi":"Ei
+        karkeistettu","en":"None","sv":"Inte skyddad"}},{"enumeration":"KM1","property":"MX.secureLevelKM1","label":{"fi":"1
+        km","en":"1 km","sv":"1 km"}},{"enumeration":"KM5","property":"MX.secureLevelKM5","label":{"fi":"5
+        km","en":"5 km","sv":"5 km"}},{"enumeration":"KM10","property":"MX.secureLevelKM10","label":{"fi":"10
+        km","en":"10 km","sv":"10 km"}},{"enumeration":"KM25","property":"MX.secureLevelKM25","label":{"fi":"25
+        km","en":"25 km","sv":"25 km"}},{"enumeration":"KM50","property":"MX.secureLevelKM50","label":{"fi":"50
+        km","en":"50 km","sv":"50 km"}},{"enumeration":"KM100","property":"MX.secureLevelKM100","label":{"fi":"100
+        km","en":"100 km","sv":"100 km"}},{"enumeration":"HIGHEST","property":"MX.secureLevelHighest","label":{"fi":"Täyssalaus","en":"Fully
+        hidden","sv":"Helt dold"}},{"enumeration":"NOSHOW","property":"MX.secureLevelNoShow","label":{"fi":"Ei
+        näytetä ollenkaan - käytetään lähinnä spammin estämiseksi","en":"Not shown
+        at all - used mainly to prevent spam","sv":"Visas inte alls - används huvudsakligen
+        att stoppa skräppost"}},{"enumeration":"DEFAULT_TAXON_CONSERVATION","property":"MZ.secureReasonTaxonConservation","label":{"fi":"Lajitiedon
+        sensitiivisyys","en":"Sensitivity of biodiversity data","sv":"Sensitivitet
+        av artdata"}},{"enumeration":"BREEDING_SITE_CONSERVATION","property":"MZ.secureReasonBreedingSiteConservation","label":{"fi":"Lisääntymispaikan
+        sensitiivisyys (esimerkiksi pesä)","en":"Breeding site conservation (for example
+        a nest)","sv":"Bevarande av avelsplatser (till exempel ett bo)"}},{"enumeration":"NATURA_AREA_CONSERVATION","property":"MZ.secureReasonNaturaAreaConservation","label":{"fi":"Lajin
+        paikkatiedot salataan Natura-alueella","en":"Species location is hidden on
+        Natura 2000 site","sv":"Platsinformationen för arten skydds i Natura-området"}},{"enumeration":"WINTER_SEASON_TAXON_CONSERVATION","property":"MZ.secureReasonWinterSeasonTaxonConservation","label":{"fi":"Talvehtimishavainnot","en":"Overwintering
+        observations","sv":"Övervintringsobservationer"}},{"enumeration":"BREEDING_SEASON_TAXON_CONSERVATION","property":"MZ.secureReasonBreedingSeasonTaxonConservation","label":{"fi":"Pesintäaika","en":"Breeding
+        season","sv":"Häckningstid"}},{"enumeration":"CUSTOM","property":"MZ.secureReasonCustom","label":{"fi":"Tiedon
+        tuottajan rajoittama aineisto","en":"Data provider has limited the access
+        to data","sv":"Dataägaren har begränsat tillgången till data"}},{"enumeration":"USER_HIDDEN","property":"MZ.secureReasonUserHidden","label":{"fi":"Käyttäjän
+        karkeistamat nimi- ja/tai paikkatiedot","en":"User has hidden name and/or
+        location information","sv":"Användaren har dolt namn och/eller platsinformation"}},{"enumeration":"USER_HIDDEN_LOCATION","property":"MZ.secureReasonUserHiddenLocation","label":{"fi":"Käyttäjän
+        karkeistamat paikkatiedot","en":"User has hidden location information","sv":"Användaren
+        har dolt platsinformation"}},{"enumeration":"USER_HIDDEN_TIME","property":"MZ.secureReasonUserHiddenTime","label":{"fi":"Käyttäjän
+        karkeistama aika","en":"User has hidden time information","sv":"Användaren
+        har dolt tidinformation"}},{"enumeration":"USER_PERSON_NAMES_HIDDEN","property":"MZ.secureReasonPersonNamesHidden","label":{"fi":"Henkilönimet
+        piiloitettu","en":"Person names hidden","sv":"Personnamn dolda"}},{"enumeration":"ADMIN_HIDDEN","property":"MZ.secureReasonAdminHidden","label":{"fi":"Ylläpitäjän
+        karkeistama","en":"Admin hidden","sv":"Administratör dold"}},{"enumeration":"DATA_QUARANTINE_PERIOD","property":"MZ.secureReasonDataQuarantinePeriod","label":{"fi":"Tutkimusaineiston
+        karenssiaika","en":"Quarantine period of research data","sv":"Karantänperiod
+        av forskningsdata"}},{"enumeration":"ONLY_PRIVATE","property":"MZ.secureReasonOnlyPrivate","label":{"fi":"Tiedon
+        tuottaja on antanut aineiston vain viranomaiskäyttöön","en":"Data provider
+        has given the data only for the authorities","sv":"Dataägaren har endast lämnat
+        uppgifterna till myndigheterna"}},{"enumeration":"COORDINATES","property":"MZ.geoSourceCoordinates","label":{"fi":"Koordinaatit","en":"Coordinates","sv":"Koordinater"}},{"enumeration":"COORDINATE_CENTERPOINT","property":"MZ.geoSourceCoordinateCenterpoint","label":{"fi":"Koordinaattien
+        keskipiste","en":"Coordinate centerpoint","sv":"Koordinera mittpunkten"}},{"enumeration":"FINNISH_MUNICIPALITY","property":"MZ.geoSourceFinnishMunicipality","label":{"fi":"Ilmotetun
+        kunnan perusteella","en":"Name of the municipality","sv":"Kommunens namn"}},{"enumeration":"OLD_FINNISH_MUNICIPALITY","property":"MZ.geoSourceOldFinnishMunicipality","label":{"fi":"Nykyinen
+        kunta vanhan ilmoitetun kunnan perusteella","en":"Current municipality resolved
+        using name of old municipality","sv":"Nuvarande kommun beslutas med namnet
+        på den gamla kommunen"}},{"enumeration":"REPORTED_VALUE","property":"MZ.geoSourceReportedValue","label":{"fi":"Ilmoitettu
+        tieto","en":"Reported value","sv":"Rapporterat värde"}},{"enumeration":"FULL","property":"MY.invasiveControlEffectivenessFull","label":{"fi":"Torjuttu
+        kokonaan","en":"Fully controlled","sv":"Fullt kontrollerad"}},{"enumeration":"PARTIAL","property":"MY.invasiveControlEffectivenessPartial","label":{"fi":"Torjuttu
+        osittain","en":"Partially controlled","sv":"Delvis kontrollerad"}},{"enumeration":"NO_EFFECT","property":"MY.invasiveControlEffectivenessNone","label":{"fi":"Ei
+        torjuttu (ei onnistunut)","en":"Not controlled (didn''t succeed)","sv":"Inte
+        kontrolleras (inte lyckas)"}},{"enumeration":"NOT_FOUND","property":"MY.invasiveControlEffectivenessNotFound","label":{"fi":"Ei
+        löydetty","en":"Not found","sv":"Hittades inte"}},{"enumeration":"SURE","property":"MY.taxonConfidenceSure","label":{"fi":"Varma","en":"Sure","sv":"Säker"}},{"enumeration":"UNSURE","property":"MY.taxonConfidenceUnsure","label":{"fi":"Epävarma","en":"Unsure","sv":"Osäker"}},{"enumeration":"SUBSPECIES_UNSURE","property":"MY.taxonConfidenceSubspeciesUnsure","label":{"fi":"Alalaji
+        epävarma","en":"Subspecies unsure","sv":"Underart osäker"}},{"enumeration":"REPORTED_UNRELIABLE","property":"MZ.qualityIssueReportedUnreliable","label":{"fi":"Havainto
+        on merkitty virheelliseksi","en":"The observation is marked as erroneous","sv":"Observationen
+        markeras som felaktig"}},{"enumeration":"MEDIA_ISSUE","property":"MZ.qualityIssueMedia","label":{"fi":"Kuviin
+        liittyvä ongelma","en":"Issue with media","sv":"Problem med media"}},{"enumeration":"INVALID_CREATED_DATE","property":"MZ.qualityIssueCreatedDate","label":{"fi":"Lisäyspvm
+        on epäkelpo","en":"Issue with created date","sv":"Problem med skapat datum"}},{"enumeration":"INVALID_MODIFIED_DATE","property":"MZ.qualityIssueModifiedDate","label":{"fi":"Muokkauspvm
+        on epäkelpo","en":"Issue with modified date","sv":"Utgåva med modifierat datum"}},{"enumeration":"COORDINATES_COUNTRY_MISMATCH","property":"MZ.qualityIssueCoordinatesCountryMismatch","label":{"fi":"Koordinaatit
+        ja ilmoitetut maa eivät täsmää","en":"Coordinates and reported country mismatch","sv":"Koordinater
+        och rapporterad missförändring mellan länder"}},{"enumeration":"COORDINATES_MUNICIPALITY_MISMATCH","property":"MZ.qualityIssueMunicipalityMismatch","label":{"fi":"Koordinaatit
+        ja ilmoitettu kunta eivät täsmää","en":"Coordinates and reported municipality
+        mismatch","sv":"Koordinater och rapporterade missförhållande mellan kommuner"}},{"enumeration":"INVALID_GEO","property":"MZ.qualityIssueGeo","label":{"fi":"Geoinformaatio
+        (määritelty alue) on epäkelpo","en":"Geoinformation (defined area) is invalid","sv":"Geoinformation
+        (definierat område) är ogiltigt"}},{"enumeration":"INVALID_COORDINATES","property":"MZ.qualityIssueCoordinates","label":{"fi":"Invalid
+        coordinates","en":"Invalid coordinates","sv":"Ogiltiga koordinater"}},{"enumeration":"INVALID_YKJ_COORDINATES","property":"MZ.qualityIssueYkjCoordinates","label":{"fi":"Koordinaatit
+        ovat epäkelvot (yhtenäiskoordinaatit, YKJ)","en":"Coordinate issue (Uniform
+        system, YKJ)","sv":"Koordinatfråga (Uniform system, YKJ)"}},{"enumeration":"INVALID_EUREF_COORDINATES","property":"MZ.qualityIssueEurefCoordinates","label":{"fi":"Koordinaatit
+        ovat epäkelvot (EUREF-FIN, ETRS-TM35FIN)","en":"Coordinate issue (EUREF-FIN,
+        ETRS-TM35FIN)","sv":"Koordinatfråga (EUREF-FIN, ETRS-TM35FIN)"}},{"enumeration":"INVALID_WGS84_COORDINATES","property":"MZ.qualityIssueWgs84Coordinates","label":{"fi":"Koordinaatit
+        ovat epäkelvot (WGS84)","en":"Coordinate issue (WGS84)","sv":"Koordinatfråga
+        (WGS84)"}},{"enumeration":"TOO_LARGE_AREA","property":"MZ.qualityIssueTooLargeArea","label":{"fi":"Liian
+        suuri havaintoalue","en":"Too large area","sv":"För stort område"}},{"enumeration":"DATE_END_BEFORE_BEGIN","property":"MZ.qualityIssueDateEndBeforeBegin","label":{"fi":"Loppupäivä
+        on ennen alkupäivää","en":"End date is before begin date","sv":"Slutdatum
+        är före startdatum"}},{"enumeration":"DATE_END_GIVEN_WITHOUT_BEGIN","property":"MZ.qualityIssueDateEndWithoutBegin","label":{"fi":"Loppupäivä
+        ilmoitetut ilman alkupäivää","en":"End date reported without begin date","sv":"Slutdatum
+        rapporteras utan startdatum"}},{"enumeration":"DATE_IN_FUTURE","property":"MZ.qualityIssueDateInFuture","label":{"fi":"Päivämäärä
+        on tulevaisuudessa","en":"Date is in the future","sv":"Datum är i framtiden"}},{"enumeration":"DATE_TOO_FAR_IN_THE_PAST","property":"MZ.qualityIssueDateTooFarInThePast","label":{"fi":"Päivämäärä
+        on liian kaukana menneisyydessä (kirjoitusvirhe)","en":"Date too far in the
+        past","sv":"Datum för långt tidigare"}},{"enumeration":"INVALID_DATE","property":"MZ.qualityIssueInvalidDate","label":{"fi":"Epäkelpo
+        päivämäärä","en":"Invalid date","sv":"Ogiltigt datum"}},{"enumeration":"RECORD_BASIS_MISSING","property":"MZ.qualityIssueRecordBasisMissing","label":{"fi":"Havaintotapaa
+        ei ole ilmoitettu","en":"Record basis is missing","sv":"Rekordunderlag saknas"}},{"enumeration":"INVALID_HOUR","property":"MZ.qualityIssueInvalidHour","label":{"fi":"Virheellinen
+        tai puutteellinen kellonaika","en":"Invalid or incomplete time","sv":"Ogiltig
+        eller ofullständig tid"}},{"enumeration":"INVALID_MINUTE","property":"MZ.qualityIssueInvalidMinute","label":{"fi":"Virheellinen
+        tai puutteellinen kellonaika","en":"Invalid or incomplete time","sv":"Ogiltig
+        eller ofullständig tid"}},{"enumeration":"TIME_END_BEFORE_BEGIN","property":"MZ.qualityIssueTimeEndBeforeBegin","label":{"fi":"Loppuaika
+        on ennen alkuaikaa","en":"Time end is before begin","sv":"Tidsänden är innan
+        den börjar"}},{"enumeration":"ETL_ISSUE","property":"MZ.qualityIssueDataTransfer","label":{"fi":"Tiedonsiirron
+        ongelma","en":"Data transfer (ETL) issue","sv":"Information om dataöverföring
+        (ETL)"}},{"enumeration":"AUTOMATED_FINBIF_VALIDATION","property":"MZ.qualitySourceValidation","label":{"fi":"Lajitietokeskuksen
+        automaattinen tarkistus","en":"FinBIF data validation","sv":"FinBIF-data validering"}},{"enumeration":"ORIGINAL_DOCUMENT","property":"MZ.qualitySourceOriginalDocument","label":{"fi":"Alkuperäinen
+        lähdeaineisto","en":"Original document","sv":"Orginal dokument"}},{"enumeration":"QUALITY_CONTROL","property":"MZ.qualitySourceQualityControl","label":{"fi":"Laadunvalvonta","en":"Quality
+        control","sv":"Kvalitetskontroll"}},{"enumeration":"NO_ISSUES","property":"MZ.qualityIssueFilterNoIssues","label":{"fi":"Vain
+        virheettömät","en":"No issues","sv":"Inga problem"}},{"enumeration":"BOTH","property":"MZ.qualityIssueFilterBoth","label":{"fi":"Virheelliset
+        ja virheettömät","en":"Issues and no issues","sv":"Med problem och inga problem"}},{"enumeration":"ONLY_ISSUES","property":"MZ.qualityIssueFilterOnlyIssues","label":{"fi":"Vain
+        virheelliset","en":"Only issues","sv":"Endast med problem"}},{"enumeration":"ALL","property":"MZ.annotationTypeFilterAll","label":{"fi":"Kaikki
+        annotaatiot","en":"All annotations","sv":"Alla anteckningar"}},{"enumeration":"COMMENT","property":"MZ.annotationTypeFilterTypeComment","label":{"fi":"Kommentit","en":"Comments","sv":"Kommentarer"}},{"enumeration":"ADMIN","property":"MZ.annotationTypeFilterTypeAdmin","label":{"fi":"Yllläpito","en":"Administration","sv":"Administration"}},{"enumeration":"FORM_ADMIN","property":"MZ.annotationTypeFilterTypeFormAdmin","label":{"fi":"Tutkimuksen
+        kuratointi","en":"Monitoring scheme curation","sv":"Övervakningssystemets
+        kuration"}},{"enumeration":"DW_AUTO","property":"MZ.annotationTypeFilterTypeAuto","label":{"fi":"Automaattiset/konemerkinnät","en":"Automatic/machine
+        markings","sv":"Automatisk/maskinmarkeringar"}},{"enumeration":"USER_CHECK","property":"MZ.annotationTypeFilterTypeCheck","label":{"fi":"Tarkistusmerkinnät","en":"Check
+        markings","sv":"Kontrollera markeringar"}},{"enumeration":"USER_EFFECTIVE","property":"MZ.annotationTypeFilterTypeEffective","label":{"fi":"Laatumerkinnät","en":"Quality
+        markings","sv":"Kvalitetsmarkeringar"}},{"enumeration":"INVASIVE_CONTROL","property":"MAN.typeInvasiveControlEffectiveness","label":{"fi":"Torjunnan
+        tehokkuus","en":"Invasive control effectiveness","sv":"Invasiv kontroll effektivitet"}},{"enumeration":"DELETED","property":"MZ.annotationTypeFilterTypeDeleted","label":{"fi":"Poistetut
+        kommentit","en":"Deleted comments","sv":"Raderade kvalitetsmarkeringar"}},{"enumeration":"WILD","property":"MY.wildWild","label":{"fi":"Luonnonvaraiset","en":"Wild","sv":"Vild"}},{"enumeration":"WILD_UNKNOWN","property":"MY.wildUnknown","label":{"fi":"Ei
+        merkintää","en":"Unknown","sv":"Okänd"}},{"enumeration":"NON_WILD","property":"MY.wildNonWild","label":{"fi":"Ei
+        luonnonvaraiset","en":"Non-wild","sv":"Inte vild"}},{"enumeration":"AMATEUR","property":"MY.collectionQualityEnum1","label":{"fi":"Kansalaishavaintoja
+        / ei laadunvarmistusta","en":"Citizen science / mostly uncurated","sv":"Medborgarvetenskap
+        / ingen kvalitetssäkring"}},{"enumeration":"HOBBYIST","property":"MY.collectionQualityEnum2","label":{"fi":"Asiantuntevat
+        harrastajat / asiantuntijoiden laadunvarmistama","en":"Expert hobbyists /
+        expert curated","sv":"Expertentusiaster / expertkuraterad"}},{"enumeration":"PROFESSIONAL","property":"MY.collectionQualityEnum3","label":{"fi":"Ammattiaineistot
+        / asiantuntijoiden laadunvarmistama","en":"Professional / professionally curated","sv":"Professionella
+        dataseten / expertkuraterad"}},{"enumeration":"EXPERT_VERIFIED","property":"MZ.recordQualityExpertVerified","label":{"fi":"Asiantuntijan
+        varmistama","en":"Expert verified","sv":"Expertkuraterad"}},{"enumeration":"COMMUNITY_VERIFIED","property":"MZ.recordQualityCommunityVerified","label":{"fi":"Yhteisön
+        varmistama","en":"Community verified","sv":"Gemenskapskuraterat"}},{"enumeration":"NEUTRAL","property":"MZ.recordQualityNeutral","label":{"fi":"Ei
+        arvioitu","en":"Unassessed","sv":"Obedömd"}},{"enumeration":"UNCERTAIN","property":"MZ.recordQualityUncertain","label":{"fi":"Epävarma","en":"Uncertain","sv":"Osäker"}},{"enumeration":"ERRONEOUS","property":"MZ.recordQualityErroneous","label":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}},{"enumeration":"RELIABLE","property":"MZ.reliabilityReliable","label":{"fi":"Luotettava","en":"Reliable","sv":"Pålitlig"}},{"enumeration":"UNDEFINED","property":"MZ.reliabilityNeutral","label":{"fi":"Neutraali","en":"Neutral","sv":"Neutral"}},{"enumeration":"UNRELIABLE","property":"MZ.reliabilityUnreliable","label":{"fi":"Epäluotettava","en":"Unreliable","sv":"Opålitliga"}},{"enumeration":"ADMIN_MARKED_SPAM","property":"MMAN.3","label":{"fi":"spam","en":"spam","sv":"spam"}},{"enumeration":"ADMIN_MARKED_COARSE","property":"MMAN.32","label":{"fi":"karkeista","en":"coarse","sv":"grov"}},{"enumeration":"ADMIN_MARKED_NON_WILD","property":"MMAN.33","label":{"fi":"ei-luonnonvarainen","en":"non-wild","sv":"icke-vilda"}},{"enumeration":"EXPERT_TAG_VERIFIED","property":"MMAN.5","label":{"fi":"varmistettu","en":"verified","sv":"verifierad"}},{"enumeration":"EXPERT_TAG_UNCERTAIN","property":"MMAN.8","label":{"fi":"epävarma","en":"uncertain","sv":"osäker"}},{"enumeration":"EXPERT_TAG_ERRONEOUS","property":"MMAN.9","label":{"fi":"virheellinen","en":"erroneous","sv":"felaktig"}},{"enumeration":"COMMUNITY_TAG_VERIFIED","property":"MMAN.52","label":{"fi":"varmistettu
+        (yhteisö)","en":"verified (community)","sv":"verifierad (gemenskapen)"}},{"enumeration":"CHECKED_CANNOT_VERIFY","property":"MMAN.18","label":{"fi":"lajia
+        ei voida määrittää","en":"cannot identify species","sv":"oidentifierbar"}},{"enumeration":"CHANGED_OWNER_MANUAL","property":"MMAN.10","label":{"fi":"muokattu","en":"changed","sv":"ändrats"}},{"enumeration":"CHANGED_DW_AUTO","property":"MMAN.30","label":{"fi":"havaintoa
+        muutettu","en":"observation updated","sv":"observation uppdaterad"}},{"enumeration":"CHECK","property":"MMAN.31","label":{"fi":"tarkista","en":"check","sv":"checka"}},{"enumeration":"CHECK_COORDINATES","property":"MMAN.22","label":{"fi":"tarkista
+        koordinaatit","en":"check coordinates","sv":"kolla koordinater"}},{"enumeration":"CHECK_DATETIME","property":"MMAN.23","label":{"fi":"tarkista
+        ajankohta","en":"check date/time","sv":"kolla datum / tid"}},{"enumeration":"CHECK_LOCATION","property":"MMAN.24","label":{"fi":"tarkista
+        paikka","en":"check location","sv":"kolla plats"}},{"enumeration":"CHECK_OBSERVER","property":"MMAN.25","label":{"fi":"tarkista
+        havainnoija","en":"check observer","sv":"kolla observatören"}},{"enumeration":"CHECK_TAXON","property":"MMAN.26","label":{"fi":"tarkista
+        määritys","en":"check identification","sv":"kolla identifiering"}},{"enumeration":"CHECK_WILDNESS","property":"MMAN.29","label":{"fi":"tarkista
+        luonnonvaraisuus","en":"check wildness","sv":"kolla vildhet"}},{"enumeration":"CHECK_DUPLICATE","property":"MMAN.28","label":{"fi":"tarkista
+        duplikaatti","en":"check duplicate","sv":"kolla duplikatet"}},{"enumeration":"CHECK_NEEDS_INFO","property":"MMAN.20","label":{"fi":"tarvitsee
+        lisätietoa","en":"needs info","sv":"behöver info"}},{"enumeration":"CHECK_SPAM","property":"MMAN.34","label":{"fi":"tarkista
+        spam","en":"check spam","sv":"kolla spam"}},{"enumeration":"CHECK_BREEDING_INDEX","property":"MMAN.53","label":{"fi":"tarkista
+        pesimävarmuusindeksi","en":"check breeding index","sv":"kolla häckningssäkerhetsindexet"}},{"enumeration":"AUTO_DISTRIBUTION_CHECK","property":"MMAN.54","label":{"fi":"tarkista
+        levinneisyys (autom. validointi)","en":"check distribution (autom. validation)","sv":"kolla
+        utbrednings (automatisk validering)"}},{"enumeration":"AUTO_PERIOD_CHECK","property":"MMAN.55","label":{"fi":"tarkista
+        esiintymisaika (autom. validointi)","en":"check period (autom. validation)","sv":"kolla
+        period (automatisk validering)"}},{"enumeration":"AUTO_VALIDATIONS_PASS","property":"MMAN.56","label":{"fi":"läpäisee
+        automaattiset validoinnit","en":"passes automatic validations","sv":"klarar
+        automatiska valideringar"}},{"enumeration":"FORMADMIN_CENSUS_COUNT_ERROR","property":"MMAN.11","label":{"fi":"laskennan
+        kokonaismäärä epäilyttävä","en":"census total count incorrect","sv":"census
+        totalt räknat fel"}},{"enumeration":"FORMADMIN_CENSUS_INNER_COUNT_ERROR","property":"MMAN.12","label":{"fi":"pääsaran
+        luvut epäilyttäviä","en":"census inner count incorrect","sv":"census inre
+        räkning fel"}},{"enumeration":"FORMADMIN_CENSUS_OTHER_ERROR","property":"MMAN.13","label":{"fi":"epäilyttävä
+        laskenta","en":"census unreliable","sv":"census otillförlitlig"}},{"enumeration":"FORMADMIN_VERIFIED","property":"MMAN.50","label":{"fi":"varmistettu
+        (aineiston omistaja)","en":"verified by curator","sv":"verifierad av kurator"}},{"enumeration":"FORMADMIN_UNCERTAIN","property":"MMAN.51","label":{"fi":"curator
+        uncertain","en":"curator uncertain","sv":"curator uncertain"}},{"enumeration":"INVASIVE_FULL","property":"MMAN.14","label":{"fi":"torjuttu
+        kokonaan","en":"invasive fully controlled","sv":"invasive fullt kontrollerad"}},{"enumeration":"INVASIVE_PARTIAL","property":"MMAN.15","label":{"fi":"torjuttu
+        osittain","en":"invasive partially controlled","sv":"invasive delvis kontrollerad"}},{"enumeration":"INVASIVE_NO_EFFECT","property":"MMAN.16","label":{"fi":"ei
+        torjuttu","en":"invasive not controlled","sv":"invasive Inte kontrolleras"}},{"enumeration":"INVASIVE_NOT_FOUND","property":"MMAN.17","label":{"fi":"torjuttavaa
+        ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
+        (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
+        (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
+  recorded_at: 2023-04-13 10:21:26 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MZ.recordQualityEnum?lang=multi&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 13 Apr 2023 10:21:26 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '551'
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-download-options: noopen
+      etag: W/"227-r7mSFm73e9r3gsBRF6Llh1LyIT8"
+      vary: Accept-Encoding
+      cache-control: public
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '[{"id":"MZ.recordQualityExpertVerified","value":{"sv":"Expertkuraterad","en":"Expert
+        verified","fi":"Asiantuntijan varmistama"}},{"id":"MZ.recordQualityCommunityVerified","value":{"en":"Community
+        verified","fi":"Yhteisön varmistama","sv":"Gemenskapskuraterat"}},{"id":"MZ.recordQualityNeutral","value":{"sv":"Obedömd","fi":"Ei
+        arvioitu","en":"Unassessed"}},{"id":"MZ.recordQualityUncertain","value":{"fi":"Epävarma","en":"Uncertain","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}]'
+  recorded_at: 2023-04-13 10:21:26 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 13 Apr 2023 10:21:26 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      cache-control: no-store
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":244121,"pageSize":10,"total":2441205,"cacheTimestamp":1681381134,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cygnus
+        cygnus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"laulujoutsen","unitId":"http://tun.fi/JX.297875#3"},"gathering":{"conversions":{"day":13,"month":4,"wgs84CenterPoint":{"lat":60.170379,"lon":24.925005}},"eventDate":{"begin":"2023-04-13","end":"2023-04-13"},"hourBegin":11,"hourEnd":11,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":16,"minutesEnd":16},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Larus
+        ridibundus","scientificNameAuthorship":"(Linnaeus, 1766)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"naurulokki","unitId":"http://tun.fi/JX.297875#5"},"gathering":{"conversions":{"day":13,"month":4,"wgs84CenterPoint":{"lat":60.173075,"lon":24.930706}},"eventDate":{"begin":"2023-04-13","end":"2023-04-13"},"hourBegin":11,"hourEnd":11,"interpretations":{"coordinateAccuracy":1},"minutesBegin":16,"minutesEnd":16},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Foo","unitId":"http://tun.fi/JX.297869#5"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.246223,"lon":25.013385}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":45,"minutesEnd":50},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
+        corone","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varis","unitId":"http://tun.fi/JX.297869#8"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.243375,"lon":25.017022}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":45,"minutesEnd":50},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Boo","unitId":"http://tun.fi/JX.297868#8"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.24124,"lon":25.089418}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":1,"minutesEnd":4},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Foo","unitId":"http://tun.fi/JX.297868#5"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.241634,"lon":25.090436}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":1,"minutesEnd":4},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Anas
+        crecca","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"tavi","unitId":"http://tun.fi/JX.297868#3"},"gathering":{"conversions":{"day":12,"month":4,"wgs84CenterPoint":{"lat":60.262781,"lon":25.099856}},"eventDate":{"begin":"2023-04-12","end":"2023-04-12"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":1,"minutesEnd":4},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
+        volans","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.297866#3"},"gathering":{"conversions":{"day":11,"month":4,"wgs84CenterPoint":{"lat":60.241717,"lon":25.090972}},"eventDate":{"begin":"2023-04-11","end":"2023-04-11"},"hourBegin":14,"hourEnd":14,"interpretations":{"coordinateAccuracy":1},"minutesBegin":21,"minutesEnd":21},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"3","interpretations":{"individualCount":3,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrgus
+        andromedae","scientificNameAuthorship":"(Wallengren, 1853)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Pyrgus
+        andromedae","unitId":"http://tun.fi/JX.297865#5"},"gathering":{"conversions":{"day":6,"month":4},"eventDate":{"begin":"2023-04-06","end":"2023-04-06"}},"document":{"sourceId":"http://tun.fi/KE.841"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Aglais
+        io","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Aglais
+        io","unitId":"http://tun.fi/JX.297860#111"},"gathering":{"conversions":{"day":6,"month":4,"wgs84CenterPoint":{"lat":65.308241,"lon":28.415041}},"eventDate":{"begin":"2023-04-06","end":"2023-04-06"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.841"}}]}'
+  recorded_at: 2023-04-13 10:21:26 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

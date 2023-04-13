@@ -55,6 +55,8 @@ api_get <- function(obj) {
 
     fcp <- getOption("finbif_cache_path")
 
+    is_path <- is.character(fcp)
+
     no_cache_path <- is.null(fcp)
 
     if (no_cache_path) {
@@ -83,7 +85,7 @@ api_get <- function(obj) {
 
       })
 
-    } else {
+    } else if (is_path) {
 
       cache_file_name <- paste0("finbif_cache_file_", hash)
 
@@ -124,6 +126,105 @@ api_get <- function(obj) {
         if (has_obj) {
 
           saveRDS(obj, cache_file_path)
+
+        }
+
+      })
+
+    } else {
+
+      has_dbi <- has_pkgs("DBI", "blob")
+
+      stopifnot("Packages {DBI} & {blob} needed to use a DB cache" = has_dbi)
+
+      has_table <- DBI::dbExistsTable(fcp, "finbif_cache")
+
+      if (!has_table) {
+
+        created <- numeric()
+
+        created <- as.POSIXct(created)
+
+        timeout_init <- numeric()
+
+        blob <- blob::blob()
+
+        init <- data.frame(
+          hash = character(),
+          created = created,
+          timeout = timeout_init,
+          blob = blob
+        )
+
+        DBI::dbWriteTable(fcp, "finbif_cache", init)
+
+      } else {
+
+        db_query <- "SELECT * FROM finbif_cache WHERE hash = '%s'"
+
+        db_query <- sprintf(db_query, hash)
+
+        db_cache <- DBI::dbGetQuery(fcp, db_query)
+
+        nrows <- nrow(db_cache)
+
+        has_cached_obj <- nrows > 0L
+
+        if (has_cached_obj) {
+
+          created <- db_cache[["created"]]
+
+          timeout <- db_cache[["timeout"]]
+
+          timeout <- timeout * 3600
+
+          current <- Sys.time()
+
+          elapsed <- current - created
+
+          valid <- timeout > elapsed
+
+          if (valid) {
+
+            cached_obj <- db_cache[["blob"]]
+
+            cached_obj <- cached_obj[[1L]]
+
+            cached_obj <- unserialize(cached_obj)
+
+            return(cached_obj)
+
+          } else {
+
+            db_query <- "DELETE FROM finbif_cache WHERE hash = '%s'"
+
+            db_query <- sprintf(db_query, hash)
+
+            DBI::dbExecute(fcp, db_query)
+
+          }
+
+        }
+
+      }
+
+      on.exit({
+
+        has_obj <- !is.null(obj)
+
+        if (has_obj) {
+
+          created <- Sys.time()
+
+          blob <- serialize(obj, NULL)
+
+          blob <- blob::blob(blob)
+
+          db_cache <- data.frame(
+            hash = hash, created = created, timeout = timeout, blob = blob
+          )
+
+          DBI::dbAppendTable(fcp, "finbif_cache", db_cache)
 
         }
 

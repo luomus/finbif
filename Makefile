@@ -22,7 +22,9 @@ all: dev_deps R/sysdata.rda sentinels/check codemeta.json clean
 
 dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('codemetar', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('blob', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('data.table', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('DBI', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('details', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('devtools', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('future', quietly = TRUE))";\
@@ -32,6 +34,7 @@ dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('readODS', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('readxl', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('rmarkdown', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('RSQLite', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('sf', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('testthat', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('vcr', quietly = TRUE))";\
