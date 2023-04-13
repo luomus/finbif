@@ -32,20 +32,46 @@ get_cache <- function(hash) {
 
   hash_exists <- exists(hash, envir = cache_location)
 
+  data <- NULL
+
   if (hash_exists) {
 
-    get(hash, envir = cache_location)
+    obj <- get(hash, envir = cache_location)
+
+    created <- obj[["created"]]
+
+    timeout <- obj[["timeout"]]
+
+    timeout <- timeout * 3600
+
+    current <- Sys.time()
+
+    elapsed <- current - created
+
+    valid <- timeout > elapsed
+
+    if (valid) {
+
+      data <- obj[["data"]]
+
+    } else {
+
+      remove(list = hash, envir = cache_location)
+
+    }
 
   }
+
+  data
 
 }
 
 set_cache <- function(obj) {
 
+  obj[["created"]] <- Sys.time()
+
   hash <- obj[["hash"]]
 
-  data <- obj[["data"]]
-
-  assign(hash, data, envir = cache_location)
+  assign(hash, obj, envir = cache_location)
 
 }

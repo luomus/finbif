@@ -1,3 +1,11 @@
+# finbif 0.8.0.9002
+
+#### NEW FEATURES
+
+  - Cached data can be assigned a timeout by using a number (hours)
+    instead of a logical value for the `cache` argument to `finbif_`
+    functions or the package option `finbif_use_cache`.
+
 # finbif 0.8.0.9001
 
 #### BUG FIXES

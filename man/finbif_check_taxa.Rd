@@ -12,7 +12,9 @@ finbif_check_taxa(taxa, cache = getOption("finbif_use_cache"))
 vector can have the name of a taxonomic rank (genus, species, etc.,).
 The elements of the vectors should be the taxa to check.}
 
-\item{cache}{Logical. Use cached data.}
+\item{cache}{Logical or Integer. If \code{TRUE} or a number greater than zero,
+then data-caching will be used. If not logical then cache will be
+invalidated after the number of hours indicated by the argument.}
 }
 \value{
 An object of class \code{finbif_taxa}. A list with the same form as

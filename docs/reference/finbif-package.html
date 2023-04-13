@@ -12,7 +12,7 @@ A programmatic interface to the 'Finnish Biodiversity Information Facility' ('Fi
     
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9002</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,7 +82,9 @@ A programmatic interface to the 'Finnish Biodiversity Information Facility' ('Fi
 Default: <code>TRUE</code></p></dd>
 
 <dt><code>finbif_use_cache</code></dt>
-<dd><p>Logical. Should API queries by cached. Default:
+<dd><p>Logical or Integer. If <code>TRUE</code> or a number greater
+than zero, then data-caching will be used. If not logical then cache will
+be invalidated after the number of hours indicated by the value. Default:
 <code>TRUE</code></p></dd>
 
 <dt><code>finbif_cache_path</code></dt>

@@ -520,3 +520,26 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_aggregate_list_col"))
+
+suppressMessages(insert_cassette("finbif_invalidate_cache"))
+
+test_that(
+  "cache invalidation works", {
+
+    skip_on_cran()
+
+    finbif_occurrence(cache = 1e-9)
+
+    expect_s3_class(finbif_occurrence(cache = TRUE), "finbif_occ")
+
+    options(finbif_cache_path = NULL)
+
+    finbif_occurrence(cache = 1e-09)
+
+    expect_s3_class(finbif_occurrence(cache = TRUE), "finbif_occ")
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_invalidate_cache"))

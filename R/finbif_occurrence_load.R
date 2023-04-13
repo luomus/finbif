@@ -802,6 +802,20 @@ get_zip <- function(fb_occurrenc_obj) {
 
   write_file <- fb_occurrenc_obj[["write_file"]]
 
+  timeout <- cache
+
+  cache_logical <- is.logical(cache)
+
+  if (cache_logical) {
+
+    timeout <- Inf
+
+  } else {
+
+    cache <- cache > 0
+
+  }
+
   if (cache) {
 
     hash <- sub(":\\d+", "", url)
@@ -832,7 +846,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
         if (has_write_file) {
 
-          cache_obj <- list(data = write_file, hash = hash)
+          cache_obj <- list(data = write_file, hash = hash, timeout = timeout)
 
           set_cache(cache_obj)
 
@@ -850,9 +864,27 @@ get_zip <- function(fb_occurrenc_obj) {
 
       if (write_file_exists) {
 
-        fb_occurrenc_obj[["file"]] <- write_file
+        created <- file.mtime(write_file)
 
-        return(fb_occurrenc_obj)
+        timeout <- timeout / 3600
+
+        current <- Sys.time()
+
+        elapsed <- current - created
+
+        valid <- timeout > elapsed
+
+        if (valid) {
+
+          fb_occurrenc_obj[["file"]] <- write_file
+
+          return(fb_occurrenc_obj)
+
+        } else {
+
+          unlink(write_file)
+
+        }
 
       }
 

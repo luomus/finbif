@@ -6,7 +6,9 @@
 #'   `"v0"`}
 #' \item{`finbif_allow_query`}{Logical. Should remote API queries by allowed.
 #'   Default: `TRUE`}
-#' \item{`finbif_use_cache`}{Logical. Should API queries by cached. Default:
+#' \item{`finbif_use_cache`}{ Logical or Integer. If `TRUE` or a number greater
+#'   than zero, then data-caching will be used. If not logical then cache will
+#'   be invalidated after the number of hours indicated by the value. Default:
 #'   `TRUE`}
 #' \item{`finbif_cache_path`}{Character. The path to the directory where to
 #'   store cached API queries. If unset (the default) in memory caching is

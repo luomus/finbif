@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9002</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -152,7 +152,9 @@ downloads. Defaults to value of option <code>finbif_hide_progress</code>.</p></d
 
 
 <dt>cache</dt>
-<dd><p>Logical. Use cached data.</p></dd>
+<dd><p>Logical or Integer. If <code>TRUE</code> or a number greater than zero,
+then data-caching will be used. If not logical then cache will be
+invalidated after the number of hours indicated by the argument.</p></dd>
 
 
 <dt>dwc</dt>

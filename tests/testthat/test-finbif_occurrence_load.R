@@ -64,9 +64,9 @@ test_that(
       "../write-files/finbif_cache_file_3db6439c7601e4401b8a27a2094919a3"
 
     expect_snapshot_value(
-      finbif_occurrence_load(file, quiet = TRUE, tzone = "Etc/UTC")[
-        seq(nrows),
-      ],
+      finbif_occurrence_load(
+        file, quiet = TRUE, tzone = "Etc/UTC", cache = Inf
+      )[seq(nrows), ],
       style = "json2", ignore_attr = "url"
     )
 
@@ -83,9 +83,9 @@ test_that(
 
     capture.output(
       with_progress <- suppressMessages(
-        finbif_occurrence_load(file, tzone = "Etc/UTC", write_file = file_path)[
-          seq(nrows),
-        ]
+        finbif_occurrence_load(
+          file, tzone = "Etc/UTC", write_file = file_path, cache = 1e-9
+        )[seq(nrows), ]
       )
     )
 
@@ -175,6 +175,28 @@ test_that(
     })
 
     expect_snapshot_value(dl_select_all, style = "json2")
+
+    options(finbif_cache_path = tempdir())
+
+    capture.output(
+      with_progress <- suppressMessages(
+        finbif_occurrence_load(
+          file, tzone = "Etc/UTC", write_file = file_path, cache = 1e-9
+        )[seq(nrows), ]
+      )
+    )
+
+    capture.output(
+      with_progress <- suppressMessages(
+        finbif_occurrence_load(
+          file, tzone = "Etc/UTC", write_file = file_path, cache = 1e-9
+        )[seq(nrows), ]
+      )
+    )
+
+    expect_snapshot_value(with_progress, style = "json2", ignore_attr = "url")
+
+    options(finbif_cache_path = NULL)
 
   }
 

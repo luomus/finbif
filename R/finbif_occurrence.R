@@ -31,7 +31,9 @@
 #' @param count_only Logical. Only return the number of records available.
 #' @param quiet Logical. Suppress the progress indicator for multipage
 #'   downloads. Defaults to value of option `finbif_hide_progress`.
-#' @param cache Logical. Use cached data.
+#' @param cache Logical or Integer. If `TRUE` or a number greater than zero,
+#'   then data-caching will be used. If not logical then cache will be
+#'   invalidated after the number of hours indicated by the argument.
 #' @param dwc Logical. Use Darwin Core (or Darwin Core style) variable names.
 #' @param seed Integer. Set a seed for randomly sampling records.
 #' @param exclude_na Logical. Should records where all selected variables have

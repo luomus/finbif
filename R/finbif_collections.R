@@ -15,7 +15,9 @@
 #' @param nmin Integer. Filter collections by number of records. Only return
 #'   information on collections with greater than value specified. If `NA` then
 #'   return information on all collections.
-#' @param cache Logical. Use cached data.
+#' @param cache Logical or Integer. If `TRUE` or a number greater than zero,
+#'   then data-caching will be used. If not logical then cache will be
+#'   invalidated after the number of hours indicated by the argument.
 #' @return A data.frame.
 #' @examples \dontrun{
 #'
@@ -392,6 +394,20 @@ get_swagger <- function(cache) {
 
   url <- paste0(fb_api_url, "/explorer/swagger.json")
 
+  timeout <- cache
+
+  cache_logical <- is.logical(cache)
+
+  if (cache_logical) {
+
+    timeout <- Inf
+
+  } else {
+
+    cache <- cache > 0
+
+  }
+
   if (cache) {
 
     hash <- digest::digest(url)
@@ -414,7 +430,7 @@ get_swagger <- function(cache) {
 
       on.exit({
 
-        cache_obj <- list(data = ans, hash = hash)
+        cache_obj <- list(data = ans, hash = hash, timeout = timeout)
 
         set_cache(cache_obj)
 
@@ -422,23 +438,41 @@ get_swagger <- function(cache) {
 
     } else {
 
-      file_nm <- paste0("finbif_cache_file_", hash)
+      cache_file_name <- paste0("finbif_cache_file_", hash)
 
-      cache_file <- file.path(fcp, file_nm)
+      cache_file_path <- file.path(fcp, cache_file_name)
 
-      has_cache_file <- file.exists(cache_file)
+      cache_file_exists <- file.exists(cache_file_path)
 
-      if (has_cache_file) {
+      if (cache_file_exists) {
 
-        cache <- readRDS(cache_file)
+        created <- file.mtime(cache_file_path)
 
-        return(cache)
+        timeout <- timeout / 3600
+
+        current <- Sys.time()
+
+        elapsed <- current - created
+
+        valid <- timeout > elapsed
+
+        if (valid) {
+
+          cached_obj <- readRDS(cache_file_path)
+
+          return(cached_obj)
+
+        } else {
+
+          unlink(cache_file_path)
+
+        }
 
       }
 
       on.exit({
 
-        saveRDS(ans, cache_file)
+        saveRDS(ans, cache_file_path)
 
       })
 

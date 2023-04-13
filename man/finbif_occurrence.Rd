@@ -71,7 +71,9 @@ database.}
 \item{quiet}{Logical. Suppress the progress indicator for multipage
 downloads. Defaults to value of option \code{finbif_hide_progress}.}
 
-\item{cache}{Logical. Use cached data.}
+\item{cache}{Logical or Integer. If \code{TRUE} or a number greater than zero,
+then data-caching will be used. If not logical then cache will be
+invalidated after the number of hours indicated by the argument.}
 
 \item{dwc}{Logical. Use Darwin Core (or Darwin Core style) variable names.}
 

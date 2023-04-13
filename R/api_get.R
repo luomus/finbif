@@ -29,6 +29,20 @@ api_get <- function(obj) {
 
   cache <- obj[["cache"]]
 
+  timeout <- cache
+
+  cache_logical <- is.logical(cache)
+
+  if (cache_logical) {
+
+    timeout <- Inf
+
+  } else {
+
+    cache <- cache > 0
+
+  }
+
   query <- obj[["query"]]
 
   path <- obj[["path"]]
@@ -61,9 +75,9 @@ api_get <- function(obj) {
 
         if (has_obj) {
 
-          cache_object <- list(data = obj, hash = hash)
+          cache_obj <- list(data = obj, hash = hash, timeout = timeout)
 
-          set_cache(cache_object)
+          set_cache(cache_obj)
 
         }
 
@@ -79,9 +93,27 @@ api_get <- function(obj) {
 
       if (cache_file_exists) {
 
-        cached_obj <- readRDS(cache_file_path)
+        created <- file.mtime(cache_file_path)
 
-        return(cached_obj)
+        timeout <- timeout / 3600
+
+        current <- Sys.time()
+
+        elapsed <- current - created
+
+        valid <- timeout > elapsed
+
+        if (valid) {
+
+          cached_obj <- readRDS(cache_file_path)
+
+          return(cached_obj)
+
+        } else {
+
+          unlink(cache_file_path)
+
+        }
 
       }
 

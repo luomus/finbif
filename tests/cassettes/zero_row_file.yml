@@ -260,7 +260,7 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2023-03-29 09:10:05 GMT
+  recorded_at: 2023-04-12 14:05:07 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -312,7 +312,7 @@ http_interactions:
         prov","en":"Microbial specimen"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}},{"id":"MY.recordBasisMaterialSample","value":{"en":"Material
         sample","sv":"Materialprov","fi":"Materiaalinäyte"}},{"id":"MY.recordBasisSubfossilSpecimenAmberInclusion","value":{"sv":"Bärnsten
         fossil","fi":"Meripihkafossiili","en":"Amber inclusion"}}]'
-  recorded_at: 2023-03-29 09:10:05 GMT
+  recorded_at: 2023-04-12 14:05:07 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -354,7 +354,7 @@ http_interactions:
         - Gynandromorph"}},{"id":"MY.sexE","value":{"fi":"eri sukupuolia","en":"E
         - multiple","sv":"olika kön"}},{"id":"MY.sexC","value":{"fi":"ristiriitainen","en":"C
         - Conflicting","sv":"kontroversiell"}}]'
-  recorded_at: 2023-03-29 09:10:05 GMT
+  recorded_at: 2023-04-12 14:05:07 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -396,7 +396,7 @@ http_interactions:
         egg","fi":"kuoriutunut muna","sv":"kläckt ägg"}},{"id":"MY.lifeStageHatchedPupa","value":{"sv":"kläckt
         ägg","fi":"kuoriutunut kotelo","en":"hatched pupa"}},{"id":"MY.lifeStageGall","value":{"fi":"äkämä","en":"gall","sv":"gallbildning"}},{"id":"MY.lifeStageMarks","value":{"sv":"spår","en":"marks
         (feeding marks etc.)","fi":"jäljet (syömäjäljet tms.)"}},{"id":"MY.lifeStageTriungulin","value":{"fi":"triunguliini","sv":"triunguliini","en":"triungulin"}}]'
-  recorded_at: 2023-03-29 09:10:05 GMT
+  recorded_at: 2023-04-12 14:05:07 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -441,7 +441,7 @@ http_interactions:
         frö / frukt / spor"}},{"id":"MY.plantLifeStageDeadSprout","value":{"en":"dead
         sprout","fi":"kuollut verso","sv":"död skott"}},{"id":"MY.plantLifeStageSubterranean","value":{"en":"subterranean","fi":"mukula
         / sipuli / juuri","sv":"knöl / lök / rot"}}]'
-  recorded_at: 2023-03-29 09:10:05 GMT
+  recorded_at: 2023-04-12 14:05:07 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -500,5 +500,30 @@ http_interactions:
         has hidden time information","sv":"Användaren har dolt tidinformation","fi":"Käyttäjän
         karkeistama aika"}},{"id":"MZ.secureReasonPersonNamesHidden","value":{"en":"Person
         names hidden","sv":"Personnamn dolda","fi":"Henkilönimet piiloitettu"}}]'
-  recorded_at: 2023-03-29 09:10:05 GMT
+  recorded_at: 2023-04-12 14:05:07 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: http://127.0.0.1/HBF.49381?personToken=<finbif_dl_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: ''
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      connection: close
+      content-type: text/plain
+      content-length: '53035'
+    body:
+      encoding: ''
+      file: yes
+      string: ../write-files/finbif_cache_file_3db6439c7601e4401b8a27a2094919a3
+  recorded_at: 2023-04-12 14:05:07 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

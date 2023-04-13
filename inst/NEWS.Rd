@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.8.0.9002}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item Cached data can be assigned a timeout by using a number (hours)
+        instead of a logical value for the \code{cache} argument to
+        \code{finbif_} functions or the package option \code{finbif_use_cache}.
+    }
+  }
+}
+
 \section{finbif version 0.8.0.9001}{
   \subsection{BUG FIXES}{
     \itemize{
