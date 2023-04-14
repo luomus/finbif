@@ -1,3 +1,10 @@
+# finbif 0.8.0.9004
+
+#### BUG FIXES
+
+  - Fixed a bug causing an infinite recursion when determining page size
+    during record download pagination.
+
 # finbif 0.8.0.9003
 
 #### NEW FEATURES
