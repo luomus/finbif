@@ -7,9 +7,11 @@ get_next_lowest_factor <- function(
   y
 ) {
 
-  mod <- x %% y
+  x <- as.integer(x)
 
-  mod <- as.integer(mod)
+  y <- as.integer(y)
+
+  mod <- x %% y
 
   end <- identical(mod, 0L)
 
