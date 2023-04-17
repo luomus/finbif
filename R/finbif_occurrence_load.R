@@ -870,7 +870,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
         current <- Sys.time()
 
-        elapsed <- current - created
+        elapsed <- difftime(current, created, units = "secs")
 
         valid <- timeout > elapsed
 

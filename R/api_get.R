@@ -101,7 +101,7 @@ api_get <- function(obj) {
 
         current <- Sys.time()
 
-        elapsed <- current - created
+        elapsed <- difftime(current, created, units = "secs")
 
         valid <- timeout > elapsed
 
@@ -172,7 +172,7 @@ api_get <- function(obj) {
 
         if (has_cached_obj) {
 
-          created <- db_cache[["created"]]
+          created <- as.POSIXct(db_cache[["created"]], origin = "1970-01-01")
 
           timeout <- db_cache[["timeout"]]
 
@@ -180,7 +180,7 @@ api_get <- function(obj) {
 
           current <- Sys.time()
 
-          elapsed <- current - created
+          elapsed <- difftime(current, created, units = "secs")
 
           valid <- timeout > elapsed
 

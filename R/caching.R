@@ -56,7 +56,7 @@ get_cache <- function(hash) {
 
     current <- Sys.time()
 
-    elapsed <- current - created
+    elapsed <- difftime(current, created, units = "secs")
 
     valid <- timeout > elapsed
 

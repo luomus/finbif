@@ -452,7 +452,7 @@ get_swagger <- function(cache) {
 
         current <- Sys.time()
 
-        elapsed <- current - created
+        elapsed <- difftime(current, created, units = "secs")
 
         valid <- timeout > elapsed
 
