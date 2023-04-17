@@ -40,7 +40,11 @@ finbif_informal_groups <- function(
 
   query <- list(pageSize = 1000L, lang = locale)
 
-  request <- list(path = "informal-taxon-groups/tree", query, cache = TRUE)
+  cache <- getOption("finbif_use_cache")
+
+  request <- list(
+    path = "informal-taxon-groups/tree", query = query, cache = cache
+  )
 
   x <- api_get(request)
 

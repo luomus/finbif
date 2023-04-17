@@ -10,7 +10,9 @@ get_sysdata <- function(x) {
 
   query <- list(lang = "multi")
 
-  request <- list(path = path, query = query, cache = TRUE)
+  cache <- getOption("finbif_use_cache")
+
+  request <- list(path = path, query = query, cache = cache)
 
   sd_response <- api_get(request)
 
@@ -56,7 +58,9 @@ get_enumeration <- function(obj) {
 
   get_function <- obj[["fun"]]
 
-  request <- list(path = "warehouse/enumeration-labels", cache = TRUE)
+  cache <- getOption("finbif_use_cache")
+
+  request <- list(path = "warehouse/enumeration-labels", cache = cache)
 
   en_response <- api_get(request)
 
@@ -138,7 +142,9 @@ get_areas <- function(x) {
 
   query <- list(type = x, lang = "multi", pageSize = 1000L)
 
-  request <- list(path = "areas", query = query, cache = TRUE)
+  cache <- getOption("finbif_use_cache")
+
+  request <- list(path = "areas", query = query, cache = cache)
 
   sd_response <- api_get(request)
 
@@ -371,7 +377,9 @@ informal_groups <- function() {
 
   query <- list(lang = "multi", pageSize = 1000L)
 
-  request <- list(path = "informal-taxon-groups", query = query, cache = TRUE)
+  cache <- getOption("finbif_use_cache")
+
+  request <- list(path = "informal-taxon-groups", query = query, cache = cache)
 
   sd_response <- api_get(request)
 
@@ -937,7 +945,9 @@ source <- function() {
 
   query <- list(lang = "multi", pageSize = 1000L)
 
-  request <- list(path = "sources", query = query, cache = TRUE)
+  cache <- getOption("finbif_use_cache")
+
+  request <- list(path = "sources", query = query, cache = cache)
 
   sd_response <- api_get(request)
 
