@@ -383,6 +383,28 @@ get_rows <- function(
 
 }
 
+#' @noRd
+
+cache_is_valid <- function(timeout, created) {
+
+  timeout_offset <- getOption("finbif_timeout_offset")
+
+  timeout_min <- 1 - timeout_offset
+
+  timeout_max <- 1 + timeout_offset
+
+  timeout_rand <- runif(1, timeout_min, timeout_max)
+
+  timeout_secs <- timeout * 3600 * timeout_rand
+
+  current <- Sys.time()
+
+  elapsed <- difftime(current, created, units = "secs")
+
+  timeout_secs > elapsed
+
+}
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd

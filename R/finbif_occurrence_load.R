@@ -866,13 +866,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
         created <- file.mtime(write_file)
 
-        timeout <- timeout * 3600
-
-        current <- Sys.time()
-
-        elapsed <- difftime(current, created, units = "secs")
-
-        valid <- timeout > elapsed
+        valid <- cache_is_valid(timeout, created)
 
         if (valid) {
 

@@ -448,13 +448,7 @@ get_swagger <- function(cache) {
 
         created <- file.mtime(cache_file_path)
 
-        timeout <- timeout * 3600
-
-        current <- Sys.time()
-
-        elapsed <- difftime(current, created, units = "secs")
-
-        valid <- timeout > elapsed
+        valid <- cache_is_valid(timeout, created)
 
         if (valid) {
 
