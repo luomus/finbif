@@ -166,7 +166,15 @@ api_get <- function(obj) {
 
         if (has_cached_obj) {
 
-          created <- as.POSIXct(db_cache[["created"]], origin = "1970-01-01")
+          created <- db_cache[["created"]]
+
+          created <- as.POSIXct(created, origin = "1970-01-01")
+
+          last_cache_ind <- which.max(created)
+
+          last_cache_ind <- last_cache_ind[[1L]]
+
+          created <- created[[last_cache_ind]]
 
           timeout <- db_cache[["timeout"]]
 
@@ -174,7 +182,7 @@ api_get <- function(obj) {
 
           if (valid) {
 
-            cached_obj <- db_cache[["blob"]]
+            cached_obj <- db_cache[last_cache_ind, "blob"]
 
             cached_obj <- cached_obj[[1L]]
 
