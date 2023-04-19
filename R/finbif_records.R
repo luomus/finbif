@@ -878,7 +878,9 @@ get_extra_pages <- function(fb_records_list) {
 
   has_future <- has_pkgs("future")
 
-  if (has_future) {
+  use_future <- has_future && getOption("finbif_use_async")
+
+  if (use_future) {
 
     value <- future::value
 
@@ -926,7 +928,7 @@ get_extra_pages <- function(fb_records_list) {
 
     delayedAssign("res", records_obj(fb_records_obj))
 
-    if (has_future) {
+    if (use_future) {
 
       res <- future::future(
         {

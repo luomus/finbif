@@ -17,6 +17,7 @@
     finbif_warehouse_query = "warehouse/query/",
     finbif_allow_query = TRUE,
     finbif_hide_progress = FALSE,
+    finbif_use_async = TRUE,
     finbif_rate_limit = 1,
     finbif_max_queries = 2000L,
     finbif_max_page_size = 1000L,
