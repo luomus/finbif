@@ -176,7 +176,9 @@ api_get <- function(obj) {
 
           created <- created[[last_cache_ind]]
 
-          timeout <- db_cache[["timeout"]]
+          timeout <- db_cache["timeout"]
+
+          timeout <- timeout[[last_cache_ind]]
 
           valid <- cache_is_valid(timeout, created)
 
