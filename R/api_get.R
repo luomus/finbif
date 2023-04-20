@@ -7,6 +7,8 @@ api_get <- function(obj) {
 
   fb_access_token <- get_token()
 
+  fb_restricted_access_token <- get_restricted_access_token(obj)
+
   url <- getOption("finbif_api_url")
 
   version <- getOption("finbif_api_version")
@@ -185,10 +187,6 @@ api_get <- function(obj) {
   stopifnot("Request not cached and option:finbif_allow_query = FALSE" = allow)
 
   query <- add_email(query)
-
-  fb_restricted_access_token <- Sys.getenv(
-    "FINBIF_RESTRICTED_ACCESS_TOKEN", "unset"
-  )
 
   fb_restricted_access_token_par <- list(
     permissionToken = fb_restricted_access_token
@@ -556,5 +554,31 @@ append_obj <- function(obj) {
     DBI::dbAppendTable(fcp, "finbif_cache", db_cache)
 
   }
+
+}
+
+get_restricted_access_token <- function(obj) {
+
+  token <- "unset"
+
+  restricted_api <- obj[["restricted_api"]]
+
+  has_token <- !is.null(restricted_api)
+
+  if (has_token) {
+
+    token <- Sys.getenv(restricted_api)
+
+    token_empty <- identical(token, "")
+
+    if (token_empty) {
+
+      stop("Restricted API token declared but token is unset", .call = FALSE)
+
+    }
+
+  }
+
+  token
 
 }

@@ -30,7 +30,8 @@ finbif_occurrence(
   unlist = FALSE,
   facts = NULL,
   duplicates = FALSE,
-  filter_col = NULL
+  filter_col = NULL,
+  restricted_api = NULL
 )
 }
 \arguments{
@@ -125,6 +126,10 @@ duplicate records are removed.}
 \item{filter_col}{Character. The name of a column, with values derived from
 the names of the filter sets used when using multiple filters, to include
 when using multiple filter sets. If \code{NULL} (default), no column is included.}
+
+\item{restricted_api}{Character. If using a restricted data API token in
+addition to a personal access token, a string indicating the name of an
+environment variable storing the restricted data API token.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

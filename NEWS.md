@@ -1,3 +1,10 @@
+# finbif 0.8.0.9005
+
+#### NEW FEATURES
+
+  - A restricted data API token can be explicitly declared via the
+    `restricted_api` argument to `finbif_occurrence`.
+
 # finbif 0.8.0.9004
 
 #### BUG FIXES

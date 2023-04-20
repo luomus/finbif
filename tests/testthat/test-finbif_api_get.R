@@ -8,6 +8,11 @@ test_that(
 
     Sys.setenv(FINBIF_ACCESS_TOKEN = token)
 
+    expect_error(
+      fb_occurrence(restricted_api = "KEY"),
+      "Restricted API token declared but token is unset"
+    )
+
   }
 )
 

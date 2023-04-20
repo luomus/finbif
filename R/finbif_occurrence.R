@@ -71,6 +71,9 @@
 #' @param filter_col Character. The name of a column, with values derived from
 #'  the names of the filter sets used when using multiple filters, to include
 #'  when using multiple filter sets. If `NULL` (default), no column is included.
+#' @param restricted_api Character. If using a restricted data API token in
+#'   addition to a personal access token, a string indicating the name of an
+#'   environment variable storing the restricted data API token.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -120,7 +123,8 @@ finbif_occurrence <- function(
   unlist = FALSE,
   facts = NULL,
   duplicates = FALSE,
-  filter_col = NULL
+  filter_col = NULL,
+  restricted_api = NULL
 ) {
 
   taxa <- c(...)
@@ -153,7 +157,8 @@ finbif_occurrence <- function(
     unlist = unlist,
     facts = facts,
     duplicates = duplicates,
-    filter_col = filter_col
+    filter_col = filter_col,
+    restricted_api = restricted_api
   )
 
   occurrence(fb_records_obj)

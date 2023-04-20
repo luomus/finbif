@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.8.0.9005}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item A restricted data API token can be explicitly declared via the
+        \code{restricted_api} argument to \code{finbif_occurrence}.
+    }
+  }
+}
+
+
 \section{finbif version 0.8.0.9004}{
   \subsection{BUG FIXES}{
     \itemize{

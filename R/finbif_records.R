@@ -608,6 +608,8 @@ request <- function(fb_records_obj) {
 
   include_facts <- fb_records_obj[["include_facts"]]
 
+  restricted_api <- fb_records_obj[["restricted_api"]]
+
   path <- getOption("finbif_warehouse_query")
 
   count_records <- count_only && identical(aggregate, "none")
@@ -620,7 +622,12 @@ request <- function(fb_records_obj) {
 
     path <- paste0(path, "unit/count")
 
-    request_obj <- list(path = path, query = query, cache = cache)
+    request_obj <- list(
+      path = path,
+      query = query,
+      cache = cache,
+      restricted_api = restricted_api
+    )
 
     resp <- api_get(request_obj)
 
@@ -640,7 +647,12 @@ request <- function(fb_records_obj) {
 
     query[["pageSize"]] <- 1L
 
-    request_obj <- list(path = path, query = query, cache = cache)
+    request_obj <- list(
+      path = path,
+      query = query,
+      cache = cache,
+      restricted_api = restricted_api
+    )
 
     resp <- api_get(request_obj)
 
@@ -712,7 +724,8 @@ request <- function(fb_records_obj) {
     record_id = record_id_selected,
     date_time = date_time_selected,
     aggregate = aggregate,
-    cache = cache
+    cache = cache,
+    restricted_api = restricted_api
   )
 
   need_more_pages <- n > max_size
@@ -836,12 +849,18 @@ get_extra_pages <- function(fb_records_list) {
 
   aggregate <- attr(fb_records_list, "aggregate", TRUE)
 
+  restricted_api <- attr(fb_records_list, "restricted_api", TRUE)
+
   df <- attr(fb_records_list, "df", TRUE)
 
   locale <- attr(fb_records_list, "locale", TRUE)
 
   fb_records_obj <- list(
-    path = path, cache = cache, select_query = select, aggregate = aggregate
+    path = path,
+    cache = cache,
+    select_query = select,
+    aggregate = aggregate,
+    restricted_api = restricted_api
   )
 
   multipage <- n > max_size
