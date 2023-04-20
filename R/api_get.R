@@ -207,7 +207,23 @@ api_get <- function(obj) {
 
   Sys.sleep(sleep)
 
-  url_path <- sprintf("%s/%s/%s", url, version, path)
+  private_api <- Sys.getenv("FINBIF_PRIVATE_API", "unset")
+
+  private_api <- switch(
+    private_api,
+    unset = "laji.fi",
+    sprintf("%s.%s", private_api, "laji.fi")
+  )
+
+  use_private_api <- Sys.getenv("FINBIF_USE_PRIVATE_API")
+
+  use_private_api <- tolower(use_private_api)
+
+  url_path <- switch(
+    use_private_api,
+    true = sprintf("https://%s/api/%s", private_api, path),
+    sprintf("%s/%s/%s", url, version, path)
+  )
 
   pkg_version <- utils::packageVersion("finbif")
 
@@ -229,7 +245,7 @@ api_get <- function(obj) {
 
   fb_access_token_par <- list(access_token = fb_access_token)
 
-  query <- c(query, fb_access_token_par)
+  query <- switch(use_private_api, true = query, c(query, fb_access_token_par))
 
   times <- getOption("finbif_retry_times")
 
@@ -397,7 +413,15 @@ add_email <- function(query) {
 
   has_email <- !is.null(email)
 
-  if (has_email) {
+  use_private_api <- Sys.getenv("FINBIF_USE_PRIVATE_API")
+
+  use_private_api <- as.logical(use_private_api)
+
+  use_private_api <- isTRUE(use_private_api)
+
+  add_email <- has_email && !use_private_api
+
+  if (add_email) {
 
     email_par <- list(personEmail = email)
 
@@ -417,7 +441,15 @@ get_token <- function() {
 
   no_token <- identical(fb_access_token, "")
 
-  if (no_token) {
+  use_private_api <- Sys.getenv("FINBIF_USE_PRIVATE_API")
+
+  use_private_api <- as.logical(use_private_api)
+
+  use_private_api <- isTRUE(use_private_api)
+
+  needs_token <- no_token && !use_private_api
+
+  if (needs_token) {
 
     stop(
       "Access token for FinBIF has not been set. Use finbif_get_token() to \n",
