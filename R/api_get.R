@@ -5,21 +5,7 @@
 
 api_get <- function(obj) {
 
-  fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
-
-  no_token <- identical(fb_access_token, "")
-
-  if (no_token) {
-
-    stop(
-      "Access token for FinBIF has not been set. Use finbif_get_token() to \n",
-      "have an access token sent to your email address. Then set it as the \n",
-      "environment variable FINBIF_ACCESS_TOKEN with \n",
-      "Sys.setenv(FINBIF_ACCESS_TOKEN = \"<access_token_sent_to_your_email>\")",
-      call. = FALSE
-    )
-
-  }
+  fb_access_token <- get_token()
 
   url <- getOption("finbif_api_url")
 
@@ -27,21 +13,11 @@ api_get <- function(obj) {
 
   hash <- NULL
 
-  cache <- obj[["cache"]]
+  cache <- cache_as_logical(obj)
 
-  timeout <- cache
+  timeout <- get_timeout(obj)
 
-  cache_logical <- is.logical(cache)
-
-  if (cache_logical) {
-
-    timeout <- Inf
-
-  } else {
-
-    cache <- cache > 0
-
-  }
+  obj[["timeout"]] <- timeout
 
   query <- obj[["query"]]
 
@@ -73,15 +49,7 @@ api_get <- function(obj) {
 
       on.exit({
 
-        has_obj <- !is.null(obj)
-
-        if (has_obj) {
-
-          cache_obj <- list(data = obj, hash = hash, timeout = timeout)
-
-          set_cache(cache_obj)
-
-        }
+        cache_obj(obj)
 
       })
 
@@ -90,6 +58,8 @@ api_get <- function(obj) {
       cache_file_name <- paste0("finbif_cache_file_", hash)
 
       cache_file_path <- file.path(fcp, cache_file_name)
+
+      obj[["cache_file_path"]] <- cache_file_path
 
       cache_file_exists <- file.exists(cache_file_path)
 
@@ -115,13 +85,7 @@ api_get <- function(obj) {
 
       on.exit({
 
-        has_obj <- !is.null(obj)
-
-        if (has_obj) {
-
-          saveRDS(obj, cache_file_path)
-
-        }
+        save_obj(obj)
 
       })
 
@@ -208,23 +172,7 @@ api_get <- function(obj) {
 
       on.exit({
 
-        has_obj <- !is.null(obj)
-
-        if (has_obj) {
-
-          created <- Sys.time()
-
-          blob <- serialize(obj, NULL)
-
-          blob <- blob::blob(blob)
-
-          db_cache <- data.frame(
-            hash = hash, created = created, timeout = timeout, blob = blob
-          )
-
-          DBI::dbAppendTable(fcp, "finbif_cache", db_cache)
-
-        }
+        append_obj(obj)
 
       })
 
@@ -236,17 +184,7 @@ api_get <- function(obj) {
 
   stopifnot("Request not cached and option:finbif_allow_query = FALSE" = allow)
 
-  email <- getOption("finbif_email")
-
-  has_email <- !is.null(email)
-
-  if (has_email) {
-
-    email_par <- list(personEmail = email)
-
-    query <- c(query, email_par)
-
-  }
+  query <- add_email(query)
 
   fb_restricted_access_token <- Sys.getenv(
     "FINBIF_RESTRICTED_ACCESS_TOKEN", "unset"
@@ -318,6 +256,8 @@ api_get <- function(obj) {
   fb_access_token_str <- paste0("&access_token=", fb_access_token)
 
   notoken <- gsub(fb_access_token_str, "", resp_url)
+
+  email <- getOption("finbif_email")
 
   email_str <- paste0("&personEmail=", email)
 
@@ -446,5 +386,143 @@ get_calling_function <- function(pkg) {
   arg_nm_str <- paste(arg_nm_strs, collapse = ",")
 
   paste0(fun, "(", arg_nm_str, ")")
+
+}
+
+#' @noRd
+
+add_email <- function(query) {
+
+  email <- getOption("finbif_email")
+
+  has_email <- !is.null(email)
+
+  if (has_email) {
+
+    email_par <- list(personEmail = email)
+
+    query <- c(query, email_par)
+
+  }
+
+  query
+
+}
+
+#' @noRd
+
+get_token <- function() {
+
+  fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
+
+  no_token <- identical(fb_access_token, "")
+
+  if (no_token) {
+
+    stop(
+      "Access token for FinBIF has not been set. Use finbif_get_token() to \n",
+      "have an access token sent to your email address. Then set it as the \n",
+      "environment variable FINBIF_ACCESS_TOKEN with \n",
+      "Sys.setenv(FINBIF_ACCESS_TOKEN = \"<access_token_sent_to_your_email>\")",
+      call. = FALSE
+    )
+
+  }
+
+  fb_access_token
+
+}
+
+#' @noRd
+
+cache_as_logical <- function(obj) {
+
+  cache <- obj[["cache"]]
+
+  cache > 0
+
+}
+
+#' @noRd
+
+get_timeout <- function(obj) {
+
+  timeout <- obj[["cache"]]
+
+  is_logical <- is.logical(timeout)
+
+  if (is_logical) {
+
+    timeout <- Inf
+
+  }
+
+  timeout
+
+}
+
+#' @noRd
+
+save_obj <- function(obj) {
+
+  has_obj <- !is.null(obj)
+
+  if (has_obj) {
+
+    cache_file_path <- obj[["cache_file_path"]]
+
+    saveRDS(obj, cache_file_path)
+
+  }
+
+}
+
+#' @noRd
+
+cache_obj <- function(obj) {
+
+  has_obj <- !is.null(obj)
+
+  if (has_obj) {
+
+    hash <- obj[["hash"]]
+
+    timeout <- obj[["timeout"]]
+
+    cache_obj <- list(data = obj, hash = hash, timeout = timeout)
+
+    set_cache(cache_obj)
+
+  }
+
+}
+
+#' @noRd
+
+append_obj <- function(obj) {
+
+  has_obj <- !is.null(obj)
+
+  if (has_obj) {
+
+    fcp <- getOption("finbif_cache_path")
+
+    hash <- obj[["hash"]]
+
+    created <- Sys.time()
+
+    timeout <- obj[["timeout"]]
+
+    blob <- serialize(obj, NULL)
+
+    blob <- blob::blob(blob)
+
+    db_cache <- data.frame(
+      hash = hash, created = created, timeout = timeout, blob = blob
+    )
+
+    DBI::dbAppendTable(fcp, "finbif_cache", db_cache)
+
+  }
 
 }
