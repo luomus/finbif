@@ -40,7 +40,7 @@ finbif_collections <- function(
 
   locale <- switch(locale, sv = locale, fi = locale, "en")
 
-  swagger <- get_swagger(cache)
+  swagger <- get_swagger()
 
   swagger <- httr::content(swagger)
 
@@ -388,95 +388,31 @@ get_collections <- function(col_obj) {
 #' @importFrom digest digest
 #' @importFrom httr RETRY
 
-get_swagger <- function(cache) {
+get_swagger <- function() {
 
   fb_api_url <- getOption("finbif_api_url")
 
   url <- paste0(fb_api_url, "/explorer/swagger.json")
 
-  timeout <- cache
+  hash <- digest::digest(url)
 
-  cache_logical <- is.logical(cache)
+  cache <- get_cache(hash)
 
-  if (cache_logical) {
+  has_cache <- !is.null(cache)
 
-    timeout <- Inf
+  if (has_cache) {
 
-  } else {
-
-    cache <- cache > 0
+    return(cache)
 
   }
 
-  if (cache) {
+  on.exit({
 
-    hash <- digest::digest(url)
+    cache_obj <- list(data = ans, hash = hash, swagger = TRUE)
 
-    fcp <- getOption("finbif_cache_path")
+    set_cache(cache_obj)
 
-    fcp_is_null <- is.null(fcp)
-
-    if (fcp_is_null) {
-
-      cache <- get_cache(hash)
-
-      has_cache <- !is.null(cache)
-
-      if (has_cache) {
-
-        return(cache)
-
-      }
-
-      on.exit({
-
-        cache_obj <- list(data = ans, hash = hash, timeout = timeout)
-
-        set_cache(cache_obj)
-
-      })
-
-    } else {
-
-      cache_file_name <- paste0("finbif_cache_file_", hash)
-
-      cache_file_path <- file.path(fcp, cache_file_name)
-
-      cache_file_exists <- file.exists(cache_file_path)
-
-      if (cache_file_exists) {
-
-        created <- file.mtime(cache_file_path)
-
-        valid <- cache_is_valid(timeout, created)
-
-        if (valid) {
-
-          cached_obj <- readRDS(cache_file_path)
-
-          return(cached_obj)
-
-        } else {
-
-          unlink(cache_file_path)
-
-        }
-
-      }
-
-      on.exit({
-
-        saveRDS(ans, cache_file_path)
-
-      })
-
-    }
-
-  }
-
-  allow <- getOption("finbif_allow_query")
-
-  stopifnot("Request not cached and option:finbif_allow_query = FALSE" = allow)
+  })
 
   rate_limit <- getOption("finbif_rate_limit")
 

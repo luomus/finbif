@@ -31,6 +31,8 @@ test_that(
 
     expect_s3_class(finbif_occurrence(), "finbif_occ")
 
+    expect_null(finbif_update_cache())
+
     finbif_clear_cache()
 
     expect_s3_class(finbif_occurrence(cache = 1e-9), "finbif_occ")

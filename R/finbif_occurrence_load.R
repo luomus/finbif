@@ -802,19 +802,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
   write_file <- fb_occurrenc_obj[["write_file"]]
 
-  timeout <- cache
-
-  cache_logical <- is.logical(cache)
-
-  if (cache_logical) {
-
-    timeout <- Inf
-
-  } else {
-
-    cache <- cache > 0
-
-  }
+  cache <- cache > 0
 
   if (cache) {
 
@@ -824,9 +812,11 @@ get_zip <- function(fb_occurrenc_obj) {
 
     fcp <- getOption("finbif_cache_path")
 
-    fcp_is_null <- is.null(fcp)
+    no_cache_path <- is.null(fcp)
 
-    if (fcp_is_null) {
+    is_path <- is.character(fcp)
+
+    if (no_cache_path) {
 
       cache_file <- get_cache(hash)
 
@@ -846,7 +836,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
         if (has_write_file) {
 
-          cache_obj <- list(data = write_file, hash = hash, timeout = timeout)
+          cache_obj <- list(data = write_file, hash = hash, timeout = Inf)
 
           set_cache(cache_obj)
 
@@ -854,9 +844,9 @@ get_zip <- function(fb_occurrenc_obj) {
 
       })
 
-    } else {
+    } else if (is_path) {
 
-      file_name <- paste0("finbif_cache_file_", hash)
+      file_name <- paste0("finbif_dwnld_cache_file_", hash)
 
       write_file <- file.path(fcp, file_name)
 
@@ -864,23 +854,15 @@ get_zip <- function(fb_occurrenc_obj) {
 
       if (write_file_exists) {
 
-        created <- file.mtime(write_file)
+        fb_occurrenc_obj[["file"]] <- write_file
 
-        valid <- cache_is_valid(timeout, created)
-
-        if (valid) {
-
-          fb_occurrenc_obj[["file"]] <- write_file
-
-          return(fb_occurrenc_obj)
-
-        } else {
-
-          unlink(write_file)
-
-        }
+        return(fb_occurrenc_obj)
 
       }
+
+    } else {
+
+      stop("Database cache cannot be used for FinBIF downloads.", call. = TRUE)
 
     }
 

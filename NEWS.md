@@ -1,3 +1,11 @@
+# finbif 0.8.0.9006
+
+#### NEW FEATURES
+
+  - New function `finbif_update_cache` can be used to update all the
+    cached objects that have reached their expiration and are no longer
+    valid.
+
 # finbif 0.8.0.9005
 
 #### NEW FEATURES

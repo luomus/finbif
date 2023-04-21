@@ -573,7 +573,7 @@ get_restricted_access_token <- function(obj) {
 
     if (token_empty) {
 
-      stop("Restricted API token declared but token is unset", .call = FALSE)
+      stop("Restricted API token declared but token is unset", call. = FALSE)
 
     }
 

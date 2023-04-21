@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.8.0.9006}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New function \code{finbif_update_cache} can be used to update all
+        the cached objects that have reached their expiration and are no longer
+        valid.
+    }
+  }
+}
+
 \section{finbif version 0.8.0.9005}{
   \subsection{NEW FEATURES}{
     \itemize{
@@ -9,7 +19,6 @@
     }
   }
 }
-
 
 \section{finbif version 0.8.0.9004}{
   \subsection{BUG FIXES}{

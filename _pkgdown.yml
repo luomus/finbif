@@ -55,3 +55,4 @@ reference:
     contents:
       - caching
       - finbif_clear_cache
+      - finbif_update_cache

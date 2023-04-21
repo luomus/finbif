@@ -389,13 +389,21 @@ cache_is_valid <- function(timeout, created) {
 
   timeout_offset <- getOption("finbif_timeout_offset")
 
-  timeout_min <- 1 - timeout_offset
+  timeout_offset <- pmax(timeout_offset, 0)
 
-  timeout_max <- 1 + timeout_offset
+  timeout_offset <- pmin(timeout_offset, 1)
 
-  timeout_rand <- runif(1, timeout_min, timeout_max)
+  timeout_offset <- timeout_offset * 1000
 
-  timeout_secs <- timeout * 3600 * timeout_rand
+  timeout_min <- 1000 - timeout_offset
+
+  timeout_max <- 1000 + timeout_offset
+
+  timeout_seq <- seq(timeout_min, timeout_max)
+
+  timeout_rand <- sample(timeout_seq, 1L)
+
+  timeout_secs <- timeout * timeout_rand * 3.6
 
   current <- Sys.time()
 

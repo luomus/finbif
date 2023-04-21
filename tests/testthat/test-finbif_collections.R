@@ -15,10 +15,6 @@ test_that(
       "data.frame"
     )
 
-    op <- getOption("finbif_cache_path")
-
-    options(finbif_cache_path = tempdir())
-
     expect_s3_class(
       finbif_collections(select = NA, nmin = NA, cache = 1e-9), "data.frame"
     )
@@ -26,8 +22,6 @@ test_that(
     expect_s3_class(
       finbif_collections(select = NA, nmin = NA, cache = 1e-9), "data.frame"
     )
-
-    options(finbif_cache_path = op)
 
   }
 )

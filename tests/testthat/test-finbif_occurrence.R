@@ -13,6 +13,8 @@ test_that(
       "finbif_occ"
     )
 
+    expect_null(finbif_update_cache())
+
     expect_s3_class(
       finbif_occurrence(
         "Rangifer tarandus fennicus", "not a valid taxon",
@@ -102,7 +104,7 @@ test_that(
 )
 
 test_that(
-  "returns data that prints/plots valid output", {
+  "returns data that prints valid output", {
 
     skip_on_cran()
 
@@ -144,6 +146,8 @@ test_that(
       ),
       "Records downloaded:"
     )
+
+    expect_null(finbif_update_cache())
 
     expect_output(
       print(finbif_occurrence(aggregate = "species")), "Records downloaded:"
