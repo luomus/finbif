@@ -1,4 +1,4 @@
-pandoc: 2.9.2.1
+pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
@@ -7,5 +7,5 @@ articles:
   v03_selecting_variables: v03_selecting_variables.html
   v04_metadata: v04_metadata.html
   v05_filtering: v05_filtering.html
-last_built: 2023-04-21T11:40Z
+last_built: 2023-04-24T06:38Z
 

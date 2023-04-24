@@ -83,10 +83,12 @@
 
 
 
-<script src="v03_selecting_variables_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Selecting and ordering variables</h1>
-                        <h4 data-toc-skip class="author">William K. Morris</h4>
+                        <h4 data-toc-skip class="author">William K.
+Morris</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/luomus/finbif/blob/HEAD/vignettes/v03_selecting_variables.Rmd" class="external-link"><code>vignettes/v03_selecting_variables.Rmd</code></a></small>
@@ -95,21 +97,27 @@
 
     
     
-<p>When requesting data using <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> you can select from among (or order by) many variables (properties of the occurrence records). The default set of variables returned is a small subset of those available. Note that not all variables are available for all records. See <code><a href="../reference/variables.html">?variables</a></code> for details.</p>
+<p>When requesting data using <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> you can select from
+among (or order by) many variables (properties of the occurrence
+records). The default set of variables returned is a small subset of
+those available. Note that not all variables are available for all
+records. See <code><a href="../reference/variables.html">?variables</a></code> for details.</p>
 <div class="section level2">
 <h2 id="selecting-variables">Selecting variables<a class="anchor" aria-label="anchor" href="#selecting-variables"></a>
 </h2>
 <div class="section level3">
 <h3 id="limiting-variables">Limiting variables<a class="anchor" aria-label="anchor" href="#limiting-variables"></a>
 </h3>
-<p>To retrieve a limited set of variables from FinBIF simply specify the desired variables in the <code>select</code> argument.</p>
+<p>To retrieve a limited set of variables from FinBIF simply specify the
+desired variables in the <code>select</code> argument.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  genus  <span class="op">=</span> <span class="st">"Falco"</span>,</span>
 <span>  select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"scientific_name"</span>, <span class="st">"life_stage"</span>, <span class="st">"sex"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 315462</span></span>
@@ -130,11 +138,13 @@
 <div class="section level3">
 <h3 id="extra-variables">Extra variables<a class="anchor" aria-label="anchor" href="#extra-variables"></a>
 </h3>
-<p>To get extra variables as well as the default set, specify the extra variables in addition to the keyword <code>"default_vars"</code>.</p>
+<p>To get extra variables as well as the default set, specify the extra
+variables in addition to the keyword <code>"default_vars"</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"default_vars"</span>, <span class="st">"life_stage"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 40410386</span></span>
@@ -159,15 +169,20 @@
 <div class="section level2">
 <h2 id="ordering">Ordering<a class="anchor" aria-label="anchor" href="#ordering"></a>
 </h2>
-<p>You can change the order of occurrence records before they are fetched from the server by using the <code>order_by</code> argument. The default ordering is <code>date_start</code> descending, then <code>load_date</code> descending, then <code>reported_name</code>.</p>
+<p>You can change the order of occurrence records before they are
+fetched from the server by using the <code>order_by</code> argument. The
+default ordering is <code>date_start</code> descending, then
+<code>load_date</code> descending, then <code>reported_name</code>.</p>
 <div class="section level3">
 <h3 id="ascending-order">Ascending order<a class="anchor" aria-label="anchor" href="#ascending-order"></a>
 </h3>
-<p>By default occurrence records are ordered by variables in ascending order.</p>
+<p>By default occurrence records are ordered by variables in ascending
+order.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, order_by <span class="op">=</span> <span class="st">"abundance"</span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 71156</span></span>
@@ -191,11 +206,13 @@
 <div class="section level3">
 <h3 id="descending-order">Descending order<a class="anchor" aria-label="anchor" href="#descending-order"></a>
 </h3>
-<p>You can switch to descending order by prefixing the variable with a dash.</p>
+<p>You can switch to descending order by prefixing the variable with a
+dash.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, order_by <span class="op">=</span> <span class="st">"-abundance"</span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 71156</span></span>
@@ -219,11 +236,13 @@
 <div class="section level3">
 <h3 id="multiple-variables">Multiple variables<a class="anchor" aria-label="anchor" href="#multiple-variables"></a>
 </h3>
-<p>You can specify multiple variables to order by. Sorting primacy is from left to right.</p>
+<p>You can specify multiple variables to order by. Sorting primacy is
+from left to right.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus olor"</span>, order_by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"municipality_id"</span>, <span class="st">"-abundance"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 30843</span></span>
@@ -247,11 +266,14 @@
 <div class="section level3">
 <h3 id="random-sample">Random sample<a class="anchor" aria-label="anchor" href="#random-sample"></a>
 </h3>
-<p>You can also request a random sample (random order) of occurrence records by setting the <code>sample</code> argument to <code>TRUE</code>.</p>
+<p>You can also request a random sample (random order) of occurrence
+records by setting the <code>sample</code> argument to
+<code>TRUE</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<details closed><p><summary> Click to show/hide output. </summary></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<details closed><summary>
+Click to show/hide output.
+</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 40410449</span></span>

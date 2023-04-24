@@ -80,7 +80,6 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 ```
 
 ## Citation
-
 Data from FinBIF comes from many sources. For information on citing
 FinBIF itself and the contributed datasets please visit this link:
 
@@ -89,7 +88,7 @@ FinBIF itself and the contributed datasets please visit this link:
 To cite the finbif R package in publications please use:
 
   Morris, William K. (2023). Introduction to the finbif package. R
-  package version 0.8.0.9000, https://doi.org/10.5281/zenodo.3612814
+  package version 0.8.0.9006, https://doi.org/10.5281/zenodo.3612814
 
 ----
 

@@ -59,7 +59,7 @@ sentinels/pkgdown: sentinels/vignettes README.md NEWS.md sentinels/doc _pkgdown.
 > mkdir -p $(@D);\
 > touch $@
 
-README.md: README.Rmd
+README.md: README.Rmd DESCRIPTION
 > ${RSCRIPT} -e "knitr::knit('$<')"
 
 NEWS.md: inst/NEWS.Rd
