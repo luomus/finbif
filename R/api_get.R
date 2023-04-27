@@ -124,6 +124,12 @@ api_get <- function(obj) {
 
         db_query <- sprintf(db_query, hash)
 
+        tm <- Sys.time()
+
+        tm <- as.character(tm)
+
+        debug_msg("[", tm, "] ", "Reading from cache: ", hash)
+
         db_cache <- DBI::dbGetQuery(fcp, db_query)
 
         nrows <- nrow(db_cache)
@@ -163,6 +169,12 @@ api_get <- function(obj) {
             db_query <- "DELETE FROM finbif_cache WHERE hash = '%s'"
 
             db_query <- sprintf(db_query, hash)
+
+            tm <- Sys.time()
+
+            tm <- as.character(tm)
+
+            debug_msg("[", tm, "] ", "Removing from cache: ", hash)
 
             DBI::dbExecute(fcp, db_query)
 
@@ -330,6 +342,12 @@ api_get <- function(obj) {
   obj[["response"]] <- resp
 
   obj[["hash"]] <- hash
+
+  tm <- Sys.time()
+
+  tm <- as.character(tm)
+
+  debug_msg("[", tm, "] ", "Request made to: ", notoken, " ", hash)
 
   structure(obj, class = "finbif_api")
 
@@ -551,11 +569,19 @@ append_obj <- function(obj) {
       hash = hash, created = created, timeout = timeout, blob = blob
     )
 
+    tm <- Sys.time()
+
+    tm <- as.character(tm)
+
+    debug_msg("[", tm, "] ", "Adding to cache: ", hash)
+
     DBI::dbAppendTable(fcp, "finbif_cache", db_cache)
 
   }
 
 }
+
+#' @noRd
 
 get_restricted_access_token <- function(obj) {
 
@@ -580,5 +606,17 @@ get_restricted_access_token <- function(obj) {
   }
 
   token
+
+}
+
+#' @noRd
+
+debug_msg <- function(...) {
+
+  debug <- Sys.getenv("FINBIF_DEBUG", "nullfile")
+
+  f <- get(debug)
+
+  cat(..., "\n", file = f(), sep = "", append = TRUE)
 
 }
