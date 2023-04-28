@@ -218,6 +218,8 @@ get_areas <- function(x) {
 
   }
 
+  sd_df <- replace_missing_names(sd_df)
+
   sd_df <- set_translations(sd_df)
 
   structure(sd_df, class = "data.frame")
@@ -706,6 +708,7 @@ municipality <- function() {
     ML.578 = "Pohjois-Karjala",
     ML.579 = "Uusimaa",
     ML.580 = "Varsinais-Suomi",
+    ML.581 = "Etel\u00e4-Savo",
     ML.582 = "Etel\u00e4-Savo",
     ML.584 = "Lappi",
     ML.585 = "Satakunta",
@@ -1194,5 +1197,37 @@ atlas_class <- function() {
 abundance_unit <- function() {
 
   get_sysdata("MY.abundanceUnitEnum")
+
+}
+
+#' @noRd
+
+replace_missing_names <- function(df) {
+
+  col_names <- paste0("name_", supported_langs)
+
+  for (i in col_names) {
+
+    col <- df[[i]]
+
+    other_col_names <- setdiff(col_names, i)
+
+    for (j in other_col_names) {
+
+      missing <- is.na(col)
+
+      other_col <- df[[j]]
+
+      replace <- other_col[missing]
+
+      col[missing] <- replace
+
+    }
+
+    df[[i]] <- col
+
+  }
+
+  df
 
 }
