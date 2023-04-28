@@ -708,7 +708,6 @@ municipality <- function() {
     ML.578 = "Pohjois-Karjala",
     ML.579 = "Uusimaa",
     ML.580 = "Varsinais-Suomi",
-    ML.581 = "Etel\u00e4-Savo",
     ML.582 = "Etel\u00e4-Savo",
     ML.584 = "Lappi",
     ML.585 = "Satakunta",
