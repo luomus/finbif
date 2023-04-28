@@ -401,7 +401,11 @@ cache_is_valid <- function(timeout, created) {
 
   timeout_seq <- seq(timeout_min, timeout_max)
 
-  timeout_rand <- sample(timeout_seq, 1L)
+  seq_length <- length(timeout_seq)
+
+  sample <- sample.int(seq_length, 1L)
+
+  timeout_rand <- timeout_seq[sample]
 
   timeout_secs <- timeout * timeout_rand * 3.6
 
