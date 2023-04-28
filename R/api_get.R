@@ -128,8 +128,6 @@ api_get <- function(obj) {
 
         tm <- as.character(tm)
 
-        debug_msg("[", tm, "] ", "Reading from cache: ", hash)
-
         db_cache <- DBI::dbGetQuery(fcp, db_query)
 
         nrows <- nrow(db_cache)
@@ -159,6 +157,8 @@ api_get <- function(obj) {
             cached_obj <- db_cache[last_cache_ind, "blob"]
 
             cached_obj <- cached_obj[[1L]]
+
+            debug_msg("[", tm, "] ", "Reading from cache: ", hash)
 
             cached_obj <- unserialize(cached_obj)
 
