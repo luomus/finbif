@@ -2,14 +2,6 @@
 
 .onLoad <- function(libname, pkgname) {
 
-  op <- options()
-
-  op_names <- names(op)
-
-  locale <- get_locale()
-
-  tz <- Sys.timezone()
-
   op_finbif <- list(
     finbif_api_url = "https://api.laji.fi",
     finbif_dl_url = "https://dw.laji.fi/download",
@@ -27,25 +19,21 @@
     finbif_retry_pause_min = 1L,
     finbif_use_cache = TRUE,
     finbif_timeout_offset = 0,
-    finbif_tz = tz,
-    finbif_locale = locale
+    finbif_tz = Sys.timezone(),
+    finbif_locale = get_locale()
   )
 
-  op_finbif_names <- names(op_finbif)
+  op <- options()
 
-  toset <- !op_finbif_names %in% op_names
+  toset <- !names(op_finbif) %in% names(op)
 
-  any_toset <- any(toset)
+  if (any(toset)) {
 
-  if (any_toset) {
-
-    op_finbif_toset <- op_finbif[toset]
-
-    options(op_finbif_toset)
+    options(op_finbif[toset])
 
   }
 
-  invisible()
+  invisible(NULL)
 
 }
 
