@@ -25,9 +25,67 @@ finbif_request_token <- function(email, quiet = FALSE) {
 
   fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
-  no_token <- identical(fb_access_token, "")
+  if (identical(fb_access_token, "")) {
 
-  if (!no_token) {
+    allow <- getOption("finbif_allow_query")
+
+    stopifnot("Option:finbif_allow_query = FALSE" = allow)
+
+    url <- getOption("finbif_api_url")
+
+    version <- getOption("finbif_api_version")
+
+    pkg_version <- utils::packageVersion("finbif")
+
+    agent <- paste0("https://github.com/luomus/finbif#", pkg_version)
+
+    config <- list(
+      headers = c(Accept = "application/json"),
+      options =  list(useragent = agent)
+    )
+
+    resp <- httr::RETRY(
+      "POST",
+      sprintf("%s/%s/%s", url, version, "api-users"),
+      structure(config, class = "request"),
+      body = list(email = email),
+      encode = "json",
+      times = getOption("finbif_retry_times"),
+      pause_base = getOption("finbif_retry_pause_base"),
+      pause_cap = getOption("finbif_retry_pause_cap"),
+      pause_min = getOption("finbif_retry_pause_min"),
+      quiet = quiet,
+      terminate_on = 404L
+    )
+
+    parsed <- httr::content(resp)
+
+    if (!identical(resp[["status_code"]], 200L)) {
+
+      msg <- sprintf(
+        "API request failed [%s]\n%s",
+        resp[["status_code"]],
+        parsed[["message"]]
+      )
+
+      stop(msg, call. = FALSE)
+
+    }
+
+    if (!quiet) {
+
+      message(
+        "A personal access token for api.laji.fi has been sent to: ",
+        email
+      )
+
+    }
+
+    ans <- list(content = parsed, path = "api-users", response = resp)
+
+    ans <- structure(ans, class = "finbif_api")
+
+  } else {
 
     message(
       "An access token has already been set. If you want to receive a new \n",
@@ -35,89 +93,9 @@ finbif_request_token <- function(email, quiet = FALSE) {
       "Sys.unsetenv(\"FINBIF_ACCESS_TOKEN\")"
     )
 
-    return(invisible())
+    ans <- NULL
 
   }
-
-  url <- getOption("finbif_api_url")
-
-  version <- getOption("finbif_api_version")
-
-  path <- "api-users"
-
-  allow <- getOption("finbif_allow_query")
-
-  stopifnot("Option:finbif_allow_query = FALSE" = allow)
-
-  rate_limit <- getOption("finbif_rate_limit")
-
-  sleep <- 1 / rate_limit
-
-  Sys.sleep(sleep)
-
-  url_path <- sprintf("%s/%s/%s", url, version, path)
-
-  pkg_version <- utils::packageVersion("finbif")
-
-  agent <- paste0("https://github.com/luomus/finbif#", pkg_version)
-
-  agent <- list(useragent = agent)
-
-  accept <- c(Accept = "application/json")
-
-  config <- list(headers = accept, options = agent)
-
-  config <- structure(config, class = "request")
-
-  body <- list(email = email)
-
-  times <- getOption("finbif_retry_times")
-
-  pause_base <- getOption("finbif_retry_pause_base")
-
-  pause_cap <- getOption("finbif_retry_pause_cap")
-
-  pause_min <- getOption("finbif_retry_pause_min")
-
-  resp <- httr::RETRY(
-    "POST",
-    url_path,
-    config,
-    body = body,
-    encode = "json",
-    times = times,
-    pause_base = pause_base,
-    pause_cap = pause_cap,
-    pause_min = pause_min,
-    quiet = quiet,
-    terminate_on = 404L
-  )
-
-  parsed <- httr::content(resp)
-
-  status <- resp[["status_code"]]
-
-  error <- !identical(status, 200L)
-
-  if (error) {
-
-    msg <- parsed[["message"]]
-
-    msg <- sprintf("API request failed [%s]\n%s", status, msg)
-
-    stop(msg, call. = FALSE)
-
-  }
-
-  if (!quiet) {
-
-    message("A personal access token for api.laji.fi has been sent to: ", email)
-
-  }
-
-  ans <- list(content = parsed, path = path, response = resp)
-
-  ans <- structure(ans, class = "finbif_api")
 
   invisible(ans)
 
