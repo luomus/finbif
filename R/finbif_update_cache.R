@@ -15,41 +15,27 @@ finbif_update_cache <- function() {
 
   fcp <- getOption("finbif_cache_path")
 
-  in_memory <- is.null(fcp)
+  if (is.null(fcp)) {
 
-  in_file_system <- is.character(fcp)
+    for (cached_object in as.list(cache_location)) {
 
-  if (in_memory) {
+      is_swagger <- isTRUE(cached_object[["swagger"]])
 
-    cached_objects <- as.list(cache_location)
-
-    for (i in cached_objects) {
-
-      cached_object <- i[["data"]]
-
-      is_swagger <- i[["swagger"]]
-
-      is_swagger <- isTRUE(is_swagger)
-
-      is_write_file <- is.character(cached_object)
-
-      can_be_updated <- !is_write_file && !is_swagger
+      can_be_updated <- !is.character(cached_object[["data"]]) && !is_swagger
 
       if (can_be_updated) {
 
-        api_get(cached_object)
+        api_get(cached_object[["data"]])
 
       }
 
     }
 
-  } else if (in_file_system) {
+  } else if (is.character(fcp)) {
 
-    cached_objects <- list.files(fcp, pattern = "finbif_cache_file_")
+    for (cached_object in list.files(fcp, pattern = "finbif_cache_file_")) {
 
-    for (i in cached_objects) {
-
-      cached_object <- file.path(fcp, i)
+      cached_object <- file.path(fcp, cached_object)
 
       cached_object <- readRDS(cached_object)
 
@@ -63,37 +49,21 @@ finbif_update_cache <- function() {
 
     stopifnot("Packages {DBI} & {blob} needed to use a DB cache" = has_dbi)
 
-    has_table <- DBI::dbExistsTable(fcp, "finbif_cache")
+    if (DBI::dbExistsTable(fcp, "finbif_cache")) {
 
-    if (has_table) {
+      cached_objects <- DBI::dbGetQuery(fcp, "SELECT hash FROM finbif_cache")
 
-      db_query <- "SELECT hash FROM finbif_cache"
+      for (i in cached_objects[["hash"]]) {
 
-      cached_objects <- DBI::dbGetQuery(fcp, db_query)
-
-      cached_objects <- cached_objects[["hash"]]
-
-      db_query <- "SELECT * FROM finbif_cache WHERE hash = '%s'"
-
-      for (i in cached_objects) {
-
-        db_query_i <- sprintf(db_query, i)
+        db_query_i <- sprintf("SELECT * FROM finbif_cache WHERE hash = '%s'", i)
 
         db_cache <- DBI::dbGetQuery(fcp, db_query_i)
 
-        created <- db_cache[["created"]]
+        created <- as.POSIXct(db_cache[["created"]], origin = "1970-01-01")
 
-        created <- as.POSIXct(created, origin = "1970-01-01")
+        last_cache_ind <- which.max(created)[[1L]]
 
-        last_cache_ind <- which.max(created)
-
-        last_cache_ind <- last_cache_ind[[1L]]
-
-        cached_object <- db_cache[last_cache_ind, "blob"]
-
-        cached_object <- cached_object[[1L]]
-
-        cached_object <- unserialize(cached_object)
+        cached_object <- unserialize(db_cache[last_cache_ind, "blob"][[1L]])
 
         api_get(cached_object)
 
