@@ -15,17 +15,13 @@ finbif_clear_cache <- function() {
 
   fcp <- getOption("finbif_cache_path")
 
-  fcp_is_null <- is.null(fcp)
-
-  is_path <- is.character(fcp)
-
-  if (fcp_is_null) {
+  if (is.null(fcp)) {
 
     cache_list <- ls(all.names = TRUE, envir = cache_location)
 
     rm(list = cache_list, envir = cache_location)
 
-  } else if (is_path) {
+  } else if (is.character(fcp)) {
 
     cache_files <- file.path(fcp, "finbif_cache_file_*")
 
@@ -33,9 +29,7 @@ finbif_clear_cache <- function() {
 
     cache_files_deleted <- identical(cache_files_deleted, 0L)
 
-    stopifnot(cache_files_deleted)
-
-    invisible(NULL)
+    stopifnot("Cache file deletion failed" = cache_files_deleted)
 
   } else {
 
@@ -43,14 +37,14 @@ finbif_clear_cache <- function() {
 
     stopifnot("Packages {DBI} & {blob} needed to use a DB cache" = has_dbi)
 
-    has_table <- DBI::dbExistsTable(fcp, "finbif_cache")
-
-    if (has_table) {
+    if (DBI::dbExistsTable(fcp, "finbif_cache")) {
 
       DBI::dbRemoveTable(fcp, "finbif_cache")
 
     }
 
   }
+
+  invisible(NULL)
 
 }
