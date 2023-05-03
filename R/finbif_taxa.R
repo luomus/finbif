@@ -47,19 +47,13 @@ finbif_taxa <- function(
   cache = getOption("finbif_use_cache")
 ) {
 
-  path <- "taxa/search"
+  query <- list(query = name, matchType = match.arg(type), limit = n)
 
-  type <- match.arg(type)
-
-  query <- list(query = name, matchType = type, limit = n)
-
-  req <- list(path = path, query = query, cache = cache)
+  req <- list(path = "taxa/search", query = query, cache = cache)
 
   res <- api_get(req)
 
-  class <- c("finbif_taxa", "finbif_api")
-
-  structure(res, class = class)
+  structure(res, class = c("finbif_taxa", "finbif_api"))
 
 }
 
@@ -67,21 +61,15 @@ finbif_taxa <- function(
 
 taxon_attribute <- function(obj) {
 
-  taxon <- obj[["taxon"]]
-
-  attribute <- obj[["attribute"]]
-
-  locale <- obj[["locale"]]
-
-  taxon <- finbif_taxa(taxon, n = 1, type = "exact")
+  taxon <- finbif_taxa(obj[["taxon"]], n = 1, type = "exact")
 
   taxon <- taxon[["content"]]
 
   taxon <- taxon[[1L]]
 
-  ans <- taxon[[attribute]]
+  attribute <- obj[["attribute"]]
 
-  with_locale(ans, locale)
+  with_locale(taxon[[attribute]], obj[["locale"]])
 
 }
 
