@@ -44,13 +44,9 @@ finbif_check_taxa <- function(
 
   taxa_list_names <- tolower(taxa_list_names)
 
-  taxa_list_names_length <- length(taxa_list_names)
+  has_names <- length(taxa_list_names) > 0L
 
-  has_names <- taxa_list_names_length > 0L
-
-  taxa_list_seq <- seq_along(taxa_list)
-
-  for (i in taxa_list_seq) {
+  for (i in seq_along(taxa_list)) {
 
     taxa_list_name <- character()
 
@@ -68,9 +64,7 @@ finbif_check_taxa <- function(
 
     taxa_names <- taxa_i
 
-    taxa_seq <- seq_along(taxa_i)
-
-    for (j in taxa_seq) {
+    for (j in seq_along(taxa_i)) {
 
       id <- NA_character_
 
@@ -78,21 +72,13 @@ finbif_check_taxa <- function(
 
       resp <- finbif_taxa(taxon, cache = cache)
 
-      content <- resp[["content"]]
+      if (length(resp[["content"]]) > 0L) {
 
-      content_length <- length(content)
-
-      has_content <- content_length > 0L
-
-      if (has_content) {
-
-        content <- content[[1L]]
+        content <- resp[["content"]][[1L]]
 
         check_rank_obj <- list(name = taxa_list_name, rank = content)
 
-        cond <- no_name || check_rank(check_rank_obj)
-
-        if (cond) {
+        if (no_name || check_rank(check_rank_obj)) {
 
           id <- content[["id"]]
 
@@ -116,9 +102,7 @@ finbif_check_taxa <- function(
 
   }
 
-  class <- c("list", "finbif_taxa_list")
-
-  structure(taxa_list, class = class)
+  structure(taxa_list, class = c("list", "finbif_taxa_list"))
 
 }
 
@@ -126,14 +110,8 @@ finbif_check_taxa <- function(
 
 check_rank <- function(obj) {
 
-  name <- obj[["name"]]
+  rank <- sub("MX.", "", obj[[c("rank", "taxonRank")]])
 
-  rank <- obj[["rank"]]
-
-  rank <- rank[["taxonRank"]]
-
-  rank <- sub("MX.", "", rank)
-
-  identical(name, rank)
+  identical(obj[["name"]], rank)
 
 }
