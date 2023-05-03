@@ -16,9 +16,7 @@ coords <- function(obj) {
 
   ans <- paste(lat, lon, sep = ":")
 
-  has_sys <- !is.null(obj[["system"]])
-
-  if (has_sys) {
+  if (!is.null(obj[["system"]])) {
 
     sys <- toupper(obj[["system"]])
 
@@ -28,9 +26,7 @@ coords <- function(obj) {
 
     ans <- paste(ans, sys, sep = ":")
 
-    has_ratio <- !is.null(obj[["ratio"]])
-
-    if (has_ratio) {
+    if (!is.null(obj[["ratio"]])) {
 
       ans <- paste(ans, obj[["ratio"]], sep = ":")
 
