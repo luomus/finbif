@@ -42,27 +42,17 @@ cache_location <- new.env()
 
 get_cache <- function(hash) {
 
-  hash_exists <- exists(hash, envir = cache_location)
-
   data <- NULL
 
-  if (hash_exists) {
+  if (exists(hash, envir = cache_location)) {
 
     obj <- get(hash, envir = cache_location)
 
-    created <- obj[["created"]]
-
-    timeout <- obj[["timeout"]]
-
-    is_swagger <- obj[["swagger"]]
-
-    is_swagger <- isTRUE(is_swagger)
-
     valid <- TRUE
 
-    if (!is_swagger) {
+    if (!isTRUE(obj[["swagger"]])) {
 
-      valid <- cache_is_valid(timeout, created)
+      valid <- cache_is_valid(obj[["timeout"]], obj[["created"]])
 
     }
 
@@ -88,8 +78,6 @@ set_cache <- function(obj) {
 
   obj[["created"]] <- Sys.time()
 
-  hash <- obj[["hash"]]
-
-  assign(hash, obj, envir = cache_location)
+  assign(obj[["hash"]], obj, envir = cache_location)
 
 }
