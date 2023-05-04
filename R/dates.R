@@ -1,5 +1,4 @@
 #' @noRd
-#' @importFrom lubridate as_date period rollback int_end int_start
 
 dates <- function(obj) {
 

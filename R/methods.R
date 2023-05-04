@@ -1,5 +1,4 @@
 #' @noRd
-#' @export
 
 as.data.frame.finbif_records <- function(
   x,
@@ -277,7 +276,6 @@ localise_labels <- function(labels_obj) {
 
 #' @noRd
 #' @importFrom utils txtProgressBar setTxtProgressBar
-#' @export
 
 as.data.frame.finbif_records_list <- function(
   x,
