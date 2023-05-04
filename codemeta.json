@@ -257,7 +257,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "fileSize": "5403.371KB",
+  "fileSize": "5401.85KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
