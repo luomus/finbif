@@ -143,7 +143,7 @@ test_that(
 
     })
 
-    expect_output(print(trmd), "rank")
+    expect_output(print(trmd), "name")
 
   }
 
@@ -151,6 +151,8 @@ test_that(
 
 test_that(
   "returns errors appropriately", {
+
     expect_error(finbif_metadata("notmetadata"))
+
   }
 )

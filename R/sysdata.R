@@ -90,7 +90,7 @@ get_enumeration <- function(obj) {
 
   enumeration <- tolower(id)
 
-  enumeration <- list(enumeration = enumeration)
+  enumeration <- list(code = enumeration)
 
   enumeration <- structure(enumeration, class = "data.frame", row.names = id)
 
@@ -156,10 +156,6 @@ get_areas <- function(x) {
 
   col_names <- paste0("name_", supported_langs)
 
-  alpha <- c("alpha2", "alpha3")
-
-  col_names <- c(col_names, alpha, "alpha")
-
   n_cols <- length(col_names)
 
   sd_df <- vector("list", n_cols)
@@ -182,23 +178,13 @@ get_areas <- function(x) {
 
   }
 
-  for (j in alpha) {
+  alpha <- paste0("countryCodeISO", "alpha2")
 
-    el_j <- paste0("countryCodeISO", j)
+  alpha <- vapply(sd_response_results, get_el_recurse, "", alpha, "character")
 
-    sd_j <- vapply(sd_response_results, get_el_recurse, "", el_j, "character")
+  if (!all_na(alpha)) {
 
-    all_na_j <- all_na(sd_j)
-
-    if (all_na_j) {
-
-      sd_df[[j]] <- NULL
-
-    } else {
-
-      sd_df[[j]] <- sd_j
-
-    }
+    sd_df[["code"]] <- alpha
 
   }
 
@@ -206,15 +192,9 @@ get_areas <- function(x) {
 
   alpha <- vapply(sd_response_results, get_el_recurse, "", alpha, "character")
 
-  all_na_alpha <- all_na(alpha)
+  if (!all_na(alpha)) {
 
-  if (all_na_alpha) {
-
-    sd_df[["alpha"]] <- NULL
-
-  } else {
-
-    sd_df[["alpha"]] <- alpha
+    sd_df[["code"]] <- alpha
 
   }
 
@@ -270,7 +250,7 @@ filter_names <- function() {
 
 regulatory_status <- function() {
 
-  status_code <- c(
+  code <- c(
     MX.finlex160_1997_appendix4 = "FNLX160_97_4",
     MX.finlex160_1997_appendix4_specialInterest = "FNLX160_97_4_SI",
     MX.finlex160_1997_appendix2a = "FNLX160_97_2A",
@@ -329,29 +309,29 @@ regulatory_status <- function() {
 
   id <- row.names(reg_status)
 
-  status_code <- status_code[id]
+  code <- code[id]
 
-  status_code_na <- is.na(status_code)
+  code_na <- is.na(code)
 
-  missing_status_codes <- id[status_code_na]
+  missing_codes <- id[code_na]
 
-  missing_status_codes <- sub("^.*\\.", "", missing_status_codes)
+  missing_codes <- sub("^.*\\.", "", missing_codes)
 
-  missing_status_codes <- abbreviate(missing_status_codes, 20L)
+  missing_codes <- abbreviate(missing_codes, 20L)
 
-  missing_status_codes <- toupper(missing_status_codes)
+  missing_codes <- toupper(missing_codes)
 
-  status_code[status_code_na] <- missing_status_codes
+  code[code_na] <- missing_codes
 
-  status_code <- make.unique(status_code)
+  code <- make.unique(code)
 
-  status_code <- structure(status_code, class = "translation")
+  code <- structure(code, class = "translation")
 
-  status_code <- list(status_code = status_code)
+  code <- list(code = code)
 
-  status_code <- structure(status_code, class = "data.frame", row.names = id)
+  code <- structure(code, class = "data.frame", row.names = id)
 
-  cbind(status_code, reg_status)
+  cbind(code, reg_status)
 
 }
 
@@ -449,7 +429,7 @@ primary_secondary_habitat <- primary_habitat
 
 taxon_rank <- function() {
 
-  get_sysdata("MX.threatenedStatusEnum")
+  get_sysdata("MX.taxonRankEnum")
 
 }
 
@@ -975,7 +955,9 @@ source <- function() {
 
   sd_df <- structure(sd_df, row.names = row_names, names = col_names)
 
-  sd_df[["id"]] <- row_names
+  sd_df[["id"]] <- NULL
+
+  sd_df[["code"]] <- row_names
 
   sq <- seq_along(supported_langs)
 
