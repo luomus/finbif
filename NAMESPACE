@@ -2,7 +2,6 @@
 
 S3method("[",finbif_occ)
 S3method(conditionMessage,dfrd_errors)
-S3method(gen_seed,finbif_records_list)
 S3method(print,finbif_metadata_df)
 S3method(print,finbif_occ)
 S3method(print,finbif_taxa_list)

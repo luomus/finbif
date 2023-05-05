@@ -974,11 +974,7 @@ add_nas <- function(df) {
 
     ans <- df[[nm]]
 
-    is_na <- is.na(ans)
-
-    all_na <- all(is_na)
-
-    if (all_na) {
+    if (all_na(ans)) {
 
       file_vars <- attr(df, "file_vars", TRUE)
 
