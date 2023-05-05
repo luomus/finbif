@@ -120,9 +120,9 @@ parse_date <- function(date) {
 
       date <- tryCatch(
         as.Date(date),
-        warning = function(w) {
+        error = function(e) {
 
-          deferrable_error("Can not parse one or more specified dates")
+          deferrable_error("Can't parse one or more specified dates")
 
         }
       )
