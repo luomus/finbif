@@ -210,7 +210,6 @@ api_get <- function(obj) {
     fb_restricted_access_token, unset = query, query_w_fb_restricted_access
   )
 
-  # Pausing between requests is important if many request will be made
   rate_limit <- getOption("finbif_rate_limit")
 
   sleep <- 1 / rate_limit
@@ -235,6 +234,12 @@ api_get <- function(obj) {
     sprintf("%s/%s/%s", url, version, path)
   )
 
+  url_path <- switch(
+    path,
+    swagger = sprintf("%s/explorer/swagger.json", url),
+    url_path
+  )
+
   pkg_version <- utils::packageVersion("finbif")
 
   calling_fun <- get_calling_function("finbif")
@@ -256,6 +261,8 @@ api_get <- function(obj) {
   fb_access_token_par <- list(access_token = fb_access_token)
 
   query <- switch(use_private_api, true = query, c(query, fb_access_token_par))
+
+  query <- switch(path, swagger = list(), query)
 
   times <- getOption("finbif_retry_times")
 
