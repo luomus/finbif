@@ -118,20 +118,21 @@ parse_date <- function(date) {
 
     } else {
 
-      date <- tryCatch(
-        as.Date(date),
-        error = function(e) {
-
-          deferrable_error("Can't parse one or more specified dates")
-
-        }
-      )
+      date <- tryCatch(as.Date(date), error = date_error)
 
     }
 
   }
 
   date
+
+}
+
+#' @noRd
+
+date_error <- function(e) {
+
+  deferrable_error("Can't parse one or more specified dates")
 
 }
 
