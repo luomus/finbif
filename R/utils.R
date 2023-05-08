@@ -163,7 +163,10 @@ truncate_string_to_unique <- function(x) {
 
 #' @noRd
 
-char_all_equal <- function(x, i) {
+char_all_equal <- function(
+  x,
+  i
+) {
 
   chars <- substr(x, i, i)
 
