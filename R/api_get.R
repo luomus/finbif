@@ -13,19 +13,15 @@ api_get <- function(obj) {
 
   version <- getOption("finbif_api_version")
 
-  hash <- NULL
-
-  cache <- cache_as_logical(obj)
-
-  timeout <- get_timeout(obj)
-
-  obj[["timeout"]] <- timeout
+  path <- obj[["path"]]
 
   query <- obj[["query"]]
 
-  path <- obj[["path"]]
+  obj[["timeout"]] <- get_timeout(obj)
 
-  if (cache) {
+  hash <- NULL
+
+  if (obj[["cache"]] > 0) {
 
     query_list <- list(url, version, path, query)
 
@@ -33,29 +29,19 @@ api_get <- function(obj) {
 
     fcp <- getOption("finbif_cache_path")
 
-    is_path <- is.character(fcp)
-
-    no_cache_path <- is.null(fcp)
-
-    if (no_cache_path) {
+    if (is.null(fcp)) {
 
       cached_obj <- get_cache(hash)
 
-      has_cached_obj <- !is.null(cached_obj)
-
-      if (has_cached_obj) {
+      if (!is.null(cached_obj)) {
 
         return(cached_obj)
 
       }
 
-      on.exit({
+      on.exit(cache_obj(obj))
 
-        cache_obj(obj)
-
-      })
-
-    } else if (is_path) {
+    } else if (is.character(fcp)) {
 
       cache_file_name <- paste0("finbif_cache_file_", hash)
 
@@ -63,19 +49,13 @@ api_get <- function(obj) {
 
       obj[["cache_file_path"]] <- cache_file_path
 
-      cache_file_exists <- file.exists(cache_file_path)
-
-      if (cache_file_exists) {
+      if (file.exists(cache_file_path)) {
 
         created <- file.mtime(cache_file_path)
 
-        valid <- cache_is_valid(timeout, created)
+        if (cache_is_valid(obj[["timeout"]], created)) {
 
-        if (valid) {
-
-          cached_obj <- readRDS(cache_file_path)
-
-          return(cached_obj)
+          return(readRDS(cache_file_path))
 
         } else {
 
@@ -85,96 +65,62 @@ api_get <- function(obj) {
 
       }
 
-      on.exit({
-
-        save_obj(obj)
-
-      })
+      on.exit(save_obj(obj))
 
     } else {
 
-      has_dbi <- has_pkgs("DBI", "blob")
+      stopifnot(
+        "{DBI} & {blob} needed to use a DB cache" =  has_pkgs("DBI", "blob")
+      )
 
-      stopifnot("Packages {DBI} & {blob} needed to use a DB cache" = has_dbi)
-
-      has_table <- DBI::dbExistsTable(fcp, "finbif_cache")
-
-      if (!has_table) {
-
-        created <- numeric()
-
-        created <- as.POSIXct(created)
-
-        timeout_init <- numeric()
-
-        blob <- blob::blob()
+      if (!DBI::dbExistsTable(fcp, "finbif_cache")) {
 
         init <- data.frame(
           hash = character(),
-          created = created,
-          timeout = timeout_init,
-          blob = blob
+          created = as.POSIXct(numeric()),
+          timeout = numeric(),
+          blob = blob::blob()
         )
 
         DBI::dbWriteTable(fcp, "finbif_cache", init)
 
       } else {
 
-        db_query <- "SELECT * FROM finbif_cache WHERE hash = '%s'"
-
-        db_query <- sprintf(db_query, hash)
-
-        tm <- Sys.time()
-
-        tm <- as.character(tm)
+        db_query <- sprintf(
+          "SELECT * FROM finbif_cache WHERE hash = '%s'", hash
+        )
 
         db_cache <- DBI::dbGetQuery(fcp, db_query)
 
         nrows <- nrow(db_cache)
 
-        has_cached_obj <- nrows > 0L
+        if (nrows > 0L) {
 
-        if (has_cached_obj) {
+          created <- as.POSIXct(db_cache[["created"]], origin = "1970-01-01")
 
-          created <- db_cache[["created"]]
+          ind <- which.max(created)
 
-          created <- as.POSIXct(created, origin = "1970-01-01")
+          ind <- ind[[1L]]
 
-          last_cache_ind <- which.max(created)
+          if (cache_is_valid(db_cache[[ind, "timeout"]], created[[ind]])) {
 
-          last_cache_ind <- last_cache_ind[[1L]]
+            cached_obj <- db_cache[ind, "blob"]
 
-          created <- created[[last_cache_ind]]
+            debug_msg(
+              "[", as.character(Sys.time()), "] ", "Reading from cache: ", hash
+            )
 
-          timeout <- db_cache[["timeout"]]
-
-          timeout <- timeout[[last_cache_ind]]
-
-          valid <- cache_is_valid(timeout, created)
-
-          if (valid) {
-
-            cached_obj <- db_cache[last_cache_ind, "blob"]
-
-            cached_obj <- cached_obj[[1L]]
-
-            debug_msg("[", tm, "] ", "Reading from cache: ", hash)
-
-            cached_obj <- unserialize(cached_obj)
-
-            return(cached_obj)
+            return(unserialize(cached_obj[[1L]]))
 
           } else {
 
-            db_query <- "DELETE FROM finbif_cache WHERE hash = '%s'"
+            db_query <- sprintf(
+              "DELETE FROM finbif_cache WHERE hash = '%s'", hash
+            )
 
-            db_query <- sprintf(db_query, hash)
-
-            tm <- Sys.time()
-
-            tm <- as.character(tm)
-
-            debug_msg("[", tm, "] ", "Removing from cache: ", hash)
+            debug_msg(
+              "[", as.character(Sys.time()), "] ", "Removing from cache: ", hash
+            )
 
             DBI::dbExecute(fcp, db_query)
 
@@ -184,11 +130,7 @@ api_get <- function(obj) {
 
       }
 
-      on.exit({
-
-        append_obj(obj)
-
-      })
+      on.exit(append_obj(obj))
 
     }
 
@@ -204,17 +146,13 @@ api_get <- function(obj) {
     permissionToken = fb_restricted_access_token
   )
 
-  query_w_fb_restricted_access <- c(query, fb_restricted_access_token_par)
-
   query <- switch(
-    fb_restricted_access_token, unset = query, query_w_fb_restricted_access
+    fb_restricted_access_token,
+    unset = query,
+    c(query, fb_restricted_access_token_par)
   )
 
-  rate_limit <- getOption("finbif_rate_limit")
-
-  sleep <- 1 / rate_limit
-
-  Sys.sleep(sleep)
+  Sys.sleep(1 / getOption("finbif_rate_limit"))
 
   private_api <- Sys.getenv("FINBIF_PRIVATE_API", "unset")
 
@@ -226,10 +164,8 @@ api_get <- function(obj) {
 
   use_private_api <- Sys.getenv("FINBIF_USE_PRIVATE_API")
 
-  use_private_api <- tolower(use_private_api)
-
   url_path <- switch(
-    use_private_api,
+    tolower(use_private_api),
     true = sprintf("https://%s/api/%s", private_api, path),
     sprintf("%s/%s/%s", url, version, path)
   )
@@ -248,47 +184,29 @@ api_get <- function(obj) {
 
   agent <- paste0(agent, ":", calling_fun)
 
-  agent <- Sys.getenv("FINBIF_USER_AGENT", agent)
+  agent <- list(useragent = Sys.getenv("FINBIF_USER_AGENT", agent))
 
-  agent <- list(useragent = agent)
-
-  accept <- c(Accept = "application/json")
-
-  config <- list(headers = accept, options = agent)
-
-  config <- structure(config, class = "request")
+  config <- list(headers = c(Accept = "application/json"), options = agent)
 
   fb_access_token_par <- list(access_token = fb_access_token)
 
   query <- switch(use_private_api, true = query, c(query, fb_access_token_par))
 
-  query <- switch(path, swagger = list(), query)
-
-  times <- getOption("finbif_retry_times")
-
-  pause_base <- getOption("finbif_retry_pause_base")
-
-  pause_cap <- getOption("finbif_retry_pause_cap")
-
-  pause_min <- getOption("finbif_retry_pause_min")
-
   resp <- httr::RETRY(
     "GET",
     url_path,
-    config,
-    query = query,
-    times = times,
-    pause_base = pause_base,
-    pause_cap = pause_cap,
-    pause_min = pause_min,
+    structure(config, class = "request"),
+    query = switch(path, swagger = list(), query),
+    times = getOption("finbif_retry_times"),
+    pause_base = getOption("finbif_retry_pause_base"),
+    pause_cap = getOption("finbif_retry_pause_cap"),
+    pause_min = getOption("finbif_retry_pause_min"),
     terminate_on = 404L
   )
 
-  resp_url <- resp[["url"]]
-
   fb_access_token_str <- paste0("&access_token=", fb_access_token)
 
-  notoken <- gsub(fb_access_token_str, "", resp_url)
+  notoken <- gsub(fb_access_token_str, "", resp[["url"]])
 
   email <- getOption("finbif_email")
 
@@ -304,19 +222,11 @@ api_get <- function(obj) {
 
   resp[["url"]] <- notoken
 
-  request_url <- c("request", "url")
+  resp[[c("request", "url")]] <- notoken
 
-  resp[[request_url]] <- notoken
+  resp_type <- gsub("\\s", "",  resp[[c("headers", "content-type")]])
 
-  content_type <- c("headers", "content-type")
-
-  resp_type <- resp[[content_type]]
-
-  resp_type <- gsub("\\s", "", resp_type)
-
-  resp_not_json <- !identical(resp_type, "application/json;charset=utf-8")
-
-  if (resp_not_json) {
+  if (!identical(resp_type, "application/json;charset=utf-8")) {
 
     obj <- NULL
 
@@ -326,18 +236,12 @@ api_get <- function(obj) {
 
   parsed <- httr::content(resp)
 
-  status_code <- resp[["status_code"]]
-
-  status_code_error <- !identical(status_code, 200L)
-
-  if (status_code_error) {
+  if (!identical(resp[["status_code"]], 200L)) {
 
     obj <- NULL
 
-    err_msg_body <- parsed[["message"]]
-
     err_msg <- sprintf(
-      "API request failed [%s]\n%s>", status_code, err_msg_body
+      "API request failed [%s]\n%s>", resp[["status_code"]], parsed[["message"]]
     )
 
     stop(err_msg, call. = FALSE)
@@ -350,11 +254,9 @@ api_get <- function(obj) {
 
   obj[["hash"]] <- hash
 
-  tm <- Sys.time()
-
-  tm <- as.character(tm)
-
-  debug_msg("[", tm, "] ", "Request made to: ", notoken, " ", hash)
+  debug_msg(
+    "[", as.character(Sys.time()), "] ", "Request made to: ", notoken, " ", hash
+  )
 
   structure(obj, class = "finbif_api")
 
@@ -364,35 +266,17 @@ api_get <- function(obj) {
 
 get_calling_function <- function(pkg) {
 
-  calls <- sys.calls()
+  for (call in sys.calls()) {
 
-  for (call in calls) {
+    fun <- try(as.character(call[[1L]]), silent = TRUE)
 
-    fun <- try({
-
-        f <- call[[1L]]
-
-        as.character(f)
-
-      },
-      silent = TRUE
-    )
-
-    no_error <- inherits(fun, "character")
-
-    if (no_error) {
+    if (inherits(fun, "character")) {
 
       len <- length(fun)
 
-      fun <- fun[[len]]
-
       ns <- getNamespace(pkg)
 
-      nms <- ls(ns)
-
-      in_ns <- fun %in% nms
-
-      if (in_ns) {
+      if (fun[[len]] %in% ls(ns)) {
 
         break
 
@@ -404,13 +288,9 @@ get_calling_function <- function(pkg) {
 
   args <- call[-1L]
 
-  n_args <- length(args)
-
-  has_args <- n_args > 0L
-
   arg_nm_strs <- ""
 
-  if (has_args) {
+  if (length(args) > 0L) {
 
     type <- vapply(args, typeof, "")
 
@@ -434,17 +314,11 @@ add_email <- function(query) {
 
   email <- getOption("finbif_email")
 
-  has_email <- !is.null(email)
-
   use_private_api <- Sys.getenv("FINBIF_USE_PRIVATE_API")
 
   use_private_api <- as.logical(use_private_api)
 
-  use_private_api <- isTRUE(use_private_api)
-
-  add_email <- has_email && !use_private_api
-
-  if (add_email) {
+  if (!is.null(email) && !isTRUE(use_private_api)) {
 
     email_par <- list(personEmail = email)
 
@@ -462,17 +336,11 @@ get_token <- function() {
 
   fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
-  no_token <- identical(fb_access_token, "")
-
   use_private_api <- Sys.getenv("FINBIF_USE_PRIVATE_API")
 
   use_private_api <- as.logical(use_private_api)
 
-  use_private_api <- isTRUE(use_private_api)
-
-  needs_token <- no_token && !use_private_api
-
-  if (needs_token) {
+  if (identical(fb_access_token, "") && !isTRUE(use_private_api)) {
 
     stop(
       "Access token for FinBIF has not been set. Use finbif_get_token() to \n",
@@ -490,23 +358,11 @@ get_token <- function() {
 
 #' @noRd
 
-cache_as_logical <- function(obj) {
-
-  cache <- obj[["cache"]]
-
-  cache > 0
-
-}
-
-#' @noRd
-
 get_timeout <- function(obj) {
 
   timeout <- obj[["cache"]]
 
-  is_logical <- is.logical(timeout)
-
-  if (is_logical) {
+  if (is.logical(timeout)) {
 
     timeout <- Inf
 
@@ -520,13 +376,9 @@ get_timeout <- function(obj) {
 
 save_obj <- function(obj) {
 
-  has_obj <- !is.null(obj)
+  if (!is.null(obj)) {
 
-  if (has_obj) {
-
-    cache_file_path <- obj[["cache_file_path"]]
-
-    saveRDS(obj, cache_file_path)
+    saveRDS(obj, obj[["cache_file_path"]])
 
   }
 
@@ -536,15 +388,11 @@ save_obj <- function(obj) {
 
 cache_obj <- function(obj) {
 
-  has_obj <- !is.null(obj)
+  if (!is.null(obj)) {
 
-  if (has_obj) {
-
-    hash <- obj[["hash"]]
-
-    timeout <- obj[["timeout"]]
-
-    cache_obj <- list(data = obj, hash = hash, timeout = timeout)
+    cache_obj <- list(
+      data = obj, hash = obj[["hash"]], timeout = obj[["timeout"]]
+    )
 
     set_cache(cache_obj)
 
@@ -556,31 +404,22 @@ cache_obj <- function(obj) {
 
 append_obj <- function(obj) {
 
-  has_obj <- !is.null(obj)
-
-  if (has_obj) {
-
-    fcp <- getOption("finbif_cache_path")
-
-    hash <- obj[["hash"]]
-
-    created <- Sys.time()
-
-    timeout <- obj[["timeout"]]
+  if (!is.null(obj)) {
 
     blob <- serialize(obj, NULL)
 
-    blob <- blob::blob(blob)
+    hash <- obj[["hash"]]
 
     db_cache <- data.frame(
-      hash = hash, created = created, timeout = timeout, blob = blob
+      hash = hash,
+      created = Sys.time(),
+      timeout = obj[["timeout"]],
+      blob = blob::blob(blob)
     )
 
-    tm <- Sys.time()
+    debug_msg("[", as.character(Sys.time()), "] ", "Adding to cache: ", hash)
 
-    tm <- as.character(tm)
-
-    debug_msg("[", tm, "] ", "Adding to cache: ", hash)
+    fcp <- getOption("finbif_cache_path")
 
     DBI::dbAppendTable(fcp, "finbif_cache", db_cache)
 
@@ -596,15 +435,11 @@ get_restricted_access_token <- function(obj) {
 
   restricted_api <- obj[["restricted_api"]]
 
-  has_token <- !is.null(restricted_api)
-
-  if (has_token) {
+  if (!is.null(restricted_api)) {
 
     token <- Sys.getenv(restricted_api)
 
-    token_empty <- identical(token, "")
-
-    if (token_empty) {
+    if (identical(token, "")) {
 
       stop("Restricted API token declared but token is unset", call. = FALSE)
 
@@ -622,8 +457,14 @@ debug_msg <- function(...) {
 
   debug <- Sys.getenv("FINBIF_DEBUG", "nullfile")
 
-  f <- get(debug)
+  debug <- switch(
+    debug,
+    nullfile = nullfile(),
+    stdout = stdout(),
+    stderr = stderr(),
+    debug
+  )
 
-  cat(..., "\n", file = f(), sep = "", append = TRUE)
+  cat(..., "\n", file = debug, sep = "", append = TRUE)
 
 }
