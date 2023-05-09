@@ -104,7 +104,7 @@ finbif_occurrence_load <- function(
 
   all_cols <- any(all_cols)
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   col_names <- var_names[[var_type]]
 
@@ -752,7 +752,7 @@ new_vars <- function(df) {
 
   ss <- file_vars[ss, "superseeded"]
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   deselect <- var_names[deselect, "translated_var"]
 
@@ -996,7 +996,7 @@ add_nas <- function(df) {
 
       if (no_nm) {
 
-        file_vars <- var_names()
+        file_vars <- sysdata("var_names")
 
         file_var_type <- file_vars[[var_type]]
 
@@ -1028,7 +1028,7 @@ any_issues <- function(fb_occurrence_df) {
 
   any_issue <- "unit.quality.documentGatheringUnitQualityIssues"
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   any_issue <- var_names[[any_issue, var_type]]
 
@@ -1233,7 +1233,7 @@ dt_read <- function(fb_occurrence_obj) {
 
     select_type <- select[["type"]]
 
-    var_names <- var_names()
+    var_names <- sysdata("var_names")
 
     select_vars <-  var_names[select_query, select_type]
 
@@ -1502,7 +1502,7 @@ deselect <- function(select) {
 
   deselect <- select[["deselect"]]
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   deselect <- var_names[deselect, type]
 
@@ -1837,7 +1837,7 @@ paste_col <- function(x) {
 
 infer_file_vars <- function(cols) {
 
-  file_vars <- cite_file_vars()
+  file_vars <- sysdata("cite_file_vars")
 
   attr(file_vars, "lite") <- FALSE
 
@@ -1853,7 +1853,7 @@ infer_file_vars <- function(cols) {
 
   if (lite) {
 
-    lite_download_file_vars <- lite_download_file_vars()
+    lite_download_file_vars <- sysdata("lite_download_file_vars")
 
     file_vars <- lite_download_file_vars
 

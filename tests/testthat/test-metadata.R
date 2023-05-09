@@ -7,7 +7,13 @@ test_that(
 
     options(finbif_locale = "ru")
 
-    expect_s3_class(finbif_metadata("red_list"), "data.frame")
+    vcr::use_cassette("red_list_metadata", {
+
+      rlmd <- finbif_metadata("red_list")
+
+    })
+
+    expect_s3_class(rlmd, "data.frame")
 
     vcr::use_cassette("country_metadata", {
 
@@ -115,7 +121,13 @@ test_that(
 
     expect_s3_class(rsmd, "data.frame")
 
-    expect_s3_class(finbif_metadata("habitat_type"), "data.frame")
+    vcr::use_cassette("habitat_type_metadata", {
+
+      htmd <- finbif_metadata("habitat_type")
+
+    })
+
+    expect_s3_class(htmd, "data.frame")
 
     expect_s3_class(finbif_metadata("habitat_qualifier"), "data.frame")
 

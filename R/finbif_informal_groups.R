@@ -30,7 +30,7 @@ finbif_informal_groups <- function(
   locale = getOption("finbif_locale")
 ) {
 
-  if (!locale %in% supported_langs) {
+  if (!locale %in% sysdata("supported_langs")) {
 
     locale <- "en"
 

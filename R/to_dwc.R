@@ -40,9 +40,9 @@ to_native <- function(...) {
 #' @export
 
 from_schema <- function(
-    ...,
-    to = c("native", "dwc", "short"),
-    file = c("none", "citable", "lite")
+  ...,
+  to = c("native", "dwc", "short"),
+  file = c("none", "citable", "lite")
 ) {
 
   nms <- c(...)
@@ -51,9 +51,9 @@ from_schema <- function(
 
   vars <- switch(
     match.arg(file),
-    none = var_names(),
-    citable = cite_file_vars(),
-    lite = lite_download_file_vars()
+    none = sysdata("var_names"),
+    citable = sysdata("cite_file_vars"),
+    lite = sysdata("lite_download_file_vars")
   )
 
   to <- switch(
@@ -77,7 +77,7 @@ to <- function(
 
   x <- unlist(x)
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   vars_to <- var_names[[to]]
 

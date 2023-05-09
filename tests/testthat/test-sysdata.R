@@ -3,33 +3,39 @@ test_that(
 
     skip_on_cran()
 
-    expect_s3_class(has_value(), "data.frame")
+    expect_s3_class(sysdata("has_value"), "data.frame")
 
-    expect_s3_class(threatened_status(), "data.frame")
+    vcr::use_cassette("threatened_status", {
 
-    expect_s3_class(informal_groups_reported(), "data.frame")
+      ts <- sysdata("threatened_status")
 
-    expect_s3_class(finnish_occurrence_status_neg(), "data.frame")
+    })
 
-    expect_s3_class(superrecord_basis(), "data.frame")
+    expect_s3_class(ts, "data.frame")
 
-    expect_s3_class(quality_issues(), "data.frame")
+    expect_s3_class(sysdata("informal_groups_reported"), "data.frame")
+
+    expect_s3_class(sysdata("finnish_occurrence_status_neg"), "data.frame")
+
+    expect_s3_class(sysdata("superrecord_basis"), "data.frame")
+
+    expect_s3_class(sysdata("quality_issues"), "data.frame")
 
     vcr::use_cassette("collection_quality", {
 
-      cq <- collection_quality()
+      cq <- sysdata("collection_quality")
 
     })
 
     expect_s3_class(cq, "data.frame")
 
-    expect_s3_class(record_reliability(), "data.frame")
+    expect_s3_class(sysdata("record_reliability"), "data.frame")
 
-    expect_s3_class(complete_list_type(), "data.frame")
+    expect_s3_class(sysdata("complete_list_type"), "data.frame")
 
     vcr::use_cassette("location_tag", {
 
-      lt <- location_tag()
+      lt <- sysdata("location_tag")
 
     })
 
@@ -37,7 +43,7 @@ test_that(
 
     vcr::use_cassette("atlas_code", {
 
-      aco <- atlas_code()
+      aco <- sysdata("atlas_code")
 
     })
 
@@ -45,11 +51,17 @@ test_that(
 
     vcr::use_cassette("atlas_class", {
 
-      acl <- atlas_class()
+      acl <- sysdata("atlas_class")
 
     })
 
     expect_s3_class(acl, "data.frame")
+
+    expect_s3_class(
+      sysdata("primary_secondary_habitat")[["habitat_types"]], "data.frame"
+    )
+
+    expect_s3_class(sysdata("orig_taxon_rank"), "data.frame")
 
   }
 )

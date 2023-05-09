@@ -534,6 +534,8 @@ conditionMessage.dfrd_errors <- function(c) {
 
 get_locale <- function() {
 
+  supported_langs <- sysdata("supported_langs")
+
   ans <- supported_langs[[1L]]
 
   env <- c("LANGUAGE", "LANG")
@@ -592,6 +594,8 @@ with_locale <- function(
   } else if (l > 1L) {
 
     nms <- names(x)
+
+    supported_langs <- sysdata("supported_langs")
 
     locales <- setdiff(supported_langs, locale)
 

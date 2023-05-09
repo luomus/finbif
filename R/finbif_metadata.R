@@ -15,9 +15,7 @@
 #' }
 #' @export
 
-finbif_metadata <- function(
-  which
-) {
+finbif_metadata <- function(which) {
 
   metadata_name <- c(
     "regulatory_status",
@@ -51,23 +49,24 @@ finbif_metadata <- function(
 
     data <- switch(
       which,
-      regulatory_status = regulatory_status(),
-      red_list = red_list_status(),
-      country = country(),
-      region = region(),
-      bio_province = bio_province(),
-      municipality = municipality(),
-      bird_assoc_area = bird_assoc_area(),
-      finnish_occurrence_status = finnish_occurrence_status(),
-      habitat_type = primary_habitat()[["habitat_types"]],
-      habitat_qualifier = primary_habitat()[["specific_habitat_types"]],
-      life_stage = life_stage(),
-      record_basis = record_basis(),
-      restriction_level = restriction_level(),
-      restriction_reason = restriction_reason(),
-      sex_category = sex(),
-      source = source(),
-      taxon_rank = taxon_rank()
+      regulatory_status = sysdata("regulatory_status"),
+      red_list = sysdata("red_list_status"),
+      country = sysdata("country"),
+      region = sysdata("region"),
+      bio_province = sysdata("bio_province"),
+      municipality = sysdata("municipality"),
+      bird_assoc_area = sysdata("bird_assoc_area"),
+      finnish_occurrence_status = sysdata("finnish_occurrence_status"),
+      habitat_type = sysdata("primary_habitat")[["habitat_types"]],
+      habitat_qualifier =
+        sysdata("primary_habitat")[["specific_habitat_types"]],
+      life_stage = sysdata("life_stage"),
+      record_basis = sysdata("record_basis"),
+      restriction_level = sysdata("restriction_level"),
+      restriction_reason = sysdata("restriction_reason"),
+      sex_category = sysdata("sex"),
+      source = sysdata("source"),
+      taxon_rank = sysdata("taxon_rank")
     )
 
     locale <- getOption("finbif_locale")

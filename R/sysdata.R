@@ -1,6 +1,50 @@
 #' @noRd
 
-supported_langs <- c(English = "en", Finnish = "fi", Swedish = "sv")
+sysdata <- function(which) {
+
+  switch(
+    which,
+    supported_langs = c(English = "en", Finnish = "fi", Swedish = "sv"),
+    var_names = var_names_df,
+    has_value = has_value_df,
+    cite_file_vars = cite_file_vars_df,
+    lite_download_file_vars = lite_download_file_vars_df,
+    filter_names = filter_names_df,
+    regulatory_status = regulatory_status(),
+    red_list_status = red_list_status(),
+    threatened_status = get_sysdata("MX.threatenedStatusEnum"),
+    informal_groups = informal_groups(),
+    informal_groups_reported = informal_groups(),
+    primary_habitat = primary_habitat(),
+    primary_secondary_habitat = primary_habitat(),
+    taxon_rank = get_sysdata("MX.taxonRankEnum"),
+    orig_taxon_rank = get_sysdata("MX.taxonRankEnum"),
+    country = get_areas("country"),
+    region = get_areas("province"),
+    bio_province = get_areas("biogeographicalProvince"),
+    municipality = municipality(),
+    bird_assoc_area = bird_assoc_area(),
+    finnish_occurrence_status = finnish_occurrence_status(),
+    finnish_occurrence_status_neg = finnish_occurrence_status(),
+    source = sources(),
+    record_basis = record_basis(),
+    superrecord_basis = superrecord_basis(),
+    life_stage = life_stage(),
+    sex = sex(),
+    restriction_reason = restriction_reason(),
+    restriction_level = restriction_level(),
+    quality_issues = quality_issues(),
+    collection_quality = collection_quality(),
+    record_quality = record_quality(),
+    record_reliability = record_reliability(),
+    complete_list_type = complete_list_type(),
+    location_tag = get_sysdata("MNP.tagEnum"),
+    atlas_code = get_sysdata("MY.atlasCodeEnum"),
+    atlas_class = get_sysdata("MY.atlasClassEnum"),
+    abundance_unit = get_sysdata("MY.abundanceUnitEnum")
+  )
+
+}
 
 #' @noRd
 
@@ -17,6 +61,8 @@ get_sysdata <- function(x) {
   sd_response <- api_get(request)
 
   sd_response_content <- sd_response[["content"]]
+
+  supported_langs <- sysdata("supported_langs")
 
   n_langs <- length(supported_langs)
 
@@ -154,6 +200,8 @@ get_areas <- function(x) {
 
   row_names <- vapply(sd_response_results, getElement, "", "id")
 
+  supported_langs <- sysdata("supported_langs")
+
   col_names <- paste0("name_", supported_langs)
 
   n_cols <- length(col_names)
@@ -208,41 +256,35 @@ get_areas <- function(x) {
 
 #' @noRd
 
-var_names <- function() {
+replace_missing_names <- function(df) {
 
-  var_names_df
+  supported_langs <- sysdata("supported_langs")
 
-}
+  col_names <- paste0("name_", supported_langs)
 
-#' @noRd
+  for (i in col_names) {
 
-has_value <- function() {
+    col <- df[[i]]
 
-  has_value_df
+    other_col_names <- setdiff(col_names, i)
 
- }
+    for (j in other_col_names) {
 
-#' @noRd
+      missing <- is.na(col)
 
-cite_file_vars <- function() {
+      other_col <- df[[j]]
 
-  cite_file_vars_df
+      replace <- other_col[missing]
 
-}
+      col[missing] <- replace
 
-#' @noRd
+    }
 
-lite_download_file_vars <- function() {
+    df[[i]] <- col
 
-  lite_download_file_vars_df
+  }
 
-}
-
-#' @noRd
-
-filter_names <- function() {
-
-  filter_names_df
+  df
 
 }
 
@@ -347,14 +389,6 @@ red_list_status <- function() {
 
 #' @noRd
 
-threatened_status <- function() {
-
-  get_sysdata("MX.threatenedStatusEnum")
-
-}
-
-#' @noRd
-
 informal_groups <- function() {
 
   query <- list(lang = "multi", pageSize = 1000L)
@@ -368,6 +402,8 @@ informal_groups <- function() {
   results <- c("content", "results")
 
   sd_response_content <- sd_response[[results]]
+
+  supported_langs <- sysdata("supported_langs")
 
   n_langs <- length(supported_langs)
 
@@ -403,10 +439,6 @@ informal_groups <- function() {
 
 #' @noRd
 
-informal_groups_reported <- informal_groups
-
-#' @noRd
-
 primary_habitat <- function() {
 
   habitat_types <- list(prefix = "MKV.habitat", suffix = "Enum")
@@ -418,46 +450,6 @@ primary_habitat <- function() {
   specific_types <- get_code(specific_types)
 
   list(habitat_types = habitat_types, specific_habitat_types = specific_types)
-
-}
-
-#' @noRd
-
-primary_secondary_habitat <- primary_habitat
-
-#' @noRd
-
-taxon_rank <- function() {
-
-  get_sysdata("MX.taxonRankEnum")
-
-}
-
-#' @noRd
-
-orig_taxon_rank <- taxon_rank
-
-#' @noRd
-
-country <- function() {
-
-  get_areas("country")
-
-}
-
-#' @noRd
-
-region <- function() {
-
-  get_areas("province")
-
-}
-
-#' @noRd
-
-bio_province <- function() {
-
-  get_areas("biogeographicalProvince")
 
 }
 
@@ -919,11 +911,7 @@ finnish_occurrence_status <- function() {
 
 #' @noRd
 
-finnish_occurrence_status_neg <- finnish_occurrence_status
-
-#' @noRd
-
-source <- function() {
+sources <- function() {
 
   query <- list(lang = "multi", pageSize = 1000L)
 
@@ -940,6 +928,8 @@ source <- function() {
   row_names <- vapply(sd_response_results, getElement, "", "id")
 
   types <- c("name", "description")
+
+  supported_langs <- sysdata("supported_langs")
 
   n_langs <- length(supported_langs)
 
@@ -1146,69 +1136,5 @@ complete_list_type <- function() {
   )
 
   structure(options, row.names = rnms, class = "data.frame")
-
-}
-
-#' @noRd
-
-location_tag <- function() {
-
-  get_sysdata("MNP.tagEnum")
-
-}
-
-#' @noRd
-
-atlas_code <- function() {
-
-  get_sysdata("MY.atlasCodeEnum")
-
-}
-
-#' @noRd
-
-atlas_class <- function() {
-
-  get_sysdata("MY.atlasClassEnum")
-
-}
-
-#' @noRd
-
-abundance_unit <- function() {
-
-  get_sysdata("MY.abundanceUnitEnum")
-
-}
-
-#' @noRd
-
-replace_missing_names <- function(df) {
-
-  col_names <- paste0("name_", supported_langs)
-
-  for (i in col_names) {
-
-    col <- df[[i]]
-
-    other_col_names <- setdiff(col_names, i)
-
-    for (j in other_col_names) {
-
-      missing <- is.na(col)
-
-      other_col <- df[[j]]
-
-      replace <- other_col[missing]
-
-      col[missing] <- replace
-
-    }
-
-    df[[i]] <- col
-
-  }
-
-  df
 
 }

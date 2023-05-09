@@ -102,7 +102,7 @@ records <- function(fb_records_obj) {
 
       order_by <- sub("^-", "", order_by)
 
-      var_names <- var_names()
+      var_names <- sysdata("var_names")
 
       var_names_order <- var_names[["order"]]
 
@@ -182,7 +182,7 @@ records_data_frame <- function(x) {
 
   cols <- attr(x, "select")
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   single_col <- var_names[cols, "single"]
 
@@ -280,7 +280,7 @@ process_cols <- function(x) {
 
   col_list <- list()
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   for (col in attr(x, "select")) {
 
@@ -340,6 +340,8 @@ process_cols <- function(x) {
 
           langs <- unlist(langs)
 
+          supported_langs <- sysdata("supported_langs")
+
           if (any(langs %in% supported_langs)) {
 
             ans <- vapply(ans, with_locale, type_na, locale)
@@ -378,9 +380,7 @@ localise_labels <- function(labels_obj) {
 
   var_names <- labels_obj[["var_names"]]
 
-  new_labels <- get(var_names[[col, "translated_var"]])
-
-  new_labels <- new_labels()
+  new_labels <- sysdata(var_names[[col, "translated_var"]])
 
   locale_col <- paste0("name_", labels_obj[["locale"]])
 
@@ -454,7 +454,7 @@ infer_selection <- function(fb_records_obj) {
 
   var_type <- fb_records_obj[["var_type"]]
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   is_date_time_vars <- var_names[["date"]]
 
@@ -764,7 +764,7 @@ infer_computed_vars <- function(fb_records_obj) {
 
   computed_var_list <- list(abundance, cu, citation, sn, red_list, region)
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   for (i in computed_var_list) {
 
@@ -1224,7 +1224,7 @@ parse_filters <- function(fb_records_obj) {
   finbif_filter_names <- names(filter)
 
   finbif_filter_names <- list(
-    x = finbif_filter_names, translation = "filter_names", env = -1
+    x = finbif_filter_names, translation = "filter_names"
   )
 
   finbif_filter_names <- translate(finbif_filter_names)
@@ -1249,7 +1249,7 @@ parse_filters <- function(fb_records_obj) {
 
   cols <- c("id", "collection_name", "abbreviation")
 
-  filter_names <- filter_names()
+  filter_names <- sysdata("filter_names")
 
   for (i in filter_sq) {
 
@@ -1275,7 +1275,7 @@ parse_filters <- function(fb_records_obj) {
 
     if (requires_translation) {
 
-      filter_i <- list(x = filter_i, translation = nm_i, env = -1)
+      filter_i <- list(x = filter_i, translation = nm_i)
 
       filter_i <- translate(filter_i)
 
@@ -1397,19 +1397,17 @@ translate <- function(translation_obj) {
 
   translation <- translation_obj[["translation"]]
 
-  pos <- translation_obj[["env"]]
+  lst <- translation_obj[["env"]]
 
-  trsltn <- get(translation, pos)
+  if (translation %in% names(lst)) {
 
-  is_fun <- is.function(trsltn)
+    trsltn <- lst[[translation]]
 
-  if (is_fun) {
+  } else {
 
-    trsltn <- trsltn()
+    trsltn <- sysdata(translation)
 
   }
-
-  # Some filters have multi-level values to translate (e.g., primary_habitat)
 
   is_list <- is.list(x)
 
@@ -1922,7 +1920,7 @@ na_exclude <- function(fb_records_obj) {
 
     has_value <- c(hasValue = has_value)
 
-    var_names <- var_names()
+    var_names <- sysdata("var_names")
 
     available_vars <- row.names(var_names)
 
