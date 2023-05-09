@@ -281,7 +281,9 @@ occurrence <- function(fb_records_obj) {
 
   pb_head("Processing data", quiet = quiet)
 
-  fb_occurrence_df <- as.data.frame(records, locale = locale, quiet = quiet)
+  attr(records, "quiet") <- quiet
+
+  fb_occurrence_df <- records_list_data_frame(records)
 
   colnames <- names(fb_occurrence_df)
 
@@ -376,6 +378,87 @@ occurrence <- function(fb_records_obj) {
   names(fb_occurrence_df) <- names(select_user)
 
   fb_occurrence_df
+
+}
+
+#' @noRd
+#' @importFrom utils txtProgressBar setTxtProgressBar
+
+records_list_data_frame <- function(x) {
+
+  quiet <- attr(x, "quiet")
+
+  n <- length(x)
+
+  if (!quiet) {
+
+    pb <- utils::txtProgressBar(0L, n, style = 3L)
+
+    on.exit(close(pb))
+
+  }
+
+  df <- list()
+
+  for (i in seq_len(n)) {
+
+    if (!quiet) {
+
+      utils::setTxtProgressBar(pb, i)
+
+    }
+
+    xi <- x[[i]]
+
+    dfi <- attr(xi, "df")
+
+    if (is.null(dfi)) {
+
+      dfi <- records_data_frame(xi)
+
+    }
+
+    df[[i]] <- dfi
+
+  }
+
+  url <- vapply(df, attr, "", "url", TRUE)
+
+  time <- lapply(df, attr, "time", TRUE)
+
+  df <- do.call(rbind, df)
+
+  record_id <- switch(
+    xi[["aggregate"]], none = "unit.unitId", xi[["select_query"]]
+  )
+
+  record_id <- do.call(paste, df[, record_id, drop = FALSE])
+
+  if (inherits(x, "finbif_records_sample_list")) {
+
+    nrows <- nrow(df)
+
+    records <- sample.int(nrows)
+
+    if (attr(x, "cache")) {
+
+      seed <- gen_seed(x)
+
+      records <- sample_with_seed(nrows, nrows, seed)
+
+    }
+
+    df <- df[records, ]
+
+  }
+
+  if (!attr(x, "record_id")) {
+
+    df[["unit.unitId"]] <- NULL
+
+  }
+
+  structure(df, url = url, time = do.call(c, time), record_id = record_id)
 
 }
 

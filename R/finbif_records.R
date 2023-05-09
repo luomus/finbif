@@ -18,8 +18,6 @@ records <- function(fb_records_obj) {
 
   count_only <- fb_records_obj[["count_only"]]
 
-  locale <- fb_records_obj[["locale"]]
-
   max_size <- getOption("finbif_max_page_size")
 
   fb_records_obj[["max_size"]] <- max_size
@@ -164,7 +162,7 @@ records <- function(fb_records_obj) {
 
     last <- ans[[ind]]
 
-    last_df <- as.data.frame(last, locale = locale)
+    last_df <- records_data_frame(last)
 
     attr(last, "df") <- last_df
 
@@ -173,6 +171,236 @@ records <- function(fb_records_obj) {
   }
 
   ans
+
+}
+
+#' @noRd
+
+records_data_frame <- function(x) {
+
+  results <- x[[c("content", "results")]]
+
+  cols <- attr(x, "select")
+
+  var_names <- var_names()
+
+  single_col <- var_names[cols, "single"]
+
+  aggregation <- attr(x, "aggregate")
+
+  aggregated <- !identical(aggregation, "none")
+
+  if (aggregated) {
+
+    n_cols <- length(cols)
+
+    single_col <- rep(TRUE, n_cols)
+
+    aggregations <- c(
+      records = "count",
+      species = "speciesCount",
+      taxa = "taxonCount",
+      individuals = "individualCountSum",
+      pairs = "pairCountSum",
+      events = "count",
+      documents = "count"
+    )
+
+    aggregations <- aggregations[aggregation]
+
+    aggregation_nms <- names(aggregations)
+
+    counts <- list()
+
+    for (i in seq_along(aggregations)) {
+
+      aggregation_nm <- aggregation_nms[[i]]
+
+      count <- vapply(results, get_el_recurse, 0L, aggregations[[i]], "integer")
+
+      na_count <- is.na(count)
+
+      counts[[aggregation_nm]] <- ifelse(na_count, 0L, count)
+
+    }
+
+    results <- lapply(results, getElement, "aggregateBy")
+
+  }
+
+  attr(results, "select") <- cols
+
+  attr(results, "locale") <- attr(x, "locale")
+
+  attr(results, "aggregated") <- aggregated
+
+  results <- process_cols(results)
+
+  cols_split <- split(cols, single_col)
+
+  cols_single <- cols_split[["TRUE"]]
+
+  df <- as.data.frame(results[cols_single, drop = FALSE])
+
+  cols_list <- cols_split[["FALSE"]]
+
+  df[cols_list] <- results[cols_list, drop = FALSE]
+
+  if (aggregated) {
+
+    aggregation_cols <- paste0("n_", aggregation)
+
+    cols <- c(cols, aggregation_cols)
+
+    for (i in seq_along(aggregation)) {
+
+      aggregation_col_i <- aggregation_cols[[i]]
+
+      df[[aggregation_col_i]] <- counts[[i]]
+
+    }
+
+  }
+
+  structure(
+    df[cols],
+    url = x[[c("response", "url")]],
+    time = x[[c("response", "date")]]
+  )
+
+}
+
+#' @noRd
+
+process_cols <- function(x) {
+
+  locale <- attr(x, "locale")
+
+  aggregated <- attr(x, "aggregated")
+
+  col_list <- list()
+
+  var_names <- var_names()
+
+  for (col in attr(x, "select")) {
+
+    type  <- var_names[[col, "type"]]
+
+    type_na <- cast_to_type(NA, type)
+
+    single <- var_names[[col, "single"]]
+
+    localised <- var_names[[col, "localised"]]
+
+    labels_obj <- list(col = col, var_names = var_names, locale = locale)
+
+    if (aggregated) {
+
+      ans <- vapply(x, getElement, NA_character_, col)
+
+      ans <- ifelse(ans == "", NA_character_, ans)
+
+      if (localised) {
+
+        labels_obj[["labels"]] <- ans
+
+        ans <- localise_labels(labels_obj)
+
+      }
+
+      ans <- cast_to_type(ans, type)
+
+    } else {
+
+      col_els <- strsplit(col, "\\.")
+
+      col_els <- col_els[[1L]]
+
+      if (single) {
+
+        ans <- vapply(x, get_el_recurse, type_na, col_els, type)
+
+        if (localised) {
+
+          labels_obj[["labels"]] <- ans
+
+          ans <- localise_labels(labels_obj)
+
+        }
+
+      } else {
+
+        ans <- lapply(x, get_el_recurse, col_els, type)
+
+        ans <- lapply(ans, unlist)
+
+        if (localised) {
+
+          langs <- lapply(ans, names)
+
+          langs <- unlist(langs)
+
+          if (any(langs %in% supported_langs)) {
+
+            ans <- vapply(ans, with_locale, type_na, locale)
+
+          } else {
+
+            for (i in seq_along(ans)) {
+
+              labels_obj[["labels"]] <- ans[[i]]
+
+              ans[[i]] <- localise_labels(labels_obj)
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+    col_list[[col]] <- ans
+
+  }
+
+  col_list
+
+}
+
+#' @noRd
+
+localise_labels <- function(labels_obj) {
+
+  col <- labels_obj[["col"]]
+
+  var_names <- labels_obj[["var_names"]]
+
+  new_labels <- get(var_names[[col, "translated_var"]])
+
+  new_labels <- new_labels()
+
+  locale_col <- paste0("name_", labels_obj[["locale"]])
+
+  new_label_names <- names(new_labels)
+
+  label_col <- which(new_label_names == locale_col)
+
+  label_col <- max(1L, label_col)
+
+  obj_labels <- labels_obj[["labels"]]
+
+  labels_na <- is.na(obj_labels)
+
+  localised_labels <- ifelse(
+    labels_na, obj_labels, new_labels[obj_labels, label_col]
+  )
+
+  localised_labels_na <- is.na(localised_labels)
+
+  ifelse(localised_labels_na, obj_labels, localised_labels)
 
 }
 
@@ -698,13 +926,10 @@ request <- function(fb_records_obj) {
 
   resp <- list(resp)
 
-  class <- c("finbif_records_list", "finbif_api_list")
-
   select <- unique(select)
 
   fb_records_list <- structure(
     resp,
-    class = class,
     max_size = max_size,
     quiet = quiet,
     path = path,
@@ -814,15 +1039,13 @@ records_obj <- function(fb_records_obj) {
 
   response <- api_get(fb_records_obj)
 
-  class <- c("finbif_records", "finbif_api")
-
   select <- fb_records_obj[["select_query"]]
 
   select <- unique(select)
 
   aggregate <- fb_records_obj[["aggregate"]]
 
-  structure(response, class = class, select = select, aggregate = aggregate)
+  structure(response, select = select, aggregate = aggregate)
 
 }
 
@@ -852,8 +1075,6 @@ get_extra_pages <- function(fb_records_list) {
   restricted_api <- attr(fb_records_list, "restricted_api", TRUE)
 
   df <- attr(fb_records_list, "df", TRUE)
-
-  locale <- attr(fb_records_list, "locale", TRUE)
 
   fb_records_obj <- list(
     path = path,
@@ -964,9 +1185,7 @@ get_extra_pages <- function(fb_records_list) {
 
       fb_records_list_i <- fb_records_list[[i]]
 
-      # More performant to convert to data.frame directly from list
-
-      fb_records_df_i <- as.data.frame(fb_records_list[[i]], locale = locale)
+      fb_records_df_i <- records_data_frame(fb_records_list[[i]])
 
       attr(fb_records_list_i, "df") <- fb_records_df_i
 
@@ -1328,15 +1547,11 @@ record_sample <- function(fb_records_list) {
 
   attr(fb_records_list, "remove") <- remove
 
-  class <- c(
-    "finbif_records_sample_list", "finbif_records_list", "finbif_api_list"
-  )
-
   ans <- remove_records(fb_records_list)
 
   structure(
     ans,
-    class = class,
+    class = "finbif_records_sample_list",
     nrec_dnld = n,
     nrec_avl = n_tot,
     select = select,
