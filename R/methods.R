@@ -12,9 +12,7 @@
 
   n_args <- nargs()
 
-  has_drop <- !missing(drop)
-
-  if (has_drop) {
+  if (!missing(drop)) {
 
     n_args <- n_args - 1L
 
@@ -32,9 +30,7 @@
 
   cols <- seq_len(ncols)
 
-  lt3 <- n_args < 3L
-
-  if (lt3) {
+  if (n_args < 3L) {
 
     if (has_i) {
 
@@ -52,9 +48,7 @@
 
     if (has_i) {
 
-      i_is_bool <- is.logical(i)
-
-      if (i_is_bool) {
+      if (is.logical(i)) {
 
         i <- rep_len(i, nrows)
 
@@ -78,11 +72,7 @@
 
   }
 
-  ans <- as.data.frame(ans, stringsAsFactors = FALSE)
-
-  class <- class(x)
-
-  ans <- structure(ans, class = class)
+  ans <- structure(as.data.frame(ans), class = class(x))
 
   attr <- attributes(x)
 
@@ -92,17 +82,13 @@
 
   id <- attr[["record_id"]]
 
-  id <- id[rows]
-
-  attr[["record_id"]] <- id
+  attr[["record_id"]] <- id[rows]
 
   mostattributes(ans) <- attr
 
   nms <- names(x)
 
-  cols_not_nms <- !is.character(cols)
-
-  if (cols_not_nms) {
+  if (!is.character(cols)) {
 
     cols <- nms[cols]
 
