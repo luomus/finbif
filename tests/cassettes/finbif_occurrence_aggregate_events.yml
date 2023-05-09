@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 09:10:43 GMT
+      date: Tue, 09 May 2023 13:59:55 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -30,5 +30,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"currentPage":1,"lastPage":1,"pageSize":10,"total":4,"results":[{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/KE.8_1008632#1"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/KE.8_1071931#1"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/KE.8_1115147#1"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/KE.8_1218583#1"},"count":1}]}'
-  recorded_at: 2023-03-29 09:10:43 GMT
+  recorded_at: 2023-05-09 13:59:55 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

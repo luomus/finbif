@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 09:10:50 GMT
+      date: Tue, 09 May 2023 14:00:00 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -86,5 +86,5 @@ http_interactions:
         r.y.","sv":""}},{"id":"ML.1127","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Suomen
         ulkopuoliset alueet","en":"","fi":"Suomen ulkopuoliset alueet","sv":""}},{"id":"ML.1267","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Ostrobothnia
         Australis r.f.","en":"","fi":"Ostrobothnia Australis r.f.","sv":""}}],"lastPage":1,"@context":"http://schema.laji.fi/context/area.jsonld"}'
-  recorded_at: 2023-03-29 09:10:50 GMT
+  recorded_at: 2023-05-09 14:00:00 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

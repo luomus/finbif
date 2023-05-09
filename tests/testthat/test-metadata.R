@@ -31,21 +31,9 @@ test_that(
 
     expect_s3_class(rmd, "data.frame")
 
-    vcr::use_cassette("bio_province_metadata", {
+    expect_s3_class(finbif_metadata("bio_province"), "data.frame")
 
-      bpmd <- finbif_metadata("bio_province")
-
-    })
-
-    expect_s3_class(bpmd, "data.frame")
-
-    vcr::use_cassette("municipality_metadata", {
-
-      mmd <- finbif_metadata("municipality")
-
-    })
-
-    expect_s3_class(mmd, "data.frame")
+    expect_s3_class(finbif_metadata("municipality"), "data.frame")
 
     vcr::use_cassette("bird_assoc_area_metadata", {
 
@@ -71,21 +59,9 @@ test_that(
 
     expect_s3_class(smd, "data.frame")
 
-    vcr::use_cassette("record_basis_metadata", {
+    expect_s3_class(finbif_metadata("record_basis"), "data.frame")
 
-      rbmd <- finbif_metadata("record_basis")
-
-    })
-
-    expect_s3_class(rbmd, "data.frame")
-
-    vcr::use_cassette("sex_category_metadata", {
-
-      scmd <- finbif_metadata("sex_category")
-
-    })
-
-    expect_s3_class(scmd, "data.frame")
+    expect_s3_class(finbif_metadata("sex_category"), "data.frame")
 
     expect_s3_class(finbif_metadata("restriction_reason"), "data.frame")
 
@@ -97,13 +73,7 @@ test_that(
 
     expect_s3_class(rlmd, "data.frame")
 
-    vcr::use_cassette("life_stage_metadata", {
-
-      lsmd <- finbif_metadata("life_stage")
-
-    })
-
-    expect_s3_class(lsmd, "data.frame")
+    expect_s3_class(finbif_metadata("life_stage"), "data.frame")
 
     vcr::use_cassette("taxon_rank_metadata", {
 

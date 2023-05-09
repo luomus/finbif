@@ -15,13 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 09 May 2023 13:47:20 GMT
+      date: Tue, 09 May 2023 13:59:59 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"531-5qkI0/7r87AQSpGfInQN4o71HcU"
+      etag: W/"531-fKhsKevokcRAqJcorJnlgXwZHBY"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
@@ -39,12 +39,12 @@ http_interactions:
         – Regionally Extinct","fi":"RE – Suomesta hävinneet","sv":"RE – Nationellt
         utdöd"}},{"id":"MX.iucnCR","value":{"fi":"CR – Äärimmäisen uhanalaiset","en":"CR
         – Critically Endangered","sv":"CR – Akut hotad"}},{"id":"MX.iucnEN","value":{"en":"EN
-        – Endangered","fi":"EN – Erittäin uhanalaiset","sv":"EN – Starkt hotad"}},{"id":"MX.iucnVU","value":{"en":"VU
-        – Vulnerable","fi":"VU – Vaarantuneet","sv":"VU – Sårbar"}},{"id":"MX.iucnNT","value":{"en":"NT
-        – Near Threatened","fi":"NT – Silmälläpidettävät","sv":"NT – Nära hotad"}},{"id":"MX.iucnLC","value":{"fi":"LC
+        – Endangered","fi":"EN – Erittäin uhanalaiset","sv":"EN – Starkt hotad"}},{"id":"MX.iucnVU","value":{"fi":"VU
+        – Vaarantuneet","sv":"VU – Sårbar","en":"VU – Vulnerable"}},{"id":"MX.iucnNT","value":{"sv":"NT
+        – Nära hotad","fi":"NT – Silmälläpidettävät","en":"NT – Near Threatened"}},{"id":"MX.iucnLC","value":{"fi":"LC
         – Elinvoimaiset","sv":"LC – Livskraftig","en":"LC – Least Concern"}},{"id":"MX.iucnDD","value":{"en":"DD
         – Data Deficient","sv":"DD – Kunskapsbrist","fi":"DD – Puutteellisesti tunnetut"}},{"id":"MX.iucnNA","value":{"sv":"NA
-        – Ej tillämplig","fi":"NA – Arviointiin soveltumattomat","en":"NA – Not Applicable"}},{"id":"MX.iucnNE","value":{"en":"NE
-        – Not Evaluated","fi":"NE – Arvioimatta jätetyt","sv":"NE – Ej bedömd"}}]'
-  recorded_at: 2023-05-09 13:47:20 GMT
+        – Ej tillämplig","fi":"NA – Arviointiin soveltumattomat","en":"NA – Not Applicable"}},{"id":"MX.iucnNE","value":{"fi":"NE
+        – Arvioimatta jätetyt","en":"NE – Not Evaluated","sv":"NE – Ej bedömd"}}]'
+  recorded_at: 2023-05-09 13:59:59 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

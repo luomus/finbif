@@ -15,13 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 29 Mar 2023 09:10:50 GMT
+      date: Tue, 09 May 2023 14:00:00 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"1be0-G4vQZHWBMogi5mII57PxIO9eH98"
+      etag: W/"1be0-6xXwqQOoIDsQI5GcfLCpcJYJ90Q"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
@@ -34,28 +34,27 @@ http_interactions:
       encoding: ''
       file: no
       string: '[{"id":"MX.doesNotOccur","value":{"fi":"Ei esiinny","en":"Does not
-        occur","sv":"Förekommer inte"}},{"id":"MX.typeOfOccurrenceOccurs","value":{"sv":"Förekommer","fi":"Esiintyy","en":"Occurs"}},{"id":"MX.typeOfOccurrenceStablePopulation","value":{"fi":"Vakiintunut","sv":"Väletablerat","en":"Stable
-        population"}},{"id":"MX.typeOfOccurrenceCommon","value":{"sv":"Vanlig","fi":"Yleinen","en":"Common"},"rdfs:comment":{"fi":"Ilmaisee
+        occur","sv":"Förekommer inte"}},{"id":"MX.typeOfOccurrenceOccurs","value":{"en":"Occurs","sv":"Förekommer","fi":"Esiintyy"}},{"id":"MX.typeOfOccurrenceStablePopulation","value":{"sv":"Väletablerat","fi":"Vakiintunut","en":"Stable
+        population"}},{"id":"MX.typeOfOccurrenceCommon","value":{"fi":"Yleinen","en":"Common","sv":"Vanlig"},"rdfs:comment":{"fi":"Ilmaisee
         että laji on yleinen (eli esiintyy laajalla alueella). Hyönteisillä pohjautuu
-        frekvenssipisteisiin. Käytetään lajien yleisyyshaussa."}},{"id":"MX.typeOfOccurrenceRare","value":{"en":"Rare","fi":"Harvinainen","sv":"Sällsynt"}},{"id":"MX.typeOfOccurrenceVeryRare","value":{"sv":"Mycket
-        sällsynt","en":"Very rare","fi":"Hyvin harvinainen"}},{"id":"MX.typeOfOccurrenceVagrant","value":{"en":"Regular
-        vagrant","fi":"Säännöllinen harhailija","sv":"Regelbunden vandrare"}},{"id":"MX.typeOfOccurrenceRareVagrant","value":{"fi":"Satunnainen
-        harhailija","en":"Irregular vagrant","sv":"Slumpmässig vandrare"}},{"id":"MX.typeOfOccurrenceMigrant","value":{"sv":"Flyttande","en":"Migrant","fi":"Vaeltaja"}},{"id":"MX.typeOfOccurrenceImport","value":{"en":"Import","sv":"Import","fi":"Ihmisen
+        frekvenssipisteisiin. Käytetään lajien yleisyyshaussa."}},{"id":"MX.typeOfOccurrenceRare","value":{"fi":"Harvinainen","sv":"Sällsynt","en":"Rare"}},{"id":"MX.typeOfOccurrenceVeryRare","value":{"fi":"Hyvin
+        harvinainen","sv":"Mycket sällsynt","en":"Very rare"}},{"id":"MX.typeOfOccurrenceVagrant","value":{"fi":"Säännöllinen
+        harhailija","en":"Regular vagrant","sv":"Regelbunden vandrare"}},{"id":"MX.typeOfOccurrenceRareVagrant","value":{"en":"Irregular
+        vagrant","fi":"Satunnainen harhailija","sv":"Slumpmässig vandrare"}},{"id":"MX.typeOfOccurrenceMigrant","value":{"sv":"Flyttande","en":"Migrant","fi":"Vaeltaja"}},{"id":"MX.typeOfOccurrenceImport","value":{"sv":"Import","en":"Import","fi":"Ihmisen
         tuoma (importti)"}},{"id":"MX.typeOfOccurrenceAnthropogenic","value":{"en":"Anthropogenic","fi":"Ihmisen
-        vaikutuksesta","sv":"Mänsklig påverkan"}},{"id":"MX.typeOfOccurrenceNotEstablished","value":{"fi":"Ei
-        vakiintunut","sv":"Inte etablerad","en":"Not established"}},{"id":"MX.typeOfOccurrenceExtirpated","value":{"en":"Extinct","fi":"Hävinnyt","sv":"Utdöd"}},{"id":"MX.typeOfOccurrenceOldRecords","value":{"en":"Old
-        records only","fi":"Vain vanhoja havaintoja","sv":"Endast föråldrade observeringar"}},{"id":"MX.typeOfOccurrenceUncertain","value":{"fi":"Vain
-        epävarmoja tietoja","sv":"Endast osäkra rekorder","en":"Uncertain records
-        only"}},{"id":"MX.typeOfOccurrenceSpontaneousOldResident","value":{"fi":"alkuperäinen,
-        vanhaa perua, vakiintunut","en":"AOV - spontaneous, old, resident","sv":""}},{"id":"MX.typeOfOccurrenceSpontaneousNewResident","value":{"en":"ANV
-        - spontaneous, new, resident","fi":"alkuperäinen, uutta perua, vakiintunut","sv":""}},{"id":"MX.typeOfOccurrenceAlienOldResident","value":{"en":"TOV
+        vaikutuksesta","sv":"Mänsklig påverkan"}},{"id":"MX.typeOfOccurrenceNotEstablished","value":{"sv":"Inte
+        etablerad","en":"Not established","fi":"Ei vakiintunut"}},{"id":"MX.typeOfOccurrenceExtirpated","value":{"fi":"Hävinnyt","sv":"Utdöd","en":"Extinct"}},{"id":"MX.typeOfOccurrenceOldRecords","value":{"sv":"Endast
+        föråldrade observeringar","en":"Old records only","fi":"Vain vanhoja havaintoja"}},{"id":"MX.typeOfOccurrenceUncertain","value":{"fi":"Vain
+        epävarmoja tietoja","en":"Uncertain records only","sv":"Endast osäkra rekorder"}},{"id":"MX.typeOfOccurrenceSpontaneousOldResident","value":{"en":"AOV
+        - spontaneous, old, resident","fi":"alkuperäinen, vanhaa perua, vakiintunut","sv":""}},{"id":"MX.typeOfOccurrenceSpontaneousNewResident","value":{"fi":"alkuperäinen,
+        uutta perua, vakiintunut","en":"ANV - spontaneous, new, resident","sv":""}},{"id":"MX.typeOfOccurrenceAlienOldResident","value":{"en":"TOV
         - alien, old, resident (archaeophyte)","fi":"tulokas, vanhaa perua, vakinainen
         (muinaistulokas)","sv":""}},{"id":"MX.typeOfOccurrenceSpontaneousNewEphemeral","value":{"en":"ANS
-        - spontaneous, new, ephemeral","fi":"alkuperäinen, uutta perua, satunnainen","sv":""}},{"id":"MX.typeOfOccurrenceSpontaneousNewEphemeralOnlyOld","value":{"en":"ANSX
-        - spontaneous, new, ephemeral, only old records","fi":"alkuperäinen, uutta
-        perua, satunnainen, ei tietoja 1980-","sv":""}},{"id":"MX.typeOfOccurrenceSpontaneousOldFormerlyResidentPossiblyExtinct","value":{"en":"AOVU
-        - spontaneous, old, formerly resident, now possibly extinct","fi":"alkuperäinen,
-        vanhaa perua, aiemmin vakinainen; mahdollisesti hävinnyt","sv":""}},{"id":"MX.typeOfOccurrenceSpontaneousOldFormerlyResidentExtinct","value":{"en":"AOVX
+        - spontaneous, new, ephemeral","fi":"alkuperäinen, uutta perua, satunnainen","sv":""}},{"id":"MX.typeOfOccurrenceSpontaneousNewEphemeralOnlyOld","value":{"fi":"alkuperäinen,
+        uutta perua, satunnainen, ei tietoja 1980-","en":"ANSX - spontaneous, new,
+        ephemeral, only old records","sv":""}},{"id":"MX.typeOfOccurrenceSpontaneousOldFormerlyResidentPossiblyExtinct","value":{"fi":"alkuperäinen,
+        vanhaa perua, aiemmin vakinainen; mahdollisesti hävinnyt","en":"AOVU - spontaneous,
+        old, formerly resident, now possibly extinct","sv":""}},{"id":"MX.typeOfOccurrenceSpontaneousOldFormerlyResidentExtinct","value":{"en":"AOVX
         - spontaneous, old, formerly resident, extinct","fi":"alkuperäinen, vanhaa
         perua, hävinnyt","sv":""}},{"id":"MX.typeOfOccurrenceAlienNewEphemeral","value":{"en":"TNS
         - alien, new, ephemeral","fi":"tulokas, satunnainen, havaittu 1980 tai myöhemmin","sv":""}},{"id":"MX.typeOfOccurrenceAlienNewEphemeralOnlyold","value":{"en":"TNSX
@@ -64,11 +63,11 @@ http_interactions:
         - alien, new, resident","fi":"tulokas, uutta perua, vakinainen","sv":""}},{"id":"MX.typeOfOccurrenceAlienOldFormerlyResidentPossiblyExtinct","value":{"en":"TOVU
         -alien, old, formerly resident, now possibly extinct","fi":"muinaistulokas,
         mahdollisesti hävinnyt","sv":""}},{"id":"MX.typeOfOccurrenceAlienOldExtinct","value":{"en":"TOVX
-        - alien, old, extinct","fi":"muinaistulokas, hävinnyt","sv":""}},{"id":"MX.typeOfOccurrenceSmallDegreeCultivatedOrigin","value":{"fi":"niukasti
-        viljelyperäinen","en":"1 - spreading in the wild; to a small degree of cultivated
-        origin","sv":""}},{"id":"MX.typeOfOccurrenceNotableDegreeCultivatedOrigin","value":{"fi":"merkittävästi
-        viljelyperäinen","en":"2 - spreading in the wild; to a notable degree of cultivated
-        origin","sv":""}},{"id":"MX.typeOfOccurrenceCompletelyCultivatedOrigin","value":{"en":"3
+        - alien, old, extinct","fi":"muinaistulokas, hävinnyt","sv":""}},{"id":"MX.typeOfOccurrenceSmallDegreeCultivatedOrigin","value":{"en":"1
+        - spreading in the wild; to a small degree of cultivated origin","fi":"niukasti
+        viljelyperäinen","sv":""}},{"id":"MX.typeOfOccurrenceNotableDegreeCultivatedOrigin","value":{"en":"2
+        - spreading in the wild; to a notable degree of cultivated origin","fi":"merkittävästi
+        viljelyperäinen","sv":""}},{"id":"MX.typeOfOccurrenceCompletelyCultivatedOrigin","value":{"en":"3
         - spreading in the wild; completely of cultivated origin","fi":"kokonaan viljelyperäinen","sv":""}},{"id":"MX.typeOfOccurrenceOnlyCultivated","value":{"fi":"vain
         viljeltynä","en":"C - only as cultivated","sv":""}},{"id":"MX.typeOfOccurrenceMaxShortDistanceEscape","value":{"en":"H
         - at most a short-distance escape from cultivation (inside a garden or similar)","fi":"korkeintaan
@@ -76,24 +75,24 @@ http_interactions:
         - at most a soil immigrant, perhaps slightly spreading vegetatively","fi":"korkeintaan
         (ehkä vähän kasvullisesti leviävä) maatulokas","sv":""}},{"id":"MX.typeOfOccurrenceMaxReplanted","value":{"en":"P
         - extinct in the wild; planted anew into the wild","fi":"korkeintaan \"luontoon\"
-        kylvetty / palautettu","sv":""}},{"id":"MX.typeOfOccurrenceMaxRelict","value":{"en":"R
-        - at most a relict of cultivation","fi":"korkeintaan viljelyjäänne","sv":""}},{"id":"MX.typeOfOccurrenceNotEvaluated","value":{"en":"I
-        - not evaluated","fi":"statusta ei arvioitu","sv":""}},{"id":"MX.typeOfOccurrenceRegularBreeder","value":{"fi":"Säännöllinen
-        pesijä","sv":"Vanlig häckare","en":"Regular breeder"}},{"id":"MX.typeOfOccurrenceIrregularBreeder","value":{"sv":"Ovanlig
-        häckare","fi":"Satunnainen pesijä","en":"Irregular breeder"}},{"id":"MX.typeOfOccurrencePassageMigrant","value":{"fi":"Läpimuuttaja","en":"Passage
-        migrant","sv":""}},{"id":"MX.typeOfOccurrenceBirdLifeCategoryA","value":{"en":"BirdLife
-        Category A","sv":"BirdLife kategori A","fi":"BirdLife-kategoria A (ilm. luonnonvaraisena
-        tavattu ainakin kerran v. 1949 jälkeen)"}},{"id":"MX.typeOfOccurrenceBirdLifeCategoryB","value":{"fi":"BirdLife-kategoria
-        B (ilm. luonnonvaraisena tavattu v. 1800–1949)","en":"BirdLife Category B","sv":"BirdLife
-        kategori B"}},{"id":"MX.typeOfOccurrenceBirdLifeCategoryC","value":{"fi":"BirdLife-kategoria
-        C (karanneista tai vapautetuista yksilöistä syntynyt elinvoimainen populaatio)","en":"BirdLife
-        Category C","sv":"BirdLife kategori C"}},{"id":"MX.typeOfOccurrenceBirdLifeCategoryD","value":{"sv":"BirdLife
-        kategori D","fi":"BirdLife-kategoria D (ei ole lähes varmasti luonnonvarainen
-        tai lähes varmasti karkulainen)","en":"BirdLife Category D"}},{"id":"MX.typeOfOccurrenceBirdLifeCategoryE","value":{"fi":"BirdLife-kategoria
-        E (varma tai lähes varma tarha- tai häkkikarkulainen)","en":"BirdLife Category
-        E","sv":"BirdLife kategori E"}},{"id":"MX.typeOfOccurrenceOccursBasedOnOccurrences","value":{"fi":"Esiintyy
+        kylvetty / palautettu","sv":""}},{"id":"MX.typeOfOccurrenceMaxRelict","value":{"fi":"korkeintaan
+        viljelyjäänne","en":"R - at most a relict of cultivation","sv":""}},{"id":"MX.typeOfOccurrenceNotEvaluated","value":{"en":"I
+        - not evaluated","fi":"statusta ei arvioitu","sv":""}},{"id":"MX.typeOfOccurrenceRegularBreeder","value":{"en":"Regular
+        breeder","fi":"Säännöllinen pesijä","sv":"Vanlig häckare"}},{"id":"MX.typeOfOccurrenceIrregularBreeder","value":{"sv":"Ovanlig
+        häckare","en":"Irregular breeder","fi":"Satunnainen pesijä"}},{"id":"MX.typeOfOccurrencePassageMigrant","value":{"en":"Passage
+        migrant","fi":"Läpimuuttaja","sv":""}},{"id":"MX.typeOfOccurrenceBirdLifeCategoryA","value":{"sv":"BirdLife
+        kategori A","fi":"BirdLife-kategoria A (ilm. luonnonvaraisena tavattu ainakin
+        kerran v. 1949 jälkeen)","en":"BirdLife Category A"}},{"id":"MX.typeOfOccurrenceBirdLifeCategoryB","value":{"en":"BirdLife
+        Category B","fi":"BirdLife-kategoria B (ilm. luonnonvaraisena tavattu v. 1800–1949)","sv":"BirdLife
+        kategori B"}},{"id":"MX.typeOfOccurrenceBirdLifeCategoryC","value":{"sv":"BirdLife
+        kategori C","fi":"BirdLife-kategoria C (karanneista tai vapautetuista yksilöistä
+        syntynyt elinvoimainen populaatio)","en":"BirdLife Category C"}},{"id":"MX.typeOfOccurrenceBirdLifeCategoryD","value":{"sv":"BirdLife
+        kategori D","en":"BirdLife Category D","fi":"BirdLife-kategoria D (ei ole
+        lähes varmasti luonnonvarainen tai lähes varmasti karkulainen)"}},{"id":"MX.typeOfOccurrenceBirdLifeCategoryE","value":{"sv":"BirdLife
+        kategori E","en":"BirdLife Category E","fi":"BirdLife-kategoria E (varma tai
+        lähes varma tarha- tai häkkikarkulainen)"}},{"id":"MX.typeOfOccurrenceOccursBasedOnOccurrences","value":{"fi":"Esiintyy
         havaintodatan perusteella – ei asiantuntijan arvioima","en":"Occurs on the
         basis of occurrence data – not an expert evaluation","sv":"Förekommer på grundval
         av händelsedata – inte en expertbestämning"}}]'
-  recorded_at: 2023-03-29 09:10:50 GMT
+  recorded_at: 2023-05-09 14:00:00 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
