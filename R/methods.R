@@ -111,15 +111,11 @@ rbind.finbif_occ <- function(...) {
 
   l <- list(...)
 
-  attrs <- c("nrec_dnld", "nrec_avl", "url", "time", "record_id")
-
-  for (i in attrs) {
+  for (i in c("nrec_dnld", "nrec_avl", "url", "time", "record_id")) {
 
     a <- lapply(l, attr, i)
 
-    a <- unlist(a)
-
-    attr(ans, i) <- a
+    attr(ans, i) <- unlist(a)
 
   }
 
@@ -145,17 +141,13 @@ print.finbif_taxa_list <- function(
 
   nms <- names(nms)
 
-  has_ranks <- !is.null(ranks)
-
   padl <- 0L
 
-  if (has_ranks) {
+  if (!is.null(ranks)) {
 
     padl <- nchar(ranks)
 
-    padl <- max(padl)
-
-    padl <- padl + 2L
+    padl <- max(padl) + 2L
 
   }
 
@@ -163,9 +155,7 @@ print.finbif_taxa_list <- function(
 
   padr <- 0L
 
-  has_nms <- !is.null(nms)
-
-  if (has_nms) {
+  if (!is.null(nms)) {
 
     padr <- nchar(nms)
 
@@ -175,9 +165,7 @@ print.finbif_taxa_list <- function(
 
   padr <- paste0("%-", padr, "s] ")
 
-  sq <- seq_along(x)
-
-  for (i in sq) {
+  for (i in seq_along(x)) {
 
     rank <- ranks[[i]]
 
@@ -195,9 +183,7 @@ print.finbif_taxa_list <- function(
 
     xi <- x[[i]]
 
-    sqi <- seq_along(xi)
-
-    for (j in sqi) {
+    for (j in seq_along(xi)) {
 
       taxon <- xi[j]
 
@@ -236,31 +222,19 @@ print.finbif_metadata_df <- function(
 
   df <- x
 
-  width <- getOption("width")
-
-  ncols <- ncol(df)
-
-  sl <- width / ncols
+  sl <- getOption("width") / ncol(df)
 
   sl <- max(9L, sl)
 
-  colnames <- names(df)
+  for (col in names(df)) {
 
-  for (col in colnames) {
-
-    df_col <- df[[col]]
-
-    col_is_char <- is.character(df_col)
-
-    if (col_is_char) {
+    if (is.character(df[[col]])) {
 
       n <- nchar(col)
 
       n <- max(sl, n)
 
-      df_col <- truncate_string(df_col, n)
-
-      df[[col]] <- df_col
+      df[[col]] <- truncate_string(df[[col]], n)
 
     }
 
@@ -304,9 +278,7 @@ print.finbif_occ <- function(
 
   widths <- colname_widths
 
-  has_rows <- nrows > 0L
-
-  if (has_rows) {
+  if (nrows > 0L) {
 
     obj <- list(df = df, colname_widths = colname_widths)
 
@@ -318,7 +290,6 @@ print.finbif_occ <- function(
 
     na_widths <- is.na(widths)
 
-    # Printed NA values are four characters wide, "<NA>"
     widths[na_widths] <- 4L
 
     widths <- apply(widths, 2L, max, na.rm = TRUE)
@@ -329,11 +300,9 @@ print.finbif_occ <- function(
 
   dsply_nc <- 0L
 
-  gt_9_rows <- dsply_nr > 9L
-
   cumulative_width <- 1L
 
-  if (gt_9_rows) {
+  if (dsply_nr > 9L) {
 
     cumulative_width <-  2L
 
@@ -343,13 +312,9 @@ print.finbif_occ <- function(
 
     i <- dsply_nc + 1L
 
-    width_i <- widths[[i]]
+    cumulative_width <- cumulative_width + widths[[i]] + 1L
 
-    cumulative_width <- cumulative_width + 1L + width_i
-
-    end_loop <- cumulative_width > dwdth
-
-    if (end_loop) {
+    if (cumulative_width > dwdth) {
 
       break
 
@@ -361,15 +326,14 @@ print.finbif_occ <- function(
 
   dsply_cols <- seq_len(dsply_nc)
 
-  df <- df[, dsply_cols]
+  print.data.frame(df[, dsply_cols])
 
-  print.data.frame(df)
-
-  extra_rows <- nrows - dsply_nr
-
-  extra_cols <- ncols - dsply_nc
-
-  extras_obj <- list(x, rows = extra_rows, cols = extra_cols, dc = dsply_cols)
+  extras_obj <- list(
+    x,
+    rows = nrows - dsply_nr,
+    cols = ncols - dsply_nc,
+    dc = dsply_cols
+  )
 
   print_extras(extras_obj)
 
@@ -383,39 +347,21 @@ records_msg <- function(obj) {
 
   x <- obj[[1L]]
 
-  width <- obj[["width"]]
-
-  dnld <- obj[["dnld"]]
-
-  avl <- obj[["avl"]]
-
-  l <- list(nrec_dnld = dnld, nrec_avl = avl)
-
-  sq <- seq_along(l)
+  l <- list(nrec_dnld = obj[["dnld"]], nrec_avl = obj[["avl"]])
 
   nms <- names(l)
 
-  for (i in sq) {
+  for (i in seq_along(l)) {
 
-    nm <- nms[[i]]
+    x_nm <- attr(x, nms[[i]])
 
-    x_nm <- attr(x, nm)
+    if (length(x_nm) > 0L) {
 
-    nl <- length(x_nm)
-
-    cond <- !identical(nl, 0L)
-
-    if (cond) {
-
-      li <- l[[i]]
-
-      suf <- paste0("Records ", li, ": ")
+      suf <- paste0("Records ", l[[i]], ": ")
 
       x_nm <- paste(x_nm, collapse = " + ")
 
-      sufl <- nchar(suf)
-
-      n <- width - sufl - 2L
+      n <- obj[["width"]] - nchar(suf) - 2L
 
       x_nm <- truncate_string(x_nm, n)
 
@@ -435,71 +381,43 @@ format_cols <- function(obj) {
 
   colname_widths <- obj[["colname_widths"]]
 
-  sq <- seq_along(df)
-
-  num_class <- c("double", "integer")
-
-  for (i in sq) {
+  for (i in seq_along(df)) {
 
     dfi <- df[[i]]
 
     class <- col_class(dfi)
 
-    is_list_col <- is.list(dfi)
+    if (length(class) > 0L) {
 
-    cl <- length(class)
-
-    has_class <- cl > 0L
-
-    if (has_class) {
-
-      if (is_list_col) {
+      if (is.list(dfi)) {
 
         dfi_len <- lapply(dfi, length)
-
-        dfi_len <- unlist(dfi_len)
 
         dfi_na <- lapply(dfi, is.na)
 
         dfi_na <- lapply(dfi_na, sum)
 
-        dfi_na <- unlist(dfi_na)
+        dfi <-  unlist(dfi_len) - unlist(dfi_na)
 
-        dfi <- dfi_len - dfi_na
-
-        dfi_singular <- dfi == 1L
-
-        suffix <- ifelse(dfi_singular, "", "s")
+        suffix <- ifelse(dfi == 1L, "", "s")
 
         dfi <- paste0(dfi, " element", suffix)
 
       } else {
 
-        is_uri <- identical(class, "uri")
-
-        if (is_uri) {
+        if (identical(class, "uri")) {
 
           dfi <- truncate_string_to_unique(dfi)
 
-        }
-
-        is_char <- is_uri || identical(class, "character")
-
-        if (is_char) {
+        } else if (identical(class, "character")) {
 
           dfi <- truncate_string(dfi)
 
-        }
-
-        is_num <- class %in% num_class
-
-        if (is_num) {
+        } else {
 
           cwi <- colname_widths[[i]]
 
-          digits <- cwi - 2L
-
-          dfi <- formatC(dfi, digits, cwi, flag = "- ")
+          dfi <- formatC(dfi,  cwi - 2L, cwi, flag = "- ")
 
         }
 
@@ -519,53 +437,39 @@ format_cols <- function(obj) {
 
 col_class <- function(x) {
 
-  class <-  "character"
-
   uris <- grepl("^http", x)
 
-  has_uri <- any(uris)
+  if (any(uris)) {
 
-  if (has_uri) {
+    "uri"
 
-    class <- "uri"
-  }
+  } else if (is.integer(x)) {
 
-  has_num <- is.numeric(x)
+    "integer"
 
-  if (has_num) {
+  } else if (is.numeric(x)) {
 
-    class <- "double"
+    "double"
 
-  }
+  } else {
 
-  has_int <- is.integer(x)
-
-  if (has_int) {
-
-    class <- "integer"
+    "character"
 
   }
-
-  class
 
 }
 
 #' @noRd
+
 print_extras <- function(obj) {
-
-  x <- obj[[1L]]
-
-  extra_rows <- obj[["rows"]]
 
   extra_cols <- obj[["cols"]]
 
-  dsply_cols <- obj[["dc"]]
+  extra_rows <- obj[["rows"]]
 
-  no_cols <- identical(extra_cols, 0L)
+  no_cols <- extra_cols < 1L
 
-  no_data <- no_cols && identical(extra_rows, 0L)
-
-  if (no_data) {
+  if (no_cols && extra_rows < 1L) {
 
     return(NULL)
 
@@ -573,9 +477,7 @@ print_extras <- function(obj) {
 
   suffix <- ""
 
-  more_rows <- extra_rows > 1L
-
-  if (more_rows) {
+  if (extra_rows > 1L) {
 
     suffix <- "s"
 
@@ -593,9 +495,7 @@ print_extras <- function(obj) {
 
   suffix <- ""
 
-  more_cols <- extra_cols > 1L
-
-  if (more_cols) {
+  if (extra_cols > 1L) {
 
     suffix <- "s"
 
@@ -603,41 +503,34 @@ print_extras <- function(obj) {
 
   cat(" and ", extra_cols, " more variable", suffix, ":\n", sep = "")
 
-  i <- 1L
 
-  extra_names <- names(x)
+  extra_names <- names(obj[[1L]])
+
+  dsply_cols <- obj[["dc"]]
 
   extra_names <- extra_names[-dsply_cols]
 
-  extra_name_i <- extra_names[[i]]
+  extra_name_i <- extra_names[[1L]]
 
   cat(extra_name_i)
 
-  nchars <- nchar(extra_name_i)
-
-  nchars <- nchars + 2L
+  nchars <- nchar(extra_name_i) + 2L
 
   sq <- seq_along(extra_names)
 
-  sq <- sq[-1L]
-
   width <- getOption("width")
 
-  for (i in sq) {
+  for (i in sq[-1L]) {
 
     extra_name_i <- extra_names[[i]]
 
-    nchars_next <- nchar(extra_name_i)
+    nchars_next <- nchar(extra_name_i) + 2L
 
-    nchars_next <- nchars_next + 2L
-
-    nchars  <- nchars + nchars_next
-
-    too_many_chars <- nchars > width
+    nchars <- nchars + nchars_next
 
     sep <- ", "
 
-    if (too_many_chars) {
+    if (nchars > width) {
 
       sep <- ",\n"
 
@@ -650,7 +543,5 @@ print_extras <- function(obj) {
   }
 
   cat("\n")
-
-  NULL
 
 }
