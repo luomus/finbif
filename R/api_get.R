@@ -274,9 +274,11 @@ get_calling_function <- function(pkg) {
 
       len <- length(fun)
 
+      fun <- fun[[len]]
+
       ns <- getNamespace(pkg)
 
-      if (fun[[len]] %in% ls(ns)) {
+      if (fun %in% ls(ns)) {
 
         break
 
