@@ -2,22 +2,6 @@
 
 records <- function(fb_records_obj) {
 
-  aggregate <- fb_records_obj[["aggregate"]]
-
-  filter <- fb_records_obj[["filter"]]
-
-  order_by <- fb_records_obj[["order_by"]]
-
-  var_type <- fb_records_obj[["var_type"]]
-
-  seed <- fb_records_obj[["seed"]]
-
-  sample <- fb_records_obj[["sample"]]
-
-  df <- fb_records_obj[["df"]]
-
-  count_only <- fb_records_obj[["count_only"]]
-
   max_size <- getOption("finbif_max_page_size")
 
   fb_records_obj[["max_size"]] <- max_size
@@ -28,35 +12,23 @@ records <- function(fb_records_obj) {
 
   fb_records_obj[["nmax"]] <- nmax
 
-  dwc <- fb_records_obj[["dwc"]]
-
-  var_type <- col_type_string(dwc)
+  var_type <- col_type_string(fb_records_obj[["dwc"]])
 
   fb_records_obj[["var_type"]] <- var_type
 
-  n <- fb_records_obj[["n"]]
+  fb_records_obj[["n"]] <- as.integer(fb_records_obj[["n"]])
 
-  n <- as.integer(n)
-
-  fb_records_obj[["n"]] <- n
+  query <- list()
 
   defer_errors({
 
     check_n(fb_records_obj)
 
-    # aggregation ==============================================================
-
-    aggregate <- infer_aggregation(aggregate)
+    aggregate <- infer_aggregation(fb_records_obj[["aggregate"]])
 
     fb_records_obj[["aggregate"]] <- aggregate
 
-    # filter ===================================================================
-
-    query <- list()
-
-    has_filter <- !is.null(filter)
-
-    if (has_filter) {
+    if (!is.null(fb_records_obj[["filter"]])) {
 
       parsed_filters <- parse_filters(fb_records_obj)
 
@@ -64,39 +36,27 @@ records <- function(fb_records_obj) {
 
     }
 
-    # select ===================================================================
-
     select <- infer_selection(fb_records_obj)
 
     select_query <- select[["query"]]
 
     fb_records_obj[["select_query"]] <- select_query
 
-    select_user <- select[["user"]]
+    fb_records_obj[["select_user"]] <- select[["user"]]
 
-    fb_records_obj[["select_user"]] <- select_user
+    fb_records_obj[["record_id_selected"]] <- select[["record_id_selected"]]
 
-    record_id_selected <- select[["record_id_selected"]]
+    fb_records_obj[["date_time_selected"]] <- select[["date_time_selected"]]
 
-    fb_records_obj[["record_id_selected"]] <- record_id_selected
-
-    date_time_selected <- select[["date_time_selected"]]
-
-    fb_records_obj[["date_time_selected"]] <- date_time_selected
-
-    aggregate <- aggregate[[1L]]
-
-    select_param <- switch(aggregate, none = "selected", "aggregateBy")
+    select_param <- switch(aggregate[[1L]], none = "selected", "aggregateBy")
 
     fb_records_obj[["select_param"]] <- select_param
 
     query[[select_param]] <- paste(select_query, collapse = ",")
 
-    # order ====================================================================
+    order_by <- fb_records_obj[["order_by"]]
 
-    has_order <- !is.null(order_by)
-
-    if (has_order) {
+    if (!is.null(order_by)) {
 
       desc_order <- grepl("^-", order_by)
 
@@ -120,19 +80,15 @@ records <- function(fb_records_obj) {
 
       order_by <- order_by_computed_var(order_by)
 
-      order_by_desc <- order_by[desc_order]
-
-      order_by_desc <- paste(order_by_desc, "DESC")
-
-      order_by[desc_order] <- order_by_desc
+      order_by[desc_order] <- paste(order_by[desc_order], "DESC")
 
       order_by <- paste(order_by, collapse = ",")
 
     }
 
-    if (sample) {
+    if (fb_records_obj[["sample"]]) {
 
-      seed <- as.integer(seed)
+      seed <- as.integer(fb_records_obj[["seed"]])
 
       seed <- c("RANDOM", seed)
 
@@ -154,17 +110,13 @@ records <- function(fb_records_obj) {
 
   ans <- request(fb_records_obj)
 
-  df <- df && !count_only
-
-  if (df) {
+  if (fb_records_obj[["df"]] && !fb_records_obj[["count_only"]]) {
 
     ind <- length(ans)
 
     last <- ans[[ind]]
 
-    last_df <- records_data_frame(last)
-
-    attr(last, "df") <- last_df
+    attr(last, "df") <- records_data_frame(last)
 
     ans[[ind]] <- last
 
