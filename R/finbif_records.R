@@ -373,13 +373,7 @@ infer_aggregation <- function(aggregate) {
 
   has_events_or_docs <- events_and_docs %in% aggregate
 
-  l <- length(aggregate)
-
-  more_than_one <- l > 1L
-
-  cond <- more_than_one && any(has_events_or_docs)
-
-  if (cond) {
+  if (length(aggregate) > 1L && any(has_events_or_docs)) {
 
     deferrable_error(
       "Chosen aggregation cannot by combined with other aggregations"
