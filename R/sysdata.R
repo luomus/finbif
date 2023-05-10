@@ -50,49 +50,37 @@ sysdata <- function(which) {
 
 get_sysdata <- function(x) {
 
-  path <- paste0("metadata/ranges/", x)
-
-  query <- list(lang = "multi")
-
-  cache <- getOption("finbif_use_cache")
-
-  request <- list(path = path, query = query, cache = cache)
+  request <- list(
+    path = paste0("metadata/ranges/", x),
+    query = list(lang = "multi"),
+    cache = getOption("finbif_use_cache")
+  )
 
   sd_response <- api_get(request)
-
-  sd_response_content <- sd_response[["content"]]
 
   supported_langs <- sysdata("supported_langs")
 
   n_langs <- length(supported_langs)
 
-  sq <- seq_len(n_langs)
+  sd_response_content <- sd_response[["content"]]
 
-  sd_df <- vector("list", n_langs)
+  sd_df <- structure(
+    vector("list", n_langs),
+    row.names =  vapply(sd_response_content, getElement, "", "id"),
+    names = paste0("name_", supported_langs)
+  )
 
-  row_names <- vapply(sd_response_content, getElement, "", "id")
+  for (i in seq_len(n_langs)) {
 
-  col_names <- paste0("name_", supported_langs)
-
-  sd_df <- structure(sd_df, row.names = row_names, names = col_names)
-
-  for (i in sq) {
-
-    lang_i <- supported_langs[[i]]
-
-    el_i <- c("value", lang_i)
+    el_i <- c("value", supported_langs[[i]])
 
     sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
 
-    sd_i <- sub("^.* [\u2013|-] ", "", sd_i)
-
-    sd_df[[i]] <- sd_i
+    sd_df[[i]] <- sub("^.* [\u2013|-] ", "", sd_i)
 
   }
 
-  sd_df <- set_translations(sd_df)
-
-  structure(sd_df, class = "data.frame")
+  structure(set_translations(sd_df), class = "data.frame")
 
 }
 
@@ -100,19 +88,14 @@ get_sysdata <- function(x) {
 
 get_enumeration <- function(obj) {
 
-  enum <- obj[["enum"]]
-
-  get_function <- obj[["fun"]]
-
-  cache <- getOption("finbif_use_cache")
-
-  request <- list(path = "warehouse/enumeration-labels", cache = cache)
+  request <- list(
+    path = "warehouse/enumeration-labels",
+    cache = getOption("finbif_use_cache")
+  )
 
   en_response <- api_get(request)
 
-  results <- c("content", "results")
-
-  en_response_results <- en_response[[results]]
+  en_response_results <- en_response[[c("content", "results")]]
 
   enumerations <- vapply(en_response_results, getElement, "", "enumeration")
 
@@ -120,11 +103,11 @@ get_enumeration <- function(obj) {
 
   enumerations <- structure(enumerations, names = ids)
 
-  sd_en_df <- get_function(enum)
+  get_function <- obj[["fun"]]
 
-  id <- row.names(sd_en_df)
+  sd_en_df <- get_function(obj[["enum"]])
 
-  id <- enumerations[id]
+  id <- enumerations[row.names(sd_en_df)]
 
   non_missing_enums <- !is.na(id)
 
@@ -134,9 +117,7 @@ get_enumeration <- function(obj) {
 
   id <- id[non_missing_enums]
 
-  enumeration <- tolower(id)
-
-  enumeration <- list(code = enumeration)
+  enumeration <- list(code = tolower(id))
 
   enumeration <- structure(enumeration, class = "data.frame", row.names = id)
 
@@ -162,9 +143,7 @@ get_code <- function(obj) {
 
   prefix <- obj[["prefix"]]
 
-  suffix <- obj[["suffix"]]
-
-  x <- paste0(prefix, suffix)
+  x <- paste0(prefix, obj[["suffix"]])
 
   ht <- get_sysdata(x)
 
@@ -186,19 +165,15 @@ get_code <- function(obj) {
 
 get_areas <- function(x) {
 
-  query <- list(type = x, lang = "multi", pageSize = 1000L)
-
-  cache <- getOption("finbif_use_cache")
-
-  request <- list(path = "areas", query = query, cache = cache)
+  request <- list(
+    path = "areas",
+    query = list(type = x, lang = "multi", pageSize = 1000L),
+    cache = getOption("finbif_use_cache")
+  )
 
   sd_response <- api_get(request)
 
-  results <- c("content", "results")
-
-  sd_response_results <- sd_response[[results]]
-
-  row_names <- vapply(sd_response_results, getElement, "", "id")
+  sd_response_results <- sd_response[[c("content", "results")]]
 
   supported_langs <- sysdata("supported_langs")
 
@@ -206,51 +181,45 @@ get_areas <- function(x) {
 
   n_cols <- length(col_names)
 
-  sd_df <- vector("list", n_cols)
+  sd_df <- structure(
+    vector("list", n_cols),
+    row.names = vapply(sd_response_results, getElement, "", "id"),
+    names = col_names
+  )
 
-  sd_df <- structure(sd_df, row.names = row_names, names = col_names)
+  for (i in seq_along(supported_langs)) {
 
-  sq <- seq_along(supported_langs)
-
-  for (i in sq) {
-
-    lang_i <- supported_langs[[i]]
-
-    el_i <- c("name", lang_i)
+    el_i <- c("name", supported_langs[[i]])
 
     sd_i <- vapply(sd_response_results, get_el_recurse, "", el_i, "character")
 
-    sd_i <- sub("^.* [\u2013|-] ", "", sd_i)
-
-    sd_df[[i]] <- sd_i
+    sd_df[[i]] <- sub("^.* [\u2013|-] ", "", sd_i)
 
   }
 
-  alpha <- paste0("countryCodeISO", "alpha2")
+  c_els <- paste0("countryCodeISO", "alpha2")
 
-  alpha <- vapply(sd_response_results, get_el_recurse, "", alpha, "character")
+  ccode <- vapply(sd_response_results, get_el_recurse, "", c_els, "character")
 
-  if (!all_na(alpha)) {
+  if (!all_na(ccode)) {
 
-    sd_df[["code"]] <- alpha
+    sd_df[["code"]] <- ccode
 
   }
 
-  alpha <- c("provinceCodeAlpha", "fi")
+  p_els <- c("provinceCodeAlpha", "fi")
 
-  alpha <- vapply(sd_response_results, get_el_recurse, "", alpha, "character")
+  pcode <- vapply(sd_response_results, get_el_recurse, "", p_els, "character")
 
-  if (!all_na(alpha)) {
+  if (!all_na(pcode)) {
 
-    sd_df[["code"]] <- alpha
+    sd_df[["code"]] <- pcode
 
   }
 
   sd_df <- replace_missing_names(sd_df)
 
-  sd_df <- set_translations(sd_df)
-
-  structure(sd_df, class = "data.frame")
+  structure(set_translations(sd_df), class = "data.frame")
 
 }
 
@@ -266,17 +235,13 @@ replace_missing_names <- function(df) {
 
     col <- df[[i]]
 
-    other_col_names <- setdiff(col_names, i)
-
-    for (j in other_col_names) {
+    for (j in setdiff(col_names, i)) {
 
       missing <- is.na(col)
 
       other_col <- df[[j]]
 
-      replace <- other_col[missing]
-
-      col[missing] <- replace
+      col[missing] <- other_col[missing]
 
     }
 
@@ -361,9 +326,7 @@ regulatory_status <- function() {
 
   missing_codes <- abbreviate(missing_codes, 20L)
 
-  missing_codes <- toupper(missing_codes)
-
-  code[code_na] <- missing_codes
+  code[code_na] <- toupper(missing_codes)
 
   code <- make.unique(code)
 
@@ -391,49 +354,37 @@ red_list_status <- function() {
 
 informal_groups <- function() {
 
-  query <- list(lang = "multi", pageSize = 1000L)
-
-  cache <- getOption("finbif_use_cache")
-
-  request <- list(path = "informal-taxon-groups", query = query, cache = cache)
+  request <- list(
+    path = "informal-taxon-groups",
+    query = list(lang = "multi", pageSize = 1000L),
+    cache = getOption("finbif_use_cache")
+  )
 
   sd_response <- api_get(request)
 
-  results <- c("content", "results")
-
-  sd_response_content <- sd_response[[results]]
+  sd_response_content <- sd_response[[ c("content", "results")]]
 
   supported_langs <- sysdata("supported_langs")
 
   n_langs <- length(supported_langs)
 
-  sq <- seq_len(n_langs)
+  sd_df <- structure(
+    vector("list", n_langs),
+    row.names = vapply(sd_response_content, getElement, "", "id"),
+    names = paste0("name_", supported_langs)
+  )
 
-  sd_df <- vector("list", n_langs)
+  for (i in seq_len(n_langs)) {
 
-  row_names <- vapply(sd_response_content, getElement, "", "id")
-
-  col_names <- paste0("name_", supported_langs)
-
-  sd_df <- structure(sd_df, row.names = row_names, names = col_names)
-
-  for (i in sq) {
-
-    lang_i <- supported_langs[[i]]
-
-    el_i <- c("name", lang_i)
+    el_i <- c("name", supported_langs[[i]])
 
     sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
 
-    sd_i <- sub("^.* [\u2013|-] ", "", sd_i)
-
-    sd_df[[i]] <- sd_i
+    sd_df[[i]] <- sub("^.* [\u2013|-] ", "", sd_i)
 
   }
 
-  sd_df <- set_translations(sd_df)
-
-  structure(sd_df, class = "data.frame")
+  structure(set_translations(sd_df), class = "data.frame")
 
 }
 
@@ -443,13 +394,12 @@ primary_habitat <- function() {
 
   habitat_types <- list(prefix = "MKV.habitat", suffix = "Enum")
 
-  habitat_types <- get_code(habitat_types)
-
   specific_types <-  list(prefix = "MKV.habitatSpecificType", suffix = "Enum")
 
-  specific_types <- get_code(specific_types)
-
-  list(habitat_types = habitat_types, specific_habitat_types = specific_types)
+  list(
+    habitat_types = get_code(habitat_types),
+    specific_habitat_types = get_code(specific_types)
+  )
 
 }
 
@@ -773,9 +723,7 @@ municipality <- function() {
 
   id <- row.names(municipalities)
 
-  regions <- regions[id]
-
-  regions <- structure(regions, class = "translation", names = NULL)
+  regions <- structure(regions[id], class = "translation", names = NULL)
 
   regions <- list(region = regions)
 
@@ -825,9 +773,7 @@ bird_assoc_area <- function() {
 
   id <- row.names(bird_assoc)
 
-  codes <- codes[id]
-
-  codes <- unname(codes)
+  codes <- unname(codes[id])
 
   codes <- structure(codes, class = "translation", names = NULL)
 
@@ -895,9 +841,7 @@ finnish_occurrence_status <- function() {
 
   id <- row.names(finnish_occurrence)
 
-  codes <- codes[id]
-
-  codes <- unname(codes)
+  codes <- unname(codes[id])
 
   codes <- structure(codes, class = "translation", names = NULL)
 
@@ -913,17 +857,15 @@ finnish_occurrence_status <- function() {
 
 sources <- function() {
 
-  query <- list(lang = "multi", pageSize = 1000L)
-
-  cache <- getOption("finbif_use_cache")
-
-  request <- list(path = "sources", query = query, cache = cache)
+  request <- list(
+    path = "sources",
+    query =  list(lang = "multi", pageSize = 1000L),
+    cache = getOption("finbif_use_cache")
+  )
 
   sd_response <- api_get(request)
 
-  results <- c("content", "results")
-
-  sd_response_results <- sd_response[[results]]
+  sd_response_results <- sd_response[[c("content", "results")]]
 
   row_names <- vapply(sd_response_results, getElement, "", "id")
 
@@ -937,15 +879,11 @@ sources <- function() {
 
   col_names <- paste(col_names, supported_langs, sep = "_")
 
-  col_names <- c("id", col_names)
-
   n_cols <- length(col_names)
 
   sd_df <- vector("list", n_cols)
 
   sd_df <- structure(sd_df, row.names = row_names, names = col_names)
-
-  sd_df[["id"]] <- NULL
 
   sd_df[["code"]] <- row_names
 
@@ -961,19 +899,15 @@ sources <- function() {
 
       sd_i <- vapply(sd_response_results, get_el_recurse, "", el_i, "character")
 
-      sd_i <- sub("^.* \u2013 ", "", sd_i)
-
       col <- paste(type, lang_i, sep = "_")
 
-      sd_df[[col]] <- sd_i
+      sd_df[[col]] <- sub("^.* \u2013 ", "", sd_i)
 
     }
 
   }
 
-  sd_df <- set_translations(sd_df)
-
-  structure(sd_df, class = "data.frame")
+  structure(set_translations(sd_df), class = "data.frame")
 
 }
 
