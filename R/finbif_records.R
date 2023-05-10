@@ -661,70 +661,28 @@ infer_computed_vars <- function(fb_records_obj) {
 
 request <- function(fb_records_obj) {
 
-  filter <- fb_records_obj[["filter"]]
-
-  select <- fb_records_obj[["select_query"]]
-
-  sample <- fb_records_obj[["sample"]]
-
-  n <- fb_records_obj[["n"]]
-
-  page <- fb_records_obj[["page"]]
-
-  count_only <- fb_records_obj[["count_only"]]
-
-  quiet <- fb_records_obj[["quiet"]]
-
-  cache <- fb_records_obj[["cache"]]
+  path <- getOption("finbif_warehouse_query")
 
   query <- fb_records_obj[["query"]]
 
-  max_size <- fb_records_obj[["max_size"]]
+  cache <- fb_records_obj[["cache"]]
 
-  select_user <- fb_records_obj[["select_user"]]
+  count_only <- fb_records_obj[["count_only"]]
 
-  record_id_selected <- fb_records_obj[["record_id_selected"]]
-
-  date_time_selected <- fb_records_obj[["date_time_selected"]]
-
-  dwc <- fb_records_obj[["dwc"]]
-
-  aggregate <- fb_records_obj[["aggregate"]]
-
-  df <- fb_records_obj[["df"]]
-
-  seed <- fb_records_obj[["seed"]]
-
-  exclude_na <- fb_records_obj[["exclude_na"]]
-
-  locale <- fb_records_obj[["locale"]]
-
-  include_facts <- fb_records_obj[["include_facts"]]
-
-  restricted_api <- fb_records_obj[["restricted_api"]]
-
-  path <- getOption("finbif_warehouse_query")
-
-  count_records <- count_only && identical(aggregate, "none")
-
-  if (count_records) {
+  if (count_only && identical(fb_records_obj[["aggregate"]], "none")) {
 
     query[["selected"]] <- NULL
 
     query[["orderBy"]]  <- NULL
 
-    path <- paste0(path, "unit/count")
-
     request_obj <- list(
-      path = path,
+      path = paste0(path, "unit/count"),
       query = query,
       cache = cache,
-      restricted_api = restricted_api
+      restricted_api = fb_records_obj[["restricted_api"]]
     )
 
-    resp <- api_get(request_obj)
-
-    return(resp)
+    return(api_get(request_obj))
 
   }
 
@@ -744,91 +702,69 @@ request <- function(fb_records_obj) {
       path = path,
       query = query,
       cache = cache,
-      restricted_api = restricted_api
+      restricted_api = fb_records_obj[["restricted_api"]]
     )
 
     resp <- api_get(request_obj)
 
-    n_tot <- resp[["content"]]
-
-    n_tot <- n_tot[["total"]]
-
-    n_tot <- list(total = n_tot)
-
-    resp[["content"]] <- n_tot
+    resp[["content"]] <- list(total = resp[[c("content", "total")]])
 
     return(resp)
 
   }
 
-  taxon_counts <- taxa_counts(fb_records_obj)
+  n <- fb_records_obj[["n"]]
 
-  query[["taxonCounts"]] <- taxon_counts
+  max_size <- fb_records_obj[["max_size"]]
 
-  individual_counts <- individual_counts(fb_records_obj)
+  select_user <- fb_records_obj[["select_user"]]
 
-  query[["onlyCount"]] <- individual_counts
+  query[["taxonCounts"]] <- taxa_counts(fb_records_obj)
 
-  pair_counts <- pair_counts(fb_records_obj)
+  query[["onlyCount"]] <- individual_counts(fb_records_obj)
 
-  query[["pairCounts"]] <- pair_counts
+  query[["pairCounts"]] <- pair_counts(fb_records_obj)
 
-  query[["page"]] <- page
+  query[["page"]] <- fb_records_obj[["page"]]
 
-  page_size <- min(n, max_size)
-
-  query[["pageSize"]] <- page_size
+  query[["pageSize"]] <- min(n, max_size)
 
   fb_records_obj[["query"]] <- query
 
   resp <- records_obj(fb_records_obj)
 
-  n_tot <- resp[["content"]]
-
-  n_tot <- n_tot[["total"]]
+  n_tot <- resp[[c("content", "total")]]
 
   n <- min(n, n_tot)
 
-  resp <- list(resp)
-
-  select <- unique(select)
-
   fb_records_list <- structure(
-    resp,
+    list(resp),
     max_size = max_size,
-    quiet = quiet,
+    quiet = fb_records_obj[["quiet"]],
     path = path,
-    filter = filter,
+    filter = fb_records_obj[["filter"]],
     query = query,
     nrec_dnld = n,
     nrec_avl = n_tot,
-    seed = seed,
-    select = select,
+    seed = fb_records_obj[["seed"]],
+    select = fb_records_obj[["select_query"]],
     select_user = select_user,
-    locale = locale,
-    df = df,
-    dwc = dwc,
-    exclude_na = exclude_na,
-    include_facts = include_facts,
+    locale = fb_records_obj[["locale"]],
+    df = fb_records_obj[["df"]],
+    dwc = fb_records_obj[["dwc"]],
+    exclude_na = fb_records_obj[["exclude_na"]],
+    include_facts = fb_records_obj[["include_facts"]],
     count_only = count_only,
-    record_id = record_id_selected,
-    date_time = date_time_selected,
-    aggregate = aggregate,
+    record_id = fb_records_obj[["record_id_selected"]],
+    date_time = fb_records_obj[["date_time_selected"]],
+    aggregate = fb_records_obj[["aggregate"]],
     cache = cache,
-    restricted_api = restricted_api
+    restricted_api = fb_records_obj[["restricted_api"]]
   )
 
-  need_more_pages <- n > max_size
+  if (n > max_size) {
 
-  if (need_more_pages) {
-
-    # If random sampling and requesting few records or a large proportion of the
-    # total number of records, it makes more sense to just get all the records
-    # and sample afterwards to avoid coping with duplicates due to pagination.
-
-    sample_after_request <-  sample && sample_after(fb_records_list)
-
-    if (sample_after_request) {
+    if (fb_records_obj[["sample"]] && sample_after(fb_records_list)) {
 
       fb_records_obj[["select"]] <- select_user
 
@@ -840,19 +776,15 @@ request <- function(fb_records_obj) {
 
       attr(fb_records_list, "nrec_dnld") <- n
 
-      sampled_records <- record_sample(fb_records_list)
-
-      return(sampled_records)
+      return(record_sample(fb_records_list))
 
     }
 
     fb_records_list <- get_extra_pages(fb_records_list)
 
-    if (sample) {
+    if (fb_records_obj[["sample"]]) {
 
-      no_seed <- is.null(seed)
-
-      if (no_seed) {
+      if (is.null(fb_records_obj[["seed"]])) {
 
         attr(fb_records_list, "seed") <- 1L
 
