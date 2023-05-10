@@ -591,105 +591,61 @@ infer_selection <- function(fb_records_obj) {
 
 infer_computed_vars <- function(fb_records_obj) {
 
+  l <- list(
+    abundance = list(
+      vars = c(
+        "abundance", "individualCount", "occurrence_status", "occurrenceStatus"
+      ),
+      v_names = c(
+        "unit.interpretations.individualCount", "unit.abundanceString"
+      )
+    ),
+    cu = list(
+      vars = c("coordinates_uncertainty", "coordinateUncertaintyInMeters"),
+      v_names = c(
+        "gathering.interpretations.coordinateAccuracy", "document.sourceId"
+      )
+    ),
+    citation = list(
+      vars = c("citation", "bibliographicCitation"),
+      v_names = c("document.documentId", "document.sourceId")
+    ),
+    sn = list(
+      vars = c("scientific_name", "scientificName"),
+      v_names = c(
+        "unit.linkings.taxon.scientificName",
+        "unit.taxonVerbatim",
+        "unit.linkings.taxon.scientificNameAuthorship",
+        "unit.author",
+        "document.sourceId"
+      )
+    ),
+    red_list = list(
+      vars = c("red_list_status", "redListStatus"),
+      v_names = c(
+        "unit.linkings.taxon.latestRedListStatusFinland.status",
+        "unit.linkings.taxon.latestRedListStatusFinland.year"
+      )
+    ),
+    region = list(
+      vars = c("region", "stateProvince"),
+      v_names = "gathering.interpretations.finnishMunicipality"
+    )
+  )
+
   select <- fb_records_obj[["select"]]
-
-  var_type <- fb_records_obj[["var_type"]]
-
-  abundance_vars <- c(
-    "abundance",
-    "individualCount",
-    "occurrence_status",
-    "occurrenceStatus"
-  )
-
-  abundance_var_names <- c(
-    "unit.interpretations.individualCount",
-    "unit.abundanceString"
-  )
-
-  abundance <- list(vars = abundance_vars, v_names = abundance_var_names)
-
-  cu_vars <- c(
-    "coordinates_uncertainty",
-    "coordinateUncertaintyInMeters"
-  )
-
-  cu_var_names <- c(
-    "gathering.interpretations.coordinateAccuracy",
-    "document.sourceId"
-  )
-
-  cu <- list(vars = cu_vars, v_names = cu_var_names)
-
-  citation_vars <- c(
-    "citation",
-    "bibliographicCitation"
-  )
-
-  citation_var_names <- c(
-    "document.documentId",
-    "document.sourceId"
-  )
-
-  citation <- list(vars = citation_vars, v_names = citation_var_names)
-
-  sn_vars <- c(
-    "scientific_name",
-    "scientificName"
-  )
-
-  sn_var_names <- c(
-    "unit.linkings.taxon.scientificName",
-    "unit.taxonVerbatim",
-    "unit.linkings.taxon.scientificNameAuthorship",
-    "unit.author",
-    "document.sourceId"
-  )
-
-  sn <- list(vars = sn_vars, v_names = sn_var_names)
-
-  red_list_vars <- c(
-    "red_list_status",
-    "redListStatus"
-  )
-
-  red_list_var_names <- c(
-    "unit.linkings.taxon.latestRedListStatusFinland.status",
-    "unit.linkings.taxon.latestRedListStatusFinland.year"
-  )
-
-  red_list <- list(vars = red_list_vars, v_names = red_list_var_names)
-
-  region_vars <- c(
-    "region",
-    "stateProvince"
-  )
-
-  region_var_names <- c(
-    "gathering.interpretations.finnishMunicipality"
-  )
-
-  region <- list(vars = region_vars, v_names = region_var_names)
-
-  computed_var_list <- list(abundance, cu, citation, sn, red_list, region)
 
   var_names <- sysdata("var_names")
 
-  for (i in computed_var_list) {
+  var_type <- fb_records_obj[["var_type"]]
 
-    vars_i <- i[["vars"]]
+  for (i in l) {
 
-    v_names_i <- i[["v_names"]]
+    if (any(i[["vars"]] %in% select)) {
 
-    cond <- vars_i %in% select
+      v_names_i <- i[["v_names"]]
 
-    cond <- any(cond)
-
-    if (cond) {
-
-      inferred <- var_names[v_names_i, var_type]
-
-      select <- c(select, inferred)
+      select <- c(select, var_names[v_names_i, var_type])
 
     }
 
