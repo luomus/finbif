@@ -396,8 +396,6 @@ infer_selection <- function(fb_records_obj) {
 
   select <- fb_records_obj[["select"]]
 
-  include_facts <- fb_records_obj[["include_facts"]]
-
   var_type <- fb_records_obj[["var_type"]]
 
   var_names <- sysdata("var_names")
@@ -405,8 +403,6 @@ infer_selection <- function(fb_records_obj) {
   is_date_time_vars <- var_names[["date"]]
 
   date_time_vars <- var_names[is_date_time_vars, ]
-
-  date_time_var_names <- row.names(date_time_vars)
 
   is_default_vars <- var_names[["default_var"]]
 
@@ -418,11 +414,9 @@ infer_selection <- function(fb_records_obj) {
     var_names["unit.linkings.taxon.scientificName", ]
   )
 
-  select_null <- is.null(select)
-
   aggregate_none <- identical(aggregate, "none")
 
-  if (select_null) {
+  if (is.null(select)) {
 
     select <- row.names(default_vars)
 
@@ -434,12 +428,9 @@ infer_selection <- function(fb_records_obj) {
 
     if (aggregate_none) {
 
-      # Missing 'select' implies default selection which implies date-time,
-      # abundance, coord uncertainty and scientific name calc needed
-
       select <- c(
         select,
-        date_time_var_names,
+        row.names(date_time_vars),
         "unit.interpretations.individualCount",
         "unit.abundanceString",
         "gathering.interpretations.coordinateAccuracy",
@@ -468,9 +459,7 @@ infer_selection <- function(fb_records_obj) {
 
     n_select <- length(select)
 
-    all_deselect <- identical(n_deselect, n_select)
-
-    if (all_deselect) {
+    if (identical(n_deselect, n_select)) {
 
       select <- "default_vars"
 
@@ -478,17 +467,13 @@ infer_selection <- function(fb_records_obj) {
 
     select <- grep("^-", select, value = TRUE, invert = TRUE)
 
-    default_vars <- default_vars[[var_type]]
-
-    default_vars <- list(default_vars)
+    default_vars <- list(default_vars[[var_type]])
 
     select <- ifelse(select == "default_vars", default_vars, select)
 
     select <- unlist(select)
 
-    select_ind <- !select %in% deselect
-
-    select <- select[select_ind]
+    select <- select[!select %in% deselect]
 
     select_user <- select
 
@@ -498,9 +483,7 @@ infer_selection <- function(fb_records_obj) {
 
     record_id_selected <- record_id %in% select
 
-    needs_record_id <- !record_id_selected && aggregate_none
-
-    if (needs_record_id) {
+    if (!record_id_selected && aggregate_none) {
 
       select <- c(record_id, select)
 
@@ -521,9 +504,7 @@ infer_selection <- function(fb_records_obj) {
 
     if (date_time_selected) {
 
-      date_time_vars_selection <- date_time_vars[[var_type]]
-
-      select <- c(select, date_time_vars_selection)
+      select <- c(select, date_time_vars[[var_type]])
 
     }
 
@@ -555,9 +536,7 @@ infer_selection <- function(fb_records_obj) {
 
     vars_computed_from_id <- grepl("^computed_var_from_id", select)
 
-    any_vars_computed_from_id <- any(vars_computed_from_id)
-
-    if (any_vars_computed_from_id) {
+    if (any(vars_computed_from_id)) {
 
       select_computed <- select[vars_computed_from_id]
 
@@ -565,27 +544,17 @@ infer_selection <- function(fb_records_obj) {
 
       n_computed <- nrow(vars_computed_from_id)
 
-      computed_sq <- seq_len(n_computed)
-
-      for (i in computed_sq) {
+      for (i in seq_len(n_computed)) {
 
         computed_names <- row.names(vars_computed_from_id)
-
-        computed_name_i <- computed_names[[i]]
-
-        ind <- match(computed_name_i, select)
 
         computed_var <- vars_computed_from_id[i, var_type]
 
         suffix <- switch(var_type, translated_var = "_id", dwc = "ID")
 
-        id_var <- paste0(computed_var, suffix)
+        select_vars[["x"]] <- paste0(computed_var, suffix)
 
-        select_vars[["x"]] <- id_var
-
-        select_i <- translate(select_vars)
-
-        select[[ind]] <- select_i
+        select[[match(computed_names[[i]], select)]] <- translate(select_vars)
 
       }
 
@@ -593,7 +562,7 @@ infer_selection <- function(fb_records_obj) {
 
   }
 
-  if (include_facts) {
+  if (fb_records_obj[["include_facts"]]) {
 
     select <- c(
       select,
@@ -607,16 +576,10 @@ infer_selection <- function(fb_records_obj) {
 
   }
 
-  # Can't query the server for vars that are computed after download
-
   uncomputed <- !grepl("^computed_var", select)
 
-  select <- select[uncomputed]
-
-  select <- unique(select)
-
   list(
-    query = select,
+    query = unique(select[uncomputed]),
     user = select_user,
     record_id_selected = record_id_selected,
     date_time_selected = date_time_selected
