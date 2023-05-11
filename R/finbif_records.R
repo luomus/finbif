@@ -1391,11 +1391,11 @@ taxa_counts <- function(fb_records_obj) {
 
 individual_counts <- function(fb_records_obj) {
 
-  ans <- NULL
+  ans <- "false"
 
-  if ("individuals" %in% fb_records_obj[["aggregate"]]) {
+  if (!"individuals" %in% fb_records_obj[["aggregate"]]) {
 
-    ans <- "false"
+    ans <- NULL
 
   }
 
@@ -1407,11 +1407,11 @@ individual_counts <- function(fb_records_obj) {
 
 pair_counts <- function(fb_records_obj) {
 
-  ans <- NULL
+  ans <- "true"
 
-  if ("pairs" %in% fb_records_obj[["aggregate"]]) {
+  if (!"pairs" %in% fb_records_obj[["aggregate"]]) {
 
-    ans <- "true"
+    ans <- NULL
 
   }
 
