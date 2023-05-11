@@ -1409,9 +1409,7 @@ check_n <- function(fb_records_obj) {
 
   nmax <- fb_records_obj[["nmax"]]
 
-  more_than_nmax <- n > nmax
-
-  if (more_than_nmax) {
+  if (n > nmax) {
 
     msg <- paste("Cannot download more than", nmax, "records")
 
@@ -1419,9 +1417,7 @@ check_n <- function(fb_records_obj) {
 
   }
 
-  less_than_one <- n < 1L
-
-  if (less_than_one) {
+  if (n < 1L) {
 
     deferrable_error("Cannot request less than 1 record")
 
