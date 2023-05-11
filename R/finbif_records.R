@@ -686,7 +686,15 @@ request <- function(fb_records_obj) {
 
   }
 
-  endpoint <- select_endpoint(fb_records_obj)
+  aggregate <- fb_records_obj[["aggregate"]]
+
+  endpoint <- switch(
+    aggregate[[1L]],
+    none = "unit/list",
+    events = "gathering/aggregate",
+    documents = "document/aggregate",
+    "unit/aggregate"
+  )
 
   path <- paste0(path, endpoint)
 
@@ -734,9 +742,7 @@ request <- function(fb_records_obj) {
   resp <- api_get(fb_records_obj)
 
   resp <- structure(
-    resp,
-    select = fb_records_obj[["select_query"]],
-    aggregate = fb_records_obj[["aggregate"]]
+    resp, select = fb_records_obj[["select_query"]], aggregate = aggregate
   )
 
   n_tot <- resp[[c("content", "total")]]
@@ -763,7 +769,7 @@ request <- function(fb_records_obj) {
     count_only = count_only,
     record_id = fb_records_obj[["record_id_selected"]],
     date_time = fb_records_obj[["date_time_selected"]],
-    aggregate = fb_records_obj[["aggregate"]],
+    aggregate = aggregate,
     cache = cache,
     restricted_api = fb_records_obj[["restricted_api"]]
   )
@@ -1362,24 +1368,6 @@ check_n <- function(fb_records_obj) {
     deferrable_error("Cannot request less than 1 record")
 
   }
-
-}
-
-#' @noRd
-
-select_endpoint <- function(fb_records_obj) {
-
-  aggregate <- fb_records_obj[["aggregate"]]
-
-  aggregate <- aggregate[[1L]]
-
-  switch(
-    aggregate,
-    none = "unit/list",
-    events = "gathering/aggregate",
-    documents = "document/aggregate",
-    "unit/aggregate"
-  )
 
 }
 
