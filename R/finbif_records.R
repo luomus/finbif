@@ -731,7 +731,13 @@ request <- function(fb_records_obj) {
 
   fb_records_obj[["query"]] <- query
 
-  resp <- records_obj(fb_records_obj)
+  resp <- api_get(fb_records_obj)
+
+  resp <- structure(
+    resp,
+    select =  fb_records_obj[["select_query"]],
+    aggregate = fb_records_obj[["aggregate"]]
+  )
 
   n_tot <- resp[[c("content", "total")]]
 
@@ -764,7 +770,9 @@ request <- function(fb_records_obj) {
 
   if (n > max_size) {
 
-    if (fb_records_obj[["sample"]] && sample_after(fb_records_list)) {
+    sample_after <- n / n_tot > .5 || n_tot < max_size * 3L
+
+    if (fb_records_obj[["sample"]] && sample_after) {
 
       fb_records_obj[["select"]] <- select_user
 
@@ -797,52 +805,6 @@ request <- function(fb_records_obj) {
   }
 
   fb_records_list
-
-}
-
-#' @noRd
-
-sample_after <- function(fb_records_list) {
-
-  n <- attr(fb_records_list, "nrec_dnld", TRUE)
-
-  n_tot <- attr(fb_records_list, "nrec_avl", TRUE)
-
-  ratio <- n / n_tot
-
-  cond <- ratio > .5
-
-  cond || gt_max_size3(n_tot)
-
-}
-
-#' @noRd
-
-gt_max_size3 <- function(n) {
-
-  max_size <- getOption("finbif_max_page_size")
-
-  max_size3 <- max_size * 3L
-
-  n < max_size3
-
-}
-
-# construct request ------------------------------------------------------------
-
-#' @noRd
-
-records_obj <- function(fb_records_obj) {
-
-  response <- api_get(fb_records_obj)
-
-  select <- fb_records_obj[["select_query"]]
-
-  select <- unique(select)
-
-  aggregate <- fb_records_obj[["aggregate"]]
-
-  structure(response, select = select, aggregate = aggregate)
 
 }
 
@@ -963,18 +925,11 @@ get_extra_pages <- function(fb_records_list) {
 
     fb_records_obj[["query"]] <- query
 
-    delayedAssign("res", records_obj(fb_records_obj))
+    delayedAssign("res", api_get(fb_records_obj))
 
     if (use_future) {
 
-      res <- future::future(
-        {
-
-          records_obj(fb_records_obj)
-
-        },
-        seed = NULL
-      )
+      res <- future::future(api_get(fb_records_obj), seed = NULL)
 
     }
 
@@ -994,7 +949,11 @@ get_extra_pages <- function(fb_records_list) {
 
     res <- value(res)
 
-    fb_records_list[[i]] <- res
+    fb_records_list[[i]] <- structure(
+      res,
+      select =  fb_records_obj[["select_query"]],
+      aggregate = fb_records_obj[["aggregate"]]
+    )
 
     page <- page + 1L
 
