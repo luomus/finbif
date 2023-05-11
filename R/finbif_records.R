@@ -1206,76 +1206,38 @@ record_sample <- function(fb_records_list) {
 
 handle_duplicates <- function(fb_records_list) {
 
-  filter <- attr(fb_records_list, "filter", TRUE)
-
-  select <- attr(fb_records_list, "select_user", TRUE)
-
-  max_size <- attr(fb_records_list, "max_size", TRUE)
-
-  cache <- attr(fb_records_list, "cache", TRUE)
-
-  n <- attr(fb_records_list, "nrec_dnld", TRUE)
-
-  seed <- attr(fb_records_list, "seed", TRUE)
-
-  dwc <- attr(fb_records_list, "dwc", TRUE)
-
-  df <- attr(fb_records_list, "df", TRUE)
-
-  exclude_na <- attr(fb_records_list, "exclude_na", TRUE)
-
-  locale <- attr(fb_records_list, "locale", TRUE)
-
-  include_facts <- attr(fb_records_list, "include_facts", TRUE)
-
-  count_only <- attr(fb_records_list, "count_only", TRUE)
-
   ids <- lapply(fb_records_list, extract_ids)
 
   ids <- unlist(ids)
 
-  duplicates <- duplicated(ids)
+  dups <- duplicated(ids)
 
-  duplicates <- which(duplicates)
+  dups <- which(dups)
 
-  attr(fb_records_list, "remove") <- duplicates
+  attr(fb_records_list, "remove") <- dups
 
   fb_records_list <- remove_records(fb_records_list)
 
-  n_id <- length(ids)
-
-  n_dups <-  length(duplicates)
-
-  n_unique <- n_id - n_dups
-
-  need_new_records <- n_unique < n
-
-  if (need_new_records) {
+  if (length(ids) - length(dups) < attr(fb_records_list, "nrec_dnld", TRUE)) {
 
     fb_records_obj <- list(
-      filter = filter,
-      select = select,
+      filter = attr(fb_records_list, "filter", TRUE),
+      select = attr(fb_records_list, "select_user", TRUE),
       sample = TRUE,
-      n = max_size,
-      cache = cache,
-      dwc = dwc,
-      seed = seed,
-      df = df,
-      exclude_na = exclude_na,
-      locale = locale,
-      include_facts = include_facts,
-      count_only = count_only
+      n = attr(fb_records_list, "max_size", TRUE),
+      cache = attr(fb_records_list, "cache", TRUE),
+      dwc = attr(fb_records_list, "dwc", TRUE),
+      seed = attr(fb_records_list, "seed", TRUE),
+      df = attr(fb_records_list, "df", TRUE),
+      exclude_na = attr(fb_records_list, "exclude_na", TRUE),
+      locale = attr(fb_records_list, "locale", TRUE),
+      include_facts = attr(fb_records_list, "include_facts", TRUE),
+      count_only = attr(fb_records_list, "count_only", TRUE)
     )
 
     new_records <- records(fb_records_obj)
 
-    new_records <- new_records[[1L]]
-
-    n_records <- length(fb_records_list)
-
-    next_records <- n_records + 1L
-
-    fb_records_list[[next_records]] <- new_records
+    fb_records_list[[length(fb_records_list) + 1L]] <- new_records[[1L]]
 
     fb_records_list <- handle_duplicates(fb_records_list)
 
