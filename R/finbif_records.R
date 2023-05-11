@@ -1253,13 +1253,13 @@ handle_duplicates <- function(fb_records_list) {
 
 extract_ids <- function(x) {
 
-  unit_id <- c("unit", "unitId")
-
-  x <- x[["content"]]
-
-  x <- x[["results"]]
-
-  vapply(x, get_el_recurse, "", unit_id, "character")
+  vapply(
+    x[[c("content", "results")]],
+    get_el_recurse,
+    "",
+    c("unit", "unitId"),
+    "character"
+  )
 
 }
 
