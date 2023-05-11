@@ -553,19 +553,13 @@ fix_issue_vars <- function(x) {
 
   type <- c("Time", "Location")
 
-  cols <- c("Issue", "Source", "Message")
+  for (i in c("Issue", "Source", "Message")) {
 
-  sq <- seq_len(2L)
-
-  for (i in cols) {
-
-    for (j in sq) {
-
-      type_j <- type[[j]]
+    for (j in 1:2) {
 
       issue <- sprintf("Issue.%s.%s", i, j)
 
-      issue_type <- sprintf("%sIssue.%s", type_j, i)
+      issue_type <- sprintf("%sIssue.%s", type[[j]], i)
 
       x <- sub(issue, issue_type, x)
 
