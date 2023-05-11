@@ -1038,27 +1038,13 @@ parse_filters <- function(fb_records_obj) {
 
 check_coordinates <- function(obj) {
 
-  name <- obj[["name"]]
-
   filter <- obj[["filter"]]
-
-  n_filters <- length(filter)
 
   nms <- names(filter)
 
-  empty_names <- nms == ""
+  no_system <- !is.null(nms) && !identical(nms[[3L]], "") && !"system" %in% nms
 
-  has_names <- !is.null(nms)
-
-  cond <- has_names && !empty_names[[3L]]
-
-  cond <- cond && !"system" %in% nms
-
-  cond <- cond || n_filters < 3L
-
-  cond <- cond && identical(name, "coordinates")
-
-  if (cond) {
+  if (no_system || length(filter) < 3L) {
 
     deferrable_error("Invalid coordinates: system not specified")
 
