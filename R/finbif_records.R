@@ -1437,9 +1437,7 @@ order_by_computed_var <- function(order_by) {
 
   nms <- names(lt)
 
-  nms <- paste0("computed_var_", nms)
-
-  names(lt) <- nms
+  names(lt) <- paste0("computed_var_", nms)
 
   ans <- lt[order_by]
 
