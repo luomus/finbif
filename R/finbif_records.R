@@ -1269,25 +1269,21 @@ extract_ids <- function(x) {
 
 remove_records <- function(fb_records_list) {
 
-  n <- attr(fb_records_list, "nrec_dnld", TRUE)
-
   remove <- attr(fb_records_list, "remove", TRUE)
 
   contents <- lapply(fb_records_list, getElement, "content")
 
   page_sizes <- vapply(contents, getElement, 0L, "pageSize")
 
-  records_null <- is.null(remove)
-
-  if (records_null) {
+  if (is.null(remove)) {
 
     total_page_sizes <- sum(page_sizes)
 
     remove <- seq(1L, total_page_sizes)
 
-    which_records <- seq(1L, n)
+    n <- attr(fb_records_list, "nrec_dnld", TRUE)
 
-    remove <- remove[-which_records]
+    remove <- remove[-seq_len(n)]
 
   }
 
@@ -1297,25 +1293,17 @@ remove_records <- function(fb_records_list) {
 
   excess_pages <- excess_pages[remove]
 
-  nl <- length(fb_records_list)
-
   page_size_sum <- cumsum(page_sizes)
 
-  page_size_sum <- page_size_sum[-nl]
+  page_size_sum <- page_size_sum[-length(fb_records_list)]
 
   records <- c(0L, page_size_sum)
 
-  records <- records[excess_pages]
-
-  records <- remove - records
-
-  records <- split(records, excess_pages)
+  records <- split(remove - records[excess_pages], excess_pages)
 
   for (i in sq) {
 
-    char_i <- as.character(i)
-
-    ind <- records[[char_i]]
+    ind <- records[[as.character(i)]]
 
     fb_records_list_i <- fb_records_list[[i]]
 
@@ -1325,23 +1313,17 @@ remove_records <- function(fb_records_list) {
 
     results[ind] <- NULL
 
-    new_page_size <- length(results)
-
-    content[["pageSize"]] <- new_page_size
+    content[["pageSize"]] <- length(results)
 
     content[["results"]] <- results
 
     fb_records_list_i[["content"]] <- content
 
-    has_ind <- !is.null(ind)
+    if (!is.null(ind)) {
 
-    if (has_ind) {
+      df <- attr(fb_records_list_i, "df", TRUE)
 
-      df <- attr(fb_records_list_i, "df")
-
-      df <- df[-ind, ]
-
-      attr(fb_records_list_i, "df") <- df
+      attr(fb_records_list_i, "df") <- df[-ind, ]
 
     }
 
@@ -1351,11 +1333,7 @@ remove_records <- function(fb_records_list) {
 
   contents <- lapply(fb_records_list, getElement, "content")
 
-  page_sizes <- vapply(contents, getElement,  0L, "pageSize")
-
-  to_remove <- page_sizes == 0L
-
-  fb_records_list[to_remove] <- NULL
+  fb_records_list[vapply(contents, getElement, 0L, "pageSize") == 0L] <- NULL
 
   fb_records_list
 
