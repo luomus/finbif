@@ -1074,9 +1074,7 @@ translate <- function(translation_obj) {
 
   }
 
-  is_list <- is.list(x)
-
-  if (is_list) {
+  if (is.list(x)) {
 
     nms <- names(x)
 
@@ -1104,13 +1102,11 @@ translate <- function(translation_obj) {
 
     nms <- names(x)
 
-    empty <- x == ""
-
     unempty_x <- sprintf("[%s]", x)
 
-    x <- ifelse(empty, x, unempty_x)
+    x <- ifelse(x == "", x, unempty_x)
 
-    sprintf("%s%s", nms, x)
+    ans <- sprintf("%s%s", nms, x)
 
   } else {
 
@@ -1118,23 +1114,17 @@ translate <- function(translation_obj) {
 
     ind <- rep(NA_integer_, n)
 
-    # multilevel filters have data.frames a level below
-
-    not_df <- !is.data.frame(trsltn)
-
-    if (not_df) {
+    if (!is.data.frame(trsltn)) {
 
       trsltn <- trsltn[[1L]]
 
     }
 
+    x_low <- tolower(x)
+
     for (i in trsltn) {
 
-      is_translation <- inherits(i, "translation")
-
-      if (is_translation) {
-
-        x_low <- tolower(x)
+      if (inherits(i, "translation")) {
 
         i_low <- tolower(i)
 
@@ -1148,21 +1138,13 @@ translate <- function(translation_obj) {
 
     }
 
-    any_na <- anyNA(ind)
+    if (anyNA(ind)) {
 
-    if (any_na) {
-
-      na_ind <- is.na(ind)
-
-      x_na <- x[na_ind]
-
-      for (err in x_na) {
+      for (err in x[is.na(ind)]) {
 
         translation <- gsub("_", " ", translation)
 
-        invalid <- paste0("Invalid name in ", translation, ": ", err)
-
-        deferrable_error(invalid)
+        deferrable_error(paste0("Invalid name in ", translation, ": ", err))
 
       }
 
@@ -1172,11 +1154,11 @@ translate <- function(translation_obj) {
 
     ans <- ans[ind]
 
-    unique <- !grepl("DUPLICATE", ans)
-
-    ans[unique]
+    ans <- ans[!grepl("DUPLICATE", ans)]
 
   }
+
+  ans
 
 }
 
