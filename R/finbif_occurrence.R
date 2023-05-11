@@ -414,7 +414,7 @@ records_list_data_frame <- function(x) {
 
     if (is.null(dfi)) {
 
-      dfi <- records_data_frame(xi)
+      dfi <- records_df(xi)
 
     }
 

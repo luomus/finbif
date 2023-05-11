@@ -116,7 +116,7 @@ records <- function(fb_records_obj) {
 
     last <- ans[[ind]]
 
-    attr(last, "df") <- records_data_frame(last)
+    attr(last, "df") <- records_df(last)
 
     ans[[ind]] <- last
 
@@ -128,7 +128,7 @@ records <- function(fb_records_obj) {
 
 #' @noRd
 
-records_data_frame <- function(x) {
+records_df <- function(x) {
 
   results <- x[[c("content", "results")]]
 
@@ -735,7 +735,7 @@ request <- function(fb_records_obj) {
 
   resp <- structure(
     resp,
-    select =  fb_records_obj[["select_query"]],
+    select = fb_records_obj[["select_query"]],
     aggregate = fb_records_obj[["aggregate"]]
   )
 
@@ -815,57 +815,37 @@ request <- function(fb_records_obj) {
 
 get_extra_pages <- function(fb_records_list) {
 
+  fb_records_obj <- list(
+    path = attr(fb_records_list, "path", TRUE),
+    cache = attr(fb_records_list, "cache", TRUE),
+    select_query = attr(fb_records_list, "select", TRUE),
+    aggregate = attr(fb_records_list, "aggregate", TRUE),
+    restricted_api = attr(fb_records_list, "restricted_api", TRUE)
+  )
+
   n <- attr(fb_records_list, "nrec_dnld", TRUE)
 
   max_size <- attr(fb_records_list, "max_size", TRUE)
 
-  quiet <- attr(fb_records_list, "quiet", TRUE)
-
-  path <- attr(fb_records_list, "path", TRUE)
-
-  query <- attr(fb_records_list, "query", TRUE)
-
-  cache <- attr(fb_records_list, "cache", TRUE)
-
-  select <- attr(fb_records_list, "select", TRUE)
-
-  aggregate <- attr(fb_records_list, "aggregate", TRUE)
-
-  restricted_api <- attr(fb_records_list, "restricted_api", TRUE)
-
-  df <- attr(fb_records_list, "df", TRUE)
-
-  fb_records_obj <- list(
-    path = path,
-    cache = cache,
-    select_query = select,
-    aggregate = aggregate,
-    restricted_api = restricted_api
-  )
-
   multipage <- n > max_size
 
-  use_pb <- multipage && !quiet
+  quiet <- attr(fb_records_list, "quiet", TRUE)
 
-  if (use_pb) {
+  if (multipage && !quiet) {
 
     pb_head("Fetching data")
 
-    ratio <- n / max_size
-
-    max <- floor(ratio)
+    max <- floor(n / max_size)
 
     pb <- utils::txtProgressBar(0L, max, style = 3L)
 
-    on.exit({
-
-      close(pb)
-
-    })
+    on.exit(close(pb))
 
   }
 
   i <- 1L
+
+  query <- attr(fb_records_list, "query", TRUE)
 
   page <- query[["page"]]
 
@@ -875,9 +855,7 @@ get_extra_pages <- function(fb_records_list) {
 
   n_pages <- n %/% page_size
 
-  has_future <- has_pkgs("future")
-
-  use_future <- has_future && getOption("finbif_use_async")
+  use_future <- has_pkgs("future") && getOption("finbif_use_async")
 
   if (use_future) {
 
@@ -893,23 +871,17 @@ get_extra_pages <- function(fb_records_list) {
 
     }
 
-    no_more_pages <- page > n_pages
-
-    if (no_more_pages) {
-
-      excess_records <- n %% page_size
+    if (page > n_pages) {
 
       last_record <- page_size * n_pages
 
-      no_more_records <- identical(last_record, n)
-
-      if (no_more_records) {
+      if (identical(last_record, n)) {
 
         break
 
       }
 
-      page_size <- get_next_lowest_factor(last_record, excess_records)
+      page_size <- get_next_lowest_factor(last_record, n %% page_size)
 
       page <- last_record / page_size
 
@@ -933,25 +905,17 @@ get_extra_pages <- function(fb_records_list) {
 
     }
 
-    if (df) {
+    if (attr(fb_records_list, "df", TRUE)) {
 
-      fb_records_list_i <- fb_records_list[[i]]
-
-      fb_records_df_i <- records_data_frame(fb_records_list[[i]])
-
-      attr(fb_records_list_i, "df") <- fb_records_df_i
-
-      fb_records_list[[i]] <- fb_records_list_i
+      attr(fb_records_list[[i]], "df") <- records_df(fb_records_list[[i]])
 
     }
 
     i <- i + 1L
 
-    res <- value(res)
-
     fb_records_list[[i]] <- structure(
-      res,
-      select =  fb_records_obj[["select_query"]],
+      value(res),
+      select = fb_records_obj[["select_query"]],
       aggregate = fb_records_obj[["aggregate"]]
     )
 
