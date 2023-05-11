@@ -387,21 +387,11 @@ finbif_occurrence_load <- function(
 
 read_finbif_tsv <- function(fb_occurrenc_obj) {
 
-  n <- fb_occurrenc_obj[["n"]]
-
-  count_only <- fb_occurrenc_obj[["count_only"]]
-
-  facts <- fb_occurrenc_obj[["facts"]]
+  file <- as.character(fb_occurrenc_obj[["file"]])
 
   ptrn <- "^https?://.+?/HBF\\."
 
-  file <- fb_occurrenc_obj[["file"]]
-
-  file <- as.character(file)
-
-  is_url <- grepl(ptrn, file)
-
-  if (is_url) {
+  if (grepl(ptrn, file)) {
 
     file <- sub(ptrn, "", file)
 
@@ -411,6 +401,8 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
   tsv <- gsub("zip", "tsv", tsv)
 
+  facts <- fb_occurrenc_obj[["facts"]]
+
   tsv_prefix <- switch(
     facts,
     none = "rows_",
@@ -419,9 +411,7 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
     document = "document_facts_",
   )
 
-  fact_types <- c("none", "record", "event", "document")
-
-  valid_facts <- facts %in% fact_types
+  valid_facts <- facts %in% c("none", "record", "event", "document")
 
   stopifnot(
     "Facts can only be of types: record, event and/or document" = valid_facts
@@ -431,47 +421,33 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
   fb_occurrenc_obj[["file"]] <- file
 
-  tsv <- paste0(tsv_prefix, tsv)
+  fb_occurrenc_obj[["tsv"]] <-  paste0(tsv_prefix, tsv)
 
-  fb_occurrenc_obj[["tsv"]] <- tsv
+  if (grepl("^[0-9]*$", file)) {
 
-  is_number <- grepl("^[0-9]*$", file)
-
-  if (is_number) {
+    fb_occurrenc_obj[["tsv"]] <- sprintf("%sHBF.%s.tsv", tsv_prefix, file)
 
     finbif_dl_url <- getOption("finbif_dl_url")
 
-    url <- sprintf("%s/HBF.%s", finbif_dl_url, file)
-
-    fb_occurrenc_obj[["url"]] <- url
-
-    tsv <- sprintf("%sHBF.%s.tsv", tsv_prefix, file)
-
-    fb_occurrenc_obj[["tsv"]] <- tsv
+    fb_occurrenc_obj[["url"]] <- sprintf("%s/HBF.%s", finbif_dl_url, file)
 
     fb_occurrenc_obj <- get_zip(fb_occurrenc_obj)
 
     file <- fb_occurrenc_obj[["file"]]
 
-  } else {
-
-    url <- file
-
   }
 
   df <- attempt_read(fb_occurrenc_obj)
 
-  if (count_only) {
+  if (fb_occurrenc_obj[["count_only"]]) {
 
     return(df)
 
   }
 
-  attr(df, "url") <- url
+  attr(df, "url") <- file
 
-  n_all <- identical(n, -1L)
-
-  if (n_all) {
+  if (identical(fb_occurrenc_obj[["n"]], -1L)) {
 
     attr(df, "nrow") <- nrow(df)
 
