@@ -1455,33 +1455,23 @@ na_exclude <- function(fb_records_obj) {
 
   query <- fb_records_obj[["query"]]
 
-  exclude_na <- fb_records_obj[["exclude_na"]]
+  if (fb_records_obj[["exclude_na"]]) {
 
-  select_param <- fb_records_obj[["select_param"]]
+    select_param <- fb_records_obj[["select_param"]]
 
-  if (exclude_na) {
-
-    has_value <- query[[select_param]]
-
-    has_value <- strsplit(has_value, ",")
+    has_value <- strsplit(query[[select_param]], ",")
 
     has_value <- c(hasValue = has_value)
 
-    var_names <- sysdata("var_names")
+    v <- sysdata("var_names")
 
-    available_vars <- row.names(var_names)
+    available_vars <- row.names(v)
 
-    ind <- var_names[["aggregate"]]
+    i <- v[["aggregate"]] | v[["aggregate_events"]] | v[["aggregate_documents"]]
 
-    ind <- ind | var_names[["aggregate_events"]]
+    i <- i & v[["single"]]
 
-    ind <- ind | var_names[["aggregate_documents"]]
-
-    ind <- ind & var_names[["single"]]
-
-    available_vars <- available_vars[ind]
-
-    has_value <- lapply(has_value, intersect, available_vars)
+    has_value <- lapply(has_value, intersect, available_vars[i])
 
     has_value <- lapply(has_value, paste, collapse = ",")
 
