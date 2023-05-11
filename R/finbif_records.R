@@ -933,53 +933,29 @@ get_extra_pages <- function(fb_records_list) {
 
 parse_filters <- function(fb_records_obj) {
 
-  filter <- fb_records_obj[["filter"]]
+  filter <- as.list(fb_records_obj[["filter"]])
 
-  aggregate <- fb_records_obj[["aggregate"]]
-
-  locale <- fb_records_obj[["locale"]]
-
-  filter <- as.list(filter)
-
-  finbif_filter_names <- names(filter)
-
-  finbif_filter_names <- list(
-    x = finbif_filter_names, translation = "filter_names"
-  )
+  finbif_filter_names <- list(x = names(filter), translation = "filter_names")
 
   finbif_filter_names <- translate(finbif_filter_names)
 
-  aggregate <- aggregate[[1L]]
+  has_taxon <- any(finbif_filter_names %in% c("taxonId", "target"))
 
-  taxon_filters <- c("taxonId", "target")
+  events_or_docs <- fb_records_obj[["aggregate"]] %in% c("events", "documents")
 
-  is_taxon_filter <- finbif_filter_names %in% taxon_filters
-
-  cond <- any(is_taxon_filter)
-
-  cond <- cond && switch(aggregate, events = TRUE, documents = TRUE, FALSE)
-
-  if (cond) {
+  if (has_taxon && events_or_docs) {
 
     deferrable_error("Cannot use current aggregation and filter by taxon")
 
   }
 
-  filter_sq <- seq_along(filter)
-
-  cols <- c("id", "collection_name", "abbreviation")
-
   filter_names <- sysdata("filter_names")
 
-  for (i in filter_sq) {
+  for (i in seq_along(filter)) {
 
     filter_name_i <- finbif_filter_names[[i]]
 
-    # the filter might not exist
-
-    name_na <- is.na(filter_name_i)
-
-    if (name_na) {
+    if (is.na(filter_name_i)) {
 
       next
 
@@ -989,55 +965,46 @@ parse_filters <- function(fb_records_obj) {
 
     nm_i <- nms[[i]]
 
-    filter_i <- filter[[i]]
+    f_i <- filter[[i]]
 
-    requires_translation <- filter_names[[filter_name_i, "translated_values"]]
+    if (filter_names[[filter_name_i, "translated_values"]]) {
 
-    if (requires_translation) {
+      f_i <- list(x = f_i, translation = nm_i)
 
-      filter_i <- list(x = filter_i, translation = nm_i)
-
-      filter_i <- translate(filter_i)
-
-    }
-
-    is_collection_filter <- grepl("^(not_){0,1}collection$", nm_i) # nolint
-
-    if (is_collection_filter) {
-
-      is_collection <- inherits(filter_i, "finbif_collections")
-
-      if (is_collection) {
-
-        filter_i <- row.names(filter_i)
-
-      } else {
-
-        env <- list()
-
-        collections <- finbif_collections(
-          select = cols, supercollections = TRUE, nmin = NA, locale = locale
-        )
-
-        collections[] <- lapply(collections, structure, class = "translation")
-
-        env[[nm_i]] <- collections
-
-        filter_i <- list(x = filter_i, translation = nm_i, env = env)
-
-        filter_i <- translate(filter_i)
-
-      }
+      f_i <- translate(f_i)
 
     }
 
     class <- filter_names[[filter_name_i, "class"]]
 
-    is_coords <- identical(class, "coords")
+    if (grepl("^(not_){0,1}collection$", nm_i)) {
 
-    if (is_coords) {
+      if (inherits(f_i, "finbif_collections")) {
 
-      # Coordinates filter must have a system defined
+        f_i <- row.names(f_i)
+
+      } else {
+
+        collections <- finbif_collections(
+          select = c("id", "collection_name", "abbreviation"),
+          supercollections = TRUE,
+          nmin = NA,
+          locale = fb_records_obj[["locale"]]
+        )
+
+        collections[] <- lapply(collections, structure, class = "translation")
+
+        env <- list()
+
+        env[[nm_i]] <- collections
+
+        f_i <- list(x = f_i, translation = nm_i, env = env)
+
+        f_i <- translate(f_i)
+
+      }
+
+    } else if (identical(class, "coords")) {
 
       coordinates_filter <- filter[["coordinates"]]
 
@@ -1045,27 +1012,19 @@ parse_filters <- function(fb_records_obj) {
 
       check_coordinates(coordinates_obj)
 
-      filter_i <- coords(filter_i)
+      f_i <- coords(f_i)
 
-    }
-
-    is_date <- identical(class, "date")
-
-    if (is_date) {
+    } else if (identical(class, "date")) {
 
       date_filter <- list(filter = nm_i)
 
-      date_filter <- c(date_filter, filter_i)
+      date_filter <- c(date_filter, f_i)
 
-      filter_i <- dates(date_filter)
+      f_i <- dates(date_filter)
 
     }
 
-    sep <- filter_names[filter_name_i, "sep"]
-
-    filter_i <- paste(filter_i, collapse = sep)
-
-    filter[[i]] <- filter_i
+    filter[[i]] <- paste(f_i, collapse = filter_names[filter_name_i, "sep"])
 
   }
 
