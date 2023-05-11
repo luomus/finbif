@@ -1168,17 +1168,13 @@ translate <- function(translation_obj) {
 
 record_sample <- function(fb_records_list) {
 
-  n  <- attr(fb_records_list, "nrec_dnld", TRUE)
-
   n_tot <- attr(fb_records_list, "nrec_avl", TRUE)
 
-  select <- attr(fb_records_list, "select", TRUE)
-
-  record_id <- attr(fb_records_list, "record_id", TRUE)
-
-  cache <- attr(fb_records_list, "cache", TRUE)
+  n <- attr(fb_records_list, "nrec_dnld", TRUE)
 
   size <- n_tot - n
+
+  cache <- attr(fb_records_list, "cache", TRUE)
 
   remove <- sample.int(n_tot, size)
 
@@ -1192,15 +1188,13 @@ record_sample <- function(fb_records_list) {
 
   attr(fb_records_list, "remove") <- remove
 
-  ans <- remove_records(fb_records_list)
-
   structure(
-    ans,
+    remove_records(fb_records_list),
     class = "finbif_records_sample_list",
     nrec_dnld = n,
     nrec_avl = n_tot,
-    select = select,
-    record_id = record_id,
+    select = attr(fb_records_list, "select", TRUE),
+    record_id = attr(fb_records_list, "record_id", TRUE),
     cache = cache
   )
 
