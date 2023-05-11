@@ -461,21 +461,9 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
 attempt_read <- function(fb_occurrence_obj) {
 
-  file <- fb_occurrence_obj[["file"]]
+  use_dt <- fb_occurrence_obj[["dt"]]
 
-  tsv <- fb_occurrence_obj[["tsv"]]
-
-  count_only <- fb_occurrence_obj[["count_only"]]
-
-  n <- fb_occurrence_obj[["n"]]
-
-  dt <- fb_occurrence_obj[["dt"]]
-
-  use_dt <- dt
-
-  dt_na <- is.na(dt)
-
-  if (dt_na) {
+  if (is.na(use_dt)) {
 
     use_dt <- TRUE
 
@@ -483,35 +471,29 @@ attempt_read <- function(fb_occurrence_obj) {
 
   }
 
-  if (count_only) {
+  if (fb_occurrence_obj[["count_only"]]) {
 
-    nlines(fb_occurrence_obj)
+    ans <- nlines(fb_occurrence_obj)
 
   } else {
 
     n_rows <- NULL
 
-    has_n <- !identical(n, -1L)
-
-    if (has_n) {
+    if (!identical(fb_occurrence_obj[["n"]], -1L)) {
 
       n_rows <- nlines(fb_occurrence_obj)
 
     }
 
-    use_dt <- use_dt && has_pkgs("data.table")
+    if (use_dt && has_pkgs("data.table")) {
 
-    if (use_dt) {
+      input <- as.character(fb_occurrence_obj[["file"]])
 
-      input <- as.character(file)
-
-      is_tsv <- grepl("\\.tsv$", input)
-
-      input_list <- list(input = input, tsv = tsv)
+      input_list <- list(input = input, tsv = fb_occurrence_obj[["tsv"]])
 
       input_list <- list(zip = input_list)
 
-      if (is_tsv) {
+      if (grepl("\\.tsv$", input)) {
 
         fb_occurrence_obj[["keep_tsv"]] <- FALSE
 
@@ -521,19 +503,19 @@ attempt_read <- function(fb_occurrence_obj) {
 
       fb_occurrence_obj[["dt_args"]] <- input_list
 
-      df <- dt_read(fb_occurrence_obj)
+      ans <- dt_read(fb_occurrence_obj)
 
     } else {
 
-      df <- rd_read(fb_occurrence_obj)
+      ans <- rd_read(fb_occurrence_obj)
 
     }
 
-    attr(df, "nrow") <- n_rows
-
-    df
+    attr(ans, "nrow") <- n_rows
 
   }
+
+  ans
 
 }
 
