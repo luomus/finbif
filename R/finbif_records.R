@@ -1375,19 +1375,11 @@ check_n <- function(fb_records_obj) {
 
 taxa_counts <- function(fb_records_obj) {
 
-  aggregate <- fb_records_obj[["aggregate"]]
+  ans <- NULL
 
-  taxa_counts <- c("species", "taxa")
+  if (any(c("species", "taxa") %in% fb_records_obj[["aggregate"]])) {
 
-  has_taxa_count <- taxa_counts %in% aggregate
-
-  without_taxa_counts <- !any(has_taxa_count)
-
-  ans <- "true"
-
-  if (without_taxa_counts) {
-
-    ans <- NULL
+    ans <- "true"
 
   }
 
@@ -1399,15 +1391,11 @@ taxa_counts <- function(fb_records_obj) {
 
 individual_counts <- function(fb_records_obj) {
 
-  aggregate <- fb_records_obj[["aggregate"]]
+  ans <- NULL
 
-  without_individual_count <- !"individuals" %in% aggregate
+  if ("individuals" %in% fb_records_obj[["aggregate"]]) {
 
-  ans <- "false"
-
-  if (without_individual_count) {
-
-    ans <- NULL
+    ans <- "false"
 
   }
 
@@ -1419,15 +1407,11 @@ individual_counts <- function(fb_records_obj) {
 
 pair_counts <- function(fb_records_obj) {
 
-  aggregate <- fb_records_obj[["aggregate"]]
+  ans <- NULL
 
-  without_pair_count <- !"pairs" %in% aggregate
+  if ("pairs" %in% fb_records_obj[["aggregate"]]) {
 
-  ans <- "true"
-
-  if (without_pair_count) {
-
-    ans <- NULL
+    ans <- "true"
 
   }
 
