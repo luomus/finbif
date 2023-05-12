@@ -1038,19 +1038,7 @@ rd_read <- function(fb_occurrence_obj) {
 
   tsv <- fb_occurrence_obj[["tsv"]]
 
-  n <- fb_occurrence_obj[["n"]]
-
-  select <- fb_occurrence_obj[["select"]]
-
-  keep_tsv <- fb_occurrence_obj[["keep_tsv"]]
-
-  skip <- fb_occurrence_obj[["skip"]]
-
-  quote <- ""
-
-  use_unzip <- keep_tsv && !grepl("\\.tsv$", file)
-
-  if (use_unzip) {
+  if (fb_occurrence_obj[["keep_tsv"]] && !grepl("\\.tsv$", file)) {
 
     unzip <- op_unzip()
 
@@ -1062,10 +1050,14 @@ rd_read <- function(fb_occurrence_obj) {
 
   connection_obj <- list(file = file, tsv = tsv, mode = "")
 
-  con <- open_tsv_connection(connection_obj)
+  quote <- ""
 
   df <- utils::read.delim(
-    con, nrows = 1L, na.strings = "", quote = quote, skip = 0L
+    open_tsv_connection(connection_obj),
+    nrows = 1L,
+    na.strings = "",
+    quote = quote,
+    skip = 0L
   )
 
   df_names <- names(df)
@@ -1074,21 +1066,19 @@ rd_read <- function(fb_occurrence_obj) {
 
   file_vars <- infer_file_vars(cols)
 
+  select <- fb_occurrence_obj[["select"]]
+
   select[["file_vars"]] <- file_vars
 
-  lite <- attr(file_vars, "lite", TRUE)
-
-  if (lite) {
+  if (attr(file_vars, "lite", TRUE)) {
 
     quote <- "\""
 
   }
 
-  n_int <- as.integer(n)
+  n <- as.integer(fb_occurrence_obj[["n"]])
 
-  is_zero <- identical(n_int, 0L)
-
-  if (is_zero) {
+  if (identical(n, 0L)) {
 
     df <- df[0L, ]
 
@@ -1096,25 +1086,13 @@ rd_read <- function(fb_occurrence_obj) {
 
     connection_obj <- list(file = file, tsv = tsv, mode = "")
 
-    con <- open_tsv_connection(connection_obj)
-
-    skip <- skip + 1L
-
-    nrows <- abs(n)
-
-    nrows <- max(nrows, 1L)
-
-    sign <- sign(n)
-
-    nrows <- nrows * sign
-
     df <- utils::read.delim(
-      con,
+      open_tsv_connection(connection_obj),
       header = FALSE,
       quote = quote,
       na.strings = "",
-      nrows = nrows,
-      skip = skip
+      nrows = n,
+      skip = fb_occurrence_obj[["skip"]] + 1L
     )
 
     classes <- file_vars[cols, "type"]
@@ -1123,31 +1101,19 @@ rd_read <- function(fb_occurrence_obj) {
 
     classes <- ifelse(na_classes, "character", classes)
 
-    sq_df <- seq_along(df)
+    for (i in seq_along(df)) {
 
-    for (i in sq_df) {
-
-      dfi <- df[[i]]
-
-      class_i <- classes[[i]]
-
-      dfi <- cast_to_type(dfi, class_i)
-
-      dfi <- df[[i]]
+      df[[i]] <- cast_to_type(df[[i]], classes[[i]])
 
     }
 
   }
 
-  deselect <- deselect(select)
-
-  idx <- !cols %in% deselect
+  idx <- !cols %in% deselect(select)
 
   df <- df[idx]
 
-  df_names <- cols[idx]
-
-  names(df) <- df_names
+  names(df) <- cols[idx]
 
   attr(df, "file_vars") <- file_vars
 
