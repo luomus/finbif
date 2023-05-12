@@ -1410,9 +1410,7 @@ convert_col_type <- function(col) {
 
 paste_col <- function(x) {
 
-  is_na <- is.na(x)
-
-  x[is_na] <- ""
+  x[is.na(x)] <- ""
 
   paste(x, collapse = ", ")
 
