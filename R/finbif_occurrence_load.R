@@ -1147,19 +1147,13 @@ deselect <- function(select) {
 
   type <- select[["type"]]
 
-  file_vars_type <- file_vars[[type]]
-
   deselect <- select[["deselect"]]
 
   var_names <- sysdata("var_names")
 
-  deselect <- var_names[deselect, type]
+  ind <- file_vars[[type]] %in% var_names[deselect, type]
 
-  deselect <- file_vars_type %in% deselect
-
-  deselect <- file_vars[deselect, ]
-
-  row.names(deselect)
+  row.names(file_vars[ind, ])
 
 }
 
