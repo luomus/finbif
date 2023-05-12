@@ -621,17 +621,11 @@ new_vars <- function(df) {
 
 get_zip <- function(fb_occurrenc_obj) {
 
-  url <- fb_occurrenc_obj[["url"]]
-
-  quiet <- fb_occurrenc_obj[["quiet"]]
-
-  cache <- fb_occurrenc_obj[["cache"]]
-
   write_file <- fb_occurrenc_obj[["write_file"]]
 
-  cache <- cache > 0
+  url <- fb_occurrenc_obj[["url"]]
 
-  if (cache) {
+  if (fb_occurrenc_obj[["cache"]] > 0) {
 
     hash <- sub(":\\d+", "", url)
 
@@ -639,17 +633,11 @@ get_zip <- function(fb_occurrenc_obj) {
 
     fcp <- getOption("finbif_cache_path")
 
-    no_cache_path <- is.null(fcp)
-
-    is_path <- is.character(fcp)
-
-    if (no_cache_path) {
+    if (is.null(fcp)) {
 
       cache_file <- get_cache(hash)
 
-      has_cache_file <- !is.null(cache_file)
-
-      if (has_cache_file) {
+      if (!is.null(cache_file)) {
 
         fb_occurrenc_obj[["file"]] <- cache_file
 
@@ -659,9 +647,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
       on.exit({
 
-        has_write_file <- !is.null(write_file)
-
-        if (has_write_file) {
+        if (!is.null(write_file)) {
 
           cache_obj <- list(data = write_file, hash = hash, timeout = Inf)
 
@@ -671,15 +657,13 @@ get_zip <- function(fb_occurrenc_obj) {
 
       })
 
-    } else if (is_path) {
+    } else if (is.character(fcp)) {
 
       file_name <- paste0("finbif_dwnld_cache_file_", hash)
 
       write_file <- file.path(fcp, file_name)
 
-      write_file_exists <- file.exists(write_file)
-
-      if (write_file_exists) {
+      if (file.exists(write_file)) {
 
         fb_occurrenc_obj[["file"]] <- write_file
 
@@ -697,7 +681,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
   progress <- NULL
 
-  if (!quiet) {
+  if (!fb_occurrenc_obj[["quiet"]]) {
 
     progress <- httr::progress()
 
@@ -707,44 +691,28 @@ get_zip <- function(fb_occurrenc_obj) {
 
   stopifnot("Request not cached and option:finbif_allow_query = FALSE" = allow)
 
-  rate_limit <- getOption("finbif_rate_limit")
-
-  sleep <- 1 / rate_limit
-
-  Sys.sleep(sleep)
+  Sys.sleep(1 / getOption("finbif_rate_limit"))
 
   query <- list()
 
   auth <- Sys.getenv("FINBIF_RESTRICTED_FILE_ACCESS_TOKEN")
 
-  has_auth <- !identical(auth, "")
-
-  if (has_auth) {
+  if (!identical(auth, "")) {
 
     query <- list(personToken = auth)
 
   }
 
-  write_disk <- httr::write_disk(write_file, overwrite = TRUE)
-
-  times <- getOption("finbif_retry_times")
-
-  pause_base <- getOption("finbif_retry_pause_base")
-
-  pause_cap <- getOption("finbif_retry_pause_cap")
-
-  pause_min <- getOption("finbif_retry_pause_min")
-
   resp <- httr::RETRY(
     "GET",
     url,
-    write_disk,
+    httr::write_disk(write_file, overwrite = TRUE),
     progress,
     query = query,
-    times = times,
-    pause_base = pause_base,
-    pause_cap = pause_cap,
-    pause_min = pause_min,
+    times =  getOption("finbif_retry_times"),
+    pause_base = getOption("finbif_retry_pause_base"),
+    pause_cap = getOption("finbif_retry_pause_cap"),
+    pause_min = getOption("finbif_retry_pause_min"),
     quiet = quiet,
     terminate_on = 404L
   )
@@ -755,25 +723,15 @@ get_zip <- function(fb_occurrenc_obj) {
 
   fl <- as.integer(fl)
 
-  too_large <- isTRUE(fs > fl)
-
-  if (too_large) {
+  if (isTRUE(fs > fl)) {
 
     stop("File download too large; err_name: too_large", call. = FALSE)
 
   }
 
-  if (!quiet) {
-
-    message("")
-
-  }
-
   code <- resp[["status_code"]]
 
-  has_error <- !identical(code, 200L)
-
-  if (has_error) {
+  if (!identical(code, 200L)) {
 
     msg <- sprintf("File request failed [%s]; err_name: request_failed", code)
 
