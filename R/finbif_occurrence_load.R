@@ -1308,31 +1308,23 @@ bind_facts <- function(x) {
 
   id <- attr(facts, "id", TRUE)
 
-  nms <- names(x)
+  stopifnot("Cannot bind facts. ID column missing from data" = id %in% names(x))
 
-  has_id <- id %in% nms
-
-  stopifnot("Cannot bind facts. ID column missing from data" = has_id)
-
-  attr <- attributes(x)
-
-  facts_id <- facts[[id]]
+  matches <- match(x[[id]], facts[[id]])
 
   facts[[id]] <- NULL
 
-  records_id <- x[[id]]
-
-  matches <- match(records_id, facts_id)
-
   facts <- facts[matches, , drop = FALSE]
 
-  x <- cbind(x, facts)
+  ans <- cbind(x, facts)
 
-  attr[["names"]] <- names(x)
+  attr <- attributes(x)
 
-  attributes(x) <- attr
+  attr[["names"]] <- names(ans)
 
-  x
+  attributes(ans) <- attr
+
+  ans
 
 }
 
