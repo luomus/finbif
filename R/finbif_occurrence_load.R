@@ -1358,15 +1358,15 @@ unlist_col <- function(col) {
 
   col_unlisted_len <- length(col_unlisted)
 
-  len_eql <- identical(col_len, col_unlisted_len)
+  if (identical(col_len, col_unlisted_len)) {
 
-  if (len_eql) {
+    col_unlisted
 
-    col <- col_unlisted
+  } else {
+
+    col
 
   }
-
-  col
 
 }
 
