@@ -1161,9 +1161,7 @@ deselect <- function(select) {
 
 select_facts <- function(select) {
 
-  lite <- select[["lite"]]
-
-  if (lite) {
+  if (select[["lite"]]) {
 
     select[["facts"]] <- NULL
 
