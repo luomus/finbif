@@ -1420,33 +1420,15 @@ paste_col <- function(x) {
 
 infer_file_vars <- function(cols) {
 
-  file_vars <- sysdata("cite_file_vars")
+  if (length(cols) < 100L && !"Fact" %in% cols) {
 
-  attr(file_vars, "lite") <- FALSE
+    file_vars <- sysdata("lite_download_file_vars")
 
-  locale <- "none"
-
-  n_cols <- length(cols)
-
-  small_n_cols <- n_cols < 100L
-
-  is_fact_df <- "Fact" %in% cols
-
-  lite <- small_n_cols && !is_fact_df
-
-  if (lite) {
-
-    lite_download_file_vars <- sysdata("lite_download_file_vars")
-
-    file_vars <- lite_download_file_vars
-
-    locale <- lapply(lite_download_file_vars, intersect, cols)
+    locale <- lapply(file_vars, intersect, cols)
 
     locale <- vapply(locale, length, 0L)
 
-    mx <- max(locale)
-
-    locale <- locale == mx
+    locale <- locale == max(locale)
 
     locale <- which(locale)
 
@@ -1462,15 +1444,21 @@ infer_file_vars <- function(cols) {
 
     locale <- locale_nms[[1L]]
 
-    file_vars_locale <- file_vars[[locale]]
-
-    rownames(file_vars) <- file_vars_locale
+    rownames(file_vars) <- file_vars[[locale]]
 
     attr(file_vars, "lite") <- TRUE
 
-  }
+    attr(file_vars, "locale") <- locale
 
-  attr(file_vars, "locale") <- locale
+  } else {
+
+    file_vars <- sysdata("cite_file_vars")
+
+    attr(file_vars, "lite") <- FALSE
+
+    attr(file_vars, "locale") <- "none"
+
+  }
 
   file_vars
 
