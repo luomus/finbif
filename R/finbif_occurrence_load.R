@@ -713,7 +713,7 @@ get_zip <- function(fb_occurrenc_obj) {
     pause_base = getOption("finbif_retry_pause_base"),
     pause_cap = getOption("finbif_retry_pause_cap"),
     pause_min = getOption("finbif_retry_pause_min"),
-    quiet = quiet,
+    quiet = fb_occurrenc_obj[["quiet"]],
     terminate_on = 404L
   )
 
