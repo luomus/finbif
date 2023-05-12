@@ -1185,9 +1185,7 @@ spread_facts <-  function(facts) {
 
   drop_facts_na <- attr(facts, "drop_facts_na", TRUE)
 
-  is_error <- inherits(facts, "try-error")
-
-  if (is_error) {
+  if (inherits(facts, "try-error")) {
 
     facts <- data.frame(
       Parent = NA_character_,
@@ -1215,9 +1213,7 @@ spread_facts <-  function(facts) {
 
   na_ind <- is.na(ind)
 
-  any_na_ind <- any(na_ind)
-
-  if (any_na_ind) {
+  if (any(na_ind)) {
 
     missing_facts <- select[na_ind]
 
@@ -1230,45 +1226,25 @@ spread_facts <-  function(facts) {
       call. = FALSE
     )
 
-    drop <- !isTRUE(drop_facts_na)
-
-    missing_facts <- missing_facts[drop]
+    missing_facts <- missing_facts[!isTRUE(drop_facts_na)]
 
   }
 
-  any_ind_not_na <- !all(na_ind)
-
-  if (any_ind_not_na) {
+  if (!all(na_ind)) {
 
     select <- select[!na_ind]
 
-    ind <- select_facts %in% select
+    facts <- facts[select_facts %in% select, ]
 
-    ind <- which(ind)
+    facts[["Fact"]] <- paste(type, "fact_", facts[["Fact"]], sep = "_")
 
-    facts <- facts[ind, ]
-
-    select_facts <- facts[["Fact"]]
-
-    select_facts <- paste(type, "fact_", select_facts, sep = "_")
-
-    facts[["Fact"]] <- select_facts
-
-    fact_values <- facts[["Value"]]
-
-    fact_ids <- c("Fact", id)
-
-    fact_ids <- facts[fact_ids]
-
-    facts <- tapply(fact_values, fact_ids, c, simplify = FALSE)
+    facts <- tapply(facts[["Value"]], facts[c("Fact", id)], c, simplify = FALSE)
 
     fact_dimnames <- dimnames(facts)
 
     selected_fact_nms <- paste(type, "fact_", select, sep = "_")
 
-    fact_nms <- fact_dimnames[["Fact"]]
-
-    fact_nms <- intersect(selected_fact_nms, fact_nms)
+    fact_nms <- intersect(selected_fact_nms, fact_dimnames[["Fact"]])
 
     colnames <- c(id, fact_nms)
 
@@ -1288,9 +1264,7 @@ spread_facts <-  function(facts) {
 
       fact_i <- unname(fact_i)
 
-      fact_null <- vapply(fact_i, is.null, NA)
-
-      fact_i[fact_null] <- NA
+      fact_i[vapply(fact_i, is.null, NA)] <- NA
 
       fact_i <- unlist_col(fact_i)
 
@@ -1304,9 +1278,9 @@ spread_facts <-  function(facts) {
 
     }
 
-    row_names <- seq_along(ids)
-
-    facts <- structure(fact_list, class = "data.frame", row.names = row_names)
+    facts <- structure(
+      fact_list, class = "data.frame", row.names = seq_along(ids)
+    )
 
   } else {
 
@@ -1316,9 +1290,7 @@ spread_facts <-  function(facts) {
 
   for (mf in missing_facts) {
 
-    mfacts <- paste(type, "fact_", mf, sep = "_")
-
-    facts[[mfacts]] <- NA_character_
+    facts[[paste(type, "fact_", mf, sep = "_")]] <- NA_character_
 
   }
 
