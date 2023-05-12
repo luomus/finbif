@@ -787,35 +787,21 @@ add_nas <- function(df) {
 
 #' @noRd
 
-any_issues <- function(fb_occurrence_df) {
+any_issues <- function(df) {
 
-  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+  dwc <- attr(df, "dwc", TRUE)
 
-  var_type <- col_type_string(dwc)
+  vtype <- col_type_string(dwc)
 
-  any_issue <- "unit.quality.documentGatheringUnitQualityIssues"
+  vnms <- sysdata("var_names")
 
-  var_names <- sysdata("var_names")
+  issues <- vnms[["unit.quality.documentGatheringUnitQualityIssues", vtype]]
 
-  any_issue <- var_names[[any_issue, var_type]]
-
-  select_user <- attr(fb_occurrence_df, "select_user", TRUE)
-
-  df_nms <- names(fb_occurrence_df)
-
-  needs_any_issue <- any_issue %in% select_user
-
-  needs_any_issue <- needs_any_issue && !any_issue %in% df_nms
-
-  if (needs_any_issue) {
+  if (issues %in% attr(df, "select_user", TRUE) && !issues %in% names(df)) {
 
     issue <- logical()
 
-    nrows <- nrow(fb_occurrence_df)
-
-    has_rows <- nrows > 0L
-
-    if (has_rows) {
+    if (nrow(df) > 0L) {
 
       issue <- FALSE
 
@@ -830,23 +816,19 @@ any_issues <- function(fb_occurrence_df) {
 
       for (i in issue_cols) {
 
-        issue_col <- var_names[[i, var_type]]
+        issue_col_nm <- vnms[[i, vtype]]
 
-        issue_col <- fb_occurrence_df[[issue_col]]
+        issue_col <- df[[issue_col_nm]]
 
-        issue_col_len <- length(issue_col)
-
-        has_issue_col <- issue_col_len > 0L
+        has_issue_col <- length(issue_col) > 0L
 
         if (has_issue_col) {
 
-          issue_col <- !is.na(issue_col)
-
-          issue <- issue | issue_col
+          issue <- issue | !is.na(issue_col)
 
         }
 
-        has_an_issue_col <- has_an_issue_col | has_issue_col
+        has_an_issue_col <- has_an_issue_col || has_issue_col
 
       }
 
@@ -858,11 +840,11 @@ any_issues <- function(fb_occurrence_df) {
 
     }
 
-    fb_occurrence_df[[any_issue]] <- issue
+    df[[issues]] <- issue
 
   }
 
-  fb_occurrence_df
+  df
 
 }
 
