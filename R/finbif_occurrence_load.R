@@ -1374,39 +1374,29 @@ unlist_col <- function(col) {
 
 convert_col_type <- function(col) {
 
-  is_list <- is.list(col)
-
-  if (is_list) {
+  if (is.list(col)) {
 
     col <- vapply(col, paste_col, "")
 
   }
 
-  empty_col <- col == ""
+  col[col == ""] <- NA_character_
 
-  col[empty_col] <- NA_character_
+  nws <- trimws(col)
 
-  col_na <- is.na(col)
+  nws_no_na <- nws[!is.na(col)]
 
-  col_nws <- trimws(col)
+  num <- grepl("^[-+]?[0-9]*[\\.,]?[0-9]+([eE][-+]?[0-9]+)?$", nws_no_na)
 
-  col_nws_no_na <- col_nws[!col_na]
+  if (all(num)) {
 
-  is_num <- grepl("^[-+]?[0-9]*[\\.,]?[0-9]+([eE][-+]?[0-9]+)?$", col_nws_no_na)
+    col <- as.numeric(nws)
 
-  is_num <- all(is_num)
+    int <- !grepl("[\\.,]", nws_no_na)
 
-  if (is_num) {
+    if (all(int)) {
 
-    is_int <- !grepl("[\\.,]", col_nws_no_na)
-
-    is_int <- all(is_int)
-
-    col <- as.numeric(col_nws)
-
-    if (is_int) {
-
-      col <- as.integer(col_nws)
+      col <- as.integer(nws)
 
     }
 
