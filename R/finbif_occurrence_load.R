@@ -75,8 +75,17 @@ finbif_occurrence_load <- function(
   skip = 0
 ) {
 
+  nchars <- nchar(file)
+
+  file <- switch(
+    substring(file, nchars - 3L, nchars),
+    .ods = from_ods(file),
+    xlsx = from_xlsx(file),
+    file
+  )
+
   fb_records_obj <- list(
-    file = preprocess_data_file(file),
+    file = file,
     n = as.integer(n),
     count_only = count_only,
     quiet = quiet,
@@ -1466,16 +1475,6 @@ infer_file_vars <- function(cols) {
 
 #' @noRd
 
-preprocess_data_file <- function(file) {
-
-  ext <- get_ext(file)
-
-  switch(ext, .ods = from_ods(file), xlsx = from_xlsx(file), file)
-
-}
-
-#' @noRd
-
 nlines <- function(fb_occurrence_obj) {
 
   file <- fb_occurrence_obj[["file"]]
@@ -1528,21 +1527,13 @@ open_tsv_connection <- function(connection_obj) {
 
   mode <- connection_obj[["mode"]]
 
-  ext <- get_ext(file)
-
-  switch(ext, .tsv = file(file, mode), unz(file, tsv, mode))
-
-}
-
-#' @noRd
-
-get_ext <- function(file) {
-
   nchars <- nchar(file)
 
-  start <- nchars - 3L
-
-  substring(file, start, nchars)
+  switch(
+    substring(file, nchars - 3L, nchars),
+    .tsv = file(file, mode),
+    unz(file, tsv, mode)
+  )
 
 }
 
