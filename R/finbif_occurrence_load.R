@@ -1127,15 +1127,11 @@ op_unzip <- function() {
 
   unzip <- "internal"
 
-  option_unzip <- getOption("unzip")
+  op_unzip <- getOption("unzip")
 
-  no_unzip <- is.null(unzip)
+  if (!is.null(op_unzip) && !identical(op_unzip, "")) {
 
-  no_unzip <- no_unzip || identical(unzip, "")
-
-  if (!no_unzip) {
-
-    unzip <- option_unzip
+    unzip <- op_unzip
 
   }
 
