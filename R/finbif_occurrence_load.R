@@ -753,47 +753,29 @@ add_nas <- function(df) {
 
   var_type <- col_type_string(dwc)
 
-  nms <- names(df)
+  file_vars <- attr(df, "file_vars", TRUE)
 
-  for (nm in nms) {
+  file_var_type <- file_vars[[var_type]]
 
-    ans <- df[[nm]]
+  vnames <- sysdata("var_names")
 
-    if (all_na(ans)) {
+  vnames_type <- vnames[[var_type]]
 
-      file_vars <- attr(df, "file_vars", TRUE)
+  for (nm in names(df)) {
 
-      file_var_type <- file_vars[[var_type]]
+    if (all_na(df[[nm]])) {
 
-      ind <- file_var_type == nm
+      ind <- file_var_type == nm & file_vars[["superseeded"]] == "FALSE"
 
-      ind_int <- which(ind)
+      if (any(ind)) {
 
-      superseeded <- file_vars[["superseeded"]]
+        df[[nm]] <- cast_to_type(df[[nm]], file_vars[ind, "type"])
 
-      not_superseeded <- superseeded == "FALSE"
+      } else {
 
-      ind <- ind & not_superseeded
-
-      l <- length(ind_int)
-
-      no_nm <- identical(l, 0L)
-
-      if (no_nm) {
-
-        file_vars <- sysdata("var_names")
-
-        file_var_type <- file_vars[[var_type]]
-
-        ind <- file_var_type == nm
+        df[[nm]] <- cast_to_type(df[[nm]], vnames[vnames_type == nm, "type"])
 
       }
-
-      type <- file_vars[ind, "type"]
-
-      df_nm <- cast_to_type(ans, type)
-
-      df[[nm]] <- df_nm
 
     }
 
