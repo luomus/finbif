@@ -1758,8 +1758,6 @@ split_dt_col <- function(col) {
 
   dates_na <- is.na(dates1)
 
-  dates1 <- ifelse(dates_na, dates2, dates1)
-
   times <- lapply(col, "[[", 1L)
 
   times <- lapply(times, list, n = 2L, split = "-")
@@ -1772,45 +1770,25 @@ split_dt_col <- function(col) {
 
   times2 <- times[[2L]]
 
-  times2_1 <- times2[[1L]]
-
-  start_times <- times2[[2L]]
-
-  start_times <- list(start_times, n = 2L, split = ":")
+  start_times <- list(times2[[2L]], n = 2L, split = ":")
 
   start_times <- split_col(start_times)
 
-  minute_start <- start_times[[1L]]
-
-  minute_start <- as.integer(minute_start)
-
-  hour_start <- start_times[[2L]]
-
-  hour_start <- as.integer(hour_start)
-
   times_na <- is.na(times1)
 
-  end_times <- ifelse(times_na, times2_1, times1)
+  end_times <- ifelse(times_na, times2[[1L]], times1)
 
   end_times <- list(end_times, n = 2L, split = ":")
 
   end_times <- split_col(end_times)
 
-  minute_end <- end_times[[1L]]
-
-  minute_end <- as.integer(minute_end)
-
-  hour_end <- end_times[[2L]]
-
-  hour_end <- as.integer(hour_end)
-
   list(
     date_start = dates2,
-    date_end = dates1,
-    hour_start = hour_start,
-    hour_end =  hour_end,
-    minute_start = minute_start,
-    minute_end = minute_end
+    date_end = ifelse(dates_na, dates2, dates1),
+    hour_start = as.integer(start_times[[2L]]),
+    hour_end =  as.integer(end_times[[2L]]),
+    minute_start = as.integer(start_times[[1L]]),
+    minute_end = as.integer(end_times[[1L]])
   )
 
 }
