@@ -127,12 +127,8 @@ finbif_occurrence <- function(
   restricted_api = NULL
 ) {
 
-  taxa <- c(...)
-
-  on_check_fail <- match.arg(on_check_fail)
-
   fb_records_obj <- list(
-    taxa = taxa,
+    taxa = c(...),
     filter = filter,
     select = select,
     order_by = order_by,
@@ -146,7 +142,7 @@ finbif_occurrence <- function(
     dwc = dwc,
     date_time_method = date_time_method,
     check_taxa = check_taxa,
-    on_check_fail = on_check_fail,
+    on_check_fail = match.arg(on_check_fail),
     tzone = tzone,
     locale = locale,
     df = TRUE,
