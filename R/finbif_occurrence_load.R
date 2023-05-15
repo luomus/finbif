@@ -1531,9 +1531,7 @@ open_tsv_connection <- function(connection_obj) {
 
 from_ods <- function(file) {
 
-  has_read_ods <- has_pkgs("readODS")
-
-  stopifnot("Package {readODS} required for ODS files" = has_read_ods)
+  stopifnot("Package {readODS} required for ODS files" = has_pkgs("readODS"))
 
   df <- readODS::read_ods(file, col_types = NA)
 
@@ -1545,9 +1543,7 @@ from_ods <- function(file) {
 
 from_xlsx <- function(file) {
 
-  has_readxl <- has_pkgs("readxl")
-
-  stopifnot("Package {readxl} required for Excel files" = has_readxl)
+  stopifnot("Package {readxl} required for Excel files" = has_pkgs("readxl"))
 
   df <- readxl::read_xlsx(
     file,
