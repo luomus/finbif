@@ -1702,41 +1702,33 @@ expand_lite_cols <- function(df) {
 
 split_taxa_col <- function(col) {
 
-  locale <- attr(col, "locale", TRUE)
+  col_list <- list(col, n = 2L, split = " \u2014 ")
 
-  col <- list(col, n = 2L, split = " \u2014 ")
+  split_cols <- split_col(col_list)
 
-  split_cols <- split_col(col)
+  col_list2 <- list(split_cols[[2L]], n = 2L, split = " \\(|\\)")
 
-  col1 <- split_cols[[1L]]
-
-  col2 <- split_cols[[2L]]
-
-  col2 <- list(col2, n = 2L, split = " \\(|\\)")
-
-  common_names <- split_col(col2)
+  common_names <- split_col(col_list2)
 
   common_names1 <- common_names[[1L]]
 
   common_names2 <- common_names[[2L]]
 
-  split_cols <- list(scientific_name = col1)
-
   common_names_na <- is.na(common_names1)
+
+  locale <- attr(col, "locale", TRUE)
 
   common_names1 <- ifelse(common_names_na, locale, common_names1)
 
-  locales <- c("en", "fi", "sv")
+  split_cols <- list(scientific_name = split_cols[[1L]])
 
-  for (loc in locales) {
+  for (loc in c("en", "fi", "sv")) {
 
     ind <- common_names1 == loc
 
     col_loc <- NA_character_
 
-    col_loc_values <- common_names2[ind]
-
-    col_loc[ind] <- col_loc_values
+    col_loc[ind] <- common_names2[ind]
 
     split_cols[[loc]] <- col_loc
 
