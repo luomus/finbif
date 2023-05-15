@@ -1578,9 +1578,7 @@ expand_lite_cols <- function(df) {
 
   select <- attr(df, "select", TRUE)
 
-  add <- !select[["all"]]
-
-  if (add) {
+  if (!select[["all"]]) {
 
     formatted_taxon_name <- c(
       "scientific_name_interpreted",
@@ -1619,8 +1617,6 @@ expand_lite_cols <- function(df) {
 
     locale <- attr(file_vars, "locale", TRUE)
 
-    translated_vars <- file_vars[["translated_var"]]
-
     cols <- c(
       "formatted_taxon_name",
       "formatted_date_time",
@@ -1631,25 +1627,17 @@ expand_lite_cols <- function(df) {
       "coordinates_10_center_ykj"
     )
 
-    cols <- translated_vars %in% cols
+    translated_vars <- file_vars[["translated_var"]]
 
-    cols <- which(cols)
+    for (col in which(translated_vars %in% cols)) {
 
-    for (col in cols) {
-
-      col_nm <- file_vars[col, ]
-
-      col_nm <- rownames(col_nm)
-
-      has_col_nm <- col_nm %in% df_names
+      col_nm <- rownames(file_vars[col, ])
 
       df_col <- df[[col_nm]]
 
       df_col_na <- is.na(df_col)
 
-      expand <- has_col_nm && !all(df_col_na)
-
-      if (expand) {
+      if (col_nm %in% df_names && !all(df_col_na)) {
 
         attr(df_col, "locale") <- locale
 
@@ -1682,31 +1670,19 @@ expand_lite_cols <- function(df) {
           coordinates_10_center_ykj = coordinates_10_center_ykj
         )
 
-        new_cols <- translated_vars %in% new_cols
+        new_cols <- rownames(file_vars[translated_vars %in% new_cols, ])
 
-        new_cols <- file_vars[new_cols, ]
-
-        new_cols <- rownames(new_cols)
-
-        sq <- seq_along(new_cols)
-
-        for (i in sq) {
+        for (i in seq_along(new_cols)) {
 
           col <- new_cols[[i]]
 
           dfi <- df[[col]]
 
-          no_col <- is.null(dfi)
-
           na_dfi <- is.na(dfi)
 
-          no_col <- no_col || all(na_dfi)
+          if (is.null(dfi) || all(na_dfi)) {
 
-          if (no_col) {
-
-             dfi <- split_cols[[i]]
-
-             df[[col]] <- dfi
+             df[[col]] <- split_cols[[i]]
 
           }
 
