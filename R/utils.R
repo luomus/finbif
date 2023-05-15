@@ -90,7 +90,9 @@ pb_head <- function(
   quiet = FALSE
 ) {
 
-  diff <- getOption("width") - nchar(msg) + 15L
+  nchars <- nchar(msg) + 15L
+
+  diff <- getOption("width") - nchars
 
   diff <- max(0L, diff)
 
