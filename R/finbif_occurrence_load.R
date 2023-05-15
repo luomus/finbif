@@ -1477,19 +1477,15 @@ infer_file_vars <- function(cols) {
 
 nlines <- function(fb_occurrence_obj) {
 
-  file <- fb_occurrence_obj[["file"]]
-
-  tsv <- fb_occurrence_obj[["tsv"]]
-
-  connection_obj <- list(file = file, tsv = tsv, mode = "rb")
+  connection_obj <- list(
+    file = fb_occurrence_obj[["file"]],
+    tsv = fb_occurrence_obj[["tsv"]],
+    mode = "rb"
+  )
 
   con <- open_tsv_connection(connection_obj)
 
-  on.exit({
-
-    close(con)
-
-  })
+  on.exit(close(con))
 
   n <- -1L
 
@@ -1499,13 +1495,9 @@ nlines <- function(fb_occurrence_obj) {
 
     chunk <- readBin(con, "raw", 65536L)
 
-    raw10 <- as.raw(10L)
+    chunk_10 <- chunk == as.raw(10L)
 
-    chunk_10 <- chunk == raw10
-
-    subtotal <- sum(chunk_10)
-
-    n <- n + subtotal
+    n <- n + sum(chunk_10)
 
     empty <- raw(0L)
 
