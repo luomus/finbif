@@ -5,7 +5,12 @@
 #' @aliases fb_metadata
 #'
 #' @param which Character. Which category of metadata to display. If
-#'  unspecified, function returns the categories of metadata available.
+#'   unspecified, function returns the categories of metadata available.
+#' @param locale Character. One of the supported two-letter ISO 639-1 language
+#'   codes. Current supported languages are English, Finnish and Swedish. For
+#'   data where more than one language is available the language denoted by
+#'   `locale` will be preferred while falling back to the other languages in the
+#'   order indicated above.
 #'
 #' @return A data.frame.
 #' @examples \dontrun{
@@ -15,7 +20,10 @@
 #' }
 #' @export
 
-finbif_metadata <- function(which) {
+finbif_metadata <- function(
+  which,
+  locale = getOption("finbif_locale")
+) {
 
   metadata_name <- c(
     "regulatory_status",
@@ -69,8 +77,6 @@ finbif_metadata <- function(which) {
       taxon_rank = sysdata("taxon_rank")
     )
 
-    locale <- getOption("finbif_locale")
-
     col_names <- "name"
 
     name <- paste0("name_", locale)
@@ -108,8 +114,6 @@ finbif_metadata <- function(which) {
     data <- data[ind, cols, drop = FALSE]
 
     colnames(data) <- col_names
-
-    rownames(data) <- NULL
 
     class(data) <- c("finbif_metadata_df", "data.frame")
 
