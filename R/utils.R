@@ -104,6 +104,8 @@ pb_head <- function(
 
   }
 
+  quiet
+
 }
 
 #' @noRd
