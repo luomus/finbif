@@ -1515,8 +1515,6 @@ open_tsv_connection <- function(connection_obj) {
 
   file <- connection_obj[["file"]]
 
-  tsv <- connection_obj[["tsv"]]
-
   mode <- connection_obj[["mode"]]
 
   nchars <- nchar(file)
@@ -1524,7 +1522,7 @@ open_tsv_connection <- function(connection_obj) {
   switch(
     substring(file, nchars - 3L, nchars),
     .tsv = file(file, mode),
-    unz(file, tsv, mode)
+    unz(file, connection_obj[["tsv"]], mode)
   )
 
 }
