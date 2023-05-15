@@ -1823,17 +1823,11 @@ split_coord_euref_col <- function(col) {
 
 split_col <- function(split_obj) {
 
-  col <- split_obj[[1L]]
+  col <- as.character(split_obj[[1L]])
 
-  col <- as.character(col)
+  sq <- seq_len(split_obj[["n"]])
 
-  n <- split_obj[["n"]]
-
-  sq <- seq_len(n)
-
-  split <- split_obj[["split"]]
-
-  split_cols <- strsplit(col, split)
+  split_cols <- strsplit(col, split_obj[["split"]])
 
   split_cols <- lapply(split_cols, c, NA_character_)
 
