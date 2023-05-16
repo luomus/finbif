@@ -1317,11 +1317,7 @@ multi_req <- function(fb_records_obj) {
 
   for (arg in rep_args) {
 
-    fb_records_obj_arg <- fb_records_obj[[arg]]
-
-    fb_records_obj_arg <- rep_len(fb_records_obj_arg, n_filters)
-
-    fb_records_obj[[arg]] <- fb_records_obj_arg
+    fb_records_obj[[arg]] <- rep_len(fb_records_obj[[arg]], n_filters)
 
   }
 
@@ -1329,43 +1325,31 @@ multi_req <- function(fb_records_obj) {
 
   fb_records_obj_filter[["check_taxa"]] <- FALSE
 
-  filter_sq <- seq_len(n_filters)
+  for (filter in seq_len(n_filters)) {
 
-  for (filter in filter_sq) {
-
-    args <- c("filter", rep_args)
-
-    for (arg in args) {
+    for (arg in c("filter", rep_args)) {
 
       fb_records_obj_arg <- fb_records_obj[[arg]]
 
-      fb_records_obj_arg_filter <- fb_records_obj_arg[[filter]]
-
-      fb_records_obj_filter[[arg]] <- fb_records_obj_arg_filter
+      fb_records_obj_filter[[arg]] <- fb_records_obj_arg[[filter]]
 
     }
 
-    resp <- occurrence(fb_records_obj_filter)
-
-    ans[[filter]] <- resp
+    ans[[filter]] <- occurrence(fb_records_obj_filter)
 
   }
 
-  count_only <- fb_records_obj[["count_only"]]
+  if (!fb_records_obj[["count_only"]]) {
 
-  duplicates <- fb_records_obj[["duplicates"]]
+    filter_col <- fb_records_obj[["filter_col"]]
 
-  if (!count_only) {
+    if (!is.null(filter_col)) {
 
-    if (include_filter_col) {
-
-      for (i in filter_set_num) {
+      for (i in filter_num) {
 
         ans_i <- ans[[i]]
 
-        name_i <- filter_set_names[[i]]
-
-        ans_i[[filter_col]] <- name_i
+        ans_i[[filter_col]] <- filter_nms[[i]]
 
         ans[[i]] <- ans_i
 
@@ -1375,13 +1359,11 @@ multi_req <- function(fb_records_obj) {
 
     ans <- do.call(rbind, ans)
 
-    if (!duplicates) {
+    if (!fb_records_obj[["duplicates"]]) {
 
       record_id <- attr(ans, "record_id")
 
-      dups <- duplicated(record_id)
-
-      ans <- ans[!dups, ]
+      ans <- ans[!duplicated(record_id), ]
 
     }
 
