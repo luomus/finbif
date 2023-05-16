@@ -693,65 +693,37 @@ compute_duration <- function(fb_occurrence_df) {
 
   duration_var <- var_names["computed_var_duration", vtype]
 
-  column_names <- attr(fb_occurrence_df, "column_names", TRUE)
+  if (duration_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-  has_duration <- duration_var %in% column_names
+    h_start <- var_names["gathering.hourBegin", vtype]
 
-  if (has_duration) {
+    h_end <- var_names["gathering.hourEnd", vtype]
 
-    hour_start <- var_names["gathering.hourBegin", vtype]
+    hna <- is.na(fb_occurrence_df[[h_start]]) | is.na(fb_occurrence_df[[h_end]])
 
-    hour_end <- var_names["gathering.hourEnd", vtype]
+    datetime_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
 
-    date_time_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
+    datetime_end <- attr(fb_occurrence_df, "date_time_end", TRUE)
 
-    date_time_end <- attr(fb_occurrence_df, "date_time_end", TRUE)
+    dna <- is.na(datetime_start) | is.na(datetime_end)
 
-    hour_start <- fb_occurrence_df[[hour_start]]
+    da <- !hna & !dna
 
-    hour_start_is_na <- is.na(hour_start)
+    duration_length <- length(da)
 
-    hour_end <- fb_occurrence_df[[hour_end]]
+    intvl <- rep_len(NA_integer_, duration_length)
 
-    hour_end_is_na <- is.na(hour_end)
+    intvl <- lubridate::as.interval(intvl)
 
-    hour_is_na <- hour_start_is_na | hour_end_is_na
+    duration <- intvl
 
-    date_time_start_is_na <- is.na(date_time_start)
+    intvl[da] <- lubridate::interval(datetime_start[da], datetime_end[da])
 
-    date_time_end_is_na <- is.na(date_time_end)
+    has_duration <- da & intvl != 0
 
-    date_time_is_na <- date_time_start_is_na | date_time_end_is_na
+    duration[has_duration] <- intvl[has_duration]
 
-    duration_is_na <- hour_is_na | date_time_is_na
-
-    duration_length <- length(duration_is_na)
-
-    interval <- rep_len(NA_integer_, duration_length)
-
-    interval <- lubridate::as.interval(interval)
-
-    date_time_start <- date_time_start[!duration_is_na]
-
-    date_time_end <- date_time_end[!duration_is_na]
-
-    date_time_interval <- lubridate::interval(date_time_start, date_time_end)
-
-    duration <- interval
-
-    interval[!duration_is_na] <- date_time_interval
-
-    zero_interval <- interval == 0
-
-    has_duration <- !duration_is_na & !zero_interval
-
-    date_time_interval <- interval[has_duration]
-
-    duration[has_duration] <- date_time_interval
-
-    duration <- lubridate::as.duration(duration)
-
-    fb_occurrence_df[[duration_var]] <- duration
+    fb_occurrence_df[[duration_var]] <- lubridate::as.duration(duration)
 
   }
 
