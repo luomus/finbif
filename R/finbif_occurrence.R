@@ -434,31 +434,19 @@ select_taxa <- function(fb_records_obj) {
 
   taxa <- fb_records_obj[["taxa"]]
 
-  cache <- fb_records_obj[["cache"]]
-
-  check_taxa <- fb_records_obj[["check_taxa"]]
-
-  on_check_fail <- fb_records_obj[["on_check_fail"]]
-
   ntaxa <- length(taxa)
 
-  has_taxa <- ntaxa > 0L
-
-  if (has_taxa) {
+  if (ntaxa > 0L) {
 
     taxon_name <- paste(taxa, collapse = ",")
 
     ans <- list(taxon_name = taxon_name)
 
-    if (check_taxa) {
+    if (fb_records_obj[["check_taxa"]]) {
 
-      taxa_names <- names(taxa)
+      cache <- fb_records_obj[["cache"]]
 
-      no_taxa_name <- !"taxa" %in% taxa_names
-
-      cond <- no_taxa_name || ntaxa > 1L
-
-      if (cond) {
+      if (!"taxa" %in% names(taxa) || ntaxa > 1L) {
 
         taxa <- finbif_check_taxa(taxa, cache = cache)
 
@@ -478,13 +466,9 @@ select_taxa <- function(fb_records_obj) {
 
       taxa_invalid <- is.na(taxa)
 
-      any_taxa_invalid <- any(taxa_invalid)
+      if (any(taxa_invalid)) {
 
-      if (any_taxa_invalid) {
-
-        invalid_taxa <- taxa[taxa_invalid]
-
-        invalid_taxa_names <- names(invalid_taxa)
+        invalid_taxa_names <- names(taxa[taxa_invalid])
 
         msg <- sub("\\.", " - ", invalid_taxa_names)
 
@@ -499,7 +483,7 @@ select_taxa <- function(fb_records_obj) {
         )
 
         switch(
-          on_check_fail,
+          fb_records_obj[["on_check_fail"]],
           warn  = warning(msg, call. = FALSE),
           error = stop(msg, call. = FALSE)
         )
@@ -508,13 +492,9 @@ select_taxa <- function(fb_records_obj) {
 
       taxa_valid <- !taxa_invalid
 
-      any_taxa_valid <- any(taxa_valid)
+      if (any(taxa_valid)) {
 
-      if (any_taxa_valid) {
-
-        valid_taxa <- taxa[taxa_valid]
-
-        valid_taxa <- paste(valid_taxa, collapse = ",")
+        valid_taxa <- paste(taxa[taxa_valid], collapse = ",")
 
         ans <- list(taxon_id = valid_taxa)
 
