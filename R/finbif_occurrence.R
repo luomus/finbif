@@ -1183,7 +1183,7 @@ compute_scientific_name <- function(fb_occurrence_df) {
 
     uv <- fb_occurrence_df[[src]] == "http://tun.fi/KE.3" & is.na(sci_interps)
 
-    fb_occurrence_df[[sci_var]]<- ifelse(uv, with_verbatim, without_verbatim)
+    fb_occurrence_df[[sci_var]] <- ifelse(uv, with_verbatim, without_verbatim)
 
   }
 
