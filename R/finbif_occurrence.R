@@ -320,11 +320,11 @@ occurrence <- function(fb_records_obj) {
 
 records_list_data_frame <- function(x) {
 
-  quiet <- attr(x, "quiet")
+  verbose <- !attr(x, "quiet")
 
   n <- length(x)
 
-  if (!quiet) {
+  if (verbose) {
 
     pb <- utils::txtProgressBar(0L, n, style = 3L)
 
@@ -336,7 +336,7 @@ records_list_data_frame <- function(x) {
 
   for (i in seq_len(n)) {
 
-    if (!quiet) {
+    if (verbose) {
 
       utils::setTxtProgressBar(pb, i)
 
