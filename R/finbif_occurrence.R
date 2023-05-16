@@ -1143,25 +1143,21 @@ compute_coordinate_uncertainty <- function(fb_occurrence_df) {
 
 compute_scientific_name <- function(fb_occurrence_df) {
 
-  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
-  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   vtype <- col_type_string(dwc)
 
   var_names <- sysdata("var_names")
 
-  sci_name_var <- var_names[["computed_var_scientific_name", vtype]]
+  sci_var <- var_names[["computed_var_scientific_name", vtype]]
 
-  add <- add && sci_name_var %in% select_user
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  if (add) {
+  if (add && sci_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-    sci_name_interp <- var_names[["unit.linkings.taxon.scientificName", vtype]]
+    sci_interp <- var_names[["unit.linkings.taxon.scientificName", vtype]]
 
-    sci_name_interps <- fb_occurrence_df[[sci_name_interp]]
+    sci_interps <- fb_occurrence_df[[sci_interp]]
 
     verbatim <- var_names[["unit.taxonVerbatim", vtype]]
 
@@ -1175,27 +1171,19 @@ compute_scientific_name <- function(fb_occurrence_df) {
 
     verbatim_authors <- fb_occurrence_df[[verbatim_author]]
 
-    source_var <- var_names[["document.sourceId", vtype]]
-
-    source <- fb_occurrence_df[[source_var]]
-
-    source_is_kotka <- source == "http://tun.fi/KE.3"
-
-    unlinked <- is.na(sci_name_interps)
-
-    use_verbatim <- source_is_kotka & unlinked
-
     with_verbatim <- list(names = verbatims, authors = verbatim_authors)
 
     with_verbatim <- add_authors(with_verbatim)
 
-    without_verbatim <- list(names = sci_name_interps, authors = authors)
+    without_verbatim <- list(names = sci_interps, authors = authors)
 
     without_verbatim <- add_authors(without_verbatim)
 
-    sci_name <- ifelse(use_verbatim, with_verbatim, without_verbatim)
+    src <- var_names[["document.sourceId", vtype]]
 
-    fb_occurrence_df[[sci_name_var]] <- sci_name
+    uv <- fb_occurrence_df[[src]] == "http://tun.fi/KE.3" & is.na(sci_interps)
+
+    fb_occurrence_df[[sci_var]]<- ifelse(uv, with_verbatim, without_verbatim)
 
   }
 
