@@ -514,56 +514,42 @@ select_taxa <- function(fb_records_obj) {
 
 date_times <- function(fb_occurrence_df) {
 
-  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+  if (attr(fb_occurrence_df, "date_time", TRUE)) {
 
-  vtype <- col_type_string(dwc)
+    dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  var_names <- sysdata("var_names")
+    vtype <- col_type_string(dwc)
 
-  date_start <- var_names["gathering.eventDate.begin", vtype]
+    var_names <- sysdata("var_names")
 
-  hour_start <- var_names["gathering.hourBegin", vtype]
+    date_start <- var_names["gathering.eventDate.begin", vtype]
 
-  minute_start <- var_names["gathering.minutesBegin", vtype]
+    hour_start <- var_names["gathering.hourBegin", vtype]
 
-  date_end <- var_names["gathering.eventDate.end", vtype]
+    minute_start <- var_names["gathering.minutesBegin", vtype]
 
-  hour_end <- var_names["gathering.hourEnd", vtype]
+    date_end <- var_names["gathering.eventDate.end", vtype]
 
-  minute_end <- var_names["gathering.minutesEnd", vtype]
+    hour_end <- var_names["gathering.hourEnd", vtype]
 
-  lat <- var_names["gathering.conversions.wgs84CenterPoint.lat", vtype]
+    minute_end <- var_names["gathering.minutesEnd", vtype]
 
-  lon <- var_names["gathering.conversions.wgs84CenterPoint.lon", vtype]
+    lat <- var_names["gathering.conversions.wgs84CenterPoint.lat", vtype]
 
-  tzone <- attr(fb_occurrence_df, "tzone", TRUE)
+    lon <- var_names["gathering.conversions.wgs84CenterPoint.lon", vtype]
 
-  method <- attr(fb_occurrence_df, "date_time_method", TRUE)
+    tzone <- attr(fb_occurrence_df, "tzone", TRUE)
 
-  date_time <- attr(fb_occurrence_df, "date_time", TRUE)
-
-  if (date_time) {
-
-    date_start <- fb_occurrence_df[[date_start]]
-
-    hour_start <- fb_occurrence_df[[hour_start]]
-
-    minute_start <- fb_occurrence_df[[minute_start]]
-
-    date_end <- fb_occurrence_df[[date_end]]
-
-    hour_end <- fb_occurrence_df[[hour_end]]
-
-    minute_end <- fb_occurrence_df[[minute_end]]
+    method <- attr(fb_occurrence_df, "date_time_method", TRUE)
 
     lat <- fb_occurrence_df[[lat]]
 
     lon <- fb_occurrence_df[[lon]]
 
     date_time_start <- list(
-      date = date_start,
-      hour = hour_start,
-      minute = minute_start,
+      date = fb_occurrence_df[[date_start]],
+      hour = fb_occurrence_df[[hour_start]],
+      minute = fb_occurrence_df[[minute_start]],
       lat = lat,
       lon = lon,
       tzone = tzone,
@@ -571,29 +557,23 @@ date_times <- function(fb_occurrence_df) {
     )
 
     date_time_end <- list(
-      date = date_end,
-      hour = hour_end,
-      minute = minute_end,
+      date = fb_occurrence_df[[date_end]],
+      hour = fb_occurrence_df[[hour_end]],
+      minute = fb_occurrence_df[[minute_end]],
       lat = lat,
       lon = lon,
       tzone = tzone,
       method = method
     )
 
-    date_time_start <- date_time(date_time_start)
-
-    date_time_end <- date_time(date_time_end)
-
     df_attrs <- attributes(fb_occurrence_df)
 
     new_attrs <- list(
-      date_time_start = date_time_start,
-      date_time_end = date_time_end
+      date_time_start = date_time(date_time_start),
+      date_time_end = date_time(date_time_end)
     )
 
-    df_attrs <- c(df_attrs, new_attrs)
-
-    attributes(fb_occurrence_df) <- df_attrs
+    attributes(fb_occurrence_df) <-  c(df_attrs, new_attrs)
 
   }
 
@@ -615,68 +595,50 @@ date_time <- function(date_time_obj) {
 
   date <- date_time_obj[["date"]]
 
-  date_length <- length(date)
-
-  date_has_length <- date_length > 0L
-
-  if (date_has_length) {
+  if (length(date) > 0L) {
 
     date_time <- lubridate::ymd(date)
 
     date_time <- lubridate::as_datetime(date_time)
 
-    # When there is no hour assume the hour is midday (i.e., don't assume
-    # midnight)
-
     hour <- date_time_obj[["hour"]]
 
-    has_hour <- !is.null(hour)
-
-    if (has_hour) {
+    if (!is.null(hour)) {
 
       hour_is_na <- is.na(hour)
 
-      date_time_hour <- ifelse(hour_is_na, 12L, hour)
+      lubridate::hour(date_time) <- ifelse(hour_is_na, 12L, hour)
 
     }
 
-    lubridate::hour(date_time) <- date_time_hour
-
     minute <- date_time_obj[["minute"]]
 
-    has_minute <- !is.null(minute)
+    if (!is.null(minute)) {
 
-    if (has_minute) {
+      date_time_min <- lubridate::minute(date_time)
 
-      date_time_minute <- lubridate::minute(date_time)
+      min_is_na <- is.na(minute)
 
-      minute_is_na <- is.na(minute)
-
-      date_time_minute <- ifelse(minute_is_na, date_time_minute, minute)
-
-      lubridate::minute(date_time) <- date_time_minute
+      lubridate::minute(date_time) <- ifelse(min_is_na, date_time_min, minute)
 
     }
 
     method <- date_time_obj[["method"]]
 
-    no_method <- identical(method, "none")
+    if (identical(method, "none")) {
 
-    if (no_method) {
-
-      tz_in <- "Europe/Helsinki"
-
-      date_time <- lubridate::force_tz(date_time, tz_in)
+      date_time <- lubridate::force_tz(date_time, "Europe/Helsinki")
 
       date_time <- lubridate::with_tz(date_time, tzone)
 
     } else {
 
-      lat <- date_time_obj[["lat"]]
-
-      lon <- date_time_obj[["lon"]]
-
-      tz_in <- lutz::tz_lookup_coords(lat, lon, method, FALSE)
+      tz_in <- lutz::tz_lookup_coords(
+        date_time_obj[["lat"]],
+        date_time_obj[["lon"]],
+        method,
+        FALSE
+      )
 
       tz_in_is_na <- is.na(tz_in)
 
@@ -686,19 +648,11 @@ date_time <- function(date_time_obj) {
 
     }
 
-    month <- date_time_obj[["month"]]
+    na_m <- is.na(date_time_obj[["month"]])
 
-    is_na_month <- is.na(month)
+    na_d <- is.na(date_time_obj[["day"]])
 
-    day <- date_time_obj[["day"]]
-
-    is_na_day <- is.na(day)
-
-    is_na_month_day <- is_na_month | is_na_day
-
-    na_month_day <- lubridate::as_datetime(NA_integer_, tz = tzone)
-
-    date_time[is_na_month_day] <- na_month_day
+    date_time[na_m | na_d] <- lubridate::as_datetime(NA_integer_, tz = tzone)
 
   }
 
