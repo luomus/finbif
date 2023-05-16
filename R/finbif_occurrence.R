@@ -1285,25 +1285,17 @@ multi_req <- function(fb_records_obj) {
 
   filters <- fb_records_obj[["filter"]]
 
-  filter_col <- fb_records_obj[["filter_col"]]
+  filter_num <- seq_along(filters)
 
-  include_filter_col <- !is.null(filter_col)
+  filter_nms <- names(filters)
 
-  filter_set_num <- seq_along(filters)
+  if (is.null(filter_nms)) {
 
-  filter_set_names <- names(filters)
-
-  filter_names_null <- is.null(filter_set_names)
-
-  if (filter_names_null) {
-
-    filter_set_names <- filter_set_num
+    filter_nms <- filter_num
 
   } else {
 
-    names_missing <- filter_set_names == ""
-
-    filter_set_names <- ifelse(names_missing, filter_set_num, filter_set_names)
+    filter_nms <- ifelse(filter_nms == "", filter_num, filter_nms)
 
   }
 
