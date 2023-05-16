@@ -1016,73 +1016,52 @@ compute_abundance <- function(fb_occurrence_df) {
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
-
   vtype <- col_type_string(dwc)
 
-  var_names <- sysdata("var_names")
+  vnms <- sysdata("var_names")
 
-  abundance_var <- var_names[["computed_var_abundance", vtype]]
+  abundance_var <- vnms[["computed_var_abundance", vtype]]
 
-  occurrence_status_var <- var_names[["computed_var_occurrence_status", vtype]]
+  has_abundance <- abundance_var %in% select_user
 
-  has_abundance_var <- abundance_var %in% select_user
+  occ_status_var <- vnms[["computed_var_occurrence_status", vtype]]
 
-  has_occurrence_var <- occurrence_status_var %in% select_user
+  has_occ <- occ_status_var %in% select_user
 
-  has_abundance_vars <- has_abundance_var || has_occurrence_var
+  has_abundance_vars <- has_abundance || has_occ
 
-  add <- add && has_abundance_vars
+  if (attr(fb_occurrence_df, "include_new_cols", TRUE) && has_abundance_vars) {
 
-  if (add) {
-
-    count_var <- var_names[["unit.interpretations.individualCount", vtype]]
+    count_var <- vnms[["unit.interpretations.individualCount", vtype]]
 
     count <- fb_occurrence_df[[count_var]]
 
-    count_one <- count == 1L
+    verbatim_var <- vnms[["unit.abundanceString", vtype]]
 
-    verbatim_var <- var_names[["unit.abundanceString", vtype]]
-
-    verbatim <- fb_occurrence_df[[verbatim_var]]
-
-    has_one <- grepl("1", verbatim)
+    has_one <- grepl("1", fb_occurrence_df[[verbatim_var]])
 
     has_one <- ifelse(has_one, 1L, NA_integer_)
 
-    abundance <- ifelse(count_one, has_one, count)
+    abundance <- ifelse(count == 1L, has_one, count)
 
-    if (has_abundance_var) {
+    if (has_abundance) {
 
       fb_occurrence_df[[abundance_var]] <- abundance
 
     }
 
-    if (has_occurrence_var) {
+    if (has_occ) {
 
-      fi <- c("paikalla", "poissa")
+      stat <- switch(
+        attr(fb_occurrence_df, "locale", TRUE),
+        fi = c("paikalla", "poissa"),
+        sv = c("n\u00e4rvarande", "fr\u00e5nvarande"),
+        c("present", "absent")
+      )
 
-      sv <- c("n\u00e4rvarande", "fr\u00e5nvarande")
+      is_p <- is.na(abundance) | abundance > 0L
 
-      en <- c("present", "absent")
-
-      locale <- attr(fb_occurrence_df, "locale", TRUE)
-
-      status <- switch(locale, fi = fi, sv = sv, en)
-
-      present <- status[[1L]]
-
-      absent <- status[[2L]]
-
-      abundance_is_na <- is.na(abundance)
-
-      is_present <- abundance > 0L
-
-      is_present <- abundance_is_na | is_present
-
-      occurrence_status <- ifelse(is_present, present, absent)
-
-      fb_occurrence_df[[occurrence_status_var]] <- occurrence_status
+      fb_occurrence_df[[occ_status_var]] <- ifelse(is_p, stat[[1L]], stat[[2L]])
 
     }
 
