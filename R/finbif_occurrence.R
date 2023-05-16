@@ -400,37 +400,29 @@ records_list_data_frame <- function(x) {
 
 det_datetime_method <- function(fb_records_obj) {
 
-  n <- fb_records_obj[["n"]]
-
   method <- fb_records_obj[["date_time_method"]]
 
-  is_null <- is.null(method)
-
-  if (is_null) {
+  if (is.null(method)) {
 
     method <- "none"
 
+    n <- fb_records_obj[["n"]]
+
     is_num <- is.numeric(n)
 
-    is_pos <- n >= 0L
-
-    cond <- is_num & is_pos
-
-    n <- ifelse(cond, n, Inf)
+    n <- ifelse(is_num & n >= 0L, n, Inf)
 
     n <- sum(n)
 
-    n_small <- n < 1e5L
-
-    if (n_small) {
+    if (n < 1e5L) {
 
       method <- "fast"
 
     }
 
-  }
+    fb_records_obj[["date_time_method"]] <- method
 
-  fb_records_obj[["date_time_method"]] <- method
+  }
 
   fb_records_obj
 
