@@ -1377,25 +1377,15 @@ multi_req <- function(fb_records_obj) {
 
 unlist_cols <- function(fb_occurrence_df) {
 
-  unlist <- attr(fb_occurrence_df, "unlist", TRUE)
+  if (attr(fb_occurrence_df, "unlist", TRUE)) {
 
-  if (unlist) {
+    for (col in attr(fb_occurrence_df, "column_names", TRUE)) {
 
-    cols <- attr(fb_occurrence_df, "column_names", TRUE)
+      df_col <- fb_occurrence_df[[col]]
 
-    for (col in cols) {
+      if (is.list(df_col) && !grepl("Fact|fact_", col)) {
 
-      fb_occurrence_df_col <- fb_occurrence_df[[col]]
-
-      is_list_col <- is.list(fb_occurrence_df_col)
-
-      is_list_col <- is_list_col && !grepl("Fact|fact_", col)
-
-      if (is_list_col) {
-
-        fb_occurrence_df_col <- vapply(fb_occurrence_df_col, concat_string, "")
-
-        fb_occurrence_df[[col]] <- fb_occurrence_df_col
+        fb_occurrence_df[[col]] <- vapply(df_col, concat_string, "")
 
       }
 
