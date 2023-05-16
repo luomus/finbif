@@ -840,37 +840,31 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
 compute_vars_from_id <- function(fb_occurrence_df) {
 
-  select_user <- attr(fb_occurrence_df, "column_names")
-
-  dwc <- attr(fb_occurrence_df, "dwc")
-
   locale <- attr(fb_occurrence_df, "locale")
 
   add <- attr(fb_occurrence_df, "include_new_cols")
 
   colnames <- names(fb_occurrence_df)
 
+  select_user <- attr(fb_occurrence_df, "column_names")
+
   cols <- setdiff(select_user, colnames)
+
+  dwc <- attr(fb_occurrence_df, "dwc")
 
   vtype <- col_type_string(dwc)
 
   suffix <- switch(vtype, translated_var = "_id", dwc = "ID")
 
-  sq <- seq_along(cols)
-
-  for (i in sq) {
+  for (i in seq_along(cols)) {
 
     col_i <- cols[[i]]
 
     id_var_name <- paste0(col_i, suffix)
 
-    add_i <- add && id_var_name %in% colnames
+    if (add && id_var_name %in% colnames) {
 
-    if (add_i) {
-
-      is_collection <- identical(id_var_name, "collection_id")
-
-      if (is_collection) {
+      if (identical(id_var_name, "collection_id")) {
 
         ptrn <- "collection_name"
 
@@ -890,19 +884,15 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
         metadata <- sysdata(col_i_native)
 
-        not_df <- !inherits(metadata, "data.frame")
-
-        if (not_df) {
+        if (!inherits(metadata, "data.frame")) {
 
           rownames <- lapply(metadata, row.names)
-
-          rownames <- unlist(rownames)
 
           args <- c(metadata, make.row.names = FALSE)
 
           metadata <- do.call(rbind, args)
 
-          row.names(metadata) <- rownames
+          row.names(metadata) <- unlist(rownames)
 
         }
 
@@ -912,15 +902,11 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
       nms <- names(metadata)
 
-      ind <- grep(ptrn, nms)
-
-      nms <- gsub(ptrn, "", nms)
-
-      names(metadata) <- nms
+      names(metadata) <- gsub(ptrn, "", nms)
 
       id <- lapply(id_var, vapply, remove_domain, "")
 
-      metadata <- metadata[, ind, drop = FALSE]
+      metadata <- metadata[, grep(ptrn, nms), drop = FALSE]
 
       var <- lapply(id, get_rows, metadata)
 
@@ -934,9 +920,7 @@ compute_vars_from_id <- function(fb_occurrence_df) {
         ifelse, var_is_na, id_var, var, SIMPLIFY = FALSE, USE.NAMES = FALSE
       )
 
-      unlist <- !is.list(id_var)
-
-      if (unlist) {
+      if (!is.list(id_var)) {
 
         df_col_i <- unlist(df_col_i)
 
