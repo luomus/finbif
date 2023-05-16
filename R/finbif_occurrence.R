@@ -1199,13 +1199,7 @@ add_authors <- function(names_obj) {
 
   authors <- names_obj[["authors"]]
 
-  nchars <- nchar(authors)
-
-  has_chars <- nchars > 0L
-
-  has_authors <- !is.na(authors)
-
-  has_authors <- has_authors & has_chars
+  has_authors <- !is.na(authors) & nchar(authors) > 0L
 
   authors <- paste0(" ", authors)
 
