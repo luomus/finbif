@@ -1403,35 +1403,25 @@ drop_na_col <- function(fb_occurrence_df) {
 
   drop_which <- attr(fb_occurrence_df, "drop_na", TRUE)
 
-  drop_any <- any(drop_which)
-
-  if (drop_any) {
-
-    ncols <- length(fb_occurrence_df)
-
-    nrows <- nrow(fb_occurrence_df)
-
-    column_names <- attr(fb_occurrence_df, "column_names", TRUE)
-
-    which <- rep_len(drop_which, ncols)
+  if (any(drop_which)) {
 
     fb_occurrence_df_attrs <- attributes(fb_occurrence_df)
 
-    cls <- class(fb_occurrence_df)
+    fb_occurrence_df_attrs[["class"]] <- class(fb_occurrence_df)
 
-    fb_occurrence_df_attrs[["class"]] <- cls
+    nrows <- nrow(fb_occurrence_df)
 
-    rnms <- seq_len(nrows)
-
-    fb_occurrence_df_attrs[["row.names"]] <- rnms
+    fb_occurrence_df_attrs[["row.names"]] <- seq_len(nrows)
 
     attr(fb_occurrence_df, "class") <- "list"
 
     is_na <- lapply(fb_occurrence_df, is.na)
 
-    is_na <- vapply(is_na, all, NA)
+    ncols <- length(fb_occurrence_df)
 
-    drop <- is_na & which
+    drop <- vapply(is_na, all, NA) & rep_len(drop_which, ncols)
+
+    column_names <- attr(fb_occurrence_df, "column_names", TRUE)
 
     drop_column_names <- column_names[drop]
 
