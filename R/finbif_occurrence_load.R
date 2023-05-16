@@ -1637,7 +1637,9 @@ expand_lite_cols <- function(df) {
 
       df_col_na <- is.na(df_col)
 
-      if (col_nm %in% df_names && !all(df_col_na)) {
+      has_col_nm <- col_nm %in% df_names && !all(df_col_na)
+
+      if (has_col_nm) {
 
         attr(df_col, "locale") <- locale
 
@@ -1680,7 +1682,9 @@ expand_lite_cols <- function(df) {
 
           na_dfi <- is.na(dfi)
 
-          if (is.null(dfi) || all(na_dfi)) {
+          no_col <- is.null(dfi) || all(na_dfi)
+
+          if (no_col) {
 
              df[[col]] <- split_cols[[i]]
 
