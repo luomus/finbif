@@ -1451,53 +1451,49 @@ extract_facts <- function(fb_occurrence_df) {
 
   facts <- attr(fb_occurrence_df, "facts", TRUE)
 
-  has_facts <- !is.null(facts)
-
-  if (has_facts) {
+  if (!is.null(facts)) {
 
     dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
     vtype <- col_type_string(dwc)
 
-    nms <- c("unit.facts.fact", "gathering.facts.fact", "document.facts.fact")
+    nms <- c(
+      "unit.facts.fact",
+      "gathering.facts.fact",
+      "document.facts.fact"
+    )
 
     vls <- c(
-      "unit.facts.value", "gathering.facts.value", "document.facts.value"
+      "unit.facts.value",
+      "gathering.facts.value",
+      "document.facts.value"
     )
 
     fb_occurrence_df[facts] <- NA_character_
-
-    levels <- seq_len(3L)
 
     var_names <- sysdata("var_names")
 
     for (fact in facts) {
 
-      for (level in levels) {
+      for (level in 1:3) {
 
         levels_nms <- nms[[level]]
 
         fact_name <- var_names[[levels_nms, vtype]]
 
-        fact_col <- fb_occurrence_df[[fact_name]]
-
-        is_fact <- lapply(fact_col, "==", fact)
+        is_fact <- lapply(fb_occurrence_df[[fact_name]], "==", fact)
 
         level_vls <- vls[[level]]
 
         values_name <- var_names[[level_vls, vtype]]
 
-        values_col <- fb_occurrence_df[[values_name]]
+        values <- mapply(extract_fact, fb_occurrence_df[[values_name]], is_fact)
 
-        fact_values <- mapply(extract_fact, values_col, is_fact)
+        fact_value_is_na <- is.na(values)
 
-        fact_value_is_na <- is.na(fact_values)
+        if (!all(fact_value_is_na)) {
 
-        has_value <- !all(fact_value_is_na)
-
-        if (has_value) {
-
-          fb_occurrence_df[[fact]] <- fact_values
+          fb_occurrence_df[[fact]] <- values
 
         }
 
@@ -1518,19 +1514,16 @@ extract_fact <- function(
   i
 ) {
 
-  xi <- x[i]
+  ans <- x[i]
 
-  l <- length(xi)
+  if (length(ans) < 1L) {
 
-  is_na <- identical(l, 0L)
-
-  if (is_na) {
-
-    xi <- NA_character_
+    ans <- NA_character_
 
   }
 
-  xi
+  ans
+
 
 }
 
