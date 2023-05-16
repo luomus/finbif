@@ -744,123 +744,91 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
   iso8601_var <- var_names["computed_var_date_time_ISO8601", vtype]
 
-  column_names <- attr(fb_occurrence_df, "column_names", TRUE)
+  if (iso8601_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-  has_iso8601 <- iso8601_var %in% column_names
+    ds <- attr(fb_occurrence_df, "date_time_start", TRUE)
 
-  if (has_iso8601) {
+    dsna <- is.na(ds)
 
-    date_start <- var_names["gathering.eventDate.begin", vtype]
+    de <- attr(fb_occurrence_df, "date_time_end", TRUE)
 
-    hour_start <- var_names["gathering.hourBegin", vtype]
+    dena <- is.na(de)
 
-    minute_start <- var_names["gathering.minutesBegin", vtype]
+    duration_na <- dsna | dena
 
-    date_end <- var_names["gathering.eventDate.end", vtype]
-
-    hour_end <- var_names["gathering.hourEnd", vtype]
-
-    minute_end <- var_names["gathering.minutesEnd", vtype]
-
-    tzone <- attr(fb_occurrence_df, "tzone", TRUE)
-
-    date_time_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
-
-    date_time_end <- attr(fb_occurrence_df, "date_time_end", TRUE)
-
-    date_time_start_is_na <- is.na(date_time_start)
-
-    date_time_end_is_na <- is.na(date_time_end)
-
-    duration_is_na <- date_time_start_is_na | date_time_end_is_na
-
-    duration_length <- length(duration_is_na)
+    duration_length <- length(duration_na)
 
     iso8601 <- rep_len("1970-01-01/1970-01-01", duration_length)
 
+    tzone <- attr(fb_occurrence_df, "tzone", TRUE)
+
     iso8601 <- lubridate::interval(iso8601, tzone = tzone)
 
-    start_not_na <- date_time_start[!date_time_start_is_na]
+    iso8601[!duration_na] <- lubridate::interval(ds[!dsna], de[!dena])
 
-    end_not_na <- date_time_end[!date_time_end_is_na]
-
-    iso8601_not_na <- lubridate::interval(start_not_na, end_not_na)
-
-    iso8601_na <- lubridate::as.interval(NA_integer_)
-
-    iso8601[!duration_is_na] <- iso8601_not_na
-
-    iso8601[duration_is_na] <- iso8601_na
+    iso8601[duration_na] <- lubridate::as.interval(NA_integer_)
 
     iso8601 <- lubridate::format_ISO8601(iso8601, usetz = TRUE)
 
+    hour_start <- var_names["gathering.hourBegin", vtype]
+
     hour_start <- fb_occurrence_df[[hour_start]]
+
+    minute_start <- var_names["gathering.minutesBegin", vtype]
 
     minute_start <- fb_occurrence_df[[minute_start]]
 
+    hour_end <- var_names["gathering.hourEnd", vtype]
+
     hour_end <- fb_occurrence_df[[hour_end]]
+
+    minute_end <- var_names["gathering.minutesEnd", vtype]
 
     minute_end <- fb_occurrence_df[[minute_end]]
 
-    hour_start_is_na <- is.na(hour_start)
+    no_start_time <- is.na(hour_start) & is.na(minute_start)
 
-    minute_start_is_na <- is.na(minute_start)
+    no_end_time <- is.na(hour_end) & is.na(minute_end)
 
-    no_start_time <- hour_start_is_na & minute_start_is_na
-
-    hour_end_is_na <- is.na(hour_end)
-
-    minute_end_is_na <- is.na(minute_end)
-
-    no_end_time <-  hour_end_is_na & minute_end_is_na
-
-    no_time <- no_start_time | no_end_time
+    date_start <- var_names["gathering.eventDate.begin", vtype]
 
     date_start <- fb_occurrence_df[[date_start]]
 
+    date_end <- var_names["gathering.eventDate.end", vtype]
+
     date_end <- fb_occurrence_df[[date_end]]
 
-    date_start_ymd <- lubridate::ymd(date_start)
-
-    date_end_ymd <- lubridate::ymd(date_end)
-
-    interval <- lubridate::interval(date_start_ymd, date_end_ymd)
+    interval <- lubridate::interval(date_start, date_end)
 
     format_interval <- lubridate::format_ISO8601(interval, usetz = TRUE)
 
-    iso8601 <- ifelse(no_time, format_interval, iso8601)
-
-    no_duration <- date_time_start == date_time_end
+    iso8601 <- ifelse(no_start_time | no_end_time, format_interval, iso8601)
 
     dates_equal <- date_start == date_end
 
-    date_end_is_na <- is.na(date_end)
-
-    no_end_date <- date_end_is_na | dates_equal
+    no_end_date <-  is.na(date_end) | dates_equal
 
     no_end <- no_end_time & no_end_date
 
-    use_start <- no_end | no_duration
+    use_start <- no_end | ds == de
 
-    format_start <- lubridate::format_ISO8601(date_time_start, usetz = TRUE)
+    format_start <- lubridate::format_ISO8601(ds, usetz = TRUE)
 
     iso8601 <- ifelse(use_start, format_start, iso8601)
 
-    use_start_ymd <- no_start_time & no_end_date
+    fmt_start_ymd <- lubridate::ymd(date_start)
 
-    format_start_ymd <- lubridate::format_ISO8601(date_start_ymd, usetz = TRUE)
+    fmt_start_ymd <- lubridate::format_ISO8601(fmt_start_ymd, usetz = TRUE)
 
-    iso8601 <- ifelse(use_start_ymd, format_start_ymd, iso8601)
+    iso8601 <- ifelse(no_start_time & no_end_date, fmt_start_ymd, iso8601)
 
-    iso8601_is_na <- is.na(iso8601)
+    iso8601_na <- is.na(iso8601)
 
-    date_interval <- paste(date_start, date_end, sep = "/")
+    date_intvl <- paste(date_start, date_end, sep = "/")
 
-    date_interval <- ifelse(dates_equal, date_start, date_interval)
+    date_intvl <- ifelse(dates_equal, date_start, date_intvl)
 
-    iso8601 <- ifelse(iso8601_is_na, date_interval, iso8601)
-
-    fb_occurrence_df[[iso8601_var]] <- iso8601
+    fb_occurrence_df[[iso8601_var]] <- ifelse(iso8601_na, date_intvl, iso8601)
 
   }
 
