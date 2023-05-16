@@ -666,21 +666,13 @@ compute_date_time <- function(fb_occurrence_df) {
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  vtype <- col_type_string(dwc)
-
   var_names <- sysdata("var_names")
 
-  date_time_var <- var_names["computed_var_date_time", vtype]
+  dtv <- var_names["computed_var_date_time",  col_type_string(dwc)]
 
-  column_names <- attr(fb_occurrence_df, "column_names", TRUE)
+  if (dtv %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-  has_date_time <- date_time_var %in% column_names
-
-  if (has_date_time) {
-
-    date_time_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
-
-    fb_occurrence_df[[date_time_var]] <- date_time_start
+    fb_occurrence_df[[dtv]] <- attr(fb_occurrence_df, "date_time_start", TRUE)
 
   }
 
