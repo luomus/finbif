@@ -171,15 +171,21 @@ occurrence <- function(fb_records_obj) {
 
   filter <- fb_records_obj[["filter"]]
 
-  filters <- names(filter)
+  nms <- names(filter)
 
-  available <- sysdata("filter_names")
+  fnames <- sysdata("filter_names")
 
-  matched_filter_names <- intersect(filters, available[["translated_filter"]])
+  missing_names <- is.null(nms) || !any(nms %in% fnames[["translated_filter"]])
 
-  n_filters <- length(filter)
+  filters_has_no_length <- vapply(filter, length, 0L) < 1L
 
-  if (n_filters > 1L && n_filters > length(matched_filter_names)) {
+  filter_names <- lapply(filter, names)
+
+  filter_names_are_char <- vapply(filter_names, is.character, NA)
+
+  cond <- all(filters_has_no_length | filter_names_are_char)
+
+  if (cond && missing_names && is.list(filter)) {
 
     return(multi_req(fb_records_obj))
 
