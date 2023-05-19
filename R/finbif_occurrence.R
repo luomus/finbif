@@ -183,9 +183,11 @@ occurrence <- function(fb_records_obj) {
 
   filter_names_are_char <- vapply(filter_names, is.character, NA)
 
-  cond <- all(filters_has_no_length | filter_names_are_char)
+  filters_have_names <- all(filters_has_no_length | filter_names_are_char)
 
-  if (cond && missing_names && is.list(filter)) {
+  use_multi_req <- filters_have_names && missing_names && is.list(filter)
+
+  if (use_multi_req) {
 
     return(multi_req(fb_records_obj))
 
@@ -199,7 +201,9 @@ occurrence <- function(fb_records_obj) {
 
   n <- fb_records_obj[["n"]]
 
-  if (n < 0 || is.factor(n) || !is.finite(n)) {
+  needs_n <- n < 0 || is.factor(n) || !is.finite(n)
+
+  if (needs_n) {
 
     max_page_size <- getOption("finbif_max_page_size")
 
