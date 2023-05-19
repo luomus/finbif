@@ -118,25 +118,27 @@ finbif_collections <- function(
 
   }
 
+  ind <- TRUE
+
   if (!is.na(nmin)) {
 
-    include <- !is.na(collections[["count"]]) & collections[["count"]] > nmin
-
-    collections <- collections[include, ]
+    ind <- ind & !is.na(collections[["count"]]) & collections[["count"]] > nmin
 
   }
 
   if (!subcollections) {
 
-    collections <- collections[is.na(collections[["is_part_of"]]), ]
+    ind <- ind & is.na(collections[["is_part_of"]])
 
   }
 
   if (!supercollections) {
 
-    collections <- collections[!has_children, ]
+    ind <- ind & !has_children
 
   }
+
+  collections <- collections[ind, ]
 
   n_collections <- nrow(collections)
 
