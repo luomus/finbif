@@ -23,8 +23,8 @@
 \section{finbif version 0.8.0.9004}{
   \subsection{BUG FIXES}{
     \itemize{
-      \item Fixed a bug causing an infinite recursion when determining page
-        size during record download pagination.
+      \item Fixed a bug causing an infinite recursion when determining page size
+        during record download pagination.
     }
   }
 }

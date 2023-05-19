@@ -169,31 +169,15 @@ occurrence <- function(fb_records_obj) {
 
   fb_records_obj <- det_datetime_method(fb_records_obj)
 
-  filter <- fb_records_obj[["filter"]]
-
-  nms <- names(filter)
-
-  fnames <- sysdata("filter_names")
-
-  missing_names <- is.null(nms) || !any(nms %in% fnames[["translated_filter"]])
-
-  filters_has_no_length <- vapply(filter, length, 0L) < 1L
-
-  filter_names <- lapply(filter, names)
-
-  filter_names_are_char <- vapply(filter_names, is.character, NA)
-
-  filters_have_names <- all(filters_has_no_length | filter_names_are_char)
-
-  use_multi_req <- filters_have_names && missing_names && is.list(filter)
-
-  if (use_multi_req) {
+  if (use_multi_req(fb_records_obj)) {
 
     return(multi_req(fb_records_obj))
 
   }
 
-  fb_records_obj[["filter"]] <- c(fb_records_obj[["taxa"]], filter)
+  fb_records_obj[["filter"]] <- c(
+    fb_records_obj[["taxa"]], fb_records_obj[["filter"]]
+  )
 
   facts <- fb_records_obj[["facts"]]
 
@@ -322,6 +306,30 @@ occurrence <- function(fb_records_obj) {
   names(fb_occurrence_df) <- names(select_user)
 
   fb_occurrence_df
+
+}
+
+#' @noRd
+
+use_multi_req <- function(fb_records_obj) {
+
+  filter <- fb_records_obj[["filter"]]
+
+  nms <- names(filter)
+
+  fnames <- sysdata("filter_names")
+
+  no_name <- is.null(nms) || !any(nms %in% fnames[["translated_filter"]])
+
+  filters_has_no_length <- vapply(filter, length, 0L) < 1L
+
+  filter_names <- lapply(filter, names)
+
+  filter_names_are_char <- vapply(filter_names, is.character, NA)
+
+  named <- all(filters_has_no_length | filter_names_are_char)
+
+  no_name && named && is.list(filter) && length(filter) > 0L
 
 }
 
