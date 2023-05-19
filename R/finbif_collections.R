@@ -102,7 +102,9 @@ finbif_collections <- function(
 
   has_children <- collections[["has_children"]]
 
-  for (collection in collections[has_children & !is.na(has_children), "id"]) {
+  has_children <- has_children & !is.na(has_children)
+
+  for (collection in collections[has_children, "id"]) {
 
     if (is.na(collections[collection, "count"])) {
 
