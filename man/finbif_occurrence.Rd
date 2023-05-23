@@ -28,7 +28,10 @@ finbif_occurrence(
   aggregate_counts = TRUE,
   exclude_na = FALSE,
   unlist = FALSE,
-  facts = NULL
+  facts = NULL,
+  duplicates = FALSE,
+  filter_col = NULL,
+  restricted_api = NULL
 )
 }
 \arguments{
@@ -69,7 +72,9 @@ database.}
 \item{quiet}{Logical. Suppress the progress indicator for multipage
 downloads. Defaults to value of option \code{finbif_hide_progress}.}
 
-\item{cache}{Logical. Use cached data.}
+\item{cache}{Logical or Integer. If \code{TRUE} or a number greater than zero,
+then data-caching will be used. If not logical then cache will be
+invalidated after the number of hours indicated by the argument.}
 
 \item{dwc}{Logical. Use Darwin Core (or Darwin Core style) variable names.}
 
@@ -113,6 +118,18 @@ concatenated into a string separated by ";"?}
 
 \item{facts}{Character vector. Extra variables to be extracted from record,
 event and document "facts".}
+
+\item{duplicates}{Logical. If \code{TRUE}, allow duplicate records/aggregated
+records when making multi-filter set requests. If \code{FALSE} (default)
+duplicate records are removed.}
+
+\item{filter_col}{Character. The name of a column, with values derived from
+the names of the filter sets used when using multiple filters, to include
+when using multiple filter sets. If \code{NULL} (default), no column is included.}
+
+\item{restricted_api}{Character. If using a restricted data API token in
+addition to a personal access token, a string indicating the name of an
+environment variable storing the restricted data API token.}
 }
 \value{
 A \code{data.frame}. If \code{count_only =  TRUE} an integer.

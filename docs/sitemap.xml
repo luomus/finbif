@@ -34,9 +34,6 @@
     <loc>/articles/v05_filtering.html</loc>
   </url>
   <url>
-    <loc>/articles/v06_plotting.html</loc>
-  </url>
-  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
@@ -44,12 +41,6 @@
   </url>
   <url>
     <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/as.data.frame.finbif_records.html</loc>
-  </url>
-  <url>
-    <loc>/reference/breaks_xy.html</loc>
   </url>
   <url>
     <loc>/reference/caching.html</loc>
@@ -85,19 +76,13 @@
     <loc>/reference/finbif_occurrence_load.html</loc>
   </url>
   <url>
-    <loc>/reference/finbif_records.html</loc>
-  </url>
-  <url>
     <loc>/reference/finbif_request_token.html</loc>
   </url>
   <url>
     <loc>/reference/finbif_taxa.html</loc>
   </url>
   <url>
-    <loc>/reference/finland_map.html</loc>
-  </url>
-  <url>
-    <loc>/reference/hist_xy.html</loc>
+    <loc>/reference/finbif_update_cache.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>

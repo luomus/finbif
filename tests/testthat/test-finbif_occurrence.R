@@ -13,6 +13,8 @@ test_that(
       "finbif_occ"
     )
 
+    expect_null(finbif_update_cache())
+
     expect_s3_class(
       finbif_occurrence(
         "Rangifer tarandus fennicus", "not a valid taxon",
@@ -102,7 +104,7 @@ test_that(
 )
 
 test_that(
-  "returns data that prints/plots valid output", {
+  "returns data that prints valid output", {
 
     skip_on_cran()
 
@@ -145,29 +147,13 @@ test_that(
       "Records downloaded:"
     )
 
+    expect_null(finbif_update_cache())
+
     expect_output(
       print(finbif_occurrence(aggregate = "species")), "Records downloaded:"
     )
 
     expect_output(print(finbif_occurrence()), "Records downloaded:")
-
-    has_grd <- requireNamespace("grDevices", quietly = TRUE)
-
-    coverage <- identical(Sys.getenv("COVERAGE"), "true")
-
-    if (has_grd && coverage) {
-
-      path <- tempfile(fileext = ".svg")
-
-      grDevices::svg(path, width = 7, height = 7, antialias = "none")
-
-      plot(fungi, axes = FALSE, xlab = NA, ylab = NA, panel.first = NULL)
-
-      dev.off()
-
-      expect_true(file.exists(path))
-
-    }
 
   }
 )
@@ -196,17 +182,55 @@ test_that(
     )
 
     expect_error(
-      finbif_occurrence(filter = list(NULL), aggregate = "records", n = 2e5)
-    )
-
-    expect_error(
       finbif_occurrence("Birds", aggregate = "events")
     )
+
+    expect_error(finbif_occurrence(n = 0))
+
+    expect_error(finbif_occurrence(n = 1e9))
+
+    expect_error(finbif_occurrence(aggregate = c("records", "events")))
+
+    expect_error(finbif_occurrence(filter = c(not_a_filter = TRUE)))
 
   }
 )
 
 suppressMessages(eject_cassette("finbif_occurrence"))
+
+suppressMessages(insert_cassette("finbif_occurrence_low"))
+
+test_that(
+  "low-level operations work", {
+
+    skip_on_cran()
+
+    expect_type(
+      finbif_occurrence(
+        filter = list(
+          collection = finbif_collections(taxonomic_coverage == "Coleoptera"),
+          primary_habitat = "M",
+          date_range_ymd = c(2000, 2010)
+        ),
+        aggregate = "records",
+        count_only = TRUE,
+        cache = FALSE
+      ),
+      "integer"
+    )
+
+    expect_type(
+      finbif_occurrence(
+        filter = list(primary_habitat = list(M = "V")), count_only = TRUE
+      ),
+      "integer"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_low"))
 
 suppressMessages(insert_cassette("finbif_occurrence_has_media"))
 
@@ -252,7 +276,13 @@ test_that(
 
     skip_on_cran()
 
+    expect_s3_class(
+      finbif_occurrence(filter = list(a = NULL, NULL), filter_col = "b"),
+      "finbif_occ"
+    )
+
     expect_s3_class(finbif_occurrence(filter = list(NULL, NULL)), "finbif_occ")
+
 
   }
 )
@@ -474,3 +504,46 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_localise_enums"))
+
+suppressMessages(insert_cassette("finbif_aggregate_list_col"))
+
+test_that(
+  "can aggregate list cols", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(
+        select = "record_annotation_created", aggregate = "records"
+      ),
+      "finbif_occ"
+    )
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_aggregate_list_col"))
+
+suppressMessages(insert_cassette("finbif_invalidate_cache"))
+
+test_that(
+  "cache invalidation works", {
+
+    skip_on_cran()
+
+    finbif_occurrence(cache = 1e-9)
+
+    expect_s3_class(finbif_occurrence(cache = TRUE), "finbif_occ")
+
+    options(finbif_cache_path = NULL)
+
+    finbif_occurrence(cache = 1e-09)
+
+    expect_s3_class(finbif_occurrence(cache = TRUE), "finbif_occ")
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_invalidate_cache"))

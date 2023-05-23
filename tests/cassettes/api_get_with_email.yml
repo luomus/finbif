@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 30 Mar 2023 06:40:37 GMT
+      date: Tue, 23 May 2023 08:00:54 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -28,6 +28,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":46172384,"pageSize":1,"total":46172384,"cacheTimestamp":1680157860,"results":[{"unit":{"unitId":"http://tun.fi/JX.1540855#3"}}]}'
-  recorded_at: 2023-03-30 06:40:37 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":46892197,"pageSize":1,"total":46892197,"cacheTimestamp":1684828854,"results":[{"unit":{"unitId":"http://tun.fi/JX.1583879#3"}}]}'
+  recorded_at: 2023-05-23 08:00:54 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

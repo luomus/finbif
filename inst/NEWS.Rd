@@ -1,6 +1,46 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.9.0}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New function \code{finbif_update_cache} can be used to update all
+        the cached objects that have reached their expiration and are no longer
+        valid.
+      \item A restricted data API token can be explicitly declared via the
+        \code{restricted_api} argument to \code{finbif_occurrence}.
+      \item Cached data can use a database as a backend by passing a \code{DBI}
+        database connection object to the package option
+        \code{finbif_cache_path}.
+      \item Cached data can be assigned a timeout by using a number (hours)
+        instead of a logical value for the \code{cache} argument to
+        \code{finbif_} functions or the package option \code{finbif_use_cache}.
+      \item Record aggregations with \code{finbif_occurrence} can now be
+        combined with multi-filter requests. Removing duplicate records or
+        aggregate record combinations can be controlled with the
+        \code{duplicates} argument and adding a column indicating the filter
+        sets can be added with the \code{filter_col} argument.
+      }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed a bug causing an infinite recursion when determining page size
+        during record download pagination.
+      \item Fix bug triggered when using aggregation with some selected
+        variables.
+      }
+    }
+  }
+  \subsection{DEFUNCT}{
+    \itemize{
+      \item Mapping utilities \code{finland_map}, \code{breaks_xy},
+        \code{hist_xy} and the plot method for \code{finbif_occ} objects are now
+        defunct.
+      \item User access to \code{finbif_records} and its classes and methods is
+        now defunct.
+    }
+  }
+}
+
 \section{finbif version 0.8.0}{
   \subsection{DEPRECATION}{
     \itemize{
@@ -122,7 +162,7 @@
   }
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
-      \item For clarity, KKJ coordinate reference system is now refered to as
+      \item For clarity, KKJ coordinate reference system is now referred to as
         YKJ.
       \item When selecting all available variables for download file imports
         using \code{finbif_occurrence_load} "extra" variables will no longer

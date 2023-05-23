@@ -22,17 +22,19 @@ all: dev_deps R/sysdata.rda sentinels/check codemeta.json clean
 
 dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('codemetar', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('blob', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('data.table', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('DBI', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('details', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('devtools', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('future', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('grDevices', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('jsonlite', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('knitr', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('pkgdown', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('readODS', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('readxl', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('rmarkdown', quietly = TRUE))";\
+> ${RSCRIPT} -e "stopifnot(requireNamespace('RSQLite', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('sf', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('testthat', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('vcr', quietly = TRUE))";\
@@ -52,11 +54,12 @@ sentinels/check: sentinels/pkgdown $(shell find tests -type f)
 sentinels/pkgdown: sentinels/vignettes README.md NEWS.md sentinels/doc _pkgdown.yml
 > echo "options(rmarkdown.html_vignette.check_title = FALSE)" > .Rprofile;\
 > ${RSCRIPT} -e "pkgdown::build_site()";\
-> rm .Rprofile;\
+> rm .Rprofile; \
+> rm -f docs/reference/Rplot001.png;\
 > mkdir -p $(@D);\
 > touch $@
 
-README.md: README.Rmd
+README.md: README.Rmd DESCRIPTION
 > ${RSCRIPT} -e "knitr::knit('$<')"
 
 NEWS.md: inst/NEWS.Rd

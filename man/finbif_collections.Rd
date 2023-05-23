@@ -33,7 +33,9 @@ collections.}
 information on collections with greater than value specified. If \code{NA} then
 return information on all collections.}
 
-\item{cache}{Logical. Use cached data.}
+\item{cache}{Logical or Integer. If \code{TRUE} or a number greater than zero,
+then data-caching will be used. If not logical then cache will be
+invalidated after the number of hours indicated by the argument.}
 }
 \value{
 A data.frame.

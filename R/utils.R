@@ -2,32 +2,16 @@
 
 #' @noRd
 
-deprecation <- function(msg) {
-
-  warn <- Sys.getenv("DEPRECATION_WARNING", TRUE)
-
-  warn <- as.logical(warn)
-
-  if (warn) {
-
-    warning(msg, call. = FALSE)
-
-  }
-
-}
-
-#' @noRd
-
 get_next_lowest_factor <- function(
   x,
   y
 ) {
 
-  mod <- x %% y
+  x <- as.integer(x)
 
-  end <- identical(mod, 0L)
+  y <- as.integer(y)
 
-  if (end) {
+  if (identical(x %% y, 0L)) {
 
     return(y)
 
@@ -47,15 +31,9 @@ get_el_recurse <- function(
   type
 ) {
 
-  l <- length(nms)
+  if (length(nms) < 1L) {
 
-  no_names <- identical(l, 0L)
-
-  if (no_names) {
-
-    no_obj <- is.null(obj) || identical(obj, "")
-
-    if (no_obj) {
+    if (is.null(obj) || identical(obj, "")) {
 
       obj <- cast_to_type(NA, type)
 
@@ -67,23 +45,15 @@ get_el_recurse <- function(
 
   nm <- nms[[1L]]
 
-  nms <- nms[-1L]
-
-  next_obj <- getElement(obj, nm)
-
   obj_names <- names(obj)
-
-  no_names <- is.null(obj_names)
 
   has_name <- FALSE
 
-  if (no_names) {
+  if (is.null(obj_names)) {
 
     for (i in obj) {
 
-      i_names <- names(i)
-
-      has_name <- nm %in% i_names
+      has_name <- nm %in% names(i)
 
       if (has_name) {
 
@@ -95,21 +65,21 @@ get_el_recurse <- function(
 
   }
 
+  next_obj <- getElement(obj, nm)
+
   if (has_name) {
 
     next_obj <- lapply(obj, getElement, nm)
 
     null_elements <- vapply(next_obj, is.null, NA)
 
-    type_na <- cast_to_type(NA, type)
-
-    next_obj[null_elements] <- type_na
+    next_obj[null_elements] <- cast_to_type(NA, type)
 
     next_obj <- unlist(next_obj, recursive = FALSE)
 
   }
 
-  get_el_recurse(next_obj, nms, type)
+  get_el_recurse(next_obj, nms[-1L], type)
 
 }
 
@@ -120,13 +90,9 @@ pb_head <- function(
   quiet = FALSE
 ) {
 
-  nchars <- nchar(msg)
+  nchars <- nchar(msg) + 15L
 
-  gap <- nchars + 15L
-
-  width <- getOption("width")
-
-  diff <- width - gap
+  diff <- getOption("width") - nchars
 
   diff <- max(0L, diff)
 
@@ -137,6 +103,8 @@ pb_head <- function(
     message("  |=== ", msg, " ", body, "|")
 
   }
+
+  quiet
 
 }
 
@@ -149,15 +117,11 @@ truncate_string <- function(
 
   x <- as.character(x)
 
-  nchars <- nchar(x)
-
-  too_many_chars <- nchars > sl
-
-  sl <- sl - 1L
-
-  x_sl <- substr(x, 1L, sl)
+  x_sl <- substr(x, 1L, sl - 1L)
 
   x_sl <- sprintf("%s\u2026", x_sl)
+
+  too_many_chars <- nchar(x) > sl
 
   ifelse(too_many_chars, x_sl, x)
 
@@ -183,25 +147,19 @@ truncate_string_to_unique <- function(x) {
 
     unique_y <- unique(y)
 
-    n_unique_y <- length(unique_y)
-
-    more_than_one <- n_unique_y > 1L
-
-    cond <- more_than_one && char_all_equal(y, i)
+    cond <- length(unique_y) > 1L && char_all_equal(y, i)
 
   }
 
-  y <- trimws(y)
+  y_trimmed <- trimws(y)
 
-  x_ind <- x[ind]
+  unchanged <- y == y_trimmed
 
-  unchanged <- x_ind == y
+  y_trimmed <- paste0("\u2026", y_trimmed)
 
-  changed <- paste0("\u2026", y)
+  y <- ifelse(unchanged, y, y_trimmed)
 
-  x_ind <- ifelse(unchanged, y, changed)
-
-  x[ind] <- x_ind
+  x[ind] <- y
 
   x
 
@@ -209,15 +167,14 @@ truncate_string_to_unique <- function(x) {
 
 #' @noRd
 
-char_all_equal <- function(x, i) {
+char_all_equal <- function(
+  x,
+  i
+) {
 
   chars <- substr(x, i, i)
 
-  char <- chars[[1L]]
-
-  equal <- chars == char
-
-  all(equal)
+  all(chars == chars[[1L]])
 
 }
 
@@ -260,56 +217,42 @@ has_pkgs <- function(...) {
 #' @noRd
 
 name_chr_vec <- function(
-  x,
+  x = NULL,
   unique = TRUE,
-  na.rm = TRUE # nolint
+  na_rm = TRUE
 ) {
 
-  no_x <- missing(x)
+  if (!is.null(x)) {
 
-  no_x <- no_x || is.null(x)
+    stopifnot("'x' is not a character vector" = inherits(x, "character"))
 
-  if (no_x) {
+    if (na_rm) {
 
-    return(NULL)
+      x <- x[!is.na(x)]
 
-  }
+    }
 
-  is_char <- inherits(x, "character")
+    nms <- names(x)
 
-  stopifnot("'x' is not a character vector" = is_char)
+    if (is.null(nms)) {
 
-  if (na.rm) {
+      nms <- x
 
-    not_na <- !is.na(x)
+    } else {
 
-    x <- x[not_na]
+      nms <- ifelse(nms == "", x, nms)
 
-  }
+    }
 
-  nms <- names(x)
+    if (unique) {
 
-  no_nms <- is.null(nms)
+      nms <- make.unique(nms)
 
-  if (no_nms) {
+    }
 
-    nms <- x
-
-  } else {
-
-    empty_names <- nms == ""
-
-    nms <- ifelse(empty_names, x, nms)
+    names(x) <- nms
 
   }
-
-  if (unique) {
-
-    nms <- make.unique(nms)
-
-  }
-
-  names(x) <- nms
 
   x
 
@@ -331,13 +274,9 @@ concat_string <- function(x) {
 
   not_na <- !is.na(x)
 
-  any_not_na <- any(not_na)
+  if (any(not_na)) {
 
-  if (any_not_na) {
-
-    x_not_na <- x[not_na]
-
-    ans <- paste(x_not_na, collapse = "; ")
+    ans <- paste(x[not_na], collapse = "; ")
 
   }
 
@@ -352,25 +291,13 @@ cast_to_type <- function(
   type
 ) {
 
-  l <- length(type)
-
-  cond <- !identical(l, 1L)
-
-  if (cond) {
-
-    type <- "character"
-
-  }
-
-  f <- switch(
+  switch(
     type,
-    character = as.character,
-    double = as.double,
-    integer = as.integer,
-    logical = as.logical
+    double = as.double(x),
+    integer = as.integer(x),
+    logical = as.logical(x),
+    as.character(x)
   )
-
-  f(x)
 
 }
 
@@ -395,6 +322,28 @@ get_rows <- function(
 
 }
 
+#' @noRd
+
+cache_is_valid <- function(timeout, created) {
+
+  timeout_offset <- getOption("finbif_timeout_offset")
+
+  timeout_offset <- pmax(timeout_offset, 0)
+
+  timeout_offset <- pmin(timeout_offset, 1)
+
+  timeout_offset <- timeout_offset * 1000
+
+  timeout_seq <- seq(1000 - timeout_offset, 1000 + timeout_offset)
+
+  seq_length <- length(timeout_seq)
+
+  timeout_secs <- timeout * timeout_seq[sample.int(seq_length, 1L)] * 3.6
+
+  timeout_secs > difftime(Sys.time(), created, units = "secs")
+
+}
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd
@@ -411,9 +360,7 @@ sample_with_seed <- function(
 
   })
 
-  has_seed <- exists(".Random.seed", 1L)
-
-  if (has_seed) {
+  if (exists(".Random.seed", 1L)) {
 
     oldseed <- get(".Random.seed", 1L)
 
@@ -439,29 +386,12 @@ sample_with_seed <- function(
 
 }
 
-#' @noRd
-
-gen_seed <- function(
-  x,
-  ...
-) {
-
-  UseMethod("gen_seed", x)
-
-}
-
 #' @importFrom digest digest
-#' @export
 #' @noRd
 
-gen_seed.finbif_records_list <- function(
-  x,
-  ...
-) {
+gen_seed <- function(x) {
 
   hash <- lapply(x, getElement, "hash")
-
-  hash <- do.call(paste0, hash)
 
   hash <- digest::digest(hash)
 
@@ -478,21 +408,17 @@ gen_seed.finbif_records_list <- function(
 
 deferrable_error <- function(message) {
 
-  withRestarts({
-
+  withRestarts(
+    {
       calls <- sys.calls()
 
-      calls_len <- length(calls)
-
-      i <- calls_len - 1L
+      i <- length(calls) - 1L
 
       i <- max(i, 1L)
 
-      call <- calls[[i]]
+      e <- error(message, "deferrable_error", call = calls[[i]], calls = calls)
 
-      err <- error(message, "deferrable_error", call = call, calls = calls)
-
-      stop(err)
+      stop(e)
 
     },
     continue_deferrable_error = continue
@@ -525,25 +451,13 @@ defer_errors <- function(
 
       sq <- seq_along(calls)
 
-      calls_obj <- calls[]
-
       e_calls <- e[["calls"]]
 
-      e_calls_obj <- e_calls[sq]
+      if (identical(calls[], e_calls[sq])) {
 
-      cond <- identical(calls_obj, e_calls_obj)
+        l <- length(calls) + 1L
 
-      if (cond) {
-
-        l <- length(calls)
-
-        l <- l + 1L
-
-        ind <- seq_len(l)
-
-        ind <- ind * -1L
-
-        e_calls <- e_calls[ind]
+        e_calls <- e_calls[-seq_len(l)]
 
         e[["calls"]] <- e_calls
 
@@ -559,6 +473,7 @@ defer_errors <- function(
   )
 
   deferred_errors(errors, handler, calls, value)
+
 }
 
 #' @noRd
@@ -570,15 +485,11 @@ deferred_errors <- function(
   value = NULL
 ) {
 
-  l <- length(errors)
-
-  if (l) {
+  if (length(errors) > 0L) {
 
     err <- list(errors = errors, value = value)
 
-    class <- c("dfrd_errors", "error", "condition")
-
-    class(err) <- class
+    class(err) <- c("dfrd_errors", "error", "condition")
 
     handler(err)
 
@@ -600,9 +511,7 @@ error <- function(
 
   message <- list(message = message, ...)
 
-  class <- c(class, "error", "condition")
-
-  structure(message, class = class)
+  structure(message, class = c(class, "error", "condition"))
 
 }
 
@@ -611,9 +520,7 @@ error <- function(
 
 conditionMessage.dfrd_errors <- function(c) {
 
-  errors <- c[["errors"]]
-
-  errors <- vapply(errors, getElement, "", "message")
+  errors <- vapply(c[["errors"]], getElement, "", "message")
 
   n <- length(errors)
 
@@ -625,113 +532,13 @@ conditionMessage.dfrd_errors <- function(c) {
 
 }
 
-# variable names ---------------------------------------------------------------
-
-#' @noRd
-
-to <- function(
-  x,
-  from,
-  to
-) {
-
-  x <- unlist(x)
-
-  var_names <- var_names()
-
-  vars_to <- var_names[[to]]
-
-  vars_from <- var_names[[from]]
-
-  vars_to <- c(vars_to, "default_vars")
-
-  ind <- !x %in% vars_to
-
-  xx <- x[ind]
-
-  xx <- match(xx, vars_from)
-
-  xx <- var_names[xx, to]
-
-  x[ind] <- xx
-
-  x
-
-}
-
-#' Convert variable names
-#'
-#' Convert variable names to Darwin Core or FinBIF R package native style.
-#'
-#' @param ... Character. Variable names to convert. For `to_dwc` and `to_native`
-#'   the names must be in the opposite format. For `from_schema` the names must
-#'   be from the FinBIF schema (e.g., names returned by https://api.laji.fi) or
-#'   a FinBIF download file (citable or lite).
-#' @param to Character. Type of variable names to convert to.
-#' @param file Character. For variable names that are derived from a FinBIF
-#'   download file which type of file.
-#'
-#' @return Character vector.
-#'
-#' @examples
-#'
-#' to_dwc("record_id", "date_time", "scientific_name")
-#' @export
-
-to_dwc <- function(...) {
-
-  l <- list(...)
-
-  to(l, "translated_var", "dwc")
-
-}
-
-#' @rdname to_dwc
-#' @export
-
-to_native <- function(...) {
-
-  l <- list(...)
-
-  to(l, "dwc", "translated_var")
-
-}
-
-#' @rdname to_dwc
-#' @export
-
-from_schema <- function(
-  ...,
-  to = c("native", "dwc", "short"),
-  file = c("none", "citable", "lite")
-) {
-
-  nms <- c(...)
-
-  nms <- make.names(nms)
-
-  file <- match.arg(file)
-
-  vars <- switch(
-    file,
-    none = var_names(),
-    citable = cite_file_vars(),
-    lite = lite_download_file_vars()
-  )
-
-  to <- match.arg(to)
-
-  to <- switch(to, native = "translated_var", dwc = "dwc", short = "shrtnm")
-
-  vars[nms, to]
-
-}
-
 # localization -----------------------------------------------------------------
 
 #' @noRd
 
 get_locale <- function() {
+
+  supported_langs <- sysdata("supported_langs")
 
   ans <- supported_langs[[1L]]
 
@@ -741,23 +548,15 @@ get_locale <- function() {
 
   collate <- Sys.getlocale("LC_COLLATE")
 
-  sys_lang <- c(env, collate)
-
-  for (l in sys_lang) {
+  for (l in c(env, collate)) {
 
     reg <- regexpr(".+?(?=[[:punct:]])", l, perl = TRUE)
 
     l <- regmatches(l, reg)
 
-    len <- length(l)
+    if (length(l) > 0L) {
 
-    has_lang <- len > 0L
-
-    if (has_lang) {
-
-      cond <- l %in% supported_langs
-
-      if (cond) {
+      if (l %in% supported_langs) {
 
         ans <- l
 
@@ -765,11 +564,7 @@ get_locale <- function() {
 
       }
 
-      lang_nms <- names(supported_langs)
-
-      cond <- l %in% lang_nms
-
-      if (cond) {
+      if (l %in% names(supported_langs)) {
 
         ans <- supported_langs[[l]]
 
@@ -796,19 +591,15 @@ with_locale <- function(
 
   ans <- NA_character_
 
-  cond <- identical(l, 1L)
-
-  if (cond) {
+  if (identical(l, 1L)) {
 
     ans <- x[[1L]]
 
-  }
-
-  cond <- l > 1L
-
-  if (cond) {
+  } else if (l > 1L) {
 
     nms <- names(x)
+
+    supported_langs <- sysdata("supported_langs")
 
     locales <- setdiff(supported_langs, locale)
 

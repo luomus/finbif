@@ -1,60 +1,36 @@
 #' @noRd
-#' @importFrom lubridate as_date period rollback int_end int_start
 
 dates <- function(obj) {
 
-  obj_len <- length(obj)
+  len <- length(obj)
 
-  if (obj_len < 2L) {
+  if (len < 2L) {
 
     deferrable_error("Need to specify at least one of 'begin' or 'end' date")
 
   }
 
-  end <- obj[["end"]]
+  if (is.null(obj[["end"]])) {
 
-  no_end_name <- is.null(end)
+    obj[["begin"]] <- obj[[2L]]
 
-  no_end <- identical(obj_len, 2L)
+    if (len > 2L) {
 
-  end_not_named <- no_end_name && !no_end
+      obj[["end"]] <- obj[[3L]]
 
-  if (end_not_named) {
-
-    begin <- obj[[2L]]
-
-    obj[["begin"]] <- begin
-
-    end <- obj[[3L]]
-
-  }
-
-  obj[["end"]] <- end
-
-  no_end <- no_end && no_end_name
-
-  if (no_end) {
-
-    begin <- obj[[2L]]
-
-    obj[["begin"]] <- begin
+    }
 
   }
 
   obj[["format"]] <- "%Y-%m-%d"
 
-  filter <- obj[["filter"]]
-
   ans <- switch(
-    filter,
+    obj[["filter"]],
     date_range_ymd = date_range_ymd(obj),
     date_range_ym  = date_range_ym(obj),
-    date_range_d   = date_range_md(obj),
-    date_range_md  = date_range_md(obj),
-    last_import_date_min = parse_date(begin),
-    last_import_date_max = parse_date(begin),
-    first_import_date_min = parse_date(begin),
-    first_import_date_max = parse_date(begin)
+    date_range_d = date_range_md(obj),
+    date_range_md = date_range_md(obj),
+    parse_date(obj[["begin"]])
   )
 
   paste(ans)
@@ -62,170 +38,101 @@ dates <- function(obj) {
 }
 
 #' @noRd
-#' @importFrom lubridate as_date int_end int_start period rollback
+#' @importFrom lubridate int_end int_start period rollback
 
 date_range_ymd <- function(obj) {
 
-  begin <- obj[["begin"]]
+  if (inherits(obj[["begin"]], "Interval")) {
 
-  end <- obj[["end"]]
+    obj[["end"]] <- lubridate::int_end(obj[["begin"]])
 
-  is_interval <- inherits(begin, "Interval")
+    obj[["begin"]] <- lubridate::int_start(obj[["begin"]])
 
-  if (is_interval) {
+  } else {
 
-    obj[["begin"]] <- lubridate::int_start(begin)
+    obj[["begin"]] <- parse_date(obj[["begin"]])
 
-    obj[["end"]] <- lubridate::int_end(begin)
+    obj[["end"]] <- parse_date(obj[["end"]])
 
-    ans <- date_range_ymd(obj)
+    no_begin <- identical(obj[["begin"]], "")
 
-    return(ans)
+    no_end <- identical(obj[["end"]], "")
 
-  }
+    null_begin <- is.null(obj[["begin"]])
 
-  begin <- parse_date(begin)
+    null_end <- is.null(obj[["end"]])
 
-  obj[["begin"]] <- begin
+    end_class <- class(obj[["end"]])
 
-  end <- parse_date(end)
+    same_class <- inherits(obj[["begin"]], end_class)
 
-  obj[["end"]] <- end
+    cond <- any(no_begin, no_end, null_begin, null_end, same_class)
 
-  no_begin <- identical(begin, "")
+    if (cond) {
 
-  no_end <- identical(end, "")
+      return(format_date(obj))
 
-  null_begin <- is.null(begin)
+    }
 
-  null_end <- is.null(end)
+    if (inherits(obj[["begin"]], "y")) {
 
-  end_class <- class(end)
+      obj[["begin"]] <- paste0(obj[["begin"]], "-01")
 
-  same_class <- inherits(begin, end_class)
+    } else if (inherits(obj[["end"]], "y")) {
 
-  cond <- any(no_begin, no_end, null_begin, null_end, same_class)
+      obj[["end"]] <- paste0(obj[["end"]], "-12")
 
-  if (cond) {
+    } else if (inherits(obj[["begin"]], "ym")) {
 
-    ans <- format_date(obj)
+      obj[["begin"]] <- paste0(obj[["begin"]], "-01")
 
-    return(ans)
+    } else if (inherits(obj[["end"]], "ym")) {
 
-  }
+      obj[["end"]] <- paste0(obj[["end"]], "-01")
 
-  begin_is_year <- inherits(begin, "y")
+      obj[["end"]] <- as.Date(obj[["end"]]) + lubridate::period(month = 1L)
 
-  if (begin_is_year) {
+      obj[["end"]] <- lubridate::rollback(obj[["end"]])
 
-    obj[["begin"]] <- paste0(begin, "-01")
-
-    ans <- date_range_ymd(obj)
-
-    return(ans)
+    }
 
   }
 
-  end_is_year <- inherits(end, "y")
-
-  if (end_is_year) {
-
-    obj[["end"]] <- paste0(end, "-12")
-
-    ans <- date_range_ymd(obj)
-
-    return(ans)
-
-  }
-
-  begin_is_year_month <- inherits(begin, "ym")
-
-  if (begin_is_year_month) {
-
-    obj[["begin"]] <- paste0(begin, "-01")
-
-    ans <- date_range_ymd(obj)
-
-    return(ans)
-
-  }
-
-  end_is_year_month <- inherits(end, "ym")
-
-  if (end_is_year_month) {
-
-    end <- paste0(end, "-01")
-
-    end <- lubridate::as_date(end)
-
-    month <- lubridate::period(month = 1L)
-
-    end <- end + month
-
-    obj[["end"]] <- lubridate::rollback(end)
-
-    ans <- date_range_ymd(obj)
-
-    return(ans)
-
-  }
+  date_range_ymd(obj)
 
 }
 
 #' @noRd
-#' @importFrom lubridate as_date
 
 parse_date <- function(date) {
 
-  no_date <- is.null(date) || date_empty(date)
+  if (!is.null(date) && as.character(date) != "") {
 
-  if (no_date) {
+    if (grepl("^\\d{4}$", date)) {
 
-    return(date)
+      date <- structure(date, class = "y")
 
-  }
+    } else if (grepl("^\\d{4}-\\d{2}$", date)) {
 
-  is_year <- grepl("^\\d{4}$", date)
+      date <- structure(date, class = "ym")
 
-  if (is_year) {
+    } else {
 
-    ans <- structure(date, class = "y")
-
-    return(ans)
-
-  }
-
-  is_year_month <- grepl("^\\d{4}-\\d{2}$", date)
-
-  if (is_year_month) {
-
-    ans <- structure(date, class = "ym")
-
-    return(ans)
-
-  }
-
-  tryCatch({
-
-     lubridate::as_date(date)
-
-    },
-    warning = function(w) {
-
-      deferrable_error("Can not parse one or more specified dates")
+      date <- tryCatch(as.Date(date), error = date_error)
 
     }
-  )
+
+  }
+
+  date
 
 }
 
 #' @noRd
 
-date_empty <- function(date) {
+date_error <- function(e) {
 
-  date <- as.character(date)
-
-  identical(date, "")
+  deferrable_error("Can't parse one or more specified dates")
 
 }
 
@@ -233,29 +140,19 @@ date_empty <- function(date) {
 
 format_date <- function(obj) {
 
-  begin <- obj[["begin"]]
+  if (inherits(obj[["begin"]], "Date")) {
 
-  begin_is_date <- inherits(begin, "Date")
-
-  end <- obj[["end"]]
-
-  end_is_date <- inherits(end, "Date")
-
-  format <- obj[["format"]]
-
-  if (begin_is_date) {
-
-    begin <- format.Date(begin, format)
+    obj[["begin"]] <- format.Date(obj[["begin"]], obj[["format"]])
 
   }
 
-  if (end_is_date) {
+  if (inherits(obj[["end"]], "Date")) {
 
-    end <- format.Date(end, format)
+    obj[["end"]] <- format.Date(obj[["end"]], obj[["format"]])
 
   }
 
-  dates <- c(begin, end)
+  dates <- c(obj[["begin"]], obj[["end"]])
 
   paste(dates, collapse = "/")
 
@@ -275,11 +172,7 @@ date_range_ym  <- function(obj) {
 
 date_range_md <- function(obj) {
 
-  begin <- obj[["begin"]]
-
-  end <- obj[["end"]]
-
-  dates <- c(begin, end)
+  dates <- c(obj[["begin"]], obj[["end"]])
 
   dates <- sub("-", "", dates)
 

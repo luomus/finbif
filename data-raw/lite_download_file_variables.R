@@ -44,16 +44,6 @@ for (l in names(locales)) {
     locales[[l]]
   )
 
-  locales[[l]] <- ifelse(
-    is.na(lite_download_file_vars_df[["combine_with"]]),
-    locales[[l]],
-    paste(
-      locales[[l]],
-      locales[lite_download_file_vars_df[["combine_with"]], l],
-      sep = " + "
-    )
-  )
-
 }
 
 locales <- Map(make.names, locales)

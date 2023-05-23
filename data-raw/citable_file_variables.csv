@@ -88,7 +88,7 @@ Gathering.Interpretations.MunicipalitySource,mncpltySrc,municipality_source,coun
 Gathering.Conversions.DayOfYearEnd,ordDayEnd,ordinal_day_end,endDayOfYear,FALSE,integer,FALSE
 Gathering.Conversions.DayOfYearBegin,ordDayStrt,ordinal_day_start,startDayOfYear,FALSE,integer,FALSE
 Unit.Interpretations.PairCount,pairAbund,pair_abundance,pairCount,FALSE,integer,FALSE
-Gathering.Interpretations.Bioprovince,bioProv,bio_province,stateBioProvince,FALSE,character,FALSE
+Gathering.Interpretations.Bioprovince,bioProvI,bio_province_interpreted,bioStateProvinceInterpreted,FALSE,character,FALSE
 Gathering.Interpretations.BioProvinceSource,bioProvSrc,bio_province_source,stateBioProvinceSource,FALSE,character,FALSE
 Gathering.BioProvinceVerbatim,bioProvVbm,province_verbatim,verbatimBioStateProvince,FALSE,character,FALSE
 Gathering.ProvinceVerbatim,regionVbm,region_verbatim,verbatimStateProvince,FALSE,character,FALSE

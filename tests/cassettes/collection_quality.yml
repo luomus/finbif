@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 30 Mar 2023 06:42:21 GMT
+      date: Tue, 23 May 2023 08:08:57 GMT
       content-type: application/json; charset=utf-8
       content-length: '588'
       access-control-allow-origin: '*'
@@ -39,5 +39,5 @@ http_interactions:
         harrastajat / asiantuntijoiden laadunvarmistama"}},{"id":"MY.collectionQualityEnum1","value":{"fi":"Kansalaishavaintoja
         / ei laadunvarmistusta","sv":"Medborgarvetenskap / ingen kvalitetssäkring","en":"Citizen
         science / mostly uncurated"}}]'
-  recorded_at: 2023-03-30 06:42:21 GMT
+  recorded_at: 2023-05-23 08:08:57 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -61,12 +61,12 @@ test_that(
     options(finbif_cache_path = "../write-files", finbif_tz = Sys.timezone())
 
     file_path <-
-      "../write-files/finbif_cache_file_3db6439c7601e4401b8a27a2094919a3"
+      "../write-files/finbif_dwnld_cache_file_3db6439c7601e4401b8a27a2094919a3"
 
     expect_snapshot_value(
-      finbif_occurrence_load(file, quiet = TRUE, tzone = "Etc/UTC")[
-        seq(nrows),
-      ],
+      finbif_occurrence_load(
+        file, quiet = TRUE, tzone = "Etc/UTC", cache = Inf
+      )[seq(nrows), ],
       style = "json2", ignore_attr = "url"
     )
 
@@ -176,6 +176,28 @@ test_that(
 
     expect_snapshot_value(dl_select_all, style = "json2")
 
+    options(finbif_cache_path = tempdir())
+
+    capture.output(
+      with_progress <- suppressMessages(
+        finbif_occurrence_load(
+          file, tzone = "Etc/UTC", write_file = file_path, cache = 1e-9
+        )[seq(nrows), ]
+      )
+    )
+
+    capture.output(
+      with_progress <- suppressMessages(
+        finbif_occurrence_load(
+          file, tzone = "Etc/UTC", write_file = file_path, cache = 1e-9
+        )[seq(nrows), ]
+      )
+    )
+
+    expect_snapshot_value(with_progress, style = "json2", ignore_attr = "url")
+
+    options(finbif_cache_path = NULL)
+
   }
 
 )
@@ -233,7 +255,7 @@ test_that(
     Sys.setenv("FINBIF_FILE_SIZE_LIMIT" = "52e3")
 
     file_path <-
-      "../write-files/finbif_cache_file_3db6439c7601e4401b8a27a2094919a3"
+      "../write-files/finbif_dwnld_cache_file_3db6439c7601e4401b8a27a2094919a3"
 
     expect_error(
       finbif_occurrence_load(
@@ -259,6 +281,25 @@ test_that(
       finbif_occurrence_load("laji-data-new-col.tsv", tzone = "Etc/UTC"),
       style = "json2"
     )
+
+  }
+)
+
+test_that(
+  "using DB cache with file load raises error", {
+
+    con <- file()
+
+    options(finbif_cache_path = con)
+
+    expect_error(
+      finbif_occurrence_load(49381, tzone = "Etc/UTC"),
+      "Database cache cannot be used for FinBIF downloads."
+    )
+
+    options(finbif_cache_path = NULL)
+
+    close(con)
 
   }
 )

@@ -1,50 +1,86 @@
 #' @noRd
 
-supported_langs <- c(English = "en", Finnish = "fi", Swedish = "sv")
+sysdata <- function(which) {
+
+  switch(
+    which,
+    supported_langs = c(English = "en", Finnish = "fi", Swedish = "sv"),
+    var_names = var_names_df,
+    has_value = has_value_df,
+    cite_file_vars = cite_file_vars_df,
+    lite_download_file_vars = lite_download_file_vars_df,
+    filter_names = filter_names_df,
+    regulatory_status = regulatory_status(),
+    red_list_status = red_list_status(),
+    threatened_status = get_sysdata("MX.threatenedStatusEnum"),
+    informal_groups = informal_groups(),
+    informal_groups_reported = informal_groups(),
+    primary_habitat = primary_habitat(),
+    primary_secondary_habitat = primary_habitat(),
+    taxon_rank = get_sysdata("MX.taxonRankEnum"),
+    orig_taxon_rank = get_sysdata("MX.taxonRankEnum"),
+    country = get_areas("country"),
+    region = get_areas("province"),
+    bio_province = get_areas("biogeographicalProvince"),
+    municipality = municipality(),
+    bird_assoc_area = bird_assoc_area(),
+    finnish_occurrence_status = finnish_occurrence_status(),
+    finnish_occurrence_status_neg = finnish_occurrence_status(),
+    source = sources(),
+    record_basis = record_basis(),
+    superrecord_basis = superrecord_basis(),
+    life_stage = life_stage(),
+    sex = sex(),
+    restriction_reason = restriction_reason(),
+    restriction_level = restriction_level(),
+    quality_issues = quality_issues(),
+    collection_quality = collection_quality(),
+    record_quality = record_quality(),
+    record_reliability = record_reliability(),
+    complete_list_type = complete_list_type(),
+    location_tag = get_sysdata("MNP.tagEnum"),
+    atlas_code = get_sysdata("MY.atlasCodeEnum"),
+    atlas_class = get_sysdata("MY.atlasClassEnum"),
+    abundance_unit = get_sysdata("MY.abundanceUnitEnum")
+  )
+
+}
 
 #' @noRd
 
 get_sysdata <- function(x) {
 
-  path <- paste0("metadata/ranges/", x)
-
-  query <- list(lang = "multi")
-
-  request <- list(path = path, query = query, cache = TRUE)
+  request <- list(
+    path = paste0("metadata/ranges/", x),
+    query = list(lang = "multi"),
+    cache = getOption("finbif_use_cache")
+  )
 
   sd_response <- api_get(request)
 
-  sd_response_content <- sd_response[["content"]]
+  supported_langs <- sysdata("supported_langs")
 
   n_langs <- length(supported_langs)
 
-  sq <- seq_len(n_langs)
+  sd_response_content <- sd_response[["content"]]
 
-  sd_df <- vector("list", n_langs)
+  sd_df <- structure(
+    vector("list", n_langs),
+    row.names =  vapply(sd_response_content, getElement, "", "id"),
+    names = paste0("name_", supported_langs)
+  )
 
-  row_names <- vapply(sd_response_content, getElement, "", "id")
+  for (i in seq_len(n_langs)) {
 
-  col_names <- paste0("name_", supported_langs)
-
-  sd_df <- structure(sd_df, row.names = row_names, names = col_names)
-
-  for (i in sq) {
-
-    lang_i <- supported_langs[[i]]
-
-    el_i <- c("value", lang_i)
+    el_i <- c("value", supported_langs[[i]])
 
     sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
 
-    sd_i <- sub("^.* [\u2013|-] ", "", sd_i)
-
-    sd_df[[i]] <- sd_i
+    sd_df[[i]] <- sub("^.* [\u2013|-] ", "", sd_i)
 
   }
 
-  sd_df <- set_translations(sd_df)
-
-  structure(sd_df, class = "data.frame")
+  structure(set_translations(sd_df), class = "data.frame")
 
 }
 
@@ -52,17 +88,14 @@ get_sysdata <- function(x) {
 
 get_enumeration <- function(obj) {
 
-  enum <- obj[["enum"]]
-
-  get_function <- obj[["fun"]]
-
-  request <- list(path = "warehouse/enumeration-labels", cache = TRUE)
+  request <- list(
+    path = "warehouse/enumeration-labels",
+    cache = getOption("finbif_use_cache")
+  )
 
   en_response <- api_get(request)
 
-  results <- c("content", "results")
-
-  en_response_results <- en_response[[results]]
+  en_response_results <- en_response[[c("content", "results")]]
 
   enumerations <- vapply(en_response_results, getElement, "", "enumeration")
 
@@ -70,11 +103,11 @@ get_enumeration <- function(obj) {
 
   enumerations <- structure(enumerations, names = ids)
 
-  sd_en_df <- get_function(enum)
+  get_function <- obj[["fun"]]
 
-  id <- row.names(sd_en_df)
+  sd_en_df <- get_function(obj[["enum"]])
 
-  id <- enumerations[id]
+  id <- enumerations[row.names(sd_en_df)]
 
   non_missing_enums <- !is.na(id)
 
@@ -84,9 +117,7 @@ get_enumeration <- function(obj) {
 
   id <- id[non_missing_enums]
 
-  enumeration <- tolower(id)
-
-  enumeration <- list(enumeration = enumeration)
+  enumeration <- list(code = tolower(id))
 
   enumeration <- structure(enumeration, class = "data.frame", row.names = id)
 
@@ -112,9 +143,7 @@ get_code <- function(obj) {
 
   prefix <- obj[["prefix"]]
 
-  suffix <- obj[["suffix"]]
-
-  x <- paste0(prefix, suffix)
+  x <- paste0(prefix, obj[["suffix"]])
 
   ht <- get_sysdata(x)
 
@@ -136,125 +165,91 @@ get_code <- function(obj) {
 
 get_areas <- function(x) {
 
-  query <- list(type = x, lang = "multi", pageSize = 1000L)
-
-  request <- list(path = "areas", query = query, cache = TRUE)
+  request <- list(
+    path = "areas",
+    query = list(type = x, lang = "multi", pageSize = 1000L),
+    cache = getOption("finbif_use_cache")
+  )
 
   sd_response <- api_get(request)
 
-  results <- c("content", "results")
+  sd_response_results <- sd_response[[c("content", "results")]]
 
-  sd_response_results <- sd_response[[results]]
-
-  row_names <- vapply(sd_response_results, getElement, "", "id")
+  supported_langs <- sysdata("supported_langs")
 
   col_names <- paste0("name_", supported_langs)
 
-  alpha <- c("alpha2", "alpha3")
-
-  col_names <- c(col_names, alpha, "alpha")
-
   n_cols <- length(col_names)
 
-  sd_df <- vector("list", n_cols)
+  sd_df <- structure(
+    vector("list", n_cols),
+    row.names = vapply(sd_response_results, getElement, "", "id"),
+    names = col_names
+  )
 
-  sd_df <- structure(sd_df, row.names = row_names, names = col_names)
+  for (i in seq_along(supported_langs)) {
 
-  sq <- seq_along(supported_langs)
-
-  for (i in sq) {
-
-    lang_i <- supported_langs[[i]]
-
-    el_i <- c("name", lang_i)
+    el_i <- c("name", supported_langs[[i]])
 
     sd_i <- vapply(sd_response_results, get_el_recurse, "", el_i, "character")
 
-    sd_i <- sub("^.* [\u2013|-] ", "", sd_i)
-
-    sd_df[[i]] <- sd_i
+    sd_df[[i]] <- sub("^.* [\u2013|-] ", "", sd_i)
 
   }
 
-  for (j in alpha) {
+  c_els <- paste0("countryCodeISO", "alpha2")
 
-    el_j <- paste0("countryCodeISO", j)
+  ccode <- vapply(sd_response_results, get_el_recurse, "", c_els, "character")
 
-    sd_j <- vapply(sd_response_results, get_el_recurse, "", el_j, "character")
+  if (!all_na(ccode)) {
 
-    all_na_j <- all_na(sd_j)
+    sd_df[["code"]] <- ccode
 
-    if (all_na_j) {
+  }
 
-      sd_df[[j]] <- NULL
+  p_els <- c("provinceCodeAlpha", "fi")
 
-    } else {
+  pcode <- vapply(sd_response_results, get_el_recurse, "", p_els, "character")
 
-      sd_df[[j]] <- sd_j
+  if (!all_na(pcode)) {
+
+    sd_df[["code"]] <- pcode
+
+  }
+
+  sd_df <- replace_missing_names(sd_df)
+
+  structure(set_translations(sd_df), class = "data.frame")
+
+}
+
+#' @noRd
+
+replace_missing_names <- function(df) {
+
+  supported_langs <- sysdata("supported_langs")
+
+  col_names <- paste0("name_", supported_langs)
+
+  for (i in col_names) {
+
+    col <- df[[i]]
+
+    for (j in setdiff(col_names, i)) {
+
+      missing <- is.na(col)
+
+      other_col <- df[[j]]
+
+      col[missing] <- other_col[missing]
 
     }
 
-  }
-
-  alpha <- c("provinceCodeAlpha", "fi")
-
-  alpha <- vapply(sd_response_results, get_el_recurse, "", alpha, "character")
-
-  all_na_alpha <- all_na(alpha)
-
-  if (all_na_alpha) {
-
-    sd_df[["alpha"]] <- NULL
-
-  } else {
-
-    sd_df[["alpha"]] <- alpha
+    df[[i]] <- col
 
   }
 
-  sd_df <- set_translations(sd_df)
-
-  structure(sd_df, class = "data.frame")
-
-}
-
-#' @noRd
-
-var_names <- function() {
-
-  var_names_df
-
-}
-
-#' @noRd
-
-has_value <- function() {
-
-  has_value_df
-
- }
-
-#' @noRd
-
-cite_file_vars <- function() {
-
-  cite_file_vars_df
-
-}
-
-#' @noRd
-
-lite_download_file_vars <- function() {
-
-  lite_download_file_vars_df
-
-}
-
-#' @noRd
-
-filter_names <- function() {
-
-  filter_names_df
+  df
 
 }
 
@@ -262,7 +257,7 @@ filter_names <- function() {
 
 regulatory_status <- function() {
 
-  status_code <- c(
+  code <- c(
     MX.finlex160_1997_appendix4 = "FNLX160_97_4",
     MX.finlex160_1997_appendix4_specialInterest = "FNLX160_97_4_SI",
     MX.finlex160_1997_appendix2a = "FNLX160_97_2A",
@@ -321,29 +316,27 @@ regulatory_status <- function() {
 
   id <- row.names(reg_status)
 
-  status_code <- status_code[id]
+  code <- code[id]
 
-  status_code_na <- is.na(status_code)
+  code_na <- is.na(code)
 
-  missing_status_codes <- id[status_code_na]
+  missing_codes <- id[code_na]
 
-  missing_status_codes <- sub("^.*\\.", "", missing_status_codes)
+  missing_codes <- sub("^.*\\.", "", missing_codes)
 
-  missing_status_codes <- abbreviate(missing_status_codes, 20L)
+  missing_codes <- abbreviate(missing_codes, 20L)
 
-  missing_status_codes <- toupper(missing_status_codes)
+  code[code_na] <- toupper(missing_codes)
 
-  status_code[status_code_na] <- missing_status_codes
+  code <- make.unique(code)
 
-  status_code <- make.unique(status_code)
+  code <- structure(code, class = "translation")
 
-  status_code <- structure(status_code, class = "translation")
+  code <- list(code = code)
 
-  status_code <- list(status_code = status_code)
+  code <- structure(code, class = "data.frame", row.names = id)
 
-  status_code <- structure(status_code, class = "data.frame", row.names = id)
-
-  cbind(status_code, reg_status)
+  cbind(code, reg_status)
 
 }
 
@@ -359,61 +352,41 @@ red_list_status <- function() {
 
 #' @noRd
 
-threatened_status <- function() {
-
-  get_sysdata("MX.threatenedStatusEnum")
-
-}
-
-#' @noRd
-
 informal_groups <- function() {
 
-  query <- list(lang = "multi", pageSize = 1000L)
-
-  request <- list(path = "informal-taxon-groups", query = query, cache = TRUE)
+  request <- list(
+    path = "informal-taxon-groups",
+    query = list(lang = "multi", pageSize = 1000L),
+    cache = getOption("finbif_use_cache")
+  )
 
   sd_response <- api_get(request)
 
-  results <- c("content", "results")
+  sd_response_content <- sd_response[[ c("content", "results")]]
 
-  sd_response_content <- sd_response[[results]]
+  supported_langs <- sysdata("supported_langs")
 
   n_langs <- length(supported_langs)
 
-  sq <- seq_len(n_langs)
+  sd_df <- structure(
+    vector("list", n_langs),
+    row.names = vapply(sd_response_content, getElement, "", "id"),
+    names = paste0("name_", supported_langs)
+  )
 
-  sd_df <- vector("list", n_langs)
+  for (i in seq_len(n_langs)) {
 
-  row_names <- vapply(sd_response_content, getElement, "", "id")
-
-  col_names <- paste0("name_", supported_langs)
-
-  sd_df <- structure(sd_df, row.names = row_names, names = col_names)
-
-  for (i in sq) {
-
-    lang_i <- supported_langs[[i]]
-
-    el_i <- c("name", lang_i)
+    el_i <- c("name", supported_langs[[i]])
 
     sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
 
-    sd_i <- sub("^.* [\u2013|-] ", "", sd_i)
-
-    sd_df[[i]] <- sd_i
+    sd_df[[i]] <- sub("^.* [\u2013|-] ", "", sd_i)
 
   }
 
-  sd_df <- set_translations(sd_df)
-
-  structure(sd_df, class = "data.frame")
+  structure(set_translations(sd_df), class = "data.frame")
 
 }
-
-#' @noRd
-
-informal_groups_reported <- informal_groups
 
 #' @noRd
 
@@ -421,53 +394,12 @@ primary_habitat <- function() {
 
   habitat_types <- list(prefix = "MKV.habitat", suffix = "Enum")
 
-  habitat_types <- get_code(habitat_types)
-
   specific_types <-  list(prefix = "MKV.habitatSpecificType", suffix = "Enum")
 
-  specific_types <- get_code(specific_types)
-
-  list(habitat_types = habitat_types, specific_habitat_types = specific_types)
-
-}
-
-#' @noRd
-
-primary_secondary_habitat <- primary_habitat
-
-#' @noRd
-
-taxon_rank <- function() {
-
-  get_sysdata("MX.threatenedStatusEnum")
-
-}
-
-#' @noRd
-
-orig_taxon_rank <- taxon_rank
-
-#' @noRd
-
-country <- function() {
-
-  get_areas("country")
-
-}
-
-#' @noRd
-
-region <- function() {
-
-  get_areas("province")
-
-}
-
-#' @noRd
-
-bio_province <- function() {
-
-  get_areas("biogeographicalProvince")
+  list(
+    habitat_types = get_code(habitat_types),
+    specific_habitat_types = get_code(specific_types)
+  )
 
 }
 
@@ -791,9 +723,7 @@ municipality <- function() {
 
   id <- row.names(municipalities)
 
-  regions <- regions[id]
-
-  regions <- structure(regions, class = "translation", names = NULL)
+  regions <- structure(regions[id], class = "translation", names = NULL)
 
   regions <- list(region = regions)
 
@@ -843,9 +773,7 @@ bird_assoc_area <- function() {
 
   id <- row.names(bird_assoc)
 
-  codes <- codes[id]
-
-  codes <- unname(codes)
+  codes <- unname(codes[id])
 
   codes <- structure(codes, class = "translation", names = NULL)
 
@@ -913,9 +841,7 @@ finnish_occurrence_status <- function() {
 
   id <- row.names(finnish_occurrence)
 
-  codes <- codes[id]
-
-  codes <- unname(codes)
+  codes <- unname(codes[id])
 
   codes <- structure(codes, class = "translation", names = NULL)
 
@@ -929,25 +855,23 @@ finnish_occurrence_status <- function() {
 
 #' @noRd
 
-finnish_occurrence_status_neg <- finnish_occurrence_status
+sources <- function() {
 
-#' @noRd
-
-source <- function() {
-
-  query <- list(lang = "multi", pageSize = 1000L)
-
-  request <- list(path = "sources", query = query, cache = TRUE)
+  request <- list(
+    path = "sources",
+    query =  list(lang = "multi", pageSize = 1000L),
+    cache = getOption("finbif_use_cache")
+  )
 
   sd_response <- api_get(request)
 
-  results <- c("content", "results")
-
-  sd_response_results <- sd_response[[results]]
+  sd_response_results <- sd_response[[c("content", "results")]]
 
   row_names <- vapply(sd_response_results, getElement, "", "id")
 
   types <- c("name", "description")
+
+  supported_langs <- sysdata("supported_langs")
 
   n_langs <- length(supported_langs)
 
@@ -955,15 +879,13 @@ source <- function() {
 
   col_names <- paste(col_names, supported_langs, sep = "_")
 
-  col_names <- c("id", col_names)
-
   n_cols <- length(col_names)
 
   sd_df <- vector("list", n_cols)
 
   sd_df <- structure(sd_df, row.names = row_names, names = col_names)
 
-  sd_df[["id"]] <- row_names
+  sd_df[["code"]] <- row_names
 
   sq <- seq_along(supported_langs)
 
@@ -977,19 +899,15 @@ source <- function() {
 
       sd_i <- vapply(sd_response_results, get_el_recurse, "", el_i, "character")
 
-      sd_i <- sub("^.* \u2013 ", "", sd_i)
-
       col <- paste(type, lang_i, sep = "_")
 
-      sd_df[[col]] <- sd_i
+      sd_df[[col]] <- sub("^.* \u2013 ", "", sd_i)
 
     }
 
   }
 
-  sd_df <- set_translations(sd_df)
-
-  structure(sd_df, class = "data.frame")
+  structure(set_translations(sd_df), class = "data.frame")
 
 }
 
@@ -1152,37 +1070,5 @@ complete_list_type <- function() {
   )
 
   structure(options, row.names = rnms, class = "data.frame")
-
-}
-
-#' @noRd
-
-location_tag <- function() {
-
-  get_sysdata("MNP.tagEnum")
-
-}
-
-#' @noRd
-
-atlas_code <- function() {
-
-  get_sysdata("MY.atlasCodeEnum")
-
-}
-
-#' @noRd
-
-atlas_class <- function() {
-
-  get_sysdata("MY.atlasClassEnum")
-
-}
-
-#' @noRd
-
-abundance_unit <- function() {
-
-  get_sysdata("MY.abundanceUnitEnum")
 
 }

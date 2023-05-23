@@ -10,23 +10,15 @@ coords <- function(obj) {
 
   names(obj) <- nms[obj_seq]
 
-  lat <- obj[["lat"]]
+  lat <- paste(obj[["lat"]], collapse = ":")
 
-  lon <- obj[["lon"]]
-
-  lat <- paste(lat, collapse = ":")
-
-  lon <- paste(lon, collapse = ":")
+  lon <- paste(obj[["lon"]], collapse = ":")
 
   ans <- paste(lat, lon, sep = ":")
 
-  sys <- obj[["system"]]
+  if (!is.null(obj[["system"]])) {
 
-  has_sys <- !is.null(sys)
-
-  if (has_sys) {
-
-    sys <- toupper(sys)
+    sys <- toupper(obj[["system"]])
 
     systems <- c("WGS84", "EUREF", "YKJ")
 
@@ -34,13 +26,9 @@ coords <- function(obj) {
 
     ans <- paste(ans, sys, sep = ":")
 
-    ratio <- obj[["ratio"]]
+    if (!is.null(obj[["ratio"]])) {
 
-    has_ratio <- !is.null(ratio)
-
-    if (has_ratio) {
-
-      ans <- paste(ans, ratio, sep = ":")
+      ans <- paste(ans, obj[["ratio"]], sep = ":")
 
     }
 

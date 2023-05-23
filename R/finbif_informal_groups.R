@@ -30,59 +30,53 @@ finbif_informal_groups <- function(
   locale = getOption("finbif_locale")
 ) {
 
-  no_locale <- !locale %in% supported_langs
-
-  if (no_locale) {
+  if (!locale %in% sysdata("supported_langs")) {
 
     locale <- "en"
 
   }
 
-  query <- list(pageSize = 1000L, lang = locale)
+  request <- list(
+    path = "informal-taxon-groups/tree",
+    query = list(pageSize = 1000L, lang = locale),
+    cache = getOption("finbif_use_cache")
+  )
 
-  request <- list(path = "informal-taxon-groups/tree", query, cache = TRUE)
+  informal_grps <- api_get(request)
 
-  x <- api_get(request)
+  informal_grps <- informal_grps[[c("content", "results")]]
 
-  results <- c("content", "results")
+  grps <- vapply(informal_grps, getElement, "", "name")
 
-  x <- x[[results]]
-
-  grps <- vapply(x, getElement, "", "name")
-
-  use_group <- !missing(group)
-
-  if (use_group) {
+  if (!missing(group)) {
 
     groups <- grps == group
 
-    has_group <- any(groups)
-
-    stopifnot("Group not found" = has_group)
+    stopifnot("Group not found" = any(groups))
 
     grp <- which(groups)
 
-    x <- x[[grp]]
+    informal_grps <- informal_grps[[grp]]
 
   }
 
   if (!quiet) {
 
-    obj <- list(x = x, cntr = 0L, limit = limit)
+    obj <- list(informal_grps = informal_grps, cntr = 0L, limit = limit)
 
     print_informal_group(obj)
 
   }
 
-  x <- unlist(x)
+  informal_grps <- unlist(informal_grps)
 
-  x <- unname(x)
+  informal_grps <- unname(informal_grps)
 
-  x <- grep("^MVL\\.", x, invert = TRUE, value = TRUE)
+  informal_grps <- grep("^MVL\\.", informal_grps, invert = TRUE, value = TRUE)
 
-  class(x) <- "translation"
+  class(informal_grps) <- "translation"
 
-  invisible(x)
+  invisible(informal_grps)
 
 }
 
@@ -90,25 +84,21 @@ finbif_informal_groups <- function(
 
 print_informal_group <- function(obj) {
 
-  x <- obj[["x"]]
+  informal_grps <- obj[["informal_grps"]]
 
-  cntr1 <- obj[["cntr"]]
-
-  limit <- obj[["limit"]]
-
-  times <- max(cntr1 - 1L, 0L)
+  times <- max(obj[["cntr"]] - 1L, 0L)
 
   pad <- rep("    ", times)
 
-  cntr1 <- cntr1 + 1L
+  cntr1 <- obj[["cntr"]] + 1L
 
   cntr2 <- 1L
 
-  x_len <- length(x)
+  len <- length(informal_grps)
 
-  limit <- min(limit, x_len)
+  limit <- min(obj[["limit"]], len)
 
-  for (i in x) {
+  for (informal_grp in informal_grps) {
 
     branch <- ""
 
@@ -120,15 +110,11 @@ print_informal_group <- function(obj) {
 
     }
 
-    at_limit <- !is_branch && cntr2 > limit
+    if (!is_branch && cntr2 > limit) {
 
-    if (at_limit) {
+      sq <- seq_len(cntr2 - 1L)
 
-      sq <- cntr2 - 1L
-
-      sq <- seq_len(sq)
-
-      extras <- x[-sq]
+      extras <- informal_grps[-sq]
 
       extras <- unlist(extras)
 
@@ -136,11 +122,9 @@ print_informal_group <- function(obj) {
 
       extra <- length(extras)
 
-      has_extras <- extra > 1L
-
       s <- ""
 
-      if (has_extras) {
+      if (extra > 1L) {
 
         s <- "s"
 
@@ -154,19 +138,15 @@ print_informal_group <- function(obj) {
 
     cntr2 <- cntr2 + 1L
 
-    i_name <- i[["name"]]
+    cat(pad, branch, informal_grp[["name"]], "\n", sep = "")
 
-    cat(pad, branch, i_name, "\n", sep = "")
+    if ("hasSubGroup" %in% names(informal_grp)) {
 
-    nms <- names(i)
-
-    has_sub <- "hasSubGroup" %in% nms
-
-    if (has_sub) {
-
-      xi <- i[["hasSubGroup"]]
-
-      obj_i <- list(x = xi, cntr = cntr1, limit = limit)
+      obj_i <- list(
+        informal_grps = informal_grp[["hasSubGroup"]],
+        cntr = cntr1,
+        limit = limit
+      )
 
       print_informal_group(obj_i)
 
@@ -174,6 +154,6 @@ print_informal_group <- function(obj) {
 
   }
 
-  invisible()
+  invisible(NULL)
 
 }

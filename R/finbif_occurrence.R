@@ -6,7 +6,43 @@
 #'
 #' @param ... Character vectors or list of character vectors. Taxa of records
 #'   to download.
-#' @inheritParams finbif_records
+#' @param filter List of named character vectors. Filters to apply to records.
+#' @param select Character vector. Variables to return. If not specified, a
+#'   default set of commonly used variables will be used. Use `"default_vars"`
+#'   as a shortcut for this set. Variables can be deselected by prepending a `-`
+#'   to the variable name. If only deselects are specified the default set of
+#'   variables without the deselection will be returned.
+#' @param order_by Character vector. Variables to order records by before they
+#'   are returned. Most, though not all, variables can be used to order records
+#'   before they are returned. Ordering is ascending by default. To return in
+#'   descending order append a `-` to the front of the variable (e.g.,
+#'   `"-date_start"`). Default order is `"-date_start"` > `"-load_data"` >
+#'   `"reported_name"`.
+#' @param aggregate Character. If `"none"` (default), returns full records. If
+#'   one or more of `"records"`, `"species"`, `"taxa"`, `"individuals"`,
+#'   `"pairs"`, `"events"` or `"documents"`; aggregates combinations of the
+#'   selected variables by counting records, species, taxa, individuals or
+#'   events or documents. Aggregation by events or documents cannot be done in
+#'   combination with any of the other aggregation types.
+#' @param sample Logical. If `TRUE` randomly sample the records from the FinBIF
+#'   database.
+#' @param n Integer. How many records to download/import.
+#' @param page Integer. Which page of records to start downloading from.
+#' @param count_only Logical. Only return the number of records available.
+#' @param quiet Logical. Suppress the progress indicator for multipage
+#'   downloads. Defaults to value of option `finbif_hide_progress`.
+#' @param cache Logical or Integer. If `TRUE` or a number greater than zero,
+#'   then data-caching will be used. If not logical then cache will be
+#'   invalidated after the number of hours indicated by the argument.
+#' @param dwc Logical. Use Darwin Core (or Darwin Core style) variable names.
+#' @param seed Integer. Set a seed for randomly sampling records.
+#' @param exclude_na Logical. Should records where all selected variables have
+#'   non-NA values only be returned.
+#' @param locale Character. One of the supported two-letter ISO 639-1 language
+#'   codes. Current supported languages are English, Finnish and Swedish. For
+#'   data where more than one language is available the language denoted by
+#'   `locale` will be preferred while falling back to the other languages in the
+#'   order indicated above.
 #' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
 #'   `date_time` and/or `duration` variables have been selected. Default is
 #'   `"fast"` when  less than 100,000 records are requested and `"none"` when
@@ -29,6 +65,15 @@
 #'  concatenated into a string separated by ";"?
 #' @param facts Character vector. Extra variables to be extracted from record,
 #'  event and document "facts".
+#' @param duplicates Logical. If `TRUE`, allow duplicate records/aggregated
+#'  records when making multi-filter set requests. If `FALSE` (default)
+#'  duplicate records are removed.
+#' @param filter_col Character. The name of a column, with values derived from
+#'  the names of the filter sets used when using multiple filters, to include
+#'  when using multiple filter sets. If `NULL` (default), no column is included.
+#' @param restricted_api Character. If using a restricted data API token in
+#'   addition to a personal access token, a string indicating the name of an
+#'   environment variable storing the restricted data API token.
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'
@@ -76,15 +121,14 @@ finbif_occurrence <- function(
   aggregate_counts = TRUE,
   exclude_na = FALSE,
   unlist = FALSE,
-  facts = NULL
+  facts = NULL,
+  duplicates = FALSE,
+  filter_col = NULL,
+  restricted_api = NULL
 ) {
 
-  taxa <- c(...)
-
-  on_check_fail <- match.arg(on_check_fail)
-
   fb_records_obj <- list(
-    taxa = taxa,
+    taxa = c(...),
     filter = filter,
     select = select,
     order_by = order_by,
@@ -98,7 +142,7 @@ finbif_occurrence <- function(
     dwc = dwc,
     date_time_method = date_time_method,
     check_taxa = check_taxa,
-    on_check_fail = on_check_fail,
+    on_check_fail = match.arg(on_check_fail),
     tzone = tzone,
     locale = locale,
     df = TRUE,
@@ -107,7 +151,10 @@ finbif_occurrence <- function(
     aggregate_counts = aggregate_counts,
     exclude_na = exclude_na,
     unlist = unlist,
-    facts = facts
+    facts = facts,
+    duplicates = duplicates,
+    filter_col = filter_col,
+    restricted_api = restricted_api
   )
 
   occurrence(fb_records_obj)
@@ -122,67 +169,23 @@ occurrence <- function(fb_records_obj) {
 
   fb_records_obj <- det_datetime_method(fb_records_obj)
 
-  filter <- fb_records_obj[["filter"]]
+  if (use_multi_req(fb_records_obj)) {
 
-  taxa <- fb_records_obj[["taxa"]]
-
-  n <- fb_records_obj[["n"]]
-
-  date_time_method <- fb_records_obj[["date_time_method"]]
-
-  aggregate <- fb_records_obj[["aggregate"]]
-
-  count_only <- fb_records_obj[["count_only"]]
-
-  quiet <- fb_records_obj[["quiet"]]
-
-  dwc <- fb_records_obj[["dwc"]]
-
-  locale <- fb_records_obj[["locale"]]
-
-  facts <- fb_records_obj[["facts"]]
-
-  aggregate_counts <- fb_records_obj[["aggregate_counts"]]
-
-  tzone <- fb_records_obj[["tzone"]]
-
-  unlist <- fb_records_obj[["unlist"]]
-
-  drop_na <- fb_records_obj[["drop_na"]]
-
-  filter_names <- names(filter)
-
-  no_filter_names <- is.null(filter_names)
-
-  multi_filter <- no_filter_names && !is.null(filter)
-
-  if (multi_filter) {
-
-    aggregate_none <- identical(aggregate, "none")
-
-    stopifnot(
-      "Only one filter set can be used with aggregation" = aggregate_none
-    )
-
-    multi_request <- multi_req(fb_records_obj)
-
-    return(multi_request)
+    return(multi_req(fb_records_obj))
 
   }
 
-  filter <- c(taxa, filter)
+  fb_records_obj[["filter"]] <- c(
+    fb_records_obj[["taxa"]], fb_records_obj[["filter"]]
+  )
 
-  fb_records_obj[["filter"]] <- filter
+  facts <- fb_records_obj[["facts"]]
 
-  include_facts <- !is.null(facts)
+  fb_records_obj[["include_facts"]] <- !is.null(facts)
 
-  fb_records_obj[["include_facts"]] <- include_facts
+  n <- fb_records_obj[["n"]]
 
-  needs_n <- n < 0
-
-  needs_n <- needs_n || is.factor(n)
-
-  needs_n <- needs_n || !is.finite(n)
+  needs_n <- n < 0 || is.factor(n) || !is.finite(n)
 
   if (needs_n) {
 
@@ -190,43 +193,27 @@ occurrence <- function(fb_records_obj) {
 
     fb_records_obj[["n"]] <- max_page_size
 
-    n <- records(fb_records_obj)
+    records <- records(fb_records_obj)
 
-    n <- attr(n, "nrec_avl")
+    n <- attr(records, "nrec_avl")
 
-    n <- pmax(n, max_page_size)
-
-    fb_records_obj[["n"]] <- n
+    fb_records_obj[["n"]] <- pmax(n, max_page_size)
 
   }
 
   records <- records(fb_records_obj)
 
-  if (count_only) {
+  if (fb_records_obj[["count_only"]]) {
 
-    total <- c("content", "total")
-
-    ans <- records[[total]]
-
-    return(ans)
+    return(records[[c("content", "total")]])
 
   }
 
-  select_user <- attr(records, "select_user", TRUE)
+  quiet <- fb_records_obj[["quiet"]] || length(records) < 2L
 
-  nrec_dnld <- attr(records, "nrec_dnld", TRUE)
+  attr(records, "quiet") <- pb_head("Processing data", quiet = quiet)
 
-  nrec_avl <- attr(records, "nrec_avl", TRUE)
-
-  date_time <- attr(records, "date_time", TRUE)
-
-  # Don't need a processing progress bar if only one page of records
-
-  quiet <- quiet || length(records) < 2L
-
-  pb_head("Processing data", quiet = quiet)
-
-  fb_occurrence_df <- as.data.frame(records, locale = locale, quiet = quiet)
+  fb_occurrence_df <- records_list_data_frame(records)
 
   colnames <- names(fb_occurrence_df)
 
@@ -234,17 +221,17 @@ occurrence <- function(fb_records_obj) {
 
   ind <- !colnames %in% n_col_nms
 
-  vtype <- col_type_string(dwc)
+  dwc <- fb_records_obj[["dwc"]]
 
   non_count_cols <- colnames[ind]
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
-  non_count_cols <- var_names[non_count_cols, vtype]
+  colnames[ind] <- var_names[non_count_cols, col_type_string(dwc)]
 
-  colnames[ind] <- non_count_cols
+  select_user <- attr(records, "select_user", TRUE)
 
-  if (aggregate_counts) {
+  if (fb_records_obj[["aggregate_counts"]]) {
 
     select_user <- c(select_user, n_col_nms)
 
@@ -255,19 +242,19 @@ occurrence <- function(fb_records_obj) {
   df_attrs <- attributes(fb_occurrence_df)
 
   new_attrs <- list(
-    nrec_dnld = nrec_dnld,
-    nrec_avl  = nrec_avl,
+    nrec_dnld = attr(records, "nrec_dnld", TRUE),
+    nrec_avl  = attr(records, "nrec_avl", TRUE),
     column_names = select_user,
-    aggregate = aggregate,
+    aggregate = fb_records_obj[["aggregate"]],
     dwc = dwc,
-    date_time = date_time,
-    date_time_method = date_time_method,
-    tzone = tzone,
-    locale = locale,
+    date_time = attr(records, "date_time", TRUE),
+    date_time_method = fb_records_obj[["date_time_method"]],
+    tzone = fb_records_obj[["tzone"]],
+    locale = fb_records_obj[["locale"]],
     include_new_cols = TRUE,
     facts = facts,
-    unlist = unlist,
-    drop_na = drop_na
+    unlist = fb_records_obj[["unlist"]],
+    drop_na = fb_records_obj[["drop_na"]]
   )
 
   df_attrs <- c(df_attrs, new_attrs)
@@ -302,9 +289,7 @@ occurrence <- function(fb_records_obj) {
 
   fb_occurrence_df <- extract_facts(fb_occurrence_df)
 
-  class <- c("finbif_occ", "data.frame")
-
-  class(fb_occurrence_df) <- class
+  class(fb_occurrence_df) <- c("finbif_occ", "data.frame")
 
   facts <- name_chr_vec(facts)
 
@@ -326,39 +311,136 @@ occurrence <- function(fb_records_obj) {
 
 #' @noRd
 
-det_datetime_method <- function(fb_records_obj) {
+use_multi_req <- function(fb_records_obj) {
 
-  n <- fb_records_obj[["n"]]
+  filter <- fb_records_obj[["filter"]]
+
+  nms <- names(filter)
+
+  fnames <- sysdata("filter_names")
+
+  no_name <- is.null(nms) || !any(nms %in% fnames[["translated_filter"]])
+
+  filters_has_no_length <- vapply(filter, length, 0L) < 1L
+
+  filter_names <- lapply(filter, names)
+
+  filter_names_are_char <- vapply(filter_names, is.character, NA)
+
+  named <- all(filters_has_no_length | filter_names_are_char)
+
+  no_name && named && is.list(filter) && length(filter) > 0L
+
+}
+
+#' @noRd
+#' @importFrom utils txtProgressBar setTxtProgressBar
+
+records_list_data_frame <- function(x) {
+
+  verbose <- !attr(x, "quiet")
+
+  n <- length(x)
+
+  if (verbose) {
+
+    pb <- utils::txtProgressBar(0L, n, style = 3L)
+
+    on.exit(close(pb))
+
+  }
+
+  df <- list()
+
+  for (i in seq_len(n)) {
+
+    if (verbose) {
+
+      utils::setTxtProgressBar(pb, i)
+
+    }
+
+    xi <- x[[i]]
+
+    dfi <- attr(xi, "df")
+
+    if (is.null(dfi)) {
+
+      dfi <- records_df(xi)
+
+    }
+
+    df[[i]] <- dfi
+
+  }
+
+  url <- vapply(df, attr, "", "url", TRUE)
+
+  time <- lapply(df, attr, "time", TRUE)
+
+  df <- do.call(rbind, df)
+
+  record_id <- switch(
+    xi[["aggregate"]], none = "unit.unitId", xi[["select_query"]]
+  )
+
+  record_id <- do.call(paste, df[, record_id, drop = FALSE])
+
+  if (inherits(x, "finbif_records_sample_list")) {
+
+    nrows <- nrow(df)
+
+    records <- sample.int(nrows)
+
+    if (attr(x, "cache")) {
+
+      seed <- gen_seed(x)
+
+      records <- sample_with_seed(nrows, nrows, seed)
+
+    }
+
+    df <- df[records, ]
+
+  }
+
+  if (!attr(x, "record_id")) {
+
+    df[["unit.unitId"]] <- NULL
+
+  }
+
+  structure(df, url = url, time = do.call(c, time), record_id = record_id)
+
+}
+
+#' @noRd
+
+det_datetime_method <- function(fb_records_obj) {
 
   method <- fb_records_obj[["date_time_method"]]
 
-  is_null <- is.null(method)
-
-  if (is_null) {
+  if (is.null(method)) {
 
     method <- "none"
 
+    n <- fb_records_obj[["n"]]
+
     is_num <- is.numeric(n)
 
-    is_pos <- n >= 0L
-
-    cond <- is_num & is_pos
-
-    n <- ifelse(cond, n, Inf)
+    n <- ifelse(is_num & n >= 0L, n, Inf)
 
     n <- sum(n)
 
-    n_small <- n < 1e5L
-
-    if (n_small) {
+    if (n < 1e5L) {
 
       method <- "fast"
 
     }
 
-  }
+    fb_records_obj[["date_time_method"]] <- method
 
-  fb_records_obj[["date_time_method"]] <- method
+  }
 
   fb_records_obj
 
@@ -370,31 +452,19 @@ select_taxa <- function(fb_records_obj) {
 
   taxa <- fb_records_obj[["taxa"]]
 
-  cache <- fb_records_obj[["cache"]]
-
-  check_taxa <- fb_records_obj[["check_taxa"]]
-
-  on_check_fail <- fb_records_obj[["on_check_fail"]]
-
   ntaxa <- length(taxa)
 
-  has_taxa <- ntaxa > 0L
-
-  if (has_taxa) {
+  if (ntaxa > 0L) {
 
     taxon_name <- paste(taxa, collapse = ",")
 
     ans <- list(taxon_name = taxon_name)
 
-    if (check_taxa) {
+    if (fb_records_obj[["check_taxa"]]) {
 
-      taxa_names <- names(taxa)
+      cache <- fb_records_obj[["cache"]]
 
-      no_taxa_name <- !"taxa" %in% taxa_names
-
-      cond <- no_taxa_name || ntaxa > 1L
-
-      if (cond) {
+      if (!"taxa" %in% names(taxa) || ntaxa > 1L) {
 
         taxa <- finbif_check_taxa(taxa, cache = cache)
 
@@ -414,13 +484,9 @@ select_taxa <- function(fb_records_obj) {
 
       taxa_invalid <- is.na(taxa)
 
-      any_taxa_invalid <- any(taxa_invalid)
+      if (any(taxa_invalid)) {
 
-      if (any_taxa_invalid) {
-
-        invalid_taxa <- taxa[taxa_invalid]
-
-        invalid_taxa_names <- names(invalid_taxa)
+        invalid_taxa_names <- names(taxa[taxa_invalid])
 
         msg <- sub("\\.", " - ", invalid_taxa_names)
 
@@ -435,7 +501,7 @@ select_taxa <- function(fb_records_obj) {
         )
 
         switch(
-          on_check_fail,
+          fb_records_obj[["on_check_fail"]],
           warn  = warning(msg, call. = FALSE),
           error = stop(msg, call. = FALSE)
         )
@@ -444,13 +510,9 @@ select_taxa <- function(fb_records_obj) {
 
       taxa_valid <- !taxa_invalid
 
-      any_taxa_valid <- any(taxa_valid)
+      if (any(taxa_valid)) {
 
-      if (any_taxa_valid) {
-
-        valid_taxa <- taxa[taxa_valid]
-
-        valid_taxa <- paste(valid_taxa, collapse = ",")
+        valid_taxa <- paste(taxa[taxa_valid], collapse = ",")
 
         ans <- list(taxon_id = valid_taxa)
 
@@ -470,56 +532,42 @@ select_taxa <- function(fb_records_obj) {
 
 date_times <- function(fb_occurrence_df) {
 
-  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+  if (attr(fb_occurrence_df, "date_time", TRUE)) {
 
-  vtype <- col_type_string(dwc)
+    dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  var_names <- var_names()
+    vtype <- col_type_string(dwc)
 
-  date_start <- var_names["gathering.eventDate.begin", vtype]
+    var_names <- sysdata("var_names")
 
-  hour_start <- var_names["gathering.hourBegin", vtype]
+    date_start <- var_names["gathering.eventDate.begin", vtype]
 
-  minute_start <- var_names["gathering.minutesBegin", vtype]
+    hour_start <- var_names["gathering.hourBegin", vtype]
 
-  date_end <- var_names["gathering.eventDate.end", vtype]
+    minute_start <- var_names["gathering.minutesBegin", vtype]
 
-  hour_end <- var_names["gathering.hourEnd", vtype]
+    date_end <- var_names["gathering.eventDate.end", vtype]
 
-  minute_end <- var_names["gathering.minutesEnd", vtype]
+    hour_end <- var_names["gathering.hourEnd", vtype]
 
-  lat <- var_names["gathering.conversions.wgs84CenterPoint.lat", vtype]
+    minute_end <- var_names["gathering.minutesEnd", vtype]
 
-  lon <- var_names["gathering.conversions.wgs84CenterPoint.lon", vtype]
+    lat <- var_names["gathering.conversions.wgs84CenterPoint.lat", vtype]
 
-  tzone <- attr(fb_occurrence_df, "tzone", TRUE)
+    lon <- var_names["gathering.conversions.wgs84CenterPoint.lon", vtype]
 
-  method <- attr(fb_occurrence_df, "date_time_method", TRUE)
+    tzone <- attr(fb_occurrence_df, "tzone", TRUE)
 
-  date_time <- attr(fb_occurrence_df, "date_time", TRUE)
-
-  if (date_time) {
-
-    date_start <- fb_occurrence_df[[date_start]]
-
-    hour_start <- fb_occurrence_df[[hour_start]]
-
-    minute_start <- fb_occurrence_df[[minute_start]]
-
-    date_end <- fb_occurrence_df[[date_end]]
-
-    hour_end <- fb_occurrence_df[[hour_end]]
-
-    minute_end <- fb_occurrence_df[[minute_end]]
+    method <- attr(fb_occurrence_df, "date_time_method", TRUE)
 
     lat <- fb_occurrence_df[[lat]]
 
     lon <- fb_occurrence_df[[lon]]
 
     date_time_start <- list(
-      date = date_start,
-      hour = hour_start,
-      minute = minute_start,
+      date = fb_occurrence_df[[date_start]],
+      hour = fb_occurrence_df[[hour_start]],
+      minute = fb_occurrence_df[[minute_start]],
       lat = lat,
       lon = lon,
       tzone = tzone,
@@ -527,29 +575,23 @@ date_times <- function(fb_occurrence_df) {
     )
 
     date_time_end <- list(
-      date = date_end,
-      hour = hour_end,
-      minute = minute_end,
+      date = fb_occurrence_df[[date_end]],
+      hour = fb_occurrence_df[[hour_end]],
+      minute = fb_occurrence_df[[minute_end]],
       lat = lat,
       lon = lon,
       tzone = tzone,
       method = method
     )
 
-    date_time_start <- date_time(date_time_start)
-
-    date_time_end <- date_time(date_time_end)
-
     df_attrs <- attributes(fb_occurrence_df)
 
     new_attrs <- list(
-      date_time_start = date_time_start,
-      date_time_end = date_time_end
+      date_time_start = date_time(date_time_start),
+      date_time_end = date_time(date_time_end)
     )
 
-    df_attrs <- c(df_attrs, new_attrs)
-
-    attributes(fb_occurrence_df) <- df_attrs
+    attributes(fb_occurrence_df) <-  c(df_attrs, new_attrs)
 
   }
 
@@ -571,68 +613,50 @@ date_time <- function(date_time_obj) {
 
   date <- date_time_obj[["date"]]
 
-  date_length <- length(date)
-
-  date_has_length <- date_length > 0L
-
-  if (date_has_length) {
+  if (length(date) > 0L) {
 
     date_time <- lubridate::ymd(date)
 
     date_time <- lubridate::as_datetime(date_time)
 
-    # When there is no hour assume the hour is midday (i.e., don't assume
-    # midnight)
-
     hour <- date_time_obj[["hour"]]
 
-    has_hour <- !is.null(hour)
-
-    if (has_hour) {
+    if (!is.null(hour)) {
 
       hour_is_na <- is.na(hour)
 
-      date_time_hour <- ifelse(hour_is_na, 12L, hour)
+      lubridate::hour(date_time) <- ifelse(hour_is_na, 12L, hour)
 
     }
 
-    lubridate::hour(date_time) <- date_time_hour
-
     minute <- date_time_obj[["minute"]]
 
-    has_minute <- !is.null(minute)
+    if (!is.null(minute)) {
 
-    if (has_minute) {
+      date_time_min <- lubridate::minute(date_time)
 
-      date_time_minute <- lubridate::minute(date_time)
+      min_is_na <- is.na(minute)
 
-      minute_is_na <- is.na(minute)
-
-      date_time_minute <- ifelse(minute_is_na, date_time_minute, minute)
-
-      lubridate::minute(date_time) <- date_time_minute
+      lubridate::minute(date_time) <- ifelse(min_is_na, date_time_min, minute)
 
     }
 
     method <- date_time_obj[["method"]]
 
-    no_method <- identical(method, "none")
+    if (identical(method, "none")) {
 
-    if (no_method) {
-
-      tz_in <- "Europe/Helsinki"
-
-      date_time <- lubridate::force_tz(date_time, tz_in)
+      date_time <- lubridate::force_tz(date_time, "Europe/Helsinki")
 
       date_time <- lubridate::with_tz(date_time, tzone)
 
     } else {
 
-      lat <- date_time_obj[["lat"]]
-
-      lon <- date_time_obj[["lon"]]
-
-      tz_in <- lutz::tz_lookup_coords(lat, lon, method, FALSE)
+      tz_in <- lutz::tz_lookup_coords(
+        date_time_obj[["lat"]],
+        date_time_obj[["lon"]],
+        method,
+        FALSE
+      )
 
       tz_in_is_na <- is.na(tz_in)
 
@@ -642,19 +666,11 @@ date_time <- function(date_time_obj) {
 
     }
 
-    month <- date_time_obj[["month"]]
+    na_m <- is.na(date_time_obj[["month"]])
 
-    is_na_month <- is.na(month)
+    na_d <- is.na(date_time_obj[["day"]])
 
-    day <- date_time_obj[["day"]]
-
-    is_na_day <- is.na(day)
-
-    is_na_month_day <- is_na_month | is_na_day
-
-    na_month_day <- lubridate::as_datetime(NA_integer_, tz = tzone)
-
-    date_time[is_na_month_day] <- na_month_day
+    date_time[na_m | na_d] <- lubridate::as_datetime(NA_integer_, tz = tzone)
 
   }
 
@@ -668,21 +684,13 @@ compute_date_time <- function(fb_occurrence_df) {
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  vtype <- col_type_string(dwc)
+  var_names <- sysdata("var_names")
 
-  var_names <- var_names()
+  dtv <- var_names["computed_var_date_time",  col_type_string(dwc)]
 
-  date_time_var <- var_names["computed_var_date_time", vtype]
+  if (dtv %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-  column_names <- attr(fb_occurrence_df, "column_names", TRUE)
-
-  has_date_time <- date_time_var %in% column_names
-
-  if (has_date_time) {
-
-    date_time_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
-
-    fb_occurrence_df[[date_time_var]] <- date_time_start
+    fb_occurrence_df[[dtv]] <- attr(fb_occurrence_df, "date_time_start", TRUE)
 
   }
 
@@ -699,69 +707,41 @@ compute_duration <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   duration_var <- var_names["computed_var_duration", vtype]
 
-  column_names <- attr(fb_occurrence_df, "column_names", TRUE)
+  if (duration_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-  has_duration <- duration_var %in% column_names
+    h_start <- var_names["gathering.hourBegin", vtype]
 
-  if (has_duration) {
+    h_end <- var_names["gathering.hourEnd", vtype]
 
-    hour_start <- var_names["gathering.hourBegin", vtype]
+    hna <- is.na(fb_occurrence_df[[h_start]]) | is.na(fb_occurrence_df[[h_end]])
 
-    hour_end <- var_names["gathering.hourEnd", vtype]
+    datetime_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
 
-    date_time_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
+    datetime_end <- attr(fb_occurrence_df, "date_time_end", TRUE)
 
-    date_time_end <- attr(fb_occurrence_df, "date_time_end", TRUE)
+    dna <- is.na(datetime_start) | is.na(datetime_end)
 
-    hour_start <- fb_occurrence_df[[hour_start]]
+    da <- !hna & !dna
 
-    hour_start_is_na <- is.na(hour_start)
+    duration_length <- length(da)
 
-    hour_end <- fb_occurrence_df[[hour_end]]
+    intvl <- rep_len(NA_integer_, duration_length)
 
-    hour_end_is_na <- is.na(hour_end)
+    intvl <- lubridate::as.interval(intvl)
 
-    hour_is_na <- hour_start_is_na | hour_end_is_na
+    duration <- intvl
 
-    date_time_start_is_na <- is.na(date_time_start)
+    intvl[da] <- lubridate::interval(datetime_start[da], datetime_end[da])
 
-    date_time_end_is_na <- is.na(date_time_end)
+    has_duration <- da & intvl != 0
 
-    date_time_is_na <- date_time_start_is_na | date_time_end_is_na
+    duration[has_duration] <- intvl[has_duration]
 
-    duration_is_na <- hour_is_na | date_time_is_na
-
-    duration_length <- length(duration_is_na)
-
-    interval <- rep_len(NA_integer_, duration_length)
-
-    interval <- lubridate::as.interval(interval)
-
-    date_time_start <- date_time_start[!duration_is_na]
-
-    date_time_end <- date_time_end[!duration_is_na]
-
-    date_time_interval <- lubridate::interval(date_time_start, date_time_end)
-
-    duration <- interval
-
-    interval[!duration_is_na] <- date_time_interval
-
-    zero_interval <- interval == 0
-
-    has_duration <- !duration_is_na & !zero_interval
-
-    date_time_interval <- interval[has_duration]
-
-    duration[has_duration] <- date_time_interval
-
-    duration <- lubridate::as.duration(duration)
-
-    fb_occurrence_df[[duration_var]] <- duration
+    fb_occurrence_df[[duration_var]] <- lubridate::as.duration(duration)
 
   }
 
@@ -778,127 +758,95 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   iso8601_var <- var_names["computed_var_date_time_ISO8601", vtype]
 
-  column_names <- attr(fb_occurrence_df, "column_names", TRUE)
+  if (iso8601_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-  has_iso8601 <- iso8601_var %in% column_names
+    ds <- attr(fb_occurrence_df, "date_time_start", TRUE)
 
-  if (has_iso8601) {
+    dsna <- is.na(ds)
 
-    date_start <- var_names["gathering.eventDate.begin", vtype]
+    de <- attr(fb_occurrence_df, "date_time_end", TRUE)
 
-    hour_start <- var_names["gathering.hourBegin", vtype]
+    dena <- is.na(de)
 
-    minute_start <- var_names["gathering.minutesBegin", vtype]
+    duration_na <- dsna | dena
 
-    date_end <- var_names["gathering.eventDate.end", vtype]
-
-    hour_end <- var_names["gathering.hourEnd", vtype]
-
-    minute_end <- var_names["gathering.minutesEnd", vtype]
-
-    tzone <- attr(fb_occurrence_df, "tzone", TRUE)
-
-    date_time_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
-
-    date_time_end <- attr(fb_occurrence_df, "date_time_end", TRUE)
-
-    date_time_start_is_na <- is.na(date_time_start)
-
-    date_time_end_is_na <- is.na(date_time_end)
-
-    duration_is_na <- date_time_start_is_na | date_time_end_is_na
-
-    duration_length <- length(duration_is_na)
+    duration_length <- length(duration_na)
 
     iso8601 <- rep_len("1970-01-01/1970-01-01", duration_length)
 
+    tzone <- attr(fb_occurrence_df, "tzone", TRUE)
+
     iso8601 <- lubridate::interval(iso8601, tzone = tzone)
 
-    start_not_na <- date_time_start[!date_time_start_is_na]
+    iso8601[!duration_na] <- lubridate::interval(ds[!dsna], de[!dena])
 
-    end_not_na <- date_time_end[!date_time_end_is_na]
-
-    iso8601_not_na <- lubridate::interval(start_not_na, end_not_na)
-
-    iso8601_na <- lubridate::as.interval(NA_integer_)
-
-    iso8601[!duration_is_na] <- iso8601_not_na
-
-    iso8601[duration_is_na] <- iso8601_na
+    iso8601[duration_na] <- lubridate::as.interval(NA_integer_)
 
     iso8601 <- lubridate::format_ISO8601(iso8601, usetz = TRUE)
 
+    hour_start <- var_names["gathering.hourBegin", vtype]
+
     hour_start <- fb_occurrence_df[[hour_start]]
+
+    minute_start <- var_names["gathering.minutesBegin", vtype]
 
     minute_start <- fb_occurrence_df[[minute_start]]
 
+    hour_end <- var_names["gathering.hourEnd", vtype]
+
     hour_end <- fb_occurrence_df[[hour_end]]
+
+    minute_end <- var_names["gathering.minutesEnd", vtype]
 
     minute_end <- fb_occurrence_df[[minute_end]]
 
-    hour_start_is_na <- is.na(hour_start)
+    no_start_time <- is.na(hour_start) & is.na(minute_start)
 
-    minute_start_is_na <- is.na(minute_start)
+    no_end_time <- is.na(hour_end) & is.na(minute_end)
 
-    no_start_time <- hour_start_is_na & minute_start_is_na
-
-    hour_end_is_na <- is.na(hour_end)
-
-    minute_end_is_na <- is.na(minute_end)
-
-    no_end_time <-  hour_end_is_na & minute_end_is_na
-
-    no_time <- no_start_time | no_end_time
+    date_start <- var_names["gathering.eventDate.begin", vtype]
 
     date_start <- fb_occurrence_df[[date_start]]
 
+    date_end <- var_names["gathering.eventDate.end", vtype]
+
     date_end <- fb_occurrence_df[[date_end]]
 
-    date_start_ymd <- lubridate::ymd(date_start)
-
-    date_end_ymd <- lubridate::ymd(date_end)
-
-    interval <- lubridate::interval(date_start_ymd, date_end_ymd)
+    interval <- lubridate::interval(date_start, date_end)
 
     format_interval <- lubridate::format_ISO8601(interval, usetz = TRUE)
 
-    iso8601 <- ifelse(no_time, format_interval, iso8601)
-
-    no_duration <- date_time_start == date_time_end
+    iso8601 <- ifelse(no_start_time | no_end_time, format_interval, iso8601)
 
     dates_equal <- date_start == date_end
 
-    date_end_is_na <- is.na(date_end)
-
-    no_end_date <- date_end_is_na | dates_equal
+    no_end_date <-  is.na(date_end) | dates_equal
 
     no_end <- no_end_time & no_end_date
 
-    use_start <- no_end | no_duration
+    use_start <- no_end | ds == de
 
-    format_start <- lubridate::format_ISO8601(date_time_start, usetz = TRUE)
+    format_start <- lubridate::format_ISO8601(ds, usetz = TRUE)
 
     iso8601 <- ifelse(use_start, format_start, iso8601)
 
-    use_start_ymd <- no_start_time & no_end_date
+    fmt_start_ymd <- lubridate::ymd(date_start)
 
-    format_start_ymd <- lubridate::format_ISO8601(date_start_ymd, usetz = TRUE)
+    fmt_start_ymd <- lubridate::format_ISO8601(fmt_start_ymd, usetz = TRUE)
 
-    iso8601 <- ifelse(use_start_ymd, format_start_ymd, iso8601)
+    iso8601 <- ifelse(no_start_time & no_end_date, fmt_start_ymd, iso8601)
 
-    iso8601_is_na <- is.na(iso8601)
+    iso8601_na <- is.na(iso8601)
 
-    date_interval <- paste(date_start, date_end, sep = "/")
+    date_intvl <- paste(date_start, date_end, sep = "/")
 
-    date_interval <- ifelse(dates_equal, date_start, date_interval)
+    date_intvl <- ifelse(dates_equal, date_start, date_intvl)
 
-    iso8601 <- ifelse(iso8601_is_na, date_interval, iso8601)
-
-    fb_occurrence_df[[iso8601_var]] <- iso8601
+    fb_occurrence_df[[iso8601_var]] <- ifelse(iso8601_na, date_intvl, iso8601)
 
   }
 
@@ -910,37 +858,31 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
 compute_vars_from_id <- function(fb_occurrence_df) {
 
-  select_user <- attr(fb_occurrence_df, "column_names")
-
-  dwc <- attr(fb_occurrence_df, "dwc")
-
   locale <- attr(fb_occurrence_df, "locale")
 
   add <- attr(fb_occurrence_df, "include_new_cols")
 
   colnames <- names(fb_occurrence_df)
 
+  select_user <- attr(fb_occurrence_df, "column_names")
+
   cols <- setdiff(select_user, colnames)
+
+  dwc <- attr(fb_occurrence_df, "dwc")
 
   vtype <- col_type_string(dwc)
 
   suffix <- switch(vtype, translated_var = "_id", dwc = "ID")
 
-  sq <- seq_along(cols)
-
-  for (i in sq) {
+  for (i in seq_along(cols)) {
 
     col_i <- cols[[i]]
 
     id_var_name <- paste0(col_i, suffix)
 
-    add_i <- add && id_var_name %in% colnames
+    if (add && id_var_name %in% colnames) {
 
-    if (add_i) {
-
-      is_collection <- identical(id_var_name, "collection_id")
-
-      if (is_collection) {
+      if (identical(id_var_name, "collection_id")) {
 
         ptrn <- "collection_name"
 
@@ -958,23 +900,17 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
         col_i_native <- to_native(col_i)
 
-        metadata <- get(col_i_native)
+        metadata <- sysdata(col_i_native)
 
-        metadata <- metadata()
-
-        not_df <- !inherits(metadata, "data.frame")
-
-        if (not_df) {
+        if (!inherits(metadata, "data.frame")) {
 
           rownames <- lapply(metadata, row.names)
-
-          rownames <- unlist(rownames)
 
           args <- c(metadata, make.row.names = FALSE)
 
           metadata <- do.call(rbind, args)
 
-          row.names(metadata) <- rownames
+          row.names(metadata) <- unlist(rownames)
 
         }
 
@@ -984,15 +920,11 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
       nms <- names(metadata)
 
-      ind <- grep(ptrn, nms)
-
-      nms <- gsub(ptrn, "", nms)
-
-      names(metadata) <- nms
+      names(metadata) <- gsub(ptrn, "", nms)
 
       id <- lapply(id_var, vapply, remove_domain, "")
 
-      metadata <- metadata[, ind, drop = FALSE]
+      metadata <- metadata[, grep(ptrn, nms), drop = FALSE]
 
       var <- lapply(id, get_rows, metadata)
 
@@ -1006,9 +938,7 @@ compute_vars_from_id <- function(fb_occurrence_df) {
         ifelse, var_is_na, id_var, var, SIMPLIFY = FALSE, USE.NAMES = FALSE
       )
 
-      unlist <- !is.list(id_var)
-
-      if (unlist) {
+      if (!is.list(id_var)) {
 
         df_col_i <- unlist(df_col_i)
 
@@ -1028,27 +958,19 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
 compute_epsg <- function(fb_occurrence_df) {
 
-  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
-
-  if (add) {
-
-    select_user <- attr(fb_occurrence_df, "column_names", TRUE)
+  if (attr(fb_occurrence_df, "include_new_cols", TRUE)) {
 
     dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
     vtype <- col_type_string(dwc)
 
-    var_names <- var_names()
+    var_names <- sysdata("var_names")
 
-    var_names_type <- var_names[, vtype, drop = FALSE]
+    vnt <- var_names[, vtype, drop = FALSE]
 
-    epsg_var <- var_names_type["computed_var_epsg", ]
+    epsg_vars <- c(vnt["computed_var_epsg", ], vnt["computed_var_fp_epsg", ])
 
-    fp_epsg_var <- var_names_type["computed_var_fp_epsg", ]
-
-    epsg_vars <- c(epsg_var, fp_epsg_var)
-
-    has_epsg_vars <- epsg_vars %in% select_user
+    select_user <- attr(fb_occurrence_df, "column_names", TRUE)
 
     crs <- c(computed_var_epsg = "", computed_var_fp_epsg = "footprint")
 
@@ -1056,11 +978,9 @@ compute_epsg <- function(fb_occurrence_df) {
 
     sq <- seq_along(crs)
 
-    sq <- sq[has_epsg_vars]
+    sq <- sq[epsg_vars %in% select_user]
 
-    var_names_type <- var_names_type[[1L]]
-
-    select_user <- match(select_user, var_names_type)
+    select_user <- match(select_user, vnt[[1L]])
 
     select_user <- var_names[select_user, ]
 
@@ -1068,17 +988,13 @@ compute_epsg <- function(fb_occurrence_df) {
 
     select_user <- var_names[select_user, "translated_var"]
 
-    n <- nrow(fb_occurrence_df)
-
-    epsgs <- c(euref = "euref", ykj = "ykj",  wgs84 = "wgs84")
+    epsgs <- c(euref = "euref", ykj = "ykj", wgs84 = "wgs84")
 
     for (i in sq) {
 
-      crs_i <- crs[[i]]
-
       epsg <- epsgs
 
-      epsg[] <- paste0(crs_i, "_", epsgs, "$")
+      epsg[] <- paste0(crs[[i]], "_", epsgs, "$")
 
       epsg <- lapply(epsg, grepl, select_user)
 
@@ -1090,23 +1006,17 @@ compute_epsg <- function(fb_occurrence_df) {
 
       epsg <- which.min(epsg)
 
-      epsg <- names(epsg)
+      crs_nm_i <- crs_nms[[i]]
 
-      epsg <- switch(
-        epsg,
+      crs_nm_i <- var_names[[crs_nm_i, vtype]]
+
+      fb_occurrence_df[[crs_nm_i]] <- switch(
+        names(epsg),
         euref = "EPSG:3067",
         ykj = "EPSG:2393",
         wgs84 = "EPSG:4326",
         NA_character_
       )
-
-      epsg <- rep_len(epsg, n)
-
-      crs_nm_i <- crs_nms[[i]]
-
-      crs_nm_i <- var_names[[crs_nm_i, vtype]]
-
-      fb_occurrence_df[[crs_nm_i]] <- epsg
 
     }
 
@@ -1124,73 +1034,52 @@ compute_abundance <- function(fb_occurrence_df) {
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
-
   vtype <- col_type_string(dwc)
 
-  var_names <- var_names()
+  vnms <- sysdata("var_names")
 
-  abundance_var <- var_names[["computed_var_abundance", vtype]]
+  abundance_var <- vnms[["computed_var_abundance", vtype]]
 
-  occurrence_status_var <- var_names[["computed_var_occurrence_status", vtype]]
+  has_abundance <- abundance_var %in% select_user
 
-  has_abundance_var <- abundance_var %in% select_user
+  occ_status_var <- vnms[["computed_var_occurrence_status", vtype]]
 
-  has_occurrence_var <- occurrence_status_var %in% select_user
+  has_occ <- occ_status_var %in% select_user
 
-  has_abundance_vars <- has_abundance_var || has_occurrence_var
+  has_abundance_vars <- has_abundance || has_occ
 
-  add <- add && has_abundance_vars
+  if (attr(fb_occurrence_df, "include_new_cols", TRUE) && has_abundance_vars) {
 
-  if (add) {
-
-    count_var <- var_names[["unit.interpretations.individualCount", vtype]]
+    count_var <- vnms[["unit.interpretations.individualCount", vtype]]
 
     count <- fb_occurrence_df[[count_var]]
 
-    count_one <- count == 1L
+    verbatim_var <- vnms[["unit.abundanceString", vtype]]
 
-    verbatim_var <- var_names[["unit.abundanceString", vtype]]
-
-    verbatim <- fb_occurrence_df[[verbatim_var]]
-
-    has_one <- grepl("1", verbatim)
+    has_one <- grepl("1", fb_occurrence_df[[verbatim_var]])
 
     has_one <- ifelse(has_one, 1L, NA_integer_)
 
-    abundance <- ifelse(count_one, has_one, count)
+    abundance <- ifelse(count == 1L, has_one, count)
 
-    if (has_abundance_var) {
+    if (has_abundance) {
 
       fb_occurrence_df[[abundance_var]] <- abundance
 
     }
 
-    if (has_occurrence_var) {
+    if (has_occ) {
 
-      fi <- c("paikalla", "poissa")
+      stat <- switch(
+        attr(fb_occurrence_df, "locale", TRUE),
+        fi = c("paikalla", "poissa"),
+        sv = c("n\u00e4rvarande", "fr\u00e5nvarande"),
+        c("present", "absent")
+      )
 
-      sv <- c("n\u00e4rvarande", "fr\u00e5nvarande")
+      is_p <- is.na(abundance) | abundance > 0L
 
-      en <- c("present", "absent")
-
-      locale <- attr(fb_occurrence_df, "locale", TRUE)
-
-      status <- switch(locale, fi = fi, sv = sv, en)
-
-      present <- status[[1L]]
-
-      absent <- status[[2L]]
-
-      abundance_is_na <- is.na(abundance)
-
-      is_present <- abundance > 0L
-
-      is_present <- abundance_is_na | is_present
-
-      occurrence_status <- ifelse(is_present, present, absent)
-
-      fb_occurrence_df[[occurrence_status_var]] <- occurrence_status
+      fb_occurrence_df[[occ_status_var]] <- ifelse(is_p, stat[[1L]], stat[[2L]])
 
     }
 
@@ -1204,39 +1093,29 @@ compute_abundance <- function(fb_occurrence_df) {
 
 compute_citation <- function(fb_occurrence_df) {
 
-  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
-  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   vtype <- col_type_string(dwc)
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   citation_var <- var_names[["computed_var_citation", vtype]]
 
-  add <- add && citation_var %in% select_user
+  has_cit_var <- citation_var %in% attr(fb_occurrence_df, "column_names", TRUE)
 
-  if (add) {
+  if (attr(fb_occurrence_df, "include_new_cols", TRUE) && has_cit_var) {
 
-    record_id <- attr(fb_occurrence_df, "record_id", TRUE)
+    r_id <- attr(fb_occurrence_df, "record_id", TRUE)
 
-    source_var <- var_names[["document.sourceId", vtype]]
-
-    source <- fb_occurrence_df[[source_var]]
-
-    source_is_kotka <- source == "http://tun.fi/KE.3"
+    src <- var_names[["document.sourceId", vtype]]
 
     document_id_var <- var_names[["document.documentId", vtype]]
 
-    document_id <- fb_occurrence_df[[document_id_var]]
+    d_id <- fb_occurrence_df[[document_id_var]]
 
-    citation <- ifelse(source_is_kotka, document_id, record_id)
+    cit <- ifelse(fb_occurrence_df[[src]] == "http://tun.fi/KE.3", d_id, r_id)
 
-    citation <- paste(citation, "Source: FinBIF")
-
-    fb_occurrence_df[[citation_var]] <- citation
+    fb_occurrence_df[[citation_var]] <- paste(cit, "Source: FinBIF")
 
   }
 
@@ -1248,43 +1127,29 @@ compute_citation <- function(fb_occurrence_df) {
 
 compute_coordinate_uncertainty <- function(fb_occurrence_df) {
 
-  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
-  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   vtype <- col_type_string(dwc)
 
-  var_names <- var_names()
+  vnms <- sysdata("var_names")
 
-  coord_uncert_var <- var_names[["computed_var_coordinates_uncertainty", vtype]]
+  uncert_var <- vnms[["computed_var_coordinates_uncertainty", vtype]]
 
-  add <- add && coord_uncert_var %in% select_user
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  if (add) {
+  if (add && uncert_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-    interpreted_var <- "gathering.interpretations.coordinateAccuracy"
+    interp_var <- vnms[["gathering.interpretations.coordinateAccuracy", vtype]]
 
-    interpreted_var <- var_names[[interpreted_var, vtype]]
+    interp <- fb_occurrence_df[[interp_var]]
 
-    interpreted <- fb_occurrence_df[[interpreted_var]]
+    source_var <- vnms[["document.sourceId", vtype]]
 
-    source_var <- var_names[["document.sourceId", vtype]]
+    na <- fb_occurrence_df[[source_var]] == "http://tun.fi/KE.3" &  interp == 1
 
-    source <- fb_occurrence_df[[source_var]]
+    coord_uncert <- ifelse(na, NA_real_, interp)
 
-    source_is_kotka <- source == "http://tun.fi/KE.3"
-
-    interpreted_one <- interpreted == 1
-
-    is_na <- source_is_kotka & interpreted_one
-
-    coord_uncert <- ifelse(is_na, NA_real_, interpreted)
-
-    coord_uncert <- as.numeric(coord_uncert)
-
-    fb_occurrence_df[[coord_uncert_var]] <- coord_uncert
+    fb_occurrence_df[[uncert_var]] <- as.numeric(coord_uncert)
 
   }
 
@@ -1296,25 +1161,21 @@ compute_coordinate_uncertainty <- function(fb_occurrence_df) {
 
 compute_scientific_name <- function(fb_occurrence_df) {
 
-  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
-  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   vtype <- col_type_string(dwc)
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
-  sci_name_var <- var_names[["computed_var_scientific_name", vtype]]
+  sci_var <- var_names[["computed_var_scientific_name", vtype]]
 
-  add <- add && sci_name_var %in% select_user
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  if (add) {
+  if (add && sci_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-    sci_name_interp <- var_names[["unit.linkings.taxon.scientificName", vtype]]
+    sci_interp <- var_names[["unit.linkings.taxon.scientificName", vtype]]
 
-    sci_name_interps <- fb_occurrence_df[[sci_name_interp]]
+    sci_interps <- fb_occurrence_df[[sci_interp]]
 
     verbatim <- var_names[["unit.taxonVerbatim", vtype]]
 
@@ -1328,27 +1189,19 @@ compute_scientific_name <- function(fb_occurrence_df) {
 
     verbatim_authors <- fb_occurrence_df[[verbatim_author]]
 
-    source_var <- var_names[["document.sourceId", vtype]]
-
-    source <- fb_occurrence_df[[source_var]]
-
-    source_is_kotka <- source == "http://tun.fi/KE.3"
-
-    unlinked <- is.na(sci_name_interps)
-
-    use_verbatim <- source_is_kotka & unlinked
-
     with_verbatim <- list(names = verbatims, authors = verbatim_authors)
 
     with_verbatim <- add_authors(with_verbatim)
 
-    without_verbatim <- list(names = sci_name_interps, authors = authors)
+    without_verbatim <- list(names = sci_interps, authors = authors)
 
     without_verbatim <- add_authors(without_verbatim)
 
-    sci_name <- ifelse(use_verbatim, with_verbatim, without_verbatim)
+    src <- var_names[["document.sourceId", vtype]]
 
-    fb_occurrence_df[[sci_name_var]] <- sci_name
+    uv <- fb_occurrence_df[[src]] == "http://tun.fi/KE.3" & is.na(sci_interps)
+
+    fb_occurrence_df[[sci_var]] <- ifelse(uv, with_verbatim, without_verbatim)
 
   }
 
@@ -1364,13 +1217,7 @@ add_authors <- function(names_obj) {
 
   authors <- names_obj[["authors"]]
 
-  nchars <- nchar(authors)
-
-  has_chars <- nchars > 0L
-
-  has_authors <- !is.na(authors)
-
-  has_authors <- has_authors & has_chars
+  has_authors <- !is.na(authors) & nchar(authors) > 0L
 
   authors <- paste0(" ", authors)
 
@@ -1388,43 +1235,31 @@ add_authors <- function(names_obj) {
 
 compute_red_list_status <- function(fb_occurrence_df) {
 
-  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
-  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   vtype <- col_type_string(dwc)
 
-  var_names <- var_names()
+  vn <- sysdata("var_names")
 
-  red_list_var <- var_names[["computed_var_red_list_status", vtype]]
+  red_list_var <- vn[["computed_var_red_list_status", vtype]]
 
-  add <- add && red_list_var %in% select_user
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  if (add) {
+  if (add && red_list_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-    red_list_id <- "unit.linkings.taxon.latestRedListStatusFinland.status"
+    id <- vn[[ "unit.linkings.taxon.latestRedListStatusFinland.status", vtype]]
 
-    red_list_id <- var_names[[red_list_id, vtype]]
+    id <- fb_occurrence_df[[id]]
 
-    red_list_id <- fb_occurrence_df[[red_list_id]]
+    yr <- vn[["unit.linkings.taxon.latestRedListStatusFinland.year", vtype]]
 
-    red_list_year <- "unit.linkings.taxon.latestRedListStatusFinland.year"
+    na <- is.na(id)
 
-    red_list_year <- var_names[[red_list_year, vtype]]
+    red_list <- sub("http://tun.fi/MX.iucn", "", id)
 
-    red_list_year <- fb_occurrence_df[[red_list_year]]
+    red_list <- paste(red_list, fb_occurrence_df[[yr]])
 
-    red_list_na <- is.na(red_list_id)
-
-    red_list_id <- sub("http://tun.fi/MX.iucn", "", red_list_id)
-
-    red_list_id <- paste(red_list_id, red_list_year)
-
-    red_list_id <- ifelse(red_list_na, NA_character_, red_list_id)
-
-    fb_occurrence_df[[red_list_var]] <- red_list_id
+    fb_occurrence_df[[red_list_var]] <- ifelse(na, NA_character_, red_list)
 
   }
 
@@ -1436,35 +1271,25 @@ compute_red_list_status <- function(fb_occurrence_df) {
 
 compute_region <- function(fb_occurrence_df) {
 
-  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
-  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   vtype <- col_type_string(dwc)
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
   region_var <- var_names[["computed_var_region", vtype]]
 
-  add <- add && region_var %in% select_user
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
-  if (add) {
+  if (add && region_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-    municipality_id <- "gathering.interpretations.finnishMunicipality"
+    idv <- var_names[["gathering.interpretations.finnishMunicipality", vtype]]
 
-    municipality_id <-  var_names[[municipality_id, vtype]]
-
-    municipality_id <- fb_occurrence_df[[municipality_id]]
-
-    municipality_id <- basename(municipality_id)
+    id <- basename(fb_occurrence_df[[idv]])
 
     municipality <- municipality()
 
-    region <- municipality[municipality_id, "region"]
-
-    fb_occurrence_df[[region_var]] <- region
+    fb_occurrence_df[[region_var]] <- municipality[id, "region"]
 
   }
 
@@ -1477,6 +1302,20 @@ compute_region <- function(fb_occurrence_df) {
 multi_req <- function(fb_records_obj) {
 
   filters <- fb_records_obj[["filter"]]
+
+  filter_num <- seq_along(filters)
+
+  filter_nms <- names(filters)
+
+  if (is.null(filter_nms)) {
+
+    filter_nms <- filter_num
+
+  } else {
+
+    filter_nms <- ifelse(filter_nms == "", filter_num, filter_nms)
+
+  }
 
   n_filters <- length(filters)
 
@@ -1496,11 +1335,7 @@ multi_req <- function(fb_records_obj) {
 
   for (arg in rep_args) {
 
-    fb_records_obj_arg <- fb_records_obj[[arg]]
-
-    fb_records_obj_arg <- rep_len(fb_records_obj_arg, n_filters)
-
-    fb_records_obj[[arg]] <- fb_records_obj_arg
+    fb_records_obj[[arg]] <- rep_len(fb_records_obj[[arg]], n_filters)
 
   }
 
@@ -1508,39 +1343,47 @@ multi_req <- function(fb_records_obj) {
 
   fb_records_obj_filter[["check_taxa"]] <- FALSE
 
-  filter_sq <- seq_len(n_filters)
+  for (filter in seq_len(n_filters)) {
 
-  for (filter in filter_sq) {
-
-    args <- c("filter", rep_args)
-
-    for (arg in args) {
+    for (arg in c("filter", rep_args)) {
 
       fb_records_obj_arg <- fb_records_obj[[arg]]
 
-      fb_records_obj_arg_filter <- fb_records_obj_arg[[filter]]
-
-      fb_records_obj_filter[[arg]] <- fb_records_obj_arg_filter
+      fb_records_obj_filter[[arg]] <- fb_records_obj_arg[[filter]]
 
     }
 
-    resp <- occurrence(fb_records_obj_filter)
-
-    ans[[filter]] <- resp
+    ans[[filter]] <- occurrence(fb_records_obj_filter)
 
   }
 
-  count_only <- fb_records_obj[["count_only"]]
+  if (!fb_records_obj[["count_only"]]) {
 
-  if (!count_only) {
+    filter_col <- fb_records_obj[["filter_col"]]
+
+    if (!is.null(filter_col)) {
+
+      for (i in filter_num) {
+
+        ans_i <- ans[[i]]
+
+        ans_i[[filter_col]] <- filter_nms[[i]]
+
+        ans[[i]] <- ans_i
+
+      }
+
+    }
 
     ans <- do.call(rbind, ans)
 
-    record_id <- attr(ans, "record_id")
+    if (!fb_records_obj[["duplicates"]]) {
 
-    dups <- duplicated(record_id)
+      record_id <- attr(ans, "record_id")
 
-    ans <- ans[!dups, ]
+      ans <- ans[!duplicated(record_id), ]
+
+    }
 
   }
 
@@ -1552,25 +1395,15 @@ multi_req <- function(fb_records_obj) {
 
 unlist_cols <- function(fb_occurrence_df) {
 
-  unlist <- attr(fb_occurrence_df, "unlist", TRUE)
+  if (attr(fb_occurrence_df, "unlist", TRUE)) {
 
-  if (unlist) {
+    for (col in attr(fb_occurrence_df, "column_names", TRUE)) {
 
-    cols <- attr(fb_occurrence_df, "column_names", TRUE)
+      df_col <- fb_occurrence_df[[col]]
 
-    for (col in cols) {
+      if (is.list(df_col) && !grepl("Fact|fact_", col)) {
 
-      fb_occurrence_df_col <- fb_occurrence_df[[col]]
-
-      is_list_col <- is.list(fb_occurrence_df_col)
-
-      is_list_col <- is_list_col && !grepl("Fact|fact_", col)
-
-      if (is_list_col) {
-
-        fb_occurrence_df_col <- vapply(fb_occurrence_df_col, concat_string, "")
-
-        fb_occurrence_df[[col]] <- fb_occurrence_df_col
+        fb_occurrence_df[[col]] <- vapply(df_col, concat_string, "")
 
       }
 
@@ -1588,35 +1421,25 @@ drop_na_col <- function(fb_occurrence_df) {
 
   drop_which <- attr(fb_occurrence_df, "drop_na", TRUE)
 
-  drop_any <- any(drop_which)
-
-  if (drop_any) {
-
-    ncols <- length(fb_occurrence_df)
-
-    nrows <- nrow(fb_occurrence_df)
-
-    column_names <- attr(fb_occurrence_df, "column_names", TRUE)
-
-    which <- rep_len(drop_which, ncols)
+  if (any(drop_which)) {
 
     fb_occurrence_df_attrs <- attributes(fb_occurrence_df)
 
-    cls <- class(fb_occurrence_df)
+    fb_occurrence_df_attrs[["class"]] <- class(fb_occurrence_df)
 
-    fb_occurrence_df_attrs[["class"]] <- cls
+    nrows <- nrow(fb_occurrence_df)
 
-    rnms <- seq_len(nrows)
-
-    fb_occurrence_df_attrs[["row.names"]] <- rnms
+    fb_occurrence_df_attrs[["row.names"]] <- seq_len(nrows)
 
     attr(fb_occurrence_df, "class") <- "list"
 
     is_na <- lapply(fb_occurrence_df, is.na)
 
-    is_na <- vapply(is_na, all, NA)
+    ncols <- length(fb_occurrence_df)
 
-    drop <- is_na & which
+    drop <- vapply(is_na, all, NA) & rep_len(drop_which, ncols)
+
+    column_names <- attr(fb_occurrence_df, "column_names", TRUE)
 
     drop_column_names <- column_names[drop]
 
@@ -1646,53 +1469,49 @@ extract_facts <- function(fb_occurrence_df) {
 
   facts <- attr(fb_occurrence_df, "facts", TRUE)
 
-  has_facts <- !is.null(facts)
-
-  if (has_facts) {
+  if (!is.null(facts)) {
 
     dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
     vtype <- col_type_string(dwc)
 
-    nms <- c("unit.facts.fact", "gathering.facts.fact", "document.facts.fact")
+    nms <- c(
+      "unit.facts.fact",
+      "gathering.facts.fact",
+      "document.facts.fact"
+    )
 
     vls <- c(
-      "unit.facts.value", "gathering.facts.value", "document.facts.value"
+      "unit.facts.value",
+      "gathering.facts.value",
+      "document.facts.value"
     )
 
     fb_occurrence_df[facts] <- NA_character_
 
-    levels <- seq_len(3L)
-
-    var_names <- var_names()
+    var_names <- sysdata("var_names")
 
     for (fact in facts) {
 
-      for (level in levels) {
+      for (level in 1:3) {
 
         levels_nms <- nms[[level]]
 
         fact_name <- var_names[[levels_nms, vtype]]
 
-        fact_col <- fb_occurrence_df[[fact_name]]
-
-        is_fact <- lapply(fact_col, "==", fact)
+        is_fact <- lapply(fb_occurrence_df[[fact_name]], "==", fact)
 
         level_vls <- vls[[level]]
 
         values_name <- var_names[[level_vls, vtype]]
 
-        values_col <- fb_occurrence_df[[values_name]]
+        values <- mapply(extract_fact, fb_occurrence_df[[values_name]], is_fact)
 
-        fact_values <- mapply(extract_fact, values_col, is_fact)
+        fact_value_is_na <- is.na(values)
 
-        fact_value_is_na <- is.na(fact_values)
+        if (!all(fact_value_is_na)) {
 
-        has_value <- !all(fact_value_is_na)
-
-        if (has_value) {
-
-          fb_occurrence_df[[fact]] <- fact_values
+          fb_occurrence_df[[fact]] <- values
 
         }
 
@@ -1713,19 +1532,16 @@ extract_fact <- function(
   i
 ) {
 
-  xi <- x[i]
+  ans <- x[i]
 
-  l <- length(xi)
+  if (length(ans) < 1L) {
 
-  is_na <- identical(l, 0L)
-
-  if (is_na) {
-
-    xi <- NA_character_
+    ans <- NA_character_
 
   }
 
-  xi
+  ans
+
 
 }
 
@@ -1754,21 +1570,11 @@ finbif_last_mod <- function(
     ..., filter = filter, select = "load_date", order_by = "-load_date", n = 1L
   )
 
-  ans <- character()
+  ans <- as.Date(character())
 
-  ans <- as.Date(ans)
+  if (nrow(res) > 0L) {
 
-  nrows <- nrow(res)
-
-  has_rows <- nrows > 0L
-
-  if (has_rows) {
-
-    ans <- res[["load_date"]]
-
-    ans <- ans[[1L]]
-
-    ans <- as.Date(ans)
+    ans <- as.Date(res[[1L, "load_date"]])
 
   }
 

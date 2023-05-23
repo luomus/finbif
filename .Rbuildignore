@@ -12,9 +12,7 @@
 ^docs$
 ^Meta$
 ^\.github$
-^vignettes/figure$
 ^cran-comments\.md$
-^CRAN-RELEASE$
 ^\.zenodo\.json$
 ^inst/man$
 ^inst/vign$

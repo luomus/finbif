@@ -31,7 +31,9 @@ than \code{finbif_taxa} a \code{finbif_taxa} object.}
 \item{type}{Character. Type of match to make. Must be one of \code{exact},
 \code{partial} or \code{likely}.}
 
-\item{cache}{Logical. Use cached data.}
+\item{cache}{Logical or Integer. If \code{TRUE} or a number greater than zero,
+then data-caching will be used. If not logical then cache will be
+invalidated after the number of hours indicated by the argument.}
 
 \item{locale}{Character. One of the supported two-letter ISO 639-1 language
 codes. Current supported languages are English, Finnish and Swedish. For

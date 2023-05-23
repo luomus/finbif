@@ -3,9 +3,7 @@
 .Rhistory
 .RData
 .Ruserdata
-doc
-Meta
-/doc/
-/Meta/
 sandbox
 sentinels
+/doc/
+/Meta/

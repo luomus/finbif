@@ -44,7 +44,6 @@
 #'   order indicated above.
 #' @param skip Integer. The number of lines of the data file to skip before
 #'   beginning to read data (not including the header).
-#' @inheritParams finbif_records
 #' @inheritParams finbif_occurrence
 #' @return A `data.frame`, or if `count_only =  TRUE` an integer.
 #' @examples \dontrun{
@@ -76,13 +75,18 @@ finbif_occurrence_load <- function(
   skip = 0
 ) {
 
-  file <- preprocess_data_file(file)
+  nchars <- nchar(file)
 
-  n <- as.integer(n)
+  file <- switch(
+    substring(file, nchars - 3L, nchars),
+    .ods = from_ods(file),
+    xlsx = from_xlsx(file),
+    file
+  )
 
   fb_records_obj <- list(
     file = file,
-    n = n,
+    n = as.integer(n),
     count_only = count_only,
     quiet = quiet,
     cache = cache,
@@ -93,27 +97,21 @@ finbif_occurrence_load <- function(
     facts = "none"
   )
 
+  all_cols <- any(c("all", "short") %in% select)
+
+  var_names <- sysdata("var_names")
+
   var_type <- col_type_string(dwc)
+
+  col_names <- var_names[[var_type]]
 
   short <- FALSE
 
   deselect <- character()
 
-  all_cols <- c("all", "short")
-
-  all_cols <- all_cols %in% select
-
-  all_cols <- any(all_cols)
-
-  var_names <- var_names()
-
-  col_names <- var_names[[var_type]]
-
   if (all_cols) {
 
-    select_one <- select[[1L]]
-
-    short <- identical(select_one, "short")
+    short <- identical(select[[1L]], "short")
 
     deselect <- grep("^-", select, value = TRUE)
 
@@ -121,9 +119,7 @@ finbif_occurrence_load <- function(
 
     deselect <- match(deselect, col_names)
 
-    deselect <- var_names[deselect, ]
-
-    deselect <- row.names(deselect)
+    deselect <- row.names(var_names[deselect, ])
 
     select <- "default_vars"
 
@@ -143,9 +139,7 @@ finbif_occurrence_load <- function(
 
   })
 
-  fact_types <- vapply(facts, length, 0L)
-
-  fact_types <- fact_types > 0L
+  fact_types <- vapply(facts, length, 0L) > 0L
 
   fact_types <- which(fact_types)
 
@@ -179,27 +173,13 @@ finbif_occurrence_load <- function(
 
   fb_occurrence_df <- localise_enums(fb_occurrence_df)
 
-  n_recs <- attr(fb_occurrence_df, "nrow", TRUE)
-
-  url <- attr(fb_occurrence_df, "url", TRUE)
-
-  df_names <- names(fb_occurrence_df)
-
-  df_names <- fix_issue_vars(df_names)
-
-  names(fb_occurrence_df) <- df_names
-
   select <- select_facts(select)
-
-  fact_types <- select[["facts"]]
 
   attr(fb_occurrence_df, "select") <- select
 
   fb_occurrence_df <- new_vars(fb_occurrence_df)
 
-  translated_vars <- file_vars[["translated_var"]]
-
-  record_id <- translated_vars == "record_id"
+  record_id <- file_vars[["translated_var"]] == "record_id"
 
   record_id <- file_vars[record_id, ]
 
@@ -215,9 +195,7 @@ finbif_occurrence_load <- function(
 
   na_nms <- is.na(nms)
 
-  df_names <- ifelse(na_nms, df_names, nms)
-
-  names(fb_occurrence_df) <- df_names
+  names(fb_occurrence_df) <- ifelse(na_nms, df_names, nms)
 
   select_user <- select[["user"]]
 
@@ -246,9 +224,9 @@ finbif_occurrence_load <- function(
 
   fb_occurrence_df <- add_nas(fb_occurrence_df)
 
-  df_names <- names(fb_occurrence_df)
+  select[["user"]] <- names(fb_occurrence_df)
 
-  select[["user"]] <- df_names
+  n_recs <- attr(fb_occurrence_df, "nrow", TRUE)
 
   if (!all_cols) {
 
@@ -258,18 +236,14 @@ finbif_occurrence_load <- function(
 
     datetime_obj <- det_datetime_method(datetime_obj)
 
-    date_time <- select[["date_time_selected"]]
-
-    date_time_method <- datetime_obj[["date_time_method"]]
-
     fb_occurrence_df <- structure(
       fb_occurrence_df,
       select_user = select_user,
       column_names = select_user,
       aggregate = "none",
       dwc = dwc,
-      date_time = date_time,
-      date_time_method = date_time_method,
+      date_time = select[["date_time_selected"]],
+      date_time_method = datetime_obj[["date_time_method"]],
       tzone = tzone
     )
 
@@ -285,21 +259,15 @@ finbif_occurrence_load <- function(
 
     df_names <- names(fb_occurrence_df)
 
-    extra_vars <- setdiff(select_user, df_names)
+    nrows <- nrow(fb_occurrence_df)
 
-    for (extra_var in extra_vars) {
+    na <- rep_len(NA, nrows)
 
-      ind <- col_names == extra_var
+    for (extra_var in setdiff(select_user, df_names)) {
 
-      type <- var_names[ind, "type"]
+      type <- var_names[col_names == extra_var, "type"]
 
-      nrows <- nrow(fb_occurrence_df)
-
-      na <- rep_len(NA, nrows)
-
-      na <- cast_to_type(na, type)
-
-      fb_occurrence_df[[extra_var]] <- na
+      fb_occurrence_df[[extra_var]] <- cast_to_type(na, type)
 
     }
 
@@ -311,69 +279,43 @@ finbif_occurrence_load <- function(
 
   class <- class(fb_occurrence_df)
 
-  class <- c("finbif_occ", class)
-
-  dwc <- dwc && !short
-
   fb_occurrence_df <- structure(
     fb_occurrence_df,
-    class = class,
+    class = c("finbif_occ", class),
     nrec_dnld = n_recs,
     nrec_avl = n_recs,
-    url = url,
+    url = attr(fb_occurrence_df, "url", TRUE),
     time = "??",
     short_nms = short,
-    dwc = dwc,
+    dwc = dwc && !short,
     record_id = record_id
   )
 
-  for (fact_type in fact_types) {
+  for (ftype in select[["facts"]]) {
 
-    levels <- c("record", "event", "document")
+    stopifnot("Invalid fact type" = ftype %in% c("record", "event", "document"))
 
-    level_ok <- fact_type %in% levels
-
-    stopifnot("Invalid fact type" = level_ok)
-
-    deselect <- character()
-
-    select_obj <- list(all = TRUE, deselect, type = "translated_var")
-
-    fb_records_obj[["select"]] <- select_obj
+    fb_records_obj[["select"]] <- list(
+      all = TRUE,
+      deselect = character(),
+      type = "translated_var"
+    )
 
     fb_records_obj[["n"]] <- -1L
 
-    fb_records_obj[["facts"]] <- fact_type
-
-    facts_df <- try({
-
-        read_finbif_tsv(fb_records_obj)
-
-      },
-      silent = TRUE
-    )
-
-    file_vars_type <- file_vars[, var_type, drop = FALSE]
-
-    record_type <- file_vars_type["Unit.UnitID", ]
-
-    event_type <- file_vars_type["Gathering.GatheringID", ]
-
-    document_type <- file_vars_type["Document.DocumentID", ]
+    fb_records_obj[["facts"]] <- ftype
 
     id <- switch(
-      fact_type,
-      record = record_type,
-      event = event_type,
-      document = document_type
+      ftype,
+      record = file_vars[["Unit.UnitID", var_type]],
+      event = file_vars[["Gathering.GatheringID", var_type]],
+      document = file_vars[["Document.DocumentID", var_type]]
     )
 
-    fact_lvl <- facts[[fact_type]]
-
     facts_df <- structure(
-      facts_df,
-      facts = fact_lvl,
-      fact_type = fact_type,
+      try(read_finbif_tsv(fb_records_obj), silent = TRUE),
+      facts = facts[[ftype]],
+      fact_type = ftype,
       id = id,
       type_convert_facts = type_convert_facts,
       drop_facts_na = drop_facts_na
@@ -383,17 +325,13 @@ finbif_occurrence_load <- function(
 
     select_user <- select[["user"]]
 
-    df_user <- fb_occurrence_df[select_user]
-
-    df_names_user <- names(df_user)
+    df_names_user <- names(fb_occurrence_df[select_user])
 
     df_names_facts <- names(facts_df)
 
     df_names_facts <- setdiff(df_names_facts, id)
 
-    select_user <- c(df_names_user, df_names_facts)
-
-    select[["user"]] <- select_user
+    select[["user"]] <- c(df_names_user, df_names_facts)
 
     attr(fb_occurrence_df, "facts_df") <- facts_df
 
@@ -415,27 +353,17 @@ finbif_occurrence_load <- function(
 
     short_fcts <- sub("http://tun.fi/", "", short_fcts)
 
-    n <- length(short_fcts)
-
-    n <- n + .1
+    n <- length(short_fcts) + .1
 
     n <- log10(n)
 
-    n <- ceiling(n)
-
-    n <- 9 - n
-
     short_fcts <- abbreviate(
-      short_fcts, n, FALSE, strict = TRUE, method = "both.sides"
+      short_fcts, 9 - ceiling(n), FALSE, strict = TRUE, method = "both.sides"
     )
 
     short_fact_sq <- seq_along(short_fcts)
 
-    short_fcts <- paste0("f", short_fact_sq, short_fcts)
-
-    short_nms_na <- is.na(short_nms)
-
-    short_nms[short_nms_na] <- short_fcts
+    short_nms[is.na(short_nms)] <- paste0("f", short_fact_sq, short_fcts)
 
     missing <- which(short_nms == "f")
 
@@ -443,21 +371,16 @@ finbif_occurrence_load <- function(
 
     nms_missing <- gsub("[^A-Za-z]", "", nms_missing)
 
-    nms_missing <- abbreviate(nms_missing, 10L)
+    short_nms[missing] <- abbreviate(nms_missing, 10L)
 
-    short_nms[missing] <- nms_missing
+    select[["user"]] <- short_nms
 
-    df_names <- short_nms
-
-    select[["user"]] <- df_names
-
-    names(fb_occurrence_df) <- df_names
+    names(fb_occurrence_df) <- short_nms
 
   }
 
-  select_user <- select[["user"]]
 
-  select_user <- name_chr_vec(select_user)
+  select_user <- name_chr_vec(select[["user"]])
 
   fb_occurrence_df <- fb_occurrence_df[, select_user, drop = FALSE]
 
@@ -473,21 +396,11 @@ finbif_occurrence_load <- function(
 
 read_finbif_tsv <- function(fb_occurrenc_obj) {
 
-  n <- fb_occurrenc_obj[["n"]]
-
-  count_only <- fb_occurrenc_obj[["count_only"]]
-
-  facts <- fb_occurrenc_obj[["facts"]]
+  file <- as.character(fb_occurrenc_obj[["file"]])
 
   ptrn <- "^https?://.+?/HBF\\."
 
-  file <- fb_occurrenc_obj[["file"]]
-
-  file <- as.character(file)
-
-  is_url <- grepl(ptrn, file)
-
-  if (is_url) {
+  if (grepl(ptrn, file)) {
 
     file <- sub(ptrn, "", file)
 
@@ -497,6 +410,8 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
   tsv <- gsub("zip", "tsv", tsv)
 
+  facts <- fb_occurrenc_obj[["facts"]]
+
   tsv_prefix <- switch(
     facts,
     none = "rows_",
@@ -505,9 +420,7 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
     document = "document_facts_",
   )
 
-  fact_types <- c("none", "record", "event", "document")
-
-  valid_facts <- facts %in% fact_types
+  valid_facts <- facts %in% c("none", "record", "event", "document")
 
   stopifnot(
     "Facts can only be of types: record, event and/or document" = valid_facts
@@ -517,47 +430,33 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
   fb_occurrenc_obj[["file"]] <- file
 
-  tsv <- paste0(tsv_prefix, tsv)
+  fb_occurrenc_obj[["tsv"]] <-  paste0(tsv_prefix, tsv)
 
-  fb_occurrenc_obj[["tsv"]] <- tsv
+  if (grepl("^[0-9]*$", file)) {
 
-  is_number <- grepl("^[0-9]*$", file)
-
-  if (is_number) {
+    fb_occurrenc_obj[["tsv"]] <- sprintf("%sHBF.%s.tsv", tsv_prefix, file)
 
     finbif_dl_url <- getOption("finbif_dl_url")
 
-    url <- sprintf("%s/HBF.%s", finbif_dl_url, file)
-
-    fb_occurrenc_obj[["url"]] <- url
-
-    tsv <- sprintf("%sHBF.%s.tsv", tsv_prefix, file)
-
-    fb_occurrenc_obj[["tsv"]] <- tsv
+    fb_occurrenc_obj[["url"]] <- sprintf("%s/HBF.%s", finbif_dl_url, file)
 
     fb_occurrenc_obj <- get_zip(fb_occurrenc_obj)
 
     file <- fb_occurrenc_obj[["file"]]
 
-  } else {
-
-    url <- file
-
   }
 
   df <- attempt_read(fb_occurrenc_obj)
 
-  if (count_only) {
+  if (fb_occurrenc_obj[["count_only"]]) {
 
     return(df)
 
   }
 
-  attr(df, "url") <- url
+  attr(df, "url") <- file
 
-  n_all <- identical(n, -1L)
-
-  if (n_all) {
+  if (identical(fb_occurrenc_obj[["n"]], -1L)) {
 
     attr(df, "nrow") <- nrow(df)
 
@@ -571,21 +470,9 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
 
 attempt_read <- function(fb_occurrence_obj) {
 
-  file <- fb_occurrence_obj[["file"]]
+  use_dt <- fb_occurrence_obj[["dt"]]
 
-  tsv <- fb_occurrence_obj[["tsv"]]
-
-  count_only <- fb_occurrence_obj[["count_only"]]
-
-  n <- fb_occurrence_obj[["n"]]
-
-  dt <- fb_occurrence_obj[["dt"]]
-
-  use_dt <- dt
-
-  dt_na <- is.na(dt)
-
-  if (dt_na) {
+  if (is.na(use_dt)) {
 
     use_dt <- TRUE
 
@@ -593,35 +480,29 @@ attempt_read <- function(fb_occurrence_obj) {
 
   }
 
-  if (count_only) {
+  if (fb_occurrence_obj[["count_only"]]) {
 
-    nlines(fb_occurrence_obj)
+    ans <- nlines(fb_occurrence_obj)
 
   } else {
 
     n_rows <- NULL
 
-    has_n <- !identical(n, -1L)
-
-    if (has_n) {
+    if (!identical(fb_occurrence_obj[["n"]], -1L)) {
 
       n_rows <- nlines(fb_occurrence_obj)
 
     }
 
-    use_dt <- use_dt && has_pkgs("data.table")
+    if (use_dt && has_pkgs("data.table")) {
 
-    if (use_dt) {
+      input <- as.character(fb_occurrence_obj[["file"]])
 
-      input <- as.character(file)
-
-      is_tsv <- grepl("\\.tsv$", input)
-
-      input_list <- list(input = input, tsv = tsv)
+      input_list <- list(input = input, tsv = fb_occurrence_obj[["tsv"]])
 
       input_list <- list(zip = input_list)
 
-      if (is_tsv) {
+      if (grepl("\\.tsv$", input)) {
 
         fb_occurrence_obj[["keep_tsv"]] <- FALSE
 
@@ -631,19 +512,19 @@ attempt_read <- function(fb_occurrence_obj) {
 
       fb_occurrence_obj[["dt_args"]] <- input_list
 
-      df <- dt_read(fb_occurrence_obj)
+      ans <- dt_read(fb_occurrence_obj)
 
     } else {
 
-      df <- rd_read(fb_occurrence_obj)
+      ans <- rd_read(fb_occurrence_obj)
 
     }
 
-    attr(df, "nrow") <- n_rows
-
-    df
+    attr(ans, "nrow") <- n_rows
 
   }
+
+  ans
 
 }
 
@@ -655,29 +536,17 @@ localise_enums <- function(df) {
 
   filed_var_names <- row.names(file_vars)
 
-  locale <- attr(df, "locale", TRUE)
+  labels_obj <- list(var_names = file_vars, locale = attr(df, "locale", TRUE))
 
-  df_names <- names(df)
+  for (nm in names(df)) {
 
-  for (nm in df_names) {
+    if (isTRUE(file_vars[[nm, "localised"]]) && nm %in% filed_var_names) {
 
-    localised <- file_vars[[nm, "localised"]]
+      labels_obj[["labels"]] <- df[[nm]]
 
-    localised <- isTRUE(localised)
+      labels_obj[["col"]] <- nm
 
-    localised <- localised && nm %in% filed_var_names
-
-    if (localised) {
-
-      dfnm <- df[[nm]]
-
-      labels_obj <- list(
-        labels = dfnm, col = nm, var_names = file_vars, locale = locale
-      )
-
-      dfnm <- localise_labels(labels_obj)
-
-      df[[nm]] <- dfnm
+      df[[nm]] <- localise_labels(labels_obj)
 
     }
 
@@ -693,19 +562,13 @@ fix_issue_vars <- function(x) {
 
   type <- c("Time", "Location")
 
-  cols <- c("Issue", "Source", "Message")
+  for (i in c("Issue", "Source", "Message")) {
 
-  sq <- seq_len(2L)
-
-  for (i in cols) {
-
-    for (j in sq) {
-
-      type_j <- type[[j]]
+    for (j in 1:2) {
 
       issue <- sprintf("Issue.%s.%s", i, j)
 
-      issue_type <- sprintf("%sIssue.%s", type_j, i)
+      issue_type <- sprintf("%sIssue.%s", type[[j]], i)
 
       x <- sub(issue, issue_type, x)
 
@@ -723,17 +586,13 @@ new_vars <- function(df) {
 
   file_vars <- attr(df, "file_vars", TRUE)
 
-  select <- attr(df, "select", TRUE)
+  nss <- file_vars[["superseeded"]] == "FALSE"
 
-  deselect <- select[["deselect"]]
-
-  add <- !select[["all"]]
+  ss <- rownames(file_vars[!nss, ])
 
   file_cols <- attr(df, "file_cols", TRUE)
 
-  no_file_cols <- is.null(file_cols)
-
-  if (no_file_cols) {
+  if (is.null(file_cols)) {
 
     file_cols <- names(df)
 
@@ -741,47 +600,23 @@ new_vars <- function(df) {
 
   }
 
-  superseeded <- file_vars[["superseeded"]]
-
-  ind <- superseeded == "FALSE"
-
-  ss <- file_vars[!ind, ]
-
-  ss <- rownames(ss)
-
   ss <- intersect(ss, file_cols)
 
-  ss <- file_vars[ss, "superseeded"]
+  var_names <- sysdata("var_names")
 
-  var_names <- var_names()
+  select <- attr(df, "select", TRUE)
 
-  deselect <- var_names[deselect, "translated_var"]
+  ds <- select[["deselect"]]
 
-  translated_vars <- file_vars[["translated_var"]]
+  ds <- file_vars[["translated_var"]] %in% var_names[ds, "translated_var"]
 
-  deselect <- translated_vars %in% deselect
+  nms <- row.names(file_vars[nss & !ds, ])
 
-  ind <- ind & !deselect
+  file_cols <- c(file_cols, file_vars[ss, "superseeded"])
 
-  nms <- file_vars[ind, ]
+  if (!select[["all"]] && nrow(df) > 0L) {
 
-  nms <- row.names(nms)
-
-  file_cols <- c(file_cols, ss)
-
-  new_vars <- setdiff(nms, file_cols)
-
-  if (add) {
-
-    nrows <- nrow(df)
-
-    dfi <- rep_len(NA, nrows)
-
-    for (i in new_vars) {
-
-      df[[i]] <- dfi
-
-    }
+    df[setdiff(nms, file_cols)] <- NA
 
   }
 
@@ -795,15 +630,11 @@ new_vars <- function(df) {
 
 get_zip <- function(fb_occurrenc_obj) {
 
-  url <- fb_occurrenc_obj[["url"]]
-
-  quiet <- fb_occurrenc_obj[["quiet"]]
-
-  cache <- fb_occurrenc_obj[["cache"]]
-
   write_file <- fb_occurrenc_obj[["write_file"]]
 
-  if (cache) {
+  url <- fb_occurrenc_obj[["url"]]
+
+  if (fb_occurrenc_obj[["cache"]] > 0) {
 
     hash <- sub(":\\d+", "", url)
 
@@ -811,15 +642,11 @@ get_zip <- function(fb_occurrenc_obj) {
 
     fcp <- getOption("finbif_cache_path")
 
-    fcp_is_null <- is.null(fcp)
-
-    if (fcp_is_null) {
+    if (is.null(fcp)) {
 
       cache_file <- get_cache(hash)
 
-      has_cache_file <- !is.null(cache_file)
-
-      if (has_cache_file) {
+      if (!is.null(cache_file)) {
 
         fb_occurrenc_obj[["file"]] <- cache_file
 
@@ -829,11 +656,9 @@ get_zip <- function(fb_occurrenc_obj) {
 
       on.exit({
 
-        has_write_file <- !is.null(write_file)
+        if (!is.null(write_file)) {
 
-        if (has_write_file) {
-
-          cache_obj <- list(data = write_file, hash = hash)
+          cache_obj <- list(data = write_file, hash = hash, timeout = Inf)
 
           set_cache(cache_obj)
 
@@ -841,15 +666,13 @@ get_zip <- function(fb_occurrenc_obj) {
 
       })
 
-    } else {
+    } else if (is.character(fcp)) {
 
-      file_name <- paste0("finbif_cache_file_", hash)
+      file_name <- paste0("finbif_dwnld_cache_file_", hash)
 
       write_file <- file.path(fcp, file_name)
 
-      write_file_exists <- file.exists(write_file)
-
-      if (write_file_exists) {
+      if (file.exists(write_file)) {
 
         fb_occurrenc_obj[["file"]] <- write_file
 
@@ -857,13 +680,17 @@ get_zip <- function(fb_occurrenc_obj) {
 
       }
 
+    } else {
+
+      stop("Database cache cannot be used for FinBIF downloads.", call. = TRUE)
+
     }
 
   }
 
   progress <- NULL
 
-  if (!quiet) {
+  if (!fb_occurrenc_obj[["quiet"]]) {
 
     progress <- httr::progress()
 
@@ -873,45 +700,29 @@ get_zip <- function(fb_occurrenc_obj) {
 
   stopifnot("Request not cached and option:finbif_allow_query = FALSE" = allow)
 
-  rate_limit <- getOption("finbif_rate_limit")
-
-  sleep <- 1 / rate_limit
-
-  Sys.sleep(sleep)
+  Sys.sleep(1 / getOption("finbif_rate_limit"))
 
   query <- list()
 
   auth <- Sys.getenv("FINBIF_RESTRICTED_FILE_ACCESS_TOKEN")
 
-  has_auth <- !identical(auth, "")
-
-  if (has_auth) {
+  if (!identical(auth, "")) {
 
     query <- list(personToken = auth)
 
   }
 
-  write_disk <- httr::write_disk(write_file, overwrite = TRUE)
-
-  times <- getOption("finbif_retry_times")
-
-  pause_base <- getOption("finbif_retry_pause_base")
-
-  pause_cap <- getOption("finbif_retry_pause_cap")
-
-  pause_min <- getOption("finbif_retry_pause_min")
-
   resp <- httr::RETRY(
     "GET",
     url,
-    write_disk,
+    httr::write_disk(write_file, overwrite = TRUE),
     progress,
     query = query,
-    times = times,
-    pause_base = pause_base,
-    pause_cap = pause_cap,
-    pause_min = pause_min,
-    quiet = quiet,
+    times =  getOption("finbif_retry_times"),
+    pause_base = getOption("finbif_retry_pause_base"),
+    pause_cap = getOption("finbif_retry_pause_cap"),
+    pause_min = getOption("finbif_retry_pause_min"),
+    quiet = fb_occurrenc_obj[["quiet"]],
     terminate_on = 404L
   )
 
@@ -921,25 +732,15 @@ get_zip <- function(fb_occurrenc_obj) {
 
   fl <- as.integer(fl)
 
-  too_large <- isTRUE(fs > fl)
-
-  if (too_large) {
+  if (isTRUE(fs > fl)) {
 
     stop("File download too large; err_name: too_large", call. = FALSE)
 
   }
 
-  if (!quiet) {
-
-    message("")
-
-  }
-
   code <- resp[["status_code"]]
 
-  has_error <- !identical(code, 200L)
-
-  if (has_error) {
+  if (!identical(code, 200L)) {
 
     msg <- sprintf("File request failed [%s]; err_name: request_failed", code)
 
@@ -961,51 +762,29 @@ add_nas <- function(df) {
 
   var_type <- col_type_string(dwc)
 
-  nms <- names(df)
+  file_vars <- attr(df, "file_vars", TRUE)
 
-  for (nm in nms) {
+  file_var_type <- file_vars[[var_type]]
 
-    ans <- df[[nm]]
+  vnames <- sysdata("var_names")
 
-    is_na <- is.na(ans)
+  vnames_type <- vnames[[var_type]]
 
-    all_na <- all(is_na)
+  for (nm in names(df)) {
 
-    if (all_na) {
+    if (all_na(df[[nm]])) {
 
-      file_vars <- attr(df, "file_vars", TRUE)
+      ind <- file_var_type == nm & file_vars[["superseeded"]] == "FALSE"
 
-      file_var_type <- file_vars[[var_type]]
+      if (any(ind)) {
 
-      ind <- file_var_type == nm
+        df[[nm]] <- cast_to_type(df[[nm]], file_vars[ind, "type"])
 
-      ind_int <- which(ind)
+      } else {
 
-      superseeded <- file_vars[["superseeded"]]
-
-      not_superseeded <- superseeded == "FALSE"
-
-      ind <- ind & not_superseeded
-
-      l <- length(ind_int)
-
-      no_nm <- identical(l, 0L)
-
-      if (no_nm) {
-
-        file_vars <- var_names()
-
-        file_var_type <- file_vars[[var_type]]
-
-        ind <- file_var_type == nm
+        df[[nm]] <- cast_to_type(df[[nm]], vnames[vnames_type == nm, "type"])
 
       }
-
-      type <- file_vars[ind, "type"]
-
-      df_nm <- cast_to_type(ans, type)
-
-      df[[nm]] <- df_nm
 
     }
 
@@ -1017,35 +796,21 @@ add_nas <- function(df) {
 
 #' @noRd
 
-any_issues <- function(fb_occurrence_df) {
+any_issues <- function(df) {
 
-  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+  dwc <- attr(df, "dwc", TRUE)
 
-  var_type <- col_type_string(dwc)
+  vtype <- col_type_string(dwc)
 
-  any_issue <- "unit.quality.documentGatheringUnitQualityIssues"
+  vnms <- sysdata("var_names")
 
-  var_names <- var_names()
+  issues <- vnms[["unit.quality.documentGatheringUnitQualityIssues", vtype]]
 
-  any_issue <- var_names[[any_issue, var_type]]
-
-  select_user <- attr(fb_occurrence_df, "select_user", TRUE)
-
-  df_nms <- names(fb_occurrence_df)
-
-  needs_any_issue <- any_issue %in% select_user
-
-  needs_any_issue <- needs_any_issue && !any_issue %in% df_nms
-
-  if (needs_any_issue) {
+  if (issues %in% attr(df, "select_user", TRUE) && !issues %in% names(df)) {
 
     issue <- logical()
 
-    nrows <- nrow(fb_occurrence_df)
-
-    has_rows <- nrows > 0L
-
-    if (has_rows) {
+    if (nrow(df) > 0L) {
 
       issue <- FALSE
 
@@ -1060,23 +825,19 @@ any_issues <- function(fb_occurrence_df) {
 
       for (i in issue_cols) {
 
-        issue_col <- var_names[[i, var_type]]
+        issue_col_nm <- vnms[[i, vtype]]
 
-        issue_col <- fb_occurrence_df[[issue_col]]
+        issue_col <- df[[issue_col_nm]]
 
-        issue_col_len <- length(issue_col)
-
-        has_issue_col <- issue_col_len > 0L
+        has_issue_col <- length(issue_col) > 0L
 
         if (has_issue_col) {
 
-          issue_col <- !is.na(issue_col)
-
-          issue <- issue | issue_col
+          issue <- issue | !is.na(issue_col)
 
         }
 
-        has_an_issue_col <- has_an_issue_col | has_issue_col
+        has_an_issue_col <- has_an_issue_col || has_issue_col
 
       }
 
@@ -1088,11 +849,11 @@ any_issues <- function(fb_occurrence_df) {
 
     }
 
-    fb_occurrence_df[[any_issue]] <- issue
+    df[[issues]] <- issue
 
   }
 
-  fb_occurrence_df
+  df
 
 }
 
@@ -1101,24 +862,12 @@ any_issues <- function(fb_occurrence_df) {
 
 dt_read <- function(fb_occurrence_obj) {
 
-  select <- fb_occurrence_obj[["select"]]
-
-  n <- fb_occurrence_obj[["n"]]
-
-  quiet <- fb_occurrence_obj[["quiet"]]
-
-  dt <- fb_occurrence_obj[["dt"]]
-
-  keep_tsv <- fb_occurrence_obj[["keep_tsv"]]
-
   skip <- fb_occurrence_obj[["skip"]]
-
-  dt_args <- fb_occurrence_obj[["dt_args"]]
 
   args <- list(
     nrows = 0,
-    showProgress = !quiet,
-    data.table = dt,
+    showProgress = !fb_occurrence_obj[["quiet"]],
+    data.table = fb_occurrence_obj[["dt"]],
     na.strings = "",
     quote = "",
     sep = "\t",
@@ -1128,21 +877,15 @@ dt_read <- function(fb_occurrence_obj) {
     skip = 0L
   )
 
-  args <- c(dt_args, args)
+  args <- c(fb_occurrence_obj[["dt_args"]], args)
 
-  arg_names <- names(args)
-
-  use_zip <- "zip" %in% arg_names
-
-  if (use_zip) {
+  if ("zip" %in% names(args)) {
 
     unzip <- op_unzip()
 
-    args_zip <- args[["zip"]]
+    zip_input <- args[[c("zip", "input")]]
 
-    zip_input <- args_zip[["input"]]
-
-    zip_tsv <- args_zip[["tsv"]]
+    zip_tsv <- args[[c("zip", "tsv")]]
 
     dir <- dirname(zip_input)
 
@@ -1150,19 +893,13 @@ dt_read <- function(fb_occurrence_obj) {
 
     args[["input"]] <- args_input
 
-    input_exists <- file.exists(args_input)
-
-    if (!input_exists) {
+    if (!file.exists(args_input)) {
 
       utils::unzip(zip_input, files = zip_tsv, exdir = dir, unzip = unzip)
 
-      if (!keep_tsv) {
+      if (!fb_occurrence_obj[["keep_tsv"]]) {
 
-        on.exit({
-
-          unlink(args_input)
-
-        })
+        on.exit(unlink(args_input))
 
       }
 
@@ -1184,37 +921,27 @@ dt_read <- function(fb_occurrence_obj) {
 
   file_vars <- infer_file_vars(cols)
 
+  select <- fb_occurrence_obj[["select"]]
+
   select[["file_vars"]] <- file_vars
 
-  lite <- attr(file_vars, "lite", TRUE)
-
-  if (lite) {
+  if (attr(file_vars, "lite", TRUE)) {
 
     args[["quote"]] <- "\""
 
   }
 
-  select_all <- select[["all"]]
+  if (select[["all"]]) {
 
-  if (select_all) {
+    args_select <- !cols %in% deselect(select)
 
-    deselect <- deselect(select)
-
-    args_select <- !cols %in% deselect
-
-    args_select <- which(args_select)
-
-    args[["select"]] <- args_select
+    args[["select"]] <- which(args_select)
 
   } else {
 
     select_query <- select[["query"]]
 
-    iss <- "unit.quality.documentGatheringUnitQualityIssues"
-
-    iss <- iss %in% select_query
-
-    if (iss) {
+    if ("unit.quality.documentGatheringUnitQualityIssues" %in% select_query) {
 
       select_query <- c(
         select_query,
@@ -1230,13 +957,9 @@ dt_read <- function(fb_occurrence_obj) {
 
     select_type <- select[["type"]]
 
-    var_names <- var_names()
+    vnms <- sysdata("var_names")
 
-    select_vars <-  var_names[select_query, select_type]
-
-    file_vars_type <- file_vars[[select_type]]
-
-    select_vars <- file_vars_type %in% select_vars
+    select_vars <- file_vars[[select_type]] %in% vnms[select_query, select_type]
 
     expand_vars <- c(
       "formatted_taxon_name",
@@ -1248,27 +971,17 @@ dt_read <- function(fb_occurrence_obj) {
       "coordinates_10_center_ykj"
     )
 
-    translated_vars <- file_vars[["translated_var"]]
+    select_vars <- switch(
+      attr(file_vars, "locale", TRUE),
+      none = select_vars,
+      file_vars[["translated_var"]] %in% expand_vars | select_vars
+    )
 
-    expand_vars <- translated_vars %in% expand_vars
-
-    expand_vars <- expand_vars | select_vars
-
-    locale <- attr(file_vars, "locale", TRUE)
-
-    select_vars <- switch(locale, none = select_vars, expand_vars)
-
-    file_vars_select <- file_vars[select_vars, ]
-
-    select_vars <- row.names(file_vars_select)
-
-    args_select <- cols %in% select_vars
+    args_select <- cols %in% row.names(file_vars[select_vars, ])
 
     args_select <- which(args_select)
 
-    select_facts <- select[["facts"]]
-
-    for (ftype in select_facts) {
+    for (ftype in select[["facts"]]) {
 
       id_col <- switch(
         ftype,
@@ -1277,9 +990,7 @@ dt_read <- function(fb_occurrence_obj) {
         document = "Document.DocumentID"
       )
 
-      id_col <- cols %in% id_col
-
-      id_col <- which(id_col)
+      id_col <- which(cols %in% id_col)
 
       args_select  <- c(args_select, id_col)
 
@@ -1293,21 +1004,17 @@ dt_read <- function(fb_occurrence_obj) {
 
   }
 
-  args[["nrows"]] <- as.double(n)
+  args[["nrows"]] <- as.double(fb_occurrence_obj[["n"]])
 
   args[["check.names"]] <- TRUE
 
-  skip <- skip + 1L
-
-  args[["skip"]] <- skip
+  args[["skip"]] <- skip + 1L
 
   args[["header"]] <- FALSE
 
   df <- do.call(data.table::fread, args)
 
-  nms <- cols[args_select]
-
-  names(df) <- nms
+  names(df) <- cols[args_select]
 
   classes <- file_vars[cols, "type"]
 
@@ -1317,17 +1024,9 @@ dt_read <- function(fb_occurrence_obj) {
 
   classes <- ifelse(na_classes, "character", classes)
 
-  sq_df <- seq_along(df)
+  for (i in seq_along(df)) {
 
-  for (i in sq_df) {
-
-    dfi <- df[[i]]
-
-    class_i <- classes[[i]]
-
-    dfi <- cast_to_type(dfi, class_i)
-
-    dfi <- df[[i]]
+    df[[i]] <- cast_to_type(df[[i]], classes[[i]])
 
   }
 
@@ -1348,19 +1047,7 @@ rd_read <- function(fb_occurrence_obj) {
 
   tsv <- fb_occurrence_obj[["tsv"]]
 
-  n <- fb_occurrence_obj[["n"]]
-
-  select <- fb_occurrence_obj[["select"]]
-
-  keep_tsv <- fb_occurrence_obj[["keep_tsv"]]
-
-  skip <- fb_occurrence_obj[["skip"]]
-
-  quote <- ""
-
-  use_unzip <- keep_tsv && !grepl("\\.tsv$", file)
-
-  if (use_unzip) {
+  if (fb_occurrence_obj[["keep_tsv"]] && !grepl("\\.tsv$", file)) {
 
     unzip <- op_unzip()
 
@@ -1372,10 +1059,14 @@ rd_read <- function(fb_occurrence_obj) {
 
   connection_obj <- list(file = file, tsv = tsv, mode = "")
 
-  con <- open_tsv_connection(connection_obj)
+  quote <- ""
 
   df <- utils::read.delim(
-    con, nrows = 1L, na.strings = "", quote = quote, skip = 0L
+    open_tsv_connection(connection_obj),
+    nrows = 1L,
+    na.strings = "",
+    quote = quote,
+    skip = 0L
   )
 
   df_names <- names(df)
@@ -1384,21 +1075,19 @@ rd_read <- function(fb_occurrence_obj) {
 
   file_vars <- infer_file_vars(cols)
 
+  select <- fb_occurrence_obj[["select"]]
+
   select[["file_vars"]] <- file_vars
 
-  lite <- attr(file_vars, "lite", TRUE)
-
-  if (lite) {
+  if (attr(file_vars, "lite", TRUE)) {
 
     quote <- "\""
 
   }
 
-  n_int <- as.integer(n)
+  n <- as.integer(fb_occurrence_obj[["n"]])
 
-  is_zero <- identical(n_int, 0L)
-
-  if (is_zero) {
+  if (identical(n, 0L)) {
 
     df <- df[0L, ]
 
@@ -1406,25 +1095,13 @@ rd_read <- function(fb_occurrence_obj) {
 
     connection_obj <- list(file = file, tsv = tsv, mode = "")
 
-    con <- open_tsv_connection(connection_obj)
-
-    skip <- skip + 1L
-
-    nrows <- abs(n)
-
-    nrows <- max(nrows, 1L)
-
-    sign <- sign(n)
-
-    nrows <- nrows * sign
-
     df <- utils::read.delim(
-      con,
+      open_tsv_connection(connection_obj),
       header = FALSE,
       quote = quote,
       na.strings = "",
-      nrows = nrows,
-      skip = skip
+      nrows = n,
+      skip = fb_occurrence_obj[["skip"]] + 1L
     )
 
     classes <- file_vars[cols, "type"]
@@ -1433,31 +1110,19 @@ rd_read <- function(fb_occurrence_obj) {
 
     classes <- ifelse(na_classes, "character", classes)
 
-    sq_df <- seq_along(df)
+    for (i in seq_along(df)) {
 
-    for (i in sq_df) {
-
-      dfi <- df[[i]]
-
-      class_i <- classes[[i]]
-
-      dfi <- cast_to_type(dfi, class_i)
-
-      dfi <- df[[i]]
+      df[[i]] <- cast_to_type(df[[i]], classes[[i]])
 
     }
 
   }
 
-  deselect <- deselect(select)
-
-  idx <- !cols %in% deselect
+  idx <- !cols %in% deselect(select)
 
   df <- df[idx]
 
-  df_names <- cols[idx]
-
-  names(df) <- df_names
+  names(df) <- cols[idx]
 
   attr(df, "file_vars") <- file_vars
 
@@ -1471,15 +1136,11 @@ op_unzip <- function() {
 
   unzip <- "internal"
 
-  option_unzip <- getOption("unzip")
+  op_unzip <- getOption("unzip")
 
-  no_unzip <- is.null(unzip)
+  if (!is.null(op_unzip) && !identical(op_unzip, "")) {
 
-  no_unzip <- no_unzip || identical(unzip, "")
-
-  if (!no_unzip) {
-
-    unzip <- option_unzip
+    unzip <- op_unzip
 
   }
 
@@ -1495,19 +1156,13 @@ deselect <- function(select) {
 
   type <- select[["type"]]
 
-  file_vars_type <- file_vars[[type]]
-
   deselect <- select[["deselect"]]
 
-  var_names <- var_names()
+  var_names <- sysdata("var_names")
 
-  deselect <- var_names[deselect, type]
+  ind <- file_vars[[type]] %in% var_names[deselect, type]
 
-  deselect <- file_vars_type %in% deselect
-
-  deselect <- file_vars[deselect, ]
-
-  row.names(deselect)
+  row.names(file_vars[ind, ])
 
 }
 
@@ -1515,9 +1170,7 @@ deselect <- function(select) {
 
 select_facts <- function(select) {
 
-  lite <- select[["lite"]]
-
-  if (lite) {
+  if (select[["lite"]]) {
 
     select[["facts"]] <- NULL
 
@@ -1541,9 +1194,7 @@ spread_facts <-  function(facts) {
 
   drop_facts_na <- attr(facts, "drop_facts_na", TRUE)
 
-  is_error <- inherits(facts, "try-error")
-
-  if (is_error) {
+  if (inherits(facts, "try-error")) {
 
     facts <- data.frame(
       Parent = NA_character_,
@@ -1571,9 +1222,7 @@ spread_facts <-  function(facts) {
 
   na_ind <- is.na(ind)
 
-  any_na_ind <- any(na_ind)
-
-  if (any_na_ind) {
+  if (any(na_ind)) {
 
     missing_facts <- select[na_ind]
 
@@ -1586,45 +1235,25 @@ spread_facts <-  function(facts) {
       call. = FALSE
     )
 
-    drop <- !isTRUE(drop_facts_na)
-
-    missing_facts <- missing_facts[drop]
+    missing_facts <- missing_facts[!isTRUE(drop_facts_na)]
 
   }
 
-  any_ind_not_na <- !all(na_ind)
-
-  if (any_ind_not_na) {
+  if (!all(na_ind)) {
 
     select <- select[!na_ind]
 
-    ind <- select_facts %in% select
+    facts <- facts[select_facts %in% select, ]
 
-    ind <- which(ind)
+    facts[["Fact"]] <- paste(type, "fact_", facts[["Fact"]], sep = "_")
 
-    facts <- facts[ind, ]
-
-    select_facts <- facts[["Fact"]]
-
-    select_facts <- paste(type, "fact_", select_facts, sep = "_")
-
-    facts[["Fact"]] <- select_facts
-
-    fact_values <- facts[["Value"]]
-
-    fact_ids <- c("Fact", id)
-
-    fact_ids <- facts[fact_ids]
-
-    facts <- tapply(fact_values, fact_ids, c, simplify = FALSE)
+    facts <- tapply(facts[["Value"]], facts[c("Fact", id)], c, simplify = FALSE)
 
     fact_dimnames <- dimnames(facts)
 
     selected_fact_nms <- paste(type, "fact_", select, sep = "_")
 
-    fact_nms <- fact_dimnames[["Fact"]]
-
-    fact_nms <- intersect(selected_fact_nms, fact_nms)
+    fact_nms <- intersect(selected_fact_nms, fact_dimnames[["Fact"]])
 
     colnames <- c(id, fact_nms)
 
@@ -1644,9 +1273,7 @@ spread_facts <-  function(facts) {
 
       fact_i <- unname(fact_i)
 
-      fact_null <- vapply(fact_i, is.null, NA)
-
-      fact_i[fact_null] <- NA
+      fact_i[vapply(fact_i, is.null, NA)] <- NA
 
       fact_i <- unlist_col(fact_i)
 
@@ -1660,9 +1287,9 @@ spread_facts <-  function(facts) {
 
     }
 
-    row_names <- seq_along(ids)
-
-    facts <- structure(fact_list, class = "data.frame", row.names = row_names)
+    facts <- structure(
+      fact_list, class = "data.frame", row.names = seq_along(ids)
+    )
 
   } else {
 
@@ -1672,9 +1299,7 @@ spread_facts <-  function(facts) {
 
   for (mf in missing_facts) {
 
-    mfacts <- paste(type, "fact_", mf, sep = "_")
-
-    facts[[mfacts]] <- NA_character_
+    facts[[paste(type, "fact_", mf, sep = "_")]] <- NA_character_
 
   }
 
@@ -1692,31 +1317,23 @@ bind_facts <- function(x) {
 
   id <- attr(facts, "id", TRUE)
 
-  nms <- names(x)
+  stopifnot("Cannot bind facts. ID column missing from data" = id %in% names(x))
 
-  has_id <- id %in% nms
-
-  stopifnot("Cannot bind facts. ID column missing from data" = has_id)
-
-  attr <- attributes(x)
-
-  facts_id <- facts[[id]]
+  matches <- match(x[[id]], facts[[id]])
 
   facts[[id]] <- NULL
 
-  records_id <- x[[id]]
-
-  matches <- match(records_id, facts_id)
-
   facts <- facts[matches, , drop = FALSE]
 
-  x <- cbind(x, facts)
+  ans <- cbind(x, facts)
 
-  attr[["names"]] <- names(x)
+  attr <- attributes(x)
 
-  attributes(x) <- attr
+  attr[["names"]] <- names(ans)
 
-  x
+  attributes(ans) <- attr
+
+  ans
 
 }
 
@@ -1726,25 +1343,15 @@ short_nms <- function(file_vars) {
 
   var_type <- attr(file_vars, "var_type", TRUE)
 
-  short_nms <- file_vars[["shrtnm"]]
-
-  short_nms <- c(short_nms, "abund", "crdUncert", "sciNm")
+  short_nms <- c(file_vars[["shrtnm"]], "abund", "crdUncert", "sciNm")
 
   translated_var <- c("abundance", "coordinates_uncertainty", "scientific_name")
 
   dwc <- c("individualCount", "coordinateUncertaintyInMeters", "scientificName")
 
-  nms <- switch(
-    var_type,
-    translated_var = translated_var,
-    dwc = dwc
-  )
+  nms <- switch(var_type, translated_var = translated_var, dwc = dwc)
 
-  file_vars_type <- file_vars[[var_type]]
-
-  nms <- c(file_vars_type, nms)
-
-  names(short_nms) <- nms
+  names(short_nms) <- c(file_vars[[var_type]], nms)
 
   short_nms
 
@@ -1760,15 +1367,15 @@ unlist_col <- function(col) {
 
   col_unlisted_len <- length(col_unlisted)
 
-  len_eql <- identical(col_len, col_unlisted_len)
+  if (identical(col_len, col_unlisted_len)) {
 
-  if (len_eql) {
+    col_unlisted
 
-    col <- col_unlisted
+  } else {
+
+    col
 
   }
-
-  col
 
 }
 
@@ -1776,39 +1383,29 @@ unlist_col <- function(col) {
 
 convert_col_type <- function(col) {
 
-  is_list <- is.list(col)
-
-  if (is_list) {
+  if (is.list(col)) {
 
     col <- vapply(col, paste_col, "")
 
   }
 
-  empty_col <- col == ""
+  col[col == ""] <- NA_character_
 
-  col[empty_col] <- NA_character_
+  nws <- trimws(col)
 
-  col_na <- is.na(col)
+  nws_no_na <- nws[!is.na(col)]
 
-  col_nws <- trimws(col)
+  num <- grepl("^[-+]?[0-9]*[\\.,]?[0-9]+([eE][-+]?[0-9]+)?$", nws_no_na)
 
-  col_nws_no_na <- col_nws[!col_na]
+  if (all(num)) {
 
-  is_num <- grepl("^[-+]?[0-9]*[\\.,]?[0-9]+([eE][-+]?[0-9]+)?$", col_nws_no_na)
+    col <- as.numeric(nws)
 
-  is_num <- all(is_num)
+    int <- !grepl("[\\.,]", nws_no_na)
 
-  if (is_num) {
+    if (all(int)) {
 
-    is_int <- !grepl("[\\.,]", col_nws_no_na)
-
-    is_int <- all(is_int)
-
-    col <- as.numeric(col_nws)
-
-    if (is_int) {
-
-      col <- as.integer(col_nws)
+      col <- as.integer(nws)
 
     }
 
@@ -1822,9 +1419,7 @@ convert_col_type <- function(col) {
 
 paste_col <- function(x) {
 
-  is_na <- is.na(x)
-
-  x[is_na] <- ""
+  x[is.na(x)] <- ""
 
   paste(x, collapse = ", ")
 
@@ -1834,33 +1429,15 @@ paste_col <- function(x) {
 
 infer_file_vars <- function(cols) {
 
-  file_vars <- cite_file_vars()
+  if (length(cols) < 100L && !"Fact" %in% cols) {
 
-  attr(file_vars, "lite") <- FALSE
+    file_vars <- sysdata("lite_download_file_vars")
 
-  locale <- "none"
-
-  n_cols <- length(cols)
-
-  small_n_cols <- n_cols < 100L
-
-  is_fact_df <- "Fact" %in% cols
-
-  lite <- small_n_cols && !is_fact_df
-
-  if (lite) {
-
-    lite_download_file_vars <- lite_download_file_vars()
-
-    file_vars <- lite_download_file_vars
-
-    locale <- lapply(lite_download_file_vars, intersect, cols)
+    locale <- lapply(file_vars, intersect, cols)
 
     locale <- vapply(locale, length, 0L)
 
-    mx <- max(locale)
-
-    locale <- locale == mx
+    locale <- locale == max(locale)
 
     locale <- which(locale)
 
@@ -1876,15 +1453,21 @@ infer_file_vars <- function(cols) {
 
     locale <- locale_nms[[1L]]
 
-    file_vars_locale <- file_vars[[locale]]
-
-    rownames(file_vars) <- file_vars_locale
+    rownames(file_vars) <- file_vars[[locale]]
 
     attr(file_vars, "lite") <- TRUE
 
-  }
+    attr(file_vars, "locale") <- locale
 
-  attr(file_vars, "locale") <- locale
+  } else {
+
+    file_vars <- sysdata("cite_file_vars")
+
+    attr(file_vars, "lite") <- FALSE
+
+    attr(file_vars, "locale") <- "none"
+
+  }
 
   file_vars
 
@@ -1892,31 +1475,17 @@ infer_file_vars <- function(cols) {
 
 #' @noRd
 
-preprocess_data_file <- function(file) {
-
-  ext <- get_ext(file)
-
-  switch(ext, .ods = from_ods(file), xlsx = from_xlsx(file), file)
-
-}
-
-#' @noRd
-
 nlines <- function(fb_occurrence_obj) {
 
-  file <- fb_occurrence_obj[["file"]]
-
-  tsv <- fb_occurrence_obj[["tsv"]]
-
-  connection_obj <- list(file = file, tsv = tsv, mode = "rb")
+  connection_obj <- list(
+    file = fb_occurrence_obj[["file"]],
+    tsv = fb_occurrence_obj[["tsv"]],
+    mode = "rb"
+  )
 
   con <- open_tsv_connection(connection_obj)
 
-  on.exit({
-
-    close(con)
-
-  })
+  on.exit(close(con))
 
   n <- -1L
 
@@ -1926,13 +1495,9 @@ nlines <- function(fb_occurrence_obj) {
 
     chunk <- readBin(con, "raw", 65536L)
 
-    raw10 <- as.raw(10L)
+    chunk_10 <- chunk == as.raw(10L)
 
-    chunk_10 <- chunk == raw10
-
-    subtotal <- sum(chunk_10)
-
-    n <- n + subtotal
+    n <- n + sum(chunk_10)
 
     empty <- raw(0L)
 
@@ -1950,25 +1515,15 @@ open_tsv_connection <- function(connection_obj) {
 
   file <- connection_obj[["file"]]
 
-  tsv <- connection_obj[["tsv"]]
-
   mode <- connection_obj[["mode"]]
-
-  ext <- get_ext(file)
-
-  switch(ext, .tsv = file(file, mode), unz(file, tsv, mode))
-
-}
-
-#' @noRd
-
-get_ext <- function(file) {
 
   nchars <- nchar(file)
 
-  start <- nchars - 3L
-
-  substring(file, start, nchars)
+  switch(
+    substring(file, nchars - 3L, nchars),
+    .tsv = file(file, mode),
+    unz(file, connection_obj[["tsv"]], mode)
+  )
 
 }
 
@@ -1976,9 +1531,7 @@ get_ext <- function(file) {
 
 from_ods <- function(file) {
 
-  has_read_ods <- has_pkgs("readODS")
-
-  stopifnot("Package {readODS} required for ODS files" = has_read_ods)
+  stopifnot("Package {readODS} required for ODS files" = has_pkgs("readODS"))
 
   df <- readODS::read_ods(file, col_types = NA)
 
@@ -1990,9 +1543,7 @@ from_ods <- function(file) {
 
 from_xlsx <- function(file) {
 
-  has_readxl <- has_pkgs("readxl")
-
-  stopifnot("Package {readxl} required for Excel files" = has_readxl)
+  stopifnot("Package {readxl} required for Excel files" = has_pkgs("readxl"))
 
   df <- readxl::read_xlsx(
     file,
@@ -2027,9 +1578,7 @@ expand_lite_cols <- function(df) {
 
   select <- attr(df, "select", TRUE)
 
-  add <- !select[["all"]]
-
-  if (add) {
+  if (!select[["all"]]) {
 
     formatted_taxon_name <- c(
       "scientific_name_interpreted",
@@ -2068,8 +1617,6 @@ expand_lite_cols <- function(df) {
 
     locale <- attr(file_vars, "locale", TRUE)
 
-    translated_vars <- file_vars[["translated_var"]]
-
     cols <- c(
       "formatted_taxon_name",
       "formatted_date_time",
@@ -2080,25 +1627,19 @@ expand_lite_cols <- function(df) {
       "coordinates_10_center_ykj"
     )
 
-    cols <- translated_vars %in% cols
+    translated_vars <- file_vars[["translated_var"]]
 
-    cols <- which(cols)
+    for (col in which(translated_vars %in% cols)) {
 
-    for (col in cols) {
-
-      col_nm <- file_vars[col, ]
-
-      col_nm <- rownames(col_nm)
-
-      has_col_nm <- col_nm %in% df_names
+      col_nm <- rownames(file_vars[col, ])
 
       df_col <- df[[col_nm]]
 
       df_col_na <- is.na(df_col)
 
-      expand <- has_col_nm && !all(df_col_na)
+      has_col_nm <- col_nm %in% df_names && !all(df_col_na)
 
-      if (expand) {
+      if (has_col_nm) {
 
         attr(df_col, "locale") <- locale
 
@@ -2131,31 +1672,21 @@ expand_lite_cols <- function(df) {
           coordinates_10_center_ykj = coordinates_10_center_ykj
         )
 
-        new_cols <- translated_vars %in% new_cols
+        new_cols <- rownames(file_vars[translated_vars %in% new_cols, ])
 
-        new_cols <- file_vars[new_cols, ]
-
-        new_cols <- rownames(new_cols)
-
-        sq <- seq_along(new_cols)
-
-        for (i in sq) {
+        for (i in seq_along(new_cols)) {
 
           col <- new_cols[[i]]
 
           dfi <- df[[col]]
 
-          no_col <- is.null(dfi)
-
           na_dfi <- is.na(dfi)
 
-          no_col <- no_col || all(na_dfi)
+          no_col <- is.null(dfi) || all(na_dfi)
 
           if (no_col) {
 
-             dfi <- split_cols[[i]]
-
-             df[[col]] <- dfi
+             df[[col]] <- split_cols[[i]]
 
           }
 
@@ -2175,41 +1706,33 @@ expand_lite_cols <- function(df) {
 
 split_taxa_col <- function(col) {
 
-  locale <- attr(col, "locale", TRUE)
+  col_list <- list(col, n = 2L, split = " \u2014 ")
 
-  col <- list(col, n = 2L, split = " \u2014 ")
+  split_cols <- split_col(col_list)
 
-  split_cols <- split_col(col)
+  col_list2 <- list(split_cols[[2L]], n = 2L, split = " \\(|\\)")
 
-  col1 <- split_cols[[1L]]
-
-  col2 <- split_cols[[2L]]
-
-  col2 <- list(col2, n = 2L, split = " \\(|\\)")
-
-  common_names <- split_col(col2)
+  common_names <- split_col(col_list2)
 
   common_names1 <- common_names[[1L]]
 
   common_names2 <- common_names[[2L]]
 
-  split_cols <- list(scientific_name = col1)
-
   common_names_na <- is.na(common_names1)
+
+  locale <- attr(col, "locale", TRUE)
 
   common_names1 <- ifelse(common_names_na, locale, common_names1)
 
-  locales <- c("en", "fi", "sv")
+  split_cols <- list(scientific_name = split_cols[[1L]])
 
-  for (loc in locales) {
+  for (loc in c("en", "fi", "sv")) {
 
     ind <- common_names1 == loc
 
     col_loc <- NA_character_
 
-    col_loc_values <- common_names2[ind]
-
-    col_loc[ind] <- col_loc_values
+    col_loc[ind] <- common_names2[ind]
 
     split_cols[[loc]] <- col_loc
 
@@ -2239,8 +1762,6 @@ split_dt_col <- function(col) {
 
   dates_na <- is.na(dates1)
 
-  dates1 <- ifelse(dates_na, dates2, dates1)
-
   times <- lapply(col, "[[", 1L)
 
   times <- lapply(times, list, n = 2L, split = "-")
@@ -2253,45 +1774,25 @@ split_dt_col <- function(col) {
 
   times2 <- times[[2L]]
 
-  times2_1 <- times2[[1L]]
-
-  start_times <- times2[[2L]]
-
-  start_times <- list(start_times, n = 2L, split = ":")
+  start_times <- list(times2[[2L]], n = 2L, split = ":")
 
   start_times <- split_col(start_times)
 
-  minute_start <- start_times[[1L]]
-
-  minute_start <- as.integer(minute_start)
-
-  hour_start <- start_times[[2L]]
-
-  hour_start <- as.integer(hour_start)
-
   times_na <- is.na(times1)
 
-  end_times <- ifelse(times_na, times2_1, times1)
+  end_times <- ifelse(times_na, times2[[1L]], times1)
 
   end_times <- list(end_times, n = 2L, split = ":")
 
   end_times <- split_col(end_times)
 
-  minute_end <- end_times[[1L]]
-
-  minute_end <- as.integer(minute_end)
-
-  hour_end <- end_times[[2L]]
-
-  hour_end <- as.integer(hour_end)
-
   list(
     date_start = dates2,
-    date_end = dates1,
-    hour_start = hour_start,
-    hour_end =  hour_end,
-    minute_start = minute_start,
-    minute_end = minute_end
+    date_end = ifelse(dates_na, dates2, dates1),
+    hour_start = as.integer(start_times[[2L]]),
+    hour_end =  as.integer(end_times[[2L]]),
+    minute_start = as.integer(start_times[[1L]]),
+    minute_end = as.integer(end_times[[1L]])
   )
 
 }
@@ -2326,17 +1827,11 @@ split_coord_euref_col <- function(col) {
 
 split_col <- function(split_obj) {
 
-  col <- split_obj[[1L]]
+  col <- as.character(split_obj[[1L]])
 
-  col <- as.character(col)
+  sq <- seq_len(split_obj[["n"]])
 
-  n <- split_obj[["n"]]
-
-  sq <- seq_len(n)
-
-  split <- split_obj[["split"]]
-
-  split_cols <- strsplit(col, split)
+  split_cols <- strsplit(col, split_obj[["split"]])
 
   split_cols <- lapply(split_cols, c, NA_character_)
 

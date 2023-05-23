@@ -24,7 +24,7 @@ unit.linkings.taxon.taxonRank,taxon_rank_id,taxonRankID,FALSE,FALSE,character,ur
 computed_var_from_id_taxon_rank,taxon_rank,taxonRank,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.abundanceString,abundance_verbatim,verbatimAbundance,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.countryDisplayname,country_display,countryDisplay,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-gathering.interpretations.biogeographicalProvinceDisplayname,bio_province,bioStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+gathering.interpretations.biogeographicalProvinceDisplayname,bio_province_interpreted,bioStateProvinceInterpreted,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 computed_var_from_id_municipality,municipality,county,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 computed_var_region,region,stateProvince,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.wgs84WKT,footprint_wgs84,footprintWKT,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
@@ -202,6 +202,7 @@ gathering.facts.value,event_fact_value,eventFactValue,FALSE,FALSE,character,char
 gathering.gatheringOrder,event_order,eventOrder,FALSE,FALSE,integer,integer,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.higherGeography,higher_geography,higherGeography,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.biogeographicalProvince,bio_province_id,bioStateProvinceID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+computed_var_from_id_bio_province,bio_province,bioStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.biogeographicalProvinces,bio_province_ids,bioStateProvinceIDs,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.country,country_id,countryID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 computed_var_from_id_country,country,country,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE

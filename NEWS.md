@@ -1,3 +1,44 @@
+# finbif 0.9.0
+
+#### NEW FEATURES
+
+  - New function `finbif_update_cache` can be used to update all the
+    cached objects that have reached their expiration and are no longer
+    valid.
+
+  - A restricted data API token can be explicitly declared via the
+    `restricted_api` argument to `finbif_occurrence`.
+
+  - Cached data can use a database as a backend by passing a `DBI`
+    database connection object to the package option
+    `finbif_cache_path`.
+
+  - Cached data can be assigned a timeout by using a number (hours)
+    instead of a logical value for the `cache` argument to `finbif_`
+    functions or the package option `finbif_use_cache`.
+
+  - Record aggregations with `finbif_occurrence` can now be combined
+    with multi-filter requests. Removing duplicate records or aggregate
+    record combinations can be controlled with the `duplicates` argument
+    and adding a column indicating the filter sets can be added with the
+    `filter_col` argument.
+
+##### BUG FIXES
+
+  - Fixed a bug causing an infinite recursion when determining page size
+    during record download pagination.
+
+  - Fix bug triggered when using aggregation with some selected
+    variables.
+
+#### DEFUNCT
+
+  - Mapping utilities `finland_map`, `breaks_xy`, `hist_xy` and the plot
+    method for `finbif_occ` objects are now defunct.
+
+  - User access to `finbif_records` and its classes and methods is now
+    defunct.
+
 # finbif 0.8.0
 
 #### DEPRECATION
@@ -117,7 +158,7 @@
 
 #### MINOR IMPROVEMENTS
 
-  - For clarity, KKJ coordinate reference system is now refered to as
+  - For clarity, KKJ coordinate reference system is now referred to as
     YKJ.
 
   - When selecting all available variables for download file imports

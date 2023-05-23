@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 30 Mar 2023 06:41:43 GMT
+      date: Tue, 23 May 2023 08:06:55 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -29,5 +29,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"currentPage":1,"lastPage":1,"pageSize":1000,"total":10,"results":[{"unit":{"unitId":"http://mus.utu.fi/MY.10888542"}},{"unit":{"unitId":"http://mus.utu.fi/MY.10888538"}},{"unit":{"unitId":"http://mus.utu.fi/MY.4247571"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475339"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475342"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475121"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475348"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475351"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475184"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475345"}}]}'
-  recorded_at: 2023-03-30 06:41:43 GMT
+  recorded_at: 2023-05-23 08:06:55 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

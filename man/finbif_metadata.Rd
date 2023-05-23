@@ -5,11 +5,17 @@
 \alias{fb_metadata}
 \title{FinBIF metadata}
 \usage{
-finbif_metadata(which)
+finbif_metadata(which, locale = getOption("finbif_locale"))
 }
 \arguments{
 \item{which}{Character. Which category of metadata to display. If
 unspecified, function returns the categories of metadata available.}
+
+\item{locale}{Character. One of the supported two-letter ISO 639-1 language
+codes. Current supported languages are English, Finnish and Swedish. For
+data where more than one language is available the language denoted by
+\code{locale} will be preferred while falling back to the other languages in the
+order indicated above.}
 }
 \value{
 A data.frame.

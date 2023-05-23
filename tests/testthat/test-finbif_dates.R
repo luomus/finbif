@@ -1,20 +1,3 @@
-suppressMessages(insert_cassette("dates"))
-
-test_that(
-  "return valid data", {
-
-    skip_on_cran()
-
-    records <-
-      finbif_records(filter = list(date_range_ymd = c("2001", "2008")))
-
-    expect_output(print(records), "FinBIF")
-
-  }
-)
-
-suppressMessages(eject_cassette("dates"))
-
 test_that(
   "returns errors appropriately", {
 
