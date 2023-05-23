@@ -1,71 +1,42 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.8.0.9006}{
+\section{finbif version 0.9.0}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item New function \code{finbif_update_cache} can be used to update all
         the cached objects that have reached their expiration and are no longer
         valid.
-    }
-  }
-}
-
-\section{finbif version 0.8.0.9005}{
-  \subsection{NEW FEATURES}{
-    \itemize{
       \item A restricted data API token can be explicitly declared via the
         \code{restricted_api} argument to \code{finbif_occurrence}.
-    }
-  }
-}
-
-\section{finbif version 0.8.0.9004}{
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Fixed a bug causing an infinite recursion when determining page size
-        during record download pagination.
-    }
-  }
-}
-
-\section{finbif version 0.8.0.9003}{
-  \subsection{NEW FEATURES}{
-    \itemize{
       \item Cached data can use a database as a backend by passing a \code{DBI}
         database connection object to the package option
         \code{finbif_cache_path}.
-    }
-  }
-}
-
-\section{finbif version 0.8.0.9002}{
-  \subsection{NEW FEATURES}{
-    \itemize{
       \item Cached data can be assigned a timeout by using a number (hours)
         instead of a logical value for the \code{cache} argument to
         \code{finbif_} functions or the package option \code{finbif_use_cache}.
-    }
-  }
-}
-
-\section{finbif version 0.8.0.9001}{
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Fix bug triggered when using aggregation with some selected
-        variables.
-    }
-  }
-}
-
-\section{finbif version 0.8.0.9000}{
-  \subsection{NEW FEATURES}{
-    \itemize{
       \item Record aggregations with \code{finbif_occurrence} can now be
         combined with multi-filter requests. Removing duplicate records or
         aggregate record combinations can be controlled with the
         \code{duplicates} argument and adding a column indicating the filter
         sets can be added with the \code{filter_col} argument.
+      }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed a bug causing an infinite recursion when determining page size
+        during record download pagination.
+      \item Fix bug triggered when using aggregation with some selected
+        variables.
+      }
+    }
+  }
+  \subsection{DEFUNCT}{
+    \itemize{
+      \item Mapping utilities \code{finland_map}, \code{breaks_xy},
+        \code{hist_xy} and the plot method for \code{finbif_occ} objects are now
+        defunct.
+      \item User access to \code{finbif_records} and its classes and methods is
+        now defunct.
     }
   }
 }

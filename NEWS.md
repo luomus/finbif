@@ -1,4 +1,4 @@
-# finbif 0.8.0.9006
+# finbif 0.9.0
 
 #### NEW FEATURES
 
@@ -6,52 +6,38 @@
     cached objects that have reached their expiration and are no longer
     valid.
 
-# finbif 0.8.0.9005
-
-#### NEW FEATURES
-
   - A restricted data API token can be explicitly declared via the
     `restricted_api` argument to `finbif_occurrence`.
-
-# finbif 0.8.0.9004
-
-#### BUG FIXES
-
-  - Fixed a bug causing an infinite recursion when determining page size
-    during record download pagination.
-
-# finbif 0.8.0.9003
-
-#### NEW FEATURES
 
   - Cached data can use a database as a backend by passing a `DBI`
     database connection object to the package option
     `finbif_cache_path`.
 
-# finbif 0.8.0.9002
-
-#### NEW FEATURES
-
   - Cached data can be assigned a timeout by using a number (hours)
     instead of a logical value for the `cache` argument to `finbif_`
     functions or the package option `finbif_use_cache`.
-
-# finbif 0.8.0.9001
-
-#### BUG FIXES
-
-  - Fix bug triggered when using aggregation with some selected
-    variables.
-
-# finbif 0.8.0.9000
-
-#### NEW FEATURES
 
   - Record aggregations with `finbif_occurrence` can now be combined
     with multi-filter requests. Removing duplicate records or aggregate
     record combinations can be controlled with the `duplicates` argument
     and adding a column indicating the filter sets can be added with the
     `filter_col` argument.
+
+##### BUG FIXES
+
+  - Fixed a bug causing an infinite recursion when determining page size
+    during record download pagination.
+
+  - Fix bug triggered when using aggregation with some selected
+    variables.
+
+#### DEFUNCT
+
+  - Mapping utilities `finland_map`, `breaks_xy`, `hist_xy` and the plot
+    method for `finbif_occ` objects are now defunct.
+
+  - User access to `finbif_records` and its classes and methods is now
+    defunct.
 
 # finbif 0.8.0
 
