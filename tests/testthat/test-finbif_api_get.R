@@ -1,6 +1,8 @@
 test_that(
   "with missing token returns error", {
 
+    skip_on_cran()
+
     token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
     Sys.unsetenv("FINBIF_ACCESS_TOKEN")
 
