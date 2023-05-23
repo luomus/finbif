@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MX.adminStatusEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MX.adminStatusEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 May 2023 08:08:57 GMT
+      date: Tue, 23 May 2023 09:52:38 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"be8c-c/tj38Lebm+v2OQpNIK2otp/bYE"
+      etag: W/"be8c-V21NW+gpugpyJGv024Hv3pYx6ek"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -453,19 +453,19 @@ http_interactions:
         – Lajiturva-hankkeessa 2019–2021 laadittu lajiluettelo), mutta siitä on poistettu
         silmälläpidettävät lajit sekä sellaisia lintu- ja riistaeläinlajeja, joiden
         luonnonsuojelulain mukaisen suojelun valvonta ei tällä hetkellä ole mahdollista
-        automaattisella menettelyllä.","en":"","sv":""}},{"id":"MX.finlex160_1997_appendix4","value":{"sv":"FÖRÅLDRAD
-        Hotade arter (NVF 1997/160, bilaga 4 2013/471)","fi":"VANHA Uhanalaiset lajit
-        (LSA 1997/160, liite 4 2013/471)","en":"OUTDATED Threatened species (NCD 1997/160,
-        Appendix 4 2013/471)"},"administrativeStatusDescription":{"fi":"Tämä on vanhentunut
-        luettelo joka on korvattu uudella vuonna 2021. Luonnonsuojeluasetuksella voidaan
-        säätää uhanalaiseksi lajiksi sellainen luonnonvarainen eliölaji, jonka luontainen
-        säilyminen Suomessa on vaarantunut.","en":"","sv":""},"administrativeStatusLink":{"fi":"http://www.finlex.fi/fi/laki/ajantasa/1997/19970160","en":"","sv":""}},{"id":"MX.finlex160_1997_appendix4_specialInterest","value":{"fi":"VANHA
+        automaattisella menettelyllä.","en":"","sv":""}},{"id":"MX.finlex160_1997_appendix4","value":{"fi":"VANHA
+        Uhanalaiset lajit (LSA 1997/160, liite 4 2013/471)","en":"OUTDATED Threatened
+        species (NCD 1997/160, Appendix 4 2013/471)","sv":"FÖRÅLDRAD Hotade arter
+        (NVF 1997/160, bilaga 4 2013/471)"},"administrativeStatusDescription":{"fi":"Tämä
+        on vanhentunut luettelo joka on korvattu uudella vuonna 2021. Luonnonsuojeluasetuksella
+        voidaan säätää uhanalaiseksi lajiksi sellainen luonnonvarainen eliölaji, jonka
+        luontainen säilyminen Suomessa on vaarantunut.","en":"","sv":""},"administrativeStatusLink":{"fi":"http://www.finlex.fi/fi/laki/ajantasa/1997/19970160","en":"","sv":""}},{"id":"MX.finlex160_1997_appendix4_specialInterest","value":{"en":"OUTDATED
+        Species under strict protection (NCD 1997/160, Appendix 4 2013/471)","fi":"VANHA
         Erityisesti suojeltavat lajit (LSA 1997/160, liite 4 2013/471)","sv":"FÖRÅLDRAD
-        Särskilt skydda arter (NVF 1997/160, bilaga 4 2013/471)","en":"OUTDATED Species
-        under strict protection (NCD 1997/160, Appendix 4 2013/471)"},"administrativeStatusDescription":{"fi":"Tämä
+        Särskilt skydda arter (NVF 1997/160, bilaga 4 2013/471)"},"administrativeStatusDescription":{"fi":"Tämä
         on vanhentunut luettelo. Luettelo on korvattu uudella vuonna 2021. Luonnonsuojeluasetuksella
         voidaan säätää erityisesti suojeltavaksi lajiksi sellainen uhanalainen eliölaji,
         jonka häviämisuhka on ilmeinen. Erityisesti suojeltavan lajin säilymiselle
         tärkeän esiintymispaikan hävittäminen tai heikentäminen on kielletty.","en":"","sv":""},"administrativeStatusLink":{"sv":"http://www.finlex.fi/sv/laki/ajantasa/1997/19970160","fi":"http://www.finlex.fi/fi/laki/ajantasa/1997/19970160","en":""}}]'
-  recorded_at: 2023-05-23 08:08:57 GMT
+  recorded_at: 2023-05-23 09:52:38 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

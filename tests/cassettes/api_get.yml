@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,11 +15,12 @@ http_interactions:
       reason: Bad Request
       message: 'Client error: (400) Bad Request'
     headers:
-      date: Tue, 23 May 2023 08:00:22 GMT
+      date: Tue, 23 May 2023 09:51:23 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,11 +29,11 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"status":400,"message":"No such field for base UNIT: not_a_var"}'
-  recorded_at: 2023-05-23 08:00:54 GMT
+  recorded_at: 2023-05-23 09:51:26 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -46,11 +47,12 @@ http_interactions:
       reason: Bad Request
       message: 'Client error: (400) Bad Request'
     headers:
-      date: Tue, 23 May 2023 08:00:23 GMT
+      date: Tue, 23 May 2023 09:51:24 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -59,11 +61,11 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"status":400,"message":"No such field for base UNIT: not_a_var"}'
-  recorded_at: 2023-05-23 08:00:54 GMT
+  recorded_at: 2023-05-23 09:51:26 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=not_a_var&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -77,11 +79,12 @@ http_interactions:
       reason: Bad Request
       message: 'Client error: (400) Bad Request'
     headers:
-      date: Tue, 23 May 2023 08:00:27 GMT
+      date: Tue, 23 May 2023 09:51:26 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -90,11 +93,11 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"status":400,"message":"No such field for base UNIT: not_a_var"}'
-  recorded_at: 2023-05-23 08:00:54 GMT
+  recorded_at: 2023-05-23 09:51:26 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?format=xml&page=1&pageSize=1&selected=unit.unitId&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?format=xml&page=1&pageSize=1&selected=unit.unitId&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -108,12 +111,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 May 2023 08:00:54 GMT
+      date: Tue, 23 May 2023 09:51:26 GMT
       content-type: application/xml;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -121,6 +125,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: <response><currentPage>1</currentPage><nextPage>2</nextPage><lastPage>46892197</lastPage><pageSize>1</pageSize><total>46892197</total><cacheTimestamp>1684828854</cacheTimestamp><results><unit><unitId>http://tun.fi/JX.1583879#3</unitId></unit></results></response>
-  recorded_at: 2023-05-23 08:00:54 GMT
+      string: <response><currentPage>1</currentPage><nextPage>2</nextPage><lastPage>2441241</lastPage><pageSize>1</pageSize><total>2441241</total><cacheTimestamp>1684835486</cacheTimestamp><results><unit><unitId>http://tun.fi/JX.298017#3</unitId></unit></results></response>
+  recorded_at: 2023-05-23 09:51:26 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
