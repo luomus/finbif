@@ -47,11 +47,6 @@ test_that(
     expect_s3_class(with_progress, "finbif_occ")
 
     expect_s3_class(
-      finbif_occurrence("Vulpes vulpes", sample = TRUE, n = 1600, quiet = TRUE),
-      "finbif_occ"
-    )
-
-    expect_s3_class(
       finbif_occurrence(
         select = "taxon_id", sample = TRUE, n = 3001, quiet = TRUE
       ),
@@ -197,6 +192,38 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_occurrence"))
+
+suppressMessages(insert_cassette("finbif_occurrence_dups"))
+
+test_that(
+  "duplicate records are handled correctly", {
+
+    n <- 1600
+
+    dev <- identical(getOption("finbif_api_url"), "https://apitest.laji.fi")
+
+    if (dev) {
+
+      op <- options()
+
+      options(finbif_max_page_size = 100L)
+
+      n <- 300L
+
+    }
+
+    expect_s3_class(
+      finbif_occurrence("Vulpes vulpes", sample = TRUE, n = n, quiet = TRUE),
+      "finbif_occ"
+    )
+
+    if (dev) options(op)
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_dups"))
 
 suppressMessages(insert_cassette("finbif_occurrence_low"))
 
