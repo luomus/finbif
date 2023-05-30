@@ -700,3 +700,7 @@ unit.identificationBasis,identification_basis,basisOfIndentification,FALSE,FALSE
 unit.samplingMethod,sampling_method,measurementMethod,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.conversions.birdAssociationArea,bird_assoc_area_id,birdAssociationAreaId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 unit.primarySpecimen,primary_specimen,primarySpecimen,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+document.siteDead,site_dead,siteDead,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+gathering.accurateArea,accurate_area,accurateArea,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+document.namedPlace.wgs84CenterPoint.lat,location_lat_wgs84,locationDecimalLatitude,FALSE,FALSE,double,double,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.wgs84CenterPoint.lon,location_lon_wgs84,locationDecimalLongitude,FALSE,FALSE,double,double,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
