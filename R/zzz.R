@@ -18,6 +18,7 @@
     finbif_retry_pause_cap = 60L,
     finbif_retry_pause_min = 1L,
     finbif_use_cache = TRUE,
+    finbif_use_cache_metadata = FALSE,
     finbif_timeout_offset = 0,
     finbif_tz = Sys.timezone(),
     finbif_locale = get_locale()

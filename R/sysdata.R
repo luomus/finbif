@@ -50,10 +50,14 @@ sysdata <- function(which) {
 
 get_sysdata <- function(x) {
 
+  cache <- getOption("finbif_use_cache")
+
+  cache <- cache || getOption("finbif_use_cache_metadata")
+
   request <- list(
     path = paste0("metadata/ranges/", x),
     query = list(lang = "multi"),
-    cache = getOption("finbif_use_cache")
+    cache = cache
   )
 
   sd_response <- api_get(request)
@@ -88,9 +92,13 @@ get_sysdata <- function(x) {
 
 get_enumeration <- function(obj) {
 
+  cache <- getOption("finbif_use_cache")
+
+  cache <- cache || getOption("finbif_use_cache_metadata")
+
   request <- list(
     path = "warehouse/enumeration-labels",
-    cache = getOption("finbif_use_cache")
+    cache = cache
   )
 
   en_response <- api_get(request)
@@ -165,10 +173,14 @@ get_code <- function(obj) {
 
 get_areas <- function(x) {
 
+  cache <- getOption("finbif_use_cache")
+
+  cache <- cache || getOption("finbif_use_cache_metadata")
+
   request <- list(
     path = "areas",
     query = list(type = x, lang = "multi", pageSize = 1000L),
-    cache = getOption("finbif_use_cache")
+    cache = cache
   )
 
   sd_response <- api_get(request)
@@ -354,10 +366,14 @@ red_list_status <- function() {
 
 informal_groups <- function() {
 
+  cache <- getOption("finbif_use_cache")
+
+  cache <- cache || getOption("finbif_use_cache_metadata")
+
   request <- list(
     path = "informal-taxon-groups",
     query = list(lang = "multi", pageSize = 1000L),
-    cache = getOption("finbif_use_cache")
+    cache = cache
   )
 
   sd_response <- api_get(request)
@@ -857,10 +873,14 @@ finnish_occurrence_status <- function() {
 
 sources <- function() {
 
+  cache <- getOption("finbif_use_cache")
+
+  cache <- cache || getOption("finbif_use_cache_metadata")
+
   request <- list(
     path = "sources",
-    query =  list(lang = "multi", pageSize = 1000L),
-    cache = getOption("finbif_use_cache")
+    query = list(lang = "multi", pageSize = 1000L),
+    cache = cache
   )
 
   sd_response <- api_get(request)

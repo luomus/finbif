@@ -1,3 +1,10 @@
+# finbif 0.9.0.9000
+
+#### NEW FEATURES
+
+  - New option `finbif_use_cache_metadata` to set caching for metadata
+    only. Is ignored if `finbif_use_cache` is `TRUE`.
+
 # finbif 0.9.0
 
 #### NEW FEATURES
