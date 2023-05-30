@@ -52,12 +52,10 @@ get_sysdata <- function(x) {
 
   cache <- getOption("finbif_use_cache")
 
-  cache <- cache || getOption("finbif_use_cache_metadata")
-
   request <- list(
     path = paste0("metadata/ranges/", x),
     query = list(lang = "multi"),
-    cache = cache
+    cache = infer_cache(cache)
   )
 
   sd_response <- api_get(request)
@@ -94,11 +92,9 @@ get_enumeration <- function(obj) {
 
   cache <- getOption("finbif_use_cache")
 
-  cache <- cache || getOption("finbif_use_cache_metadata")
-
   request <- list(
     path = "warehouse/enumeration-labels",
-    cache = cache
+    cache = infer_cache(cache)
   )
 
   en_response <- api_get(request)
@@ -175,12 +171,10 @@ get_areas <- function(x) {
 
   cache <- getOption("finbif_use_cache")
 
-  cache <- cache || getOption("finbif_use_cache_metadata")
-
   request <- list(
     path = "areas",
     query = list(type = x, lang = "multi", pageSize = 1000L),
-    cache = cache
+    cache = infer_cache(cache)
   )
 
   sd_response <- api_get(request)
@@ -368,12 +362,10 @@ informal_groups <- function() {
 
   cache <- getOption("finbif_use_cache")
 
-  cache <- cache || getOption("finbif_use_cache_metadata")
-
   request <- list(
     path = "informal-taxon-groups",
     query = list(lang = "multi", pageSize = 1000L),
-    cache = cache
+    cache = infer_cache(cache)
   )
 
   sd_response <- api_get(request)
@@ -875,12 +867,10 @@ sources <- function() {
 
   cache <- getOption("finbif_use_cache")
 
-  cache <- cache || getOption("finbif_use_cache_metadata")
-
   request <- list(
     path = "sources",
     query = list(lang = "multi", pageSize = 1000L),
-    cache = cache
+    cache = infer_cache(cache)
   )
 
   sd_response <- api_get(request)
