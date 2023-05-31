@@ -182,7 +182,7 @@ records_df <- function(x) {
 
   attr(results, "select") <- cols
 
-  attr(results, "locale") <- attr(x, "locale")
+  attr(results, "locale") <- x[["locale"]]
 
   attr(results, "aggregated") <- aggregated
 
