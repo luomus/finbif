@@ -102,7 +102,7 @@ computed_var_from_id_reported_informal_groups,reported_informal_groups,verbatimI
 unit.reportedTaxonConfidence,reported_taxon_confidence,identificationQualifer,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.reportedTaxonId,reported_taxon_id,verbatimTaxonID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.sex,sex,sex,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE
-unit.superRecordBasis,superrecord_basis,basisOfSuperRecord,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
+unit.superRecordBasis,superrecord_basis,basisOfSuperRecord,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE
 unit.taxonVerbatim,reported_name,verbatimIdentification,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.typeSpecimen,type_specimen,typeStatus,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.unitOrder,record_order,occurrenceOrder,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
