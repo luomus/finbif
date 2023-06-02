@@ -935,23 +935,34 @@ record_basis <- function() {
 
 superrecord_basis <- function() {
 
-  options <- c(
-    "human_observation",
-    "machine_observation",
-    "specimen"
+  r <- c(
+    "HUMAN_OBSERVATION_UNSPECIFIED",
+    "MACHINE_OBSERVATION_UNSPECIFIED",
+    "PRESERVED_SPECIMEN"
   )
 
-  options <- structure(options, class = "translation")
-
-  options <- list(options = options)
-
-  rnms <- c(
-    "human_observation_unspecified",
-    "machine_observation_unspecified",
-    "preserved_specimen"
+  bases <- list(
+    code = tolower(r),
+    name_en =  c(
+      "Human Observation",
+      "Machine Observation",
+      "Specimen"
+    ),
+    name_fi =  c(
+      "Havaittu",
+      "Laitteen tekem\u00e4 havainto",
+      "N\u00e4yte"
+    ),
+    name_sv =  c(
+      "Observation",
+      "Maskinobservation",
+      "Prov"
+    )
   )
 
-  structure(options, row.names = rnms, class = "data.frame")
+  bases <- structure(bases, row.names = r, class = "data.frame")
+
+  set_translations(bases)
 
 }
 
@@ -1009,15 +1020,30 @@ restriction_level <- function() {
 
 quality_issues <- function() {
 
-  options <- c("with_issues", "without_issues", "both")
+  r <- c("ONLY_ISSUES", "NO_ISSUES", "BOTH")
 
-  options <- structure(options, class = "translation")
+  quality <- list(
+    code =  c("with_issues", "without_issues", "both"),
+    name_en = c(
+      "With issues",
+      "Without issues",
+      "Both"
+    ),
+    name_fi = c(
+      "Vain virheelliset",
+      "Vain virheett\u00f6m\u00e4t",
+      "Virheelliset ja virheett\u00f6m\u00e4t"
+    ),
+    name_sv = c(
+      "Endast med problem",
+      "Inga problem",
+      "Med problem och inga problem"
+    )
+  )
 
-  options <- list(options = options)
+  quality <- structure(quality, row.names = r, class = "data.frame")
 
-  rnms <- c("only_issues", "no_issues", "both")
-
-  structure(options, row.names = rnms, class = "data.frame")
+  set_translations(quality)
 
 }
 
@@ -1045,15 +1071,18 @@ record_quality <- function() {
 
 record_reliability <- function() {
 
-  options <- c("reliable", "unassessed", "unreliable")
+  r <- c("RELIABLE", "NEUTRAL", "UNRELIABLE")
 
-  options <- structure(options, class = "translation")
+  reliability <- list(
+    code = c("reliable", "undefined", "unreliable"),
+    name_en = c("Reliable", "Undefined", "Unreliable"),
+    name_fi = c("Luotettava", "Neutraali", "Ep\u00e4luotettava"),
+    name_sv = c("P\u00e5litlig", "Neutral", "Opu00e5litliga")
+  )
 
-  options <- list(options = options)
+  reliability <- structure(reliability, row.names = r, class = "data.frame")
 
-  rnms <- c("reliable", "undefined", "unreliable")
-
-  structure(options, row.names = rnms, class = "data.frame")
+  set_translations(reliability)
 
 }
 
@@ -1061,24 +1090,54 @@ record_reliability <- function() {
 
 complete_list_type <- function() {
 
-  options <- c(
-    "all_species_and_all_breeding",
-    "all_species_and_partial_breeding",
-    "incomplete",
-    "all_species"
-  )
-
-  options <- structure(options, class = "translation")
-
-  options <- list(options = options)
-
-  rnms <- c(
+  r <- c(
     "MY.completeListTypeCompleteWithBreedingStatus",
     "MY.completeListTypeComplete",
     "MY.completeListTypeIncomplete",
     "MY.completeListTypeCompleteWithBreedingStatus,MY.completeListTypeComplete"
   )
 
-  structure(options, row.names = rnms, class = "data.frame")
+  list_type <- list(
+    code = c(
+      "all_species_and_all_breeding",
+      "all_species_and_partial_breeding",
+      "incomplete",
+      "all_species"
+    ),
+    name_en = c(
+      "All species and all breeding codes",
+      "All species and some breeding codes",
+      "Incomplete",
+      "All species"
+    ),
+    name_fi = c(
+      paste0(
+        "T\u00e4ydellinen lajilista sis\u00e4lt\u00e4en",
+        " pesim\u00e4varmuusindeksit kaikille havainnoille"
+      ),
+      paste0(
+        "T\u00e4ydellinen lajiluettelo sis\u00e4lt\u00e4en",
+        " joidenkin havaintojen lis\u00e4\u00e4ntymisvarmuusindeksit"
+      ),
+      "Ep\u00e4t\u00e4ydellinen lajilista",
+      "T\u00e4ydellinen lajilista"
+    ),
+    name_sv = c(
+      paste0(
+        "Komplett artlista inklusive h\u00e4ckningss\u00e4kerhetsindex",
+        " f\u00f6r alla observationer"
+      ),
+      paste0(
+        "Komplett artlista inklusive h\u00e4ckningss\u00e4kerhetsindex",
+        " f\u00f6r vissa observationer"
+      ),
+      "Komplett artlista",
+      "Okomplett artlista"
+    )
+  )
+
+  list_type <- structure(list_type, row.names = r, class = "data.frame")
+
+  set_translations(list_type)
 
 }
