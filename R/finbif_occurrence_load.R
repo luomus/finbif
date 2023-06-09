@@ -534,13 +534,13 @@ localise_enums <- function(df) {
 
   file_vars <- attr(df, "file_vars", TRUE)
 
-  filed_var_names <- row.names(file_vars)
+  field_var_names <- row.names(file_vars)
 
   labels_obj <- list(var_names = file_vars, locale = attr(df, "locale", TRUE))
 
   for (nm in names(df)) {
 
-    if (isTRUE(file_vars[[nm, "localised"]]) && nm %in% filed_var_names) {
+    if (nm %in% field_var_names && isTRUE(file_vars[[nm, "localised"]])) {
 
       labels_obj[["labels"]] <- df[[nm]]
 
@@ -780,7 +780,7 @@ add_nas <- function(df) {
 
         df[[nm]] <- cast_to_type(df[[nm]], file_vars[ind, "type"])
 
-      } else {
+      } else if (nm %in% vnames_type) {
 
         df[[nm]] <- cast_to_type(df[[nm]], vnames[vnames_type == nm, "type"])
 
