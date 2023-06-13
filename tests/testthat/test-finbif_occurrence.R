@@ -574,3 +574,26 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_invalidate_cache"))
+
+suppressMessages(insert_cassette("finbif_compute_var_zero_rows"))
+
+test_that(
+  "can compute a var from id when there are zero records", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(
+        filter = list(collection = "HR.121", informal_groups = "Myriapods"),
+        select = "municipality"
+      ),
+      "finbif_occ"
+    )
+
+    expect_s3_class(finbif_occurrence(cache = TRUE), "finbif_occ")
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_compute_var_zero_rows"))

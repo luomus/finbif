@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.9.0.9001}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed a bug triggered when trying to compute a variable from an
+        identifier and data returned contained zero records.
+    }
+  }
+}
+
 \section{finbif version 0.9.0.9000}{
   \subsection{NEW FEATURES}{
     \itemize{
