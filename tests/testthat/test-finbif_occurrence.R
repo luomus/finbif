@@ -271,7 +271,7 @@ test_that(
       sample = TRUE
     )
 
-    url <- sample(unlist(has_media[["media"]]), 1L)
+    url <- unlist(has_media[["media"]])[[1L]]
 
     expect_match(url, "^http")
 
