@@ -58,7 +58,7 @@ finbif_informal_groups <- function(
 
     grp <- which(groups)
 
-    informal_grps <- informal_grps[[grp]]
+    informal_grps <- informal_grps[grp]
 
   }
 
