@@ -50,8 +50,8 @@ Some more complex metadata is accessed with other `{finbif}` functions
 ### Informal groups
 Informal taxonomic groups and their relationships can be displayed with
 `finbif_informal_groups()`
-```{r informal-groups6}
-finbif_informal_groups(limit = 6)
+```{r informal-groups2}
+finbif_informal_groups(limit = 2)
 ```
 
 You can select a subgroup by specifying a parent informal group as a function
@@ -86,8 +86,9 @@ are the ID number of the collection.
 finbif_collections(supercollections = TRUE)["HR.128", "collection_name"]
 ```
 
-You can see the child collections of a supercollection by specifying the ID as
-a filter. Note that the children of supercollections may also be supercollections
+You can see the child collections of a supercollection by specifying the ID as a
+filter. Note that the children of supercollections may also be
+supercollections.
 ```{details collections-128}
 finbif_collections(is_part_of == "HR.128", supercollections = TRUE)
 ```
