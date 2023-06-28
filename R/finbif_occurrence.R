@@ -944,6 +944,12 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
       }
 
+      if (is.null(df_col_i)) {
+
+        df_col_i <- character()
+
+      }
+
       fb_occurrence_df[[col_i]] <- df_col_i
 
     }

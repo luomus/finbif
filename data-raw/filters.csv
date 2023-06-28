@@ -118,4 +118,5 @@ identificationBasis,identification_basis,uri,FALSE,",",FALSE
 samplingMethod,sampling_method,uri,FALSE,",",FALSE
 taxonSetId,taxon_set_id,uri,FALSE,",",FALSE
 timeAccuracy,time_uncertainty,integer,FALSE,",",FALSE
-sensitive,sensitiive,logical,FALSE,",",FALSE
+sensitive,sensitive,logical,FALSE,",",FALSE
+excludeNulls,exclude_missing_levels,logical,FALSE,",",FALSE

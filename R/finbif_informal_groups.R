@@ -36,10 +36,12 @@ finbif_informal_groups <- function(
 
   }
 
+  cache <- getOption("finbif_use_cache")
+
   request <- list(
     path = "informal-taxon-groups/tree",
     query = list(pageSize = 1000L, lang = locale),
-    cache = getOption("finbif_use_cache")
+    cache = infer_cache(cache)
   )
 
   informal_grps <- api_get(request)
@@ -56,7 +58,7 @@ finbif_informal_groups <- function(
 
     grp <- which(groups)
 
-    informal_grps <- informal_grps[[grp]]
+    informal_grps <- informal_grps[grp]
 
   }
 

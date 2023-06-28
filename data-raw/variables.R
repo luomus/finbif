@@ -4,11 +4,11 @@ var_names <- read.csv(
   row.names = 1L, comment.char = "#"
 )
 
-vars <- httr::GET(Sys.getenv("WAREHOUSE_SWAGGER_URL"))
+vars <- httr::GET("https://dw.laji.fi/swagger")
 
 if (identical(Sys.getenv("BRANCH"), "dev")) {
 
-  vars <- httr::GET(Sys.getenv("DEV_WAREHOUSE_SWAGGER_URL"))
+  vars <- httr::GET("https://staging.laji.fi/laji-etl/swagger")
 
 }
 

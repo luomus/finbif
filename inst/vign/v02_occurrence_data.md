@@ -28,21 +28,21 @@ finbif_occurrence()
 ```r
 
 #> Records downloaded: 10
-#> Records available: 40410386
+#> Records available: 47159747
 #> A data.frame [10 x 12]
-#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1        …JX.1315966#18             Trametes  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 3        …JX.1315966#15                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 4        …JX.1315966#12                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864 2021-10-05 12:00:00
-#> 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467 2021-10-05 12:00:00
-#> 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361 2021-10-05 12:00:00
-#> 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456 2021-10-05 12:00:00
-#> ...with 0 more records and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
+#> 2                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
+#> 3                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
+#> 4                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
+#> 5                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
+#> 6                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
+#> 7                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
+#> 8                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
+#> 9                          …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
+#> 10                         …JX.1594382#29 Dendrocopos major (…        NA  64.12716  23.99111
+#> ...with 0 more record and 7 more variables:
+#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
 ```
@@ -84,20 +84,20 @@ finbif_occurrence("Cygnus cygnus")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 71156
+#> Records available: 95730
 #> A data.frame [10 x 12]
-#>              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00
-#> 2        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00
-#> 3       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00
-#> 4  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00
-#> 5  …HR.3211/96886383-U   Cygnus cygnus  1         62.91891  28.18733 2021-10-02 12:00:00
-#> 6  …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00
-#> 7       …JX.1315449#15   Cygnus cygnus  6         61.32296  28.56814 2021-10-02 10:40:00
-#> 8       …JX.1315165#30   Cygnus cygnus  2         61.10535  21.55759 2021-10-02 08:25:00
-#> 9        …JX.1296318#3   Cygnus cygnus  26        60.83174  26.44824 2021-09-30 12:00:00
-#> 10 …HR.3211/96581760-U   Cygnus cygnus  1         61.46442  23.65117 2021-09-29 12:00:00
-#> ...with 0 more records and 6 more variables:
+#>                   record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1            …JX.1594164#13 Cygnus cygnus (Linn…        NA  64.94473  26.67958 2023-06-13 14:33:00
+#> 2  …HR.4412/6489172c9ddda_U Cygnus cygnus (Linn…        NA  61.74701  23.11493 2023-06-13 12:00:00
+#> 3  …HR.4412/64891730060a4_U Cygnus cygnus (Linn…        NA  61.38348  22.97288 2023-06-13 12:00:00
+#> 4  …HR.4412/648917378a3b6_U Cygnus cygnus (Linn…        NA  62.76028  24.15774 2023-06-13 12:00:00
+#> 5  …HR.4412/6489175adc05f_U Cygnus cygnus (Linn…        NA  60.78752  21.39263 2023-06-13 12:00:00
+#> 6  …HR.4412/6489173a1db9b_U Cygnus cygnus (Linn…        NA  64.31374  26.68643 2023-06-13 12:00:00
+#> 7  …HR.4412/648917456a396_U Cygnus cygnus (Linn…        NA  61.87986  25.19067 2023-06-13 12:00:00
+#> 8  …HR.4412/648917454912b_U Cygnus cygnus (Linn…        NA  60.42215  24.00099 2023-06-13 12:00:00
+#> 9  …HR.4412/64891750e74e7_U Cygnus cygnus (Linn…        NA  63.86383  27.70835 2023-06-13 12:00:00
+#> 10 …HR.4412/64891741330f8_U Cygnus cygnus (Linn…        NA  61.74701  23.11493 2023-06-13 12:00:00
+#> ...with 0 more record and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
@@ -119,20 +119,20 @@ finbif_occurrence("Cygnus cygnus", "Cygnus olor")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 101999
+#> Records available: 138681
 #> A data.frame [10 x 12]
-#>              record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1        …JX.1315856#9     Cygnus olor  8         60.42794  22.20052 2021-10-04 12:00:00
-#> 2       …JX.1315724#21     Cygnus olor  6         60.44906  22.76845 2021-10-03 12:00:00
-#> 3       …JX.1315701#36     Cygnus olor  8         60.42794  22.20052 2021-10-03 12:00:00
-#> 4       …JX.1315699#24     Cygnus olor  8         60.56739  21.57188 2021-10-03 12:00:00
-#> 5       …JX.1315699#12   Cygnus cygnus  3         60.56739  21.57188 2021-10-03 12:00:00
-#> 6        …JX.1315624#7   Cygnus cygnus  2         63.77814  23.07286 2021-10-03 12:00:00
-#> 7       …JX.1315190#24   Cygnus cygnus  2         60.42794  22.20052 2021-10-02 12:00:00
-#> 8  …HR.3211/96901650-U   Cygnus cygnus  1         60.20356  25.18139 2021-10-02 12:00:00
-#> 9  …HR.3211/96886383-U   Cygnus cygnus  1         62.91891  28.18733 2021-10-02 12:00:00
-#> 10 …HR.3211/96873463-U   Cygnus cygnus  1         61.55599  25.95057 2021-10-02 12:00:00
-#> ...with 0 more records and 6 more variables:
+#>                   record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1            …JX.1594164#13 Cygnus cygnus (Linn…        NA  64.94473  26.67958 2023-06-13 14:33:00
+#> 2  …HR.4412/6489172c9ddda_U Cygnus cygnus (Linn…        NA  61.74701  23.11493 2023-06-13 12:00:00
+#> 3  …HR.4412/64891730060a4_U Cygnus cygnus (Linn…        NA  61.38348  22.97288 2023-06-13 12:00:00
+#> 4  …HR.4412/648917378a3b6_U Cygnus cygnus (Linn…        NA  62.76028  24.15774 2023-06-13 12:00:00
+#> 5  …HR.4412/64891759be4c7_U Cygnus olor (J.F. G…        NA  63.40045  21.48901 2023-06-13 12:00:00
+#> 6  …HR.4412/6489175adc05f_U Cygnus cygnus (Linn…        NA  60.78752  21.39263 2023-06-13 12:00:00
+#> 7  …HR.4412/6489173a1db9b_U Cygnus cygnus (Linn…        NA  64.31374  26.68643 2023-06-13 12:00:00
+#> 8  …HR.4412/648917456a396_U Cygnus cygnus (Linn…        NA  61.87986  25.19067 2023-06-13 12:00:00
+#> 9  …HR.4412/648917454912b_U Cygnus cygnus (Linn…        NA  60.42215  24.00099 2023-06-13 12:00:00
+#> 10 …HR.4412/64891750e74e7_U Cygnus cygnus (Linn…        NA  63.86383  27.70835 2023-06-13 12:00:00
+#> ...with 0 more record and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
@@ -167,21 +167,21 @@ finbif_occurrence(n = 1001)
 ```r
 
 #> Records downloaded: 1001
-#> Records available: 40410386
+#> Records available: 47159747
 #> A data.frame [1001 x 12]
-#>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1      …50#3 Exechiopsis fimbria…  1         65.01504  25.52607 2021-10-05 12:00:00
-#> 2     …29#12 Depressaria badiella  1         62.92172  27.63335 2021-10-05 12:00:00
-#> 3     …29#15 Depressaria daucella  1         62.92172  27.63335 2021-10-05 12:00:00
-#> 4      …29#9   Epirrita autumnata  1         62.92172  27.63335 2021-10-05 12:00:00
-#> 5      …29#6  Poecilocampa populi  1         62.92172  27.63335 2021-10-05 12:00:00
-#> 6      …29#3      Xestia c-nigrum  1         62.92172  27.63335 2021-10-05 12:00:00
-#> 7     …31#18 Agriopis aurantiaria  1         60.4528   22.40844 2021-10-04 12:00:00
-#> 8      …31#3     Autographa gamma  1         60.4528   22.40844 2021-10-04 12:00:00
-#> 9     …31#12 Chloroclysta sitera…  1         60.4528   22.40844 2021-10-04 12:00:00
-#> 10    …31#15   Epirrita autumnata  1         60.4528   22.40844 2021-10-04 12:00:00
-#> ...with 991 more records and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
+#> 2                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
+#> 3                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
+#> 4                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
+#> 5                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
+#> 6                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
+#> 7                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
+#> 8                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
+#> 9                          …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
+#> 10                         …JX.1594382#29 Dendrocopos major (…        NA  64.12716  23.99111
+#> ...with 991 more records and 7 more variables:
+#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
 ```
@@ -194,7 +194,7 @@ retrieving any records, by setting `count_only = TRUE`.
 
 ```r
 finbif_occurrence(count_only = TRUE)
-#> [1] 40410386
+#> [1] 47159747
 ```
 
 ## Checking taxa
@@ -214,21 +214,21 @@ finbif_occurrence("Vulpes vulpes", "Moomin")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 4238
+#> Records available: 5303
 #> A data.frame [10 x 12]
-#>               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1         …JX.1315490#3   Vulpes vulpes  1         65.05719  25.62634 2021-10-02 12:00:00
-#> 2  …KE.176/6154c070d5d…   Vulpes vulpes  1         60.20882  24.90362 2021-09-29 12:00:00
-#> 3         …JX.1294654#3   Vulpes vulpes  1         60.83805  21.37382 2021-09-24 05:30:00
-#> 4   …HR.3211/95828765-U   Vulpes vulpes  1         60.76014  24.91448 2021-09-23 12:00:00
-#> 5  …KE.176/614e5d42d5d…   Vulpes vulpes  1         60.11016  25.01864 2021-09-22 12:00:00
-#> 6  …KE.176/614abfb4d5d…   Vulpes vulpes  1         60.13192  24.72079 2021-09-22 12:00:00
-#> 7         …JX.1293417#7   Vulpes vulpes  1         60.82366  21.2978  2021-09-20 05:30:00
-#> 8   …HR.3211/95510814-U   Vulpes vulpes  1         60.5      21.9     2021-09-19 12:00:00
-#> 9       …JX.1293110#126   Vulpes vulpes  1         62.57362  28.58553 2021-09-18 12:00:00
-#> 10      …JX.1272497#417   Vulpes vulpes  1         64.50244  29.98219 2021-09-17 12:00:00
-#> ...with 0 more records and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1                    …HR.3211/167313561-U Vulpes vulpes (Linn…        NA  60.18049  25.04838
+#> 2                    …HR.3211/167310567-U Vulpes vulpes (Linn…        NA  60.2241   24.89373
+#> 3  …KE.176/64894ccdd5de884fa20e2972#Unit1 Vulpes vulpes (Linn…  1         60.21118  24.90744
+#> 4  …KE.176/6489506dd5de884fa20e2976#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
+#> 5  …KE.176/648802d6d5de884fa20e290d#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
+#> 6  …KE.176/648802c7d5de884fa20e290c#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
+#> 7                    …HR.3211/167167234-U Vulpes vulpes (Linn…        NA  60.20261  24.86879
+#> 8                    …HR.3211/166968734-U Vulpes vulpes (Linn…        NA  60.5      21.9    
+#> 9                    …HR.3211/166944731-U Vulpes vulpes (Linn…        NA  60.17493  24.74123
+#> 10 …KE.176/64869a52d5de884fa20e28ae#Unit1 Vulpes vulpes (Linn…  1         60.23885  25.12012
+#> ...with 0 more record and 7 more variables:
+#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
 ```
@@ -250,21 +250,21 @@ finbif_occurrence("Vulpes vulpes", "Moomin", check_taxa = FALSE)
 ```r
 
 #> Records downloaded: 10
-#> Records available: 4238
+#> Records available: 5303
 #> A data.frame [10 x 12]
-#>               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1         …JX.1315490#3   Vulpes vulpes  1         65.05719  25.62634 2021-10-02 12:00:00
-#> 2  …KE.176/6154c070d5d…   Vulpes vulpes  1         60.20882  24.90362 2021-09-29 12:00:00
-#> 3         …JX.1294654#3   Vulpes vulpes  1         60.83805  21.37382 2021-09-24 05:30:00
-#> 4   …HR.3211/95828765-U   Vulpes vulpes  1         60.76014  24.91448 2021-09-23 12:00:00
-#> 5  …KE.176/614e5d42d5d…   Vulpes vulpes  1         60.11016  25.01864 2021-09-22 12:00:00
-#> 6  …KE.176/614abfb4d5d…   Vulpes vulpes  1         60.13192  24.72079 2021-09-22 12:00:00
-#> 7         …JX.1293417#7   Vulpes vulpes  1         60.82366  21.2978  2021-09-20 05:30:00
-#> 8   …HR.3211/95510814-U   Vulpes vulpes  1         60.5      21.9     2021-09-19 12:00:00
-#> 9       …JX.1293110#126   Vulpes vulpes  1         62.57362  28.58553 2021-09-18 12:00:00
-#> 10      …JX.1272497#417   Vulpes vulpes  1         64.50244  29.98219 2021-09-17 12:00:00
-#> ...with 0 more records and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1                    …HR.3211/167313561-U Vulpes vulpes (Linn…        NA  60.18049  25.04838
+#> 2                    …HR.3211/167310567-U Vulpes vulpes (Linn…        NA  60.2241   24.89373
+#> 3  …KE.176/64894ccdd5de884fa20e2972#Unit1 Vulpes vulpes (Linn…  1         60.21118  24.90744
+#> 4  …KE.176/6489506dd5de884fa20e2976#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
+#> 5  …KE.176/648802d6d5de884fa20e290d#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
+#> 6  …KE.176/648802c7d5de884fa20e290c#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
+#> 7                    …HR.3211/167167234-U Vulpes vulpes (Linn…        NA  60.20261  24.86879
+#> 8                    …HR.3211/166968734-U Vulpes vulpes (Linn…        NA  60.5      21.9    
+#> 9                    …HR.3211/166944731-U Vulpes vulpes (Linn…        NA  60.17493  24.74123
+#> 10 …KE.176/64869a52d5de884fa20e28ae#Unit1 Vulpes vulpes (Linn…  1         60.23885  25.12012
+#> ...with 0 more record and 7 more variables:
+#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
 ```
@@ -278,7 +278,11 @@ taxa are not found in the FinBIF database.
 
 ```r
 finbif_occurrence("Vulpes vulpes", "Moomin", on_check_fail = "error")
-#> Error: Cannot find taxa: Moomin
+#> Error: Cannot find the following taxa in the FinBIF taxonomy.
+#> Please check you are using accepted names and not synonyms or
+#> other names for the taxa you are selecting:
+#> 
+#> Moomin
 ```
 This can be a useful strategy if you are using `{finbif}` non-interactively
 (in a script), and you do not want to proceed if any of your taxon names are
@@ -314,19 +318,19 @@ finbif_occurrence("Lepidoptera", select = "municipality", aggregate = "species")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 317
+#> Records available: 309
 #> A data.frame [10 x 2]
 #>    municipality n_species
-#> 1       Kouvola      1328
-#> 2     Virolahti      1932
-#> 3      Rääkkylä      1346
-#> 4   Kemiönsaari      1963
-#> 5      Parainen      1765
-#> 6         Hanko      1895
-#> 7      Helsinki      1937
-#> 8     Raasepori      1860
-#> 9         Kotka      1635
-#> 10       Kuopio      1319
+#> 1     Raasepori  2038    
+#> 2     Virolahti  1978    
+#> 3       Kouvola  1508    
+#> 4      Rääkkylä  1367    
+#> 5   Kemiönsaari  2008    
+#> 6         Hanko  1945    
+#> 7      Parainen  1858    
+#> 8      Helsinki  1980    
+#> 9        Kuopio  1345    
+#> 10        Kotka  1719    
 
 ```
 
@@ -350,21 +354,22 @@ finbif_occurrence(select = "-date_time")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 40410386
+#> Records available: 47159747
 #> A data.frame [10 x 11]
-#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84 coordinates_uncertainty
-#> 1        …JX.1315966#18             Trametes  1         65.08865  25.45157  1                     
-#> 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157  1                     
-#> 3        …JX.1315966#15                Fungi  1         65.08865  25.45157  1                     
-#> 4        …JX.1315966#12                Fungi  1         65.08865  25.45157  1                     
-#> 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157  1                     
-#> 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157  1                     
-#> 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864  50000                 
-#> 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467  1                     
-#> 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361  1                     
-#> 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456  1                     
-#> ...with 0 more records and 5 more variables:
-#> any_issues, requires_verification, requires_identification, record_reliability, record_quality
+#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
+#> 2                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
+#> 3                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
+#> 4                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
+#> 5                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
+#> 6                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
+#> 7                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
+#> 8                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
+#> 9                          …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
+#> 10                         …JX.1594382#29 Dendrocopos major (…        NA  64.12716  23.99111
+#> ...with 0 more record and 6 more variables:
+#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#> record_reliability, record_quality
 
 ```
 
@@ -392,21 +397,21 @@ finbif_occurrence(date_time_method = "accurate")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 40410386
+#> Records available: 47159747
 #> A data.frame [10 x 12]
-#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1        …JX.1315966#18             Trametes  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 3        …JX.1315966#15                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 4        …JX.1315966#12                Fungi  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157 2021-10-05 12:00:00
-#> 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864 2021-10-05 12:00:00
-#> 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467 2021-10-05 12:00:00
-#> 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361 2021-10-05 12:00:00
-#> 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456 2021-10-05 12:00:00
-#> ...with 0 more records and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
+#> 2                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
+#> 3                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
+#> 4                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
+#> 5                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
+#> 6                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
+#> 7                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
+#> 8                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
+#> 9                          …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
+#> 10                         …JX.1594382#29 Dendrocopos major (…        NA  64.12716  23.99111
+#> ...with 0 more record and 7 more variables:
+#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
 ```
@@ -435,21 +440,21 @@ finbif_occurrence(tzone = "Etc/UTC")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 40410386
+#> Records available: 47159747
 #> A data.frame [10 x 12]
-#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1        …JX.1315966#18             Trametes  1         65.08865  25.45157 2021-10-05 09:00:00
-#> 2         …JX.1315966#9 Trichaptum fuscovio…  1         65.08865  25.45157 2021-10-05 09:00:00
-#> 3        …JX.1315966#15                Fungi  1         65.08865  25.45157 2021-10-05 09:00:00
-#> 4        …JX.1315966#12                Fungi  1         65.08865  25.45157 2021-10-05 09:00:00
-#> 5         …JX.1315966#3  Lycogala epidendrum  1         65.08865  25.45157 2021-10-05 09:00:00
-#> 6         …JX.1315966#6 Stereum sanguinolen…  1         65.08865  25.45157 2021-10-05 09:00:00
-#> 7  …KE.176/615c07e7d5d…   Acherontia atropos  1         60.11016  25.01864 2021-10-05 09:00:00
-#> 8         …JX.1315969#3      Rana temporaria  1         62.48525  21.75467 2021-10-05 09:00:00
-#> 9        …JX.1315960#15   Puccinia absinthii  1         62.25399  25.71361 2021-10-05 09:00:00
-#> 10        …JX.1315960#7    Puccinia tanaceti  1         62.2528   25.71456 2021-10-05 09:00:00
-#> ...with 0 more records and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
+#> 2                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
+#> 3                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
+#> 4                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
+#> 5                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
+#> 6                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
+#> 7                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
+#> 8                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
+#> 9                          …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
+#> 10                         …JX.1594382#29 Dendrocopos major (…        NA  64.12716  23.99111
+#> ...with 0 more record and 7 more variables:
+#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
 ```

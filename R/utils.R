@@ -344,6 +344,34 @@ cache_is_valid <- function(timeout, created) {
 
 }
 
+#' @noRd
+
+infer_cache <- function(cache) {
+
+  ans <- getOption("finbif_use_cache_metadata")
+
+  if (is.logical(cache)) {
+
+    if (is.logical(ans)) {
+
+      ans <- cache || ans
+
+    }
+
+  } else {
+
+    if (is.logical(ans)) {
+
+      ans <- cache
+
+    }
+
+  }
+
+  ans
+
+}
+
 # random sampling --------------------------------------------------------------
 
 #' @noRd

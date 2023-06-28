@@ -36,19 +36,19 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 315462
+#> Records available: 342668
 #> A data.frame [10 x 3]
-#>      scientific_name life_stage sex
-#> 1  Falco columbarius         NA  NA
-#> 2  Falco columbarius         NA  NA
-#> 3     Falco subbuteo         NA  NA
-#> 4  Falco tinnunculus         NA  NA
-#> 5  Falco tinnunculus         NA  NA
-#> 6     Falco subbuteo         NA  NA
-#> 7              Falco         NA  NA
-#> 8  Falco tinnunculus         NA  NA
-#> 9  Falco columbarius         NA  NA
-#> 10             Falco         NA  NA
+#>         scientific_name life_stage sex
+#> 1  Falco columbarius L…         NA  NA
+#> 2  Falco tinnunculus L…         NA  NA
+#> 3  Falco tinnunculus L…         NA  NA
+#> 4  Falco subbuteo Linn…         NA  NA
+#> 5  Falco tinnunculus L…         NA  NA
+#> 6  Falco subbuteo Linn…         NA  NA
+#> 7  Falco tinnunculus L…         NA  NA
+#> 8  Falco tinnunculus L…         NA  NA
+#> 9  Falco tinnunculus L…         NA  NA
+#> 10 Falco subbuteo Linn…         NA  NA
 
 ```
 
@@ -70,21 +70,21 @@ finbif_occurrence(select = c("default_vars", "life_stage"))
 ```r
 
 #> Records downloaded: 10
-#> Records available: 40410386
+#> Records available: 47159747
 #> A data.frame [10 x 13]
-#>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1      …50#3 Exechiopsis fimbria…  1         65.01504  25.52607 2021-10-05 12:00:00
-#> 2     …29#12 Depressaria badiella  1         62.92172  27.63335 2021-10-05 12:00:00
-#> 3     …29#15 Depressaria daucella  1         62.92172  27.63335 2021-10-05 12:00:00
-#> 4      …29#9   Epirrita autumnata  1         62.92172  27.63335 2021-10-05 12:00:00
-#> 5      …29#6  Poecilocampa populi  1         62.92172  27.63335 2021-10-05 12:00:00
-#> 6      …29#3      Xestia c-nigrum  1         62.92172  27.63335 2021-10-05 12:00:00
-#> 7     …31#18 Agriopis aurantiaria  1         60.4528   22.40844 2021-10-04 12:00:00
-#> 8      …31#3     Autographa gamma  1         60.4528   22.40844 2021-10-04 12:00:00
-#> 9     …31#12 Chloroclysta sitera…  1         60.4528   22.40844 2021-10-04 12:00:00
-#> 10    …31#15   Epirrita autumnata  1         60.4528   22.40844 2021-10-04 12:00:00
-#> ...with 0 more records and 7 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1                           …JX.1594385#3 Sciurus vulgaris Li…  1         60.23584  25.05693
+#> 2  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
+#> 3                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
+#> 4                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
+#> 5                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
+#> 6                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
+#> 7                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
+#> 8                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
+#> 9                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
+#> 10                         …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
+#> ...with 0 more record and 8 more variables:
+#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality, life_stage
 
 ```
@@ -111,20 +111,31 @@ finbif_occurrence("Cygnus cygnus", order_by = "abundance")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 71156
+#> Records available: 95730
 #> A data.frame [10 x 12]
-#>               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1   …KE.67/9403350#Unit   Cygnus cygnus  1         60.41667  16       1997-04-01 13:00:00
-#> 2         …MHU.29327372   Cygnus cygnus  1         63.37022  30.37826                <NA>
-#> 3  …KE.176/58c7db302d0…   Cygnus cygnus  1         61.082    27.78355 2017-04-08 12:00:00
-#> 4          …MHU.2529766   Cygnus cygnus  1         64.94099  27.52532 2007-06-09 12:00:00
-#> 5   …KE.67/9069501#Unit   Cygnus cygnus  1         52.71667  1.55     1997-01-03 14:00:00
-#> 6         …MHU.12651157   Cygnus cygnus  1         61.21489  23.36719 2006-06-12 12:00:00
-#> 7         …MHU.21539922   Cygnus cygnus  1         60.42008  22.44084 2009-03-15 12:00:00
-#> 8   …KE.67/9465507#Unit   Cygnus cygnus  1         61.8      22.76667 2000-03-22 12:00:00
-#> 9   …KE.67/9607357#Unit   Cygnus cygnus  1         63.13333  22.43333 2003-06-07 12:00:00
-#> 10  …HR.3211/71804082-U   Cygnus cygnus  1         60.22502  25.00972 2021-03-21 12:00:00
-#> ...with 0 more records and 6 more variables:
+#>                     record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1         …KE.67/9403350#Unit Cygnus cygnus (Linn…  1         60.41667  16      
+#> 2  …HR.3691/OBS810893905_Unit Cygnus cygnus (Linn…        NA  61.56563  29.56771
+#> 3             …JX.1026351#259 Cygnus cygnus (Linn…  1         65.89416  28.90961
+#> 4               …JX.1025175#3 Cygnus cygnus (Linn…  1         61.83248  23.40816
+#> 5         …KE.67/9069501#Unit Cygnus cygnus (Linn…  1         52.71667  1.55    
+#> 6               …JX.1252188#3 Cygnus cygnus (Linn…        NA  60.17258  24.27095
+#> 7         …KE.67/9465507#Unit Cygnus cygnus (Linn…  1         61.8      22.76667
+#> 8         …KE.67/9607357#Unit Cygnus cygnus (Linn…  1         63.13333  22.43333
+#> 9               …MHU.10961285 Cygnus cygnus (Linn…        NA  64.97813  24.74932
+#> 10 …HR.3691/OBS886590077_Unit Cygnus cygnus (Linn…        NA  61.27566  22.557  
+#>              date_time
+#> 1  1997-04-01 13:00:00
+#> 2  2007-05-18 12:00:00
+#> 3  2013-06-24 03:12:00
+#> 4  2014-06-08 03:45:00
+#> 5  1997-01-03 14:00:00
+#> 6  2021-05-23 06:15:00
+#> 7  2000-03-22 12:00:00
+#> 8  2003-06-07 12:00:00
+#> 9  2008-07-12 12:00:00
+#> 10 2020-03-31 12:00:00
+#> ...with 0 more record and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
@@ -147,21 +158,21 @@ finbif_occurrence("Cygnus cygnus", order_by = "-abundance")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 71156
+#> Records available: 95730
 #> A data.frame [10 x 12]
-#>               record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1          …MHU.2981587   Cygnus cygnus  6000      64.4     -14.54    1995-07-05 15:00:00
-#> 2         …MHU.29480894   Cygnus cygnus  2010      64.54597  27.88859 2010-01-01 12:00:00
-#> 3  …HR.3691/OBS6046423…   Cygnus cygnus  1753      64.5074   24.2789  2018-04-23 12:00:00
-#> 4  …HR.3691/OBS6635688…   Cygnus cygnus  1600      65.9879   24.0634  2018-10-06 13:00:00
-#> 5         …MHU.28815250   Cygnus cygnus  1500            NA        NA 2003-04-18 15:00:00
-#> 6  …HR.3691/OBS6713538…   Cygnus cygnus  1361      64.7166   24.5319  2018-10-27 12:00:00
-#> 7         …MHU.28815110   Cygnus cygnus  1200            NA        NA 2003-04-16 15:00:00
-#> 8  …HR.3691/OBS6015318…   Cygnus cygnus  1145      64.5074   24.2789  2018-04-18 12:00:00
-#> 9  …HR.3691/OBS6023666…   Cygnus cygnus  1125      64.5074   24.2789  2018-04-19 12:00:00
-#> 10    …KE.8_1209789#134   Cygnus cygnus  1064      62.50172  21.3326  2017-11-04 08:40:00
-#> ...with 0 more records and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#>                      record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1                 …MHU.2981587 Cygnus cygnus (Linn…  6000      64.4     -14.54   
+#> 2  …HR.3691/OBS1101526155_Unit Cygnus cygnus (Linn…  1760      62.16389  21.45786
+#> 3   …HR.3691/OBS604642304_Unit Cygnus cygnus (Linn…  1753      64.50736  24.27894
+#> 4   …HR.3691/OBS663568887_Unit Cygnus cygnus (Linn…  1600      65.98787  24.06341
+#> 5                …MHU.28815250 Cygnus cygnus (Linn…  1500            NA        NA
+#> 6   …HR.3691/OBS671353848_Unit Cygnus cygnus (Linn…  1361      64.71656  24.53188
+#> 7                …JX.1357345#5 Cygnus cygnus (Linn…  1300      64.8465   25.2883 
+#> 8                …JX.1398409#3 Cygnus cygnus (Linn…  1280      64.8448   25.2816 
+#> 9                …MHU.28815110 Cygnus cygnus (Linn…  1200            NA        NA
+#> 10 …HR.3691/OBS1119137190_Unit Cygnus cygnus (Linn…  1163      64.71656  24.53188
+#> ...with 0 more record and 7 more variables:
+#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
 ```
@@ -184,20 +195,20 @@ finbif_occurrence("Cygnus olor", order_by = c("municipality_id", "-abundance"))
 ```r
 
 #> Records downloaded: 10
-#> Records available: 30843
+#> Records available: 42951
 #> A data.frame [10 x 12]
-#>    record_id scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  …12015253     Cygnus olor  2500            NA        NA 2008-08-17 15:00:00
-#> 2  …13633876     Cygnus olor  1500            NA        NA 2008-10-03 15:00:00
-#> 3    …780984     Cygnus olor  1300            NA        NA 2006-02-14 14:00:00
-#> 4    …781416     Cygnus olor  1300            NA        NA 2006-02-14 14:00:00
-#> 5   …2062563     Cygnus olor  1200            NA        NA 2006-12-19 14:00:00
-#> 6  …10352894     Cygnus olor  1100            NA        NA 2008-06-28 15:00:00
-#> 7    …927797     Cygnus olor  1050            NA        NA 2006-04-05 15:00:00
-#> 8   …3110953     Cygnus olor  960             NA        NA 2007-10-06 15:00:00
-#> 9  …26309317     Cygnus olor  900             NA        NA 2009-07-08 15:00:00
-#> 10  …1260385     Cygnus olor  800       58.66     23.57    2006-04-26 18:00:00
-#> ...with 0 more records and 6 more variables:
+#>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1  …12015253 Cygnus olor (J.F. G…  2500            NA        NA 2008-08-17 12:00:00
+#> 2  …13633876 Cygnus olor (J.F. G…  1500            NA        NA 2008-10-03 12:00:00
+#> 3    …781416 Cygnus olor (J.F. G…  1300            NA        NA 2006-02-14 12:00:00
+#> 4    …780984 Cygnus olor (J.F. G…  1300            NA        NA 2006-02-14 12:00:00
+#> 5   …2062563 Cygnus olor (J.F. G…  1200            NA        NA 2006-12-19 12:00:00
+#> 6  …10352894 Cygnus olor (J.F. G…  1100            NA        NA 2008-06-28 12:00:00
+#> 7    …927797 Cygnus olor (J.F. G…  1050            NA        NA 2006-04-05 12:00:00
+#> 8   …3110953 Cygnus olor (J.F. G…  960             NA        NA 2007-10-06 12:00:00
+#> 9  …26309317 Cygnus olor (J.F. G…  900             NA        NA 2009-07-08 12:00:00
+#> 10  …1260385 Cygnus olor (J.F. G…  800       58.66     23.57    2006-04-26 18:00:00
+#> ...with 0 more record and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
@@ -221,21 +232,21 @@ finbif_occurrence(sample = TRUE)
 ```r
 
 #> Records downloaded: 10
-#> Records available: 40410449
+#> Records available: 47159747
 #> A data.frame [10 x 12]
-#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1   …KE.67/2798389#Unit  Emberiza citrinella  1         63.1745   23.85393 2005-06-26 12:00:00
-#> 2   …KE.67/5096145#Unit      Hirundo rustica  1         61.31215  23.78458 2000-08-31 20:00:00
-#> 3           …JX.98066#3            Pica pica  7         61.16842  25.78921 1969-12-29 09:00:00
-#> 4         …MKC.30782842 Vaccinium uliginosum  1         60.71347  21.67181 2016-10-06 12:00:00
-#> 5        …JX.1041885#63     Gimnomera tarsea  1         67.568    26.8804  2012-07-06 12:00:00
-#> 6          …JX.751150#2 Brachylomia viminal…  1         61.09245  21.47795 1974-09-20 12:00:00
-#> 7          …MKC.5700111            Taraxacum  1         62.56906  24.48739 1969-01-01 12:00:00
-#> 8  …KE.67/10030682#Unit     Larus argentatus  1         60.75066  26.86027 2004-07-11 12:00:00
-#> 9         …MKC.24352916         Rubus idaeus  1         62.81964  23.41582 2008-07-03 12:00:00
-#> 10  …KE.67/7670229#Unit      Curruca curruca  1         59.93333  24.4     1979-06-09 04:00:00
-#> ...with 0 more records and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
+#>                      record_id      scientific_name abundance lat_wgs84 lon_wgs84
+#> 1          …KE.67/5632630#Unit Ficedula hypoleuca …  1         61.74637  22.77479
+#> 2                   …MHU.40397      Prunus padus L.        NA  60.28016  20.25637
+#> 3                 …JX.775148#3 Yezognophos vittari…  1         60.44245  27.006  
+#> 4         …KE.67/11580538#Unit Cyanistes caeruleus…  1         60.32754  24.64944
+#> 5                …JX.328070#23 Pechipogo strigilat…        NA  61.54883  21.64192
+#> 6   …HR.3691/OBS889952298_Unit Parus major Linnaeu…  5         66.6165   24.68816
+#> 7               …JX.1025818#50 Garrulus glandarius…  1         63.43302  27.74526
+#> 8  …HR.3691/OBS1104249688_Unit Alauda arvensis Lin…        NA  60.05577  24.06798
+#> 9          …KE.67/8616657#Unit Cyanistes caeruleus…  1         61.5      24.83333
+#> 10                …JX.101375#9 Poecile montanus (C…  7         63.09517  23.1341 
+#> ...with 0 more record and 7 more variables:
+#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
 
 ```

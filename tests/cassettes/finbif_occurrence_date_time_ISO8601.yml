@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 May 2023 08:05:59 GMT
+      date: Tue, 23 May 2023 09:52:29 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,6 +29,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":4689220,"pageSize":10,"total":46892197,"cacheTimestamp":1684829159,"results":[{"unit":{"unitId":"http://tun.fi/JX.1583888#3"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":63.287377,"lon":21.672878}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"},"hourBegin":5,"minutesBegin":30}},{"unit":{"unitId":"http://tun.fi/JX.1583879#3"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":60.936227,"lon":26.15899}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.1583879#5"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":60.936227,"lon":26.15899}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.1583879#7"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":60.936227,"lon":26.15899}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.1583875#5"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":60.942083,"lon":26.163459}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.1583875#3"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":60.942083,"lon":26.163459}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.1583874#5"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":60.942206,"lon":26.168354}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.1583874#3"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":60.942206,"lon":26.168354}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.1583874#7"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":60.942206,"lon":26.168354}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.1583873#3"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":60.941404,"lon":26.170007}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}}]}'
-  recorded_at: 2023-05-23 08:05:59 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":244125,"pageSize":10,"total":2441241,"cacheTimestamp":1684835549,"results":[{"unit":{"unitId":"http://tun.fi/JX.298017#3"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":62.425578,"lon":27}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.298017#11"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":62.425578,"lon":27}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.298017#9"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":62.425578,"lon":27}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.298017#5"},"gathering":{"conversions":{"day":23,"month":5,"wgs84CenterPoint":{"lat":62.425578,"lon":27}},"eventDate":{"begin":"2023-05-23","end":"2023-05-23"}}},{"unit":{"unitId":"http://tun.fi/JX.297941#3"},"gathering":{"conversions":{"day":9,"month":5,"wgs84CenterPoint":{"lat":60.242257,"lon":25.090629}},"eventDate":{"begin":"2023-05-09","end":"2023-05-09"},"hourBegin":15,"hourEnd":15,"minutesBegin":16,"minutesEnd":17}},{"unit":{"unitId":"http://tun.fi/JX.297941#6"},"gathering":{"conversions":{"day":9,"month":5,"wgs84CenterPoint":{"lat":60.241588,"lon":25.089923}},"eventDate":{"begin":"2023-05-09","end":"2023-05-09"},"hourBegin":15,"hourEnd":15,"minutesBegin":16,"minutesEnd":17}},{"unit":{"unitId":"http://tun.fi/JX.297940#3"},"gathering":{"conversions":{"day":9,"month":5,"wgs84CenterPoint":{"lat":61.029044,"lon":25.825046}},"eventDate":{"begin":"2023-05-09","end":"2023-05-09"}}},{"unit":{"unitId":"http://tun.fi/JX.297940#13"},"gathering":{"conversions":{"day":9,"month":5,"wgs84CenterPoint":{"lat":61.029044,"lon":25.825046}},"eventDate":{"begin":"2023-05-09","end":"2023-05-09"}}},{"unit":{"unitId":"http://tun.fi/JX.297940#9"},"gathering":{"conversions":{"day":9,"month":5,"wgs84CenterPoint":{"lat":61.029044,"lon":25.825046}},"eventDate":{"begin":"2023-05-09","end":"2023-05-09"}}},{"unit":{"unitId":"http://tun.fi/JX.297940#5"},"gathering":{"conversions":{"day":9,"month":5,"wgs84CenterPoint":{"lat":61.029044,"lon":25.825046}},"eventDate":{"begin":"2023-05-09","end":"2023-05-09"}}}]}'
+  recorded_at: 2023-05-23 09:52:29 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

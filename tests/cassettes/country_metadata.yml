@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/areas?type=country&lang=multi&pageSize=1000&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/areas?type=country&lang=multi&pageSize=1000&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 May 2023 08:08:56 GMT
+      date: Tue, 23 May 2023 09:52:37 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"9380-EMth07QNTGnlHFlHztP0ezlZIJ8"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -114,5 +114,5 @@ http_interactions:
         States Minor Outlying Islands","fi":"Yhdysvaltain pienet erillissaaret","sv":""}},{"id":"ML.246","areaType":"ML.country","countryCodeISOalpha2":"ZW","countryCodeISOalpha3":"ZWE","name":{"en":"Zimbabwe","fi":"Zimbabwe","sv":""}},{"id":"ML.247","areaType":"ML.country","name":{"en":"Soviet
         Union","fi":"Neuvostoliitto","sv":""}},{"id":"ML.248","areaType":"ML.country","name":{"en":"Czechoslovakia","fi":"Tsekkoslovakia","sv":""}},{"id":"ML.249","areaType":"ML.country","name":{"en":"Yugoslavia","fi":"Jugoslavia","sv":""}},{"id":"ML.1207","areaType":"ML.country","countryCodeISOalpha2":"XK","countryCodeISOalpha3":"UNK","name":{"en":"Kosovo","fi":"Kosovo","sv":"Kosovo"}},{"id":"ML.1307","areaType":"ML.country","countryCodeISOalpha2":"SS","countryCodeISOalpha3":"SSD","name":{"en":"South
         Sudan","fi":"Etelä-Sudan","sv":""}}],"lastPage":1,"@context":"http://schema.laji.fi/context/area.jsonld"}'
-  recorded_at: 2023-05-23 08:08:56 GMT
+  recorded_at: 2023-05-23 09:52:37 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

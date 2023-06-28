@@ -47,11 +47,6 @@ test_that(
     expect_s3_class(with_progress, "finbif_occ")
 
     expect_s3_class(
-      finbif_occurrence("Vulpes vulpes", sample = TRUE, n = 1600, quiet = TRUE),
-      "finbif_occ"
-    )
-
-    expect_s3_class(
       finbif_occurrence(
         select = "taxon_id", sample = TRUE, n = 3001, quiet = TRUE
       ),
@@ -198,6 +193,38 @@ test_that(
 
 suppressMessages(eject_cassette("finbif_occurrence"))
 
+suppressMessages(insert_cassette("finbif_occurrence_dups"))
+
+test_that(
+  "duplicate records are handled correctly", {
+
+    n <- 1600
+
+    dev <- identical(getOption("finbif_api_url"), "https://apitest.laji.fi")
+
+    if (dev) {
+
+      op <- options()
+
+      options(finbif_max_page_size = 100L)
+
+      n <- 300L
+
+    }
+
+    expect_s3_class(
+      finbif_occurrence("Vulpes vulpes", sample = TRUE, n = n, quiet = TRUE),
+      "finbif_occ"
+    )
+
+    if (dev) options(op)
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_occurrence_dups"))
+
 suppressMessages(insert_cassette("finbif_occurrence_low"))
 
 test_that(
@@ -244,7 +271,7 @@ test_that(
       sample = TRUE
     )
 
-    url <- sample(unlist(has_media[["media"]]), 1L)
+    url <- unlist(has_media[["media"]])[[1L]]
 
     expect_match(url, "^http")
 
@@ -547,3 +574,26 @@ test_that(
 )
 
 suppressMessages(eject_cassette("finbif_invalidate_cache"))
+
+suppressMessages(insert_cassette("finbif_compute_var_zero_rows"))
+
+test_that(
+  "can compute a var from id when there are zero records", {
+
+    skip_on_cran()
+
+    expect_s3_class(
+      finbif_occurrence(
+        filter = list(collection = "HR.121", informal_groups = "Myriapods"),
+        select = "municipality"
+      ),
+      "finbif_occ"
+    )
+
+    expect_s3_class(finbif_occurrence(cache = TRUE), "finbif_occ")
+
+  }
+
+)
+
+suppressMessages(eject_cassette("finbif_compute_var_zero_rows"))

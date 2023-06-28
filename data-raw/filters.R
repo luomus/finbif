@@ -29,7 +29,7 @@ rm(token)
 
 stopifnot(
   identical(
-    sort(filters),
+    sort(c(filters, "excludeNulls")),
     sort(row.names(filter_names))
   )
 )
@@ -41,7 +41,6 @@ stopifnot(
   )
 )
 
-# Some filter have been deprecated or are not available in the public API
 unused_filters <- c("editorId", "editorOrObserverId", "observerId")
 
 filter_names <- filter_names[-match(unused_filters, rownames(filter_names)), ]

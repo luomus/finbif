@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/taxa/search?query=Parus%20major&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/taxa/search?query=Parus%20major&matchType=exact&limit=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,16 +15,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 May 2023 08:08:55 GMT
+      date: Tue, 23 May 2023 09:52:36 GMT
       content-type: application/json; charset=utf-8
       content-length: '440'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"1b8-A8+sO8i7SJ+tQq9IWF1Tffx1MdQ"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -35,5 +35,5 @@ http_interactions:
       string: '[{"matchingName":"Parus major","nameType":"MX.scientificName","id":"MX.34567","scientificName":"Parus
         major","scientificNameAuthorship":"Linnaeus, 1758","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"fi":"talitiainen","en":"Great
         Tit","sv":"talgoxe"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","sv":"Fåglar","fi":"Linnut"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2023-05-23 08:08:55 GMT
+  recorded_at: 2023-05-23 09:52:36 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

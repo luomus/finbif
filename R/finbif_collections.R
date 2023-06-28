@@ -40,6 +40,8 @@ finbif_collections <- function(
 
   locale <- switch(locale, sv = locale, fi = locale, "en")
 
+  cache <- infer_cache(cache)
+
   swagger <- list(path = "swagger", cache = cache)
 
   swagger <- api_get(swagger)
@@ -218,6 +220,8 @@ get_collections <- function(col_obj) {
 
   qry <- c(col_obj[["qry"]], page_args)
 
+  cache <- infer_cache(col_obj[["cache"]])
+
   collections_list <- list()
 
   cond <- TRUE
@@ -228,9 +232,7 @@ get_collections <- function(col_obj) {
 
     qry[["page"]] <- page
 
-    query_obj <- list(
-      path = col_obj[["path"]], query = qry, cache = col_obj[["cache"]]
-    )
+    query_obj <- list(path = col_obj[["path"]], query = qry, cache = cache)
 
     resp <- api_get(query_obj)
 

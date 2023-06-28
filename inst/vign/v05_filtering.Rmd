@@ -174,7 +174,7 @@ finbif_metadata("habitat_qualifier")[4:6, ]
 ```{details habitat-type-specific-filter}
 # Search records of taxa for which forests with sun-exposure and broadleaved
 # deciduous trees are their primary habitat type
-finbif_occurrence(filter = list(primary_habitat = list(M = c("PA", "J"))))
+finbif_occurrence(filter = list(primary_habitat = list(M = c("PAK", "J"))))
 ```
 
 ## Status of taxa in Finland
