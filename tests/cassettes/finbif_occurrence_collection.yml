@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.collectionId&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.collectionId&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 May 2023 09:52:27 GMT
+      date: Wed, 28 Jun 2023 07:27:58 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,6 +28,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":244125,"pageSize":10,"total":2441241,"cacheTimestamp":1684835547,"results":[{"unit":{"unitId":"http://tun.fi/JX.298017#3"},"document":{"collectionId":"http://tun.fi/HR.4471"}},{"unit":{"unitId":"http://tun.fi/JX.298017#11"},"document":{"collectionId":"http://tun.fi/HR.4471"}},{"unit":{"unitId":"http://tun.fi/JX.298017#9"},"document":{"collectionId":"http://tun.fi/HR.4471"}},{"unit":{"unitId":"http://tun.fi/JX.298017#5"},"document":{"collectionId":"http://tun.fi/HR.4471"}},{"unit":{"unitId":"http://tun.fi/JX.297941#3"},"document":{"collectionId":"http://tun.fi/HR.2951"}},{"unit":{"unitId":"http://tun.fi/JX.297941#6"},"document":{"collectionId":"http://tun.fi/HR.2951"}},{"unit":{"unitId":"http://tun.fi/JX.297940#3"},"document":{"collectionId":"http://tun.fi/HR.4471"}},{"unit":{"unitId":"http://tun.fi/JX.297940#13"},"document":{"collectionId":"http://tun.fi/HR.4471"}},{"unit":{"unitId":"http://tun.fi/JX.297940#9"},"document":{"collectionId":"http://tun.fi/HR.4471"}},{"unit":{"unitId":"http://tun.fi/JX.297940#5"},"document":{"collectionId":"http://tun.fi/HR.4471"}}]}'
-  recorded_at: 2023-05-23 09:52:28 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: '{"currentPage":1,"nextPage":2,"lastPage":4732529,"pageSize":10,"total":47325286,"cacheTimestamp":1687937278,"results":[{"unit":{"unitId":"http://tun.fi/KE.176/649bdfc9d5def54a0f0b4f23#Unit1"},"document":{"collectionId":"http://tun.fi/HR.203"}},{"unit":{"unitId":"http://tun.fi/JX.1602362#3"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.1602360#42"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.1602360#27"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.1602360#48"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.1602360#33"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.1602360#6"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.1602360#9"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.1602360#45"},"document":{"collectionId":"http://tun.fi/HR.1747"}},{"unit":{"unitId":"http://tun.fi/JX.1602360#30"},"document":{"collectionId":"http://tun.fi/HR.1747"}}]}'
+  recorded_at: 2023-06-28 07:27:58 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0

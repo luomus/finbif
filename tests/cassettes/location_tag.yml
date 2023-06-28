@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MNP.tagEnum?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MNP.tagEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,16 +15,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 May 2023 09:52:38 GMT
+      date: Wed, 28 Jun 2023 07:31:54 GMT
       content-type: application/json; charset=utf-8
       content-length: '943'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"3af-7mRphG1RP+ONS/Ex20MX9nQJw34"
       vary: Accept-Encoding
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -39,5 +39,5 @@ http_interactions:
         habitat","fi":"Tärkeä habitaatti","sv":"Viktig livsmiljö"}},{"id":"MNP.tagCensusRare","value":{"fi":"Harvoin
         laskettu","en":"Rarely censused","sv":"Sällan censused"}},{"id":"MNP.tagHabitatFarmland","value":{"fi":"Pelto","sv":"Odlinglandskap","en":"Farmland"}},{"id":"MNP.tagHabitatMire","value":{"fi":"Suo","en":"Mire","sv":"Myr"}},{"id":"MNP.tagHabitatMountain","value":{"en":"Mountain","sv":"Fjäl","fi":"Tunturi"}},{"id":"MNP.tagSuitable","value":{"fi":"Soveltuu
         liito-oravalle satelliittikuvan perusteella","en":"","sv":""}}]'
-  recorded_at: 2023-05-23 09:52:38 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2023-06-28 07:31:54 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0

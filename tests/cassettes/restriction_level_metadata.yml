@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MX.secureLevels?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MX.secureLevels?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,16 +15,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 May 2023 09:52:38 GMT
+      date: Wed, 28 Jun 2023 07:31:52 GMT
       content-type: application/json; charset=utf-8
       content-length: '889'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"379-/qlEKiKIfxtjsiBWXnNsX0g1Tjo"
+      etag: W/"379-A/pKIMYa4U5f1o8dbCWlAyjvdLI"
       vary: Accept-Encoding
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -32,16 +32,16 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MX.secureLevelNone","value":{"en":"None","fi":"Ei karkeistettu","sv":"Inte
-        skyddad"}},{"id":"MX.secureLevelKM1","value":{"en":"1 km","sv":"1 km","fi":"1
-        km"}},{"id":"MX.secureLevelKM5","value":{"fi":"5 km","sv":"5 km","en":"5 km"}},{"id":"MX.secureLevelKM10","value":{"en":"10
-        km","sv":"10 km","fi":"10 km"}},{"id":"MX.secureLevelKM25","value":{"fi":"25
-        km","sv":"25 km","en":"25 km"}},{"id":"MX.secureLevelKM50","value":{"en":"50
-        km","fi":"50 km","sv":"50 km"}},{"id":"MX.secureLevelKM100","value":{"en":"100
-        km","sv":"100 km","fi":"100 km"}},{"id":"MX.secureLevelHighest","value":{"fi":"Täyssalaus","en":"Fully
-        hidden","sv":"Helt dold"}},{"id":"MX.secureLevelNoShow","value":{"en":"Not
+      string: '[{"id":"MX.secureLevelNone","value":{"en":"None","sv":"Inte skyddad","fi":"Ei
+        karkeistettu"}},{"id":"MX.secureLevelKM1","value":{"en":"1 km","sv":"1 km","fi":"1
+        km"}},{"id":"MX.secureLevelKM5","value":{"sv":"5 km","fi":"5 km","en":"5 km"}},{"id":"MX.secureLevelKM10","value":{"en":"10
+        km","sv":"10 km","fi":"10 km"}},{"id":"MX.secureLevelKM25","value":{"sv":"25
+        km","fi":"25 km","en":"25 km"}},{"id":"MX.secureLevelKM50","value":{"fi":"50
+        km","en":"50 km","sv":"50 km"}},{"id":"MX.secureLevelKM100","value":{"en":"100
+        km","sv":"100 km","fi":"100 km"}},{"id":"MX.secureLevelHighest","value":{"en":"Fully
+        hidden","fi":"Täyssalaus","sv":"Helt dold"}},{"id":"MX.secureLevelNoShow","value":{"en":"Not
         shown at all - used mainly to prevent spam","fi":"Ei näytetä ollenkaan - käytetään
         lähinnä spammin estämiseksi","sv":"Visas inte alls - används huvudsakligen
         att stoppa skräppost"}}]'
-  recorded_at: 2023-05-23 09:52:38 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2023-06-28 07:31:52 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0

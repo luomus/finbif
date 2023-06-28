@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/areas?type=birdAssociationArea&lang=multi&pageSize=1000&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/areas?type=birdAssociationArea&lang=multi&pageSize=1000&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 May 2023 09:52:37 GMT
+      date: Wed, 28 Jun 2023 07:31:52 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"16d1-1tbd6rDI6bnjQfOcrSZ2JJNd0wg"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -86,5 +86,5 @@ http_interactions:
         r.y.","sv":""}},{"id":"ML.1127","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Suomen
         ulkopuoliset alueet","en":"","fi":"Suomen ulkopuoliset alueet","sv":""}},{"id":"ML.1267","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Ostrobothnia
         Australis r.f.","en":"","fi":"Ostrobothnia Australis r.f.","sv":""}}],"lastPage":1,"@context":"http://schema.laji.fi/context/area.jsonld"}'
-  recorded_at: 2023-05-23 09:52:37 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2023-06-28 07:31:52 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0

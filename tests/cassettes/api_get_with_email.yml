@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=unit.unitId&personEmail=noreply%40laji.fi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?page=1&pageSize=1&selected=unit.unitId&personEmail=noreply%40laji.fi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 May 2023 09:51:26 GMT
+      date: Wed, 28 Jun 2023 07:21:41 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,6 +28,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":2441241,"pageSize":1,"total":2441241,"cacheTimestamp":1684835486,"results":[{"unit":{"unitId":"http://tun.fi/JX.298017#3"}}]}'
-  recorded_at: 2023-05-23 09:51:26 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: '{"currentPage":1,"nextPage":2,"lastPage":47325286,"pageSize":1,"total":47325286,"cacheTimestamp":1687936851,"results":[{"unit":{"unitId":"http://tun.fi/JX.1602360#42"}}]}'
+  recorded_at: 2023-06-28 07:21:41 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0
