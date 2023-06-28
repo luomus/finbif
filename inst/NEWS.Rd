@@ -1,20 +1,17 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.9.0.9001}{
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Fixed a bug triggered when trying to compute a variable from an
-        identifier and data returned contained zero records.
-    }
-  }
-}
-
-\section{finbif version 0.9.0.9000}{
+\section{finbif version 0.9.1}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item New option \code{finbif_use_cache_metadata} to set caching for
         metadata only. Is ignored if \code{finbif_use_cache} is \code{TRUE}.
+    }
+  }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed a bug triggered when trying to compute a variable from an
+        identifier and data returned contained zero records.
     }
   }
 }

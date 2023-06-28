@@ -1,16 +1,14 @@
-# finbif 0.9.0.9001
-
-#### BUG FIXES
-
-  - Fixed a bug triggered when trying to compute a variable from an
-    identifier and data returned contained zero records.
-
-# finbif 0.9.0.9000
+# finbif 0.9.1
 
 #### NEW FEATURES
 
   - New option `finbif_use_cache_metadata` to set caching for metadata
     only. Is ignored if `finbif_use_cache` is `TRUE`.
+
+#### BUG FIXES
+
+  - Fixed a bug triggered when trying to compute a variable from an
+    identifier and data returned contained zero records.
 
 # finbif 0.9.0
 
