@@ -198,6 +198,8 @@ suppressMessages(insert_cassette("finbif_occurrence_dups"))
 test_that(
   "duplicate records are handled correctly", {
 
+    skip_on_cran()
+
     n <- 1600
 
     dev <- identical(getOption("finbif_api_url"), "https://apitest.laji.fi")
