@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/taxa/search?query=Otter&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/taxa/search?query=Otter&matchType=exact&limit=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,16 +15,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 28 Jun 2023 07:31:51 GMT
+      date: Fri, 30 Jun 2023 07:04:59 GMT
       content-type: application/json; charset=utf-8
       content-length: '435'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"1b3-5oDSWCeJeY7vc/kDPCARmeAe0nY"
+      etag: W/"1b3-MDfMnWFtpRjyAOqh4bHGe19UZY4"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -33,12 +33,12 @@ http_interactions:
       encoding: ''
       file: no
       string: '[{"matchingName":"Otter","nameType":"MX.vernacularName","id":"MX.47169","scientificName":"Lutra
-        lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"fi":"saukko","en":"Otter","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"fi":"Nisäkkäät","en":"Mammals","sv":"Däggdjur"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2023-06-28 07:31:51 GMT
+        lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"fi":"saukko","en":"Otter","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"fi":"Nisäkkäät","sv":"Däggdjur","en":"Mammals"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
+  recorded_at: 2023-06-30 07:05:00 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/taxa/search?query=Bubo%20bubo&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/taxa/search?query=Bubo%20bubo&matchType=exact&limit=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -52,16 +52,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 28 Jun 2023 07:31:51 GMT
+      date: Fri, 30 Jun 2023 07:04:59 GMT
       content-type: application/json; charset=utf-8
       content-length: '641'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"281-FsgmGp5j1VGL0N2eXp9Qc44lPhg"
+      etag: W/"281-5dgEseePeXhyC8+p9bmrHDcRDV8"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -71,13 +71,13 @@ http_interactions:
       file: no
       string: '[{"matchingName":"Bubo bubo","nameType":"MX.scientificName","id":"MX.28965","scientificName":"Bubo
         bubo","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"fi":"huuhkaja","sv":"berguv","se":"lidnu","en":"Eurasian
-        Eagle-owl"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","sv":"Fåglar","fi":"Linnut"}},{"id":"MVL.1141","name":{"en":"Birds
-        of prey and owls","fi":"Petolinnut ja pöllöt","sv":"Rovfåglar och ugglor"}},{"id":"MVL.1161","name":{"fi":"Pöllöt","sv":"Ugglor","en":"Owls"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2023-06-28 07:31:51 GMT
+        Eagle-owl"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","sv":"Fåglar","fi":"Linnut"}},{"id":"MVL.1141","name":{"sv":"Rovfåglar
+        och ugglor","en":"Birds of prey and owls","fi":"Petolinnut ja pöllöt"}},{"id":"MVL.1161","name":{"fi":"Pöllöt","en":"Owls","sv":"Ugglor"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
+  recorded_at: 2023-06-30 07:05:00 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/taxa/search?query=MX.279648&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/taxa/search?query=MX.279648&matchType=exact&limit=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -91,16 +91,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 28 Jun 2023 07:31:51 GMT
+      date: Fri, 30 Jun 2023 07:04:59 GMT
       content-type: application/json; charset=utf-8
       content-length: '649'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"289-7l7BfMG1WG9nmcBFeu27JbHkiDM"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -112,5 +112,5 @@ http_interactions:
         nigrinervis","scientificNameAuthorship":"(Wahlgren, 1918)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{},"informalGroups":[{"id":"MVL.232","name":{"fi":"Hyönteiset
         ja hämähäkkieläimet","en":"Insects and arachnids","sv":"Insekter och spindeldjur"}},{"id":"MVL.224","name":{"sv":"Tvåvingar","en":"True
         flies","fi":"Kaksisiipiset"}},{"id":"MVL.342","name":{"en":"Brachyceran flies","sv":"Flugor","fi":"Kärpäset"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2023-06-28 07:31:51 GMT
+  recorded_at: 2023-06-30 07:05:00 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
