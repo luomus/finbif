@@ -75,11 +75,13 @@ api_get <- function(obj) {
 
       if (!DBI::dbExistsTable(fcp, "finbif_cache")) {
 
+        blob <- list()
+
         init <- data.frame(
           hash = character(),
           created = as.POSIXct(numeric()),
           timeout = numeric(),
-          blob = blob::blob()
+          blob = structure(blob, class = "vctrs_vctr")
         )
 
         DBI::dbWriteTable(fcp, "finbif_cache", init)
@@ -410,13 +412,15 @@ append_obj <- function(obj) {
 
     blob <- serialize(obj, NULL)
 
+    blob <- list(blob)
+
     hash <- obj[["hash"]]
 
     db_cache <- data.frame(
       hash = hash,
       created = Sys.time(),
       timeout = obj[["timeout"]],
-      blob = blob::blob(blob)
+      blob = structure(blob, class = "vctrs_vctr")
     )
 
     debug_msg("[", as.character(Sys.time()), "] ", "Adding to cache: ", hash)
