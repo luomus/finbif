@@ -116,6 +116,8 @@ records <- function(fb_records_obj) {
 
     last <- ans[[ind]]
 
+    last[["locale"]] <- fb_records_obj[["locale"]]
+
     attr(last, "df") <- records_df(last)
 
     ans[[ind]] <- last
@@ -917,10 +919,14 @@ get_extra_pages <- function(fb_records_list) {
 
     }
 
+    records_i <- value(res)
+
+    records_i <- c(records_i, locale = fb_records_list[[i]][["locale"]])
+
     i <- i + 1L
 
     fb_records_list[[i]] <- structure(
-      value(res),
+      records_i,
       select = fb_records_obj[["select_query"]],
       aggregate = fb_records_obj[["aggregate"]]
     )
