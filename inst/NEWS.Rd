@@ -2,7 +2,12 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.9.1.9000}{
-
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed a bug triggered when localising some variables and multiple
+        pages of data had been requested.
+    }
+  }
 }
 
 \section{finbif version 0.9.1}{

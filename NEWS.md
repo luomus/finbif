@@ -1,3 +1,10 @@
+# finbif 0.9.1.9000
+
+#### BUG FIXES
+
+  - Fixed a bug triggered when localising some variables and multiple
+    pages of data had been requested.
+
 # finbif 0.9.1
 
 #### NEW FEATURES
