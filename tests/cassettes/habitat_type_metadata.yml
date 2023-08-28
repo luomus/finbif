@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MKV.habitatEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MKV.habitatEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 08:43:17 GMT
+      date: Mon, 28 Aug 2023 11:01:41 GMT
       content-type: application/json; charset=utf-8
-      transfer-encoding: chunked
+      content-length: '16347'
+      x-powered-by: Express
       access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
-      x-download-options: noopen
       etag: W/"3fdb-gsfZJUhxcUN0mR3gVcsay8SKH8I"
-      vary: Accept-Encoding
-      content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -189,11 +186,11 @@ http_interactions:
         – rakennukset ja rakenteet","en":"Ir – buildings and constructions","sv":"Ir
         – byggnader och konstruktioner"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatU","value":{"fi":"?
         – Elinympäristö tuntematon","sv":"? – Habitat okänt","en":"? – Habitat unknown"}}]'
-  recorded_at: 2023-08-28 08:43:17 GMT
+  recorded_at: 2023-08-28 11:01:41 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MKV.habitatSpecificTypeEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MKV.habitatSpecificTypeEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -207,17 +204,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 08:43:17 GMT
+      date: Mon, 28 Aug 2023 11:01:41 GMT
       content-type: application/json; charset=utf-8
-      transfer-encoding: chunked
+      content-length: '1862'
+      x-powered-by: Express
       access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
-      x-download-options: noopen
       etag: W/"746-tKDNd9reJYdqXiIklFiMZhmzbD4"
-      vary: Accept-Encoding
-      content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -246,5 +240,5 @@ http_interactions:
         kalliot/kivikot","sv":"ke – intermediärä-basiska hällmarker samt sten- och
         blockfält"}},{"id":"MKV.habitatSpecificTypeCA","value":{"fi":"ca – kalkkivaikutteinen","en":"ca
         – calcareous effect","sv":"ca – kalkrik"}}]'
-  recorded_at: 2023-08-28 08:43:17 GMT
+  recorded_at: 2023-08-28 11:01:41 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

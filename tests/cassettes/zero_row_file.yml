@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 08:33:26 GMT
+      date: Mon, 28 Aug 2023 10:59:12 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -94,10 +95,7 @@ http_interactions:
         tekemä havainto, ääni","en":"Machine observation audio","sv":"Maskinobservation,
         audio"}},{"enumeration":"MACHINE_OBSERVATION_GEOLOGGER","property":"MY.recordBasisMachineObservationGeologger","label":{"fi":"Geopaikannin","en":"Geologger","sv":"Geologger"}},{"enumeration":"MACHINE_OBSERVATION_SATELLITE_TRANSMITTER","property":"MY.recordBasisMachineObservationSatelliteTransmitter","label":{"fi":"Satelliittipaikannus","en":"Satellite
         positioning","sv":"Maskinobservation, satellitpositionering"}},{"enumeration":"LITERATURE","property":"MY.recordBasisLiterature","label":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}},{"enumeration":"MATERIAL_SAMPLE","property":"MY.recordBasisMaterialSample","label":{"fi":"Materiaalinäyte","en":"Material
-        sample","sv":"Materialprov"}},{"enumeration":"MATERIAL_SAMPLE_AIR","property":"MY.recordBasisMaterialSampleAir","label":{"fi":"Materiaalinäyte:
-        ilmanäyte","en":"Material sample, air","sv":"Materialprov, luft"}},{"enumeration":"MATERIAL_SAMPLE_SOIL","property":"MY.recordBasisMaterialSampleSoil","label":{"fi":"Materiaalinäyte:
-        maaperänäyte","en":"Material sample, soil","sv":"Materialprov, jord"}},{"enumeration":"MATERIAL_SAMPLE_WATER","property":"MY.recordBasisMaterialSampleWater","label":{"fi":"Materiaalinäyte:
-        vesinäyte","en":"Material sample, water","sv":"Materialprov, vatten"}},{"enumeration":"CITABLE","property":"HBF.downloadTypeCitable","label":{"fi":"Viitattavissa
+        sample","sv":"Materialprov"}},{"enumeration":"MATERIAL_SAMPLE_AIR","property":"MY.recordBasisMaterialSampleAir","label":{}},{"enumeration":"MATERIAL_SAMPLE_SOIL","property":"MY.recordBasisMaterialSampleSoil","label":{}},{"enumeration":"MATERIAL_SAMPLE_WATER","property":"MY.recordBasisMaterialSampleWater","label":{}},{"enumeration":"CITABLE","property":"HBF.downloadTypeCitable","label":{"fi":"Viitattavissa
         (tallennettu Lajitietokeskukseen)","en":"Citable (stored to FinBIF)","sv":"Citable
         (lagras till FinBIF)"}},{"enumeration":"LIGHTWEIGHT","property":"HBF.downloadTypeLightweight","label":{"fi":"Käyttäjän
         lataus (ei viitattavissa, ladattavissa)","en":"User download (not citable,
@@ -263,11 +261,11 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2023-08-28 08:33:27 GMT
+  recorded_at: 2023-08-28 10:59:13 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MY.recordBases?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.recordBases?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -281,17 +279,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 08:33:26 GMT
+      date: Mon, 28 Aug 2023 10:59:13 GMT
       content-type: application/json; charset=utf-8
-      transfer-encoding: chunked
+      content-length: '3283'
+      x-powered-by: Express
       access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
-      x-download-options: noopen
-      etag: W/"cd3-AfN7rDdLz029M8vkH0AFu1yro1Y"
-      vary: Accept-Encoding
-      content-encoding: gzip
+      etag: W/"cd3-DM+yga7fzJoGMUgt9165LyIoduU"
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -299,32 +294,32 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MY.recordBasisPreservedSpecimen","value":{"sv":"Prov","fi":"Näyte","en":"Preserved
-        specimen"}},{"id":"MY.recordBasisHumanObservation","value":{"en":"Observation","fi":"Havaittu","sv":"Observation"}},{"id":"MY.recordBasisHumanObservationSeen","value":{"sv":"Sett","en":"Seen","fi":"Nähty"}},{"id":"MY.recordBasisHumanObservationHeard","value":{"en":"Heard","fi":"Kuultu","sv":"Hörts"}},{"id":"MY.recordBasisHumanObservationHandled","value":{"en":"Handled
-        (catched, not preserved)","sv":"Behandlad (fasttagit, inte bevarad)","fi":"Käsitelty
-        (otettu kiinni, ei näytettä)"}},{"id":"MY.recordBasisHumanObservationPhoto","value":{"en":"Photographed","fi":"Valokuvattu","sv":"Fotograferat"}},{"id":"MY.recordBasisHumanObservationAudio","value":{"fi":"Äänitetty","en":"Audio
+      string: '[{"id":"MY.recordBasisPreservedSpecimen","value":{"fi":"Näyte","en":"Preserved
+        specimen","sv":"Prov"}},{"id":"MY.recordBasisHumanObservation","value":{"en":"Observation","fi":"Havaittu","sv":"Observation"}},{"id":"MY.recordBasisHumanObservationSeen","value":{"en":"Seen","sv":"Sett","fi":"Nähty"}},{"id":"MY.recordBasisHumanObservationHeard","value":{"sv":"Hörts","fi":"Kuultu","en":"Heard"}},{"id":"MY.recordBasisHumanObservationHandled","value":{"en":"Handled
+        (catched, not preserved)","fi":"Käsitelty (otettu kiinni, ei näytettä)","sv":"Behandlad
+        (fasttagit, inte bevarad)"}},{"id":"MY.recordBasisHumanObservationPhoto","value":{"en":"Photographed","fi":"Valokuvattu","sv":"Fotograferat"}},{"id":"MY.recordBasisHumanObservationAudio","value":{"fi":"Äänitetty","en":"Audio
         recording","sv":"Ljudsatt"}},{"id":"MY.recordBasisHumanObservationVideo","value":{"en":"Video
-        recording","fi":"Videoitu","sv":"Videobandad"}},{"id":"MY.recordBasisHumanObservationIndirect","value":{"en":"Indirect
-        observation (footprints, feces, etc)","fi":"Epäsuora havainto (jäljet, ulosteet,
-        yms)","sv":"Indirekt observation (fotspår, avföring, etc)"}},{"id":"MY.recordBasisMachineObservation","value":{"en":"Machine
-        observation","fi":"Laitteen tekemä havainto","sv":"Maskinobservation"}},{"id":"MY.recordBasisMachineObservationPhoto","value":{"fi":"Laitteen
-        tekemä havainto, valokuva","en":"Machine observation photo","sv":"Maskinobservation,
-        foto"}},{"id":"MY.recordBasisMachineObservationVideo","value":{"sv":"Maskinobservation,
-        video","fi":"Laitteen tekemä havainto, video","en":"Machine observation video"}},{"id":"MY.recordBasisMachineObservationAudio","value":{"sv":"Maskinobservation,
-        audio","en":"Machine observation audio","fi":"Laitteen tekemä havainto, ääni"}},{"id":"MY.recordBasisMachineObservationGeologger","value":{"en":"Geologger","fi":"Geopaikannin","sv":"Geologger"}},{"id":"MY.recordBasisMachineObservationSatelliteTransmitter","value":{"en":"Satellite
-        positioning","fi":"Satelliittipaikannus","sv":"Maskinobservation, satellitpositionering"}},{"id":"MY.recordBasisFossilSpecimen","value":{"fi":"Fossiili","en":"Fossil","sv":"Fossil"}},{"id":"MY.recordBasisSubfossilSpecimen","value":{"en":"Subfossil","fi":"Subfossiili","sv":"Subfossil"}},{"id":"MY.recordBasisSubfossilSpecimenAmberInclusion","value":{"en":"Amber
-        inclusion","sv":"Bärnsten fossil","fi":"Meripihkafossiili"}},{"id":"MY.recordBasisMaterialSample","value":{"fi":"Materiaalinäyte","sv":"Materialprov","en":"Material
-        sample"}},{"id":"MY.recordBasisMaterialSampleAir","value":{"fi":"Materiaalinäyte:
-        ilmanäyte","sv":"Materialprov, luft","en":"Material sample, air"}},{"id":"MY.recordBasisMaterialSampleSoil","value":{"fi":"Materiaalinäyte:
-        maaperänäyte","en":"Material sample, soil","sv":"Materialprov, jord"}},{"id":"MY.recordBasisMaterialSampleWater","value":{"sv":"Materialprov,
-        vatten","fi":"Materiaalinäyte: vesinäyte","en":"Material sample, water"}},{"id":"MY.recordBasisMicrobialSpecimen","value":{"en":"Microbial
-        specimen","sv":"Mikrobiella prov","fi":"Mikrobinäyte"}},{"id":"MY.recordBasisLivingSpecimen","value":{"en":"Living
-        specimen","fi":"Elävä näyte","sv":"Levande prov"}},{"id":"MY.recordBasisLiterature","value":{"en":"Literature","fi":"Kirjallisuustieto","sv":"Litteratur"}}]'
-  recorded_at: 2023-08-28 08:33:27 GMT
+        recording","fi":"Videoitu","sv":"Videobandad"}},{"id":"MY.recordBasisHumanObservationIndirect","value":{"sv":"Indirekt
+        observation (fotspår, avföring, etc)","fi":"Epäsuora havainto (jäljet, ulosteet,
+        yms)","en":"Indirect observation (footprints, feces, etc)"}},{"id":"MY.recordBasisMachineObservation","value":{"sv":"Maskinobservation","en":"Machine
+        observation","fi":"Laitteen tekemä havainto"}},{"id":"MY.recordBasisMachineObservationPhoto","value":{"en":"Machine
+        observation photo","sv":"Maskinobservation, foto","fi":"Laitteen tekemä havainto,
+        valokuva"}},{"id":"MY.recordBasisMachineObservationVideo","value":{"sv":"Maskinobservation,
+        video","en":"Machine observation video","fi":"Laitteen tekemä havainto, video"}},{"id":"MY.recordBasisMachineObservationAudio","value":{"sv":"Maskinobservation,
+        audio","fi":"Laitteen tekemä havainto, ääni","en":"Machine observation audio"}},{"id":"MY.recordBasisMachineObservationGeologger","value":{"en":"Geologger","fi":"Geopaikannin","sv":"Geologger"}},{"id":"MY.recordBasisMachineObservationSatelliteTransmitter","value":{"en":"Satellite
+        positioning","sv":"Maskinobservation, satellitpositionering","fi":"Satelliittipaikannus"}},{"id":"MY.recordBasisFossilSpecimen","value":{"fi":"Fossiili","en":"Fossil","sv":"Fossil"}},{"id":"MY.recordBasisSubfossilSpecimen","value":{"fi":"Subfossiili","en":"Subfossil","sv":"Subfossil"}},{"id":"MY.recordBasisSubfossilSpecimenAmberInclusion","value":{"sv":"Bärnsten
+        fossil","en":"Amber inclusion","fi":"Meripihkafossiili"}},{"id":"MY.recordBasisMaterialSample","value":{"en":"Material
+        sample","sv":"Materialprov","fi":"Materiaalinäyte"}},{"id":"MY.recordBasisMaterialSampleAir","value":{"en":"Material
+        sample, air","fi":"Materiaalinäyte: ilmanäyte","sv":"Materialprov, luft"}},{"id":"MY.recordBasisMaterialSampleSoil","value":{"en":"Material
+        sample, soil","sv":"Materialprov, jord","fi":"Materiaalinäyte: maaperänäyte"}},{"id":"MY.recordBasisMaterialSampleWater","value":{"en":"Material
+        sample, water","fi":"Materiaalinäyte: vesinäyte","sv":"Materialprov, vatten"}},{"id":"MY.recordBasisMicrobialSpecimen","value":{"sv":"Mikrobiella
+        prov","fi":"Mikrobinäyte","en":"Microbial specimen"}},{"id":"MY.recordBasisLivingSpecimen","value":{"sv":"Levande
+        prov","en":"Living specimen","fi":"Elävä näyte"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}}]'
+  recorded_at: 2023-08-28 10:59:13 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MY.sexes?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.sexes?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -338,16 +333,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 08:33:27 GMT
+      date: Mon, 28 Aug 2023 10:59:13 GMT
       content-type: application/json; charset=utf-8
       content-length: '670'
+      x-powered-by: Express
       access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
-      x-download-options: noopen
       etag: W/"29e-me+iW8lpqr7cFEhlRsqF4SfDkr8"
-      vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -362,11 +355,11 @@ http_interactions:
         - Gynandromorph"}},{"id":"MY.sexE","value":{"fi":"eri sukupuolia","en":"E
         - multiple","sv":"olika kön"}},{"id":"MY.sexC","value":{"fi":"ristiriitainen","en":"C
         - Conflicting","sv":"kontroversiell"}}]'
-  recorded_at: 2023-08-28 08:33:27 GMT
+  recorded_at: 2023-08-28 10:59:13 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MY.lifeStages?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.lifeStages?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -380,17 +373,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 08:33:27 GMT
+      date: Mon, 28 Aug 2023 10:59:13 GMT
       content-type: application/json; charset=utf-8
-      transfer-encoding: chunked
+      content-length: '1807'
+      x-powered-by: Express
       access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
-      x-download-options: noopen
       etag: W/"70f-mIiXk5dvAmrEpT21jXhgamAY3Gw"
-      vary: Accept-Encoding
-      content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -404,11 +394,11 @@ http_interactions:
         egg","fi":"kuoriutunut muna","sv":"kläckt ägg"}},{"id":"MY.lifeStageHatchedPupa","value":{"sv":"kläckt
         ägg","fi":"kuoriutunut kotelo","en":"hatched pupa"}},{"id":"MY.lifeStageGall","value":{"fi":"äkämä","en":"gall","sv":"gallbildning"}},{"id":"MY.lifeStageMarks","value":{"sv":"spår","en":"marks
         (feeding marks etc.)","fi":"jäljet (syömäjäljet tms.)"}},{"id":"MY.lifeStageTriungulin","value":{"en":"triungulin","fi":"triunguliini","sv":"triunguliini"}}]'
-  recorded_at: 2023-08-28 08:33:27 GMT
+  recorded_at: 2023-08-28 10:59:13 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MY.plantLifeStageEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.plantLifeStageEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -422,17 +412,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 08:33:27 GMT
+      date: Mon, 28 Aug 2023 10:59:13 GMT
       content-type: application/json; charset=utf-8
-      transfer-encoding: chunked
+      content-length: '1238'
+      x-powered-by: Express
       access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
-      x-download-options: noopen
-      etag: W/"4d6-5QHWk6FRIg5gGwR4Fh/BlwtguAw"
-      vary: Accept-Encoding
-      content-encoding: gzip
+      etag: W/"4d6-PyzJGNCkXXVfTajF7Rwp4Hoecxk"
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -440,20 +427,20 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MY.plantLifeStageSterile","value":{"en":"sterile","sv":"steril","fi":"steriili"}},{"id":"MY.plantLifeStageFertile","value":{"en":"fertile","fi":"fertiili","sv":"bördig"}},{"id":"MY.plantLifeStageSeed","value":{"fi":"siemen
-        / itiö / hedelmä","sv":"frö / spor / frukt","en":"seed / spore / fruit"}},{"id":"MY.plantLifeStageSprout","value":{"fi":"verso","en":"sprout","sv":"skott"}},{"id":"MY.plantLifeStageBud","value":{"fi":"nuppu","en":"bud","sv":"knopp"}},{"id":"MY.plantLifeStageFlower","value":{"fi":"kukka","en":"flower","sv":"blomma"}},{"id":"MY.plantLifeStageWitheredFlower","value":{"fi":"kuihtunut
-        kukka","en":"withered flower","sv":"vissnad blomma"}},{"id":"MY.plantLifeStageRipeningFruit","value":{"fi":"kypsyviä
-        siemeniä / hedelmiä / itiöitä","en":"ripening seed / fruit / spore","sv":"mognande
-        frö / frukt / spor"}},{"id":"MY.plantLifeStageRipeFruit","value":{"fi":"kypsiä
+      string: '[{"id":"MY.plantLifeStageSterile","value":{"en":"sterile","fi":"steriili","sv":"steril"}},{"id":"MY.plantLifeStageFertile","value":{"en":"fertile","fi":"fertiili","sv":"bördig"}},{"id":"MY.plantLifeStageSeed","value":{"sv":"frö
+        / spor / frukt","fi":"siemen / itiö / hedelmä","en":"seed / spore / fruit"}},{"id":"MY.plantLifeStageSprout","value":{"sv":"skott","en":"sprout","fi":"verso"}},{"id":"MY.plantLifeStageBud","value":{"fi":"nuppu","en":"bud","sv":"knopp"}},{"id":"MY.plantLifeStageFlower","value":{"fi":"kukka","en":"flower","sv":"blomma"}},{"id":"MY.plantLifeStageWitheredFlower","value":{"sv":"vissnad
+        blomma","fi":"kuihtunut kukka","en":"withered flower"}},{"id":"MY.plantLifeStageRipeningFruit","value":{"fi":"kypsyviä
+        siemeniä / hedelmiä / itiöitä","sv":"mognande frö / frukt / spor","en":"ripening
+        seed / fruit / spore"}},{"id":"MY.plantLifeStageRipeFruit","value":{"fi":"kypsiä
         siemeniä / hedelmiä / itiöitä","en":"ripe seed / fruit / spore","sv":"mogen
         frö / frukt / spor"}},{"id":"MY.plantLifeStageDeadSprout","value":{"en":"dead
         sprout","fi":"kuollut verso","sv":"död skott"}},{"id":"MY.plantLifeStageSubterranean","value":{"en":"subterranean","fi":"mukula
         / sipuli / juuri","sv":"knöl / lök / rot"}}]'
-  recorded_at: 2023-08-28 08:33:27 GMT
+  recorded_at: 2023-08-28 10:59:13 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MZ.secureReason?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MZ.secureReason?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -467,17 +454,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 08:33:27 GMT
+      date: Mon, 28 Aug 2023 10:59:13 GMT
       content-type: application/json; charset=utf-8
-      transfer-encoding: chunked
+      content-length: '2363'
+      x-powered-by: Express
       access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
-      x-download-options: noopen
       etag: W/"93b-n+WUD1JbwUHVJQdlkghbCdC+kZA"
-      vary: Accept-Encoding
-      content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -509,5 +493,5 @@ http_interactions:
         karkeistama aika","en":"User has hidden time information","sv":"Användaren
         har dolt tidinformation"}},{"id":"MZ.secureReasonPersonNamesHidden","value":{"en":"Person
         names hidden","fi":"Henkilönimet piiloitettu","sv":"Personnamn dolda"}}]'
-  recorded_at: 2023-08-28 08:33:27 GMT
+  recorded_at: 2023-08-28 10:59:13 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
