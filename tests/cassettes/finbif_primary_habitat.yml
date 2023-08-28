@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.primaryHabitat.habitat&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.primaryHabitat.habitat&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 30 Jun 2023 07:04:53 GMT
+      date: Mon, 28 Aug 2023 08:42:30 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,6 +28,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":261527,"pageSize":10,"total":2615270,"cacheTimestamp":1688108693,"results":[{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.298146#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVsk"}}},"unitId":"http://tun.fi/JX.298145#3"}},{"unit":{"unitId":"http://tun.fi/JX.298139#3"}},{"unit":{"unitId":"http://tun.fi/JX.298140#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMl"}}},"unitId":"http://tun.fi/JX.298123#3"}},{"unit":{"unitId":"http://tun.fi/JX.298123#18"}},{"unit":{"unitId":"http://tun.fi/JX.298123#22"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatI"}}},"unitId":"http://tun.fi/JX.298123#20"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.298123#9"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.298123#6"}}]}'
-  recorded_at: 2023-06-30 07:04:53 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":4787921,"pageSize":10,"total":47879207,"cacheTimestamp":1693212150,"results":[{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMl"}}},"unitId":"http://tun.fi/HR.3211/180568359-U"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatI"}}},"unitId":"http://tun.fi/HR.3211/180587250-U"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMl"}}},"unitId":"http://tun.fi/HR.3211/180527103-U"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIr"}}},"unitId":"http://tun.fi/HR.3211/180586954-U"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMl"}}},"unitId":"http://tun.fi/HR.3211/180582630-U"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIu"}}},"unitId":"http://tun.fi/HR.3211/180573487-U"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatRi"}}},"unitId":"http://tun.fi/HR.3211/180586882-U"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatRj"}}},"unitId":"http://tun.fi/HR.3211/180586748-U"}},{"unit":{"unitId":"http://tun.fi/HR.3211/180583348-U"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/HR.3211/180586945-U"}}]}'
+  recorded_at: 2023-08-28 08:42:30 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

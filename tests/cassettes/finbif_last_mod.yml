@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/taxa/search?query=Cygnus%20cygnus&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/taxa/search?query=Cygnus%20cygnus&matchType=exact&limit=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,16 +15,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 30 Jun 2023 07:02:22 GMT
+      date: Mon, 28 Aug 2023 08:33:24 GMT
       content-type: application/json; charset=utf-8
       content-length: '536'
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"218-FVCY559L8cL+237jGY8XHGplI2U"
+      etag: W/"218-FJnpzSJzqjV9S9/RpIXJ7o2asbo"
       vary: Accept-Encoding
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -34,12 +34,12 @@ http_interactions:
       file: no
       string: '[{"matchingName":"Cygnus cygnus","nameType":"MX.scientificName","id":"MX.26280","scientificName":"Cygnus
         cygnus","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"fi":"laulujoutsen","en":"Whooper
-        Swan","sv":"sångsvan"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","sv":"Fåglar","fi":"Linnut"}},{"id":"MVL.1241","name":{"fi":"Vesilinnut","sv":"Vattenfåglar","en":"Waterbirds"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2023-06-30 07:02:24 GMT
+        Swan","sv":"sångsvan"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","sv":"Fåglar","fi":"Linnut"}},{"id":"MVL.1241","name":{"sv":"Vattenfåglar","fi":"Vesilinnut","en":"Waterbirds"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
+  recorded_at: 2023-08-28 08:33:25 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/areas?type=country&lang=multi&pageSize=1000&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/areas?type=country&lang=multi&pageSize=1000&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -53,17 +53,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 30 Jun 2023 07:02:23 GMT
+      date: Mon, 28 Aug 2023 08:33:25 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"9380-EMth07QNTGnlHFlHztP0ezlZIJ8"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -152,11 +152,11 @@ http_interactions:
         States Minor Outlying Islands","fi":"Yhdysvaltain pienet erillissaaret","sv":""}},{"id":"ML.246","areaType":"ML.country","countryCodeISOalpha2":"ZW","countryCodeISOalpha3":"ZWE","name":{"en":"Zimbabwe","fi":"Zimbabwe","sv":""}},{"id":"ML.247","areaType":"ML.country","name":{"en":"Soviet
         Union","fi":"Neuvostoliitto","sv":""}},{"id":"ML.248","areaType":"ML.country","name":{"en":"Czechoslovakia","fi":"Tsekkoslovakia","sv":""}},{"id":"ML.249","areaType":"ML.country","name":{"en":"Yugoslavia","fi":"Jugoslavia","sv":""}},{"id":"ML.1207","areaType":"ML.country","countryCodeISOalpha2":"XK","countryCodeISOalpha3":"UNK","name":{"en":"Kosovo","fi":"Kosovo","sv":"Kosovo"}},{"id":"ML.1307","areaType":"ML.country","countryCodeISOalpha2":"SS","countryCodeISOalpha3":"SSD","name":{"en":"South
         Sudan","fi":"Etelä-Sudan","sv":""}}],"lastPage":1,"@context":"http://schema.laji.fi/context/area.jsonld"}'
-  recorded_at: 2023-06-30 07:02:24 GMT
+  recorded_at: 2023-08-28 08:33:25 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?taxonId=MX.26280&countryId=ML.206&selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate%20DESC&page=1&pageSize=1&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?taxonId=MX.26280&countryId=ML.206&selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate%20DESC&page=1&pageSize=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -170,13 +170,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 30 Jun 2023 07:02:24 GMT
+      date: Mon, 28 Aug 2023 08:33:25 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -184,6 +183,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":4756,"pageSize":1,"total":4756,"results":[{"unit":{"unitId":"http://tun.fi/KE.921/LGE.308807/774015"},"document":{"loadDate":"2023-06-15"}}]}'
-  recorded_at: 2023-06-30 07:02:24 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":92207,"pageSize":1,"total":92207,"results":[{"unit":{"unitId":"http://tun.fi/JX.1631144#3"},"document":{"loadDate":"2023-08-28"}}]}'
+  recorded_at: 2023-08-28 08:33:25 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
