@@ -1,4 +1,4 @@
-# finbif 0.9.1.9000
+# finbif 0.9.2
 
 #### BUG FIXES
 
