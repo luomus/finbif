@@ -31,7 +31,7 @@ test_that(
           list(
             path = "warehouse/query/unit/list",
             query = list(page = 1, pageSize = 1, selected = "not_a_var"),
-            cache = TRUE
+            cache = FALSE
           )
         )
       ),
@@ -53,7 +53,7 @@ test_that(
           query = list(
             format = "xml", page = 1, pageSize = 1, selected = "unit.unitId"
           ),
-          cache = TRUE
+          cache = FALSE
         )
       ),
       "API did not return json"
