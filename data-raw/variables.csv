@@ -85,7 +85,6 @@ unit.media.author,record_media_author,associatedMediaBy,FALSE,FALSE,character,ch
 unit.media.caption,record_media_caption,associatedMediaCaption,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.media.copyrightOwner,record_media_copyright,associatedMediaRightsHolder,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.media.fullURL,record_media_url,associatedMedia,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.media.licenseAbbreviation,record_media_license_abbr,associatedMediaLicenseAbbreviation,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.media.licenseId,record_media_license_id,license,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.media.mediaType,record_media_type,associatedMediaType,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.media.squareThumbnailURL,record_thumbnail_square,occurrenceAssociatedMediaSquareThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -127,7 +126,6 @@ document.media.author,document_media_author,documentAssociatedMediaBy,FALSE,FALS
 document.media.caption,document_media_caption,documentAssociatedMediaCaption,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.media.copyrightOwner,document_media_copyright,documentAssociatedMediaRightsHolder,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.media.fullURL,document_media_url,documentAssociatedMedia,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-document.media.licenseAbbreviation,document_media_license_abbr,documentAssociatedMediaLicenseAbbreviation,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.media.licenseId,document_media_license_id,documentAssociatedMediaLicense,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.media.mediaType,document_media_type,documentAssociatedMediaType,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.media.squareThumbnailURL,document_thumbnail_square,documentAssociatedMediaSquareThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -221,7 +219,6 @@ gathering.media.author,event_media_author,eventAssociatedMediaBy,FALSE,FALSE,cha
 gathering.media.caption,event_media_caption,eventAssociatedMediaCaption,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.media.copyrightOwner,event_media_copyright,eventAssociatedMediaRightsHolder,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.media.fullURL,event_media_url,eventAssociatedMedia,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-gathering.media.licenseAbbreviation,event_media_license_abbr,eventAssociatedMediaLicenseAbbreviation,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.media.licenseId,event_media_license_id,eventAssociatedMediaLicense,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.media.mediaType,event_media_type,eventAssociatedMediaType,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.media.squareThumbnailURL,event_thumbnail_square,eventAssociatedMediaSquareThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -704,3 +701,13 @@ document.siteDead,site_dead,siteDead,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE
 gathering.accurateArea,accurate_area,accurateArea,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 document.namedPlace.wgs84CenterPoint.lat,location_lat_wgs84,locationDecimalLatitude,FALSE,FALSE,double,double,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.wgs84CenterPoint.lon,location_lon_wgs84,locationDecimalLongitude,FALSE,FALSE,double,double,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.media.highDetailModelURL,document_high_res_model,documentAssociatedMediaHighResModel,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+document.media.lowDetailModelURL,document_low_res_model,documentAssociatedMediaLowResModel,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+document.media.videoURL,document_video,documentAssociatedMediaVideo,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+gathering.media.highDetailModelURL,event_high_res_model,eventAssociatedMediaHighResModel,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+gathering.media.lowDetailModelURL,event_low_res_model,eventAssociatedMediaLowResModel,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+gathering.media.videoURL,event_video,eventAssociatedMediaVideo,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.media.highDetailModelURL,record_high_res_model,occurrenceAsociatedMediaHighResModel,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.media.lowDetailModelURL,record_low_res_model,occurrenceAssociatedMediaLowResModel,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.media.videoURL,record_video,occurrenceAssociatedMediaVideo,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.modelCount,record_model_count,occurrenceAssociatedMediaModelCount,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE

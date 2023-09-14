@@ -120,3 +120,4 @@ taxonSetId,taxon_set_id,uri,FALSE,",",FALSE
 timeAccuracy,time_uncertainty,integer,FALSE,",",FALSE
 sensitive,sensitive,logical,FALSE,",",FALSE
 excludeNulls,exclude_missing_levels,logical,FALSE,",",FALSE
+hasUnitModel,has_record_model,logical,FALSE,",",FALSE
