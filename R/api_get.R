@@ -226,14 +226,6 @@ api_get <- function(obj) {
 
   resp_type <- gsub("\\s", "",  resp[[c("headers", "content-type")]])
 
-  if (!identical(resp_type, "application/json;charset=utf-8")) {
-
-    obj <- NULL
-
-    stop("API did not return json", call. = FALSE)
-
-  }
-
   parsed <- httr::content(resp)
 
   if (!identical(resp[["status_code"]], 200L)) {

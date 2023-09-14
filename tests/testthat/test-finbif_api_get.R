@@ -41,27 +41,6 @@ test_that(
   }
 )
 
-test_that(
-  "that doesn't receive JSON returns an error message", {
-
-    skip_on_cran()
-
-    expect_error(
-      api_get(
-        list(
-          path = "warehouse/query/unit/list",
-          query = list(
-            format = "xml", page = 1, pageSize = 1, selected = "unit.unitId"
-          ),
-          cache = FALSE
-        )
-      ),
-      "API did not return json"
-    )
-
-  }
-)
-
 suppressMessages(eject_cassette("api_get"))
 
 suppressMessages(insert_cassette("api_get_with_email"))
