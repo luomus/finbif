@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.9.2.9001}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fix a bug resulting in the incorrect region being assigned to
+        occurrences records.
+    }
+  }
+}
+
+
 \section{finbif version 0.9.2.9000}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
