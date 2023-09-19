@@ -632,6 +632,14 @@ infer_computed_vars <- function(fb_records_obj) {
     region = list(
       vars = c("region", "stateProvince"),
       v_names = "gathering.interpretations.finnishMunicipality"
+    ),
+    institution_code = list(
+      vars = c("institution_code", "institutionCode"),
+      v_names = "document.collectionId"
+    ),
+    collection_code = list(
+      vars = c("collection_code", "collectionCode"),
+      v_names = "document.collectionId"
     )
   )
 

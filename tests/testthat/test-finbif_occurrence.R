@@ -289,7 +289,9 @@ test_that(
 
     skip_on_cran()
 
-    col_df <- finbif_occurrence(select = c("collection", "collection_id"))
+    col_df <- finbif_occurrence(
+      select = c("collection", "collection_id", "collection_code")
+    )
 
     expect_s3_class(col_df, "finbif_occ")
 

@@ -287,6 +287,8 @@ occurrence <- function(fb_records_obj) {
 
   fb_occurrence_df <- compute_region(fb_occurrence_df)
 
+  fb_occurrence_df <- compute_codes(fb_occurrence_df)
+
   fb_occurrence_df <- extract_facts(fb_occurrence_df)
 
   class(fb_occurrence_df) <- c("finbif_occ", "data.frame")
@@ -1208,6 +1210,52 @@ compute_scientific_name <- function(fb_occurrence_df) {
     uv <- fb_occurrence_df[[src]] == "http://tun.fi/KE.3" & is.na(sci_interps)
 
     fb_occurrence_df[[sci_var]] <- ifelse(uv, with_verbatim, without_verbatim)
+
+  }
+
+  fb_occurrence_df
+
+}
+
+#' @noRd
+
+compute_codes <- function(fb_occurrence_df) {
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  col_names <- attr(fb_occurrence_df, "column_names", TRUE)
+
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
+
+  vtype <- col_type_string(dwc)
+
+  var_names <- sysdata("var_names")
+
+  id_var <- var_names[["document.collectionId", vtype]]
+
+  codes <- finbif_collections(
+    select = c("collection_code", "institution_code"),
+    supercollections = TRUE,
+    nmin = NA
+  )
+
+  codevars <- c("computed_var_collection_code", "computed_var_institution_code")
+
+  for (i in seq_along(codevars)) {
+
+    codevar_i <- codevars[[i]]
+
+    var <- var_names[[codevar_i, vtype]]
+
+    if (add && var %in% col_names) {
+
+      id <- fb_occurrence_df[[id_var]]
+
+      id <- remove_domain(id)
+
+      fb_occurrence_df[[var]] <- codes[id, i]
+
+    }
 
   }
 

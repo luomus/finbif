@@ -40,6 +40,8 @@ unit.individualId,individual_id,organismID,FALSE,FALSE,character,uri,TRUE,TRUE,T
 gathering.gatheringId,event_id,eventID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 document.collectionId,collection_id,collectionID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 computed_var_from_id_collection,collection,collection,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+computed_var_collection_code,collection_code,collectionCode,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+computed_var_institution_code,institution_code,institutionCode,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotationCount,record_annotation_count,occurrenceAnnotationCount,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.annotations.annotationByPerson,record_annotation_person_id,occurrenceAnnotationByID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.annotationByPersonName,record_annotation_person_name,occurrenceAnnotationBy,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE

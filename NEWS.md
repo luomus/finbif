@@ -1,3 +1,11 @@
+# finbif 0.9.2.9000
+
+#### MINOR IMPROVEMENTS
+
+  - New undocumented variables `institution_code` and `collection_code`
+    can be selected when using functions `finbif_collections` and
+    `finbif_occurrence`.
+
 # finbif 0.9.2
 
 #### BUG FIXES

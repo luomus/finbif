@@ -2,6 +2,13 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.9.2.9000}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item New undocumented variables \code{institution_code} and
+        \code{collection_code} can be selected when using functions
+        \code{finbif_collections} and \code{finbif_occurrence}.
+    }
+  }
 }
 
 \section{finbif version 0.9.2}{
