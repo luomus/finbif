@@ -1233,12 +1233,6 @@ compute_codes <- function(fb_occurrence_df) {
 
   id_var <- var_names[["document.collectionId", vtype]]
 
-  codes <- finbif_collections(
-    select = c("collection_code", "institution_code"),
-    supercollections = TRUE,
-    nmin = NA
-  )
-
   codevars <- c("computed_var_collection_code", "computed_var_institution_code")
 
   for (i in seq_along(codevars)) {
@@ -1248,6 +1242,12 @@ compute_codes <- function(fb_occurrence_df) {
     var <- var_names[[codevar_i, vtype]]
 
     if (add && var %in% col_names) {
+
+      codes <- finbif_collections(
+        select = c("collection_code", "institution_code"),
+        supercollections = TRUE,
+        nmin = NA
+      )
 
       id <- fb_occurrence_df[[id_var]]
 
