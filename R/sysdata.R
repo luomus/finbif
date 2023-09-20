@@ -1074,10 +1074,10 @@ record_reliability <- function() {
   r <- c("RELIABLE", "NEUTRAL", "UNRELIABLE")
 
   reliability <- list(
-    code = c("reliable", "undefined", "unreliable"),
-    name_en = c("Reliable", "Undefined", "Unreliable"),
+    code = c("reliable", "unassessed", "Unreliable"),
+    name_en = c("Reliable", "Unassessed", "Unreliable"),
     name_fi = c("Luotettava", "Neutraali", "Ep\u00e4luotettava"),
-    name_sv = c("P\u00e5litlig", "Neutral", "Opu00e5litliga")
+    name_sv = c("P\u00e5litlig", "Neutral", "Op\u00e5litliga")
   )
 
   reliability <- structure(reliability, row.names = r, class = "data.frame")
