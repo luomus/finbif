@@ -1071,7 +1071,7 @@ record_quality <- function() {
 
 record_reliability <- function() {
 
-  r <- c("RELIABLE", "NEUTRAL", "UNRELIABLE")
+  r <- c("RELIABLE", "UNDEFINED", "UNRELIABLE")
 
   reliability <- list(
     code = c("reliable", "unassessed", "Unreliable"),
