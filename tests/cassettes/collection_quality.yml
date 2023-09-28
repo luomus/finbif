@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MY.collectionQualityEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.collectionQualityEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,16 +15,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 28 Sep 2023 11:52:47 GMT
+      date: Thu, 28 Sep 2023 13:16:25 GMT
       content-type: application/json; charset=utf-8
       content-length: '588'
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"24c-r8bXXCgCtbRyJ25kGRlRe9Po2WQ"
+      etag: W/"24c-6T0sJwdLnzIcIqR9tihm8VZ7sA0"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -32,12 +33,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MY.collectionQualityEnum3","value":{"en":"Professional / professionally
-        curated","fi":"Ammattiaineistot / asiantuntijoiden laadunvarmistama","sv":"Professionella
-        dataseten / expertkuraterad"}},{"id":"MY.collectionQualityEnum2","value":{"en":"Expert
-        hobbyists / expert curated","fi":"Asiantuntevat harrastajat / asiantuntijoiden
-        laadunvarmistama","sv":"Expertentusiaster / expertkuraterad"}},{"id":"MY.collectionQualityEnum1","value":{"en":"Citizen
-        science / mostly uncurated","fi":"Kansalaishavaintoja / ei laadunvarmistusta","sv":"Medborgarvetenskap
+      string: '[{"id":"MY.collectionQualityEnum3","value":{"fi":"Ammattiaineistot
+        / asiantuntijoiden laadunvarmistama","sv":"Professionella dataseten / expertkuraterad","en":"Professional
+        / professionally curated"}},{"id":"MY.collectionQualityEnum2","value":{"fi":"Asiantuntevat
+        harrastajat / asiantuntijoiden laadunvarmistama","en":"Expert hobbyists /
+        expert curated","sv":"Expertentusiaster / expertkuraterad"}},{"id":"MY.collectionQualityEnum1","value":{"fi":"Kansalaishavaintoja
+        / ei laadunvarmistusta","en":"Citizen science / mostly uncurated","sv":"Medborgarvetenskap
         / ingen kvalitetssäkring"}}]'
-  recorded_at: 2023-09-28 11:52:47 GMT
+  recorded_at: 2023-09-28 13:16:25 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

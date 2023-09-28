@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/gathering/aggregate?namedPlaceId=MNP.798&aggregateBy=gathering.gatheringId&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/gathering/aggregate?namedPlaceId=MNP.798&aggregateBy=gathering.gatheringId&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 28 Sep 2023 11:48:15 GMT
+      date: Thu, 28 Sep 2023 13:16:04 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,6 +29,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":12,"pageSize":10,"total":119,"results":[{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/JX.1048021#2"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/JX.1055294#2"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/JX.1100710#2"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/JX.1175262#2"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/JX.1200466#2"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/JX.1215885#2"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/JX.127777#1"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/JX.127778#1"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/JX.127779#1"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/JX.127780#1"},"count":1}]}'
-  recorded_at: 2023-09-28 11:48:15 GMT
+      string: '{"currentPage":1,"lastPage":1,"pageSize":10,"total":4,"results":[{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/KE.8_1008632#1"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/KE.8_1071931#1"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/KE.8_1115147#1"},"count":1},{"aggregateBy":{"gathering.gatheringId":"http://tun.fi/KE.8_1218583#1"},"count":1}]}'
+  recorded_at: 2023-09-28 13:16:04 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
