@@ -1,11 +1,9 @@
-# finbif 0.9.2.9001
+# finbif 0.9.3
 
 #### BUG FIXES
 
   - Fix a bug resulting in the incorrect region being assigned to
     occurrences records.
-
-# finbif 0.9.2.9000
 
 #### MINOR IMPROVEMENTS
 
