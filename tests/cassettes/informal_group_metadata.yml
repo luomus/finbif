@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/informal-taxon-groups/tree?pageSize=1000&lang=en&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/informal-taxon-groups/tree?pageSize=1000&lang=en&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,14 +15,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 11:01:41 GMT
+      date: Thu, 28 Sep 2023 11:52:47 GMT
       content-type: application/json; charset=utf-8
-      content-length: '6737'
-      x-powered-by: Express
+      transfer-encoding: chunked
       access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
       etag: W/"1a51-4AvV6ysq0UZ7mOFF/Jhkds8xFss"
+      vary: Accept-Encoding
+      content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -76,5 +79,5 @@ http_interactions:
         oligochaetes"},{"id":"MVL.501","name":"Leeches"},{"id":"MVL.502","name":"Polychaetes"}],"name":"Annelids"},{"id":"MVL.962","hasSubGroup":[{"id":"MVL.621","name":"Monogeneans"},{"id":"MVL.961","name":"Tapeworms"}],"name":"Parasitic
         worms"},{"id":"MVL.401","name":"Priapulid worms"},{"id":"MVL.402","name":"Ribbon
         worms"},{"id":"MVL.601","name":"Turbellarians"}],"name":"Worms"}],"lastPage":1,"@context":"http://schema.laji.fi/context/informalTaxonGroup-en.jsonld"}'
-  recorded_at: 2023-08-28 11:01:42 GMT
+  recorded_at: 2023-09-28 11:52:47 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

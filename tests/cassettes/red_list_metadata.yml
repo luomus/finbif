@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MX.iucnStatuses?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MX.iucnStatuses?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,14 +15,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 11:01:40 GMT
+      date: Thu, 28 Sep 2023 11:52:45 GMT
       content-type: application/json; charset=utf-8
-      content-length: '1329'
-      x-powered-by: Express
+      transfer-encoding: chunked
       access-control-allow-origin: '*'
-      etag: W/"531-fKhsKevokcRAqJcorJnlgXwZHBY"
+      access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
+      etag: W/"531-efcLKhqHJTTbcFHw8kQb+8XGTyY"
+      vary: Accept-Encoding
+      content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -36,12 +39,12 @@ http_interactions:
         – Regionally Extinct","fi":"RE – Suomesta hävinneet","sv":"RE – Nationellt
         utdöd"}},{"id":"MX.iucnCR","value":{"fi":"CR – Äärimmäisen uhanalaiset","en":"CR
         – Critically Endangered","sv":"CR – Akut hotad"}},{"id":"MX.iucnEN","value":{"en":"EN
-        – Endangered","fi":"EN – Erittäin uhanalaiset","sv":"EN – Starkt hotad"}},{"id":"MX.iucnVU","value":{"fi":"VU
-        – Vaarantuneet","sv":"VU – Sårbar","en":"VU – Vulnerable"}},{"id":"MX.iucnNT","value":{"sv":"NT
-        – Nära hotad","fi":"NT – Silmälläpidettävät","en":"NT – Near Threatened"}},{"id":"MX.iucnLC","value":{"fi":"LC
+        – Endangered","fi":"EN – Erittäin uhanalaiset","sv":"EN – Starkt hotad"}},{"id":"MX.iucnVU","value":{"sv":"VU
+        – Sårbar","en":"VU – Vulnerable","fi":"VU – Vaarantuneet"}},{"id":"MX.iucnNT","value":{"sv":"NT
+        – Nära hotad","en":"NT – Near Threatened","fi":"NT – Silmälläpidettävät"}},{"id":"MX.iucnLC","value":{"fi":"LC
         – Elinvoimaiset","sv":"LC – Livskraftig","en":"LC – Least Concern"}},{"id":"MX.iucnDD","value":{"en":"DD
         – Data Deficient","sv":"DD – Kunskapsbrist","fi":"DD – Puutteellisesti tunnetut"}},{"id":"MX.iucnNA","value":{"sv":"NA
-        – Ej tillämplig","fi":"NA – Arviointiin soveltumattomat","en":"NA – Not Applicable"}},{"id":"MX.iucnNE","value":{"fi":"NE
-        – Arvioimatta jätetyt","en":"NE – Not Evaluated","sv":"NE – Ej bedömd"}}]'
-  recorded_at: 2023-08-28 11:01:40 GMT
+        – Ej tillämplig","fi":"NA – Arviointiin soveltumattomat","en":"NA – Not Applicable"}},{"id":"MX.iucnNE","value":{"sv":"NE
+        – Ej bedömd","fi":"NE – Arvioimatta jätetyt","en":"NE – Not Evaluated"}}]'
+  recorded_at: 2023-09-28 11:52:45 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

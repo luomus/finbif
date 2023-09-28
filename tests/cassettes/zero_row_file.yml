@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 10:59:12 GMT
+      date: Thu, 28 Sep 2023 11:41:41 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -34,7 +33,8 @@ http_interactions:
         och ETRS89, decimalgrader"}},{"enumeration":"EUREF","property":"MY.coordinateSystemEtrs-tm35fin","label":{"fi":"ETRS-TM35FIN-tasokoordinaatit","en":"ETRS-TM35FIN
         grid","sv":"ETRS-TM35FIN-plankoordinatsystem"}},{"enumeration":"YKJ","property":"MY.coordinateSystemYkj","label":{"fi":"Yhtenäiskoordinaatisto
         (YKJ)","en":"Uniform grid (YKJ)","sv":"Enhetskoordinatsystemet (EKS)"}},{"enumeration":"IMAGE","property":"MM.image","label":{"fi":"Kuva","en":"Image","sv":"Bild"}},{"enumeration":"AUDIO","property":"MM.audio","label":{"fi":"Äänitallenne","en":"Audio
-        recording","sv":"Ljudinspelning"}},{"enumeration":"VIDEO","property":"MM.video","label":{"fi":"Video","en":"Video","sv":"Video"}},{"enumeration":"MALE","property":"MY.sexM","label":{"fi":"koiras","en":"M
+        recording","sv":"Ljudinspelning"}},{"enumeration":"VIDEO","property":"MM.video","label":{"fi":"Video","en":"Video","sv":"Video"}},{"enumeration":"MODEL","property":"MM.model","label":{"fi":"3D-malli","en":"3D
+        model","sv":"3D-modell"}},{"enumeration":"MALE","property":"MY.sexM","label":{"fi":"koiras","en":"M
         - Male","sv":"hane"}},{"enumeration":"FEMALE","property":"MY.sexF","label":{"fi":"naaras","en":"F
         - Female","sv":"hona"}},{"enumeration":"WORKER","property":"MY.sexW","label":{"fi":"työläinen","en":"W
         - Worker","sv":"arbetare"}},{"enumeration":"UNKNOWN","property":"MY.sexU","label":{"fi":"tuntematon","en":"U
@@ -95,7 +95,10 @@ http_interactions:
         tekemä havainto, ääni","en":"Machine observation audio","sv":"Maskinobservation,
         audio"}},{"enumeration":"MACHINE_OBSERVATION_GEOLOGGER","property":"MY.recordBasisMachineObservationGeologger","label":{"fi":"Geopaikannin","en":"Geologger","sv":"Geologger"}},{"enumeration":"MACHINE_OBSERVATION_SATELLITE_TRANSMITTER","property":"MY.recordBasisMachineObservationSatelliteTransmitter","label":{"fi":"Satelliittipaikannus","en":"Satellite
         positioning","sv":"Maskinobservation, satellitpositionering"}},{"enumeration":"LITERATURE","property":"MY.recordBasisLiterature","label":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}},{"enumeration":"MATERIAL_SAMPLE","property":"MY.recordBasisMaterialSample","label":{"fi":"Materiaalinäyte","en":"Material
-        sample","sv":"Materialprov"}},{"enumeration":"MATERIAL_SAMPLE_AIR","property":"MY.recordBasisMaterialSampleAir","label":{}},{"enumeration":"MATERIAL_SAMPLE_SOIL","property":"MY.recordBasisMaterialSampleSoil","label":{}},{"enumeration":"MATERIAL_SAMPLE_WATER","property":"MY.recordBasisMaterialSampleWater","label":{}},{"enumeration":"CITABLE","property":"HBF.downloadTypeCitable","label":{"fi":"Viitattavissa
+        sample","sv":"Materialprov"}},{"enumeration":"MATERIAL_SAMPLE_AIR","property":"MY.recordBasisMaterialSampleAir","label":{"fi":"Materiaalinäyte:
+        ilmanäyte","en":"Material sample, air","sv":"Materialprov, luft"}},{"enumeration":"MATERIAL_SAMPLE_SOIL","property":"MY.recordBasisMaterialSampleSoil","label":{"fi":"Materiaalinäyte:
+        maaperänäyte","en":"Material sample, soil","sv":"Materialprov, jord"}},{"enumeration":"MATERIAL_SAMPLE_WATER","property":"MY.recordBasisMaterialSampleWater","label":{"fi":"Materiaalinäyte:
+        vesinäyte","en":"Material sample, water","sv":"Materialprov, vatten"}},{"enumeration":"CITABLE","property":"HBF.downloadTypeCitable","label":{"fi":"Viitattavissa
         (tallennettu Lajitietokeskukseen)","en":"Citable (stored to FinBIF)","sv":"Citable
         (lagras till FinBIF)"}},{"enumeration":"LIGHTWEIGHT","property":"HBF.downloadTypeLightweight","label":{"fi":"Käyttäjän
         lataus (ei viitattavissa, ladattavissa)","en":"User download (not citable,
@@ -261,11 +264,11 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2023-08-28 10:59:13 GMT
+  recorded_at: 2023-09-28 11:41:42 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.recordBases?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MY.recordBases?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -279,14 +282,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 10:59:13 GMT
+      date: Thu, 28 Sep 2023 11:41:41 GMT
       content-type: application/json; charset=utf-8
-      content-length: '3283'
-      x-powered-by: Express
+      transfer-encoding: chunked
       access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
       etag: W/"cd3-DM+yga7fzJoGMUgt9165LyIoduU"
+      vary: Accept-Encoding
+      content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -315,11 +321,11 @@ http_interactions:
         sample, water","fi":"Materiaalinäyte: vesinäyte","sv":"Materialprov, vatten"}},{"id":"MY.recordBasisMicrobialSpecimen","value":{"sv":"Mikrobiella
         prov","fi":"Mikrobinäyte","en":"Microbial specimen"}},{"id":"MY.recordBasisLivingSpecimen","value":{"sv":"Levande
         prov","en":"Living specimen","fi":"Elävä näyte"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}}]'
-  recorded_at: 2023-08-28 10:59:13 GMT
+  recorded_at: 2023-09-28 11:41:42 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.sexes?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MY.sexes?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -333,14 +339,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 10:59:13 GMT
+      date: Thu, 28 Sep 2023 11:41:41 GMT
       content-type: application/json; charset=utf-8
       content-length: '670'
-      x-powered-by: Express
       access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
       etag: W/"29e-me+iW8lpqr7cFEhlRsqF4SfDkr8"
+      vary: Accept-Encoding
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -355,11 +363,11 @@ http_interactions:
         - Gynandromorph"}},{"id":"MY.sexE","value":{"fi":"eri sukupuolia","en":"E
         - multiple","sv":"olika kön"}},{"id":"MY.sexC","value":{"fi":"ristiriitainen","en":"C
         - Conflicting","sv":"kontroversiell"}}]'
-  recorded_at: 2023-08-28 10:59:13 GMT
+  recorded_at: 2023-09-28 11:41:42 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.lifeStages?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MY.lifeStages?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -373,14 +381,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 10:59:13 GMT
+      date: Thu, 28 Sep 2023 11:41:41 GMT
       content-type: application/json; charset=utf-8
-      content-length: '1807'
-      x-powered-by: Express
+      transfer-encoding: chunked
       access-control-allow-origin: '*'
-      etag: W/"70f-mIiXk5dvAmrEpT21jXhgamAY3Gw"
+      access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
+      etag: W/"70f-rsa9TRnOyLSjvqjD//gb5rtFL/4"
+      vary: Accept-Encoding
+      content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -388,17 +399,17 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MY.lifeStageEgg","value":{"fi":"muna","en":"egg","sv":"ägg"}},{"id":"MY.lifeStageLarva","value":{"en":"larva","fi":"toukka","sv":"larv"}},{"id":"MY.lifeStagePupa","value":{"fi":"kotelo","sv":"puppa","en":"pupa"}},{"id":"MY.lifeStageJuvenile","value":{"fi":"nuori","sv":"juvenil","en":"juvenile"}},{"id":"MY.lifeStageNymph","value":{"fi":"nymfi","sv":"nymf","en":"nymph"}},{"id":"MY.lifeStageSubimago","value":{"fi":"subimago","sv":"subimago","en":"subimago"}},{"id":"MY.lifeStageImmature","value":{"en":"immature","fi":"keskenkasvuinen","sv":"omogen"}},{"id":"MY.lifeStageAdult","value":{"en":"adult","fi":"aikuinen","sv":"vuxen"}},{"id":"MY.lifeStageFertile","value":{"en":"fertile","sv":"fertil","fi":"fertiili"}},{"id":"MY.lifeStageSterile","value":{"fi":"steriili","en":"sterile","sv":"steril"}},{"id":"MY.lifeStageTadpole","value":{"en":"tadpole","sv":"grodyngel","fi":"nuijapää"}},{"id":"MY.lifeStageEmbryo","value":{"en":"embryo
-        or fetus","fi":"alkio tai sikiö","sv":"embryo eller foster"}},{"id":"MY.lifeStageSubadult","value":{"sv":"subadult","en":"subadult","fi":"esiaikuinen"}},{"id":"MY.lifeStageMature","value":{"sv":"könsmogen","en":"mature","fi":"sukukypsä"}},{"id":"MY.lifeStagePullus","value":{"fi":"poikanen
-        (linnut)","en":"pullus","sv":"unge (fåglar)"}},{"id":"MY.lifeStageHatchedEgg","value":{"en":"hatched
-        egg","fi":"kuoriutunut muna","sv":"kläckt ägg"}},{"id":"MY.lifeStageHatchedPupa","value":{"sv":"kläckt
-        ägg","fi":"kuoriutunut kotelo","en":"hatched pupa"}},{"id":"MY.lifeStageGall","value":{"fi":"äkämä","en":"gall","sv":"gallbildning"}},{"id":"MY.lifeStageMarks","value":{"sv":"spår","en":"marks
-        (feeding marks etc.)","fi":"jäljet (syömäjäljet tms.)"}},{"id":"MY.lifeStageTriungulin","value":{"en":"triungulin","fi":"triunguliini","sv":"triunguliini"}}]'
-  recorded_at: 2023-08-28 10:59:13 GMT
+      string: '[{"id":"MY.lifeStageEgg","value":{"fi":"muna","en":"egg","sv":"ägg"}},{"id":"MY.lifeStageLarva","value":{"fi":"toukka","en":"larva","sv":"larv"}},{"id":"MY.lifeStagePupa","value":{"en":"pupa","fi":"kotelo","sv":"puppa"}},{"id":"MY.lifeStageJuvenile","value":{"en":"juvenile","fi":"nuori","sv":"juvenil"}},{"id":"MY.lifeStageNymph","value":{"sv":"nymf","fi":"nymfi","en":"nymph"}},{"id":"MY.lifeStageSubimago","value":{"sv":"subimago","en":"subimago","fi":"subimago"}},{"id":"MY.lifeStageImmature","value":{"en":"immature","fi":"keskenkasvuinen","sv":"omogen"}},{"id":"MY.lifeStageAdult","value":{"en":"adult","fi":"aikuinen","sv":"vuxen"}},{"id":"MY.lifeStageFertile","value":{"en":"fertile","sv":"fertil","fi":"fertiili"}},{"id":"MY.lifeStageSterile","value":{"sv":"steril","fi":"steriili","en":"sterile"}},{"id":"MY.lifeStageTadpole","value":{"en":"tadpole","sv":"grodyngel","fi":"nuijapää"}},{"id":"MY.lifeStageEmbryo","value":{"en":"embryo
+        or fetus","fi":"alkio tai sikiö","sv":"embryo eller foster"}},{"id":"MY.lifeStageSubadult","value":{"en":"subadult","fi":"esiaikuinen","sv":"subadult"}},{"id":"MY.lifeStageMature","value":{"sv":"könsmogen","fi":"sukukypsä","en":"mature"}},{"id":"MY.lifeStagePullus","value":{"en":"pullus","fi":"poikanen
+        (linnut)","sv":"unge (fåglar)"}},{"id":"MY.lifeStageHatchedEgg","value":{"en":"hatched
+        egg","fi":"kuoriutunut muna","sv":"kläckt ägg"}},{"id":"MY.lifeStageHatchedPupa","value":{"fi":"kuoriutunut
+        kotelo","sv":"kläckt ägg","en":"hatched pupa"}},{"id":"MY.lifeStageGall","value":{"en":"gall","fi":"äkämä","sv":"gallbildning"}},{"id":"MY.lifeStageMarks","value":{"fi":"jäljet
+        (syömäjäljet tms.)","en":"marks (feeding marks etc.)","sv":"spår"}},{"id":"MY.lifeStageTriungulin","value":{"en":"triungulin","fi":"triunguliini","sv":"triunguliini"}}]'
+  recorded_at: 2023-09-28 11:41:42 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.plantLifeStageEnum?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MY.plantLifeStageEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -412,14 +423,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 10:59:13 GMT
+      date: Thu, 28 Sep 2023 11:41:41 GMT
       content-type: application/json; charset=utf-8
-      content-length: '1238'
-      x-powered-by: Express
+      transfer-encoding: chunked
       access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
       etag: W/"4d6-PyzJGNCkXXVfTajF7Rwp4Hoecxk"
+      vary: Accept-Encoding
+      content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -436,11 +450,11 @@ http_interactions:
         frö / frukt / spor"}},{"id":"MY.plantLifeStageDeadSprout","value":{"en":"dead
         sprout","fi":"kuollut verso","sv":"död skott"}},{"id":"MY.plantLifeStageSubterranean","value":{"en":"subterranean","fi":"mukula
         / sipuli / juuri","sv":"knöl / lök / rot"}}]'
-  recorded_at: 2023-08-28 10:59:13 GMT
+  recorded_at: 2023-09-28 11:41:42 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MZ.secureReason?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MZ.secureReason?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -454,14 +468,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 10:59:13 GMT
+      date: Thu, 28 Sep 2023 11:41:42 GMT
       content-type: application/json; charset=utf-8
-      content-length: '2363'
-      x-powered-by: Express
+      transfer-encoding: chunked
       access-control-allow-origin: '*'
-      etag: W/"93b-n+WUD1JbwUHVJQdlkghbCdC+kZA"
+      access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
+      etag: W/"93b-XxtAP8vjptvCS0CbfkcHDOUSjlg"
+      vary: Accept-Encoding
+      content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -469,29 +486,29 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MZ.secureReasonTaxonConservation","value":{"fi":"Lajitiedon
-        sensitiivisyys","en":"Sensitivity of biodiversity data","sv":"Sensitivitet
-        av artdata"}},{"id":"MZ.secureReasonNaturaAreaConservation","value":{"fi":"Lajin
+      string: '[{"id":"MZ.secureReasonTaxonConservation","value":{"sv":"Sensitivitet
+        av artdata","fi":"Lajitiedon sensitiivisyys","en":"Sensitivity of biodiversity
+        data"}},{"id":"MZ.secureReasonNaturaAreaConservation","value":{"fi":"Lajin
         paikkatiedot salataan Natura-alueella","en":"Species location is hidden on
-        Natura 2000 site","sv":"Platsinformationen för arten skydds i Natura-området"}},{"id":"MZ.secureReasonWinterSeasonTaxonConservation","value":{"fi":"Talvehtimishavainnot","sv":"Övervintringsobservationer","en":"Overwintering
-        observations"}},{"id":"MZ.secureReasonBreedingSeasonTaxonConservation","value":{"en":"Breeding
+        Natura 2000 site","sv":"Platsinformationen för arten skydds i Natura-området"}},{"id":"MZ.secureReasonWinterSeasonTaxonConservation","value":{"en":"Overwintering
+        observations","fi":"Talvehtimishavainnot","sv":"Övervintringsobservationer"}},{"id":"MZ.secureReasonBreedingSeasonTaxonConservation","value":{"en":"Breeding
         season","fi":"Pesintäaika","sv":"Häckningstid"}},{"id":"MZ.secureReasonCustom","value":{"fi":"Tiedon
         tuottajan rajoittama aineisto","en":"Data provider has limited access to the
-        data","sv":"Dataägaren har begränsat tillgången till data"}},{"id":"MZ.secureReasonUserHidden","value":{"en":"User
-        has hidden name and/or location information","sv":"Användaren har dolt namn
-        och/eller platsinformation","fi":"Käyttäjän karkeistamat nimi- ja/tai paikkatiedot"}},{"id":"MZ.secureReasonDataQuarantinePeriod","value":{"sv":"Karantänperiod
+        data","sv":"Dataägaren har begränsat tillgången till data"}},{"id":"MZ.secureReasonUserHidden","value":{"fi":"Käyttäjän
+        karkeistamat nimi- ja/tai paikkatiedot","sv":"Användaren har dolt namn och/eller
+        platsinformation","en":"User has hidden name and/or location information"}},{"id":"MZ.secureReasonDataQuarantinePeriod","value":{"sv":"Karantänperiod
         av forskningsdata","en":"Quarantine period of research data","fi":"Tutkimusaineiston
         karenssiaika"}},{"id":"MZ.secureReasonOnlyPrivate","value":{"en":"Data provider
-        has given the data only for the authorities","fi":"Tiedon tuottaja on antanut
-        aineiston vain viranomaiskäyttöön","sv":"Dataägaren har endast lämnat uppgifterna
-        till myndigheterna"}},{"id":"MZ.secureReasonAdminHidden","value":{"fi":"Ylläpitäjän
+        has given the data only for the authorities","sv":"Dataägaren har endast lämnat
+        uppgifterna till myndigheterna","fi":"Tiedon tuottaja on antanut aineiston
+        vain viranomaiskäyttöön"}},{"id":"MZ.secureReasonAdminHidden","value":{"fi":"Ylläpitäjän
         karkeistama","en":"Admin hidden","sv":"Administratör dold"}},{"id":"MZ.secureReasonBreedingSiteConservation","value":{"fi":"Lisääntymispaikan
         sensitiivisyys (esimerkiksi pesä)","en":"Breeding site conservation (for example
         a nest)","sv":"Bevarande av avelsplatser (till exempel ett bo)"}},{"id":"MZ.secureReasonUserHiddenLocation","value":{"sv":"Användaren
         har dolt platsinformation","en":"User has hidden location information","fi":"Käyttäjän
         karkeistamat paikkatiedot"}},{"id":"MZ.secureReasonUserHiddenTime","value":{"fi":"Käyttäjän
         karkeistama aika","en":"User has hidden time information","sv":"Användaren
-        har dolt tidinformation"}},{"id":"MZ.secureReasonPersonNamesHidden","value":{"en":"Person
-        names hidden","fi":"Henkilönimet piiloitettu","sv":"Personnamn dolda"}}]'
-  recorded_at: 2023-08-28 10:59:13 GMT
+        har dolt tidinformation"}},{"id":"MZ.secureReasonPersonNamesHidden","value":{"sv":"Personnamn
+        dolda","en":"Person names hidden","fi":"Henkilönimet piiloitettu"}}]'
+  recorded_at: 2023-09-28 11:41:42 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

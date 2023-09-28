@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MKV.habitatEnum?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MKV.habitatEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,14 +15,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 11:01:41 GMT
+      date: Thu, 28 Sep 2023 11:52:46 GMT
       content-type: application/json; charset=utf-8
-      content-length: '16347'
-      x-powered-by: Express
+      transfer-encoding: chunked
       access-control-allow-origin: '*'
-      etag: W/"3fdb-gsfZJUhxcUN0mR3gVcsay8SKH8I"
+      access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
+      etag: W/"3fdb-TUVQyVKRaHVHGchLrr0UvpQBoBk"
+      vary: Accept-Encoding
+      content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -30,12 +33,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MKV.habitatM","value":{"sv":"M – Skogar","fi":"M – Metsät","en":"M
-        – Forests"}},{"id":"MKV.habitatMk","value":{"en":"Mk – heath forests","sv":"Mk
-        – moskogar","fi":"Mk – kangasmetsät"},"altParent":"MKV.habitatM"},{"id":"MKV.habitatMkk","value":{"en":"Mkk
-        – sub-xeric, xeric and barren heath forests","sv":"Mkk – tämligen torra moskogar
-        och karga skogar på fastmark","fi":"Mkk – kuivahkot ja sitä karummat kankaat"},"altParent":"MKV.habitatMk"},{"id":"MKV.habitatMkt","value":{"en":"Mkt
-        – mesic and herb-rich heath forests","fi":"Mkt – tuoreet ja lehtomaiset kankaat","sv":"Mkt
+      string: '[{"id":"MKV.habitatM","value":{"fi":"M – Metsät","en":"M – Forests","sv":"M
+        – Skogar"}},{"id":"MKV.habitatMk","value":{"fi":"Mk – kangasmetsät","sv":"Mk
+        – moskogar","en":"Mk – heath forests"},"altParent":"MKV.habitatM"},{"id":"MKV.habitatMkk","value":{"sv":"Mkk
+        – tämligen torra moskogar och karga skogar på fastmark","en":"Mkk – sub-xeric,
+        xeric and barren heath forests","fi":"Mkk – kuivahkot ja sitä karummat kankaat"},"altParent":"MKV.habitatMk"},{"id":"MKV.habitatMkt","value":{"fi":"Mkt
+        – tuoreet ja lehtomaiset kankaat","en":"Mkt – mesic and herb-rich heath forests","sv":"Mkt
         – friska och lundartade skogar på fastmark"},"altParent":"MKV.habitatMk"},{"id":"MKV.habitatMl","value":{"en":"Ml
         – herb-rich forests (also spruce-dominated)","fi":"Ml – lehdot (myös kuusivaltaiset)","sv":"Ml
         – lundar (också grandominerande)"},"altParent":"MKV.habitatM"},{"id":"MKV.habitatMlt","value":{"fi":"Mlt
@@ -53,15 +56,15 @@ http_interactions:
         – open rich fens","fi":"Sla – avoletot","sv":"Sla – öppna kärr"},"altParent":"MKV.habitatSl"},{"id":"MKV.habitatSlr","value":{"sv":"Slr
         – rikkärrs-tallkär","en":"Slr – rich pine fens","fi":"Slr – lettorämeet"},"altParent":"MKV.habitatSl"},{"id":"MKV.habitatSlk","value":{"fi":"Slk
         – lettokorvet","en":"Slk – rich spruce-birch fens","sv":"Slk – rikkärrsartade
-        skogskärr"},"altParent":"MKV.habitatSl"},{"id":"MKV.habitatSn","value":{"en":"Sn
-        – fens","fi":"Sn – nevat","sv":"Sn – fattigkärr"},"altParent":"MKV.habitatS"},{"id":"MKV.habitatSnk","value":{"sv":"Snk
-        – karga fattigkärr","en":"Snk – ombro- and oligotrophic fens","fi":"Snk –
-        karut nevat"},"altParent":"MKV.habitatSn"},{"id":"MKV.habitatSnr","value":{"en":"Snr
-        – mesotrophic fens","sv":"Snr – mesotrofiska fattigkärr","fi":"Snr – rehevät
-        nevat"},"altParent":"MKV.habitatSn"},{"id":"MKV.habitatSr","value":{"en":"Sr
-        – pine mires","fi":"Sr – rämeet","sv":"Sr – tallmossar och kärr"},"altParent":"MKV.habitatS"},{"id":"MKV.habitatSrk","value":{"sv":"Srk
-        – karga tallmossar och kärr","fi":"Srk – karut rämeet","en":"Srk – ombro-
-        and oligotrophic pine mires"},"altParent":"MKV.habitatSr"},{"id":"MKV.habitatSrr","value":{"fi":"Srr
+        skogskärr"},"altParent":"MKV.habitatSl"},{"id":"MKV.habitatSn","value":{"fi":"Sn
+        – nevat","en":"Sn – fens","sv":"Sn – fattigkärr"},"altParent":"MKV.habitatS"},{"id":"MKV.habitatSnk","value":{"fi":"Snk
+        – karut nevat","en":"Snk – ombro- and oligotrophic fens","sv":"Snk – karga
+        fattigkärr"},"altParent":"MKV.habitatSn"},{"id":"MKV.habitatSnr","value":{"sv":"Snr
+        – mesotrofiska fattigkärr","en":"Snr – mesotrophic fens","fi":"Snr – rehevät
+        nevat"},"altParent":"MKV.habitatSn"},{"id":"MKV.habitatSr","value":{"fi":"Sr
+        – rämeet","en":"Sr – pine mires","sv":"Sr – tallmossar och kärr"},"altParent":"MKV.habitatS"},{"id":"MKV.habitatSrk","value":{"sv":"Srk
+        – karga tallmossar och kärr","en":"Srk – ombro- and oligotrophic pine mires","fi":"Srk
+        – karut rämeet"},"altParent":"MKV.habitatSr"},{"id":"MKV.habitatSrr","value":{"fi":"Srr
         – rehevät rämeet","en":"Srr – mesotrophic pine mires","sv":"Srr – mesotrofiska
         tallmossar och kärr"},"altParent":"MKV.habitatSr"},{"id":"MKV.habitatSk","value":{"fi":"Sk
         – korvet","sv":"Sk – skogskärr","en":"Sk – spruce mires"},"altParent":"MKV.habitatS"},{"id":"MKV.habitatSkk","value":{"fi":"Skk
@@ -127,9 +130,9 @@ http_interactions:
         – hietikkorannat","en":"Rjh – sandy lake shores and river banks","sv":"Rjh
         – sandstränder"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatRjt","value":{"sv":"Rjt
         – öppna översvämingsbenägna ständer","en":"Rjt – inland open alluvial shores","fi":"Rjt
-        – avoimet tulvarannat"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatK","value":{"sv":"K
-        – Hällmarker samt sten- och blockfält","en":"K – Rock outcrops and boulder
-        fields","fi":"K – Kalliot ja kivikot"}},{"id":"MKV.habitatKk","value":{"sv":"Kk
+        – avoimet tulvarannat"},"altParent":"MKV.habitatRj"},{"id":"MKV.habitatK","value":{"fi":"K
+        – Kalliot ja kivikot","sv":"K – Hällmarker samt sten- och blockfält","en":"K
+        – Rock outcrops and boulder fields"}},{"id":"MKV.habitatKk","value":{"sv":"Kk
         – kalkhällar och stenbrott, också bar kalkjord","en":"Kk – calcareous rock
         outcrops and quarries","fi":"Kk – kalkkikalliot ja -louhokset, myös paljas
         kalkkimaa"},"altParent":"MKV.habitatK"},{"id":"MKV.habitatKs","value":{"fi":"Ks
@@ -170,8 +173,8 @@ http_interactions:
         – Perinneympäristöt ja muut ihmisen muuttamat ympäristöt","sv":"I – Vårdbiotoper
         och andra biotoper med mänsklig påverkan","en":"I – Rural biotopes and cultural
         habitats"}},{"id":"MKV.habitatIn","value":{"en":"In – seminatural dry meadows","fi":"In
-        – kuivat niityt, kedot ja nummet","sv":"In – torrängar och hedar"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIt","value":{"sv":"It
-        – friska ängar","en":"It – seminatural mesic meadows","fi":"It – tuoreet niityt"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIh","value":{"fi":"Ih
+        – kuivat niityt, kedot ja nummet","sv":"In – torrängar och hedar"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIt","value":{"fi":"It
+        – tuoreet niityt","sv":"It – friska ängar","en":"It – seminatural mesic meadows"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIh","value":{"fi":"Ih
         – hakamaat, lehdesniityt ja metsälaitumet","en":"Ih – wooded pastures, pollard
         meadows and grazed woodlands","sv":"Ih – hagmarker, hamlingsängar och skogsbeten"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatIk","value":{"en":"Ik
         – seminatural moist meadows (excluding shore meadows)","fi":"Ik – kosteat
@@ -186,11 +189,11 @@ http_interactions:
         – rakennukset ja rakenteet","en":"Ir – buildings and constructions","sv":"Ir
         – byggnader och konstruktioner"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatU","value":{"fi":"?
         – Elinympäristö tuntematon","sv":"? – Habitat okänt","en":"? – Habitat unknown"}}]'
-  recorded_at: 2023-08-28 11:01:41 GMT
+  recorded_at: 2023-09-28 11:52:47 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MKV.habitatSpecificTypeEnum?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MKV.habitatSpecificTypeEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -204,14 +207,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 28 Aug 2023 11:01:41 GMT
+      date: Thu, 28 Sep 2023 11:52:46 GMT
       content-type: application/json; charset=utf-8
-      content-length: '1862'
-      x-powered-by: Express
+      transfer-encoding: chunked
       access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
       etag: W/"746-tKDNd9reJYdqXiIklFiMZhmzbD4"
+      vary: Accept-Encoding
+      content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -240,5 +246,5 @@ http_interactions:
         kalliot/kivikot","sv":"ke – intermediärä-basiska hällmarker samt sten- och
         blockfält"}},{"id":"MKV.habitatSpecificTypeCA","value":{"fi":"ca – kalkkivaikutteinen","en":"ca
         – calcareous effect","sv":"ca – kalkrik"}}]'
-  recorded_at: 2023-08-28 11:01:41 GMT
+  recorded_at: 2023-09-28 11:52:47 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
