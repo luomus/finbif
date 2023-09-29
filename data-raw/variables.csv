@@ -144,6 +144,7 @@ document.secureLevel,restriction_level,documentInformationWithheld,FALSE,FALSE,c
 document.secureReasons,restriction_reason,documentInformationWithheldReason,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE
 document.secured,restriction,informationRestricted,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.sourceId,source_id,sourceID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+computed_var_from_id_source,source,source,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 gathering.biogeographicalProvince,bio_province_verbatim,verbatimBioStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.conversions.century,century,century,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.day,day,day,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE
