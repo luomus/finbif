@@ -695,7 +695,7 @@ unit.linkings.taxon.taxonConceptIds,taxon_concept_ids,taxonConceptID,FALSE,FALSE
 unit.types.linkings.taxon.taxonConceptIds,type_specimen_taxon_concept_ids,typeSpecimenTaxonConceptID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.virva,orig_taxon_virva,originalTaxonVirva,FALSE,FALSE,logical,logical,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.virva,taxon_Virva,taxonVirva,FALSE,FALSE,logical,logical,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.interpretations.virva,virva,virva,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.interpretations.collectionAndRecordQuality,collection_and_record_quality,collectionAndRecordQuality,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identificationBasis,identification_basis,basisOfIndentification,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.samplingMethod,sampling_method,measurementMethod,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.conversions.birdAssociationArea,bird_assoc_area_id,birdAssociationAreaId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
