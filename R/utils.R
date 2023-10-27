@@ -2,29 +2,6 @@
 
 #' @noRd
 
-get_next_lowest_factor <- function(
-  x,
-  y
-) {
-
-  x <- as.integer(x)
-
-  y <- as.integer(y)
-
-  if (identical(x %% y, 0L)) {
-
-    return(y)
-
-  }
-
-  y <- y - 1L
-
-  get_next_lowest_factor(x, y)
-
-}
-
-#' @noRd
-
 get_el_recurse <- function(
   obj,
   nms,

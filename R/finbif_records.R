@@ -887,23 +887,15 @@ get_extra_pages <- function(fb_records_list) {
 
     }
 
-    if (page > n_pages) {
+    if (page == n_pages + 1) {
 
-      last_record <- page_size * n_pages
+      page_size <- n %% page_size
 
-      if (identical(last_record, n)) {
+    }
 
-        break
+    if (page == n_pages + 2 || page_size == 0) {
 
-      }
-
-      page_size <- get_next_lowest_factor(last_record, n %% page_size)
-
-      page <- last_record / page_size
-
-      page <- page + 1L
-
-      n_pages <- n %/% page_size
+      break
 
     }
 

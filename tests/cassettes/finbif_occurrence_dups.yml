@@ -36,7 +36,7 @@ http_interactions:
       string: '[{"matchingName":"Vulpes vulpes","nameType":"MX.scientificName","id":"MX.46587","scientificName":"Vulpes
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"fi":"kettu","en":"Red
         Fox","sv":"rödräv"},"informalGroups":[{"id":"MVL.2","name":{"fi":"Nisäkkäät","sv":"Däggdjur","en":"Mammals"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2023-09-28 13:15:59 GMT
+  recorded_at: 2023-10-26 05:29:04 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
@@ -179,7 +179,7 @@ http_interactions:
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Kettu","unitId":"http://tun.fi/JX.129189#3"},"gathering":{"conversions":{"day":31,"month":1,"wgs84CenterPoint":{"lat":60.444664,"lon":25.270941}},"eventDate":{"begin":"2018-01-31","end":"2018-01-31"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Vulpes
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kettu","unitId":"http://tun.fi/hatikka:1175911#3"},"gathering":{"conversions":{"day":11,"month":5,"wgs84CenterPoint":{"lat":66.463563,"lon":25.646107}},"eventDate":{"begin":"2016-05-11","end":"2016-05-11"},"hourBegin":6,"hourEnd":10,"interpretations":{"coordinateAccuracy":1000},"minutesBegin":35,"minutesEnd":15},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Vulpes
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Kettu","unitId":"http://tun.fi/JX.210429#3"},"gathering":{"conversions":{"day":1,"month":1,"wgs84CenterPoint":{"lat":24.025418,"lon":60.15323}},"eventDate":{"begin":"2019-01-01","end":"2019-01-01"},"interpretations":{"coordinateAccuracy":5000}},"document":{"sourceId":"http://tun.fi/KE.542"}}]}'
-  recorded_at: 2023-09-28 13:15:59 GMT
+  recorded_at: 2023-10-26 05:29:04 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
@@ -326,7 +326,7 @@ http_interactions:
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kettu","unitId":"http://tun.fi/KE.8_1203546#2"},"gathering":{"conversions":{"day":15,"month":7,"wgs84CenterPoint":{"lat":60.55689,"lon":22.339371}},"eventDate":{"begin":"2017-07-15","end":"2017-07-15"},"hourBegin":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":35},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Vulpes
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kettu","unitId":"http://tun.fi/JX.184781#4"},"gathering":{"conversions":{"day":2,"month":10,"wgs84CenterPoint":{"lat":64.771778,"lon":27.121885}},"eventDate":{"begin":"2020-10-02","end":"2020-10-02"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Vulpes
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kettu","unitId":"http://tun.fi/hatikka:1192149#3"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":60.987954,"lon":21.583022}},"eventDate":{"begin":"2002-04-15","end":"2002-04-15"},"interpretations":{"coordinateAccuracy":5000}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
-  recorded_at: 2023-09-28 13:15:59 GMT
+  recorded_at: 2023-10-26 05:29:04 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
@@ -470,7 +470,7 @@ http_interactions:
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Vulpes
         vulpes","unitId":"http://tun.fi/KE.8_1137052#2"},"gathering":{"conversions":{"day":8,"month":6,"wgs84CenterPoint":{"lat":62.397763,"lon":23.998513}},"eventDate":{"begin":"2010-06-08","end":"2010-06-08"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Vulpes
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Kettu","unitId":"http://tun.fi/JX.240715#3"},"gathering":{"conversions":{"day":1,"month":1,"wgs84CenterPoint":{"lat":24.025418,"lon":60.15323}},"eventDate":{"begin":"2019-01-01","end":"2019-01-01"},"interpretations":{"coordinateAccuracy":5000}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
-  recorded_at: 2023-09-28 13:15:59 GMT
+  recorded_at: 2023-10-26 05:29:04 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
@@ -616,5 +616,101 @@ http_interactions:
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kettu","unitId":"http://tun.fi/JX.129782#3"},"gathering":{"conversions":{"day":30,"month":3,"wgs84CenterPoint":{"lat":60.363609,"lon":26.181373}},"eventDate":{"begin":"2018-03-30","end":"2018-03-30"},"interpretations":{"coordinateAccuracy":10000}},"document":{"sourceId":"http://tun.fi/KE.681"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Vulpes
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kettu","unitId":"http://tun.fi/JX.163170#3"},"gathering":{"conversions":{"day":6,"month":8,"wgs84CenterPoint":{"lat":60.257177,"lon":25.020122}},"eventDate":{"begin":"2019-08-06","end":"2019-08-06"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Vulpes
         vulpes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kettu","unitId":"http://tun.fi/hatikka:1062476#3"},"gathering":{"conversions":{"day":22,"month":6,"wgs84CenterPoint":{"lat":60.439862,"lon":22.374606}},"eventDate":{"begin":"2012-06-22","end":"2012-06-22"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
-  recorded_at: 2023-09-28 13:15:59 GMT
+  recorded_at: 2023-10-26 05:29:04 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?taxonId=MX.46587&selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&orderBy=RANDOM&page=4&pageSize=0&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 400
+      category: Client error
+      reason: Bad Request
+      message: 'Client error: (400) Bad Request'
+    headers:
+      date: Thu, 26 Oct 2023 05:28:59 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"status":400,"message":"Invalid page size: 0"}'
+  recorded_at: 2023-10-26 05:29:04 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?taxonId=MX.46587&selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&orderBy=RANDOM&page=4&pageSize=0&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 400
+      category: Client error
+      reason: Bad Request
+      message: 'Client error: (400) Bad Request'
+    headers:
+      date: Thu, 26 Oct 2023 05:29:01 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"status":400,"message":"Invalid page size: 0"}'
+  recorded_at: 2023-10-26 05:29:04 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?taxonId=MX.46587&selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&orderBy=RANDOM&page=4&pageSize=0&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 400
+      category: Client error
+      reason: Bad Request
+      message: 'Client error: (400) Bad Request'
+    headers:
+      date: Thu, 26 Oct 2023 05:29:04 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 staging.laji.fi
+      x-frame-options: DENY
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"status":400,"message":"Invalid page size: 0"}'
+  recorded_at: 2023-10-26 05:29:04 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
