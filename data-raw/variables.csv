@@ -714,3 +714,9 @@ unit.media.highDetailModelURL,record_high_res_model,occurrenceAsociatedMediaHigh
 unit.media.lowDetailModelURL,record_low_res_model,occurrenceAssociatedMediaLowResModel,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.media.videoURL,record_video,occurrenceAssociatedMediaVideo,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.modelCount,record_model_count,occurrenceAssociatedMediaModelCount,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+document.media.fullResolutionMediaAvailable,document_media_full_res,documentAssociatedMediaFullRes,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+document.media.type,document_media_type2,documentAssociatedMediaType2,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+gathering.media.fullResolutionMediaAvailable,event_media_full_res,eventAssociatedMediaFullRes,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+gathering.media.type,event_media_type2,eventAssociatedMediaType2,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.media.fullResolutionMediaAvailable,record_media_full_res,occurrenceAssociatedMediaFullRes,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.media.type,record_media_type2,occurrenceAssociatedMediaType2,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
