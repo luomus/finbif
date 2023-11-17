@@ -881,6 +881,8 @@ get_extra_pages <- function(fb_records_list) {
 
   while (multipage) {
 
+    current_page_size <- page_size
+
     if (!quiet) {
 
       utils::setTxtProgressBar(pb, i)
@@ -889,11 +891,11 @@ get_extra_pages <- function(fb_records_list) {
 
     if (page == n_pages + 1) {
 
-      page_size <- n %% page_size
+      current_page_size <- n %% page_size
 
     }
 
-    if (page == n_pages + 2 || page_size == 0) {
+    if (page == n_pages + 2 || current_page_size == 0) {
 
       break
 
@@ -920,6 +922,12 @@ get_extra_pages <- function(fb_records_list) {
     }
 
     records_i <- value(res)
+
+    results <- c("content", "results")
+
+    results_seq <- seq_len(current_page_size)
+
+    records_i[[results]] <- records_i[[results]][results_seq]
 
     records_i <- c(records_i, locale = fb_records_list[[i]][["locale"]])
 
