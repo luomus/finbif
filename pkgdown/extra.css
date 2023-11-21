@@ -11,7 +11,7 @@ body {
 }
 
 .navbar-dark .navbar-nav .active > .nav-link {
-  background-color: #2691D9;
+  background-color: #55AAE2;
 }
 
 .ref-description img {
@@ -23,6 +23,10 @@ body {
 }
 
 .navbar-dark input[type="search"] {
-  background-color: #2691D9;
+  background-color: #55AAE2;
   padding-left: 0.5rem;
+}
+
+.text-muted {
+  text-shadow: 1px 1px 3px #000;
 }

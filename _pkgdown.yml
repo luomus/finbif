@@ -3,7 +3,9 @@ template:
   bootswatch: materia
   bslib:
     table-border-width: "0px"
-    primary: "#2691D9"
+    bg: "#141B15"
+    fg: "#FFFFFF"
+    primary: "#55AAE2"
     font-size-base: "1rem"
     base_font:
       google: "Roboto"
