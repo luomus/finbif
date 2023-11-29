@@ -224,8 +224,6 @@ api_get <- function(obj) {
 
   resp[[c("request", "url")]] <- notoken
 
-  resp_type <- gsub("\\s", "",  resp[[c("headers", "content-type")]])
-
   parsed <- httr::content(resp)
 
   if (!identical(resp[["status_code"]], 200L)) {
