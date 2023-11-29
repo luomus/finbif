@@ -923,11 +923,15 @@ get_extra_pages <- function(fb_records_list) {
 
     records_i <- value(res)
 
-    results <- c("content", "results")
+    if (length(records_i) > current_page_size) {
 
-    results_seq <- seq_len(current_page_size)
+      results <- c("content", "results")
 
-    records_i[[results]] <- records_i[[results]][results_seq]
+      results_seq <- seq_len(current_page_size)
+
+      records_i[[results]] <- records_i[[results]][results_seq]
+
+    }
 
     records_i <- c(records_i, locale = fb_records_list[[i]][["locale"]])
 
