@@ -1301,7 +1301,7 @@ compute_red_list_status <- function(fb_occurrence_df) {
 
   if (add && red_list_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
 
-    id <- vn[[ "unit.linkings.taxon.latestRedListStatusFinland.status", vtype]]
+    id <- vn[["unit.linkings.taxon.latestRedListStatusFinland.status", vtype]]
 
     id <- fb_occurrence_df[[id]]
 

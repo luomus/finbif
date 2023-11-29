@@ -370,7 +370,7 @@ informal_groups <- function() {
 
   sd_response <- api_get(request)
 
-  sd_response_content <- sd_response[[ c("content", "results")]]
+  sd_response_content <- sd_response[[c("content", "results")]]
 
   supported_langs <- sysdata("supported_langs")
 
@@ -415,7 +415,7 @@ primary_habitat <- function() {
 
 municipality <- function() {
 
- regions <- c(
+  regions <- c(
     ML.351 = "Ahvenanmaa",
     ML.352 = "Uusimaa",
     ML.353 = "Ahvenanmaa",

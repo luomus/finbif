@@ -1686,7 +1686,7 @@ expand_lite_cols <- function(df) {
 
           if (no_col) {
 
-             df[[col]] <- split_cols[[i]]
+            df[[col]] <- split_cols[[i]]
 
           }
 

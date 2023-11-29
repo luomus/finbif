@@ -133,7 +133,7 @@ test_that(
     )
     expect_identical(
       dates(list(filter = "last_import_date_max", 2001)), "2001"
-      )
+    )
     expect_identical(
       dates(list(filter = "first_import_date_min", 2001)), "2001"
     )
