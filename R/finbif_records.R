@@ -847,7 +847,9 @@ get_extra_pages <- function(fb_records_list) {
 
   quiet <- attr(fb_records_list, "quiet", TRUE)
 
-  if (multipage && !quiet) {
+  use_progress <- multipage && !quiet
+
+  if (use_progress) {
 
     pb_head("Fetching data")
 
@@ -895,7 +897,9 @@ get_extra_pages <- function(fb_records_list) {
 
     }
 
-    if (page == n_pages + 2 || current_page_size == 0) {
+    end <- page == n_pages + 2 || current_page_size == 0
+
+    if (end) {
 
       break
 
