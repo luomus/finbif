@@ -781,7 +781,8 @@ request <- function(fb_records_obj) {
     date_time = fb_records_obj[["date_time_selected"]],
     aggregate = aggregate,
     cache = cache,
-    restricted_api = fb_records_obj[["restricted_api"]]
+    restricted_api = fb_records_obj[["restricted_api"]],
+    from_cache = resp[["from_cache"]]
   )
 
   if (n > max_size) {
@@ -836,7 +837,8 @@ get_extra_pages <- function(fb_records_list) {
     cache = attr(fb_records_list, "cache", TRUE),
     select_query = attr(fb_records_list, "select", TRUE),
     aggregate = attr(fb_records_list, "aggregate", TRUE),
-    restricted_api = attr(fb_records_list, "restricted_api", TRUE)
+    restricted_api = attr(fb_records_list, "restricted_api", TRUE),
+    cache_override = attr(fb_records_list, "from_cache", TRUE)
   )
 
   n <- attr(fb_records_list, "nrec_dnld", TRUE)

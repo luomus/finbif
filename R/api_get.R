@@ -35,6 +35,8 @@ api_get <- function(obj) {
 
       if (!is.null(cached_obj)) {
 
+        cached_obj[["from_cache"]] <- TRUE
+
         return(cached_obj)
 
       }
@@ -55,7 +57,11 @@ api_get <- function(obj) {
 
         if (cache_is_valid(obj[["timeout"]], created)) {
 
-          return(readRDS(cache_file_path))
+          cached_obj <- readRDS(cache_file_path)
+
+          cached_obj[["from_cache"]] <- TRUE
+
+          return(cached_obj)
 
         } else {
 
@@ -110,7 +116,11 @@ api_get <- function(obj) {
               "[", as.character(Sys.time()), "] ", "Reading from cache: ", hash
             )
 
-            return(unserialize(cached_obj[[1L]]))
+            cached_obj <- unserialize(cached_obj[[1L]])
+
+            cached_obj[["from_cache"]] <- TRUE
+
+            return(cached_obj)
 
           } else {
 
@@ -244,6 +254,8 @@ api_get <- function(obj) {
 
   obj[["hash"]] <- hash
 
+  obj[["from_cache"]] <- FALSE
+
   debug_msg(
     "[", as.character(Sys.time()), "] ", "Request made to: ", notoken, " ", hash
   )
@@ -354,9 +366,15 @@ get_timeout <- function(obj) {
 
   timeout <- obj[["cache"]]
 
-  if (is.logical(timeout)) {
+  if (is.logical(timeout) || isTRUE(obj[["cache_override"]])) {
 
     timeout <- Inf
+
+  }
+
+  if (isFALSE(obj[["cache_override"]])) {
+
+    timeout <- 0
 
   }
 
