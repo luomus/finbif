@@ -308,6 +308,8 @@ get_collections <- function(col_obj) {
 
   col_names <- gsub("([a-z])([A-Z])", "\\1_\\L\\2", col_names, perl = TRUE)
 
+  col_names <- tolower(col_names)
+
   structure(collections, names = col_names)
 
 }
