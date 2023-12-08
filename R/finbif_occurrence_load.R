@@ -351,7 +351,7 @@ finbif_occurrence_load <- function(
 
     short_fcts <- sub("^.*_fact__", "", short_fcts)
 
-    short_fcts <- sub("http://tun.fi/", "", short_fcts)
+    short_fcts <- remove_domain(short_fcts)
 
     n <- length(short_fcts) + .1
 
