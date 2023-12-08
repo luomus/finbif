@@ -1028,6 +1028,8 @@ parse_filters <- function(fb_records_obj) {
 
         env[[nm_i]] <- collections
 
+        f_i <- remove_domain(f_i)
+
         f_i <- list(x = f_i, translation = nm_i, env = env)
 
         f_i <- translate(f_i)
