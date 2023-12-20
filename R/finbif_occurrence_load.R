@@ -271,6 +271,14 @@ finbif_occurrence_load <- function(
 
     }
 
+  } else {
+
+    select_user_keep <- !duplicated(select[["user"]])
+
+    select[["user"]] <- select[["user"]][select_user_keep]
+
+    fb_occurrence_df <- fb_occurrence_df[, select_user_keep, drop = FALSE]
+
   }
 
   attr(fb_occurrence_df, "file_cols") <- NULL
@@ -378,7 +386,6 @@ finbif_occurrence_load <- function(
     names(fb_occurrence_df) <- short_nms
 
   }
-
 
   select_user <- name_chr_vec(select[["user"]])
 
@@ -912,8 +919,6 @@ dt_read <- function(fb_occurrence_obj) {
   cols <- sysdata("cite_file_vars")
 
   cols <- rownames(cols)
-
-  cols <- unique(cols)
 
   if (file.exists(args[["input"]])) {
 
@@ -1553,8 +1558,6 @@ open_tsv_connection <- function(connection_obj) {
     vars <- sysdata("cite_file_vars")
 
     vars <- rownames(vars)
-
-    vars <- unique(vars)
 
     vars <- paste0(vars, collapse = "\t")
 
