@@ -313,7 +313,7 @@ finbif_occurrence_load <- function(
     )
 
     facts_df <- structure(
-      try(read_finbif_tsv(fb_records_obj), silent = TRUE),
+      read_finbif_tsv(fb_records_obj),
       facts = facts[[ftype]],
       fact_type = ftype,
       id = id,
@@ -909,9 +909,15 @@ dt_read <- function(fb_occurrence_obj) {
 
   }
 
-  cols <- do.call(data.table::fread, args)
+  cols <- rownames(sysdata("cite_file_vars"))
 
-  cols <- names(cols)
+  if (file.exists(args[["input"]])) {
+
+    cols <- do.call(data.table::fread, args)
+
+    cols <- names(cols)
+
+  }
 
   cols <- make.names(cols)
 
@@ -1012,7 +1018,13 @@ dt_read <- function(fb_occurrence_obj) {
 
   args[["header"]] <- FALSE
 
-  df <- do.call(data.table::fread, args)
+  df <- structure(vector("list", length(args_select)), class = "data.frame")
+
+  if (file.exists(args[["input"]])) {
+
+    df <- do.call(data.table::fread, args)
+
+  }
 
   names(df) <- cols[args_select]
 
@@ -1059,10 +1071,12 @@ rd_read <- function(fb_occurrence_obj) {
 
   connection_obj <- list(file = file, tsv = tsv, mode = "")
 
+  con <- open_tsv_connection(connection_obj)
+
   quote <- ""
 
   df <- utils::read.delim(
-    open_tsv_connection(connection_obj),
+    con,
     nrows = 1L,
     na.strings = "",
     quote = quote,
@@ -1087,13 +1101,11 @@ rd_read <- function(fb_occurrence_obj) {
 
   n <- as.integer(fb_occurrence_obj[["n"]])
 
-  if (identical(n, 0L)) {
+  if (identical(n, 0L) || inherits(con, "textConnection")) {
 
     df <- df[0L, ]
 
   } else {
-
-    connection_obj <- list(file = file, tsv = tsv, mode = "")
 
     df <- utils::read.delim(
       open_tsv_connection(connection_obj),
@@ -1194,7 +1206,7 @@ spread_facts <-  function(facts) {
 
   drop_facts_na <- attr(facts, "drop_facts_na", TRUE)
 
-  if (inherits(facts, "try-error")) {
+  if (identical(nrow(facts), 0L)) {
 
     facts <- data.frame(
       Parent = NA_character_,
@@ -1510,6 +1522,7 @@ nlines <- function(fb_occurrence_obj) {
 }
 
 #' @noRd
+#' @importFrom utils unzip
 
 open_tsv_connection <- function(connection_obj) {
 
@@ -1517,13 +1530,31 @@ open_tsv_connection <- function(connection_obj) {
 
   mode <- connection_obj[["mode"]]
 
+  tsv <- connection_obj[["tsv"]]
+
   nchars <- nchar(file)
 
-  switch(
-    substring(file, nchars - 3L, nchars),
-    .tsv = file(file, mode),
-    unz(file, connection_obj[["tsv"]], mode)
-  )
+  ext <- substring(file, nchars - 3L, nchars)
+
+  if (identical(ext, ".tsv")) {
+
+    file(file, mode)
+
+  } else if (tsv %in% utils::unzip(file, list = TRUE)[["Name"]]) {
+
+    unz(file, tsv, mode)
+
+  } else {
+
+    vars <- sysdata("cite_file_vars")
+
+    vars <- rownames(vars)
+
+    vars <- paste0(vars, collapse = "\t")
+
+    textConnection(vars)
+
+  }
 
 }
 

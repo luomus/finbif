@@ -303,3 +303,14 @@ test_that(
 
   }
 )
+
+test_that(
+  "reading a zip file with no tsv does not trigger an error", {
+
+    expect_s3_class(
+      open_tsv_connection(list(file = "HBF.6968.zip", tsv = "none")),
+      "textConnection"
+    )
+
+  }
+)
