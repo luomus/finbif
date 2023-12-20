@@ -909,7 +909,11 @@ dt_read <- function(fb_occurrence_obj) {
 
   }
 
-  cols <- rownames(sysdata("cite_file_vars"))
+  cols <- sysdata("cite_file_vars")
+
+  cols <- rownames(cols)
+
+  cols <- unique(cols)
 
   if (file.exists(args[["input"]])) {
 
@@ -1549,6 +1553,8 @@ open_tsv_connection <- function(connection_obj) {
     vars <- sysdata("cite_file_vars")
 
     vars <- rownames(vars)
+
+    vars <- unique(vars)
 
     vars <- paste0(vars, collapse = "\t")
 
