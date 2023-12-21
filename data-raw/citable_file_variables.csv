@@ -138,4 +138,4 @@ Taxon.Lajiturva,thrtStat,threatened_status,threatenedStatus,FALSE,character,FALS
 Taxon.StatusesFI,regStatFI,regulatory_status_finnish,regulatoryStatusFinnish,FALSE,character,FALSE
 Unit.Interpretations.Tags,tags,record_derived_tags,occurrenceDerivedTags,FALSE,character,FALSE
 Unit.Alive,isAlive,is_alive,isAlive,FALSE,logical,FALSE
-Gathering.AccurateArea,accurateArea,accurate_area,accuArea,FALSE,logical,FALSE
+Gathering.AccurateArea,accuArea,accurate_area,accurateArea,FALSE,logical,FALSE
