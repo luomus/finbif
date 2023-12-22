@@ -93,9 +93,6 @@
 #' )
 #'
 #' }
-#' @importFrom lubridate as_datetime as.duration as.interval force_tzs
-#' @importFrom lubridate format_ISO8601 hour interval minute ymd
-#' @importFrom lutz tz_lookup_coords
 #' @export
 
 finbif_occurrence <- function(
@@ -602,7 +599,7 @@ date_times <- function(fb_occurrence_df) {
 }
 
 #' @noRd
-#' @importFrom lubridate as_datetime force_tz hour minute with_tz ymd
+#' @importFrom lubridate as_datetime force_tz force_tzs hour minute with_tz ymd
 #' @importFrom lutz tz_lookup_coords
 
 date_time <- function(date_time_obj) {
@@ -701,7 +698,6 @@ compute_date_time <- function(fb_occurrence_df) {
 }
 
 #' @noRd
-#' @importFrom lubridate as.interval as.duration interval
 
 compute_duration <- function(fb_occurrence_df) {
 
@@ -733,17 +729,15 @@ compute_duration <- function(fb_occurrence_df) {
 
     intvl <- rep_len(NA_integer_, duration_length)
 
-    intvl <- lubridate::as.interval(intvl)
+    intvl <- as.difftime(intvl, units = "secs")
 
-    duration <- intvl
+    fb_occurrence_df[[duration_var]] <- intvl
 
-    intvl[da] <- lubridate::interval(datetime_start[da], datetime_end[da])
+    intvl[da] <- difftime(datetime_end[da], datetime_start[da])
 
     has_duration <- da & intvl != 0
 
-    duration[has_duration] <- intvl[has_duration]
-
-    fb_occurrence_df[[duration_var]] <- lubridate::as.duration(duration)
+    fb_occurrence_df[has_duration, duration_var] <- intvl[has_duration]
 
   }
 
