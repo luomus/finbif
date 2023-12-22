@@ -599,7 +599,6 @@ date_times <- function(fb_occurrence_df) {
 }
 
 #' @noRd
-#' @importFrom lubridate as_datetime force_tz force_tzs hour minute with_tz ymd
 #' @importFrom lutz tz_lookup_coords
 
 date_time <- function(date_time_obj) {
@@ -614,9 +613,9 @@ date_time <- function(date_time_obj) {
 
   if (length(date) > 0L) {
 
-    date_time <- lubridate::ymd(date)
+    date_time <- as.Date(date)
 
-    date_time <- lubridate::as_datetime(date_time)
+    date_time <- as.POSIXlt(date_time)
 
     hour <- date_time_obj[["hour"]]
 
@@ -624,7 +623,7 @@ date_time <- function(date_time_obj) {
 
       hour_is_na <- is.na(hour)
 
-      lubridate::hour(date_time) <- ifelse(hour_is_na, 12L, hour)
+      date_time[, "hour"] <- ifelse(hour_is_na, 12L, hour)
 
     }
 
@@ -632,21 +631,21 @@ date_time <- function(date_time_obj) {
 
     if (!is.null(minute)) {
 
-      date_time_min <- lubridate::minute(date_time)
+      date_time_min <- date_time[, "min"]
 
       min_is_na <- is.na(minute)
 
-      lubridate::minute(date_time) <- ifelse(min_is_na, date_time_min, minute)
+      date_time[, "min"] <- ifelse(min_is_na, date_time_min, minute)
 
     }
+
+    date_time <- format(date_time, "%F %T")
 
     method <- date_time_obj[["method"]]
 
     if (identical(method, "none")) {
 
-      date_time <- lubridate::force_tz(date_time, "Europe/Helsinki")
-
-      date_time <- lubridate::with_tz(date_time, tzone)
+      date_time <- as.POSIXct(date_time, "Europe/Helsinki")
 
     } else {
 
@@ -659,17 +658,23 @@ date_time <- function(date_time_obj) {
 
       tz_in_is_na <- is.na(tz_in)
 
-      tzones <- ifelse(tz_in_is_na, tzone, tz_in)
+      tz_in <- ifelse(tz_in_is_na, "Europe/Helsinki", tz_in)
 
-      date_time <- lubridate::force_tzs(date_time, tzones, tzone)
+      date_time <- mapply(
+        as.POSIXct, date_time, tz_in, SIMPLIFY = FALSE, USE.NAMES = FALSE
+      )
+
+      date_time <-  do.call(c, date_time)
 
     }
+
+    date_time <- as.POSIXct(date_time, tzone)
 
     na_m <- is.na(date_time_obj[["month"]])
 
     na_d <- is.na(date_time_obj[["day"]])
 
-    date_time[na_m | na_d] <- lubridate::as_datetime(NA_integer_, tz = tzone)
+    date_time[na_m | na_d] <- as.POSIXct(NA_integer_, tz = tzone)
 
   }
 
@@ -746,7 +751,7 @@ compute_duration <- function(fb_occurrence_df) {
 }
 
 #' @noRd
-#' @importFrom lubridate as.interval format_ISO8601 interval ymd
+#' @importFrom lubridate as.interval format_ISO8601 interval
 
 compute_iso8601 <- function(fb_occurrence_df) {
 
@@ -830,7 +835,7 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
     iso8601 <- ifelse(use_start, format_start, iso8601)
 
-    fmt_start_ymd <- lubridate::ymd(date_start)
+    fmt_start_ymd <- as.Date(date_start)
 
     fmt_start_ymd <- lubridate::format_ISO8601(fmt_start_ymd, usetz = TRUE)
 
