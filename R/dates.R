@@ -38,15 +38,16 @@ dates <- function(obj) {
 }
 
 #' @noRd
-#' @importFrom lubridate int_end int_start period rollback
 
 date_range_ymd <- function(obj) {
 
   if (inherits(obj[["begin"]], "Interval")) {
 
-    obj[["end"]] <- lubridate::int_end(obj[["begin"]])
+    begin <- getElement(obj[["begin"]], "start")
 
-    obj[["begin"]] <- lubridate::int_start(obj[["begin"]])
+    obj[["end"]] <- begin + getElement(obj[["begin"]], ".Data")
+
+    obj[["begin"]] <- begin
 
   } else {
 
@@ -90,9 +91,11 @@ date_range_ymd <- function(obj) {
 
       obj[["end"]] <- paste0(obj[["end"]], "-01")
 
-      obj[["end"]] <- as.Date(obj[["end"]]) + lubridate::period(month = 1L)
+      obj[["end"]] <- as.Date(obj[["end"]])
 
-      obj[["end"]] <- lubridate::rollback(obj[["end"]])
+      obj[["end"]] <- seq(obj[["end"]], by = "month", length.out = 2L)[[2L]]
+
+      obj[["end"]] <- seq(obj[["end"]], by = "-1 day", length.out = 2L)[[2L]]
 
     }
 
