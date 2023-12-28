@@ -36,6 +36,8 @@ test_that(
 
     skip_on_cran()
 
+    skip_if(getRversion() < "4.3.0")
+
     file <- 49381L
     nrows <- 280L
 
@@ -202,37 +204,37 @@ test_that(
 
 )
 
-if (!identical(.Platform$OS.type, "windows")) {
+test_that(
+  "can load data from a lite download", {
 
-  test_that(
-    "can load data from a lite download", {
+    skip_if(getRversion() < "4.3.0")
 
-      expect_snapshot_value(
-        finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC", dt = FALSE),
-        style = "json2"
-      )
+    skip_on_os("windows")
 
-      expect_snapshot_value(
-        finbif_occurrence_load("laji-data-pap.tsv", tzone = "Etc/UTC"),
-        style = "json2"
-      )
+    expect_snapshot_value(
+      finbif_occurrence_load("laji-data.tsv", tzone = "Etc/UTC", dt = FALSE),
+      style = "json2"
+    )
 
-      skip_on_cran()
+    expect_snapshot_value(
+      finbif_occurrence_load("laji-data-pap.tsv", tzone = "Etc/UTC"),
+      style = "json2"
+    )
 
-      expect_snapshot_value(
-        finbif_occurrence_load("laji-data.ods", tzone = "Etc/UTC"),
-        style = "json2", ignore_attr = "url"
-      )
+    skip_on_cran()
 
-      expect_snapshot_value(
-        finbif_occurrence_load("laji-data.xlsx", tzone = "Etc/UTC"),
-        style = "json2", ignore_attr = "url"
-      )
+    expect_snapshot_value(
+      finbif_occurrence_load("laji-data.ods", tzone = "Etc/UTC"),
+      style = "json2", ignore_attr = "url"
+    )
 
-    }
-  )
+    expect_snapshot_value(
+      finbif_occurrence_load("laji-data.xlsx", tzone = "Etc/UTC"),
+      style = "json2", ignore_attr = "url"
+    )
 
-}
+  }
+)
 
 test_that(
   "with invalid URL returns an error message", {
@@ -271,6 +273,8 @@ test_that(
 
 test_that(
   "importing files with unknown columns works", {
+
+    skip_if(getRversion() < "4.3.0")
 
     expect_snapshot_value(
       finbif_occurrence_load("HBF.49382.zip", tzone = "Etc/UTC"),
