@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.1 (2023-06-16)",
+  "runtimePlatform": "R version 4.3.2 (2023-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -225,18 +225,6 @@
     },
     "4": {
       "@type": "SoftwareApplication",
-      "identifier": "lubridate",
-      "name": "lubridate",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=lubridate"
-    },
-    "5": {
-      "@type": "SoftwareApplication",
       "identifier": "lutz",
       "name": "lutz",
       "provider": {
@@ -247,7 +235,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lutz"
     },
-    "6": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -257,7 +245,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "fileSize": "5376.955KB",
+  "fileSize": "5377.829KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
