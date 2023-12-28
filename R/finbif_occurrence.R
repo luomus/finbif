@@ -751,7 +751,6 @@ compute_duration <- function(fb_occurrence_df) {
 }
 
 #' @noRd
-#' @importFrom lubridate as.interval format_ISO8601 interval
 
 compute_iso8601 <- function(fb_occurrence_df) {
 
@@ -777,17 +776,23 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
     duration_length <- length(duration_na)
 
-    iso8601 <- rep_len("1970-01-01/1970-01-01", duration_length)
+    iso8601s <- rep_len(NA_integer_, duration_length)
 
     tzone <- attr(fb_occurrence_df, "tzone", TRUE)
 
-    iso8601 <- lubridate::interval(iso8601, tzone = tzone)
+    iso8601s <- as.POSIXct(iso8601s, tzone)
 
-    iso8601[!duration_na] <- lubridate::interval(ds[!dsna], de[!dena])
+    iso8601e <- iso8601s
 
-    iso8601[duration_na] <- lubridate::as.interval(NA_integer_)
+    iso8601s[!duration_na] <- ds[!dsna]
 
-    iso8601 <- lubridate::format_ISO8601(iso8601, usetz = TRUE)
+    iso8601e[!duration_na] <- de[!dena]
+
+    iso8601s <- format(iso8601s, "%FT%T%z")
+
+    iso8601e <- format(iso8601e, "%FT%T%z")
+
+    iso8601 <- paste(iso8601s, iso8601e, sep = "/")
 
     hour_start <- var_names["gathering.hourBegin", vtype]
 
@@ -817,9 +822,15 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
     date_end <- fb_occurrence_df[[date_end]]
 
-    interval <- lubridate::interval(date_start, date_end)
+    ds_time <- as.POSIXct(date_start)
 
-    format_interval <- lubridate::format_ISO8601(interval, usetz = TRUE)
+    de_time <- as.POSIXct(date_end)
+
+    ds_time <- format(ds_time, "%FT%T%z")
+
+    de_time  <- format(de_time, "%FT%T%z")
+
+    format_interval <- iso8601 <- paste(ds_time, de_time, sep = "/")
 
     iso8601 <- ifelse(no_start_time | no_end_time, format_interval, iso8601)
 
@@ -831,13 +842,13 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
     use_start <- no_end | ds == de
 
-    format_start <- lubridate::format_ISO8601(ds, usetz = TRUE)
+    format_start <- format(ds, "%FT%T%z")
 
     iso8601 <- ifelse(use_start, format_start, iso8601)
 
     fmt_start_ymd <- as.Date(date_start)
 
-    fmt_start_ymd <- lubridate::format_ISO8601(fmt_start_ymd, usetz = TRUE)
+    fmt_start_ymd <- format(fmt_start_ymd, "%FT%T%z")
 
     iso8601 <- ifelse(no_start_time & no_end_date, fmt_start_ymd, iso8601)
 
