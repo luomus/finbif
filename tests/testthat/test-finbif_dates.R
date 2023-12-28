@@ -27,10 +27,10 @@ test_that(
     expect_identical(dates(list(filter = f, end = "2001-05-01")), "2001-05-01")
 
     expect_identical(
-      dates(list(filter = f, lubridate::as_date("2001-05-01"))), "2001-05-01"
+      dates(list(filter = f, as.Date("2001-05-01"))), "2001-05-01"
     )
     expect_identical(
-      dates(list(filter = f, end = lubridate::as_date("2001-05-01"))),
+      dates(list(filter = f, end = as.Date("2001-05-01"))),
       "2001-05-01"
     )
 
@@ -67,7 +67,18 @@ test_that(
       dates(list(filter = f, "2001-05-01", "2002")), "2001-05-01/2002-12-31"
     )
     expect_identical(
-      dates(list(filter = f, lubridate::interval("2001-05-01", "2002-12-31"))),
+      dates(
+        list(
+          filter = f,
+          structure(
+            list(
+              start = as.Date("2001-05-01"),
+              .Data = as.difftime(609, units = "days")
+            ),
+            class = "Interval"
+          )
+        )
+      ),
       "2001-05-01/2002-12-31"
     )
 
@@ -86,10 +97,10 @@ test_that(
     expect_identical(dates(list(filter = f, end = "2001-05-01")), "2001-05")
 
     expect_identical(
-      dates(list(filter = f, lubridate::as_date("2001-05-01"))), "2001-05"
+      dates(list(filter = f, as.Date("2001-05-01"))), "2001-05"
     )
     expect_identical(
-      dates(list(filter = f, end = lubridate::as_date("2001-05-01"))), "2001-05"
+      dates(list(filter = f, end = as.Date("2001-05-01"))), "2001-05"
     )
 
     expect_identical(dates(list(filter = f, 2001, 2004)), "2001/2004")
