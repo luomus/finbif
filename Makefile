@@ -51,7 +51,7 @@ sentinels/check: sentinels/pkgdown $(shell find tests -type f)
 > mkdir -p $(@D);\
 > touch $@
 
-sentinels/pkgdown: sentinels/vignettes README.md NEWS.md sentinels/doc _pkgdown.yml $(shell find pkgdown -type f)
+sentinels/pkgdown: sentinels/vignettes README.md NEWS.md LICENSE sentinels/doc _pkgdown.yml $(shell find pkgdown -type f)
 > echo "options(rmarkdown.html_vignette.check_title = FALSE)" > .Rprofile;\
 > ${RSCRIPT} -e "pkgdown::build_site()";\
 > rm .Rprofile; \
