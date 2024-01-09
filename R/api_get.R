@@ -113,7 +113,11 @@ api_get <- function(obj) {
             cached_obj <- db_cache[ind, "blob"]
 
             debug_msg(
-              "[", as.character(Sys.time()), "] ", "Reading from cache: ", hash
+              "INFO [",
+              format(Sys.time()),
+              "] ",
+              "Reading from cache: ",
+              hash
             )
 
             cached_obj <- unserialize(cached_obj[[1L]])
@@ -129,7 +133,7 @@ api_get <- function(obj) {
             )
 
             debug_msg(
-              "[", as.character(Sys.time()), "] ", "Removing from cache: ", hash
+              "INFO [", format(Sys.time()), "] ", "Removing from cache: ", hash
             )
 
             DBI::dbExecute(fcp, db_query)
@@ -257,7 +261,7 @@ api_get <- function(obj) {
   obj[["from_cache"]] <- FALSE
 
   debug_msg(
-    "[", as.character(Sys.time()), "] ", "Request made to: ", notoken, " ", hash
+    "INFO [", format(Sys.time()), "] ", "Request made to: ", notoken, " ", hash
   )
 
   structure(obj, class = "finbif_api")
@@ -427,7 +431,7 @@ append_obj <- function(obj) {
       blob = blob::blob(blob)
     )
 
-    debug_msg("[", as.character(Sys.time()), "] ", "Adding to cache: ", hash)
+    debug_msg("INFO [", format(Sys.time()), "] ", "Adding to cache: ", hash)
 
     fcp <- getOption("finbif_cache_path")
 
