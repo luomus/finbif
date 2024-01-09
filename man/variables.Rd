@@ -130,16 +130,16 @@ Variables related to the location of records include:
 \itemize{
 \item \verb{\{lat|lon\}_\{euref|wgs84\}} Numeric.
 Coordinates (in
-\href{https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/}{EUREF} or
-\href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84} coordinate system)
+\href{https://spatialreference.org/ref/epsg/3067/}{EUREF} or
+\href{https://spatialreference.org/ref/epsg/4326/}{WGS84} coordinate system)
 of the central point of a bounding box encompassing the record's geographic
 coverage.
 \item \verb{\{lat|lon\}_\{min|max\}_\{euref|ykj|wgs84\}}. Numeric.
 Vertices of a bounding box encompassing the record's geographic coverage.
 Coordinates are available in
-\href{https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/}{EUREF},
+\href{https://spatialreference.org/ref/epsg/3067/}{EUREF},
 \href{https://spatialreference.org/ref/epsg/2393/}{YKJ}, or
-\href{https://spatialreference.org/ref/epsg/wgs-84/}{WGS84}.
+\href{https://spatialreference.org/ref/epsg/4326/}{WGS84}.
 \item \code{coordinates_uncertainty} Integer.
 The horizontal distance (in meters) from the record's given coordinates
 describing the smallest circle containing the whole of the record's

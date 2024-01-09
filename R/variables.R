@@ -116,16 +116,16 @@
 #'
 #' - `{lat|lon}_{euref|wgs84}` Numeric.
 #'   Coordinates (in
-#'   [EUREF](https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/) or
-#'   [WGS84](https://spatialreference.org/ref/epsg/wgs-84/) coordinate system)
+#'   [EUREF](https://spatialreference.org/ref/epsg/3067/) or
+#'   [WGS84](https://spatialreference.org/ref/epsg/4326/) coordinate system)
 #'   of the central point of a bounding box encompassing the record's geographic
 #'   coverage.
 #' - `{lat|lon}_{min|max}_{euref|ykj|wgs84}`. Numeric.
 #'   Vertices of a bounding box encompassing the record's geographic coverage.
 #'   Coordinates are available in
-#'   [EUREF](https://spatialreference.org/ref/epsg/etrs89-etrs-tm35fin/),
+#'   [EUREF](https://spatialreference.org/ref/epsg/3067/),
 #'   [YKJ](https://spatialreference.org/ref/epsg/2393/), or
-#'   [WGS84](https://spatialreference.org/ref/epsg/wgs-84/).
+#'   [WGS84](https://spatialreference.org/ref/epsg/4326/).
 #' - `coordinates_uncertainty` Integer.
 #'   The horizontal distance (in meters) from the record's given coordinates
 #'   describing the smallest circle containing the whole of the record's
