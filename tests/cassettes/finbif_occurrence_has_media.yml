@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?hasMedia=TRUE&selected=unit.unitId%2Cunit.media.fullURL&orderBy=RANDOM&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?hasMedia=TRUE&selected=unit.unitId%2Cunit.media.fullURL&orderBy=RANDOM&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 28 Sep 2023 13:16:02 GMT
+      date: Fri, 12 Jan 2024 11:02:28 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,6 +28,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":1623,"pageSize":10,"total":16223,"results":[{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/90912894/original.jpeg?1597925877"}],"unitId":"http://tun.fi/HR.3211/57016874-U"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/EIG.4324/Combined_001-002.jpg"}],"unitId":"http://tun.fi/MY.716751"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/EIG.6171/Combined_001-002.jpg"}],"unitId":"http://tun.fi/MY.722859"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/73693925/original.jpeg?1589871385"}],"unitId":"http://tun.fi/HR.3211/46461482-U"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/H.1586271/Combined_001-002.jpg"}],"unitId":"http://tun.fi/MY.765250"}},{"unit":{"media":[{"fullURL":"https://hatikka.fi/getimage.php?id=10811"},{"fullURL":"https://hatikka.fi/getimage.php?id=10812"}],"unitId":"http://tun.fi/KE.8/1076357#2"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/80614219/original.jpg?1592989767"}],"unitId":"http://tun.fi/HR.3211/50754442-U"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/89608115/original.jpeg?1597252264"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/89608134/original.jpeg?1597252272"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/89608150/original.jpeg?1597252278"}],"unitId":"http://tun.fi/HR.3211/56238915-U"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/98719637/original.jpeg?1601825786"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/98719651/original.jpeg?1601825793"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/98719664/original.jpeg?1601825800"}],"unitId":"http://tun.fi/HR.3211/61676835-U"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/H.1717451/Combined_001-002.jpg"}],"unitId":"http://tun.fi/MY.777211"}}]}'
-  recorded_at: 2023-09-28 13:16:02 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":245037,"pageSize":10,"total":2450362,"results":[{"unit":{"media":[{"fullURL":"https://inaturalist-open-data.s3.amazonaws.com/photos/91327892/original.jpeg"}],"unitId":"http://tun.fi/HR.3211/57266145-U"}},{"unit":{"media":[{"fullURL":"https://inaturalist-open-data.s3.amazonaws.com/photos/218153902/original.jpeg"},{"fullURL":"https://inaturalist-open-data.s3.amazonaws.com/photos/218153923/original.jpeg"}],"unitId":"http://tun.fi/HR.3211/128432887-U"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/F.82049/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.3506956"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/Q.282200/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.14852042"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/F.519719/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.13940473"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/Q.91943/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.13407861"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/Q.10523/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.12812117"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/Q.335902/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.15275480"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/F.265552/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.7053306"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/Q.46105/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.12954487"}}]}'
+  recorded_at: 2024-01-12 11:02:28 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

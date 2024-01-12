@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/aggregate?aggregateBy=unit.annotations.created&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/aggregate?aggregateBy=unit.annotations.created&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 28 Sep 2023 13:16:21 GMT
+      date: Fri, 12 Jan 2024 11:07:30 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,16 +28,16 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":84,"pageSize":10,"total":836,"cacheTimestamp":1695906981,"results":[{"aggregateBy":{"unit.annotations.created":"2019-11-11
-        15:05:38.0"},"count":10},{"aggregateBy":{"unit.annotations.created":"2019-11-11
-        15:06:01.0"},"count":10},{"aggregateBy":{"unit.annotations.created":"2019-11-11
-        15:06:03.0"},"count":10},{"aggregateBy":{"unit.annotations.created":"2019-11-11
-        15:06:47.0"},"count":10},{"aggregateBy":{"unit.annotations.created":"2019-11-11
-        15:07:13.0"},"count":10},{"aggregateBy":{"unit.annotations.created":"2019-11-11
-        15:08:02.0"},"count":10},{"aggregateBy":{"unit.annotations.created":"2019-11-11
-        15:05:31.0"},"count":9},{"aggregateBy":{"unit.annotations.created":"2019-11-11
-        15:06:36.0"},"count":9},{"aggregateBy":{"unit.annotations.created":"2019-11-11
-        15:06:39.0"},"count":9},{"aggregateBy":{"unit.annotations.created":"2019-11-11
-        15:06:45.0"},"count":9}]}'
-  recorded_at: 2023-09-28 13:16:21 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":4610,"pageSize":10,"total":46091,"cacheTimestamp":1705057650,"results":[{"aggregateBy":{"unit.annotations.created":"2017-11-16
+        09:30:00.0"},"count":639},{"aggregateBy":{"unit.annotations.created":"2017-11-23
+        12:37:00.0"},"count":196},{"aggregateBy":{"unit.annotations.created":"2020-05-06
+        11:49:13.0"},"count":2},{"aggregateBy":{"unit.annotations.created":"2020-05-15
+        15:05:15.0"},"count":2},{"aggregateBy":{"unit.annotations.created":"2020-05-15
+        15:09:59.0"},"count":2},{"aggregateBy":{"unit.annotations.created":"2021-05-24
+        20:07:31.0"},"count":2},{"aggregateBy":{"unit.annotations.created":"2021-12-23
+        15:23:19.0"},"count":2},{"aggregateBy":{"unit.annotations.created":"2023-02-23
+        10:02:18.0"},"count":2},{"aggregateBy":{"unit.annotations.created":"2023-12-18
+        10:58:47.0"},"count":2},{"aggregateBy":{"unit.annotations.created":"2017-07-05
+        11:10:38.0"},"count":1}]}'
+  recorded_at: 2024-01-12 11:07:30 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

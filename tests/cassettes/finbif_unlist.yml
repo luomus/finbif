@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.informalTaxonGroups&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.informalTaxonGroups&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 28 Sep 2023 13:16:11 GMT
+      date: Fri, 12 Jan 2024 11:05:32 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,12 +28,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":262862,"pageSize":10,"total":2628611,"cacheTimestamp":1695906971,"results":[{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.232","http://tun.fi/MVL.31","http://tun.fi/MVL.181","http://tun.fi/MVL.237"]}},"unitId":"http://tun.fi/JX.306981#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.299095#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.343"]}},"unitId":"http://tun.fi/HR.4114/2397_U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.343"]}},"unitId":"http://tun.fi/HR.4114/2395_U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.343"]}},"unitId":"http://tun.fi/HR.4114/2398_U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.343"]}},"unitId":"http://tun.fi/HR.4114/2394_U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.343"]}},"unitId":"http://tun.fi/HR.4114/2396_U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.343"]}},"unitId":"http://tun.fi/JX.298435#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.343"]}},"unitId":"http://tun.fi/HR.4114/2393_U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.343"]}},"unitId":"http://tun.fi/HR.4114/2391_U"}}]}'
-  recorded_at: 2023-09-28 13:16:13 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":5039234,"pageSize":10,"total":50392331,"cacheTimestamp":1705057532,"results":[{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2"]}},"unitId":"http://tun.fi/KE.176/65a11bcad5de6fbf10fb576d#Unit1"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668511#12"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668511#6"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1","http://tun.fi/MVL.1141","http://tun.fi/MVL.1162"]}},"unitId":"http://tun.fi/JX.1668511#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668511#14"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1","http://tun.fi/MVL.1141","http://tun.fi/MVL.1162"]}},"unitId":"http://tun.fi/JX.1668471#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668460#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668459#5"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668459#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2","http://tun.fi/MVL.1181"]}},"unitId":"http://tun.fi/HR.3211/196411469-U"}}]}'
+  recorded_at: 2024-01-12 11:05:32 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/informal-taxon-groups?lang=multi&pageSize=1000&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/informal-taxon-groups?lang=multi&pageSize=1000&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -48,18 +47,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 28 Sep 2023 13:16:13 GMT
+      date: Fri, 12 Jan 2024 11:05:32 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
-      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"3d69-oN3c8QkR0TQJhdE27b2GuNtmcM4"
+      etag: W/"3dda-lmSGCikSwP2Zo+mf1NnfC2fqpnk"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -67,7 +65,7 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"pageSize":1000,"total":148,"results":[{"id":"MVL.1","hasSubGroup":["MVL.1241","MVL.1141"],"name":{"en":"Birds","fi":"Linnut","sv":"Fåglar"}},{"id":"MVL.2","hasSubGroup":["MVL.1181","MVL.187"],"name":{"en":"Mammals","fi":"Nisäkkäät","sv":"Däggdjur"}},{"id":"MVL.22","hasSubGroup":["MVL.82"],"name":{"en":"Algae","fi":"Levät","sv":"Alger"}},{"id":"MVL.23","hasSubGroup":["MVL.562","MVL.563","MVL.561"],"name":{"en":"Bryophytes","fi":"Sammalet","sv":"Mossor"}},{"id":"MVL.24","hasSubGroup":["MVL.63","MVL.62","MVL.61","MVL.81","MVL.121"],"name":{"en":"Macrofungi","fi":"Suursienet","sv":"Storsvampar"}},{"id":"MVL.25","hasSubGroup":["MVL.382","MVL.381"],"name":{"en":"Lichenized
+      string: '{"currentPage":1,"pageSize":1000,"total":149,"results":[{"id":"MVL.1","hasSubGroup":["MVL.1241","MVL.1141"],"name":{"en":"Birds","fi":"Linnut","sv":"Fåglar"}},{"id":"MVL.2","hasSubGroup":["MVL.1181","MVL.187"],"name":{"en":"Mammals","fi":"Nisäkkäät","sv":"Däggdjur"}},{"id":"MVL.22","hasSubGroup":["MVL.82"],"name":{"en":"Algae","fi":"Levät","sv":"Alger"}},{"id":"MVL.23","hasSubGroup":["MVL.563","MVL.561","MVL.562"],"name":{"en":"Bryophytes","fi":"Sammalet","sv":"Mossor"}},{"id":"MVL.24","hasSubGroup":["MVL.62","MVL.63","MVL.81","MVL.121","MVL.61"],"name":{"en":"Macrofungi","fi":"Suursienet","sv":"Storsvampar"}},{"id":"MVL.25","hasSubGroup":["MVL.382","MVL.381"],"name":{"en":"Lichenized
         and lichenicolous fungi","fi":"Jäkälät ja likenikoliset sienet","sv":"Lavar
         och lavparasiter"}},{"id":"MVL.26","hasSubGroup":["MVL.162","MVL.161"],"name":{"en":"Reptiles
         and amphibians","fi":"Matelijat ja sammakkoeläimet","sv":"Kräld- och groddjur"}},{"id":"MVL.27","name":{"en":"Fishes","fi":"Kalat","sv":"Fiskar"}},{"id":"MVL.28","hasSubGroup":["MVL.241","MVL.601","MVL.962","MVL.402","MVL.401"],"name":{"en":"Worms","fi":"Madot","sv":"Maskar"}},{"id":"MVL.30","name":{"en":"Sawflies,
@@ -102,11 +100,11 @@ http_interactions:
         insects, megalopterans, snakeflies, mecopterans","fi":"Verkkosiipiset, kaislakorennot,
         käärmekorennot ja kärsäkorennot","sv":"Nätvingar, vattennätvingar, halssländor,
         näbbsländor"}},{"id":"MVL.227","name":{"en":"Booklice","fi":"Jäytiäiset","sv":"Stövsländor"}},{"id":"MVL.228","name":{"en":"Thrips","fi":"Ripsiäiset","sv":"Tripsar"}},{"id":"MVL.229","name":{"en":"Twisted-wing
-        parasites","fi":"Kierresiipiset","sv":"Vridvingar"}},{"id":"MVL.230","name":{"en":"Cockroaches","fi":"Torakat","sv":"Kackerlackor"}},{"id":"MVL.232","hasSubGroup":["MVL.38","MVL.1001","MVL.33","MVL.30","MVL.31","MVL.223","MVL.234","MVL.224","MVL.229","MVL.227","MVL.222","MVL.230","MVL.228","MVL.236","MVL.1004","MVL.36","MVL.225","MVL.661","MVL.226","MVL.34","MVL.235"],"name":{"en":"Insects
-        and arachnids","fi":"Hyönteiset ja hämähäkkieläimet","sv":"Insekter och spindeldjur"}},{"id":"MVL.233","hasSubGroup":["MVL.564","MVL.361","MVL.25","MVL.24"],"name":{"en":"Fungi
-        and lichens","fi":"Sienet ja jäkälät","sv":"Svampar och lavar"}},{"id":"MVL.234","name":{"en":"Mites
+        parasites","fi":"Kierresiipiset","sv":"Vridvingar"}},{"id":"MVL.230","name":{"en":"Cockroaches","fi":"Torakat","sv":"Kackerlackor"}},{"id":"MVL.232","hasSubGroup":["MVL.38","MVL.1001","MVL.33","MVL.30","MVL.31","MVL.223","MVL.234","MVL.224","MVL.229","MVL.227","MVL.222","MVL.230","MVL.228","MVL.236","MVL.1004","MVL.225","MVL.36","MVL.661","MVL.226","MVL.34","MVL.235"],"name":{"en":"Insects
+        and arachnids","fi":"Hyönteiset ja hämähäkkieläimet","sv":"Insekter och spindeldjur"}},{"id":"MVL.233","hasSubGroup":["MVL.24","MVL.25","MVL.361","MVL.564"],"name":{"en":"Fungi
+        and lichens","fi":"Sienet ja jäkälät","sv":"Svampar och lavar"}},{"id":"MVL.234","hasSubGroup":["MVL.1263"],"name":{"en":"Mites
         and ticks","fi":"Punkit","sv":"Kvalster"}},{"id":"MVL.235","name":{"en":"Harvestmen","fi":"Lukit","sv":"Lockespindlar"}},{"id":"MVL.236","name":{"en":"Pseudoscorpions","fi":"Valeskorpionit","sv":"Klokrypare"}},{"id":"MVL.237","name":{"en":"Macrolepidoptera","fi":"Suurperhoset","sv":"Storfjärilar"}},{"id":"MVL.238","name":{"en":"Microlepidoptera","fi":"Pikkuperhoset","sv":"Mikrofjärilar"}},{"id":"MVL.239","name":{"en":"Bivalves","fi":"Simpukat","sv":"Musslor"}},{"id":"MVL.240","name":{"en":"Landsnails
-        and slugs","fi":"Maakotilot ja etanat","sv":"Snäckor och sniglar"}},{"id":"MVL.241","hasSubGroup":["MVL.501","MVL.502","MVL.503"],"name":{"en":"Annelids","fi":"Nivelmadot","sv":"Ringmaskar"}},{"id":"MVL.243","name":{"en":"Chilopods,
+        and slugs","fi":"Maakotilot ja etanat","sv":"Snäckor och sniglar"}},{"id":"MVL.241","hasSubGroup":["MVL.503","MVL.502","MVL.501"],"name":{"en":"Annelids","fi":"Nivelmadot","sv":"Ringmaskar"}},{"id":"MVL.243","name":{"en":"Chilopods,
         centipedes","fi":"Juoksujalkaiset","sv":"Enkelfotingar"}},{"id":"MVL.244","name":{"en":"Millipedes","fi":"Kaksoisjalkaiset","sv":"Dubbelfotingar"}},{"id":"MVL.245","name":{"en":"Pauropods","fi":"Harvajalkaiset","sv":"Fåfotingar"}},{"id":"MVL.246","name":{"en":"Symphylans","fi":"Sokkojuoksiaiset","sv":"Dvärgfotingar"}},{"id":"MVL.301","name":{"en":"Entognatha","fi":"Alkuhyönteiset","sv":"Urinsekter"}},{"id":"MVL.321","name":{"en":"Slime
         molds","fi":"Limasienet","sv":"Slemsvampar"}},{"id":"MVL.341","name":{"en":"Nematoceran
         flies","fi":"Sääsket","sv":"Myggor"}},{"id":"MVL.342","name":{"en":"Brachyceran
@@ -147,15 +145,16 @@ http_interactions:
         climbers","fi":"Ainavihannat köynnökset","sv":"Vintergröna klätterväxter"}},{"id":"MVL.1091","name":{"en":"Deciduous
         climbers","fi":"Kesävihannat köynnökset","sv":"Sommargröna klätterväxter"}},{"id":"MVL.1092","hasSubGroup":["MVL.1090","MVL.1091"],"name":{"en":"Climbers","fi":"Köynnökset","sv":"Klätterväxter"}},{"id":"MVL.1093","name":{"en":"Hemicryptophytes","fi":"Puolipiilijät","sv":"Hemikryptofyter"}},{"id":"MVL.1094","name":{"en":"Geophytes","fi":"Piilotalvehtijat","sv":"Geofyter"}},{"id":"MVL.1095","name":{"en":"Helophytes","fi":"Ilmaversoiset
         vesikasvit","sv":"Helofyter"}},{"id":"MVL.1096","name":{"en":"Nympheids","fi":"Kelluslehtiset","sv":"Flytbladsväxter"}},{"id":"MVL.1097","name":{"en":"Elodeids","fi":"Uposlehtiset","sv":"Submers
-        vattenväxter"}},{"id":"MVL.1098","name":{"en":"Isoetids","fi":"Pohjalehtiset","sv":"Rosettväxter"}},{"id":"MVL.1099","name":{"en":"Lemnids","fi":"Irtokellujat","sv":"Vattenyteväxter"}},{"id":"MVL.1100","hasSubGroup":["MVL.1097","MVL.1099","MVL.1098","MVL.1122","MVL.1096","MVL.1095"],"name":{"en":"Aquatic
+        vattenväxter"}},{"id":"MVL.1098","name":{"en":"Isoetids","fi":"Pohjalehtiset","sv":"Rosettväxter"}},{"id":"MVL.1099","name":{"en":"Lemnids","fi":"Irtokellujat","sv":"Vattenyteväxter"}},{"id":"MVL.1100","hasSubGroup":["MVL.1097","MVL.1099","MVL.1098","MVL.1096","MVL.1122","MVL.1095"],"name":{"en":"Aquatic
         plants","fi":"Vesikasvit","sv":"Vattenväxter"}},{"id":"MVL.1101","name":{"en":"Therophytes","fi":"Kesäkasvit","sv":"Terofyter"}},{"id":"MVL.1102","hasSubGroup":["MVL.1086","MVL.1100","MVL.1083","MVL.1093","MVL.1094","MVL.1092","MVL.1121","MVL.1101","MVL.1089"],"name":{"en":"Plant
         life forms","fi":"Kasvien elomuodot","sv":"Växtformer"}},{"id":"MVL.1103","name":{"en":"Carnivorous
         plants","fi":"Lihansyöjäkasvit","sv":"Köttätande växter"}},{"id":"MVL.1121","name":{"en":"Shore
         plants","fi":"Rantakasvit","sv":"Strandväxter"}},{"id":"MVL.1122","name":{"en":"Submerged
-        plants","fi":"Irtokeijujat","sv":"Flytväxter"}},{"id":"MVL.1141","hasSubGroup":["MVL.1162","MVL.1161"],"name":{"en":"Birds
+        plants","fi":"Irtokeijujat","sv":"Flytväxter"}},{"id":"MVL.1141","hasSubGroup":["MVL.1161","MVL.1162"],"name":{"en":"Birds
         of prey and owls","fi":"Petolinnut ja pöllöt","sv":"Rovfåglar och ugglor"}},{"id":"MVL.1161","name":{"en":"Owls","fi":"Pöllöt","sv":"Ugglor"}},{"id":"MVL.1162","name":{"en":"Birds
         of prey","fi":"Petolinnut","sv":"Rovfåglar"}},{"id":"MVL.1181","name":{"en":"Small
         mammals","fi":"Piennisäkkäät","sv":"Små däggdjur"}},{"id":"MVL.1221","name":{"en":"Spring
-        flowers","fi":"Kevätkukkijat","sv":"Vårväxter"}},{"id":"MVL.1241","name":{"en":"Waterbirds","fi":"Vesilinnut","sv":"Vattenfåglar"}}],"lastPage":1,"@context":"http://schema.laji.fi/context/informalTaxonGroup.jsonld"}'
-  recorded_at: 2023-09-28 13:16:13 GMT
+        flowers","fi":"Kevätkukkijat","sv":"Vårväxter"}},{"id":"MVL.1241","name":{"en":"Waterbirds","fi":"Vesilinnut","sv":"Vattenfåglar"}},{"id":"MVL.1263","name":{"en":"Water
+        mites","fi":"Vesipunkit","sv":"Vattenkvalster"}}],"lastPage":1,"@context":"http://schema.laji.fi/context/informalTaxonGroup.jsonld"}'
+  recorded_at: 2024-01-12 11:05:32 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
