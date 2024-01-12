@@ -6,9 +6,7 @@ if (identical(Sys.getenv("BRANCH"), "dev")) {
 
 }
 
-locales <- sprintf("https://github.com/luomus/laji.git/branches%s", path)
-
-locales <- system2("svn", c("ls", locales), TRUE)
+locales <- c("en.json", "fi.json", "sv.json")
 
 locales <- Map(
   \(x) sprintf("https://raw.githubusercontent.com/luomus/laji%s%s", path, x),
