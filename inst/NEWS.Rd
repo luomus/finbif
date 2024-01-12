@@ -1,7 +1,28 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.9.3.9000}{
+\section{finbif version 0.9.4}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item New undocumented variable "source" can be selected with
+        \code{finbif_occurrence}.
+    }
+  }
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Record pagination should now often require less queries of FinBIF
+        server and be should be faster.
+      \item FinBIF collections field names have been sanitised.
+      \item When filtering records by "collection_id" a full URL ID can be used
+        or a QName.
+    }
+  }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Reading zero observation data downloads will now produce a zero row
+        \code{data.frame} instead of triggering an error.
+    }
+  }
 }
 
 \section{finbif version 0.9.3}{

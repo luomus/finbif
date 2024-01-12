@@ -1,3 +1,25 @@
+# finbif 0.9.4
+
+#### NEW FEATURES
+
+  - New undocumented variable "source" can be selected with
+    `finbif_occurrence`.
+
+#### MINOR IMPROVEMENTS
+
+  - Record pagination should now often require less queries of FinBIF
+    server and be should be faster.
+
+  - FinBIF collections field names have been sanitised.
+
+  - When filtering records by "collection\_id" a full URL ID can be used
+    or a QName.
+
+#### BUG FIXES
+
+  - Reading zero observation data downloads will now produce a zero row
+    `data.frame` instead of triggering an error.
+
 # finbif 0.9.3
 
 #### BUG FIXES

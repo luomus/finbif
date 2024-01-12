@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.3.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,6 +56,23 @@
       <small>Source: <a href="https://github.com/luomus/finbif/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.9.4" id="finbif-094">finbif 0.9.4<a class="anchor" aria-label="anchor" href="#finbif-094"></a></h2>
+<div class="section level5">
+<h5 id="new-features-0-9-4">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-9-4"></a></h5>
+<ul><li>New undocumented variable “source” can be selected with <code>finbif_occurrence</code>.</li>
+</ul></div>
+<div class="section level5">
+<h5 id="minor-improvements-0-9-4">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-4"></a></h5>
+<ul><li><p>Record pagination should now often require less queries of FinBIF server and be should be faster.</p></li>
+<li><p>FinBIF collections field names have been sanitised.</p></li>
+<li><p>When filtering records by “collection_id” a full URL ID can be used or a QName.</p></li>
+</ul></div>
+<div class="section level5">
+<h5 id="bug-fixes-0-9-4">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-4"></a></h5>
+<ul><li>Reading zero observation data downloads will now produce a zero row <code>data.frame</code> instead of triggering an error.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.3" id="finbif-093">finbif 0.9.3<a class="anchor" aria-label="anchor" href="#finbif-093"></a></h2><p class="text-muted">CRAN release: 2023-09-28</p>
 <div class="section level5">
