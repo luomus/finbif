@@ -1,6 +1,9 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.9.4.9000}{
+}
+
 \section{finbif version 0.9.4}{
   \subsection{NEW FEATURES}{
     \itemize{

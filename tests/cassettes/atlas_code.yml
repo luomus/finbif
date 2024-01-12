@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MY.atlasCodeEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.atlasCodeEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 11:07:35 GMT
+      date: Fri, 12 Jan 2024 12:02:51 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"1dbe-xKk81UKz5nsmLgfP++ZVmH+355U"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -120,5 +121,5 @@ http_interactions:
         found with eggs or nestlings","sv":"82 Säker häckning; Direkt bevis på säker
         häckning konstaterat: bo iakttaget med ägg eller ungar","fi":"82 Varma pesintä:
         nähty pesässä munia tai poikasia."}}]'
-  recorded_at: 2024-01-12 11:07:35 GMT
+  recorded_at: 2024-01-12 12:02:51 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

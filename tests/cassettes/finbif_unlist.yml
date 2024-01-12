@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.informalTaxonGroups&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.informalTaxonGroups&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 11:05:32 GMT
+      date: Fri, 12 Jan 2024 12:02:45 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,12 +29,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":5039234,"pageSize":10,"total":50392331,"cacheTimestamp":1705057532,"results":[{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2"]}},"unitId":"http://tun.fi/KE.176/65a11bcad5de6fbf10fb576d#Unit1"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668511#12"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668511#6"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1","http://tun.fi/MVL.1141","http://tun.fi/MVL.1162"]}},"unitId":"http://tun.fi/JX.1668511#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668511#14"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1","http://tun.fi/MVL.1141","http://tun.fi/MVL.1162"]}},"unitId":"http://tun.fi/JX.1668471#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668460#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668459#5"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.1668459#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2","http://tun.fi/MVL.1181"]}},"unitId":"http://tun.fi/HR.3211/196411469-U"}}]}'
-  recorded_at: 2024-01-12 11:05:32 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":292593,"pageSize":10,"total":2925923,"cacheTimestamp":1705051554,"results":[{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.312515#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1","http://tun.fi/MVL.1241"]}},"unitId":"http://tun.fi/JX.312492#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.312453#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/HR.3211/195160833-U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/HR.3211/195160871-U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/HR.3211/195160953-U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.25"]}},"unitId":"http://tun.fi/HR.3211/195156808-U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.27"]}},"unitId":"http://tun.fi/HR.3211/195156496-U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/HR.3211/195124603-U"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://tun.fi/HR.3211/195155319-U"}}]}'
+  recorded_at: 2024-01-12 12:02:45 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/informal-taxon-groups?lang=multi&pageSize=1000&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/informal-taxon-groups?lang=multi&pageSize=1000&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -47,17 +48,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 11:05:32 GMT
+      date: Fri, 12 Jan 2024 12:02:45 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"3dda-lmSGCikSwP2Zo+mf1NnfC2fqpnk"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -156,5 +158,5 @@ http_interactions:
         mammals","fi":"Piennisäkkäät","sv":"Små däggdjur"}},{"id":"MVL.1221","name":{"en":"Spring
         flowers","fi":"Kevätkukkijat","sv":"Vårväxter"}},{"id":"MVL.1241","name":{"en":"Waterbirds","fi":"Vesilinnut","sv":"Vattenfåglar"}},{"id":"MVL.1263","name":{"en":"Water
         mites","fi":"Vesipunkit","sv":"Vattenkvalster"}}],"lastPage":1,"@context":"http://schema.laji.fi/context/informalTaxonGroup.jsonld"}'
-  recorded_at: 2024-01-12 11:05:32 GMT
+  recorded_at: 2024-01-12 12:02:45 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

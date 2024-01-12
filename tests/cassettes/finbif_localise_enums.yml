@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/aggregate?aggregateBy=unit.abundanceUnit&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/aggregate?aggregateBy=unit.abundanceUnit&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 11:06:47 GMT
+      date: Fri, 12 Jan 2024 12:02:46 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,12 +29,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":20,"cacheTimestamp":1705057607,"results":[{"aggregateBy":{"unit.abundanceUnit":"INDIVIDUAL_COUNT"},"count":2596878},{"aggregateBy":{"unit.abundanceUnit":"NESTS"},"count":432705},{"aggregateBy":{"unit.abundanceUnit":"TRUNKS"},"count":93405},{"aggregateBy":{"unit.abundanceUnit":"RELATIVE_DENSITY"},"count":39891},{"aggregateBy":{"unit.abundanceUnit":"SPROUTS"},"count":32170},{"aggregateBy":{"unit.abundanceUnit":"OCCURS_DOES_NOT_OCCUR"},"count":20763},{"aggregateBy":{"unit.abundanceUnit":"BREEDING_SITES"},"count":11720},{"aggregateBy":{"unit.abundanceUnit":"FRUITBODIES"},"count":8229},{"aggregateBy":{"unit.abundanceUnit":"INDIRECT_MARKS"},"count":7810},{"aggregateBy":{"unit.abundanceUnit":"SPOTS"},"count":6172}]}'
-  recorded_at: 2024-01-12 11:07:29 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":2,"pageSize":10,"total":20,"cacheTimestamp":1705051561,"results":[{"aggregateBy":{"unit.abundanceUnit":"INDIVIDUAL_COUNT"},"count":403291},{"aggregateBy":{"unit.abundanceUnit":"NESTS"},"count":121560},{"aggregateBy":{"unit.abundanceUnit":"TRUNKS"},"count":90030},{"aggregateBy":{"unit.abundanceUnit":"SPROUTS"},"count":29354},{"aggregateBy":{"unit.abundanceUnit":"BREEDING_SITES"},"count":10140},{"aggregateBy":{"unit.abundanceUnit":"FRUITBODIES"},"count":7748},{"aggregateBy":{"unit.abundanceUnit":"INDIRECT_MARKS"},"count":6622},{"aggregateBy":{"unit.abundanceUnit":"PAIRCOUNT"},"count":6130},{"aggregateBy":{"unit.abundanceUnit":"SPOTS"},"count":6088},{"aggregateBy":{"unit.abundanceUnit":"SQUARE_M"},"count":4217}]}'
+  recorded_at: 2024-01-12 12:02:47 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MY.abundanceUnitEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.abundanceUnitEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -47,17 +48,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 11:06:47 GMT
+      date: Fri, 12 Jan 2024 12:02:46 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"ac8-1m1wJpAtYeIosea8mk3pXTKN9+0"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -89,11 +91,11 @@ http_interactions:
         meter (m^2)","fi":"Neliömetri (m^2)","sv":"Kvadratmeter (m^2)"}},{"id":"MY.abundanceUnitRelativeDensity","value":{"fi":"Suhteellinen
         tiheys","sv":"Relativ densitet","en":"Relative density"}},{"id":"MY.abundanceUnitOccursDoesNotOccur","value":{"sv":"Forekommer
         / förekommer inte","en":"Occurs / does not occur","fi":"Esiintyy/ei esiinny"}}]'
-  recorded_at: 2024-01-12 11:07:29 GMT
+  recorded_at: 2024-01-12 12:02:47 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.abundanceUnit&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.abundanceUnit&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -107,12 +109,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 11:07:25 GMT
+      date: Fri, 12 Jan 2024 12:02:46 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -120,12 +123,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":5039234,"pageSize":10,"total":50392331,"cacheTimestamp":1705057645,"results":[{"unit":{"unitId":"http://tun.fi/KE.176/65a11bcad5de6fbf10fb576d#Unit1"}},{"unit":{"unitId":"http://tun.fi/JX.1668511#12"}},{"unit":{"unitId":"http://tun.fi/JX.1668511#6"}},{"unit":{"unitId":"http://tun.fi/JX.1668511#3"}},{"unit":{"unitId":"http://tun.fi/JX.1668511#14"}},{"unit":{"unitId":"http://tun.fi/JX.1668471#3"}},{"unit":{"unitId":"http://tun.fi/JX.1668460#3"}},{"unit":{"unitId":"http://tun.fi/JX.1668459#5"}},{"unit":{"unitId":"http://tun.fi/JX.1668459#3"}},{"unit":{"unitId":"http://tun.fi/HR.3211/196411469-U"}}]}'
-  recorded_at: 2024-01-12 11:07:29 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":292593,"pageSize":10,"total":2925923,"cacheTimestamp":1705051562,"results":[{"unit":{"unitId":"http://tun.fi/JX.312515#3"}},{"unit":{"unitId":"http://tun.fi/JX.312492#3"}},{"unit":{"unitId":"http://tun.fi/JX.312453#3"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195160833-U"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195160871-U"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195160953-U"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195156808-U"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195156496-U"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195124603-U"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195155319-U"}}]}'
+  recorded_at: 2024-01-12 12:02:47 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MZ.secureReason?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MZ.secureReason?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -139,17 +142,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 11:07:25 GMT
+      date: Fri, 12 Jan 2024 12:02:46 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"93b-g+dEX9GCdqJ/EaerGQZDkuF3/9E"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -181,11 +185,11 @@ http_interactions:
         has hidden time information","fi":"Käyttäjän karkeistama aika","sv":"Användaren
         har dolt tidinformation"}},{"id":"MZ.secureReasonPersonNamesHidden","value":{"en":"Person
         names hidden","sv":"Personnamn dolda","fi":"Henkilönimet piiloitettu"}}]'
-  recorded_at: 2024-01-12 11:07:29 GMT
+  recorded_at: 2024-01-12 12:02:47 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?secureReason=BREEDING_SEASON_TAXON_CONSERVATION&selected=unit.unitId%2Cdocument.secureReasons&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?secureReason=BREEDING_SEASON_TAXON_CONSERVATION&selected=unit.unitId%2Cdocument.secureReasons&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -199,12 +203,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 11:07:29 GMT
+      date: Fri, 12 Jan 2024 12:02:47 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -212,6 +217,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":91932,"pageSize":10,"total":919316,"results":[{"unit":{"unitId":"http://tun.fi/A.0B2D2730-2097-4A33-AEF3-79B45B413939#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.13F1A611-CFC5-40D1-9F15-3BE6C0B362F6#U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.3DCF6429-A5DA-453D-8E76-2AF086B5FF9E#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.575134DF-4B7A-46A6-8280-69D5AB13C380#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.57F8BCC0-871A-49E7-B2D2-E37795815647#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.6391FA16-42E6-45EB-A41A-DF351072F42A#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.67843C24-8449-4B58-BA62-9CFD542CBB76#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.70876CE0-02A6-4EBB-AF56-5C0AE593E3DD#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.84448BB6-6BC1-4100-851B-52B139F02C11#U"},"document":{"secureReasons":["BREEDING_SEASON_TAXON_CONSERVATION"]}},{"unit":{"unitId":"http://tun.fi/A.84BECB8B-7389-4235-9F23-B30801EA2D8E#U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION"]}}]}'
-  recorded_at: 2024-01-12 11:07:29 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":15089,"pageSize":10,"total":150881,"results":[{"unit":{"unitId":"http://tun.fi/HR.49/79123/G.102932_AD"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD"]}},{"unit":{"unitId":"http://tun.fi/HR.49/79123_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD"]}},{"unit":{"unitId":"http://tun.fi/HR.49/79343_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD"]}},{"unit":{"unitId":"http://tun.fi/HR.49/79363_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD"]}},{"unit":{"unitId":"http://tun.fi/HR.49/79403_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD"]}},{"unit":{"unitId":"http://tun.fi/HR.49/79404_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD"]}},{"unit":{"unitId":"http://tun.fi/HR.49/79406_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD"]}},{"unit":{"unitId":"http://tun.fi/HR.49/79407_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD"]}},{"unit":{"unitId":"http://tun.fi/HR.49/79408_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD"]}},{"unit":{"unitId":"http://tun.fi/HR.49/79409_U"},"document":{"secureReasons":["DEFAULT_TAXON_CONSERVATION","BREEDING_SEASON_TAXON_CONSERVATION","DATA_QUARANTINE_PERIOD"]}}]}'
+  recorded_at: 2024-01-12 12:02:47 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MY.abundanceUnitEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.abundanceUnitEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 10:52:25 GMT
+      date: Fri, 12 Jan 2024 12:01:11 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"ac8-C+iczIWpC2OmNK3CHj5IQIrXKwU"
+      etag: W/"ac8-1m1wJpAtYeIosea8mk3pXTKN9+0"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -39,10 +40,10 @@ http_interactions:
         of breeding sites (rocks, cavities, etc.)","fi":"Lisääntymispaikkojen lukumäärä
         (kivi, kolo, ym)","sv":"Häckningsplatsantal (stenar, håligheter etc.)"}},{"id":"MY.abundanceUnitFeedingSite","value":{"fi":"Ruokailupaikkojen
         lukumäärä","en":"Number of feeding sites","sv":"Utfodringsplatser"}},{"id":"MY.abundanceUnitColony","value":{"fi":"Yhdyskuntien
-        lukumäärä","en":"Colonies","sv":"Kolonier"}},{"id":"MY.abundanceUnitFruitbody","value":{"fi":"Itiöemien
-        lukumäärä","en":"Fruitbodies/sporocarps","sv":"Fruktkroppar"}},{"id":"MY.abundanceUnitSprout","value":{"en":"Sprouts","fi":"Versojen
-        lukumäärä","sv":"Spiror"}},{"id":"MY.abundanceUnitHummock","value":{"fi":"Mättäiden/tuppaiden
-        lukumäärä","en":"Number of hummocks","sv":"Hummocks"}},{"id":"MY.abundanceUnitThallus","value":{"fi":"Sekovarsien
+        lukumäärä","en":"Colonies","sv":"Kolonier"}},{"id":"MY.abundanceUnitFruitbody","value":{"sv":"Fruktkroppar","fi":"Itiöemien
+        lukumäärä","en":"Fruitbodies/sporocarps"}},{"id":"MY.abundanceUnitSprout","value":{"en":"Sprouts","fi":"Versojen
+        lukumäärä","sv":"Spiror"}},{"id":"MY.abundanceUnitHummock","value":{"sv":"Hummocks","fi":"Mättäiden/tuppaiden
+        lukumäärä","en":"Number of hummocks"}},{"id":"MY.abundanceUnitThallus","value":{"fi":"Sekovarsien
         lukumäärä","en":"Number of thalli","sv":"Tallus"}},{"id":"MY.abundanceUnitFlower","value":{"fi":"Kukkien
         lukumäärä","en":"Number of flowers","sv":"Blommor"}},{"id":"MY.abundanceUnitSpot","value":{"en":"Number
         of spots","sv":"Fläckar","fi":"Laikkujen lukumäärä"}},{"id":"MY.abundanceUnitTrunk","value":{"fi":"Runkojen
@@ -57,5 +58,5 @@ http_interactions:
         meter (m^2)","fi":"Neliömetri (m^2)","sv":"Kvadratmeter (m^2)"}},{"id":"MY.abundanceUnitRelativeDensity","value":{"fi":"Suhteellinen
         tiheys","sv":"Relativ densitet","en":"Relative density"}},{"id":"MY.abundanceUnitOccursDoesNotOccur","value":{"sv":"Forekommer
         / förekommer inte","en":"Occurs / does not occur","fi":"Esiintyy/ei esiinny"}}]'
-  recorded_at: 2024-01-12 10:52:25 GMT
+  recorded_at: 2024-01-12 12:01:11 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
