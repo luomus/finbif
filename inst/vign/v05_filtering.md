@@ -113,9 +113,7 @@ finbif_occurrence(filter = list(date_range_ym = c("2019-12")))
 
 </details>
 <br>
-, or for record events, a range as a character vector or an
-[Interval](https://lubridate.tidyverse.org/reference/Interval-class.html)
-object.
+, or for record events, a range as a character vector.
 
 ```r
 finbif_occurrence(

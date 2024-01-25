@@ -201,21 +201,20 @@ to 100m).</p></li>
     
 
 <p>Filters related to time of record include:</p><ul><li><p><code>date_range_ymd</code> Dates.
-An <a href="https://lubridate.tidyverse.org/reference/Interval-class.html" class="external-link">Interval</a> object or a vector of one to
-two <a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a> objects (begin and end dates) or objects that
-are coercible to the <a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a> class by
-<a href="https://lubridate.tidyverse.org/reference/as_date.html" class="external-link">as_date</a>. When supplying dates as strings, the day or
-month-and-day can be omitted (e.g.,<code>"2001-04"</code> or <code>"2001"</code>). Note however,
-that when omitting day, only "<code>-</code>" is allowed to separate year and month,
-and months must be in two-digit/leading zero form. If the begin or end
-dates are partial date strings they will be interpreted as the first or
-last day of the month or year (e.g., <code>c(2001, 2003)</code> is equivalent to
+A vector of one to two <a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a> objects (begin and end
+dates) or objects that are coercible to the <a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a>. When
+supplying dates as strings, the day or month-and-day can be omitted (e.g.,
+<code>"2001-04"</code> or <code>"2001"</code>). Note however, that when omitting day, only "<code>-</code>"
+is allowed to separate year and month, and months must be in
+two-digit/leading zero form. If the begin or end dates are partial date
+strings they will be interpreted as the first or last day of the month or
+year (e.g., <code>c(2001, 2003)</code> is equivalent to
 <code>c("2001-01-01", "2003-12-12")</code>). If a single date is supplied as a partial
 date string then all records that fall within that month or year will be
 returned (e.g., <code>c("2001-01")</code> is equivalent to
 <code>c("2001-01-01", "2001-01-31")</code>). Use empty strings for the begin or end
-date to specify open-ended date ranges (e.g., <code>c("2000-01-01", "")</code> for
-all dates from the turn of the century).</p></li>
+date to specify open-ended date ranges (e.g., <code>c("2000-01-01", "")</code> for all
+dates from the turn of the century).</p></li>
 <li><p><code>date_range_ym</code> Dates.
 As above, but days (if supplied) will be ignored.</p></li>
 <li><p><code>date_range_d</code> Integer vector.
@@ -228,11 +227,11 @@ day of the year.</p></li>
 <li><p><code>{first|last}_import_date_{min|max}</code> Date.
 Filter by date record was imported/modified. Either a
 <a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a> object or object that is coercible to the
-<a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a> class by <a href="https://lubridate.tidyverse.org/reference/as_date.html" class="external-link">as_date</a>, or the number
-of seconds since 1970-01-01 00:00.00 UTC (the so-called UNIX epoch). Note
-that this means that specifying a year, such as 2019, without a month and
-day will be interpreted as 2019 seconds after midnight on Jan 1, 1970 and
-not the year 2019.</p></li>
+<a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a> class, or the number of seconds since 1970-01-01
+00:00.00 UTC (the so-called UNIX epoch). Note that this means that
+specifying a year, such as 2019, without a month and day will be
+interpreted as 2019 seconds after midnight on Jan 1, 1970 and not the year
+2019.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="quality">Quality<a class="anchor" aria-label="anchor" href="#quality"></a></h2>

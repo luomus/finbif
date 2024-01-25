@@ -53,9 +53,7 @@ FinBIF. The date filters can be a single year, month or date,
 ```{details date-filter}
 finbif_occurrence(filter = list(date_range_ym = c("2019-12")))
 ```
-, or for record events, a range as a character vector or an
-[Interval](https://lubridate.tidyverse.org/reference/Interval-class.html)
-object.
+, or for record events, a range as a character vector.
 ```{details date-range-filter}
 finbif_occurrence(
   filter = list(date_range_ymd = c("2019-06-01", "2019-12-31"))

@@ -149,21 +149,20 @@ to 100m).
 Filters related to time of record include:
 \itemize{
 \item \code{date_range_ymd} Dates.
-An \link[lubridate:Interval-class]{Interval} object or a vector of one to
-two \link[base:Dates]{Date} objects (begin and end dates) or objects that
-are coercible to the \link[base:Dates]{Date} class by
-\link[lubridate]{as_date}. When supplying dates as strings, the day or
-month-and-day can be omitted (e.g.,\code{"2001-04"} or \code{"2001"}). Note however,
-that when omitting day, only "\code{-}" is allowed to separate year and month,
-and months must be in two-digit/leading zero form. If the begin or end
-dates are partial date strings they will be interpreted as the first or
-last day of the month or year (e.g., \code{c(2001, 2003)} is equivalent to
+A vector of one to two \link[base:Dates]{Date} objects (begin and end
+dates) or objects that are coercible to the \link[base:Dates]{Date}. When
+supplying dates as strings, the day or month-and-day can be omitted (e.g.,
+\code{"2001-04"} or \code{"2001"}). Note however, that when omitting day, only "\code{-}"
+is allowed to separate year and month, and months must be in
+two-digit/leading zero form. If the begin or end dates are partial date
+strings they will be interpreted as the first or last day of the month or
+year (e.g., \code{c(2001, 2003)} is equivalent to
 \code{c("2001-01-01", "2003-12-12")}). If a single date is supplied as a partial
 date string then all records that fall within that month or year will be
 returned (e.g., \code{c("2001-01")} is equivalent to
 \code{c("2001-01-01", "2001-01-31")}). Use empty strings for the begin or end
-date to specify open-ended date ranges (e.g., \code{c("2000-01-01", "")} for
-all dates from the turn of the century).
+date to specify open-ended date ranges (e.g., \code{c("2000-01-01", "")} for all
+dates from the turn of the century).
 \item \code{date_range_ym} Dates.
 As above, but days (if supplied) will be ignored.
 \item \code{date_range_d} Integer vector.
@@ -176,11 +175,11 @@ day of the year.
 \item \verb{\{first|last\}_import_date_\{min|max\}} Date.
 Filter by date record was imported/modified. Either a
 \link[base:Dates]{Date} object or object that is coercible to the
-\link[base:Dates]{Date} class by \link[lubridate]{as_date}, or the number
-of seconds since 1970-01-01 00:00.00 UTC (the so-called UNIX epoch). Note
-that this means that specifying a year, such as 2019, without a month and
-day will be interpreted as 2019 seconds after midnight on Jan 1, 1970 and
-not the year 2019.
+\link[base:Dates]{Date} class, or the number of seconds since 1970-01-01
+00:00.00 UTC (the so-called UNIX epoch). Note that this means that
+specifying a year, such as 2019, without a month and day will be
+interpreted as 2019 seconds after midnight on Jan 1, 1970 and not the year
+2019.
 }
 }
 
