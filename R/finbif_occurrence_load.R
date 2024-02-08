@@ -313,6 +313,8 @@ finbif_occurrence_load <- function(
 
     fb_records_obj[["facts"]] <- ftype
 
+    fb_records_obj[["skip"]] <- 0L
+
     id <- switch(
       ftype,
       record = file_vars[["Unit.UnitID", var_type]],
