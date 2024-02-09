@@ -55,7 +55,7 @@ finbif_request_token <- function(email, quiet = FALSE) {
       pause_cap = getOption("finbif_retry_pause_cap"),
       pause_min = getOption("finbif_retry_pause_min"),
       quiet = quiet,
-      terminate_on = 404L
+      terminate_on = c(404L, 422L)
     )
 
     parsed <- httr::content(resp)
@@ -64,8 +64,8 @@ finbif_request_token <- function(email, quiet = FALSE) {
 
       msg <- sprintf(
         "API request failed [%s]\n%s",
-        resp[["status_code"]],
-        parsed[["message"]]
+        parsed[[c("error", "statusCode")]],
+        parsed[[c("error", "message")]]
       )
 
       stop(msg, call. = FALSE)
