@@ -51,7 +51,7 @@ See `?filters` section "Location" for more details
 The event or import date of records can be used to filter occurrence data from
 FinBIF. The date filters can be a single year, month or date,
 ```{details date-filter}
-finbif_occurrence(filter = list(date_range_ym = c("2019-12")))
+finbif_occurrence(filter = list(date_range_ym = c("2020-12")))
 ```
 , or for record events, a range as a character vector.
 ```{details date-range-filter}
@@ -80,12 +80,12 @@ strict <- c(
   record_quality = "expert_verified"
 )
 permissive <- list(
-  quality_issues = "both",
-  record_reliability = c("reliable", "unassessed", "unreliable"),
+  wild_status = c("wild", "non_wild", "wild_unknown"),
   record_quality = c(
     "expert_verified", "community_verified", "unassessed", "uncertain",
     "erroneous"
-  )
+  ),
+  abundance_min = 0
 )
 c(
   strict     = finbif_occurrence(filter = strict,     count_only = TRUE),

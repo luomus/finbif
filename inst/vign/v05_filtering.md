@@ -71,7 +71,7 @@ The event or import date of records can be used to filter occurrence data from
 FinBIF. The date filters can be a single year, month or date,
 
 ```r
-finbif_occurrence(filter = list(date_range_ym = c("2019-12")))
+finbif_occurrence(filter = list(date_range_ym = c("2020-12")))
 ```
 
 
@@ -81,30 +81,19 @@ finbif_occurrence(filter = list(date_range_ym = c("2019-12")))
 ```r
 
 #> Records downloaded: 10
-#> Records available: 20150
+#> Records available: 23847
 #> A data.frame [10 x 12]
-#>                     record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1  …KE.921/LGE.627772/1470480 Pteromys volans (Li…        NA  61.81362  25.75756
-#> 2             …JX.1054648#107 Pica pica (Linnaeus…  3         65.30543  25.70355
-#> 3              …JX.1054648#85 Poecile montanus (C…  1         65.30543  25.70355
-#> 4             …JX.1054648#103 Garrulus glandarius…  3         65.30543  25.70355
-#> 5             …JX.1054648#123 Passer montanus (Li…  3         65.30543  25.70355
-#> 6             …JX.1054648#149 Pyrrhula pyrrhula (…  1         65.30543  25.70355
-#> 7              …JX.1054648#93 Cyanistes caeruleus…  9         65.30543  25.70355
-#> 8              …JX.1054648#95 Parus major Linnaeu…  35        65.30543  25.70355
-#> 9             …JX.1054648#137 Carduelis flammea (…  2         65.30543  25.70355
-#> 10            …JX.1056695#107 Pica pica (Linnaeus…  6         62.7154   23.0893 
-#>              date_time
-#> 1  2019-12-31 12:00:00
-#> 2  2019-12-31 10:20:00
-#> 3  2019-12-31 10:20:00
-#> 4  2019-12-31 10:20:00
-#> 5  2019-12-31 10:20:00
-#> 6  2019-12-31 10:20:00
-#> 7  2019-12-31 10:20:00
-#> 8  2019-12-31 10:20:00
-#> 9  2019-12-31 10:20:00
-#> 10 2019-12-31 10:15:00
+#>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1       …107 Pica pica (Linnaeus…  31        65.0027   25.49381 2020-12-31 10:20:00
+#> 2        …45 Larus argentatus Po…  1         65.0027   25.49381 2020-12-31 10:20:00
+#> 3       …153 Emberiza citrinella…  2         65.0027   25.49381 2020-12-31 10:20:00
+#> 4        …49 Columba livia domes…  33        65.0027   25.49381 2020-12-31 10:20:00
+#> 5       …117 Corvus corax Linnae…  1         65.0027   25.49381 2020-12-31 10:20:00
+#> 6       …111 Corvus monedula Lin…  7         65.0027   25.49381 2020-12-31 10:20:00
+#> 7       …161 Sciurus vulgaris Li…  1         65.0027   25.49381 2020-12-31 10:20:00
+#> 8       …123 Passer montanus (Li…  28        65.0027   25.49381 2020-12-31 10:20:00
+#> 9       …149 Pyrrhula pyrrhula (…  1         65.0027   25.49381 2020-12-31 10:20:00
+#> 10       …77 Turdus pilaris Linn…  1         65.0027   25.49381 2020-12-31 10:20:00
 #> ...with 0 more record and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
@@ -212,19 +201,19 @@ strict <- c(
   record_quality = "expert_verified"
 )
 permissive <- list(
-  quality_issues = "both",
-  record_reliability = c("reliable", "unassessed", "unreliable"),
+  wild_status = c("wild", "non_wild", "wild_unknown"),
   record_quality = c(
     "expert_verified", "community_verified", "unassessed", "uncertain",
     "erroneous"
-  )
+  ),
+  abundance_min = 0
 )
 c(
   strict     = finbif_occurrence(filter = strict,     count_only = TRUE),
   permissive = finbif_occurrence(filter = permissive, count_only = TRUE)
 )
-#> Error: 1 error occurred:
-#>   - Invalid name in record reliability: unassessed
+#>     strict permissive 
+#>      52654   51733557
 ```
 
 ## Collection
