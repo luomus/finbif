@@ -62,10 +62,10 @@ finbif_request_token <- function(email, quiet = FALSE) {
 
     if (!identical(resp[["status_code"]], 200L)) {
 
+      error <- parsed[["error"]]
+
       msg <- sprintf(
-        "API request failed [%s]\n%s",
-        parsed[[c("error", "statusCode")]],
-        parsed[[c("error", "message")]]
+        "API request failed [%s]\n%s", error[["statusCode"]], error[["message"]]
       )
 
       stop(msg, call. = FALSE)
@@ -75,8 +75,7 @@ finbif_request_token <- function(email, quiet = FALSE) {
     if (!quiet) {
 
       message(
-        "A personal access token for api.laji.fi has been sent to: ",
-        email
+        "A personal access token for api.laji.fi has been sent to: ", email
       )
 
     }
