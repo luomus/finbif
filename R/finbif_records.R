@@ -1007,7 +1007,7 @@ parse_filters <- function(fb_records_obj) {
 
     class <- filter_names[[filter_name_i, "class"]]
 
-    if (grepl("^(not_){0,1}collection$", nm_i)) {
+    if (grepl("^(not_){0,1}collection(_exclusive){0,1}$", nm_i)) {
 
       if (inherits(f_i, "finbif_collections")) {
 
