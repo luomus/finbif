@@ -46,9 +46,23 @@ test_that(
 
     expect_s3_class(with_progress, "finbif_occ")
 
+    if (getOption("finbif_api_url") == "https://api.laji.fi") {
+
+      filter <- c(collection = "HR.3671")
+
+    } else {
+
+      filter <- NULL
+
+    }
+
     expect_s3_class(
       finbif_occurrence(
-        select = "taxon_id", sample = TRUE, n = 3001, quiet = TRUE
+        select = "taxon_id",
+        filter  = filter,
+        sample = TRUE,
+        n = 3001,
+        quiet = TRUE
       ),
       "finbif_occ"
     )
