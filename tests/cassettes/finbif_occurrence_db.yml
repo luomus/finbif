@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:24:14 GMT
+      date: Fri, 15 Mar 2024 14:41:48 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,22 +29,22 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":5086714,"pageSize":10,"total":50867131,"cacheTimestamp":1710491054,"results":[{"unit":{"abundanceString":"3","interpretations":{"individualCount":3,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cygnus
-        cygnus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"laulujoutsen","unitId":"http://tun.fi/JX.1688560#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":4,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":53},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Garrulus
-        glandarius","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"närhi","unitId":"http://tun.fi/JX.1688559#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":7,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":29},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Dendrocopos
-        major","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"käpytikka","unitId":"http://tun.fi/JX.1688558#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":7,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":46},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrrhula
-        pyrrhula","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"punatulkku","unitId":"http://tun.fi/JX.1688557#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":7,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":58},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cyanistes
-        caeruleus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"sinitiainen","unitId":"http://tun.fi/JX.1688552#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":63.586041,"lon":27.171864}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":9,"hourEnd":9,"interpretations":{"coordinateAccuracy":10},"minutesBegin":3,"minutesEnd":3},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Certhia
-        familiaris","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"puukiipijä","unitId":"http://tun.fi/JX.1688550#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":63.586035,"lon":27.171859}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":9,"hourEnd":9,"interpretations":{"coordinateAccuracy":10},"minutesBegin":2,"minutesEnd":2},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"10-50","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
-        volans","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.1688549#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.469335,"lon":25.951322}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":20,"minutesEnd":31},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"1-10","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
-        volans","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.1688549#6"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.46951,"lon":25.951826}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":20,"minutesEnd":31},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"6","interpretations":{"individualCount":6,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Larus
-        argentatus","scientificNameAuthorship":"Pontoppidan, 1763"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"harmaalokki","unitId":"http://tun.fi/JX.1688547#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.597528,"lon":29.75077}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"20","interpretations":{"individualCount":20,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
-        monedula","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"naakka","unitId":"http://tun.fi/JX.1688547#5"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.597528,"lon":29.75077}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
-  recorded_at: 2024-03-15 08:24:15 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":293376,"pageSize":10,"total":2933752,"cacheTimestamp":1710513708,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Apus
+        apus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"tervapääsky","unitId":"http://tun.fi/JX.320463#3"},"gathering":{"conversions":{"day":14,"month":3,"wgs84CenterPoint":{"lat":65.036407,"lon":25.485458}},"eventDate":{"begin":"2024-03-14","end":"2024-03-14"},"hourBegin":10,"hourEnd":12,"interpretations":{"coordinateAccuracy":1000},"minutesBegin":30,"minutesEnd":0},"document":{"sourceId":"http://tun.fi/KE.841"}},{"unit":{"abundanceString":"1m","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Alauda
+        arvensis","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"alaarv","unitId":"http://tun.fi/JX.320395#3"},"gathering":{"conversions":{"day":12,"month":3,"wgs84CenterPoint":{"lat":61.321157,"lon":25.433038}},"eventDate":{"begin":"2024-03-12","end":"2024-03-12"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.841"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Branta
+        canadensis","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kanadanhanhi","unitId":"http://tun.fi/JX.320253#3"},"gathering":{"conversions":{"day":1,"month":3,"wgs84CenterPoint":{"lat":63.495534,"lon":24.854576}},"eventDate":{"begin":"2024-03-01","end":"2024-03-01"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Falco
+        peregrinus","scientificNameAuthorship":"Tunstall, 1771"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"muuttohaukka","unitId":"http://tun.fi/JX.320252#7"},"gathering":{"conversions":{"day":1,"month":3,"wgs84CenterPoint":{"lat":61.849494,"lon":26.072638}},"eventDate":{"begin":"2024-03-01","end":"2024-03-01"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Parus
+        major","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"parmaj","unitId":"http://tun.fi/JX.320252#5"},"gathering":{"conversions":{"day":1,"month":3,"wgs84CenterPoint":{"lat":61.849494,"lon":26.072638}},"eventDate":{"begin":"2024-03-01","end":"2024-03-01"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":true,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
+        corone","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varis","unitId":"http://tun.fi/JX.314982#3"},"gathering":{"conversions":{"day":27,"month":2,"wgs84CenterPoint":{"lat":60.241988,"lon":25.089986}},"eventDate":{"begin":"2024-02-27","end":"2024-02-27"},"hourBegin":13,"interpretations":{"coordinateAccuracy":10},"minutesBegin":40},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Accipiter
+        nisus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varpushaukka","unitId":"http://tun.fi/JX.314981#3"},"gathering":{"conversions":{"day":27,"month":2,"wgs84CenterPoint":{"lat":60.242023,"lon":25.090062}},"eventDate":{"begin":"2024-02-27","end":"2024-02-27"},"hourBegin":13,"interpretations":{"coordinateAccuracy":10},"minutesBegin":21},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"EXPERT_VERIFIED","reliability":"RELIABLE"},"linkings":{"taxon":{"scientificName":"Somateria
+        mollissima","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"haahka","unitId":"http://tun.fi/JX.314974#3"},"gathering":{"conversions":{"day":26,"month":2,"wgs84CenterPoint":{"lat":60.1859,"lon":25.146168}},"eventDate":{"begin":"2024-02-26","end":"2024-02-26"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Epitheca
+        bimaculata","scientificNameAuthorship":"(Charpentier, 1825)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"liitokorento","unitId":"http://tun.fi/JX.313720#5"},"gathering":{"conversions":{"day":19,"month":2,"wgs84CenterPoint":{"lat":60.172099,"lon":24.930592}},"eventDate":{"begin":"2024-02-19","end":"2024-02-19"},"hourBegin":14,"hourEnd":14,"interpretations":{"coordinateAccuracy":1},"minutesBegin":37,"minutesEnd":38},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Calopteryx
+        virgo","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"neidonkorento","unitId":"http://tun.fi/JX.313720#3"},"gathering":{"conversions":{"day":19,"month":2,"wgs84CenterPoint":{"lat":60.172099,"lon":24.930592}},"eventDate":{"begin":"2024-02-19","end":"2024-02-19"},"hourBegin":14,"hourEnd":14,"interpretations":{"coordinateAccuracy":1},"minutesBegin":37,"minutesEnd":38},"document":{"sourceId":"http://tun.fi/KE.1141"}}]}'
+  recorded_at: 2024-03-15 14:41:49 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -57,12 +58,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:24:14 GMT
+      date: Fri, 15 Mar 2024 14:41:48 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -306,11 +308,11 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2024-03-15 08:24:15 GMT
+  recorded_at: 2024-03-15 14:41:49 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MZ.recordQualityEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MZ.recordQualityEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -324,16 +326,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:24:14 GMT
+      date: Fri, 15 Mar 2024 14:41:48 GMT
       content-type: application/json; charset=utf-8
       content-length: '551'
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"227-onHpvtHk2qyP8cWLilsXSzAsEZM"
+      etag: W/"227-X4xlY3SOpC79HQ2BulVJUbaL7Ck"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -341,15 +344,15 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MZ.recordQualityExpertVerified","value":{"fi":"Asiantuntijan
-        varmistama","en":"Expert verified","sv":"Expertkuraterad"}},{"id":"MZ.recordQualityCommunityVerified","value":{"en":"Community
-        verified","fi":"Yhteisön varmistama","sv":"Gemenskapskuraterat"}},{"id":"MZ.recordQualityNeutral","value":{"sv":"Obedömd","en":"Unassessed","fi":"Ei
-        arvioitu"}},{"id":"MZ.recordQualityUncertain","value":{"fi":"Epävarma","en":"Uncertain","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}]'
-  recorded_at: 2024-03-15 08:24:15 GMT
+      string: '[{"id":"MZ.recordQualityExpertVerified","value":{"sv":"Expertkuraterad","en":"Expert
+        verified","fi":"Asiantuntijan varmistama"}},{"id":"MZ.recordQualityCommunityVerified","value":{"en":"Community
+        verified","fi":"Yhteisön varmistama","sv":"Gemenskapskuraterat"}},{"id":"MZ.recordQualityNeutral","value":{"en":"Unassessed","fi":"Ei
+        arvioitu","sv":"Obedömd"}},{"id":"MZ.recordQualityUncertain","value":{"en":"Uncertain","fi":"Epävarma","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}]'
+  recorded_at: 2024-03-15 14:41:49 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -363,12 +366,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:24:14 GMT
+      date: Fri, 15 Mar 2024 14:41:48 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -376,22 +380,22 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":5086714,"pageSize":10,"total":50867131,"cacheTimestamp":1710491054,"results":[{"unit":{"abundanceString":"3","interpretations":{"individualCount":3,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cygnus
-        cygnus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"laulujoutsen","unitId":"http://tun.fi/JX.1688560#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":4,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":53},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Garrulus
-        glandarius","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"närhi","unitId":"http://tun.fi/JX.1688559#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":7,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":29},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Dendrocopos
-        major","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"käpytikka","unitId":"http://tun.fi/JX.1688558#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":7,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":46},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrrhula
-        pyrrhula","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"punatulkku","unitId":"http://tun.fi/JX.1688557#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":7,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":58},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cyanistes
-        caeruleus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"sinitiainen","unitId":"http://tun.fi/JX.1688552#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":63.586041,"lon":27.171864}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":9,"hourEnd":9,"interpretations":{"coordinateAccuracy":10},"minutesBegin":3,"minutesEnd":3},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Certhia
-        familiaris","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"puukiipijä","unitId":"http://tun.fi/JX.1688550#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":63.586035,"lon":27.171859}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":9,"hourEnd":9,"interpretations":{"coordinateAccuracy":10},"minutesBegin":2,"minutesEnd":2},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"10-50","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
-        volans","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.1688549#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.469335,"lon":25.951322}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":20,"minutesEnd":31},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"1-10","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
-        volans","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.1688549#6"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.46951,"lon":25.951826}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":20,"minutesEnd":31},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"6","interpretations":{"individualCount":6,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Larus
-        argentatus","scientificNameAuthorship":"Pontoppidan, 1763"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"harmaalokki","unitId":"http://tun.fi/JX.1688547#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.597528,"lon":29.75077}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"20","interpretations":{"individualCount":20,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
-        monedula","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"naakka","unitId":"http://tun.fi/JX.1688547#5"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.597528,"lon":29.75077}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
-  recorded_at: 2024-03-15 08:24:15 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":293376,"pageSize":10,"total":2933752,"cacheTimestamp":1710513708,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Apus
+        apus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"tervapääsky","unitId":"http://tun.fi/JX.320463#3"},"gathering":{"conversions":{"day":14,"month":3,"wgs84CenterPoint":{"lat":65.036407,"lon":25.485458}},"eventDate":{"begin":"2024-03-14","end":"2024-03-14"},"hourBegin":10,"hourEnd":12,"interpretations":{"coordinateAccuracy":1000},"minutesBegin":30,"minutesEnd":0},"document":{"sourceId":"http://tun.fi/KE.841"}},{"unit":{"abundanceString":"1m","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Alauda
+        arvensis","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"alaarv","unitId":"http://tun.fi/JX.320395#3"},"gathering":{"conversions":{"day":12,"month":3,"wgs84CenterPoint":{"lat":61.321157,"lon":25.433038}},"eventDate":{"begin":"2024-03-12","end":"2024-03-12"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.841"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Branta
+        canadensis","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kanadanhanhi","unitId":"http://tun.fi/JX.320253#3"},"gathering":{"conversions":{"day":1,"month":3,"wgs84CenterPoint":{"lat":63.495534,"lon":24.854576}},"eventDate":{"begin":"2024-03-01","end":"2024-03-01"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Falco
+        peregrinus","scientificNameAuthorship":"Tunstall, 1771"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"muuttohaukka","unitId":"http://tun.fi/JX.320252#7"},"gathering":{"conversions":{"day":1,"month":3,"wgs84CenterPoint":{"lat":61.849494,"lon":26.072638}},"eventDate":{"begin":"2024-03-01","end":"2024-03-01"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Parus
+        major","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"parmaj","unitId":"http://tun.fi/JX.320252#5"},"gathering":{"conversions":{"day":1,"month":3,"wgs84CenterPoint":{"lat":61.849494,"lon":26.072638}},"eventDate":{"begin":"2024-03-01","end":"2024-03-01"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":true,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
+        corone","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varis","unitId":"http://tun.fi/JX.314982#3"},"gathering":{"conversions":{"day":27,"month":2,"wgs84CenterPoint":{"lat":60.241988,"lon":25.089986}},"eventDate":{"begin":"2024-02-27","end":"2024-02-27"},"hourBegin":13,"interpretations":{"coordinateAccuracy":10},"minutesBegin":40},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Accipiter
+        nisus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varpushaukka","unitId":"http://tun.fi/JX.314981#3"},"gathering":{"conversions":{"day":27,"month":2,"wgs84CenterPoint":{"lat":60.242023,"lon":25.090062}},"eventDate":{"begin":"2024-02-27","end":"2024-02-27"},"hourBegin":13,"interpretations":{"coordinateAccuracy":10},"minutesBegin":21},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"EXPERT_VERIFIED","reliability":"RELIABLE"},"linkings":{"taxon":{"scientificName":"Somateria
+        mollissima","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"haahka","unitId":"http://tun.fi/JX.314974#3"},"gathering":{"conversions":{"day":26,"month":2,"wgs84CenterPoint":{"lat":60.1859,"lon":25.146168}},"eventDate":{"begin":"2024-02-26","end":"2024-02-26"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Epitheca
+        bimaculata","scientificNameAuthorship":"(Charpentier, 1825)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"liitokorento","unitId":"http://tun.fi/JX.313720#5"},"gathering":{"conversions":{"day":19,"month":2,"wgs84CenterPoint":{"lat":60.172099,"lon":24.930592}},"eventDate":{"begin":"2024-02-19","end":"2024-02-19"},"hourBegin":14,"hourEnd":14,"interpretations":{"coordinateAccuracy":1},"minutesBegin":37,"minutesEnd":38},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Calopteryx
+        virgo","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"neidonkorento","unitId":"http://tun.fi/JX.313720#3"},"gathering":{"conversions":{"day":19,"month":2,"wgs84CenterPoint":{"lat":60.172099,"lon":24.930592}},"eventDate":{"begin":"2024-02-19","end":"2024-02-19"},"hourBegin":14,"hourEnd":14,"interpretations":{"coordinateAccuracy":1},"minutesBegin":37,"minutesEnd":38},"document":{"sourceId":"http://tun.fi/KE.1141"}}]}'
+  recorded_at: 2024-03-15 14:41:49 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -405,12 +409,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:24:14 GMT
+      date: Fri, 15 Mar 2024 14:41:48 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -654,11 +659,11 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2024-03-15 08:24:15 GMT
+  recorded_at: 2024-03-15 14:41:49 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MZ.recordQualityEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MZ.recordQualityEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -672,16 +677,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:24:14 GMT
+      date: Fri, 15 Mar 2024 14:41:49 GMT
       content-type: application/json; charset=utf-8
       content-length: '551'
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"227-onHpvtHk2qyP8cWLilsXSzAsEZM"
+      etag: W/"227-X4xlY3SOpC79HQ2BulVJUbaL7Ck"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -689,15 +695,15 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MZ.recordQualityExpertVerified","value":{"fi":"Asiantuntijan
-        varmistama","en":"Expert verified","sv":"Expertkuraterad"}},{"id":"MZ.recordQualityCommunityVerified","value":{"en":"Community
-        verified","fi":"Yhteisön varmistama","sv":"Gemenskapskuraterat"}},{"id":"MZ.recordQualityNeutral","value":{"sv":"Obedömd","en":"Unassessed","fi":"Ei
-        arvioitu"}},{"id":"MZ.recordQualityUncertain","value":{"fi":"Epävarma","en":"Uncertain","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}]'
-  recorded_at: 2024-03-15 08:24:15 GMT
+      string: '[{"id":"MZ.recordQualityExpertVerified","value":{"sv":"Expertkuraterad","en":"Expert
+        verified","fi":"Asiantuntijan varmistama"}},{"id":"MZ.recordQualityCommunityVerified","value":{"en":"Community
+        verified","fi":"Yhteisön varmistama","sv":"Gemenskapskuraterat"}},{"id":"MZ.recordQualityNeutral","value":{"en":"Unassessed","fi":"Ei
+        arvioitu","sv":"Obedömd"}},{"id":"MZ.recordQualityUncertain","value":{"en":"Uncertain","fi":"Epävarma","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}]'
+  recorded_at: 2024-03-15 14:41:49 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -711,12 +717,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:24:14 GMT
+      date: Fri, 15 Mar 2024 14:41:49 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -724,16 +731,16 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":5086714,"pageSize":10,"total":50867131,"cacheTimestamp":1710491054,"results":[{"unit":{"abundanceString":"3","interpretations":{"individualCount":3,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cygnus
-        cygnus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"laulujoutsen","unitId":"http://tun.fi/JX.1688560#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":4,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":53},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Garrulus
-        glandarius","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"närhi","unitId":"http://tun.fi/JX.1688559#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":7,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":29},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Dendrocopos
-        major","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"käpytikka","unitId":"http://tun.fi/JX.1688558#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":7,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":46},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pyrrhula
-        pyrrhula","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"punatulkku","unitId":"http://tun.fi/JX.1688557#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":64.300873,"lon":25.033611}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":7,"interpretations":{"coordinateAccuracy":10000},"minutesBegin":58},"document":{"sourceId":"http://tun.fi/KE.1701"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cyanistes
-        caeruleus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"sinitiainen","unitId":"http://tun.fi/JX.1688552#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":63.586041,"lon":27.171864}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":9,"hourEnd":9,"interpretations":{"coordinateAccuracy":10},"minutesBegin":3,"minutesEnd":3},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Certhia
-        familiaris","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"puukiipijä","unitId":"http://tun.fi/JX.1688550#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":63.586035,"lon":27.171859}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":9,"hourEnd":9,"interpretations":{"coordinateAccuracy":10},"minutesBegin":2,"minutesEnd":2},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"10-50","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
-        volans","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.1688549#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.469335,"lon":25.951322}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":20,"minutesEnd":31},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"1-10","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Pteromys
-        volans","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/JX.1688549#6"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.46951,"lon":25.951826}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"hourBegin":8,"hourEnd":8,"interpretations":{"coordinateAccuracy":1},"minutesBegin":20,"minutesEnd":31},"document":{"sourceId":"http://tun.fi/KE.1221"}},{"unit":{"abundanceString":"6","interpretations":{"individualCount":6,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Larus
-        argentatus","scientificNameAuthorship":"Pontoppidan, 1763"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"harmaalokki","unitId":"http://tun.fi/JX.1688547#3"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.597528,"lon":29.75077}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"20","interpretations":{"individualCount":20,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
-        monedula","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"naakka","unitId":"http://tun.fi/JX.1688547#5"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":62.597528,"lon":29.75077}},"eventDate":{"begin":"2024-03-15","end":"2024-03-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
-  recorded_at: 2024-03-15 08:24:15 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":293376,"pageSize":10,"total":2933752,"cacheTimestamp":1710513708,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Apus
+        apus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"tervapääsky","unitId":"http://tun.fi/JX.320463#3"},"gathering":{"conversions":{"day":14,"month":3,"wgs84CenterPoint":{"lat":65.036407,"lon":25.485458}},"eventDate":{"begin":"2024-03-14","end":"2024-03-14"},"hourBegin":10,"hourEnd":12,"interpretations":{"coordinateAccuracy":1000},"minutesBegin":30,"minutesEnd":0},"document":{"sourceId":"http://tun.fi/KE.841"}},{"unit":{"abundanceString":"1m","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Alauda
+        arvensis","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"alaarv","unitId":"http://tun.fi/JX.320395#3"},"gathering":{"conversions":{"day":12,"month":3,"wgs84CenterPoint":{"lat":61.321157,"lon":25.433038}},"eventDate":{"begin":"2024-03-12","end":"2024-03-12"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.841"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Branta
+        canadensis","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kanadanhanhi","unitId":"http://tun.fi/JX.320253#3"},"gathering":{"conversions":{"day":1,"month":3,"wgs84CenterPoint":{"lat":63.495534,"lon":24.854576}},"eventDate":{"begin":"2024-03-01","end":"2024-03-01"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Falco
+        peregrinus","scientificNameAuthorship":"Tunstall, 1771"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"muuttohaukka","unitId":"http://tun.fi/JX.320252#7"},"gathering":{"conversions":{"day":1,"month":3,"wgs84CenterPoint":{"lat":61.849494,"lon":26.072638}},"eventDate":{"begin":"2024-03-01","end":"2024-03-01"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Parus
+        major","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"parmaj","unitId":"http://tun.fi/JX.320252#5"},"gathering":{"conversions":{"day":1,"month":3,"wgs84CenterPoint":{"lat":61.849494,"lon":26.072638}},"eventDate":{"begin":"2024-03-01","end":"2024-03-01"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":true,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
+        corone","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varis","unitId":"http://tun.fi/JX.314982#3"},"gathering":{"conversions":{"day":27,"month":2,"wgs84CenterPoint":{"lat":60.241988,"lon":25.089986}},"eventDate":{"begin":"2024-02-27","end":"2024-02-27"},"hourBegin":13,"interpretations":{"coordinateAccuracy":10},"minutesBegin":40},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Accipiter
+        nisus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varpushaukka","unitId":"http://tun.fi/JX.314981#3"},"gathering":{"conversions":{"day":27,"month":2,"wgs84CenterPoint":{"lat":60.242023,"lon":25.090062}},"eventDate":{"begin":"2024-02-27","end":"2024-02-27"},"hourBegin":13,"interpretations":{"coordinateAccuracy":10},"minutesBegin":21},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"EXPERT_VERIFIED","reliability":"RELIABLE"},"linkings":{"taxon":{"scientificName":"Somateria
+        mollissima","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"haahka","unitId":"http://tun.fi/JX.314974#3"},"gathering":{"conversions":{"day":26,"month":2,"wgs84CenterPoint":{"lat":60.1859,"lon":25.146168}},"eventDate":{"begin":"2024-02-26","end":"2024-02-26"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Epitheca
+        bimaculata","scientificNameAuthorship":"(Charpentier, 1825)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"liitokorento","unitId":"http://tun.fi/JX.313720#5"},"gathering":{"conversions":{"day":19,"month":2,"wgs84CenterPoint":{"lat":60.172099,"lon":24.930592}},"eventDate":{"begin":"2024-02-19","end":"2024-02-19"},"hourBegin":14,"hourEnd":14,"interpretations":{"coordinateAccuracy":1},"minutesBegin":37,"minutesEnd":38},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Calopteryx
+        virgo","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"neidonkorento","unitId":"http://tun.fi/JX.313720#3"},"gathering":{"conversions":{"day":19,"month":2,"wgs84CenterPoint":{"lat":60.172099,"lon":24.930592}},"eventDate":{"begin":"2024-02-19","end":"2024-02-19"},"hourBegin":14,"hourEnd":14,"interpretations":{"coordinateAccuracy":1},"minutesBegin":37,"minutesEnd":38},"document":{"sourceId":"http://tun.fi/KE.1141"}}]}'
+  recorded_at: 2024-03-15 14:41:49 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

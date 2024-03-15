@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.latestRedListStatusFinland.status%2Cunit.linkings.taxon.latestRedListStatusFinland.year&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.latestRedListStatusFinland.status%2Cunit.linkings.taxon.latestRedListStatusFinland.year&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:33:18 GMT
+      date: Fri, 15 Mar 2024 14:43:30 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,12 +29,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":5086714,"pageSize":10,"total":50867133,"cacheTimestamp":1710491598,"results":[{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1688560#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnNT","year":2019}}},"unitId":"http://tun.fi/JX.1688559#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1688558#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1688557#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1688552#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1688550#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.1688549#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.1688549#6"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.1688547#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.1688547#5"}}]}'
-  recorded_at: 2024-03-15 08:33:19 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":293376,"pageSize":10,"total":2933752,"cacheTimestamp":1710513810,"results":[{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnEN","year":2019}}},"unitId":"http://tun.fi/JX.320463#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnNT","year":2019}}},"unitId":"http://tun.fi/JX.320395#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnNA","year":2019}}},"unitId":"http://tun.fi/JX.320253#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnVU","year":2019}}},"unitId":"http://tun.fi/JX.320252#7"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.320252#5"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.314982#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.314981#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnEN","year":2019}}},"unitId":"http://tun.fi/JX.314974#3"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.313720#5"}},{"unit":{"linkings":{"taxon":{"latestRedListStatusFinland":{"status":"http://tun.fi/MX.iucnLC","year":2019}}},"unitId":"http://tun.fi/JX.313720#3"}}]}'
+  recorded_at: 2024-03-15 14:43:30 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MX.iucnStatuses?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MX.iucnStatuses?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -47,17 +48,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:33:18 GMT
+      date: Fri, 15 Mar 2024 14:43:30 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"531-fKhsKevokcRAqJcorJnlgXwZHBY"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -78,5 +80,5 @@ http_interactions:
         – Data Deficient","sv":"DD – Kunskapsbrist","fi":"DD – Puutteellisesti tunnetut"}},{"id":"MX.iucnNA","value":{"sv":"NA
         – Ej tillämplig","fi":"NA – Arviointiin soveltumattomat","en":"NA – Not Applicable"}},{"id":"MX.iucnNE","value":{"fi":"NE
         – Arvioimatta jätetyt","en":"NE – Not Evaluated","sv":"NE – Ej bedömd"}}]'
-  recorded_at: 2024-03-15 08:33:19 GMT
+  recorded_at: 2024-03-15 14:43:30 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

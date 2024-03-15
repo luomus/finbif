@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.primaryHabitat.habitat&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.primaryHabitat.habitat&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:33:58 GMT
+      date: Fri, 15 Mar 2024 14:43:32 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,6 +29,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":5086714,"pageSize":10,"total":50867133,"cacheTimestamp":1710491638,"results":[{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVs"}}},"unitId":"http://tun.fi/JX.1688560#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.1688559#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.1688558#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMkt"}}},"unitId":"http://tun.fi/JX.1688557#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.1688552#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.1688550#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.1688549#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.1688549#6"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVi"}}},"unitId":"http://tun.fi/JX.1688547#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIr"}}},"unitId":"http://tun.fi/JX.1688547#5"}}]}'
-  recorded_at: 2024-03-15 08:33:58 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":293376,"pageSize":10,"total":2933752,"cacheTimestamp":1710513812,"results":[{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIr"}}},"unitId":"http://tun.fi/JX.320463#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIv"}}},"unitId":"http://tun.fi/JX.320395#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVs"}}},"unitId":"http://tun.fi/JX.320253#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatSn"}}},"unitId":"http://tun.fi/JX.320252#7"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.320252#5"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatIv"}}},"unitId":"http://tun.fi/JX.314982#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatMk"}}},"unitId":"http://tun.fi/JX.314981#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVi"}}},"unitId":"http://tun.fi/JX.314974#3"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVsr"}}},"unitId":"http://tun.fi/JX.313720#5"}},{"unit":{"linkings":{"taxon":{"primaryHabitat":{"habitat":"http://tun.fi/MKV.habitatVj"}}},"unitId":"http://tun.fi/JX.313720#3"}}]}'
+  recorded_at: 2024-03-15 14:43:32 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MX.taxonRankEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MX.taxonRankEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:34:52 GMT
+      date: Fri, 15 Mar 2024 14:43:39 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"1393-d1J7tmyMwX5xEhWp9Y+1FTAV/Xk"
+      etag: W/"1393-125G4gWfFzW2f8HkKVXU4RsG/JE"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -33,19 +34,19 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MX.superdomain","value":{"en":"superdomain","sv":"liv","fi":"luonto"}},{"id":"MX.domain","value":{"en":"domain","sv":"domän","fi":"yläkunta"}},{"id":"MX.kingdom","value":{"en":"kingdom","fi":"kunta","sv":"rike"}},{"id":"MX.subkingdom","value":{"fi":"alakunta","en":"subkingdom","sv":"underrike"}},{"id":"MX.infrakingdom","value":{"en":"infrakingdom","sv":"infrarike","fi":"infrakunta"}},{"id":"MX.superphylum","value":{"fi":"yläjakso","en":"superphylum","sv":"överfylum"}},{"id":"MX.phylum","value":{"fi":"pääjakso
-        / kaari","en":"phylum","sv":"fylum"}},{"id":"MX.subphylum","value":{"sv":"underfylum","en":"subphylum","fi":"alajakso
-        / alakaari"}},{"id":"MX.infraphylum","value":{"fi":"osajakso","sv":"infrafylum","en":"infraphylum"}},{"id":"MX.superdivision","value":{"en":"superdivision","sv":"överdivision","fi":"yläkaari"}},{"id":"MX.division","value":{"en":"division","sv":"division","fi":"kaari"}},{"id":"MX.subdivision","value":{"en":"subdivision","sv":"underdivision","fi":"alakaari"}},{"id":"MX.infradivision","value":{"sv":"infradivision","fi":"osakaari","en":"infradivision"}},{"id":"MX.superclass","value":{"en":"superclass","sv":"överklass","fi":"yläluokka"}},{"id":"MX.class","value":{"en":"class","sv":"klass","fi":"luokka"}},{"id":"MX.subclass","value":{"fi":"alaluokka","sv":"underklass","en":"subclass"}},{"id":"MX.infraclass","value":{"sv":"infraklass","fi":"osaluokka","en":"infraclass"}},{"id":"MX.parvclass","value":{"en":"parvclass","fi":"parvoluokka","sv":"parvklass"}},{"id":"MX.superorder","value":{"en":"superorder","sv":"överordning","fi":"ylälahko"}},{"id":"MX.order","value":{"en":"order","fi":"lahko","sv":"ordning"}},{"id":"MX.suborder","value":{"fi":"alalahko","en":"suborder","sv":"underordning"}},{"id":"MX.infraorder","value":{"fi":"osalahko","en":"infraorder","sv":"infraordning"}},{"id":"MX.parvorder","value":{"sv":"parvordning","fi":"parvolahko","en":"parvorder"}},{"id":"MX.superfamily","value":{"sv":"överfamilj","en":"superfamily","fi":"yläheimo"}},{"id":"MX.family","value":{"en":"family","sv":"familj","fi":"heimo"}},{"id":"MX.subfamily","value":{"fi":"alaheimo","sv":"underfamilj","en":"subfamily"}},{"id":"MX.tribe","value":{"en":"tribe","fi":"sukuryhmä
-        (tribus)","sv":"tribus"}},{"id":"MX.subtribe","value":{"sv":"undertribus","en":"subtribe","fi":"alatribus"}},{"id":"MX.supergenus","value":{"en":"supergenus","sv":"översläkte","fi":"yläsuku"}},{"id":"MX.genus","value":{"en":"genus","sv":"släkte","fi":"suku"}},{"id":"MX.nothogenus","value":{"en":"nothogenus","fi":"nothogenus","sv":"nothogenus"}},{"id":"MX.subgenus","value":{"fi":"alasuku","sv":"undersläkte","en":"subgenus"}},{"id":"MX.section","value":{"en":"section","fi":"sektio","sv":"sektion"}},{"id":"MX.subsection","value":{"sv":"subsektion","fi":"alasektio","en":"subsection"}},{"id":"MX.series","value":{"sv":"series","fi":"series","en":"series"}},{"id":"MX.subseries","value":{"en":"subseries","fi":"alaseries","sv":"subseries"}},{"id":"MX.infragenericTaxon","value":{"en":"infrageneric
-        taxon","sv":"infrageneric taxon","fi":"sukutasoa alempi taksoni"}},{"id":"MX.aggregate","value":{"en":"aggregate","fi":"lajiryhmä","sv":"aggregat"}},{"id":"MX.speciesAggregate","value":{"en":"taxon
-        aggregate","sv":"taxon aggregat","fi":"taksoniryhmä"}},{"id":"MX.species","value":{"en":"species","sv":"art","fi":"laji"}},{"id":"MX.nothospecies","value":{"sv":"hybridart","en":"nothospecies","fi":"risteymälaji
-        (kasvitiede)"}},{"id":"MX.infraspecificTaxon","value":{"fi":"lajitasoa alempi
-        taksoni","en":"infraspecific taxon","sv":"infraspecific taxon"}},{"id":"MX.subspecificAggregate","value":{"fi":"alalajiryhmä","en":"subspecific
-        aggregate","sv":"subspecific aggregate"}},{"id":"MX.subspecies","value":{"en":"subspecies","sv":"underart","fi":"alalaji"}},{"id":"MX.nothosubspecies","value":{"en":"nothosubspecies","sv":"hybridunderart","fi":"risteymäalalaji
-        (kasvitiede)"}},{"id":"MX.variety","value":{"en":"variety","fi":"muunnos","sv":"varietet"}},{"id":"MX.subvariety","value":{"en":"subvariety","fi":"alamuunnos","sv":"subvarietet"}},{"id":"MX.form","value":{"en":"form","sv":"form","fi":"muoto"}},{"id":"MX.subform","value":{"en":"subform","fi":"alamuoto","sv":"subform"}},{"id":"MX.hybrid","value":{"en":"hybrid","fi":"risteymä","sv":"hybrid"}},{"id":"MX.anamorph","value":{"en":"anamorph","sv":"anamorf","fi":"anamorfisuus"}},{"id":"MX.ecotype","value":{"sv":"ekotyp","fi":"ekotyyppi","en":"ecotype"}},{"id":"MX.populationGroup","value":{"en":"population
-        group","fi":"populaatioryhmä","sv":"population grupp"}},{"id":"MX.intergenericHybrid","value":{"en":"intergeneric
-        hybrid","fi":"sukujenvälinen risteymä (kasvitiede)","sv":""}},{"id":"MX.infragenericHybrid","value":{"en":"infrageneric
+      string: '[{"id":"MX.superdomain","value":{"sv":"liv","en":"superdomain","fi":"luonto"}},{"id":"MX.domain","value":{"en":"domain","sv":"domän","fi":"yläkunta"}},{"id":"MX.kingdom","value":{"en":"kingdom","fi":"kunta","sv":"rike"}},{"id":"MX.subkingdom","value":{"en":"subkingdom","sv":"underrike","fi":"alakunta"}},{"id":"MX.infrakingdom","value":{"sv":"infrarike","fi":"infrakunta","en":"infrakingdom"}},{"id":"MX.superphylum","value":{"en":"superphylum","sv":"överfylum","fi":"yläjakso"}},{"id":"MX.phylum","value":{"en":"phylum","sv":"fylum","fi":"pääjakso
+        / kaari"}},{"id":"MX.subphylum","value":{"en":"subphylum","fi":"alajakso /
+        alakaari","sv":"underfylum"}},{"id":"MX.infraphylum","value":{"en":"infraphylum","sv":"infrafylum","fi":"osajakso"}},{"id":"MX.superdivision","value":{"en":"superdivision","sv":"överdivision","fi":"yläkaari"}},{"id":"MX.division","value":{"en":"division","sv":"division","fi":"kaari"}},{"id":"MX.subdivision","value":{"sv":"underdivision","fi":"alakaari","en":"subdivision"}},{"id":"MX.infradivision","value":{"sv":"infradivision","fi":"osakaari","en":"infradivision"}},{"id":"MX.superclass","value":{"en":"superclass","sv":"överklass","fi":"yläluokka"}},{"id":"MX.class","value":{"en":"class","sv":"klass","fi":"luokka"}},{"id":"MX.subclass","value":{"fi":"alaluokka","sv":"underklass","en":"subclass"}},{"id":"MX.infraclass","value":{"sv":"infraklass","fi":"osaluokka","en":"infraclass"}},{"id":"MX.parvclass","value":{"fi":"parvoluokka","en":"parvclass","sv":"parvklass"}},{"id":"MX.superorder","value":{"en":"superorder","sv":"överordning","fi":"ylälahko"}},{"id":"MX.order","value":{"en":"order","fi":"lahko","sv":"ordning"}},{"id":"MX.suborder","value":{"en":"suborder","sv":"underordning","fi":"alalahko"}},{"id":"MX.infraorder","value":{"sv":"infraordning","fi":"osalahko","en":"infraorder"}},{"id":"MX.parvorder","value":{"en":"parvorder","sv":"parvordning","fi":"parvolahko"}},{"id":"MX.superfamily","value":{"en":"superfamily","sv":"överfamilj","fi":"yläheimo"}},{"id":"MX.family","value":{"en":"family","sv":"familj","fi":"heimo"}},{"id":"MX.subfamily","value":{"sv":"underfamilj","en":"subfamily","fi":"alaheimo"}},{"id":"MX.tribe","value":{"en":"tribe","fi":"sukuryhmä
+        (tribus)","sv":"tribus"}},{"id":"MX.subtribe","value":{"sv":"undertribus","en":"subtribe","fi":"alatribus"}},{"id":"MX.supergenus","value":{"en":"supergenus","sv":"översläkte","fi":"yläsuku"}},{"id":"MX.genus","value":{"en":"genus","sv":"släkte","fi":"suku"}},{"id":"MX.nothogenus","value":{"en":"nothogenus","fi":"nothogenus","sv":"nothogenus"}},{"id":"MX.subgenus","value":{"en":"subgenus","sv":"undersläkte","fi":"alasuku"}},{"id":"MX.section","value":{"en":"section","sv":"sektion","fi":"sektio"}},{"id":"MX.subsection","value":{"fi":"alasektio","en":"subsection","sv":"subsektion"}},{"id":"MX.series","value":{"fi":"series","sv":"series","en":"series"}},{"id":"MX.subseries","value":{"fi":"alaseries","en":"subseries","sv":"subseries"}},{"id":"MX.infragenericTaxon","value":{"en":"infrageneric
+        taxon","sv":"infrageneric taxon","fi":"sukutasoa alempi taksoni"}},{"id":"MX.aggregate","value":{"en":"aggregate","fi":"lajiryhmä","sv":"aggregat"}},{"id":"MX.speciesAggregate","value":{"sv":"taxon
+        aggregat","fi":"taksoniryhmä","en":"taxon aggregate"}},{"id":"MX.species","value":{"en":"species","sv":"art","fi":"laji"}},{"id":"MX.nothospecies","value":{"fi":"risteymälaji
+        (kasvitiede)","sv":"hybridart","en":"nothospecies"}},{"id":"MX.infraspecificTaxon","value":{"sv":"infraspecific
+        taxon","en":"infraspecific taxon","fi":"lajitasoa alempi taksoni"}},{"id":"MX.subspecificAggregate","value":{"fi":"alalajiryhmä","sv":"subspecific
+        aggregate","en":"subspecific aggregate"}},{"id":"MX.subspecies","value":{"sv":"underart","fi":"alalaji","en":"subspecies"}},{"id":"MX.nothosubspecies","value":{"en":"nothosubspecies","sv":"hybridunderart","fi":"risteymäalalaji
+        (kasvitiede)"}},{"id":"MX.variety","value":{"en":"variety","fi":"muunnos","sv":"varietet"}},{"id":"MX.subvariety","value":{"sv":"subvarietet","en":"subvariety","fi":"alamuunnos"}},{"id":"MX.form","value":{"en":"form","sv":"form","fi":"muoto"}},{"id":"MX.subform","value":{"sv":"subform","fi":"alamuoto","en":"subform"}},{"id":"MX.hybrid","value":{"en":"hybrid","fi":"risteymä","sv":"hybrid"}},{"id":"MX.anamorph","value":{"en":"anamorph","sv":"anamorf","fi":"anamorfisuus"}},{"id":"MX.ecotype","value":{"sv":"ekotyp","fi":"ekotyyppi","en":"ecotype"}},{"id":"MX.populationGroup","value":{"en":"population
+        group","sv":"population grupp","fi":"populaatioryhmä"}},{"id":"MX.intergenericHybrid","value":{"fi":"sukujenvälinen
+        risteymä (kasvitiede)","en":"intergeneric hybrid","sv":""}},{"id":"MX.infragenericHybrid","value":{"en":"infrageneric
         hybrid","fi":"suvunsisäinen risteymä (kasvitiede)","sv":""}},{"id":"MX.cultivar","value":{"fi":"lajike","en":"cultivar","sv":""}},{"id":"MX.group","value":{"en":"Group","sv":"Grupp","fi":"viljelykasvien
         Ryhmä"}},{"id":"MX.grex","value":{"sv":"grex","fi":"grex","en":"grex"}}]'
-  recorded_at: 2024-03-15 08:34:52 GMT
+  recorded_at: 2024-03-15 14:43:39 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

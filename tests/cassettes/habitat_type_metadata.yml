@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MKV.habitatEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MKV.habitatEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:34:52 GMT
+      date: Fri, 15 Mar 2024 14:43:39 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"3fdb-OuDC+aZi+t3I4qwgXr3kWFydADs"
+      etag: W/"3fdb-8vekIrzLN1fPxFgr4CwvMXYyQZ0"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -50,8 +51,8 @@ http_interactions:
         – tunturikoivikot (pois lukien tunturikoivulehdot)","sv":"Mt – fjällbjörkskogar
         (exkl. örtrika fjällbjörkskogar)"},"altParent":"MKV.habitatM"},{"id":"MKV.habitatMtl","value":{"fi":"Mtl
         – tunturikoivulehdot","en":"Mtl – herb-rich alpine birch forests","sv":"Mtl
-        – örtrika fjällbjörkskogar"},"altParent":"MKV.habitatM"},{"id":"MKV.habitatS","value":{"en":"S
-        – Mires","fi":"S – Suot","sv":"S – Myrmarker"}},{"id":"MKV.habitatSl","value":{"fi":"Sl
+        – örtrika fjällbjörkskogar"},"altParent":"MKV.habitatM"},{"id":"MKV.habitatS","value":{"fi":"S
+        – Suot","en":"S – Mires","sv":"S – Myrmarker"}},{"id":"MKV.habitatSl","value":{"fi":"Sl
         – letot","en":"Sl – rich fens","sv":"Sl – rikkärr"},"altParent":"MKV.habitatS"},{"id":"MKV.habitatSla","value":{"en":"Sla
         – open rich fens","fi":"Sla – avoletot","sv":"Sla – öppna kärr"},"altParent":"MKV.habitatSl"},{"id":"MKV.habitatSlr","value":{"sv":"Slr
         – rikkärrs-tallkär","en":"Slr – rich pine fens","fi":"Slr – lettorämeet"},"altParent":"MKV.habitatSl"},{"id":"MKV.habitatSlk","value":{"fi":"Slk
@@ -189,11 +190,11 @@ http_interactions:
         – rakennukset ja rakenteet","en":"Ir – buildings and constructions","sv":"Ir
         – byggnader och konstruktioner"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatU","value":{"fi":"?
         – Elinympäristö tuntematon","sv":"? – Habitat okänt","en":"? – Habitat unknown"}}]'
-  recorded_at: 2024-03-15 08:34:52 GMT
+  recorded_at: 2024-03-15 14:43:39 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MKV.habitatSpecificTypeEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MKV.habitatSpecificTypeEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -207,17 +208,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 08:34:52 GMT
+      date: Fri, 15 Mar 2024 14:43:39 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"746-tKDNd9reJYdqXiIklFiMZhmzbD4"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -246,5 +248,5 @@ http_interactions:
         kalliot/kivikot","sv":"ke – intermediärä-basiska hällmarker samt sten- och
         blockfält"}},{"id":"MKV.habitatSpecificTypeCA","value":{"fi":"ca – kalkkivaikutteinen","en":"ca
         – calcareous effect","sv":"ca – kalkrik"}}]'
-  recorded_at: 2024-03-15 08:34:52 GMT
+  recorded_at: 2024-03-15 14:43:39 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
