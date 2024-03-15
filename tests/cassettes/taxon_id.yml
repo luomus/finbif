@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/taxa/search?query=Lutra%20lutra&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/taxa/search?query=Lutra%20lutra&matchType=exact&limit=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 12:02:50 GMT
+      date: Fri, 15 Mar 2024 08:34:51 GMT
       content-type: application/json; charset=utf-8
       content-length: '441'
-      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"1b9-VgaboU8rxXLLaq6zhHxYA1GMY6U"
       vary: Accept-Encoding
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -35,5 +34,5 @@ http_interactions:
       file: no
       string: '[{"matchingName":"Lutra lutra","nameType":"MX.scientificName","id":"MX.47169","scientificName":"Lutra
         lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"fi":"saukko","en":"Otter","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"fi":"Nisäkkäät","en":"Mammals","sv":"Däggdjur"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2024-01-12 12:02:50 GMT
+  recorded_at: 2024-03-15 08:34:51 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

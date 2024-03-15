@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.documentId%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.documentId%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 12 Jan 2024 12:02:44 GMT
+      date: Fri, 15 Mar 2024 08:32:05 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,6 +28,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":292593,"pageSize":10,"total":2925923,"cacheTimestamp":1705051552,"results":[{"unit":{"unitId":"http://tun.fi/JX.312515#3"},"document":{"documentId":"http://tun.fi/JX.312515","sourceId":"http://tun.fi/KE.841"}},{"unit":{"unitId":"http://tun.fi/JX.312492#3"},"document":{"documentId":"http://tun.fi/JX.312492","sourceId":"http://tun.fi/KE.1481"}},{"unit":{"unitId":"http://tun.fi/JX.312453#3"},"document":{"documentId":"http://tun.fi/JX.312453","sourceId":"http://tun.fi/KE.1481"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195160833-U"},"document":{"documentId":"http://tun.fi/HR.3211/195160833","sourceId":"http://tun.fi/KE.901"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195160871-U"},"document":{"documentId":"http://tun.fi/HR.3211/195160871","sourceId":"http://tun.fi/KE.901"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195160953-U"},"document":{"documentId":"http://tun.fi/HR.3211/195160953","sourceId":"http://tun.fi/KE.901"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195156808-U"},"document":{"documentId":"http://tun.fi/HR.3211/195156808","sourceId":"http://tun.fi/KE.901"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195156496-U"},"document":{"documentId":"http://tun.fi/HR.3211/195156496","sourceId":"http://tun.fi/KE.901"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195124603-U"},"document":{"documentId":"http://tun.fi/HR.3211/195124603","sourceId":"http://tun.fi/KE.901"}},{"unit":{"unitId":"http://tun.fi/HR.3211/195155319-U"},"document":{"documentId":"http://tun.fi/HR.3211/195155319","sourceId":"http://tun.fi/KE.901"}}]}'
-  recorded_at: 2024-01-12 12:02:44 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":5086714,"pageSize":10,"total":50867133,"cacheTimestamp":1710491525,"results":[{"unit":{"unitId":"http://tun.fi/JX.1688560#3"},"document":{"documentId":"http://tun.fi/JX.1688560","sourceId":"http://tun.fi/KE.1701"}},{"unit":{"unitId":"http://tun.fi/JX.1688559#3"},"document":{"documentId":"http://tun.fi/JX.1688559","sourceId":"http://tun.fi/KE.1701"}},{"unit":{"unitId":"http://tun.fi/JX.1688558#3"},"document":{"documentId":"http://tun.fi/JX.1688558","sourceId":"http://tun.fi/KE.1701"}},{"unit":{"unitId":"http://tun.fi/JX.1688557#3"},"document":{"documentId":"http://tun.fi/JX.1688557","sourceId":"http://tun.fi/KE.1701"}},{"unit":{"unitId":"http://tun.fi/JX.1688552#3"},"document":{"documentId":"http://tun.fi/JX.1688552","sourceId":"http://tun.fi/KE.1221"}},{"unit":{"unitId":"http://tun.fi/JX.1688550#3"},"document":{"documentId":"http://tun.fi/JX.1688550","sourceId":"http://tun.fi/KE.1221"}},{"unit":{"unitId":"http://tun.fi/JX.1688549#3"},"document":{"documentId":"http://tun.fi/JX.1688549","sourceId":"http://tun.fi/KE.1221"}},{"unit":{"unitId":"http://tun.fi/JX.1688549#6"},"document":{"documentId":"http://tun.fi/JX.1688549","sourceId":"http://tun.fi/KE.1221"}},{"unit":{"unitId":"http://tun.fi/JX.1688547#3"},"document":{"documentId":"http://tun.fi/JX.1688547","sourceId":"http://tun.fi/KE.389"}},{"unit":{"unitId":"http://tun.fi/JX.1688547#5"},"document":{"documentId":"http://tun.fi/JX.1688547","sourceId":"http://tun.fi/KE.389"}}]}'
+  recorded_at: 2024-03-15 08:32:05 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
