@@ -1,7 +1,20 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.9.4.9000}{
+\section{finbif version 0.9.5}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item A more informative error message is given when requesting an access
+        token for an email address that has already been assigned one.
+    }
+  }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed an issue with reading facts for FinBIF record download files.
+      \item Fixed an issue with readling column names using \code{data.table}
+        package to ingest FinBIF record download files.
+    }
+  }
 }
 
 \section{finbif version 0.9.4}{

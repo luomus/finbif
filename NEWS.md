@@ -1,3 +1,17 @@
+# finbif 0.9.5
+
+#### MINOR IMPROVEMENTS
+
+  - A more informative error message is given when requesting an access
+    token for an email address that has already been assigned one.
+
+#### BUG FIXES
+
+  - Fixed an issue with reading facts for FinBIF record download files.
+
+  - Fixed an issue with readling column names using `data.table` package
+    to ingest FinBIF record download files.
+
 # finbif 0.9.4
 
 #### NEW FEATURES
