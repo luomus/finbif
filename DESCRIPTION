@@ -52,7 +52,7 @@ Suggests:
     webfakes
 Config/testthat/edition: 3
 X-schema.org-applicationCategory: Biodiversity
-X-schema.org-keywords: 
+X-schema.org-keywords:
     api,
     biodiversity,
     biodiversity-informatics,
