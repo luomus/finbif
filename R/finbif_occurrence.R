@@ -1563,7 +1563,13 @@ extract_facts <- function(fb_occurrence_df) {
 
         fact_name <- var_names[[levels_nms, vtype]]
 
-        is_fact <- lapply(fb_occurrence_df[[fact_name]], "==", fact)
+        facts_sans_domain <- lapply(
+          fb_occurrence_df[[fact_name]], remove_domain
+        )
+
+        fact_sans_domain <- remove_domain(fact)
+
+        is_fact <- lapply(facts_sans_domain, "==", fact_sans_domain)
 
         level_vls <- vls[[level]]
 
