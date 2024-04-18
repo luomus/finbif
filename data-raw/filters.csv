@@ -123,3 +123,4 @@ excludeNulls,exclude_missing_levels,logical,FALSE,",",FALSE
 hasUnitModel,has_record_model,logical,FALSE,",",FALSE
 collectionIdExplicit,collection_exclusive,uri,FALSE,",",FALSE
 collectionIdExplicitNot,not_collection_exclusive,uri,FALSE,",",FALSE
+local,is_local,logical,FALSE,",",FALSE

@@ -1,3 +1,10 @@
+# finbif 0.9.5.9000
+
+#### MINOR IMPROVEMENTS
+
+  - New undocumented variable and filter `local` added from upstream
+    API.
+
 # finbif 0.9.5
 
 #### MINOR IMPROVEMENTS

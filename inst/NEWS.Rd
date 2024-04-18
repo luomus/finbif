@@ -2,6 +2,12 @@
 \title{News for Package \pkg{finbif}}
 
 \section{finbif version 0.9.5.9000}{
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item New undocumented variable and filter \code{local} added from
+        upstream API.
+    }
+  }
 }
 
 \section{finbif version 0.9.5}{
