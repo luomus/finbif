@@ -1,5 +1,5 @@
 pandoc: 3.1.1
-pkgdown: 2.0.8
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   finbif: finbif.html
@@ -7,5 +7,5 @@ articles:
   v03_selecting_variables: v03_selecting_variables.html
   v04_metadata: v04_metadata.html
   v05_filtering: v05_filtering.html
-last_built: 2024-04-18T10:40Z
+last_built: 2024-04-22T07:59Z
 
