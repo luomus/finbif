@@ -1029,7 +1029,9 @@ dt_read <- function(fb_occurrence_obj) {
 
   args[["header"]] <- FALSE
 
-  df <- structure(vector("list", length(args[["select"]])), class = "data.frame")
+  df <- structure(
+    vector("list", length(args[["select"]])), class = "data.frame"
+  )
 
   if (file.exists(args[["input"]])) {
 
