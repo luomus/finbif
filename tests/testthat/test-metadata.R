@@ -5,7 +5,7 @@ test_that(
 
     expect_s3_class(finbif_metadata(), "data.frame")
 
-    options(finbif_locale = "ru")
+    options(finbif_locale = "se")
 
     vcr::use_cassette("red_list_metadata", {
 
