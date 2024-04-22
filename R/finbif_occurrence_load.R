@@ -357,6 +357,18 @@ finbif_occurrence_load <- function(
 
     short_nms <- short_nms[df_names]
 
+    which_missing <- which(na_nms)
+
+    missing_short_names <- gsub("\\.", "", df_names[which_missing])
+
+    missing_short_names <- abbreviate(
+      missing_short_names, 10, FALSE, strict = TRUE, method = "both.sides"
+    )
+
+    short_nms[which_missing] <- missing_short_names
+
+    names(short_nms)[which_missing] <- df_names[which_missing]
+
     short_fcts <- grep("_fact__", df_names, value = TRUE)
 
     short_fcts <- sub("^.*_fact__", "", short_fcts)
@@ -374,14 +386,6 @@ finbif_occurrence_load <- function(
     short_fact_sq <- seq_along(short_fcts)
 
     short_nms[is.na(short_nms)] <- paste0("f", short_fact_sq, short_fcts)
-
-    missing <- which(short_nms == "f")
-
-    nms_missing <- df_names[missing]
-
-    nms_missing <- gsub("[^A-Za-z]", "", nms_missing)
-
-    short_nms[missing] <- abbreviate(nms_missing, 10L)
 
     select[["user"]] <- short_nms
 
