@@ -139,4 +139,4 @@ Taxon.StatusesFI,regStatFI,regulatory_status_finnish,regulatoryStatusFinnish,FAL
 Unit.Interpretations.Tags,tags,record_derived_tags,occurrenceDerivedTags,FALSE,character,FALSE
 Unit.Alive,isAlive,is_alive,isAlive,FALSE,logical,FALSE
 Gathering.AccurateArea,accuArea,accurate_area,accurateArea,FALSE,logical,FALSE
-Unit.Local,local,local,local,FALSE,FALSE,logical,FALSE
+Unit.Local,local,local,local,FALSE,logical,FALSE
