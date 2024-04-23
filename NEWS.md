@@ -1,3 +1,10 @@
+# finbif 0.9.5.9001
+
+#### BUG FIXES
+
+  - Fixed an issue that caused more records than requested to be
+    returned for certain values of `n`.
+
 # finbif 0.9.5.9000
 
 #### MINOR IMPROVEMENTS
