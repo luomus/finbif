@@ -929,9 +929,9 @@ get_extra_pages <- function(fb_records_list) {
 
     records_i <- value(res)
 
-    if (length(records_i) > current_page_size) {
+    results <- c("content", "results")
 
-      results <- c("content", "results")
+    if (length(records_i[[results]]) > current_page_size) {
 
       results_seq <- seq_len(current_page_size)
 
