@@ -9,8 +9,7 @@
 8.  Run data-raw/sysdata.R and commit changes.
 9.  Delete cassettes, run tests and commit changes to test assets.
 10. Rebuild README (touch README.Rmd; make) and commit.
-11. Check winbuilder (`devtools::check_win_devel()`) and rhub
-    (`devtools::check_rhub()`).
+11. Check winbuilder (`devtools::check_win_devel()`).
 12. Update and commit cran-comments.md.
 13. Release (`devtools::release()`) and wait for CRAN response.
 14. Once CRAN version goes online (news file in particular) rebuild pkgdown
