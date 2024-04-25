@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MKV.habitatEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MKV.habitatEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,17 +15,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 25 Apr 2024 06:15:16 GMT
+      date: Thu, 25 Apr 2024 07:35:26 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"3fdb-7n0fKOj3KRcCmWsLcHzkhdmELVI"
+      etag: W/"3fdb-8vekIrzLN1fPxFgr4CwvMXYyQZ0"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -50,8 +51,8 @@ http_interactions:
         – tunturikoivikot (pois lukien tunturikoivulehdot)","sv":"Mt – fjällbjörkskogar
         (exkl. örtrika fjällbjörkskogar)"},"altParent":"MKV.habitatM"},{"id":"MKV.habitatMtl","value":{"fi":"Mtl
         – tunturikoivulehdot","en":"Mtl – herb-rich alpine birch forests","sv":"Mtl
-        – örtrika fjällbjörkskogar"},"altParent":"MKV.habitatM"},{"id":"MKV.habitatS","value":{"en":"S
-        – Mires","fi":"S – Suot","sv":"S – Myrmarker"}},{"id":"MKV.habitatSl","value":{"fi":"Sl
+        – örtrika fjällbjörkskogar"},"altParent":"MKV.habitatM"},{"id":"MKV.habitatS","value":{"fi":"S
+        – Suot","en":"S – Mires","sv":"S – Myrmarker"}},{"id":"MKV.habitatSl","value":{"fi":"Sl
         – letot","en":"Sl – rich fens","sv":"Sl – rikkärr"},"altParent":"MKV.habitatS"},{"id":"MKV.habitatSla","value":{"en":"Sla
         – open rich fens","fi":"Sla – avoletot","sv":"Sla – öppna kärr"},"altParent":"MKV.habitatSl"},{"id":"MKV.habitatSlr","value":{"sv":"Slr
         – rikkärrs-tallkär","en":"Slr – rich pine fens","fi":"Slr – lettorämeet"},"altParent":"MKV.habitatSl"},{"id":"MKV.habitatSlk","value":{"fi":"Slk
@@ -143,29 +144,29 @@ http_interactions:
         – luolat ja halkeamat","en":"Kl – caves and crevices","sv":"Kl – grottor och
         skrevor"},"altParent":"MKV.habitatK"},{"id":"MKV.habitatKm","value":{"sv":"Km
         – silikatrika hällmarker","en":"Km – siliceous rock outcrops","fi":"Km – karut
-        ja keskiravinteiset kalliot"},"altParent":"MKV.habitatK"},{"id":"MKV.habitatT","value":{"fi":"T
-        – Tunturipaljakat","en":"T – Alpine habitats","sv":"T – Fjäll"}},{"id":"MKV.habitatTk","value":{"fi":"Tk
-        – tunturikankaat","en":"Tk – alpine heaths","sv":"Tk – fjällhedar"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTn","value":{"fi":"Tn
-        – tunturiniityt","en":"Tn – alpine meadows","sv":"Tn – fjällängar"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTu","value":{"sv":"Tu
-        – snölegor","en":"Tu – snowbeds","fi":"Tu – lumenviipymät"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTp","value":{"en":"Tp
-        – alpine heath scrubs","sv":"Tp – fjällbuskmarker","fi":"Tp – tunturikangaspensaikot"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTl","value":{"en":"Tl
+        ja keskiravinteiset kalliot"},"altParent":"MKV.habitatK"},{"id":"MKV.habitatT","value":{"en":"T
+        – Alpine habitats","fi":"T – Tunturipaljakat","sv":"T – Fjäll"}},{"id":"MKV.habitatTk","value":{"fi":"Tk
+        – tunturikankaat","en":"Tk – alpine heaths","sv":"Tk – fjällhedar"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTn","value":{"sv":"Tn
+        – fjällängar","en":"Tn – alpine meadows","fi":"Tn – tunturiniityt"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTu","value":{"sv":"Tu
+        – snölegor","en":"Tu – snowbeds","fi":"Tu – lumenviipymät"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTp","value":{"sv":"Tp
+        – fjällbuskmarker","en":"Tp – alpine heath scrubs","fi":"Tp – tunturikangaspensaikot"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTl","value":{"en":"Tl
         – alpine rock outcrops and boulder fields","fi":"Tl – paljakan kalliot ja
-        kivikot","sv":"Tl – hällmarker och stenjordar på fjäll"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTll","value":{"sv":"Tll
-        – oligotrofa och mesotrofa hällmarker och stenjordar på fjäll","en":"Tll –
-        alpine siliceous rock outcrops and boulder fields","fi":"Tll – paljakan karut
-        ja keskiravinteiset kalliot ja kivikot"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTlk","value":{"en":"Tlk
-        – alpine calcareous rock outcrops and boulder fields","fi":"Tlk – paljakan
-        kalkkikalliot ja -kivikot","sv":"Tlk – kalkrika hällmarker och stenjordar
-        på fjäll"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTls","value":{"en":"Tls
-        – alpine serpentine rock outcrops and boulder fields","sv":"Tls – serpentinberg
-        och -block på fjäll","fi":"Tls – paljakan serpentiinikalliot ja -kivikot"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTlr","value":{"en":"Tlr
+        kivikot","sv":"Tl – hällmarker och stenjordar på fjäll"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTll","value":{"en":"Tll
+        – alpine siliceous rock outcrops and boulder fields","fi":"Tll – paljakan
+        karut ja keskiravinteiset kalliot ja kivikot","sv":"Tll – oligotrofa och mesotrofa
+        hällmarker och stenjordar på fjäll"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTlk","value":{"en":"Tlk
+        – alpine calcareous rock outcrops and boulder fields","sv":"Tlk – kalkrika
+        hällmarker och stenjordar på fjäll","fi":"Tlk – paljakan kalkkikalliot ja
+        -kivikot"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTls","value":{"sv":"Tls
+        – serpentinberg och -block på fjäll","fi":"Tls – paljakan serpentiinikalliot
+        ja -kivikot","en":"Tls – alpine serpentine rock outcrops and boulder fields"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTlr","value":{"en":"Tlr
         – alpine gorges and canyons","fi":"Tlr – paljakan kalliorotkot, rotkolaaksot
         ja kurut","sv":"Tlr – klyftor och raviner på fjäll"},"altParent":"MKV.habitatTl"},{"id":"MKV.habitatTlä","value":{"en":"Tlä
         – alpine spring complexes and seepage areas","fi":"Tlä – paljakan lähteiköt
-        ja tihkupinnat","sv":"Tlä – källor och källpåverkade områden på fjäll"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTs","value":{"en":"Ts
-        – alpine mires","sv":"Ts – myrmarker på fjäll","fi":"Ts – paljakan suot"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTj","value":{"fi":"Tj
-        – paljakan järvet ja lammet (sis. rannat)","sv":"Tj – sjöar och tjärnar på
-        fjäll","en":"Tj – alpine ponds and lakes (shores included)"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTv","value":{"en":"Tv
+        ja tihkupinnat","sv":"Tlä – källor och källpåverkade områden på fjäll"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTs","value":{"sv":"Ts
+        – myrmarker på fjäll","fi":"Ts – paljakan suot","en":"Ts – alpine mires"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTj","value":{"sv":"Tj
+        – sjöar och tjärnar på fjäll","en":"Tj – alpine ponds and lakes (shores included)","fi":"Tj
+        – paljakan järvet ja lammet (sis. rannat)"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTv","value":{"en":"Tv
         – streams in fell area (incl. shores)","sv":"Tv – ström på fjäll (inkl. strand)","fi":"Tv
         – paljakan virtavedet (sis. rannat)"},"altParent":"MKV.habitatT"},{"id":"MKV.habitatTa","value":{"fi":"Ta
         – paljakan lampareet ja allikot","sv":"Ta – göl på fjäll","en":"Ta – puddles
@@ -189,11 +190,11 @@ http_interactions:
         – rakennukset ja rakenteet","en":"Ir – buildings and constructions","sv":"Ir
         – byggnader och konstruktioner"},"altParent":"MKV.habitatI"},{"id":"MKV.habitatU","value":{"fi":"?
         – Elinympäristö tuntematon","sv":"? – Habitat okänt","en":"? – Habitat unknown"}}]'
-  recorded_at: 2024-04-25 06:15:16 GMT
+  recorded_at: 2024-04-25 07:35:26 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MKV.habitatSpecificTypeEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MKV.habitatSpecificTypeEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -207,17 +208,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 25 Apr 2024 06:15:16 GMT
+      date: Thu, 25 Apr 2024 07:35:26 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"746-tKDNd9reJYdqXiIklFiMZhmzbD4"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -246,5 +248,5 @@ http_interactions:
         kalliot/kivikot","sv":"ke – intermediärä-basiska hällmarker samt sten- och
         blockfält"}},{"id":"MKV.habitatSpecificTypeCA","value":{"fi":"ca – kalkkivaikutteinen","en":"ca
         – calcareous effect","sv":"ca – kalkrik"}}]'
-  recorded_at: 2024-04-25 06:15:16 GMT
+  recorded_at: 2024-04-25 07:35:26 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

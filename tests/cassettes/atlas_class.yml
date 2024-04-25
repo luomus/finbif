@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/metadata/ranges/MY.atlasClassEnum?lang=multi&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/metadata/ranges/MY.atlasClassEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,16 +15,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 25 Apr 2024 06:15:17 GMT
+      date: Thu, 25 Apr 2024 07:35:26 GMT
       content-type: application/json; charset=utf-8
       content-length: '474'
+      x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"1da-O4PiGbz5QaktZVvPLLE8glnSJl8"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -37,5 +38,5 @@ http_interactions:
         breeding","fi":"Mahdollinen pesintä","sv":"Möjlig häckning"}},{"id":"MY.atlasClassEnumC","value":{"fi":"Todennäköinen
         pesintä","en":"Probable breeding","sv":"Sannolik häckning"}},{"id":"MY.atlasClassEnumD","value":{"fi":"Varma
         pesintä","en":"Confirmed breeding","sv":"Säker häckning"}}]'
-  recorded_at: 2024-04-25 06:15:17 GMT
+  recorded_at: 2024-04-25 07:35:26 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
