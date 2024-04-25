@@ -21,9 +21,7 @@ if (requireNamespace("webfakes", quietly = TRUE)) {
     }
   )
 
-  api <- local_app_process(app)
-
-  api[["start"]]()
+  api <- new_app_process(app)
 
   options(finbif_dl_url = sub("/$", "", api[["url"]]()))
 
@@ -320,3 +318,5 @@ test_that(
 
   }
 )
+
+api[["stop"]]()

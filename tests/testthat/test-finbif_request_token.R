@@ -19,9 +19,7 @@ if (requireNamespace("webfakes", quietly = TRUE)) {
     }
   )
 
-  http <- local_app_process(app)
-
-  http[["start"]]()
+  http <- new_app_process(app)
 
 } else {
 
@@ -66,3 +64,5 @@ test_that(
 
   }
 )
+
+http[["stop"]]()
