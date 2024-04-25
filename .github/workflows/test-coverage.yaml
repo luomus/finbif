@@ -34,14 +34,12 @@ jobs:
         with:
           extra-packages: |
             any::covr
-            any::devtools
-            any::DT
+            r-lib/webfakes
           needs: coverage
 
       - name: Test coverage
         run: |
           covr::codecov(
-            coverage = devtools::test_coverage(show_report = FALSE),
             quiet = FALSE,
             clean = FALSE,
             install_path =  file.path(normalizePath(Sys.getenv("RUNNER_TEMP"), winslash = "/"), "package")
