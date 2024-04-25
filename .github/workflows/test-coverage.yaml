@@ -35,6 +35,7 @@ jobs:
           extra-packages: |
             any::covr
             any::devtools
+            any::DT
           needs: coverage
 
       - name: Test coverage
