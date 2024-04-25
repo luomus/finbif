@@ -1,20 +1,17 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.9.5.9001}{
-  \subsection{BUG FIXES}{
-    \itemize{
-      \item Fixed an issue that caused more records than requested to be
-        returned for certain values of \code{n}.
-    }
-  }
-}
-
-\section{finbif version 0.9.5.9000}{
+\section{finbif version 0.9.6}{
   \subsection{MINOR IMPROVEMENTS}{
     \itemize{
       \item New undocumented variable and filter \code{local} added from
         upstream API.
+    }
+  }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed an issue that caused more records than requested to be
+        returned for certain values of \code{n}.
     }
   }
 }
