@@ -21,7 +21,9 @@ if (requireNamespace("webfakes", quietly = TRUE)) {
     }
   )
 
-  api <- local_app_process(app, .local_envir = teardown_env())
+  api <- local_app_process(app)
+
+  api[["start"]]()
 
   options(finbif_dl_url = sub("/$", "", api[["url"]]()))
 

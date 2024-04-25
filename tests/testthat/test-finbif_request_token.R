@@ -19,7 +19,9 @@ if (requireNamespace("webfakes", quietly = TRUE)) {
     }
   )
 
-  http <- local_app_process(app, .local_envir = teardown_env())
+  http <- local_app_process(app)
+
+  http[["start"]]()
 
 } else {
 
