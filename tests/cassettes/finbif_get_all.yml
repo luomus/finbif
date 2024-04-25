@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.778&selected=unit.unitId&page=1&pageSize=1000&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?collectionId=HR.778&selected=unit.unitId&page=1&pageSize=1000&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 14:43:28 GMT
+      date: Thu, 25 Apr 2024 06:12:21 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,6 +28,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"lastPage":1,"pageSize":1000,"total":2,"results":[{"unit":{"unitId":"http://mus.utu.fi/MY.2475121"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475184"}}]}'
-  recorded_at: 2024-03-15 14:43:28 GMT
+      string: '{"currentPage":1,"lastPage":1,"pageSize":1000,"total":10,"results":[{"unit":{"unitId":"http://mus.utu.fi/MY.10888542"}},{"unit":{"unitId":"http://mus.utu.fi/MY.10888538"}},{"unit":{"unitId":"http://mus.utu.fi/MY.4247571"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475339"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475342"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475121"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475348"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475351"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475184"}},{"unit":{"unitId":"http://mus.utu.fi/MY.2475345"}}]}'
+  recorded_at: 2024-04-25 06:12:21 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0

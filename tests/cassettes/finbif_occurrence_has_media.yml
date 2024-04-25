@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?hasMedia=TRUE&selected=unit.unitId%2Cunit.media.fullURL&orderBy=RANDOM&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?hasMedia=TRUE&selected=unit.unitId%2Cunit.media.fullURL&orderBy=RANDOM&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Fri, 15 Mar 2024 14:43:23 GMT
+      date: Thu, 25 Apr 2024 06:09:38 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,6 +28,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":1185,"pageSize":10,"total":11848,"results":[{"unit":{"media":[{"fullURL":"https://imagetest.laji.fi/MM.106857/Capreolus_capreolus_xray.mp4"},{"fullURL":"https://imagetest.laji.fi/MM.106858/Capreolus_capreolus_360.mp4"}],"unitId":"http://id.luomus.fi/MY.10644644"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/90048516/original.jpg?1597492420"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/90048959/original.jpg?1597492770"}],"unitId":"http://tun.fi/HR.3211/56502163-U"}},{"unit":{"media":[{"fullURL":"https://imagetest.laji.fi/MM.60297/HA.H3300297.jpg"}],"unitId":"http://tun.fi/MY.114760"}},{"unit":{"media":[{"fullURL":"https://inaturalist-open-data.s3.amazonaws.com/photos/342863539/original.jpg"},{"fullURL":"https://inaturalist-open-data.s3.amazonaws.com/photos/342863540/original.jpg"}],"unitId":"http://tun.fi/HR.3211/194966302-U"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/94606189/original.jpg?1599834535"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/94606208/original.jpg?1599834547"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/94606223/original.jpg?1599834554"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/94606247/original.jpg?1599834560"}],"unitId":"http://tun.fi/HR.3211/59217581-U"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/77382056/original.jpeg?1591523615"}],"unitId":"http://tun.fi/HR.3211/48757529-U"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/88716076/original.jpeg?1596813441"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/88716118/original.jpeg?1596813453"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/88716150/original.jpeg?1596813466"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/88716132/original.jpeg?1596813459"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/88716175/original.jpeg?1596813475"}],"unitId":"http://tun.fi/HR.3211/55703899-U"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/89591697/original.jpg?1597245721"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/89591678/original.jpeg?1597245713"},{"fullURL":"https://proxy.laji.fi/inaturalist/photos/89594820/original.jpeg?1597246980"}],"unitId":"http://tun.fi/HR.3211/56228974-U"}},{"unit":{"media":[{"fullURL":"https://proxy.laji.fi/inaturalist/photos/83766695/original.jpeg?1594480718"}],"unitId":"http://tun.fi/HR.3211/52684648-U"}},{"unit":{"media":[{"fullURL":"https://imagetest.laji.fi/MM.58732/HA.H1405044.jpg"}],"unitId":"http://tun.fi/MY.106410"}}]}'
-  recorded_at: 2024-03-15 14:43:23 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":251171,"pageSize":10,"total":2511709,"results":[{"unit":{"media":[{"fullURL":"https://inaturalist-open-data.s3.amazonaws.com/photos/331742344/original.jpeg"}],"unitId":"http://tun.fi/HR.3211/189382451-U"}},{"unit":{"media":[{"fullURL":"https://inaturalist-open-data.s3.amazonaws.com/photos/144910640/original.jpeg?1626795558"}],"unitId":"http://tun.fi/HR.3211/87864808-U"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/Q.57085/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.12998407"}},{"unit":{"media":[{"fullURL":"https://inaturalist-open-data.s3.amazonaws.com/photos/135761924/original.jpeg?1623516534"}],"unitId":"http://tun.fi/HR.3211/82703754-U"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/F.136565/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.5622660"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/F.257515/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.7020657"}},{"unit":{"media":[{"fullURL":"https://id.digitarium.fi/api/F.436850/Preview001.jpg"}],"unitId":"http://id.luomus.fi/MY.11509306"}},{"unit":{"media":[{"fullURL":"https://inaturalist-open-data.s3.amazonaws.com/photos/326033148/original.jpeg"}],"unitId":"http://tun.fi/HR.3211/186548851-U"}},{"unit":{"media":[{"fullURL":"https://inaturalist-open-data.s3.amazonaws.com/photos/153864481/original.jpeg"}],"unitId":"http://tun.fi/HR.3211/92884193-U"}},{"unit":{"media":[{"fullURL":"https://image.laji.fi/MM.1820458/GQ.935.JPG"}],"unitId":"http://id.luomus.fi/MY.11738751"}}]}'
+  recorded_at: 2024-04-25 06:09:38 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
