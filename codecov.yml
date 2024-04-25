@@ -1,0 +1,22 @@
+codecov:
+  branch: main
+
+comment: false
+
+coverage:
+  status:
+    project:
+      default:
+        target: auto
+        threshold: 1%
+        informational: true
+        branches:
+          - main
+          - dev
+    patch:
+      default:
+        target: auto
+        threshold: 1%
+        informational: true
+        branches:
+          - dev
