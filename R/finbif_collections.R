@@ -124,7 +124,7 @@ finbif_collections <- function(
 
   if (!is.na(nmin)) {
 
-    ind <- ind & !is.na(collections[["count"]]) & collections[["count"]] > nmin
+    ind <- ind & !is.na(collections[["count"]]) & collections[["count"]] >= nmin
 
   }
 
