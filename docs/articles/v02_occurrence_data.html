@@ -83,12 +83,10 @@
 
 
 
-
-<div class="row">
+<script src="v02_occurrence_data_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Occurrence records from FinBIF</h1>
-                        <h4 data-toc-skip class="author">William K.
-Morris</h4>
+                        <h4 data-toc-skip class="author">William K. Morris</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/luomus/finbif/blob/HEAD/vignettes/v02_occurrence_data.Rmd" class="external-link"><code>vignettes/v02_occurrence_data.Rmd</code></a></small>
@@ -97,16 +95,11 @@ Morris</h4>
 
     
     
-<p>The core purpose of <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> is accessing occurrence
-data stored in the FinBIF database. Occurrence data can be retrieved
-from FinBIF with the function <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>. Without
-any arguments specified <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> will retrieve
-the latest 10 occurrence records from FinBIF.</p>
+<p>The core purpose of <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> is accessing occurrence data stored in the FinBIF database. Occurrence data can be retrieved from FinBIF with the function <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>. Without any arguments specified <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> will retrieve the latest 10 occurrence records from FinBIF.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 47159747</span></span>
@@ -125,36 +118,27 @@ Click to show/hide output.
 <span><span class="co">#&gt; ...with 0 more record and 7 more variables:</span></span>
 <span><span class="co">#&gt; date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
-</details><p><br> The print method for the resulting <code>finbif_occ</code>
-object will display the number of records downloaded, the total number
-of records available, a data summary including up to 10 rows of some
-core record variables (when available), the number of remaining records
-and variables, as well as the names of additional variables.</p>
+</details><p><br> The print method for the resulting <code>finbif_occ</code> object will display the number of records downloaded, the total number of records available, a data summary including up to 10 rows of some core record variables (when available), the number of remaining records and variables, as well as the names of additional variables.</p>
 <div class="section level2">
 <h2 id="darwin-core-variables">Darwin Core Variables<a class="anchor" aria-label="anchor" href="#darwin-core-variables"></a>
 </h2>
-<p>You can switch from the default variable names to <a href="http://rs.tdwg.org/dwc/" class="external-link">Darwin Core</a> style names by setting
-<code>dwc = TRUE</code>.</p>
+<p>You can switch from the default variable names to <a href="http://rs.tdwg.org/dwc/" class="external-link">Darwin Core</a> style names by setting <code>dwc = TRUE</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>dwc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "occurrenceID"                  "scientificName"                "individualCount"              </span></span>
 <span><span class="co">#&gt;  [4] "decimalLatitude"               "decimalLongitude"              "eventDateTime"                </span></span>
 <span><span class="co">#&gt;  [7] "coordinateUncertaintyInMeters" "hasIssues"                     "requiresVerification"         </span></span>
 <span><span class="co">#&gt; [10] "requiresIdentification"        "occurrenceReliability"         "occurrenceQuality"</span></span></code></pre></div>
-<p>The functions <code><a href="../reference/to_dwc.html">to_dwc()</a></code> and <code><a href="../reference/to_dwc.html">to_native()</a></code> can
-be used to translate variable names to and from Darwin Core style and
-<a href="https://github.com/luomus/finbif" class="external-link">finbif</a>’s native variable names style.</p>
+<p>The functions <code><a href="../reference/to_dwc.html">to_dwc()</a></code> and <code><a href="../reference/to_dwc.html">to_native()</a></code> can be used to translate variable names to and from Darwin Core style and <a href="https://github.com/luomus/finbif" class="external-link">finbif</a>’s native variable names style.</p>
 </div>
 <div class="section level2">
 <h2 id="choosing-taxa">Choosing taxa<a class="anchor" aria-label="anchor" href="#choosing-taxa"></a>
 </h2>
-<p>You can limit the records to certain taxa by specifying them as an
-argument.</p>
+<p>You can limit the records to certain taxa by specifying them as an argument.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 95730</span></span>
@@ -177,9 +161,8 @@ Click to show/hide output.
 <p>Multiple taxa can be requested at once.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, <span class="st">"Cygnus olor"</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 138681</span></span>
@@ -199,8 +182,7 @@ Click to show/hide output.
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>You can also chose higher taxonomic groups and use common names (in
-English, Finnish and Swedish).</p>
+<p>You can also chose higher taxonomic groups and use common names (in English, Finnish and Swedish).</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">birds</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Birds"</span><span class="op">)</span></span>
 <span><span class="va">linnut</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Linnut"</span><span class="op">)</span></span>
@@ -212,13 +194,11 @@ English, Finnish and Swedish).</p>
 <div class="section level2">
 <h2 id="request-size">Request size<a class="anchor" aria-label="anchor" href="#request-size"></a>
 </h2>
-<p>You can increase the number of records returned by using the
-<code>n</code> argument.</p>
+<p>You can increase the number of records returned by using the <code>n</code> argument.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1001</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 1001</span></span>
 <span><span class="co">#&gt; Records available: 47159747</span></span>
@@ -238,9 +218,7 @@ Click to show/hide output.
 <span><span class="co">#&gt; date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>You can see how many records are available for a given request,
-without retrieving any records, by setting
-<code>count_only = TRUE</code>.</p>
+<p>You can see how many records are available for a given request, without retrieving any records, by setting <code>count_only = TRUE</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>count_only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 47159747</span></span></code></pre></div>
@@ -248,15 +226,11 @@ without retrieving any records, by setting
 <div class="section level2">
 <h2 id="checking-taxa">Checking taxa<a class="anchor" aria-label="anchor" href="#checking-taxa"></a>
 </h2>
-<p>When you request occurrence records for specific taxa, by default,
-the taxon names are first checked against the FinBIF database. If any of
-the requested taxa are not found in the database you will receive a
-warning but the data will still be retrieved for the remaining taxa.</p>
+<p>When you request occurrence records for specific taxa, by default, the taxon names are first checked against the FinBIF database. If any of the requested taxa are not found in the database you will receive a warning but the data will still be retrieved for the remaining taxa.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 5303</span></span>
@@ -276,13 +250,11 @@ Click to show/hide output.
 <span><span class="co">#&gt; date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>You can turn off taxon name pre-checking by setting the value of the
-<code>check_taxa</code> argument to <code>FALSE</code>.</p>
+<p>You can turn off taxon name pre-checking by setting the value of the <code>check_taxa</code> argument to <code>FALSE</code>.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span>, check_taxa <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 5303</span></span>
@@ -302,10 +274,7 @@ Click to show/hide output.
 <span><span class="co">#&gt; date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>By setting the argument, <code>on_check_fail</code> to
-<code>"error"</code> (the default is <code>"warn"</code>), you can
-elevate the warnings to errors and the request will fail if any of the
-taxa are not found in the FinBIF database.</p>
+<p>By setting the argument, <code>on_check_fail</code> to <code>"error"</code> (the default is <code>"warn"</code>), you can elevate the warnings to errors and the request will fail if any of the taxa are not found in the FinBIF database.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Vulpes vulpes"</span>, <span class="st">"Moomin"</span>, on_check_fail <span class="op">=</span> <span class="st">"error"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error: Cannot find the following taxa in the FinBIF taxonomy.</span></span>
@@ -313,38 +282,17 @@ taxa are not found in the FinBIF database.</p>
 <span><span class="co">#&gt; other names for the taxa you are selecting:</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Moomin</span></span></code></pre></div>
-<p>This can be a useful strategy if you are using <a href="https://github.com/luomus/finbif" class="external-link">finbif</a>
-non-interactively (in a script), and you do not want to proceed if any
-of your taxon names are wrong or misspelled.</p>
+<p>This can be a useful strategy if you are using <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> non-interactively (in a script), and you do not want to proceed if any of your taxon names are wrong or misspelled.</p>
 </div>
 <div class="section level2">
 <h2 id="aggregating-records">Aggregating records<a class="anchor" aria-label="anchor" href="#aggregating-records"></a>
 </h2>
-<p>You can request records in aggregate using the <code>aggregate</code>
-argument to <code>finbif_occurrence</code>. Aggregated requests will
-return counts for the combination of the <code>variables</code> you
-specify with the <code>select</code> argument. You can request counts of
-<code>"records"</code>, <code>"species"</code> or <code>"taxa"</code> by
-using the corresponding string as the value for the
-<code>aggregate</code> argument. Aggregating by <code>"species"</code>
-will count the number of unique species identifiers for a set of records
-grouped by the combination of selected variables. Note that this count
-will not include records of taxa that do not have species identifiers,
-including records of higher taxa (e.g., genus only records), records of
-the non-species children of aggregate or complex taxa, and hybrid taxa.
-Therefore, in some contexts the results returned will be an
-underestimate of species richness. Likewise, aggregating by
-<code>"taxa"</code>, which returns a count the number of unique taxon
-identifiers, could represent an overestimate of the number of taxa as
-records of higher taxa will contribute to the count while their true
-identify may be a duplicate of other records.</p>
-<p>To illustrate, you can count the number of moths and butterflies by
-municipality with the following:</p>
+<p>You can request records in aggregate using the <code>aggregate</code> argument to <code>finbif_occurrence</code>. Aggregated requests will return counts for the combination of the <code>variables</code> you specify with the <code>select</code> argument. You can request counts of <code>"records"</code>, <code>"species"</code> or <code>"taxa"</code> by using the corresponding string as the value for the <code>aggregate</code> argument. Aggregating by <code>"species"</code> will count the number of unique species identifiers for a set of records grouped by the combination of selected variables. Note that this count will not include records of taxa that do not have species identifiers, including records of higher taxa (e.g., genus only records), records of the non-species children of aggregate or complex taxa, and hybrid taxa. Therefore, in some contexts the results returned will be an underestimate of species richness. Likewise, aggregating by <code>"taxa"</code>, which returns a count the number of unique taxon identifiers, could represent an overestimate of the number of taxa as records of higher taxa will contribute to the count while their true identify may be a duplicate of other records.</p>
+<p>To illustrate, you can count the number of moths and butterflies by municipality with the following:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Lepidoptera"</span>, select <span class="op">=</span> <span class="st">"municipality"</span>, aggregate <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 309</span></span>
@@ -365,16 +313,11 @@ Click to show/hide output.
 <div class="section level2">
 <h2 id="time-duration">Time &amp; duration<a class="anchor" aria-label="anchor" href="#time-duration"></a>
 </h2>
-<p>The default behaviour of <code>finbif_occurrence</code> is to
-consolidate date and time data for occurrence recording events into a
-<code>date_time</code> variable. This can be turned off (which can speed
-up data processing time) by deselecting the <code>date_time</code>
-variable.</p>
+<p>The default behaviour of <code>finbif_occurrence</code> is to consolidate date and time data for occurrence recording events into a <code>date_time</code> variable. This can be turned off (which can speed up data processing time) by deselecting the <code>date_time</code> variable.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>select <span class="op">=</span> <span class="st">"-date_time"</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 47159747</span></span>
@@ -400,19 +343,11 @@ Click to show/hide output.
 <div class="section level4">
 <h4 id="timezone-input">Timezone input<a class="anchor" aria-label="anchor" href="#timezone-input"></a>
 </h4>
-<p>The FinBIF database doesn’t currently store timezone information, so
-<a href="https://github.com/luomus/finbif" class="external-link">finbif</a> makes assumptions about the appropriate timezone
-based on the time and location of the occurrence recording events to
-calculate <code>date_time</code> and <code>duration</code>. By default,
-a fast heuristic is used to determine the timezones. If you require
-greater accuracy (e.g., you are using data on the Finnish/Swedish border
-and daytime/nighttime hours are important), you can switch to more
-accurate, though slower, timezone calculation method.</p>
+<p>The FinBIF database doesn’t currently store timezone information, so <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> makes assumptions about the appropriate timezone based on the time and location of the occurrence recording events to calculate <code>date_time</code> and <code>duration</code>. By default, a fast heuristic is used to determine the timezones. If you require greater accuracy (e.g., you are using data on the Finnish/Swedish border and daytime/nighttime hours are important), you can switch to more accurate, though slower, timezone calculation method.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>date_time_method <span class="op">=</span> <span class="st">"accurate"</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 47159747</span></span>
@@ -436,17 +371,14 @@ Click to show/hide output.
 <div class="section level4">
 <h4 id="timezone-output">Timezone output<a class="anchor" aria-label="anchor" href="#timezone-output"></a>
 </h4>
-<p>The timezone of the calculated <code>date_time</code> variable is
-determined by the timezone of your operating system.</p>
+<p>The timezone of the calculated <code>date_time</code> variable is determined by the timezone of your operating system.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/timezones.html" class="external-link">Sys.timezone</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>You can override this by setting the <code>tzone</code> argument to a
-different value.</p>
+<p>You can override this by setting the <code>tzone</code> argument to a different value.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>tzone <span class="op">=</span> <span class="st">"Etc/UTC"</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 47159747</span></span>
@@ -466,12 +398,10 @@ Click to show/hide output.
 <span><span class="co">#&gt; date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>Or set the global timezone option to set the timezone for the current
-session.</p>
+<p>Or set the global timezone option to set the timezone for the current session.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>finbif_tz <span class="op">=</span> <span class="st">"Etc/UTC"</span><span class="op">)</span></span></code></pre></div>
-<p>This may be advisable for reproducibility or when working with
-multiple systems.</p>
+<p>This may be advisable for reproducibility or when working with multiple systems.</p>
 </div>
 </div>
 </div>

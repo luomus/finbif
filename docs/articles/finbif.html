@@ -83,12 +83,10 @@
 
 
 
-
-<div class="row">
+<script src="finbif_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Introduction to the finbif package</h1>
-                        <h4 data-toc-skip class="author">William K.
-Morris</h4>
+                        <h4 data-toc-skip class="author">William K. Morris</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/luomus/finbif/blob/HEAD/vignettes/finbif.Rmd" class="external-link"><code>vignettes/finbif.Rmd</code></a></small>
@@ -97,25 +95,14 @@ Morris</h4>
 
     
     
-<p>FinBIF aggregates Finnish biodiversity data from multiple sources in
-a single open access portal for researchers, citizen scientists,
-industry and government. FinBIF allows users of biodiversity information
-to find, access, combine and visualise data on Finnish plants, animals
-and microorganisms. The <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> R package makes the
-publicly available data in FinBIF easily accessible to programmers.
-Biodiversity information is available on taxonomy and taxon occurrence.
-Occurrence data can be filtered by taxon, time, location and other
-variables. The data accessed are conveniently preformatted for
-subsequent analyses.</p>
+<p>FinBIF aggregates Finnish biodiversity data from multiple sources in a single open access portal for researchers, citizen scientists, industry and government. FinBIF allows users of biodiversity information to find, access, combine and visualise data on Finnish plants, animals and microorganisms. The <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> R package makes the publicly available data in FinBIF easily accessible to programmers. Biodiversity information is available on taxonomy and taxon occurrence. Occurrence data can be filtered by taxon, time, location and other variables. The data accessed are conveniently preformatted for subsequent analyses.</p>
 <div class="section level2">
 <h2 id="installing-the-finbif-package">Installing the finbif package<a class="anchor" aria-label="anchor" href="#installing-the-finbif-package"></a>
 </h2>
-<p>You can install the current stable version of <a href="https://github.com/luomus/finbif" class="external-link">finbif</a>
-from <a href="https://cran.r-project.org" class="external-link">CRAN</a>,</p>
+<p>You can install the current stable version of <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> from <a href="https://cran.r-project.org" class="external-link">CRAN</a>,</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"finbif"</span><span class="op">)</span></span></code></pre></div>
-<p>You can also install the latest development version of
-<a href="https://github.com/luomus/finbif" class="external-link">finbif</a> from <a href="https://github.com" class="external-link">GitHub</a>,</p>
+<p>You can also install the latest development version of <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> from <a href="https://github.com" class="external-link">GitHub</a>,</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"luomus/finbif@dev"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -128,21 +115,16 @@ from <a href="https://cran.r-project.org" class="external-link">CRAN</a>,</p>
 <div class="section level2">
 <h2 id="getting-a-finbif-access-token">Getting a FinBIF access token<a class="anchor" aria-label="anchor" href="#getting-a-finbif-access-token"></a>
 </h2>
-<p>To use the FinBIF API you must first request and set a personal
-access token. You can request an API token to be sent to your email
-address with the function <code>finbif_get_token()</code>.</p>
+<p>To use the FinBIF API you must first request and set a personal access token. You can request an API token to be sent to your email address with the function <code>finbif_get_token()</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_request_token.html">finbif_request_token</a></span><span class="op">(</span><span class="st">"your@email.com"</span><span class="op">)</span></span></code></pre></div>
-<p>Copy the access token that was sent to your email and set it as the
-environment variable <code>FINBIF_ACCESS_TOKEN</code> either for the
-current session,</p>
+<p>Copy the access token that was sent to your email and set it as the environment variable <code>FINBIF_ACCESS_TOKEN</code> either for the current session,</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span></span>
 <span>  FINBIF_ACCESS_TOKEN <span class="op">=</span> <span class="st">"xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrv"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co"># Note: the above is not a real access token. Do not try using it.</span></span></code></pre></div>
-<p>, or by adding it to a <code>Renviron</code> startup file (see <a href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/" class="external-link">here</a>
-for details).</p>
+<p>, or by adding it to a <code>Renviron</code> startup file (see <a href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/" class="external-link">here</a> for details).</p>
 </div>
 <div class="section level2">
 <h2 id="working-with-taxa">Working with taxa<a class="anchor" aria-label="anchor" href="#working-with-taxa"></a>
@@ -151,9 +133,7 @@ for details).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [Ursus arctos] ID: MX.47348</span></span></code></pre></div>
-<p>If the taxon is in the FinBIF database its unique ID is returned.
-When a taxon is not in the FinBIF database it is reported as “not found”
-and for that taxa the list element is <code>NA</code>.</p>
+<p>If the taxon is in the FinBIF database its unique ID is returned. When a taxon is not in the FinBIF database it is reported as “not found” and for that taxa the list element is <code>NA</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">taxa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span>, <span class="st">"Moomin"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [Ursus arctos] ID: MX.47348</span></span>
@@ -164,25 +144,18 @@ and for that taxa the list element is <code>NA</code>.</p>
 <span><span class="va">taxa</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; Moomin </span></span>
 <span><span class="co">#&gt;     NA</span></span></code></pre></div>
-<p>You can also specify the taxonomic rank when searching FinBIF and the
-search will be limited to the specified rank.</p>
+<p>You can also specify the taxonomic rank when searching FinBIF and the search will be limited to the specified rank.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_check_taxa.html">finbif_check_taxa</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ursus arctos"</span>, <span class="st">"Ursus"</span><span class="op">)</span>, genus <span class="op">=</span> <span class="st">"Ursus"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [species: Ursus arctos] ID: MX.47348</span></span>
 <span><span class="co">#&gt; [species: Ursus       ] Not found</span></span>
 <span><span class="co">#&gt; [genus:   Ursus       ] ID: MX.51311</span></span></code></pre></div>
-<p>The function <code><a href="../reference/finbif_taxa.html">finbif_taxa()</a></code> can be used for a more
-general search for taxa in the FinBIF database. Searches can be
-<code>exact</code>, <code>partial</code> or <code>likely</code> (fuzzy
-matching). Information for a single taxon is returned when using exact
-or fuzzy matching, but multiple taxa, up to a limit, <code>n</code>, may
-be returned when using partial matching.</p>
+<p>The function <code><a href="../reference/finbif_taxa.html">finbif_taxa()</a></code> can be used for a more general search for taxa in the FinBIF database. Searches can be <code>exact</code>, <code>partial</code> or <code>likely</code> (fuzzy matching). Information for a single taxon is returned when using exact or fuzzy matching, but multiple taxa, up to a limit, <code>n</code>, may be returned when using partial matching.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">birch_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/finbif_taxa.html">finbif_taxa</a></span><span class="op">(</span><span class="st">"Betula pendula"</span>, <span class="fl">2</span>, <span class="st">"partial"</span><span class="op">)</span></span>
 <span><span class="va">birch_search</span><span class="op">$</span><span class="va">content</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
 <span><span class="co">#&gt; [[1]]$matchingName</span></span>
@@ -300,9 +273,7 @@ Click to show/hide output.
 <div class="section level2">
 <h2 id="getting-occurrence-data">Getting occurrence data<a class="anchor" aria-label="anchor" href="#getting-occurrence-data"></a>
 </h2>
-<p>You can download occurrence data from the FinBIF database as a
-<code>data.frame</code> with the <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>
-function.</p>
+<p>You can download occurrence data from the FinBIF database as a <code>data.frame</code> with the <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> function.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Records downloaded: 100</span></span>
@@ -322,17 +293,15 @@ function.</p>
 <span><span class="co">#&gt; ...with 90 more records and 6 more variables:</span></span>
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
-<p>You can search for multiple taxa at once and filter the records with
-the <code>filter</code> argument.</p>
+<p>You can search for multiple taxa at once and filter the records with the <code>filter</code> argument.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  <span class="st">"Cygnus cygnus"</span>,</span>
 <span>  <span class="st">"Cygnus olor"</span>,</span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>coordinates_uncertainty_max <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 47293</span></span>
@@ -352,19 +321,15 @@ Click to show/hide output.
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
 </details><p><br></p>
-<p>See <code><a href="../reference/filters.html">?filters</a></code> and <code><a href="../articles/v05_filtering.html">vignette("v05_filtering")</a></code>
-for more details on filtering FinBIF records.</p>
+<p>See <code><a href="../reference/filters.html">?filters</a></code> and <code><a href="../articles/v05_filtering.html">vignette("v05_filtering")</a></code> for more details on filtering FinBIF records.</p>
 <div class="section level3">
 <h3 id="random-sampling">Random sampling<a class="anchor" aria-label="anchor" href="#random-sampling"></a>
 </h3>
-<p>It is possible to request a random sample of records instead of the
-last <code>n</code> records (or records ordered by some other
-variable).</p>
+<p>It is possible to request a random sample of records instead of the last <code>n</code> records (or records ordered by some other variable).</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Birds"</span>, sample <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<details closed><summary>
-Click to show/hide output.
-</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<details closed><p><summary> Click to show/hide output. </summary></p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
 <span><span class="co">#&gt; Records available: 21748016</span></span>
@@ -389,9 +354,7 @@ Click to show/hide output.
 <div class="section level2">
 <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
-<p>By default <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> uses local caching for repeated API
-requests. This can be turned on or off on a per request or session
-basis. See <code><a href="../reference/caching.html">?caching</a></code> for details.</p>
+<p>By default <a href="https://github.com/luomus/finbif" class="external-link">finbif</a> uses local caching for repeated API requests. This can be turned on or off on a per request or session basis. See <code><a href="../reference/caching.html">?caching</a></code> for details.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
