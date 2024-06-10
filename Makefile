@@ -64,7 +64,9 @@ README.md: README.Rmd DESCRIPTION
 
 NEWS.md: inst/NEWS.Rd
 > ${RSCRIPT} -e "tools::Rd2HTML('$<', 'inst/NEWS.html')";\
+> sed -i 's/h2>/h1>/g' inst/NEWS.html;\
 > sed -i 's/h3>/h1>/g' inst/NEWS.html;\
+> sed -i 's/h4>/h2>/g' inst/NEWS.html;\
 > pandoc -s inst/NEWS.html -o inst/NEWS.md -t gfm;\
 > sed -i '1,8d' inst/NEWS.md;\
 > head -n -2 inst/NEWS.md > NEWS.md;\
