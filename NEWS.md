@@ -1,23 +1,31 @@
+# News for Package <span class="pkg">finbif</span>
+
+# finbif 0.9.6.9000
+
+## NEW FEATURES
+
+  - This is the latest development version
+
 # finbif 0.9.6
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - New undocumented variable and filter `local` added from upstream
     API.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fixed an issue that caused more records than requested to be
     returned for certain values of `n`.
 
 # finbif 0.9.5
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - A more informative error message is given when requesting an access
     token for an email address that has already been assigned one.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fixed an issue with reading facts for FinBIF record download files.
 
@@ -26,12 +34,12 @@
 
 # finbif 0.9.4
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - New undocumented variable "source" can be selected with
     `finbif_occurrence`.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - Record pagination should now often require less queries of FinBIF
     server and be should be faster.
@@ -41,19 +49,19 @@
   - When filtering records by "collection\_id" a full URL ID can be used
     or a QName.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Reading zero observation data downloads will now produce a zero row
     `data.frame` instead of triggering an error.
 
 # finbif 0.9.3
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fix a bug resulting in the incorrect region being assigned to
     occurrences records.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - New undocumented variables `institution_code` and `collection_code`
     can be selected when using functions `finbif_collections` and
@@ -61,26 +69,26 @@
 
 # finbif 0.9.2
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fixed a bug triggered when localising some variables and multiple
     pages of data had been requested.
 
 # finbif 0.9.1
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - New option `finbif_use_cache_metadata` to set caching for metadata
     only. Is ignored if `finbif_use_cache` is `TRUE`.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fixed a bug triggered when trying to compute a variable from an
     identifier and data returned contained zero records.
 
 # finbif 0.9.0
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - New function `finbif_update_cache` can be used to update all the
     cached objects that have reached their expiration and are no longer
@@ -111,7 +119,7 @@
   - Fix bug triggered when using aggregation with some selected
     variables.
 
-#### DEFUNCT
+## DEFUNCT
 
   - Mapping utilities `finland_map`, `breaks_xy`, `hist_xy` and the plot
     method for `finbif_occ` objects are now defunct.
@@ -121,7 +129,7 @@
 
 # finbif 0.8.0
 
-#### DEPRECATION
+## DEPRECATION
 
   - Mapping utilities `finland_map`, `breaks_xy`, `hist_xy` and the plot
     method for `finbif_occ` objects have been deprecated as they are
@@ -130,14 +138,14 @@
   - User access to `finbif_records` and its classes and methods is
     deprecated in favour of `finbif_occurrence`.
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - Record aggregations with `finbif_occurrence` can now include
     "individual" and "pair" sums.
 
 # finbif 0.7.2
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - Updated deprecated use of tidy::pivot\_wider.
 
@@ -145,7 +153,7 @@
 
 # finbif 0.7.1
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - New function `finbif_mod_date` to get last modified date for FinBIF
     occurrence data.
@@ -153,7 +161,7 @@
   - Region is now a selectable variable for `finbif_occurrence` and can
     also be used to filter records.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - For the sake of clarity "province" is now referred to as
     "bio-province".
@@ -167,14 +175,14 @@
   - For consistency, `lang` argument to `finbif_collections` has been
     changed to `locale`.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fixed bug that caused locale to be set incorrectly for multipage
     requests.
 
 # finbif 0.7.0
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - New function `taxon_id` that returns FinBIF taxon identifiers given
     a scientific name, vernacular name or other taxon identifier.
@@ -198,7 +206,7 @@
   - New argument `facts` added to `finbif_occurrence` that can be used
     to automatically extract facts when downloading occurrence records.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fixed bug triggered by incorrect data type applied to
     `taxonomic_order`.
@@ -207,19 +215,19 @@
 
 # finbif 0.6.6
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - New option to exclude all records with any NA values for any of the
     selected variables added to `finbif_occurrence`.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - The warning/error message returned when an invalid taxon is
     requested with `finbif_occurrence` has been made more detailed,
     warning the user they may be using synonyms or other invalid taxon
     names.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fix applied for a print method error triggered by clashing class
     names.
@@ -228,7 +236,7 @@
 
 # finbif 0.6.5
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - New variables and filters (currently undocumented) have been added
     for the forthcoming Finnish atlas of breeding birds.
@@ -236,7 +244,7 @@
   - Skip rows argument added to `finbif_occurrence_load` so files can be
     read in chunks.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - For clarity, KKJ coordinate reference system is now referred to as
     YKJ.
@@ -247,7 +255,7 @@
 
 # finbif 0.6.4
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - New administrative statuses added.
 
@@ -269,14 +277,14 @@
   - New filters and variables (currently undocumented) added from
     upstream API.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fix bug triggered when printing occurrence records where all records
     have no coordinate uncertainty.
 
 # finbif 0.6.3
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - Argument `drop_na_facts` has been changed to `drop_facts_na` for
     function `finbif_occurrence_load` to avoid problems due to partial
@@ -290,14 +298,14 @@
 
   - New administrative statuses added.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fix bug in importing of file downloads triggered by string quotation
     errors.
 
 # finbif 0.6.2
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - New package option, `finbif_allow_query`, with default value,
     `TRUE`. If set to `FALSE` then remote API queries will trigger an
@@ -305,13 +313,13 @@
 
   - Records can now be aggregated by document.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - A client-side error will be triggered if an attempt is made to
     filter by taxon and aggregate data by event with
     `finbif_occurrence`.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fix bug preventing loading of FinBIF archives that is triggered when
     all variables are selected with `select = "all"`.
@@ -321,14 +329,14 @@
 
 # finbif 0.6.1
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fixed a regression in the last release that prevented collection
     names being converted from their URIs.
 
 # finbif 0.6.0
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - New variables `lat_euref` and `lon_euref` available for occurrence
     record downloads. These new variables represent the central point of
@@ -362,7 +370,7 @@
     the column will have the EPSG code of the first column that contains
     geographic data.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - Can now select all available variables when importing a FinBIF
     download request file using `finbif_occurrence_load` with `select =
@@ -381,7 +389,7 @@
   - Variables that are computed from their identifiers are now localised
     when multiple languages are available.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fixed bug that prevented occurrence record counting when caching was
     not in use.
@@ -391,7 +399,7 @@
 
 # finbif 0.5.0
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - Getting records from FinBIF can now be speed up (\~1.5x) with
     asynchronous processing. If the `future` package is available and an
@@ -416,7 +424,7 @@
 
 # finbif 0.4.1
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - New functions `scientific_name` and `common_name` are now available
     to get scientific and common names for taxa (given a taxon name or
@@ -425,7 +433,7 @@
   - Add ability to extract complex record variables such as those
     associated with record media (currently undocumented).
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - Collection name can be selected as a variable for occurrence
     records. Previously it had to be manually translated from collection
@@ -437,21 +445,21 @@
 
 # finbif 0.4.0
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - Occurrence record requests can now be made with aggregation,
     `aggregate = c("records", "species", "taxa")`. This returns the
     number of records, and/or species or taxa for each combination of
     the selected variables instead of the occurrence records themselves.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - Error is triggered when attempting to request less than one record.
 
   - New content on requesting aggregated occurrence records added to
     vignette: 2. Occurrence records from FinBIF.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Fixed two bugs in print method for FinBIF occurrence records that
     were triggered when attempting to print only one row of data.
@@ -472,7 +480,7 @@
 
 # finbif 0.3.1
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - Occurrence records can be ordered by the total number of records or
     total number of Finnish records of the taxon (variables:
@@ -483,14 +491,14 @@
 
   - New administrative statuses added to filters.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - Filtering vignette updated to reflect changes to data quality
     filters.
 
 # finbif 0.3.0
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - All user facing functions with a `finbif_` prefix can now also be
     used with the alternative shorter prefix `fb_`.
@@ -523,7 +531,7 @@
   - New vignettes on getting occurrence records, selecting and ordering
     variables, metadata and plotting have been added.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - Caching defaults to in memory caching instead of relying on the
     temporary directory.
@@ -564,7 +572,7 @@
   - After some failures, API requests are now automatically retried up
     to three times.
 
-#### BUG FIXES
+## BUG FIXES
 
   - Ordering by descending variables did not work when ordering by both
     ascending and descending variables.
@@ -581,14 +589,16 @@
 
 # finbif 0.2.0
 
-#### NEW FEATURES
+## NEW FEATURES
 
   - Add capacity to request a random sample of FinBIF records.
 
-#### MINOR IMPROVEMENTS
+## MINOR IMPROVEMENTS
 
   - Add more content to vignettes.
 
 # finbif 0.1.0
 
   - Initial release.
+
+</div>
