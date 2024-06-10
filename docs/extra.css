@@ -30,3 +30,7 @@ body {
 .text-muted {
   text-shadow: 1px 1px 3px #000;
 }
+
+[data-bs-theme="dark"] {
+  --bs-secondary-color: #B9BBB9BF
+}
