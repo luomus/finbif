@@ -62,7 +62,7 @@ test_that(
       finbif_request_token("em"), "An access token has already been set"
     )
 
+    http[["stop"]]()
+
   }
 )
-
-http[["stop"]]()

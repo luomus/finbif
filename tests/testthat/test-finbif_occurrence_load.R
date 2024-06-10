@@ -268,6 +268,8 @@ test_that(
 
     Sys.unsetenv("FINBIF_FILE_SIZE_LIMIT")
 
+    api[["stop"]]()
+
   }
 )
 
@@ -318,5 +320,3 @@ test_that(
 
   }
 )
-
-api[["stop"]]()
