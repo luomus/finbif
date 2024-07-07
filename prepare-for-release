@@ -8,7 +8,8 @@
 7.  Restart R to reset environment variables.
 8.  Run data-raw/sysdata.R and commit changes.
 9.  Delete cassettes, run tests and commit changes to test assets.
-10. Rebuild README (touch README.Rmd; make) and commit.
+10. Change docs URL in DESCRIPTION, CITATION.cff files and _pkgdown.yml, rebuild
+    README (touch README.Rmd) and make and commit.
 11. Check winbuilder (`devtools::check_win_devel()`).
 12. Update and commit cran-comments.md.
 13. Release (`devtools::release()`) and wait for CRAN response.
@@ -21,5 +22,6 @@
 18. Merge main (`git merge main`).
 19. Restart R to reset environment variables.
 20. Add dev component to version number, update cff, news and rerun
-    data-raw/sysdata.R, delete cassettes, rerun tests, touch README.Rmd and make
+    data-raw/sysdata.R, delete cassettes, rerun tests, change docs URL in
+    DESCRIPTION, CITATION.cff files and _pkgdown.yml, touch README.Rmd and make
     then commit and push.

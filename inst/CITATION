@@ -24,6 +24,16 @@ bibentry(
   ),
   year     = format(Sys.Date(), "%Y"),
   note     = sprintf("R package version %s", meta$Version),
-  url      = "https://luomus.github.io/finbif/articles/finbif.html",
+  url      = {
+    if (length(unlist(packageVersion("finbif"))) > 3L) {
+
+      "https://finbif-docs-dev.netlify.app/articles/finbif.html"
+
+    } else {
+
+      "https://luomus.github.io/finbif/articles/finbif.html"
+
+    }
+  },
   doi      = "10.5281/zenodo.3612814"
 )

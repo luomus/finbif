@@ -22,7 +22,7 @@ Description: A programmatic interface to the 'Finnish Biodiversity Information
     location and other variables. The data accessed are conveniently
     preformatted for subsequent analyses.
 License: MIT + file LICENSE
-URL: https://github.com/luomus/finbif, https://luomus.github.io/finbif/
+URL: https://github.com/luomus/finbif, https://finbif-docs-dev.netlify.app/
 BugReports: https://github.com/luomus/finbif/issues
 VignetteBuilder:
     knitr
@@ -36,7 +36,7 @@ Imports:
     lutz,
     utils
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests:
     blob,
     data.table,
