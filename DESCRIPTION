@@ -47,7 +47,7 @@ Suggests:
     readxl,
     rmarkdown,
     RSQLite,
-    testthat (>= 2.1.0),
+    testthat (>= 3.0.0),
     vcr,
     webfakes
 Config/testthat/edition: 3
