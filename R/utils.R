@@ -355,7 +355,6 @@ infer_cache <- function(cache) {
 
 sample_with_seed <- function(
   n,
-  size,
   seed
 ) {
 
@@ -387,7 +386,7 @@ sample_with_seed <- function(
 
   do.call(set.seed, args)
 
-  sample.int(n, size)
+  sample.int(n)
 
 }
 

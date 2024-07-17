@@ -3,7 +3,7 @@ test_that(
 
     rm(".Random.seed", pos = 1L)
 
-    sample_with_seed(10, 10, 123)
+    sample_with_seed(10, 123)
 
     expect_false(exists(".Random.seed", 1L))
 

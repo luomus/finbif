@@ -385,23 +385,31 @@ records_list_data_frame <- function(x) {
 
   record_id <- do.call(paste, df[, record_id, drop = FALSE])
 
-  if (inherits(x, "finbif_records_sample_list")) {
+  dups <- duplicated(record_id)
 
-    nrows <- nrow(df)
+  df <- df[!dups, , drop = FALSE]
 
-    records <- sample.int(nrows)
+  record_id <- record_id[!dups]
 
-    if (attr(x, "cache")) {
+  s <- seq_len(attr(x, "nrec_dnld", TRUE))
+
+  if (attr(x, "sample", TRUE)) {
+
+    s <- sample(s)
+
+    if (attr(x, "cache", TRUE)) {
 
       seed <- gen_seed(x)
 
-      records <- sample_with_seed(nrows, nrows, seed)
+      s <- sample_with_seed(attr(x, "nrec_dnld", TRUE), seed)
 
     }
 
-    df <- df[records, ]
-
   }
+
+  df <- df[s, , drop = FALSE]
+
+  record_id <- record_id[s]
 
   if (!attr(x, "record_id")) {
 

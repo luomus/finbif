@@ -768,6 +768,7 @@ request <- function(fb_records_obj) {
     query = query,
     nrec_dnld = n,
     nrec_avl = n_tot,
+    sample = fb_records_obj[["sample"]],
     seed = fb_records_obj[["seed"]],
     select = fb_records_obj[["select_query"]],
     select_user = select_user,
@@ -785,43 +786,7 @@ request <- function(fb_records_obj) {
     from_cache = resp[["from_cache"]]
   )
 
-  if (n > max_size) {
-
-    sample_after <- n / n_tot > .5 || n_tot < max_size * 3L
-
-    if (fb_records_obj[["sample"]] && sample_after) {
-
-      fb_records_obj[["select"]] <- select_user
-
-      fb_records_obj[["sample"]] <- FALSE
-
-      fb_records_obj[["n"]] <- n_tot
-
-      fb_records_list <- records(fb_records_obj)
-
-      attr(fb_records_list, "nrec_dnld") <- n
-
-      return(record_sample(fb_records_list))
-
-    }
-
-    fb_records_list <- get_extra_pages(fb_records_list)
-
-    if (fb_records_obj[["sample"]]) {
-
-      if (is.null(fb_records_obj[["seed"]])) {
-
-        attr(fb_records_list, "seed") <- 1L
-
-      }
-
-      fb_records_list <- handle_duplicates(fb_records_list)
-
-    }
-
-  }
-
-  fb_records_list
+  get_extra_pages(fb_records_list)
 
 }
 
@@ -842,6 +807,8 @@ get_extra_pages <- function(fb_records_list) {
   )
 
   n <- attr(fb_records_list, "nrec_dnld", TRUE)
+
+  n_tot <- attr(fb_records_list, "nrec_avl", TRUE)
 
   max_size <- attr(fb_records_list, "max_size", TRUE)
 
@@ -867,13 +834,9 @@ get_extra_pages <- function(fb_records_list) {
 
   query <- attr(fb_records_list, "query", TRUE)
 
+  sample <- attr(fb_records_list, "sample", TRUE)
+
   page <- query[["page"]]
-
-  page <- page + 1L
-
-  page_size <- query[["pageSize"]]
-
-  n_pages <- n %/% page_size
 
   use_future <- has_pkgs("future") && getOption("finbif_use_async")
 
@@ -883,9 +846,25 @@ get_extra_pages <- function(fb_records_list) {
 
   }
 
-  while (multipage) {
+  n_needed <- n
 
-    current_page_size <- page_size
+  n_got <- query[["pageSize"]]
+
+  ids <- character()
+
+  while (n_needed > (n_got - length(which(duplicated(ids))))) {
+
+    page <- page + 1L
+
+    if (sample && page > ceiling(n_tot / query[["pageSize"]])) {
+
+      page <- 1L
+
+      query[["orderBy"]] <- sub(
+        ",?RANDOM:?\\d*|^RANDOM:?\\d*,?", "", query[["orderBy"]]
+      )
+
+    }
 
     if (!quiet) {
 
@@ -893,23 +872,7 @@ get_extra_pages <- function(fb_records_list) {
 
     }
 
-    if (page == n_pages + 1) {
-
-      current_page_size <- n %% page_size
-
-    }
-
-    end <- page == n_pages + 2 || current_page_size == 0
-
-    if (end) {
-
-      break
-
-    }
-
     query[["page"]] <- page
-
-    query[["pageSize"]] <- page_size
 
     fb_records_obj[["query"]] <- query
 
@@ -929,16 +892,6 @@ get_extra_pages <- function(fb_records_list) {
 
     records_i <- value(res)
 
-    results <- c("content", "results")
-
-    if (length(records_i[[results]]) > current_page_size) {
-
-      results_seq <- seq_len(current_page_size)
-
-      records_i[[results]] <- records_i[[results]][results_seq]
-
-    }
-
     records_i <- c(records_i, locale = fb_records_list[[i]][["locale"]])
 
     i <- i + 1L
@@ -949,7 +902,13 @@ get_extra_pages <- function(fb_records_list) {
       aggregate = fb_records_obj[["aggregate"]]
     )
 
-    page <- page + 1L
+    ids <- lapply(fb_records_list, extract_ids)
+
+    ids <- unlist(ids)
+
+    ids <- ids[!is.na(ids)]
+
+    n_got <- n_got + length(records_i[[c("content", "results")]])
 
   }
 
@@ -1194,92 +1153,7 @@ translate <- function(translation_obj) {
 
 }
 
-# sample records ---------------------------------------------------------------
-
-#'@noRd
-
-record_sample <- function(fb_records_list) {
-
-  n_tot <- attr(fb_records_list, "nrec_avl", TRUE)
-
-  n <- attr(fb_records_list, "nrec_dnld", TRUE)
-
-  size <- n_tot - n
-
-  cache <- attr(fb_records_list, "cache", TRUE)
-
-  remove <- sample.int(n_tot, size)
-
-  if (cache) {
-
-    seed <- gen_seed(fb_records_list)
-
-    remove <- sample_with_seed(n_tot, size, seed)
-
-  }
-
-  attr(fb_records_list, "remove") <- remove
-
-  structure(
-    remove_records(fb_records_list),
-    class = "finbif_records_sample_list",
-    nrec_dnld = n,
-    nrec_avl = n_tot,
-    select = attr(fb_records_list, "select", TRUE),
-    record_id = attr(fb_records_list, "record_id", TRUE),
-    cache = cache
-  )
-
-}
-
-# handle duplicates ------------------------------------------------------------
-
-#' @noRd
-
-handle_duplicates <- function(fb_records_list) {
-
-  ids <- lapply(fb_records_list, extract_ids)
-
-  ids <- unlist(ids)
-
-  dups <- duplicated(ids)
-
-  dups <- which(dups)
-
-  attr(fb_records_list, "remove") <- dups
-
-  fb_records_list <- remove_records(fb_records_list)
-
-  if (length(ids) - length(dups) < attr(fb_records_list, "nrec_dnld", TRUE)) {
-
-    fb_records_obj <- list(
-      filter = attr(fb_records_list, "filter", TRUE),
-      select = attr(fb_records_list, "select_user", TRUE),
-      sample = TRUE,
-      n = attr(fb_records_list, "max_size", TRUE),
-      cache = attr(fb_records_list, "cache", TRUE),
-      dwc = attr(fb_records_list, "dwc", TRUE),
-      seed = attr(fb_records_list, "seed", TRUE),
-      df = attr(fb_records_list, "df", TRUE),
-      exclude_na = attr(fb_records_list, "exclude_na", TRUE),
-      locale = attr(fb_records_list, "locale", TRUE),
-      include_facts = attr(fb_records_list, "include_facts", TRUE),
-      count_only = attr(fb_records_list, "count_only", TRUE)
-    )
-
-    new_records <- records(fb_records_obj)
-
-    fb_records_list[[length(fb_records_list) + 1L]] <- new_records[[1L]]
-
-    fb_records_list <- handle_duplicates(fb_records_list)
-
-  }
-
-  attr(fb_records_list, "remove") <- NULL
-
-  remove_records(fb_records_list)
-
-}
+# utils ------------------------------------------------------------------------
 
 #' @noRd
 
@@ -1294,84 +1168,6 @@ extract_ids <- function(x) {
   )
 
 }
-
-# remove records ---------------------------------------------------------------
-
-#' @noRd
-
-remove_records <- function(fb_records_list) {
-
-  remove <- attr(fb_records_list, "remove", TRUE)
-
-  contents <- lapply(fb_records_list, getElement, "content")
-
-  page_sizes <- vapply(contents, getElement, 0L, "pageSize")
-
-  if (is.null(remove)) {
-
-    total_page_sizes <- sum(page_sizes)
-
-    remove <- seq(1L, total_page_sizes)
-
-    n <- attr(fb_records_list, "nrec_dnld", TRUE)
-
-    remove <- remove[-seq_len(n)]
-
-  }
-
-  sq <- seq_along(fb_records_list)
-
-  excess_pages <- rep.int(sq, page_sizes)
-
-  excess_pages <- excess_pages[remove]
-
-  page_size_sum <- cumsum(page_sizes)
-
-  page_size_sum <- page_size_sum[-length(fb_records_list)]
-
-  records <- c(0L, page_size_sum)
-
-  records <- split(remove - records[excess_pages], excess_pages)
-
-  for (i in sq) {
-
-    ind <- records[[as.character(i)]]
-
-    fb_records_list_i <- fb_records_list[[i]]
-
-    content <- fb_records_list_i[["content"]]
-
-    results <- content[["results"]]
-
-    results[ind] <- NULL
-
-    content[["pageSize"]] <- length(results)
-
-    content[["results"]] <- results
-
-    fb_records_list_i[["content"]] <- content
-
-    if (!is.null(ind)) {
-
-      df <- attr(fb_records_list_i, "df", TRUE)
-
-      attr(fb_records_list_i, "df") <- df[-ind, ]
-
-    }
-
-    fb_records_list[[i]] <- fb_records_list_i
-
-  }
-
-  contents <- lapply(fb_records_list, getElement, "content")
-
-  fb_records_list[vapply(contents, getElement, 0L, "pageSize") == 0L] <- NULL
-
-  fb_records_list
-
-}
-
-# utils ------------------------------------------------------------------------
 
 #' @noRd
 
