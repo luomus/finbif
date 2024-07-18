@@ -19,7 +19,8 @@
 ^prepare-for-release$
 ^LICENSE\.md$
 ^CITATION\.cff$
-^tests/cassettes$
+^tests/fixtures$
+^tests/files$
 ^CRAN-SUBMISSION$
 ^sandbox$
 ^sentinels$
