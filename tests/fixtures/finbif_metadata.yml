@@ -1,0 +1,123 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/sources?lang=multi&pageSize=1000&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Wed, 17 Jul 2024 14:06:54 GMT
+      content-type: application/json; charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
+      x-download-options: noopen
+      etag: W/"278b-6/ixu+yFS8GW5HHn+ZHYT+/JyZY"
+      vary: Accept-Encoding
+      content-encoding: gzip
+      cache-control: public
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"currentPage":1,"pageSize":1000,"total":45,"results":[{"id":"KE.3","name":{"en":"Kotka
+        Collection Management System","fi":"Kotka kokoelmanhallintajärjestelmä","sv":"Kotka
+        samlingshanteringssystem"},"description":{"en":"Collection management system","fi":"Kokoelmanhallintajärjestelmä","sv":""}},{"id":"KE.7","name":{"en":"Hatikka
+        (old)","fi":"Hatikka (vanha)","sv":"Hatikka (gammal)"},"description":{"en":"Observation
+        system","fi":"Observation system","sv":"Observation system"}},{"id":"KE.8","name":{"en":"Fieldjournal.org
+        / Hatikka","fi":"Hatikka","sv":"Fieldjournal.org / Hatikka"},"description":{"xml:lang":"en","content":"Fieldjournal.org.
+        Observation system.","en":"Fieldjournal.org. Observation system.","fi":"","sv":""}},{"id":"KE.23","name":{"en":"Nest
+        Card System","fi":"Pesäkorttirekisteri","sv":"Nest Card System"},"description":{"xml:lang":"en","content":"Admin
+        system for nest card monitoring study","en":"Admin system for nest card monitoring
+        study","fi":"","sv":""}},{"id":"KE.24","name":{"en":"Birds of prey nest card
+        system","fi":"Petolintujen pesäseuranta","sv":"Rovfåglar häckar kort system"},"description":{"xml:lang":"en","content":"Birds
+        of prey nest card system","en":"Birds of prey nest card system","fi":"","sv":""}},{"id":"KE.41","name":{"en":"Haliaeetus","fi":"Haliaeetus","sv":"Haliaeetus"},"description":{"en":"White
+        tailed sea eagle database system","fi":"Merikotkan pesäseurannan tietojärjestelmä","sv":""}},{"id":"KE.42","name":{"en":"Pandion","fi":"Pandion","sv":"Pandion"},"description":{"xml:lang":"en","content":"Osprey
+        monitoring database system","en":"Osprey monitoring database system","fi":"","sv":""}},{"id":"KE.67","name":{"en":"The
+        Finnish Ringing Centre (TIPU)","fi":"Rengastustoimiston keskustietojärjestelmä
+        (TIPU)","sv":"Finlands Ringmärkningsbyrån (TIPU)"},"description":{"xml:lang":"en","content":"Web
+        based admin system for managing bird ringing data","en":"Web based admin system
+        for managing bird ringing data","fi":"","sv":""}},{"id":"KE.102","name":{"en":"ULKO","fi":"ULKO","sv":"ULKO"},"description":{"xml:lang":"fi","content":"Postinvälitys
+        ulkomaisten rengastuskeskusten ja suomalaisen löytäjän välillä.","en":"","fi":"Postinvälitys
+        ulkomaisten rengastuskeskusten ja suomalaisen löytäjän välillä.","sv":""}},{"id":"KE.167","name":{"en":"National
+        vascular plant database Kastikka","fi":"Putkilokasvitietokanta Kastikka","sv":"Nationella
+        kärlväxtdatabas Kastikka"},"description":{"xml:lang":"fi","content":"Putkilokasvitietokanta","en":"","fi":"Putkilokasvitietokanta","sv":""}},{"id":"KE.176","name":{"en":"Löydös","fi":"Löydös","sv":"Löydös"},"description":{"xml:lang":"en","content":"An
+        open form to report for example a found rings, nature observations, spring
+        observations, etc","en":"An open form to report for example a found rings,
+        nature observations, spring observations, etc","fi":"","sv":""}},{"id":"KE.341","name":{"en":"Satellite
+        Data Management System","fi":"Satelliittidatanhallintajärjestelmä","sv":"Satellite
+        data hanteringssystem"}},{"id":"KE.383","name":{"en":"Lintulauta","fi":"Lintulauta","sv":"Lintulauta"},"description":{"en":"Talvilintujen
+        ruokintapaikkaseurannan järjestelmä","fi":"Talvilintujen ruokintapaikkaseurannan
+        järjestelmä","sv":"Talvilintujen ruokintapaikkaseurannan järjestelmä"}},{"id":"KE.388","name":{"en":"Lajistore","fi":"Lajistore","sv":"Lajistore"}},{"id":"KE.389","name":{"en":"Laji.fi
+        / Notebook","fi":"Laji.fi / Vihko","sv":"Laji.fi / Skrivbok"},"description":{"en":"Lajitietokeskuksen
+        Laji.fi-portaali sekä Vihko-havaintopalvelu, jotka käyttävät api.laji.fi-rajapintaa.","fi":"Lajitietokeskuksen
+        Laji.fi-portaali sekä Vihko-havaintopalvelu, jotka käyttävät api.laji.fi-rajapintaa.","sv":"Lajitietokeskuksen
+        Laji.fi-portaali sekä Vihko-havaintopalvelu, jotka käyttävät api.laji.fi-rajapintaa."}},{"id":"KE.398","name":{"en":"FinBIF
+        Data Warehouse API / ETL","fi":"Lajitietokeskuksen tietovarasto API / ETL","sv":"FinBIF
+        Datalager API / ETL"},"description":{"xml:lang":"en","content":"Extract-Transform-Load
+        (ETL) to Laji-Data Warehouse, query API and management console","en":"Extract-Transform-Load
+        (ETL) to Laji-Data Warehouse, query API and management console","fi":"","sv":""}},{"id":"KE.421","name":{"en":"Itämeren
+        Vieraslajit","fi":"Itämeren Vieraslajit","sv":"Itämeren Vieraslajit"}},{"id":"KE.422","name":{"en":"Vierasnisäkäslajit
+        Suomessa","fi":"Vierasnisäkäslajit Suomessa","sv":"Vierasnisäkäslajit Suomessa"}},{"id":"KE.461","name":{"en":"Butterfly
+        Atlas","fi":"Suurperhosatlas","sv":"Fjärils Atlas"},"description":{"en":"Larry
+        Huldenin tiedostoista viety SQL Serveriin, jonne generoitu dwc+xml dokkarit,
+        jotka viedään tietovarastoon","fi":"Larry Huldenin tiedostoista viety SQL
+        Serveriin, jonne generoitu dwc+xml dokkarit, jotka viedään tietovarastoon","sv":"Larry
+        Huldenin tiedostoista viety SQL Serveriin, jonne generoitu dwc+xml dokkarit,
+        jotka viedään tietovarastoon"}},{"id":"KE.481","name":{"en":"NAFI (old data)","fi":"NAFI
+        (vanha data)","sv":"NAFI (gammal data)"},"description":{"xml:lang":"fi","content":"Päiväperhosseurannan
+        vanha data","en":"","fi":"Päiväperhosseurannan vanha data","sv":""}},{"id":"KE.621","name":{"en":"Kalahavainnot.fi","fi":"Kalahavainnot.fi","sv":"Kalahavainnot.fi"}},{"id":"KE.641","name":{"en":"Ilmari","fi":"Ilmari","sv":"Ilmari"},"description":{"en":"Mobile
+        laji.fi app","fi":"Mobile laji.fi app","sv":"Mobile laji.fi app"}},{"id":"KE.681","name":{"en":"Taskulaji","fi":"Taskulaji","sv":"Taskulaji"},"description":{"en":"Laji.fi
+        client for Sailfish OS","fi":"Laji.fi client for Sailfish OS","sv":"Laji.fi
+        client for Sailfish OS"}},{"id":"KE.821","name":{"en":"Ilmari","fi":"Ilmari","sv":"Ilmari"},"description":{"en":"Mobile
+        laji.fi app","fi":"Mobile laji.fi app","sv":"Mobile laji.fi app"}},{"id":"KE.841","name":{"en":"sienitunnistus.fi","fi":"sienitunnistus.fi","sv":"sienitunnistus.fi"},"description":{"en":"Automaattinen
+        sienitunnistus","fi":"Automaattinen sienitunnistus","sv":"Automaattinen sienitunnistus"}},{"id":"KE.861","name":{"en":"Viekas","fi":"Viekas","sv":"Viekas"},"description":{"en":"Viekas
+        portal","fi":"Viekas portal","sv":"Viekas portal"}},{"id":"KE.881","name":{"en":"Earthcape","fi":"Earthcape","sv":"Earthcape"},"description":{"en":"Collection
+        management software developed by Evgeniy Meyke","fi":"Collection management
+        software developed by Evgeniy Meyke","sv":"Collection management software
+        developed by Evgeniy Meyke"}},{"id":"KE.901","name":{"en":"iNaturalist","fi":"iNaturalist","sv":"iNaturalist"},"description":{"xml:lang":"en","content":"iNaturalist
+        is a global nature observation system and social citizen science platform.
+        It focuses on connecting observations to people who have the skills to identify
+        them, in order to get observations peer-reviewed and confirmed.\n\niNaturalist
+        is a joint initiative of the California Academy of Sciences and the National
+        Geographic Society.","en":"iNaturalist is a global nature observation system
+        and social citizen science platform. It focuses on connecting observations
+        to people who have the skills to identify them, in order to get observations
+        peer-reviewed and confirmed.\n\niNaturalist is a joint initiative of the California
+        Academy of Sciences and the National Geographic Society.","fi":"","sv":""}},{"id":"KE.921","name":{"en":"LajiGIS","fi":"LajiGIS","sv":"LajiGIS"},"description":{"xml:lang":"en","content":"Temporary
+        database that FinBIF can access to read LajiGIS data into FinBIF","en":"Temporary
+        database that FinBIF can access to read LajiGIS data into FinBIF","fi":"","sv":""}},{"id":"KE.941","name":{"en":"Zoobenthos
+        database - POHJE","fi":"Pohjaeläintietojärjestelmä - POHJE","sv":""}},{"id":"KE.981","name":{"en":"FinBIF
+        Data Bank","fi":"Lajitietokeskuksen aineistopankki","sv":"FinBIF Datasägarna"},"description":{"en":"Files
+        uploaded to FinBIF Data Bank as secondary data","fi":"Laji.fi:n Aineistopankkiin
+        ladatut sekundaaridatat","sv":""}},{"id":"KE.1021","name":{"xml:lang":"fi","content":"LUKE","en":"","fi":"LUKE","sv":""},"description":{"xml:lang":"en","content":"Luke
+        data to dw","en":"Luke data to dw","fi":"","sv":""}},{"id":"KE.1102","name":{"en":"eBird","fi":"eBird","sv":"eBird"}},{"id":"KE.1161","name":{"en":"Vieraslajit.fi","fi":"Vieraslajit.fi","sv":"Vieraslajit.fi"},"description":{"xml:lang":"en","content":"Invasive
+        alien species portal of Finland","en":"Invasive alien species portal of Finland","fi":"","sv":""}},{"id":"KE.1201","name":{"en":"LoLIFE
+        APP","fi":"LoLIFE APP","sv":"LoLIFE APP"}},{"id":"KE.1221","name":{"en":"Mobile
+        Nature Notebook","fi":"Mobiilivihko","sv":"Mobil Skrivbok"}},{"id":"KE.1321","name":{"xml:lang":"fi","content":"Retkikasvio
+        (iOS, Android)","en":"","fi":"Retkikasvio (iOS, Android)","sv":""},"description":{"xml:lang":"en","content":"Botanical
+        field guide (iOS, Android)","en":"Botanical field guide (iOS, Android)","fi":"","sv":""}},{"id":"KE.1381","name":{"en":"City
+        of Tampere","fi":"Tampereen kaupunki","sv":"City of Tampere"}},{"id":"KE.1421","name":{"en":"City
+        of Espoo","fi":"Espoon kaupunki","sv":""}},{"id":"KE.1481","name":{"en":"Tiira.fi","fi":"Tiira.fi","sv":"Tiira.fi"}},{"id":"KE.1501","name":{"en":"YÖPETI","fi":"YÖPETI","sv":"YÖPETI"},"description":{"xml:lang":"en","content":"Finnish
+        Enviromental Institute Noctua database","en":"Finnish Enviromental Institute
+        Noctua database","fi":"","sv":""}},{"id":"KE.1681","name":{"en":"Helsinki
+        Invasive Species App","fi":"Helsingin Vieraslajisovellus","sv":"Helsingfors
+        invasiva arter app"}},{"id":"KE.1701","name":{"en":"Pinnasieppo mobile application","fi":"Pinnasieppo-mobiilisovellus","sv":"Pinnasieppo-mobilapplikation"}},{"id":"KE.1721","name":{"en":"Crowdsorsa","fi":"Crowdsorsa","sv":"Crowdsorsa"}},{"id":"KE.1761","name":{"en":"FinBIF
+        Trait Database","fi":"FinBIF Trait Database","sv":"FinBIF Trait Database"},"description":{"en":"Backend
+        API for Trait DB. Part of laji-backend.","fi":"Backend API for Trait DB. Part
+        of laji-backend.","sv":"Backend API for Trait DB. Part of laji-backend."}}],"lastPage":1,"@context":"http://schema.laji.fi/context/informationSystem.jsonld"}'
+  recorded_at: 2024-07-17 14:06:54 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0
