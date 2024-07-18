@@ -4,7 +4,11 @@ test_that("checking taxa works", {
 
   op <- options()
 
-  options(finbif_use_cache = FALSE, finbif_rate_limit = Inf)
+  cache <- tempfile()
+
+  dir.create(cache)
+
+  options(finbif_cache_path = cache, finbif_rate_limit = Inf)
 
   vcr::use_cassette("finbif_check_taxa", {
 
@@ -19,6 +23,8 @@ test_that("checking taxa works", {
       class = c("list", "finbif_taxa_list")
     )
   )
+
+  options(finbif_cache_path = NULL)
 
   options(op)
 

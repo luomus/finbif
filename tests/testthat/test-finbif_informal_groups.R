@@ -4,7 +4,11 @@ test_that("fetching informal groups works", {
 
   op <- options()
 
-  options(finbif_use_cache = FALSE, finbif_rate_limit = Inf)
+  cache <- tempfile()
+
+  dir.create(cache)
+
+  options(finbif_cache_path = cache, finbif_rate_limit = Inf)
 
   vcr::use_cassette("finbif_informal_groups", {
 
@@ -30,6 +34,8 @@ test_that("fetching informal groups works", {
   expect_equal(
     bryophytes, c("Bryophytes", "  --Hornworts", "  --Liverworts", "  --Mosses")
   )
+
+  options(finbif_cache_path = NULL)
 
   options(op)
 

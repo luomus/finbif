@@ -4,6 +4,10 @@ test_that("download imports work", {
 
   op <- options()
 
+  cache <- tempfile()
+
+  dir.create(cache)
+
   options(finbif_rate_limit = Inf)
 
   vcr::use_cassette("finbif_occurrence_load", {
@@ -15,7 +19,7 @@ test_that("download imports work", {
       quiet = TRUE
     )
 
-    options(finbif_cache_path = tempdir())
+    options(finbif_cache_path = cache)
 
     HBF_49381_zip_file <- finbif_occurrence_load(
       "HBF.49381.zip",
@@ -153,7 +157,8 @@ test_that("download imports work", {
     list(file = tmp)
   )
 
-  while (!file.exists(tmp) || length(url <- readLines(tmp)) < 2L) {}
+  while (!file.exists(tmp) || length(url <- readLines(tmp, warn = FALSE)) < 2) {
+  }
 
   options(finbif_dl_url = sub("/$", "", url[[1L]]))
 
@@ -232,6 +237,8 @@ test_that("download imports work", {
   )
 
   close(con)
+
+  options(finbif_cache_path = NULL)
 
   options(op)
 

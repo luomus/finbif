@@ -4,7 +4,11 @@ test_that("fetching metadata works", {
 
   op <- options()
 
-  options(finbif_use_cache = FALSE, finbif_rate_limit = Inf)
+  cache <- tempfile()
+
+  dir.create(cache)
+
+  options(finbif_cache_path = cache, finbif_rate_limit = Inf)
 
   vcr::use_cassette("finbif_metadata", {
 
@@ -18,6 +22,8 @@ test_that("fetching metadata works", {
     finbif_metadata("not_metadata"),
     "not_metadata not found in FinBIF metadata."
   )
+
+  options(finbif_cache_path = NULL)
 
   options(op)
 

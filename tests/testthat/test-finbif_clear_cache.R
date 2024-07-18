@@ -1,10 +1,14 @@
 test_that("clearing cache works", {
 
-  expect_null(finbif_clear_cache())
-
   op <- options()
 
-  options(finbif_cache_path = tempdir())
+  expect_null(finbif_clear_cache())
+
+  cache <- tempfile()
+
+  dir.create(cache)
+
+  options(finbif_cache_path = cache)
 
   expect_null(finbif_clear_cache())
 
@@ -15,6 +19,8 @@ test_that("clearing cache works", {
   options(finbif_cache_path = db)
 
   expect_null(finbif_clear_cache())
+
+  options(finbif_cache_path = NULL)
 
   options(op)
 

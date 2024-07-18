@@ -4,7 +4,11 @@ test_that("fetching collections works", {
 
   op <- options()
 
-  options(finbif_use_cache = FALSE, finbif_rate_limit = Inf)
+  cache <- tempfile()
+
+  dir.create(cache)
+
+  options(finbif_cache_path = cache, finbif_rate_limit = Inf)
 
   vcr::use_cassette("finbif_collections", {
 
@@ -25,6 +29,8 @@ test_that("fetching collections works", {
       "\n  Collections filter must be a logical vector\n"
     )
   )
+
+  options(finbif_cache_path = NULL)
 
   options(op)
 
