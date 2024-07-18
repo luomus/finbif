@@ -1431,7 +1431,15 @@ multi_req <- function(fb_records_obj) {
 
         ans_i <- ans[[i]]
 
-        ans_i[[filter_col]] <- filter_nms[[i]]
+        filter_nms_i <- filter_nms[[i]]
+
+        if (nrow(ans_i) < 1L) {
+
+          filter_nms_i <- character()
+
+        }
+
+        ans_i[[filter_col]]
 
         ans[[i]] <- ans_i
 
