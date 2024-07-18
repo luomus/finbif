@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Wed, 17 Jul 2024 14:06:54 GMT
+      date: Thu, 18 Jul 2024 12:01:34 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -119,5 +119,5 @@ http_interactions:
         Trait Database","fi":"FinBIF Trait Database","sv":"FinBIF Trait Database"},"description":{"en":"Backend
         API for Trait DB. Part of laji-backend.","fi":"Backend API for Trait DB. Part
         of laji-backend.","sv":"Backend API for Trait DB. Part of laji-backend."}}],"lastPage":1,"@context":"http://schema.laji.fi/context/informationSystem.jsonld"}'
-  recorded_at: 2024-07-17 14:06:54 GMT
+  recorded_at: 2024-07-18 12:01:34 GMT
   recorded_with: vcr/1.2.2, webmockr/0.9.0
