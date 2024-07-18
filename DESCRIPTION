@@ -39,6 +39,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests:
     blob,
+    callr,
     data.table,
     DBI,
     future,
@@ -48,7 +49,7 @@ Suggests:
     rmarkdown,
     RSQLite,
     testthat (>= 3.0.0),
-    vcr,
+    vcr (>= 0.6.0),
     webfakes
 Config/testthat/edition: 3
 X-schema.org-applicationCategory: Biodiversity
