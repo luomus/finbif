@@ -361,15 +361,7 @@ records_list_data_frame <- function(x) {
 
     xi <- x[[i]]
 
-    dfi <- attr(xi, "df")
-
-    if (is.null(dfi)) {
-
-      dfi <- records_df(xi)
-
-    }
-
-    df[[i]] <- dfi
+    df[[i]] <- attr(xi, "df")
 
   }
 
