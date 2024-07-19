@@ -64,8 +64,8 @@ finbif_request_token <- function(email, quiet = FALSE) {
 
       error <- parsed[["error"]]
 
-      msg <- sprintf(
-        "API request failed [%s]\n%s", error[["statusCode"]], error[["message"]]
+      msg <- paste0(
+        "API request failed [", error[["statusCode"]], "]\n", error[["message"]]
       )
 
       stop(msg, call. = FALSE)
