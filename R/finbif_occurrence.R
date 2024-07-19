@@ -300,11 +300,9 @@ occurrence <- function(fb_records_obj) {
 
   fb_occurrence_df <- unlist_cols(fb_occurrence_df)
 
-  fb_occurrence_df <- drop_na_col(fb_occurrence_df)
-
   names(fb_occurrence_df) <- names(select_user)
 
-  fb_occurrence_df
+  drop_na_col(fb_occurrence_df)
 
 }
 
