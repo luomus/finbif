@@ -244,8 +244,10 @@ api_get <- function(obj) {
 
     obj <- NULL
 
-    err_msg <- sprintf(
-      "API request failed [%s]\n%s>", resp[["status_code"]], parsed[["message"]]
+    error <- parsed[["error"]]
+
+    err_msg <- paste0(
+      "API request failed [", resp[["status_code"]], "]\n", error[["message"]]
     )
 
     stop(err_msg, call. = FALSE)
