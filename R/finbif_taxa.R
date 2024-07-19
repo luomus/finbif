@@ -28,8 +28,8 @@
 #' # Use partial matching
 #' finbif_taxa("Ursus", n = 10, "partial")
 #'
-#' # Get Sámi (Northern) name of Eurasian Eagle-owl
-#' common_name("Bubo bubo", "se")
+#' # Get Swedish name of Eurasian Eagle-owl
+#' common_name("Bubo bubo", "sv")
 #'
 #' # Get scientific name of "Otter"
 #' scientific_name("Otter")
