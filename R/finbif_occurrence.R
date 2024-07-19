@@ -1642,6 +1642,12 @@ finbif_last_mod <- function(
   filter
 ) {
 
+  if (missing(filter)) {
+
+    filter <- NULL
+
+  }
+
   res <- finbif_occurrence(
     ..., filter = filter, select = "load_date", order_by = "-load_date", n = 1L
   )
