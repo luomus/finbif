@@ -169,11 +169,11 @@ print.finbif_taxa_list <- function(
 
     rank <- ranks[[i]]
 
-    rank_is_null <- is.null(rank)
+    no_rank <- is.null(rank) || identical(rank, "")
 
     rank <- paste0(rank, ": ")
 
-    if (rank_is_null) {
+    if (no_rank) {
 
       rank <- ""
 
