@@ -370,7 +370,7 @@ records_list_data_frame <- function(x) {
   df <- do.call(rbind, df)
 
   record_id <- switch(
-    xi[["aggregate"]], none = "unit.unitId", xi[["select_query"]]
+    xi[["aggregate"]][[1L]], none = "unit.unitId", xi[["select_query"]]
   )
 
   record_id <- do.call(paste, df[, record_id, drop = FALSE])
