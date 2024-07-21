@@ -930,9 +930,11 @@ parse_filters <- function(fb_records_obj) {
 
   has_taxon <- any(finbif_filter_names %in% c("taxonId", "target"))
 
-  events_or_docs <- fb_records_obj[["aggregate"]] %in% c("events", "documents")
+  has_events_or_docs <- any(
+    fb_records_obj[["aggregate"]] %in% c("events", "documents")
+  )
 
-  if (has_taxon && events_or_docs) {
+  if (has_taxon && has_events_or_docs) {
 
     deferrable_error("Cannot use current aggregation and filter by taxon")
 
