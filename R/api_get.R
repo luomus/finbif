@@ -244,10 +244,8 @@ api_get <- function(obj) {
 
     obj <- NULL
 
-    error <- parsed[["error"]]
-
     err_msg <- paste0(
-      "API request failed [", resp[["status_code"]], "]\n", error[["message"]]
+      "API request failed [", resp[["status_code"]], "]\n", parsed[["message"]]
     )
 
     stop(err_msg, call. = FALSE)
