@@ -1581,15 +1581,9 @@ extract_facts <- function(fb_occurrence_df) {
 
         values_name <- var_names[[level_vls, vtype]]
 
-        values <- mapply(extract_fact, fb_occurrence_df[[values_name]], is_fact)
-
-        fact_value_is_na <- is.na(values)
-
-        if (!all(fact_value_is_na)) {
-
-          fb_occurrence_df[[fact]] <- values
-
-        }
+        fb_occurrence_df[[fact]] <- mapply(
+          extract_fact, fb_occurrence_df[[values_name]], is_fact
+        )
 
       }
 
