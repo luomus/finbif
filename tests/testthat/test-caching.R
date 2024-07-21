@@ -18,7 +18,7 @@ test_that("cache invalidation works", {
 
     finbif_occurrence(cache = 1e-09)
 
-    cached <- finbif_occurrence(cache = 1e-09)
+    cached <- finbif_occurrence(cache = TRUE)
 
   })
 
@@ -32,7 +32,7 @@ test_that("cache invalidation works", {
 
     finbif_occurrence(cache = 1e-09)
 
-    cached <- finbif_occurrence(cache = 1e-09)
+    cached <- finbif_occurrence(cache = TRUE)
 
   })
 
@@ -46,7 +46,7 @@ test_that("cache invalidation works", {
 
     finbif_occurrence(cache = 1e-09)
 
-    cached <- finbif_occurrence(cache = 1e-09)
+    cached <- finbif_occurrence(cache = TRUE)
 
   })
 

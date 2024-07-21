@@ -55,9 +55,9 @@ api_get <- function(obj) {
 
         created <- file.mtime(cache_file_path)
 
-        if (cache_is_valid(obj[["timeout"]], created)) {
+        cached_obj <- readRDS(cache_file_path)
 
-          cached_obj <- readRDS(cache_file_path)
+        if (cache_is_valid(cached_obj[["timeout"]], created)) {
 
           cached_obj[["from_cache"]] <- TRUE
 
