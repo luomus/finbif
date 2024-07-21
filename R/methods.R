@@ -530,7 +530,7 @@ print_extras <- function(obj) {
 
     sep <- ", "
 
-    if (nchars > width) {
+    if (isTRUE(nchars > width)) {
 
       sep <- ",\n"
 
