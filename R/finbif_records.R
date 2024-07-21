@@ -364,18 +364,17 @@ localise_labels <- function(labels_obj) {
 
 infer_aggregation <- function(aggregate) {
 
-  events_and_docs <- c("events", "documents")
+  single_agg <- c("none", "events", "documents")
 
   aggregations <- c(
-    "none", "records", "species", "taxa", "individuals", "pairs",
-    events_and_docs
+    single_agg, "none", "records", "species", "taxa", "individuals", "pairs"
   )
 
   aggregate <- match.arg(aggregate, aggregations, TRUE)
 
-  has_events_or_docs <- events_and_docs %in% aggregate
+  has_single_agg <- single_agg %in% aggregate
 
-  if (length(aggregate) > 1L && any(has_events_or_docs)) {
+  if (length(aggregate) > 1L && any(has_single_agg)) {
 
     deferrable_error(
       "Chosen aggregation cannot by combined with other aggregations"
