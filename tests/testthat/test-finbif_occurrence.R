@@ -217,7 +217,7 @@ test_that("fetching aggregated occurrences works", {
     )
 
     record_basis_aggregate <- finbif_occurrence(
-      select = "record_basis",
+      select = "basisOfRecord",
       aggregate = c("records", "species"),
       n = 5,
       exclude_na = TRUE,
