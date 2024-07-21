@@ -21,6 +21,8 @@ test_that("download imports work", {
 
     options(finbif_cache_path = cache)
 
+    finbif_clear_cache()
+
     HBF_49381_zip_file <- finbif_occurrence_load(
       "HBF.49381.zip",
       select = "short",
@@ -114,7 +116,7 @@ test_that("download imports work", {
     laji_data_xlsx, style = "json2", ignore_attr = "url"
   )
 
-  tmp <- tempfile()
+  tf <- tempfile()
 
   bg <- callr::r_bg(
     function(file) {
@@ -154,11 +156,10 @@ test_that("download imports work", {
       Sys.sleep(60L)
 
     },
-    list(file = tmp)
+    list(file = tf)
   )
 
-  while (!file.exists(tmp) || length(url <- readLines(tmp, warn = FALSE)) < 2) {
-  }
+  while (!file.exists(tf) || length(url <- readLines(tf, warn = FALSE)) < 2L) {}
 
   options(finbif_dl_url = sub("/$", "", url[[1L]]))
 

@@ -22,6 +22,8 @@ test_that("clearing cache works", {
 
   options(finbif_cache_path = NULL)
 
+  DBI::dbDisconnect(db)
+
   options(op)
 
 })
