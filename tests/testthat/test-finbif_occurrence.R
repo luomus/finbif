@@ -18,7 +18,9 @@ test_that("fetching occurrences works", {
 
   vcr::use_cassette("finbif_occurrence", {
 
-    count <- fb_occurrence(count_only = TRUE)
+    count <- finbif_occurrence(
+      "Plants", filter = c(date_range_ymd = 2023), count_only = TRUE
+    )
 
     birds <- capture.output(
       suppressMessages(
@@ -37,7 +39,9 @@ test_that("fetching occurrences works", {
             "collection_code",
             "red_list_status",
             "region",
-            "informal_groups"
+            "informal_groups",
+            "common_name",
+            "restriction_reason"
           ),
           filter = list(
             c(date_range_ymd = 2023),
@@ -53,7 +57,9 @@ test_that("fetching occurrences works", {
 
     hr778 <- finbif_occurrence(
       taxa = "Red algae",
-      filter = c(collection = "HR.778"), n = -1, quiet = TRUE
+      filter = c(collection = "HR.778"),
+      n = -1,
+      quiet = TRUE
     )
 
     hr778_no_records <- finbif_occurrence(
@@ -65,6 +71,44 @@ test_that("fetching occurrences works", {
       select = "municipality",
       filter_col = "set",
       quiet = TRUE
+    )
+
+    options(finbif_max_page_size = 20)
+
+    plants <- finbif_occurrence(
+      "Plants",
+      filter = list(date_range_ymd = 2023, subset = c(1, floor(count / 50))),
+      sample = TRUE,
+      n = "all",
+      quiet = TRUE
+    )
+
+    options(finbif_max_page_size = 5)
+
+    no_filter_error <- try(
+      finbif_occurrence(
+        filter = list(
+          not_filter = TRUE,
+          primary_habitat = list(M = "V"),
+          collection = finbif_collections(
+            taxonomic_coverage == "Coleoptera",
+            supercollections = TRUE,
+            nmin = NA
+          )
+        ),
+        n = 3e6
+      ),
+      silent = TRUE
+    )
+
+    coord_filter_error <- try(
+      finbif_occurrence(
+        filter = list(
+          primary_habitat = "M", coordinates = list(c(60, 68), c(20, 30))
+        ),
+        n = 0
+      ),
+      silent = TRUE
     )
 
     invalid_taxa_error <- try(
@@ -88,6 +132,16 @@ test_that("fetching occurrences works", {
   expect_snapshot(hr778)
 
   expect_snapshot(hr778_no_records)
+
+  expect_snapshot(plants)
+
+  expect_match(no_filter_error, "Invalid name in filter names")
+
+  expect_match(no_filter_error, "Cannot download more than")
+
+  expect_match(coord_filter_error, "Invalid coordinates: system not specified")
+
+  expect_match(coord_filter_error, "Cannot request less than 1 record")
 
   expect_equal(
     invalid_taxa_error[[1L]],
@@ -128,6 +182,76 @@ test_that("fetching occurrences works", {
   })
 
   expect_match(api_error, "API request failed")
+
+  finbif_clear_cache()
+
+  options(finbif_cache_path = NULL)
+
+  options(op)
+
+})
+
+test_that("fetching aggregated occurrences works", {
+
+  skip_on_cran()
+
+  op <- options()
+
+  cache <- tempfile()
+
+  dir.create(cache)
+
+  options(
+    finbif_cache_path = cache,
+    finbif_rate_limit = Inf,
+    finbif_max_page_size = 5,
+    finbif_use_async = FALSE
+  )
+
+  finbif_clear_cache()
+
+  vcr::use_cassette("finbif_occurrence_aggregate", {
+
+    record_basis_count <- finbif_occurrence(
+      select = "record_basis", aggregate = "records", count_only = TRUE
+    )
+
+    record_basis_aggregate <- finbif_occurrence(
+      select = "record_basis",
+      aggregate = c("records", "species"),
+      n = 5,
+      exclude_na = TRUE,
+      dwc = TRUE
+    )
+
+    aggregate_error <- try(
+      finbif_occurrence(
+        "Birds",
+        select = "-event_id",
+        aggregate = c("events", "species"),
+        check_taxa = FALSE
+      ),
+      silent = TRUE
+    )
+
+  })
+
+  expect_type(record_basis_count, "integer")
+
+  expect_snapshot(record_basis_aggregate)
+
+  expect_match(
+    aggregate_error,
+    "Chosen aggregation cannot by combined with other aggregations"
+  )
+
+  expect_match(
+    aggregate_error,
+    "Cannot use current aggregation and filter by taxon"
+  )
+
+
+  finbif_clear_cache()
 
   options(finbif_cache_path = NULL)
 
