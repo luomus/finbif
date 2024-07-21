@@ -16,13 +16,13 @@ records <- function(fb_records_obj) {
 
   fb_records_obj[["var_type"]] <- var_type
 
-  fb_records_obj[["n"]] <- as.integer(fb_records_obj[["n"]])
-
   query <- list()
 
   defer_errors({
 
     check_n(fb_records_obj)
+
+    fb_records_obj[["n"]] <- as.integer(fb_records_obj[["n"]])
 
     aggregate <- infer_aggregation(fb_records_obj[["aggregate"]])
 
@@ -1179,7 +1179,7 @@ check_n <- function(fb_records_obj) {
 
   nmax <- fb_records_obj[["nmax"]]
 
-  if (n > nmax) {
+  if (as.numeric(n) > nmax) {
 
     msg <- paste("Cannot download more than", nmax, "records")
 
