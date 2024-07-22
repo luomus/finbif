@@ -10,63 +10,74 @@ test_that("clearing cache works", {
 
   dir.create(cache)
 
-  db <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
+  if (
+    requireNamespace("DBI", quietly = TRUE) &&
+    requireNamespace("RSQLite", quietly = TRUE)
+  ) {
 
-  finbif_clear_cache()
+    db <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
 
-  vcr::use_cassette("finbif_last_mod1", {
+    finbif_clear_cache()
 
-    last_mod <- finbif_last_mod()
+    if (requireNamespace("vcr", quietly = TRUE)) {
 
-    finbif_update_cache()
+      vcr::use_cassette("finbif_last_mod1", {
 
-    last_mod <- finbif_last_mod()
+        last_mod <- finbif_last_mod()
 
-  })
+        finbif_update_cache()
 
-  expect_s3_class(last_mod[[1L]], "Date")
+        last_mod <- finbif_last_mod()
 
-  finbif_clear_cache()
+      })
 
-  options(finbif_cache_path = cache)
+      expect_s3_class(last_mod[[1L]], "Date")
 
-  finbif_clear_cache()
+      finbif_clear_cache()
 
-  vcr::use_cassette("finbif_last_mod2", {
+      options(finbif_cache_path = cache)
 
-    last_mod <- finbif_last_mod()
+      finbif_clear_cache()
 
-    finbif_update_cache()
+      vcr::use_cassette("finbif_last_mod2", {
 
-    last_mod <- finbif_last_mod()
+        last_mod <- finbif_last_mod()
 
-  })
+        finbif_update_cache()
 
-  expect_s3_class(last_mod[[1L]], "Date")
+        last_mod <- finbif_last_mod()
 
-  finbif_clear_cache()
+      })
 
-  options(finbif_cache_path = db)
+      expect_s3_class(last_mod[[1L]], "Date")
 
-  finbif_clear_cache()
+      finbif_clear_cache()
 
-  vcr::use_cassette("finbif_last_mod3", {
+      options(finbif_cache_path = db)
 
-    last_mod <- finbif_last_mod()
+      finbif_clear_cache()
 
-    finbif_update_cache()
+      vcr::use_cassette("finbif_last_mod3", {
 
-    last_mod <- finbif_last_mod()
+        last_mod <- finbif_last_mod()
 
-  })
+        finbif_update_cache()
 
-  expect_s3_class(last_mod[[1L]], "Date")
+        last_mod <- finbif_last_mod()
 
-  finbif_clear_cache()
+      })
 
-  options(finbif_cache_path = NULL)
+      expect_s3_class(last_mod[[1L]], "Date")
 
-  DBI::dbDisconnect(db)
+      finbif_clear_cache()
+
+      options(finbif_cache_path = NULL)
+
+      DBI::dbDisconnect(db)
+
+    }
+
+  }
 
   options(op)
 

@@ -12,17 +12,24 @@ test_that("clearing cache works", {
 
   expect_null(finbif_clear_cache())
 
-  db <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
+  if (
+    requireNamespace("DBI", quietly = TRUE) &&
+    requireNamespace("RSQLite", quietly = TRUE)
+  ) {
 
-  DBI::dbCreateTable(db, "finbif_cache", c(hash = "TEXT"))
+    db <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
 
-  options(finbif_cache_path = db)
+    DBI::dbCreateTable(db, "finbif_cache", c(hash = "TEXT"))
 
-  expect_null(finbif_clear_cache())
+    options(finbif_cache_path = db)
 
-  options(finbif_cache_path = NULL)
+    expect_null(finbif_clear_cache())
 
-  DBI::dbDisconnect(db)
+    options(finbif_cache_path = NULL)
+
+    DBI::dbDisconnect(db)
+
+  }
 
   options(op)
 

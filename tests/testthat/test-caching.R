@@ -8,55 +8,78 @@ test_that("cache invalidation works", {
 
   dir.create(cache)
 
-  db <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
-
   options(finbif_rate_limit = Inf)
 
   finbif_clear_cache()
 
-  vcr::use_cassette("finbif_cache_timeout", {
+  if (requireNamespace("vcr", quietly = TRUE)) {
 
-    finbif_occurrence(cache = 1e-09)
+    vcr::use_cassette("finbif_cache_timeout", {
 
-    cached <- finbif_occurrence(cache = TRUE)
+      finbif_occurrence(cache = 1e-09)
 
-  })
+      cached <- finbif_occurrence(cache = TRUE)
 
-  expect_snapshot(cached)
+    })
+
+    expect_snapshot(cached)
+
+  }
 
   finbif_clear_cache()
 
   options(finbif_cache_path = cache)
 
-  vcr::use_cassette("finbif_cache_file_timeout", {
+  if (requireNamespace("vcr", quietly = TRUE)) {
 
-    finbif_occurrence(cache = 1e-09)
+    vcr::use_cassette("finbif_cache_file_timeout", {
 
-    cached <- finbif_occurrence(cache = TRUE)
+      finbif_occurrence(cache = 1e-09)
 
-  })
+      cached <- finbif_occurrence(cache = TRUE)
 
-  expect_snapshot(cached)
+    })
+
+    expect_snapshot(cached)
+
+  }
 
   finbif_clear_cache()
 
-  options(finbif_cache_path = db)
+  if (
+    requireNamespace("DBI", quietly = TRUE) &&
+    requireNamespace("RSQLite", quietly = TRUE)
+  ) {
 
-  vcr::use_cassette("finbif_cache_db_timeout", {
+    db <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
 
-    finbif_occurrence(cache = 1e-09)
+    options(finbif_cache_path = db)
 
-    cached <- finbif_occurrence(cache = TRUE)
+  }
 
-  })
+  if (requireNamespace("vcr", quietly = TRUE)) {
 
-  expect_snapshot(cached)
+    vcr::use_cassette("finbif_cache_db_timeout", {
+
+      finbif_occurrence(cache = 1e-09)
+
+      cached <- finbif_occurrence(cache = TRUE)
+
+    })
+
+    expect_snapshot(cached)
+
+  }
 
   finbif_clear_cache()
 
   options(finbif_cache_path = NULL)
 
-  DBI::dbDisconnect(db)
+  if (requireNamespace("DBI", quietly = TRUE)) {
+
+    DBI::dbDisconnect(db)
+
+  }
 
   options(op)
 

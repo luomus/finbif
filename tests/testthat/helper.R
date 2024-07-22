@@ -1,5 +1,3 @@
-library("vcr")
-
 branch <- Sys.getenv("BRANCH")
 
 gh_ref <- Sys.getenv("GITHUB_REF_NAME")
@@ -16,13 +14,19 @@ if (is_dev_branch && has_dev_token) {
 
 }
 
-invisible(vcr::vcr_configure(
-  dir = vcr::vcr_test_path("fixtures"),
-  filter_sensitive_data = list(
-    "<finbif_token>" = Sys.getenv("FINBIF_ACCESS_TOKEN"),
-    "<finbif_dev_token>" = Sys.getenv("FINBIF_DEV_ACCESS_TOKEN"),
-    "<finbif_dl_token>" = Sys.getenv("FINBIF_RESTRICTED_FILE_ACCESS_TOKEN")
-  )
-))
+if (requireNamespace("vcr", quietly = TRUE)) {
 
-vcr::check_cassette_names()
+  library("vcr")
+
+  invisible(vcr::vcr_configure(
+    dir = vcr::vcr_test_path("fixtures"),
+    filter_sensitive_data = list(
+      "<finbif_token>" = Sys.getenv("FINBIF_ACCESS_TOKEN"),
+      "<finbif_dev_token>" = Sys.getenv("FINBIF_DEV_ACCESS_TOKEN"),
+      "<finbif_dl_token>" = Sys.getenv("FINBIF_RESTRICTED_FILE_ACCESS_TOKEN")
+    )
+  ))
+
+  vcr::check_cassette_names()
+
+}

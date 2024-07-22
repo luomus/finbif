@@ -16,21 +16,25 @@ test_that("searching for taxa works", {
 
   finbif_clear_cache()
 
-  vcr::use_cassette("finbif_taxa", {
+  if (requireNamespace("vcr", quietly = TRUE)) {
 
-    bubo_bubo <- common_name("Bubo bubo")
+    vcr::use_cassette("finbif_taxa", {
 
-    otter <- scientific_name("Otter")
+      bubo_bubo <- common_name("Bubo bubo")
 
-    otter_id <- taxon_id("Otter")
+      otter <- scientific_name("Otter")
 
-  })
+      otter_id <- taxon_id("Otter")
 
-  expect_equal(bubo_bubo, "Eurasian Eagle-owl")
+    })
 
-  expect_equal(otter, "Lutra lutra")
+    expect_equal(bubo_bubo, "Eurasian Eagle-owl")
 
-  expect_equal(otter_id, "MX.47169")
+    expect_equal(otter, "Lutra lutra")
+
+    expect_equal(otter_id, "MX.47169")
+
+  }
 
   options(finbif_cache_path = NULL, finbif_email = NULL)
 

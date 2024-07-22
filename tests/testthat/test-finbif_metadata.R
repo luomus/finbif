@@ -12,45 +12,49 @@ test_that("fetching metadata works", {
     finbif_use_cache = 1, finbif_cache_path = cache, finbif_rate_limit = Inf
   )
 
-  vcr::use_cassette("finbif_metadata", {
+  if (requireNamespace("vcr", quietly = TRUE)) {
 
-    sources <- finbif_metadata("source", "ru")
+    vcr::use_cassette("finbif_metadata", {
 
-    regulatory_status <- finbif_metadata("regulatory_status")
+      sources <- finbif_metadata("source", "ru")
 
-    taxon_rank <- finbif_metadata("taxon_rank")
+      regulatory_status <- finbif_metadata("regulatory_status")
 
-    country <- finbif_metadata("country")
+      taxon_rank <- finbif_metadata("taxon_rank")
 
-    region <- finbif_metadata("region")
+      country <- finbif_metadata("country")
 
-    bio_province <- finbif_metadata("bio_province")
+      region <- finbif_metadata("region")
 
-    bird_assoc_area <- finbif_metadata("bird_assoc_area")
+      bio_province <- finbif_metadata("bio_province")
 
-    finnish_occurrence_status <- finbif_metadata("finnish_occurrence_status")
+      bird_assoc_area <- finbif_metadata("bird_assoc_area")
 
-    restriction_level <- finbif_metadata("restriction_level")
+      finnish_occurrence_status <- finbif_metadata("finnish_occurrence_status")
 
-  })
+      restriction_level <- finbif_metadata("restriction_level")
 
-  expect_snapshot(sources)
+    })
 
-  expect_snapshot(regulatory_status)
+    expect_snapshot(sources)
 
-  expect_snapshot(taxon_rank)
+    expect_snapshot(regulatory_status)
 
-  expect_snapshot(country)
+    expect_snapshot(taxon_rank)
 
-  expect_snapshot(region)
+    expect_snapshot(country)
 
-  expect_snapshot(bio_province)
+    expect_snapshot(region)
 
-  expect_snapshot(bird_assoc_area)
+    expect_snapshot(bio_province)
 
-  expect_snapshot(finnish_occurrence_status)
+    expect_snapshot(bird_assoc_area)
 
-  expect_snapshot(restriction_level)
+    expect_snapshot(finnish_occurrence_status)
+
+    expect_snapshot(restriction_level)
+
+  }
 
   expect_error(
     finbif_metadata("not_metadata"),

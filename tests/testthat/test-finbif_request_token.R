@@ -6,55 +6,62 @@ test_that("requesting token works", {
 
   tf <- tempfile()
 
-  bg <- callr::r_bg(
-    function(file, version) {
+  if (
+    requireNamespace("callr", quietly = TRUE) &&
+    requireNamespace("webfakes", quietly = TRUE)
+  ) {
 
-      app <- webfakes::new_app()
+    bg <- callr::r_bg(
+      function(file, version) {
 
-      app[["post"]](
-        sprintf("/%s/api-users", version),
-        function(req, res) {
-          res[["send_json"]]("")
-        }
-      )
+        app <- webfakes::new_app()
 
-      app[["post"]](
-        "/test-error/api-users",
-        function(req, res) {
-          res[["set_status"]](404L)
-          res[["send_json"]]("")
-        }
-      )
+        app[["post"]](
+          sprintf("/%s/api-users", version),
+          function(req, res) {
+            res[["send_json"]]("")
+          }
+        )
 
-      web <- webfakes::local_app_process(app)
+        app[["post"]](
+          "/test-error/api-users",
+          function(req, res) {
+            res[["set_status"]](404L)
+            res[["send_json"]]("")
+          }
+        )
 
-      cat(c(web[["url"]](), "."), file = file, sep = "\n")
+        web <- webfakes::local_app_process(app)
 
-      Sys.sleep(60L)
+        cat(c(web[["url"]](), "."), file = file, sep = "\n")
 
-    },
-    list(file = tf, version = getOption("finbif_api_version"))
-  )
+        Sys.sleep(60L)
 
-  while (!file.exists(tf) || length(url <- readLines(tf, warn = FALSE)) < 2L) {}
+      },
+      list(file = tf, version = getOption("finbif_api_version"))
+    )
 
-  options(finbif_api_url = sub("/$", "", url[[1L]]), finbif_rate_limit = Inf)
+    while (!file.exists(tf) || length(url <- readLines(tf, warn = FALSE)) < 2L) {}
 
-  tokn <- Sys.getenv("FINBIF_ACCESS_TOKEN")
+    options(finbif_api_url = sub("/$", "", url[[1L]]), finbif_rate_limit = Inf)
 
-  Sys.unsetenv("FINBIF_ACCESS_TOKEN")
+    tokn <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
-  expect_error(finbif_occurrence(), "Access token for FinBIF has not been set")
+    Sys.unsetenv("FINBIF_ACCESS_TOKEN")
 
-  expect_message(
-    finbif_request_token("em"), "A personal access token for api.laji.fi"
-  )
+    expect_error(finbif_occurrence(), "Access token for FinBIF has not been set")
 
-  options(finbif_api_version = "test-error")
+    expect_message(
+      finbif_request_token("em"), "A personal access token for api.laji.fi"
+    )
 
-  expect_error(
-    finbif_request_token("em"), "API request failed"
-  )
+    options(finbif_api_version = "test-error")
+
+    expect_error(
+      finbif_request_token("em"), "API request failed"
+    )
+
+  }
 
   Sys.setenv(FINBIF_ACCESS_TOKEN = tokn)
 
