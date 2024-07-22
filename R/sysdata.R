@@ -1074,7 +1074,7 @@ record_reliability <- function() {
   r <- c("RELIABLE", "UNDEFINED", "UNRELIABLE")
 
   reliability <- list(
-    code = c("reliable", "unassessed", "Unreliable"),
+    code = c("reliable", "unassessed", "unreliable"),
     name_en = c("Reliable", "Unassessed", "Unreliable"),
     name_fi = c("Luotettava", "Neutraali", "Ep\u00e4luotettava"),
     name_sv = c("P\u00e5litlig", "Neutral", "Op\u00e5litliga")
