@@ -48,7 +48,7 @@ test_that("cache invalidation works", {
 
   if (
     requireNamespace("DBI", quietly = TRUE) &&
-    requireNamespace("RSQLite", quietly = TRUE)
+      requireNamespace("RSQLite", quietly = TRUE)
   ) {
 
     db <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")

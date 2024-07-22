@@ -14,7 +14,7 @@ test_that("clearing cache works", {
 
   if (
     requireNamespace("DBI", quietly = TRUE) &&
-    requireNamespace("RSQLite", quietly = TRUE)
+      requireNamespace("RSQLite", quietly = TRUE)
   ) {
 
     db <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")

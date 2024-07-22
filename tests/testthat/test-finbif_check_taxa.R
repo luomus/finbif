@@ -14,7 +14,7 @@ test_that("checking taxa works", {
 
   if (requireNamespace("vcr", quietly = TRUE)) {
 
-  vcr::use_cassette("finbif_check_taxa", {
+    vcr::use_cassette("finbif_check_taxa", {
 
       capture.output(
         cygnus_cygnus <- print(

@@ -14,7 +14,7 @@ test_that("download imports work", {
 
     vcr::use_cassette("finbif_occurrence_load", {
 
-      HBF_49381_zip_mem <- finbif_occurrence_load(
+      hbf_49381_zip_mem <- finbif_occurrence_load(
         "HBF.49381.zip",
         select = "short",
         tzone = "Etc/UTC",
@@ -25,26 +25,26 @@ test_that("download imports work", {
 
       finbif_clear_cache()
 
-      HBF_49381_zip_file <- finbif_occurrence_load(
+      hbf_49381_zip_file <- finbif_occurrence_load(
         "HBF.49381.zip",
         select = "short",
         tzone = "Etc/UTC",
         quiet = TRUE
       )
 
-      HBF_49382_zip_file <- finbif_occurrence_load(
+      hbf_49382_zip_file <- finbif_occurrence_load(
         "HBF.49382.zip",
         tzone = "Etc/UTC",
         quiet = TRUE
       )
 
-      HBF_6968_zip_file <- finbif_occurrence_load(
+      hbf_6968_zip_file <- finbif_occurrence_load(
         "HBF.6968.zip",
         tzone = "Etc/UTC",
         quiet = TRUE
       )
 
-      HBF_6960_zip_file <- finbif_occurrence_load(
+      hbf_6960_zip_file <- finbif_occurrence_load(
         "HBF.6960.zip",
         tzone = "Etc/UTC",
         quiet = TRUE,
@@ -74,23 +74,23 @@ test_that("download imports work", {
     })
 
     expect_snapshot_value(
-      HBF_49381_zip_mem, style = "json2", ignore_attr = "url"
+      hbf_49381_zip_mem, style = "json2", ignore_attr = "url"
     )
 
     expect_snapshot_value(
-      HBF_49381_zip_file, style = "json2", ignore_attr = "url"
+      hbf_49381_zip_file, style = "json2", ignore_attr = "url"
     )
 
     expect_snapshot_value(
-      HBF_49382_zip_file, style = "json2", ignore_attr = "url"
+      hbf_49382_zip_file, style = "json2", ignore_attr = "url"
     )
 
     expect_snapshot_value(
-      HBF_6968_zip_file, style = "json2", ignore_attr = "url"
+      hbf_6968_zip_file, style = "json2", ignore_attr = "url"
     )
 
     expect_snapshot_value(
-      HBF_6960_zip_file, style = "json2", ignore_attr = "url"
+      hbf_6960_zip_file, style = "json2", ignore_attr = "url"
     )
 
     expect_equal(
@@ -120,11 +120,11 @@ test_that("download imports work", {
 
   }
 
-  tf <- tempfile()
+  f <- tempfile()
 
   if (
     requireNamespace("callr", quietly = TRUE) &&
-    requireNamespace("webfakes", quietly = TRUE)
+      requireNamespace("webfakes", quietly = TRUE)
   ) {
 
     bg <- callr::r_bg(
@@ -165,10 +165,10 @@ test_that("download imports work", {
         Sys.sleep(60L)
 
       },
-      list(file = tf)
+      list(file = f)
     )
 
-    while (!file.exists(tf) || length(url <- readLines(tf, warn = FALSE)) < 2L) {}
+    while (!file.exists(f) || length(url <- readLines(f, warn = FALSE)) < 2L) {}
 
     options(finbif_dl_url = sub("/$", "", url[[1L]]))
 
@@ -186,7 +186,7 @@ test_that("download imports work", {
     Sys.unsetenv("FINBIF_FILE_SIZE_LIMIT")
 
     expect_warning(
-      tun_fi_HBF_49381 <- finbif_occurrence_load(
+      tun_fi_hbf_49381 <- finbif_occurrence_load(
         "https://tun.fi/HBF.49381",
         facts = list(
           record = c("imageCount", "imageUrl", "areaInSqMeters", "not_a_fact")
@@ -201,20 +201,20 @@ test_that("download imports work", {
     )
 
     expect_snapshot_value(
-      tun_fi_HBF_49381, style = "json2", ignore_attr = "url"
+      tun_fi_hbf_49381, style = "json2", ignore_attr = "url"
     )
 
     options(finbif_cache_path = NULL)
 
     capture.output(
-      HBF_49381 <- finbif_occurrence_load(
+      hbf_49381 <- finbif_occurrence_load(
         49381,
         tzone = "Etc/UTC"
       )
     )
 
     expect_snapshot_value(
-      HBF_49381,
+      hbf_49381,
       style = "json2",
       ignore_attr = "url"
     )

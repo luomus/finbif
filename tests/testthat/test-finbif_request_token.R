@@ -4,11 +4,11 @@ test_that("requesting token works", {
 
   op <- options()
 
-  tf <- tempfile()
+  f <- tempfile()
 
   if (
     requireNamespace("callr", quietly = TRUE) &&
-    requireNamespace("webfakes", quietly = TRUE)
+      requireNamespace("webfakes", quietly = TRUE)
   ) {
 
     bg <- callr::r_bg(
@@ -38,10 +38,10 @@ test_that("requesting token works", {
         Sys.sleep(60L)
 
       },
-      list(file = tf, version = getOption("finbif_api_version"))
+      list(file = f, version = getOption("finbif_api_version"))
     )
 
-    while (!file.exists(tf) || length(url <- readLines(tf, warn = FALSE)) < 2L) {}
+    while (!file.exists(f) || length(url <- readLines(f, warn = FALSE)) < 2L) {}
 
     options(finbif_api_url = sub("/$", "", url[[1L]]), finbif_rate_limit = Inf)
 
@@ -49,7 +49,9 @@ test_that("requesting token works", {
 
     Sys.unsetenv("FINBIF_ACCESS_TOKEN")
 
-    expect_error(finbif_occurrence(), "Access token for FinBIF has not been set")
+    expect_error(
+      finbif_occurrence(), "Access token for FinBIF has not been set"
+    )
 
     expect_message(
       finbif_request_token("em"), "A personal access token for api.laji.fi"

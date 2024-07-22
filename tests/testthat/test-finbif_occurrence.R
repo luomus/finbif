@@ -160,25 +160,28 @@ test_that("fetching occurrences works", {
 
     expect_match(no_filter_error, "Cannot download more than")
 
-    expect_match(coord_filter_error, "Invalid coordinates: system not specified")
+    expect_match(
+      coord_filter_error, "Invalid coordinates: system not specified"
+    )
 
     expect_match(coord_filter_error, "Cannot request less than 1 record")
 
     expect_equal(
       invalid_taxa_error[[1L]],
       paste(
-        "Error : Cannot find the following taxa in the FinBIF taxonomy.\nPlease",
-        "check you are using accepted names and not synonyms or\nother names for",
-        "the taxa you are selecting:\n\nAlgae\n"
+        "Error : Cannot find the following taxa in the FinBIF",
+        "taxonomy.\nPlease check you are using accepted names and not synonyms",
+        "or\nother names for the taxa you are selecting:\n\nAlgae\n"
       )
     )
 
     expect_equal(
       invalid_taxa_warn[[1L]],
       paste(
-        "Error : (converted from warning) Cannot find the following taxa in the",
-        "FinBIF taxonomy.\nPlease check you are using accepted names and not",
-        "synonyms or\nother names for the taxa you are selecting:\n\nAlgae\n"
+        "Error : (converted from warning) Cannot find the following taxa in",
+        "the FinBIF taxonomy.\nPlease check you are using accepted names and",
+        "not synonyms or\nother names for the taxa you are",
+        "selecting:\n\nAlgae\n"
       )
     )
 
@@ -243,7 +246,7 @@ test_that("fetching occurrences with date filters works", {
               list(
                 start = as.Date("2001-05-01"),
                 .Data = as.difftime(609, units = "days")
-                ),
+              ),
               class = "Interval"
             )
           ),
