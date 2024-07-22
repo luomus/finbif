@@ -538,21 +538,23 @@ conditionMessage.dfrd_errors <- function(c) {
 
 get_locale <- function() {
 
-  supported_langs <- sysdata("supported_langs")
+  supported <- sysdata("supported_langs")
+
+  matches <- name_chr_vec(c(unname(supported), supported))
 
   env <- Sys.getenv(c("LANGUAGE", "LANG"))
 
   collate <- Sys.getlocale("LC_COLLATE")
 
-  for (l in c(env, collate, supported_langs[[1L]])) {
+  for (l in c(env, collate, supported[[1L]])) {
 
     reg <- regexpr(".+?(?=[[:punct:]])", l, perl = TRUE)
 
     l <- regmatches(l, reg)
 
-    if (isTRUE(l %in% c(supported_langs, names(supported_langs)))) {
+    if (isTRUE(l %in% names(matches))) {
 
-      return(l)
+      return(matches[[l]])
 
     }
 
