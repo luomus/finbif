@@ -485,6 +485,8 @@ deferred_errors <- function(
 
   if (length(errors) > 0L) {
 
+    errors <- errors[!duplicated(lapply(errors, getElement, "message"))]
+
     err <- list(errors = errors, value = value)
 
     class(err) <- c("dfrd_errors", "error", "condition")
