@@ -60,7 +60,8 @@ test_that("fetching occurrences works", {
             facts = c(pairs = "MY.pairCount"),
             sample = TRUE,
             unlist = TRUE,
-            drop_na = TRUE
+            drop_na = TRUE,
+            tzone = "Etc/UTC"
           )
         )
       )
