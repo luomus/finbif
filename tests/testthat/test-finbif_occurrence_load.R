@@ -200,17 +200,21 @@ test_that("download imports work", {
       "could not be found in dataset"
     )
 
-    expect_snapshot_value(tun_fi_HBF_49381, style = "json2", ignore_attr = "url")
+    expect_snapshot_value(
+      tun_fi_HBF_49381, style = "json2", ignore_attr = "url"
+    )
 
     options(finbif_cache_path = NULL)
 
+    capture.output(
+      HBF_49381 <- finbif_occurrence_load(
+        49381,
+        tzone = "Etc/UTC"
+      )
+    )
+
     expect_snapshot_value(
-      capture.output(
-        finbif_occurrence_load(
-          49381,
-          tzone = "Etc/UTC"
-        )
-      ),
+      HBF_49381,
       style = "json2",
       ignore_attr = "url"
     )
