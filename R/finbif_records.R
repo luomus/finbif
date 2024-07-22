@@ -1010,7 +1010,9 @@ parse_filters <- function(fb_records_obj) {
 
       date_filter <- list(filter = nm_i)
 
-      date_filter <- c(date_filter, f_i)
+      date_filter <- switch(
+        class(f_i), Interval = list(filter = nm_i, f_i), c(date_filter, f_i)
+      )
 
       f_i <- dates(date_filter)
 
