@@ -2,19 +2,11 @@
 
 dates <- function(obj) {
 
-  len <- length(obj)
-
-  if (len < 2L) {
-
-    deferrable_error("Need to specify at least one of 'begin' or 'end' date")
-
-  }
-
   if (is.null(obj[["end"]])) {
 
     obj[["begin"]] <- obj[[2L]]
 
-    if (len > 2L) {
+    if (length(obj) > 2L) {
 
       obj[["end"]] <- obj[[3L]]
 
