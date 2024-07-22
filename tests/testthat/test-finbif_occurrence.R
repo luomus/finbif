@@ -41,11 +41,19 @@ test_that("fetching occurrences works", {
             "region",
             "informal_groups",
             "common_name",
-            "restriction_reason"
+            "restriction_reason",
+            "atlas_code",
+            "atlas_class"
           ),
           filter = list(
             c(date_range_ymd = 2023),
-            c(date_range_ymd = 2024)
+            c(
+              date_range_ymd = 2024,
+              informal_groups_reported = "Birds",
+              primary_secondary_habitat = "M",
+              record_reliability = "reliable",
+              complete_list_type = "incomplete"
+            )
           ),
           facts = c(pairs = "MY.pairCount"),
           sample = TRUE,
@@ -73,11 +81,21 @@ test_that("fetching occurrences works", {
       quiet = TRUE
     )
 
-    options(finbif_max_page_size = 20)
+    options(finbif_max_page_size = 20, finbif_use_async = FALSE)
 
     plants <- finbif_occurrence(
       "Plants",
-      filter = list(date_range_ymd = 2023, subset = c(1, floor(count / 50))),
+      select = c(
+        "threatened_status",
+        "orig_taxon_rank"
+      ),
+      filter = list(
+        date_range_ymd = 2023,
+        has_value = "record_id",
+        quality_issues = "without_issues",
+        finnish_occurrence_status_neg = "extinct",
+        subset = c(1, floor(count / 50))
+      ),
       sample = TRUE,
       n = "all",
       quiet = TRUE
@@ -191,6 +209,69 @@ test_that("fetching occurrences works", {
 
 })
 
+test_that("fetching occurrences with date filters works", {
+
+  skip_on_cran()
+
+  op <- options()
+
+  cache <- tempfile()
+
+  dir.create(cache)
+
+  options(
+    finbif_cache_path = cache,
+    finbif_rate_limit = Inf,
+    finbif_max_page_size = 5
+  )
+
+  finbif_clear_cache()
+
+  vcr::use_cassette("finbif_occurrence_dates", {
+
+    date_filters <- finbif_occurrence(
+      filter = list(
+        list(
+          date_range_ymd = structure(
+            list(
+              start = as.Date("2001-05-01"),
+              .Data = as.difftime(609, units = "days")
+              ),
+            class = "Interval"
+          )
+        ),
+        list(date_range_ymd = c("2001", "2002-06-30")),
+        list(date_range_ymd = c("2001-01-01", "2002")),
+        list(date_range_ymd = as.Date("2001-05-01")),
+        list(date_range_ymd = 2001:2002),
+        list(date_range_ym = c("2001-01", "2002-12")),
+        list(date_range_md = "01-01")
+      ),
+      n = 5
+    )
+
+    date_error <- try(
+      finbif_occurrence(filter = c(date_range_ymd = "not_a_date")),
+      silent = TRUE
+    )
+
+  })
+
+  expect_snapshot(date_filters)
+
+  expect_equal(
+    date_error[[1]],
+    "Error : 1 error occurred:\n  - Can't parse one or more specified dates\n"
+  )
+
+  finbif_clear_cache()
+
+  options(finbif_cache_path = NULL)
+
+  options(op)
+
+})
+
 test_that("fetching aggregated occurrences works", {
 
   skip_on_cran()
@@ -204,8 +285,7 @@ test_that("fetching aggregated occurrences works", {
   options(
     finbif_cache_path = cache,
     finbif_rate_limit = Inf,
-    finbif_max_page_size = 5,
-    finbif_use_async = FALSE
+    finbif_max_page_size = 5
   )
 
   finbif_clear_cache()
@@ -213,11 +293,15 @@ test_that("fetching aggregated occurrences works", {
   vcr::use_cassette("finbif_occurrence_aggregate", {
 
     record_basis_count <- finbif_occurrence(
-      select = "record_basis", aggregate = "records", count_only = TRUE
+      select = "record_basis",
+      filter = list(coordinates = list(c(60.4, 61), c(22, 22.5), "wgs84", 1)),
+      aggregate = "records",
+      count_only = TRUE
     )
 
     record_basis_aggregate <- finbif_occurrence(
       select = "basisOfRecord",
+      filter = c(location_tag = "Farmland"),
       aggregate = c("records", "species"),
       n = 5,
       exclude_na = TRUE,
@@ -249,7 +333,6 @@ test_that("fetching aggregated occurrences works", {
     aggregate_error,
     "Cannot use current aggregation and filter by taxon"
   )
-
 
   finbif_clear_cache()
 
