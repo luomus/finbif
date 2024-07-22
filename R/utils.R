@@ -540,43 +540,23 @@ get_locale <- function() {
 
   supported_langs <- sysdata("supported_langs")
 
-  ans <- supported_langs[[1L]]
-
-  env <- c("LANGUAGE", "LANG")
-
-  env <- Sys.getenv(env)
+  env <- Sys.getenv(c("LANGUAGE", "LANG"))
 
   collate <- Sys.getlocale("LC_COLLATE")
 
-  for (l in c(env, collate)) {
+  for (l in c(env, collate, supported_langs[[1L]])) {
 
     reg <- regexpr(".+?(?=[[:punct:]])", l, perl = TRUE)
 
     l <- regmatches(l, reg)
 
-    if (length(l) > 0L) {
+    if (isTRUE(l %in% c(supported_langs, names(supported_langs)))) {
 
-      if (l %in% supported_langs) {
-
-        ans <- l
-
-        break
-
-      }
-
-      if (l %in% names(supported_langs)) {
-
-        ans <- supported_langs[[l]]
-
-        break
-
-      }
+      return(l)
 
     }
 
   }
-
-  ans
 
 }
 
