@@ -358,12 +358,6 @@ sample_with_seed <- function(
   seed
 ) {
 
-  on.exit({
-
-    rm(".Random.seed", pos = 1L)
-
-  })
-
   if (exists(".Random.seed", 1L)) {
 
     oldseed <- get(".Random.seed", 1L)
