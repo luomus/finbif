@@ -1026,13 +1026,15 @@ compute_epsg <- function(fb_occurrence_df) {
 
       crs_nm_i <- var_names[[crs_nm_i, vtype]]
 
-      fb_occurrence_df[[crs_nm_i]] <- switch(
+      crs_i <- switch(
         names(epsg),
         euref = "EPSG:3067",
         ykj = "EPSG:2393",
         wgs84 = "EPSG:4326",
         NA_character_
       )
+
+      fb_occurrence_df[[crs_nm_i]] <- rep(crs_i, nrow(fb_occurrence_df))
 
     }
 
@@ -1131,7 +1133,11 @@ compute_citation <- function(fb_occurrence_df) {
 
     cit <- ifelse(fb_occurrence_df[[src]] == "http://tun.fi/KE.3", d_id, r_id)
 
-    fb_occurrence_df[[citation_var]] <- paste(cit, "Source: FinBIF")
+    cit <- paste(cit, "Source: FinBIF")
+
+    fb_occurrence_df[[citation_var]] <- rep(
+      cit, length.out = nrow(fb_occurrence_df)
+    )
 
   }
 
@@ -1557,7 +1563,7 @@ extract_facts <- function(fb_occurrence_df) {
       "document.facts.value"
     )
 
-    fb_occurrence_df[facts] <- NA_character_
+    fb_occurrence_df[facts] <- rep(NA_character_, nrow(fb_occurrence_df))
 
     var_names <- sysdata("var_names")
 
