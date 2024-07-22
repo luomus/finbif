@@ -1443,7 +1443,7 @@ multi_req <- function(fb_records_obj) {
 
         }
 
-        ans_i[[filter_col]]
+        ans_i[[filter_col]] <- filter_nms_i
 
         ans[[i]] <- ans_i
 
