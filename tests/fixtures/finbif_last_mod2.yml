@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate%20DESC&page=1&pageSize=1&access_token=<finbif_token>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Content-Type: ''
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Mon, 22 Jul 2024 13:13:01 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      access-control-allow-origin: '*'
+      via: 1.0 dw.laji.fi
+      cache-control: no-store
+      x-xss-protection: 1;mode=block
+      x-content-type-options: nosniff
+      strict-transport-security: max-age=31536000;includeSubDomains;preload
+      referrer-policy: no-referrer-when-downgrade
+    body:
+      encoding: ''
+      file: no
+      string: '{"currentPage":1,"nextPage":2,"lastPage":52104100,"pageSize":1,"total":52104100,"cacheTimestamp":1721653981,"results":[{"unit":{"unitId":"http://tun.fi/JX.1750331#3"},"document":{"loadDate":"2024-07-22"}}]}'
+  recorded_at: 2024-07-22 13:13:01 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0
