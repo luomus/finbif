@@ -48,8 +48,8 @@
     Output
       Records downloaded: 0 + 0
       Records available: 0 + 0
-      A data.frame [0 x 1]
-      [1] municipality
+      A data.frame [0 x 2]
+      [1] municipality set         
       <0 rows> (or 0-length row.names)
 
 ---
