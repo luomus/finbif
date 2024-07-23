@@ -4,23 +4,22 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 52111306
+      Records available: 3243278
       A data.frame [10 x 12]
-                                      record_id      scientific_name abundance
-      1                           …JX.1750745#3 Larus argentatus Po…  1       
-      2                           …JX.1750745#6 Grus grus (Linnaeus…  2       
-      3  …KE.176/669f8a91d5de69282856ac84#Unit1 Thecla betulae (Lin…  1       
-      4                           …JX.1750740#3 Mimas tiliae (Linna…  1       
-      5                          …JX.1750742#12 Agrostis stolonifer…        NA
-      6                          …JX.1750742#30 Argentina anserina …        NA
-      7                          …JX.1750742#42 Calidris alba (Pall…  2       
-      8                          …JX.1750742#45 Calidris canutus (L…  1       
-      9                          …JX.1750742#27 Carex paleacea Schr…        NA
-      10                          …JX.1750742#6 Carex paleacea Schr…  18      
-      ...with 0 more record and 9 more variables:
-      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
-      requires_verification, requires_identification, record_reliability,
-      record_quality
+         record_id      scientific_name abundance lat_wgs84 lon_wgs84
+      1    …2186#5 Pieris Schrank, 1801  2         60.32273  24.50043
+      2    …2186#7 Thymelicus lineola …  3         60.32273  24.50043
+      3    …2186#3 Aglais urticae (Lin…  1         60.32273  24.50043
+      4    …2172#3 Corvus corone Linna…  2         63.68183  25.96783
+      5    …1975#3 Pteromys volans (Li…  1         60.24123  19.60607
+      6    …1599#3 Selenia dentaria (F…  2         60.27413  24.94582
+      7    …1437#3 Eptesicus nilssonii…        NA  60.42728  22.28203
+      8    …1412#3 Pica pica (Linnaeus…        NA  66.57083  25.75368
+      9    …1411#3 Vulpes vulpes (Linn…        NA  63.04719  27.12149
+      10   …1410#3 Corvus corone Linna…        NA  64.80449  28.46601
+      ...with 0 more record and 7 more variables:
+      date_time, coordinates_uncertainty, any_issues, requires_verification,
+      requires_identification, record_reliability, record_quality
 
 ---
 
@@ -28,23 +27,22 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 52111306
+      Records available: 3243278
       A data.frame [10 x 12]
-                                      record_id      scientific_name abundance
-      1                           …JX.1750745#3 Larus argentatus Po…  1       
-      2                           …JX.1750745#6 Grus grus (Linnaeus…  2       
-      3  …KE.176/669f8a91d5de69282856ac84#Unit1 Thecla betulae (Lin…  1       
-      4                           …JX.1750740#3 Mimas tiliae (Linna…  1       
-      5                          …JX.1750742#12 Agrostis stolonifer…        NA
-      6                          …JX.1750742#30 Argentina anserina …        NA
-      7                          …JX.1750742#42 Calidris alba (Pall…  2       
-      8                          …JX.1750742#45 Calidris canutus (L…  1       
-      9                          …JX.1750742#27 Carex paleacea Schr…        NA
-      10                          …JX.1750742#6 Carex paleacea Schr…  18      
-      ...with 0 more record and 9 more variables:
-      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
-      requires_verification, requires_identification, record_reliability,
-      record_quality
+         record_id      scientific_name abundance lat_wgs84 lon_wgs84
+      1    …2186#5 Pieris Schrank, 1801  2         60.32273  24.50043
+      2    …2186#7 Thymelicus lineola …  3         60.32273  24.50043
+      3    …2186#3 Aglais urticae (Lin…  1         60.32273  24.50043
+      4    …2172#3 Corvus corone Linna…  2         63.68183  25.96783
+      5    …1975#3 Pteromys volans (Li…  1         60.24123  19.60607
+      6    …1599#3 Selenia dentaria (F…  2         60.27413  24.94582
+      7    …1437#3 Eptesicus nilssonii…        NA  60.42728  22.28203
+      8    …1412#3 Pica pica (Linnaeus…        NA  66.57083  25.75368
+      9    …1411#3 Vulpes vulpes (Linn…        NA  63.04719  27.12149
+      10   …1410#3 Corvus corone Linna…        NA  64.80449  28.46601
+      ...with 0 more record and 7 more variables:
+      date_time, coordinates_uncertainty, any_issues, requires_verification,
+      requires_identification, record_reliability, record_quality
 
 ---
 
@@ -52,21 +50,20 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 52111306
+      Records available: 3243278
       A data.frame [10 x 12]
-                                      record_id      scientific_name abundance
-      1                           …JX.1750745#3 Larus argentatus Po…  1       
-      2                           …JX.1750745#6 Grus grus (Linnaeus…  2       
-      3  …KE.176/669f8a91d5de69282856ac84#Unit1 Thecla betulae (Lin…  1       
-      4                           …JX.1750740#3 Mimas tiliae (Linna…  1       
-      5                          …JX.1750742#12 Agrostis stolonifer…        NA
-      6                          …JX.1750742#30 Argentina anserina …        NA
-      7                          …JX.1750742#42 Calidris alba (Pall…  2       
-      8                          …JX.1750742#45 Calidris canutus (L…  1       
-      9                          …JX.1750742#27 Carex paleacea Schr…        NA
-      10                          …JX.1750742#6 Carex paleacea Schr…  18      
-      ...with 0 more record and 9 more variables:
-      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
-      requires_verification, requires_identification, record_reliability,
-      record_quality
+         record_id      scientific_name abundance lat_wgs84 lon_wgs84
+      1    …2186#5 Pieris Schrank, 1801  2         60.32273  24.50043
+      2    …2186#7 Thymelicus lineola …  3         60.32273  24.50043
+      3    …2186#3 Aglais urticae (Lin…  1         60.32273  24.50043
+      4    …2172#3 Corvus corone Linna…  2         63.68183  25.96783
+      5    …1975#3 Pteromys volans (Li…  1         60.24123  19.60607
+      6    …1599#3 Selenia dentaria (F…  2         60.27413  24.94582
+      7    …1437#3 Eptesicus nilssonii…        NA  60.42728  22.28203
+      8    …1412#3 Pica pica (Linnaeus…        NA  66.57083  25.75368
+      9    …1411#3 Vulpes vulpes (Linn…        NA  63.04719  27.12149
+      10   …1410#3 Corvus corone Linna…        NA  64.80449  28.46601
+      ...with 0 more record and 7 more variables:
+      date_time, coordinates_uncertainty, any_issues, requires_verification,
+      requires_identification, record_reliability, record_quality
 
