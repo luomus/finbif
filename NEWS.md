@@ -1,5 +1,11 @@
 # News for Package <span class="pkg">finbif</span>
 
+# finbif 0.9.7.9000
+
+## NEW FEATURES
+
+  - This is the latest development version.
+
 # finbif 0.9.7
 
 ## NEW FEATURES
