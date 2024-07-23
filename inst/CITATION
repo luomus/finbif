@@ -25,7 +25,7 @@ bibentry(
   year     = format(Sys.Date(), "%Y"),
   note     = sprintf("R package version %s", meta$Version),
   url      = {
-    if (length(unlist(packageVersion("finbif"))) > 3L) {
+    if (length(unlist(as.numeric_version(meta$Version))) > 3L) {
 
       "https://finbif-docs-dev.netlify.app/articles/finbif.html"
 

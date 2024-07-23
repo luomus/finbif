@@ -9,7 +9,7 @@ template:
     font-size-base: "1rem"
     base_font:
       google: "Roboto"
-url: https://finbif-docs-dev.netlify.app/
+url: https://luomus.github.io/finbif/
 home:
   title: "FinBIF R package"
 destination: docs
