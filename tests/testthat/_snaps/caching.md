@@ -4,22 +4,23 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3243275
+      Records available: 52111306
       A data.frame [10 x 12]
-         record_id      scientific_name abundance lat_wgs84 lon_wgs84
-      1    …2172#3 Corvus corone Linna…  2         63.68183  25.96783
-      2    …1975#3 Pteromys volans (Li…  1         60.24123  19.60607
-      3    …1599#3 Selenia dentaria (F…  2         60.27413  24.94582
-      4    …1437#3 Eptesicus nilssonii…        NA  60.42728  22.28203
-      5    …1412#3 Pica pica (Linnaeus…        NA  66.57083  25.75368
-      6    …1411#3 Vulpes vulpes (Linn…        NA  63.04719  27.12149
-      7    …1410#3 Corvus corone Linna…        NA  64.80449  28.46601
-      8    …1409#3 Corvus corone Linna…        NA  64.22205  27.67531
-      9    …1397#3 Balaenoptera muscul…        NA  64.8954   25.43543
-      10   …1407#3 Balaenoptera muscul…        NA  64.8954   25.43543
-      ...with 0 more record and 7 more variables:
-      date_time, coordinates_uncertainty, any_issues, requires_verification,
-      requires_identification, record_reliability, record_quality
+                                      record_id      scientific_name abundance
+      1                           …JX.1750745#3 Larus argentatus Po…  1       
+      2                           …JX.1750745#6 Grus grus (Linnaeus…  2       
+      3  …KE.176/669f8a91d5de69282856ac84#Unit1 Thecla betulae (Lin…  1       
+      4                           …JX.1750740#3 Mimas tiliae (Linna…  1       
+      5                          …JX.1750742#12 Agrostis stolonifer…        NA
+      6                          …JX.1750742#30 Argentina anserina …        NA
+      7                          …JX.1750742#42 Calidris alba (Pall…  2       
+      8                          …JX.1750742#45 Calidris canutus (L…  1       
+      9                          …JX.1750742#27 Carex paleacea Schr…        NA
+      10                          …JX.1750742#6 Carex paleacea Schr…  18      
+      ...with 0 more record and 9 more variables:
+      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
+      requires_verification, requires_identification, record_reliability,
+      record_quality
 
 ---
 
@@ -27,22 +28,23 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3243275
+      Records available: 52111306
       A data.frame [10 x 12]
-         record_id      scientific_name abundance lat_wgs84 lon_wgs84
-      1    …2172#3 Corvus corone Linna…  2         63.68183  25.96783
-      2    …1975#3 Pteromys volans (Li…  1         60.24123  19.60607
-      3    …1599#3 Selenia dentaria (F…  2         60.27413  24.94582
-      4    …1437#3 Eptesicus nilssonii…        NA  60.42728  22.28203
-      5    …1412#3 Pica pica (Linnaeus…        NA  66.57083  25.75368
-      6    …1411#3 Vulpes vulpes (Linn…        NA  63.04719  27.12149
-      7    …1410#3 Corvus corone Linna…        NA  64.80449  28.46601
-      8    …1409#3 Corvus corone Linna…        NA  64.22205  27.67531
-      9    …1397#3 Balaenoptera muscul…        NA  64.8954   25.43543
-      10   …1407#3 Balaenoptera muscul…        NA  64.8954   25.43543
-      ...with 0 more record and 7 more variables:
-      date_time, coordinates_uncertainty, any_issues, requires_verification,
-      requires_identification, record_reliability, record_quality
+                                      record_id      scientific_name abundance
+      1                           …JX.1750745#3 Larus argentatus Po…  1       
+      2                           …JX.1750745#6 Grus grus (Linnaeus…  2       
+      3  …KE.176/669f8a91d5de69282856ac84#Unit1 Thecla betulae (Lin…  1       
+      4                           …JX.1750740#3 Mimas tiliae (Linna…  1       
+      5                          …JX.1750742#12 Agrostis stolonifer…        NA
+      6                          …JX.1750742#30 Argentina anserina …        NA
+      7                          …JX.1750742#42 Calidris alba (Pall…  2       
+      8                          …JX.1750742#45 Calidris canutus (L…  1       
+      9                          …JX.1750742#27 Carex paleacea Schr…        NA
+      10                          …JX.1750742#6 Carex paleacea Schr…  18      
+      ...with 0 more record and 9 more variables:
+      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
+      requires_verification, requires_identification, record_reliability,
+      record_quality
 
 ---
 
@@ -50,20 +52,21 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3243275
+      Records available: 52111306
       A data.frame [10 x 12]
-         record_id      scientific_name abundance lat_wgs84 lon_wgs84
-      1    …2172#3 Corvus corone Linna…  2         63.68183  25.96783
-      2    …1975#3 Pteromys volans (Li…  1         60.24123  19.60607
-      3    …1599#3 Selenia dentaria (F…  2         60.27413  24.94582
-      4    …1437#3 Eptesicus nilssonii…        NA  60.42728  22.28203
-      5    …1412#3 Pica pica (Linnaeus…        NA  66.57083  25.75368
-      6    …1411#3 Vulpes vulpes (Linn…        NA  63.04719  27.12149
-      7    …1410#3 Corvus corone Linna…        NA  64.80449  28.46601
-      8    …1409#3 Corvus corone Linna…        NA  64.22205  27.67531
-      9    …1397#3 Balaenoptera muscul…        NA  64.8954   25.43543
-      10   …1407#3 Balaenoptera muscul…        NA  64.8954   25.43543
-      ...with 0 more record and 7 more variables:
-      date_time, coordinates_uncertainty, any_issues, requires_verification,
-      requires_identification, record_reliability, record_quality
+                                      record_id      scientific_name abundance
+      1                           …JX.1750745#3 Larus argentatus Po…  1       
+      2                           …JX.1750745#6 Grus grus (Linnaeus…  2       
+      3  …KE.176/669f8a91d5de69282856ac84#Unit1 Thecla betulae (Lin…  1       
+      4                           …JX.1750740#3 Mimas tiliae (Linna…  1       
+      5                          …JX.1750742#12 Agrostis stolonifer…        NA
+      6                          …JX.1750742#30 Argentina anserina …        NA
+      7                          …JX.1750742#42 Calidris alba (Pall…  2       
+      8                          …JX.1750742#45 Calidris canutus (L…  1       
+      9                          …JX.1750742#27 Carex paleacea Schr…        NA
+      10                          …JX.1750742#6 Carex paleacea Schr…  18      
+      ...with 0 more record and 9 more variables:
+      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
+      requires_verification, requires_identification, record_reliability,
+      record_quality
 
