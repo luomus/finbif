@@ -4,7 +4,27 @@
 
 ## NEW FEATURES
 
-  - This is the latest development version
+  - Record pagination has been simplified and improved so that it should
+    not be possible to have duplicate records when using
+    `finbif_occurrences`.
+
+## MINOR IMPROVEMENTS
+
+  - `finbif_last_mod` can be used without a `filter` argument value.
+
+  - Error handling for API requests has been improved.
+
+## BUG FIXES
+
+  - Fixed an issue triggered when multi-filter set requests returned
+    zero results.
+
+  - Fixed bug triggered when dropping columns of all NA data.
+
+  - Fixed an issue with file-based caches timing out correctly.
+
+  - Fixed an issue triggered when selecting certain variables and zero
+    records were returned.
 
 # finbif 0.9.6
 

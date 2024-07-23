@@ -43,7 +43,19 @@
 <h2 class="pkg-version" data-toc-text="0.9.6.9000" id="finbif-0969000">finbif 0.9.6.9000<a class="anchor" aria-label="anchor" href="#finbif-0969000"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-9-6-9000">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-9-6-9000"></a></h3>
-<ul><li>This is the latest development version</li></ul></div>
+<ul><li>Record pagination has been simplified and improved so that it should not be possible to have duplicate records when using <code>finbif_occurrences</code>.</li></ul></div>
+<div class="section level3">
+<h3 id="minor-improvements-0-9-6-9000">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-6-9000"></a></h3>
+<ul><li><p><code>finbif_last_mod</code> can be used without a <code>filter</code> argument value.</p></li>
+<li><p>Error handling for API requests has been improved.</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-0-9-6-9000">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-6-9000"></a></h3>
+<ul><li><p>Fixed an issue triggered when multi-filter set requests returned zero results.</p></li>
+<li><p>Fixed bug triggered when dropping columns of all NA data.</p></li>
+<li><p>Fixed an issue with file-based caches timing out correctly.</p></li>
+<li><p>Fixed an issue triggered when selecting certain variables and zero records were returned.</p></li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.6" id="finbif-096">finbif 0.9.6<a class="anchor" aria-label="anchor" href="#finbif-096"></a></h2><p class="text-muted">CRAN release: 2024-04-25</p>

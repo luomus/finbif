@@ -4,7 +4,26 @@
 \section{finbif version 0.9.6.9000}{
   \subsection{NEW FEATURES}{
     \itemize{
-      \item  This is the latest development version
+      \item Record pagination has been simplified and improved so that it
+        should not be possible to have duplicate records when using
+        \code{finbif_occurrences}.
+    }
+  }
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item \code{finbif_last_mod} can be used without a \code{filter} argument
+        value.
+      \item Error handling for API requests has been improved.
+    }
+  }
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed an issue triggered when multi-filter set requests returned
+        zero results.
+      \item Fixed bug triggered when dropping columns of all NA data.
+      \item Fixed an issue with file-based caches timing out correctly.
+      \item Fixed an issue triggered when selecting certain variables and zero
+        records were returned.
     }
   }
 }
