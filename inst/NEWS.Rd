@@ -1,7 +1,7 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.9.6.9000}{
+\section{finbif version 0.9.7}{
   \subsection{NEW FEATURES}{
     \itemize{
       \item Record pagination has been simplified and improved so that it

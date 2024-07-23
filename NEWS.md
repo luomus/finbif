@@ -1,6 +1,6 @@
 # News for Package <span class="pkg">finbif</span>
 
-# finbif 0.9.6.9000
+# finbif 0.9.7
 
 ## NEW FEATURES
 

@@ -1,7 +1,7 @@
 # YAML 1.2
 ---
-version: "0.9.6.9000"
-date-released: 2024-04-25
+version: "0.9.7"
+date-released: 2024-07-23
 title: finbif
 abstract: |
     "The `finbif` R package is a programmatic interface to the [Finnish
@@ -51,7 +51,7 @@ preferred-citation:
   type: manual
   year: 2024
   doi: "10.5281/zenodo.3612814"
-  notes: "R package version 0.9.6.9000"
+  notes: "R package version 0.9.7"
   url: "https://finbif-docs-dev.netlify.app/articles/finbif.html"
 message: "If you use this software, please cite it using these metadata."
 ...
