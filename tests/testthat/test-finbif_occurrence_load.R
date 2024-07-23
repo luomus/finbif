@@ -55,8 +55,7 @@ test_that("download imports work", {
         "laji-data.tsv",
         select = "all",
         tzone = "Etc/UTC",
-        quiet = TRUE,
-        dt = FALSE
+        quiet = TRUE
       )
 
       laji_data_pap_tsv <- finbif_occurrence_load(
