@@ -18,6 +18,7 @@ branch <- system2("git", c("rev-parse", "--abbrev-ref", "HEAD"), TRUE)
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/finbif?color=brightgreen)](https://cran.r-project.org/package=finbif)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3612814.svg)](https://doi.org/10.5281/zenodo.3612814)
 [![Build Status](https://github.com/luomus/finbif/workflows/R-CMD-check/badge.svg?branch=`r branch`)](https://github.com/luomus/finbif/actions)
+[![codecov](https://codecov.io/gh/luomus/finbif/branch/`r branch`/graph/badge.svg)](https://app.codecov.io/github/luomus/finbif/branch/`r branch`)
 <!-- badges: end -->
 
 The `finbif` R package is a programmatic interface to the
