@@ -12,7 +12,13 @@ get_el_recurse <- function(
 
     if (is.null(obj) || identical(obj, "")) {
 
-      obj <- cast_to_type(NA, type)
+      obj <- switch(
+        type,
+        double = NA_real_,
+        integer = NA_integer_,
+        logical = NA,
+        NA_character_
+      )
 
     }
 
@@ -50,7 +56,13 @@ get_el_recurse <- function(
 
     null_elements <- vapply(next_obj, is.null, NA)
 
-    next_obj[null_elements] <- cast_to_type(NA, type)
+    next_obj[null_elements] <- switch(
+      type,
+      double = NA_real_,
+      integer = NA_integer_,
+      logical = NA,
+      NA_character_
+    )
 
     next_obj <- unlist(next_obj, recursive = FALSE)
 
