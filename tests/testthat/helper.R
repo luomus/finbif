@@ -1,3 +1,5 @@
+Sys.setenv(DEPRECATION_WARNING = -1)
+
 branch <- Sys.getenv("BRANCH")
 
 gh_ref <- Sys.getenv("GITHUB_REF_NAME")

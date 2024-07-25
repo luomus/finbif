@@ -1579,6 +1579,21 @@ open_tsv_connection <- function(connection_obj) {
 
 from_ods <- function(file) {
 
+  warn <- Sys.getenv("DEPRECATION_WARNING", 0)
+
+  op <- options()
+
+  options(warn = as.integer(warn))
+
+  warning(
+    "Reading ODS file downloads has been deprecated in the {finbif} package ",
+    "and will unavailable in the next release. Please use TSV downloads ",
+    "instead.",
+    call. = FALSE
+  )
+
+  options(op)
+
   stopifnot("Package {readODS} required for ODS files" = has_pkgs("readODS"))
 
   df <- readODS::read_ods(file, col_types = NA)
@@ -1590,6 +1605,21 @@ from_ods <- function(file) {
 #' @noRd
 
 from_xlsx <- function(file) {
+
+  warn <- Sys.getenv("DEPRECATION_WARNING", 0)
+
+  op <- options()
+
+  options(warn = as.integer(warn))
+
+  warning(
+    "Reading XLSX file downloads has been deprecated in the {finbif} package ",
+    "and will unavailable in the next release. Please use TSV downloads ",
+    "instead.",
+    call. = FALSE
+  )
+
+  options(op)
 
   stopifnot("Package {readxl} required for Excel files" = has_pkgs("readxl"))
 
