@@ -75,17 +75,23 @@ api_get <- function(obj) {
 
     } else {
 
-      stopifnot(
-        "{DBI} & {blob} needed to use a DB cache" =  has_pkgs("DBI", "blob")
-      )
+      stopifnot("Package {DBI} needed to use a DB cache" = has_pkgs("DBI"))
 
       if (!DBI::dbExistsTable(fcp, "finbif_cache")) {
+
+        blob <- list()
+
+        blob <- structure(
+          blob,
+          ptype = raw(),
+          class = c("blob", "vctrs_list_of", "vctrs_vctr", "list")
+        )
 
         init <- data.frame(
           hash = character(),
           created = as.POSIXct(numeric()),
           timeout = numeric(),
-          blob = blob::blob()
+          blob = blob
         )
 
         DBI::dbWriteTable(fcp, "finbif_cache", init)
@@ -418,17 +424,25 @@ cache_obj <- function(obj) {
 
 append_obj <- function(obj) {
 
+  hash <- obj[["hash"]]
+
   if (!is.null(obj)) {
 
     blob <- serialize(obj, NULL)
 
-    hash <- obj[["hash"]]
+    blob <- list(blob)
+
+    blob <- structure(
+      blob,
+      ptype = raw(),
+      class = c("blob", "vctrs_list_of", "vctrs_vctr", "list")
+    )
 
     db_cache <- data.frame(
       hash = hash,
       created = Sys.time(),
       timeout = obj[["timeout"]],
-      blob = blob::blob(blob)
+      blob = blob
     )
 
     debug_msg("INFO [", format(Sys.time()), "] ", "Adding to cache: ", hash)

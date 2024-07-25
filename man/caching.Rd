@@ -29,10 +29,10 @@ setting the file path for the current session with
 \section{Using database caching}{
 
 Caching can also be done using a database. Using a database for caching
-requires the packages \code{DBI}, \code{blob} and a database backend package such as
-\code{RSQLite} to be installed. To use the database for caching simply pass the
-connection objected created with \code{DBI::dbConnect} to the \code{finbif_cache_path}
-option (e.g.,
+requires the \code{DBI} package and a database backend package such as \code{RSQLite}
+to be installed. To use the database for caching simply pass the connection
+objected created with \code{DBI::dbConnect} to the \code{finbif_cache_path} option
+(e.g.,
 \code{db <- DBI::dbConnect(RSQLite::SQLite(), "my-db.sqlite"); }
 \code{options(finbif_cache_path = db)}
 ).

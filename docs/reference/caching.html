@@ -71,10 +71,10 @@ setting the file path for the current session with
 
 
 <p>Caching can also be done using a database. Using a database for caching
-requires the packages <code>DBI</code>, <code>blob</code> and a database backend package such as
-<code>RSQLite</code> to be installed. To use the database for caching simply pass the
-connection objected created with <code><a href="https://dbi.r-dbi.org/reference/dbConnect.html" class="external-link">DBI::dbConnect</a></code> to the <code>finbif_cache_path</code>
-option (e.g.,
+requires the <code>DBI</code> package and a database backend package such as <code>RSQLite</code>
+to be installed. To use the database for caching simply pass the connection
+objected created with <code><a href="https://dbi.r-dbi.org/reference/dbConnect.html" class="external-link">DBI::dbConnect</a></code> to the <code>finbif_cache_path</code> option
+(e.g.,
 <code>db &lt;- DBI::dbConnect(RSQLite::SQLite(), "my-db.sqlite"); </code>
 <code>options(finbif_cache_path = db)</code>
 ).</p>

@@ -23,7 +23,6 @@ all: dev_deps R/sysdata.rda sentinels/check codemeta.json clean
 dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('callr', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('codemetar', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('blob', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('data.table', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('DBI', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('details', quietly = TRUE))";\

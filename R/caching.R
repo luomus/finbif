@@ -20,10 +20,10 @@
 #'
 #' @section Using database caching:
 #' Caching can also be done using a database. Using a database for caching
-#' requires the packages `DBI`, `blob` and a database backend package such as
-#' `RSQLite` to be installed. To use the database for caching simply pass the
-#' connection objected created with `DBI::dbConnect` to the `finbif_cache_path`
-#' option (e.g.,
+#' requires the `DBI` package and a database backend package such as `RSQLite`
+#' to be installed. To use the database for caching simply pass the connection
+#' objected created with `DBI::dbConnect` to the `finbif_cache_path` option
+#' (e.g.,
 #' `db <- DBI::dbConnect(RSQLite::SQLite(), "my-db.sqlite"); `
 #' `options(finbif_cache_path = db)`
 #' ).
