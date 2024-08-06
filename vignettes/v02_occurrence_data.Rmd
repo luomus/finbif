@@ -423,7 +423,7 @@ finbif_occurrence(date_time_method = "accurate")
 The timezone of the calculated `date_time` variable is determined by the
 timezone of your operating system.
 
-```r
+``` r
 Sys.timezone()
 ```
 
@@ -464,7 +464,7 @@ finbif_occurrence(tzone = "Etc/UTC")
 
 Or set the global timezone option to set the timezone for the current session.
 
-```r
+``` r
 options(finbif_tz = "Etc/UTC")
 ```
 This may be advisable for reproducibility or when working with multiple systems.

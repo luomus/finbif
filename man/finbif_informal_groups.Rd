@@ -9,7 +9,8 @@ finbif_informal_groups(
   group,
   limit = 5,
   quiet = FALSE,
-  locale = getOption("finbif_locale")
+  locale = getOption("finbif_locale"),
+  cache = getOption("finbif_use_cache_metadata")
 )
 }
 \arguments{
@@ -26,6 +27,10 @@ codes. Current supported languages are English, Finnish and Swedish. For
 data where more than one language is available the language denoted by
 \code{locale} will be preferred while falling back to the other languages in the
 order indicated above.}
+
+\item{cache}{Logical or Integer. If \code{TRUE} or a number greater than zero,
+then data-caching will be used. If not logical then cache will be
+invalidated after the number of hours indicated by the argument.}
 }
 \value{
 A character vector (invisibly).

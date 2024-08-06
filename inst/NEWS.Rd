@@ -1,10 +1,19 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.9.7.9000}{
-  \subsection{NEW FEATURES}{
+\section{finbif version 0.9.7.9001}{
+  \subsection{MINOR IMPROVEMENTS}{
     \itemize{
-      \item  This is the latest development version.
+      \item Caching behaviour has been made more consistent.
+    }
+  }
+}
+
+\section{finbif version 0.9.7.9000}{
+  \subsection{DEPRECATION}{
+    \itemize{
+      \item Importing \code{.ods} and \code{.xlsx} occurrence data files has
+        been deprecated and will be defunct in a future release.
     }
   }
 }
@@ -14,7 +23,7 @@
     \itemize{
       \item Record pagination has been simplified and improved so that it
         should not be possible to have duplicate records when using
-        \code{finbif_occurrences}.
+        \code{finbif_occurrence}.
     }
   }
   \subsection{MINOR IMPROVEMENTS}{
@@ -61,7 +70,7 @@
   \subsection{BUG FIXES}{
     \itemize{
       \item Fixed an issue with reading facts for FinBIF record download files.
-      \item Fixed an issue with readling column names using \code{data.table}
+      \item Fixed an issue with reading column names using \code{data.table}
         package to ingest FinBIF record download files.
     }
   }

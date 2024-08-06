@@ -25,20 +25,20 @@ analyses.
 You can install the current stable version of `{finbif}` from
 [CRAN](https://cran.r-project.org),
 
-```r
+``` r
 install.packages("finbif")
 ```
 
 You can also install the latest development version of `{finbif}` from
 [GitHub](https://github.com),
 
-```r
+``` r
 remotes::install_github("luomus/finbif@dev")
 ```
 
 ## Loading the finbif package
 
-```r
+``` r
 library(finbif)
 ```
 
@@ -47,14 +47,14 @@ To use the FinBIF API you must first request and set a personal access token.
 You can request an API token to be sent to your email address with the function
 `finbif_get_token()`.
 
-```r
+``` r
 finbif_request_token("your@email.com")
 ```
 
 Copy the access token that was sent to your email and set it as the environment
 variable `FINBIF_ACCESS_TOKEN` either for the current session,
 
-```r
+``` r
 Sys.setenv(
   FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrv"
 )

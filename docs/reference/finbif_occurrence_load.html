@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.7.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.7.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,8 +105,11 @@ downloads. Defaults to value of option <code>finbif_hide_progress</code>.</p></d
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
 <dd><p>Logical or Integer. If <code>TRUE</code> or a number greater than zero,
-then data-caching will be used. If not logical then cache will be
-invalidated after the number of hours indicated by the argument.</p></dd>
+then data-caching will be used. If not logical then the cache will be
+invalidated after the number of hours indicated by the argument. If a
+length one vector is used, its value will only apply to caching
+occurrence records. If the value is length two, then the second element
+will determine how metadata is cached.</p></dd>
 
 
 <dt id="arg-dwc">dwc<a class="anchor" aria-label="anchor" href="#arg-dwc"></a></dt>

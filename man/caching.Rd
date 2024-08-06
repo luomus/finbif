@@ -13,10 +13,11 @@ request made using the same arguments will only request data from FinBIF in
 the first instance and subsequent requests will use the local cache while it
 exists. This will increase the speed of repeated requests and save bandwidth
 and computation for the FinBIF server. Caching can be turned off temporarily
-by setting the \code{cache = FALSE} in the requesting function.
+by setting \code{cache = c(FALSE, FALSE)} in the requesting function.
 
-Setting \code{options(finbif_use_cache = FALSE)} will turn off caching for the
-current session.
+Setting
+\code{options(finbif_use_cache = FALSE, finbif_use_cache_metadata = FALSE)} will
+turn off caching for the current session.
 }
 
 \section{Using filesystem caching}{
@@ -38,8 +39,21 @@ objected created with \code{DBI::dbConnect} to the \code{finbif_cache_path} opti
 ).
 }
 
+\section{Timeouts}{
+
+A cache timeout can be set by using an integer (number of hours until cache
+is considered invalid and is cleared) instead of a logical value for the
+\code{finbif_use_cache} and \code{finbif_use_cache_metadata} options or the \code{cache}
+function arguments.
+}
+
 \section{Clearing the cache}{
 
-The cache files can deleted \code{finbif_clear_cache()}.
+The cache can be reset \code{finbif_clear_cache()}.
+}
+
+\section{Updating the cache}{
+
+The cache can be updated using \code{finbif_update_cache()}.
 }
 

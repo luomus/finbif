@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.7.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.7.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,9 +54,10 @@ request made using the same arguments will only request data from FinBIF in
 the first instance and subsequent requests will use the local cache while it
 exists. This will increase the speed of repeated requests and save bandwidth
 and computation for the FinBIF server. Caching can be turned off temporarily
-by setting the <code>cache = FALSE</code> in the requesting function.</p>
-<p>Setting <code>options(finbif_use_cache = FALSE)</code> will turn off caching for the
-current session.</p>
+by setting <code>cache = c(FALSE, FALSE)</code> in the requesting function.</p>
+<p>Setting
+<code>options(finbif_use_cache = FALSE, finbif_use_cache_metadata = FALSE)</code> will
+turn off caching for the current session.</p>
     </div>
     <div class="section level2">
     <h2 id="using-filesystem-caching">Using filesystem caching<a class="anchor" aria-label="anchor" href="#using-filesystem-caching"></a></h2>
@@ -80,10 +81,25 @@ objected created with <code><a href="https://dbi.r-dbi.org/reference/dbConnect.h
 ).</p>
     </div>
     <div class="section level2">
+    <h2 id="timeouts">Timeouts<a class="anchor" aria-label="anchor" href="#timeouts"></a></h2>
+
+
+<p>A cache timeout can be set by using an integer (number of hours until cache
+is considered invalid and is cleared) instead of a logical value for the
+<code>finbif_use_cache</code> and <code>finbif_use_cache_metadata</code> options or the <code>cache</code>
+function arguments.</p>
+    </div>
+    <div class="section level2">
     <h2 id="clearing-the-cache">Clearing the cache<a class="anchor" aria-label="anchor" href="#clearing-the-cache"></a></h2>
 
 
-<p>The cache files can deleted <code><a href="finbif_clear_cache.html">finbif_clear_cache()</a></code>.</p>
+<p>The cache can be reset <code><a href="finbif_clear_cache.html">finbif_clear_cache()</a></code>.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="updating-the-cache">Updating the cache<a class="anchor" aria-label="anchor" href="#updating-the-cache"></a></h2>
+
+
+<p>The cache can be updated using <code><a href="finbif_update_cache.html">finbif_update_cache()</a></code>.</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

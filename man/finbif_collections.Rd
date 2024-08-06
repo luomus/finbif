@@ -12,7 +12,7 @@ finbif_collections(
   supercollections = FALSE,
   locale = getOption("finbif_locale"),
   nmin = 0,
-  cache = getOption("finbif_use_cache")
+  cache = getOption("finbif_use_cache_metadata")
 )
 }
 \arguments{

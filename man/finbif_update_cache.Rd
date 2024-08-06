@@ -8,7 +8,7 @@
 finbif_update_cache()
 }
 \description{
-Update all cached API requests from FinBIF.
+Update all cached FinBIF API requests.
 }
 \examples{
 \dontrun{

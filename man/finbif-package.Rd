@@ -19,10 +19,14 @@ A programmatic interface to the 'Finnish Biodiversity Information Facility' ('Fi
 \code{"v0"}}
 \item{\code{finbif_allow_query}}{Logical. Should remote API queries by allowed.
 Default: \code{TRUE}}
-\item{\code{finbif_use_cache}}{ Logical or Integer. If \code{TRUE} or a number greater
+\item{\code{finbif_use_cache}}{Logical or Integer. If \code{TRUE} or a number greater
 than zero, then data-caching will be used. If not logical then cache will
 be invalidated after the number of hours indicated by the value. Default:
 \code{TRUE}}
+\item{\code{finbif_use_cache_metadata}}{Logical or Integer. If \code{TRUE} or a number
+greater than zero, then metadata-caching will be used. If not logical then
+cache will be invalidated after the number of hours indicated by the value.
+Default: \code{TRUE}}
 \item{\code{finbif_cache_path}}{Character. The path to the directory where to
 store cached API queries. If unset (the default) in memory caching is
 used.}

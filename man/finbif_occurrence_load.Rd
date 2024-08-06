@@ -49,8 +49,11 @@ values are ignored causing all records to be imported.}
 downloads. Defaults to value of option \code{finbif_hide_progress}.}
 
 \item{cache}{Logical or Integer. If \code{TRUE} or a number greater than zero,
-then data-caching will be used. If not logical then cache will be
-invalidated after the number of hours indicated by the argument.}
+then data-caching will be used. If not logical then the cache will be
+invalidated after the number of hours indicated by the argument. If a
+length one vector is used, its value will only apply to caching
+occurrence records. If the value is length two, then the second element
+will determine how metadata is cached.}
 
 \item{dwc}{Logical. Use Darwin Core (or Darwin Core style) variable names.}
 

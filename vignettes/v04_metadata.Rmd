@@ -218,7 +218,7 @@ Higher level, "supercollections" can be viewed by setting
 `supercollections = TRUE` and you can limit the output to collections with
 a minimum number of records in them with the `nmin` argument.
 
-```r
+``` r
 collections <- finbif_collections(supercollections = TRUE, nmin = 10000)
 ```
 

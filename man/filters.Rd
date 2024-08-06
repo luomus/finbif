@@ -117,8 +117,8 @@ coverage area of the returned records will be completely within the box
 bound by the coordinates values. Values less than \code{1} requires the returned
 record's coverage to overlap with the bounding box in that proportion. When
 using the system "\code{ykj}" the coordinates will be coerced to integers with
-units inferred from the number of integer digits (7 digits equals km's, 6
-equals 10km's, etc.,). If coordinate maximums are not specified they will
+units inferred from the number of integer digits (7 digits equals kms, 6
+equals 10kms, etc.,). If coordinate maximums are not specified they will
 be assumed to be one unit above the minimums (e.g., \code{c(666, 333, "ykj")} is
 equivalent to \code{list(c(6660000, 6670000), c(3330000, 3340000), "ykj")}).
 \item \code{coordinates_center} Coordinates.

@@ -8,7 +8,7 @@
 finbif_clear_cache()
 }
 \description{
-Remove cached API requests from FinBIF.
+Remove cached FinBIF API requests.
 }
 \examples{
 \dontrun{

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.7.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.7.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,16 +40,25 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.9.7.9001" id="finbif-0979001">finbif 0.9.7.9001<a class="anchor" aria-label="anchor" href="#finbif-0979001"></a></h2>
+<div class="section level3">
+<h3 id="minor-improvements-0-9-7-9001">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-7-9001"></a></h3>
+<ul><li>Caching behaviour has been made more consistent.</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.7.9000" id="finbif-0979000">finbif 0.9.7.9000<a class="anchor" aria-label="anchor" href="#finbif-0979000"></a></h2>
 <div class="section level3">
-<h3 id="new-features-0-9-7-9000">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-9-7-9000"></a></h3>
-<ul><li>This is the latest development version.</li></ul></div>
+<h3 id="deprecation-0-9-7-9000">DEPRECATION<a class="anchor" aria-label="anchor" href="#deprecation-0-9-7-9000"></a></h3>
+<ul><li>Importing <code>.ods</code> and <code>.xlsx</code> occurrence data files has been deprecated and will be defunct in a future release.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.7" id="finbif-097">finbif 0.9.7<a class="anchor" aria-label="anchor" href="#finbif-097"></a></h2><p class="text-muted">CRAN release: 2024-07-23</p>
 <div class="section level3">
 <h3 id="new-features-0-9-7">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-9-7"></a></h3>
-<ul><li>Record pagination has been simplified and improved so that it should not be possible to have duplicate records when using <code>finbif_occurrences</code>.</li></ul></div>
+<ul><li>Record pagination has been simplified and improved so that it should not be possible to have duplicate records when using <code>finbif_occurrence</code>.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-9-7">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-7"></a></h3>
 <ul><li><p><code>finbif_last_mod</code> can be used without a <code>filter</code> argument value.</p></li>
@@ -67,27 +76,31 @@
 <h2 class="pkg-version" data-toc-text="0.9.6" id="finbif-096">finbif 0.9.6<a class="anchor" aria-label="anchor" href="#finbif-096"></a></h2><p class="text-muted">CRAN release: 2024-04-25</p>
 <div class="section level3">
 <h3 id="minor-improvements-0-9-6">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-6"></a></h3>
-<ul><li>New undocumented variable and filter <code>local</code> added from upstream API.</li></ul></div>
+<ul><li>New undocumented variable and filter <code>local</code> added from upstream API.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-9-6">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-6"></a></h3>
-<ul><li>Fixed an issue that caused more records than requested to be returned for certain values of <code>n</code>.</li></ul></div>
+<ul><li>Fixed an issue that caused more records than requested to be returned for certain values of <code>n</code>.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.5" id="finbif-095">finbif 0.9.5<a class="anchor" aria-label="anchor" href="#finbif-095"></a></h2><p class="text-muted">CRAN release: 2024-03-15</p>
 <div class="section level3">
 <h3 id="minor-improvements-0-9-5">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-5"></a></h3>
-<ul><li>A more informative error message is given when requesting an access token for an email address that has already been assigned one.</li></ul></div>
+<ul><li>A more informative error message is given when requesting an access token for an email address that has already been assigned one.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-9-5">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-5"></a></h3>
 <ul><li><p>Fixed an issue with reading facts for FinBIF record download files.</p></li>
-<li><p>Fixed an issue with readling column names using <code>data.table</code> package to ingest FinBIF record download files.</p></li>
+<li><p>Fixed an issue with reading column names using <code>data.table</code> package to ingest FinBIF record download files.</p></li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.4" id="finbif-094">finbif 0.9.4<a class="anchor" aria-label="anchor" href="#finbif-094"></a></h2><p class="text-muted">CRAN release: 2024-01-12</p>
 <div class="section level3">
 <h3 id="new-features-0-9-4">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-9-4"></a></h3>
-<ul><li>New undocumented variable “source” can be selected with <code>finbif_occurrence</code>.</li></ul></div>
+<ul><li>New undocumented variable “source” can be selected with <code>finbif_occurrence</code>.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-9-4">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-4"></a></h3>
 <ul><li><p>Record pagination should now often require less queries of FinBIF server and be should be faster.</p></li>
@@ -96,31 +109,37 @@
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-9-4">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-4"></a></h3>
-<ul><li>Reading zero observation data downloads will now produce a zero row <code>data.frame</code> instead of triggering an error.</li></ul></div>
+<ul><li>Reading zero observation data downloads will now produce a zero row <code>data.frame</code> instead of triggering an error.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.3" id="finbif-093">finbif 0.9.3<a class="anchor" aria-label="anchor" href="#finbif-093"></a></h2><p class="text-muted">CRAN release: 2023-09-28</p>
 <div class="section level3">
 <h3 id="bug-fixes-0-9-3">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-3"></a></h3>
-<ul><li>Fix a bug resulting in the incorrect region being assigned to occurrences records.</li></ul></div>
+<ul><li>Fix a bug resulting in the incorrect region being assigned to occurrences records.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-9-3">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-3"></a></h3>
-<ul><li>New undocumented variables <code>institution_code</code> and <code>collection_code</code> can be selected when using functions <code>finbif_collections</code> and <code>finbif_occurrence</code>.</li></ul></div>
+<ul><li>New undocumented variables <code>institution_code</code> and <code>collection_code</code> can be selected when using functions <code>finbif_collections</code> and <code>finbif_occurrence</code>.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.2" id="finbif-092">finbif 0.9.2<a class="anchor" aria-label="anchor" href="#finbif-092"></a></h2><p class="text-muted">CRAN release: 2023-08-28</p>
 <div class="section level3">
 <h3 id="bug-fixes-0-9-2">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-2"></a></h3>
-<ul><li>Fixed a bug triggered when localising some variables and multiple pages of data had been requested.</li></ul></div>
+<ul><li>Fixed a bug triggered when localising some variables and multiple pages of data had been requested.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.1" id="finbif-091">finbif 0.9.1<a class="anchor" aria-label="anchor" href="#finbif-091"></a></h2><p class="text-muted">CRAN release: 2023-06-29</p>
 <div class="section level3">
 <h3 id="new-features-0-9-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-9-1"></a></h3>
-<ul><li>New option <code>finbif_use_cache_metadata</code> to set caching for metadata only. Is ignored if <code>finbif_use_cache</code> is <code>TRUE</code>.</li></ul></div>
+<ul><li>New option <code>finbif_use_cache_metadata</code> to set caching for metadata only. Is ignored if <code>finbif_use_cache</code> is <code>TRUE</code>.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-9-1">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-1"></a></h3>
-<ul><li>Fixed a bug triggered when trying to compute a variable from an identifier and data returned contained zero records.</li></ul></div>
+<ul><li>Fixed a bug triggered when trying to compute a variable from an identifier and data returned contained zero records.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.0" id="finbif-090">finbif 0.9.0<a class="anchor" aria-label="anchor" href="#finbif-090"></a></h2><p class="text-muted">CRAN release: 2023-05-23</p>
@@ -152,7 +171,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-0-8-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-8-0"></a></h3>
-<ul><li>Record aggregations with <code>finbif_occurrence</code> can now include “individual” and “pair” sums.</li></ul></div>
+<ul><li>Record aggregations with <code>finbif_occurrence</code> can now include “individual” and “pair” sums.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.7.2" id="finbif-072">finbif 0.7.2<a class="anchor" aria-label="anchor" href="#finbif-072"></a></h2><p class="text-muted">CRAN release: 2023-02-06</p>
@@ -178,7 +198,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-7-1">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-7-1"></a></h3>
-<ul><li>Fixed bug that caused locale to be set incorrectly for multipage requests.</li></ul></div>
+<ul><li>Fixed bug that caused locale to be set incorrectly for multipage requests.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.7.0" id="finbif-070">finbif 0.7.0<a class="anchor" aria-label="anchor" href="#finbif-070"></a></h2><p class="text-muted">CRAN release: 2022-09-13</p>
@@ -202,10 +223,12 @@
 <h2 class="pkg-version" data-toc-text="0.6.6" id="finbif-066">finbif 0.6.6<a class="anchor" aria-label="anchor" href="#finbif-066"></a></h2><p class="text-muted">CRAN release: 2022-08-08</p>
 <div class="section level3">
 <h3 id="new-features-0-6-6">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-6"></a></h3>
-<ul><li>New option to exclude all records with any NA values for any of the selected variables added to <code>finbif_occurrence</code>.</li></ul></div>
+<ul><li>New option to exclude all records with any NA values for any of the selected variables added to <code>finbif_occurrence</code>.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-6-6">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-6-6"></a></h3>
-<ul><li>The warning/error message returned when an invalid taxon is requested with <code>finbif_occurrence</code> has been made more detailed, warning the user they may be using synonyms or other invalid taxon names.</li></ul></div>
+<ul><li>The warning/error message returned when an invalid taxon is requested with <code>finbif_occurrence</code> has been made more detailed, warning the user they may be using synonyms or other invalid taxon names.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-6-6">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-6"></a></h3>
 <ul><li><p>Fix applied for a print method error triggered by clashing class names.</p></li>
@@ -239,7 +262,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-6-4">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-4"></a></h3>
-<ul><li>Fix bug triggered when printing occurrence records where all records have no coordinate uncertainty.</li></ul></div>
+<ul><li>Fix bug triggered when printing occurrence records where all records have no coordinate uncertainty.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.3" id="finbif-063">finbif 0.6.3<a class="anchor" aria-label="anchor" href="#finbif-063"></a></h2><p class="text-muted">CRAN release: 2022-01-03</p>
@@ -252,7 +276,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-6-3">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-3"></a></h3>
-<ul><li>Fix bug in importing of file downloads triggered by string quotation errors.</li></ul></div>
+<ul><li>Fix bug in importing of file downloads triggered by string quotation errors.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.2" id="finbif-062">finbif 0.6.2<a class="anchor" aria-label="anchor" href="#finbif-062"></a></h2><p class="text-muted">CRAN release: 2021-09-03</p>
@@ -263,7 +288,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-6-2">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-6-2"></a></h3>
-<ul><li>A client-side error will be triggered if an attempt is made to filter by taxon and aggregate data by event with <code>finbif_occurrence</code>.</li></ul></div>
+<ul><li>A client-side error will be triggered if an attempt is made to filter by taxon and aggregate data by event with <code>finbif_occurrence</code>.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-6-2">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-2"></a></h3>
 <ul><li><p>Fix bug preventing loading of FinBIF archives that is triggered when all variables are selected with <code>select = "all"</code>.</p></li>
@@ -274,7 +300,8 @@
 <h2 class="pkg-version" data-toc-text="0.6.1" id="finbif-061">finbif 0.6.1<a class="anchor" aria-label="anchor" href="#finbif-061"></a></h2><p class="text-muted">CRAN release: 2021-07-26</p>
 <div class="section level3">
 <h3 id="bug-fixes-0-6-1">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-1"></a></h3>
-<ul><li>Fixed a regression in the last release that prevented collection names being converted from their URIs.</li></ul></div>
+<ul><li>Fixed a regression in the last release that prevented collection names being converted from their URIs.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.0" id="finbif-060">finbif 0.6.0<a class="anchor" aria-label="anchor" href="#finbif-060"></a></h2><p class="text-muted">CRAN release: 2021-07-22</p>
@@ -330,7 +357,8 @@
 <h2 class="pkg-version" data-toc-text="0.4.0" id="finbif-040">finbif 0.4.0<a class="anchor" aria-label="anchor" href="#finbif-040"></a></h2><p class="text-muted">CRAN release: 2020-12-17</p>
 <div class="section level3">
 <h3 id="new-features-0-4-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-4-0"></a></h3>
-<ul><li>Occurrence record requests can now be made with aggregation, <code>aggregate = c("records", "species", "taxa")</code>. This returns the number of records, and/or species or taxa for each combination of the selected variables instead of the occurrence records themselves.</li></ul></div>
+<ul><li>Occurrence record requests can now be made with aggregation, <code>aggregate = c("records", "species", "taxa")</code>. This returns the number of records, and/or species or taxa for each combination of the selected variables instead of the occurrence records themselves.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-4-0">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-4-0"></a></h3>
 <ul><li><p>Error is triggered when attempting to request less than one record.</p></li>
@@ -356,7 +384,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-3-1">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-3-1"></a></h3>
-<ul><li>Filtering vignette updated to reflect changes to data quality filters.</li></ul></div>
+<ul><li>Filtering vignette updated to reflect changes to data quality filters.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="finbif-030">finbif 0.3.0<a class="anchor" aria-label="anchor" href="#finbif-030"></a></h2><p class="text-muted">CRAN release: 2020-04-23</p>
@@ -397,14 +426,17 @@
 <h2 class="pkg-version" data-toc-text="0.2.0" id="finbif-020">finbif 0.2.0<a class="anchor" aria-label="anchor" href="#finbif-020"></a></h2><p class="text-muted">CRAN release: 2020-01-16</p>
 <div class="section level3">
 <h3 id="new-features-0-2-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-2-0"></a></h3>
-<ul><li>Add capacity to request a random sample of FinBIF records.</li></ul></div>
+<ul><li>Add capacity to request a random sample of FinBIF records.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-2-0">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-2-0"></a></h3>
-<ul><li>Add more content to vignettes.</li></ul></div>
+<ul><li>Add more content to vignettes.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="finbif-010">finbif 0.1.0<a class="anchor" aria-label="anchor" href="#finbif-010"></a></h2><p class="text-muted">CRAN release: 2019-11-19</p>
-<ul><li>Initial release.</li></ul></div>
+<ul><li>Initial release.</li>
+</ul></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

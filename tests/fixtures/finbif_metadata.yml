@@ -15,7 +15,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jul 2024 11:58:44 GMT
+      date: Fri, 26 Jul 2024 10:11:04 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       x-powered-by: Express
@@ -78,8 +78,8 @@ http_interactions:
         Trait Database","fi":"FinBIF Trait Database","sv":"FinBIF Trait Database"}},{"id":"KE.1681","name":{"en":"Helsinki
         Invasive Species App","fi":"Helsingin Vieraslajisovellus","sv":"Helsingfors
         invasiva arter app"}}],"lastPage":1,"@context":"http://schema.laji.fi/context/informationSystem.jsonld"}'
-  recorded_at: 2024-07-23 11:58:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/1.0.0
+  recorded_at: 2024-07-26 10:11:05 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/metadata/ranges/MX.adminStatusEnum?lang=multi&access_token=<finbif_token>
@@ -96,14 +96,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jul 2024 11:58:44 GMT
+      date: Fri, 26 Jul 2024 10:11:04 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"1025a-4DMcjWtzdhZ1Z7lRne0NLFuBVEo"
+      etag: W/"1025a-D061pMQNXflWYm2BMCKjnDY61hM"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
@@ -192,15 +192,15 @@ http_interactions:
         vara nödvändigt för att skyddas i en del av landet.","fi":"Luonnonsuojelulain
         (2023/9) 69 §:n mukaan valtioneuvoston asetuksella voidaan säädellä osassa
         maata rauhoitetuksi eläinlajit, joiden säilyminen käy uhatuksi tai rauhoittaminen
-        muusta syystä osoittautuu tarpeelliseksi.","en":""},"administrativeStatusLink":{"sv":"https://www.finlex.fi/sv/laki/ajantasa/2023/20231066","fi":"https://www.finlex.fi/fi/laki/ajantasa/2023/20231066","en":""}},{"id":"MX.finlex160_1997_largeBirdsOfPrey","value":{"en":"Large
-        birds of prey (NCD 2023/9, 73 §)","sv":"Stora rovfåglar (NVF 2023/9, 73 §)","fi":"Suuret
+        muusta syystä osoittautuu tarpeelliseksi.","en":""},"administrativeStatusLink":{"sv":"https://www.finlex.fi/sv/laki/ajantasa/2023/20231066","fi":"https://www.finlex.fi/fi/laki/ajantasa/2023/20231066","en":""}},{"id":"MX.finlex160_1997_largeBirdsOfPrey","value":{"sv":"Stora
+        rovfåglar (NVF 2023/9, 73 §)","en":"Large birds of prey (NCD 2023/9, 73 §)","fi":"Suuret
         petolinnut (LSL 2023/9, 73 §)"},"administrativeStatusDescription":{"en":"The
         nesting tree of a large bird of prey, where the nest is in regular use and
         clearly visible, is protected.","sv":"Ett på behörigt sätt utmärkt boträd
         för en fridlyst fågel och ett boträd där en stor rovfågel häckar och där boet
         är i regelbunden användning och klart synligt är fridlyst.","fi":"Suuren petolinnun
         pesäpuu, jossa oleva pesä on säännöllisessä käytössä ja selvästi nähtävissä,
-        on rauhoitettu."},"administrativeStatusLink":{"sv":"https://www.finlex.fi/sv/laki/ajantasa/2023/20230009","en":"https://www.finlex.fi/fi/laki/ajantasa/2023/20230009","fi":"https://www.finlex.fi/fi/laki/ajantasa/2023/20230009"}},{"id":"MX.finlex1066_2023_appendix7","value":{"en":"Species
+        on rauhoitettu."},"administrativeStatusLink":{"en":"https://www.finlex.fi/fi/laki/ajantasa/2023/20230009","fi":"https://www.finlex.fi/fi/laki/ajantasa/2023/20230009","sv":"https://www.finlex.fi/sv/laki/ajantasa/2023/20230009"}},{"id":"MX.finlex1066_2023_appendix7","value":{"en":"Species
         requiring strict protection within the European Union (NVF 2023/1066, Appendix
         7)","sv":"Arter som kräver strikt skydd inom Europeiska unionen (NVF 2023/1066,
         bilaga 7)","fi":"Suomessa esiintyvät Euroopan unionin tiukkaa suojelua edellyttävät
@@ -210,28 +210,28 @@ http_interactions:
         Decree contains a list of species in Finland that require strict protection
         by the European Union.","sv":"I bilaga 7 till naturvårdsförordningen finns
         en förteckning över arter i Finland som kräver strikt skydd av Europeiska
-        unionen."},"administrativeStatusLink":{"fi":"https://www.finlex.fi/fi/laki/ajantasa/2023/20231066","sv":"https://www.finlex.fi/sv/laki/ajantasa/2023/20231066","en":""}},{"id":"MX.habitatsDirectiveAnnexII","value":{"fi":"EU:n
-        luontodirektiivin II-liite","sv":"EU:s habitatdirektiv, bilaga II","en":"EU
-        Habitats Directive Annex II"},"administrativeStatusDescription":{"sv":"De
-        djur- och växtarter europeiska gemenskapen anser vara viktiga och för vilkas
-        skyddområden för specifika skyddsåtgärder bör anvisas (nätverket Natura 2000)","fi":"Liitteen
+        unionen."},"administrativeStatusLink":{"fi":"https://www.finlex.fi/fi/laki/ajantasa/2023/20231066","sv":"https://www.finlex.fi/sv/laki/ajantasa/2023/20231066","en":""}},{"id":"MX.habitatsDirectiveAnnexII","value":{"en":"EU
+        Habitats Directive Annex II","sv":"EU:s habitatdirektiv, bilaga II","fi":"EU:n
+        luontodirektiivin II-liite"},"administrativeStatusDescription":{"sv":"De djur-
+        och växtarter europeiska gemenskapen anser vara viktiga och för vilkas skyddområden
+        för specifika skyddsåtgärder bör anvisas (nätverket Natura 2000)","fi":"Liitteen
         II Suomessa esiintyvät lajit (jotka mukana Suomen artikla 17 mukaisessa raportissa
         EU:lle vuonna 2019). Euroopan unionin tärkeänä pitämä laji, jonka suotuisa
         suojelutaso on pyrittävä säilyttämään tai palauttamaan. Suojelukeinona on
         alueellinen suojelu (Natura 2000 -alueet). Niille lajeille, joille Suomella
         on liitteessä varauma tai jotka esiintyvät satunnaisesti, Suomen ei ole tarvinnut
-        alueita perustaa.","en":""},"administrativeStatusLink":{"fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","en":""}},{"id":"MX.habitatsDirectiveAnnexIV","value":{"fi":"EU:n
-        luontodirektiivin IV-liite","sv":"EU:s habitatdirektiv, bilaga IV","en":"EU
-        Habitats Directive Annex IV"},"administrativeStatusDescription":{"fi":"Liitteen
+        alueita perustaa.","en":""},"administrativeStatusLink":{"fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","en":""}},{"id":"MX.habitatsDirectiveAnnexIV","value":{"sv":"EU:s
+        habitatdirektiv, bilaga IV","en":"EU Habitats Directive Annex IV","fi":"EU:n
+        luontodirektiivin IV-liite"},"administrativeStatusDescription":{"sv":"De djur-
+        och växtarter gemenskapen anser vara viktiga och vilka kräver strängt skydd.
+        Det är med andra ord förbjudet att avsiktligt döda, fånga, störa (särskilt
+        under fortplantningstiden) samt nyttja dem i kommersiellt syfte.","fi":"Liitteen
         IV Suomessa esiintyvät lajit ja alalajit (jotka mukana Suomen artikla 17 mukaisessa
         raportissa EU:lle vuonna 2019). EU:n tärkeänä pitämä laji, jonka suotuisa
         suojelutaso on pyrittävä säilyttämään tai palauttamaan. Suojelukeinona on
-        lajin tiukka suojelu.","sv":"De djur- och växtarter gemenskapen anser vara
-        viktiga och vilka kräver strängt skydd. Det är med andra ord förbjudet att
-        avsiktligt döda, fånga, störa (särskilt under fortplantningstiden) samt nyttja
-        dem i kommersiellt syfte.","en":""},"administrativeStatusLink":{"fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","en":""}},{"id":"MX.habitatsDirectiveAnnexV","value":{"sv":"EU:s
-        habitatdirektiv, bilaga V","fi":"EU:n luontodirektiivin V-liite","en":"EU
-        Habitats Directive Annex V"},"administrativeStatusDescription":{"sv":"De djur-
+        lajin tiukka suojelu.","en":""},"administrativeStatusLink":{"fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","en":""}},{"id":"MX.habitatsDirectiveAnnexV","value":{"fi":"EU:n
+        luontodirektiivin V-liite","en":"EU Habitats Directive Annex V","sv":"EU:s
+        habitatdirektiv, bilaga V"},"administrativeStatusDescription":{"sv":"De djur-
         och växtarter gemenskapen anser vara viktiga och där det kan krävas reglering
         av rätten att ta dem från naturen och att utnyttja dem.","fi":"EU:n luontodirektiivin
         liitteessä V luetellut, Suomessa esiintyvät lajit ja lajiryhmät (jotka mukana
@@ -252,47 +252,47 @@ http_interactions:
         (kaloja ja riistanisäkkäitä) eli niiden suojelemiseksi ei tarvitse perustaa
         Natura 2000 -alueita.","sv":"Finland har fått ett förbehåll för tio av dessa
         arter i samband med medlemsförhandlingarna (fiskar och viltdäggdjur). Det
-        innebär att vi inte behöver inrätta Natura 2000-områden för skyddet av dem.","en":""},"administrativeStatusLink":{"sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","en":""}},{"id":"MX.habitatsDirectiveAnnexII_FinlandNaturaSpecies","value":{"en":"EU
-        Habitats Directive Annex II, Finland''s Natura species","fi":"EU:n luontodirektiivin
-        liite II, Suomen Natura-lajit","sv":"EU:s habitatdirektiv bilaga II, Finlands
-        Natura-arter"},"administrativeStatusDescription":{"sv":"Arter och underarter
-        i bilaga II som förekommer i Finland som kriterier för skydd av Natura 2000-områden
-        i Finland. Arten har i de bilaterala förhandlingarna mellan EU och Finland
-        ansetts vara en sådan permanent ställning att Finland måste inrätta särskilda
-        skyddsområden för att skydda dessa arters livsmiljöer (Natura 2000 nätverk
-        av platser). Natura-arter listas i referenslistorna för de boreala, alpina
-        och Östersjöregionerna per medlemsstat.","fi":"Liitteen II Suomessa esiintyvät
-        lajit ja alalajit, jotka ovat Suomessa Natura 2000 -alueiden suojeluperusteina.
-        Lajien on katsottu EU:n ja Suomen kahdenvälisissä neuvotteluissa esiintyvän
-        siinä määrin pysyvänä kantana, että Suomen on perustettava näiden lajien elinympäristöjen
-        suojeluun erityisten suojelutoimien alueita (Natura 2000 -alueverkosto). Suomen
-        liitteessä II oleville varaumalajeille alueita ei tarvitse perustaa. Natura-lajit
-        on lueteltu boreaalisen-, alpiinisen- ja Itämeren alueen referenssiluetteloissa
-        jäsenmaittain.","en":"Annex II species and subspecies occurring in Finland
-        as criteria for the protection of Natura 2000 sites in Finland. The species
-        has been considered in the bilateral negotiations between the EU and Finland
-        to be such a permanent position that Finland must establish special protection
-        areas for the protection of the habitats of these species (Natura 2000 network
-        of sites)."},"administrativeStatusLink":{"en":"https://www.eionet.europa.eu/etcs/etc-bd/activities/building-the-natura-2000-network","sv":"https://www.eionet.europa.eu/etcs/etc-bd/activities/building-the-natura-2000-network","fi":"https://www.eionet.europa.eu/etcs/etc-bd/activities/building-the-natura-2000-network"}},{"id":"MX.habitatsDirectiveAnnexIVExceptionGranted","value":{"fi":"EU:n
-        luontodirektiivin IV-liite, Suomi saanut varauman koskien tätä lajia","sv":"EU:s
+        innebär att vi inte behöver inrätta Natura 2000-områden för skyddet av dem.","en":""},"administrativeStatusLink":{"fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","en":""}},{"id":"MX.habitatsDirectiveAnnexII_FinlandNaturaSpecies","value":{"fi":"EU:n
+        luontodirektiivin liite II, Suomen Natura-lajit","en":"EU Habitats Directive
+        Annex II, Finland''s Natura species","sv":"EU:s habitatdirektiv bilaga II,
+        Finlands Natura-arter"},"administrativeStatusDescription":{"en":"Annex II
+        species and subspecies occurring in Finland as criteria for the protection
+        of Natura 2000 sites in Finland. The species has been considered in the bilateral
+        negotiations between the EU and Finland to be such a permanent position that
+        Finland must establish special protection areas for the protection of the
+        habitats of these species (Natura 2000 network of sites).","fi":"Liitteen
+        II Suomessa esiintyvät lajit ja alalajit, jotka ovat Suomessa Natura 2000
+        -alueiden suojeluperusteina. Lajien on katsottu EU:n ja Suomen kahdenvälisissä
+        neuvotteluissa esiintyvän siinä määrin pysyvänä kantana, että Suomen on perustettava
+        näiden lajien elinympäristöjen suojeluun erityisten suojelutoimien alueita
+        (Natura 2000 -alueverkosto). Suomen liitteessä II oleville varaumalajeille
+        alueita ei tarvitse perustaa. Natura-lajit on lueteltu boreaalisen-, alpiinisen-
+        ja Itämeren alueen referenssiluetteloissa jäsenmaittain.","sv":"Arter och
+        underarter i bilaga II som förekommer i Finland som kriterier för skydd av
+        Natura 2000-områden i Finland. Arten har i de bilaterala förhandlingarna mellan
+        EU och Finland ansetts vara en sådan permanent ställning att Finland måste
+        inrätta särskilda skyddsområden för att skydda dessa arters livsmiljöer (Natura
+        2000 nätverk av platser). Natura-arter listas i referenslistorna för de boreala,
+        alpina och Östersjöregionerna per medlemsstat."},"administrativeStatusLink":{"fi":"https://www.eionet.europa.eu/etcs/etc-bd/activities/building-the-natura-2000-network","en":"https://www.eionet.europa.eu/etcs/etc-bd/activities/building-the-natura-2000-network","sv":"https://www.eionet.europa.eu/etcs/etc-bd/activities/building-the-natura-2000-network"}},{"id":"MX.habitatsDirectiveAnnexIVExceptionGranted","value":{"sv":"EU:s
         habitatdirektiv bilaga IV, undantag beviljades för finska populationerna","en":"EU
-        Habitats Directive Annex IV, exception granted for Finnish populations"},"administrativeStatusDescription":{"sv":"Finland
-        har fått ett förbehåll för den europeiska bävern och för vargen i renskötselområden.","fi":"Suomi
-        on saanut varauman euroopanmajavalle sekä sudelle poronhoitoalueella.","en":""},"administrativeStatusLink":{"sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","en":""}},{"id":"MX.habitatsDirectiveAnnexVExceptionGranted","value":{"fi":"EU:n
+        Habitats Directive Annex IV, exception granted for Finnish populations","fi":"EU:n
+        luontodirektiivin IV-liite, Suomi saanut varauman koskien tätä lajia"},"administrativeStatusDescription":{"fi":"Suomi
+        on saanut varauman euroopanmajavalle sekä sudelle poronhoitoalueella.","sv":"Finland
+        har fått ett förbehåll för den europeiska bävern och för vargen i renskötselområden.","en":""},"administrativeStatusLink":{"fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","en":""}},{"id":"MX.habitatsDirectiveAnnexVExceptionGranted","value":{"fi":"EU:n
         luontodirektiivin V-liite, Suomi saanut varauman koskien tätä lajia","en":"EU
         Habitats Directive Annex V, exception granted for Finnish populations","sv":"EU:s
         habitatdirektiv bilaga V, undantag beviljades för finska populationerna"},"administrativeStatusDescription":{"fi":"Suomella
         on sudelle varauma poronhoitoalueen eteläpuolelle.","sv":"Finland har ett
-        förbehåll för vargen söder om renskötselområdet.","en":""},"administrativeStatusLink":{"sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","en":""}},{"id":"MX.birdsDirectiveStatusAppendix1","value":{"sv":"EU:s
-        direktiv om bevarande av vilda fåglar, bilaga I","en":"EU Directive on Conservation
-        of Wild Birds Annex I","fi":"EU:n lintudirektiivin I-liite"},"administrativeStatusDescription":{"sv":"Arter
+        förbehåll för vargen söder om renskötselområdet.","en":""},"administrativeStatusLink":{"sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","en":""}},{"id":"MX.birdsDirectiveStatusAppendix1","value":{"fi":"EU:n
+        lintudirektiivin I-liite","sv":"EU:s direktiv om bevarande av vilda fåglar,
+        bilaga I","en":"EU Directive on Conservation of Wild Birds Annex I"},"administrativeStatusDescription":{"sv":"Arter
         av gemenskapsintresse för vilkas skydd man måste anvisa särskilda skyddsområden
         (nätverket av Natura 2000-områden).","fi":"Yhteisön tärkeinä pitämät, Suomessa
         esiintyvät lajit, joiden elinympäristöjä on suojeltava erityistoimin. Toimilla
         varmistetaan lajien eloonjääminen ja lisääntyminen niiden levinneisyysalueella
-        (mm. Natura 2000 -alueiden perustaminen).","en":""},"administrativeStatusLink":{"sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","en":""}},{"id":"MX.birdsDirectiveStatusAppendix2A","value":{"sv":"EU:s
-        direktiv om bevarande av vilda fåglar, bilaga II/A","fi":"EU:n lintudirektiivin
-        II/A-liite","en":"EU Directive on Conservation of Wild Birds Annex II/A"},"administrativeStatusDescription":{"sv":"Arter
+        (mm. Natura 2000 -alueiden perustaminen).","en":""},"administrativeStatusLink":{"fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Luonto_ja_lintudirektiivien_lajit","sv":"https://www.ymparisto.fi/sv-FI/Natur/Arter/Arter_i_habitat_och_fageldirektiven","en":""}},{"id":"MX.birdsDirectiveStatusAppendix2A","value":{"fi":"EU:n
+        lintudirektiivin II/A-liite","sv":"EU:s direktiv om bevarande av vilda fåglar,
+        bilaga II/A","en":"EU Directive on Conservation of Wild Birds Annex II/A"},"administrativeStatusDescription":{"sv":"Arter
         som kan jagas i hela Europeiska unionen om nationell lagstiftning tillåter
         det. Medlemsstaterna måste se till att jakten inte äventyrar bevarandeåtgärderna
         för arterna i deras utbredningsområde. Bilagan innehåller förutom listan dalripaunderarterna
@@ -309,23 +309,24 @@ http_interactions:
         för arterna i deras utbredningsområde.","fi":"Lajit, joiden metsästäminen
         voidaan sallia Suomessa (jäsenmailla omat luettelot), mikäli kansallinen lainsäädäntö
         sallii sen. Jäsenvaltioiden on varmistettava ettei metsästys vaaranna lajin
-        suojelutoimenpiteitä niiden levinneisyysalueella.","en":""}},{"id":"MX.birdsDirectiveStatusAppendix3A","value":{"fi":"EU:n
-        lintudirektiivin III/A-liite","en":"EU Directive on Conservation of Wild Birds
-        Annex III/A","sv":"EU:s direktiv om bevarande av vilda fåglar, bilaga III/A"},"administrativeStatusDescription":{"fi":"Lajit,
-        joiden myynti, kuljetus ja hallussa pitäminen myyntiä varten sekä elävien
-        tai kuolleiden lintujen ja kaikkien niiden helposti tunnistettavien osien
-        tai linnuista valmistettujen tuotteiden myytäväksi tarjoaminen ei ole kiellettyä,
-        JOS linnut on pyydystetty tai muuten hankittu laillisella tavalla. Liitteessä
-        on listauksen lisäksi punapyy Alectoris rufa sekä kalliopyy Alectoris barbara,
-        jotka eivät esiinny Suomessa.","sv":"Arter för vilka försäljning, transport
-        eller innehav för försäljning och erbjudande till försäljning av levande eller
-        döda fåglar och alla deras lätt identifierbara delar eller produkter tillverkade
-        av fåglar kan beviljas av medlemsstaterna, om fåglarna har fångats eller på
-        annat sätt förvärvats i en lagligt sätt. Dessutom ingår underarten Tetrao
-        tetrix britannicus, som inte förekommer i Finland, i bilagan. Utöver underarterna
-        Lagopus lagopus lagopus som förekommer i Finland, omfattar bilagan underarterna
-        L. l. scoticus och L. l. hibernicus, som inte förekommer i Finland. Om tundragåsen
-        finns underarten Anser albifrons albifrons, som vandrar genom Finland, i bilagan.","en":""}},{"id":"MX.birdsDirectiveStatusAppendix3B","value":{"en":"EU
+        suojelutoimenpiteitä niiden levinneisyysalueella.","en":""}},{"id":"MX.birdsDirectiveStatusAppendix3A","value":{"en":"EU
+        Directive on Conservation of Wild Birds Annex III/A","sv":"EU:s direktiv om
+        bevarande av vilda fåglar, bilaga III/A","fi":"EU:n lintudirektiivin III/A-liite"},"administrativeStatusDescription":{"sv":"Arter
+        för vilka försäljning, transport eller innehav för försäljning och erbjudande
+        till försäljning av levande eller döda fåglar och alla deras lätt identifierbara
+        delar eller produkter tillverkade av fåglar kan beviljas av medlemsstaterna,
+        om fåglarna har fångats eller på annat sätt förvärvats i en lagligt sätt.
+        Dessutom ingår underarten Tetrao tetrix britannicus, som inte förekommer i
+        Finland, i bilagan. Utöver underarterna Lagopus lagopus lagopus som förekommer
+        i Finland, omfattar bilagan underarterna L. l. scoticus och L. l. hibernicus,
+        som inte förekommer i Finland. Om tundragåsen finns underarten Anser albifrons
+        albifrons, som vandrar genom Finland, i bilagan.","fi":"Lajit, joiden myynti,
+        kuljetus ja hallussa pitäminen myyntiä varten sekä elävien tai kuolleiden
+        lintujen ja kaikkien niiden helposti tunnistettavien osien tai linnuista valmistettujen
+        tuotteiden myytäväksi tarjoaminen ei ole kiellettyä, JOS linnut on pyydystetty
+        tai muuten hankittu laillisella tavalla. Liitteessä on listauksen lisäksi
+        punapyy Alectoris rufa sekä kalliopyy Alectoris barbara, jotka eivät esiinny
+        Suomessa.","en":""}},{"id":"MX.birdsDirectiveStatusAppendix3B","value":{"en":"EU
         Directive on Conservation of Wild Birds Annex III/B","fi":"EU:n lintudirektiivin
         III/B-liite","sv":"EU:s direktiv om bevarande av vilda fåglar, bilaga III/B"},"administrativeStatusDescription":{"fi":"Lajit,
         joiden myyntiin, kuljetukseen tai hallussa pitämiseen myyntiä varten sekä
@@ -337,15 +338,15 @@ http_interactions:
         lagopus lisäksi liitteessä alalajit L. l. scoticus ja L. l. hibernicus, jotka
         eivät esiinny Suomessa. Tundrahanhesta liitteessä on Suomen kautta muuttava
         alalaji Anser albifrons albifrons.","sv":"Arter som har handelsförbud, men
-        för vilka undantagstillstånd kan beviljas.","en":""}},{"id":"MX.birdsDirectiveStatusMigratoryBirds","value":{"en":"Migratory
-        birds of the EU Birds Directive","sv":"Flyttfåglar i EU:s direktiv om bevarande
-        av vilda fåglar","fi":"EU:n lintudirektiivin muuttolinnut"},"administrativeStatusDescription":{"en":"Migratory
-        species that occur regularly in Finland, for the protection of which must
-        be taken similar measures to those for Annex I species (eg the establishment
-        of Natura 2000 sites).","fi":"Suomessa säännöllisesti esiintyvät muuttavat
-        lajit, joiden suojelemiseksi on toteutettava vastaavat toimenpiteet kuin liitteen
-        I lajeille (mm. Natura 2000 -alueiden perustaminen).","sv":"Flyttfåglar som
-        förekommer regelbundet i Finland, vars skydd måste vidtas liknande åtgärder
+        för vilka undantagstillstånd kan beviljas.","en":""}},{"id":"MX.birdsDirectiveStatusMigratoryBirds","value":{"fi":"EU:n
+        lintudirektiivin muuttolinnut","sv":"Flyttfåglar i EU:s direktiv om bevarande
+        av vilda fåglar","en":"Migratory birds of the EU Birds Directive"},"administrativeStatusDescription":{"fi":"Suomessa
+        säännöllisesti esiintyvät muuttavat lajit, joiden suojelemiseksi on toteutettava
+        vastaavat toimenpiteet kuin liitteen I lajeille (mm. Natura 2000 -alueiden
+        perustaminen).","en":"Migratory species that occur regularly in Finland, for
+        the protection of which must be taken similar measures to those for Annex
+        I species (eg the establishment of Natura 2000 sites).","sv":"Flyttfåglar
+        som förekommer regelbundet i Finland, vars skydd måste vidtas liknande åtgärder
         som för arter i bilaga I (t.ex. etablering av Natura 2000 -platser)."}},{"id":"MX.cites_appendixI","value":{"en":"Convention
         on International Trade in Endangered Species of Wild Flora and Fauna - CITES,
         Appendix I","fi":"CITES-sopimus, liite I","sv":"CITES-konventionen, bilaga
@@ -369,16 +370,16 @@ http_interactions:
         osien ja niistä valmistettujen tuotteiden tuonti ja vienti on säännelty. Sopimuksen
         II-liitteen lajien kansainvälinen kauppa on sallittua, mutta vaatii vientiluvan
         vientimaasta.","en":""},"administrativeStatusLink":{"en":"https://www.ymparisto.fi/en-US/Forms_permits_and_environmental_impact_assessment/Permits_notifications_and_registration/International_trade_of_endangered_species_CITES","fi":"https://www.ymparisto.fi/cites/lajiliitteet","sv":"https://www.ymparisto.fi/sv-FI/Arendehantering_tillstand_och_miljokonsekvensbedomning/Tillstand_anmalningar_och_registrering/Internationell_och_EUintern_handel_med_hotade_arter_och_de_tillstand_som_kravs_for_detta_CITES/CITESbilagor_och_artsoktjanst"}},{"id":"MX.cites_appendixIII","value":{"fi":"CITES-sopimus,
-        liite III","en":"Convention on International Trade in Endangered Species of
-        Wild Flora and Fauna - CITES, Appendix III","sv":"CITES-konventionen, bilaga
-        III"},"administrativeStatusDescription":{"fi":"CITES-sopimus sääntelee uhanalaisten
-        lajien kansainvälistä kauppaa, eli näiden lajien, niiden osien ja niistä valmistettujen
-        tuotteiden tuonti ja vienti on säännelty. Sopimuksen III-liitteen lajien kansainvälinen
-        kauppa on sallittua, mutta luvanvaraista. Vientilupa vaaditaan maasta, joka
-        on mainittu lajiliitteessä. Muista maista vaaditaan joko vientilupa tai alkuperätodistus.","sv":"Internationell
-        handel med arterna i den här bilagan är tillåten, men det krävs tillstånd.
-        Man måste ha ett exporttillstånd från det land som nämns i artbilagan. Från
-        andra länder krävs antingen ett exporttillstånd eller ett ursprungsintyg.","en":""},"administrativeStatusLink":{"fi":"https://www.ymparisto.fi/fi-fi/asiointi_luvat_ja_ymparistovaikutusten_arviointi/Luvat_ilmoitukset_ja_rekisterointi/Uhanalaisten_lajien_kansainvalinen_ja_EUn_sisainen_kauppa_ja_sita_koskevat_luvat_CITES/CITESlajiliitteet_ja_lajihakupalvelut","en":"https://www.ymparisto.fi/en-US/Forms_permits_and_environmental_impact_assessment/Permits_notifications_and_registration/International_trade_of_endangered_species_CITES","sv":"https://www.ymparisto.fi/sv-FI/Arendehantering_tillstand_och_miljokonsekvensbedomning/Tillstand_anmalningar_och_registrering/Internationell_och_EUintern_handel_med_hotade_arter_och_de_tillstand_som_kravs_for_detta_CITES/CITESbilagor_och_artsoktjanst"}},{"id":"MX.euRegulation_cites_appendixA","value":{"sv":"EU-lagstiftning
+        liite III","sv":"CITES-konventionen, bilaga III","en":"Convention on International
+        Trade in Endangered Species of Wild Flora and Fauna - CITES, Appendix III"},"administrativeStatusDescription":{"fi":"CITES-sopimus
+        sääntelee uhanalaisten lajien kansainvälistä kauppaa, eli näiden lajien, niiden
+        osien ja niistä valmistettujen tuotteiden tuonti ja vienti on säännelty. Sopimuksen
+        III-liitteen lajien kansainvälinen kauppa on sallittua, mutta luvanvaraista.
+        Vientilupa vaaditaan maasta, joka on mainittu lajiliitteessä. Muista maista
+        vaaditaan joko vientilupa tai alkuperätodistus.","sv":"Internationell handel
+        med arterna i den här bilagan är tillåten, men det krävs tillstånd. Man måste
+        ha ett exporttillstånd från det land som nämns i artbilagan. Från andra länder
+        krävs antingen ett exporttillstånd eller ett ursprungsintyg.","en":""},"administrativeStatusLink":{"fi":"https://www.ymparisto.fi/fi-fi/asiointi_luvat_ja_ymparistovaikutusten_arviointi/Luvat_ilmoitukset_ja_rekisterointi/Uhanalaisten_lajien_kansainvalinen_ja_EUn_sisainen_kauppa_ja_sita_koskevat_luvat_CITES/CITESlajiliitteet_ja_lajihakupalvelut","en":"https://www.ymparisto.fi/en-US/Forms_permits_and_environmental_impact_assessment/Permits_notifications_and_registration/International_trade_of_endangered_species_CITES","sv":"https://www.ymparisto.fi/sv-FI/Arendehantering_tillstand_och_miljokonsekvensbedomning/Tillstand_anmalningar_och_registrering/Internationell_och_EUintern_handel_med_hotade_arter_och_de_tillstand_som_kravs_for_detta_CITES/CITESbilagor_och_artsoktjanst"}},{"id":"MX.euRegulation_cites_appendixA","value":{"sv":"EU-lagstiftning
         om CITES, bilaga A","en":"EU regulation regarding CITES, Appendix A","fi":"EU-lainsäädäntö
         koskien CITES-sopimusta, liite A"},"administrativeStatusDescription":{"sv":"Internationell
         handel med arterna är förbjuden. Vissa arter kan exporteras och importeras
@@ -424,31 +425,31 @@ http_interactions:
         koskien CITES-sopimusta, liite D"},"administrativeStatusDescription":{"fi":"D-liitteen
         lajien kaupallinen tuonti EU:n ulkopuolelta vaatii CITES-tuonti-ilmoituksen.","en":"Commercial
         imports of Appendix D species from outside the EU require a CITES import notification.","sv":"Kommersiell
-        import av bilaga D-arter från länder utanför EU kräver en CITES-importanmälan."},"administrativeStatusLink":{"sv":"https://www.ymparisto.fi/sv-FI/Arendehantering_tillstand_och_miljokonsekvensbedomning/Tillstand_anmalningar_och_registrering/Internationell_och_EUintern_handel_med_hotade_arter_och_de_tillstand_som_kravs_for_detta_CITES/CITESbilagor_och_artsoktjanst","en":"https://www.ymparisto.fi/en-US/Forms_permits_and_environmental_impact_assessment/Permits_notifications_and_registration/International_trade_of_endangered_species_CITES","fi":"https://www.ymparisto.fi/cites/lajiliitteet"}},{"id":"MX.finnishEnvironmentInstitute2020protectionPrioritySpecies","value":{"fi":"Kiireellisesti
-        suojeltavat lajit (SYKE 2020)","sv":"Akut skyddad art (SYKE 2020)","en":"Species
-        to be protected urgently (Finnish Environment Institute 2020)"},"administrativeStatusDescription":{"fi":"Lajisuojelun
+        import av bilaga D-arter från länder utanför EU kräver en CITES-importanmälan."},"administrativeStatusLink":{"sv":"https://www.ymparisto.fi/sv-FI/Arendehantering_tillstand_och_miljokonsekvensbedomning/Tillstand_anmalningar_och_registrering/Internationell_och_EUintern_handel_med_hotade_arter_och_de_tillstand_som_kravs_for_detta_CITES/CITESbilagor_och_artsoktjanst","en":"https://www.ymparisto.fi/en-US/Forms_permits_and_environmental_impact_assessment/Permits_notifications_and_registration/International_trade_of_endangered_species_CITES","fi":"https://www.ymparisto.fi/cites/lajiliitteet"}},{"id":"MX.finnishEnvironmentInstitute2020protectionPrioritySpecies","value":{"en":"Species
+        to be protected urgently (Finnish Environment Institute 2020)","fi":"Kiireellisesti
+        suojeltavat lajit (SYKE 2020)","sv":"Akut skyddad art (SYKE 2020)"},"administrativeStatusDescription":{"fi":"Lajisuojelun
         alueellisen suunnittelun priorisoimiseksi ympäristöhallinnon vastuulla olevista
         uhanalaisista lajeista on valittu pikaisimpia suojelutoimia vaativat lajit
         omalle listalle ns. kiireellisesti suojeltaviksi lajeiksi. Lista päivitettiin
         vuonna 2020. Valinnan ovat tehneet ympäristöhallinnon apuna toimivien eliötyöryhmien
-        lajiasiantuntijat Suomen ympäristökeskuksen koordinoimana.","en":"","sv":""},"administrativeStatusLink":{"fi":"https://www.ymparisto.fi/fi-FI/Luonto/Lajit/Lajiensuojelutyo/Kiireellisesti_suojeltavat_lajit","en":"","sv":""}},{"id":"MX.finnishEnvironmentInstitute2010protectionPrioritySpecies","value":{"en":"OUTDATED
-        Species to be protected urgently (Finnish Environment Institute 2010-2011)","fi":"VANHA
-        Kiireellisesti suojeltavat lajit (SYKE 2010–2011)","sv":"FÖRÅLDRAD Prioriterade
-        arter (SYKE 2010-2011)"},"administrativeStatusDescription":{"fi":"Lajisuojelun
+        lajiasiantuntijat Suomen ympäristökeskuksen koordinoimana.","en":"","sv":""},"administrativeStatusLink":{"fi":"https://www.ymparisto.fi/fi-FI/Luonto/Lajit/Lajiensuojelutyo/Kiireellisesti_suojeltavat_lajit","en":"","sv":""}},{"id":"MX.finnishEnvironmentInstitute2010protectionPrioritySpecies","value":{"sv":"FÖRÅLDRAD
+        Prioriterade arter (SYKE 2010-2011)","en":"OUTDATED Species to be protected
+        urgently (Finnish Environment Institute 2010-2011)","fi":"VANHA Kiireellisesti
+        suojeltavat lajit (SYKE 2010–2011)"},"administrativeStatusDescription":{"fi":"Lajisuojelun
         kansallista toimintaohjelmaa varten valmisteltiin Suomen ympäristökeskuksessa
         vuosina 2010–2011 raportti lajisuojelun priorisoinnista. Raportin valmisteluun
         osallistuivat luonnonsuojeluhallinnon toimijat ja siinä hyödynnettiin mm.
         tuoreimman uhanalaisuuden arvioinnin tuloksia (Punainen kirja 2010). Eliöryhmäkohtaiset
-        työryhmät arvioivat työtä varten lajien turvaamistarpeita ja -keinoja.","en":"","sv":""},"administrativeStatusLink":{"fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Lajiensuojelutyo/Uhanalaisten_lajien_suojelun_toimintaohjelma/Kiireellisesti_suojeltavat_lajit","en":"","sv":""}},{"id":"MX.gameBird","value":{"en":"Game
-        bird (Hunting law 1993/615)","fi":"Riistalintu (Metsästyslaki 1993/615)","sv":"Viltfågel
-        (Jaktlag 1993/615)"},"administrativeStatusDescription":{"sv":"Viltfåglar som
-        listas i jaktlag (5§)","fi":"Metsästyslaissa luetellut riistalinnut (5§).","en":""},"administrativeStatusLink":{"sv":"http://www.finlex.fi/sv/laki/ajantasa/1993/19930615","fi":"http://www.finlex.fi/fi/laki/ajantasa/1993/19930615","en":""}},{"id":"MX.gameMammal","value":{"sv":"Viltdäggdjur
-        (Jaktlag 1993/615; 2019/683)","en":"Game mammal (Hunting law 1993/615; 2019/683)","fi":"Riistanisäkäs
-        (Metsästyslaki 1993/615; 2019/683)"},"administrativeStatusDescription":{"sv":"Viltdäggdjur
-        som listas i jaktlagen (5§).","fi":"Metsästyslaissa luetellut riistanisäkkäät
-        (5§).","en":""},"administrativeStatusLink":{"fi":"http://www.finlex.fi/fi/laki/ajantasa/1993/19930615","sv":"http://www.finlex.fi/sv/laki/ajantasa/1993/19930615","en":""}},{"id":"MX.unprotectedSpecies","value":{"sv":"Icke
-        fredade djur (Jaktlag 1993/615)","en":"Unprotected animal (Hunting law 1993/615)","fi":"Rauhoittamaton
-        eläin (Metsästyslaki 1993/615)"},"administrativeStatusDescription":{"fi":"Metsästyslaissa
+        työryhmät arvioivat työtä varten lajien turvaamistarpeita ja -keinoja.","en":"","sv":""},"administrativeStatusLink":{"fi":"http://www.ymparisto.fi/fi-FI/Luonto/Lajit/Lajiensuojelutyo/Uhanalaisten_lajien_suojelun_toimintaohjelma/Kiireellisesti_suojeltavat_lajit","en":"","sv":""}},{"id":"MX.gameBird","value":{"sv":"Viltfågel
+        (Jaktlag 1993/615)","en":"Game bird (Hunting law 1993/615)","fi":"Riistalintu
+        (Metsästyslaki 1993/615)"},"administrativeStatusDescription":{"sv":"Viltfåglar
+        som listas i jaktlag (5§)","fi":"Metsästyslaissa luetellut riistalinnut (5§).","en":""},"administrativeStatusLink":{"fi":"http://www.finlex.fi/fi/laki/ajantasa/1993/19930615","sv":"http://www.finlex.fi/sv/laki/ajantasa/1993/19930615","en":""}},{"id":"MX.gameMammal","value":{"fi":"Riistanisäkäs
+        (Metsästyslaki 1993/615; 2019/683)","en":"Game mammal (Hunting law 1993/615;
+        2019/683)","sv":"Viltdäggdjur (Jaktlag 1993/615; 2019/683)"},"administrativeStatusDescription":{"fi":"Metsästyslaissa
+        luetellut riistanisäkkäät (5§).","sv":"Viltdäggdjur som listas i jaktlagen
+        (5§).","en":""},"administrativeStatusLink":{"sv":"http://www.finlex.fi/sv/laki/ajantasa/1993/19930615","fi":"http://www.finlex.fi/fi/laki/ajantasa/1993/19930615","en":""}},{"id":"MX.unprotectedSpecies","value":{"sv":"Icke
+        fredade djur (Jaktlag 1993/615)","fi":"Rauhoittamaton eläin (Metsästyslaki
+        1993/615)","en":"Unprotected animal (Hunting law 1993/615)"},"administrativeStatusDescription":{"fi":"Metsästyslaissa
         luetellut rauhoittamattomat eläimet.","sv":"Icke fredade djur som listas i
         jaktlag.","en":""},"administrativeStatusLink":{"sv":"http://www.finlex.fi/sv/laki/ajantasa/1993/19930615","fi":"http://www.finlex.fi/fi/laki/ajantasa/1993/19930615","en":""}},{"id":"MX.nationallySignificantInvasiveSpecies","value":{"en":"Government
         Decree on Invasive Alien Species of National Concern (1725/2015)","sv":"Statsrådets
@@ -468,37 +469,37 @@ http_interactions:
         päästäminen on kielletty. Omistajat saavat pitää EU:n luetteloon kuuluvat
         lemmikkieläimet niiden luonnolliseen kuolemaan saakka. Ehtona on, että eläintä
         on pidetty lemmikkinä jo ennen lajin ottamista luetteloon.","en":"","sv":""},"administrativeStatusLink":{"en":"http://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R1141&from=EN","fi":"http://vieraslajit.fi/fi/content/euroopan-unionin-kannalta-merkityksellisten-haitallisten-vieraslajien-luettelo","sv":"http://eur-lex.europa.eu/legal-content/SV/TXT/HTML/?uri=CELEX:32016R1141&from=EN"}},{"id":"MX.quarantinePlantPest","value":{"fi":"Karanteenituhooja","sv":"Karantänskadegörare","en":"Quarantine
-        plant pest"},"administrativeStatusDescription":{"fi":"Karanteenituhoojat ovat
-        kasvitauteja ja tuholaisia, joita ei saa esiintyä kasvintuotannossa, myytävissä
-        tai maahantuotavissa kasveissa, metsissä, kotipuutarhoissa eikä viheralueilla.
-        Ne ovat kasvintuhoojia, jotka aiheuttavat merkittäviä haittoja kasvintuotannolle,
-        metsätaloudelle tai ympäristölle.","sv":"Karantänskadegörarna är växtsjukdomar
-        och skadedjur, som man försöker hindra från att spridas till Finland. Karantänskadegörarna
-        skulle vålla avsevärda skador på växtproduktionen eller miljön, om de skulle
-        sprida sig hit. Ifall karantänskadegörare påträffas i växtproduktionen, naturen
-        eller på växter till salu, fattar myndigheterna beslut om utrotningsåtgärder
-        för dessa.","en":""},"administrativeStatusLink":{"sv":"https://www.ruokavirasto.fi/sv/odlare/vaxtproduktion/vaxthalsa/vaxtskadegorare/karantanskadegorare/","fi":"https://www.ruokavirasto.fi/viljelijat/kasvintuotanto/kasvinterveys/kasvintuhoojat/karanteenituhoojat/","en":""}},{"id":"MX.qualityPlantPest","value":{"sv":"Kvalitetsskadegörare","en":"Quality
-        plant pest","fi":"Laatutuhooja"},"administrativeStatusDescription":{"fi":"Laatutuhoojat
-        ovat kasvitauteja ja tuholaisia, joita ei saa olla myytävissä kasveissa (taimiaineisto,
-        ruukkukasvit, kesäkukat). Vaatimuksen tarkoituksena on estää näiden tuhoojien
-        leviämistä. Viljelmillä valvotaan laatututuhoojien esiintymistä omavalvontana.","sv":"Kvalitetsskadegörarna
+        plant pest"},"administrativeStatusDescription":{"sv":"Karantänskadegörarna
+        är växtsjukdomar och skadedjur, som man försöker hindra från att spridas till
+        Finland. Karantänskadegörarna skulle vålla avsevärda skador på växtproduktionen
+        eller miljön, om de skulle sprida sig hit. Ifall karantänskadegörare påträffas
+        i växtproduktionen, naturen eller på växter till salu, fattar myndigheterna
+        beslut om utrotningsåtgärder för dessa.","fi":"Karanteenituhoojat ovat kasvitauteja
+        ja tuholaisia, joita ei saa esiintyä kasvintuotannossa, myytävissä tai maahantuotavissa
+        kasveissa, metsissä, kotipuutarhoissa eikä viheralueilla. Ne ovat kasvintuhoojia,
+        jotka aiheuttavat merkittäviä haittoja kasvintuotannolle, metsätaloudelle
+        tai ympäristölle.","en":""},"administrativeStatusLink":{"sv":"https://www.ruokavirasto.fi/sv/odlare/vaxtproduktion/vaxthalsa/vaxtskadegorare/karantanskadegorare/","fi":"https://www.ruokavirasto.fi/viljelijat/kasvintuotanto/kasvinterveys/kasvintuhoojat/karanteenituhoojat/","en":""}},{"id":"MX.qualityPlantPest","value":{"fi":"Laatutuhooja","sv":"Kvalitetsskadegörare","en":"Quality
+        plant pest"},"administrativeStatusDescription":{"fi":"Laatutuhoojat ovat kasvitauteja
+        ja tuholaisia, joita ei saa olla myytävissä kasveissa (taimiaineisto, ruukkukasvit,
+        kesäkukat). Vaatimuksen tarkoituksena on estää näiden tuhoojien leviämistä.
+        Viljelmillä valvotaan laatututuhoojien esiintymistä omavalvontana.","sv":"Kvalitetsskadegörarna
         (i lagstiftningen EU-icke-karantänskadegörare) är växtsjukdomar och skadedjur,
         som inte får förekomma på växter till salu (plantmaterial, krukväxter, utplanteringsväxter).
         Syftet med kravet är att förhindra spridningen av dessa skadegörare. Förekomsten
         av kvalitetsskadegörare övervakas i odlingar som egenkontroll.","en":""},"administrativeStatusLink":{"fi":"https://www.ruokavirasto.fi/viljelijat/kasvintuotanto/kasvinterveys/kasvintuhoojat/laatutuhoojat/","sv":"https://www.ruokavirasto.fi/sv/odlare/vaxtproduktion/vaxthalsa/vaxtskadegorare/kvalitetsskadegorare/","en":""}},{"id":"MX.otherPlantPest","value":{"en":"Other
-        plant pest","fi":"Muu kasvintuhooja","sv":"Andra växtskadegörare"}},{"id":"MX.nationalInvasiveSpeciesStrategy","value":{"en":"Finland’s
+        plant pest","sv":"Andra växtskadegörare","fi":"Muu kasvintuhooja"}},{"id":"MX.nationalInvasiveSpeciesStrategy","value":{"en":"Finland’s
         National Strategy on Invasive Alien Species (GR 2012)","fi":"Kansallinen vieraslajistrategia
         (VN 2012)","sv":"Nationell strategi för främmande arter (SP 2012)"},"administrativeStatusDescription":{"fi":"Kansallinen
         vieraslajistrategia on valtioneuvoston 15.3.2012 periaatepäätöksenä hyväksymä
         strategia, jonka kantavana ajatuksena on ehkäistä haitallisten vieraslajien
         aiheuttamia haittoja ja riskejä Suomen luonnolle, luonnonvarojen kestävälle
         hyödyntämiselle, elinkeinoille sekä yhteiskunnan ja ihmisten hyvinvoinnille.","en":"","sv":""},"administrativeStatusLink":{"fi":"http://vieraslajit.fi/fi/node/27","en":"","sv":""}},{"id":"MX.otherInvasiveSpeciesList","value":{"sv":"Andra
-        invasiva arter","en":"Other invasive species","fi":"Muu vieraslaji"},"administrativeStatusDescription":{"fi":"Suomessa
+        invasiva arter","fi":"Muu vieraslaji","en":"Other invasive species"},"administrativeStatusDescription":{"fi":"Suomessa
         havaitut vieraslajit, joita ei ole vielä määritelty asetuksissa.","en":"","sv":""}},{"id":"MX.controllingRisksOfInvasiveAlienSpecies","value":{"en":"Government
-        Decree on Managing the Risk Caused by Alien Species (704/2019, VN 912/2023)","fi":"Kansallisesti
-        haitalliseksi säädetty vieraslaji (Kansallinen vieraslajiluettelo) (VN 704/2019,
-        VN 912/2023)","sv":"Förordning om hantering av risker orsakade av invasiva
-        främmande arter (704/2019, VN 912/2023)"},"administrativeStatusDescription":{"fi":"Suomen
+        Decree on Managing the Risk Caused by Alien Species (704/2019, VN 912/2023)","sv":"Förordning
+        om hantering av risker orsakade av invasiva främmande arter (704/2019, VN
+        912/2023)","fi":"Kansallisesti haitalliseksi säädetty vieraslaji (Kansallinen
+        vieraslajiluettelo) (VN 704/2019, VN 912/2023)"},"administrativeStatusDescription":{"fi":"Suomen
         kansallinen vieraslajiluettelo. Kansalliseen vieraslajiluetteloon kuuluvien
         lajien maahantuonti, kasvattaminen, myynti, muu hallussapito ja ympäristöön
         päästäminen on kiellettyä.","en":"","sv":""},"administrativeStatusLink":{"fi":"https://www.vieraslajit.fi/fi/content/vieraslajiasetus-7042019","en":"","sv":""}},{"id":"MX.finnishEnvironmentInstitute20072010forestSpecies","value":{"fi":"VANHA
@@ -506,44 +507,44 @@ http_interactions:
         metsälajiluettelo","en":"OUTDATED Safeguarding Endangered Species in Forestry
         – Project 2007-2010","sv":""},"administrativeStatusDescription":{"fi":"Tapio
         ja SYKE vastasivat vuosina 2007–2010 toteutetun Uhanalaisten lajien turvaaminen
-        metsätaloudessa -hankkeen toteutuksesta. Sen tuloksena laadittiin lajiluettelo.","en":"","sv":""},"administrativeStatusLink":{"fi":"https://www.metsakeskus.fi/uhanalaiset-lajit","en":"","sv":""}},{"id":"MX.finnishEnvironmentInstitute2020conservationProjectSpecies","value":{"en":"Connectivity
+        metsätaloudessa -hankkeen toteutuksesta. Sen tuloksena laadittiin lajiluettelo.","en":"","sv":""},"administrativeStatusLink":{"fi":"https://www.metsakeskus.fi/uhanalaiset-lajit","en":"","sv":""}},{"id":"MX.finnishEnvironmentInstitute2020conservationProjectSpecies","value":{"fi":"Metsäisten
+        suojelualueiden konnektiviteetti – SUMI-hankkeessa 2020 laadittu metsälajiluettelo","en":"Connectivity
         of forest conservation areas – SUMI Project 2020","sv":"Skogsbevarande områden
-        – SUMI- projekt 2020","fi":"Metsäisten suojelualueiden konnektiviteetti –
-        SUMI-hankkeessa 2020 laadittu metsälajiluettelo"},"administrativeStatusLink":{"fi":"https://www.syke.fi/fi-FI/Tutkimus__kehittaminen/Tutkimus_ja_kehittamishankkeet/Hankkeet/Suojelualueverkosto_muuttuvassa_ilmastossa_SUMI","en":"","sv":""}},{"id":"MX.finnishEnvironmentInstitute2020conservationProjectAapamireSpecies","value":{"en":"Aapamire
-        species – SUMI Project 2020","fi":"Aapasuolajit – SUMI-hankkeessa 2020 laadittu
-        uhanalaisten tai silmälläpidettävien aapasuolajien luettelo","sv":"Aapamyr
-        arter – SUMI-projekt 2020"},"administrativeStatusLink":{"fi":"https://www.syke.fi/fi-FI/Tutkimus__kehittaminen/Tutkimus_ja_kehittamishankkeet/Hankkeet/Suojelualueverkosto_muuttuvassa_ilmastossa_SUMI","en":"","sv":""}},{"id":"MX.finnishEnvironmentInstitute2020conservationProjectVascularSpecies","value":{"sv":"Kärlväxter
-        – SUMI-projekt 2022","en":"Vascular plants – SUMI Project 2022","fi":"Putkilokasvien
-        toiminnallinen monimuotoisuus – SUMI-hankkeessa 2022 laadittu luettelo"},"administrativeStatusLink":{"fi":"https://www.syke.fi/fi-FI/Tutkimus__kehittaminen/Tutkimus_ja_kehittamishankkeet/Hankkeet/Suojelualueverkosto_muuttuvassa_ilmastossa_SUMI","en":"","sv":""}},{"id":"MX.cropWildRelative","value":{"fi":"Viljelykasvien
-        luonnonvarainen sukulainen (CWR Prioriteettilaji)","en":"Crop wild relative
-        (CWR Priority species)","sv":"Vilda kulturväxtsläktingar (Prioriterade CWR
-        arter)"},"administrativeStatusDescription":{"en":"Crop wild relatives are
-        wild species related to cultivated plants. The Finnish CWR priority species
-        have been prioritized according to the utilisation potential and socioeconomic
-        value. The priority list contains 55 species and 22 subspecies. The list has
-        been prepared by Luke, Luomus and Metsähallitus in a project funded by Ministry
-        of Agriculture and Forestry.","sv":"Vilda kulturväxtsläktingar är vilda växtarter
-        som är släkt med de odlade grödorna. Finlands CWR arter är prioriterade enligt
-        deras användarpotential och socioekonomiska värde. Den prioriterade artlistan
-        innehållar 55 arter och 22 underarter. Listan är utarbetad av Jord- och Skogsbruksministeriets
-        finansierade Lukes, Luomus och Forstyrelsens projekt 2018- 2020.","fi":"Viljelykasvien
-        luonnonvaraiset sukulaislajit (CWR, crop wild relatives) ovat luonnonvaraisia
-        kasveja, jotka ovat sukua viljelykasveille. Suomen CWR lajit on priorisoitu
-        käyttöpotentiaalin ja sosioekonomisen arvon mukaan. Priorisoitu lajilista
-        sisältää 55 lajia ja 22 alalajia. Lista on laadittu Maa-ja metsätalousministeriön
-        rahoittamassa Luken, Luomuksen ja Metsähallituksen hankkeessa 2018-2020."}},{"id":"MX.finnishEnvironmentInstitute20192021forestSpecies","value":{"en":"Safeguarding
-        Endangered Species in Forestry – Lajiturva Project 2019–2021","fi":"Uhanalaisten
+        – SUMI- projekt 2020"},"administrativeStatusLink":{"fi":"https://www.syke.fi/fi-FI/Tutkimus__kehittaminen/Tutkimus_ja_kehittamishankkeet/Hankkeet/Suojelualueverkosto_muuttuvassa_ilmastossa_SUMI","en":"","sv":""}},{"id":"MX.finnishEnvironmentInstitute2020conservationProjectAapamireSpecies","value":{"sv":"Aapamyr
+        arter – SUMI-projekt 2020","en":"Aapamire species – SUMI Project 2020","fi":"Aapasuolajit
+        – SUMI-hankkeessa 2020 laadittu uhanalaisten tai silmälläpidettävien aapasuolajien
+        luettelo"},"administrativeStatusLink":{"fi":"https://www.syke.fi/fi-FI/Tutkimus__kehittaminen/Tutkimus_ja_kehittamishankkeet/Hankkeet/Suojelualueverkosto_muuttuvassa_ilmastossa_SUMI","en":"","sv":""}},{"id":"MX.finnishEnvironmentInstitute2020conservationProjectVascularSpecies","value":{"en":"Vascular
+        plants – SUMI Project 2022","sv":"Kärlväxter – SUMI-projekt 2022","fi":"Putkilokasvien
+        toiminnallinen monimuotoisuus – SUMI-hankkeessa 2022 laadittu luettelo"},"administrativeStatusLink":{"fi":"https://www.syke.fi/fi-FI/Tutkimus__kehittaminen/Tutkimus_ja_kehittamishankkeet/Hankkeet/Suojelualueverkosto_muuttuvassa_ilmastossa_SUMI","en":"","sv":""}},{"id":"MX.cropWildRelative","value":{"en":"Crop
+        wild relative (CWR Priority species)","sv":"Vilda kulturväxtsläktingar (Prioriterade
+        CWR arter)","fi":"Viljelykasvien luonnonvarainen sukulainen (CWR Prioriteettilaji)"},"administrativeStatusDescription":{"en":"Crop
+        wild relatives are wild species related to cultivated plants. The Finnish
+        CWR priority species have been prioritized according to the utilisation potential
+        and socioeconomic value. The priority list contains 55 species and 22 subspecies.
+        The list has been prepared by Luke, Luomus and Metsähallitus in a project
+        funded by Ministry of Agriculture and Forestry.","sv":"Vilda kulturväxtsläktingar
+        är vilda växtarter som är släkt med de odlade grödorna. Finlands CWR arter
+        är prioriterade enligt deras användarpotential och socioekonomiska värde.
+        Den prioriterade artlistan innehållar 55 arter och 22 underarter. Listan är
+        utarbetad av Jord- och Skogsbruksministeriets finansierade Lukes, Luomus och
+        Forstyrelsens projekt 2018- 2020.","fi":"Viljelykasvien luonnonvaraiset sukulaislajit
+        (CWR, crop wild relatives) ovat luonnonvaraisia kasveja, jotka ovat sukua
+        viljelykasveille. Suomen CWR lajit on priorisoitu käyttöpotentiaalin ja sosioekonomisen
+        arvon mukaan. Priorisoitu lajilista sisältää 55 lajia ja 22 alalajia. Lista
+        on laadittu Maa-ja metsätalousministeriön rahoittamassa Luken, Luomuksen ja
+        Metsähallituksen hankkeessa 2018-2020."}},{"id":"MX.finnishEnvironmentInstitute20192021forestSpecies","value":{"fi":"Uhanalaisten
         lajien esiintymien turvaaminen metsätaloudessa – Lajiturva-hankkeessa 2019–2021
-        laadittu lajiluettelo","sv":""},"administrativeStatusDescription":{"fi":"Lajiturva-hankkeen
+        laadittu lajiluettelo","en":"Safeguarding Endangered Species in Forestry –
+        Lajiturva Project 2019–2021","sv":""},"administrativeStatusDescription":{"fi":"Lajiturva-hankkeen
         2019–2021 tavoitteena oli lisätä lajiesiintymätiedon avulla sellaisten metsän-
         ja luonnonhoitoratkaisujen käyttöä, joilla turvataan uhanalaisten lajien esiintymiä
         ja populaatioita. Hankkeessa laadittiin lajiluettelo. Lajiluettelossa on mukana
         vuoden 2019uhanalaisuuden arvioinnissa uhanalaiseksi (CR,EN,VU) ja silmälläpidettäväksi
         (NT) luokiteltuja lajeja.Lisäksi mukana on muutama lakisääteisesti suojeltu
-        elinvoimainen (LC) laji.","en":"","sv":""},"administrativeStatusLink":{"fi":"https://tapio.fi/lajiturva-hanke/","en":"","sv":""}},{"id":"MX.forestCentreSpecies","value":{"en":"Species
+        elinvoimainen (LC) laji.","en":"","sv":""},"administrativeStatusLink":{"fi":"https://tapio.fi/lajiturva-hanke/","en":"","sv":""}},{"id":"MX.forestCentreSpecies","value":{"fi":"Metsänkäyttöilmoitusten
+        automaattimenettelyssä käytettävä lajiluettelo (MKI-OHKE 2023)","en":"Species
         used in the automatic procedure for forest use notifications (MKI-OHKE 2023)","sv":"Artslista
-        som används i det automatiska förfarandet för skogsanmälningar (MKI-OHKE 2023)","fi":"Metsänkäyttöilmoitusten
-        automaattimenettelyssä käytettävä lajiluettelo (MKI-OHKE 2023)"},"administrativeStatusDescription":{"fi":"ELY-keskusten
+        som används i det automatiska förfarandet för skogsanmälningar (MKI-OHKE 2023)"},"administrativeStatusDescription":{"fi":"ELY-keskusten
         yhteisessä Metsänkäyttöilmoitus-OHKE-hankkeessa 2023 laadittu lajiluettelo.
         Luettelossa on listattu lajit, joiden luonnonsuojelulain mukaista suojelua
         valvotaan Suomen metsäkeskuksen ja ELY-keskusten välisellä automaattisella
@@ -568,10 +569,10 @@ http_interactions:
         for species of bryophytes, vascular plants, fungi, lichens, butterflies and
         moths and birds classified as Least Concern (LC) and Near Threatened (NT).
         Species assessed as being regionally threatened are classified as RT (Regionally
-        Threatened)."},"administrativeStatusLink":{"en":"https://punainenkirja.laji.fi/en/about/r-213","sv":"https://punainenkirja.laji.fi/sv/about/r-215","fi":"https://punainenkirja.laji.fi/about/r-205"}},{"id":"MX.regionallyThreatened2020_1b","value":{"sv":"Regionalt
-        hotade 2020 - 1b Hemiboreal, Sydvästra fastlandskusten","fi":"Alueellisesti
-        uhanalainen 2020 - 1b Hemiboreaalinen, Lounainen rannikkomaa","en":"Regionally
-        Threatened 2020 - 1b Hemiboreal, Oak zone"},"administrativeStatusDescription":{"sv":"Regionala
+        Threatened)."},"administrativeStatusLink":{"en":"https://punainenkirja.laji.fi/en/about/r-213","sv":"https://punainenkirja.laji.fi/sv/about/r-215","fi":"https://punainenkirja.laji.fi/about/r-205"}},{"id":"MX.regionallyThreatened2020_1b","value":{"en":"Regionally
+        Threatened 2020 - 1b Hemiboreal, Oak zone","fi":"Alueellisesti uhanalainen
+        2020 - 1b Hemiboreaalinen, Lounainen rannikkomaa","sv":"Regionalt hotade 2020
+        - 1b Hemiboreal, Sydvästra fastlandskusten"},"administrativeStatusDescription":{"sv":"Regionala
         hotbedömningen 2020 har utförts i en riksomfattande bedömning för moss-, kärlväxt-,
         svamp-, lav-, fjärils- och fågelarter som klassificerats som Livskraftiga
         (LC) och Nära hotade (NT). Arter som bedöms vara regionalt hotade har antecknats
@@ -688,10 +689,10 @@ http_interactions:
         uhanalaisuusarviointi 2020 on tehty valtakunnallisessa arvioinnissa elinvoimaisiksi
         (LC) ja silmälläpidettäviksi (NT) luokitelluille sammal-, putkilokasvi-, sieni-,
         jäkälä-, perhos- ja lintulajeille. Alueellisesti uhanalaiseksi arvioidut lajit
-        on merkitty luokkaan RT (Regionally Threatened)."},"administrativeStatusLink":{"fi":"https://punainenkirja.laji.fi/about/r-205","sv":"https://punainenkirja.laji.fi/sv/about/r-215","en":"https://punainenkirja.laji.fi/en/about/r-213"}},{"id":"MX.regionallyThreatened2020_4c","value":{"sv":"Regionalt
-        hotade 2020 - 4c Norra boreal, Skogs-Lappland","fi":"Alueellisesti uhanalainen
-        2020 - 4c Pohjoisboreaalinen, Metsä-Lappi","en":"Regionally Threatened 2020
-        - 4c Northern boreal, Forest Lapland"},"administrativeStatusDescription":{"en":"Regional
+        on merkitty luokkaan RT (Regionally Threatened)."},"administrativeStatusLink":{"fi":"https://punainenkirja.laji.fi/about/r-205","sv":"https://punainenkirja.laji.fi/sv/about/r-215","en":"https://punainenkirja.laji.fi/en/about/r-213"}},{"id":"MX.regionallyThreatened2020_4c","value":{"en":"Regionally
+        Threatened 2020 - 4c Northern boreal, Forest Lapland","sv":"Regionalt hotade
+        2020 - 4c Norra boreal, Skogs-Lappland","fi":"Alueellisesti uhanalainen 2020
+        - 4c Pohjoisboreaalinen, Metsä-Lappi"},"administrativeStatusDescription":{"en":"Regional
         assessment of threatened species 2020 has been carried out in a national assessment
         for species of bryophytes, vascular plants, fungi, lichens, butterflies and
         moths and birds classified as Least Concern (LC) and Near Threatened (NT).
@@ -703,10 +704,10 @@ http_interactions:
         hotbedömningen 2020 har utförts i en riksomfattande bedömning för moss-, kärlväxt-,
         svamp-, lav-, fjärils- och fågelarter som klassificerats som Livskraftiga
         (LC) och Nära hotade (NT). Arter som bedöms vara regionalt hotade har antecknats
-        i klassen RT (Regionally Threatened)."},"administrativeStatusLink":{"en":"https://punainenkirja.laji.fi/en/about/r-213","fi":"https://punainenkirja.laji.fi/about/r-205","sv":"https://punainenkirja.laji.fi/sv/about/r-215"}},{"id":"MX.regionallyThreatened2020_4d","value":{"sv":"Regionalt
-        hotade 2020 - 4d Norra boreal, Fjäll-Lappland","fi":"Alueellisesti uhanalainen
-        2020 - 4d Pohjoisboreaalinen, Tunturi-Lappi","en":"Regionally Threatened 2020
-        - 4d Northern boreal, Fjeld Lapland"},"administrativeStatusDescription":{"en":"Regional
+        i klassen RT (Regionally Threatened)."},"administrativeStatusLink":{"en":"https://punainenkirja.laji.fi/en/about/r-213","fi":"https://punainenkirja.laji.fi/about/r-205","sv":"https://punainenkirja.laji.fi/sv/about/r-215"}},{"id":"MX.regionallyThreatened2020_4d","value":{"en":"Regionally
+        Threatened 2020 - 4d Northern boreal, Fjeld Lapland","fi":"Alueellisesti uhanalainen
+        2020 - 4d Pohjoisboreaalinen, Tunturi-Lappi","sv":"Regionalt hotade 2020 -
+        4d Norra boreal, Fjäll-Lappland"},"administrativeStatusDescription":{"en":"Regional
         assessment of threatened species 2020 has been carried out in a national assessment
         for species of bryophytes, vascular plants, fungi, lichens, butterflies and
         moths and birds classified as Least Concern (LC) and Near Threatened (NT).
@@ -738,8 +739,8 @@ http_interactions:
         voidaan säätää erityisesti suojeltavaksi lajiksi sellainen uhanalainen eliölaji,
         jonka häviämisuhka on ilmeinen. Erityisesti suojeltavan lajin säilymiselle
         tärkeän esiintymispaikan hävittäminen tai heikentäminen on kielletty.","en":"","sv":""},"administrativeStatusLink":{"sv":"http://www.finlex.fi/sv/laki/ajantasa/1997/19970160","fi":"http://www.finlex.fi/fi/laki/ajantasa/1997/19970160","en":""}}]'
-  recorded_at: 2024-07-23 11:58:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/1.0.0
+  recorded_at: 2024-07-26 10:11:05 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/metadata/ranges/MX.taxonRankEnum?lang=multi&access_token=<finbif_token>
@@ -756,14 +757,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jul 2024 11:58:44 GMT
+      date: Fri, 26 Jul 2024 10:11:05 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"1393-I2r4VHuDubjLZ1/CY5YuVX1Q7kM"
+      etag: W/"1393-YyNaZRuhSM1EbR/hSqYwDaHKMFI"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
@@ -775,22 +776,21 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MX.superdomain","value":{"en":"superdomain","fi":"luonto","sv":"liv"}},{"id":"MX.domain","value":{"en":"domain","sv":"domän","fi":"yläkunta"}},{"id":"MX.kingdom","value":{"en":"kingdom","fi":"kunta","sv":"rike"}},{"id":"MX.subkingdom","value":{"fi":"alakunta","en":"subkingdom","sv":"underrike"}},{"id":"MX.infrakingdom","value":{"en":"infrakingdom","fi":"infrakunta","sv":"infrarike"}},{"id":"MX.superphylum","value":{"sv":"överfylum","fi":"yläjakso","en":"superphylum"}},{"id":"MX.phylum","value":{"fi":"pääjakso
-        / kaari","sv":"fylum","en":"phylum"}},{"id":"MX.subphylum","value":{"fi":"alajakso
-        / alakaari","en":"subphylum","sv":"underfylum"}},{"id":"MX.infraphylum","value":{"sv":"infrafylum","en":"infraphylum","fi":"osajakso"}},{"id":"MX.superdivision","value":{"fi":"yläkaari","sv":"överdivision","en":"superdivision"}},{"id":"MX.division","value":{"en":"division","sv":"division","fi":"kaari"}},{"id":"MX.subdivision","value":{"en":"subdivision","sv":"underdivision","fi":"alakaari"}},{"id":"MX.infradivision","value":{"sv":"infradivision","fi":"osakaari","en":"infradivision"}},{"id":"MX.superclass","value":{"en":"superclass","sv":"överklass","fi":"yläluokka"}},{"id":"MX.class","value":{"en":"class","sv":"klass","fi":"luokka"}},{"id":"MX.subclass","value":{"sv":"underklass","en":"subclass","fi":"alaluokka"}},{"id":"MX.infraclass","value":{"sv":"infraklass","fi":"osaluokka","en":"infraclass"}},{"id":"MX.parvclass","value":{"en":"parvclass","sv":"parvklass","fi":"parvoluokka"}},{"id":"MX.superorder","value":{"sv":"överordning","en":"superorder","fi":"ylälahko"}},{"id":"MX.order","value":{"en":"order","fi":"lahko","sv":"ordning"}},{"id":"MX.suborder","value":{"sv":"underordning","en":"suborder","fi":"alalahko"}},{"id":"MX.infraorder","value":{"en":"infraorder","sv":"infraordning","fi":"osalahko"}},{"id":"MX.parvorder","value":{"en":"parvorder","fi":"parvolahko","sv":"parvordning"}},{"id":"MX.superfamily","value":{"fi":"yläheimo","sv":"överfamilj","en":"superfamily"}},{"id":"MX.family","value":{"en":"family","sv":"familj","fi":"heimo"}},{"id":"MX.subfamily","value":{"sv":"underfamilj","en":"subfamily","fi":"alaheimo"}},{"id":"MX.tribe","value":{"en":"tribe","fi":"sukuryhmä
-        (tribus)","sv":"tribus"}},{"id":"MX.subtribe","value":{"sv":"undertribus","en":"subtribe","fi":"alatribus"}},{"id":"MX.supergenus","value":{"en":"supergenus","fi":"yläsuku","sv":"översläkte"}},{"id":"MX.genus","value":{"en":"genus","sv":"släkte","fi":"suku"}},{"id":"MX.nothogenus","value":{"sv":"nothogenus","en":"nothogenus","fi":"nothogenus"}},{"id":"MX.subgenus","value":{"fi":"alasuku","en":"subgenus","sv":"undersläkte"}},{"id":"MX.section","value":{"fi":"sektio","en":"section","sv":"sektion"}},{"id":"MX.subsection","value":{"fi":"alasektio","sv":"subsektion","en":"subsection"}},{"id":"MX.series","value":{"en":"series","sv":"series","fi":"series"}},{"id":"MX.subseries","value":{"fi":"alaseries","en":"subseries","sv":"subseries"}},{"id":"MX.infragenericTaxon","value":{"fi":"sukutasoa
-        alempi taksoni","sv":"infrageneric taxon","en":"infrageneric taxon"}},{"id":"MX.aggregate","value":{"en":"aggregate","fi":"lajiryhmä","sv":"aggregat"}},{"id":"MX.speciesAggregate","value":{"en":"taxon
-        aggregate","sv":"taxon aggregat","fi":"taksoniryhmä"}},{"id":"MX.species","value":{"sv":"art","fi":"laji","en":"species"}},{"id":"MX.nothospecies","value":{"en":"nothospecies","sv":"hybridart","fi":"risteymälaji
-        (kasvitiede)"}},{"id":"MX.infraspecificTaxon","value":{"en":"infraspecific
-        taxon","fi":"lajitasoa alempi taksoni","sv":"infraspecific taxon"}},{"id":"MX.subspecificAggregate","value":{"en":"subspecific
-        aggregate","sv":"subspecific aggregate","fi":"alalajiryhmä"}},{"id":"MX.subspecies","value":{"fi":"alalaji","sv":"underart","en":"subspecies"}},{"id":"MX.nothosubspecies","value":{"en":"nothosubspecies","sv":"hybridunderart","fi":"risteymäalalaji
-        (kasvitiede)"}},{"id":"MX.variety","value":{"en":"variety","fi":"muunnos","sv":"varietet"}},{"id":"MX.subvariety","value":{"fi":"alamuunnos","sv":"subvarietet","en":"subvariety"}},{"id":"MX.form","value":{"en":"form","sv":"form","fi":"muoto"}},{"id":"MX.subform","value":{"en":"subform","fi":"alamuoto","sv":"subform"}},{"id":"MX.hybrid","value":{"en":"hybrid","fi":"risteymä","sv":"hybrid"}},{"id":"MX.anamorph","value":{"en":"anamorph","sv":"anamorf","fi":"anamorfisuus"}},{"id":"MX.ecotype","value":{"sv":"ekotyp","fi":"ekotyyppi","en":"ecotype"}},{"id":"MX.populationGroup","value":{"fi":"populaatioryhmä","sv":"population
-        grupp","en":"population group"}},{"id":"MX.intergenericHybrid","value":{"en":"intergeneric
-        hybrid","fi":"sukujenvälinen risteymä (kasvitiede)","sv":""}},{"id":"MX.infragenericHybrid","value":{"en":"infrageneric
+      string: '[{"id":"MX.superdomain","value":{"sv":"liv","en":"superdomain","fi":"luonto"}},{"id":"MX.domain","value":{"en":"domain","sv":"domän","fi":"yläkunta"}},{"id":"MX.kingdom","value":{"en":"kingdom","fi":"kunta","sv":"rike"}},{"id":"MX.subkingdom","value":{"fi":"alakunta","en":"subkingdom","sv":"underrike"}},{"id":"MX.infrakingdom","value":{"en":"infrakingdom","sv":"infrarike","fi":"infrakunta"}},{"id":"MX.superphylum","value":{"en":"superphylum","sv":"överfylum","fi":"yläjakso"}},{"id":"MX.phylum","value":{"en":"phylum","sv":"fylum","fi":"pääjakso
+        / kaari"}},{"id":"MX.subphylum","value":{"fi":"alajakso / alakaari","en":"subphylum","sv":"underfylum"}},{"id":"MX.infraphylum","value":{"sv":"infrafylum","fi":"osajakso","en":"infraphylum"}},{"id":"MX.superdivision","value":{"en":"superdivision","sv":"överdivision","fi":"yläkaari"}},{"id":"MX.division","value":{"en":"division","sv":"division","fi":"kaari"}},{"id":"MX.subdivision","value":{"sv":"underdivision","en":"subdivision","fi":"alakaari"}},{"id":"MX.infradivision","value":{"sv":"infradivision","fi":"osakaari","en":"infradivision"}},{"id":"MX.superclass","value":{"en":"superclass","sv":"överklass","fi":"yläluokka"}},{"id":"MX.class","value":{"en":"class","sv":"klass","fi":"luokka"}},{"id":"MX.subclass","value":{"en":"subclass","fi":"alaluokka","sv":"underklass"}},{"id":"MX.infraclass","value":{"sv":"infraklass","fi":"osaluokka","en":"infraclass"}},{"id":"MX.parvclass","value":{"fi":"parvoluokka","en":"parvclass","sv":"parvklass"}},{"id":"MX.superorder","value":{"en":"superorder","sv":"överordning","fi":"ylälahko"}},{"id":"MX.order","value":{"en":"order","fi":"lahko","sv":"ordning"}},{"id":"MX.suborder","value":{"fi":"alalahko","en":"suborder","sv":"underordning"}},{"id":"MX.infraorder","value":{"sv":"infraordning","fi":"osalahko","en":"infraorder"}},{"id":"MX.parvorder","value":{"en":"parvorder","sv":"parvordning","fi":"parvolahko"}},{"id":"MX.superfamily","value":{"en":"superfamily","sv":"överfamilj","fi":"yläheimo"}},{"id":"MX.family","value":{"en":"family","sv":"familj","fi":"heimo"}},{"id":"MX.subfamily","value":{"sv":"underfamilj","fi":"alaheimo","en":"subfamily"}},{"id":"MX.tribe","value":{"en":"tribe","fi":"sukuryhmä
+        (tribus)","sv":"tribus"}},{"id":"MX.subtribe","value":{"sv":"undertribus","en":"subtribe","fi":"alatribus"}},{"id":"MX.supergenus","value":{"en":"supergenus","sv":"översläkte","fi":"yläsuku"}},{"id":"MX.genus","value":{"en":"genus","sv":"släkte","fi":"suku"}},{"id":"MX.nothogenus","value":{"en":"nothogenus","fi":"nothogenus","sv":"nothogenus"}},{"id":"MX.subgenus","value":{"fi":"alasuku","sv":"undersläkte","en":"subgenus"}},{"id":"MX.section","value":{"fi":"sektio","sv":"sektion","en":"section"}},{"id":"MX.subsection","value":{"fi":"alasektio","sv":"subsektion","en":"subsection"}},{"id":"MX.series","value":{"sv":"series","fi":"series","en":"series"}},{"id":"MX.subseries","value":{"en":"subseries","fi":"alaseries","sv":"subseries"}},{"id":"MX.infragenericTaxon","value":{"sv":"infrageneric
+        taxon","fi":"sukutasoa alempi taksoni","en":"infrageneric taxon"}},{"id":"MX.aggregate","value":{"en":"aggregate","fi":"lajiryhmä","sv":"aggregat"}},{"id":"MX.speciesAggregate","value":{"fi":"taksoniryhmä","en":"taxon
+        aggregate","sv":"taxon aggregat"}},{"id":"MX.species","value":{"en":"species","sv":"art","fi":"laji"}},{"id":"MX.nothospecies","value":{"fi":"risteymälaji
+        (kasvitiede)","sv":"hybridart","en":"nothospecies"}},{"id":"MX.infraspecificTaxon","value":{"sv":"infraspecific
+        taxon","en":"infraspecific taxon","fi":"lajitasoa alempi taksoni"}},{"id":"MX.subspecificAggregate","value":{"fi":"alalajiryhmä","sv":"subspecific
+        aggregate","en":"subspecific aggregate"}},{"id":"MX.subspecies","value":{"en":"subspecies","sv":"underart","fi":"alalaji"}},{"id":"MX.nothosubspecies","value":{"en":"nothosubspecies","sv":"hybridunderart","fi":"risteymäalalaji
+        (kasvitiede)"}},{"id":"MX.variety","value":{"en":"variety","fi":"muunnos","sv":"varietet"}},{"id":"MX.subvariety","value":{"sv":"subvarietet","en":"subvariety","fi":"alamuunnos"}},{"id":"MX.form","value":{"en":"form","sv":"form","fi":"muoto"}},{"id":"MX.subform","value":{"sv":"subform","en":"subform","fi":"alamuoto"}},{"id":"MX.hybrid","value":{"en":"hybrid","fi":"risteymä","sv":"hybrid"}},{"id":"MX.anamorph","value":{"en":"anamorph","sv":"anamorf","fi":"anamorfisuus"}},{"id":"MX.ecotype","value":{"sv":"ekotyp","fi":"ekotyyppi","en":"ecotype"}},{"id":"MX.populationGroup","value":{"en":"population
+        group","sv":"population grupp","fi":"populaatioryhmä"}},{"id":"MX.intergenericHybrid","value":{"fi":"sukujenvälinen
+        risteymä (kasvitiede)","en":"intergeneric hybrid","sv":""}},{"id":"MX.infragenericHybrid","value":{"en":"infrageneric
         hybrid","fi":"suvunsisäinen risteymä (kasvitiede)","sv":""}},{"id":"MX.cultivar","value":{"fi":"lajike","en":"cultivar","sv":""}},{"id":"MX.group","value":{"en":"Group","sv":"Grupp","fi":"viljelykasvien
-        Ryhmä"}},{"id":"MX.grex","value":{"sv":"grex","en":"grex","fi":"grex"}}]'
-  recorded_at: 2024-07-23 11:58:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/1.0.0
+        Ryhmä"}},{"id":"MX.grex","value":{"sv":"grex","fi":"grex","en":"grex"}}]'
+  recorded_at: 2024-07-26 10:11:05 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/areas?type=country&lang=multi&pageSize=1000&access_token=<finbif_token>
@@ -807,7 +807,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jul 2024 11:58:44 GMT
+      date: Fri, 26 Jul 2024 10:11:05 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       x-powered-by: Express
@@ -909,8 +909,8 @@ http_interactions:
         States Minor Outlying Islands","fi":"Yhdysvaltain pienet erillissaaret","sv":""}},{"id":"ML.246","areaType":"ML.country","countryCodeISOalpha2":"ZW","countryCodeISOalpha3":"ZWE","name":{"en":"Zimbabwe","fi":"Zimbabwe","sv":""}},{"id":"ML.247","areaType":"ML.country","name":{"en":"Soviet
         Union","fi":"Neuvostoliitto","sv":""}},{"id":"ML.248","areaType":"ML.country","name":{"en":"Czechoslovakia","fi":"Tsekkoslovakia","sv":""}},{"id":"ML.249","areaType":"ML.country","name":{"en":"Yugoslavia","fi":"Jugoslavia","sv":""}},{"id":"ML.1207","areaType":"ML.country","countryCodeISOalpha2":"XK","countryCodeISOalpha3":"UNK","name":{"en":"Kosovo","fi":"Kosovo","sv":"Kosovo"}},{"id":"ML.1307","areaType":"ML.country","countryCodeISOalpha2":"SS","countryCodeISOalpha3":"SSD","name":{"en":"the
         Republic of South Sudan","fi":"Etelä-Sudan","sv":""}}],"lastPage":1,"@context":"http://schema.laji.fi/context/area.jsonld"}'
-  recorded_at: 2024-07-23 11:58:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/1.0.0
+  recorded_at: 2024-07-26 10:11:05 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/areas?type=province&lang=multi&pageSize=1000&access_token=<finbif_token>
@@ -927,7 +927,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jul 2024 11:58:45 GMT
+      date: Fri, 26 Jul 2024 10:11:05 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       x-powered-by: Express
@@ -957,8 +957,8 @@ http_interactions:
         Ostrobothnia","fi":"Etelä-Pohjanmaa","sv":"Södra Österbotten"},"provinceCodeNumeric":"14"},{"id":"ML.1240","areaType":"ML.province","name":{"en":"Ostrobothnia","fi":"Pohjanmaa","sv":"Österbotten"},"provinceCodeNumeric":"15"},{"id":"ML.1241","areaType":"ML.province","name":{"en":"Central
         Ostrobothnia","fi":"Keski-Pohjanmaa","sv":"Mellersta Österbotten"},"provinceCodeNumeric":"16"},{"id":"ML.1242","areaType":"ML.province","name":{"en":"North
         Ostrobothnia","fi":"Pohjois-Pohjanmaa","sv":"Norra Österbotten"},"provinceCodeNumeric":"17"},{"id":"ML.1243","areaType":"ML.province","name":{"en":"Kainuu","fi":"Kainuu","sv":"Kajanaland"},"provinceCodeNumeric":"18"},{"id":"ML.1244","areaType":"ML.province","name":{"en":"Lapland","fi":"Lappi","sv":"Lappland"},"provinceCodeNumeric":"19"},{"id":"ML.1245","areaType":"ML.province","name":{"en":"Åland","fi":"Ahvenanmaa","sv":"Åland"},"provinceCodeNumeric":"21"}],"lastPage":1,"@context":"http://schema.laji.fi/context/area.jsonld"}'
-  recorded_at: 2024-07-23 11:58:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/1.0.0
+  recorded_at: 2024-07-26 10:11:05 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/areas?type=biogeographicalProvince&lang=multi&pageSize=1000&access_token=<finbif_token>
@@ -975,7 +975,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jul 2024 11:58:45 GMT
+      date: Fri, 26 Jul 2024 10:11:05 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       x-powered-by: Express
@@ -1011,8 +1011,8 @@ http_interactions:
         Lapland","fi":"Sompion Lappi","sv":"Lapponia sompiensis"},"provinceCodeAlpha":{"en":"Lks","fi":"SoL","sv":"Lks"},"provinceCodeNumeric":"19"},{"id":"ML.270","areaType":"ML.biogeographicalProvince","isPartOf":"ML.206","name":{"en":"Enontekiö
         Lapland","fi":"Enontekiön Lappi","sv":""},"provinceCodeAlpha":{"en":"","fi":"EnL","sv":""},"provinceCodeNumeric":"20"},{"id":"ML.271","areaType":"ML.biogeographicalProvince","isPartOf":"ML.206","name":{"en":"Inari
         Lapland","fi":"Inarin Lappi","sv":""},"provinceCodeAlpha":{"en":"","fi":"InL","sv":""},"provinceCodeNumeric":"21"}],"lastPage":1,"@context":"http://schema.laji.fi/context/area.jsonld"}'
-  recorded_at: 2024-07-23 11:58:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/1.0.0
+  recorded_at: 2024-07-26 10:11:05 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/areas?type=birdAssociationArea&lang=multi&pageSize=1000&access_token=<finbif_token>
@@ -1029,14 +1029,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jul 2024 11:58:45 GMT
+      date: Fri, 26 Jul 2024 10:11:05 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"15b6-cxTzKwk2bN6Zie0MDqYtQGZ+AS0"
+      etag: W/"15b7-8l6UPXiyapVsl9rcFDBoPgALSmc"
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: public
@@ -1082,7 +1082,7 @@ http_interactions:
         Lintutieteellinen Yhdistys ry","en":"","fi":"Merenkurkun Lintutieteellinen
         Yhdistys ry","sv":""}},{"id":"ML.1108","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"BirdLife
         Keski-Pohjanmaa ry","en":"","fi":"BirdLife Keski-Pohjanmaa ry","sv":""}},{"id":"ML.1109","areaType":"ML.birdAssociationArea","name":{"en":"","fi":"Pohjois-Pohjanmaan
-        Lintutieteellinen Yhdistys ry","sv":""}},{"id":"ML.1110","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Kainuun
+        Lintutieteellinen Yhdistys ry.","sv":""}},{"id":"ML.1110","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Kainuun
         Lintutieteellinen Yhdistys ry","en":"","fi":"Kainuun Lintutieteellinen Yhdistys
         ry","sv":""}},{"id":"ML.1111","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Meri-Lapin
         Lintutieteellinen Yhdistys Xenus ry","en":"","fi":"Meri-Lapin Lintutieteellinen
@@ -1095,8 +1095,8 @@ http_interactions:
         Seudun Lintuharrastajat ry","en":"","fi":"Rauman Seudun Lintuharrastajat ry","sv":""}},{"id":"ML.1127","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Suomen
         ulkopuoliset alueet","en":"","fi":"Suomen ulkopuoliset alueet","sv":""}},{"id":"ML.1267","areaType":"ML.birdAssociationArea","name":{"xml:lang":"fi","content":"Ostrobothnia
         Australis r.f.","en":"","fi":"Ostrobothnia Australis r.f.","sv":""}}],"lastPage":1,"@context":"http://schema.laji.fi/context/area.jsonld"}'
-  recorded_at: 2024-07-23 11:58:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/1.0.0
+  recorded_at: 2024-07-26 10:11:05 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/metadata/ranges/MX.typeOfOccurrenceEnum?lang=multi&access_token=<finbif_token>
@@ -1113,7 +1113,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jul 2024 11:58:45 GMT
+      date: Fri, 26 Jul 2024 10:11:05 GMT
       content-type: application/json; charset=utf-8
       transfer-encoding: chunked
       x-powered-by: Express
@@ -1193,8 +1193,8 @@ http_interactions:
         on the basis of occurrence data – not an expert evaluation","fi":"Esiintyy
         havaintodatan perusteella – ei asiantuntijan arvioima","sv":"Förekommer på
         grundval av händelsedata – inte en expertbestämning"}}]'
-  recorded_at: 2024-07-23 11:58:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/1.0.0
+  recorded_at: 2024-07-26 10:11:05 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
@@ -1211,7 +1211,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jul 2024 11:58:45 GMT
+      date: Fri, 26 Jul 2024 10:11:05 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
@@ -1461,8 +1461,8 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2024-07-23 11:58:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/1.0.0
+  recorded_at: 2024-07-26 10:11:05 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
     uri: https://apitest.laji.fi/v0/metadata/ranges/MX.secureLevels?lang=multi&access_token=<finbif_token>
@@ -1479,14 +1479,14 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jul 2024 11:58:45 GMT
+      date: Fri, 26 Jul 2024 10:11:05 GMT
       content-type: application/json; charset=utf-8
       content-length: '889'
       x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
       x-download-options: noopen
-      etag: W/"379-2Bu2UDa2fYeoFW0eLiHxmfHBt4E"
+      etag: W/"379-/qlEKiKIfxtjsiBWXnNsX0g1Tjo"
       vary: Accept-Encoding
       cache-control: public
       x-frame-options: DENY
@@ -1497,16 +1497,16 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"id":"MX.secureLevelNone","value":{"en":"None","sv":"Inte skyddad","fi":"Ei
-        karkeistettu"}},{"id":"MX.secureLevelKM1","value":{"en":"1 km","sv":"1 km","fi":"1
+      string: '[{"id":"MX.secureLevelNone","value":{"en":"None","fi":"Ei karkeistettu","sv":"Inte
+        skyddad"}},{"id":"MX.secureLevelKM1","value":{"en":"1 km","sv":"1 km","fi":"1
         km"}},{"id":"MX.secureLevelKM5","value":{"fi":"5 km","sv":"5 km","en":"5 km"}},{"id":"MX.secureLevelKM10","value":{"en":"10
         km","sv":"10 km","fi":"10 km"}},{"id":"MX.secureLevelKM25","value":{"fi":"25
         km","sv":"25 km","en":"25 km"}},{"id":"MX.secureLevelKM50","value":{"en":"50
         km","fi":"50 km","sv":"50 km"}},{"id":"MX.secureLevelKM100","value":{"en":"100
         km","sv":"100 km","fi":"100 km"}},{"id":"MX.secureLevelHighest","value":{"fi":"Täyssalaus","en":"Fully
-        hidden","sv":"Helt dold"}},{"id":"MX.secureLevelNoShow","value":{"fi":"Ei
-        näytetä ollenkaan - käytetään lähinnä spammin estämiseksi","sv":"Visas inte
-        alls - används huvudsakligen att stoppa skräppost","en":"Not shown at all
-        - used mainly to prevent spam"}}]'
-  recorded_at: 2024-07-23 11:58:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/1.0.0
+        hidden","sv":"Helt dold"}},{"id":"MX.secureLevelNoShow","value":{"en":"Not
+        shown at all - used mainly to prevent spam","fi":"Ei näytetä ollenkaan - käytetään
+        lähinnä spammin estämiseksi","sv":"Visas inte alls - används huvudsakligen
+        att stoppa skräppost"}}]'
+  recorded_at: 2024-07-26 10:11:05 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
