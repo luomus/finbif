@@ -51,9 +51,9 @@ from_schema <- function(
 
   vars <- switch(
     match.arg(file),
-    none = sysdata("var_names"),
-    citable = sysdata("cite_file_vars"),
-    lite = sysdata("lite_download_file_vars")
+    none = sysdata(list(which = "var_names")),
+    citable = sysdata(list(which = "cite_file_vars")),
+    lite = sysdata(list(which = "lite_download_file_vars"))
   )
 
   to <- switch(
@@ -77,7 +77,7 @@ to <- function(
 
   x <- unlist(x)
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   vars_to <- var_names[[to]]
 

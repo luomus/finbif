@@ -1,6 +1,6 @@
 #' Clear cache
 #'
-#' Remove cached API requests from FinBIF.
+#' Remove cached FinBIF API requests.
 #'
 #' @aliases fb_clear_cache
 #'

@@ -35,12 +35,10 @@ finbif_collections <- function(
   supercollections = FALSE,
   locale = getOption("finbif_locale"),
   nmin = 0,
-  cache = getOption("finbif_use_cache")
+  cache = getOption("finbif_use_cache_metadata")
 ) {
 
   locale <- switch(locale, sv = locale, fi = locale, "en")
-
-  cache <- infer_cache(cache)
 
   swagger <- list(path = "swagger", cache = cache)
 
@@ -220,7 +218,7 @@ get_collections <- function(col_obj) {
 
   qry <- c(col_obj[["qry"]], page_args)
 
-  cache <- infer_cache(col_obj[["cache"]])
+  cache <- col_obj[["cache"]]
 
   collections_list <- list()
 

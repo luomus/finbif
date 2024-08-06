@@ -11,6 +11,9 @@
 #'   data where more than one language is available the language denoted by
 #'   `locale` will be preferred while falling back to the other languages in the
 #'   order indicated above.
+#' @param cache Logical or Integer. If `TRUE` or a number greater than zero,
+#'   then data-caching will be used. If not logical then cache will be
+#'   invalidated after the number of hours indicated by the argument.
 #'
 #' @return A data.frame.
 #' @examples \dontrun{
@@ -22,7 +25,8 @@
 
 finbif_metadata <- function(
   which,
-  locale = getOption("finbif_locale")
+  locale = getOption("finbif_locale"),
+  cache = getOption("finbif_use_cache_metadata")
 ) {
 
   metadata_name <- c(
@@ -55,26 +59,24 @@ finbif_metadata <- function(
 
     }
 
+    obj <- list(cache = cache)
+
+    obj[["which"]] <- switch(
+      which,
+      red_list = "red_list_status",
+      sex_category = "sex",
+      habitat_type = "primary_habitat",
+      habitat_qualifier = "primary_habitat",
+      which
+    )
+
+    data <- sysdata(obj)
+
     data <- switch(
       which,
-      regulatory_status = sysdata("regulatory_status"),
-      red_list = sysdata("red_list_status"),
-      country = sysdata("country"),
-      region = sysdata("region"),
-      bio_province = sysdata("bio_province"),
-      municipality = sysdata("municipality"),
-      bird_assoc_area = sysdata("bird_assoc_area"),
-      finnish_occurrence_status = sysdata("finnish_occurrence_status"),
-      habitat_type = sysdata("primary_habitat")[["habitat_types"]],
-      habitat_qualifier =
-        sysdata("primary_habitat")[["specific_habitat_types"]],
-      life_stage = sysdata("life_stage"),
-      record_basis = sysdata("record_basis"),
-      restriction_level = sysdata("restriction_level"),
-      restriction_reason = sysdata("restriction_reason"),
-      sex_category = sysdata("sex"),
-      source = sysdata("source"),
-      taxon_rank = sysdata("taxon_rank")
+      habitat_type = data[["habitat_types"]],
+      habitat_qualifier = data[["specific_habitat_types"]],
+      data
     )
 
     col_names <- "name"

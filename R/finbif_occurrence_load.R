@@ -99,7 +99,7 @@ finbif_occurrence_load <- function(
 
   all_cols <- any(c("all", "short") %in% select)
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   var_type <- col_type_string(dwc)
 
@@ -170,6 +170,10 @@ finbif_occurrence_load <- function(
   select[["lite"]] <- attr(file_vars, "lite", TRUE)
 
   attr(fb_occurrence_df, "locale") <- locale
+
+  cache <- c(cache, getOption("finbif_use_cache_metadata"))
+
+  attr(fb_occurrence_df, "cache") <- cache[1:2]
 
   fb_occurrence_df <- localise_enums(fb_occurrence_df)
 
@@ -549,7 +553,11 @@ localise_enums <- function(df) {
 
   field_var_names <- row.names(file_vars)
 
-  labels_obj <- list(var_names = file_vars, locale = attr(df, "locale", TRUE))
+  labels_obj <- list(
+    var_names = file_vars,
+    locale = attr(df, "locale", TRUE),
+    cache = attr(df, "cache", TRUE)
+  )
 
   for (nm in names(df)) {
 
@@ -615,7 +623,7 @@ new_vars <- function(df) {
 
   ss <- intersect(ss, file_cols)
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   select <- attr(df, "select", TRUE)
 
@@ -779,7 +787,7 @@ add_nas <- function(df) {
 
   file_var_type <- file_vars[[var_type]]
 
-  vnames <- sysdata("var_names")
+  vnames <- sysdata(list(which = "var_names"))
 
   vnames_type <- vnames[[var_type]]
 
@@ -815,7 +823,7 @@ any_issues <- function(df) {
 
   vtype <- col_type_string(dwc)
 
-  vnms <- sysdata("var_names")
+  vnms <- sysdata(list(which = "var_names"))
 
   issues <- vnms[["unit.quality.documentGatheringUnitQualityIssues", vtype]]
 
@@ -922,7 +930,7 @@ dt_read <- function(fb_occurrence_obj) {
 
   }
 
-  cols <- sysdata("cite_file_vars")
+  cols <- sysdata(list(which = "cite_file_vars"))
 
   cols <- rownames(cols)
 
@@ -978,7 +986,7 @@ dt_read <- function(fb_occurrence_obj) {
 
     select_type <- select[["type"]]
 
-    vnms <- sysdata("var_names")
+    vnms <- sysdata(list(which = "var_names"))
 
     select_vars <- file_vars[[select_type]] %in% vnms[select_query, select_type]
 
@@ -1187,7 +1195,7 @@ deselect <- function(select) {
 
   deselect <- select[["deselect"]]
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   ind <- file_vars[[type]] %in% var_names[deselect, type]
 
@@ -1460,7 +1468,7 @@ infer_file_vars <- function(cols) {
 
   if (length(cols) < 100L && !"Fact" %in% cols) {
 
-    file_vars <- sysdata("lite_download_file_vars")
+    file_vars <- sysdata(list(which = "lite_download_file_vars"))
 
     locale <- lapply(file_vars, intersect, cols)
 
@@ -1490,7 +1498,7 @@ infer_file_vars <- function(cols) {
 
   } else {
 
-    file_vars <- sysdata("cite_file_vars")
+    file_vars <- sysdata(list(which = "cite_file_vars"))
 
     attr(file_vars, "lite") <- FALSE
 
@@ -1563,7 +1571,7 @@ open_tsv_connection <- function(connection_obj) {
 
   } else {
 
-    vars <- sysdata("cite_file_vars")
+    vars <- sysdata(list(which = "cite_file_vars"))
 
     vars <- rownames(vars)
 

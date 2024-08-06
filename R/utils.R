@@ -333,34 +333,6 @@ cache_is_valid <- function(timeout, created) {
 
 }
 
-#' @noRd
-
-infer_cache <- function(cache) {
-
-  ans <- getOption("finbif_use_cache_metadata")
-
-  if (is.logical(cache)) {
-
-    if (is.logical(ans)) {
-
-      ans <- cache || ans
-
-    }
-
-  } else {
-
-    if (is.logical(ans)) {
-
-      ans <- cache
-
-    }
-
-  }
-
-  ans
-
-}
-
 # random sampling --------------------------------------------------------------
 
 #' @noRd
@@ -552,7 +524,7 @@ get_locale <- function() {
 
   ans <- "en"
 
-  supported <- sysdata("supported_langs")
+  supported <- sysdata(list(which = "supported_langs"))
 
   matches <- name_chr_vec(c(unname(supported), supported))
 
@@ -599,7 +571,7 @@ with_locale <- function(
 
     nms <- names(x)
 
-    supported_langs <- sysdata("supported_langs")
+    supported_langs <- sysdata(list(which = "supported_langs"))
 
     locales <- setdiff(supported_langs, locale)
 

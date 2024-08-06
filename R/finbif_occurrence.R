@@ -32,8 +32,11 @@
 #' @param quiet Logical. Suppress the progress indicator for multipage
 #'   downloads. Defaults to value of option `finbif_hide_progress`.
 #' @param cache Logical or Integer. If `TRUE` or a number greater than zero,
-#'   then data-caching will be used. If not logical then cache will be
-#'   invalidated after the number of hours indicated by the argument.
+#'   then data-caching will be used. If not logical then the cache will be
+#'   invalidated after the number of hours indicated by the argument. If a
+#'   length one vector is used, its value will only apply to caching
+#'   occurrence records. If the value is length two, then the second element
+#'   will determine how metadata is cached.
 #' @param dwc Logical. Use Darwin Core (or Darwin Core style) variable names.
 #' @param seed Integer. Set a seed for randomly sampling records.
 #' @param exclude_na Logical. Should records where all selected variables have
@@ -176,6 +179,12 @@ occurrence <- function(fb_records_obj) {
     fb_records_obj[["taxa"]], fb_records_obj[["filter"]]
   )
 
+  cache <- c(
+    fb_records_obj[["cache"]], getOption("finbif_use_cache_metadata")
+  )
+
+  fb_records_obj[["cache"]] <- cache[1:2]
+
   facts <- fb_records_obj[["facts"]]
 
   fb_records_obj[["include_facts"]] <- !is.null(facts)
@@ -222,7 +231,7 @@ occurrence <- function(fb_records_obj) {
 
   non_count_cols <- colnames[ind]
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   colnames[ind] <- var_names[non_count_cols, col_type_string(dwc)]
 
@@ -314,7 +323,7 @@ use_multi_req <- function(fb_records_obj) {
 
   nms <- names(filter)
 
-  fnames <- sysdata("filter_names")
+  fnames <- sysdata(list(which = "filter_names"))
 
   no_name <- is.null(nms) || !any(nms %in% fnames[["translated_filter"]])
 
@@ -383,11 +392,13 @@ records_list_data_frame <- function(x) {
 
   s <- seq_len(attr(x, "nrec_dnld", TRUE))
 
+  cache <- attr(x, "cache", TRUE)
+
   if (attr(x, "sample", TRUE)) {
 
     s <- sample(s)
 
-    if (attr(x, "cache", TRUE)) {
+    if (cache[[1L]]) {
 
       seed <- gen_seed(x)
 
@@ -407,7 +418,13 @@ records_list_data_frame <- function(x) {
 
   }
 
-  structure(df, url = url, time = do.call(c, time), record_id = record_id)
+  structure(
+    df,
+    url = url,
+    time = do.call(c, time),
+    record_id = record_id,
+    cache = cache
+  )
 
 }
 
@@ -535,7 +552,7 @@ date_times <- function(fb_occurrence_df) {
 
     vtype <- col_type_string(dwc)
 
-    var_names <- sysdata("var_names")
+    var_names <- sysdata(list(which = "var_names"))
 
     date_start <- var_names["gathering.eventDate.begin", vtype]
 
@@ -686,7 +703,7 @@ compute_date_time <- function(fb_occurrence_df) {
 
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   dtv <- var_names["computed_var_date_time",  col_type_string(dwc)]
 
@@ -708,7 +725,7 @@ compute_duration <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   duration_var <- var_names["computed_var_duration", vtype]
 
@@ -756,7 +773,7 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   iso8601_var <- var_names["computed_var_date_time_ISO8601", vtype]
 
@@ -868,17 +885,19 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
 compute_vars_from_id <- function(fb_occurrence_df) {
 
-  locale <- attr(fb_occurrence_df, "locale")
+  locale <- attr(fb_occurrence_df, "locale", TRUE)
 
-  add <- attr(fb_occurrence_df, "include_new_cols")
+  cache <- attr(fb_occurrence_df, "cache", TRUE)
+
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   colnames <- names(fb_occurrence_df)
 
-  select_user <- attr(fb_occurrence_df, "column_names")
+  select_user <- attr(fb_occurrence_df, "column_names", TRUE)
 
   cols <- setdiff(select_user, colnames)
 
-  dwc <- attr(fb_occurrence_df, "dwc")
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   vtype <- col_type_string(dwc)
 
@@ -910,7 +929,7 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
         col_i_native <- to_native(col_i)
 
-        metadata <- sysdata(col_i_native)
+        metadata <- sysdata(list(which = col_i_native, cache = cache[[2L]]))
 
         if (!inherits(metadata, "data.frame")) {
 
@@ -980,7 +999,7 @@ compute_epsg <- function(fb_occurrence_df) {
 
     vtype <- col_type_string(dwc)
 
-    var_names <- sysdata("var_names")
+    var_names <- sysdata(list(which = "var_names"))
 
     vnt <- var_names[, vtype, drop = FALSE]
 
@@ -1054,7 +1073,7 @@ compute_abundance <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  vnms <- sysdata("var_names")
+  vnms <- sysdata(list(which = "var_names"))
 
   abundance_var <- vnms[["computed_var_abundance", vtype]]
 
@@ -1115,7 +1134,7 @@ compute_citation <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   citation_var <- var_names[["computed_var_citation", vtype]]
 
@@ -1153,7 +1172,7 @@ compute_coordinate_uncertainty <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  vnms <- sysdata("var_names")
+  vnms <- sysdata(list(which = "var_names"))
 
   uncert_var <- vnms[["computed_var_coordinates_uncertainty", vtype]]
 
@@ -1187,7 +1206,7 @@ compute_scientific_name <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   sci_var <- var_names[["computed_var_scientific_name", vtype]]
 
@@ -1243,7 +1262,7 @@ compute_codes <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   id_var <- var_names[["document.collectionId", vtype]]
 
@@ -1307,7 +1326,7 @@ compute_red_list_status <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  vn <- sysdata("var_names")
+  vn <- sysdata(list(which = "var_names"))
 
   red_list_var <- vn[["computed_var_red_list_status", vtype]]
 
@@ -1343,7 +1362,7 @@ compute_region <- function(fb_occurrence_df) {
 
   vtype <- col_type_string(dwc)
 
-  var_names <- sysdata("var_names")
+  var_names <- sysdata(list(which = "var_names"))
 
   region_var <- var_names[["computed_var_region", vtype]]
 
@@ -1355,7 +1374,9 @@ compute_region <- function(fb_occurrence_df) {
 
     id <- basename(fb_occurrence_df[[idv]])
 
-    municipality <- municipality()
+    municipality <- municipality(
+      list(cache = attr(fb_occurrence_df, "cache", TRUE)[[2L]])
+    )
 
     fb_occurrence_df[[region_var]] <- municipality[id, "region"]
 
@@ -1565,7 +1586,7 @@ extract_facts <- function(fb_occurrence_df) {
 
     fb_occurrence_df[facts] <- rep(NA_character_, nrow(fb_occurrence_df))
 
-    var_names <- sysdata("var_names")
+    var_names <- sysdata(list(which = "var_names"))
 
     for (fact in facts) {
 

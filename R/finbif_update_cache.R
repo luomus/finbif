@@ -1,6 +1,6 @@
 #' Update cache
 #'
-#' Update all cached API requests from FinBIF.
+#' Update all cached FinBIF API requests.
 #'
 #' @aliases fb_update_cache
 #'

@@ -1,66 +1,84 @@
 #' @noRd
 
-sysdata <- function(which) {
+sysdata <- function(obj) {
 
   switch(
-    which,
+    obj[["which"]],
     supported_langs = c(English = "en", Finnish = "fi", Swedish = "sv"),
     var_names = var_names_df,
     has_value = has_value_df,
     cite_file_vars = cite_file_vars_df,
     lite_download_file_vars = lite_download_file_vars_df,
     filter_names = filter_names_df,
-    regulatory_status = regulatory_status(),
-    red_list_status = red_list_status(),
-    threatened_status = get_sysdata("MX.threatenedStatusEnum"),
-    informal_groups = informal_groups(),
-    informal_groups_reported = informal_groups(),
-    primary_habitat = primary_habitat(),
-    primary_secondary_habitat = primary_habitat(),
-    taxon_rank = get_sysdata("MX.taxonRankEnum"),
-    orig_taxon_rank = get_sysdata("MX.taxonRankEnum"),
-    country = get_areas("country"),
-    region = get_areas("province"),
-    bio_province = get_areas("biogeographicalProvince"),
-    municipality = municipality(),
-    bird_assoc_area = bird_assoc_area(),
-    finnish_occurrence_status = finnish_occurrence_status(),
-    finnish_occurrence_status_neg = finnish_occurrence_status(),
-    source = sources(),
-    record_basis = record_basis(),
+    regulatory_status = regulatory_status(obj),
+    red_list_status = red_list_status(obj),
+    threatened_status = get_sysdata(
+      list(which = "MX.threatenedStatusEnum", cache = obj[["cache"]])
+    ),
+    informal_groups = informal_groups(obj),
+    informal_groups_reported = informal_groups(obj),
+    primary_habitat = primary_habitat(obj),
+    primary_secondary_habitat = primary_habitat(obj),
+    taxon_rank = get_sysdata(
+      list(which = "MX.taxonRankEnum", cache = obj[["cache"]])
+    ),
+    orig_taxon_rank = get_sysdata(
+      list(which = "MX.taxonRankEnum", cache = obj[["cache"]])
+    ),
+    country = get_areas(
+      list(which = "country", cache = obj[["cache"]])
+    ),
+    region = get_areas(
+      list(which = "province", cache = obj[["cache"]])
+    ),
+    bio_province = get_areas(
+      list(which = "biogeographicalProvince", cache = obj[["cache"]])
+    ),
+    municipality = municipality(obj),
+    bird_assoc_area = bird_assoc_area(obj),
+    finnish_occurrence_status = finnish_occurrence_status(obj),
+    finnish_occurrence_status_neg = finnish_occurrence_status(obj),
+    source = sources(obj),
+    record_basis = record_basis(obj),
     superrecord_basis = superrecord_basis(),
-    life_stage = life_stage(),
-    sex = sex(),
-    restriction_reason = restriction_reason(),
-    restriction_level = restriction_level(),
+    life_stage = life_stage(obj),
+    sex = sex(obj),
+    restriction_reason = restriction_reason(obj),
+    restriction_level = restriction_level(obj),
     quality_issues = quality_issues(),
-    collection_quality = collection_quality(),
-    record_quality = record_quality(),
+    collection_quality = collection_quality(obj),
+    record_quality = record_quality(obj),
     record_reliability = record_reliability(),
     complete_list_type = complete_list_type(),
-    location_tag = get_sysdata("MNP.tagEnum"),
-    atlas_code = get_sysdata("MY.atlasCodeEnum"),
-    atlas_class = get_sysdata("MY.atlasClassEnum"),
-    abundance_unit = get_sysdata("MY.abundanceUnitEnum")
+    location_tag = get_sysdata(
+      list(which = "MNP.tagEnum", cache = obj[["cache"]])
+    ),
+    atlas_code = get_sysdata(
+      list(which = "MY.atlasCodeEnum", cache = obj[["cache"]])
+    ),
+    atlas_class = get_sysdata(
+      list(which = "MY.atlasClassEnum", cache = obj[["cache"]])
+    ),
+    abundance_unit = get_sysdata(
+      list(which = "MY.abundanceUnitEnum", cache = obj[["cache"]])
+    )
   )
 
 }
 
 #' @noRd
 
-get_sysdata <- function(x) {
-
-  cache <- getOption("finbif_use_cache")
+get_sysdata <- function(obj) {
 
   request <- list(
-    path = paste0("metadata/ranges/", x),
+    path = paste0("metadata/ranges/", obj[["which"]]),
     query = list(lang = "multi"),
-    cache = infer_cache(cache)
+    cache = obj[["cache"]]
   )
 
   sd_response <- api_get(request)
 
-  supported_langs <- sysdata("supported_langs")
+  supported_langs <- sysdata(list(which = "supported_langs"))
 
   n_langs <- length(supported_langs)
 
@@ -90,11 +108,9 @@ get_sysdata <- function(x) {
 
 get_enumeration <- function(obj) {
 
-  cache <- getOption("finbif_use_cache")
-
   request <- list(
     path = "warehouse/enumeration-labels",
-    cache = infer_cache(cache)
+    cache = obj[["cache"]]
   )
 
   en_response <- api_get(request)
@@ -109,7 +125,7 @@ get_enumeration <- function(obj) {
 
   get_function <- obj[["fun"]]
 
-  sd_en_df <- get_function(obj[["enum"]])
+  sd_en_df <- get_function(obj)
 
   id <- enumerations[row.names(sd_en_df)]
 
@@ -147,9 +163,9 @@ get_code <- function(obj) {
 
   prefix <- obj[["prefix"]]
 
-  x <- paste0(prefix, obj[["suffix"]])
-
-  ht <- get_sysdata(x)
+  ht <- get_sysdata(
+    list(which = paste0(prefix, obj[["suffix"]]), cache = obj[["cache"]])
+  )
 
   ht_row_names <- row.names(ht)
 
@@ -167,21 +183,19 @@ get_code <- function(obj) {
 
 #' @noRd
 
-get_areas <- function(x) {
-
-  cache <- getOption("finbif_use_cache")
+get_areas <- function(obj) {
 
   request <- list(
     path = "areas",
-    query = list(type = x, lang = "multi", pageSize = 1000L),
-    cache = infer_cache(cache)
+    query = list(type = obj[["which"]], lang = "multi", pageSize = 1000L),
+    cache = obj[["cache"]]
   )
 
   sd_response <- api_get(request)
 
   sd_response_results <- sd_response[[c("content", "results")]]
 
-  supported_langs <- sysdata("supported_langs")
+  supported_langs <- sysdata(list(which = "supported_langs"))
 
   col_names <- paste0("name_", supported_langs)
 
@@ -233,7 +247,7 @@ get_areas <- function(x) {
 
 replace_missing_names <- function(df) {
 
-  supported_langs <- sysdata("supported_langs")
+  supported_langs <- sysdata(list(which = "supported_langs"))
 
   col_names <- paste0("name_", supported_langs)
 
@@ -261,7 +275,7 @@ replace_missing_names <- function(df) {
 
 #' @noRd
 
-regulatory_status <- function() {
+regulatory_status <- function(obj) {
 
   code <- c(
     MX.finlex160_1997_appendix4 = "FNLX160_97_4",
@@ -318,7 +332,9 @@ regulatory_status <- function() {
     MX.euRegulation_cites_appendixD = "EU_CITESD"
   )
 
-  reg_status <- get_sysdata("MX.adminStatusEnum")
+  reg_status <- get_sysdata(
+    list(which = "MX.adminStatusEnum", cache = obj[["cache"]])
+  )
 
   id <- row.names(reg_status)
 
@@ -348,9 +364,11 @@ regulatory_status <- function() {
 
 #' @noRd
 
-red_list_status <- function() {
+red_list_status <- function(obj) {
 
-  red_list <- list(prefix = "MX.iucn", suffix = "Statuses")
+  red_list <- list(
+    prefix = "MX.iucn", suffix = "Statuses", cache = obj[["cache"]]
+  )
 
   get_code(red_list)
 
@@ -358,21 +376,19 @@ red_list_status <- function() {
 
 #' @noRd
 
-informal_groups <- function() {
-
-  cache <- getOption("finbif_use_cache")
+informal_groups <- function(obj) {
 
   request <- list(
     path = "informal-taxon-groups",
     query = list(lang = "multi", pageSize = 1000L),
-    cache = infer_cache(cache)
+    cache = obj[["cache"]]
   )
 
   sd_response <- api_get(request)
 
   sd_response_content <- sd_response[[c("content", "results")]]
 
-  supported_langs <- sysdata("supported_langs")
+  supported_langs <- sysdata(list(which = "supported_langs"))
 
   n_langs <- length(supported_langs)
 
@@ -398,11 +414,15 @@ informal_groups <- function() {
 
 #' @noRd
 
-primary_habitat <- function() {
+primary_habitat <- function(obj) {
 
-  habitat_types <- list(prefix = "MKV.habitat", suffix = "Enum")
+  habitat_types <- list(
+    prefix = "MKV.habitat", suffix = "Enum", cache = obj[["cache"]]
+  )
 
-  specific_types <-  list(prefix = "MKV.habitatSpecificType", suffix = "Enum")
+  specific_types <-  list(
+    prefix = "MKV.habitatSpecificType", suffix = "Enum", cache = obj[["cache"]]
+  )
 
   list(
     habitat_types = get_code(habitat_types),
@@ -413,7 +433,7 @@ primary_habitat <- function() {
 
 #' @noRd
 
-municipality <- function() {
+municipality <- function(obj) {
 
   regions <- c(
     ML.351 = "Ahvenanmaa",
@@ -727,7 +747,9 @@ municipality <- function() {
     ML.670 = "Pohjanmaa"
   )
 
-  municipalities <- get_areas("municipality")
+  municipalities <- get_areas(
+    list(which = "municipality", cache = obj[["cache"]])
+  )
 
   id <- row.names(municipalities)
 
@@ -743,7 +765,7 @@ municipality <- function() {
 
 #' @noRd
 
-bird_assoc_area <- function() {
+bird_assoc_area <- function(obj) {
 
   codes <- c(
     ML.1088 = "AFF",
@@ -777,7 +799,9 @@ bird_assoc_area <- function() {
     ML.1267 = "OA"
   )
 
-  bird_assoc <- get_areas("birdAssociationArea")
+  bird_assoc <- get_areas(
+    list(which = "birdAssociationArea", cache = obj[["cache"]])
+  )
 
   id <- row.names(bird_assoc)
 
@@ -795,7 +819,7 @@ bird_assoc_area <- function() {
 
 #' @noRd
 
-finnish_occurrence_status <- function() {
+finnish_occurrence_status <- function(obj) {
 
   codes <- c(
     MX.doesNotOccur = "none",
@@ -845,7 +869,9 @@ finnish_occurrence_status <- function() {
     MX.typeOfOccurrenceBirdLifeCategoryE = "BLE"
   )
 
-  finnish_occurrence <- get_sysdata("MX.typeOfOccurrenceEnum")
+  finnish_occurrence <- get_sysdata(
+    list(which = "MX.typeOfOccurrenceEnum", cache = obj[["cache"]])
+  )
 
   id <- row.names(finnish_occurrence)
 
@@ -863,14 +889,12 @@ finnish_occurrence_status <- function() {
 
 #' @noRd
 
-sources <- function() {
-
-  cache <- getOption("finbif_use_cache")
+sources <- function(obj) {
 
   request <- list(
     path = "sources",
     query = list(lang = "multi", pageSize = 1000L),
-    cache = infer_cache(cache)
+    cache = obj[["cache"]]
   )
 
   sd_response <- api_get(request)
@@ -881,7 +905,7 @@ sources <- function() {
 
   types <- c("name", "description")
 
-  supported_langs <- sysdata("supported_langs")
+  supported_langs <- sysdata(list(which = "supported_langs"))
 
   n_langs <- length(supported_langs)
 
@@ -923,9 +947,11 @@ sources <- function() {
 
 #' @noRd
 
-record_basis <- function() {
+record_basis <- function(obj) {
 
-  record_bases <- list(enum = "MY.recordBases", fun = get_sysdata)
+  record_bases <- list(
+    which = "MY.recordBases", cache = obj[["cache"]], fun = get_sysdata
+  )
 
   get_enumeration(record_bases)
 
@@ -968,13 +994,17 @@ superrecord_basis <- function() {
 
 #' @noRd
 
-life_stage <- function() {
+life_stage <- function(obj) {
 
-  animal_life_stages <- list(enum = "MY.lifeStages", fun = get_sysdata)
+  animal_life_stages <- list(
+    which = "MY.lifeStages", cache = obj[["cache"]], fun = get_sysdata
+  )
 
   animal_life_stages <- get_enumeration(animal_life_stages)
 
-  plant_life_stages <- list(enum = "MY.plantLifeStageEnum", fun = get_sysdata)
+  plant_life_stages <- list(
+    which = "MY.plantLifeStageEnum", cache = obj[["cache"]], fun = get_sysdata
+  )
 
   plant_life_stages <- get_enumeration(plant_life_stages)
 
@@ -986,11 +1016,11 @@ life_stage <- function() {
 
 #' @noRd
 
-sex <- function() {
+sex <- function(obj) {
 
-  sexes <- list(prefix = "MY.sex", suffix = "es")
-
-  sexes <- list(enum = sexes, fun = get_code)
+  sexes <- list(
+    prefix = "MY.sex", suffix = "es", cache = obj[["cache"]], fun = get_code
+  )
 
   get_enumeration(sexes)
 
@@ -998,9 +1028,11 @@ sex <- function() {
 
 #' @noRd
 
-restriction_reason <- function() {
+restriction_reason <- function(obj) {
 
-  reasons <- list(enum = "MZ.secureReason", fun = get_sysdata)
+  reasons <- list(
+    which = "MZ.secureReason", cache = obj[["cache"]], fun = get_sysdata
+  )
 
   get_enumeration(reasons)
 
@@ -1008,9 +1040,11 @@ restriction_reason <- function() {
 
 #' @noRd
 
-restriction_level <- function() {
+restriction_level <- function(obj) {
 
-  levels <- list(enum = "MX.secureLevels", fun = get_sysdata)
+  levels <- list(
+    which = "MX.secureLevels", cache = obj[["cache"]], fun = get_sysdata
+  )
 
   get_enumeration(levels)
 
@@ -1049,9 +1083,13 @@ quality_issues <- function() {
 
 #' @noRd
 
-collection_quality <- function() {
+collection_quality <- function(obj) {
 
-  quality <- list(enum = "MY.collectionQualityEnum", fun = get_sysdata)
+  quality <- list(
+    which = "MY.collectionQualityEnum",
+    cache = obj[["cache"]],
+    fun = get_sysdata
+  )
 
   get_enumeration(quality)
 
@@ -1059,9 +1097,11 @@ collection_quality <- function() {
 
 #' @noRd
 
-record_quality <- function() {
+record_quality <- function(obj) {
 
-  quality <- list(enum = "MZ.recordQualityEnum", fun = get_sysdata)
+  quality <- list(
+    which = "MZ.recordQualityEnum", cache = obj[["cache"]], fun = get_sysdata
+  )
 
   get_enumeration(quality)
 

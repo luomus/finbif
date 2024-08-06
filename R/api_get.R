@@ -21,7 +21,7 @@ api_get <- function(obj) {
 
   hash <- NULL
 
-  if (obj[["cache"]] > 0) {
+  if (obj[["cache"]][[1L]] > 0) {
 
     query_list <- list(url, version, path, query)
 
@@ -374,7 +374,7 @@ get_token <- function() {
 
 get_timeout <- function(obj) {
 
-  timeout <- obj[["cache"]]
+  timeout <- obj[["cache"]][[1L]]
 
   if (is.logical(timeout) || isTRUE(obj[["cache_override"]])) {
 

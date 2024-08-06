@@ -14,6 +14,9 @@
 #'   data where more than one language is available the language denoted by
 #'   `locale` will be preferred while falling back to the other languages in the
 #'   order indicated above.
+#' @param cache Logical or Integer. If `TRUE` or a number greater than zero,
+#'   then data-caching will be used. If not logical then cache will be
+#'   invalidated after the number of hours indicated by the argument.
 #' @return A character vector (invisibly).
 #' @examples \dontrun{
 #'
@@ -27,10 +30,11 @@ finbif_informal_groups <- function(
   group,
   limit = 5,
   quiet = FALSE,
-  locale = getOption("finbif_locale")
+  locale = getOption("finbif_locale"),
+  cache = getOption("finbif_use_cache_metadata")
 ) {
 
-  if (!locale %in% sysdata("supported_langs")) {
+  if (!locale %in% sysdata(list(which = "supported_langs"))) {
 
     locale <- "en"
 
@@ -41,7 +45,7 @@ finbif_informal_groups <- function(
   request <- list(
     path = "informal-taxon-groups/tree",
     query = list(pageSize = 1000L, lang = locale),
-    cache = infer_cache(cache)
+    cache = cache
   )
 
   informal_grps <- api_get(request)
