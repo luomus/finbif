@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
+\section{finbif version 0.9.8.9000}{
+  \subsection{NEW FEATURES}{
+    \itemize{
+      \item This is the latest development version.
+    }
+  }
+}
+
 \section{finbif version 0.9.8}{
   \subsection{DEPRECATION}{
     \itemize{

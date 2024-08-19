@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate%20DESC&page=1&pageSize=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate%20DESC&page=1&pageSize=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 19 Aug 2024 08:53:34 GMT
+      date: Mon, 19 Aug 2024 10:28:03 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,6 +29,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":52323067,"pageSize":1,"total":52323067,"cacheTimestamp":1724057614,"results":[{"unit":{"unitId":"http://tun.fi/JX.1760209#3"},"document":{"loadDate":"2024-08-19"}}]}'
-  recorded_at: 2024-08-19 08:53:34 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":3243303,"pageSize":1,"total":3243303,"cacheTimestamp":1724063283,"results":[{"unit":{"unitId":"http://tun.fi/HR.64/339211/G.743867_AD"},"document":{"loadDate":"2024-08-19"}}]}'
+  recorded_at: 2024-08-19 10:28:03 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
