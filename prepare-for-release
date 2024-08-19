@@ -22,6 +22,6 @@
 18. Merge main (`git merge main`).
 19. Restart R to reset environment variables.
 20. Add dev component to version number, update cff, news and rerun
-    data-raw/sysdata.R, delete cassettes, rerun tests, change docs URL in
-    DESCRIPTION, CITATION.cff files and _pkgdown.yml, touch README.Rmd and make
-    then commit and push.
+    data-raw/sysdata.R, delete cassettes and snapshots, rerun tests, change docs
+    URL in DESCRIPTION, CITATION.cff files and _pkgdown.yml, touch README.Rmd
+    and make then commit and push.
