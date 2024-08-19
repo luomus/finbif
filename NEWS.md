@@ -1,17 +1,15 @@
 # News for Package <span class="pkg">finbif</span>
 
-# finbif 0.9.7.9001
-
-## MINOR IMPROVEMENTS
-
-  - Caching behaviour has been made more consistent.
-
-# finbif 0.9.7.9000
+# finbif 0.9.8
 
 ## DEPRECATION
 
   - Importing `.ods` and `.xlsx` occurrence data files has been
     deprecated and will be defunct in a future release.
+
+## MINOR IMPROVEMENTS
+
+  - Caching behaviour has been made more consistent.
 
 # finbif 0.9.7
 

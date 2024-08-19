@@ -1,19 +1,16 @@
 \name{NEWS}
 \title{News for Package \pkg{finbif}}
 
-\section{finbif version 0.9.7.9001}{
-  \subsection{MINOR IMPROVEMENTS}{
-    \itemize{
-      \item Caching behaviour has been made more consistent.
-    }
-  }
-}
-
-\section{finbif version 0.9.7.9000}{
+\section{finbif version 0.9.8}{
   \subsection{DEPRECATION}{
     \itemize{
       \item Importing \code{.ods} and \code{.xlsx} occurrence data files has
         been deprecated and will be defunct in a future release.
+    }
+  }
+  \subsection{MINOR IMPROVEMENTS}{
+    \itemize{
+      \item Caching behaviour has been made more consistent.
     }
   }
 }
