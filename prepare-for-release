@@ -7,7 +7,7 @@
 6.  Merge changes (git merge dev) and resolve conflicts, if any, and commit.
 7.  Restart R to reset environment variables.
 8.  Run data-raw/sysdata.R and commit changes.
-9.  Delete cassettes, run tests and commit changes to test assets.
+9.  Delete cassettes and snapshots, run tests and commit changes to test assets.
 10. Change docs URL in DESCRIPTION, CITATION.cff files and _pkgdown.yml, rebuild
     README (touch README.Rmd) and make and commit.
 11. Check winbuilder (`devtools::check_win_devel()`).
