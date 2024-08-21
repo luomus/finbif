@@ -1575,21 +1575,6 @@ open_tsv_connection <- function(connection_obj) {
 }
 
 #' @noRd
-#' @importFrom utils write.table
-
-write_tsv <- function(df) {
-
-  file <- tempfile(fileext = ".tsv")
-
-  utils::write.table(
-    df, file, quote = FALSE, sep = "\t", na = "", row.names = FALSE
-  )
-
-  file
-
-}
-
-#' @noRd
 
 expand_lite_cols <- function(df) {
 
