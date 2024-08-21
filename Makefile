@@ -31,8 +31,6 @@ dev_deps:
 > ${RSCRIPT} -e "stopifnot(requireNamespace('jsonlite', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('knitr', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('pkgdown', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('readODS', quietly = TRUE))";\
-> ${RSCRIPT} -e "stopifnot(requireNamespace('readxl', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('rmarkdown', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('RSQLite', quietly = TRUE))";\
 > ${RSCRIPT} -e "stopifnot(requireNamespace('sf', quietly = TRUE))";\
@@ -51,7 +49,7 @@ sentinels/check: sentinels/pkgdown $(shell find tests -type f)
 > mkdir -p $(@D);\
 > touch $@
 
-sentinels/pkgdown: sentinels/vignettes README.md NEWS.md LICENSE sentinels/doc _pkgdown.yml $(shell find pkgdown -type f)
+sentinels/pkgdown: sentinels/vignettes README.md LICENSE sentinels/doc _pkgdown.yml $(shell find pkgdown -type f)
 > echo "options(rmarkdown.html_vignette.check_title = FALSE)" > .Rprofile;\
 > ${RSCRIPT} -e "pkgdown::build_site()";\
 > rm .Rprofile; \
@@ -61,17 +59,6 @@ sentinels/pkgdown: sentinels/vignettes README.md NEWS.md LICENSE sentinels/doc _
 
 README.md: README.Rmd DESCRIPTION
 > ${RSCRIPT} -e "knitr::knit('$<')"
-
-NEWS.md: inst/NEWS.Rd
-> ${RSCRIPT} -e "tools::Rd2HTML('$<', 'inst/NEWS.html')";\
-> sed -i 's/h2>/h1>/g' inst/NEWS.html;\
-> sed -i 's/h3>/h1>/g' inst/NEWS.html;\
-> sed -i 's/h4>/h2>/g' inst/NEWS.html;\
-> pandoc -s inst/NEWS.html -o inst/NEWS.md -t gfm;\
-> sed -i '1,8d' inst/NEWS.md;\
-> head -n -2 inst/NEWS.md > NEWS.md;\
-> sed -i 's/# ${PKGNM} version/# ${PKGNM}/g' NEWS.md;\
-> $(RM) inst/NEWS.html inst/NEWS.md
 
 sentinels/vignettes: $(shell find inst/vign -type f)
 > cd ..;\

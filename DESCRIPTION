@@ -43,8 +43,6 @@ Suggests:
     DBI,
     future,
     knitr,
-    readODS,
-    readxl,
     rmarkdown,
     RSQLite,
     testthat (>= 3.0.0),

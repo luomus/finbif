@@ -75,15 +75,6 @@ finbif_occurrence_load <- function(
   skip = 0
 ) {
 
-  nchars <- nchar(file)
-
-  file <- switch(
-    substring(file, nchars - 3L, nchars),
-    .ods = from_ods(file),
-    xlsx = from_xlsx(file),
-    file
-  )
-
   fb_records_obj <- list(
     file = file,
     n = as.integer(n),
@@ -1580,66 +1571,6 @@ open_tsv_connection <- function(connection_obj) {
     textConnection(vars)
 
   }
-
-}
-
-#' @noRd
-
-from_ods <- function(file) {
-
-  warn <- Sys.getenv("DEPRECATION_WARNING", 0)
-
-  op <- options()
-
-  options(warn = as.integer(warn))
-
-  warning(
-    "Reading ODS file downloads has been deprecated in the {finbif} package ",
-    "and will unavailable in the next release. Please use TSV downloads ",
-    "instead.",
-    call. = FALSE
-  )
-
-  options(op)
-
-  stopifnot("Package {readODS} required for ODS files" = has_pkgs("readODS"))
-
-  df <- readODS::read_ods(file, col_types = NA)
-
-  write_tsv(df)
-
-}
-
-#' @noRd
-
-from_xlsx <- function(file) {
-
-  warn <- Sys.getenv("DEPRECATION_WARNING", 0)
-
-  op <- options()
-
-  options(warn = as.integer(warn))
-
-  warning(
-    "Reading XLSX file downloads has been deprecated in the {finbif} package ",
-    "and will unavailable in the next release. Please use TSV downloads ",
-    "instead.",
-    call. = FALSE
-  )
-
-  options(op)
-
-  stopifnot("Package {readxl} required for Excel files" = has_pkgs("readxl"))
-
-  df <- readxl::read_xlsx(
-    file,
-    progress = FALSE,
-    col_types = "text",
-    trim_ws = FALSE,
-    .name_repair = "minimal"
-  )
-
-  write_tsv(df)
 
 }
 

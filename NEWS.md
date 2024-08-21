@@ -2,9 +2,10 @@
 
 # finbif 0.9.8.9000
 
-## NEW FEATURES
+## DEFUNCT
 
-  - This is the latest development version.
+  - Importing `.ods` and `.xlsx` occurrence data files is now defunct users
+    should use `.tsv` download files only.
 
 # finbif 0.9.8
 

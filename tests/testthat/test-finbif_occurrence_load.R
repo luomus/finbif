@@ -58,6 +58,10 @@ test_that("download imports work", {
         quiet = TRUE
       )
 
+      laji_data_tsv0 <- finbif_occurrence_load(
+        "laji-data.tsv", dt = FALSE, n = 0, tzone = "Etc/UTC", quiet = TRUE
+      )
+
       laji_data_pap_tsv <- finbif_occurrence_load(
         "laji-data-pap.tsv", tzone = "Etc/UTC", quiet = TRUE
       )
@@ -66,13 +70,7 @@ test_that("download imports work", {
         "laji-data-new-col.tsv", tzone = "Etc/UTC", quiet = TRUE
       )
 
-      laji_data_ods <- finbif_occurrence_load(
-        "laji-data.ods", dt = FALSE, n = 0, tzone = "Etc/UTC", quiet = TRUE
-      )
 
-      laji_data_xlsx <- finbif_occurrence_load(
-        "laji-data.xlsx", tzone = "Etc/UTC", quiet = TRUE
-      )
 
     })
 
@@ -114,11 +112,7 @@ test_that("download imports work", {
     )
 
     expect_snapshot_value(
-      laji_data_ods, style = "json2", ignore_attr = "url"
-    )
-
-    expect_snapshot_value(
-      laji_data_xlsx, style = "json2", ignore_attr = "url"
+      laji_data_tsv0, style = "json2", ignore_attr = "url"
     )
 
   }

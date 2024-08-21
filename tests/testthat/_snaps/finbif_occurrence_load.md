@@ -3034,12 +3034,12 @@
         "nrow": {
           "type": "integer",
           "attributes": {},
-          "value": [32]
+          "value": [1084]
         },
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpXKlsEy/fileff545620481c.tsv"]
+          "value": ["laji-data.tsv"]
         },
         "locale": {
           "type": "character",
@@ -3194,12 +3194,12 @@
         "nrec_dnld": {
           "type": "integer",
           "attributes": {},
-          "value": [32]
+          "value": [1084]
         },
         "nrec_avl": {
           "type": "integer",
           "attributes": {},
-          "value": [32]
+          "value": [1084]
         },
         "time": {
           "type": "character",
@@ -3293,282 +3293,6 @@
           "type": "character",
           "attributes": {},
           "value": []
-        }
-      ]
-    }
-
----
-
-    {
-      "type": "list",
-      "attributes": {
-        "row.names": {
-          "type": "integer",
-          "attributes": {},
-          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
-        },
-        "url": {
-          "type": "character",
-          "attributes": {},
-          "value": ["/tmp/RtmpXKlsEy/fileff5435da9319.tsv"]
-        },
-        "nrow": {
-          "type": "integer",
-          "attributes": {},
-          "value": [32]
-        },
-        "locale": {
-          "type": "character",
-          "attributes": {},
-          "value": ["en"]
-        },
-        "cache": {
-          "type": "logical",
-          "attributes": {},
-          "value": [true, true]
-        },
-        "select": {
-          "type": "list",
-          "attributes": {
-            "names": {
-              "type": "character",
-              "attributes": {},
-              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
-            }
-          },
-          "value": [
-            {
-              "type": "character",
-              "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
-            },
-            {
-              "type": "character",
-              "attributes": {},
-              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
-            },
-            {
-              "type": "logical",
-              "attributes": {},
-              "value": [true]
-            },
-            {
-              "type": "logical",
-              "attributes": {},
-              "value": [true]
-            },
-            {
-              "type": "character",
-              "attributes": {},
-              "value": []
-            },
-            {
-              "type": "logical",
-              "attributes": {},
-              "value": [false]
-            },
-            {
-              "type": "character",
-              "attributes": {},
-              "value": ["translated_var"]
-            },
-            {
-              "type": "logical",
-              "attributes": {},
-              "value": [true]
-            }
-          ]
-        },
-        "select_user": {
-          "type": "character",
-          "attributes": {},
-          "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
-        },
-        "column_names": {
-          "type": "character",
-          "attributes": {
-            "names": {
-              "type": "character",
-              "attributes": {},
-              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
-            }
-          },
-          "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
-        },
-        "aggregate": {
-          "type": "character",
-          "attributes": {},
-          "value": ["none"]
-        },
-        "dwc": {
-          "type": "logical",
-          "attributes": {},
-          "value": [false]
-        },
-        "tzone": {
-          "type": "character",
-          "attributes": {},
-          "value": ["Etc/UTC"]
-        },
-        "include_new_cols": {
-          "type": "logical",
-          "attributes": {},
-          "value": [true]
-        },
-        "record_id": {
-          "type": "character",
-          "attributes": {},
-          "value": ["http://tun.fi/KE.176/60d9fd27d5de58930032c2e2#Unit1", "http://tun.fi/JX.1252191#3", "http://tun.fi/JX.1252046#111", "http://tun.fi/JX.1252046#35", "http://tun.fi/JX.1252046#161", "http://tun.fi/JX.1252046#87", "http://tun.fi/JX.1252046#65", "http://tun.fi/JX.1252046#67", "http://tun.fi/JX.1252046#71", "http://tun.fi/JX.1252046#91", "http://tun.fi/JX.1252046#235", "http://tun.fi/JX.1252046#23", "http://tun.fi/JX.1252046#153", "http://tun.fi/JX.1252046#59", "http://tun.fi/JX.1252046#213", "http://tun.fi/JX.1252046#211", "http://tun.fi/JX.1252046#149", "http://tun.fi/JX.1252046#147", "http://tun.fi/JX.1252046#31", "http://tun.fi/JX.1252046#135", "http://tun.fi/JX.1252046#223", "http://tun.fi/JX.1252046#133", "http://tun.fi/JX.1252046#29", "http://tun.fi/JX.1252046#45", "http://tun.fi/JX.1252046#203", "http://tun.fi/JX.1252046#205", "http://tun.fi/JX.1252046#121", "http://tun.fi/JX.1252046#219", "http://tun.fi/JX.1252046#15", "http://tun.fi/JX.1252046#105", "http://tun.fi/KE.176/60d9c85ad5de58930032c2cd#Unit1", "http://tun.fi/KE.176/60d973c2d5de58930032c29f#Unit1"]
-        },
-        "date_time": {
-          "type": "logical",
-          "attributes": {},
-          "value": [true]
-        },
-        "date_time_method": {
-          "type": "character",
-          "attributes": {},
-          "value": ["fast"]
-        },
-        "date_time_start": {
-          "type": "double",
-          "attributes": {
-            "class": {
-              "type": "character",
-              "attributes": {},
-              "value": ["POSIXct", "POSIXt"]
-            },
-            "tzone": {
-              "type": "character",
-              "attributes": {},
-              "value": ["Etc/UTC"]
-            }
-          },
-          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
-        },
-        "date_time_end": {
-          "type": "double",
-          "attributes": {
-            "class": {
-              "type": "character",
-              "attributes": {},
-              "value": ["POSIXct", "POSIXt"]
-            },
-            "tzone": {
-              "type": "character",
-              "attributes": {},
-              "value": ["Etc/UTC"]
-            }
-          },
-          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
-        },
-        "class": {
-          "type": "character",
-          "attributes": {},
-          "value": ["finbif_occ", "data.frame"]
-        },
-        "nrec_dnld": {
-          "type": "integer",
-          "attributes": {},
-          "value": [32]
-        },
-        "nrec_avl": {
-          "type": "integer",
-          "attributes": {},
-          "value": [32]
-        },
-        "time": {
-          "type": "character",
-          "attributes": {},
-          "value": ["??"]
-        },
-        "short_nms": {
-          "type": "logical",
-          "attributes": {},
-          "value": [false]
-        },
-        "names": {
-          "type": "character",
-          "attributes": {},
-          "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
-        },
-        "drop_na": {
-          "type": "logical",
-          "attributes": {},
-          "value": [false]
-        }
-      },
-      "value": [
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["http://tun.fi/KE.176/60d9fd27d5de58930032c2e2#Unit1", "http://tun.fi/JX.1252191#3", "http://tun.fi/JX.1252046#111", "http://tun.fi/JX.1252046#35", "http://tun.fi/JX.1252046#161", "http://tun.fi/JX.1252046#87", "http://tun.fi/JX.1252046#65", "http://tun.fi/JX.1252046#67", "http://tun.fi/JX.1252046#71", "http://tun.fi/JX.1252046#91", "http://tun.fi/JX.1252046#235", "http://tun.fi/JX.1252046#23", "http://tun.fi/JX.1252046#153", "http://tun.fi/JX.1252046#59", "http://tun.fi/JX.1252046#213", "http://tun.fi/JX.1252046#211", "http://tun.fi/JX.1252046#149", "http://tun.fi/JX.1252046#147", "http://tun.fi/JX.1252046#31", "http://tun.fi/JX.1252046#135", "http://tun.fi/JX.1252046#223", "http://tun.fi/JX.1252046#133", "http://tun.fi/JX.1252046#29", "http://tun.fi/JX.1252046#45", "http://tun.fi/JX.1252046#203", "http://tun.fi/JX.1252046#205", "http://tun.fi/JX.1252046#121", "http://tun.fi/JX.1252046#219", "http://tun.fi/JX.1252046#15", "http://tun.fi/JX.1252046#105", "http://tun.fi/KE.176/60d9c85ad5de58930032c2cd#Unit1", "http://tun.fi/KE.176/60d973c2d5de58930032c29f#Unit1"]
-        },
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["Meloe violaceus", "Arctia plantaginis", "Aglais urticae", "Anthocharis cardamines", "Aphantopus hyperantus", "Boloria aquilonaris", "Boloria eunomia", "Boloria euphrosyne", "Boloria selene", "Brenthis ino", "Callophrys rubi", "Carterocephalus silvicola", "Coenonympha tullia", "Colias palaeno", "Cyaniris semiargus", "Eumedonia eumedon", "Lasiommata maera", "Lasiommata petropolitana", "Leptidea sinapis", "Limenitis populi", "Lycaena phlaeas", "Melitaea athalia", "Ochlodes sylvanus", "Pieris napi", "Plebejus argus", "Plebejus idas", "Polygonia c-album", "Polyommatus amandus", "Pyrgus malvae", "Vanessa atalanta", "Papilionoidea", "Rosa rugosa"]
-        },
-        {
-          "type": "integer",
-          "attributes": {},
-          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
-        },
-        {
-          "type": "double",
-          "attributes": {},
-          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
-        },
-        {
-          "type": "double",
-          "attributes": {},
-          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
-        },
-        {
-          "type": "double",
-          "attributes": {
-            "class": {
-              "type": "character",
-              "attributes": {},
-              "value": ["POSIXct", "POSIXt"]
-            },
-            "tzone": {
-              "type": "character",
-              "attributes": {},
-              "value": ["Etc/UTC"]
-            }
-          },
-          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
-        },
-        {
-          "type": "integer",
-          "attributes": {},
-          "value": ["NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"]
-        },
-        {
-          "type": "logical",
-          "attributes": {},
-          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-        },
-        {
-          "type": "logical",
-          "attributes": {},
-          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-        },
-        {
-          "type": "logical",
-          "attributes": {},
-          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-        },
-        {
-          "type": "character",
-          "attributes": {},
-          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-        },
-        {
-          "type": "character",
-          "attributes": {},
-          "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
         }
       ]
     }
@@ -3591,7 +3315,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpXKlsEy/fileff5430adf3f9/finbif_dwnld_cache_file_1571d33d6deb0431188fc3d56cdc8bbd"]
+          "value": ["/tmp/RtmpEXugIi/file137a34595d166/finbif_dwnld_cache_file_1571d33d6deb0431188fc3d56cdc8bbd"]
         },
         "locale": {
           "type": "character",
@@ -3939,7 +3663,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpXKlsEy/fileff543fda8e7b"]
+          "value": ["/tmp/RtmpEXugIi/file137a331723a88"]
         },
         "nrow": {
           "type": "integer",
