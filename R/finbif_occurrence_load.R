@@ -1517,7 +1517,7 @@ nlines <- function(fb_occurrence_obj) {
 
   n <- -1L
 
-  cond <- TRUE
+  cond <- !inherits(con, "textConnection")
 
   while (cond) {
 
