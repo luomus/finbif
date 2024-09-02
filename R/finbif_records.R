@@ -852,6 +852,8 @@ get_extra_pages <- function(fb_records_list) {
 
   page <- query[["page"]]
 
+  last_page <- ceiling(n_tot / query[["pageSize"]])
+
   use_future <- has_pkgs("future") && getOption("finbif_use_async")
 
   if (use_future) {
@@ -866,11 +868,17 @@ get_extra_pages <- function(fb_records_list) {
 
   ids <- character()
 
-  while (n_needed > (n_got - length(which(duplicated(ids))))) {
+  more_pages <- TRUE
+
+  while (n_needed > n_got - length(which(duplicated(ids))) && more_pages) {
 
     page <- page + 1L
 
-    if (sample && page > ceiling(n_tot / query[["pageSize"]])) {
+    sampling_failed <- sample && page > last_page
+
+    if (sampling_failed) {
+
+      sample <- FALSE
 
       page <- 1L
 
@@ -898,11 +906,7 @@ get_extra_pages <- function(fb_records_list) {
 
     }
 
-    if (attr(fb_records_list, "df", TRUE)) {
-
-      attr(fb_records_list[[i]], "df") <- records_df(fb_records_list[[i]])
-
-    }
+    attr(fb_records_list[[i]], "df") <- records_df(fb_records_list[[i]])
 
     records_i <- value(res)
 
@@ -923,6 +927,8 @@ get_extra_pages <- function(fb_records_list) {
     ids <- ids[!is.na(ids)]
 
     n_got <- n_got + length(records_i[[c("content", "results")]])
+
+    more_pages <- page < last_page || sample
 
   }
 
