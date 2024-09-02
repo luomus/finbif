@@ -10,10 +10,7 @@ test_that("clearing cache works", {
 
   dir.create(cache)
 
-  if (
-    requireNamespace("DBI", quietly = TRUE) &&
-      requireNamespace("RSQLite", quietly = TRUE)
-  ) {
+  if (all(vapply(c("DBI", "RSQLite"), requireNamespace, NA, quietly = TRUE))) {
 
     db <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
 
