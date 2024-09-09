@@ -110,7 +110,7 @@ records <- function(fb_records_obj) {
 
   ans <- request(fb_records_obj)
 
-  if (fb_records_obj[["df"]] && !fb_records_obj[["count_only"]]) {
+  if (!fb_records_obj[["count_only"]]) {
 
     ind <- length(ans)
 
@@ -787,7 +787,6 @@ request <- function(fb_records_obj) {
     select = fb_records_obj[["select_query"]],
     select_user = select_user,
     locale = fb_records_obj[["locale"]],
-    df = fb_records_obj[["df"]],
     dwc = fb_records_obj[["dwc"]],
     exclude_na = fb_records_obj[["exclude_na"]],
     include_facts = fb_records_obj[["include_facts"]],

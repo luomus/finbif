@@ -145,7 +145,6 @@ finbif_occurrence <- function(
     on_check_fail = match.arg(on_check_fail),
     tzone = tzone,
     locale = locale,
-    df = TRUE,
     seed = seed,
     drop_na = drop_na,
     aggregate_counts = aggregate_counts,
