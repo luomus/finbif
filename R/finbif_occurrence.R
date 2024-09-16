@@ -178,8 +178,8 @@ occurrence <- function(fb_records_obj) {
     fb_records_obj[["taxa"]], fb_records_obj[["filter"]]
   )
 
-  cache <- list(
-    fb_records_obj[["cache"]], getOption("finbif_use_cache_metadata")
+  cache <- as.list(
+    c(fb_records_obj[["cache"]], getOption("finbif_use_cache_metadata"))
   )
 
   fb_records_obj[["cache"]] <- cache[1:2]
