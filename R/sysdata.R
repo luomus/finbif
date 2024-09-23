@@ -26,13 +26,13 @@ sysdata <- function(obj) {
       list(which = "MX.taxonRankEnum", cache = obj[["cache"]])
     ),
     country = get_areas(
-      list(which = "country", cache = obj[["cache"]])
+      list(which = "ML.country", cache = obj[["cache"]])
     ),
     region = get_areas(
-      list(which = "province", cache = obj[["cache"]])
+      list(which = "ML.province", cache = obj[["cache"]])
     ),
     bio_province = get_areas(
-      list(which = "biogeographicalProvince", cache = obj[["cache"]])
+      list(which = "ML.biogeographicalProvince", cache = obj[["cache"]])
     ),
     municipality = municipality(obj),
     bird_assoc_area = bird_assoc_area(obj),
@@ -187,7 +187,7 @@ get_areas <- function(obj) {
 
   request <- list(
     path = "areas",
-    query = list(type = obj[["which"]], lang = "multi", pageSize = 1000L),
+    query = list(areaType = obj[["which"]], lang = "multi", pageSize = 1000L),
     cache = obj[["cache"]]
   )
 
@@ -748,7 +748,7 @@ municipality <- function(obj) {
   )
 
   municipalities <- get_areas(
-    list(which = "municipality", cache = obj[["cache"]])
+    list(which = "ML.municipality", cache = obj[["cache"]])
   )
 
   id <- row.names(municipalities)
@@ -800,7 +800,7 @@ bird_assoc_area <- function(obj) {
   )
 
   bird_assoc <- get_areas(
-    list(which = "birdAssociationArea", cache = obj[["cache"]])
+    list(which = "ML.birdAssociationArea", cache = obj[["cache"]])
   )
 
   id <- row.names(bird_assoc)
