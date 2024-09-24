@@ -1185,7 +1185,7 @@ compute_coordinate_uncertainty <- function(fb_occurrence_df) {
 
     source_var <- vnms[["document.sourceId", vtype]]
 
-    na <- fb_occurrence_df[[source_var]] == "http://tun.fi/KE.3" &  interp == 1
+    na <- fb_occurrence_df[[source_var]] == "http://tun.fi/KE.3" & interp == 1
 
     coord_uncert <- ifelse(na, NA_real_, interp)
 
