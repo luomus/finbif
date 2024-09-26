@@ -1,4 +1,4 @@
-pandoc: 3.1.11
+pandoc: '3.2'
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
@@ -7,7 +7,7 @@ articles:
   v03_selecting_variables: v03_selecting_variables.html
   v04_metadata: v04_metadata.html
   v05_filtering: v05_filtering.html
-last_built: 2024-09-18T05:40Z
+last_built: 2024-09-26T11:29Z
 urls:
   reference: https://finbif-docs-dev.netlify.app/reference
   article: https://finbif-docs-dev.netlify.app/articles
