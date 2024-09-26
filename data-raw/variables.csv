@@ -206,7 +206,8 @@ gathering.interpretations.biogeographicalProvince,bio_province_id,bioStateProvin
 computed_var_from_id_bio_province,bio_province,bioStateProvince,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.biogeographicalProvinces,bio_province_ids,bioStateProvinceIDs,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.country,country_id,countryID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-computed_var_from_id_country,country,country,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+computed_var_country,country,country,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+computed_var_country_code,country_code,countryCode,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.finnishMunicipalities,municipality_ids,countyIDs,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.finnishMunicipality,municipality_id,countyID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.municipalityDisplayname,municipality_interpreted,countyInterpreted,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE

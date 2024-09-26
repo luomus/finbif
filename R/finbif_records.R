@@ -654,6 +654,14 @@ infer_computed_vars <- function(fb_records_obj) {
     collection_code = list(
       vars = c("collection_code", "collectionCode"),
       v_names = "document.collectionId"
+    ),
+    country = list(
+      vars = "country",
+      v_names = c("gathering.interpretations.country", "gathering.country")
+    ),
+    country_code = list(
+      vars = c("country_code", "countryCode"),
+      v_names = c("gathering.interpretations.country", "gathering.country")
     )
   )
 

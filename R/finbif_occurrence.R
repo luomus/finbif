@@ -290,6 +290,8 @@ occurrence <- function(fb_records_obj) {
 
   fb_occurrence_df <- compute_red_list_status(fb_occurrence_df)
 
+  fb_occurrence_df <- compute_country(fb_occurrence_df)
+
   fb_occurrence_df <- compute_region(fb_occurrence_df)
 
   fb_occurrence_df <- compute_codes(fb_occurrence_df)
@@ -919,7 +921,8 @@ compute_vars_from_id <- function(fb_occurrence_df) {
           subcollections = TRUE,
           supercollections = TRUE,
           nmin = NA,
-          locale = locale
+          locale = locale,
+          cache = attr(fb_occurrence_df, "cache", TRUE)[[2L]]
         )
 
       } else {
@@ -1278,7 +1281,8 @@ compute_codes <- function(fb_occurrence_df) {
       codes <- finbif_collections(
         select = c("collection_code", "institution_code"),
         supercollections = TRUE,
-        nmin = NA
+        nmin = NA,
+        cache = attr(fb_occurrence_df, "cache", TRUE)[[2L]]
       )
 
       id <- fb_occurrence_df[[id_var]]
@@ -1346,6 +1350,62 @@ compute_red_list_status <- function(fb_occurrence_df) {
     red_list <- paste(red_list, fb_occurrence_df[[yr]])
 
     fb_occurrence_df[[red_list_var]] <- ifelse(na, NA_character_, red_list)
+
+  }
+
+  fb_occurrence_df
+
+}
+
+#' @noRd
+
+compute_country <- function(fb_occurrence_df) {
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  col_names <- attr(fb_occurrence_df, "column_names", TRUE)
+
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
+
+  vtype <- col_type_string(dwc)
+
+  var_names <- sysdata(list(which = "var_names"))
+
+  id_var <- var_names[["gathering.interpretations.country", vtype]]
+
+  verbatim_var <- var_names[["gathering.country", vtype]]
+
+  vars <- c("computed_var_country_code", "computed_var_country")
+
+  for (i in seq_along(vars)) {
+
+    var_i <- vars[[i]]
+
+    var <- var_names[[var_i, vtype]]
+
+    if (add && var %in% col_names) {
+
+      countries <- finbif_metadata(
+        "country", cache = attr(fb_occurrence_df, "cache", TRUE)[[2L]]
+      )
+
+      id <- fb_occurrence_df[[id_var]]
+
+      id <- remove_domain(id)
+
+      fb_occurrence_df[[var]] <- countries[id, i]
+
+      if (i == 2L) {
+
+        fb_occurrence_df[[var]] <- ifelse(
+          is.na(fb_occurrence_df[[var]]),
+          fb_occurrence_df[[verbatim_var]],
+          fb_occurrence_df[[var]]
+        )
+
+      }
+
+    }
 
   }
 
