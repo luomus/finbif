@@ -1605,7 +1605,7 @@ drop_na_col <- function(fb_occurrence_df) {
 
     fb_occurrence_df_attrs[["names"]] <- column_names
 
-    for (i in drop_column_names) {
+    for (i in names(drop_column_names)) {
 
       fb_occurrence_df[[i]] <- NULL
 
