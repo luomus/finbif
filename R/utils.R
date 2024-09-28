@@ -74,31 +74,6 @@ get_el_recurse <- function(
 
 #' @noRd
 
-pb_head <- function(
-  msg,
-  quiet = FALSE
-) {
-
-  nchars <- nchar(msg) + 15L
-
-  diff <- getOption("width") - nchars
-
-  diff <- max(0L, diff)
-
-  body <- rep("=", diff)
-
-  if (!quiet) {
-
-    message("  |=== ", msg, " ", body, "|")
-
-  }
-
-  quiet
-
-}
-
-#' @noRd
-
 truncate_string <- function(
   x,
   sl = 20L

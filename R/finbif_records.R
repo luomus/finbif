@@ -839,19 +839,19 @@ get_extra_pages <- function(fb_records_list) {
 
   use_progress <- multipage && !quiet
 
-  if (use_progress) {
+  i <- 1L
 
-    pb_head("Fetching data")
+  if (use_progress) {
 
     max <- floor(n / max_size)
 
     pb <- utils::txtProgressBar(0L, max, style = 3L)
 
+    utils::setTxtProgressBar(pb, i)
+
     on.exit(close(pb))
 
   }
-
-  i <- 1L
 
   query <- attr(fb_records_list, "query", TRUE)
 
@@ -893,11 +893,7 @@ get_extra_pages <- function(fb_records_list) {
         ",?RANDOM:?\\d*|^RANDOM:?\\d*,?", "", query[["orderBy"]]
       )
 
-    }
-
-    if (!quiet) {
-
-      utils::setTxtProgressBar(pb, i)
+      use_progress <- FALSE
 
     }
 
@@ -920,6 +916,12 @@ get_extra_pages <- function(fb_records_list) {
     records_i <- c(records_i, locale = fb_records_list[[i]][["locale"]])
 
     i <- i + 1L
+
+    if (use_progress) {
+
+      utils::setTxtProgressBar(pb, i)
+
+    }
 
     fb_records_list[[i]] <- structure(
       records_i,

@@ -214,9 +214,7 @@ occurrence <- function(fb_records_obj) {
 
   }
 
-  quiet <- fb_records_obj[["quiet"]] || length(records) < 2L
-
-  attr(records, "quiet") <- pb_head("Processing data", quiet = quiet)
+  attr(records, "quiet") <- fb_records_obj[["quiet"]] || length(records) < 2L
 
   fb_occurrence_df <- records_list_data_frame(records)
 
@@ -341,31 +339,14 @@ use_multi_req <- function(fb_records_obj) {
 }
 
 #' @noRd
-#' @importFrom utils txtProgressBar setTxtProgressBar
 
 records_list_data_frame <- function(x) {
 
-  verbose <- !attr(x, "quiet")
-
   n <- length(x)
-
-  if (verbose) {
-
-    pb <- utils::txtProgressBar(0L, n, style = 3L)
-
-    on.exit(close(pb))
-
-  }
 
   df <- list()
 
   for (i in seq_len(n)) {
-
-    if (verbose) {
-
-      utils::setTxtProgressBar(pb, i)
-
-    }
 
     xi <- x[[i]]
 
