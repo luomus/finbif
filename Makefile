@@ -51,6 +51,7 @@ sentinels/check: sentinels/pkgdown $(shell find tests -type f)
 
 sentinels/pkgdown: sentinels/vignettes README.md LICENSE sentinels/doc _pkgdown.yml $(shell find pkgdown -type f)
 > echo "options(rmarkdown.html_vignette.check_title = FALSE)" > .Rprofile;\
+> touch pkgdown/favicon/*;\
 > ${RSCRIPT} -e "pkgdown::build_site()";\
 > rm .Rprofile; \
 > rm -f docs/reference/Rplot001.png;\
