@@ -1468,6 +1468,10 @@ multi_req <- function(fb_records_obj) {
 
   }
 
+  drop_na <- fb_records_obj[["drop_na"]]
+
+  fb_records_obj[["drop_na"]] <- FALSE
+
   fb_records_obj_filter <- fb_records_obj
 
   fb_records_obj_filter[["check_taxa"]] <- FALSE
@@ -1516,7 +1520,7 @@ multi_req <- function(fb_records_obj) {
 
     if (!fb_records_obj[["duplicates"]]) {
 
-      record_id <- attr(ans, "record_id")
+      record_id <- attr(ans, "record_id", TRUE)
 
       ans <- ans[!duplicated(record_id), ]
 
@@ -1524,7 +1528,9 @@ multi_req <- function(fb_records_obj) {
 
   }
 
-  ans
+  attr(ans, "drop_na") <- drop_na
+
+  drop_na_col(ans)
 
 }
 
