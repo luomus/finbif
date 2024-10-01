@@ -54,7 +54,7 @@ test_that("fetching occurrences works", {
                 date_range_ymd = 2024,
                 informal_groups_reported = "Birds",
                 primary_secondary_habitat = "M",
-                record_reliability = "reliable",
+                record_reliability = "unassessed",
                 complete_list_type = "all_species"
               )
             ),

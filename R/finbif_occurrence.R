@@ -1406,6 +1406,8 @@ compute_region <- function(fb_occurrence_df) {
 
   region_var <- var_names[["computed_var_region", vtype]]
 
+  region_verbatim <- var_names[["gathering.province", vtype]]
+
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   if (add && region_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
@@ -1419,6 +1421,12 @@ compute_region <- function(fb_occurrence_df) {
     )
 
     fb_occurrence_df[[region_var]] <- municipality[id, "region"]
+
+    fb_occurrence_df[[region_var]] <- ifelse(
+      is.na(fb_occurrence_df[[region_var]]),
+      fb_occurrence_df[[region_verbatim]],
+      fb_occurrence_df[[region_var]]
+    )
 
   }
 
