@@ -250,6 +250,14 @@ concat_string <- function(x) {
 
 #' @noRd
 
+concat_two_strings <- function(x, y) {
+
+  concat_string(c(x, y))
+
+}
+
+#' @noRd
+
 cast_to_type <- function(
   x,
   type

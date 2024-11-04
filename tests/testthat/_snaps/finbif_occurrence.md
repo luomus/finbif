@@ -9,16 +9,16 @@
        [4] "Records available: 15781 + 728"                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
        [5] "A data.frame [20 x 26]"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
        [6] "        scientific_name abundance lat_wgs84 lon_wgs84           date_time"                                                                                                                                                                                                                                                                                                                                                                                                                             
-       [7] "1  Buteo buteo (Linnae…  1         62.872    21.7856  2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-       [8] "2  Haliaeetus albicill…  1         63.22185  21.52314 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-       [9] "3  Pandion haliaetus (…  2         62.24648  21.89424 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [10] "4  Pandion haliaetus (…  2         60.05948  23.85433 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [11] "5  Turdus pilaris Linn…  1         66.55132  25.75795 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [12] "6  Falco peregrinus Tu…  1               NA        NA 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [13] "7  Falco tinnunculus L…  1         62.22979  24.59263 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [14] "8  Pyrrhula pyrrhula (…        NA  60.23555  25.00538 2023-12-27 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [15] "9  Accipiter nisus (Li…  1         62.06566  28.23997 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [16] "10 Pandion haliaetus (…  2               NA        NA 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+       [7] "1  Ficedula hypoleuca …  5         64.0057   23.62257 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+       [8] "2  Pica pica (Linnaeus…        NA  61.12005  26.31582 2023-01-23 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+       [9] "3  Pandion haliaetus (…  1         60.69503  24.15879 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [10] "4  Parus major Linnaeu…  9         60.90207  26.16773 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [11] "5  Pandion haliaetus (…  1         63.23659  21.91926 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [12] "6  Passer montanus (Li…  4         60.54187  25.99479 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [13] "7  Haliaeetus albicill…  1         59.71766  18.98764 2023-01-01 11:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [14] "8  Apus apus (Linnaeus…  1         60.54187  25.99479 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [15] "9  Dryocopus martius (…  1         62.5697   22.13113 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [16] "10 Phoenicurus phoenic…  1         67.7927   29.48489 2023-01-01 09:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
       [17] "...with 10 more records and 21 more variables:"                                                                                                                                                                                                                                                                                                                                                                                                                                                        
       [18] "coordinates_uncertainty, any_issues, requires_verification,"                                                                                                                                                                                                                                                                                                                                                                                                                                           
       [19] "requires_identification, record_reliability, record_quality, duration,"                                                                                                                                                                                                                                                                                                                                                                                                                                
@@ -48,8 +48,8 @@
     Output
       Records downloaded: 0 + 0
       Records available: 0 + 0
-      A data.frame [0 x 2]
-      [1] municipality set         
+      A data.frame [0 x 3]
+      [1] municipality local_area   set         
       <0 rows> (or 0-length row.names)
 
 ---
@@ -57,21 +57,21 @@
     Code
       plants
     Output
-      Records downloaded: 35
-      Records available: 35
-      A data.frame [35 x 2]
+      Records downloaded: 34
+      Records available: 34
+      A data.frame [34 x 2]
          threatened_status orig_taxon_rank
-      1    Near Threatened         species
-      2         Threatened         species
-      3               <NA>         species
+      1               <NA>           genus
+      2               <NA>           genus
+      3          Statutory         species
       4               <NA>         species
-      5               <NA>         species
-      6               <NA>         species
-      7               <NA>         species
-      8               <NA>         species
-      9               <NA>          family
-      10        Threatened         species
-      ...with 25 more records
+      5    Near Threatened         species
+      6          Statutory         species
+      7               <NA>           genus
+      8          Statutory         species
+      9               <NA>         species
+      10              <NA>         species
+      ...with 24 more records
 
 ---
 

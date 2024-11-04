@@ -25,7 +25,8 @@ computed_var_from_id_taxon_rank,taxon_rank,taxonRank,FALSE,FALSE,character,chara
 unit.abundanceString,abundance_verbatim,verbatimAbundance,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.countryDisplayname,country_interpreted,countryInterpreted,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.biogeographicalProvinceDisplayname,bio_province_interpreted,bioStateProvinceInterpreted,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-computed_var_from_id_municipality,municipality,county,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+computed_var_municipality,municipality,county,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
+computed_var_local_area,local_area,municipality,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 computed_var_region,region,stateProvince,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.wgs84WKT,footprint_wgs84,footprintWKT,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.linelengthInMeters,line_length_m,lineLengthMeters,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE

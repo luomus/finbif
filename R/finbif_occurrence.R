@@ -292,6 +292,10 @@ occurrence <- function(fb_records_obj) {
 
   fb_occurrence_df <- compute_region(fb_occurrence_df)
 
+  fb_occurrence_df <- compute_municipality(fb_occurrence_df)
+
+  fb_occurrence_df <- compute_local_area(fb_occurrence_df)
+
   fb_occurrence_df <- compute_codes(fb_occurrence_df)
 
   fb_occurrence_df <- extract_facts(fb_occurrence_df)
@@ -1436,6 +1440,91 @@ compute_region <- function(fb_occurrence_df) {
 
 #' @noRd
 
+compute_municipality <- function(fb_occurrence_df) {
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  vtype <- col_type_string(dwc)
+
+  var_names <- sysdata(list(which = "var_names"))
+
+  m_var <- var_names[["computed_var_municipality", vtype]]
+
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
+
+  if (add && m_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
+
+    idv <- var_names[["gathering.interpretations.finnishMunicipality", vtype]]
+
+    id <- basename(fb_occurrence_df[[idv]])
+
+    municipality <- finbif_metadata(
+      "municipality",
+      attr(fb_occurrence_df, "locale", TRUE),
+      attr(fb_occurrence_df, "cache", TRUE)[[2L]]
+    )
+
+    fact_names <- var_names[["gathering.facts.fact", vtype]]
+
+    fact_values <- var_names[["gathering.facts.value", vtype]]
+
+    which_county <- lapply(
+      fb_occurrence_df[[fact_names]],
+      match,
+      "http://tun.fi/MY.county",
+      nomatch = 0
+    )
+
+    county <- mapply(
+      extract_fact,
+      fb_occurrence_df[[fact_values]],
+      lapply(which_county, as.logical),
+      SIMPLIFY = FALSE,
+      USE.NAMES = FALSE
+    )
+
+    fb_occurrence_df[[m_var]] <- ifelse(
+      is.na(id), unlist(county), municipality[id, "name"]
+    )
+
+  }
+
+  fb_occurrence_df
+
+}
+
+#' @noRd
+
+compute_local_area <- function(fb_occurrence_df) {
+
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+
+  vtype <- col_type_string(dwc)
+
+  var_names <- sysdata(list(which = "var_names"))
+
+  la_var <- var_names[["computed_var_local_area", vtype]]
+
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
+
+  if (add && la_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
+
+    idv <- var_names[["gathering.interpretations.finnishMunicipality", vtype]]
+
+    lav <- var_names[["gathering.municipality", vtype]]
+
+    fb_occurrence_df[[la_var]] <- ifelse(
+      is.na(fb_occurrence_df[[idv]]), fb_occurrence_df[[lav]], NA_character_
+    )
+
+  }
+
+  fb_occurrence_df
+
+}
+
+#' @noRd
+
 multi_req <- function(fb_records_obj) {
 
   filters <- fb_records_obj[["filter"]]
@@ -1662,8 +1751,12 @@ extract_facts <- function(fb_occurrence_df) {
 
         values_name <- var_names[[level_vls, vtype]]
 
-        fb_occurrence_df[[fact]] <- mapply(
+        fact_value <- mapply(
           extract_fact, fb_occurrence_df[[values_name]], is_fact
+        )
+
+        fb_occurrence_df[[fact]] <- mapply(
+          concat_two_strings, fb_occurrence_df[[fact]], fact_value
         )
 
       }

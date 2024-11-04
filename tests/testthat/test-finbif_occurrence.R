@@ -80,7 +80,7 @@ test_that("fetching occurrences works", {
           set1 = c(collection = "HR.778"),
           set2 = c(collection = "HR.778")
         ),
-        select = "municipality",
+        select = c("municipality", "local_area"),
         filter_col = "set",
         quiet = TRUE
       )

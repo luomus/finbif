@@ -607,28 +607,28 @@ infer_selection <- function(fb_records_obj) {
 
 infer_computed_vars <- function(fb_records_obj) {
 
-  l <- list(
+  computable_vars <- list(
     abundance = list(
       vars = c(
-        "abundance", "individualCount", "occurrence_status", "occurrenceStatus"
+        "computed_var_abundance", "computed_var_occurrence_status"
       ),
-      v_names = c(
+      select_names = c(
         "unit.interpretations.individualCount", "unit.abundanceString"
       )
     ),
     cu = list(
-      vars = c("coordinates_uncertainty", "coordinateUncertaintyInMeters"),
-      v_names = c(
+      vars = "computed_var_coordinates_uncertainty",
+      select_names = c(
         "gathering.interpretations.coordinateAccuracy", "document.sourceId"
       )
     ),
     citation = list(
-      vars = c("citation", "bibliographicCitation"),
-      v_names = c("document.documentId", "document.sourceId")
+      vars = "computed_var_citation",
+      select_names = c("document.documentId", "document.sourceId")
     ),
     sn = list(
-      vars = c("scientific_name", "scientificName"),
-      v_names = c(
+      vars = "computed_var_scientific_name",
+      select_names = c(
         "unit.linkings.taxon.scientificName",
         "unit.taxonVerbatim",
         "unit.linkings.taxon.scientificNameAuthorship",
@@ -637,34 +637,49 @@ infer_computed_vars <- function(fb_records_obj) {
       )
     ),
     red_list = list(
-      vars = c("red_list_status", "redListStatus"),
-      v_names = c(
+      vars = "computed_var_red_list_status",
+      select_names = c(
         "unit.linkings.taxon.latestRedListStatusFinland.status",
         "unit.linkings.taxon.latestRedListStatusFinland.year"
       )
     ),
     region = list(
-      vars = c("region", "stateProvince"),
-      v_names = c(
+      vars = "computed_var_region",
+      select_names = c(
         "gathering.interpretations.finnishMunicipality",
         "gathering.province"
       )
     ),
     institution_code = list(
-      vars = c("institution_code", "institutionCode"),
-      v_names = "document.collectionId"
+      vars = "computed_var_institution_code",
+      select_names = "document.collectionId"
     ),
     collection_code = list(
-      vars = c("collection_code", "collectionCode"),
-      v_names = "document.collectionId"
+      vars = "computed_var_institution_code",
+      select_names = "document.collectionId"
     ),
     country = list(
-      vars = "country",
-      v_names = c("gathering.interpretations.country", "gathering.country")
+      vars = "computed_var_country",
+      select_names = c("gathering.interpretations.country", "gathering.country")
     ),
     country_code = list(
-      vars = c("country_code", "countryCode"),
-      v_names = c("gathering.interpretations.country", "gathering.country")
+      vars = "computed_var_country_code",
+      select_names = c("gathering.interpretations.country", "gathering.country")
+    ),
+    municipality = list(
+      vars = "computed_var_municipality",
+      select_names = c(
+        "gathering.interpretations.finnishMunicipality",
+        "gathering.facts.fact",
+        "gathering.facts.value"
+      )
+    ),
+    local_area = list(
+      "computed_var_local_area",
+      select_names = c(
+        "gathering.interpretations.finnishMunicipality",
+        "gathering.municipality"
+      )
     )
   )
 
@@ -674,13 +689,17 @@ infer_computed_vars <- function(fb_records_obj) {
 
   var_type <- fb_records_obj[["var_type"]]
 
-  for (i in l) {
+  for (i in computable_vars) {
 
-    if (any(i[["vars"]] %in% select)) {
+    i_vars <- i[["vars"]]
 
-      v_names_i <- i[["v_names"]]
+    i_var_names <- var_names[i_vars, var_type]
 
-      select <- c(select, var_names[v_names_i, var_type])
+    if (any(i_var_names %in% select)) {
+
+      select_names_i <- i[["select_names"]]
+
+      select <- c(select, var_names[select_names_i, var_type])
 
     }
 
