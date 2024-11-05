@@ -1,11 +1,17 @@
 # News for Package <span class="pkg">finbif</span>
 
-# finbif 0.9.8.9000
+# finbif 0.9.9
 
 ## DEFUNCT
 
-  - Importing `.ods` and `.xlsx` occurrence data files is now defunct users
+  - Importing `.ods` and `.xlsx` occurrence data files is now defunct. Users
     should use `.tsv` download files only.
+    
+## MINOR IMPROVEMENTS
+
+  - Occurrence download progress indicator has been simplified.
+  - Location data parsing (country, region, municipality and local area) has
+    been improved.
 
 # finbif 0.9.8
 
