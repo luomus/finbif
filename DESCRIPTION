@@ -1,6 +1,6 @@
 Package: finbif
 Title: Interface for the 'Finnish Biodiversity Information Facility' API
-Version: 0.9.9
+Version: 0.9.9.9000
 Authors@R: c(
     person(given = "Finnish Museum of Natural History - Luomus",
            role = "cph"),
@@ -22,7 +22,7 @@ Description: A programmatic interface to the 'Finnish Biodiversity Information
     location and other variables. The data accessed are conveniently
     preformatted for subsequent analyses.
 License: MIT + file LICENSE
-URL: https://github.com/luomus/finbif, https://luomus.github.io/finbif/
+URL: https://github.com/luomus/finbif, https://finbif-docs-dev.netlify.app/
 BugReports: https://github.com/luomus/finbif/issues
 VignetteBuilder:
     knitr
