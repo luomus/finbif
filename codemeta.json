@@ -4,7 +4,7 @@
   "identifier": "finbif",
   "description": "A programmatic interface to the 'Finnish Biodiversity Information Facility' ('FinBIF') API (<https://api.laji.fi>). 'FinBIF' aggregates Finnish biodiversity data from multiple sources in a single open access portal for researchers, citizen scientists, industry and government. 'FinBIF' allows users of biodiversity information to find, access, combine and visualise data on Finnish plants, animals and microorganisms. The 'finbif' package makes the publicly available data in 'FinBIF' easily accessible to programmers. Biodiversity information is available on taxonomy and taxon occurrence. Occurrence data can be filtered by taxon, time, location and other variables. The data accessed are conveniently preformatted for subsequent analyses.",
   "name": "finbif: Interface for the 'Finnish Biodiversity Information Facility' API",
-  "relatedLink": ["https://finbif-docs-dev.netlify.app/", "https://CRAN.R-project.org/package=finbif"],
+  "relatedLink": ["https://luomus.github.io/finbif/", "https://CRAN.R-project.org/package=finbif"],
   "codeRepository": "https://github.com/luomus/finbif",
   "issueTracker": "https://github.com/luomus/finbif/issues",
   "license": "https://spdx.org/licenses/MIT",
@@ -222,7 +222,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "fileSize": "12102.65KB",
+  "fileSize": "13324.249KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

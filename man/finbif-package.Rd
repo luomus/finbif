@@ -46,7 +46,7 @@ Default: \code{FALSE}}
 Useful links:
 \itemize{
   \item \url{https://github.com/luomus/finbif}
-  \item \url{https://finbif-docs-dev.netlify.app/}
+  \item \url{https://luomus.github.io/finbif/}
   \item Report bugs at \url{https://github.com/luomus/finbif/issues}
 }
 
