@@ -4,22 +4,23 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3243303
+      Records available: 52795118
       A data.frame [10 x 12]
-         record_id      scientific_name abundance lat_wgs84 lon_wgs84
-      1    …2788#3                 Aves        NA  60.42728  22.28203
-      2    …2191#5 Pica pica (Linnaeus…  2         60.36808  24.63259
-      3    …2191#3 Corvus corone Linna…  3         60.36808  24.63259
-      4    …2189#3 Parus Linnaeus, 1758        NA  61.01164  24.07684
-      5    …2186#5 Pieris Schrank, 1801  2         60.32273  24.50043
-      6    …2186#7 Thymelicus lineola …  3         60.32273  24.50043
-      7    …2186#3 Aglais urticae (Lin…  1         60.32273  24.50043
-      8    …2172#3 Corvus corone Linna…  2         63.68183  25.96783
-      9    …1975#3 Pteromys volans (Li…  1         60.24123  19.60607
-      10   …1599#3 Selenia dentaria (F…  2         60.27413  24.94582
-      ...with 0 more record and 7 more variables:
-      date_time, coordinates_uncertainty, any_issues, requires_verification,
-      requires_identification, record_reliability, record_quality
+                                      record_id      scientific_name abundance
+      1  …KE.176/6729c5ecd5de1842598364f1#Unit1 Fraxinus excelsior …  1       
+      2                         …JX.1781328#107 Pica pica (Linnaeus…  6       
+      3                          …JX.1781328#81 Regulus regulus (Li…  6       
+      4                          …JX.1781328#85 Poecile montanus (C…  3       
+      5                          …JX.1781328#19 Mergus merganser Li…  12      
+      6                         …JX.1781328#153 Emberiza citrinella…  38      
+      7                         …JX.1781328#117 Corvus corax Linnae…  4       
+      8                          …JX.1781328#91 Periparus ater (Lin…  3       
+      9                          …JX.1781328#61 Dendrocopos major (…  17      
+      10                          …JX.1781328#7 Cygnus cygnus (Linn…  1       
+      ...with 0 more record and 9 more variables:
+      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
+      requires_verification, requires_identification, record_reliability,
+      record_quality
 
 ---
 
@@ -27,22 +28,23 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3243303
+      Records available: 52795118
       A data.frame [10 x 12]
-         record_id      scientific_name abundance lat_wgs84 lon_wgs84
-      1    …2788#3                 Aves        NA  60.42728  22.28203
-      2    …2191#5 Pica pica (Linnaeus…  2         60.36808  24.63259
-      3    …2191#3 Corvus corone Linna…  3         60.36808  24.63259
-      4    …2189#3 Parus Linnaeus, 1758        NA  61.01164  24.07684
-      5    …2186#5 Pieris Schrank, 1801  2         60.32273  24.50043
-      6    …2186#7 Thymelicus lineola …  3         60.32273  24.50043
-      7    …2186#3 Aglais urticae (Lin…  1         60.32273  24.50043
-      8    …2172#3 Corvus corone Linna…  2         63.68183  25.96783
-      9    …1975#3 Pteromys volans (Li…  1         60.24123  19.60607
-      10   …1599#3 Selenia dentaria (F…  2         60.27413  24.94582
-      ...with 0 more record and 7 more variables:
-      date_time, coordinates_uncertainty, any_issues, requires_verification,
-      requires_identification, record_reliability, record_quality
+                                      record_id      scientific_name abundance
+      1  …KE.176/6729c5ecd5de1842598364f1#Unit1 Fraxinus excelsior …  1       
+      2                         …JX.1781328#107 Pica pica (Linnaeus…  6       
+      3                          …JX.1781328#81 Regulus regulus (Li…  6       
+      4                          …JX.1781328#85 Poecile montanus (C…  3       
+      5                          …JX.1781328#19 Mergus merganser Li…  12      
+      6                         …JX.1781328#153 Emberiza citrinella…  38      
+      7                         …JX.1781328#117 Corvus corax Linnae…  4       
+      8                          …JX.1781328#91 Periparus ater (Lin…  3       
+      9                          …JX.1781328#61 Dendrocopos major (…  17      
+      10                          …JX.1781328#7 Cygnus cygnus (Linn…  1       
+      ...with 0 more record and 9 more variables:
+      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
+      requires_verification, requires_identification, record_reliability,
+      record_quality
 
 ---
 
@@ -50,20 +52,21 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3243303
+      Records available: 52795118
       A data.frame [10 x 12]
-         record_id      scientific_name abundance lat_wgs84 lon_wgs84
-      1    …2788#3                 Aves        NA  60.42728  22.28203
-      2    …2191#5 Pica pica (Linnaeus…  2         60.36808  24.63259
-      3    …2191#3 Corvus corone Linna…  3         60.36808  24.63259
-      4    …2189#3 Parus Linnaeus, 1758        NA  61.01164  24.07684
-      5    …2186#5 Pieris Schrank, 1801  2         60.32273  24.50043
-      6    …2186#7 Thymelicus lineola …  3         60.32273  24.50043
-      7    …2186#3 Aglais urticae (Lin…  1         60.32273  24.50043
-      8    …2172#3 Corvus corone Linna…  2         63.68183  25.96783
-      9    …1975#3 Pteromys volans (Li…  1         60.24123  19.60607
-      10   …1599#3 Selenia dentaria (F…  2         60.27413  24.94582
-      ...with 0 more record and 7 more variables:
-      date_time, coordinates_uncertainty, any_issues, requires_verification,
-      requires_identification, record_reliability, record_quality
+                                      record_id      scientific_name abundance
+      1  …KE.176/6729c5ecd5de1842598364f1#Unit1 Fraxinus excelsior …  1       
+      2                         …JX.1781328#107 Pica pica (Linnaeus…  6       
+      3                          …JX.1781328#81 Regulus regulus (Li…  6       
+      4                          …JX.1781328#85 Poecile montanus (C…  3       
+      5                          …JX.1781328#19 Mergus merganser Li…  12      
+      6                         …JX.1781328#153 Emberiza citrinella…  38      
+      7                         …JX.1781328#117 Corvus corax Linnae…  4       
+      8                          …JX.1781328#91 Periparus ater (Lin…  3       
+      9                          …JX.1781328#61 Dendrocopos major (…  17      
+      10                          …JX.1781328#7 Cygnus cygnus (Linn…  1       
+      ...with 0 more record and 9 more variables:
+      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
+      requires_verification, requires_identification, record_reliability,
+      record_quality
 
