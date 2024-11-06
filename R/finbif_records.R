@@ -675,7 +675,7 @@ infer_computed_vars <- function(fb_records_obj) {
       )
     ),
     local_area = list(
-      "computed_var_local_area",
+      vars = "computed_var_local_area",
       select_names = c(
         "gathering.interpretations.finnishMunicipality",
         "gathering.municipality"
