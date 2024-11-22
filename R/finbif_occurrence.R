@@ -1004,7 +1004,7 @@ compute_epsg <- function(fb_occurrence_df) {
 
     select_user <- match(select_user, vnt[[1L]])
 
-    select_user <- var_names[select_user, ]
+    select_user <- var_names[select_user, , drop = FALSE]
 
     select_user <- row.names(select_user)
 
