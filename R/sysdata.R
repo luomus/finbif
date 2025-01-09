@@ -329,12 +329,28 @@ regulatory_status <- function(obj) {
     MX.finnishEnvironmentInstitute2020conservationProjectVascularSpecies =
       "FEI2020CPVPS",
     MX.habitatsDirectiveAnnexII_FinlandNaturaSpecies = "HABDIR2FN",
-    MX.euRegulation_cites_appendixD = "EU_CITESD"
+    MX.euRegulation_cites_appendixD = "EU_CITESD",
+    MX.finlex1066_2023_appendix7 = "FNLX1066_23_7",
+    MX.concernInvasiveSpeciesNotOnOtherLists = "OTH_INVSV_NO_LIST",
+    MX.regionallyThreatened2020_1a = "REGTHRT_1A",
+    MX.regionallyThreatened2020_1b = "REGTHRT_1B",
+    MX.regionallyThreatened2020_2a = "REGTHRT_2A",
+    MX.regionallyThreatened2020_2b = "REGTHRT_2B",
+    MX.regionallyThreatened2020_3a = "REGTHRT_3A",
+    MX.regionallyThreatened2020_3b = "REGTHRT_3B",
+    MX.regionallyThreatened2020_3c = "REGTHRT_3C",
+    MX.regionallyThreatened2020_4a = "REGTHRT_4A",
+    MX.regionallyThreatened2020_4b = "REGTHRT_4B",
+    MX.regionallyThreatened2020_4c = "REGTHRT_4C",
+    MX.regionallyThreatened2020_4d = "REGTHRT_4D",
+    MX.forestCentreSpecies = "FRSTSP"
   )
 
   reg_status <- get_sysdata(
     list(which = "MX.adminStatusEnum", cache = obj[["cache"]])
   )
+
+  reg_status <- unique(reg_status)
 
   id <- row.names(reg_status)
 

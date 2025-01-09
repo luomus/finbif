@@ -54,17 +54,17 @@
       regulatory_status
     Output
                                                                            code                
-      MX.regionallyThreatened2020_1a                                       REGINLLYTHRTND2020_1
-      MX.regionallyThreatened2020_1b                                       REGNLLYTHRTND2020_1B
-      MX.regionallyThreatened2020_2a                                       REGINLLYTHRTND2020_2
-      MX.regionallyThreatened2020_2b                                       REGNLLYTHRTND2020_2B
-      MX.regionallyThreatened2020_3a                                       REGINLLYTHRTND2020_3
-      MX.regionallyThreatened2020_3b                                       REGNLLYTHRTND2020_3B
-      MX.regionallyThreatened2020_3c                                       REGNLLYTHRTND2020_3C
-      MX.regionallyThreatened2020_4a                                       REGINLLYTHRTND2020_4
-      MX.regionallyThreatened2020_4b                                       REGNLLYTHRTND2020_4B
-      MX.regionallyThreatened2020_4c                                       REGNLLYTHRTND2020_4C
-      MX.regionallyThreatened2020_4d                                       REGNLLYTHRTND2020_4D
+      MX.regionallyThreatened2020_1a                                       REGTHRT_1A          
+      MX.regionallyThreatened2020_1b                                       REGTHRT_1B          
+      MX.regionallyThreatened2020_2a                                       REGTHRT_2A          
+      MX.regionallyThreatened2020_2b                                       REGTHRT_2B          
+      MX.regionallyThreatened2020_3a                                       REGTHRT_3A          
+      MX.regionallyThreatened2020_3b                                       REGTHRT_3B          
+      MX.regionallyThreatened2020_3c                                       REGTHRT_3C          
+      MX.regionallyThreatened2020_4a                                       REGTHRT_4A          
+      MX.regionallyThreatened2020_4b                                       REGTHRT_4B          
+      MX.regionallyThreatened2020_4c                                       REGTHRT_4C          
+      MX.regionallyThreatened2020_4d                                       REGTHRT_4D          
       MX.finlex160_1997_appendix2a                                         FNLX160_97_2A       
       MX.finlex160_1997_appendix2b                                         FNLX160_97_2B       
       MX.cites_appendixI                                                   CITES1              
@@ -109,10 +109,10 @@
       MX.finnishEnvironmentInstitute2020conservationProjectSpecies         FEI_CPS             
       MX.finnishEnvironmentInstitute2020conservationProjectAapamireSpecies FEI_CPAS            
       MX.finnishEnvironmentInstitute2020conservationProjectVascularSpecies FEI2020CPVPS        
-      MX.finlex1066_2023_appendix7                                         FNLX1066_2023_PPNDX7
+      MX.finlex1066_2023_appendix7                                         FNLX1066_23_7       
       MX.finnishEnvironmentInstitute2020protectionPrioritySpecies          FEI2020PPS          
       MX.finlex160_1997_appendix4_specialInterest_2021                     FNLX160_97_4_SI_2021
-      MX.forestCentreSpecies                                               FORESTCENTRESPECIES 
+      MX.forestCentreSpecies                                               FRSTSP              
       MX.finlex160_1997_appendix4_2021                                     FNLX160_97_4_2021   
       MX.unprotectedSpecies                                                UNP_SP              
       MX.finlex160_1997_appendix3c                                         FNLX160_97_3C       
