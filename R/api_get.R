@@ -1,6 +1,7 @@
 #' @noRd
 #' @importFrom digest digest
 #' @importFrom httr content RETRY
+#' @importFrom jsonlite validate
 #' @importFrom utils packageVersion
 
 api_get <- function(obj) {
@@ -244,21 +245,30 @@ api_get <- function(obj) {
 
   resp[[c("request", "url")]] <- notoken
 
-  parsed <- httr::content(resp)
+  txt <- httr::content(resp, type = "text", encoding = "UTF-8")
 
-  if (!identical(resp[["status_code"]], 200L)) {
+  valid <- jsonlite::validate(txt)
+
+  if (!identical(resp[["status_code"]], 200L) || !valid) {
+
+    parsed <- httr::content(resp)
 
     obj <- NULL
 
     err_msg <- paste0(
-      "API request failed [", resp[["status_code"]], "]\n", parsed[["message"]]
+      "API request failed [",
+      resp[["status_code"]],
+      "]\n",
+      parsed[["message"]],
+      "\n",
+      txt
     )
 
     stop(err_msg, call. = FALSE)
 
   }
 
-  obj[["content"]] <- parsed
+  obj[["content"]] <- httr::content(resp)
 
   obj[["response"]] <- resp
 

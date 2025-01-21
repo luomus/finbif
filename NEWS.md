@@ -2,7 +2,7 @@
 
 # finbif 0.9.9.9000
 
-   - This is the current development version.
+   - Improvements have been made to the way errors in parsing json are handled. 
 
 # finbif 0.9.9
 

@@ -33,6 +33,7 @@ Depends: R (>= 3.5.0)
 Imports:
     digest,
     httr,
+    jsonlite,
     lutz,
     utils
 Roxygen: list(markdown = TRUE)

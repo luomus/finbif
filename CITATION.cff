@@ -1,7 +1,7 @@
 # YAML 1.2
 ---
 version: "0.9.9.9000"
-date-released: 2024-11-05
+date-released: 2025-01-21
 title: finbif
 abstract: |
     "The `finbif` R package is a programmatic interface to the [Finnish
@@ -49,7 +49,7 @@ preferred-citation:
       orcid: "https://orcid.org/0000-0002-8686-4154"
   title: Introduction to the finbif package
   type: manual
-  year: 2024
+  year: 2025
   doi: "10.5281/zenodo.3612814"
   notes: "R package version 0.9.9.9000"
   url: "https://finbif-docs-dev.netlify.app/articles/finbif.html"
