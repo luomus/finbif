@@ -247,9 +247,17 @@ api_get <- function(obj) {
 
   txt <- httr::content(resp, type = "text", encoding = "UTF-8")
 
-  valid <- jsonlite::validate(txt)
+  if (!jsonlite::validate(txt)) {
 
-  if (!identical(resp[["status_code"]], 200L) || !valid) {
+    obj <- NULL
+
+    err_msg <- paste0("API response parsing failed\n", txt)
+
+    stop(err_msg, call. = FALSE)
+
+  }
+
+  if (!identical(resp[["status_code"]], 200L)) {
 
     parsed <- httr::content(resp)
 
@@ -259,9 +267,7 @@ api_get <- function(obj) {
       "API request failed [",
       resp[["status_code"]],
       "]\n",
-      parsed[["message"]],
-      "\n",
-      txt
+      parsed[["message"]]
     )
 
     stop(err_msg, call. = FALSE)

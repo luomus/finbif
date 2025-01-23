@@ -41,3 +41,50 @@ test_that("searching for taxa works", {
   options(op)
 
 })
+
+test_that("invalid json triggers error", {
+
+  skip_on_cran()
+
+  op <- options()
+
+  f <- tempfile()
+
+  if (
+    requireNamespace("callr", quietly = TRUE) &&
+    requireNamespace("webfakes", quietly = TRUE)
+  ) {
+
+    bg <- callr::r_bg(
+      function(file, version) {
+
+        app <- webfakes::new_app()
+
+        app[["get"]](
+          sprintf("/%s/taxa/search", version),
+          function(req, res) {
+            res[["send_json"]](text = "'invalid json]")
+          }
+        )
+
+        web <- webfakes::local_app_process(app)
+
+        cat(c(web[["url"]](), "."), file = file, sep = "\n")
+
+        Sys.sleep(60L)
+
+      },
+      list(file = f, version = getOption("finbif_api_version"))
+    )
+
+    while (!file.exists(f) || length(url <- readLines(f, warn = FALSE)) < 2L) {}
+
+    options(finbif_api_url = sub("/$", "", url[[1L]]), finbif_rate_limit = Inf)
+
+    expect_error(finbif_taxa("Invalid JSON"), "API response parsing failed")
+
+  }
+
+  options(op)
+
+})
