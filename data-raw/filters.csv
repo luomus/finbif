@@ -124,3 +124,4 @@ hasUnitModel,has_record_model,logical,FALSE,",",FALSE
 collectionIdExplicit,collection_exclusive,uri,FALSE,",",FALSE
 collectionIdExplicitNot,not_collection_exclusive,uri,FALSE,",",FALSE
 local,is_local,logical,FALSE,",",FALSE
+actualLoadBefore,import_date,date,FALSE,",",FALSE
