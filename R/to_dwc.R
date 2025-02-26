@@ -41,7 +41,7 @@ to_native <- function(...) {
 
 from_schema <- function(
   ...,
-  to = c("native", "dwc", "short"),
+  to = c("native", "dwc"),
   file = c("none", "citable", "lite")
 ) {
 
@@ -59,8 +59,7 @@ from_schema <- function(
   to <- switch(
     match.arg(to),
     native = "translated_var",
-    dwc = "dwc",
-    short = "shrtnm"
+    dwc = "dwc"
   )
 
   vars[nms, to]

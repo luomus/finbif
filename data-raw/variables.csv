@@ -723,3 +723,5 @@ gathering.media.type,event_media_type2,eventAssociatedMediaType2,FALSE,FALSE,cha
 unit.media.fullResolutionMediaAvailable,record_media_full_res,occurrenceAssociatedMediaFullRes,FALSE,FALSE,logical,logical,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.media.type,record_media_type2,occurrenceAssociatedMediaType2,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.local,local,local,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+document.annotations.atlasCode,document_annotation_atlas_code_id,documentAnnotationAtlasCodeID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.atlasCode,record_annotation_atlas_code_id,recordAnnotationAtlasCodeID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE

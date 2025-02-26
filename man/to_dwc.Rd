@@ -10,11 +10,7 @@ to_dwc(...)
 
 to_native(...)
 
-from_schema(
-  ...,
-  to = c("native", "dwc", "short"),
-  file = c("none", "citable", "lite")
-)
+from_schema(..., to = c("native", "dwc"), file = c("none", "citable", "lite"))
 }
 \arguments{
 \item{...}{Character. Variable names to convert. For \code{to_dwc} and \code{to_native}

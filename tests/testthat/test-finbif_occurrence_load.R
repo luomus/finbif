@@ -16,7 +16,7 @@ test_that("download imports work", {
 
       hbf_49381_zip_mem <- finbif_occurrence_load(
         "HBF.49381.zip",
-        select = "short",
+        select = "all",
         tzone = "Etc/UTC",
         quiet = TRUE
       )
@@ -27,7 +27,7 @@ test_that("download imports work", {
 
       hbf_49381_zip_file <- finbif_occurrence_load(
         "HBF.49381.zip",
-        select = "short",
+        select = "all",
         tzone = "Etc/UTC",
         quiet = TRUE
       )

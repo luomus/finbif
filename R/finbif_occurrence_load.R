@@ -88,7 +88,7 @@ finbif_occurrence_load <- function(
     facts = "none"
   )
 
-  all_cols <- any(c("all", "short") %in% select)
+  all_cols <- "all" %in% select
 
   var_names <- sysdata(list(which = "var_names"))
 
@@ -96,13 +96,9 @@ finbif_occurrence_load <- function(
 
   col_names <- var_names[[var_type]]
 
-  short <- FALSE
-
   deselect <- character()
 
   if (all_cols) {
-
-    short <- identical(select[[1L]], "short")
 
     deselect <- grep("^-", select, value = TRUE)
 
@@ -289,8 +285,7 @@ finbif_occurrence_load <- function(
     nrec_avl = n_recs,
     url = attr(fb_occurrence_df, "url", TRUE),
     time = "??",
-    short_nms = short,
-    dwc = dwc && !short,
+    dwc = dwc,
     record_id = record_id
   )
 
@@ -341,50 +336,6 @@ finbif_occurrence_load <- function(
     attr(fb_occurrence_df, "facts_df") <- facts_df
 
     fb_occurrence_df <- bind_facts(fb_occurrence_df)
-
-  }
-
-  if (short) {
-
-    df_names <- names(fb_occurrence_df)
-
-    short_nms <- short_nms(file_vars)
-
-    short_nms <- short_nms[df_names]
-
-    which_missing <- which(na_nms)
-
-    missing_short_names <- gsub("\\.", "", df_names[which_missing])
-
-    missing_short_names <- abbreviate(
-      missing_short_names, 10, FALSE, strict = TRUE, method = "both.sides"
-    )
-
-    short_nms[which_missing] <- missing_short_names
-
-    names(short_nms)[which_missing] <- df_names[which_missing]
-
-    short_fcts <- grep("_fact__", df_names, value = TRUE)
-
-    short_fcts <- sub("^.*_fact__", "", short_fcts)
-
-    short_fcts <- remove_domain(short_fcts)
-
-    n <- length(short_fcts) + .1
-
-    n <- log10(n)
-
-    short_fcts <- abbreviate(
-      short_fcts, 9 - ceiling(n), FALSE, strict = TRUE, method = "both.sides"
-    )
-
-    short_fact_sq <- seq_along(short_fcts)
-
-    short_nms[is.na(short_nms)] <- paste0("f", short_fact_sq, short_fcts)
-
-    select[["user"]] <- short_nms
-
-    names(fb_occurrence_df) <- short_nms
 
   }
 
@@ -1362,26 +1313,6 @@ bind_facts <- function(x) {
   attributes(ans) <- attr
 
   ans
-
-}
-
-#' @noRd
-
-short_nms <- function(file_vars) {
-
-  var_type <- attr(file_vars, "var_type", TRUE)
-
-  short_nms <- c(file_vars[["shrtnm"]], "abund", "crdUncert", "sciNm")
-
-  translated_var <- c("abundance", "coordinates_uncertainty", "scientific_name")
-
-  dwc <- c("individualCount", "coordinateUncertaintyInMeters", "scientificName")
-
-  nms <- switch(var_type, translated_var = translated_var, dwc = dwc)
-
-  names(short_nms) <- c(file_vars[[var_type]], nms)
-
-  short_nms
 
 }
 
