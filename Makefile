@@ -54,7 +54,7 @@ sentinels/pkgdown: sentinels/vignettes README.md LICENSE sentinels/doc _pkgdown.
 > touch pkgdown/favicon/*;\
 > ${RSCRIPT} -e "pkgdown::build_site()";\
 > rm .Rprofile; \
-> rm -f docs/reference/Rplot001.png;\
+> rm -rf docs/reference/Rplot001.png docs/deps/bootstrap-*/font*;\
 > mkdir -p $(@D);\
 > touch $@
 
