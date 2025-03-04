@@ -56,6 +56,7 @@ sentinels/pkgdown: sentinels/vignettes README.md LICENSE sentinels/doc \
 > ${RSCRIPT} -e "pkgdown::build_site()";\
 > rm .Rprofile; \
 > rm -rf docs/reference/Rplot001.png docs/deps/bootstrap-*/font*;\
+> sed -i 's/@import url("font.css");//g' docs/deps/bootstrap-*/bootstrap.min.css;\
 > mkdir -p $(@D);\
 > touch $@
 
