@@ -12,7 +12,7 @@ endif
 
 PKGNM := $(shell sed -n "s/Package: *\([^ ]*\)/\1/p" DESCRIPTION)
 PKGVERS := $(shell sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION)
-PKGSRC  := $(shell basename `pwd`)
+PKGSRC := $(shell basename `pwd`)
 RSCRIPT = Rscript --no-init-file
 export _R_CHECK_SYSTEM_CLOCK_ = false
 export _R_CHECK_FUTURE_FILE_TIMESTAMPS_ = false
@@ -56,7 +56,8 @@ sentinels/pkgdown: sentinels/vignettes README.md LICENSE sentinels/doc \
 > ${RSCRIPT} -e "pkgdown::build_site()";\
 > rm .Rprofile; \
 > rm -rf docs/reference/Rplot001.png docs/deps/bootstrap-*/font*;\
-> sed -i 's/@import url("font.css");//g' docs/deps/bootstrap-*/bootstrap.min.css;\
+> sed -i 's/@import url("font.css");//g' \
+>   docs/deps/bootstrap-*/bootstrap.min.css;\
 > mkdir -p $(@D);\
 > touch $@
 
