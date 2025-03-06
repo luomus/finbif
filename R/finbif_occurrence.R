@@ -16,8 +16,8 @@
 #'   are returned. Most, though not all, variables can be used to order records
 #'   before they are returned. Ordering is ascending by default. To return in
 #'   descending order append a `-` to the front of the variable (e.g.,
-#'   `"-date_start"`). Default order is `"-date_start"` > `"-load_data"` >
-#'   `"reported_name"`.
+#'   `"-date_start"`). Default order is `"-date_start"` > `"-load_date"` >
+#'   `"reported_name"` > `"record_id"`.
 #' @param aggregate Character. If `"none"` (default), returns full records. If
 #'   one or more of `"records"`, `"species"`, `"taxa"`, `"individuals"`,
 #'   `"pairs"`, `"events"` or `"documents"`; aggregates combinations of the

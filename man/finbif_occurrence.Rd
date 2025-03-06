@@ -50,8 +50,8 @@ variables without the deselection will be returned.}
 are returned. Most, though not all, variables can be used to order records
 before they are returned. Ordering is ascending by default. To return in
 descending order append a \code{-} to the front of the variable (e.g.,
-\code{"-date_start"}). Default order is \code{"-date_start"} > \code{"-load_data"} >
-\code{"reported_name"}.}
+\code{"-date_start"}). Default order is \code{"-date_start"} > \code{"-load_date"} >
+\code{"reported_name"} > \code{"record_id"}.}
 
 \item{aggregate}{Character. If \code{"none"} (default), returns full records. If
 one or more of \code{"records"}, \code{"species"}, \code{"taxa"}, \code{"individuals"},
