@@ -381,11 +381,52 @@ test_that("fetching local area works", {
 
     vcr::use_cassette("finbif_occurrence_select_local_area", {
 
-      local_area <- finbif::fb_occurrence(select = "local_area", n = 5)
+      local_area <- finbif_occurrence(select = "local_area", n = 5)
 
     })
 
     expect_type(local_area$local_area, "character")
+
+  }
+
+  finbif_clear_cache()
+
+  options(finbif_cache_path = NULL)
+
+  options(op)
+
+})
+
+test_that("can compute a var from id when there are zero records", {
+
+  skip_on_cran()
+
+  op <- options()
+
+  cache <- tempfile()
+
+  dir.create(cache)
+
+  options(
+    finbif_cache_path = cache,
+    finbif_rate_limit = Inf,
+    finbif_max_page_size = 5
+  )
+
+  finbif_clear_cache()
+
+  if (requireNamespace("vcr", quietly = TRUE)) {
+
+    vcr::use_cassette("finbif_occurrence_compute_var_from_id_zero_rows", {
+
+      no_record_compute_id <- finbif_occurrence(
+        filter = list(collection = "HR.121", informal_groups = "Myriapods"),
+        select = "finnish_municipality"
+      )
+
+    })
+
+    expect_snapshot(no_record_compute_id)
 
   }
 

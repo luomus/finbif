@@ -25,8 +25,9 @@ computed_var_from_id_taxon_rank,taxon_rank,taxonRank,FALSE,FALSE,character,chara
 unit.abundanceString,abundance_verbatim,verbatimAbundance,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 gathering.interpretations.countryDisplayname,country_interpreted,countryInterpreted,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.biogeographicalProvinceDisplayname,bio_province_interpreted,bioStateProvinceInterpreted,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-computed_var_municipality,municipality,county,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
-computed_var_local_area,local_area,municipality,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+computed_var_from_id_finnish_municipality,finnish_municipality,finnishCounty,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+computed_var_municipality,municipality,county,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
+computed_var_local_area,local_area,municipality,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 computed_var_region,region,stateProvince,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.wgs84WKT,footprint_wgs84,footprintWKT,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 gathering.conversions.linelengthInMeters,line_length_m,lineLengthMeters,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
@@ -209,8 +210,8 @@ gathering.interpretations.biogeographicalProvinces,bio_province_ids,bioStateProv
 gathering.interpretations.country,country_id,countryID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 computed_var_country,country,country,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
 computed_var_country_code,country_code,countryCode,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
-gathering.interpretations.finnishMunicipalities,municipality_ids,countyIDs,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-gathering.interpretations.finnishMunicipality,municipality_id,countyID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
+gathering.interpretations.finnishMunicipalities,finnish_municipality_ids,finnishCountyIDs,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+gathering.interpretations.finnishMunicipality,finnish_municipality_id,finnishCountyID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.municipalityDisplayname,municipality_interpreted,countyInterpreted,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.sourceOfBiogeographicalProvince,bio_province_source,bioStateProvinceSource,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE
 gathering.interpretations.sourceOfCoordinates,coordinates_source,georeferenceSources,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE
@@ -380,7 +381,7 @@ document.namedPlace.birdAssociationAreaId,location_bird_assoc_area_id,locationBi
 document.namedPlace.collectionId,location_collection_id,locationCollectionId,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.id,location_id2,locationID2,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.alternativeIds,location_ids,locationIDs,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.namedPlace.municipalityId,location_municipality_id,locationCountyID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+document.namedPlace.municipalityId,location_finnish_municipality_id,locationFinnishCountyID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.ykj10km.lat,location_lat_10_ykj,locationDecimalLatitudeGrid10YKJ,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.namedPlace.ykj10km.lon,location_lon_10_ykj,locationDecimalLongitudeGrid10YKJ,FALSE,FALSE,integer,integer,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 gathering.linkings.observers,observers,recordedByTeam,FALSE,FALSE,character,uri,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE

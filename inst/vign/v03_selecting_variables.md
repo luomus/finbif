@@ -184,8 +184,10 @@ finbif_occurrence("Cygnus cygnus", order_by = "-abundance")
 You can specify multiple variables to order by. Sorting primacy is from left to
 right.
 
-```r
-finbif_occurrence("Cygnus olor", order_by = c("municipality_id", "-abundance"))
+``` details
+finbif_occurrence(
+  "Cygnus olor", order_by = c("finnish_municipality_id", "-abundance")
+)
 ```
 
 
@@ -195,13 +197,13 @@ finbif_occurrence("Cygnus olor", order_by = c("municipality_id", "-abundance"))
 ```r
 
 #> Records downloaded: 10
-#> Records available: 42951
+#> Records available: 56359
 #> A data.frame [10 x 12]
 #>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
 #> 1  …12015253 Cygnus olor (J.F. G…  2500            NA        NA 2008-08-17 12:00:00
 #> 2  …13633876 Cygnus olor (J.F. G…  1500            NA        NA 2008-10-03 12:00:00
-#> 3    …781416 Cygnus olor (J.F. G…  1300            NA        NA 2006-02-14 12:00:00
-#> 4    …780984 Cygnus olor (J.F. G…  1300            NA        NA 2006-02-14 12:00:00
+#> 3    …780984 Cygnus olor (J.F. G…  1300            NA        NA 2006-02-14 12:00:00
+#> 4    …781416 Cygnus olor (J.F. G…  1300            NA        NA 2006-02-14 12:00:00
 #> 5   …2062563 Cygnus olor (J.F. G…  1200            NA        NA 2006-12-19 12:00:00
 #> 6  …10352894 Cygnus olor (J.F. G…  1100            NA        NA 2008-06-28 12:00:00
 #> 7    …927797 Cygnus olor (J.F. G…  1050            NA        NA 2006-04-05 12:00:00

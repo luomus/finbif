@@ -16,7 +16,7 @@ finnish,finnish,logical,FALSE,",",TRUE
 invasive,invasive,logical,FALSE,",",TRUE
 taxonRankId,taxon_rank,uri,TRUE,",",TRUE
 countryId,country,uri,TRUE,",",TRUE
-finnishMunicipalityId,municipality,uri,TRUE,",",TRUE
+finnishMunicipalityId,finnish_municipality,uri,TRUE,",",TRUE
 biogeographicalProvinceId,bio_province,uri,TRUE,",",TRUE
 area,locality,character,FALSE,",",TRUE
 birdAssociationAreaId,bird_assoc_area,uri,TRUE,",",TRUE

@@ -1420,11 +1420,11 @@ compute_region <- function(fb_occurrence_df) {
 
     id <- basename(fb_occurrence_df[[idv]])
 
-    municipality <- municipality(
+    finnish_municipality <- finnish_municipality(
       list(cache = attr(fb_occurrence_df, "cache", TRUE)[[2L]])
     )
 
-    fb_occurrence_df[[region_var]] <- municipality[id, "region"]
+    fb_occurrence_df[[region_var]] <- finnish_municipality[id, "region"]
 
     fb_occurrence_df[[region_var]] <- ifelse(
       is.na(fb_occurrence_df[[region_var]]),
@@ -1458,8 +1458,8 @@ compute_municipality <- function(fb_occurrence_df) {
 
     id <- basename(fb_occurrence_df[[idv]])
 
-    municipality <- finbif_metadata(
-      "municipality",
+    finnish_municipality <- finbif_metadata(
+      "finnish_municipality",
       attr(fb_occurrence_df, "locale", TRUE),
       attr(fb_occurrence_df, "cache", TRUE)[[2L]]
     )
@@ -1484,7 +1484,7 @@ compute_municipality <- function(fb_occurrence_df) {
     )
 
     fb_occurrence_df[[m_var]] <- ifelse(
-      is.na(id), unlist(county), municipality[id, "name"]
+      is.na(id), unlist(county), finnish_municipality[id, "name"]
     )
 
   }

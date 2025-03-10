@@ -307,8 +307,10 @@ the count while their true identify may be a duplicate of other records.
 To illustrate, you can count the number of moths and butterflies by municipality
 with the following:
 
-```r
-finbif_occurrence("Lepidoptera", select = "municipality", aggregate = "species")
+``` details
+finbif_occurrence(
+  "Lepidoptera", select = "finnish_municipality", aggregate = "species"
+)
 ```
 
 
@@ -320,17 +322,17 @@ finbif_occurrence("Lepidoptera", select = "municipality", aggregate = "species")
 #> Records downloaded: 10
 #> Records available: 309
 #> A data.frame [10 x 2]
-#>    municipality n_species
-#> 1     Raasepori  2038    
-#> 2     Virolahti  1978    
-#> 3       Kouvola  1508    
-#> 4      Rääkkylä  1367    
-#> 5   Kemiönsaari  2008    
-#> 6         Hanko  1945    
-#> 7      Parainen  1858    
-#> 8      Helsinki  1980    
-#> 9        Kuopio  1345    
-#> 10        Kotka  1719    
+#>    finnish_municipality n_species
+#> 1             Raasepori  2062    
+#> 2             Virolahti  2024    
+#> 3              Rääkkylä  1386    
+#> 4               Kouvola  1547    
+#> 5           Kemiönsaari  2028    
+#> 6                 Hanko  1971    
+#> 7              Parainen  1904    
+#> 8              Helsinki  2025    
+#> 9                Kuopio  1420    
+#> 10                Kotka  1747    
 
 ```
 

@@ -34,7 +34,7 @@ sysdata <- function(obj) {
     bio_province = get_areas(
       list(which = "ML.biogeographicalProvince", cache = obj[["cache"]])
     ),
-    municipality = municipality(obj),
+    finnish_municipality = finnish_municipality(obj),
     bird_assoc_area = bird_assoc_area(obj),
     finnish_occurrence_status = finnish_occurrence_status(obj),
     finnish_occurrence_status_neg = finnish_occurrence_status(obj),
@@ -449,7 +449,7 @@ primary_habitat <- function(obj) {
 
 #' @noRd
 
-municipality <- function(obj) {
+finnish_municipality <- function(obj) {
 
   regions <- c(
     ML.351 = "Ahvenanmaa",

@@ -90,8 +90,8 @@
 #' - `bio_province` Character vector.
 #'   Filter by bio-province. Use `finbif_metadata()` to see bio-province names
 #'   and codes.
-#' - `municipality` Character vector.
-#'   Filter by municipality. Use `finbif_metadata()` to see municipality
+#' - `finnish_municipality` Character vector.
+#'   Filter by municipality. Use `finbif_metadata()` to see Finnish municipality
 #'   names.
 #' - `location_tag` Character vector
 #'   Filter by tags associated with a location (e.g., `"farmland"`).
@@ -128,7 +128,7 @@
 #'   Filter by source of coordinates. Currently accepted values are
 #'   `"reported_value"` (coordinates were recorded at time of observation) and
 #'   `"finnish_municipality"` (coordinates were derived and observer only
-#'   recorded municipality).
+#'   recorded Finnish municipality).
 #' - `coordinates_uncertainty_max` Integer.
 #'   Filter by maximum uncertainty of coordinates (i.e.,
 #'   `coordinates_uncertainty_max = 100` will return records that are accurate

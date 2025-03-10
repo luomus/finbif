@@ -35,7 +35,7 @@ finbif_metadata <- function(
     "country",
     "region",
     "bio_province",
-    "municipality",
+    "finnish_municipality",
     "bird_assoc_area",
     "finnish_occurrence_status",
     "habitat_type",

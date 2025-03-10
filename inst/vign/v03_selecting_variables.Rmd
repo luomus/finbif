@@ -73,7 +73,9 @@ finbif_occurrence("Cygnus cygnus", order_by = "-abundance")
 You can specify multiple variables to order by. Sorting primacy is from left to
 right.
 ```{details order-multiple}
-finbif_occurrence("Cygnus olor", order_by = c("municipality_id", "-abundance"))
+finbif_occurrence(
+  "Cygnus olor", order_by = c("finnish_municipality_id", "-abundance")
+)
 ```
 
 ### Random sample

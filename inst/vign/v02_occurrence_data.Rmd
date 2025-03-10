@@ -129,7 +129,9 @@ the count while their true identify may be a duplicate of other records.
 To illustrate, you can count the number of moths and butterflies by municipality
 with the following:
 ```{details aggregate}
-finbif_occurrence("Lepidoptera", select = "municipality", aggregate = "species")
+finbif_occurrence(
+  "Lepidoptera", select = "finnish_municipality", aggregate = "species"
+)
 ```
 
 ## Time & duration

@@ -98,8 +98,8 @@ Filter by region. Use \code{finbif_metadata()} to see region names and codes.
 \item \code{bio_province} Character vector.
 Filter by bio-province. Use \code{finbif_metadata()} to see bio-province names
 and codes.
-\item \code{municipality} Character vector.
-Filter by municipality. Use \code{finbif_metadata()} to see municipality
+\item \code{finnish_municipality} Character vector.
+Filter by municipality. Use \code{finbif_metadata()} to see Finnish municipality
 names.
 \item \code{location_tag} Character vector
 Filter by tags associated with a location (e.g., \code{"farmland"}).
@@ -136,7 +136,7 @@ As above, except coordinates indicate center of grid cell.
 Filter by source of coordinates. Currently accepted values are
 \code{"reported_value"} (coordinates were recorded at time of observation) and
 \code{"finnish_municipality"} (coordinates were derived and observer only
-recorded municipality).
+recorded Finnish municipality).
 \item \code{coordinates_uncertainty_max} Integer.
 Filter by maximum uncertainty of coordinates (i.e.,
 \code{coordinates_uncertainty_max = 100} will return records that are accurate
