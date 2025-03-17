@@ -45,49 +45,32 @@
 NULL
 
 #' @noRd
-
 cache_location <- new.env()
 
 #' @noRd
-
 get_cache <- function(hash) {
-
   data <- NULL
 
   if (exists(hash, envir = cache_location)) {
-
     obj <- get(hash, envir = cache_location)
-
     valid <- TRUE
 
     if (!isTRUE(obj[["swagger"]])) {
-
       valid <- cache_is_valid(obj[["timeout"]], obj[["created"]])
-
     }
 
     if (valid) {
-
       data <- obj[["data"]]
-
     } else {
-
       remove(list = hash, envir = cache_location)
-
     }
-
   }
 
   data
-
 }
 
 #' @noRd
-
 set_cache <- function(obj) {
-
   obj[["created"]] <- Sys.time()
-
   assign(obj[["hash"]], obj, envir = cache_location)
-
 }
