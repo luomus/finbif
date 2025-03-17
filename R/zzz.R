@@ -1,7 +1,5 @@
 #' @noRd
-
 .onLoad <- function(libname, pkgname) {
-
   op_finbif <- list(
     finbif_api_url = "https://api.laji.fi",
     finbif_dl_url = "https://dw.laji.fi/download",
@@ -23,34 +21,24 @@
     finbif_tz = Sys.timezone(),
     finbif_locale = get_locale()
   )
-
   op <- options()
-
   toset <- !names(op_finbif) %in% names(op)
 
   if (any(toset)) {
-
     options(op_finbif[toset])
-
   }
 
   invisible(NULL)
-
 }
 
 #' @noRd
 #' @exportPattern ^fb
-
 fns <- ls(pattern = "^finbif")
 
 for (fn in fns) {
-
   new_name <- gsub("finbif", "fb", fn)
-
   fn_obj <- get(fn)
-
   assign(new_name, fn_obj)
-
 }
 
 rm(fn, fns, new_name, fn_obj)
