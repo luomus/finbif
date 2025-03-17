@@ -52,7 +52,7 @@ test_that("invalid json triggers error", {
 
   if (
     requireNamespace("callr", quietly = TRUE) &&
-    requireNamespace("webfakes", quietly = TRUE)
+      requireNamespace("webfakes", quietly = TRUE)
   ) {
 
     bg <- callr::r_bg(
