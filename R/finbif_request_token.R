@@ -20,25 +20,18 @@
 #' @export
 #' @importFrom httr content RETRY
 #' @importFrom utils packageVersion
-
 finbif_request_token <- function(email, quiet = FALSE) {
-
   fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
   if (identical(fb_access_token, "")) {
-
     allow <- getOption("finbif_allow_query")
-
     stopifnot("Option:finbif_allow_query = FALSE" = allow)
 
     url <- getOption("finbif_api_url")
-
     version <- getOption("finbif_api_version")
 
     pkg_version <- utils::packageVersion("finbif")
-
     agent <- paste0("https://github.com/luomus/finbif#", pkg_version)
-
     config <- list(
       headers = c(Accept = "application/json"),
       options =  list(useragent = agent)
@@ -61,41 +54,30 @@ finbif_request_token <- function(email, quiet = FALSE) {
     parsed <- httr::content(resp)
 
     if (!identical(resp[["status_code"]], 200L)) {
-
       error <- parsed[["error"]]
-
       msg <- paste0(
         "API request failed [", resp[["status_code"]], "]\n", error[["message"]]
       )
-
       stop(msg, call. = FALSE)
-
     }
 
     if (!quiet) {
-
       message(
         "A personal access token for api.laji.fi has been sent to: ", email
       )
-
     }
 
     ans <- list(content = parsed, path = "api-users", response = resp)
-
     ans <- structure(ans, class = "finbif_api")
 
   } else {
-
     message(
       "An access token has already been set. If you want to receive a new \n",
       "token, first remove the current token with \n",
       "Sys.unsetenv(\"FINBIF_ACCESS_TOKEN\")"
     )
-
     ans <- NULL
-
   }
 
   invisible(ans)
-
 }
