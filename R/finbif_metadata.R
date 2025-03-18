@@ -22,13 +22,11 @@
 #'
 #' }
 #' @export
-
 finbif_metadata <- function(
   which,
   locale = getOption("finbif_locale"),
   cache = getOption("finbif_use_cache_metadata")
 ) {
-
   metadata_name <- c(
     "regulatory_status",
     "red_list",
@@ -48,19 +46,14 @@ finbif_metadata <- function(
     "source",
     "taxon_rank"
   )
-
   data <- data.frame(metadata_name)
 
   if (!missing(which)) {
-
     if (!which %in% metadata_name) {
-
       stop(which, " not found in FinBIF metadata.", call. = FALSE)
-
     }
 
     obj <- list(cache = cache)
-
     obj[["which"]] <- switch(
       which,
       red_list = "red_list_status",
@@ -69,9 +62,7 @@ finbif_metadata <- function(
       habitat_qualifier = "primary_habitat",
       which
     )
-
     data <- sysdata(obj)
-
     data <- switch(
       which,
       habitat_type = data[["habitat_types"]],
@@ -80,47 +71,31 @@ finbif_metadata <- function(
     )
 
     col_names <- "name"
-
     name <- paste0("name_", locale)
 
     if (!name %in% names(data)) {
-
       name <- "name_en"
-
       locale <- "en"
-
     }
 
     cols <- name
-
     description <- paste0("description_", locale)
 
     if (description %in% names(data)) {
-
       cols <- c(cols, description)
-
       col_names <- c(col_names, "description")
-
     }
 
     if ("code" %in% names(data)) {
-
       cols <- c("code", cols)
-
       col_names <- c("code", col_names)
-
     }
 
     ind <- order(data[[name]])
-
     data <- data[ind, cols, drop = FALSE]
-
     colnames(data) <- col_names
-
     class(data) <- c("finbif_metadata_df", "data.frame")
-
   }
 
   data
-
 }
