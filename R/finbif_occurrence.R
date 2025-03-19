@@ -607,7 +607,7 @@ compute_iso8601 <- function(fb_occurrence_df) {
     ds_time <- format(ds_time, "%FT%T%z")
     de_time  <- format(de_time, "%FT%T%z")
 
-    format_interval <- iso8601 <- paste(ds_time, de_time, sep = "/")
+    format_interval <- paste(ds_time, de_time, sep = "/")
     iso8601 <- ifelse(no_start_time | no_end_time, format_interval, iso8601)
 
     dates_equal <- date_start == date_end
