@@ -914,7 +914,14 @@ order_by_computed_var <- function(order_by) {
     citation = "document.documentId",
     occurrence_status = "unit.interpretations.individualCount",
     duration = "gathering.eventDate.begin",
-    region = "gathering.province"
+    region = "gathering.province",
+    date_time_ISO8601 = "gathering.eventDate.begin",
+    municipality = "gathering.interpretations.finnishMunicipality",
+    local_area = "gathering.interpretations.finnishMunicipality",
+    collection_code = "document.collectionId",
+    institution_code = "document.collectionId",
+    country = "gathering.interpretations.country",
+    country_code = "gathering.interpretations.country"
   )
 
   nms <- names(lt)
