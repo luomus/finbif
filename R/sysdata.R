@@ -1,7 +1,5 @@
 #' @noRd
-
 sysdata <- function(obj) {
-
   switch(
     obj[["which"]],
     supported_langs = c(English = "en", Finnish = "fi", Swedish = "sv"),
@@ -63,13 +61,10 @@ sysdata <- function(obj) {
       list(which = "MY.abundanceUnitEnum", cache = obj[["cache"]])
     )
   )
-
 }
 
 #' @noRd
-
 get_sysdata <- function(obj) {
-
   request <- list(
     path = paste0("metadata/ranges/", obj[["which"]]),
     query = list(lang = "multi"),
@@ -79,11 +74,9 @@ get_sysdata <- function(obj) {
   sd_response <- api_get(request)
 
   supported_langs <- sysdata(list(which = "supported_langs"))
-
   n_langs <- length(supported_langs)
 
   sd_response_content <- sd_response[["content"]]
-
   sd_df <- structure(
     vector("list", n_langs),
     row.names =  vapply(sd_response_content, getElement, "", "id"),
@@ -91,100 +84,65 @@ get_sysdata <- function(obj) {
   )
 
   for (i in seq_len(n_langs)) {
-
     el_i <- c("value", supported_langs[[i]])
-
     sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
-
     sd_df[[i]] <- sub("^.* [\u2013|-] ", "", sd_i)
-
   }
 
   structure(set_translations(sd_df), class = "data.frame")
-
 }
 
 #' @noRd
-
 get_enumeration <- function(obj) {
-
   request <- list(
     path = "warehouse/enumeration-labels",
     cache = obj[["cache"]]
   )
 
   en_response <- api_get(request)
-
   en_response_results <- en_response[[c("content", "results")]]
-
   enumerations <- vapply(en_response_results, getElement, "", "enumeration")
 
   ids <- vapply(en_response_results, getElement, "", "property")
-
   enumerations <- structure(enumerations, names = ids)
 
   get_function <- obj[["fun"]]
-
   sd_en_df <- get_function(obj)
-
   id <- enumerations[row.names(sd_en_df)]
-
   non_missing_enums <- !is.na(id)
-
   sd_en_df <- structure(sd_en_df, row.names = id)
-
   sd_en_df <- sd_en_df[non_missing_enums, ]
-
   id <- id[non_missing_enums]
-
   enumeration <- list(code = tolower(id))
-
   enumeration <- structure(enumeration, class = "data.frame", row.names = id)
-
   sd_en_df <- cbind(enumeration, sd_en_df)
-
   set_translations(sd_en_df)
-
 }
 
 #' @noRd
-
 set_translations <- function(x) {
-
   x[] <- lapply(x, structure, class = "translation")
-
   x
-
 }
 
 #' @noRd
-
 get_code <- function(obj) {
-
   prefix <- obj[["prefix"]]
-
   ht <- get_sysdata(
     list(which = paste0(prefix, obj[["suffix"]]), cache = obj[["cache"]])
   )
-
   ht_row_names <- row.names(ht)
 
   ht_code <- sub(prefix, "", ht_row_names)
-
   ht_code <- structure(ht_code, class = "translation")
-
   ht_code <- list(code = ht_code)
-
   ht_code <- structure(ht_code, class = "data.frame", row.names = ht_row_names)
 
   cbind(ht_code, ht)
-
 }
 
 #' @noRd
-
 get_areas <- function(obj) {
-
   request <- list(
     path = "areas",
     query = list(areaType = obj[["which"]], lang = "multi", pageSize = 1000L),
@@ -192,11 +150,9 @@ get_areas <- function(obj) {
   )
 
   sd_response <- api_get(request)
-
   sd_response_results <- sd_response[[c("content", "results")]]
 
   supported_langs <- sysdata(list(which = "supported_langs"))
-
   col_names <- paste0("name_", supported_langs)
 
   n_cols <- length(col_names)
@@ -208,75 +164,51 @@ get_areas <- function(obj) {
   )
 
   for (i in seq_along(supported_langs)) {
-
     el_i <- c("name", supported_langs[[i]])
-
     sd_i <- vapply(sd_response_results, get_el_recurse, "", el_i, "character")
-
     sd_df[[i]] <- sub("^.* [\u2013|-] ", "", sd_i)
-
   }
 
   c_els <- paste0("countryCodeISO", "alpha2")
-
   ccode <- vapply(sd_response_results, get_el_recurse, "", c_els, "character")
 
   if (!all_na(ccode)) {
-
     sd_df[["code"]] <- ccode
-
   }
 
   p_els <- c("provinceCodeAlpha", "fi")
-
   pcode <- vapply(sd_response_results, get_el_recurse, "", p_els, "character")
 
   if (!all_na(pcode)) {
-
     sd_df[["code"]] <- pcode
-
   }
 
   sd_df <- replace_missing_names(sd_df)
-
   structure(set_translations(sd_df), class = "data.frame")
-
 }
 
 #' @noRd
-
 replace_missing_names <- function(df) {
-
   supported_langs <- sysdata(list(which = "supported_langs"))
-
   col_names <- paste0("name_", supported_langs)
 
   for (i in col_names) {
-
     col <- df[[i]]
 
     for (j in setdiff(col_names, i)) {
-
       missing <- is.na(col)
-
       other_col <- df[[j]]
-
       col[missing] <- other_col[missing]
-
     }
 
     df[[i]] <- col
-
   }
 
   df
-
 }
 
 #' @noRd
-
 regulatory_status <- function(obj) {
-
   code <- c(
     MX.finlex160_1997_appendix4 = "FNLX160_97_4",
     MX.finlex160_1997_appendix4_specialInterest = "FNLX160_97_4_SI",
@@ -349,51 +281,35 @@ regulatory_status <- function(obj) {
   reg_status <- get_sysdata(
     list(which = "MX.adminStatusEnum", cache = obj[["cache"]])
   )
-
   reg_status <- unique(reg_status)
 
   id <- row.names(reg_status)
-
   code <- code[id]
 
   code_na <- is.na(code)
-
   missing_codes <- id[code_na]
-
   missing_codes <- sub("^.*\\.", "", missing_codes)
-
   missing_codes <- abbreviate(missing_codes, 20L)
 
   code[code_na] <- toupper(missing_codes)
-
   code <- make.unique(code)
-
   code <- structure(code, class = "translation")
-
   code <- list(code = code)
-
   code <- structure(code, class = "data.frame", row.names = id)
 
   cbind(code, reg_status)
-
 }
 
 #' @noRd
-
 red_list_status <- function(obj) {
-
   red_list <- list(
     prefix = "MX.iucn", suffix = "Statuses", cache = obj[["cache"]]
   )
-
   get_code(red_list)
-
 }
 
 #' @noRd
-
 informal_groups <- function(obj) {
-
   request <- list(
     path = "informal-taxon-groups",
     query = list(lang = "multi", pageSize = 1000L),
@@ -401,9 +317,7 @@ informal_groups <- function(obj) {
   )
 
   sd_response <- api_get(request)
-
   sd_response_content <- sd_response[[c("content", "results")]]
-
   supported_langs <- sysdata(list(which = "supported_langs"))
 
   n_langs <- length(supported_langs)
@@ -415,42 +329,30 @@ informal_groups <- function(obj) {
   )
 
   for (i in seq_len(n_langs)) {
-
     el_i <- c("name", supported_langs[[i]])
-
     sd_i <- vapply(sd_response_content, get_el_recurse, "", el_i, "character")
-
     sd_df[[i]] <- sub("^.* [\u2013|-] ", "", sd_i)
-
   }
 
   structure(set_translations(sd_df), class = "data.frame")
-
 }
 
 #' @noRd
-
 primary_habitat <- function(obj) {
-
   habitat_types <- list(
     prefix = "MKV.habitat", suffix = "Enum", cache = obj[["cache"]]
   )
-
   specific_types <-  list(
     prefix = "MKV.habitatSpecificType", suffix = "Enum", cache = obj[["cache"]]
   )
-
   list(
     habitat_types = get_code(habitat_types),
     specific_habitat_types = get_code(specific_types)
   )
-
 }
 
 #' @noRd
-
 finnish_municipality <- function(obj) {
-
   regions <- c(
     ML.351 = "Ahvenanmaa",
     ML.352 = "Uusimaa",
@@ -766,23 +668,17 @@ finnish_municipality <- function(obj) {
   municipalities <- get_areas(
     list(which = "ML.municipality", cache = obj[["cache"]])
   )
-
   id <- row.names(municipalities)
 
   regions <- structure(regions[id], class = "translation", names = NULL)
-
   regions <- list(region = regions)
-
   regions <- structure(regions, class = "data.frame", row.names = id)
 
   cbind(municipalities, regions)
-
 }
 
 #' @noRd
-
 bird_assoc_area <- function(obj) {
-
   codes <- c(
     ML.1088 = "AFF",
     ML.1095 = "EKLY",
@@ -814,29 +710,21 @@ bird_assoc_area <- function(obj) {
     ML.1089 = "TLY",
     ML.1267 = "OA"
   )
-
   bird_assoc <- get_areas(
     list(which = "ML.birdAssociationArea", cache = obj[["cache"]])
   )
-
   id <- row.names(bird_assoc)
 
   codes <- unname(codes[id])
-
   codes <- structure(codes, class = "translation", names = NULL)
-
   codes <- list(code = codes)
-
   codes <- structure(codes, class = "data.frame", row.names = id)
 
   cbind(bird_assoc, codes)
-
 }
 
 #' @noRd
-
 finnish_occurrence_status <- function(obj) {
-
   codes <- c(
     MX.doesNotOccur = "none",
     MX.typeOfOccurrenceOccurs = "occurs",
@@ -884,7 +772,6 @@ finnish_occurrence_status <- function(obj) {
     MX.typeOfOccurrenceBirdLifeCategoryD = "BLD",
     MX.typeOfOccurrenceBirdLifeCategoryE = "BLE"
   )
-
   finnish_occurrence <- get_sysdata(
     list(which = "MX.typeOfOccurrenceEnum", cache = obj[["cache"]])
   )
@@ -892,21 +779,15 @@ finnish_occurrence_status <- function(obj) {
   id <- row.names(finnish_occurrence)
 
   codes <- unname(codes[id])
-
   codes <- structure(codes, class = "translation", names = NULL)
-
   codes <- list(code = codes)
-
   codes <- structure(codes, class = "data.frame", row.names = id)
 
   cbind(finnish_occurrence, codes)
-
 }
 
 #' @noRd
-
 sources <- function(obj) {
-
   request <- list(
     path = "sources",
     query = list(lang = "multi", pageSize = 1000L),
@@ -914,69 +795,45 @@ sources <- function(obj) {
   )
 
   sd_response <- api_get(request)
-
   sd_response_results <- sd_response[[c("content", "results")]]
-
   row_names <- vapply(sd_response_results, getElement, "", "id")
 
   types <- c("name", "description")
-
   supported_langs <- sysdata(list(which = "supported_langs"))
-
   n_langs <- length(supported_langs)
-
   col_names <- rep(types, each = n_langs)
-
   col_names <- paste(col_names, supported_langs, sep = "_")
-
   n_cols <- length(col_names)
 
   sd_df <- vector("list", n_cols)
-
   sd_df <- structure(sd_df, row.names = row_names, names = col_names)
-
   sd_df[["code"]] <- row_names
 
   sq <- seq_along(supported_langs)
 
   for (type in types) {
-
     for (i in sq) {
-
       lang_i <- supported_langs[[i]]
-
       el_i <- c(type, lang_i)
-
       sd_i <- vapply(sd_response_results, get_el_recurse, "", el_i, "character")
-
       col <- paste(type, lang_i, sep = "_")
-
       sd_df[[col]] <- sub("^.* \u2013 ", "", sd_i)
-
     }
-
   }
 
   structure(set_translations(sd_df), class = "data.frame")
-
 }
 
 #' @noRd
-
 record_basis <- function(obj) {
-
   record_bases <- list(
     which = "MY.recordBases", cache = obj[["cache"]], fun = get_sysdata
   )
-
   get_enumeration(record_bases)
-
 }
 
 #' @noRd
-
 superrecord_basis <- function() {
-
   r <- c(
     "HUMAN_OBSERVATION_UNSPECIFIED",
     "MACHINE_OBSERVATION_UNSPECIFIED",
@@ -1003,73 +860,51 @@ superrecord_basis <- function() {
   )
 
   bases <- structure(bases, row.names = r, class = "data.frame")
-
   set_translations(bases)
-
 }
 
 #' @noRd
-
 life_stage <- function(obj) {
-
   animal_life_stages <- list(
     which = "MY.lifeStages", cache = obj[["cache"]], fun = get_sysdata
   )
-
   animal_life_stages <- get_enumeration(animal_life_stages)
 
   plant_life_stages <- list(
     which = "MY.plantLifeStageEnum", cache = obj[["cache"]], fun = get_sysdata
   )
-
   plant_life_stages <- get_enumeration(plant_life_stages)
 
   life_stages <- rbind(animal_life_stages, plant_life_stages)
-
   set_translations(life_stages)
-
 }
 
 #' @noRd
-
 sex <- function(obj) {
-
   sexes <- list(
     prefix = "MY.sex", suffix = "es", cache = obj[["cache"]], fun = get_code
   )
-
   get_enumeration(sexes)
-
 }
 
 #' @noRd
-
 restriction_reason <- function(obj) {
-
   reasons <- list(
     which = "MZ.secureReason", cache = obj[["cache"]], fun = get_sysdata
   )
-
   get_enumeration(reasons)
-
 }
 
 #' @noRd
-
 restriction_level <- function(obj) {
-
   levels <- list(
     which = "MX.secureLevels", cache = obj[["cache"]], fun = get_sysdata
   )
-
   get_enumeration(levels)
-
 }
 
 #' @noRd
-
 quality_issues <- function() {
-
   r <- c("ONLY_ISSUES", "NO_ISSUES", "BOTH")
 
   quality <- list(
@@ -1090,43 +925,30 @@ quality_issues <- function() {
       "Med problem och inga problem"
     )
   )
-
   quality <- structure(quality, row.names = r, class = "data.frame")
-
   set_translations(quality)
-
 }
 
 #' @noRd
-
 collection_quality <- function(obj) {
-
   quality <- list(
     which = "MY.collectionQualityEnum",
     cache = obj[["cache"]],
     fun = get_sysdata
   )
-
   get_enumeration(quality)
-
 }
 
 #' @noRd
-
 record_quality <- function(obj) {
-
   quality <- list(
     which = "MZ.recordQualityEnum", cache = obj[["cache"]], fun = get_sysdata
   )
-
   get_enumeration(quality)
-
 }
 
 #' @noRd
-
 record_reliability <- function() {
-
   r <- c("RELIABLE", "UNDEFINED", "UNRELIABLE")
 
   reliability <- list(
@@ -1135,17 +957,12 @@ record_reliability <- function() {
     name_fi = c("Luotettava", "Neutraali", "Ep\u00e4luotettava"),
     name_sv = c("P\u00e5litlig", "Neutral", "Op\u00e5litliga")
   )
-
   reliability <- structure(reliability, row.names = r, class = "data.frame")
-
   set_translations(reliability)
-
 }
 
 #' @noRd
-
 complete_list_type <- function() {
-
   r <- c(
     "MY.completeListTypeCompleteWithBreedingStatus",
     "MY.completeListTypeComplete",
@@ -1191,9 +1008,6 @@ complete_list_type <- function() {
       "Okomplett artlista"
     )
   )
-
   list_type <- structure(list_type, row.names = r, class = "data.frame")
-
   set_translations(list_type)
-
 }
