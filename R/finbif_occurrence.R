@@ -634,37 +634,27 @@ compute_iso8601 <- function(fb_occurrence_df) {
 #' @noRd
 
 compute_vars_from_id <- function(fb_occurrence_df) {
-
   locale <- attr(fb_occurrence_df, "locale", TRUE)
-
   cache <- attr(fb_occurrence_df, "cache", TRUE)
-
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   colnames <- names(fb_occurrence_df)
-
   select_user <- attr(fb_occurrence_df, "column_names", TRUE)
 
   cols <- setdiff(select_user, colnames)
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
 
   vtype <- col_type_string(dwc)
-
   suffix <- switch(vtype, translated_var = "_id", dwc = "ID")
 
   for (i in seq_along(cols)) {
-
     col_i <- cols[[i]]
-
     id_var_name <- paste0(col_i, suffix)
 
     if (add && id_var_name %in% colnames) {
-
       if (identical(id_var_name, "collection_id")) {
 
         ptrn <- "collection_name"
-
         metadata <- finbif_collections(
           select = ptrn,
           subcollections = TRUE,
@@ -675,41 +665,28 @@ compute_vars_from_id <- function(fb_occurrence_df) {
         )
 
       } else {
-
         ptrn <- "^name_|^description_"
-
         col_i_native <- to_native(col_i)
-
         metadata <- sysdata(list(which = col_i_native, cache = cache[[2L]]))
 
         if (!inherits(metadata, "data.frame")) {
-
           rownames <- lapply(metadata, row.names)
-
           args <- c(metadata, make.row.names = FALSE)
-
           metadata <- do.call(rbind, args)
-
           row.names(metadata) <- unlist(rownames)
-
         }
 
       }
 
       id_var <- fb_occurrence_df[[id_var_name]]
-
       nms <- names(metadata)
-
       names(metadata) <- gsub(ptrn, "", nms)
 
       id <- lapply(id_var, vapply, remove_domain, "")
-
       metadata <- metadata[, grep(ptrn, nms), drop = FALSE]
 
       var <- lapply(id, get_rows, metadata)
-
       var <- lapply(var, apply, 1L, with_locale, locale)
-
       var <- lapply(var, unname)
 
       var_is_na <- lapply(var, is.na)
@@ -719,81 +696,53 @@ compute_vars_from_id <- function(fb_occurrence_df) {
       )
 
       if (!is.list(id_var)) {
-
         df_col_i <- unlist(df_col_i)
-
       }
 
       if (is.null(df_col_i)) {
-
         df_col_i <- character()
-
       }
 
       fb_occurrence_df[[col_i]] <- df_col_i
-
     }
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 compute_epsg <- function(fb_occurrence_df) {
-
   if (attr(fb_occurrence_df, "include_new_cols", TRUE)) {
-
     dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
     vtype <- col_type_string(dwc)
-
     var_names <- sysdata(list(which = "var_names"))
-
     vnt <- var_names[, vtype, drop = FALSE]
-
     epsg_vars <- c(vnt["computed_var_epsg", ], vnt["computed_var_fp_epsg", ])
-
     select_user <- attr(fb_occurrence_df, "column_names", TRUE)
 
     crs <- c(computed_var_epsg = "", computed_var_fp_epsg = "footprint")
-
     crs_nms <- names(crs)
 
     sq <- seq_along(crs)
-
     sq <- sq[epsg_vars %in% select_user]
 
     select_user <- match(select_user, vnt[[1L]])
-
     select_user <- var_names[select_user, , drop = FALSE]
-
     select_user <- row.names(select_user)
-
     select_user <- var_names[select_user, "translated_var"]
 
     epsgs <- c(euref = "euref", ykj = "ykj", wgs84 = "wgs84")
 
     for (i in sq) {
-
       epsg <- epsgs
-
       epsg[] <- paste0(crs[[i]], "_", epsgs, "$")
-
       epsg <- lapply(epsg, grepl, select_user)
-
       epsg <- lapply(epsg, c, TRUE)
-
       epsg <- lapply(epsg, which)
-
       epsg <- vapply(epsg, min, 0L, USE.NAMES = TRUE)
-
       epsg <- which.min(epsg)
 
       crs_nm_i <- crs_nms[[i]]
-
       crs_nm_i <- var_names[[crs_nm_i, vtype]]
 
       crs_i <- switch(
@@ -805,59 +754,38 @@ compute_epsg <- function(fb_occurrence_df) {
       )
 
       fb_occurrence_df[[crs_nm_i]] <- rep(crs_i, nrow(fb_occurrence_df))
-
     }
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 compute_abundance <- function(fb_occurrence_df) {
-
   select_user <- attr(fb_occurrence_df, "column_names", TRUE)
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
   vtype <- col_type_string(dwc)
-
   vnms <- sysdata(list(which = "var_names"))
-
   abundance_var <- vnms[["computed_var_abundance", vtype]]
-
   has_abundance <- abundance_var %in% select_user
 
   occ_status_var <- vnms[["computed_var_occurrence_status", vtype]]
-
   has_occ <- occ_status_var %in% select_user
-
   has_abundance_vars <- has_abundance || has_occ
 
   if (attr(fb_occurrence_df, "include_new_cols", TRUE) && has_abundance_vars) {
-
     count_var <- vnms[["unit.interpretations.individualCount", vtype]]
-
     count <- fb_occurrence_df[[count_var]]
-
     verbatim_var <- vnms[["unit.abundanceString", vtype]]
-
     has_one <- grepl("1", fb_occurrence_df[[verbatim_var]])
-
     has_one <- ifelse(has_one, 1L, NA_integer_)
-
     abundance <- ifelse(count == 1L, has_one, count)
 
     if (has_abundance) {
-
       fb_occurrence_df[[abundance_var]] <- abundance
-
     }
 
     if (has_occ) {
-
       stat <- switch(
         attr(fb_occurrence_df, "locale", TRUE),
         fi = c("paikalla", "poissa"),
@@ -866,167 +794,107 @@ compute_abundance <- function(fb_occurrence_df) {
       )
 
       is_p <- is.na(abundance) | abundance > 0L
-
       fb_occurrence_df[[occ_status_var]] <- ifelse(is_p, stat[[1L]], stat[[2L]])
-
     }
 
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 compute_citation <- function(fb_occurrence_df) {
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
   vtype <- col_type_string(dwc)
-
   var_names <- sysdata(list(which = "var_names"))
-
   citation_var <- var_names[["computed_var_citation", vtype]]
-
   has_cit_var <- citation_var %in% attr(fb_occurrence_df, "column_names", TRUE)
 
   if (attr(fb_occurrence_df, "include_new_cols", TRUE) && has_cit_var) {
-
     r_id <- attr(fb_occurrence_df, "record_id", TRUE)
-
     src <- var_names[["document.sourceId", vtype]]
-
     document_id_var <- var_names[["document.documentId", vtype]]
-
     d_id <- fb_occurrence_df[[document_id_var]]
-
     cit <- ifelse(fb_occurrence_df[[src]] == "http://tun.fi/KE.3", d_id, r_id)
-
     cit <- paste(cit, "Source: FinBIF")
-
     fb_occurrence_df[[citation_var]] <- rep(
       cit, length.out = nrow(fb_occurrence_df)
     )
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 compute_coordinate_uncertainty <- function(fb_occurrence_df) {
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
   vtype <- col_type_string(dwc)
-
   vnms <- sysdata(list(which = "var_names"))
-
   uncert_var <- vnms[["computed_var_coordinates_uncertainty", vtype]]
-
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   if (add && uncert_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
-
     interp_var <- vnms[["gathering.interpretations.coordinateAccuracy", vtype]]
-
     interp <- fb_occurrence_df[[interp_var]]
-
     source_var <- vnms[["document.sourceId", vtype]]
-
     na <- fb_occurrence_df[[source_var]] == "http://tun.fi/KE.3" & interp == 1
-
     coord_uncert <- ifelse(na, NA_real_, interp)
-
     fb_occurrence_df[[uncert_var]] <- as.numeric(coord_uncert)
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 compute_scientific_name <- function(fb_occurrence_df) {
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
   vtype <- col_type_string(dwc)
-
   var_names <- sysdata(list(which = "var_names"))
-
   sci_var <- var_names[["computed_var_scientific_name", vtype]]
-
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   if (add && sci_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
-
     sci_interp <- var_names[["unit.linkings.taxon.scientificName", vtype]]
-
     sci_interps <- fb_occurrence_df[[sci_interp]]
 
     verbatim <- var_names[["unit.taxonVerbatim", vtype]]
-
     verbatims <- fb_occurrence_df[[verbatim]]
 
     author <- var_names[["unit.linkings.taxon.scientificNameAuthorship", vtype]]
-
     authors <- fb_occurrence_df[[author]]
 
     verbatim_author <- var_names[["unit.author", vtype]]
-
     verbatim_authors <- fb_occurrence_df[[verbatim_author]]
 
     with_verbatim <- list(names = verbatims, authors = verbatim_authors)
-
     with_verbatim <- add_authors(with_verbatim)
 
     without_verbatim <- list(names = sci_interps, authors = authors)
-
     without_verbatim <- add_authors(without_verbatim)
 
     src <- var_names[["document.sourceId", vtype]]
-
     uv <- fb_occurrence_df[[src]] == "http://tun.fi/KE.3" & is.na(sci_interps)
-
     fb_occurrence_df[[sci_var]] <- ifelse(uv, with_verbatim, without_verbatim)
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 compute_codes <- function(fb_occurrence_df) {
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
   col_names <- attr(fb_occurrence_df, "column_names", TRUE)
-
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
-
   vtype <- col_type_string(dwc)
-
   var_names <- sysdata(list(which = "var_names"))
-
   id_var <- var_names[["document.collectionId", vtype]]
-
   codevars <- c("computed_var_collection_code", "computed_var_institution_code")
 
   for (i in seq_along(codevars)) {
-
     codevar_i <- codevars[[i]]
-
     var <- var_names[[codevar_i, vtype]]
 
     if (add && var %in% col_names) {
-
       codes <- finbif_collections(
         select = c("collection_code", "institution_code"),
         supercollections = TRUE,
@@ -1035,153 +903,105 @@ compute_codes <- function(fb_occurrence_df) {
       )
 
       id <- fb_occurrence_df[[id_var]]
-
       id <- remove_domain(id)
 
       fb_occurrence_df[[var]] <- codes[id, i]
-
     }
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 add_authors <- function(names_obj) {
-
   names <- names_obj[["names"]]
 
   authors <- names_obj[["authors"]]
-
   has_authors <- !is.na(authors) & nchar(authors) > 0L
-
   authors <- paste0(" ", authors)
-
   authors <- ifelse(has_authors, authors, "")
-
   with_authors <- paste0(names, authors)
 
   names_na <- is.na(names)
-
   ifelse(names_na, names, with_authors)
-
 }
 
 #' @noRd
-
 compute_red_list_status <- function(fb_occurrence_df) {
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
   vtype <- col_type_string(dwc)
-
   vn <- sysdata(list(which = "var_names"))
 
   red_list_var <- vn[["computed_var_red_list_status", vtype]]
-
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   if (add && red_list_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
-
     id <- vn[["unit.linkings.taxon.latestRedListStatusFinland.status", vtype]]
-
     id <- fb_occurrence_df[[id]]
 
     yr <- vn[["unit.linkings.taxon.latestRedListStatusFinland.year", vtype]]
-
     na <- is.na(id)
 
     red_list <- sub("http://tun.fi/MX.iucn", "", id)
-
     red_list <- paste(red_list, fb_occurrence_df[[yr]])
-
     fb_occurrence_df[[red_list_var]] <- ifelse(na, NA_character_, red_list)
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 compute_country <- function(fb_occurrence_df) {
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
   col_names <- attr(fb_occurrence_df, "column_names", TRUE)
-
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   vtype <- col_type_string(dwc)
-
   var_names <- sysdata(list(which = "var_names"))
-
   id_var <- var_names[["gathering.interpretations.country", vtype]]
-
   verbatim_var <- var_names[["gathering.country", vtype]]
 
   vars <- c("computed_var_country_code", "computed_var_country")
 
   for (i in seq_along(vars)) {
-
     var_i <- vars[[i]]
-
     var <- var_names[[var_i, vtype]]
 
     if (add && var %in% col_names) {
-
       countries <- finbif_metadata(
         "country", cache = attr(fb_occurrence_df, "cache", TRUE)[[2L]]
       )
 
       id <- fb_occurrence_df[[id_var]]
-
       id <- remove_domain(id)
 
       fb_occurrence_df[[var]] <- countries[id, i]
 
       if (i == 2L) {
-
         fb_occurrence_df[[var]] <- ifelse(
           is.na(fb_occurrence_df[[var]]),
           fb_occurrence_df[[verbatim_var]],
           fb_occurrence_df[[var]]
         )
-
       }
 
     }
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 compute_region <- function(fb_occurrence_df) {
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
   vtype <- col_type_string(dwc)
-
   var_names <- sysdata(list(which = "var_names"))
-
   region_var <- var_names[["computed_var_region", vtype]]
-
   region_verbatim <- var_names[["gathering.province", vtype]]
-
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   if (add && region_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
-
     idv <- var_names[["gathering.interpretations.finnishMunicipality", vtype]]
-
     id <- basename(fb_occurrence_df[[idv]])
 
     finnish_municipality <- finnish_municipality(
@@ -1189,37 +1009,26 @@ compute_region <- function(fb_occurrence_df) {
     )
 
     fb_occurrence_df[[region_var]] <- finnish_municipality[id, "region"]
-
     fb_occurrence_df[[region_var]] <- ifelse(
       is.na(fb_occurrence_df[[region_var]]),
       fb_occurrence_df[[region_verbatim]],
       fb_occurrence_df[[region_var]]
     )
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 compute_municipality <- function(fb_occurrence_df) {
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
   vtype <- col_type_string(dwc)
-
   var_names <- sysdata(list(which = "var_names"))
-
   m_var <- var_names[["computed_var_municipality", vtype]]
-
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   if (add && m_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
-
     idv <- var_names[["gathering.interpretations.finnishMunicipality", vtype]]
-
     id <- basename(fb_occurrence_df[[idv]])
 
     finnish_municipality <- finbif_metadata(
@@ -1229,7 +1038,6 @@ compute_municipality <- function(fb_occurrence_df) {
     )
 
     fact_names <- var_names[["gathering.facts.fact", vtype]]
-
     fact_values <- var_names[["gathering.facts.value", vtype]]
 
     which_county <- lapply(
@@ -1250,65 +1058,43 @@ compute_municipality <- function(fb_occurrence_df) {
     fb_occurrence_df[[m_var]] <- ifelse(
       is.na(id), unlist(county), finnish_municipality[id, "name"]
     )
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 compute_local_area <- function(fb_occurrence_df) {
-
   dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
   vtype <- col_type_string(dwc)
-
   var_names <- sysdata(list(which = "var_names"))
-
   la_var <- var_names[["computed_var_local_area", vtype]]
-
   add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
 
   if (add && la_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
-
     idv <- var_names[["gathering.interpretations.finnishMunicipality", vtype]]
-
     lav <- var_names[["gathering.municipality", vtype]]
-
     fb_occurrence_df[[la_var]] <- ifelse(
       is.na(fb_occurrence_df[[idv]]), fb_occurrence_df[[lav]], NA_character_
     )
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 multi_req <- function(fb_records_obj) {
-
   filters <- fb_records_obj[["filter"]]
-
   filter_num <- seq_along(filters)
-
   filter_nms <- names(filters)
 
   if (is.null(filter_nms)) {
-
     filter_nms <- filter_num
-
   } else {
-
     filter_nms <- ifelse(filter_nms == "", filter_num, filter_nms)
-
   }
 
   n_filters <- length(filters)
-
   ans <- vector("list", n_filters)
 
   rep_args <- c(
@@ -1324,159 +1110,108 @@ multi_req <- function(fb_records_obj) {
   )
 
   for (arg in rep_args) {
-
     fb_records_obj[[arg]] <- rep_len(fb_records_obj[[arg]], n_filters)
-
   }
 
   drop_na <- fb_records_obj[["drop_na"]]
 
   fb_records_obj[["drop_na"]] <- FALSE
-
   fb_records_obj_filter <- fb_records_obj
-
   fb_records_obj_filter[["check_taxa"]] <- FALSE
 
   for (filter in seq_len(n_filters)) {
-
     for (arg in c("filter", rep_args)) {
-
       fb_records_obj_arg <- fb_records_obj[[arg]]
-
       fb_records_obj_filter[[arg]] <- fb_records_obj_arg[[filter]]
-
     }
 
     ans[[filter]] <- occurrence(fb_records_obj_filter)
-
   }
 
   if (!fb_records_obj[["count_only"]]) {
-
     filter_col <- fb_records_obj[["filter_col"]]
 
     if (!is.null(filter_col)) {
-
       for (i in filter_num) {
-
         ans_i <- ans[[i]]
-
         filter_nms_i <- filter_nms[[i]]
 
         if (nrow(ans_i) < 1L) {
-
           filter_nms_i <- character()
-
         }
 
         ans_i[[filter_col]] <- filter_nms_i
-
         ans[[i]] <- ans_i
-
       }
-
     }
 
     ans <- do.call(rbind, ans)
 
     if (!fb_records_obj[["duplicates"]]) {
-
       record_id <- attr(ans, "record_id", TRUE)
-
       ans <- ans[!duplicated(record_id), ]
-
     }
 
   }
 
   attr(ans, "drop_na") <- drop_na
-
   drop_na_col(ans)
-
 }
 
 #' @noRd
-
 unlist_cols <- function(fb_occurrence_df) {
-
   if (attr(fb_occurrence_df, "unlist", TRUE)) {
-
     for (col in attr(fb_occurrence_df, "column_names", TRUE)) {
-
       df_col <- fb_occurrence_df[[col]]
 
       if (is.list(df_col) && !grepl("Fact|fact_", col)) {
-
         fb_occurrence_df[[col]] <- vapply(df_col, concat_string, "")
-
       }
 
     }
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 drop_na_col <- function(fb_occurrence_df) {
-
   drop_which <- attr(fb_occurrence_df, "drop_na", TRUE)
 
   if (any(drop_which)) {
-
     fb_occurrence_df_attrs <- attributes(fb_occurrence_df)
-
     fb_occurrence_df_attrs[["class"]] <- class(fb_occurrence_df)
-
     nrows <- nrow(fb_occurrence_df)
-
     fb_occurrence_df_attrs[["row.names"]] <- seq_len(nrows)
 
     attr(fb_occurrence_df, "class") <- "list"
-
     is_na <- lapply(fb_occurrence_df, is.na)
-
     ncols <- length(fb_occurrence_df)
-
     drop <- vapply(is_na, all, NA) & rep_len(drop_which, ncols)
 
     column_names <- attr(fb_occurrence_df, "column_names", TRUE)
-
     drop_column_names <- column_names[drop]
-
     column_names <- column_names[!drop]
 
     fb_occurrence_df_attrs[["column_names"]] <- column_names
-
     fb_occurrence_df_attrs[["names"]] <- column_names
 
     for (i in names(drop_column_names)) {
-
       fb_occurrence_df[[i]] <- NULL
-
     }
 
     attributes(fb_occurrence_df) <- fb_occurrence_df_attrs
-
   }
 
   fb_occurrence_df
-
 }
 
 #' @noRd
-
 extract_facts <- function(fb_occurrence_df) {
-
   facts <- attr(fb_occurrence_df, "facts", TRUE)
 
   if (!is.null(facts)) {
-
     dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-
     vtype <- col_type_string(dwc)
 
     nms <- c(
@@ -1496,21 +1231,14 @@ extract_facts <- function(fb_occurrence_df) {
     var_names <- sysdata(list(which = "var_names"))
 
     for (fact in facts) {
-
       for (level in 1:3) {
-
         levels_nms <- nms[[level]]
-
         fact_name <- var_names[[levels_nms, vtype]]
-
         facts_sans_domain <- lapply(
           fb_occurrence_df[[fact_name]], remove_domain
         )
-
         fact_sans_domain <- remove_domain(fact)
-
         is_fact <- lapply(facts_sans_domain, "==", fact_sans_domain)
-
         level_vls <- vls[[level]]
 
         values_name <- var_names[[level_vls, vtype]]
@@ -1522,9 +1250,7 @@ extract_facts <- function(fb_occurrence_df) {
         fb_occurrence_df[[fact]] <- mapply(
           concat_two_strings, fb_occurrence_df[[fact]], fact_value
         )
-
       }
-
     }
 
   }
