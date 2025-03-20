@@ -182,7 +182,7 @@ api_get <- function(obj) {
 
   if (!jsonlite::validate(txt)) {
     obj <- NULL
-    err_msg <- paste0("API response parsing failed\n", txt)
+    err_msg <- paste("API response parsing failed", notoken, txt, sep = "\n")
     stop(err_msg, call. = FALSE)
   }
 
@@ -193,6 +193,8 @@ api_get <- function(obj) {
       "API request failed [",
       resp[["status_code"]],
       "]\n",
+      notoken,
+      "\n",
       parsed[["message"]]
     )
     stop(err_msg, call. = FALSE)
