@@ -2,7 +2,7 @@ finbif_api_var,translated_var,dwc,superseeded,type,localised
 Unit.Interpretations.IndividualCount,abundance_interpreted,individualCountInterpreted,FALSE,integer,FALSE
 Unit.AbundanceUnit,abundance_unit,abundanceUnit,FALSE,character,TRUE
 Unit.Abundance,abundance_verbatim,verbatimAbundance,FALSE,character,FALSE
-Unit.Interpretations.AnnotatedTaxonId,annotated_taxon_id,annotatedTaxonID,FALSE,character,FALSE
+Unit.Interpretations.AnnotatedTaxonId,annotated_taxon_id,annotatedTaxonConceptID,FALSE,character,FALSE
 Gathering.Conversions.Century,century,century,FALSE,integer,FALSE
 Unit.NameAccordingTo,taxon_checklist,taxonChecklist,FALSE,character,FALSE
 Document.CollectionID,collection_id,collectionID,FALSE,character,FALSE
@@ -114,7 +114,7 @@ Gathering.GatheringSection,section,eventSection,FALSE,integer,FALSE
 Unit.Sex,sex,sex,FALSE,character,TRUE
 Document.SourceID,source_id,sourceID,FALSE,character,FALSE
 Unit.RecordBasis,superrecord_basis,basisOfSuperRecord,FALSE,character,TRUE
-Taxon.ID,taxon_id,taxonID,FALSE,character,FALSE
+Taxon.ID,taxon_id,taxonConceptID,FALSE,character,FALSE
 Taxon.TaxonomicOrder,taxonomic_order,taxonTaxonomicOrder,FALSE,character,FALSE
 Gathering.TeamMembers,team,recordedBy,FALSE,character,FALSE
 Gathering.Quality.TimeIssue.Issue,time_issue,timeIssue,FALSE,character,FALSE
