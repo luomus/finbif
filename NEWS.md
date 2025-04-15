@@ -1,6 +1,8 @@
 # News for Package <span class="pkg">finbif</span>
 
-# finbif 0.9.9.9000
+# finbif 0.9.10
+
+## MINOR IMPROVEMENTS
 
    - Improvements have been made to the way errors in parsing json are handled. 
 
@@ -10,7 +12,7 @@
 
   - Importing `.ods` and `.xlsx` occurrence data files is now defunct. Users
     should use `.tsv` download files only.
-    
+
 ## MINOR IMPROVEMENTS
 
   - Occurrence download progress indicator has been simplified.
@@ -587,13 +589,13 @@
   - Front matter of vignettes is now visible when using the R help
     browser.
 
-  - Retired "quiet" option for "on\_check\_fail" argument in function
+  - Retired "quiet" option for `on_check_fail` argument in function
     `finbif_occurrence()`.
 
   - Improved error messages when taxa fail checking in
     `finbif_occurrence()`.
 
-  - Global option to set timezone, "finbif\_tz", as default value for
+  - Global option to set timezone, `finbif_tz`, as default value for
     "tzone" argument to `finbif_occurrence()`. Avoids having to set
     system environment variable TZ or specify "tzone" every time
     `finbif_occurrence()` is run.
@@ -628,8 +630,8 @@
   - Fixed bug in handling of duplicates that could result in an infinite
     recursion.
 
-  - Fixed bug that (when "on\_check\_fail" = "warn") all taxa failed
-    checks 'finbif\_occurrence()' would proceed as if no taxa had been
+  - Fixed bug that (when `on_check_fail = "warn"`) all taxa failed
+    checks `finbif_occurrence()` would proceed as if no taxa had been
     selected.
 
   - Fixed bug in print method for `finbif_occ` objects that caused error
@@ -648,5 +650,3 @@
 # finbif 0.1.0
 
   - Initial release.
-
-</div>

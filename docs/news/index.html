@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">finbif</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.9.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.10</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,9 +40,12 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.9.9.9000" id="finbif-0999000">finbif 0.9.9.9000<a class="anchor" aria-label="anchor" href="#finbif-0999000"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.9.10" id="finbif-0910">finbif 0.9.10<a class="anchor" aria-label="anchor" href="#finbif-0910"></a></h2>
+<div class="section level3">
+<h3 id="minor-improvements-0-9-10">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-10"></a></h3>
 <ul><li>Improvements have been made to the way errors in parsing json are handled.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.9" id="finbif-099">finbif 0.9.9<a class="anchor" aria-label="anchor" href="#finbif-099"></a></h2><p class="text-muted">CRAN release: 2024-11-05</p>
 <div class="section level3">
@@ -416,9 +419,9 @@
 <h3 id="minor-improvements-0-3-0">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-3-0"></a></h3>
 <ul><li><p>Caching defaults to in memory caching instead of relying on the temporary directory.</p></li>
 <li><p>Front matter of vignettes is now visible when using the R help browser.</p></li>
-<li><p>Retired “quiet” option for “on_check_fail” argument in function <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>.</p></li>
+<li><p>Retired “quiet” option for <code>on_check_fail</code> argument in function <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>.</p></li>
 <li><p>Improved error messages when taxa fail checking in <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>.</p></li>
-<li><p>Global option to set timezone, “finbif_tz”, as default value for “tzone” argument to <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>. Avoids having to set system environment variable TZ or specify “tzone” every time <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> is run.</p></li>
+<li><p>Global option to set timezone, <code>finbif_tz</code>, as default value for “tzone” argument to <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>. Avoids having to set system environment variable TZ or specify “tzone” every time <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> is run.</p></li>
 <li><p>Now when a record has no time information the start time is assumed to be midday. Previous behaviour was to assume start time was midnight, making errors potentially biased.</p></li>
 <li><p>Package options are now documented in the package level man page.</p></li>
 <li><p>News file is now accessible via R internal help system.</p></li>
@@ -431,7 +434,7 @@
 <h3 id="bug-fixes-0-3-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-3-0"></a></h3>
 <ul><li><p>Ordering by descending variables did not work when ordering by both ascending and descending variables.</p></li>
 <li><p>Fixed bug in handling of duplicates that could result in an infinite recursion.</p></li>
-<li><p>Fixed bug that (when “on_check_fail” = “warn”) all taxa failed checks ‘finbif_occurrence()’ would proceed as if no taxa had been selected.</p></li>
+<li><p>Fixed bug that (when <code>on_check_fail = "warn"</code>) all taxa failed checks <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> would proceed as if no taxa had been selected.</p></li>
 <li><p>Fixed bug in print method for <code>finbif_occ</code> objects that caused error when trying to display a single column objects with a list-col only.</p></li>
 </ul></div>
 </div>
