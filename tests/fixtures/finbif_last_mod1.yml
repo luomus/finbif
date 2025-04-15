@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate%20DESC&page=1&pageSize=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate%20DESC&page=1&pageSize=1&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 15 Apr 2025 06:28:24 GMT
+      date: Tue, 15 Apr 2025 10:32:00 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,6 +29,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":54814965,"pageSize":1,"total":54814965,"cacheTimestamp":1744698504,"results":[{"unit":{"unitId":"http://tun.fi/KE.67/14358449#Unit"},"document":{"loadDate":"2025-04-15"}}]}'
-  recorded_at: 2025-04-15 06:28:24 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":3310347,"pageSize":1,"total":3310347,"cacheTimestamp":1744713073,"results":[{"unit":{"unitId":"http://tun.fi/HR.5766/testID#U"},"document":{"loadDate":"2025-04-15"}}]}'
+  recorded_at: 2025-04-15 10:31:13 GMT
   recorded_with: vcr/1.7.0, webmockr/2.0.0

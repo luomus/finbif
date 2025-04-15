@@ -99,7 +99,6 @@ unit.quality.issue.issue,record_issue,occurrenceIssue,FALSE,TRUE,character,facto
 unit.quality.issue.message,record_issue_message,occurrenceIssueRemarks,FALSE,TRUE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.quality.issue.source,record_issue_source,occurrenceIssueSource,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.recordBasis,record_basis,basisOfRecord,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE
-unit.referencePublication,reference_publication,references,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.reportedInformalTaxonGroup,reported_informal_groups_id,verbatimInformalTaxonGroupsID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 computed_var_from_id_reported_informal_groups,reported_informal_groups,verbatimInformalTaxonGroups,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE
 unit.reportedTaxonConfidence,reported_taxon_confidence,identificationQualifer,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE

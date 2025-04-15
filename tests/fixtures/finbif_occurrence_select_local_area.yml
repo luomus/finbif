@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.interpretations.finnishMunicipality%2Cgathering.municipality&page=1&pageSize=5&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.interpretations.finnishMunicipality%2Cgathering.municipality&page=1&pageSize=5&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,12 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 15 Apr 2025 06:27:53 GMT
+      date: Tue, 15 Apr 2025 10:31:56 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -28,6 +29,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":10962993,"pageSize":5,"total":54814965,"cacheTimestamp":1744698473,"results":[{"unit":{"unitId":"http://tun.fi/JX.2261995#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.665"},"municipality":"Parainen"}},{"unit":{"unitId":"http://tun.fi/JX.2261996#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.665"},"municipality":"Parainen"}},{"unit":{"unitId":"http://tun.fi/JX.2261998#18"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.506"},"municipality":"Alajärvi"}},{"unit":{"unitId":"http://tun.fi/JX.2261998#9"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.506"},"municipality":"Alajärvi"}},{"unit":{"unitId":"http://tun.fi/JX.2261998#6"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.506"},"municipality":"Alajärvi"}}]}'
-  recorded_at: 2025-04-15 06:27:53 GMT
+      string: '{"currentPage":1,"nextPage":2,"lastPage":662070,"pageSize":5,"total":3310347,"cacheTimestamp":1744713070,"results":[{"unit":{"unitId":"http://tun.fi/JX.335949#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.424"},"municipality":"Mikkeli"}},{"unit":{"unitId":"http://tun.fi/JX.335948#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.660"}}},{"unit":{"unitId":"http://tun.fi/JX.335947#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.541"},"municipality":"Tampere"}},{"unit":{"unitId":"http://tun.fi/JX.335947#5"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.541"},"municipality":"Tampere"}},{"unit":{"unitId":"http://tun.fi/JX.335947#7"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.541"},"municipality":"Tampere"}}]}'
+  recorded_at: 2025-04-15 10:31:10 GMT
   recorded_with: vcr/1.7.0, webmockr/2.0.0
