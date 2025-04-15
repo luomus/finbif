@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,13 +15,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 05 Nov 2024 09:55:03 GMT
+      date: Tue, 15 Apr 2025 06:25:04 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,22 +28,29 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":326325,"pageSize":10,"total":3263247,"cacheTimestamp":1730800513,"results":[{"unit":{"abundanceString":"kymmeniä","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Prunus
-        pensylvanica","scientificNameAuthorship":"L. f."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45660_U"},"gathering":{"conversions":{"day":24,"month":10,"wgs84CenterPoint":{"lat":60.198893,"lon":25.049444}},"eventDate":{"begin":"2024-10-24","end":"2024-10-24"},"interpretations":{"coordinateAccuracy":10}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"abundanceString":"kymmeniä","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Galium
-        album","scientificNameAuthorship":"Mill."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45610_U"},"gathering":{"conversions":{"day":24,"month":10,"wgs84CenterPoint":{"lat":60.202623,"lon":24.880834}},"eventDate":{"begin":"2024-10-24","end":"2024-10-24"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Amphipyra
-        tragopoginis","scientificNameAuthorship":"(Clerck, 1759)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"lattayökkönen","unitId":"http://tun.fi/JX.325272#3"},"gathering":{"conversions":{"day":24,"month":10,"wgs84CenterPoint":{"lat":60.274134,"lon":24.945821}},"eventDate":{"begin":"2024-10-24","end":"2024-10-24"},"hourBegin":7,"hourEnd":9,"interpretations":{"coordinateAccuracy":1},"minutesBegin":0,"minutesEnd":0},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
-        corone","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varis","unitId":"http://tun.fi/JX.325166#3"},"gathering":{"conversions":{"day":24,"month":10,"wgs84CenterPoint":{"lat":60.174335,"lon":24.929897}},"eventDate":{"begin":"2024-10-24","end":"2024-10-24"},"hourBegin":9,"interpretations":{"coordinateAccuracy":1},"minutesBegin":22},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Rosa
-        rugosa","scientificNameAuthorship":"Thunb."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45655_U"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.210107,"lon":25.147043}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":10}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Rosa
-        rugosa","scientificNameAuthorship":"Thunb."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45656_U"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.210127,"lon":25.14687}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":10}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Amelanchier
-        spicata","scientificNameAuthorship":"(Lam.) K. Koch"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45657_U"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.210267,"lon":25.148829}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Rosa
-        rugosa","scientificNameAuthorship":"Thunb."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45658_U"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.210022,"lon":25.148393}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":10}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Rosa
-        rugosa","scientificNameAuthorship":"Thunb."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45659_U"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.21014,"lon":25.148719}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":10}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Xestia
-        speciosa","scientificNameAuthorship":"(Hübner, 1813)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kirjoharmoyökkönen","unitId":"http://tun.fi/JX.325165#3"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.274134,"lon":24.945821}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
-  recorded_at: 2024-11-05 09:55:14 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+      string: '{"currentPage":1,"nextPage":2,"lastPage":5481497,"pageSize":10,"total":54814962,"cacheTimestamp":1744698303,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Phylloscopus
+        collybita","scientificNameAuthorship":"(Vieillot, 1817)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"tiltaltti","unitId":"http://tun.fi/JX.2261995#3"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":59.782335,"lon":21.368648}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Troglodytes
+        troglodytes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"peukaloinen","unitId":"http://tun.fi/JX.2261996#3"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":59.779612,"lon":21.373079}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Achlya
+        flavicornis","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Achlya
+        flavicornis","unitId":"http://tun.fi/JX.2261998#18"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Agonopterix
+        arenella","scientificNameAuthorship":"(Denis & Schiffermüller, 1775)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Agonopterix
+        arenella","unitId":"http://tun.fi/JX.2261998#9"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Agonopterix
+        ocellana","scientificNameAuthorship":"(Fabricius, 1775)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Agonopterix
+        ocellana","unitId":"http://tun.fi/JX.2261998#6"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"3","interpretations":{"individualCount":3,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Brachionycha
+        nubeculosa","scientificNameAuthorship":"(Esper, 1785)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Brachionycha
+        nubeculosa","unitId":"http://tun.fi/JX.2261998#15"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Lithophane
+        consocia","scientificNameAuthorship":"(Borkhausen, 1792)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Lithophane
+        consocia","unitId":"http://tun.fi/JX.2261998#21"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Odontosia
+        sieversii","scientificNameAuthorship":"(Ménétriés, 1856)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Odontosia
+        sieversii","unitId":"http://tun.fi/JX.2261998#3"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Orthosia
+        gothica","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Orthosia
+        gothica","unitId":"http://tun.fi/JX.2261998#12"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Podiceps
+        auritus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"mustakurkku-uikku","unitId":"http://tun.fi/JX.2261997#3"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":59.779612,"lon":21.373079}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
+  recorded_at: 2025-04-15 06:25:04 GMT
+  recorded_with: vcr/1.7.0, webmockr/2.0.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/enumeration-labels?access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -58,13 +64,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 05 Nov 2024 09:55:03 GMT
+      date: Tue, 15 Apr 2025 06:25:04 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -152,7 +157,10 @@ http_interactions:
         (kopio tallennettu Lajitietokeskukseen)","en":"Authorities'' download (copy
         stored to FinBIF)","sv":"Myndigheternas nedladdning (kopia lagras till FinBIF)"}},{"enumeration":"AUTHORITIES_API_KEY","property":"HBF.downloadTypeAuthoritiesApiKey","label":{"fi":"Viranomaisen
         tilaama API-avain","en":"API key applied by authorities","sv":"Myndigheternas
-        API key"}},{"enumeration":"DATA_REQUEST","property":"HBF.downloadTypeDataRequest","label":{"fi":"Data
+        API key"}},{"enumeration":"AUTHORITIES_VIRVA_GEOAPI_KEY","property":"HBF.downloadTypeAuthoritiesVirvaGeoApiKey","label":{"fi":"Viranomaisen
+        tilaama GeoAPI-avain Virva tuotteelle","en":"API key applied by authorities
+        to use GeoAPI Virva product","sv":"Myndigheternas API key för att använda
+        GeoAPI Virva-produkten"}},{"enumeration":"DATA_REQUEST","property":"HBF.downloadTypeDataRequest","label":{"fi":"Data
         request","en":"Data request","sv":"Data request"}},{"enumeration":"APPROVED_DATA_REQUEST","property":"HBF.downloadTypeApprovedDataRequest","label":{"fi":"Hyväksytty
         aineistopyyntö","en":"Approved data request","sv":"Godkänd dataförfrågan"}},{"enumeration":"APPROVED_API_KEY_REQUEST","property":"HBF.downloadTypeApprovedApiKeyRequest","label":{"fi":"Hyväksytty
         aineistopyyntö (API-avain)","en":"Approved data request (API key)","sv":"Godkänd
@@ -308,11 +316,11 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2024-11-05 09:55:14 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-04-15 06:25:04 GMT
+  recorded_with: vcr/1.7.0, webmockr/2.0.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/metadata/ranges/MZ.recordQualityEnum?lang=multi&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/metadata/ranges/MZ.recordQualityEnum?lang=multi&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -326,17 +334,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 05 Nov 2024 09:55:03 GMT
+      date: Tue, 15 Apr 2025 06:25:04 GMT
       content-type: application/json; charset=utf-8
       content-length: '551'
       x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"227-r7mSFm73e9r3gsBRF6Llh1LyIT8"
+      etag: W/"227-X4xlY3SOpC79HQ2BulVJUbaL7Ck"
       vary: Accept-Encoding
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -346,13 +354,13 @@ http_interactions:
       file: no
       string: '[{"id":"MZ.recordQualityExpertVerified","value":{"sv":"Expertkuraterad","en":"Expert
         verified","fi":"Asiantuntijan varmistama"}},{"id":"MZ.recordQualityCommunityVerified","value":{"en":"Community
-        verified","fi":"Yhteisön varmistama","sv":"Gemenskapskuraterat"}},{"id":"MZ.recordQualityNeutral","value":{"sv":"Obedömd","fi":"Ei
-        arvioitu","en":"Unassessed"}},{"id":"MZ.recordQualityUncertain","value":{"fi":"Epävarma","en":"Uncertain","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}]'
-  recorded_at: 2024-11-05 09:55:14 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+        verified","fi":"Yhteisön varmistama","sv":"Gemenskapskuraterat"}},{"id":"MZ.recordQualityNeutral","value":{"en":"Unassessed","fi":"Ei
+        arvioitu","sv":"Obedömd"}},{"id":"MZ.recordQualityUncertain","value":{"en":"Uncertain","fi":"Epävarma","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}]'
+  recorded_at: 2025-04-15 06:25:04 GMT
+  recorded_with: vcr/1.7.0, webmockr/2.0.0
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -366,13 +374,12 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 05 Nov 2024 09:55:03 GMT
+      date: Tue, 15 Apr 2025 06:25:04 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -380,16 +387,23 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"nextPage":2,"lastPage":326325,"pageSize":10,"total":3263247,"cacheTimestamp":1730800513,"results":[{"unit":{"abundanceString":"kymmeniä","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Prunus
-        pensylvanica","scientificNameAuthorship":"L. f."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45660_U"},"gathering":{"conversions":{"day":24,"month":10,"wgs84CenterPoint":{"lat":60.198893,"lon":25.049444}},"eventDate":{"begin":"2024-10-24","end":"2024-10-24"},"interpretations":{"coordinateAccuracy":10}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"abundanceString":"kymmeniä","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Galium
-        album","scientificNameAuthorship":"Mill."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45610_U"},"gathering":{"conversions":{"day":24,"month":10,"wgs84CenterPoint":{"lat":60.202623,"lon":24.880834}},"eventDate":{"begin":"2024-10-24","end":"2024-10-24"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Amphipyra
-        tragopoginis","scientificNameAuthorship":"(Clerck, 1759)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"lattayökkönen","unitId":"http://tun.fi/JX.325272#3"},"gathering":{"conversions":{"day":24,"month":10,"wgs84CenterPoint":{"lat":60.274134,"lon":24.945821}},"eventDate":{"begin":"2024-10-24","end":"2024-10-24"},"hourBegin":7,"hourEnd":9,"interpretations":{"coordinateAccuracy":1},"minutesBegin":0,"minutesEnd":0},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Corvus
-        corone","scientificNameAuthorship":"Linnaeus, 1758"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"varis","unitId":"http://tun.fi/JX.325166#3"},"gathering":{"conversions":{"day":24,"month":10,"wgs84CenterPoint":{"lat":60.174335,"lon":24.929897}},"eventDate":{"begin":"2024-10-24","end":"2024-10-24"},"hourBegin":9,"interpretations":{"coordinateAccuracy":1},"minutesBegin":22},"document":{"sourceId":"http://tun.fi/KE.1141"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Rosa
-        rugosa","scientificNameAuthorship":"Thunb."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45655_U"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.210107,"lon":25.147043}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":10}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Rosa
-        rugosa","scientificNameAuthorship":"Thunb."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45656_U"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.210127,"lon":25.14687}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":10}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Amelanchier
-        spicata","scientificNameAuthorship":"(Lam.) K. Koch"}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45657_U"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.210267,"lon":25.148829}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Rosa
-        rugosa","scientificNameAuthorship":"Thunb."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45658_U"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.210022,"lon":25.148393}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":10}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Rosa
-        rugosa","scientificNameAuthorship":"Thunb."}},"quality":{"documentGatheringUnitQualityIssues":false},"unitId":"http://tun.fi/HR.1910/45659_U"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.21014,"lon":25.148719}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":10}},"document":{"sourceId":"http://tun.fi/KE.1681"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Xestia
-        speciosa","scientificNameAuthorship":"(Hübner, 1813)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"kirjoharmoyökkönen","unitId":"http://tun.fi/JX.325165#3"},"gathering":{"conversions":{"day":23,"month":10,"wgs84CenterPoint":{"lat":60.274134,"lon":24.945821}},"eventDate":{"begin":"2024-10-23","end":"2024-10-23"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
-  recorded_at: 2024-11-05 09:55:14 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+      string: '{"currentPage":1,"nextPage":2,"lastPage":5481497,"pageSize":10,"total":54814962,"cacheTimestamp":1744698303,"results":[{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Phylloscopus
+        collybita","scientificNameAuthorship":"(Vieillot, 1817)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"tiltaltti","unitId":"http://tun.fi/JX.2261995#3"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":59.782335,"lon":21.368648}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Troglodytes
+        troglodytes","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"peukaloinen","unitId":"http://tun.fi/JX.2261996#3"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":59.779612,"lon":21.373079}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Achlya
+        flavicornis","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Achlya
+        flavicornis","unitId":"http://tun.fi/JX.2261998#18"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Agonopterix
+        arenella","scientificNameAuthorship":"(Denis & Schiffermüller, 1775)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Agonopterix
+        arenella","unitId":"http://tun.fi/JX.2261998#9"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Agonopterix
+        ocellana","scientificNameAuthorship":"(Fabricius, 1775)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Agonopterix
+        ocellana","unitId":"http://tun.fi/JX.2261998#6"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"3","interpretations":{"individualCount":3,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Brachionycha
+        nubeculosa","scientificNameAuthorship":"(Esper, 1785)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Brachionycha
+        nubeculosa","unitId":"http://tun.fi/JX.2261998#15"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Lithophane
+        consocia","scientificNameAuthorship":"(Borkhausen, 1792)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Lithophane
+        consocia","unitId":"http://tun.fi/JX.2261998#21"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Odontosia
+        sieversii","scientificNameAuthorship":"(Ménétriés, 1856)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Odontosia
+        sieversii","unitId":"http://tun.fi/JX.2261998#3"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"1","interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Orthosia
+        gothica","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Orthosia
+        gothica","unitId":"http://tun.fi/JX.2261998#12"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":63.033161,"lon":23.686099}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}},{"unit":{"abundanceString":"2","interpretations":{"individualCount":2,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Podiceps
+        auritus","scientificNameAuthorship":"(Linnaeus, 1758)"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"mustakurkku-uikku","unitId":"http://tun.fi/JX.2261997#3"},"gathering":{"conversions":{"day":15,"month":4,"wgs84CenterPoint":{"lat":59.779612,"lon":21.373079}},"eventDate":{"begin":"2025-04-15","end":"2025-04-15"},"interpretations":{"coordinateAccuracy":1}},"document":{"sourceId":"http://tun.fi/KE.389"}}]}'
+  recorded_at: 2025-04-15 06:25:04 GMT
+  recorded_with: vcr/1.7.0, webmockr/2.0.0

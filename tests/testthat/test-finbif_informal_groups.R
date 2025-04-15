@@ -23,19 +23,18 @@ test_that("fetching informal groups works", {
     expect_equal(
       limit,
       c(
-        "Algae",
-        "  --Macro algae",
-        "      --Brown algae and yellow green algae",
-        "      --Green algae",
-        "      --Red algae",
-        "      --Stoneworts",
-        "...148 more groups"
+        "Birds",
+        "  --Birds of prey and owls",
+        "      --Owls",
+        "      --Birds of prey",
+        "  --Waterbirds",
+        "...149 more groups"
       )
     )
 
     expect_equal(
       bryophytes,
-      c("Bryophytes", "  --Hornworts", "  --Liverworts", "  --Mosses")
+      c("Bryophytes", "  --Mosses", "  --Liverworts", "  --Hornworts")
     )
 
   }

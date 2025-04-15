@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://apitest.laji.fi/v0/informal-taxon-groups/tree?pageSize=1000&lang=en&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/informal-taxon-groups/tree?pageSize=1000&lang=en&access_token=<finbif_token>
     body:
       encoding: ''
       string: ''
@@ -15,18 +15,13 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 05 Nov 2024 09:55:09 GMT
+      date: Tue, 15 Apr 2025 06:25:08 GMT
       content-type: application/json; charset=utf-8
-      transfer-encoding: chunked
+      content-length: '7006'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-download-options: noopen
-      etag: W/"1b96-9+77+KSySUsINRdyGVv9L3SO2Y4"
-      vary: Accept-Encoding
-      content-encoding: gzip
+      etag: W/"1b5e-7oveH2vATkXXUsslrtjr8FrEbjw"
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -34,54 +29,58 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"currentPage":1,"pageSize":1000,"total":14,"results":[{"id":"MVL.22","hasSubGroup":[{"id":"MVL.82","hasSubGroup":[{"id":"MVL.544","name":"Brown
-        algae and yellow green algae"},{"id":"MVL.543","name":"Green algae"},{"id":"MVL.542","name":"Red
-        algae"},{"id":"MVL.541","name":"Stoneworts"}],"name":"Macro algae"}],"name":"Algae"},{"id":"MVL.1","hasSubGroup":[{"id":"MVL.1141","hasSubGroup":[{"id":"MVL.1162","name":"Birds
-        of prey"},{"id":"MVL.1161","name":"Owls"}],"name":"Birds of prey and owls"},{"id":"MVL.1241","name":"Waterbirds"}],"name":"Birds"},{"id":"MVL.23","hasSubGroup":[{"id":"MVL.563","name":"Hornworts"},{"id":"MVL.562","name":"Liverworts"},{"id":"MVL.561","name":"Mosses"}],"name":"Bryophytes"},{"id":"MVL.39","hasSubGroup":[{"id":"MVL.213","hasSubGroup":[{"id":"MVL.215","name":"Amphipods,
-        isopods, opossum shrimps"},{"id":"MVL.214","name":"Crabs, shrimps and crayfishes"},{"id":"MVL.481","name":"Other
-        macrocrustaceans"},{"id":"MVL.462","name":"Woodlice"}],"name":"Macrocrustaceans"},{"id":"MVL.461","hasSubGroup":[{"id":"MVL.211","name":"Branchiopoda"},{"id":"MVL.210","name":"Copepods"},{"id":"MVL.212","name":"Seed
-        shrimps"}],"name":"Microcrustaceans"}],"name":"Crustaceans"},{"id":"MVL.27","hasSubGroup":[{"id":"MVL.1285","name":"Aquarium
-        fishes"},{"id":"MVL.1286","name":"Endemic Cichlids of Lake Tanganyika"},{"id":"MVL.1287","name":"Endemic
-        cichlids of Lake Malawi"},{"id":"MVL.1283","name":"Fishes of Europe"},{"id":"MVL.1284","name":"Freshwater
-        fishes"}],"name":"Fishes"},{"id":"MVL.233","hasSubGroup":[{"id":"MVL.25","hasSubGroup":[{"id":"MVL.382","name":"Lichenicolous
-        fungi"},{"id":"MVL.381","name":"Lichenized fungi"}],"name":"Lichenized and
-        lichenicolous fungi"},{"id":"MVL.24","hasSubGroup":[{"id":"MVL.61","name":"Agaricoid
-        fungi"},{"id":"MVL.121","hasSubGroup":[{"id":"MVL.641","name":"Cantharelloid
-        fungi"},{"id":"MVL.125","name":"Clavarioid fungi"},{"id":"MVL.124","name":"Corticioid
-        fungi"},{"id":"MVL.127","name":"Hydnoid fungi"},{"id":"MVL.123","name":"Jelly
-        fungi, tremelloid fungi"},{"id":"MVL.122","name":"Polypores"},{"id":"MVL.126","name":"Ramarioid
-        fungi"}],"name":"Aphyllophoroid fungi"},{"id":"MVL.62","name":"Boletoid fungi"},{"id":"MVL.63","name":"Cyphelloid
-        fungi"},{"id":"MVL.81","name":"Gastroid fungi, puffballs"}],"name":"Macrofungi"},{"id":"MVL.361","name":"Non-lichenized
-        Ascomycota"},{"id":"MVL.564","hasSubGroup":[{"id":"MVL.582","name":"Erysiphales"},{"id":"MVL.581","name":"Exobasidium"},{"id":"MVL.583","name":"Rust
-        fungi"},{"id":"MVL.565","name":"Smut fungi"}],"name":"Parasitic microfungi"}],"name":"Fungi
-        and lichens"},{"id":"MVL.232","hasSubGroup":[{"id":"MVL.222","hasSubGroup":[{"id":"MVL.681","name":"Caddisflies"},{"id":"MVL.1003","name":"Mayflies"},{"id":"MVL.1002","name":"Stoneflies"}],"name":"Aquatic
-        insects"},{"id":"MVL.1004","name":"Archaeognatha and Zygentoma"},{"id":"MVL.33","name":"Beetles"},{"id":"MVL.227","name":"Booklice"},{"id":"MVL.230","name":"Cockroaches"},{"id":"MVL.36","name":"Dragonflies"},{"id":"MVL.225","name":"Earwigs"},{"id":"MVL.661","name":"Fleas"},{"id":"MVL.235","name":"Harvestmen"},{"id":"MVL.223","name":"Katydids,
-        crickets, grasshopper"},{"id":"MVL.1001","name":"Lice"},{"id":"MVL.234","hasSubGroup":[{"id":"MVL.1263","name":"Water
-        mites"}],"name":"Mites and ticks"},{"id":"MVL.31","hasSubGroup":[{"id":"MVL.181","name":"Butterflies"},{"id":"MVL.184","name":"Geometer
-        moths"},{"id":"MVL.237","name":"Macrolepidoptera"},{"id":"MVL.238","name":"Microlepidoptera"},{"id":"MVL.183","name":"Owlet
-        moths"},{"id":"MVL.182","name":"Sphinx moths"}],"name":"Moths and butterflies"},{"id":"MVL.226","name":"Net-winged
-        insects, megalopterans, snakeflies, mecopterans"},{"id":"MVL.236","name":"Pseudoscorpions"},{"id":"MVL.30","name":"Sawflies,
-        wasps, ants and bees"},{"id":"MVL.38","name":"Spiders"},{"id":"MVL.228","name":"Thrips"},{"id":"MVL.34","hasSubGroup":[{"id":"MVL.704","name":"Aphids"},{"id":"MVL.702","name":"Auchenorrhynchans"},{"id":"MVL.703","name":"Bladloppor"},{"id":"MVL.701","name":"Heteropterans"},{"id":"MVL.706","name":"Soft
-        scales"},{"id":"MVL.705","name":"Whiteflies"}],"name":"True bugs"},{"id":"MVL.224","hasSubGroup":[{"id":"MVL.342","name":"Brachyceran
-        flies"},{"id":"MVL.341","name":"Nematoceran flies"}],"name":"True flies"},{"id":"MVL.229","name":"Twisted-wing
-        parasites"}],"name":"Insects and arachnids"},{"id":"MVL.2","hasSubGroup":[{"id":"MVL.187","name":"Bats"},{"id":"MVL.1181","name":"Small
-        mammals"}],"name":"Mammals"},{"id":"MVL.40","hasSubGroup":[{"id":"MVL.463","name":"Aquatic
-        snails"},{"id":"MVL.239","name":"Bivalves"},{"id":"MVL.240","name":"Landsnails
-        and slugs"}],"name":"Molluscs"},{"id":"MVL.37","hasSubGroup":[{"id":"MVL.243","name":"Chilopods,
-        centipedes"},{"id":"MVL.244","name":"Millipedes"},{"id":"MVL.245","name":"Pauropods"},{"id":"MVL.246","name":"Symphylans"}],"name":"Myriapods"},{"id":"MVL.41","hasSubGroup":[{"id":"MVL.441","name":"Bacteria"},{"id":"MVL.301","name":"Entognatha"},{"id":"MVL.321","name":"Slime
-        molds"},{"id":"MVL.521","name":"Sponges, bryozoans and cnidarians"},{"id":"MVL.442","name":"Viruses
-        and viroids"}],"name":"Other organisms"},{"id":"MVL.26","hasSubGroup":[{"id":"MVL.161","name":"Amphibians"},{"id":"MVL.162","name":"Reptiles"}],"name":"Reptiles
-        and amphibians"},{"id":"MVL.343","hasSubGroup":[{"id":"MVL.1062","name":"Berry
-        plants"},{"id":"MVL.1103","name":"Carnivorous plants"},{"id":"MVL.1102","hasSubGroup":[{"id":"MVL.1100","hasSubGroup":[{"id":"MVL.1097","name":"Elodeids"},{"id":"MVL.1095","name":"Helophytes"},{"id":"MVL.1098","name":"Isoetids"},{"id":"MVL.1099","name":"Lemnids"},{"id":"MVL.1096","name":"Nympheids"},{"id":"MVL.1122","name":"Submerged
-        plants"}],"name":"Aquatic plants"},{"id":"MVL.1089","hasSubGroup":[{"id":"MVL.1088","name":"Deciduous
-        chamaephytes"},{"id":"MVL.1087","name":"Evergreen chamaephytes"}],"name":"Chamaephytes"},{"id":"MVL.1092","hasSubGroup":[{"id":"MVL.1091","name":"Deciduous
-        climbers"},{"id":"MVL.1090","name":"Evergreen climbers"}],"name":"Climbers"},{"id":"MVL.1094","name":"Geophytes"},{"id":"MVL.1093","name":"Hemicryptophytes"},{"id":"MVL.1121","name":"Shore
-        plants"},{"id":"MVL.1086","hasSubGroup":[{"id":"MVL.1085","name":"Deciduous
-        shrubs"},{"id":"MVL.1084","name":"Evergreen bushes"}],"name":"Shrubs"},{"id":"MVL.1101","name":"Therophytes"},{"id":"MVL.1083","hasSubGroup":[{"id":"MVL.1082","name":"Deciduous
-        trees"},{"id":"MVL.1081","name":"Evergreen trees"}],"name":"Trees"}],"name":"Plant
-        life forms"},{"id":"MVL.1221","name":"Spring flowers"}],"name":"Vascular plants"},{"id":"MVL.28","hasSubGroup":[{"id":"MVL.241","hasSubGroup":[{"id":"MVL.503","name":"Earthworms,
-        oligochaetes"},{"id":"MVL.501","name":"Leeches"},{"id":"MVL.502","name":"Polychaetes"}],"name":"Annelids"},{"id":"MVL.962","hasSubGroup":[{"id":"MVL.621","name":"Monogeneans"},{"id":"MVL.961","name":"Tapeworms"}],"name":"Parasitic
-        worms"},{"id":"MVL.401","name":"Priapulid worms"},{"id":"MVL.402","name":"Ribbon
-        worms"},{"id":"MVL.601","name":"Turbellarians"}],"name":"Worms"}],"lastPage":1,"@context":"http://schema.laji.fi/context/informalTaxonGroup-en.jsonld"}'
-  recorded_at: 2024-11-05 09:55:20 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+      string: '{"results":[{"hasSubGroup":[{"hasSubGroup":[{"name":"Owls","id":"MVL.1161"},{"name":"Birds
+        of prey","id":"MVL.1162"}],"name":"Birds of prey and owls","id":"MVL.1141"},{"name":"Waterbirds","id":"MVL.1241"}],"name":"Birds","id":"MVL.1"},{"hasSubGroup":[{"name":"Small
+        mammals","id":"MVL.1181"},{"name":"Bats","id":"MVL.187"}],"name":"Mammals","id":"MVL.2"},{"hasSubGroup":[{"hasSubGroup":[{"name":"Stoneworts","id":"MVL.541"},{"name":"Red
+        algae","id":"MVL.542"},{"name":"Green algae","id":"MVL.543"},{"name":"Brown
+        algae and yellow green algae","id":"MVL.544"}],"name":"Macro algae","id":"MVL.82"}],"name":"Algae","id":"MVL.22"},{"hasSubGroup":[{"name":"Mosses","id":"MVL.561"},{"name":"Liverworts","id":"MVL.562"},{"name":"Hornworts","id":"MVL.563"}],"name":"Bryophytes","id":"MVL.23"},{"hasSubGroup":[{"name":"Lice","id":"MVL.1001"},{"name":"Archaeognatha
+        and Zygentoma","id":"MVL.1004"},{"hasSubGroup":[{"name":"Stoneflies","id":"MVL.1002"},{"name":"Mayflies","id":"MVL.1003"},{"name":"Caddisflies","id":"MVL.681"}],"name":"Aquatic
+        insects","id":"MVL.222"},{"name":"Katydids, crickets, grasshopper","id":"MVL.223"},{"hasSubGroup":[{"name":"Nematoceran
+        flies","id":"MVL.341"},{"name":"Brachyceran flies","id":"MVL.342"}],"name":"True
+        flies","id":"MVL.224"},{"name":"Earwigs","id":"MVL.225"},{"name":"Net-winged
+        insects, megalopterans, snakeflies, mecopterans","id":"MVL.226"},{"name":"Booklice","id":"MVL.227"},{"name":"Thrips","id":"MVL.228"},{"name":"Twisted-wing
+        parasites","id":"MVL.229"},{"name":"Cockroaches","id":"MVL.230"},{"hasSubGroup":[{"name":"Water
+        mites","id":"MVL.1263"}],"name":"Mites and ticks","id":"MVL.234"},{"name":"Harvestmen","id":"MVL.235"},{"name":"Pseudoscorpions","id":"MVL.236"},{"name":"Sawflies,
+        wasps, ants and bees","id":"MVL.30"},{"hasSubGroup":[{"name":"Butterflies","id":"MVL.181"},{"name":"Sphinx
+        moths","id":"MVL.182"},{"name":"Owlet moths","id":"MVL.183"},{"name":"Geometer
+        moths","id":"MVL.184"},{"name":"Macrolepidoptera","id":"MVL.237"},{"name":"Microlepidoptera","id":"MVL.238"}],"name":"Moths
+        and butterflies","id":"MVL.31"},{"name":"Beetles","id":"MVL.33"},{"hasSubGroup":[{"name":"Heteropterans","id":"MVL.701"},{"name":"Auchenorrhynchans","id":"MVL.702"},{"name":"Bladloppor","id":"MVL.703"},{"name":"Aphids","id":"MVL.704"},{"name":"Whiteflies","id":"MVL.705"},{"name":"Soft
+        scales","id":"MVL.706"}],"name":"True bugs","id":"MVL.34"},{"name":"Dragonflies","id":"MVL.36"},{"name":"Spiders","id":"MVL.38"},{"name":"Fleas","id":"MVL.661"}],"name":"Insects
+        and arachnids","id":"MVL.232"},{"hasSubGroup":[{"hasSubGroup":[{"hasSubGroup":[{"name":"Polypores","id":"MVL.122"},{"name":"Jelly
+        fungi, tremelloid fungi","id":"MVL.123"},{"name":"Corticioid fungi","id":"MVL.124"},{"name":"Clavarioid
+        fungi","id":"MVL.125"},{"name":"Ramarioid fungi","id":"MVL.126"},{"name":"Hydnoid
+        fungi","id":"MVL.127"},{"name":"Cantharelloid fungi","id":"MVL.641"}],"name":"Aphyllophoroid
+        fungi","id":"MVL.121"},{"name":"Agaricoid fungi","id":"MVL.61"},{"name":"Boletoid
+        fungi","id":"MVL.62"},{"name":"Cyphelloid fungi","id":"MVL.63"},{"name":"Gastroid
+        fungi, puffballs","id":"MVL.81"}],"name":"Macrofungi","id":"MVL.24"},{"hasSubGroup":[{"name":"Lichenized
+        fungi","id":"MVL.381"},{"name":"Lichenicolous fungi","id":"MVL.382"}],"name":"Lichenized
+        and lichenicolous fungi","id":"MVL.25"},{"name":"Non-lichenized Ascomycota","id":"MVL.361"},{"hasSubGroup":[{"name":"Smut
+        fungi","id":"MVL.565"},{"name":"Exobasidium","id":"MVL.581"},{"name":"Erysiphales","id":"MVL.582"},{"name":"Rust
+        fungi","id":"MVL.583"}],"name":"Parasitic microfungi","id":"MVL.564"}],"name":"Fungi
+        and lichens","id":"MVL.233"},{"hasSubGroup":[{"name":"Amphibians","id":"MVL.161"},{"name":"Reptiles","id":"MVL.162"}],"name":"Reptiles
+        and amphibians","id":"MVL.26"},{"hasSubGroup":[{"name":"Fishes of Europe","id":"MVL.1283"},{"name":"Freshwater
+        fishes","id":"MVL.1284"},{"name":"Aquarium fishes","id":"MVL.1285"},{"name":"Endemic
+        Cichlids of Lake Tanganyika","id":"MVL.1286"},{"name":"Endemic cichlids of
+        Lake Malawi","id":"MVL.1287"}],"name":"Fishes","id":"MVL.27"},{"hasSubGroup":[{"hasSubGroup":[{"name":"Leeches","id":"MVL.501"},{"name":"Polychaetes","id":"MVL.502"},{"name":"Earthworms,
+        oligochaetes","id":"MVL.503"}],"name":"Annelids","id":"MVL.241"},{"name":"Priapulid
+        worms","id":"MVL.401"},{"name":"Ribbon worms","id":"MVL.402"},{"name":"Turbellarians","id":"MVL.601"},{"hasSubGroup":[{"name":"Monogeneans","id":"MVL.621"},{"name":"Tapeworms","id":"MVL.961"}],"name":"Parasitic
+        worms","id":"MVL.962"}],"name":"Worms","id":"MVL.28"},{"hasSubGroup":[{"name":"Berry
+        plants","id":"MVL.1062"},{"hasSubGroup":[{"hasSubGroup":[{"name":"Evergreen
+        trees","id":"MVL.1081"},{"name":"Deciduous trees","id":"MVL.1082"}],"name":"Trees","id":"MVL.1083"},{"hasSubGroup":[{"name":"Evergreen
+        bushes","id":"MVL.1084"},{"name":"Deciduous shrubs","id":"MVL.1085"}],"name":"Shrubs","id":"MVL.1086"},{"hasSubGroup":[{"name":"Evergreen
+        chamaephytes","id":"MVL.1087"},{"name":"Deciduous chamaephytes","id":"MVL.1088"}],"name":"Chamaephytes","id":"MVL.1089"},{"hasSubGroup":[{"name":"Evergreen
+        climbers","id":"MVL.1090"},{"name":"Deciduous climbers","id":"MVL.1091"}],"name":"Climbers","id":"MVL.1092"},{"name":"Hemicryptophytes","id":"MVL.1093"},{"name":"Geophytes","id":"MVL.1094"},{"hasSubGroup":[{"name":"Helophytes","id":"MVL.1095"},{"name":"Nympheids","id":"MVL.1096"},{"name":"Elodeids","id":"MVL.1097"},{"name":"Isoetids","id":"MVL.1098"},{"name":"Lemnids","id":"MVL.1099"},{"name":"Submerged
+        plants","id":"MVL.1122"}],"name":"Aquatic plants","id":"MVL.1100"},{"name":"Therophytes","id":"MVL.1101"},{"name":"Shore
+        plants","id":"MVL.1121"}],"name":"Plant life forms","id":"MVL.1102"},{"name":"Carnivorous
+        plants","id":"MVL.1103"},{"name":"Spring flowers","id":"MVL.1221"}],"name":"Vascular
+        plants","id":"MVL.343"},{"hasSubGroup":[{"name":"Chilopods, centipedes","id":"MVL.243"},{"name":"Millipedes","id":"MVL.244"},{"name":"Pauropods","id":"MVL.245"},{"name":"Symphylans","id":"MVL.246"}],"name":"Myriapods","id":"MVL.37"},{"hasSubGroup":[{"hasSubGroup":[{"name":"Crabs,
+        shrimps and crayfishes","id":"MVL.214"},{"name":"Amphipods, isopods, opossum
+        shrimps","id":"MVL.215"},{"name":"Woodlice","id":"MVL.462"},{"name":"Other
+        macrocrustaceans","id":"MVL.481"}],"name":"Macrocrustaceans","id":"MVL.213"},{"hasSubGroup":[{"name":"Copepods","id":"MVL.210"},{"name":"Branchiopoda","id":"MVL.211"},{"name":"Seed
+        shrimps","id":"MVL.212"}],"name":"Microcrustaceans","id":"MVL.461"}],"name":"Crustaceans","id":"MVL.39"},{"hasSubGroup":[{"name":"Bivalves","id":"MVL.239"},{"name":"Landsnails
+        and slugs","id":"MVL.240"},{"name":"Aquatic snails","id":"MVL.463"}],"name":"Molluscs","id":"MVL.40"},{"hasSubGroup":[{"name":"Entognatha","id":"MVL.301"},{"name":"Slime
+        molds","id":"MVL.321"},{"name":"Bacteria","id":"MVL.441"},{"name":"Viruses
+        and viroids","id":"MVL.442"},{"name":"Sponges, bryozoans and cnidarians","id":"MVL.521"}],"name":"Other
+        organisms","id":"MVL.41"}],"@context":"http://schema.laji.fi/context/informalTaxonGroup-en.jsonld"}'
+  recorded_at: 2025-04-15 06:25:08 GMT
+  recorded_with: vcr/1.7.0, webmockr/2.0.0
