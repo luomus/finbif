@@ -56,7 +56,8 @@ Useful links:
 
 Other contributors:
 \itemize{
-  \item Finnish Museum of Natural History - Luomus [copyright holder]
+  \item Finnish Museum of Natural History - Luomus (03tcx6c30) [copyright holder]
+  \item Finnish Biodiversity Information Facility (01c0yey93) [copyright holder]
 }
 
 }

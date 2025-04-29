@@ -3,7 +3,11 @@ Title: Interface for the 'Finnish Biodiversity Information Facility' API
 Version: 0.9.10.9000
 Authors@R: c(
     person(given = "Finnish Museum of Natural History - Luomus",
-           role = "cph"),
+           role = "cph",
+           comment = c(ROR = "03tcx6c30")),
+    person(given = "Finnish Biodiversity Information Facility",
+           role = "cph",
+           comment = c(ROR = "01c0yey93")),
     person(given = "William K.",
            family = "Morris",
            role = c("aut", "cre"),

@@ -34,6 +34,10 @@
     {
       "@type": "Organization",
       "name": "Finnish Museum of Natural History - Luomus"
+    },
+    {
+      "@type": "Organization",
+      "name": "Finnish Biodiversity Information Facility"
     }
   ],
   "maintainer": [
@@ -234,7 +238,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "fileSize": "14568.277KB",
+  "fileSize": "14568.551KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
