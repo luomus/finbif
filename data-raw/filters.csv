@@ -125,3 +125,4 @@ collectionIdExplicit,collection_exclusive,uri,FALSE,",",FALSE
 collectionIdExplicitNot,not_collection_exclusive,uri,FALSE,",",FALSE
 local,is_local,logical,FALSE,",",FALSE
 actualLoadBefore,import_date,date,FALSE,",",FALSE
+includeNullLoadDates,include_null_import_dates,logical,FALSE,",",FALSE
