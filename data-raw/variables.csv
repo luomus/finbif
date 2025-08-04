@@ -725,3 +725,10 @@ unit.media.type,record_media_type2,occurrenceAssociatedMediaType2,FALSE,FALSE,ch
 unit.local,local,local,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.annotations.atlasCode,document_annotation_atlas_code_id,documentAnnotationAtlasCodeID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.atlasCode,record_annotation_atlas_code_id,recordAnnotationAtlasCodeID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.identification.linkings.taxon.qname,record_annotation_taxon_qname,occurrenceAnnotationTaxonConceptQname,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.qname,record_pre_annotation_taxon_qname,occurrencePreAnnotationTaxonConceptQname,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.identifications.linkings.taxon.qname,record_identifications_taxon_qname,occurrenceIdentificationsTaxonConceptQname,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.interpretations.det,determiner_interpreted,identifiedByInterpreted,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.originalTaxon.qname,orig_taxon_qname,originalTaxonConceptQname,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.linkings.taxon.qname,taxon_qname,taxonConceptQname,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.types.linkings.taxon.qname,type_specimen_taxon_qname,typeSpecimenTaxonConceptQname,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
