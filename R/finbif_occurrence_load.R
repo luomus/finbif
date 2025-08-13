@@ -145,7 +145,16 @@ finbif_occurrence_load <- function(
   record_id <- file_vars[["translated_var"]] == "record_id"
   record_id <- file_vars[record_id, ]
   record_id <- rownames(record_id)
-  record_id <- fb_occurrence_df[[record_id]]
+
+  event_id <- file_vars[["translated_var"]] == "event_id"
+  event_id <- file_vars[event_id, ]
+  event_id <- rownames(event_id)
+
+  document_id <- file_vars[["translated_var"]] == "document_id"
+  document_id <- file_vars[document_id, ]
+  document_id <- rownames(document_id)
+
+  record_id_col <- fb_occurrence_df[[record_id]]
 
   fb_occurrence_df <- expand_lite_cols(fb_occurrence_df)
 
@@ -166,7 +175,7 @@ finbif_occurrence_load <- function(
     tzone = tzone,
     locale = locale,
     include_new_cols = !all_cols,
-    record_id = record_id
+    record_id = record_id_col
   )
 
   fb_occurrence_df <- compute_vars_from_id(fb_occurrence_df)
@@ -229,7 +238,7 @@ finbif_occurrence_load <- function(
     url = attr(fb_occurrence_df, "url", TRUE),
     time = "??",
     dwc = dwc,
-    record_id = record_id
+    record_id = record_id_col
   )
 
   for (ftype in select[["facts"]]) {
@@ -246,9 +255,9 @@ finbif_occurrence_load <- function(
 
     id <- switch(
       ftype,
-      record = file_vars[["Unit.UnitID", var_type]],
-      event = file_vars[["Gathering.GatheringID", var_type]],
-      document = file_vars[["Document.DocumentID", var_type]]
+      record = file_vars[[record_id, var_type]],
+      event = file_vars[[event_id, var_type]],
+      document = file_vars[[document_id, var_type]]
     )
 
     facts_df <- structure(
@@ -282,8 +291,9 @@ finbif_occurrence_load <- function(
 }
 
 #' @noRd
-read_finbif_tsv <- function(fb_occurrenc_obj) {
-  file <- as.character(fb_occurrenc_obj[["file"]])
+#' @importFrom utils read.delim unzip
+read_finbif_tsv <- function(fb_occurrence_obj) {
+  file <- as.character(fb_occurrence_obj[["file"]])
   ptrn <- "^https?://.+?/HBF\\."
 
   if (grepl(ptrn, file)) {
@@ -293,14 +303,14 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
   tsv <- basename(file)
   tsv <- gsub("zip", "tsv", tsv)
 
-  facts <- fb_occurrenc_obj[["facts"]]
+  facts <- fb_occurrence_obj[["facts"]]
 
   tsv_prefix <- switch(
     facts,
     none = "rows_",
     record = "unit_facts_",
     event = "gathering_facts_",
-    document = "document_facts_",
+    document = "document_facts_"
   )
 
   valid_facts <- facts %in% c("none", "record", "event", "document")
@@ -310,26 +320,44 @@ read_finbif_tsv <- function(fb_occurrenc_obj) {
   )
 
   file <- gsub("rows_", tsv_prefix, file)
-  fb_occurrenc_obj[["file"]] <- file
-  fb_occurrenc_obj[["tsv"]] <-  paste0(tsv_prefix, tsv)
+  fb_occurrence_obj[["file"]] <- file
+  fb_occurrence_obj[["tsv"]] <-  paste0(tsv_prefix, tsv)
 
   if (grepl("^[0-9]*$", file)) {
-    fb_occurrenc_obj[["tsv"]] <- sprintf("%sHBF.%s.tsv", tsv_prefix, file)
+    fb_occurrence_obj[["tsv"]] <- sprintf("%sHBF.%s.tsv", tsv_prefix, file)
     finbif_dl_url <- getOption("finbif_dl_url")
-    fb_occurrenc_obj[["url"]] <- sprintf("%s/HBF.%s", finbif_dl_url, file)
-    fb_occurrenc_obj <- get_zip(fb_occurrenc_obj)
-    file <- fb_occurrenc_obj[["file"]]
+    fb_occurrence_obj[["url"]] <- sprintf("%s/HBF.%s", finbif_dl_url, file)
+    fb_occurrence_obj <- get_zip(fb_occurrence_obj)
+    file <- fb_occurrence_obj[["file"]]
   }
 
-  df <- attempt_read(fb_occurrenc_obj)
+  fb_occurrence_obj[["is_dwc"]] <- FALSE
 
-  if (fb_occurrenc_obj[["count_only"]]) {
+  if (grepl("\\.zip$", file)) {
+    files <- utils::unzip(path.expand(file), list = TRUE, unzip = op_unzip())
+
+    if (any(grepl("meta\\.xml$", files[["Name"]]))) {
+      fb_occurrence_obj[["is_dwc"]] <- TRUE
+      fb_occurrence_obj[["tsv"]] <- switch(
+        facts,
+        none = "occurrences.txt",
+        record = "facts/occurrence_facts.txt",
+        event = "facts/event_facts.txt",
+        document = "facts/parent_event_facts.txt"
+      )
+    }
+  }
+
+  df <- attempt_read(fb_occurrence_obj)
+
+  if (fb_occurrence_obj[["count_only"]]) {
     return(df)
   }
 
+  attr(df, "is_dwc") <- fb_occurrence_obj[["is_dwc"]]
   attr(df, "url") <- file
 
-  if (identical(fb_occurrenc_obj[["n"]], -1L)) {
+  if (identical(fb_occurrence_obj[["n"]], -1L)) {
     attr(df, "nrow") <- nrow(df)
   }
 
@@ -380,6 +408,11 @@ attempt_read <- function(fb_occurrence_obj) {
 #' @noRd
 localise_enums <- function(df) {
   file_vars <- attr(df, "file_vars", TRUE)
+
+  if (attr(df, "is_dwc")) {
+    row.names(file_vars) <- make.unique(file_vars[["dwc"]])
+  }
+
   field_var_names <- row.names(file_vars)
 
   labels_obj <- list(
@@ -419,6 +452,8 @@ new_vars <- function(df) {
   file_vars <- attr(df, "file_vars", TRUE)
   nss <- file_vars[["superseeded"]] == "FALSE"
   ss <- rownames(file_vars[!nss, ])
+  if (attr(df, "is_dwc")) ss <- file_vars[!nss, "dwc"]
+
   file_cols <- attr(df, "file_cols", TRUE)
 
   if (is.null(file_cols)) {
@@ -624,7 +659,7 @@ dt_read <- function(fb_occurrence_obj) {
 
   if ("zip" %in% names(args)) {
     unzip <- op_unzip()
-    zip_input <- args[[c("zip", "input")]]
+    zip_input <- path.expand(args[[c("zip", "input")]])
     zip_tsv <- args[[c("zip", "tsv")]]
     dir <- dirname(zip_input)
     args_input <- sprintf("%s/%s", dir, zip_tsv)
@@ -655,74 +690,26 @@ dt_read <- function(fb_occurrence_obj) {
   cols <- fix_issue_vars(cols)
 
   file_vars <- infer_file_vars(cols)
+  if (fb_occurrence_obj[["is_dwc"]]) {
+    row.names(file_vars) <- make.unique(file_vars[["dwc"]])
+  }
 
   select <- fb_occurrence_obj[["select"]]
   select[["file_vars"]] <- file_vars
 
-  if (attr(file_vars, "lite", TRUE)) {
-    args[["quote"]] <- "\""
-  }
-
-  if (select[["all"]]) {
-    args_select <- !cols %in% deselect(select)
-    args[["select"]] <- which(args_select)
-  } else {
-    select_query <- select[["query"]]
-
-    if ("unit.quality.documentGatheringUnitQualityIssues" %in% select_query) {
-      select_query <- c(
-        select_query,
-        "unit.quality.issue.issue",
-        "gathering.quality.issue.issue",
-        "gathering.quality.timeIssue.issue",
-        "gathering.quality.locationIssue.issue"
-      )
-      select[["query"]] <- select_query
-    }
-
-    select_type <- select[["type"]]
-    vnms <- sysdata(list(which = "var_names"))
-    select_vars <- file_vars[[select_type]] %in% vnms[select_query, select_type]
-
-    expand_vars <- c(
-      "formatted_taxon_name",
-      "formatted_date_time",
-      "coordinates_euref",
-      "coordinates_1_ykj",
-      "coordinates_10_ykj",
-      "coordinates_1_center_ykj",
-      "coordinates_10_center_ykj"
-    )
-
-    select_vars <- switch(
-      attr(file_vars, "locale", TRUE),
-      none = select_vars,
-      file_vars[["translated_var"]] %in% expand_vars | select_vars
-    )
-
-    args_select <- cols %in% row.names(file_vars[select_vars, ])
-    args_select <- which(args_select)
-
-    for (ftype in select[["facts"]]) {
-      id_col <- switch(
-        ftype,
-        record = "Unit.UnitID",
-        event = "Gathering.GatheringID",
-        document = "Document.DocumentID"
-      )
-      id_col <- which(cols %in% id_col)
-      args_select  <- c(args_select, id_col)
-    }
-
-    args_select <- unique(args_select)
-    args_select <- sort(args_select)
-    args[["select"]] <- args_select
-
-  }
+  args_select <- !cols %in% deselect(select)
+  args[["select"]] <- which(args_select)
 
   args[["nrows"]] <- as.double(fb_occurrence_obj[["n"]])
   args[["check.names"]] <- TRUE
-  args[["skip"]] <- skip + 1L
+
+  skip_n <- 1
+
+  if (fb_occurrence_obj[["is_dwc"]] && fb_occurrence_obj[["facts"]] == "none") {
+    skip_n <- 3
+  }
+
+  args[["skip"]] <- skip + skip_n
   args[["header"]] <- FALSE
 
   df <- structure(
@@ -775,15 +762,22 @@ rd_read <- function(fb_occurrence_obj) {
 
   df_names <- names(df)
   cols <- fix_issue_vars(df_names)
+
   file_vars <- infer_file_vars(cols)
+  if (fb_occurrence_obj[["is_dwc"]]) {
+    row.names(file_vars) <- make.unique(file_vars[["dwc"]])
+  }
+
   select <- fb_occurrence_obj[["select"]]
   select[["file_vars"]] <- file_vars
 
-  if (attr(file_vars, "lite", TRUE)) {
-    quote <- "\""
-  }
-
   n <- as.integer(fb_occurrence_obj[["n"]])
+
+  skip_n <- 1
+
+  if (fb_occurrence_obj[["is_dwc"]] && fb_occurrence_obj[["facts"]] == "none") {
+    skip_n <- 3
+  }
 
   if (identical(n, 0L) || inherits(con, "textConnection")) {
     df <- df[0L, ]
@@ -794,7 +788,7 @@ rd_read <- function(fb_occurrence_obj) {
       quote = quote,
       na.strings = "",
       nrows = n,
-      skip = fb_occurrence_obj[["skip"]] + 1L
+      skip = fb_occurrence_obj[["skip"]] + skip_n
     )
     classes <- file_vars[cols, "type"]
     na_classes <- is.na(classes)
@@ -992,7 +986,7 @@ paste_col <- function(x) {
 
 #' @noRd
 infer_file_vars <- function(cols) {
-  if (length(cols) < 100L && !"Fact" %in% cols) {
+  if (length(cols) < 65L && !"fact" %in% tolower(cols)) {
     file_vars <- sysdata(list(which = "lite_download_file_vars"))
 
     locale <- lapply(file_vars, intersect, cols)
@@ -1204,7 +1198,7 @@ split_taxa_col <- function(col) {
 
 #' @noRd
 split_dt_col <- function(col) {
-  col <- list(col, n = 2L, split = " - ")
+  col <- list(col, n = 2L, split = " - |/")
   col <- split_col(col)
   col <- lapply(col, list, n = 2L, split = " \\[|\\]")
   col <- lapply(col, split_col)
