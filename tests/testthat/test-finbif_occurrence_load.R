@@ -70,7 +70,18 @@ test_that("download imports work", {
         "laji-data-new-col.tsv", tzone = "Etc/UTC", quiet = TRUE
       )
 
+      hbf_12943_zip_file_dt <- finbif_occurrence_load(
+        "HBF.12943.zip",
+        tzone = "Etc/UTC",
+        quiet = TRUE
+      )
 
+      hbf_12943_zip_file <- finbif_occurrence_load(
+        "HBF.12943.zip",
+        tzone = "Etc/UTC",
+        quiet = TRUE,
+        dt = FALSE
+      )
 
     })
 
@@ -113,6 +124,14 @@ test_that("download imports work", {
 
     expect_snapshot_value(
       laji_data_tsv0, style = "json2", ignore_attr = "url"
+    )
+
+    expect_snapshot_value(
+      hbf_12943_zip_file, style = "json2", ignore_attr = "url"
+    )
+
+    expect_snapshot_value(
+      hbf_12943_zip_file_dt, style = "json2", ignore_attr = "url"
     )
 
   }
