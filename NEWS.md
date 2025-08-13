@@ -1,9 +1,14 @@
 # News for Package <span class="pkg">finbif</span>
 
+# finbif 0.9.10.9001
+
+   - Added capacity to import new DarwinCore archive formatted FinBIF
+     download files.
+
 # finbif 0.9.10.9000
 
-   - This is the current development version.
-
+   - Added new variables and filters from upstream API (undocumented).
+   
 # finbif 0.9.10
 
 ## MINOR IMPROVEMENTS
