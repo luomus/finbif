@@ -409,7 +409,7 @@ attempt_read <- function(fb_occurrence_obj) {
 localise_enums <- function(df) {
   file_vars <- attr(df, "file_vars", TRUE)
 
-  if (attr(df, "is_dwc")) {
+  if (attr(df, "is_dwc", TRUE)) {
     row.names(file_vars) <- make.unique(file_vars[["dwc"]])
   }
 
@@ -452,7 +452,7 @@ new_vars <- function(df) {
   file_vars <- attr(df, "file_vars", TRUE)
   nss <- file_vars[["superseeded"]] == "FALSE"
   ss <- rownames(file_vars[!nss, ])
-  if (attr(df, "is_dwc")) ss <- file_vars[!nss, "dwc"]
+  if (attr(df, "is_dwc", TRUE)) ss <- file_vars[!nss, "dwc"]
 
   file_cols <- attr(df, "file_cols", TRUE)
 
@@ -697,6 +697,10 @@ dt_read <- function(fb_occurrence_obj) {
   select <- fb_occurrence_obj[["select"]]
   select[["file_vars"]] <- file_vars
 
+  if (attr(file_vars, "lite", TRUE)) {
+    args[["quote"]] <- "\""
+  }
+
   args_select <- !cols %in% deselect(select)
   args[["select"]] <- which(args_select)
 
@@ -766,6 +770,10 @@ rd_read <- function(fb_occurrence_obj) {
   file_vars <- infer_file_vars(cols)
   if (fb_occurrence_obj[["is_dwc"]]) {
     row.names(file_vars) <- make.unique(file_vars[["dwc"]])
+  }
+
+  if (attr(file_vars, "lite", TRUE)) {
+    quote <- "\""
   }
 
   select <- fb_occurrence_obj[["select"]]
