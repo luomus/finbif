@@ -27,6 +27,4 @@ if (requireNamespace("vcr", quietly = TRUE)) {
     )
   ))
 
-  vcr::check_cassette_names()
-
 }
