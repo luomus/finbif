@@ -7,7 +7,7 @@ articles:
   v03_selecting_variables: v03_selecting_variables.html
   v04_metadata: v04_metadata.html
   v05_filtering: v05_filtering.html
-last_built: 2025-08-22T07:55Z
+last_built: 2025-08-22T08:55Z
 urls:
-  reference: https://finbif-docs-dev.netlify.app/reference
-  article: https://finbif-docs-dev.netlify.app/articles
+  reference: https://luomus.github.io/finbif/reference
+  article: https://luomus.github.io/finbif/articles
