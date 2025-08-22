@@ -1,79 +1,54 @@
 http_interactions:
 - request:
-    method: get
-    uri: https://apitest.laji.fi/v0/taxa/search?query=Bubo%20bubo&matchType=exact&limit=1&personEmail=noreply%40laji.fi&access_token=<finbif_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Content-Type: ''
-      Accept: application/json
+    method: GET
+    uri: https://api.laji.fi/v0/taxa/search?query=Bubo+bubo&matchType=exact&limit=1&personEmail=noreply%40laji.fi&access_token=<finbif_token>
   response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+    status: 200
     headers:
-      date: Tue, 15 Apr 2025 10:31:58 GMT
+      date: Fri, 22 Aug 2025 08:48:05 GMT
       content-type: application/json; charset=utf-8
       content-length: '641'
       x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"281-aQy0XQX5eopXvpcE0L4M+ye2RGU"
       vary: Accept-Encoding
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: ''
-      file: no
       string: '[{"matchingName":"Bubo bubo","nameType":"MX.scientificName","id":"MX.28965","scientificName":"Bubo
         bubo","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"en":"Eurasian
         Eagle-owl","fi":"huuhkaja","se":"lidnu","sv":"berguv"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","fi":"Linnut","sv":"Fåglar"}},{"id":"MVL.1141","name":{"en":"Birds
         of prey and owls","fi":"Petolinnut ja pöllöt","sv":"Rovfåglar och ugglor"}},{"id":"MVL.1161","name":{"en":"Owls","fi":"Pöllöt","sv":"Ugglor"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2025-04-15 10:31:12 GMT
-  recorded_with: vcr/1.7.0, webmockr/2.0.0
+  recorded_at: 2025-08-22 08:48:05
 - request:
-    method: get
-    uri: https://apitest.laji.fi/v0/taxa/search?query=Otter&matchType=exact&limit=1&personEmail=noreply%40laji.fi&access_token=<finbif_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Content-Type: ''
-      Accept: application/json
+    method: GET
+    uri: https://api.laji.fi/v0/taxa/search?query=Otter&matchType=exact&limit=1&personEmail=noreply%40laji.fi&access_token=<finbif_token>
   response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+    status: 200
     headers:
-      date: Tue, 15 Apr 2025 10:31:59 GMT
+      date: Fri, 22 Aug 2025 08:48:05 GMT
       content-type: application/json; charset=utf-8
       content-length: '435'
       x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
+      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"1b3-oBUDc3ywiGOp1Z9b2hEWRKeRaFc"
       vary: Accept-Encoding
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: ''
-      file: no
       string: '[{"matchingName":"Otter","nameType":"MX.vernacularName","id":"MX.47169","scientificName":"Lutra
         lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"en":"Otter","fi":"saukko","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"en":"Mammals","fi":"Nisäkkäät","sv":"Däggdjur"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2025-04-15 10:31:12 GMT
-  recorded_with: vcr/1.7.0, webmockr/2.0.0
+  recorded_at: 2025-08-22 08:48:05
+recorded_with: VCR-vcr/2.0.0

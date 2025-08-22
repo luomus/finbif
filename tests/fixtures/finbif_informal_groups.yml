@@ -1,35 +1,22 @@
 http_interactions:
 - request:
-    method: get
-    uri: https://apitest.laji.fi/v0/informal-taxon-groups/tree?pageSize=1000&lang=en&access_token=<finbif_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Content-Type: ''
-      Accept: application/json
+    method: GET
+    uri: https://api.laji.fi/v0/informal-taxon-groups/tree?pageSize=1000&lang=en&access_token=<finbif_token>
   response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+    status: 200
     headers:
-      date: Tue, 15 Apr 2025 10:31:25 GMT
+      date: Fri, 22 Aug 2025 08:44:48 GMT
       content-type: application/json; charset=utf-8
       content-length: '7006'
       x-powered-by: Express
       access-control-allow-origin: '*'
       etag: W/"1b5e-7oveH2vATkXXUsslrtjr8FrEbjw"
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      encoding: ''
-      file: no
       string: '{"results":[{"hasSubGroup":[{"hasSubGroup":[{"name":"Owls","id":"MVL.1161"},{"name":"Birds
         of prey","id":"MVL.1162"}],"name":"Birds of prey and owls","id":"MVL.1141"},{"name":"Waterbirds","id":"MVL.1241"}],"name":"Birds","id":"MVL.1"},{"hasSubGroup":[{"name":"Small
         mammals","id":"MVL.1181"},{"name":"Bats","id":"MVL.187"}],"name":"Mammals","id":"MVL.2"},{"hasSubGroup":[{"hasSubGroup":[{"name":"Stoneworts","id":"MVL.541"},{"name":"Red
@@ -83,5 +70,5 @@ http_interactions:
         molds","id":"MVL.321"},{"name":"Bacteria","id":"MVL.441"},{"name":"Viruses
         and viroids","id":"MVL.442"},{"name":"Sponges, bryozoans and cnidarians","id":"MVL.521"}],"name":"Other
         organisms","id":"MVL.41"}],"@context":"http://schema.laji.fi/context/informalTaxonGroup-en.jsonld"}'
-  recorded_at: 2025-04-15 10:30:38 GMT
-  recorded_with: vcr/1.7.0, webmockr/2.0.0
+  recorded_at: 2025-08-22 08:44:48
+recorded_with: VCR-vcr/2.0.0
