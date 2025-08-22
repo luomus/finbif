@@ -1,6 +1,6 @@
 Package: finbif
 Title: Interface for the 'Finnish Biodiversity Information Facility' API
-Version: 0.9.10.9001
+Version: 0.9.11
 Authors@R: c(
     person(given = "Finnish Museum of Natural History - Luomus",
            role = "cph",
