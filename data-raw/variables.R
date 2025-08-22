@@ -21,6 +21,7 @@ select_vars <- select_order_vars[[
   which(vapply(select_order_vars, getElement, "", "name") == "selected")
 ]]
 select_vars <- unlist(select_vars[["items"]][["enum"]])
+select_vars <- setdiff(select_vars, "unit.referencePublication")
 
 order_vars <- select_order_vars[[
   which(vapply(select_order_vars, getElement, "", "name") == "orderBy")
