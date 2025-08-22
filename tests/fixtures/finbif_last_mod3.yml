@@ -1,21 +1,22 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate+DESC&page=1&pageSize=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate+DESC&page=1&pageSize=1&access_token=<finbif_token>
   response:
     status: 200
     headers:
-      date: Fri, 22 Aug 2025 08:48:28 GMT
+      date: Fri, 22 Aug 2025 10:21:41 GMT
       content-type: application/json;charset=utf-8
       transfer-encoding: chunked
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":56329960,"pageSize":1,"total":56329960,"cacheTimestamp":1755852508,"results":[{"unit":{"unitId":"http://tun.fi/JX.2330948#3"},"document":{"loadDate":"2025-08-22"}}]}'
-  recorded_at: 2025-08-22 08:48:28
+      string: '{"currentPage":1,"nextPage":2,"lastPage":3233041,"pageSize":1,"total":3233041,"cacheTimestamp":1755858021,"results":[{"unit":{"unitId":"http://tun.fi/HR.49/72328/G.95046_AD"},"document":{"loadDate":"2025-08-22"}}]}'
+  recorded_at: 2025-08-22 10:20:21
 recorded_with: VCR-vcr/2.0.0

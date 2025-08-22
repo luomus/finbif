@@ -1,52 +1,52 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.laji.fi/v0/taxa/search?query=Cygnus+cygnus&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/taxa/search?query=Cygnus+cygnus&matchType=exact&limit=1&access_token=<finbif_token>
   response:
     status: 200
     headers:
-      date: Fri, 22 Aug 2025 08:44:45 GMT
+      date: Fri, 22 Aug 2025 10:20:55 GMT
       content-type: application/json; charset=utf-8
-      content-length: '536'
+      content-length: '555'
       x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
-      etag: W/"218-jmLxAc47ft4YiVIQescNFLpxMHI"
+      etag: W/"22b-laaoYZzLUcVIqPWSpXZ3cGYbbGI"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '[{"matchingName":"Cygnus cygnus","nameType":"MX.scientificName","id":"MX.26280","scientificName":"Cygnus
+      string: '[{"matchingName":"Cygnus cygnus","nameType":"MX.scientificName","id":"MX.26280","checklist":"MR.1","scientificName":"Cygnus
         cygnus","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"en":"Whooper
         Swan","fi":"laulujoutsen","sv":"sångsvan"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","fi":"Linnut","sv":"Fåglar"}},{"id":"MVL.1241","name":{"en":"Waterbirds","fi":"Vesilinnut","sv":"Vattenfåglar"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2025-08-22 08:44:45
+  recorded_at: 2025-08-22 10:19:36
 - request:
     method: GET
-    uri: https://api.laji.fi/v0/taxa/search?query=not_a_taxa&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/v0/taxa/search?query=not_a_taxa&matchType=exact&limit=1&access_token=<finbif_token>
   response:
     status: 200
     headers:
-      date: Fri, 22 Aug 2025 08:44:46 GMT
+      date: Fri, 22 Aug 2025 10:20:56 GMT
       content-type: application/json; charset=utf-8
       content-length: '2'
       x-powered-by: Express
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-frame-options: SAMEORIGIN
       x-download-options: noopen
       etag: W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"
       vary: Accept-Encoding
       cache-control: public
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
       string: '[]'
-  recorded_at: 2025-08-22 08:44:46
+  recorded_at: 2025-08-22 10:19:36
 recorded_with: VCR-vcr/2.0.0
