@@ -21,18 +21,41 @@ select_vars <- select_order_vars[[
   which(vapply(select_order_vars, getElement, "", "name") == "selected")
 ]]
 select_vars <- unlist(select_vars[["items"]][["enum"]])
-select_vars <- setdiff(select_vars, "unit.referencePublication")
+# Can be removed when production API catches up
+select_vars <- setdiff(
+  c(
+    select_vars,
+    "unit.annotations.identification.linkings.taxon.qname",
+    "unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.qname",
+    "unit.identifications.linkings.taxon.qname",
+    "unit.linkings.originalTaxon.qname",
+    "unit.linkings.taxon.qname",
+    "unit.types.linkings.taxon.qname"
+  ),
+  "unit.referencePublication"
+)
 
 order_vars <- select_order_vars[[
   which(vapply(select_order_vars, getElement, "", "name") == "orderBy")
 ]]
 order_vars <- unlist(order_vars[["items"]][["enum"]])
+# Can be removed when production API catches up
+order_vars <- setdiff(order_vars, "unit.referencePublication")
 
 agg_vars <-
   vars[["/query/unit/aggregate"]][["get"]][["parameters"]]
 agg_vars <-
   agg_vars[[which(vapply(agg_vars, getElement, "", "name") == "aggregateBy")]]
 agg_vars <- unlist(agg_vars[["items"]][["enum"]])
+# Can be removed when production API catches up
+agg_vars <- setdiff(
+  c(
+    agg_vars,
+    "unit.linkings.originalTaxon.qname",
+    "unit.linkings.taxon.qname"
+  ),
+  "unit.referencePublication"
+)
 
 agg_gath_vars <-
   vars[["/query/gathering/aggregate"]][["get"]][["parameters"]]
