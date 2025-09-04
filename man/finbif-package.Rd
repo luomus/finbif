@@ -56,8 +56,8 @@ Useful links:
 
 Other contributors:
 \itemize{
-  \item Finnish Museum of Natural History - Luomus (03tcx6c30) [copyright holder]
-  \item Finnish Biodiversity Information Facility (01c0yey93) [copyright holder]
+  \item Finnish Museum of Natural History - Luomus (\href{https://ror.org/03tcx6c30}{ROR}) [copyright holder]
+  \item Finnish Biodiversity Information Facility (\href{https://ror.org/01c0yey93}{ROR}) [copyright holder]
 }
 
 }
