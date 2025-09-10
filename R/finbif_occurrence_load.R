@@ -865,6 +865,8 @@ spread_facts <-  function(facts) {
     )
   }
 
+  names(facts)[1:3] <- c("Parent", "Fact", "Value")
+
   missing_facts <- character()
   select_facts <- facts[["Fact"]]
   ind <- match(select, select_facts)
