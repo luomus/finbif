@@ -373,15 +373,11 @@ attempt_read <- function(fb_occurrence_obj) {
     fb_occurrence_obj[["dt"]] <- FALSE
   }
 
+  fb_occurrence_obj[["nrows"]] <- nlines(fb_occurrence_obj)
+
   if (fb_occurrence_obj[["count_only"]]) {
-    ans <- nlines(fb_occurrence_obj)
+    ans <- fb_occurrence_obj[["nrows"]]
   } else {
-    n_rows <- NULL
-
-    if (!identical(fb_occurrence_obj[["n"]], -1L)) {
-      n_rows <- nlines(fb_occurrence_obj)
-    }
-
     if (use_dt && has_pkgs("data.table")) {
       input <- as.character(fb_occurrence_obj[["file"]])
       input_list <- list(input = input, tsv = fb_occurrence_obj[["tsv"]])
@@ -399,7 +395,7 @@ attempt_read <- function(fb_occurrence_obj) {
       ans <- rd_read(fb_occurrence_obj)
     }
 
-    attr(ans, "nrow") <- n_rows
+    attr(ans, "nrow") <- fb_occurrence_obj[["nrows"]]
   }
 
   ans
@@ -720,7 +716,7 @@ dt_read <- function(fb_occurrence_obj) {
     vector("list", length(args[["select"]])), class = "data.frame"
   )
 
-  if (file.exists(args[["input"]])) {
+  if (file.exists(args[["input"]]) && fb_occurrence_obj[["nrows"]] > 0L) {
     df <- do.call(data.table::fread, args)
   }
 
@@ -787,7 +783,9 @@ rd_read <- function(fb_occurrence_obj) {
     skip_n <- 3
   }
 
-  if (identical(n, 0L) || inherits(con, "textConnection")) {
+  no_rows <- identical(fb_occurrence_obj[["nrows"]], 0L)
+
+  if (identical(n, 0L) || inherits(con, "textConnection") || no_rows) {
     df <- df[0L, ]
   } else {
     df <- utils::read.delim(
@@ -805,7 +803,6 @@ rd_read <- function(fb_occurrence_obj) {
     for (i in seq_along(df)) {
       df[[i]] <- cast_to_type(df[[i]], classes[[i]])
     }
-
   }
 
   idx <- !cols %in% deselect(select)
@@ -1039,6 +1036,9 @@ nlines <- function(fb_occurrence_obj) {
   on.exit(close(con))
 
   n <- -1L
+
+  if (fb_occurrence_obj[["is_dwc"]]) n <- -3L
+
   cond <- !inherits(con, "textConnection")
 
   while (cond) {
