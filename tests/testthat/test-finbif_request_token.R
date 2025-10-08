@@ -24,6 +24,13 @@ test_that("requesting token works", {
         )
 
         app[["post"]](
+          sprintf("/%s/api-users/renew", version),
+          function(req, res) {
+            res[["send_json"]]("")
+          }
+        )
+
+        app[["post"]](
           "/test-error/api-users",
           function(req, res) {
             res[["set_status"]](404L)
@@ -55,6 +62,10 @@ test_that("requesting token works", {
 
     expect_message(
       finbif_request_token("em"), "A personal access token for api.laji.fi"
+    )
+
+    expect_message(
+      finbif_renew_token("em"), "A personal access token for api.laji.fi"
     )
 
     options(finbif_api_version = "test-error")

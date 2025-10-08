@@ -3,7 +3,7 @@
 #' Have a personal access token for use with the FinBIF API sent to a specified
 #' email address.
 #'
-#' @aliases fb_request_token
+#' @aliases fb_request_token fb_renew_token
 #'
 #' @param email Character. The email address to which to send the API access
 #'   token.
@@ -16,11 +16,29 @@
 #' # Request a token for example@email.com
 #' finbif_request_token("example@email.com")
 #'
+#' Sys.unsetenv("FINBIF_ACCESS_TOKEN")
+#'
+#' finbif_renew_token("example@email.com")
+#'
 #' }
 #' @export
+finbif_request_token <- function(email, quiet = FALSE) {
+
+  token(email, quiet, path = "api-users")
+
+}
+
+#' @export
+#' @rdname finbif_request_token
+finbif_renew_token <- function(email, quiet = FALSE) {
+
+   token(email, quiet, path = "api-users/renew")
+
+}
+
 #' @importFrom httr content RETRY
 #' @importFrom utils packageVersion
-finbif_request_token <- function(email, quiet = FALSE) {
+token <- function(email, quiet = FALSE, path) {
   fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
   if (identical(fb_access_token, "")) {
@@ -39,7 +57,7 @@ finbif_request_token <- function(email, quiet = FALSE) {
 
     resp <- httr::RETRY(
       "POST",
-      sprintf("%s/%s/%s", url, version, "api-users"),
+      sprintf("%s/%s/%s", url, version, path),
       structure(config, class = "request"),
       body = list(email = email),
       encode = "json",

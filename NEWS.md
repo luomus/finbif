@@ -2,7 +2,7 @@
 
 # finbif 0.9.11.9000
 
-   - This is the current development version.
+   - Added a new function to renew access tokens.
 
 # finbif 0.9.11
 

@@ -3,9 +3,13 @@
 \name{finbif_request_token}
 \alias{finbif_request_token}
 \alias{fb_request_token}
+\alias{fb_renew_token}
+\alias{finbif_renew_token}
 \title{Get a FinBIF personal access token}
 \usage{
 finbif_request_token(email, quiet = FALSE)
+
+finbif_renew_token(email, quiet = FALSE)
 }
 \arguments{
 \item{email}{Character. The email address to which to send the API access
@@ -27,6 +31,10 @@ email address.
 
 # Request a token for example@email.com
 finbif_request_token("example@email.com")
+
+Sys.unsetenv("FINBIF_ACCESS_TOKEN")
+
+finbif_renew_token("example@email.com")
 
 }
 }
