@@ -5,9 +5,8 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 22 Aug 2025 10:21:35 GMT
+      date: Mon, 26 Jan 2026 05:38:17 GMT
       content-type: application/json;charset=utf-8
-      transfer-encoding: chunked
       access-control-allow-origin: '*'
       via: 1.0 staging.laji.fi
       cache-control: no-store
@@ -17,6 +16,6 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":646609,"pageSize":5,"total":3233041,"cacheTimestamp":1755858015,"results":[{"unit":{"unitId":"http://tun.fi/JX.337888#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.426"},"municipality":"Taipalsaari"}},{"unit":{"unitId":"http://tun.fi/HR.4114/00d37367-bbee-4b28-a0a9-b05f0ade468c_U"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.541"}}},{"unit":{"unitId":"http://tun.fi/HR.4114/666ea910-8e6f-4c26-8e45-a1103f4030bd_U"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.541"}}},{"unit":{"unitId":"http://tun.fi/HR.4114/0e8875f8-bad3-4e96-992e-6e10e8677d2b_U"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.541"}}},{"unit":{"unitId":"http://tun.fi/HR.4114/240e9c6d-fbd8-4b1a-acee-d412dcaff362_U"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.483"}}}]}'
-  recorded_at: 2025-08-22 10:20:15
-recorded_with: VCR-vcr/2.0.0
+      string: '{"currentPage":1,"nextPage":2,"lastPage":674261,"pageSize":5,"total":3371304,"cacheTimestamp":1769405954,"results":[{"unit":{"unitId":"http://tun.fi/JX.343466#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.660"},"municipality":"Helsinki"}},{"unit":{"unitId":"http://tun.fi/JX.343465#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.492"},"municipality":"Maalahti"}},{"unit":{"unitId":"http://tun.fi/JX.343465#7"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.492"},"municipality":"Maalahti"}},{"unit":{"unitId":"http://tun.fi/JX.343464#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.660"},"municipality":"Helsinki"}},{"unit":{"unitId":"http://tun.fi/JX.343463#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.363"},"municipality":"Inkoo"}}]}'
+  recorded_at: 2026-01-26 05:39:14
+recorded_with: VCR-vcr/2.1.0

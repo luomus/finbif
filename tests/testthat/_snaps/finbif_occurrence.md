@@ -6,19 +6,19 @@
        [1] "\r  |                                                                            \r  |                                                                      |   0%\r  |                                                                            \r  |===================================                                   |  50%\r  |                                                                            \r  |======================================================================| 100%"
        [2] "\r  |                                                                            \r  |                                                                      |   0%\r  |                                                                            \r  |===================================                                   |  50%\r  |                                                                            \r  |======================================================================| 100%"
        [3] "Records downloaded: 10 + 10"                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-       [4] "Records available: 16236 + 728"                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+       [4] "Records available: 16240 + 728"                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
        [5] "A data.frame [20 x 26]"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
        [6] "        scientific_name abundance lat_wgs84 lon_wgs84           date_time"                                                                                                                                                                                                                                                                                                                                                                                                                             
-       [7] "1  Accipiter gentilis …  1         63.16081  22.33029 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-       [8] "2  Ardea cinerea Linna…        NA  64.65075  24.42538 2023-05-16 09:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-       [9] "3  Haliaeetus albicill…  1         63.22185  21.52314 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [10] "4  Pandion haliaetus (…  2               NA        NA 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [11] "5  Pernis apivorus (Li…  1         62.33471  25.74237 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [12] "6  Ficedula hypoleuca …  6         60.90207  26.16773 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [13] "7  Garrulus glandarius…  1         61.49315  23.71047 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [14] "8  Hydroprogne caspia …  3         59.87127  23.51481 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [15] "9  Pandion haliaetus (…  3         61.35254  26.52959 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
-      [16] "10 Numenius arquata (L…  2         61.53781  23.93002 2023-05-20 09:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+       [7] "1  Accipiter nisus (Li…  4         62.14014  24.59975 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+       [8] "2  Haliaeetus albicill…  1         60.61587  24.71389 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+       [9] "3  Falco tinnunculus L…  1         61.64031  22.56165 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [10] "4  Passer montanus (Li…  6         60.54187  25.99479 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [11] "5  Falco tinnunculus L…  2         60.6339   27.63642 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [12] "6  Strix aluco Linnaeu…  1         61.69187  24.63466 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [13] "7  Parus major Linnaeu…  1         63.83946  24.25267 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [14] "8  Caprimulgus europae…  1         60.44221  25.08951 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [15] "9  Parus major Linnaeu…  1         62.67081  29.827   2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
+      [16] "10 Ficedula hypoleuca …  6         60.54187  25.99479 2023-01-01 10:00:00"                                                                                                                                                                                                                                                                                                                                                                                                                             
       [17] "...with 10 more records and 21 more variables:"                                                                                                                                                                                                                                                                                                                                                                                                                                                        
       [18] "coordinates_uncertainty, any_issues, requires_verification,"                                                                                                                                                                                                                                                                                                                                                                                                                                           
       [19] "requires_identification, record_reliability, record_quality, duration,"                                                                                                                                                                                                                                                                                                                                                                                                                                
@@ -57,21 +57,21 @@
     Code
       plants
     Output
-      Records downloaded: 38
-      Records available: 38
-      A data.frame [38 x 2]
+      Records downloaded: 50
+      Records available: 50
+      A data.frame [50 x 2]
          threatened_status orig_taxon_rank
       1                 NA         species
-      2                 NA           genus
+      2                 NA    infrakingdom
       3                 NA         species
       4                 NA           genus
-      5                 NA           genus
-      6                 NA           genus
+      5                 NA         species
+      6                 NA          phylum
       7                 NA         species
       8                 NA         species
       9                 NA         species
-      10                NA           genus
-      ...with 28 more records
+      10                NA         species
+      ...with 40 more records
 
 ---
 
@@ -79,18 +79,18 @@
       occ_print
     Output
       Records downloaded: 11
-      Records available: 3233041
+      Records available: 3371304
       A data.frame [11 x 1]
          informal_groups
       1        1 element
-      2       3 elements
+      2       2 elements
       3        1 element
       4        1 element
       5        1 element
       6        1 element
       7        1 element
-      8        1 element
-      9        1 element
+      8       2 elements
+      9       2 elements
       10       1 element
       ...with 1 more record
 
@@ -100,7 +100,7 @@
       date_filters
     Output
       Records downloaded: 5 + 5 + 5 + 5 + 5 + 5 + 5
-      Records available: 53155 + 35014 + 61036 + 8 + 61036 + 61036 + 10698
+      Records available: 60224 + 40231 + 68109 + 8 + 68109 + 68109 + 11373
       A data.frame [20 x 12]
                          record_id      scientific_name abundance lat_wgs84 lon_wgs84
       1              …JX.144207#14 Poecile montanus (C…  23        65.73193  24.70732
