@@ -140,7 +140,7 @@ api_get <- function(obj) {
   )
   url_path <- switch(
     path,
-    swagger = sprintf("%s/explorer/swagger.json", url),
+    swagger = sprintf("%s/openapi-json", url),
     url_path
   )
 

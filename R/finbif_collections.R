@@ -39,18 +39,27 @@ finbif_collections <- function(
   locale <- switch(locale, sv = locale, fi = locale, "en")
   swagger <- list(path = "swagger", cache = cache)
   swagger <- api_get(swagger)
-  swagger <- swagger[[c("content", "definitions")]]
+  swagger <- swagger[[c("content", "components", "schemas")]]
 
-  col_md_nms <- swagger[["Collection"]]
+  col_md_nms <- swagger[[c("Collection", "properties")]]
+  col_md_nms <- c(col_md_nms, swagger[[c("collection", "properties")]])
+  col_md_nms <- names(col_md_nms)
+  col_md_nms <- unique(col_md_nms)
+  col_md_nms <- grep("@", col_md_nms, value = TRUE, invert = TRUE)
+
   col_md <- list(
     qry = c(lang = locale),
     path = "collections",
-    nms = names(col_md_nms[["properties"]]),
+    nms = col_md_nms,
     id = "id",
     cache = cache
   )
   col_md <- get_collections(col_md)
-  col_count_nms <- swagger[["DwQuery_AggregateRow"]]
+
+  col_count_nms <- swagger[[c("WarehouseDwQuery_AggregateRow", "properties")]]
+  col_count_nms <- names(col_count_nms)
+  col_count_nms <- unique(col_count_nms)
+  col_count_nms <- grep("@", col_count_nms, value = TRUE, invert = TRUE)
 
   qry <- list(
     aggregateBy = "document.collectionId",
@@ -61,7 +70,7 @@ finbif_collections <- function(
   col_counts <- list(
     qry = qry,
     path = paste0(finbif_warehouse_query, "unit/aggregate"),
-    nms = names(col_count_nms[["properties"]]),
+    nms = col_count_nms,
     id = "aggregateBy",
     cache = cache
   )
