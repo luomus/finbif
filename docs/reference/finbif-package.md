@@ -70,7 +70,7 @@ Useful links:
 
 - <https://github.com/luomus/finbif>
 
-- <https://luomus.github.io/finbif/>
+- <https://finbif-docs-dev.netlify.app/>
 
 - Report bugs at <https://github.com/luomus/finbif/issues>
 

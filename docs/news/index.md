@@ -1,12 +1,19 @@
 # Changelog
 
+## finbif 0.9.12.9000
+
+- This is the current development version.
+
 ## finbif 0.9.12
 
-CRAN release: 2026-01-27
+### MINOR IMPROVEMENTS
 
 - Added a new function to renew access tokens.
+
+### BUG FIXES
+
 - Fixed issue with fetching collection metadata due to upstream API
-  changes
+  changes.
 
 ## finbif 0.9.11
 
