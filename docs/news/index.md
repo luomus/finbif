@@ -2,6 +2,8 @@
 
 ## finbif 0.9.12
 
+CRAN release: 2026-01-27
+
 - Added a new function to renew access tokens.
 - Fixed issue with fetching collection metadata due to upstream API
   changes
