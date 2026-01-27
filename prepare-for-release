@@ -9,7 +9,7 @@
 8.  Run data-raw/sysdata.R and commit changes.
 9.  Delete cassettes and snapshots, run tests and commit changes to test assets.
 10. Change docs URL in DESCRIPTION, CITATION.cff files and _pkgdown.yml, rebuild
-    README (touch README.Rmd) and make and commit.
+    README (`touch README.Rmd`) and make and commit.
 11. Check winbuilder (`devtools::check_win_devel()`).
 12. Update and commit cran-comments.md.
 13. Release (`devtools::release()`) and wait for CRAN response.
