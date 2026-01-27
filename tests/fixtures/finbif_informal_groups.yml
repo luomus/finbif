@@ -1,18 +1,17 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://apitest.laji.fi/v0/informal-taxon-groups/tree?pageSize=1000&lang=en&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/informal-taxon-groups/tree?pageSize=1000&lang=en&access_token=<finbif_token>
   response:
     status: 200
     headers:
-      date: Fri, 22 Aug 2025 10:20:58 GMT
+      date: Tue, 27 Jan 2026 01:49:59 GMT
       content-type: application/json; charset=utf-8
-      content-length: '7006'
+      content-length: '7155'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"1b5e-7oveH2vATkXXUsslrtjr8FrEbjw"
+      etag: W/"1bf3-HRY94PBtYgMbGD5+syp7axUpqIs"
       cache-control: public
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -29,7 +28,7 @@ http_interactions:
         flies","id":"MVL.224"},{"name":"Earwigs","id":"MVL.225"},{"name":"Net-winged
         insects, megalopterans, snakeflies, mecopterans","id":"MVL.226"},{"name":"Booklice","id":"MVL.227"},{"name":"Thrips","id":"MVL.228"},{"name":"Twisted-wing
         parasites","id":"MVL.229"},{"name":"Cockroaches","id":"MVL.230"},{"hasSubGroup":[{"name":"Water
-        mites","id":"MVL.1263"}],"name":"Mites and ticks","id":"MVL.234"},{"name":"Harvestmen","id":"MVL.235"},{"name":"Pseudoscorpions","id":"MVL.236"},{"name":"Sawflies,
+        mites","id":"MVL.1263"}],"name":"Mites and ticks","id":"MVL.234"},{"name":"Harvestmen","id":"MVL.235"},{"name":"Pseudoscorpions","id":"MVL.236"},{"hasSubGroup":[{"name":"Ants","id":"MVL.1288"},{"name":"Wasps","id":"MVL.1289"},{"name":"Bees","id":"MVL.1290"},{"name":"Sawflies","id":"MVL.1291"}],"name":"Sawflies,
         wasps, ants and bees","id":"MVL.30"},{"hasSubGroup":[{"name":"Butterflies","id":"MVL.181"},{"name":"Sphinx
         moths","id":"MVL.182"},{"name":"Owlet moths","id":"MVL.183"},{"name":"Geometer
         moths","id":"MVL.184"},{"name":"Macrolepidoptera","id":"MVL.237"},{"name":"Microlepidoptera","id":"MVL.238"}],"name":"Moths
@@ -71,5 +70,5 @@ http_interactions:
         molds","id":"MVL.321"},{"name":"Bacteria","id":"MVL.441"},{"name":"Viruses
         and viroids","id":"MVL.442"},{"name":"Sponges, bryozoans and cnidarians","id":"MVL.521"}],"name":"Other
         organisms","id":"MVL.41"}],"@context":"http://schema.laji.fi/context/informalTaxonGroup-en.jsonld"}'
-  recorded_at: 2025-08-22 10:19:38
-recorded_with: VCR-vcr/2.0.0
+  recorded_at: 2026-01-27 01:49:59
+recorded_with: VCR-vcr/2.1.0

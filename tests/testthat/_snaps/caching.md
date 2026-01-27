@@ -4,22 +4,22 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3233041
+      Records available: 59105195
       A data.frame [10 x 12]
-                                               record_id      scientific_name
-      1                                     …JX.337888#3 Larus canus Linnaeu…
-      2  …HR.4114/00d37367-bbee-4b28-a0a9-b05f0ade468c_U Chroogomphus (Singe…
-      3  …HR.4114/666ea910-8e6f-4c26-8e45-a1103f4030bd_U   Cornus alba -ryhmä
-      4  …HR.4114/0e8875f8-bad3-4e96-992e-6e10e8677d2b_U Impatiens glandulif…
-      5  …HR.4114/240e9c6d-fbd8-4b1a-acee-d412dcaff362_U Impatiens glandulif…
-      6  …HR.4114/6e028937-3443-47eb-8858-1bbdd5667aa0_U Impatiens glandulif…
-      7  …HR.4114/a8a8a808-b099-4f59-877f-355f732aba53_U Sorbaria sorbifolia…
-      8  …HR.4114/d8a80156-bb88-40f3-a4a2-6c2ba5c842e2_U Sorbaria sorbifolia…
-      9  …HR.4114/568a65d3-462b-4343-b8eb-cee6b4642ddd_U Heracleum persicum …
-      10 …HR.4114/a9fadb82-a2db-43ff-8e80-2db984dc69a1_U Heracleum persicum …
-      ...with 0 more record and 10 more variables:
-      abundance, lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty,
-      any_issues, requires_verification, requires_identification, record_reliability,
+                                      record_id      scientific_name abundance
+      1                           …JX.2399812#9 Astur gentilis (Lin…  1       
+      2                           …JX.2399812#3 Cinclus cinclus (Li…  1       
+      3                           …JX.2399812#6 Cinclus cinclus (Li…  1       
+      4  …KE.176/6977a871d5defb28104be68c#Unit1 Turdus merula Linna…  1       
+      5  …KE.176/69779207d5defb28104be68b#Unit1 Capreolus capreolus…  4       
+      6  …KE.176/697791d7d5defb28104be68a#Unit1 Lepus europaeus Pal…  1       
+      7  …KE.176/69779198d5defb28104be689#Unit1 Sciurus vulgaris Li…  1       
+      8  …KE.176/697787d6d5defb28104be688#Unit1 Accipiter nisus (Li…  1       
+      9                           …JX.2399720#3 Columba livia domes…  15      
+      10                          …JX.2399713#3 Cyanistes caeruleus…  1       
+      ...with 0 more record and 9 more variables:
+      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
+      requires_verification, requires_identification, record_reliability,
       record_quality
 
 ---
@@ -28,22 +28,22 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3233041
+      Records available: 59105195
       A data.frame [10 x 12]
-                                               record_id      scientific_name
-      1                                     …JX.337888#3 Larus canus Linnaeu…
-      2  …HR.4114/00d37367-bbee-4b28-a0a9-b05f0ade468c_U Chroogomphus (Singe…
-      3  …HR.4114/666ea910-8e6f-4c26-8e45-a1103f4030bd_U   Cornus alba -ryhmä
-      4  …HR.4114/0e8875f8-bad3-4e96-992e-6e10e8677d2b_U Impatiens glandulif…
-      5  …HR.4114/240e9c6d-fbd8-4b1a-acee-d412dcaff362_U Impatiens glandulif…
-      6  …HR.4114/6e028937-3443-47eb-8858-1bbdd5667aa0_U Impatiens glandulif…
-      7  …HR.4114/a8a8a808-b099-4f59-877f-355f732aba53_U Sorbaria sorbifolia…
-      8  …HR.4114/d8a80156-bb88-40f3-a4a2-6c2ba5c842e2_U Sorbaria sorbifolia…
-      9  …HR.4114/568a65d3-462b-4343-b8eb-cee6b4642ddd_U Heracleum persicum …
-      10 …HR.4114/a9fadb82-a2db-43ff-8e80-2db984dc69a1_U Heracleum persicum …
-      ...with 0 more record and 10 more variables:
-      abundance, lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty,
-      any_issues, requires_verification, requires_identification, record_reliability,
+                                      record_id      scientific_name abundance
+      1                           …JX.2399812#9 Astur gentilis (Lin…  1       
+      2                           …JX.2399812#3 Cinclus cinclus (Li…  1       
+      3                           …JX.2399812#6 Cinclus cinclus (Li…  1       
+      4  …KE.176/6977a871d5defb28104be68c#Unit1 Turdus merula Linna…  1       
+      5  …KE.176/69779207d5defb28104be68b#Unit1 Capreolus capreolus…  4       
+      6  …KE.176/697791d7d5defb28104be68a#Unit1 Lepus europaeus Pal…  1       
+      7  …KE.176/69779198d5defb28104be689#Unit1 Sciurus vulgaris Li…  1       
+      8  …KE.176/697787d6d5defb28104be688#Unit1 Accipiter nisus (Li…  1       
+      9                           …JX.2399720#3 Columba livia domes…  15      
+      10                          …JX.2399713#3 Cyanistes caeruleus…  1       
+      ...with 0 more record and 9 more variables:
+      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
+      requires_verification, requires_identification, record_reliability,
       record_quality
 
 ---
@@ -52,21 +52,21 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3233041
+      Records available: 59105195
       A data.frame [10 x 12]
-                                               record_id      scientific_name
-      1                                     …JX.337888#3 Larus canus Linnaeu…
-      2  …HR.4114/00d37367-bbee-4b28-a0a9-b05f0ade468c_U Chroogomphus (Singe…
-      3  …HR.4114/666ea910-8e6f-4c26-8e45-a1103f4030bd_U   Cornus alba -ryhmä
-      4  …HR.4114/0e8875f8-bad3-4e96-992e-6e10e8677d2b_U Impatiens glandulif…
-      5  …HR.4114/240e9c6d-fbd8-4b1a-acee-d412dcaff362_U Impatiens glandulif…
-      6  …HR.4114/6e028937-3443-47eb-8858-1bbdd5667aa0_U Impatiens glandulif…
-      7  …HR.4114/a8a8a808-b099-4f59-877f-355f732aba53_U Sorbaria sorbifolia…
-      8  …HR.4114/d8a80156-bb88-40f3-a4a2-6c2ba5c842e2_U Sorbaria sorbifolia…
-      9  …HR.4114/568a65d3-462b-4343-b8eb-cee6b4642ddd_U Heracleum persicum …
-      10 …HR.4114/a9fadb82-a2db-43ff-8e80-2db984dc69a1_U Heracleum persicum …
-      ...with 0 more record and 10 more variables:
-      abundance, lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty,
-      any_issues, requires_verification, requires_identification, record_reliability,
+                                      record_id      scientific_name abundance
+      1                           …JX.2399812#9 Astur gentilis (Lin…  1       
+      2                           …JX.2399812#3 Cinclus cinclus (Li…  1       
+      3                           …JX.2399812#6 Cinclus cinclus (Li…  1       
+      4  …KE.176/6977a871d5defb28104be68c#Unit1 Turdus merula Linna…  1       
+      5  …KE.176/69779207d5defb28104be68b#Unit1 Capreolus capreolus…  4       
+      6  …KE.176/697791d7d5defb28104be68a#Unit1 Lepus europaeus Pal…  1       
+      7  …KE.176/69779198d5defb28104be689#Unit1 Sciurus vulgaris Li…  1       
+      8  …KE.176/697787d6d5defb28104be688#Unit1 Accipiter nisus (Li…  1       
+      9                           …JX.2399720#3 Columba livia domes…  15      
+      10                          …JX.2399713#3 Cyanistes caeruleus…  1       
+      ...with 0 more record and 9 more variables:
+      lat_wgs84, lon_wgs84, date_time, coordinates_uncertainty, any_issues,
+      requires_verification, requires_identification, record_reliability,
       record_quality
 

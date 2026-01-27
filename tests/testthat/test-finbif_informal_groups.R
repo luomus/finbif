@@ -28,7 +28,7 @@ test_that("fetching informal groups works", {
         "      --Owls",
         "      --Birds of prey",
         "  --Waterbirds",
-        "...149 more groups"
+        "...153 more groups"
       )
     )
 

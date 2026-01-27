@@ -1,21 +1,20 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.interpretations.finnishMunicipality%2Cgathering.municipality&page=1&pageSize=5&access_token=<finbif_token>
+    uri: https://api.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.interpretations.finnishMunicipality%2Cgathering.municipality&page=1&pageSize=5&access_token=<finbif_token>
   response:
     status: 200
     headers:
-      date: Mon, 26 Jan 2026 05:38:17 GMT
+      date: Tue, 27 Jan 2026 01:54:03 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":674261,"pageSize":5,"total":3371304,"cacheTimestamp":1769405954,"results":[{"unit":{"unitId":"http://tun.fi/JX.343466#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.660"},"municipality":"Helsinki"}},{"unit":{"unitId":"http://tun.fi/JX.343465#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.492"},"municipality":"Maalahti"}},{"unit":{"unitId":"http://tun.fi/JX.343465#7"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.492"},"municipality":"Maalahti"}},{"unit":{"unitId":"http://tun.fi/JX.343464#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.660"},"municipality":"Helsinki"}},{"unit":{"unitId":"http://tun.fi/JX.343463#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.363"},"municipality":"Inkoo"}}]}'
-  recorded_at: 2026-01-26 05:39:14
+      string: '{"currentPage":1,"nextPage":2,"lastPage":11821039,"pageSize":5,"total":59105195,"cacheTimestamp":1769478843,"results":[{"unit":{"unitId":"http://tun.fi/JX.2399812#9"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.453"}}},{"unit":{"unitId":"http://tun.fi/JX.2399812#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.434"}}},{"unit":{"unitId":"http://tun.fi/JX.2399812#6"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.434"}}},{"unit":{"unitId":"http://tun.fi/KE.176/6977a871d5defb28104be68c#Unit1"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.479"},"municipality":"Mustasaari"}},{"unit":{"unitId":"http://tun.fi/KE.176/69779207d5defb28104be68b#Unit1"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.665"},"municipality":"Parainen"}}]}'
+  recorded_at: 2026-01-27 01:54:03
 recorded_with: VCR-vcr/2.1.0
