@@ -2,8 +2,13 @@
 
 # finbif 0.9.12
 
+## MINOR IMPROVEMENTS
+
    - Added a new function to renew access tokens.
-   - Fixed issue with fetching collection metadata due to upstream API changes
+
+## BUG FIXES
+
+   - Fixed issue with fetching collection metadata due to upstream API changes.
 
 # finbif 0.9.11
 
@@ -12,7 +17,7 @@
    - Added capacity to import new DarwinCore archive formatted FinBIF
      download files.
    - Added new variables and filters from upstream API (undocumented).
-   
+
 # finbif 0.9.10
 
 ## MINOR IMPROVEMENTS
