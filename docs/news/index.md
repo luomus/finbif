@@ -6,6 +6,8 @@
 
 ## finbif 0.9.12
 
+CRAN release: 2026-01-27
+
 ### MINOR IMPROVEMENTS
 
 - Added a new function to renew access tokens.
