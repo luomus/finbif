@@ -41,7 +41,7 @@ finbif_collections <- function(
   swagger <- api_get(swagger)
   swagger <- swagger[[c("content", "components", "schemas")]]
 
-  col_md_nms <- swagger[[c("Collection", "properties")]]
+  col_md_nms <- swagger[[c("SensitiveCollection", "properties")]]
   col_md_nms <- names(col_md_nms)
   col_md_nms <- grep("@", col_md_nms, value = TRUE, invert = TRUE)
 
