@@ -42,9 +42,7 @@ finbif_collections <- function(
   swagger <- swagger[[c("content", "components", "schemas")]]
 
   col_md_nms <- swagger[[c("Collection", "properties")]]
-  col_md_nms <- c(col_md_nms, swagger[[c("collection", "properties")]])
   col_md_nms <- names(col_md_nms)
-  col_md_nms <- unique(col_md_nms)
   col_md_nms <- grep("@", col_md_nms, value = TRUE, invert = TRUE)
 
   col_md <- list(
