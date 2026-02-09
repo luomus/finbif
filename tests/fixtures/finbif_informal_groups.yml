@@ -5,13 +5,13 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Tue, 27 Jan 2026 03:52:08 GMT
+      date: Mon, 09 Feb 2026 12:24:19 GMT
       content-type: application/json; charset=utf-8
       content-length: '7155'
       x-powered-by: Express
       access-control-allow-origin: '*'
       etag: W/"1bf3-HRY94PBtYgMbGD5+syp7axUpqIs"
-      cache-control: public
+      cache-control: no-store
       x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
@@ -71,5 +71,5 @@ http_interactions:
         molds","id":"MVL.321"},{"name":"Bacteria","id":"MVL.441"},{"name":"Viruses
         and viroids","id":"MVL.442"},{"name":"Sponges, bryozoans and cnidarians","id":"MVL.521"}],"name":"Other
         organisms","id":"MVL.41"}],"@context":"http://schema.laji.fi/context/informalTaxonGroup-en.jsonld"}'
-  recorded_at: 2026-01-27 03:53:06
+  recorded_at: 2026-02-09 12:25:27
 recorded_with: VCR-vcr/2.1.0

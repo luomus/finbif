@@ -5,7 +5,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Tue, 27 Jan 2026 03:54:02 GMT
+      date: Mon, 09 Feb 2026 12:24:45 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
       via: 1.0 staging.laji.fi
@@ -16,6 +16,6 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":3371345,"pageSize":1,"total":3371345,"cacheTimestamp":1769486099,"results":[{"unit":{"unitId":"http://tun.fi/HR.49/76884_U"},"document":{"loadDate":"2026-01-27"}}]}'
-  recorded_at: 2026-01-27 03:55:00
+      string: '{"currentPage":1,"nextPage":2,"lastPage":3371571,"pageSize":1,"total":3371571,"cacheTimestamp":1770637049,"results":[{"unit":{"unitId":"http://tun.fi/HR.49/76884_U"},"document":{"loadDate":"2026-02-09"}}]}'
+  recorded_at: 2026-02-09 12:25:53
 recorded_with: VCR-vcr/2.1.0

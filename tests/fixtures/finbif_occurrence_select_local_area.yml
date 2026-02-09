@@ -5,7 +5,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Tue, 27 Jan 2026 03:53:48 GMT
+      date: Mon, 09 Feb 2026 12:24:42 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
       via: 1.0 staging.laji.fi
@@ -16,6 +16,6 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":674269,"pageSize":5,"total":3371345,"cacheTimestamp":1769486085,"results":[{"unit":{"unitId":"http://tun.fi/KE.176/697746d0d5de5a7e9c5dd174#Unit1"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.663"},"municipality":"Akaa"}},{"unit":{"unitId":"http://tun.fi/JX.343466#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.660"},"municipality":"Helsinki"}},{"unit":{"unitId":"http://tun.fi/JX.343465#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.492"},"municipality":"Maalahti"}},{"unit":{"unitId":"http://tun.fi/JX.343465#7"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.492"},"municipality":"Maalahti"}},{"unit":{"unitId":"http://tun.fi/JX.343464#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.660"},"municipality":"Helsinki"}}]}'
-  recorded_at: 2026-01-27 03:54:45
+      string: '{"currentPage":1,"nextPage":2,"lastPage":674315,"pageSize":5,"total":3371571,"cacheTimestamp":1770637045,"results":[{"unit":{"unitId":"http://tun.fi/JX.344406#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.655"},"municipality":"Kuopio"}},{"unit":{"unitId":"http://tun.fi/JX.344402#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.536"},"municipality":"Petäjävesi"}},{"unit":{"unitId":"http://tun.fi/JX.344402#8"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.504"},"municipality":"Multia"}},{"unit":{"unitId":"http://tun.fi/JX.344402#5"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.536"},"municipality":"Petäjävesi"}},{"unit":{"unitId":"http://tun.fi/JX.344401#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.538"},"municipality":"Viitasaari"}}]}'
+  recorded_at: 2026-02-09 12:25:50
 recorded_with: VCR-vcr/2.1.0

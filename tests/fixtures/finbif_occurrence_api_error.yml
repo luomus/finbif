@@ -5,7 +5,7 @@ http_interactions:
   response:
     status: 404
     headers:
-      date: Tue, 27 Jan 2026 03:53:24 GMT
+      date: Mon, 09 Feb 2026 12:24:37 GMT
       content-type: application/json; charset=utf-8
       x-powered-by: Express
       access-control-allow-origin: '*'
@@ -20,5 +20,5 @@ http_interactions:
     body:
       string: '{"error":{"statusCode":404,"name":"Error","message":"There is no method
         to handle GET /xxxx/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=5&access_token=<finbif_token>"}}'
-  recorded_at: 2026-01-27 03:54:22
+  recorded_at: 2026-02-09 12:25:46
 recorded_with: VCR-vcr/2.1.0

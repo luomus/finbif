@@ -5,7 +5,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Tue, 27 Jan 2026 03:53:59 GMT
+      date: Mon, 09 Feb 2026 12:24:44 GMT
       content-type: application/json; charset=utf-8
       content-length: '660'
       x-powered-by: Express
@@ -14,7 +14,7 @@ http_interactions:
       x-download-options: noopen
       etag: W/"294-hI8ZFloftDyJZurtz11kl66Xs3w"
       vary: Accept-Encoding
-      cache-control: public
+      cache-control: no-store
       x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
@@ -25,14 +25,14 @@ http_interactions:
         bubo","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"en":"Eurasian
         Eagle-owl","fi":"huuhkaja","se":"lidnu","sv":"berguv"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","fi":"Linnut","sv":"Fåglar"}},{"id":"MVL.1141","name":{"en":"Birds
         of prey and owls","fi":"Petolinnut ja pöllöt","sv":"Rovfåglar och ugglor"}},{"id":"MVL.1161","name":{"en":"Owls","fi":"Pöllöt","sv":"Ugglor"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2026-01-27 03:54:57
+  recorded_at: 2026-02-09 12:25:52
 - request:
     method: GET
     uri: https://apitest.laji.fi/v0/taxa/search?query=Otter&matchType=exact&limit=1&personEmail=noreply%40laji.fi&access_token=<finbif_token>
   response:
     status: 200
     headers:
-      date: Tue, 27 Jan 2026 03:54:00 GMT
+      date: Mon, 09 Feb 2026 12:24:44 GMT
       content-type: application/json; charset=utf-8
       content-length: '454'
       x-powered-by: Express
@@ -41,7 +41,7 @@ http_interactions:
       x-download-options: noopen
       etag: W/"1c6-w1oqjVyYSzk65qnH1GO4g/Zxw+g"
       vary: Accept-Encoding
-      cache-control: public
+      cache-control: no-store
       x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
@@ -50,5 +50,5 @@ http_interactions:
     body:
       string: '[{"matchingName":"Otter","nameType":"MX.vernacularName","id":"MX.47169","checklist":"MR.1","scientificName":"Lutra
         lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"en":"Otter","fi":"saukko","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"en":"Mammals","fi":"Nisäkkäät","sv":"Däggdjur"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2026-01-27 03:54:58
+  recorded_at: 2026-02-09 12:25:53
 recorded_with: VCR-vcr/2.1.0
