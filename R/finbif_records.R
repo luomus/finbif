@@ -443,7 +443,7 @@ infer_computed_vars <- function(fb_records_obj) {
       select_names = "document.collectionId"
     ),
     collection_code = list(
-      vars = "computed_var_institution_code",
+      vars = "computed_var_collection_code",
       select_names = "document.collectionId"
     ),
     country = list(
