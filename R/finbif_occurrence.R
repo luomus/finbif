@@ -902,6 +902,12 @@ compute_codes <- function(fb_occurrence_df) {
         cache = attr(fb_occurrence_df, "cache", TRUE)[[2L]]
       )
 
+      codes[["collection_code"]] <- ifelse(
+        is.na(codes[["collection_code"]]),
+        row.names(codes),
+        codes[["collection_code"]]
+      )
+
       id <- fb_occurrence_df[[id_var]]
       id <- remove_domain(id)
 
