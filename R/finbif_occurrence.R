@@ -575,8 +575,8 @@ compute_iso8601 <- function(fb_occurrence_df) {
 
     iso8601s <- as.POSIXct(iso8601s, tzone)
     iso8601e <- iso8601s
-    iso8601s[!duration_na] <- ds[!dsna]
-    iso8601e[!duration_na] <- de[!dena]
+    iso8601s[!duration_na] <- ds[!duration_na]
+    iso8601e[!duration_na] <- de[!duration_na]
     iso8601s <- format(iso8601s, "%FT%T%z")
     iso8601e <- format(iso8601e, "%FT%T%z")
     iso8601 <- paste(iso8601s, iso8601e, sep = "/")
