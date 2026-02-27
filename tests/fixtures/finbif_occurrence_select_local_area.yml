@@ -1,11 +1,11 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.interpretations.finnishMunicipality%2Cgathering.municipality&page=1&pageSize=5&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.interpretations.finnishMunicipality%2Cgathering.municipality&page=1&pageSize=5
   response:
     status: 200
     headers:
-      date: Mon, 09 Feb 2026 12:24:42 GMT
+      date: Fri, 27 Feb 2026 11:55:00 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
       via: 1.0 staging.laji.fi
@@ -16,6 +16,6 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":674315,"pageSize":5,"total":3371571,"cacheTimestamp":1770637045,"results":[{"unit":{"unitId":"http://tun.fi/JX.344406#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.655"},"municipality":"Kuopio"}},{"unit":{"unitId":"http://tun.fi/JX.344402#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.536"},"municipality":"Petäjävesi"}},{"unit":{"unitId":"http://tun.fi/JX.344402#8"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.504"},"municipality":"Multia"}},{"unit":{"unitId":"http://tun.fi/JX.344402#5"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.536"},"municipality":"Petäjävesi"}},{"unit":{"unitId":"http://tun.fi/JX.344401#3"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.538"},"municipality":"Viitasaari"}}]}'
-  recorded_at: 2026-02-09 12:25:50
+      string: '{"currentPage":1,"nextPage":2,"lastPage":674375,"pageSize":5,"total":3371875,"cacheTimestamp":1772193383,"results":[{"unit":{"unitId":"http://id.herb.oulu.fi/MY.1752633"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.541"},"municipality":"Tampere"}},{"unit":{"unitId":"http://id.herb.oulu.fi/MY.1951520"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.593"},"municipality":"Oulu"}},{"unit":{"unitId":"http://id.herb.oulu.fi/MY.1951523"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.593"},"municipality":"Oulu"}},{"unit":{"unitId":"http://id.herb.oulu.fi/MY.1951526"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.593"},"municipality":"Oulu"}},{"unit":{"unitId":"http://id.herb.oulu.fi/MY.1951529"},"gathering":{"interpretations":{"finnishMunicipality":"http://tun.fi/ML.593"},"municipality":"Oulu"}}]}'
+  recorded_at: 2026-02-27 11:56:23
 recorded_with: VCR-vcr/2.1.0

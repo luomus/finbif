@@ -1,19 +1,16 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://apitest.laji.fi/v0/taxa/search?query=Cygnus+cygnus&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/taxa/search?query=Cygnus+cygnus&matchType=exact&limit=1
   response:
     status: 200
     headers:
-      date: Mon, 09 Feb 2026 12:24:17 GMT
+      date: Fri, 27 Feb 2026 11:54:40 GMT
       content-type: application/json; charset=utf-8
-      content-length: '555'
+      content-length: '502'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-download-options: noopen
-      etag: W/"22b-laaoYZzLUcVIqPWSpXZ3cGYbbGI"
-      vary: Accept-Encoding
+      etag: W/"1f6-NeO9JVqGc+tfzU6MpfMtmYmAKMA"
       cache-control: no-store
       x-frame-options: DENY
       x-xss-protection: 1;mode=block
@@ -21,25 +18,22 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '[{"matchingName":"Cygnus cygnus","nameType":"MX.scientificName","id":"MX.26280","checklist":"MR.1","scientificName":"Cygnus
-        cygnus","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"en":"Whooper
-        Swan","fi":"laulujoutsen","sv":"sångsvan"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","fi":"Linnut","sv":"Fåglar"}},{"id":"MVL.1241","name":{"en":"Waterbirds","fi":"Vesilinnut","sv":"Vattenfåglar"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}]'
-  recorded_at: 2026-02-09 12:25:25
+      string: '{"results":[{"matchingName":"Cygnus cygnus","nameType":"MX.scientificName","id":"MX.26280","checklist":"MR.1","scientificName":"Cygnus
+        cygnus","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":"Whooper
+        Swan","informalGroups":[{"id":"MVL.1","name":"Birds"},{"id":"MVL.1241","name":"Waterbirds"}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://apitest.laji.fi/context/taxon-search-en"}'
+  recorded_at: 2026-02-27 11:56:04
 - request:
     method: GET
-    uri: https://apitest.laji.fi/v0/taxa/search?query=not_a_taxa&matchType=exact&limit=1&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/taxa/search?query=not_a_taxa&matchType=exact&limit=1
   response:
     status: 200
     headers:
-      date: Mon, 09 Feb 2026 12:24:17 GMT
+      date: Fri, 27 Feb 2026 11:54:41 GMT
       content-type: application/json; charset=utf-8
-      content-length: '2'
+      content-length: '72'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      access-control-allow-credentials: 'true'
-      x-download-options: noopen
-      etag: W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"
-      vary: Accept-Encoding
+      etag: W/"48-4fCOoXMN7P34zNtTTen9eg4A7G4"
       cache-control: no-store
       x-frame-options: DENY
       x-xss-protection: 1;mode=block
@@ -47,6 +41,6 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '[]'
-  recorded_at: 2026-02-09 12:25:25
+      string: '{"results":[],"@context":"http://schema.laji.fi/context/generic.jsonld"}'
+  recorded_at: 2026-02-27 11:56:05
 recorded_with: VCR-vcr/2.1.0

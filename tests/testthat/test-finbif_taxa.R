@@ -56,12 +56,12 @@ test_that("invalid json triggers error", {
   ) {
 
     bg <- callr::r_bg(
-      function(file, version) {
+      function(file) {
 
         app <- webfakes::new_app()
 
         app[["get"]](
-          sprintf("/%s/taxa/search", version),
+          "taxa/search",
           function(req, res) {
             res[["send_json"]](text = "'invalid json]")
           }
@@ -74,7 +74,7 @@ test_that("invalid json triggers error", {
         Sys.sleep(60L)
 
       },
-      list(file = f, version = getOption("finbif_api_version"))
+      list(file = f)
     )
 
     while (!file.exists(f) || length(url <- readLines(f, warn = FALSE)) < 2L) {}

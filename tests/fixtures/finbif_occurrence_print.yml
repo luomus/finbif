@@ -1,11 +1,11 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.informalTaxonGroups&page=1&pageSize=5&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.informalTaxonGroups&page=1&pageSize=5
   response:
     status: 200
     headers:
-      date: Mon, 09 Feb 2026 12:24:37 GMT
+      date: Fri, 27 Feb 2026 12:04:28 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
       via: 1.0 staging.laji.fi
@@ -16,15 +16,15 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":674315,"pageSize":5,"total":3371571,"cacheTimestamp":1770638378,"results":[{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2"]}},"unitId":"http://tun.fi/JX.344406#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2"]}},"unitId":"http://tun.fi/JX.344402#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2","http://tun.fi/MVL.1181"]}},"unitId":"http://tun.fi/JX.344402#8"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.344402#5"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2"]}},"unitId":"http://tun.fi/JX.344401#3"}}]}'
-  recorded_at: 2026-02-09 12:25:46
+      string: '{"currentPage":1,"nextPage":2,"lastPage":674375,"pageSize":5,"total":3371875,"cacheTimestamp":1772193951,"results":[{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.361"]}},"unitId":"http://id.herb.oulu.fi/MY.1752633"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951520"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951523"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951526"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951529"}}]}'
+  recorded_at: 2026-02-27 12:05:51
 - request:
     method: GET
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.informalTaxonGroups&page=2&pageSize=5&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.informalTaxonGroups&page=2&pageSize=5
   response:
     status: 200
     headers:
-      date: Mon, 09 Feb 2026 12:24:37 GMT
+      date: Fri, 27 Feb 2026 12:04:29 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
       via: 1.0 staging.laji.fi
@@ -35,15 +35,15 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":2,"prevPage":1,"nextPage":3,"lastPage":674315,"pageSize":5,"total":3371571,"cacheTimestamp":1770638379,"results":[{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2","http://tun.fi/MVL.1181"]}},"unitId":"http://tun.fi/JX.344401#8"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.344401#5"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.344399#11"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.232","http://tun.fi/MVL.31","http://tun.fi/MVL.184","http://tun.fi/MVL.237"]}},"unitId":"http://tun.fi/JX.344399#8"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.344399#3"}}]}'
-  recorded_at: 2026-02-09 12:25:46
+      string: '{"currentPage":2,"prevPage":1,"nextPage":3,"lastPage":674375,"pageSize":5,"total":3371875,"cacheTimestamp":1772193953,"results":[{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951532"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951535"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951538"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951541"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951544"}}]}'
+  recorded_at: 2026-02-27 12:05:53
 - request:
     method: GET
-    uri: https://apitest.laji.fi/v0/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.informalTaxonGroups&page=3&pageSize=5&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/warehouse/query/unit/list?selected=unit.unitId%2Cunit.linkings.taxon.informalTaxonGroups&page=3&pageSize=5
   response:
     status: 200
     headers:
-      date: Mon, 09 Feb 2026 12:24:37 GMT
+      date: Fri, 27 Feb 2026 12:04:32 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
       via: 1.0 staging.laji.fi
@@ -54,6 +54,6 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":3,"prevPage":2,"nextPage":4,"lastPage":674315,"pageSize":5,"total":3371571,"cacheTimestamp":1770638380,"results":[{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.232","http://tun.fi/MVL.36","http://tun.fi/MVL.222"]}},"unitId":"http://tun.fi/JX.344397#95"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2"]}},"unitId":"http://tun.fi/JX.344398#6"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.344398#8"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.1"]}},"unitId":"http://tun.fi/JX.344398#3"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.2"]}},"unitId":"http://tun.fi/JX.344333#11"}}]}'
-  recorded_at: 2026-02-09 12:25:46
+      string: '{"currentPage":3,"prevPage":2,"nextPage":4,"lastPage":674375,"pageSize":5,"total":3371875,"cacheTimestamp":1772193955,"results":[{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951547"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951550"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951553"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951556"}},{"unit":{"linkings":{"taxon":{"informalTaxonGroups":["http://tun.fi/MVL.233","http://tun.fi/MVL.24","http://tun.fi/MVL.121","http://tun.fi/MVL.122"]}},"unitId":"http://id.herb.oulu.fi/MY.1951559"}}]}'
+  recorded_at: 2026-02-27 12:05:55
 recorded_with: VCR-vcr/2.1.0

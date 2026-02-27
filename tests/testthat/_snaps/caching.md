@@ -4,19 +4,19 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3371571
+      Records available: 3371875
       A data.frame [10 x 12]
          record_id      scientific_name abundance lat_wgs84 lon_wgs84
-      1     …406#3 Vulpes vulpes (Linn…        NA  62.92448  26.93883
-      2     …402#3 Vulpes vulpes (Linn…        NA  62.39993  25.09311
-      3     …402#8 Rattus norvegicus (…        NA  62.4034   25.01967
-      4     …402#5 Corvus corone Linna…        NA  62.39993  25.09311
-      5     …401#3 Vulpes vulpes (Linn…        NA  63.08423  26.19175
-      6     …401#8 Rattus norvegicus (…        NA  63.08396  26.1904 
-      7     …401#5 Corvus corone Linna…        NA  63.08423  26.19175
-      8    …399#11 Corvus corax Linnae…        NA  67.83847  25.10002
-      9     …399#8 Eupithecia icterata…        NA  67.83821  25.1024 
-      10    …399#3 Corvus corone Linna…        NA  67.83821  25.1024 
+      1    …752633 Massaria aucupariae…        NA  61.46243  23.79724
+      2    …951520 Cerrena unicolor (B…        NA  64.94932  25.6528 
+      3    …951523 Fomes fomentarius (…        NA  64.94932  25.6528 
+      4    …951526 Fomes fomentarius (…        NA  64.94932  25.6528 
+      5    …951529 Fomes fomentarius (…        NA  64.94932  25.6528 
+      6    …951532 Fomitopsis pinicola…        NA  64.94932  25.6528 
+      7    …951535 Fomitopsis pinicola…        NA  64.94932  25.6528 
+      8    …951538 Gloeophyllum sepiar…        NA  64.94932  25.6528 
+      9    …951541 Gloeophyllum sepiar…        NA  64.94932  25.6528 
+      10   …951544 Gloeophyllum sepiar…        NA  64.94932  25.6528 
       ...with 0 more record and 7 more variables:
       date_time, coordinates_uncertainty, any_issues, requires_verification,
       requires_identification, record_reliability, record_quality
@@ -27,19 +27,19 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3371571
+      Records available: 3371875
       A data.frame [10 x 12]
          record_id      scientific_name abundance lat_wgs84 lon_wgs84
-      1     …406#3 Vulpes vulpes (Linn…        NA  62.92448  26.93883
-      2     …402#3 Vulpes vulpes (Linn…        NA  62.39993  25.09311
-      3     …402#8 Rattus norvegicus (…        NA  62.4034   25.01967
-      4     …402#5 Corvus corone Linna…        NA  62.39993  25.09311
-      5     …401#3 Vulpes vulpes (Linn…        NA  63.08423  26.19175
-      6     …401#8 Rattus norvegicus (…        NA  63.08396  26.1904 
-      7     …401#5 Corvus corone Linna…        NA  63.08423  26.19175
-      8    …399#11 Corvus corax Linnae…        NA  67.83847  25.10002
-      9     …399#8 Eupithecia icterata…        NA  67.83821  25.1024 
-      10    …399#3 Corvus corone Linna…        NA  67.83821  25.1024 
+      1    …752633 Massaria aucupariae…        NA  61.46243  23.79724
+      2    …951520 Cerrena unicolor (B…        NA  64.94932  25.6528 
+      3    …951523 Fomes fomentarius (…        NA  64.94932  25.6528 
+      4    …951526 Fomes fomentarius (…        NA  64.94932  25.6528 
+      5    …951529 Fomes fomentarius (…        NA  64.94932  25.6528 
+      6    …951532 Fomitopsis pinicola…        NA  64.94932  25.6528 
+      7    …951535 Fomitopsis pinicola…        NA  64.94932  25.6528 
+      8    …951538 Gloeophyllum sepiar…        NA  64.94932  25.6528 
+      9    …951541 Gloeophyllum sepiar…        NA  64.94932  25.6528 
+      10   …951544 Gloeophyllum sepiar…        NA  64.94932  25.6528 
       ...with 0 more record and 7 more variables:
       date_time, coordinates_uncertainty, any_issues, requires_verification,
       requires_identification, record_reliability, record_quality
@@ -50,19 +50,19 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3371571
+      Records available: 3371875
       A data.frame [10 x 12]
          record_id      scientific_name abundance lat_wgs84 lon_wgs84
-      1     …406#3 Vulpes vulpes (Linn…        NA  62.92448  26.93883
-      2     …402#3 Vulpes vulpes (Linn…        NA  62.39993  25.09311
-      3     …402#8 Rattus norvegicus (…        NA  62.4034   25.01967
-      4     …402#5 Corvus corone Linna…        NA  62.39993  25.09311
-      5     …401#3 Vulpes vulpes (Linn…        NA  63.08423  26.19175
-      6     …401#8 Rattus norvegicus (…        NA  63.08396  26.1904 
-      7     …401#5 Corvus corone Linna…        NA  63.08423  26.19175
-      8    …399#11 Corvus corax Linnae…        NA  67.83847  25.10002
-      9     …399#8 Eupithecia icterata…        NA  67.83821  25.1024 
-      10    …399#3 Corvus corone Linna…        NA  67.83821  25.1024 
+      1    …752633 Massaria aucupariae…        NA  61.46243  23.79724
+      2    …951520 Cerrena unicolor (B…        NA  64.94932  25.6528 
+      3    …951523 Fomes fomentarius (…        NA  64.94932  25.6528 
+      4    …951526 Fomes fomentarius (…        NA  64.94932  25.6528 
+      5    …951529 Fomes fomentarius (…        NA  64.94932  25.6528 
+      6    …951532 Fomitopsis pinicola…        NA  64.94932  25.6528 
+      7    …951535 Fomitopsis pinicola…        NA  64.94932  25.6528 
+      8    …951538 Gloeophyllum sepiar…        NA  64.94932  25.6528 
+      9    …951541 Gloeophyllum sepiar…        NA  64.94932  25.6528 
+      10   …951544 Gloeophyllum sepiar…        NA  64.94932  25.6528 
       ...with 0 more record and 7 more variables:
       date_time, coordinates_uncertainty, any_issues, requires_verification,
       requires_identification, record_reliability, record_quality

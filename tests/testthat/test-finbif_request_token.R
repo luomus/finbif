@@ -12,28 +12,21 @@ test_that("requesting token works", {
   ) {
 
     bg <- callr::r_bg(
-      function(file, version) {
+
+      function(file) {
 
         app <- webfakes::new_app()
 
         app[["post"]](
-          sprintf("/%s/api-users", version),
+          "/api-users",
           function(req, res) {
             res[["send_json"]]("")
           }
         )
 
         app[["post"]](
-          sprintf("/%s/api-users/renew", version),
+          "/api-users/renew",
           function(req, res) {
-            res[["send_json"]]("")
-          }
-        )
-
-        app[["post"]](
-          "/test-error/api-users",
-          function(req, res) {
-            res[["set_status"]](404L)
             res[["send_json"]]("")
           }
         )
@@ -45,7 +38,7 @@ test_that("requesting token works", {
         Sys.sleep(60L)
 
       },
-      list(file = f, version = getOption("finbif_api_version"))
+      list(file = f)
     )
 
     while (!file.exists(f) || length(url <- readLines(f, warn = FALSE)) < 2L) {}
@@ -61,17 +54,13 @@ test_that("requesting token works", {
     )
 
     expect_message(
-      finbif_request_token("em"), "A personal access token for api.laji.fi"
+      finbif_request_token("test@email"),
+      "A personal access token for api.laji.fi"
     )
 
     expect_message(
-      finbif_renew_token("em"), "A personal access token for api.laji.fi"
-    )
-
-    options(finbif_api_version = "test-error")
-
-    expect_error(
-      finbif_request_token("em"), "API request failed"
+      finbif_renew_token("test@email"),
+      "A personal access token for api.laji.fi"
     )
 
   }

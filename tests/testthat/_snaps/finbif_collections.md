@@ -285,7 +285,7 @@
       HR.1627      0 NA                 NA         <NA>          <NA>         
       HR.1707      0 NA                 NA         <NA>          <NA>         
       HR.1915    328 NA                  0         1996-09-14    2017-03-02   
-      HR.1989  77322 NA                 NA         <NA>          <NA>         
+      HR.1989  77569 NA                 NA         <NA>          <NA>         
       HR.2029  38196 NA              38196         1800-01-01    2029-12-31   
       HR.211       0 NA                 NA         <NA>          <NA>         
       HR.3551     49 NA                 NA         <NA>          <NA>         

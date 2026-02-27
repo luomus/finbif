@@ -1,11 +1,11 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://apitest.laji.fi/v0/informal-taxon-groups/tree?pageSize=1000&lang=en&access_token=<finbif_token>
+    uri: https://apitest.laji.fi/informal-taxon-groups/tree?pageSize=1000&lang=en
   response:
     status: 200
     headers:
-      date: Mon, 09 Feb 2026 12:24:19 GMT
+      date: Fri, 27 Feb 2026 11:54:43 GMT
       content-type: application/json; charset=utf-8
       content-length: '7155'
       x-powered-by: Express
@@ -71,5 +71,5 @@ http_interactions:
         molds","id":"MVL.321"},{"name":"Bacteria","id":"MVL.441"},{"name":"Viruses
         and viroids","id":"MVL.442"},{"name":"Sponges, bryozoans and cnidarians","id":"MVL.521"}],"name":"Other
         organisms","id":"MVL.41"}],"@context":"http://schema.laji.fi/context/informalTaxonGroup-en.jsonld"}'
-  recorded_at: 2026-02-09 12:25:27
+  recorded_at: 2026-02-27 11:56:06
 recorded_with: VCR-vcr/2.1.0
