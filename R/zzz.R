@@ -3,7 +3,7 @@
   op_finbif <- list(
     finbif_api_url = "https://api.laji.fi",
     finbif_dl_url = "https://dw.laji.fi/download",
-    finbif_api_version = "v0",
+    finbif_api_version = 1,
     finbif_warehouse_query = "warehouse/query/",
     finbif_allow_query = TRUE,
     finbif_hide_progress = FALSE,

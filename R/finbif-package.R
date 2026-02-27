@@ -3,7 +3,7 @@
 #' \item{`finbif_api_url`}{Character. The base url of the API to query. Default:
 #'   `"https://api.laji.fi"`}
 #' \item{`finbif_api_version`}{Character. The API version to use. Default:
-#'   `"v0"`}
+#'   `"1"`}
 #' \item{`finbif_allow_query`}{Logical. Should remote API queries by allowed.
 #'   Default: `TRUE`}
 #' \item{`finbif_use_cache`}{Logical or Integer. If `TRUE` or a number greater

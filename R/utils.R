@@ -213,6 +213,22 @@ cache_is_valid <- function(timeout, created) {
   timeout_secs > difftime(Sys.time(), created, units = "secs")
 }
 
+
+#' @noRd
+check_status <- function(res) {
+  if (!identical(res[["status_code"]], 200L)) {
+    msg <- paste0(
+      "API request failed [",
+      res[["status_code"]],
+      "]\n",
+      res[["url"]],
+      "\n",
+      httr::content(res)[["message"]]
+    )
+    stop(msg, call. = FALSE)
+  }
+}
+
 # random sampling --------------------------------------------------------------
 #' @noRd
 sample_with_seed <- function(

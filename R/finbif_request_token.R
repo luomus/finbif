@@ -43,21 +43,23 @@ token <- function(email, quiet = FALSE, path) {
 
   if (identical(fb_access_token, "")) {
     allow <- getOption("finbif_allow_query")
-    stopifnot("Option:finbif_allow_query = FALSE" = allow)
+    stopifnot("Option: finbif_allow_query = FALSE" = allow)
 
     url <- getOption("finbif_api_url")
-    version <- getOption("finbif_api_version")
 
     pkg_version <- utils::packageVersion("finbif")
     agent <- paste0("https://github.com/luomus/finbif#", pkg_version)
     config <- list(
-      headers = c(Accept = "application/json"),
+      headers = c(
+        Accept = "application/json",
+        `API-version` = getOption("finbif_api_version")
+      ),
       options =  list(useragent = agent)
     )
 
     resp <- httr::RETRY(
       "POST",
-      sprintf("%s/%s/%s", url, version, path),
+      sprintf("%s/%s", url, path),
       structure(config, class = "request"),
       body = list(email = email),
       encode = "json",
@@ -69,15 +71,7 @@ token <- function(email, quiet = FALSE, path) {
       terminate_on = c(404L, 422L)
     )
 
-    parsed <- httr::content(resp)
-
-    if (!identical(resp[["status_code"]], 200L)) {
-      error <- parsed[["error"]]
-      msg <- paste0(
-        "API request failed [", resp[["status_code"]], "]\n", error[["message"]]
-      )
-      stop(msg, call. = FALSE)
-    }
+    check_status(resp)
 
     if (!quiet) {
       message(
@@ -85,7 +79,9 @@ token <- function(email, quiet = FALSE, path) {
       )
     }
 
-    ans <- list(content = parsed, path = "api-users", response = resp)
+    ans <- list(
+      content = httr::content(resp), path = "api-users", response = resp
+    )
     ans <- structure(ans, class = "finbif_api")
 
   } else {

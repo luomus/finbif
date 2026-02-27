@@ -60,8 +60,8 @@ finbif_check_taxa <- function(
       taxon <- taxa_i[[j]]
       resp <- finbif_taxa(taxon, cache = cache)
 
-      if (length(resp[["content"]]) > 0L) {
-        content <- resp[["content"]][[1L]]
+      if (length(resp[[c("content", "results")]]) > 0L) {
+        content <- resp[[c("content", "results")]][[1L]]
         check_rank_obj <- list(name = taxa_list_name, rank = content)
 
         if (no_name || check_rank(check_rank_obj)) {

@@ -54,7 +54,7 @@ finbif_taxa <- function(
 #' @noRd
 taxon_attribute <- function(obj) {
   taxon <- finbif_taxa(obj[["taxon"]], n = 1, type = "exact")
-  taxon <- taxon[["content"]]
+  taxon <- taxon[[c("content", "results")]]
   taxon <- taxon[[1L]]
 
   attribute <- obj[["attribute"]]

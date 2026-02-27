@@ -66,8 +66,9 @@ sysdata <- function(obj) {
 #' @noRd
 get_sysdata <- function(obj) {
   request <- list(
-    path = paste0("metadata/ranges/", obj[["which"]]),
-    query = list(lang = "multi"),
+    path = paste0("metadata/alts/", obj[["which"]]),
+    query = list(),
+    lang = "multi",
     cache = obj[["cache"]]
   )
 
@@ -76,7 +77,7 @@ get_sysdata <- function(obj) {
   supported_langs <- sysdata(list(which = "supported_langs"))
   n_langs <- length(supported_langs)
 
-  sd_response_content <- sd_response[["content"]]
+  sd_response_content <- sd_response[[c("content", "results")]]
   sd_df <- structure(
     vector("list", n_langs),
     row.names =  vapply(sd_response_content, getElement, "", "id"),
@@ -312,7 +313,8 @@ red_list_status <- function(obj) {
 informal_groups <- function(obj) {
   request <- list(
     path = "informal-taxon-groups",
-    query = list(lang = "multi", pageSize = 1000L),
+    query = list(pageSize = 1000L),
+    lang = "multi",
     cache = obj[["cache"]]
   )
 
@@ -790,7 +792,8 @@ finnish_occurrence_status <- function(obj) {
 sources <- function(obj) {
   request <- list(
     path = "sources",
-    query = list(lang = "multi", pageSize = 1000L),
+    query = list(pageSize = 1000L),
+    lang = "multi",
     cache = obj[["cache"]]
   )
 

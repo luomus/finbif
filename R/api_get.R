@@ -8,17 +8,17 @@ api_get <- function(obj) {
   fb_restricted_access_token <- get_restricted_access_token(obj)
 
   url <- getOption("finbif_api_url")
-  version <- getOption("finbif_api_version")
 
   path <- obj[["path"]]
   query <- obj[["query"]]
+  lang <- obj[["lang"]]
 
   obj[["timeout"]] <- get_timeout(obj)
 
   hash <- NULL
 
   if (obj[["cache"]][[1L]] > 0) {
-    query_list <- list(url, version, path, query)
+    query_list <- list(url, path, query)
     hash <- digest::digest(query_list)
     fcp <- getOption("finbif_cache_path")
 
@@ -114,14 +114,6 @@ api_get <- function(obj) {
   stopifnot("Request not cached and option:finbif_allow_query = FALSE" = allow)
 
   query <- add_email(query)
-  fb_restricted_access_token_par <- list(
-    permissionToken = fb_restricted_access_token
-  )
-  query <- switch(
-    fb_restricted_access_token,
-    unset = query,
-    c(query, fb_restricted_access_token_par)
-  )
 
   Sys.sleep(1 / getOption("finbif_rate_limit"))
 
@@ -136,7 +128,7 @@ api_get <- function(obj) {
   url_path <- switch(
     tolower(use_private_api),
     true = sprintf("https://%s/api/%s", private_api, path),
-    sprintf("%s/%s/%s", url, version, path)
+    sprintf("%s/%s", url, path)
   )
   url_path <- switch(
     path,
@@ -149,10 +141,26 @@ api_get <- function(obj) {
   agent <- paste0("https://github.com/luomus/finbif#", pkg_version)
   agent <- paste0(agent, ":", calling_fun)
   agent <- list(useragent = Sys.getenv("FINBIF_USER_AGENT", agent))
-  config <- list(headers = c(Accept = "application/json"), options = agent)
 
-  fb_access_token_par <- list(access_token = fb_access_token)
-  query <- switch(use_private_api, true = query, c(query, fb_access_token_par))
+  headers <- c(
+    Accept = "application/json",
+    `Accept-Language` = lang,
+    `API-version` = getOption("finbif_api_version")
+  )
+
+  headers <- switch(
+    use_private_api,
+    true = headers,
+    c(headers, Authorization = sprintf("Bearer %s", fb_access_token))
+  )
+
+  headers <- switch(
+    fb_restricted_access_token,
+    unset = headers,
+    c(headers, `Permission-Token` = fb_restricted_access_token)
+  )
+
+  config <- list(headers = headers, options = agent)
 
   resp <- httr::RETRY(
     "GET",
@@ -166,39 +174,19 @@ api_get <- function(obj) {
     terminate_on = 404L
   )
 
-  fb_access_token_str <- paste0("&access_token=", fb_access_token)
-  notoken <- gsub(fb_access_token_str, "", resp[["url"]])
-  email <- getOption("finbif_email")
-  email_str <- paste0("&personEmail=", email)
-  notoken <- gsub(email_str, "", notoken)
-  fb_restricted_access_token_str <- paste0(
-    "&permissionToken=", fb_restricted_access_token
-  )
-  notoken <- gsub(fb_restricted_access_token_str, "", notoken)
-  resp[["url"]] <- notoken
-  resp[[c("request", "url")]] <- notoken
-
   txt <- httr::content(resp, type = "text", encoding = "UTF-8")
 
   if (!jsonlite::validate(txt)) {
     obj <- NULL
-    err_msg <- paste("API response parsing failed", notoken, txt, sep = "\n")
-    stop(err_msg, call. = FALSE)
-  }
-
-  if (!identical(resp[["status_code"]], 200L)) {
-    parsed <- httr::content(resp)
-    obj <- NULL
-    err_msg <- paste0(
-      "API request failed [",
-      resp[["status_code"]],
-      "]\n",
-      notoken,
-      "\n",
-      parsed[["message"]]
+    err_msg <- paste(
+      "API response parsing failed", resp[["url"]], txt, sep = "\n"
     )
     stop(err_msg, call. = FALSE)
   }
+
+  if (!identical(resp[["status_code"]], 200L)) obj <- NULL
+
+  check_status(resp)
 
   obj[["content"]] <- httr::content(resp)
   obj[["response"]] <- resp
@@ -206,7 +194,13 @@ api_get <- function(obj) {
   obj[["from_cache"]] <- FALSE
 
   debug_msg(
-    "INFO [", format(Sys.time()), "] ", "Request made to: ", notoken, " ", hash
+    "INFO [",
+    format(Sys.time()),
+    "] ",
+    "Request made to: ",
+    resp[["url"]],
+    " ",
+    hash
   )
 
   structure(obj, class = "finbif_api")
