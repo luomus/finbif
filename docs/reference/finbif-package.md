@@ -21,7 +21,7 @@ are conveniently preformatted for subsequent analyses.
 
 - `finbif_api_version`:
 
-  Character. The API version to use. Default: `"v0"`
+  Character. The API version to use. Default: `"1"`
 
 - `finbif_allow_query`:
 
