@@ -1,5 +1,5 @@
 #' @noRd
-#' @importFrom digest digest
+#' @importFrom secretbase shake256
 #' @importFrom httr content RETRY
 #' @importFrom jsonlite validate
 #' @importFrom utils packageVersion
@@ -19,7 +19,7 @@ api_get <- function(obj) {
 
   if (obj[["cache"]][[1L]] > 0) {
     query_list <- list(url, path, query)
-    hash <- digest::digest(query_list)
+    hash <- secretbase::shake256(query_list, 128L)
     fcp <- getOption("finbif_cache_path")
 
     if (is.null(fcp)) {

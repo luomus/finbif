@@ -182,15 +182,15 @@
     },
     "2": {
       "@type": "SoftwareApplication",
-      "identifier": "digest",
-      "name": "digest",
+      "identifier": "secretbase",
+      "name": "secretbase",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=digest"
+      "sameAs": "https://CRAN.R-project.org/package=secretbase"
     },
     "3": {
       "@type": "SoftwareApplication",
@@ -238,7 +238,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://species.fi",
   "keywords": ["api", "biodiversity", "biodiversity-informatics", "biodiversity-information", "finbif", "finbif-access", "occurrences", "r-package", "r-programming", "rstats", "species", "specimens", "taxon", "taxonomy", "web-services"],
-  "fileSize": "16688.006KB",
+  "fileSize": "17109.201KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

@@ -474,7 +474,7 @@ new_vars <- function(df) {
 }
 
 #' @noRd
-#' @importFrom digest digest
+#' @importFrom secretbase shake256
 #' @importFrom httr RETRY progress write_disk
 get_zip <- function(fb_occurrenc_obj) {
   write_file <- fb_occurrenc_obj[["write_file"]]
@@ -482,7 +482,7 @@ get_zip <- function(fb_occurrenc_obj) {
 
   if (fb_occurrenc_obj[["cache"]] > 0) {
     hash <- sub(":\\d+", "", url)
-    hash <- digest::digest(hash)
+    hash <- secretbase::shake256(hash, 128L)
     fcp <- getOption("finbif_cache_path")
 
     if (is.null(fcp)) {

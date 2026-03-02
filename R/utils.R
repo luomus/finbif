@@ -215,6 +215,7 @@ cache_is_valid <- function(timeout, created) {
 
 
 #' @noRd
+#' @importFrom httr content
 check_status <- function(res) {
   if (!identical(res[["status_code"]], 200L)) {
     msg <- paste0(
@@ -254,11 +255,11 @@ sample_with_seed <- function(
   sample.int(n)
 }
 
-#' @importFrom digest digest
+#' @importFrom secretbase shake256
 #' @noRd
 gen_seed <- function(x) {
   hash <- lapply(x, getElement, "hash")
-  hash <- digest::digest(hash)
+  hash <- secretbase::shake256(hash, 128L)
   hash <- substr(hash, 1L, 7L)
   strtoi(hash, 16L)
 }
