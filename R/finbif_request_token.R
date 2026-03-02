@@ -32,7 +32,7 @@ finbif_request_token <- function(email, quiet = FALSE) {
 #' @rdname finbif_request_token
 finbif_renew_token <- function(email, quiet = FALSE) {
 
-   token(email, quiet, path = "api-users/renew")
+  token(email, quiet, path = "api-users/renew")
 
 }
 
