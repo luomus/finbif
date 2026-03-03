@@ -25,7 +25,6 @@
 #' collections <- finbif_collections()
 #'
 #' }
-#' @importFrom httr content
 #' @export
 finbif_collections <- function(
   filter,

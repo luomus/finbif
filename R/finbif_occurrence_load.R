@@ -475,7 +475,7 @@ new_vars <- function(df) {
 
 #' @noRd
 #' @importFrom secretbase shake256
-#' @importFrom httr RETRY progress write_disk
+#' @importFrom httr2 req_error req_perform req_retry request req_url_query
 get_zip <- function(fb_occurrenc_obj) {
   write_file <- fb_occurrenc_obj[["write_file"]]
   url <- fb_occurrenc_obj[["url"]]
@@ -514,36 +514,35 @@ get_zip <- function(fb_occurrenc_obj) {
 
   }
 
-  progress <- NULL
+  req <- httr2::request(url)
 
   if (!fb_occurrenc_obj[["quiet"]]) {
-    progress <- httr::progress()
+    req <- httr2::req_progress(req)
   }
 
   allow <- getOption("finbif_allow_query")
   stopifnot("Request not cached and option:finbif_allow_query = FALSE" = allow)
   Sys.sleep(1 / getOption("finbif_rate_limit"))
 
-  query <- list()
   auth <- Sys.getenv("FINBIF_RESTRICTED_FILE_ACCESS_TOKEN")
 
   if (!identical(auth, "")) {
-    query <- list(personToken = auth)
+    req <- httr2::req_url_query(req, personToken = auth)
   }
 
-  resp <- httr::RETRY(
-    "GET",
-    url,
-    httr::write_disk(write_file, overwrite = TRUE),
-    progress,
-    query = query,
-    times =  getOption("finbif_retry_times"),
-    pause_base = getOption("finbif_retry_pause_base"),
-    pause_cap = getOption("finbif_retry_pause_cap"),
-    pause_min = getOption("finbif_retry_pause_min"),
-    quiet = fb_occurrenc_obj[["quiet"]],
-    terminate_on = 404L
+  pause_base <- getOption("finbif_retry_pause_base")
+  pause_cap <- getOption("finbif_retry_pause_cap")
+  pause_min <- getOption("finbif_retry_pause_min")
+
+  req <- httr2::req_retry(
+    req,
+    max_tries = getOption("finbif_retry_times"),
+    backoff = \(x) pmax(pause_min, pmin(pause_cap, pause_base^x))
   )
+
+  req <- httr2::req_error(req, is_error = \(resp) FALSE)
+
+  resp <- httr2::req_perform(req, write_file)
 
   fs <- file.size(write_file)
   fl <- Sys.getenv("FINBIF_FILE_SIZE_LIMIT")

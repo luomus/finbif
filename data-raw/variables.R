@@ -4,15 +4,17 @@ var_names <- read.csv(
   row.names = 1L, comment.char = "#"
 )
 
-vars <- httr::GET("https://dw.laji.fi/swagger")
+vars <- httr2::req_perform(httr2::request("https://dw.laji.fi/swagger"))
 
 if (identical(Sys.getenv("BRANCH"), "dev")) {
 
-  vars <- httr::GET("https://staging.laji.fi/laji-etl/swagger")
+  vars <- httr2::req_perform(
+    httr2::request("https://staging.laji.fi/laji-etl/swagger")
+  )
 
 }
 
-vars <- httr::content(vars)
+vars <- httr2::resp_body_json(vars)
 vars <- vars[["paths"]]
 select_order_vars <-
   vars[["/query/unit/list"]][["get"]][["parameters"]]

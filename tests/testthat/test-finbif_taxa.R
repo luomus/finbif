@@ -61,7 +61,7 @@ test_that("invalid json triggers error", {
         app <- webfakes::new_app()
 
         app[["get"]](
-          "taxa/search",
+          "/taxa/search",
           function(req, res) {
             res[["send_json"]](text = "'invalid json]")
           }

@@ -36,8 +36,8 @@ finbif_renew_token <- function(email, quiet = FALSE) {
 
 }
 
-#' @importFrom httr content RETRY
-#' @importFrom utils packageVersion
+#' @importFrom httr2 req_error req_headers req_perform req_retry request
+#' @importFrom httr2 req_url_query req_user_agent resp_body_json
 token <- function(email, quiet = FALSE, path) {
   fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
@@ -47,29 +47,33 @@ token <- function(email, quiet = FALSE, path) {
 
     url <- getOption("finbif_api_url")
 
+    req <- httr2::request(sprintf("%s/%s", url, path))
+
+    req <- httr2::req_body_json(req, list(email = email))
+
     pkg_version <- utils::packageVersion("finbif")
     agent <- paste0("https://github.com/luomus/finbif#", pkg_version)
-    config <- list(
-      headers = c(
-        Accept = "application/json",
-        `API-version` = getOption("finbif_api_version")
-      ),
-      options =  list(useragent = agent)
+
+    req <- httr2::req_user_agent(req, Sys.getenv("FINBIF_USER_AGENT", agent))
+
+    req <- httr2::req_headers(req, Accept = "application/json")
+    req <- httr2::req_headers(
+      req, `API-version` = getOption("finbif_api_version")
     )
 
-    resp <- httr::RETRY(
-      "POST",
-      sprintf("%s/%s", url, path),
-      structure(config, class = "request"),
-      body = list(email = email),
-      encode = "json",
-      times = getOption("finbif_retry_times"),
-      pause_base = getOption("finbif_retry_pause_base"),
-      pause_cap = getOption("finbif_retry_pause_cap"),
-      pause_min = getOption("finbif_retry_pause_min"),
-      quiet = quiet,
-      terminate_on = c(404L, 422L)
+    pause_base <- getOption("finbif_retry_pause_base")
+    pause_cap <- getOption("finbif_retry_pause_cap")
+    pause_min <- getOption("finbif_retry_pause_min")
+
+    req <- httr2::req_retry(
+      req,
+      max_tries = getOption("finbif_retry_times"),
+      backoff = \(x) pmax(pause_min, pmin(pause_cap, pause_base^x))
     )
+
+    req <- httr2::req_error(req, is_error = \(resp) FALSE)
+
+    resp <- httr2::req_perform(req)
 
     check_status(resp)
 
@@ -80,7 +84,7 @@ token <- function(email, quiet = FALSE, path) {
     }
 
     ans <- list(
-      content = httr::content(resp), path = "api-users", response = resp
+      content = httr2::resp_body_json(resp), path = "api-users", response = resp
     )
     ans <- structure(ans, class = "finbif_api")
 

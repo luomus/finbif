@@ -215,7 +215,7 @@ cache_is_valid <- function(timeout, created) {
 
 
 #' @noRd
-#' @importFrom httr content
+#' @importFrom httr2 resp_body_json
 check_status <- function(res) {
   if (!identical(res[["status_code"]], 200L)) {
     msg <- paste0(
@@ -224,7 +224,7 @@ check_status <- function(res) {
       "]\n",
       res[["url"]],
       "\n",
-      httr::content(res)[["message"]]
+      httr2::resp_body_json(res)[["message"]]
     )
     stop(msg, call. = FALSE)
   }
