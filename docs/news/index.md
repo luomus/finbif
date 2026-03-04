@@ -1,8 +1,12 @@
 # Changelog
 
+## finbif 0.9.13.9000
+
+- This is the current development version.
+
 ## finbif 0.9.13
 
-CRAN release: 2026-03-04
+CRAN release: 2026-01-27
 
 ### MINOR IMPROVEMENTS
 
@@ -415,7 +419,7 @@ CRAN release: 2022-01-03
 
 - Data quality description has been appended to description field in
   `data.frame` returned by
-  [`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md).
+  [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md).
 
 - Occurrence record filtering can now be done using open-ended date
   ranges.
@@ -678,17 +682,17 @@ CRAN release: 2020-04-23
   browser.
 
 - Retired “quiet” option for `on_check_fail` argument in function
-  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md).
+  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md).
 
 - Improved error messages when taxa fail checking in
-  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md).
+  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md).
 
 - Global option to set timezone, `finbif_tz`, as default value for
   “tzone” argument to
-  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md).
+  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md).
   Avoids having to set system environment variable TZ or specify “tzone”
   every time
-  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md)
+  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md)
   is run.
 
 - Now when a record has no time information the start time is assumed to
@@ -722,7 +726,7 @@ CRAN release: 2020-04-23
   recursion.
 
 - Fixed bug that (when `on_check_fail = "warn"`) all taxa failed checks
-  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md)
+  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md)
   would proceed as if no taxa had been selected.
 
 - Fixed bug in print method for `finbif_occ` objects that caused error

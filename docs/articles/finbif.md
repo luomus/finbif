@@ -96,7 +96,7 @@ finbif_check_taxa(list(species = c("Ursus arctos", "Ursus"), genus = "Ursus"))
 ```
 
 The function
-[`finbif_taxa()`](https://luomus.github.io/finbif/reference/finbif_taxa.md)
+[`finbif_taxa()`](https://finbif-docs-dev.netlify.app/reference/finbif_taxa.md)
 can be used for a more general search for taxa in the FinBIF database.
 Searches can be `exact`, `partial` or `likely` (fuzzy matching).
 Information for a single taxon is returned when using exact or fuzzy
@@ -231,7 +231,7 @@ Click to show/hide output.
 
 You can download occurrence data from the FinBIF database as a
 `data.frame` with the
-[`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md)
+[`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md)
 function.
 
 ``` r
@@ -291,9 +291,10 @@ Click to show/hide output.
 
   
 
-See [`?filters`](https://luomus.github.io/finbif/reference/filters.md)
+See
+[`?filters`](https://finbif-docs-dev.netlify.app/reference/filters.md)
 and
-[`vignette("v05_filtering")`](https://luomus.github.io/finbif/articles/v05_filtering.md)
+[`vignette("v05_filtering")`](https://finbif-docs-dev.netlify.app/articles/v05_filtering.md)
 for more details on filtering FinBIF records.
 
 ### Random sampling
@@ -335,5 +336,5 @@ Click to show/hide output.
 By default [finbif](https://github.com/luomus/finbif) uses local caching
 for repeated API requests. This can be turned on or off on a per request
 or session basis. See
-[`?caching`](https://luomus.github.io/finbif/reference/caching.md) for
-details.
+[`?caching`](https://finbif-docs-dev.netlify.app/reference/caching.md)
+for details.

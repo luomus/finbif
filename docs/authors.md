@@ -17,13 +17,13 @@ Source:
 [`inst/CITATION`](https://github.com/luomus/finbif/blob/HEAD/inst/CITATION)
 
 Morris, William K. (2026). Introduction to the finbif package. R package
-version 0.9.13, https://doi.org/10.5281/zenodo.3612814
+version 0.9.13.9000, https://doi.org/10.5281/zenodo.3612814
 
     @Manual{,
       title = {Introduction to the finbif package},
       author = {William K. Morris},
       year = {2026},
-      note = {R package version 0.9.13},
-      url = {https://luomus.github.io/finbif/articles/finbif.html},
+      note = {R package version 0.9.13.9000},
+      url = {https://finbif-docs-dev.netlify.app/articles/finbif.html},
       doi = {10.5281/zenodo.3612814},
     }
