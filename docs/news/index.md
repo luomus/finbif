@@ -1,8 +1,17 @@
 # Changelog
 
-## finbif 0.9.12.9000
+## finbif 0.9.13
 
-- This is the current development version.
+### MINOR IMPROVEMENTS
+
+- Package now uses version 1 of upstream API.
+- A collection ID Qname is used if there is no collection code.
+
+### BUG FIXES
+
+- Fixed an error in the formatting of iso8061 dates.
+- Fixed an error triggered if collection code is requested without
+  institution code.
 
 ## finbif 0.9.12
 
