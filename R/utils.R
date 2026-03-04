@@ -240,7 +240,7 @@ sample_with_seed <- function(
     oldseed <- get(".Random.seed", 1L)
 
     on.exit({
-      assign(".Random.seed", oldseed, 1L)
+      assign(".Random.seed", oldseed, 1L) #nolint
     })
 
   }
