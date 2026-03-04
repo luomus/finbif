@@ -1,17 +1,18 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.laji.fi/taxa/search?query=Cygnus+cygnus&matchType=exact&limit=1
+    uri: https://apitest.laji.fi/taxa/search?query=Cygnus+cygnus&matchType=exact&limit=1
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:08:35 GMT
+      date: Wed, 04 Mar 2026 11:42:11 GMT
       content-type: application/json; charset=utf-8
-      content-length: '498'
+      content-length: '502'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"1f2-wuRkx3/6QNF0FKdLcmL9n5WHWs8"
-      cache-control: public
+      etag: W/"1f6-NeO9JVqGc+tfzU6MpfMtmYmAKMA"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -19,26 +20,27 @@ http_interactions:
     body:
       string: '{"results":[{"matchingName":"Cygnus cygnus","nameType":"MX.scientificName","id":"MX.26280","checklist":"MR.1","scientificName":"Cygnus
         cygnus","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":"Whooper
-        Swan","informalGroups":[{"id":"MVL.1","name":"Birds"},{"id":"MVL.1241","name":"Waterbirds"}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://api.laji.fi/context/taxon-search-en"}'
-  recorded_at: 2026-03-04 11:08:35
+        Swan","informalGroups":[{"id":"MVL.1","name":"Birds"},{"id":"MVL.1241","name":"Waterbirds"}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://apitest.laji.fi/context/taxon-search-en"}'
+  recorded_at: 2026-03-04 11:43:39
 - request:
     method: GET
-    uri: https://api.laji.fi/taxa/search?query=not_a_taxa&matchType=exact&limit=1
+    uri: https://apitest.laji.fi/taxa/search?query=not_a_taxa&matchType=exact&limit=1
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:08:36 GMT
+      date: Wed, 04 Mar 2026 11:42:11 GMT
       content-type: application/json; charset=utf-8
       content-length: '72'
       x-powered-by: Express
       access-control-allow-origin: '*'
       etag: W/"48-4fCOoXMN7P34zNtTTen9eg4A7G4"
-      cache-control: public
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
       string: '{"results":[],"@context":"http://schema.laji.fi/context/generic.jsonld"}'
-  recorded_at: 2026-03-04 11:08:36
+  recorded_at: 2026-03-04 11:43:39
 recorded_with: VCR-vcr/2.1.0

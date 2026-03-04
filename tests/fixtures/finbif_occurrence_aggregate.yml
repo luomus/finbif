@@ -1,35 +1,37 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.laji.fi/warehouse/query/unit/aggregate?coordinates=60.4%3A61%3A22%3A22.5%3AWGS84%3A1&aggregateBy=unit.recordBasis&page=1&pageSize=1
+    uri: https://apitest.laji.fi/warehouse/query/unit/aggregate?coordinates=60.4%3A61%3A22%3A22.5%3AWGS84%3A1&aggregateBy=unit.recordBasis&page=1&pageSize=1
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:11:34 GMT
+      date: Wed, 04 Mar 2026 11:43:04 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":16,"pageSize":1,"total":16,"results":[{"aggregateBy":{"unit.recordBasis":"HUMAN_OBSERVATION_UNSPECIFIED"},"count":874933}]}'
-  recorded_at: 2026-03-04 11:11:34
+      string: '{"currentPage":1,"nextPage":2,"lastPage":8,"pageSize":1,"total":8,"results":[{"aggregateBy":{"unit.recordBasis":"HUMAN_OBSERVATION_UNSPECIFIED"},"count":35649}]}'
+  recorded_at: 2026-03-04 11:44:32
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MNP.tagEnum
+    uri: https://apitest.laji.fi/metadata/alts/MNP.tagEnum
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:11:34 GMT
+      date: Wed, 04 Mar 2026 11:43:04 GMT
       content-type: application/json; charset=utf-8
-      content-length: '1633'
+      content-length: '1637'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"661-kZtvgHqR7mzNFu5ZuRDCLWLY4gU"
-      cache-control: public
+      etag: W/"665-5WbT97g+WpLeN3ziVXv7DkFZfP0"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -37,44 +39,46 @@ http_interactions:
     body:
       string: '{"results":[{"id":"MNP.tagAccessibilityEasy","value":{"en":"Easy accessibility","fi":"Helppokulkuinen","sv":"Easy
         gå"}},{"id":"MNP.tagAccessibilityModerate","value":{"en":"Moderate accessibility","fi":"Normaalikulkuinen","sv":"Måttlig
-        gå"}},{"id":"MNP.tagAccessibilityDifficult","value":{"en":"Difficult accessibility","fi":"Vaikeakulkuinen","sv":"Svår
-        gå"}},{"id":"MNP.tagHabitatImportant","value":{"en":"Important habitat","fi":"Tärkeä
-        habitaatti","sv":"Viktig livsmiljö"}},{"id":"MNP.tagCensusRare","value":{"fi":"Harvoin
+        gå"}},{"id":"MNP.tagAccessibilityDifficult","value":{"fi":"Vaikeakulkuinen","en":"Difficult
+        accessibility","sv":"Svår gå"}},{"id":"MNP.tagHabitatImportant","value":{"en":"Important
+        habitat","fi":"Tärkeä habitaatti","sv":"Viktig livsmiljö"}},{"id":"MNP.tagCensusRare","value":{"fi":"Harvoin
         laskettu","en":"Rarely censused","sv":"Sällan censused"}},{"id":"MNP.tagHabitatFarmland","value":{"fi":"Pelto","en":"Farmland","sv":"Odlinglandskap"}},{"id":"MNP.tagHabitatMire","value":{"fi":"Suo","en":"Mire","sv":"Myr"}},{"id":"MNP.tagHabitatMountain","value":{"en":"Mountain","fi":"Tunturi","sv":"Fjäl"}},{"id":"MNP.tagSuitable","value":{"fi":"Soveltuu
-        liito-oravalle satelliittikuvan perusteella"}},{"id":"MNP.tagTypeIsland","value":{"en":"Island","sv":"Ö","fi":"Saari"}},{"id":"MNP.tagTypePartialIsland","value":{"en":"Partial
-        island","fi":"Osittainen saari","sv":"Delvis ö"}},{"id":"MNP.tagTypeIslandGroup","value":{"en":"Island
-        group","fi":"Saariryhmä","sv":"Ögrupp"}},{"id":"MNP.tagTypeWater","value":{"fi":"Vesialue","sv":"Vattenområde","en":"Water
-        area"}},{"id":"MNP.tagTypeShoreline","value":{"en":"Shoreline","sv":"Strandlinje","fi":"Ranta-alue"}},{"id":"MNP.tagTypeMixed","value":{"sv":"Kombination","en":"Mixed","fi":"Yhdistelmä"}},{"id":"MNP.tagTypeUnknown","value":{"sv":"Okänd","fi":"Tuntematon","en":"Unknown"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-03-04 11:11:34
+        liito-oravalle satelliittikuvan perusteella"}},{"id":"MNP.tagTypeIsland","value":{"fi":"Saari","sv":"Ö","en":"Island"}},{"id":"MNP.tagTypePartialIsland","value":{"sv":"Delvis
+        ö","fi":"Osittainen saari","en":"Partial island"}},{"id":"MNP.tagTypeIslandGroup","value":{"sv":"Ögrupp","en":"Island
+        group","fi":"Saariryhmä"}},{"id":"MNP.tagTypeWater","value":{"fi":"Vesialue","en":"Water
+        area","sv":"Vattenområde"}},{"id":"MNP.tagTypeShoreline","value":{"sv":"Strandlinje","fi":"Ranta-alue","en":"Shoreline"}},{"id":"MNP.tagTypeMixed","value":{"fi":"Yhdistelmä","en":"Mixed","sv":"Kombination"}},{"id":"MNP.tagTypeUnknown","value":{"sv":"Okänd","en":"Unknown","fi":"Tuntematon"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-03-04 11:44:32
 - request:
     method: GET
-    uri: https://api.laji.fi/warehouse/query/unit/aggregate?namedPlaceTag=MNP.tagHabitatFarmland&aggregateBy=unit.recordBasis&hasValue=unit.recordBasis&taxonCounts=true&page=1&pageSize=5
+    uri: https://apitest.laji.fi/warehouse/query/unit/aggregate?namedPlaceTag=MNP.tagHabitatFarmland&aggregateBy=unit.recordBasis&hasValue=unit.recordBasis&taxonCounts=true&page=1&pageSize=5
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:11:41 GMT
+      date: Wed, 04 Mar 2026 11:43:06 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"lastPage":1,"pageSize":5,"total":3,"results":[{"aggregateBy":{"unit.recordBasis":"HUMAN_OBSERVATION_HEARD"},"count":469553,"individualCountSum":475205,"individualCountMax":15,"oldestRecord":"1987-06-03","newestRecord":"2025-06-20","firstLoadDateMin":"2018-05-30","firstLoadDateMax":"2025-09-28","taxonCount":184,"speciesCount":174,"recordQualityMax":"NEUTRAL","redListStatusMax":"http://tun.fi/MX.iucnGroup5","securedCount":12655},{"aggregateBy":{"unit.recordBasis":"HUMAN_OBSERVATION_UNSPECIFIED"},"count":193569,"individualCountSum":193569,"individualCountMax":1,"oldestRecord":"1984-05-19","newestRecord":"2025-06-20","firstLoadDateMin":"2020-05-22","firstLoadDateMax":"2025-09-01","taxonCount":178,"speciesCount":169,"recordQualityMax":"NEUTRAL","redListStatusMax":"http://tun.fi/MX.iucnGroup5","securedCount":184},{"aggregateBy":{"unit.recordBasis":"HUMAN_OBSERVATION_SEEN"},"count":118324,"individualCountSum":164354,"individualCountMax":260,"oldestRecord":"1963-06-02","newestRecord":"2025-06-20","firstLoadDateMin":"2018-05-30","firstLoadDateMax":"2025-09-28","taxonCount":218,"speciesCount":202,"recordQualityMax":"NEUTRAL","redListStatusMax":"http://tun.fi/MX.iucnGroup5","securedCount":3217}]}'
-  recorded_at: 2026-03-04 11:11:41
+      string: '{"currentPage":1,"lastPage":1,"pageSize":5,"total":0,"results":[]}'
+  recorded_at: 2026-03-04 11:44:34
 - request:
     method: GET
-    uri: https://api.laji.fi/warehouse/enumeration-labels
+    uri: https://apitest.laji.fi/warehouse/enumeration-labels
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:11:41 GMT
+      date: Wed, 04 Mar 2026 11:43:06 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -317,27 +321,28 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2026-03-04 11:11:41
+  recorded_at: 2026-03-04 11:44:34
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.recordBases
+    uri: https://apitest.laji.fi/metadata/alts/MY.recordBases
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:11:42 GMT
+      date: Wed, 04 Mar 2026 11:43:06 GMT
       content-type: application/json; charset=utf-8
-      content-length: '3355'
+      content-length: '3359'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"d1b-bxgyR5NjEk/IFFT3TEeMpkXVOqM"
-      cache-control: public
+      etag: W/"d1f-rr0od5tD5UzKsdz7WCHGEvPAFJM"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"results":[{"id":"MY.recordBasisPreservedSpecimen","value":{"sv":"Prov","fi":"Näyte","en":"Preserved
-        specimen"}},{"id":"MY.recordBasisHumanObservation","value":{"en":"Observation","fi":"Havaittu","sv":"Observation"}},{"id":"MY.recordBasisHumanObservationSeen","value":{"sv":"Sett","en":"Seen","fi":"Nähty"}},{"id":"MY.recordBasisHumanObservationHeard","value":{"fi":"Kuultu","en":"Heard","sv":"Hörts"}},{"id":"MY.recordBasisHumanObservationHandled","value":{"sv":"Behandlad
+      string: '{"results":[{"id":"MY.recordBasisPreservedSpecimen","value":{"sv":"Prov","en":"Preserved
+        specimen","fi":"Näyte"}},{"id":"MY.recordBasisHumanObservation","value":{"en":"Observation","fi":"Havaittu","sv":"Observation"}},{"id":"MY.recordBasisHumanObservationSeen","value":{"sv":"Sett","en":"Seen","fi":"Nähty"}},{"id":"MY.recordBasisHumanObservationHeard","value":{"fi":"Kuultu","en":"Heard","sv":"Hörts"}},{"id":"MY.recordBasisHumanObservationHandled","value":{"sv":"Behandlad
         (fasttagit, inte bevarad)","en":"Handled (catched, not preserved)","fi":"Käsitelty
         (otettu kiinni, ei näytettä)"}},{"id":"MY.recordBasisHumanObservationPhoto","value":{"sv":"Fotograferat","en":"Photographed","fi":"Valokuvattu"}},{"id":"MY.recordBasisHumanObservationAudio","value":{"sv":"Ljudsatt","fi":"Äänitetty","en":"Audio
         recording"}},{"id":"MY.recordBasisHumanObservationVideo","value":{"en":"Video
@@ -346,16 +351,17 @@ http_interactions:
         etc)","en":"Indirect observation (footprints, feces, etc)"}},{"id":"MY.recordBasisMachineObservation","value":{"sv":"Maskinobservation","fi":"Laitteen
         tekemä havainto","en":"Machine observation"}},{"id":"MY.recordBasisMachineObservationPhoto","value":{"fi":"Laitteen
         tekemä havainto, valokuva","en":"Machine observation photo","sv":"Maskinobservation,
-        foto"}},{"id":"MY.recordBasisMachineObservationVideo","value":{"sv":"Maskinobservation,
-        video","en":"Machine observation video","fi":"Laitteen tekemä havainto, video"}},{"id":"MY.recordBasisMachineObservationAudio","value":{"sv":"Maskinobservation,
+        foto"}},{"id":"MY.recordBasisMachineObservationVideo","value":{"en":"Machine
+        observation video","fi":"Laitteen tekemä havainto, video","sv":"Maskinobservation,
+        video"}},{"id":"MY.recordBasisMachineObservationAudio","value":{"sv":"Maskinobservation,
         audio","en":"Machine observation audio","fi":"Laitteen tekemä havainto, ääni"}},{"id":"MY.recordBasisMachineObservationGeologger","value":{"en":"Geologger","sv":"Geologger","fi":"Geopaikannin"}},{"id":"MY.recordBasisMachineObservationSatelliteTransmitter","value":{"sv":"Maskinobservation,
-        satellitpositionering","en":"Satellite positioning","fi":"Satelliittipaikannus"}},{"id":"MY.recordBasisFossilSpecimen","value":{"en":"Fossil","fi":"Fossiili","sv":"Fossil"}},{"id":"MY.recordBasisSubfossilSpecimen","value":{"en":"Subfossil","sv":"Subfossil","fi":"Subfossiili"}},{"id":"MY.recordBasisSubfossilSpecimenAmberInclusion","value":{"fi":"Meripihkafossiili","en":"Amber
-        inclusion","sv":"Bärnsten fossil"}},{"id":"MY.recordBasisMaterialSample","value":{"fi":"Materiaalinäyte","en":"Material
-        sample","sv":"Materialprov"}},{"id":"MY.recordBasisMaterialSampleAir","value":{"sv":"Materialprov,
-        luft","en":"Material sample, air","fi":"Materiaalinäyte: ilmanäyte"}},{"id":"MY.recordBasisMaterialSampleSoil","value":{"fi":"Materiaalinäyte:
-        maaperänäyte","en":"Material sample, soil","sv":"Materialprov, jord"}},{"id":"MY.recordBasisMaterialSampleWater","value":{"en":"Material
-        sample, water","sv":"Materialprov, vatten","fi":"Materiaalinäyte: vesinäyte"}},{"id":"MY.recordBasisMicrobialSpecimen","value":{"fi":"Mikrobinäyte","en":"Microbial
-        specimen","sv":"Mikrobiella prov"}},{"id":"MY.recordBasisLivingSpecimen","value":{"en":"Living
-        specimen","fi":"Elävä näyte","sv":"Levande prov"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","sv":"Litteratur","en":"Literature"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-03-04 11:11:42
+        satellitpositionering","en":"Satellite positioning","fi":"Satelliittipaikannus"}},{"id":"MY.recordBasisFossilSpecimen","value":{"en":"Fossil","fi":"Fossiili","sv":"Fossil"}},{"id":"MY.recordBasisSubfossilSpecimen","value":{"en":"Subfossil","fi":"Subfossiili","sv":"Subfossil"}},{"id":"MY.recordBasisSubfossilSpecimenAmberInclusion","value":{"en":"Amber
+        inclusion","fi":"Meripihkafossiili","sv":"Bärnsten fossil"}},{"id":"MY.recordBasisMaterialSample","value":{"fi":"Materiaalinäyte","sv":"Materialprov","en":"Material
+        sample"}},{"id":"MY.recordBasisMaterialSampleAir","value":{"en":"Material
+        sample, air","sv":"Materialprov, luft","fi":"Materiaalinäyte: ilmanäyte"}},{"id":"MY.recordBasisMaterialSampleSoil","value":{"sv":"Materialprov,
+        jord","en":"Material sample, soil","fi":"Materiaalinäyte: maaperänäyte"}},{"id":"MY.recordBasisMaterialSampleWater","value":{"sv":"Materialprov,
+        vatten","en":"Material sample, water","fi":"Materiaalinäyte: vesinäyte"}},{"id":"MY.recordBasisMicrobialSpecimen","value":{"sv":"Mikrobiella
+        prov","fi":"Mikrobinäyte","en":"Microbial specimen"}},{"id":"MY.recordBasisLivingSpecimen","value":{"en":"Living
+        specimen","fi":"Elävä näyte","sv":"Levande prov"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","sv":"Litteratur","en":"Literature"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-03-04 11:44:34
 recorded_with: VCR-vcr/2.1.0
