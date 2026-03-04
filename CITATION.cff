@@ -40,7 +40,7 @@ keywords:
   - taxonomy
   - "web-services"
 license: MIT
-url: "https://finbif-docs-dev.netlify.app/"
+url: "https://luomus.github.io/finbif/"
 repository-code: "https://github.com/luomus/finbif"
 preferred-citation:
   authors:

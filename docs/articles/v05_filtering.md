@@ -3,7 +3,7 @@
 When getting records from FinBIF there are many options for filtering
 the data before it is downloaded, saving bandwidth and local
 post-processing time. For the full list of filtering options see
-[`?filters`](https://finbif-docs-dev.netlify.app/reference/filters.md).
+[`?filters`](https://luomus.github.io/finbif/reference/filters.md).
 
 ## Location
 
@@ -55,8 +55,7 @@ finbif_occurrence(
 #> record_reliability, record_quality
 ```
 
-See
-[`?filters`](https://finbif-docs-dev.netlify.app/reference/filters.md)
+See [`?filters`](https://luomus.github.io/finbif/reference/filters.md)
 section “Location” for more details
 
 ## Time
@@ -176,7 +175,7 @@ Click to show/hide output.
 ## Data Quality
 
 You can filter occurrence records by indicators of data quality. See
-[`?filters`](https://finbif-docs-dev.netlify.app/reference/filters.md)
+[`?filters`](https://luomus.github.io/finbif/reference/filters.md)
 section “Quality” for details.
 
 ``` r
@@ -205,7 +204,7 @@ c(
 The FinBIF database consists of a number of constituent collections. You
 can filter by collection with either the `collection` or
 `not_collection` filters. Use
-[`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+[`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md)
 to see metadata on the FinBIF collections.
 
 ``` r
@@ -254,7 +253,7 @@ Click to show/hide output.
   
 
 See
-[`finbif_informal_groups()`](https://finbif-docs-dev.netlify.app/reference/finbif_informal_groups.md)
+[`finbif_informal_groups()`](https://luomus.github.io/finbif/reference/finbif_informal_groups.md)
 for the full list of groups you can filter by. You can use the same
 function to see the subgroups that make up a higher level informal
 group:

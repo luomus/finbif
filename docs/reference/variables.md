@@ -30,7 +30,7 @@ All identifiers are returned in the form of a URI. Identifiers include:
   can be part of a larger (super)collection (e.g., all the collections
   at a specific museum). Only the lowest level collection ID for a
   record is returned. Use
-  [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+  [`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md)
   to explore the hierarchy of collections.
 
 - `source_id` Character. Source ID. The source of the collection's data.
@@ -196,7 +196,7 @@ Variables related to time of record include:
 - `date_time` POSIXct. The date and time of the recording event. This
   variable is computed after records are downloaded from FinBIF. Its
   timezone and accuracy can be controlled see
-  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md)
+  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md)
   for details.
 
 - `duration` Duration. The duration of the recording event. This
@@ -315,7 +315,7 @@ Other variables:
   can be part of a larger (super)collection (e.g., all the collections
   at a specific museum). Only the lowest level collection name for a
   record is returned. Use
-  [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+  [`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md)
   to explore the hierarchy of collections.
 
 - `observers_ids` List. List of observer identifiers for the record.

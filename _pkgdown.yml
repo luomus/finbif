@@ -7,7 +7,7 @@ template:
     fg: "#FFFFFF"
     primary: "#55AAE2"
     font-size-base: "1rem"
-url: https://finbif-docs-dev.netlify.app/
+url: https://luomus.github.io/finbif/
 home:
   title: "FinBIF R package"
 destination: docs
