@@ -537,10 +537,10 @@ get_zip <- function(fb_occurrenc_obj) {
   req <- httr2::req_retry(
     req,
     max_tries = getOption("finbif_retry_times"),
-    backoff = \(x) pmax(pause_min, pmin(pause_cap, pause_base^x))
+    backoff = function(x) pmax(pause_min, pmin(pause_cap, pause_base^x))
   )
 
-  req <- httr2::req_error(req, is_error = \(resp) FALSE)
+  req <- httr2::req_error(req, is_error = function(resp) FALSE)
 
   resp <- httr2::req_perform(req, write_file)
 

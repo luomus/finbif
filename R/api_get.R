@@ -140,7 +140,7 @@ api_get <- function(obj) {
 
   query <- add_email(query)
 
-  req <- do.call(\(...) httr2::req_url_query(req, ...), as.list(query))
+  req <- do.call(function(...) httr2::req_url_query(req, ...), as.list(query))
 
   pkg_version <- utils::packageVersion("finbif")
   calling_fun <- get_calling_function("finbif")
@@ -176,10 +176,10 @@ api_get <- function(obj) {
   req <- httr2::req_retry(
     req,
     max_tries = getOption("finbif_retry_times"),
-    backoff = \(x) pmax(pause_min, pmin(pause_cap, pause_base^x))
+    backoff = function(x) pmax(pause_min, pmin(pause_cap, pause_base^x))
   )
 
-  req <- httr2::req_error(req, is_error = \(resp) FALSE)
+  req <- httr2::req_error(req, is_error = function(resp) FALSE)
 
   resp <- httr2::req_perform(req)
 
