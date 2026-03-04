@@ -2,6 +2,8 @@
 
 ## finbif 0.9.13
 
+CRAN release: 2026-03-04
+
 ### MINOR IMPROVEMENTS
 
 - Package now uses version 1 of upstream API.
