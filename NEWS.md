@@ -2,7 +2,9 @@
 
 # finbif 0.9.13.9000
 
-   - This is the current development version.
+## MINOR IMPROVEMENTS
+
+   - `finbif_taxa` gains a `locale` argument.
 
 # finbif 0.9.13
 

@@ -2,11 +2,13 @@
 
 ## finbif 0.9.13.9000
 
-- This is the current development version.
+### MINOR IMPROVEMENTS
+
+- `finbif_taxa` gains a `locale` argument.
 
 ## finbif 0.9.13
 
-CRAN release: 2026-01-27
+CRAN release: 2026-03-04
 
 ### MINOR IMPROVEMENTS
 

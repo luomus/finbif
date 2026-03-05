@@ -9,7 +9,8 @@ finbif_taxa(
   name,
   n = 1,
   type = c("exact", "partial", "likely"),
-  cache = getOption("finbif_use_cache")
+  cache = getOption("finbif_use_cache"),
+  locale = getOption("finbif_locale")
 )
 
 common_name(name, locale = getOption("finbif_locale"))
