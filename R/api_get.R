@@ -20,7 +20,7 @@ api_get <- function(obj) {
   hash <- NULL
 
   if (obj[["cache"]][[1L]] > 0) {
-    query_list <- list(url, path, query)
+    query_list <- list(url, path, query, lang)
     hash <- secretbase::shake256(query_list, 128L)
     fcp <- getOption("finbif_cache_path")
 
