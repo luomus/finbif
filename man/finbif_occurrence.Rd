@@ -17,7 +17,7 @@ finbif_occurrence(
   count_only = FALSE,
   quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"),
-  dwc = FALSE,
+  dwc = getOption("finbif_use_dwc"),
   date_time_method = NULL,
   check_taxa = TRUE,
   on_check_fail = c("warn", "error"),

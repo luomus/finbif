@@ -19,7 +19,8 @@
     finbif_use_cache_metadata = TRUE,
     finbif_timeout_offset = 0,
     finbif_tz = Sys.timezone(),
-    finbif_locale = get_locale()
+    finbif_locale = get_locale(),
+    finbif_use_dwc = FALSE
   )
   op <- options()
   toset <- !names(op_finbif) %in% names(op)

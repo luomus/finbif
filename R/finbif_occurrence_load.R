@@ -60,7 +60,7 @@ finbif_occurrence_load <- function(
   count_only = FALSE,
   quiet = getOption("finbif_hide_progress"),
   cache = getOption("finbif_use_cache"),
-  dwc = FALSE,
+  dwc = getOption("finbif_use_dwc"),
   date_time_method = NULL,
   tzone = getOption("finbif_tz"),
   write_file = tempfile(),
