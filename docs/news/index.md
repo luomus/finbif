@@ -1,5 +1,17 @@
 # Changelog
 
+## finbif 0.9.13.9001
+
+### MINOR IMPROVEMENTS
+
+- DwC style field names can be set with a global option
+  `finbif_use_dwc`.
+
+### DEPRECATION
+
+- The default value of `finbif_use_dwc` is `FALSE`. This is deprecated
+  and will be set to `TRUE` in v0.9.15.
+
 ## finbif 0.9.13.9000
 
 ### MINOR IMPROVEMENTS
