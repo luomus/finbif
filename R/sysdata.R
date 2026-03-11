@@ -840,7 +840,9 @@ superrecord_basis <- function() {
   r <- c(
     "HUMAN_OBSERVATION_UNSPECIFIED",
     "MACHINE_OBSERVATION_UNSPECIFIED",
-    "PRESERVED_SPECIMEN"
+    "PRESERVED_SPECIMEN",
+    "LITERATURE",
+    "MATERIAL_SAMPLE"
   )
 
   bases <- list(
@@ -848,17 +850,23 @@ superrecord_basis <- function() {
     name_en =  c(
       "Human Observation",
       "Machine Observation",
-      "Specimen"
+      "Specimen",
+      "Literture",
+      "Material Sample"
     ),
     name_fi =  c(
       "Havaittu",
       "Laitteen tekem\u00e4 havainto",
-      "N\u00e4yte"
+      "N\u00e4yte",
+      "Kirjallisuustieto",
+      "Materiaalinäyte"
     ),
     name_sv =  c(
       "Observation",
       "Maskinobservation",
-      "Prov"
+      "Prov",
+      "Litteratur",
+      "Materialprov"
     )
   )
 
