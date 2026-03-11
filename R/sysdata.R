@@ -859,7 +859,7 @@ superrecord_basis <- function() {
       "Laitteen tekem\u00e4 havainto",
       "N\u00e4yte",
       "Kirjallisuustieto",
-      "Materiaalinäyte"
+      "Materiaalin\u00e4yte"
     ),
     name_sv =  c(
       "Observation",
