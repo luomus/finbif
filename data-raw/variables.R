@@ -4,74 +4,52 @@ var_names <- read.csv(
   row.names = 1L, comment.char = "#"
 )
 
-vars <- httr2::req_perform(httr2::request("https://dw.laji.fi/swagger"))
-
 if (identical(Sys.getenv("BRANCH"), "dev")) {
 
   vars <- httr2::req_perform(
-    httr2::request("https://staging.laji.fi/laji-etl/swagger")
+    httr2::request("https://apitest.laji.fi/openapi-json")
   )
+
+} else {
+
+  vars <- httr2::req_perform(httr2::request("https://api.laji.fi/openapi-json"))
 
 }
 
 vars <- httr2::resp_body_json(vars)
 vars <- vars[["paths"]]
 select_order_vars <-
-  vars[["/query/unit/list"]][["get"]][["parameters"]]
+  vars[["/warehouse/query/unit/list"]][["get"]][["parameters"]]
 
 select_vars <- select_order_vars[[
   which(vapply(select_order_vars, getElement, "", "name") == "selected")
 ]]
-select_vars <- unlist(select_vars[["items"]][["enum"]])
-# Can be removed when production API catches up
-select_vars <- setdiff(
-  c(
-    select_vars,
-    "unit.annotations.identification.linkings.taxon.qname",
-    "unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.qname",
-    "unit.identifications.linkings.taxon.qname",
-    "unit.linkings.originalTaxon.qname",
-    "unit.linkings.taxon.qname",
-    "unit.types.linkings.taxon.qname"
-  ),
-  "unit.referencePublication"
-)
+select_vars <- unlist(select_vars[["schema"]][["items"]][["enum"]])
 
 order_vars <- select_order_vars[[
   which(vapply(select_order_vars, getElement, "", "name") == "orderBy")
 ]]
-order_vars <- unlist(order_vars[["items"]][["enum"]])
-# Can be removed when production API catches up
-order_vars <- setdiff(order_vars, "unit.referencePublication")
+order_vars <- unlist(order_vars[["schema"]][["items"]][["enum"]])
 
 agg_vars <-
-  vars[["/query/unit/aggregate"]][["get"]][["parameters"]]
+  vars[["/warehouse/query/unit/aggregate"]][["get"]][["parameters"]]
 agg_vars <-
   agg_vars[[which(vapply(agg_vars, getElement, "", "name") == "aggregateBy")]]
-agg_vars <- unlist(agg_vars[["items"]][["enum"]])
-# Can be removed when production API catches up
-agg_vars <- setdiff(
-  c(
-    agg_vars,
-    "unit.linkings.originalTaxon.qname",
-    "unit.linkings.taxon.qname"
-  ),
-  "unit.referencePublication"
-)
+agg_vars <- unlist(agg_vars[["schema"]][["items"]][["enum"]])
 
 agg_gath_vars <-
-  vars[["/query/gathering/aggregate"]][["get"]][["parameters"]]
+  vars[["/warehouse/query/gathering/aggregate"]][["get"]][["parameters"]]
 agg_gath_vars <- agg_gath_vars[[
   which(vapply(agg_gath_vars, getElement, "", "name") == "aggregateBy")
 ]]
-agg_gath_vars <- unlist(agg_gath_vars[["items"]][["enum"]])
+agg_gath_vars <- unlist(agg_gath_vars[["schema"]][["items"]][["enum"]])
 
 agg_doc_vars <-
-  vars[["/query/document/aggregate"]][["get"]][["parameters"]]
+  vars[["/warehouse/query/document/aggregate"]][["get"]][["parameters"]]
 agg_doc_vars <- agg_doc_vars[[
   which(vapply(agg_doc_vars, getElement, "", "name") == "aggregateBy")
 ]]
-agg_doc_vars <- unlist(agg_doc_vars[["items"]][["enum"]])
+agg_doc_vars <- unlist(agg_doc_vars[["schema"]][["items"]][["enum"]])
 
 remove_vars <- "^computed_var|^missing_var"
 

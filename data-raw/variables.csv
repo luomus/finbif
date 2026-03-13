@@ -134,7 +134,7 @@ document.media.mediaType,document_media_type,documentAssociatedMediaType,FALSE,F
 document.media.squareThumbnailURL,document_thumbnail_square,documentAssociatedMediaSquareThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.media.thumbnailURL,document_thumbnail,documentAssociatedMediaThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.mediaCount,document_media_count,documentAssociatedMediaCount,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.modifiedDate,modified_date,documentModified,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+document.modifiedDate,modified,modified,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.namedPlaceId,location_id,locationID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.notes,document_notes,documentRemarks,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
 document.partial,is_partial,documentPartialStatus,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -732,3 +732,4 @@ unit.interpretations.det,determiner_interpreted,identifiedByInterpreted,FALSE,FA
 unit.linkings.originalTaxon.qname,orig_taxon_qname,originalTaxonConceptQname,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.qname,taxon_qname,taxonConceptQname,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.qname,type_specimen_taxon_qname,typeSpecimenTaxonConceptQname,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.sequenceText,dna_sequence,DNA_sequenceText,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
