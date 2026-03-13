@@ -229,7 +229,7 @@ Date and time of the recording event formatted for display.
 The date the original data was created.
 \item \code{first_load_date} Character.
 The date the record was first loaded into the FinBIF database.
-\item \code{modified_date} Character.
+\item \code{modified} Character.
 The most recent date the original data was modified.
 \item \code{load_date} Character.
 The most recent date the record was loaded into the FinBIF database.

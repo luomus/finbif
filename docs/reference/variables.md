@@ -255,7 +255,7 @@ Variables related to time of record include:
 - `first_load_date` Character. The date the record was first loaded into
   the FinBIF database.
 
-- `modified_date` Character. The most recent date the original data was
+- `modified` Character. The most recent date the original data was
   modified.
 
 - `load_date` Character. The most recent date the record was loaded into

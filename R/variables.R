@@ -212,7 +212,7 @@
 #'   The date the original data was created.
 #' - `first_load_date` Character.
 #'   The date the record was first loaded into the FinBIF database.
-#' - `modified_date` Character.
+#' - `modified` Character.
 #'   The most recent date the original data was modified.
 #' - `load_date` Character.
 #'   The most recent date the record was loaded into the FinBIF database.
