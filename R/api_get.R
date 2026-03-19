@@ -195,7 +195,7 @@ api_get <- function(obj) {
 
   if (!identical(resp[["status_code"]], 200L)) obj <- NULL
 
-  check_status(resp)
+  check_status(resp, 200L)
 
   obj[["content"]] <- httr2::resp_body_json(resp)
   obj[["response"]] <- resp
