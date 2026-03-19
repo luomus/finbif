@@ -24,7 +24,7 @@
 #' @export
 finbif_request_token <- function(email, quiet = FALSE) {
 
-  token(email, quiet, path = "api-users")
+  token(email, quiet, path = "api-user")
 
 }
 
@@ -32,12 +32,12 @@ finbif_request_token <- function(email, quiet = FALSE) {
 #' @rdname finbif_request_token
 finbif_renew_token <- function(email, quiet = FALSE) {
 
-  token(email, quiet, path = "api-users/renew")
+  token(email, quiet, path = "api-user/renew")
 
 }
 
 #' @importFrom httr2 req_error req_headers req_perform req_retry request
-#' @importFrom httr2 req_url_query req_user_agent resp_body_json
+#' @importFrom httr2 req_url_query req_user_agent
 token <- function(email, quiet = FALSE, path) {
   fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
@@ -83,9 +83,7 @@ token <- function(email, quiet = FALSE, path) {
       )
     }
 
-    ans <- list(
-      content = httr2::resp_body_json(resp), path = "api-users", response = resp
-    )
+    ans <- list(content = list(), path = "api-user", response = resp)
     ans <- structure(ans, class = "finbif_api")
 
   } else {
