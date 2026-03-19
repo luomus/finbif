@@ -18,14 +18,14 @@ test_that("requesting token works", {
         app <- webfakes::new_app()
 
         app[["post"]](
-          "/api-users",
+          "/api-user",
           function(req, res) {
             res[["send_json"]]("")
           }
         )
 
         app[["post"]](
-          "/api-users/renew",
+          "/api-user/renew",
           function(req, res) {
             res[["send_json"]]("")
           }
