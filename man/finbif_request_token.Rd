@@ -29,9 +29,5 @@ email address.
 # Request a token for example@email.com
 finbif_request_token("example@email.com")
 
-Sys.unsetenv("FINBIF_ACCESS_TOKEN")
-
-finbif_renew_token("example@email.com")
-
 }
 }
