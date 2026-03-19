@@ -7,8 +7,6 @@ specified email address.
 
 ``` r
 finbif_request_token(email, quiet = FALSE)
-
-finbif_renew_token(email, quiet = FALSE)
 ```
 
 ## Arguments

@@ -14,7 +14,6 @@ Package overview
 Getting an access token
 
 - [`finbif_request_token()`](https://finbif-docs-dev.netlify.app/reference/finbif_request_token.md)
-  [`finbif_renew_token()`](https://finbif-docs-dev.netlify.app/reference/finbif_request_token.md)
   : Get a FinBIF personal access token
 
 ## Metadata
