@@ -28,14 +28,6 @@ finbif_request_token <- function(email, quiet = FALSE) {
 
 }
 
-#' @export
-#' @rdname finbif_request_token
-finbif_renew_token <- function(email, quiet = FALSE) {
-
-  token(email, quiet, path = "api-user/renew")
-
-}
-
 #' @importFrom httr2 req_error req_headers req_perform req_retry request
 #' @importFrom httr2 req_url_query req_user_agent
 token <- function(email, quiet = FALSE, path) {

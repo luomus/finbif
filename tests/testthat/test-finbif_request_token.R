@@ -20,14 +20,7 @@ test_that("requesting token works", {
         app[["post"]](
           "/api-user",
           function(req, res) {
-            res[["send_json"]]("")
-          }
-        )
-
-        app[["post"]](
-          "/api-user/renew",
-          function(req, res) {
-            res[["send_json"]]("")
+            res[["set_status"]](201L)[["send_json"]]("")
           }
         )
 
@@ -55,11 +48,6 @@ test_that("requesting token works", {
 
     expect_message(
       finbif_request_token("test@email"),
-      "A personal access token for api.laji.fi"
-    )
-
-    expect_message(
-      finbif_renew_token("test@email"),
       "A personal access token for api.laji.fi"
     )
 

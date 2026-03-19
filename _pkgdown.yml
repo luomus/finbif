@@ -22,7 +22,6 @@ reference:
       Getting an access token
     contents:
       - finbif_request_token
-      - finbif_renew_token
   - title: "Metadata"
     desc: >
       Exploring metadata
