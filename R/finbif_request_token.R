@@ -75,7 +75,15 @@ token <- function(email, quiet = FALSE, path) {
 
     resp <- httr2::req_perform(req)
 
-    check_status(resp)
+    if (!identical(resp[["status_code"]], 200L)) {
+      msg <- paste0(
+        "API request failed [",
+        resp[["status_code"]],
+        "]\n",
+        resp[["url"]]
+      )
+      stop(msg, call. = FALSE)
+    }
 
     if (!quiet) {
       message(
