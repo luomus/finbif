@@ -13,32 +13,37 @@ A programmatic interface to the 'Finnish Biodiversity Information Facility' ('Fi
 \section{Package options}{
 
 \describe{
-\item{\code{finbif_api_url}}{Character. The base url of the API to query. Default:
-\code{"https://api.laji.fi"}}
+\item{\code{finbif_api_url}}{Character. The base URL of the API to query.
+Default: \code{"https://api.laji.fi"}}
 \item{\code{finbif_api_version}}{Character. The API version to use. Default:
 \code{"1"}}
-\item{\code{finbif_allow_query}}{Logical. Should remote API queries by allowed.
+\item{\code{finbif_allow_query}}{Logical. Should remote API queries by allowed?
 Default: \code{TRUE}}
+\item{\code{finbif_hide_progress}}{Logical. Global option to suppress progress
+indicators for downloading, importing and processing FinBIF records.
+Default: \code{FALSE}}
+\item{\code{finbif_use_async}}{Logical. Should downloading and processing of
+data be done asynchronously? Default: \code{TRUE}}
 \item{\code{finbif_use_cache}}{Logical or Integer. If \code{TRUE} or a number greater
 than zero, then data-caching will be used. If not logical then cache will
 be invalidated after the number of hours indicated by the value. Default:
 \code{TRUE}}
-\item{\code{finbif_use_cache_metadata}}{Logical or Integer. If \code{TRUE} or a number
-greater than zero, then metadata-caching will be used. If not logical then
-cache will be invalidated after the number of hours indicated by the value.
-Default: \code{TRUE}}
+\item{\code{finbif_use_cache_metadata}}{Logical or Integer. If \code{TRUE} or a
+number greater than zero, then metadata-caching will be used. If not
+logical then cache will be invalidated after the number of hours
+indicated by the value. Default: \code{TRUE}}
 \item{\code{finbif_cache_path}}{Character. The path to the directory where to
 store cached API queries. If unset (the default) in memory caching is
 used.}
 \item{\code{finbif_tz}}{Character. The timezone used by \code{finbif} functions that
 compute dates and times. Default: \code{Sys.timezone()}}
-\item{\code{finbif_locale}}{Character. One of the supported two-letter ISO 639-1
-language codes. Current supported languages are English, Finnish and
-Swedish. By default, the system settings are used to set this option if
-they are set to one of the supported languages, otherwise English is used.}
-\item{\code{finbif_hide_progress}}{Logical. Global option to suppress progress
-indicators for downloading, importing and processing FinBIF records.
-Default: \code{FALSE}}
+\item{\code{finbif_locale}}{Character. One of the supported two-letter
+ISO 639-1 language codes. Current supported languages are English,
+Finnish and Swedish. By default, the system settings are used to set this
+option if they are set to one of the supported languages, otherwise
+English is used.}
+\item{\code{finbif_use_dwc}}{Logical. Should DarwinCore style field names be
+used? Default: \code{FALSE}}
 }
 }
 

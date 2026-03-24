@@ -16,7 +16,7 @@ are conveniently preformatted for subsequent analyses.
 
 - `finbif_api_url`:
 
-  Character. The base url of the API to query. Default:
+  Character. The base URL of the API to query. Default:
   `"https://api.laji.fi"`
 
 - `finbif_api_version`:
@@ -25,7 +25,17 @@ are conveniently preformatted for subsequent analyses.
 
 - `finbif_allow_query`:
 
-  Logical. Should remote API queries by allowed. Default: `TRUE`
+  Logical. Should remote API queries by allowed? Default: `TRUE`
+
+- `finbif_hide_progress`:
+
+  Logical. Global option to suppress progress indicators for
+  downloading, importing and processing FinBIF records. Default: `FALSE`
+
+- `finbif_use_async`:
+
+  Logical. Should downloading and processing of data be done
+  asynchronously? Default: `TRUE`
 
 - `finbif_use_cache`:
 
@@ -59,10 +69,9 @@ are conveniently preformatted for subsequent analyses.
   default, the system settings are used to set this option if they are
   set to one of the supported languages, otherwise English is used.
 
-- `finbif_hide_progress`:
+- `finbif_use_dwc`:
 
-  Logical. Global option to suppress progress indicators for
-  downloading, importing and processing FinBIF records. Default: `FALSE`
+  Logical. Should DarwinCore style field names be used? Default: `FALSE`
 
 ## See also
 

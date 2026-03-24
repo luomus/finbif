@@ -53,16 +53,25 @@ A programmatic interface to the 'Finnish Biodiversity Information Facility' ('Fi
 
 
 <dl><dt><code>finbif_api_url</code></dt>
-<dd><p>Character. The base url of the API to query. Default:
-<code>"https://api.laji.fi"</code></p></dd>
+<dd><p>Character. The base URL of the API to query.
+Default: <code>"https://api.laji.fi"</code></p></dd>
 
 <dt><code>finbif_api_version</code></dt>
 <dd><p>Character. The API version to use. Default:
 <code>"1"</code></p></dd>
 
 <dt><code>finbif_allow_query</code></dt>
-<dd><p>Logical. Should remote API queries by allowed.
+<dd><p>Logical. Should remote API queries by allowed?
 Default: <code>TRUE</code></p></dd>
+
+<dt><code>finbif_hide_progress</code></dt>
+<dd><p>Logical. Global option to suppress progress
+indicators for downloading, importing and processing FinBIF records.
+Default: <code>FALSE</code></p></dd>
+
+<dt><code>finbif_use_async</code></dt>
+<dd><p>Logical. Should downloading and processing of
+data be done asynchronously? Default: <code>TRUE</code></p></dd>
 
 <dt><code>finbif_use_cache</code></dt>
 <dd><p>Logical or Integer. If <code>TRUE</code> or a number greater
@@ -71,10 +80,10 @@ be invalidated after the number of hours indicated by the value. Default:
 <code>TRUE</code></p></dd>
 
 <dt><code>finbif_use_cache_metadata</code></dt>
-<dd><p>Logical or Integer. If <code>TRUE</code> or a number
-greater than zero, then metadata-caching will be used. If not logical then
-cache will be invalidated after the number of hours indicated by the value.
-Default: <code>TRUE</code></p></dd>
+<dd><p>Logical or Integer. If <code>TRUE</code> or a
+number greater than zero, then metadata-caching will be used. If not
+logical then cache will be invalidated after the number of hours
+indicated by the value. Default: <code>TRUE</code></p></dd>
 
 <dt><code>finbif_cache_path</code></dt>
 <dd><p>Character. The path to the directory where to
@@ -86,15 +95,15 @@ used.</p></dd>
 compute dates and times. Default: <code><a href="https://rdrr.io/r/base/timezones.html" class="external-link">Sys.timezone()</a></code></p></dd>
 
 <dt><code>finbif_locale</code></dt>
-<dd><p>Character. One of the supported two-letter ISO 639-1
-language codes. Current supported languages are English, Finnish and
-Swedish. By default, the system settings are used to set this option if
-they are set to one of the supported languages, otherwise English is used.</p></dd>
+<dd><p>Character. One of the supported two-letter
+ISO 639-1 language codes. Current supported languages are English,
+Finnish and Swedish. By default, the system settings are used to set this
+option if they are set to one of the supported languages, otherwise
+English is used.</p></dd>
 
-<dt><code>finbif_hide_progress</code></dt>
-<dd><p>Logical. Global option to suppress progress
-indicators for downloading, importing and processing FinBIF records.
-Default: <code>FALSE</code></p></dd>
+<dt><code>finbif_use_dwc</code></dt>
+<dd><p>Logical. Should DarwinCore style field names be
+used? Default: <code>FALSE</code></p></dd>
 
 
 </dl></div>
