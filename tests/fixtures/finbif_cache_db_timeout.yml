@@ -5,7 +5,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:42:10 GMT
+      date: Tue, 24 Mar 2026 13:25:18 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
       via: 1.0 staging.laji.fi
@@ -16,7 +16,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":337201,"pageSize":10,"total":3372001,"cacheTimestamp":1772624617,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Massaria
+      string: '{"currentPage":1,"nextPage":2,"lastPage":338953,"pageSize":10,"total":3389523,"cacheTimestamp":1774355252,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Massaria
         aucupariae","scientificNameAuthorship":"Voglmayr & Jaklitsch"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Massaria
         aucupariae","unitId":"http://id.herb.oulu.fi/MY.1752633"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":61.462435,"lon":23.797243}},"eventDate":{"begin":"2015-03-15","end":"2015-03-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cerrena
         unicolor","scientificNameAuthorship":"(Bull. : Fr.) Murrill"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Cerrena
@@ -37,14 +37,14 @@ http_interactions:
         sepiarium","unitId":"http://id.herb.oulu.fi/MY.1951541"},"gathering":{"conversions":{"month":9,"wgs84CenterPoint":{"lat":64.949322,"lon":25.6528}},"eventDate":{"begin":"2010-09-14","end":"2010-09-26"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Gloeophyllum
         sepiarium","scientificNameAuthorship":"(Wulfen : Fr.) P. Karst."}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Gloeophyllum
         sepiarium","unitId":"http://id.herb.oulu.fi/MY.1951544"},"gathering":{"conversions":{"month":9,"wgs84CenterPoint":{"lat":64.949322,"lon":25.6528}},"eventDate":{"begin":"2010-09-14","end":"2010-09-26"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2026-03-04 11:43:38
+  recorded_at: 2026-03-24 13:27:03
 - request:
     method: GET
     uri: https://apitest.laji.fi/warehouse/enumeration-labels
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:42:11 GMT
+      date: Tue, 24 Mar 2026 13:25:18 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
       via: 1.0 staging.laji.fi
@@ -292,19 +292,19 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2026-03-04 11:43:38
+  recorded_at: 2026-03-24 13:27:04
 - request:
     method: GET
     uri: https://apitest.laji.fi/metadata/alts/MZ.recordQualityEnum
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:42:11 GMT
+      date: Tue, 24 Mar 2026 13:25:18 GMT
       content-type: application/json; charset=utf-8
       content-length: '627'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"273-ljQDrNv9/gEBMFcTEKfpLwEhGoM"
+      etag: W/"273-sdgU7QwaDdxtNhvMjYnqWqjN15g"
       cache-control: no-store
       x-frame-options: DENY
       x-xss-protection: 1;mode=block
@@ -312,18 +312,18 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"results":[{"id":"MZ.recordQualityExpertVerified","value":{"sv":"Expertkuraterad","en":"Expert
-        verified","fi":"Asiantuntijan varmistama"}},{"id":"MZ.recordQualityCommunityVerified","value":{"en":"Community
+      string: '{"results":[{"id":"MZ.recordQualityExpertVerified","value":{"fi":"Asiantuntijan
+        varmistama","en":"Expert verified","sv":"Expertkuraterad"}},{"id":"MZ.recordQualityCommunityVerified","value":{"en":"Community
         verified","fi":"Yhteisön varmistama","sv":"Gemenskapskuraterat"}},{"id":"MZ.recordQualityNeutral","value":{"en":"Unassessed","fi":"Ei
-        arvioitu","sv":"Obedömd"}},{"id":"MZ.recordQualityUncertain","value":{"en":"Uncertain","fi":"Epävarma","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-03-04 11:43:38
+        arvioitu","sv":"Obedömd"}},{"id":"MZ.recordQualityUncertain","value":{"fi":"Epävarma","en":"Uncertain","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-03-24 13:27:04
 - request:
     method: GET
     uri: https://apitest.laji.fi/warehouse/query/unit/list?selected=unit.unitId%2Cgathering.conversions.wgs84CenterPoint.lat%2Cgathering.conversions.wgs84CenterPoint.lon%2Cunit.quality.documentGatheringUnitQualityIssues%2Cunit.interpretations.needsCheck%2Cunit.interpretations.needsIdentification%2Cunit.interpretations.reliability%2Cunit.interpretations.recordQuality%2Cgathering.eventDate.begin%2Cgathering.eventDate.end%2Cgathering.hourBegin%2Cgathering.hourEnd%2Cgathering.minutesBegin%2Cgathering.minutesEnd%2Cgathering.conversions.day%2Cgathering.conversions.month%2Cunit.interpretations.individualCount%2Cunit.abundanceString%2Cgathering.interpretations.coordinateAccuracy%2Cunit.linkings.taxon.scientificName%2Cunit.taxonVerbatim%2Cunit.linkings.taxon.scientificNameAuthorship%2Cunit.author%2Cdocument.sourceId&page=1&pageSize=10
   response:
     status: 200
     headers:
-      date: Wed, 04 Mar 2026 11:42:11 GMT
+      date: Tue, 24 Mar 2026 13:25:18 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
       via: 1.0 staging.laji.fi
@@ -334,7 +334,7 @@ http_interactions:
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":337201,"pageSize":10,"total":3372001,"cacheTimestamp":1772624617,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Massaria
+      string: '{"currentPage":1,"nextPage":2,"lastPage":338953,"pageSize":10,"total":3389523,"cacheTimestamp":1774355252,"results":[{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Massaria
         aucupariae","scientificNameAuthorship":"Voglmayr & Jaklitsch"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Massaria
         aucupariae","unitId":"http://id.herb.oulu.fi/MY.1752633"},"gathering":{"conversions":{"day":15,"month":3,"wgs84CenterPoint":{"lat":61.462435,"lon":23.797243}},"eventDate":{"begin":"2015-03-15","end":"2015-03-15"},"interpretations":{"coordinateAccuracy":100}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Cerrena
         unicolor","scientificNameAuthorship":"(Bull. : Fr.) Murrill"}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Cerrena
@@ -355,5 +355,5 @@ http_interactions:
         sepiarium","unitId":"http://id.herb.oulu.fi/MY.1951541"},"gathering":{"conversions":{"month":9,"wgs84CenterPoint":{"lat":64.949322,"lon":25.6528}},"eventDate":{"begin":"2010-09-14","end":"2010-09-26"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}},{"unit":{"interpretations":{"individualCount":1,"needsCheck":false,"needsIdentification":false,"recordQuality":"NEUTRAL","reliability":"UNDEFINED"},"linkings":{"taxon":{"scientificName":"Gloeophyllum
         sepiarium","scientificNameAuthorship":"(Wulfen : Fr.) P. Karst."}},"quality":{"documentGatheringUnitQualityIssues":false},"taxonVerbatim":"Gloeophyllum
         sepiarium","unitId":"http://id.herb.oulu.fi/MY.1951544"},"gathering":{"conversions":{"month":9,"wgs84CenterPoint":{"lat":64.949322,"lon":25.6528}},"eventDate":{"begin":"2010-09-14","end":"2010-09-26"},"interpretations":{"coordinateAccuracy":1000}},"document":{"sourceId":"http://tun.fi/KE.3"}}]}'
-  recorded_at: 2026-03-04 11:43:39
+  recorded_at: 2026-03-24 13:27:04
 recorded_with: VCR-vcr/2.1.0

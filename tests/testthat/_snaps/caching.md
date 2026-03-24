@@ -4,7 +4,7 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3372001
+      Records available: 3389523
       A data.frame [10 x 12]
          record_id      scientific_name abundance lat_wgs84 lon_wgs84
       1    …752633 Massaria aucupariae…        NA  61.46243  23.79724
@@ -27,7 +27,7 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3372001
+      Records available: 3389523
       A data.frame [10 x 12]
          record_id      scientific_name abundance lat_wgs84 lon_wgs84
       1    …752633 Massaria aucupariae…        NA  61.46243  23.79724
@@ -50,7 +50,7 @@
       cached
     Output
       Records downloaded: 10
-      Records available: 3372001
+      Records available: 3389523
       A data.frame [10 x 12]
          record_id      scientific_name abundance lat_wgs84 lon_wgs84
       1    …752633 Massaria aucupariae…        NA  61.46243  23.79724

@@ -1577,7 +1577,7 @@
             "names": {
               "type": "character",
               "attributes": {},
-              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "lite"]
+              "value": ["query", "user", "record_id_selected", "date_time_selected", "deselect", "all", "type", "facts", "lite"]
             }
           },
           "value": [
@@ -1617,6 +1617,11 @@
               "value": ["translated_var"]
             },
             {
+              "type": "character",
+              "attributes": {},
+              "value": ["event"]
+            },
+            {
               "type": "logical",
               "attributes": {},
               "value": [false]
@@ -1634,10 +1639,10 @@
             "names": {
               "type": "character",
               "attributes": {},
-              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+              "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality", "event_fact__not_a_fact"]
             }
           },
-          "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+          "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality", "event_fact__not_a_fact"]
         },
         "aggregate": {
           "type": "character",
@@ -1726,10 +1731,47 @@
           "attributes": {},
           "value": ["??"]
         },
+        "facts_df": {
+          "type": "list",
+          "attributes": {
+            "names": {
+              "type": "character",
+              "attributes": {},
+              "value": ["event_id", "event_fact__not_a_fact"]
+            },
+            "id": {
+              "type": "character",
+              "attributes": {},
+              "value": ["event_id"]
+            },
+            "row.names": {
+              "type": "integer",
+              "attributes": {},
+              "value": [1]
+            },
+            "class": {
+              "type": "character",
+              "attributes": {},
+              "value": ["data.frame"]
+            }
+          },
+          "value": [
+            {
+              "type": "character",
+              "attributes": {},
+              "value": [null]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": [null]
+            }
+          ]
+        },
         "names": {
           "type": "character",
           "attributes": {},
-          "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality"]
+          "value": ["record_id", "scientific_name", "abundance", "lat_wgs84", "lon_wgs84", "date_time", "coordinates_uncertainty", "any_issues", "requires_verification", "requires_identification", "record_reliability", "record_quality", "event_fact__not_a_fact"]
         },
         "drop_na": {
           "type": "logical",
@@ -1808,6 +1850,11 @@
           "type": "character",
           "attributes": {},
           "value": ["NEUTRAL", "NEUTRAL", "NEUTRAL", "NEUTRAL", "NEUTRAL", "NEUTRAL", "NEUTRAL", "NEUTRAL", "NEUTRAL", "NEUTRAL", "NEUTRAL", "NEUTRAL"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": [null, null, null, null, null, null, null, null, null, null, null, null]
         }
       ]
     }
@@ -3857,7 +3904,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpIeCljC/file10aee2ea1109e/finbif_dwnld_cache_file_53dd0964a2b7d8ff80362e5143e3c172"]
+          "value": ["/tmp/Rtmpo6Opoq/file115d3737bca7d/finbif_dwnld_cache_file_53dd0964a2b7d8ff80362e5143e3c172"]
         },
         "locale": {
           "type": "character",
@@ -4210,7 +4257,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpIeCljC/file10aee4b8a2cf9"]
+          "value": ["/tmp/Rtmpo6Opoq/file115d3102aecab"]
         },
         "locale": {
           "type": "character",
@@ -4486,7 +4533,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpIeCljC/file10aee4b8a2cf9"]
+          "value": ["/tmp/Rtmpo6Opoq/file115d3102aecab"]
         },
         "locale": {
           "type": "character",
