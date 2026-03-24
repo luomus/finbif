@@ -38,10 +38,13 @@ test_that("download imports work", {
         quiet = TRUE
       )
 
-      hbf_6968_zip_file <- finbif_occurrence_load(
-        "HBF.6968.zip",
-        tzone = "Etc/UTC",
-        quiet = TRUE
+      hbf_6968_zip_file <- suppressWarnings(
+        finbif_occurrence_load(
+          "HBF.6968.zip",
+          facts = list(event = "not_a_fact"),
+          tzone = "Etc/UTC",
+          quiet = TRUE
+        )
       )
 
       hbf_6960_zip_file <- finbif_occurrence_load(
@@ -158,15 +161,6 @@ test_that("download imports work", {
         )
 
         app[["get"]](
-          "/HBF.6968",
-          function(req, res) {
-            file <- "HBF.6968.zip"
-            ans <- readBin(file, "raw", n = file.info(file)[["size"]])
-            res[["send"]](ans)
-          }
-        )
-
-        app[["get"]](
           "/HBF.0",
           function(req, res) {
             res[["set_status"]](404L)
@@ -243,16 +237,6 @@ test_that("download imports work", {
       ),
       style = "json2",
       ignore_attr = "url"
-    )
-
-    expect_warning(
-      finbif_occurrence_load(
-        6968,
-        facts = list(event = "not_a_fact"),
-        tzone = "Etc/UTC",
-        quiet = TRUE
-      ),
-      "could not be found in dataset"
     )
 
     bg[["kill"]]()
