@@ -198,7 +198,7 @@ get_collections <- function(col_obj) {
   }
 
   for (i in c("content", "results")) {
-    collections_list <- lapply(collections_list, getElement, i)
+    collections_list <- lapply(collections_list, "[[", i)
   }
 
   collections_list <- do.call(c, collections_list)
@@ -218,7 +218,7 @@ get_collections <- function(col_obj) {
   collections <- list()
 
   for (nm in col_obj[["nms"]]) {
-    collections[[nm]] <- lapply(collections_list, getElement, nm)
+    collections[[nm]] <- lapply(collections_list, "[[", nm)
   }
 
   lth_of_els <- lapply(collections, lapply, length)
