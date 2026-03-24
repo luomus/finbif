@@ -73,6 +73,10 @@ are conveniently preformatted for subsequent analyses.
 
   Logical. Should DarwinCore style field names be used? Default: `FALSE`
 
+- `finbif_use_all_collections`:
+
+  Logical. Should all collections be used? Default: `FALSE`
+
 ## See also
 
 Useful links:
