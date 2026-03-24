@@ -20,7 +20,8 @@
     finbif_timeout_offset = 0,
     finbif_tz = Sys.timezone(),
     finbif_locale = get_locale(),
-    finbif_use_dwc = FALSE
+    finbif_use_dwc = FALSE,
+    finbif_use_all_collections = FALSE
   )
   op <- options()
   toset <- !names(op_finbif) %in% names(op)

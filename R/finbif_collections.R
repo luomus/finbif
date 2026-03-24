@@ -116,7 +116,13 @@ finbif_collections <- function(
     ind <- ind & !has_children
   }
 
+  if (!getOption("finbif_use_all_collections")) {
+    ind <- ind & !collections[["id"]] %in% without_collections()
+    ind <- ind & !collections[["is_part_of"]] %in% without_collections()
+  }
+
   collections <- collections[ind, ]
+
   n_collections <- nrow(collections)
   rows <- rep_len(TRUE, n_collections)
 

@@ -31,5 +31,7 @@
 #'     English is used.}
 #'   \item{`finbif_use_dwc`}{Logical. Should DarwinCore style field names be
 #'     used? Default: `FALSE`}
+#'   \item{`finbif_use_all_collections`}{Logical. Should all collections be
+#'     used? Default: `FALSE`}
 #' }
 "_PACKAGE"

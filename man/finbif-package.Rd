@@ -44,6 +44,8 @@ option if they are set to one of the supported languages, otherwise
 English is used.}
 \item{\code{finbif_use_dwc}}{Logical. Should DarwinCore style field names be
 used? Default: \code{FALSE}}
+\item{\code{finbif_use_all_collections}}{Logical. Should all collections be
+used? Default: \code{FALSE}}
 }
 }
 

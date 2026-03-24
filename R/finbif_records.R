@@ -681,6 +681,11 @@ get_extra_pages <- function(fb_records_list) {
 #' @noRd
 parse_filters <- function(fb_records_obj) {
   filter <- as.list(fb_records_obj[["filter"]])
+
+  if (!getOption("finbif_use_all_collections")) {
+    filter <- c(filter, list(not_collection = without_collections(TRUE)))
+  }
+
   cache <- fb_records_obj[["cache"]]
 
   finbif_filter_names <- list(x = names(filter), translation = "filter_names")
@@ -719,12 +724,19 @@ parse_filters <- function(fb_records_obj) {
       if (inherits(f_i, "finbif_collections")) {
         f_i <- row.names(f_i)
       } else {
+
+        op <- options()
+        on.exit(options(op))
+
+        options(finbif_use_all_collections = TRUE)
+
         collections <- finbif_collections(
           select = c("id", "collection_name", "abbreviation"),
           supercollections = TRUE,
           nmin = NA,
           locale = fb_records_obj[["locale"]]
         )
+
         collections[] <- lapply(collections, structure, class = "translation")
 
         env <- list()
