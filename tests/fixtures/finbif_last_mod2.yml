@@ -1,21 +1,20 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://apitest.laji.fi/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate+DESC&page=1&pageSize=1
+    uri: https://api.laji.fi/warehouse/query/unit/list?selected=unit.unitId%2Cdocument.loadDate&orderBy=document.loadDate+DESC&page=1&pageSize=1
   response:
     status: 200
     headers:
-      date: Tue, 24 Mar 2026 13:26:25 GMT
+      date: Fri, 17 Apr 2026 12:13:20 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
-      via: 1.0 staging.laji.fi
+      via: 1.0 dw.laji.fi
       cache-control: no-store
-      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
-      string: '{"currentPage":1,"nextPage":2,"lastPage":3389523,"pageSize":1,"total":3389523,"cacheTimestamp":1774355329,"results":[{"unit":{"unitId":"http://tun.fi/JX.130728#100"},"document":{"loadDate":"2026-03-24"}}]}'
-  recorded_at: 2026-03-24 13:28:11
+      string: '{"currentPage":1,"nextPage":2,"lastPage":59646712,"pageSize":1,"total":59646712,"cacheTimestamp":1776428000,"results":[{"unit":{"unitId":"http://tun.fi/JX.2433655#3"},"document":{"loadDate":"2026-04-17"}}]}'
+  recorded_at: 2026-04-17 12:13:20
 recorded_with: VCR-vcr/2.1.0
