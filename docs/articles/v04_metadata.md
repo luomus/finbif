@@ -41,7 +41,7 @@ Click to show/hide output.
   
 
 Calling
-[`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+[`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
 and specifying one of the metadata categories will display a
 `data.frame` with the requested metadata.
 
@@ -77,7 +77,7 @@ Some more complex metadata is accessed with other
 ### Informal groups
 
 Informal taxonomic groups and their relationships can be displayed with
-[`finbif_informal_groups()`](https://finbif-docs-dev.netlify.app/reference/finbif_informal_groups.md)
+[`finbif_informal_groups()`](https://luomus.github.io/finbif/reference/finbif_informal_groups.md)
 
 ``` r
 finbif_informal_groups(limit = 2)
@@ -115,7 +115,7 @@ finbif_informal_groups("Crustaceans")
 ## Collections
 
 Another special case of metadata is
-[`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md).
+[`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md).
 Collections are the highest level of record aggregation in the FinBIF
 database.
 
@@ -203,7 +203,7 @@ Click to show/hide output.
   
 
 By default,
-[`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+[`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md)
 only displays the lowest level collections. Higher level,
 “supercollections” can be viewed by setting `supercollections = TRUE`
 and you can limit the output to collections with a minimum number of
@@ -214,7 +214,7 @@ collections <- finbif_collections(supercollections = TRUE, nmin = 10000)
 ```
 
 The
-[`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+[`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md)
 function returns a `data.frame` where the row names are the ID number of
 the collection.
 

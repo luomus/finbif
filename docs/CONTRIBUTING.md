@@ -35,5 +35,5 @@ with a minimal [reprex](https://www.tidyverse.org/help/#reprex).
 ### Code of Conduct
 
 Please note that this project is released with a [Contributor Code of
-Conduct](https://finbif-docs-dev.netlify.app/CODE_OF_CONDUCT.md). By
+Conduct](https://luomus.github.io/finbif/CODE_OF_CONDUCT.md). By
 contributing to this project you agree to abide by its terms.
