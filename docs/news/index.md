@@ -2,6 +2,8 @@
 
 ## finbif 0.9.14
 
+CRAN release: 2026-04-17
+
 ### MINOR IMPROVEMENTS
 
 - DwC style field names can be set with a global option
