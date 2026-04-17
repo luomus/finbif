@@ -3,9 +3,9 @@
 The core purpose of [finbif](https://github.com/luomus/finbif) is
 accessing occurrence data stored in the FinBIF database. Occurrence data
 can be retrieved from FinBIF with the function
-[`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md).
+[`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md).
 Without any arguments specified
-[`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md)
+[`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md)
 will retrieve the latest 10 occurrence records from FinBIF.
 
 ``` r
@@ -56,10 +56,11 @@ colnames(finbif_occurrence(dwc = TRUE))
 ```
 
 The functions
-[`to_dwc()`](https://luomus.github.io/finbif/reference/to_dwc.md) and
-[`to_native()`](https://luomus.github.io/finbif/reference/to_dwc.md) can
-be used to translate variable names to and from Darwin Core style and
-[finbif](https://github.com/luomus/finbif)’s native variable names
+[`to_dwc()`](https://finbif-docs-dev.netlify.app/reference/to_dwc.md)
+and
+[`to_native()`](https://finbif-docs-dev.netlify.app/reference/to_dwc.md)
+can be used to translate variable names to and from Darwin Core style
+and [finbif](https://github.com/luomus/finbif)’s native variable names
 style.
 
 ## Choosing taxa
