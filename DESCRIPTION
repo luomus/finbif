@@ -36,7 +36,7 @@ LazyData: true
 Depends: R (>= 4.1.0)
 Imports:
     secretbase,
-    httr2,
+    httr2 (>= 1.1.2),
     jsonlite,
     lutz,
     utils
