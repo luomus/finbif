@@ -117,7 +117,7 @@ document.facts.decimalValue,document_fact_decimal,documentFactDecimal,FALSE,FALS
 document.facts.fact,document_fact_name,documentFactName,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.facts.integerValue,document_fact_integer,documentFactInteger,FALSE,FALSE,integer,integer,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.facts.value,document_fact_value,documentFactValue,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-document.firstLoadDate,first_load_date,available,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+document.firstLoadDate,first_load_date,availableDate,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.formId,form_id,formID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.keywords,document_keywords,documentKeywords,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.licenseId,license,license,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
@@ -732,4 +732,4 @@ unit.interpretations.det,determiner_interpreted,identifiedByInterpreted,FALSE,FA
 unit.linkings.originalTaxon.qname,orig_taxon_qname,originalTaxonConceptQname,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.taxon.qname,taxon_qname,taxonConceptQname,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.qname,type_specimen_taxon_qname,typeSpecimenTaxonConceptQname,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-unit.sequenceText,dna_sequence,DNA_sequenceText,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.sequenceText,dna_sequence,dnaSequence,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE

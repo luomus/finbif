@@ -35,7 +35,7 @@ Gathering.Quality.Issue.Source,event_issue_source,eventIssueSource,FALSE,charact
 Gathering.MediaCount,event_media_count,eventAssociatedMediaCount,FALSE,integer,FALSE
 Gathering.Notes,event_notes,eventRemarks,FALSE,character,FALSE
 Gathering.GatheringOrder,event_order,eventOrder,FALSE,integer,FALSE
-Document.FirstLoadDate,first_load_date,available,FALSE,character,FALSE
+Document.FirstLoadDate,first_load_date,availableDate,FALSE,character,FALSE
 Gathering.Conversions.WGS84_WKT,footprint_wgs84,footprintWKT,FALSE,character,FALSE
 Gathering.DisplayDateTime,formatted_date_time,eventDate,FALSE,character,FALSE
 Gathering.HigherGeographyVerbatim,higher_geography,higherGeography,FALSE,character,FALSE
@@ -163,3 +163,4 @@ Unit.Interpretations.InvasiveControlEffectiveness,invasive_control_effectiveness
 Unit.DynamicProperties,dynamic_properties,dynamicProperties,FALSE,character,FALSE
 Gathering.GridCellYJK,grid_cell_ykj,gridCellYKJ,FALSE,character,FALSE
 Unit.AdditionalIDs,additional_ids,otherCatalogNumbers,FALSE,character,FALSE
+Unit.SequenceText,dna_sequence,dnaSequence,FALSE,character,FALSE
