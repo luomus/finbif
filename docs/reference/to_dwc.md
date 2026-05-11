@@ -37,6 +37,7 @@ Character vector.
 ## Examples
 
 ``` r
+
 to_dwc("record_id", "date_time", "scientific_name")
 #> [1] "occurrenceID"   "eventDateTime"  "scientificName"
 ```

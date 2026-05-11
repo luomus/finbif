@@ -9,12 +9,14 @@ Without any arguments specified
 will retrieve the latest 10 occurrence records from FinBIF.
 
 ``` r
+
 finbif_occurrence()
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 47159747
@@ -48,6 +50,7 @@ You can switch from the default variable names to [Darwin
 Core](http://rs.tdwg.org/dwc/) style names by setting `dwc = TRUE`.
 
 ``` r
+
 colnames(finbif_occurrence(dwc = TRUE))
 #>  [1] "occurrenceID"                  "scientificName"                "individualCount"              
 #>  [4] "decimalLatitude"               "decimalLongitude"              "eventDateTime"                
@@ -69,12 +72,14 @@ You can limit the records to certain taxa by specifying them as an
 argument.
 
 ``` r
+
 finbif_occurrence("Cygnus cygnus")
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 95730
@@ -100,12 +105,14 @@ Click to show/hide output.
 Multiple taxa can be requested at once.
 
 ``` r
+
 finbif_occurrence("Cygnus cygnus", "Cygnus olor")
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 138681
@@ -132,6 +139,7 @@ You can also chose higher taxonomic groups and use common names (in
 English, Finnish and Swedish).
 
 ``` r
+
 birds  <- finbif_occurrence("Birds")
 linnut <- finbif_occurrence("Linnut")
 faglar <- finbif_occurrence("Fåglar")
@@ -146,12 +154,14 @@ You can increase the number of records returned by using the `n`
 argument.
 
 ``` r
+
 finbif_occurrence(n = 1001)
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 1001
 #> Records available: 47159747
@@ -178,6 +188,7 @@ You can see how many records are available for a given request, without
 retrieving any records, by setting `count_only = TRUE`.
 
 ``` r
+
 finbif_occurrence(count_only = TRUE)
 #> [1] 47159747
 ```
@@ -190,12 +201,14 @@ requested taxa are not found in the database you will receive a warning
 but the data will still be retrieved for the remaining taxa.
 
 ``` r
+
 finbif_occurrence("Vulpes vulpes", "Moomin")
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 5303
@@ -222,12 +235,14 @@ You can turn off taxon name pre-checking by setting the value of the
 `check_taxa` argument to `FALSE`.
 
 ``` r
+
 finbif_occurrence("Vulpes vulpes", "Moomin", check_taxa = FALSE)
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 5303
@@ -255,6 +270,7 @@ By setting the argument, `on_check_fail` to `"error"` (the default is
 fail if any of the taxa are not found in the FinBIF database.
 
 ``` r
+
 finbif_occurrence("Vulpes vulpes", "Moomin", on_check_fail = "error")
 #> Error: Cannot find the following taxa in the FinBIF taxonomy.
 #> Please check you are using accepted names and not synonyms or
@@ -300,6 +316,7 @@ Click to show/hide output.
 
 ``` r
 
+
 #> Records downloaded: 10
 #> Records available: 309
 #> A data.frame [10 x 2]
@@ -326,12 +343,14 @@ This can be turned off (which can speed up data processing time) by
 deselecting the `date_time` variable.
 
 ``` r
+
 finbif_occurrence(select = "-date_time")
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 47159747
@@ -368,12 +387,14 @@ and daytime/nighttime hours are important), you can switch to more
 accurate, though slower, timezone calculation method.
 
 ``` r
+
 finbif_occurrence(date_time_method = "accurate")
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 47159747
@@ -402,6 +423,7 @@ The timezone of the calculated `date_time` variable is determined by the
 timezone of your operating system.
 
 ``` r
+
 Sys.timezone()
 ```
 
@@ -409,12 +431,14 @@ You can override this by setting the `tzone` argument to a different
 value.
 
 ``` r
+
 finbif_occurrence(tzone = "Etc/UTC")
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 47159747
@@ -441,6 +465,7 @@ Or set the global timezone option to set the timezone for the current
 session.
 
 ``` r
+
 options(finbif_tz = "Etc/UTC")
 ```
 

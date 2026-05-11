@@ -61,6 +61,11 @@ Useful links:
 \author{
 \strong{Maintainer}: William K. Morris \email{willi@mmorris.email} (\href{https://orcid.org/0000-0002-8686-4154}{ORCID})
 
+Authors:
+\itemize{
+  \item William K. Morris \email{willi@mmorris.email} (\href{https://orcid.org/0000-0002-8686-4154}{ORCID})
+}
+
 Other contributors:
 \itemize{
   \item Finnish Museum of Natural History - Luomus (\href{https://ror.org/03tcx6c30}{ROR}) [copyright holder]

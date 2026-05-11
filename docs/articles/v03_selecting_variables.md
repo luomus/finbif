@@ -16,6 +16,7 @@ To retrieve a limited set of variables from FinBIF simply specify the
 desired variables in the `select` argument.
 
 ``` r
+
 finbif_occurrence(
   genus  = "Falco",
   select = c("scientific_name", "life_stage", "sex")
@@ -25,6 +26,7 @@ finbif_occurrence(
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 342668
@@ -50,12 +52,14 @@ To get extra variables as well as the default set, specify the extra
 variables in addition to the keyword `"default_vars"`.
 
 ``` r
+
 finbif_occurrence(select = c("default_vars", "life_stage"))
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 47159747
@@ -91,12 +95,14 @@ By default occurrence records are ordered by variables in ascending
 order.
 
 ``` r
+
 finbif_occurrence("Cygnus cygnus", order_by = "abundance")
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 95730
@@ -136,12 +142,14 @@ You can switch to descending order by prefixing the variable with a
 dash.
 
 ``` r
+
 finbif_occurrence("Cygnus cygnus", order_by = "-abundance")
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 95730
@@ -179,6 +187,7 @@ Click to show/hide output.
 
 ``` r
 
+
 #> Records downloaded: 10
 #> Records available: 56359
 #> A data.frame [10 x 12]
@@ -206,12 +215,14 @@ You can also request a random sample (random order) of occurrence
 records by setting the `sample` argument to `TRUE`.
 
 ``` r
+
 finbif_occurrence(sample = TRUE)
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 47159747

@@ -10,6 +10,7 @@ post-processing time. For the full list of filtering options see
 Records can be filtered by the name of a location.
 
 ``` r
+
 finbif_occurrence(filter = c(country = "Finland"))
 #> Records downloaded: 10
 #> Records available: 44691386
@@ -33,6 +34,7 @@ finbif_occurrence(filter = c(country = "Finland"))
 Or by a set of coordinates.
 
 ``` r
+
 finbif_occurrence(
   filter = list(coordinates = list(c(60, 68), c(20, 30), "wgs84"))
 )
@@ -65,12 +67,14 @@ The event or import date of records can be used to filter occurrence
 data from FinBIF. The date filters can be a single year, month or date,
 
 ``` r
+
 finbif_occurrence(filter = list(date_range_ym = c("2020-12")))
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 23847
@@ -95,6 +99,7 @@ Click to show/hide output.
 , or for record events, a range as a character vector.
 
 ``` r
+
 finbif_occurrence(
   filter = list(date_range_ymd = c("2019-06-01", "2019-12-31"))
 )
@@ -103,6 +108,7 @@ finbif_occurrence(
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 911735
@@ -140,6 +146,7 @@ Records for a specific season or time-span across all years can also be
 requested.
 
 ``` r
+
 finbif_occurrence(
   filter = list(
     date_range_md = c(begin = "12-21", end = "12-31"),
@@ -151,6 +158,7 @@ finbif_occurrence(
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 1486845
@@ -180,6 +188,7 @@ You can filter occurrence records by indicators of data quality. See
 section “Quality” for details.
 
 ``` r
+
 strict <- c(
   collection_quality = "professional", coordinates_uncertainty_max = 1,
   record_quality = "expert_verified"
@@ -209,6 +218,7 @@ can filter by collection with either the `collection` or
 to see metadata on the FinBIF collections.
 
 ``` r
+
 finbif_occurrence(
   filter = c(collection = "iNaturalist Suomi Finland"), count_only = TRUE
 )
@@ -225,12 +235,14 @@ You can filter occurrence records based on informal taxonomic groups
 such as `Birds` or `Mammals`.
 
 ``` r
+
 finbif_occurrence(filter = list(informal_groups = c("Birds", "Mammals")))
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 22116048
@@ -260,6 +272,7 @@ function to see the subgroups that make up a higher level informal
 group:
 
 ``` r
+
 finbif_informal_groups("macrofungi")
 #> Error in finbif_informal_groups("macrofungi"): Group not found
 ```
@@ -271,6 +284,7 @@ another regulatory statuses. See `finbif_metadata("regulatory_status")`
 for a list of regulatory statuses and short-codes.
 
 ``` r
+
 # Search for birds on the EU invasive species list
 finbif_occurrence(
   filter = list(informal_groups = "Birds", regulatory_status = "EU_INVSV")
@@ -280,6 +294,7 @@ finbif_occurrence(
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 471
@@ -309,6 +324,7 @@ category. See `finbif_metadata("red_list")` for the IUCN red list
 categories and their short-codes.
 
 ``` r
+
 # Search for near threatened mammals
 finbif_occurrence(
   filter = list(informal_groups = "Mammals", red_list_status = "NT")
@@ -318,6 +334,7 @@ finbif_occurrence(
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 42510
@@ -353,6 +370,7 @@ to primarily inhabit forests, yet the locations of those records may
 encompass habitats other than forests).
 
 ``` r
+
 head(finbif_metadata("habitat_type"))
 #>                code name                                              
 #> MKV.habitatMt  Mt   alpine birch forests (excluding herb-rich alpine …
@@ -364,6 +382,7 @@ head(finbif_metadata("habitat_type"))
 ```
 
 ``` r
+
 # Search records of taxa for which forests are their primary or secondary
 # habitat type
 finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
@@ -372,6 +391,7 @@ finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 26362337
@@ -402,6 +422,7 @@ names are habitat types or subtypes and the elements of the character
 vectors are the qualifier codes.
 
 ``` r
+
 finbif_metadata("habitat_qualifier")[4:6, ]
 #>                           code name                                              
 #> MKV.habitatSpecificTypeCA CA   calcareous effect                                 
@@ -410,6 +431,7 @@ finbif_metadata("habitat_qualifier")[4:6, ]
 ```
 
 ``` r
+
 # Search records of taxa for which forests with sun-exposure and broadleaved
 # deciduous trees are their primary habitat type
 finbif_occurrence(filter = list(primary_habitat = list(M = c("PAK", "J"))))
@@ -418,6 +440,7 @@ finbif_occurrence(filter = list(primary_habitat = list(M = c("PAK", "J"))))
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 178
@@ -446,12 +469,14 @@ You can restrict the occurrence records by the status of the taxa in
 Finland. For example you can request records for only rare species.
 
 ``` r
+
 finbif_occurrence(filter = c(finnish_occurrence_status = "rare"))
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 406005
@@ -477,6 +502,7 @@ Or, by using the negation of occurrence status, you can request records
 of birds excluding those considered vagrants.
 
 ``` r
+
 finbif_occurrence(
   filter = list(
     informal_groups               = "birds",
@@ -488,6 +514,7 @@ finbif_occurrence(
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 21725426

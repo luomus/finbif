@@ -18,6 +18,7 @@ You can install the current stable version of
 [CRAN](https://cran.r-project.org),
 
 ``` r
+
 install.packages("finbif")
 ```
 
@@ -26,12 +27,14 @@ You can also install the latest development version of
 [GitHub](https://github.com),
 
 ``` r
+
 remotes::install_github("luomus/finbif@dev")
 ```
 
 ## Loading the finbif package
 
 ``` r
+
 library(finbif)
 ```
 
@@ -42,6 +45,7 @@ token. You can request an API token to be sent to your email address
 with the function `finbif_get_token()`.
 
 ``` r
+
 finbif_request_token("your@email.com")
 ```
 
@@ -50,6 +54,7 @@ environment variable `FINBIF_ACCESS_TOKEN` either for the current
 session,
 
 ``` r
+
 Sys.setenv(
   FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrv"
 )
@@ -65,6 +70,7 @@ for details).
 You can check to see if a taxon exists in the FinBIF database.
 
 ``` r
+
 finbif_check_taxa("Ursus arctos")
 #> [Ursus arctos] ID: MX.47348
 ```
@@ -74,6 +80,7 @@ taxon is not in the FinBIF database it is reported as “not found” and
 for that taxa the list element is `NA`.
 
 ``` r
+
 (taxa <- finbif_check_taxa(c("Ursus arctos", "Moomin")))
 #> [Ursus arctos] ID: MX.47348
 #> [Moomin      ] Not found
@@ -89,6 +96,7 @@ You can also specify the taxonomic rank when searching FinBIF and the
 search will be limited to the specified rank.
 
 ``` r
+
 finbif_check_taxa(list(species = c("Ursus arctos", "Ursus"), genus = "Ursus"))
 #> [species: Ursus arctos] ID: MX.47348
 #> [species: Ursus       ] Not found
@@ -104,6 +112,7 @@ matching, but multiple taxa, up to a limit, `n`, may be returned when
 using partial matching.
 
 ``` r
+
 birch_search <- finbif_taxa("Betula pendula", 2, "partial")
 birch_search$content
 ```
@@ -111,6 +120,7 @@ birch_search$content
 Click to show/hide output.
 
 ``` r
+
 
 #> [[1]]
 #> [[1]]$matchingName
@@ -235,6 +245,7 @@ You can download occurrence data from the FinBIF database as a
 function.
 
 ``` r
+
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
 #> Records available: 95730
@@ -259,6 +270,7 @@ You can search for multiple taxa at once and filter the records with the
 `filter` argument.
 
 ``` r
+
 finbif_occurrence(
   "Cygnus cygnus",
   "Cygnus olor",
@@ -269,6 +281,7 @@ finbif_occurrence(
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 47293
@@ -303,12 +316,14 @@ It is possible to request a random sample of records instead of the last
 `n` records (or records ordered by some other variable).
 
 ``` r
+
 finbif_occurrence("Birds", sample = TRUE)
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Records downloaded: 10
 #> Records available: 21748016

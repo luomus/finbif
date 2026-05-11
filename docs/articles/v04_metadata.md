@@ -11,12 +11,14 @@ You can see some of the metadata available in
 `finbif_metadata` function without any arguments.
 
 ``` r
+
 finbif_metadata()
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #>                metadata_name
 #> 1          regulatory_status
@@ -46,12 +48,14 @@ and specifying one of the metadata categories will display a
 `data.frame` with the requested metadata.
 
 ``` r
+
 finbif_metadata("red_list")
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #>           code name                 
 #> MX.iucnCR CR   Critically Endangered
@@ -80,6 +84,7 @@ Informal taxonomic groups and their relationships can be displayed with
 [`finbif_informal_groups()`](https://finbif-docs-dev.netlify.app/reference/finbif_informal_groups.md)
 
 ``` r
+
 finbif_informal_groups(limit = 2)
 #> Algae
 #>   --Macro algae
@@ -99,6 +104,7 @@ You can select a subgroup by specifying a parent informal group as a
 function argument.
 
 ``` r
+
 finbif_informal_groups("Crustaceans")
 #> Crustaceans
 #>   --Macrocrustaceans
@@ -123,6 +129,7 @@ You can subset collection metadata by using the `filter` and `select`
 arguments.
 
 ``` r
+
 finbif_collections(
   filter = geographic_coverage == "Finland",
   select = c("collection_name", "taxonomic_coverage", "count")
@@ -132,6 +139,7 @@ finbif_collections(
 Click to show/hide output.
 
 ``` r
+
 
 #>         collection_name                   taxonomic_coverage                count  
 #> HR.1227 Priv. coll. Mikko Heikkinen       Biota                                  62
@@ -210,6 +218,7 @@ and you can limit the output to collections with a minimum number of
 records in them with the `nmin` argument.
 
 ``` r
+
 collections <- finbif_collections(supercollections = TRUE, nmin = 10000)
 ```
 
@@ -219,12 +228,14 @@ function returns a `data.frame` where the row names are the ID number of
 the collection.
 
 ``` r
+
 finbif_collections(supercollections = TRUE)["HR.128", "collection_name"]
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #> Collections of the Finnish Museum of Natural History Luomus
 ```
@@ -236,12 +247,14 @@ ID as a filter. Note that the children of supercollections may also be
 supercollections.
 
 ``` r
+
 finbif_collections(is_part_of == "HR.128", supercollections = TRUE)
 ```
 
 Click to show/hide output.
 
 ``` r
+
 
 #>         collection_name abbreviation description online_url has_children is_part_of data_quality
 #> HR.129  Collections of… H            Herbarium … <NA>        TRUE        HR.128     MY.dataQual…

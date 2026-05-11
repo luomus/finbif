@@ -18,6 +18,7 @@ You can install the current stable version of `finbif` from
 [CRAN](https://cran.r-project.org),
 
 ``` r
+
 install.packages("finbif")
 ```
 
@@ -25,6 +26,7 @@ You can also install the latest development version of `finbif` from
 [GitHub](https://github.com),
 
 ``` r
+
 remotes::install_github("luomus/finbif@dev")
 ```
 
@@ -39,6 +41,7 @@ version of `finbif` [here](https://finbif-docs-dev.netlify.app).
 First load the `finbif` R package.
 
 ``` r
+
 library(finbif)
 ```
 
@@ -47,6 +50,7 @@ token. You can request an API token to be sent to your email address
 with the function `finbif_get_token`.
 
 ``` r
+
 finbif_request_token("your@email.com")
 ```
 
@@ -55,6 +59,7 @@ environment variable `FINBIF_ACCESS_TOKEN` either for the current
 session,
 
 ``` r
+
 Sys.setenv(
   FINBIF_ACCESS_TOKEN = "xtmSOIxjPwq0pOMB1WvcZgFLU9QBklauOlonWl8K5oaLIx8RniJLrvcJU4v9H7Et"
 )
@@ -70,6 +75,7 @@ for details).
 Download occurrence data from FinBIF.
 
 ``` r
+
 finbif_occurrence("Cygnus cygnus", n = 100)
 ```
 

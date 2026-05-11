@@ -92,6 +92,11 @@ Useful links:
 **Maintainer**: William K. Morris <willi@mmorris.email>
 ([ORCID](https://orcid.org/0000-0002-8686-4154))
 
+Authors:
+
+- William K. Morris <willi@mmorris.email>
+  ([ORCID](https://orcid.org/0000-0002-8686-4154))
+
 Other contributors:
 
 - Finnish Museum of Natural History - Luomus
