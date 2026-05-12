@@ -92,7 +92,11 @@ finbif_collections <- function(
 
   cols <- rownames(col_df[cols, ])
 
-  col_df <- col_df[unique(c("id", "aggregate_by", cols)), ]
+  col_df <- col_df[
+    unique(
+      c("id", "aggregate_by", "count", "is_part_of", "has_children", cols)
+    ),
+  ]
 
   col_md <- list(
     qry = NULL,
@@ -105,28 +109,26 @@ finbif_collections <- function(
 
   collections <- get_collections(col_md)
 
-  if ("count" %in% col_df[["type"]]) {
-    qry <- list(
-      aggregateBy = "document.collectionId",
-      onlyCount = FALSE,
-      pessimisticDateRangeHandling = TRUE
-    )
+  qry <- list(
+    aggregateBy = "document.collectionId",
+    onlyCount = FALSE,
+    pessimisticDateRangeHandling = TRUE
+  )
 
-    col_counts <- list(
-      qry = qry,
-      lang = locale,
-      path = paste0(getOption("finbif_warehouse_query"), "unit/aggregate"),
-      nms = col_df[col_df[["type"]] == "count", "nms"],
-      id = "aggregateBy",
-      cache = cache
-    )
-    col_counts <- get_collections(col_counts)
+  col_counts <- list(
+    qry = qry,
+    lang = locale,
+    path = paste0(getOption("finbif_warehouse_query"), "unit/aggregate"),
+    nms = col_df[col_df[["type"]] == "count", "nms"],
+    id = "aggregateBy",
+    cache = cache
+  )
+  col_counts <- get_collections(col_counts)
 
-    collections <- merge(
-      collections, col_counts, by.x = "id", by.y = "aggregate_by", all.x = TRUE
-    )
-    cols <- setdiff(cols, "aggregate_by")
-  }
+  collections <- merge(
+    collections, col_counts, by.x = "id", by.y = "aggregate_by", all.x = TRUE
+  )
+  cols <- setdiff(cols, "aggregate_by")
 
   if ("description" %in% cols && "data_quality_description" %in% cols) {
     descriptions <- collections[["description"]]
