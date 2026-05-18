@@ -26,7 +26,7 @@ CRAN release: 2026-03-04
 ### MINOR IMPROVEMENTS
 
 - Package now uses version 1 of upstream API.
-- A collection ID Qname is used if there is no collection code.
+- A collection ID QName is used if there is no collection code.
 
 ### BUG FIXES
 
@@ -543,7 +543,7 @@ CRAN release: 2021-07-22
   not in use.
 
 - Fixed bug that triggered an error when selected a variable that had to
-  be computed from its ID when using DWC style variable names.
+  be computed from its ID when using DwC style variable names.
 
 ## finbif 0.5.0
 

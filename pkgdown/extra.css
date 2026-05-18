@@ -34,3 +34,11 @@ body {
 [data-bs-theme="dark"] {
   --bs-secondary-color: #B9BBB9BF
 }
+
+.template-citation-authors pre {
+  color: #000;
+}
+
+.template-title-body pre {
+  color: #000;
+}
