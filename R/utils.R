@@ -402,5 +402,5 @@ with_locale <- function(
 
 #' @noRd
 without_collections <- function() {
-  c("HR.3671", "HR.4852", "HR.3151", "HR.6563")
+  c("HR.3671", "HR.4852", "HR.3151", "HR.6563", "HR.7400")
 }
