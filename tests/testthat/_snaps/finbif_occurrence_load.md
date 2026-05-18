@@ -1308,7 +1308,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",
@@ -1584,7 +1584,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",
@@ -1907,7 +1907,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",
@@ -2549,7 +2549,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",
@@ -2825,7 +2825,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",
@@ -3101,7 +3101,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",
@@ -3377,7 +3377,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",
@@ -3653,7 +3653,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",
@@ -3904,7 +3904,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpPHpBjX/file196ee51e488d2/finbif_dwnld_cache_file_53dd0964a2b7d8ff80362e5143e3c172"]
+          "value": ["/tmp/RtmpvzGzfK/filead9c3d9c7d3e/finbif_dwnld_cache_file_53dd0964a2b7d8ff80362e5143e3c172"]
         },
         "locale": {
           "type": "character",
@@ -3929,7 +3929,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",
@@ -4257,7 +4257,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpPHpBjX/file196eec6fccbf"]
+          "value": ["/tmp/RtmpvzGzfK/filead9ca57be89"]
         },
         "locale": {
           "type": "character",
@@ -4282,7 +4282,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",
@@ -4533,7 +4533,7 @@
         "url": {
           "type": "character",
           "attributes": {},
-          "value": ["/tmp/RtmpPHpBjX/file196eec6fccbf"]
+          "value": ["/tmp/RtmpvzGzfK/filead9ca57be89"]
         },
         "locale": {
           "type": "character",
@@ -4558,7 +4558,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author", "document.sourceId"]
+              "value": ["unit.unitId", "gathering.conversions.wgs84CenterPoint.lat", "gathering.conversions.wgs84CenterPoint.lon", "unit.quality.documentGatheringUnitQualityIssues", "unit.interpretations.needsCheck", "unit.interpretations.needsIdentification", "unit.interpretations.reliability", "unit.interpretations.recordQuality", "gathering.eventDate.begin", "gathering.eventDate.end", "gathering.hourBegin", "gathering.hourEnd", "gathering.minutesBegin", "gathering.minutesEnd", "gathering.conversions.day", "gathering.conversions.month", "unit.interpretations.individualCount", "unit.abundanceString", "gathering.interpretations.coordinateAccuracy", "document.sourceId", "unit.linkings.taxon.scientificName", "unit.taxonVerbatim", "unit.linkings.taxon.scientificNameAuthorship", "unit.author"]
             },
             {
               "type": "character",

@@ -93,6 +93,8 @@ finbif_occurrence_load <- function(
   col_names <- var_names[[var_type]]
   deselect <- character()
 
+  select <- fix_dwc_in(select)
+
   if (all_cols) {
     deselect <- grep("^-", select, value = TRUE)
     deselect <- gsub("-", "", deselect)
@@ -282,6 +284,10 @@ finbif_occurrence_load <- function(
   }
 
   select_user <- name_chr_vec(select[["user"]])
+  select_user <- fix_dwc_out(select_user)
+
+  names(fb_occurrence_df) <- fix_dwc_out(names(fb_occurrence_df))
+
   fb_occurrence_df <- fb_occurrence_df[, select_user, drop = FALSE]
 
   attr(fb_occurrence_df, "column_names") <- select_user
@@ -1271,4 +1277,16 @@ split_col <- function(split_obj) {
   split_cols <- do.call(rbind, split_cols)
 
   apply(split_cols, 2L, c, simplify = FALSE)
+}
+
+#' @noRd
+fix_dwc_in <- function(x) {
+  x <- sub("available", "availableDate", x)
+  sub("DNA_sequence", "dnaSequence", x)
+}
+
+#' @noRd
+fix_dwc_out <- function(x) {
+  x <- sub("availableDate", "available", x)
+  sub("dnaSequence", "DNA_sequence", x)
 }
