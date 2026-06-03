@@ -1,5 +1,5 @@
 #' @noRd
-.onLoad <- function(libname, pkgname) {
+.onLoad <- function(libname, pkgname) { # nocov start
   op_finbif <- list(
     finbif_api_url = "https://api.laji.fi",
     finbif_dl_url = "https://dw.laji.fi/download",
@@ -32,6 +32,28 @@
 
   invisible(NULL)
 }
+
+#' @noRd
+get_locale <- function() {
+  ans <- "en"
+  supported <- sysdata(list(which = "supported_langs"))
+  matches <- name_chr_vec(c(unname(supported), supported))
+  env <- Sys.getenv(c("LANGUAGE", "LANG"))
+  collate <- Sys.getlocale("LC_COLLATE")
+
+  for (l in c(env, collate)) {
+    reg <- regexpr(".+?(?=[[:punct:]])", l, perl = TRUE)
+    l <- regmatches(l, reg)
+
+    if (isTRUE(l %in% names(matches))) {
+      ans <- matches[[l]]
+      break
+    }
+
+  }
+
+  ans
+} # nocov end
 
 #' @noRd
 #' @export fb_check_taxa
