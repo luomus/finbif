@@ -238,7 +238,7 @@ get_calling_function <- function(pkg) {
 
   if (length(args) > 0L) {
     type <- vapply(args, typeof, "")
-    len <- vapply(args, length, 0L)
+    len <- lengths(as.list(args))
     arg_nms <- names(args)
     arg_nm_strs <- paste0(arg_nms, "=", type, "<", len, ">")
   }

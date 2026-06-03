@@ -112,7 +112,7 @@ finbif_occurrence_load <- function(
     select <- infer_selection(fb_records_obj)
   })
 
-  fact_types <- vapply(facts, length, 0L) > 0L
+  fact_types <- lengths(facts) > 0L
   fact_types <- which(fact_types)
   fact_types <- names(fact_types)
 
@@ -1002,7 +1002,7 @@ infer_file_vars <- function(cols) {
     file_vars <- sysdata(list(which = "lite_download_file_vars"))
 
     locale <- lapply(file_vars, intersect, cols)
-    locale <- vapply(locale, length, 0L)
+    locale <- lengths(locale)
     locale <- locale == max(locale)
     locale <- which(locale)
 

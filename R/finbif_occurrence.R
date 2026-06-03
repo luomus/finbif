@@ -266,7 +266,7 @@ use_multi_req <- function(fb_records_obj) {
   nms <- names(filter)
   fnames <- sysdata(list(which = "filter_names"))
   no_name <- is.null(nms) || !any(nms %in% fnames[["translated_filter"]])
-  filters_has_no_length <- vapply(filter, length, 0L) < 1L
+  filters_has_no_length <- lengths(filter) < 1L
   filter_names <- lapply(filter, names)
   filter_names_are_char <- vapply(filter_names, is.character, NA)
   named <- all(filters_has_no_length | filter_names_are_char)
