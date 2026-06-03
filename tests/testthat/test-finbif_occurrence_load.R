@@ -178,9 +178,9 @@ test_that("download imports work", {
       list(file = f)
     )
 
-    while (!file.exists(f) || length(url <- readLines(f, warn = FALSE)) < 2L) {}
+    while (!file.exists(f) || length(readLines(f, warn = FALSE)) < 2L) {}
 
-    options(finbif_dl_url = sub("/$", "", url[[1L]]))
+    options(finbif_dl_url = sub("/$", "", readLines(f, warn = FALSE)[[1L]]))
 
     expect_error(
       finbif_occurrence_load("http://tun.fi/HBF.0", quiet = TRUE),
@@ -216,11 +216,8 @@ test_that("download imports work", {
 
     options(finbif_cache_path = NULL)
 
-    capture.output(
-      hbf_49381 <- finbif_occurrence_load(
-        49381,
-        tzone = "Etc/UTC"
-      )
+    hbf_49381 <- capture.output(
+      finbif_occurrence_load(49381, tzone = "Etc/UTC")
     )
 
     expect_snapshot_value(

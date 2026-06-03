@@ -16,22 +16,17 @@ test_that("checking taxa works", {
 
     vcr::use_cassette("finbif_check_taxa", {
 
-      capture.output(
-        cygnus_cygnus <- print(
-          finbif_check_taxa(list(species = "Cygnus cygnus", "not_a_taxa"))
-        )
-      )
+     cygnus_cygnus <- capture.output(
+       print(finbif_check_taxa(list(species = "Cygnus cygnus", "not_a_taxa")))
+     )
 
     })
 
     expect_equal(
       cygnus_cygnus,
-      structure(
-        list(
-          species = c("Cygnus cygnus" = "MX.26280"),
-          c(not_a_taxa = NA_character_)
-        ),
-        class = c("list", "finbif_taxa_list")
+      c(
+        "[species: Cygnus cygnus] ID: MX.26280",
+        "[         not_a_taxa   ] Not found"
       )
     )
 

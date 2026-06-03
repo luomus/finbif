@@ -188,8 +188,8 @@ test_that("fetching occurrences works", {
 
     vcr::use_cassette("finbif_occurrence_print", {
 
-      capture.output(
-        occ_print <- suppressMessages(
+      occ_print <- capture.output(
+        suppressMessages(
           print(finbif_occurrence(select = "informal_groups", n = 11))
         )
       )

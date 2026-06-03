@@ -34,9 +34,12 @@ test_that("requesting token works", {
       list(file = f)
     )
 
-    while (!file.exists(f) || length(url <- readLines(f, warn = FALSE)) < 2L) {}
+    while (!file.exists(f) || length(readLines(f, warn = FALSE)) < 2L) {}
 
-    options(finbif_api_url = sub("/$", "", url[[1L]]), finbif_rate_limit = Inf)
+    options(
+      finbif_api_url = sub("/$", "", readLines(f, warn = FALSE)[[1L]]),
+      finbif_rate_limit = Inf
+    )
 
     tokn <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
