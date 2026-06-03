@@ -170,7 +170,7 @@ process_cols <- function(x) {
       ans <- cast_to_type(ans, type)
 
     } else {
-      col_els <- strsplit(col, "\\.")
+      col_els <- strsplit(col, ".", fixed = TRUE)
       col_els <- col_els[[1L]]
 
       if (single) {
@@ -858,14 +858,14 @@ translate <- function(translation_obj) {
 
     if (anyNA(ind)) {
       for (err in x[is.na(ind)]) {
-        translation <- gsub("_", " ", translation)
+        translation <- gsub("_", " ", translation, fixed = TRUE)
         deferrable_error(paste0("Invalid name in ", translation, ": ", err))
       }
     }
 
     ans <- row.names(trsltn)
     ans <- ans[ind]
-    ans <- ans[!grepl("DUPLICATE", ans)]
+    ans <- ans[!grepl("DUPLICATE", ans, fixed = TRUE)]
   }
 
   ans
@@ -971,7 +971,7 @@ na_exclude <- function(fb_records_obj) {
 
   if (fb_records_obj[["exclude_na"]]) {
     select_param <- fb_records_obj[["select_param"]]
-    has_value <- strsplit(query[[select_param]], ",")
+    has_value <- strsplit(query[[select_param]], ",", fixed = TRUE)
     has_value <- c(hasValue = has_value)
 
     v <- sysdata(list(which = "var_names"))

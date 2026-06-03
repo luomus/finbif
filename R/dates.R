@@ -104,7 +104,7 @@ date_range_ym  <- function(obj) {
 #' @noRd
 date_range_md <- function(obj) {
   dates <- c(obj[["begin"]], obj[["end"]])
-  dates <- sub("-", "", dates)
+  dates <- sub("-", "", dates, fixed = TRUE)
   dates <- as.integer(dates)
   paste(dates, collapse = "/")
 }

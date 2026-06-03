@@ -42,16 +42,18 @@ finbif_collections <- function(
 
   col_md_nms <- swagger[[c("SensitiveCollection", "properties")]]
   col_md_nms <- names(col_md_nms)
-  col_md_nms <- grep("@", col_md_nms, value = TRUE, invert = TRUE)
+  col_md_nms <- grep("@", col_md_nms, value = TRUE, invert = TRUE, fixed = TRUE)
 
   col_count_nms <- swagger[[c("WarehouseDwQuery_AggregateRow", "properties")]]
   col_count_nms <- names(col_count_nms)
   col_count_nms <- unique(col_count_nms)
-  col_count_nms <- grep("@", col_count_nms, value = TRUE, invert = TRUE)
+  col_count_nms <- grep(
+    "@", col_count_nms, value = TRUE, invert = TRUE, fixed = TRUE
+  )
 
   col_nms <- c(col_md_nms, col_count_nms)
 
-  col_nms_snk <- sub("\\.", "_", col_nms)
+  col_nms_snk <- sub(".", "_", col_nms, fixed = TRUE)
   col_nms_snk <- gsub("([a-z])([A-Z])", "\\1_\\L\\2", col_nms_snk, perl = TRUE)
   col_nms_snk <- tolower(col_nms_snk)
 
@@ -248,7 +250,7 @@ get_collections <- function(col_obj) {
   id <- col_obj[["id"]]
   collections[[id]] <- sub("^http:\\/\\/tun\\.fi\\/", "", collections[[id]])
   col_names <- names(collections)
-  col_names <- sub("\\.", "_", col_names)
+  col_names <- sub(".", "_", col_names, fixed = TRUE)
   col_names <- gsub("([a-z])([A-Z])", "\\1_\\L\\2", col_names, perl = TRUE)
   col_names <- tolower(col_names)
   structure(collections, names = col_names)

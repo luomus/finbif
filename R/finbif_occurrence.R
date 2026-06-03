@@ -371,7 +371,7 @@ select_taxa <- function(fb_records_obj) {
 
       if (any(taxa_invalid)) {
         invalid_taxa_names <- names(taxa[taxa_invalid])
-        msg <- sub("\\.", " - ", invalid_taxa_names)
+        msg <- sub(".", " - ", invalid_taxa_names, fixed = TRUE)
         msg <- paste(msg, collapse = ", ")
         msg <- paste(
           "Cannot find the following taxa in the FinBIF taxonomy.",
@@ -789,7 +789,7 @@ compute_abundance <- function(fb_occurrence_df) {
     count_var <- vnms[["unit.interpretations.individualCount", vtype]]
     count <- fb_occurrence_df[[count_var]]
     verbatim_var <- vnms[["unit.abundanceString", vtype]]
-    has_one <- grepl("1", fb_occurrence_df[[verbatim_var]])
+    has_one <- grepl("1", fb_occurrence_df[[verbatim_var]], fixed = TRUE)
     has_one <- ifelse(has_one, 1L, NA_integer_)
     abundance <- ifelse(count == 1L, has_one, count)
 

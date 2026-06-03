@@ -87,7 +87,7 @@ print_informal_group <- function(obj) {
       sq <- seq_len(cntr2 - 1L)
       extras <- informal_grps[-sq]
       extras <- unlist(extras)
-      extras <- grep("MVL\\.", extras)
+      extras <- grep("^MVL\\.", extras)
       extra <- length(extras)
 
       s <- ""

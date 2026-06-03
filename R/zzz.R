@@ -70,7 +70,7 @@ get_locale <- function() {
 fns <- ls(pattern = "^finbif")
 
 for (fn in fns) {
-  new_name <- gsub("finbif", "fb", fn)
+  new_name <- sub("finbif", "fb", fn, fixed = TRUE)
   fn_obj <- get(fn)
   assign(new_name, fn_obj)
 }

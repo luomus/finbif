@@ -183,7 +183,7 @@ cast_to_type <- function(
     double = as.double(x),
     integer = as.integer(x),
     logical = as.logical(x),
-    gsub("\r\n", "\n", as.character(x))
+    gsub("\r\n", "\n", as.character(x), fixed = TRUE)
   )
 }
 

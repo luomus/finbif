@@ -97,7 +97,7 @@ finbif_occurrence_load <- function(
 
   if (all_cols) {
     deselect <- grep("^-", select, value = TRUE)
-    deselect <- gsub("-", "", deselect)
+    deselect <- gsub("-", "", deselect, fixed = TRUE)
     deselect <- match(deselect, col_names)
     deselect <- row.names(var_names[deselect, ])
     select <- "default_vars"
@@ -307,7 +307,7 @@ read_finbif_tsv <- function(fb_occurrence_obj) {
   }
 
   tsv <- basename(file)
-  tsv <- gsub("zip", "tsv", tsv)
+  tsv <- sub("zip", "tsv", tsv, fixed = TRUE)
 
   facts <- fb_occurrence_obj[["facts"]]
 
@@ -325,7 +325,7 @@ read_finbif_tsv <- function(fb_occurrence_obj) {
     "Facts can only be of types: record, event and/or document" = valid_facts
   )
 
-  file <- gsub("rows_", tsv_prefix, file)
+  file <- sub("rows_", tsv_prefix, file, fixed = TRUE)
   fb_occurrence_obj[["file"]] <- file
   fb_occurrence_obj[["tsv"]] <-  paste0(tsv_prefix, tsv)
 
@@ -1273,14 +1273,14 @@ split_col <- function(split_obj) {
 
 #' @noRd
 fix_dwc_in <- function(x) {
-  x <- sub("available", "availableDate", x)
-  sub("DNA_sequence", "dnaSequence", x)
+  x <- sub("available", "availableDate", x, fixed = TRUE)
+  sub("DNA_sequence", "dnaSequence", x, fixed = TRUE)
 }
 
 #' @noRd
 fix_dwc_out <- function(x) {
-  x <- sub("availableDate", "available", x)
-  sub("dnaSequence", "DNA_sequence", x)
+  x <- sub("availableDate", "available", x, fixed = TRUE)
+  sub("dnaSequence", "DNA_sequence", x, fixed = TRUE)
 }
 
 #' @noRd
