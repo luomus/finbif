@@ -43,7 +43,8 @@ sentinels/check: sentinels/pkgdown $(shell find tests -type f)
 > cd ..;\
 > R CMD build $(PKGSRC);\
 > R CMD INSTALL $(PKGNM)_$(PKGVERS).tar.gz;\
-> _R_CHECK_DEPENDS_ONLY_=true R CMD check $(PKGNM)_$(PKGVERS).tar.gz --as-cran;\
+> _R_CHECK_DEPENDS_ONLY_=true R CMD check $(PKGNM)_$(PKGVERS).tar.gz --as-cran \
+  --no-build-vignettes;\
 > R CMD check $(PKGNM)_$(PKGVERS).tar.gz --as-cran;\
 > cd $(PKGSRC);\
 > mkdir -p $(@D);\
