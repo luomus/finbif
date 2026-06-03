@@ -144,8 +144,15 @@ birds  <- finbif_occurrence("Birds")
 linnut <- finbif_occurrence("Linnut")
 faglar <- finbif_occurrence("Fåglar")
 
-sapply(list(birds, linnut, faglar), nrow)
-#> [1] 10 10 10
+lapply(list(birds, linnut, faglar), nrow)
+#> [[1]]
+#> [1] 10
+#> 
+#> [[2]]
+#> [1] 10
+#> 
+#> [[3]]
+#> [1] 10
 ```
 
 ## Request size

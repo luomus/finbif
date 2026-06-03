@@ -133,26 +133,25 @@ post-processing time. For the full list of filtering options see
 <p>The event or import date of records can be used to filter occurrence
 data from FinBIF. The date filters can be a single year, month or
 date,</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>date_range_ym <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2020-12"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre class="details"><code><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>date_range_ym <span class="op">=</span> <span class="st">"2020-12"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <details closed><summary>
 Click to show/hide output.
 </summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 23847</span></span>
+<span><span class="co">#&gt; Records available: 30156</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
-<span><span class="co">#&gt;    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
-<span><span class="co">#&gt; 1       …107 Pica pica (Linnaeus…  31        65.0027   25.49381 2020-12-31 10:20:00</span></span>
-<span><span class="co">#&gt; 2        …45 Larus argentatus Po…  1         65.0027   25.49381 2020-12-31 10:20:00</span></span>
-<span><span class="co">#&gt; 3       …153 Emberiza citrinella…  2         65.0027   25.49381 2020-12-31 10:20:00</span></span>
-<span><span class="co">#&gt; 4        …49 Columba livia domes…  33        65.0027   25.49381 2020-12-31 10:20:00</span></span>
-<span><span class="co">#&gt; 5       …117 Corvus corax Linnae…  1         65.0027   25.49381 2020-12-31 10:20:00</span></span>
-<span><span class="co">#&gt; 6       …111 Corvus monedula Lin…  7         65.0027   25.49381 2020-12-31 10:20:00</span></span>
-<span><span class="co">#&gt; 7       …161 Sciurus vulgaris Li…  1         65.0027   25.49381 2020-12-31 10:20:00</span></span>
-<span><span class="co">#&gt; 8       …123 Passer montanus (Li…  28        65.0027   25.49381 2020-12-31 10:20:00</span></span>
-<span><span class="co">#&gt; 9       …149 Pyrrhula pyrrhula (…  1         65.0027   25.49381 2020-12-31 10:20:00</span></span>
-<span><span class="co">#&gt; 10       …77 Turdus pilaris Linn…  1         65.0027   25.49381 2020-12-31 10:20:00</span></span>
+<span><span class="co">#&gt;                    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time</span></span>
+<span><span class="co">#&gt; 1  …herb.oulu.fi/MY.10184972 Orthotrichum anomal…        NA  61.60387  24.2276  2020-12-22 12:00:00</span></span>
+<span><span class="co">#&gt; 2  …herb.oulu.fi/MY.10185111 Schistidium submuti…        NA  61.60383  24.22572 2020-12-22 12:00:00</span></span>
+<span><span class="co">#&gt; 3  …herb.oulu.fi/MY.10313974 Skeletocutis bigutt…        NA  60.23469  25.18529 2020-12-27 12:00:00</span></span>
+<span><span class="co">#&gt; 4  …herb.oulu.fi/MY.10314039 Oxyporus populinus …        NA  61.46728  24.07017 2020-12-24 12:00:00</span></span>
+<span><span class="co">#&gt; 5  …herb.oulu.fi/MY.10314043 Stereum hirsutum (W…        NA  61.46728  24.07017 2020-12-24 12:00:00</span></span>
+<span><span class="co">#&gt; 6  …herb.oulu.fi/MY.10314116 Stereum sanguinolen…        NA  60.20153  25.18193 2020-12-12 12:00:00</span></span>
+<span><span class="co">#&gt; 7  …herb.oulu.fi/MY.10745815 Eurhynchium angusti…        NA  61.46775  24.07106 2020-12-24 12:00:00</span></span>
+<span><span class="co">#&gt; 8     …luomus.fi/MY.10204437 Dendrocopos leucoto…        NA  61.6077   29.3269  2020-12-28 12:00:00</span></span>
+<span><span class="co">#&gt; 9     …luomus.fi/MY.10221155 Allophylaria macros…        NA  60.37825  25.65115 2020-12-17 12:00:00</span></span>
+<span><span class="co">#&gt; 10    …luomus.fi/MY.10221158 Host: Chamaenerion …        NA  60.37825  25.65115 2020-12-17 12:00:00</span></span>
 <span><span class="co">#&gt; ...with 0 more record and 6 more variables:</span></span>
 <span><span class="co">#&gt; coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
 <span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>

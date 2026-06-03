@@ -70,7 +70,7 @@ birds  <- finbif_occurrence("Birds")
 linnut <- finbif_occurrence("Linnut")
 faglar <- finbif_occurrence("Fåglar")
 
-sapply(list(birds, linnut, faglar), nrow)
+lapply(list(birds, linnut, faglar), nrow)
 ```
 
 ## Request size

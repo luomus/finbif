@@ -66,9 +66,8 @@ section “Location” for more details
 The event or import date of records can be used to filter occurrence
 data from FinBIF. The date filters can be a single year, month or date,
 
-``` r
-
-finbif_occurrence(filter = list(date_range_ym = c("2020-12")))
+``` details
+finbif_occurrence(filter = list(date_range_ym = "2020-12"))
 ```
 
 Click to show/hide output.
@@ -77,19 +76,19 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 23847
+#> Records available: 30156
 #> A data.frame [10 x 12]
-#>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1       …107 Pica pica (Linnaeus…  31        65.0027   25.49381 2020-12-31 10:20:00
-#> 2        …45 Larus argentatus Po…  1         65.0027   25.49381 2020-12-31 10:20:00
-#> 3       …153 Emberiza citrinella…  2         65.0027   25.49381 2020-12-31 10:20:00
-#> 4        …49 Columba livia domes…  33        65.0027   25.49381 2020-12-31 10:20:00
-#> 5       …117 Corvus corax Linnae…  1         65.0027   25.49381 2020-12-31 10:20:00
-#> 6       …111 Corvus monedula Lin…  7         65.0027   25.49381 2020-12-31 10:20:00
-#> 7       …161 Sciurus vulgaris Li…  1         65.0027   25.49381 2020-12-31 10:20:00
-#> 8       …123 Passer montanus (Li…  28        65.0027   25.49381 2020-12-31 10:20:00
-#> 9       …149 Pyrrhula pyrrhula (…  1         65.0027   25.49381 2020-12-31 10:20:00
-#> 10       …77 Turdus pilaris Linn…  1         65.0027   25.49381 2020-12-31 10:20:00
+#>                    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
+#> 1  …herb.oulu.fi/MY.10184972 Orthotrichum anomal…        NA  61.60387  24.2276  2020-12-22 12:00:00
+#> 2  …herb.oulu.fi/MY.10185111 Schistidium submuti…        NA  61.60383  24.22572 2020-12-22 12:00:00
+#> 3  …herb.oulu.fi/MY.10313974 Skeletocutis bigutt…        NA  60.23469  25.18529 2020-12-27 12:00:00
+#> 4  …herb.oulu.fi/MY.10314039 Oxyporus populinus …        NA  61.46728  24.07017 2020-12-24 12:00:00
+#> 5  …herb.oulu.fi/MY.10314043 Stereum hirsutum (W…        NA  61.46728  24.07017 2020-12-24 12:00:00
+#> 6  …herb.oulu.fi/MY.10314116 Stereum sanguinolen…        NA  60.20153  25.18193 2020-12-12 12:00:00
+#> 7  …herb.oulu.fi/MY.10745815 Eurhynchium angusti…        NA  61.46775  24.07106 2020-12-24 12:00:00
+#> 8     …luomus.fi/MY.10204437 Dendrocopos leucoto…        NA  61.6077   29.3269  2020-12-28 12:00:00
+#> 9     …luomus.fi/MY.10221155 Allophylaria macros…        NA  60.37825  25.65115 2020-12-17 12:00:00
+#> 10    …luomus.fi/MY.10221158 Host: Chamaenerion …        NA  60.37825  25.65115 2020-12-17 12:00:00
 #> ...with 0 more record and 6 more variables:
 #> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
 #> record_reliability, record_quality
