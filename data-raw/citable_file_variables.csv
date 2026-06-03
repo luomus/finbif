@@ -152,7 +152,7 @@ Taxon.InformalTaxonGroup,informal_taxon_group,informalTaxonGroup,FALSE,character
 Taxon.TaxonPreferredHabitat,taxon_preferred_habitat,taxonPreferredHabitat,FALSE,character,FALSE
 Unit.Habitat,habitat,habitat,FALSE,character,FALSE
 Taxon.Sensitive,sensitive,isSensitiveTaxon,FALSE,logical,FALSE
-Document.CollectionName,collection_name,datasetName,FALSE,character,FALSE
+Document.CollectionName,collection,datasetName,FALSE,character,FALSE
 Document.SourceName,source_name,sourceName,FALSE,character,FALSE
 Document.OriginatingSource,originating_source,originatingSource,FALSE,character,FALSE
 Gathering.Interpretations.CountryCode,country_code,countryCode,FALSE,character,FALSE

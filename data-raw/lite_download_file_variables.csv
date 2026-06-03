@@ -7,7 +7,7 @@ result.gathering.displayDateTime,formatted_date_time,eventDateTimeDisplay,FALSE,
 result.gathering.country,country,country,FALSE,character
 result.gathering.biogeographicalProvince,bio_province_interpreted,bioStateProvinceInterpreted,FALSE,character
 result.gathering.locality,locality,locality,FALSE,character
-result.document.collectionId,collection_name,collectionName,FALSE,character
+result.document.collectionId,collection,datasetName,FALSE,character
 result.document.documentId,document_id,catalogNumber,FALSE,character
 result.gathering.team,team,recordedBy,FALSE,character
 taxonomy.vernacular.name,common_name,vernacularName,FALSE,character
