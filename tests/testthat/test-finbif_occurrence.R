@@ -167,7 +167,7 @@ test_that("fetching occurrences works", {
 
     expect_match(coord_filter_error, "Cannot request less than 1 record")
 
-    expect_equal(
+    expect_identical(
       invalid_taxa_error[[1L]],
       paste(
         "Error : Cannot find the following taxa in the FinBIF",
@@ -176,7 +176,7 @@ test_that("fetching occurrences works", {
       )
     )
 
-    expect_equal(
+    expect_identical(
       invalid_taxa_warn[[1L]],
       paste(
         "Error : (converted from warning) Cannot find the following taxa in",
@@ -270,7 +270,7 @@ test_that("fetching occurrences with date filters works", {
 
     expect_snapshot(date_filters)
 
-    expect_equal(
+    expect_identical(
       date_error[[1]],
       "Error : 1 error occurred:\n  - Can't parse one or more specified dates\n"
     )

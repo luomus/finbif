@@ -108,7 +108,7 @@ test_that("download imports work", {
       hbf_6960_zip_file, style = "json2", ignore_attr = "url"
     )
 
-    expect_equal(
+    expect_identical(
       finbif_occurrence_load("HBF.49381.zip", count_only = TRUE, quiet = TRUE),
       335L
     )

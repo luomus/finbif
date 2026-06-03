@@ -24,7 +24,7 @@ test_that("fetching collections works", {
 
     expect_snapshot(collections)
 
-    expect_equal(
+    expect_identical(
       collections_error[[1L]],
       paste(
         "Error in finbif_collections(1) :",

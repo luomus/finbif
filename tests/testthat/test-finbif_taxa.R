@@ -28,11 +28,11 @@ test_that("searching for taxa works", {
 
     })
 
-    expect_equal(bubo_bubo, "Eurasian Eagle-owl")
+    expect_identical(bubo_bubo, "Eurasian Eagle-owl")
 
-    expect_equal(otter, "Lutra lutra")
+    expect_identical(otter, "Lutra lutra")
 
-    expect_equal(otter_id, "MX.47169")
+    expect_identical(otter_id, "MX.47169")
 
   }
 

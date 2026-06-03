@@ -22,7 +22,7 @@ test_that("checking taxa works", {
 
     })
 
-    expect_equal(
+    expect_identical(
       cygnus_cygnus,
       c(
         "[species: Cygnus cygnus] ID: MX.26280",

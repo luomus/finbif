@@ -20,7 +20,7 @@ test_that("fetching informal groups works", {
 
     })
 
-    expect_equal(
+    expect_identical(
       limit,
       c(
         "Birds",
@@ -32,7 +32,7 @@ test_that("fetching informal groups works", {
       )
     )
 
-    expect_equal(
+    expect_identical(
       bryophytes,
       c("Bryophytes", "  --Mosses", "  --Liverworts", "  --Hornworts")
     )
