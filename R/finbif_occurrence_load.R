@@ -499,12 +499,15 @@ get_zip <- function(fb_occurrenc_obj) {
         return(fb_occurrenc_obj)
       }
 
-      on.exit({
-        if (!is.null(write_file)) {
-          cache_obj <- list(data = write_file, hash = hash, timeout = Inf)
-          set_cache(cache_obj)
-        }
-      })
+      on.exit(
+        {
+          if (!is.null(write_file)) {
+            cache_obj <- list(data = write_file, hash = hash, timeout = Inf)
+            set_cache(cache_obj)
+          }
+        },
+        add = TRUE
+      )
     } else if (is.character(fcp)) {
       file_name <- paste0("finbif_dwnld_cache_file_", hash)
       write_file <- file.path(fcp, file_name)
@@ -670,7 +673,7 @@ dt_read <- function(fb_occurrence_obj) {
       utils::unzip(zip_input, files = zip_tsv, exdir = dir, unzip = unzip)
 
       if (!fb_occurrence_obj[["keep_tsv"]]) {
-        on.exit(unlink(args_input))
+        on.exit(unlink(args_input), add = TRUE)
       }
 
     }
@@ -1038,7 +1041,7 @@ nlines <- function(fb_occurrence_obj) {
   )
 
   con <- open_tsv_connection(connection_obj)
-  on.exit(close(con))
+  on.exit(close(con), add = TRUE)
 
   n <- -1L
 

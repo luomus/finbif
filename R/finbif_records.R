@@ -608,7 +608,7 @@ get_extra_pages <- function(fb_records_list) {
     max <- floor(n / max_size)
     pb <- utils::txtProgressBar(0L, max, style = 3L)
     utils::setTxtProgressBar(pb, i)
-    on.exit(close(pb))
+    on.exit(close(pb), add = TRUE)
   }
 
   query <- attr(fb_records_list, "query", TRUE)
@@ -686,7 +686,7 @@ parse_filters <- function(fb_records_obj) {
 
   if (!getOption("finbif_use_all_collections")) {
     op <- options()
-    on.exit(options(op))
+    on.exit(options(op), add = TRUE)
 
     options(finbif_use_all_collections = TRUE)
 
@@ -745,7 +745,7 @@ parse_filters <- function(fb_records_obj) {
       } else {
 
         op <- options()
-        on.exit(options(op))
+        on.exit(options(op), add = TRUE)
 
         options(finbif_use_all_collections = TRUE)
 

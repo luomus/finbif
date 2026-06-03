@@ -32,7 +32,7 @@ api_get <- function(obj) {
         return(cached_obj)
       }
 
-      on.exit(cache_obj(obj))
+      on.exit(cache_obj(obj), add = TRUE)
 
     } else if (is.character(fcp)) {
       cache_file_name <- paste0("finbif_cache_file_", hash)
@@ -52,7 +52,7 @@ api_get <- function(obj) {
 
       }
 
-      on.exit(save_obj(obj))
+      on.exit(save_obj(obj), add = TRUE)
 
     } else {
       stopifnot("Package {DBI} needed to use a DB cache" = has_pkgs("DBI"))
@@ -108,7 +108,7 @@ api_get <- function(obj) {
         }
       }
 
-      on.exit(append_obj(obj))
+      on.exit(append_obj(obj), add = TRUE)
     }
   }
 

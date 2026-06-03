@@ -239,9 +239,12 @@ sample_with_seed <- function(
   if (exists(".Random.seed", 1L)) {
     oldseed <- get(".Random.seed", 1L)
 
-    on.exit({
-      assign(".Random.seed", oldseed, 1L) #nolint
-    })
+    on.exit(
+      {
+        assign(".Random.seed", oldseed, 1L) #nolint
+      },
+      add = TRUE
+    )
 
   }
 
