@@ -130,18 +130,7 @@ finbif_collections <- function(
   )
   cols <- setdiff(cols, "aggregate_by")
 
-  if ("description" %in% cols && "data_quality_description" %in% cols) {
-    descriptions <- collections[["description"]]
-    data_quality_description <- collections[["data_quality_description"]]
-    na_data_quality_description <- is.na(data_quality_description)
-    descriptions_with_quality <- paste(
-      descriptions, data_quality_description, sep = "\nData quality: "
-    )
-
-    collections[["description"]] <- ifelse(
-      na_data_quality_description, descriptions, descriptions_with_quality
-    )
-  }
+  collections[["description"]] <- combine_description(cols, collections)
 
   row.names(collections) <- collections[["id"]]
 
@@ -263,4 +252,22 @@ get_collections <- function(col_obj) {
   col_names <- gsub("([a-z])([A-Z])", "\\1_\\L\\2", col_names, perl = TRUE)
   col_names <- tolower(col_names)
   structure(collections, names = col_names)
+}
+
+#' @noRd
+combine_description <- function(x, collections) {
+  if ("description" %in% x && "data_quality_description" %in% x) {
+    descriptions <- collections[["description"]]
+    data_quality_description <- collections[["data_quality_description"]]
+    na_data_quality_description <- is.na(data_quality_description)
+    descriptions_with_quality <- paste(
+      descriptions, data_quality_description, sep = "\nData quality: "
+    )
+
+    ifelse(
+      na_data_quality_description, descriptions, descriptions_with_quality
+    )
+  } else {
+    collections[["description"]]
+  }
 }
