@@ -54,9 +54,9 @@ test_that("requesting token works", {
       "A personal access token for api.laji.fi"
     )
 
-  }
+    Sys.setenv(FINBIF_ACCESS_TOKEN = tokn)
 
-  Sys.setenv(FINBIF_ACCESS_TOKEN = tokn)
+  }
 
   expect_message(
     finbif_request_token("em"), "An access token has already been set"
