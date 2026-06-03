@@ -8,6 +8,10 @@ Remove cached FinBIF API requests.
 finbif_clear_cache()
 ```
 
+## Value
+
+NULL invisibly
+
 ## Examples
 
 ``` r

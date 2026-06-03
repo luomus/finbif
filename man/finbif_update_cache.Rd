@@ -7,6 +7,9 @@
 \usage{
 finbif_update_cache()
 }
+\value{
+NULL invisibly
+}
 \description{
 Update all cached FinBIF API requests.
 }

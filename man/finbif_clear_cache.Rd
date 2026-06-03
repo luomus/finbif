@@ -7,6 +7,9 @@
 \usage{
 finbif_clear_cache()
 }
+\value{
+NULL invisibly
+}
 \description{
 Remove cached FinBIF API requests.
 }

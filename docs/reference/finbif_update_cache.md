@@ -8,6 +8,10 @@ Update all cached FinBIF API requests.
 finbif_update_cache()
 ```
 
+## Value
+
+NULL invisibly
+
 ## Examples
 
 ``` r

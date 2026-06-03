@@ -4,6 +4,7 @@
 #'
 #' @aliases fb_clear_cache
 #'
+#' @return NULL invisibly
 #' @examples \dontrun{
 #'
 #' finbif_clear_cache()
