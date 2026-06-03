@@ -711,13 +711,7 @@ dt_read <- function(fb_occurrence_obj) {
   args[["nrows"]] <- as.double(fb_occurrence_obj[["n"]])
   args[["check.names"]] <- TRUE
 
-  skip_n <- 1
-
-  if (fb_occurrence_obj[["is_dwc"]] && fb_occurrence_obj[["facts"]] == "none") {
-    skip_n <- 3
-  }
-
-  args[["skip"]] <- skip + skip_n
+  args[["skip"]] <- skip + get_skip(fb_occurrence_obj)
   args[["header"]] <- FALSE
 
   df <- structure(
@@ -785,17 +779,12 @@ rd_read <- function(fb_occurrence_obj) {
 
   n <- as.integer(fb_occurrence_obj[["n"]])
 
-  skip_n <- 1
-
-  if (fb_occurrence_obj[["is_dwc"]] && fb_occurrence_obj[["facts"]] == "none") {
-    skip_n <- 3
-  }
-
   no_rows <- identical(fb_occurrence_obj[["nrows"]], 0L)
 
   if (identical(n, 0L) || inherits(con, "textConnection") || no_rows) {
     df <- df[0L, ]
   } else {
+    skip_n <- get_skip(fb_occurrence_obj)
     df <- utils::read.delim(
       open_tsv_connection(connection_obj),
       header = FALSE,
@@ -1292,4 +1281,13 @@ fix_dwc_in <- function(x) {
 fix_dwc_out <- function(x) {
   x <- sub("availableDate", "available", x)
   sub("dnaSequence", "DNA_sequence", x)
+}
+
+#' @noRd
+get_skip <- function(x) {
+  if (x[["is_dwc"]] && x[["facts"]] == "none") {
+    3
+  } else {
+    1
+  }
 }
