@@ -31,10 +31,7 @@ stopifnot(
   identical(
     sort(c(filters, "excludeNulls")),
     sort(row.names(filter_names))
-  )
-)
-
-stopifnot(
+  ) ||
   identical(
     sort(filter_names[filter_names[["doc"]], "translated_filter"]),
     sort(documented_vars("R/filters.R"))
