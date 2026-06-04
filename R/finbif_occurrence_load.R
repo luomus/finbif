@@ -875,7 +875,7 @@ spread_facts <-  function(facts) {
 
   if (any(na_ind)) {
     missing_facts <- select[na_ind]
-    warning <- paste(missing_facts, collapse = ", ")
+    warning <- toString(missing_facts)
     warning(
       "Selected fact(s) - ",
       warning,
@@ -988,7 +988,7 @@ convert_col_type <- function(col) {
 #' @noRd
 paste_col <- function(x) {
   x[is.na(x)] <- ""
-  paste(x, collapse = ", ")
+  toString(x)
 }
 
 #' @noRd

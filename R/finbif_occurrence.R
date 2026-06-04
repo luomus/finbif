@@ -375,7 +375,7 @@ select_taxa <- function(fb_records_obj) {
       if (any(taxa_invalid)) {
         invalid_taxa_names <- names(taxa[taxa_invalid])
         msg <- sub(".", " - ", invalid_taxa_names, fixed = TRUE)
-        msg <- paste(msg, collapse = ", ")
+        msg <- toString(msg)
         msg <- paste(
           "Cannot find the following taxa in the FinBIF taxonomy.",
           "Please check you are using accepted names and not synonyms or",
