@@ -68,7 +68,8 @@ api_get <- function(obj) {
           hash = character(),
           created = as.POSIXct(numeric()),
           timeout = numeric(),
-          blob = blob
+          blob = blob,
+          stringsAsFactors = FALSE
         )
         DBI::dbWriteTable(fcp, "finbif_cache", init)
       } else {
