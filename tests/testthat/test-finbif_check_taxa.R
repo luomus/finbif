@@ -16,9 +16,9 @@ test_that("checking taxa works", {
 
     vcr::use_cassette("finbif_check_taxa", {
 
-     cygnus_cygnus <- capture.output(
-       print(finbif_check_taxa(list(species = "Cygnus cygnus", "not_a_taxa")))
-     )
+      cygnus_cygnus <- capture.output(
+        print(finbif_check_taxa(list(species = "Cygnus cygnus", "not_a_taxa")))
+      )
 
     })
 

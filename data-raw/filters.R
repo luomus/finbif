@@ -32,10 +32,10 @@ stopifnot(
     sort(c(filters, "excludeNulls")),
     sort(row.names(filter_names))
   ) ||
-  identical(
-    sort(filter_names[filter_names[["doc"]], "translated_filter"]),
-    sort(documented_vars("R/filters.R"))
-  )
+    identical(
+      sort(filter_names[filter_names[["doc"]], "translated_filter"]),
+      sort(documented_vars("R/filters.R"))
+    )
 )
 
 unused_filters <- c("editorId", "editorOrObserverId", "observerId")
