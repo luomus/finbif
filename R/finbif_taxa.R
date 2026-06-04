@@ -52,6 +52,9 @@ finbif_taxa <- function(
   structure(res, class = c("finbif_taxa", "finbif_api"))
 }
 
+#' @export fb_taxa
+fb_taxa <- finbif_taxa
+
 #' @noRd
 taxon_attribute <- function(obj) {
   taxon <- finbif_taxa(obj[["taxon"]], n = 1, type = "exact", locale = "multi")

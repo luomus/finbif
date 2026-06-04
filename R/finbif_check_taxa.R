@@ -85,6 +85,9 @@ finbif_check_taxa <- function(
   structure(taxa_list, class = c("list", "finbif_taxa_list"))
 }
 
+#' @export fb_check_taxa
+fb_check_taxa <- finbif_check_taxa
+
 #' @noRd
 check_rank <- function(obj) {
   rank <- sub("MX.", "", obj[[c("rank", "taxonRank")]])

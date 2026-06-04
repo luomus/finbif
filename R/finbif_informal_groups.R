@@ -65,6 +65,9 @@ finbif_informal_groups <- function(
   invisible(informal_grps)
 }
 
+#' @export fb_informal_groups
+fb_informal_groups <- finbif_informal_groups
+
 #' @noRd
 print_informal_group <- function(obj) {
   informal_grps <- obj[["informal_grps"]]

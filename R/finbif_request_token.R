@@ -24,6 +24,9 @@ finbif_request_token <- function(email, quiet = FALSE) {
 
 }
 
+#' @export fb_request_token
+fb_request_token <- finbif_request_token
+
 #' @noRd
 #' @importFrom httr2 req_error req_headers req_perform req_retry request
 #' @importFrom httr2 req_url_query req_user_agent

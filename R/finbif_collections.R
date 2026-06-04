@@ -189,6 +189,9 @@ finbif_collections <- function(
   )
 }
 
+#' @export fb_collections
+fb_collections <- finbif_collections
+
 #' @noRd
 get_collections <- function(col_obj) {
   page <- 0L

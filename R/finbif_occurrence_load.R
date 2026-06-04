@@ -296,6 +296,9 @@ finbif_occurrence_load <- function(
   drop_na_col(fb_occurrence_df)
 }
 
+#' @export fb_occurrence_load
+fb_occurrence_load <- finbif_occurrence_load
+
 #' @noRd
 #' @importFrom utils read.delim unzip
 read_finbif_tsv <- function(fb_occurrence_obj) {

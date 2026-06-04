@@ -158,6 +158,9 @@ finbif_occurrence <- function(
   occurrence(fb_records_obj)
 }
 
+#' @export fb_occurrence
+fb_occurrence <- finbif_occurrence
+
 #' @noRd
 occurrence <- function(fb_records_obj) {
   fb_records_obj <- select_taxa(fb_records_obj)
@@ -1324,3 +1327,6 @@ finbif_last_mod <- function(
 
   ans
 }
+
+#' @export fb_last_mod
+fb_last_mod <- finbif_last_mod

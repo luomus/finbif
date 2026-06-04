@@ -54,25 +54,3 @@ get_locale <- function() {
 
   ans
 } # nocov end
-
-#' @noRd
-#' @export fb_check_taxa
-#' @export fb_clear_cache
-#' @export fb_collections
-#' @export fb_informal_groups
-#' @export fb_last_mod
-#' @export fb_metadata
-#' @export fb_occurrence
-#' @export fb_occurrence_load
-#' @export fb_request_token
-#' @export fb_taxa
-#' @export fb_update_cache
-fns <- ls(pattern = "^finbif")
-
-for (fn in fns) {
-  new_name <- sub("finbif", "fb", fn, fixed = TRUE)
-  fn_obj <- get(fn)
-  assign(new_name, fn_obj)
-}
-
-rm(fn, fns, new_name, fn_obj)

@@ -99,3 +99,6 @@ finbif_metadata <- function(
 
   data
 }
+
+#' @export fb_metadata
+fb_metadata <- finbif_metadata
