@@ -57,22 +57,7 @@ api_get <- function(obj) {
     } else {
       stopifnot("Package {DBI} needed to use a DB cache" = has_pkgs("DBI"))
 
-      if (!DBI::dbExistsTable(fcp, "finbif_cache")) {
-        blob <- list()
-        blob <- structure(
-          blob,
-          ptype = raw(),
-          class = c("blob", "vctrs_list_of", "vctrs_vctr", "list")
-        )
-        init <- data.frame(
-          hash = character(),
-          created = as.POSIXct(numeric()),
-          timeout = numeric(),
-          blob = blob,
-          stringsAsFactors = FALSE
-        )
-        DBI::dbWriteTable(fcp, "finbif_cache", init)
-      } else {
+      if (DBI::dbExistsTable(fcp, "finbif_cache")) {
         db_query <- sprintf(
           "SELECT * FROM finbif_cache WHERE hash = '%s'", hash
         )
@@ -105,8 +90,22 @@ api_get <- function(obj) {
             )
             DBI::dbExecute(fcp, db_query)
           }
-
         }
+      } else {
+        blob <- list()
+        blob <- structure(
+          blob,
+          ptype = raw(),
+          class = c("blob", "vctrs_list_of", "vctrs_vctr", "list")
+        )
+        init <- data.frame(
+          hash = character(),
+          created = as.POSIXct(numeric()),
+          timeout = numeric(),
+          blob = blob,
+          stringsAsFactors = FALSE
+        )
+        DBI::dbWriteTable(fcp, "finbif_cache", init)
       }
 
       on.exit(append_obj(obj), add = TRUE)

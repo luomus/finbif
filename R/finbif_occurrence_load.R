@@ -190,7 +190,11 @@ finbif_occurrence_load <- function(
   select[["user"]] <- names(fb_occurrence_df)
   n_recs <- attr(fb_occurrence_df, "nrow", TRUE)
 
-  if (!all_cols) {
+  if (all_cols) {
+    select_user_keep <- !duplicated(select[["user"]])
+    select[["user"]] <- select[["user"]][select_user_keep]
+    fb_occurrence_df <- fb_occurrence_df[, select_user_keep, drop = FALSE]
+  } else {
     select[["user"]] <- select_user
 
     datetime_obj <- list(date_time_method = date_time_method, n = n_recs)
@@ -222,10 +226,6 @@ finbif_occurrence_load <- function(
       fb_occurrence_df[[extra_var]] <- cast_to_type(na, type)
     }
 
-  } else {
-    select_user_keep <- !duplicated(select[["user"]])
-    select[["user"]] <- select[["user"]][select_user_keep]
-    fb_occurrence_df <- fb_occurrence_df[, select_user_keep, drop = FALSE]
   }
 
   attr(fb_occurrence_df, "file_cols") <- NULL
@@ -886,7 +886,9 @@ spread_facts <-  function(facts) {
     missing_facts <- missing_facts[!isTRUE(drop_facts_na)]
   }
 
-  if (!all(na_ind)) {
+  if (all(na_ind)) {
+    facts <- facts[, id_col, drop = FALSE]
+  } else {
     select <- select[!na_ind]
     facts <- facts[select_facts %in% select, ]
     facts[["Fact"]] <- paste(type, "fact_", facts[["Fact"]], sep = "_")
@@ -918,8 +920,6 @@ spread_facts <-  function(facts) {
     facts <- structure(
       fact_list, class = "data.frame", row.names = seq_along(ids)
     )
-  } else {
-    facts <- facts[, id_col, drop = FALSE]
   }
 
   for (mf in missing_facts) {
