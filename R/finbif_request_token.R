@@ -24,6 +24,7 @@ finbif_request_token <- function(email, quiet = FALSE) {
 
 }
 
+#' @noRd
 #' @importFrom httr2 req_error req_headers req_perform req_retry request
 #' @importFrom httr2 req_url_query req_user_agent
 token <- function(email, quiet = FALSE, path) {
