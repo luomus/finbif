@@ -5,27 +5,13 @@ filter_names <- read.csv(
   row.names = 1L
 )
 
-token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
+req <- httr2::request("https://api.laji.fi/warehouse/filters")
 
 if (identical(Sys.getenv("BRANCH"), "dev")) {
-
-  Sys.setenv(FINBIF_ACCESS_TOKEN = Sys.getenv("FINBIF_DEV_ACCESS_TOKEN"))
-
-  options(finbif_api_url = "https://apitest.laji.fi")
-
+  req <- httr2::request("https://apitest.laji.fi/warehouse/filters")
 }
 
-filters <- try(names(
-  finbif:::api_get(
-    list(path = "warehouse/filters", query = list(), cache = FALSE)
-  )[["content"]]
-))
-
-options(finbif_api_url = "https://api.laji.fi")
-
-Sys.setenv(FINBIF_ACCESS_TOKEN = token)
-
-rm(token)
+filters <- names(httr2::resp_body_json(httr2::req_perform(req)))
 
 stopifnot(
   identical(
