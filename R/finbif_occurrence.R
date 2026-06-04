@@ -41,11 +41,6 @@
 #' @param seed Integer. Set a seed for randomly sampling records.
 #' @param exclude_na Logical. Should records where all selected variables have
 #'   non-NA values only be returned.
-#' @param locale Character. One of the supported two-letter ISO 639-1 language
-#'   codes. Current supported languages are English, Finnish and Swedish. For
-#'   data where more than one language is available the language denoted by
-#'   `locale` will be preferred while falling back to the other languages in the
-#'   order indicated above.
 #' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
 #'   `date_time` and/or `duration` variables have been selected. Default is
 #'   `"fast"` when  less than 100,000 records are requested and `"none"` when
@@ -77,6 +72,8 @@
 #' @param restricted_api Character. If using a restricted data API token in
 #'   addition to a personal access token, a string indicating the name of an
 #'   environment variable storing the restricted data API token.
+#' @inheritParams finbif_taxa
+#'
 #' @return A `data.frame`. If `count_only =  TRUE` an integer.
 #' @examples \dontrun{
 #'

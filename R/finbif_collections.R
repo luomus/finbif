@@ -15,9 +15,8 @@
 #' @param nmin Integer. Filter collections by number of records. Only return
 #'   information on collections with greater than value specified. If `NA` then
 #'   return information on all collections.
-#' @param cache Logical or Integer. If `TRUE` or a number greater than zero,
-#'   then data-caching will be used. If not logical then cache will be
-#'   invalidated after the number of hours indicated by the argument.
+#' @inheritParams finbif_taxa
+#'
 #' @return A data.frame.
 #' @examples \dontrun{
 #'
