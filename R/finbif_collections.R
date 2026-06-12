@@ -95,7 +95,15 @@ finbif_collections <- function(
 
   col_df <- col_df[
     unique(
-      c("id", "aggregate_by", "count", "is_part_of", "has_children", cols)
+      c(
+        "id",
+        "aggregate_by",
+        "count",
+        "is_part_of",
+        "has_children",
+        "collection_type",
+        cols
+      )
     ),
   ]
 
@@ -164,6 +172,8 @@ finbif_collections <- function(
   if (!getOption("finbif_use_all_collections")) {
     ind <- ind & !collections[["id"]] %in% without_collections()
     ind <- ind & !collections[["is_part_of"]] %in% without_collections()
+    ind <- ind & !grepl("gbif", collections[["id"]], fixed = TRUE)
+    ind <- ind & !grepl("Garden|Trait|Living", collections[["collection_type"]])
   }
 
   collections <- collections[ind, , drop = FALSE]
