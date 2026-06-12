@@ -230,6 +230,11 @@ check_status <- function(res, code) {
   }
 }
 
+#' @noRd
+without_collections <- function() {
+  c("HR.3671", "HR.4852", "HR.3151", "HR.6563", "HR.7400")
+}
+
 # random sampling --------------------------------------------------------------
 #' @noRd
 sample_with_seed <- function(
@@ -379,9 +384,4 @@ with_locale <- function(
   }
 
   ans
-}
-
-#' @noRd
-without_collections <- function() {
-  c("HR.3671", "HR.4852", "HR.3151", "HR.6563", "HR.7400")
 }
