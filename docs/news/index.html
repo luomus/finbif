@@ -41,7 +41,7 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.14.9000" id="finbif-09149000">finbif 0.9.14.9000<a class="anchor" aria-label="anchor" href="#finbif-09149000"></a></h2>
-<ul><li>This is the current development version.</li>
+<ul><li>The default value of <code>finbif_use_dwc</code> is now <code>TRUE</code>. meaning that <code><a href="../reference/finbif_collections.html">finbif_collections()</a></code> expects and returns DwC style variable names unless otherwise specified by the user.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.14" id="finbif-0914">finbif 0.9.14<a class="anchor" aria-label="anchor" href="#finbif-0914"></a></h2><p class="text-muted">CRAN release: 2026-04-17</p>
@@ -53,7 +53,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="deprecation-0-9-14">DEPRECATION<a class="anchor" aria-label="anchor" href="#deprecation-0-9-14"></a></h3>
-<ul><li>The default value of <code>finbif_use_dwc</code> is <code>FALSE</code>. This is deprecated and will be set to <code>TRUE</code> in v0.9.15.</li>
+<ul><li>The default value of <code>finbif_use_dwc</code> is <code>FALSE</code>. This is deprecated and will be set to <code>TRUE</code> in v0.10.0.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -126,15 +126,16 @@
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-9-7">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-7"></a></h3>
-<ul><li><p><code>finbif_last_mod</code> can be used without a <code>filter</code> argument value.</p></li>
-<li><p>Error handling for API requests has been improved.</p></li>
+<ul><li>
+<code>finbif_last_mod</code> can be used without a <code>filter</code> argument value.</li>
+<li>Error handling for API requests has been improved.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-9-7">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-7"></a></h3>
-<ul><li><p>Fixed an issue triggered when multi-filter set requests returned zero results.</p></li>
-<li><p>Fixed bug triggered when dropping columns of all NA data.</p></li>
-<li><p>Fixed an issue with file-based caches timing out correctly.</p></li>
-<li><p>Fixed an issue triggered when selecting certain variables and zero records were returned.</p></li>
+<ul><li>Fixed an issue triggered when multi-filter set requests returned zero results.</li>
+<li>Fixed bug triggered when dropping columns of all NA data.</li>
+<li>Fixed an issue with file-based caches timing out correctly.</li>
+<li>Fixed an issue triggered when selecting certain variables and zero records were returned.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -156,8 +157,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-9-5">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-5"></a></h3>
-<ul><li><p>Fixed an issue with reading facts for FinBIF record download files.</p></li>
-<li><p>Fixed an issue with reading column names using <code>data.table</code> package to ingest FinBIF record download files.</p></li>
+<ul><li>Fixed an issue with reading facts for FinBIF record download files.</li>
+<li>Fixed an issue with reading column names using <code>data.table</code> package to ingest FinBIF record download files.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -168,9 +169,9 @@
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-9-4">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-4"></a></h3>
-<ul><li><p>Record pagination should now often require less queries of FinBIF server and be should be faster.</p></li>
-<li><p>FinBIF collections field names have been sanitised.</p></li>
-<li><p>When filtering records by “collection_id” a full URL ID can be used or a QName.</p></li>
+<ul><li>Record pagination should now often require less queries of FinBIF server and should be faster.</li>
+<li>FinBIF collections field names have been sanitised.</li>
+<li>When filtering records by “collection_id” a full URL ID can be used or a QName.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-9-4">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-4"></a></h3>
@@ -181,7 +182,7 @@
 <h2 class="pkg-version" data-toc-text="0.9.3" id="finbif-093">finbif 0.9.3<a class="anchor" aria-label="anchor" href="#finbif-093"></a></h2><p class="text-muted">CRAN release: 2023-09-28</p>
 <div class="section level3">
 <h3 id="bug-fixes-0-9-3">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-3"></a></h3>
-<ul><li>Fix a bug resulting in the incorrect region being assigned to occurrences records.</li>
+<ul><li>Fix a bug resulting in the incorrect region being assigned to occurrence records.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-9-3">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-9-3"></a></h3>
@@ -210,29 +211,29 @@
 <h2 class="pkg-version" data-toc-text="0.9.0" id="finbif-090">finbif 0.9.0<a class="anchor" aria-label="anchor" href="#finbif-090"></a></h2><p class="text-muted">CRAN release: 2023-05-23</p>
 <div class="section level3">
 <h3 id="new-features-0-9-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-9-0"></a></h3>
-<ul><li><p>New function <code>finbif_update_cache</code> can be used to update all the cached objects that have reached their expiration and are no longer valid.</p></li>
-<li><p>A restricted data API token can be explicitly declared via the <code>restricted_api</code> argument to <code>finbif_occurrence</code>.</p></li>
-<li><p>Cached data can use a database as a backend by passing a <code>DBI</code> database connection object to the package option <code>finbif_cache_path</code>.</p></li>
-<li><p>Cached data can be assigned a timeout by using a number (hours) instead of a logical value for the <code>cache</code> argument to <code>finbif_</code> functions or the package option <code>finbif_use_cache</code>.</p></li>
-<li><p>Record aggregations with <code>finbif_occurrence</code> can now be combined with multi-filter requests. Removing duplicate records or aggregate record combinations can be controlled with the <code>duplicates</code> argument and adding a column indicating the filter sets can be added with the <code>filter_col</code> argument.</p></li>
+<ul><li>New function <code>finbif_update_cache</code> can be used to update all the cached objects that have reached their expiration and are no longer valid.</li>
+<li>A restricted data API token can be explicitly declared via the <code>restricted_api</code> argument to <code>finbif_occurrence</code>.</li>
+<li>Cached data can use a database as a backend by passing a <code>DBI</code> database connection object to the package option <code>finbif_cache_path</code>.</li>
+<li>Cached data can be assigned a timeout by using a number (hours) instead of a logical value for the <code>cache</code> argument to <code>finbif_</code> functions or the package option <code>finbif_use_cache</code>.</li>
+<li>Record aggregations with <code>finbif_occurrence</code> can now be combined with multi-filter requests. Removing duplicate records or aggregate record combinations can be controlled with the <code>duplicates</code> argument and adding a column indicating the filter sets can be added with the <code>filter_col</code> argument.</li>
 </ul><div class="section level6">
 <h6 id="bug-fixes-0-9-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-9-0"></a></h6>
-<ul><li><p>Fixed a bug causing an infinite recursion when determining page size during record download pagination.</p></li>
-<li><p>Fix bug triggered when using aggregation with some selected variables.</p></li>
+<ul><li>Fixed a bug causing an infinite recursion when determining page size during record download pagination.</li>
+<li>Fix bug triggered when using aggregation with some selected variables.</li>
 </ul></div>
 </div>
 <div class="section level3">
 <h3 id="defunct-0-9-0">DEFUNCT<a class="anchor" aria-label="anchor" href="#defunct-0-9-0"></a></h3>
-<ul><li><p>Mapping utilities <code>finland_map</code>, <code>breaks_xy</code>, <code>hist_xy</code> and the plot method for <code>finbif_occ</code> objects are now defunct.</p></li>
-<li><p>User access to <code>finbif_records</code> and its classes and methods is now defunct.</p></li>
+<ul><li>Mapping utilities <code>finland_map</code>, <code>breaks_xy</code>, <code>hist_xy</code> and the plot method for <code>finbif_occ</code> objects are now defunct.</li>
+<li>User access to <code>finbif_records</code> and its classes and methods is now defunct.</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.8.0" id="finbif-080">finbif 0.8.0<a class="anchor" aria-label="anchor" href="#finbif-080"></a></h2><p class="text-muted">CRAN release: 2023-03-29</p>
 <div class="section level3">
 <h3 id="deprecation-0-8-0">DEPRECATION<a class="anchor" aria-label="anchor" href="#deprecation-0-8-0"></a></h3>
-<ul><li><p>Mapping utilities <code>finland_map</code>, <code>breaks_xy</code>, <code>hist_xy</code> and the plot method for <code>finbif_occ</code> objects have been deprecated as they are out-of-scope.</p></li>
-<li><p>User access to <code>finbif_records</code> and its classes and methods is deprecated in favour of <code>finbif_occurrence</code>.</p></li>
+<ul><li>Mapping utilities <code>finland_map</code>, <code>breaks_xy</code>, <code>hist_xy</code> and the plot method for <code>finbif_occ</code> objects have been deprecated as they are out-of-scope.</li>
+<li>User access to <code>finbif_records</code> and its classes and methods isdeprecated in favour of <code>finbif_occurrence</code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-0-8-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-8-0"></a></h3>
@@ -243,23 +244,23 @@
 <h2 class="pkg-version" data-toc-text="0.7.2" id="finbif-072">finbif 0.7.2<a class="anchor" aria-label="anchor" href="#finbif-072"></a></h2><p class="text-muted">CRAN release: 2023-02-06</p>
 <div class="section level3">
 <h3 id="minor-improvements-0-7-2">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-7-2"></a></h3>
-<ul><li><p>Updated deprecated use of tidy::pivot_wider.</p></li>
-<li><p>Added new filters and variables from upstream API.</p></li>
+<ul><li>Updated deprecated use of <code>tidy::pivot_wider</code>.</li>
+<li>Added new filters and variables from upstream API.</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.7.1" id="finbif-071">finbif 0.7.1<a class="anchor" aria-label="anchor" href="#finbif-071"></a></h2><p class="text-muted">CRAN release: 2022-11-24</p>
 <div class="section level3">
 <h3 id="new-features-0-7-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-7-1"></a></h3>
-<ul><li><p>New function <code>finbif_mod_date</code> to get last modified date for FinBIF occurrence data.</p></li>
-<li><p>Region is now a selectable variable for <code>finbif_occurrence</code> and can also be used to filter records.</p></li>
+<ul><li>New function <code>finbif_mod_date</code> to get last modified date for FinBIF occurrence data.</li>
+<li>Region is now a selectable variable for <code>finbif_occurrence</code> and can also be used to filter records.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-7-1">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-7-1"></a></h3>
-<ul><li><p>For the sake of clarity “province” is now referred to as “bio-province”.</p></li>
-<li><p>Many variables, including <code>sex</code>, <code>life_stage</code> and <code>record_quality</code> are now localised.</p></li>
-<li><p>The variable <code>restriction_reasons</code> is now referred to in the singular as <code>restriction_reason</code>.</p></li>
-<li><p>For consistency, <code>lang</code> argument to <code>finbif_collections</code> has been changed to <code>locale</code>.</p></li>
+<ul><li>For the sake of clarity “province” is now referred to as “bio-province”.</li>
+<li>Many variables, including <code>sex</code>, <code>life_stage</code> and <code>record_quality</code> are now localised.</li>
+<li>The variable <code>restriction_reasons</code> is now referred to in the singular as <code>restriction_reason</code>.</li>
+<li>For consistency, <code>lang</code> argument to <code>finbif_collections</code> has been changed to <code>locale</code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-7-1">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-7-1"></a></h3>
@@ -270,18 +271,18 @@
 <h2 class="pkg-version" data-toc-text="0.7.0" id="finbif-070">finbif 0.7.0<a class="anchor" aria-label="anchor" href="#finbif-070"></a></h2><p class="text-muted">CRAN release: 2022-09-13</p>
 <div class="section level3">
 <h3 id="new-features-0-7-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-7-0"></a></h3>
-<ul><li><p>New function <code>taxon_id</code> that returns FinBIF taxon identifiers given a scientific name, vernacular name or other taxon identifier.</p></li>
-<li><p>New filters <code>complete_list_taxon_id</code> and <code>complete_list_type</code> now available.</p></li>
-<li><p>New global option <code>finbif_hide_progress</code> to suppress progress bars when downloading, importing or processing FinBIF records.</p></li>
-<li><p>For the sake of clarity and consistency the term “administrative status” is now referred to as “regulatory status” throughout.</p></li>
-<li><p>Regulatory status, informal taxonomic group and habitat data are now localised.</p></li>
-<li><p>Option <code>unlist</code> added to <code>finbif_occurrence</code> that casts list columns to strings. If a cell has multiple values the values are cast to a string separated by semi-colons.</p></li>
-<li><p>New argument <code>facts</code> added to <code>finbif_occurrence</code> that can be used to automatically extract facts when downloading occurrence records.</p></li>
+<ul><li>New function <code>taxon_id</code> that returns FinBIF taxon identifiers given a scientific name, vernacular name or other taxon identifier.</li>
+<li>New filters <code>complete_list_taxon_id</code> and <code>complete_list_type</code> now available.</li>
+<li>New global option <code>finbif_hide_progress</code> to suppress progress bars when downloading, importing or processing FinBIF records.</li>
+<li>For the sake of clarity and consistency the term “administrative status” is now referred to as “regulatory status” throughout.</li>
+<li>Regulatory status, informal taxonomic group and habitat data are now localised.</li>
+<li>Option <code>unlist</code> added to <code>finbif_occurrence</code> that casts list columns to strings. If a cell has multiple values the values are cast to a string separated by semi-colons.</li>
+<li>New argument <code>facts</code> added to <code>finbif_occurrence</code> that can be used to automatically extract facts when downloading occurrence records.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-7-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-7-0"></a></h3>
-<ul><li><p>Fixed bug triggered by incorrect data type applied to <code>taxonomic_order</code>.</p></li>
-<li><p>Fixed bug preventing locale switching of vernacular name data.</p></li>
+<ul><li>Fixed bug triggered by incorrect data type applied to <code>taxonomic_order</code>.</li>
+<li>Fixed bug preventing locale switching of vernacular name data.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -296,34 +297,34 @@
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-6-6">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-6"></a></h3>
-<ul><li><p>Fix applied for a print method error triggered by clashing class names.</p></li>
-<li><p>Fixed issue with ordering by some variables.</p></li>
+<ul><li>Fix applied for a print method error triggered by clashing class names.</li>
+<li>Fixed issue with ordering by some variables.</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.5" id="finbif-065">finbif 0.6.5<a class="anchor" aria-label="anchor" href="#finbif-065"></a></h2><p class="text-muted">CRAN release: 2022-05-20</p>
 <div class="section level3">
 <h3 id="new-features-0-6-5">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-5"></a></h3>
-<ul><li><p>New variables and filters (currently undocumented) have been added for the forthcoming Finnish atlas of breeding birds.</p></li>
-<li><p>Skip rows argument added to <code>finbif_occurrence_load</code> so files can be read in chunks.</p></li>
+<ul><li>New variables and filters (currently undocumented) have been added for the forthcoming Finnish atlas of breeding birds.</li>
+<li>Skip rows argument added to <code>finbif_occurrence_load</code> so files can be read in chunks.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-6-5">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-6-5"></a></h3>
-<ul><li><p>For clarity, KKJ coordinate reference system is now referred to as YKJ.</p></li>
-<li><p>When selecting all available variables for download file imports using <code>finbif_occurrence_load</code> “extra” variables will no longer be automatically added.</p></li>
+<ul><li>For clarity, KKJ coordinate reference system is now referred to as YKJ.</li>
+<li>When selecting all available variables for download file imports using <code>finbif_occurrence_load</code> “extra” variables will no longer be automatically added.</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.4" id="finbif-064">finbif 0.6.4<a class="anchor" aria-label="anchor" href="#finbif-064"></a></h2><p class="text-muted">CRAN release: 2022-03-10</p>
 <div class="section level3">
 <h3 id="minor-improvements-0-6-4">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-6-4"></a></h3>
-<ul><li><p>New administrative statuses added.</p></li>
-<li><p>The number of (and interval between) api request retries can be configured (currently undocumented).</p></li>
-<li><p>For some museum collections scientific names have been added for non-Finnish species.</p></li>
-<li><p>New fields have been added to citable download imports.</p></li>
-<li><p>New argument <code>aggregate_counts</code> (defaulting to <code>TRUE</code>) added to <code>finbif_occurrence</code> to toggle the inclusion of aggregation count fields on and off.</p></li>
-<li><p>New bird association area, occurrence types and location tag metadata added.</p></li>
-<li><p>New filters and variables (currently undocumented) added from upstream API.</p></li>
+<ul><li>New administrative statuses added.</li>
+<li>The number of (and interval between) api request retries can be configured (currently undocumented).</li>
+<li>For some museum collections scientific names have been added for non-Finnish species.</li>
+<li>New fields have been added to citable download imports.</li>
+<li>New argument <code>aggregate_counts</code> (defaulting to <code>TRUE</code>) added to <code>finbif_occurrence</code> to toggle the inclusion of aggregation count fields on and off.</li>
+<li>New bird association area, occurrence types and location tag metadata added.</li>
+<li>New filters and variables (currently undocumented) added from upstream API.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-6-4">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-4"></a></h3>
@@ -334,10 +335,10 @@
 <h2 class="pkg-version" data-toc-text="0.6.3" id="finbif-063">finbif 0.6.3<a class="anchor" aria-label="anchor" href="#finbif-063"></a></h2><p class="text-muted">CRAN release: 2022-01-03</p>
 <div class="section level3">
 <h3 id="minor-improvements-0-6-3">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-6-3"></a></h3>
-<ul><li><p>Argument <code>drop_na_facts</code> has been changed to <code>drop_facts_na</code> for function <code>finbif_occurrence_load</code> to avoid problems due to partial matching of argument <code>drop_na</code>.</p></li>
-<li><p>Data quality description has been appended to description field in <code>data.frame</code> returned by <code><a href="../reference/finbif_collections.html">finbif_collections()</a></code>.</p></li>
-<li><p>Occurrence record filtering can now be done using open-ended date ranges.</p></li>
-<li><p>New administrative statuses added.</p></li>
+<ul><li>Argument <code>drop_na_facts</code> has been changed to <code>drop_facts_na</code> for function <code>finbif_occurrence_load</code> to avoid problems due to partial matching of argument <code>drop_na</code>.</li>
+<li>Data quality description has been appended to description field in <code>data.frame</code> returned by <code><a href="../reference/finbif_collections.html">finbif_collections()</a></code>.</li>
+<li>Occurrence record filtering can now be done using open-ended date ranges.</li>
+<li>New administrative statuses added.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-6-3">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-3"></a></h3>
@@ -348,8 +349,8 @@
 <h2 class="pkg-version" data-toc-text="0.6.2" id="finbif-062">finbif 0.6.2<a class="anchor" aria-label="anchor" href="#finbif-062"></a></h2><p class="text-muted">CRAN release: 2021-09-03</p>
 <div class="section level3">
 <h3 id="new-features-0-6-2">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-2"></a></h3>
-<ul><li><p>New package option, <code>finbif_allow_query</code>, with default value, <code>TRUE</code>. If set to <code>FALSE</code> then remote API queries will trigger an error meaning only cached requests will run if a cache is found.</p></li>
-<li><p>Records can now be aggregated by document.</p></li>
+<ul><li>New package option, <code>finbif_allow_query</code>, with default value, <code>TRUE</code>. If set to <code>FALSE</code> then remote API queries will trigger an error meaning only cached requests will run if a cache is found.</li>
+<li>Records can now be aggregated by document.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-6-2">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-6-2"></a></h3>
@@ -357,8 +358,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-6-2">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-2"></a></h3>
-<ul><li><p>Fix bug preventing loading of FinBIF archives that is triggered when all variables are selected with <code>select = "all"</code>.</p></li>
-<li><p>Fix bug preventing <code>finbif_occ</code> objects from printing when one or more columns contain missing data only.</p></li>
+<ul><li>Fix bug preventing loading of FinBIF archives that is triggered when all variables are selected with <code>select = "all"</code>.</li>
+<li>Fix bug preventing <code>finbif_occ</code> objects from printing when one or more columns contain missing data only.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -372,50 +373,50 @@
 <h2 class="pkg-version" data-toc-text="0.6.0" id="finbif-060">finbif 0.6.0<a class="anchor" aria-label="anchor" href="#finbif-060"></a></h2><p class="text-muted">CRAN release: 2021-07-22</p>
 <div class="section level3">
 <h3 id="new-features-0-6-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-6-0"></a></h3>
-<ul><li><p>New variables <code>lat_euref</code> and <code>lon_euref</code> available for occurrence record downloads. These new variables represent the central point of a bounding box encompassing a record’s geographic coverage in the EUREF (ETRS89/ETRS-TM35FIN) coordinate system.</p></li>
-<li><p>Option now available to retain the TSV data file when loading FinBIF occurrence data with <code>finbif_occurrence_load</code> from ZIP archive or online reference.</p></li>
-<li><p>Option now available to extract “facts” when using <code>finbif_occurrence_load</code> to import records from a ZIP archive. The user must supply a named list, where the names refer to one or more fact types: “record”, “event” and/or “document”, and the list elements are character vectors indicating which “facts” to extract.</p></li>
-<li><p>“Lite” download files (occurrence record datasets of less than 10,000 records downloaded directly from laji.fi) can now be imported using <code>finbif_occurrence_load</code>.</p></li>
-<li><p>New filters (currently undocumented) <code>ely_center_id</code> and <code>region_id</code> are available for <code>finbif_occurrence</code>.</p></li>
-<li><p>New function, <code>from_schema</code>, to convert variable names from FinBIF schema to other styles.</p></li>
-<li><p>New computed variable <code>date_time_ISO8601</code> (currently undocumented) can be selected when creating <code>finbif_occ</code> objects.</p></li>
-<li><p>New computed variable <code>epsg</code> (currently undocumented). If selected, the column will have the EPSG code of the first column that contains geographic data.</p></li>
+<ul><li>New variables <code>lat_euref</code> and <code>lon_euref</code> available for occurrence record downloads. These new variables represent the central point of a bounding box encompassing a record’s geographic coverage in the EUREF (ETRS89/ETRS-TM35FIN) coordinate system.</li>
+<li>Option now available to retain the TSV data file when loading FinBIF occurrence data with <code>finbif_occurrence_load</code> from ZIP archive or online reference.</li>
+<li>Option now available to extract “facts” when using <code>finbif_occurrence_load</code> to import records from a ZIP archive. The user must supply a named list, where the names refer to one or more fact types: “record”, “event” and/or “document”, and the list elements are character vectors indicating which “facts” to extract.</li>
+<li>“Lite” download files (occurrence record datasets of less than 10,000 records downloaded directly from laji.fi) can now be imported using <code>finbif_occurrence_load</code>.</li>
+<li>New filters (currently undocumented) <code>ely_center_id</code> and <code>region_id</code> are available for <code>finbif_occurrence</code>.</li>
+<li>New function, <code>from_schema</code>, to convert variable names from FinBIF schema to other styles.</li>
+<li>New computed variable <code>date_time_ISO8601</code> (currently undocumented) can be selected when creating <code>finbif_occ</code> objects.</li>
+<li>New computed variable <code>epsg</code> (currently undocumented). If selected, the column will have the EPSG code of the first column that contains geographic data.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-6-0">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-6-0"></a></h3>
-<ul><li><p>Can now select all available variables when importing a FinBIF download request file using <code>finbif_occurrence_load</code> with <code>select = "all"</code>.</p></li>
-<li><p>New option, <code>drop_na</code>, to drop columns that only contain missing data added to <code>finbif_occurrence</code> and <code>finbif_occurrence_load</code>.</p></li>
-<li><p>User can now select columns multiple times and rename them on the fly by using a named character vector as the value of the ‘select’ argument.</p></li>
-<li><p>The variable <code>taxon_rank</code> is now converted to a string on the fly via <code>taxon_rank_id</code>.</p></li>
-<li><p>Variables that are computed from their identifiers are now localised when multiple languages are available.</p></li>
+<ul><li>Can now select all available variables when importing a FinBIF download request file using <code>finbif_occurrence_load</code> with <code>select = "all"</code>.</li>
+<li>New option, <code>drop_na</code>, to drop columns that only contain missing data added to <code>finbif_occurrence</code> and <code>finbif_occurrence_load</code>.</li>
+<li>User can now select columns multiple times and rename them on the fly by using a named character vector as the value of the ‘select’ argument.</li>
+<li>The variable <code>taxon_rank</code> is now converted to a string on the fly via <code>taxon_rank_id</code>.</li>
+<li>Variables that are computed from their identifiers are now localised when multiple languages are available.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-6-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-6-0"></a></h3>
-<ul><li><p>Fixed bug that prevented occurrence record counting when caching was not in use.</p></li>
-<li><p>Fixed bug that triggered an error when selected a variable that had to be computed from its ID when using DwC style variable names.</p></li>
+<ul><li>Fixed bug that prevented occurrence record counting when caching was not in use.</li>
+<li>Fixed bug that triggered an error when selected a variable that had to be computed from its ID when using DwC style variable names.</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.0" id="finbif-050">finbif 0.5.0<a class="anchor" aria-label="anchor" href="#finbif-050"></a></h2><p class="text-muted">CRAN release: 2021-03-27</p>
 <div class="section level3">
 <h3 id="new-features-0-5-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-5-0"></a></h3>
-<ul><li><p>Getting records from FinBIF can now be speed up (~1.5x) with asynchronous processing. If the <code>future</code> package is available and an asynchronous strategy (e.g., <code>plan(multisession, workers = 2)</code>) is selected then downloading records and processing them will occur simultaneously in separate threads, often leading to a significant speed up over sequential processing.</p></li>
-<li><p>Occurrence records can now be requested using multiple sets of filters at the same time. If a list of filters (with unnamed elements) is supplied then a record request will be made for each set of filters and the results of all requests combined and all duplicate records removed.</p></li>
-<li><p>Occurrence records can now be read directly from FinBIF download request files. The function <code>finbif_occurrence_load</code> can load data from a local file or remotely using a persistent identifier URI (e.g., <code>http://tun.fi/HBF.49381</code>).</p></li>
-<li><p>Aggregation of records can now be performed at the recording “event” level as well as the “record” level.</p></li>
+<ul><li>Getting records from FinBIF can now be speed up (~1.5x) with asynchronous processing. If the <code>future</code> package is available and an asynchronous strategy (e.g., <code>plan(multisession, workers = 2)</code>) is selected then downloading records and processing them will occur simultaneously in separate threads, often leading to a significant speed up over sequential processing.</li>
+<li>Occurrence records can now be requested using multiple sets of filters at the same time. If a list of filters (with unnamed elements) is supplied then a record request will be made for each set of filters and the results of all requests combined and all duplicate records removed.</li>
+<li>Occurrence records can now be read directly from FinBIF download request files. The function <code>finbif_occurrence_load</code> can load data from a local file or remotely using a persistent identifier URI (e.g., <code>http://tun.fi/HBF.49381</code>).</li>
+<li>Aggregation of records can now be performed at the recording “event” level as well as the “record” level.</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.1" id="finbif-041">finbif 0.4.1<a class="anchor" aria-label="anchor" href="#finbif-041"></a></h2><p class="text-muted">CRAN release: 2021-01-27</p>
 <div class="section level3">
 <h3 id="new-features-0-4-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-4-1"></a></h3>
-<ul><li><p>New functions <code>scientific_name</code> and <code>common_name</code> are now available to get scientific and common names for taxa (given a taxon name or FinBIF ID code) or extract names from a <code>finbif_taxa</code>- class object.</p></li>
-<li><p>Add ability to extract complex record variables such as those associated with record media (currently undocumented).</p></li>
+<ul><li>New functions <code>scientific_name</code> and <code>common_name</code> are now available to get scientific and common names for taxa (given a taxon name or FinBIF ID code) or extract names from a <code>finbif_taxa</code>- class object.</li>
+<li>Add ability to extract complex record variables such as those associated with record media (currently undocumented).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-4-1">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-4-1"></a></h3>
-<ul><li><p>Collection name can be selected as a variable for occurrence records. Previously it had to be manually translated from collection ID.</p></li>
-<li><p>Variables <code>restriction_reasons_conservation</code>, <code>restriction_reason_embargo</code> and <code>restriction_reason_custom</code> are no longer in use upstream and can no longer be selected.</p></li>
+<ul><li>Collection name can be selected as a variable for occurrence records. Previously it had to be manually translated from collection ID.</li>
+<li>Variables <code>restriction_reasons_conservation</code>, <code>restriction_reason_embargo</code> and <code>restriction_reason_custom</code> are no longer in use upstream and can no longer be selected.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -426,26 +427,28 @@
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-4-0">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-4-0"></a></h3>
-<ul><li><p>Error is triggered when attempting to request less than one record.</p></li>
-<li><p>New content on requesting aggregated occurrence records added to vignette: 2. Occurrence records from FinBIF.</p></li>
+<ul><li>Error is triggered when attempting to request less than one record.</li>
+<li>New content on requesting aggregated occurrence records added to vignette:
+<ol start="2" style="list-style-type: decimal"><li>Occurrence records from FinBIF.</li>
+</ol></li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-4-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-4-0"></a></h3>
-<ul><li><p>Fixed two bugs in print method for FinBIF occurrence records that were triggered when attempting to print only one row of data.</p></li>
-<li><p>Fixed bug triggering error when attempting to print occurrence record objects with zero rows.</p></li>
-<li><p>Fixed bug triggered when trying to print occurrence record data with NA values.</p></li>
-<li><p>Fixed bug causing incorrect subsetting of occurrence records when using logical vectors to subset rows.</p></li>
-<li><p>Fixed bug that printed occurrence records with multi-element data incorrectly when there was a single element.</p></li>
-<li><p>Fixed bug triggered by some system locales (<a href="https://github.com/luomus/finbif/issues/1" class="external-link">#1</a>).</p></li>
+<ul><li>Fixed two bugs in print method for FinBIF occurrence records that were triggered when attempting to print only one row of data.</li>
+<li>Fixed bug triggering error when attempting to print occurrence record objects with zero rows.</li>
+<li>Fixed bug triggered when trying to print occurrence record data with NA values.</li>
+<li>Fixed bug causing incorrect subsetting of occurrence records when using logical vectors to subset rows.</li>
+<li>Fixed bug that printed occurrence records with multi-element data incorrectly when there was a single element.</li>
+<li>Fixed bug triggered by some system locales (<a href="https://github.com/luomus/finbif/issues/1" class="external-link">#1</a>).</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="finbif-031">finbif 0.3.1<a class="anchor" aria-label="anchor" href="#finbif-031"></a></h2><p class="text-muted">CRAN release: 2020-11-24</p>
 <div class="section level3">
 <h3 id="new-features-0-3-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-3-1"></a></h3>
-<ul><li><p>Occurrence records can be ordered by the total number of records or total number of Finnish records of the taxon (variables: <code>n_total_records</code> &amp; <code>n_total_finnish_records</code>, currently undocumented).</p></li>
-<li><p>New Finnish occurrence status, <code>records_only</code>, added.</p></li>
-<li><p>New administrative statuses added to filters.</p></li>
+<ul><li>Occurrence records can be ordered by the total number of records or total number of Finnish records of the taxon (variables: <code>n_total_records</code> &amp; <code>n_total_finnish_records</code>, currently undocumented).</li>
+<li>New Finnish occurrence status, <code>records_only</code>, added.</li>
+<li>New administrative statuses added to filters.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-3-1">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-3-1"></a></h3>
@@ -456,35 +459,35 @@
 <h2 class="pkg-version" data-toc-text="0.3.0" id="finbif-030">finbif 0.3.0<a class="anchor" aria-label="anchor" href="#finbif-030"></a></h2><p class="text-muted">CRAN release: 2020-04-23</p>
 <div class="section level3">
 <h3 id="new-features-0-3-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-3-0"></a></h3>
-<ul><li><p>All user facing functions with a <code>finbif_</code> prefix can now also be used with the alternative shorter prefix <code>fb_</code>.</p></li>
-<li><p>Crop Wild Relative, CWR, added to admin statuses.</p></li>
-<li><p>There are two new utility functions, <code>to_dwc</code> and <code>to_native</code> for converting variable names to and from Darwin Core style.</p></li>
-<li><p>Users can select and order by variables in Darwin Core style when using <code>finbif_occurrence</code>.</p></li>
-<li><p>Some changes in variables and filters have flowed from upstream changes to “api.laji.fi”. The variables <code>is_unidentifiable</code>, <code>record_reliable</code>, <code>collection_reliability</code>, <code>taxon_reliability</code>, <code>taxon_reliability_message</code> and <code>taxon_reliability_source</code> have been deprecated and replaced with <code>requires_verification</code>, <code>requires_identification</code>, <code>record_reliability</code> and <code>record_quality</code>. The filters <code>collection_reliability</code> and <code>taxon_reliability</code> have been deprecated and replaced with <code>requires_verification</code>, <code>collection_quality</code>, <code>record_reliability</code>, <code>record_quality</code>, and <code>expert_verified</code>.</p></li>
-<li><p>Vernacular names are now localised. Users can select a language to use for taxon vernacular names. Missing names will fallback gracefully to other languages. A package-wide locale can be set and is by default set to the system locale (if not set or can’t be determined it will default to English).</p></li>
-<li><p>New vignettes on getting occurrence records, selecting and ordering variables, metadata and plotting have been added.</p></li>
+<ul><li>All user facing functions with a <code>finbif_</code> prefix can now also be used with the alternative shorter prefix <code>fb_</code>.</li>
+<li>Crop Wild Relative, CWR, added to admin statuses.</li>
+<li>There are two new utility functions, <code>to_dwc</code> and <code>to_native</code> for converting variable names to and from Darwin Core style.</li>
+<li>Users can select and order by variables in Darwin Core style when using <code>finbif_occurrence</code>.</li>
+<li>Some changes in variables and filters have flowed from upstream changes to “api.laji.fi”. The variables <code>is_unidentifiable</code>, <code>record_reliable</code>, <code>collection_reliability</code>, <code>taxon_reliability</code>, <code>taxon_reliability_message</code> and <code>taxon_reliability_source</code> have been deprecated and replaced with <code>requires_verification</code>, <code>requires_identification</code>, <code>record_reliability</code> and <code>record_quality</code>. The filters <code>collection_reliability</code> and <code>taxon_reliability</code> have been deprecated and replaced with <code>requires_verification</code>, <code>collection_quality</code>, <code>record_reliability</code>, <code>record_quality</code>, and <code>expert_verified</code>.</li>
+<li>Vernacular names are now localised. Users can select a language to use for taxon vernacular names. Missing names will fallback gracefully to other languages. A package-wide locale can be set and is by default set to the system locale (if not set or can’t be determined it will default to English).</li>
+<li>New vignettes on getting occurrence records, selecting and ordering variables, metadata and plotting have been added.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-0-3-0">MINOR IMPROVEMENTS<a class="anchor" aria-label="anchor" href="#minor-improvements-0-3-0"></a></h3>
-<ul><li><p>Caching defaults to in memory caching instead of relying on the temporary directory.</p></li>
-<li><p>Front matter of vignettes is now visible when using the R help browser.</p></li>
-<li><p>Retired “quiet” option for <code>on_check_fail</code> argument in function <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>.</p></li>
-<li><p>Improved error messages when taxa fail checking in <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>.</p></li>
-<li><p>Global option to set timezone, <code>finbif_tz</code>, as default value for “tzone” argument to <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>. Avoids having to set system environment variable TZ or specify “tzone” every time <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> is run.</p></li>
-<li><p>Now when a record has no time information the start time is assumed to be midday. Previous behaviour was to assume start time was midnight, making errors potentially biased.</p></li>
-<li><p>Package options are now documented in the package level man page.</p></li>
-<li><p>News file is now accessible via R internal help system.</p></li>
-<li><p>The number of default variables selected when accessing occurrence records has been reduced to speed up downloads and improve the display of <code>finbif_occ</code> objects.</p></li>
-<li><p>The print method for occurrence record objects has been updated. It is now aware of console width and when truncating variable values is more considerate of the context.</p></li>
-<li><p>Variables can now be “deselected” when using the <code>select</code> argument to <code>finbif_occurrence</code> by prepending the variable name with a “<code>-</code>”.</p></li>
-<li><p>After some failures, API requests are now automatically retried up to three times.</p></li>
+<ul><li>Caching defaults to in memory caching instead of relying on the temporary directory.</li>
+<li>Front matter of vignettes is now visible when using the R help browser.</li>
+<li>Retired “quiet” option for <code>on_check_fail</code> argument in function <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>.</li>
+<li>Improved error messages when taxa fail checking in <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>.</li>
+<li>Global option to set timezone, <code>finbif_tz</code>, as default value for “tzone” argument to <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code>. Avoids having to set system environment variable TZ or specify “tzone” every time <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> is run.</li>
+<li>Now when a record has no time information the start time is assumed to be midday. Previous behaviour was to assume start time was midnight, making errors potentially biased.</li>
+<li>Package options are now documented in the package level man page.</li>
+<li>News file is now accessible via R internal help system.</li>
+<li>The number of default variables selected when accessing occurrence records has been reduced to speed up downloads and improve the display of <code>finbif_occ</code> objects.</li>
+<li>The print method for occurrence record objects has been updated. It is now aware of console width and when truncating variable values is more considerate of the context.</li>
+<li>Variables can now be “deselected” when using the <code>select</code> argument to <code>finbif_occurrence</code> by prepending the variable name with a “<code>-</code>”.</li>
+<li>After some failures, API requests are now automatically retried up to three times.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-3-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-3-0"></a></h3>
-<ul><li><p>Ordering by descending variables did not work when ordering by both ascending and descending variables.</p></li>
-<li><p>Fixed bug in handling of duplicates that could result in an infinite recursion.</p></li>
-<li><p>Fixed bug that (when <code>on_check_fail = "warn"</code>) all taxa failed checks <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> would proceed as if no taxa had been selected.</p></li>
-<li><p>Fixed bug in print method for <code>finbif_occ</code> objects that caused error when trying to display a single column objects with a list-col only.</p></li>
+<ul><li>Ordering by descending variables did not work when ordering by both ascending and descending variables.</li>
+<li>Fixed bug in handling of duplicates that could result in an infinite recursion.</li>
+<li>Fixed bug that (when <code>on_check_fail = "warn"</code>) all taxa failed checks <code><a href="../reference/finbif_occurrence.html">finbif_occurrence()</a></code> would proceed as if no taxa had been selected.</li>
+<li>Fixed bug in print method for <code>finbif_occ</code> objects that caused error when trying to display a single column objects with a list-col only.</li>
 </ul></div>
 </div>
     <div class="section level2">

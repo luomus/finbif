@@ -26,7 +26,7 @@ Click to show/hide output.
 #> 3                    country
 #> 4                     region
 #> 5               bio_province
-#> 6               municipality
+#> 6       finnish_municipality
 #> 7            bird_assoc_area
 #> 8  finnish_occurrence_status
 #> 9               habitat_type

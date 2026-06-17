@@ -46,16 +46,16 @@ the names of additional variables.
 
 ## Darwin Core Variables
 
-You can switch from the default variable names to [Darwin
-Core](http://rs.tdwg.org/dwc/) style names by setting `dwc = TRUE`.
+You can switch from the default [Darwin Core](http://rs.tdwg.org/dwc/)
+style variable names by setting `dwc = FALSE`.
 
 ``` r
 
-colnames(finbif_occurrence(dwc = TRUE))
-#>  [1] "occurrenceID"                  "scientificName"                "individualCount"              
-#>  [4] "decimalLatitude"               "decimalLongitude"              "eventDateTime"                
-#>  [7] "coordinateUncertaintyInMeters" "hasIssues"                     "requiresVerification"         
-#> [10] "requiresIdentification"        "occurrenceReliability"         "occurrenceQuality"
+colnames(finbif_occurrence(dwc = FALSE))
+#>  [1] "record_id"               "scientific_name"         "abundance"              
+#>  [4] "lat_wgs84"               "lon_wgs84"               "date_time"              
+#>  [7] "coordinates_uncertainty" "any_issues"              "requires_verification"  
+#> [10] "requires_identification" "record_reliability"      "record_quality"
 ```
 
 The functions
@@ -313,9 +313,10 @@ identify may be a duplicate of other records.
 To illustrate, you can count the number of moths and butterflies by
 municipality with the following:
 
-``` details
+``` r
+
 finbif_occurrence(
-  "Lepidoptera", select = "finnish_municipality", aggregate = "species"
+  "Lepidoptera", select = "finnishCounty", aggregate = "species"
 )
 ```
 
@@ -327,17 +328,17 @@ Click to show/hide output.
 #> Records downloaded: 10
 #> Records available: 309
 #> A data.frame [10 x 2]
-#>    finnish_municipality n_species
-#> 1             Raasepori  2062    
-#> 2             Virolahti  2024    
-#> 3              Rääkkylä  1386    
-#> 4               Kouvola  1547    
-#> 5           Kemiönsaari  2028    
-#> 6                 Hanko  1971    
-#> 7              Parainen  1904    
-#> 8              Helsinki  2025    
-#> 9                Kuopio  1420    
-#> 10                Kotka  1747    
+#>    finnishCounty n_species
+#> 1      Raasepori  2078    
+#> 2      Virolahti  2037    
+#> 3       Rääkkylä  1396    
+#> 4        Kouvola  1578    
+#> 5    Kemiönsaari  2042    
+#> 6          Hanko  1994    
+#> 7       Parainen  1922    
+#> 8       Helsinki  2069    
+#> 9         Kuopio  1445    
+#> 10         Turku  1827    
 ```
 
   
@@ -351,7 +352,7 @@ deselecting the `date_time` variable.
 
 ``` r
 
-finbif_occurrence(select = "-date_time")
+finbif_occurrence(select = "-eventDateTime")
 ```
 
 Click to show/hide output.
@@ -360,22 +361,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 47159747
+#> Records available: 60179991
 #> A data.frame [10 x 11]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
-#> 2                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
-#> 3                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
-#> 4                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
-#> 5                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
-#> 6                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
-#> 7                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
-#> 8                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
-#> 9                          …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
-#> 10                         …JX.1594382#29 Dendrocopos major (…        NA  64.12716  23.99111
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
+#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
+#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
+#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
+#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
+#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
+#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
+#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
+#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
+#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
 #> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus
 ```
 
   

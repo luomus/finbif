@@ -2,7 +2,10 @@
 
 ## finbif 0.9.14.9000
 
-- This is the current development version.
+- The default value of `finbif_use_dwc` is now `TRUE`. meaning that
+  [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+  expects and returns DwC style variable names unless otherwise
+  specified by the user.
 
 ## finbif 0.9.14
 
@@ -17,7 +20,7 @@ CRAN release: 2026-04-17
 ### DEPRECATION
 
 - The default value of `finbif_use_dwc` is `FALSE`. This is deprecated
-  and will be set to `TRUE` in v0.9.15.
+  and will be set to `TRUE` in v0.10.0.
 
 ## finbif 0.9.13
 
@@ -107,18 +110,14 @@ CRAN release: 2024-07-23
 ### MINOR IMPROVEMENTS
 
 - `finbif_last_mod` can be used without a `filter` argument value.
-
 - Error handling for API requests has been improved.
 
 ### BUG FIXES
 
 - Fixed an issue triggered when multi-filter set requests returned zero
   results.
-
 - Fixed bug triggered when dropping columns of all NA data.
-
 - Fixed an issue with file-based caches timing out correctly.
-
 - Fixed an issue triggered when selecting certain variables and zero
   records were returned.
 
@@ -147,7 +146,6 @@ CRAN release: 2024-03-15
 ### BUG FIXES
 
 - Fixed an issue with reading facts for FinBIF record download files.
-
 - Fixed an issue with reading column names using `data.table` package to
   ingest FinBIF record download files.
 
@@ -163,10 +161,8 @@ CRAN release: 2024-01-12
 ### MINOR IMPROVEMENTS
 
 - Record pagination should now often require less queries of FinBIF
-  server and be should be faster.
-
+  server and should be faster.
 - FinBIF collections field names have been sanitised.
-
 - When filtering records by “collection_id” a full URL ID can be used or
   a QName.
 
@@ -182,7 +178,7 @@ CRAN release: 2023-09-28
 ### BUG FIXES
 
 - Fix a bug resulting in the incorrect region being assigned to
-  occurrences records.
+  occurrence records.
 
 ### MINOR IMPROVEMENTS
 
@@ -222,17 +218,13 @@ CRAN release: 2023-05-23
 - New function `finbif_update_cache` can be used to update all the
   cached objects that have reached their expiration and are no longer
   valid.
-
 - A restricted data API token can be explicitly declared via the
   `restricted_api` argument to `finbif_occurrence`.
-
 - Cached data can use a database as a backend by passing a `DBI`
   database connection object to the package option `finbif_cache_path`.
-
 - Cached data can be assigned a timeout by using a number (hours)
   instead of a logical value for the `cache` argument to `finbif_`
   functions or the package option `finbif_use_cache`.
-
 - Record aggregations with `finbif_occurrence` can now be combined with
   multi-filter requests. Removing duplicate records or aggregate record
   combinations can be controlled with the `duplicates` argument and
@@ -243,14 +235,12 @@ CRAN release: 2023-05-23
 
 - Fixed a bug causing an infinite recursion when determining page size
   during record download pagination.
-
 - Fix bug triggered when using aggregation with some selected variables.
 
 ### DEFUNCT
 
 - Mapping utilities `finland_map`, `breaks_xy`, `hist_xy` and the plot
   method for `finbif_occ` objects are now defunct.
-
 - User access to `finbif_records` and its classes and methods is now
   defunct.
 
@@ -263,9 +253,8 @@ CRAN release: 2023-03-29
 - Mapping utilities `finland_map`, `breaks_xy`, `hist_xy` and the plot
   method for `finbif_occ` objects have been deprecated as they are
   out-of-scope.
-
-- User access to `finbif_records` and its classes and methods is
-  deprecated in favour of `finbif_occurrence`.
+- User access to `finbif_records` and its classes and methods
+  isdeprecated in favour of `finbif_occurrence`.
 
 ### NEW FEATURES
 
@@ -278,8 +267,7 @@ CRAN release: 2023-02-06
 
 ### MINOR IMPROVEMENTS
 
-- Updated deprecated use of tidy::pivot_wider.
-
+- Updated deprecated use of `tidy::pivot_wider`.
 - Added new filters and variables from upstream API.
 
 ## finbif 0.7.1
@@ -290,7 +278,6 @@ CRAN release: 2022-11-24
 
 - New function `finbif_mod_date` to get last modified date for FinBIF
   occurrence data.
-
 - Region is now a selectable variable for `finbif_occurrence` and can
   also be used to filter records.
 
@@ -298,13 +285,10 @@ CRAN release: 2022-11-24
 
 - For the sake of clarity “province” is now referred to as
   “bio-province”.
-
 - Many variables, including `sex`, `life_stage` and `record_quality` are
   now localised.
-
 - The variable `restriction_reasons` is now referred to in the singular
   as `restriction_reason`.
-
 - For consistency, `lang` argument to `finbif_collections` has been
   changed to `locale`.
 
@@ -321,23 +305,17 @@ CRAN release: 2022-09-13
 
 - New function `taxon_id` that returns FinBIF taxon identifiers given a
   scientific name, vernacular name or other taxon identifier.
-
 - New filters `complete_list_taxon_id` and `complete_list_type` now
   available.
-
 - New global option `finbif_hide_progress` to suppress progress bars
   when downloading, importing or processing FinBIF records.
-
 - For the sake of clarity and consistency the term “administrative
   status” is now referred to as “regulatory status” throughout.
-
 - Regulatory status, informal taxonomic group and habitat data are now
   localised.
-
 - Option `unlist` added to `finbif_occurrence` that casts list columns
   to strings. If a cell has multiple values the values are cast to a
   string separated by semi-colons.
-
 - New argument `facts` added to `finbif_occurrence` that can be used to
   automatically extract facts when downloading occurrence records.
 
@@ -345,7 +323,6 @@ CRAN release: 2022-09-13
 
 - Fixed bug triggered by incorrect data type applied to
   `taxonomic_order`.
-
 - Fixed bug preventing locale switching of vernacular name data.
 
 ## finbif 0.6.6
@@ -367,7 +344,6 @@ CRAN release: 2022-08-08
 
 - Fix applied for a print method error triggered by clashing class
   names.
-
 - Fixed issue with ordering by some variables.
 
 ## finbif 0.6.5
@@ -378,7 +354,6 @@ CRAN release: 2022-05-20
 
 - New variables and filters (currently undocumented) have been added for
   the forthcoming Finnish atlas of breeding birds.
-
 - Skip rows argument added to `finbif_occurrence_load` so files can be
   read in chunks.
 
@@ -386,7 +361,6 @@ CRAN release: 2022-05-20
 
 - For clarity, KKJ coordinate reference system is now referred to as
   YKJ.
-
 - When selecting all available variables for download file imports using
   `finbif_occurrence_load` “extra” variables will no longer be
   automatically added.
@@ -398,22 +372,16 @@ CRAN release: 2022-03-10
 ### MINOR IMPROVEMENTS
 
 - New administrative statuses added.
-
 - The number of (and interval between) api request retries can be
   configured (currently undocumented).
-
 - For some museum collections scientific names have been added for
   non-Finnish species.
-
 - New fields have been added to citable download imports.
-
 - New argument `aggregate_counts` (defaulting to `TRUE`) added to
   `finbif_occurrence` to toggle the inclusion of aggregation count
   fields on and off.
-
 - New bird association area, occurrence types and location tag metadata
   added.
-
 - New filters and variables (currently undocumented) added from upstream
   API.
 
@@ -431,14 +399,11 @@ CRAN release: 2022-01-03
 - Argument `drop_na_facts` has been changed to `drop_facts_na` for
   function `finbif_occurrence_load` to avoid problems due to partial
   matching of argument `drop_na`.
-
 - Data quality description has been appended to description field in
   `data.frame` returned by
   [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md).
-
 - Occurrence record filtering can now be done using open-ended date
   ranges.
-
 - New administrative statuses added.
 
 ### BUG FIXES
@@ -455,7 +420,6 @@ CRAN release: 2021-09-03
 - New package option, `finbif_allow_query`, with default value, `TRUE`.
   If set to `FALSE` then remote API queries will trigger an error
   meaning only cached requests will run if a cache is found.
-
 - Records can now be aggregated by document.
 
 ### MINOR IMPROVEMENTS
@@ -467,7 +431,6 @@ CRAN release: 2021-09-03
 
 - Fix bug preventing loading of FinBIF archives that is triggered when
   all variables are selected with `select = "all"`.
-
 - Fix bug preventing `finbif_occ` objects from printing when one or more
   columns contain missing data only.
 
@@ -490,30 +453,23 @@ CRAN release: 2021-07-22
   record downloads. These new variables represent the central point of a
   bounding box encompassing a record’s geographic coverage in the EUREF
   (ETRS89/ETRS-TM35FIN) coordinate system.
-
 - Option now available to retain the TSV data file when loading FinBIF
   occurrence data with `finbif_occurrence_load` from ZIP archive or
   online reference.
-
 - Option now available to extract “facts” when using
   `finbif_occurrence_load` to import records from a ZIP archive. The
   user must supply a named list, where the names refer to one or more
   fact types: “record”, “event” and/or “document”, and the list elements
   are character vectors indicating which “facts” to extract.
-
 - “Lite” download files (occurrence record datasets of less than 10,000
   records downloaded directly from laji.fi) can now be imported using
   `finbif_occurrence_load`.
-
 - New filters (currently undocumented) `ely_center_id` and `region_id`
   are available for `finbif_occurrence`.
-
 - New function, `from_schema`, to convert variable names from FinBIF
   schema to other styles.
-
 - New computed variable `date_time_ISO8601` (currently undocumented) can
   be selected when creating `finbif_occ` objects.
-
 - New computed variable `epsg` (currently undocumented). If selected,
   the column will have the EPSG code of the first column that contains
   geographic data.
@@ -523,17 +479,13 @@ CRAN release: 2021-07-22
 - Can now select all available variables when importing a FinBIF
   download request file using `finbif_occurrence_load` with
   `select = "all"`.
-
 - New option, `drop_na`, to drop columns that only contain missing data
   added to `finbif_occurrence` and `finbif_occurrence_load`.
-
 - User can now select columns multiple times and rename them on the fly
   by using a named character vector as the value of the ‘select’
   argument.
-
 - The variable `taxon_rank` is now converted to a string on the fly via
   `taxon_rank_id`.
-
 - Variables that are computed from their identifiers are now localised
   when multiple languages are available.
 
@@ -541,7 +493,6 @@ CRAN release: 2021-07-22
 
 - Fixed bug that prevented occurrence record counting when caching was
   not in use.
-
 - Fixed bug that triggered an error when selected a variable that had to
   be computed from its ID when using DwC style variable names.
 
@@ -557,18 +508,15 @@ CRAN release: 2021-03-27
   selected then downloading records and processing them will occur
   simultaneously in separate threads, often leading to a significant
   speed up over sequential processing.
-
 - Occurrence records can now be requested using multiple sets of filters
   at the same time. If a list of filters (with unnamed elements) is
   supplied then a record request will be made for each set of filters
   and the results of all requests combined and all duplicate records
   removed.
-
 - Occurrence records can now be read directly from FinBIF download
   request files. The function `finbif_occurrence_load` can load data
   from a local file or remotely using a persistent identifier URI (e.g.,
   `http://tun.fi/HBF.49381`).
-
 - Aggregation of records can now be performed at the recording “event”
   level as well as the “record” level.
 
@@ -581,7 +529,6 @@ CRAN release: 2021-01-27
 - New functions `scientific_name` and `common_name` are now available to
   get scientific and common names for taxa (given a taxon name or FinBIF
   ID code) or extract names from a `finbif_taxa`- class object.
-
 - Add ability to extract complex record variables such as those
   associated with record media (currently undocumented).
 
@@ -589,7 +536,6 @@ CRAN release: 2021-01-27
 
 - Collection name can be selected as a variable for occurrence records.
   Previously it had to be manually translated from collection ID.
-
 - Variables `restriction_reasons_conservation`,
   `restriction_reason_embargo` and `restriction_reason_custom` are no
   longer in use upstream and can no longer be selected.
@@ -608,27 +554,22 @@ CRAN release: 2020-12-17
 ### MINOR IMPROVEMENTS
 
 - Error is triggered when attempting to request less than one record.
-
 - New content on requesting aggregated occurrence records added to
-  vignette: 2. Occurrence records from FinBIF.
+  vignette:
+  2.  Occurrence records from FinBIF.
 
 ### BUG FIXES
 
 - Fixed two bugs in print method for FinBIF occurrence records that were
   triggered when attempting to print only one row of data.
-
 - Fixed bug triggering error when attempting to print occurrence record
   objects with zero rows.
-
 - Fixed bug triggered when trying to print occurrence record data with
   NA values.
-
 - Fixed bug causing incorrect subsetting of occurrence records when
   using logical vectors to subset rows.
-
 - Fixed bug that printed occurrence records with multi-element data
   incorrectly when there was a single element.
-
 - Fixed bug triggered by some system locales
   ([\#1](https://github.com/luomus/finbif/issues/1)).
 
@@ -642,9 +583,7 @@ CRAN release: 2020-11-24
   total number of Finnish records of the taxon (variables:
   `n_total_records` & `n_total_finnish_records`, currently
   undocumented).
-
 - New Finnish occurrence status, `records_only`, added.
-
 - New administrative statuses added to filters.
 
 ### MINOR IMPROVEMENTS
@@ -659,15 +598,11 @@ CRAN release: 2020-04-23
 
 - All user facing functions with a `finbif_` prefix can now also be used
   with the alternative shorter prefix `fb_`.
-
 - Crop Wild Relative, CWR, added to admin statuses.
-
 - There are two new utility functions, `to_dwc` and `to_native` for
   converting variable names to and from Darwin Core style.
-
 - Users can select and order by variables in Darwin Core style when
   using `finbif_occurrence`.
-
 - Some changes in variables and filters have flowed from upstream
   changes to “api.laji.fi”. The variables `is_unidentifiable`,
   `record_reliable`, `collection_reliability`, `taxon_reliability`,
@@ -678,13 +613,11 @@ CRAN release: 2020-04-23
   deprecated and replaced with `requires_verification`,
   `collection_quality`, `record_reliability`, `record_quality`, and
   `expert_verified`.
-
 - Vernacular names are now localised. Users can select a language to use
   for taxon vernacular names. Missing names will fallback gracefully to
   other languages. A package-wide locale can be set and is by default
   set to the system locale (if not set or can’t be determined it will
   default to English).
-
 - New vignettes on getting occurrence records, selecting and ordering
   variables, metadata and plotting have been added.
 
@@ -692,16 +625,12 @@ CRAN release: 2020-04-23
 
 - Caching defaults to in memory caching instead of relying on the
   temporary directory.
-
 - Front matter of vignettes is now visible when using the R help
   browser.
-
 - Retired “quiet” option for `on_check_fail` argument in function
   [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md).
-
 - Improved error messages when taxa fail checking in
   [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md).
-
 - Global option to set timezone, `finbif_tz`, as default value for
   “tzone” argument to
   [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md).
@@ -709,26 +638,19 @@ CRAN release: 2020-04-23
   every time
   [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md)
   is run.
-
 - Now when a record has no time information the start time is assumed to
   be midday. Previous behaviour was to assume start time was midnight,
   making errors potentially biased.
-
 - Package options are now documented in the package level man page.
-
 - News file is now accessible via R internal help system.
-
 - The number of default variables selected when accessing occurrence
   records has been reduced to speed up downloads and improve the display
   of `finbif_occ` objects.
-
 - The print method for occurrence record objects has been updated. It is
   now aware of console width and when truncating variable values is more
   considerate of the context.
-
 - Variables can now be “deselected” when using the `select` argument to
   `finbif_occurrence` by prepending the variable name with a “`-`”.
-
 - After some failures, API requests are now automatically retried up to
   three times.
 
@@ -736,14 +658,11 @@ CRAN release: 2020-04-23
 
 - Ordering by descending variables did not work when ordering by both
   ascending and descending variables.
-
 - Fixed bug in handling of duplicates that could result in an infinite
   recursion.
-
 - Fixed bug that (when `on_check_fail = "warn"`) all taxa failed checks
   [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md)
   would proceed as if no taxa had been selected.
-
 - Fixed bug in print method for `finbif_occ` objects that caused error
   when trying to display a single column objects with a list-col only.
 

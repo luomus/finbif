@@ -49,110 +49,110 @@
     <h2 id="identifiers">Identifiers<a class="anchor" aria-label="anchor" href="#identifiers"></a></h2>
 
 
-<p>All identifiers are returned in the form of a URI. Identifiers include:</p><ul><li><p><code>record_id</code> Character.
+<p>All identifiers are returned in the form of a URI. Identifiers include:</p><ul><li><p><code>occurrenceID</code> Character.
 The ID of a record of organism's occurrence at a time and place.</p></li>
-<li><p><code>individual_id</code> Character.
+<li><p><code>organismID</code> Character.
 ID of an individual organism (e.g., a ringed bird that has been captured
-multiple times will have a single <code>individual_id</code> and multiple <code>record_id</code>s
+multiple times will have a single <code>organismID</code> and multiple <code>occurrenceID</code>s
 corresponding to each capture).</p></li>
-<li><p><code>event_id</code> Character.
+<li><p><code>eventID</code> Character.
 Event ID. An event can contain one or more records (e.g., a survey of
 plants at a particular location and time.)</p></li>
-<li><p><code>document_id</code> Character.
+<li><p><code>catalogNumber</code> Character.
 Document ID. A set of events that share common metadata.</p></li>
-<li><p><code>form_id</code> Character.
+<li><p><code>formID</code> Character.
 Form ID. The form used to create the document, event, record data.</p></li>
-<li><p><code>collection_id</code> Character.
-Collection ID. All documents, events, and records belong to a collection
-(e.g., a museum collection, or the datasets collected by a specific
-institution). Collections themselves can be part of a larger
+<li><p><code>datasetID</code> Character.
+Dataset ID. All documents, events, and records belong to a
+collection/dataset (e.g., a museum collection, or the datasets collected
+by a specific institution). Collections themselves can be part of a larger
 (super)collection (e.g., all the collections at a specific museum). Only
-the lowest level collection ID for a record is returned. Use
-<code><a href="finbif_collections.html">finbif_collections()</a></code> to explore the hierarchy of collections.</p></li>
-<li><p><code>source_id</code> Character.
+the lowest level dataset ID for a record is returned. Use
+<code><a href="finbif_collections.html">finbif_collections()</a></code> to explore the hierarchy of collections/datasets.</p></li>
+<li><p><code>sourceID</code> Character.
 Source ID. The source of the collection's data.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="taxa">Taxa<a class="anchor" aria-label="anchor" href="#taxa"></a></h2>
 
 
-<p>Variables related to taxonomy of records include:</p><ul><li><p><code>taxon_id</code> Character.
+<p>Variables related to taxonomy of records include:</p><ul><li><p><code>taxonConceptID</code> Character.
 The taxon ID in the form of a URI.</p></li>
-<li><p><code>orig_taxon_id</code> Character.
+<li><p><code>originalTaxonConceptID</code> Character.
 The taxon ID before (if any) annotation.</p></li>
-<li><p><code>annotated_taxon_id</code> Character.
+<li><p><code>annotatedTaxonConceptID</code> Character.
 The new taxon ID if the record has had it's taxonomy annotated.</p></li>
-<li><p><code>reported_taxon_id</code> Character.
+<li><p><code>verbatimTaxonConceptID</code> Character.
 The taxon ID as originally reported by the record creator.</p></li>
-<li><p><code>scientific_name</code> Character.
+<li><p><code>scientificName</code> Character.
 Scientific name of taxon.</p></li>
-<li><p><code>orig_scientific_name</code> Character.
+<li><p><code>originalScientificName</code> Character.
 The scientific name before (if any) annotation.</p></li>
-<li><p><code>scientific_display_name</code> Character.
+<li><p><code>scientificNameDisplay</code> Character.
 Scientific name of taxon formatted for display (e.g., taxa with genus only
 will be formatted as <em>Genus sp.</em>).</p></li>
-<li><p><code>orig_scientific_display_name</code> Character.
+<li><p><code>originalScientificNameDisplay</code> Character.
 Scientific display name before (if any) annotation.</p></li>
-<li><p><code>common_name</code> Character.
+<li><p><code>vernacularName</code> Character.
 Common (vernacular) name of taxon.</p></li>
-<li><p><code>orig_common_name</code> Character.
+<li><p><code>originalVernacularName</code> Character.
 Common name before (if any) annotation.</p></li>
-<li><p><code>reported_name</code> Character.
+<li><p><code>verbatimIdentification</code> Character.
 The name of the taxon as originally reported by the record creator.</p></li>
-<li><p><code>scientific_name_italicised</code> Logical.
+<li><p><code>scientificNameItalicised</code> Logical.
 Is the scientific name normally italicised (i.e., is the taxonomic rank
 genus or below.)</p></li>
-<li><p><code>orig_scientific_name_italicised</code> Logical.
+<li><p><code>originalScientificNameItalicised</code> Logical.
 Is the original scientific name normally italicised.</p></li>
-<li><p><code>scientific_name_author</code> Character.
+<li><p><code>scientificNameAuthorship</code> Character.
 The authority for the taxon scientific name.</p></li>
-<li><p><code>orig_scientific_name_author</code> Character.
+<li><p><code>originalScientificNameAuthorship</code> Character.
 The authority for the taxon scientific name before (if any) annotation.</p></li>
-<li><p><code>reported_author</code> Character.
+<li><p><code>verbatimScientificNameAuthorship</code> Character.
 The authority of the taxon as originally reported by the record creator.</p></li>
-<li><p><code>taxon_rank</code> Character.
+<li><p><code>taxonRank</code> Character.
 The taxonomic rank of the taxon.</p></li>
-<li><p><code>orig_taxon_rank</code> Character.
+<li><p><code>originalTaxonRank</code> Character.
 The taxonomic rank of the taxon before (if any) annotation.</p></li>
-<li><p><code>informal_groups</code> List.
+<li><p><code>informalTaxonGroups</code> List.
 The informal taxonomic groups that the taxon belongs to (e.g., birds) in
 the form of URIs.</p></li>
-<li><p><code>orig_informal_groups</code> List.
+<li><p><code>originalInformalTaxonGroups</code> List.
 The informal taxonomic groups that the taxon belonged to before (if any)
 annotation.</p></li>
-<li><p><code>reported_informal_groups</code> List.
+<li><p><code>verbatimInformalTaxonGroups</code> List.
 The informal taxonomic groups that the taxon belongs to as reported by the
 record creator.</p></li>
-<li><p><code>taxon_checklist</code> Character.
+<li><p><code>taxonChecklist</code> Character.
 The checklist (as a URI) that that taxon is found in.</p></li>
-<li><p><code>orig_taxon_checklist</code> Character.
+<li><p><code>originalTaxonChecklist</code> Character.
 The checklist (as a URI) that that taxon was found in before (if any)
 annotation.</p></li>
-<li><p><code>taxon_finnish</code> Logical.
+<li><p><code>taxonFinnishStatus</code> Logical.
 Is the taxon considered Finnish. The definition of a Finnish taxon differs
 by taxonomic group?</p></li>
-<li><p><code>orig_taxon_finnish</code> Logical.
+<li><p><code>originalFinnishStatus</code> Logical.
 Was the taxon considered Finnish before (if any) annotation?</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="abundance-sex-amp-life-history">Abundance, sex &amp; life history<a class="anchor" aria-label="anchor" href="#abundance-sex-amp-life-history"></a></h2>
 
 
-<p>Variables related to abundance, sex and life history include:</p><ul><li><p><code>abundance</code> Integer.
+<p>Variables related to abundance, sex and life history include:</p><ul><li><p><code>individualCount</code> Integer.
 Number of individuals recorded.</p></li>
-<li><p><code>abundance_interpreted</code> Integer.
+<li><p><code>individualCountInterpreted</code> Integer.
 Number of individuals recorded or inferred from the record. Note that many
-records with <code>abundance_interpreted == 1L</code> only indicate the record is of
+records with <code>individualCount == 1L</code> only indicate the record is of
 one individual and may not necessarily imply that this was the abundance at
 that specified place and time (e.g., a preserved museum specimen consisting
 of a single individual).</p></li>
-<li><p><code>{female|male}_abundance</code> Integer.
+<li><p><code>individualCount{Female|Male}</code> Integer.
 Number of female or male individuals recorded.</p></li>
-<li><p><code>pair_abundance</code> Integer.
+<li><p><code>pairCount</code> Integer.
 Number of mating pairs recorded.</p></li>
-<li><p><code>abundance_verbatim</code> Character.
+<li><p><code>organismQuantity</code> Character.
 The abundance as reported by the record creator.</p></li>
-<li><p><code>life_stage</code> Character.
+<li><p><code>lifeStage</code> Character.
 Life stage of individual(s) recorded.</p></li>
 <li><p><code>sex</code> Character.
 Sex of individual(s) recorded.</p></li>
@@ -161,48 +161,55 @@ Sex of individual(s) recorded.</p></li>
     <h2 id="location">Location<a class="anchor" aria-label="anchor" href="#location"></a></h2>
 
 
-<p>Variables related to the location of records include:</p><ul><li><p><code>{lat|lon}_{euref|wgs84}</code> Numeric.
+<p>Variables related to the location of records include:</p><ul><li><p><code>decimal{Latitude|Longitude}</code> Numeric.
 Coordinates (in
-<a href="https://spatialreference.org/ref/epsg/3067/" class="external-link">EUREF</a> or
 <a href="https://spatialreference.org/ref/epsg/4326/" class="external-link">WGS84</a> coordinate system)
 of the central point of a bounding box encompassing the record's geographic
 coverage.</p></li>
-<li><p><code>{lat|lon}_{min|max}_{euref|ykj|wgs84}</code>. Numeric.
+<li><p><code>decimal{Latitude|Longitude}EUREF</code> Numeric.
+Coordinates (in
+<a href="https://spatialreference.org/ref/epsg/3067/" class="external-link">EUREF</a> coordinate system)
+of the central point of a bounding box encompassing the record's geographic
+coverage.</p></li>
+<li><p><code>decimal{Latitude|Longitude}{Min|Max}{EUREF|YKJ|WGS84}</code>. Numeric.
 Vertices of a bounding box encompassing the record's geographic coverage.
 Coordinates are available in
 <a href="https://spatialreference.org/ref/epsg/3067/" class="external-link">EUREF</a>,
 <a href="https://spatialreference.org/ref/epsg/2393/" class="external-link">YKJ</a>, or
 <a href="https://spatialreference.org/ref/epsg/4326/" class="external-link">WGS84</a>.</p></li>
-<li><p><code>coordinates_uncertainty</code> Integer.
+<li><p><code>coordinateUncertaintyInMeters</code> Integer.
 The horizontal distance (in meters) from the record's given coordinates
 describing the smallest circle containing the whole of the record's
 location.</p></li>
-<li><p><code>coordinates_source</code> Character.
+<li><p><code>georeferenceSources</code> Character.
 Source of coordinates.</p></li>
-<li><p><code>footprint_{euref|ykj|wgs84}</code> Character.
+<li><p><code>footprintWKT</code> Character.
 Well-Known Text (WKT) representation of the geographic shape defining the
-location of the record in either EUREF, YKJ or WGS84 coordinate systems.</p></li>
+location of the record in WGS84 coordinate systems.</p></li>
+<li><p><code>footprintWKT{_EUREF|_YKJ}</code> Character.
+Well-Known Text (WKT) representation of the geographic shape defining the
+location of the record in either EUREF or YKJ coordinate systems.</p></li>
 <li><p><code>country</code> Character.
 The country of the record's location.</p></li>
-<li><p><code>region</code> Character.
+<li><p><code>stateProvince</code> Character.
 The administrative area directly below the level of country.</p></li>
-<li><p><code>bio_province</code> Character.
+<li><p><code>bioStateProvince</code> Character.
 For data from Finland FinBIF uses the concept of
 <a href="https://laji.fi/en/theme/emk" class="external-link">Biogeographical Province</a>. See link for
 details.</p></li>
-<li><p><code>municipality</code>. Character.
+<li><p><code>county</code>. Character.
 Administrative level below region</p></li>
-<li><p><code>higher_geography</code> Character.
+<li><p><code>higherGeography</code> Character.
 Geographic place name that is at higher level than country.</p></li>
-<li><p><code>line_length_m</code> Integer.
+<li><p><code>lineLengthMeters</code> Integer.
 The length of linear locations (e.g., line transect surveys).</p></li>
-<li><p><code>area_m2</code> Integer.
+<li><p><code>areaMetersSquared</code> Integer.
 The size of record's location in meters squared.</p></li>
-<li><p><code>is_breeding_location</code> Logical.
+<li><p><code>isBreedingSite</code> Logical.
 Whether or not the occurrence is recorded at a known breeding location.</p></li>
-<li><p><code>location_id</code> Character.
+<li><p><code>locationID</code> Character.
 A location ID in the form of a URI.</p></li>
-<li><p><code>section</code> Integer.
+<li><p><code>eventSection</code> Integer.
 A numeric identifier for a sub-location of a location (e.g., a specific
 part of a transect that undergoes repeated surveys.)</p></li>
 </ul></div>
@@ -210,33 +217,33 @@ part of a transect that undergoes repeated surveys.)</p></li>
     <h2 id="time">Time<a class="anchor" aria-label="anchor" href="#time"></a></h2>
 
 
-<p>Variables related to time of record include:</p><ul><li><p><code>date_time</code> POSIXct.
+<p>Variables related to time of record include:</p><ul><li><p><code>eventDateTime</code> POSIXct.
 The date and time of the recording event. This variable is computed after
 records are downloaded from FinBIF. Its timezone and accuracy can be
 controlled see <code><a href="finbif_occurrence.html">finbif_occurrence()</a></code> for details.</p></li>
-<li><p><code>duration</code> Duration.
+<li><p><code>samplingEffort</code> Duration.
 The duration of the recording event. This variable is computed after
 records are downloaded from FinBIF.</p></li>
-<li><p><code>date_start</code> Character.
+<li><p><code>eventDateStart</code> Character.
 The date the recording event began.</p></li>
-<li><p><code>date_end</code> Character.
+<li><p><code>eventDateEnd</code> Character.
 The date the recording event ended.</p></li>
-<li><p><code>hour_start</code> Integer.
+<li><p><code>hourStart</code> Integer.
 The hour (24 hour time) of the day the recording event began.</p></li>
-<li><p><code>hour_end</code> Integer.
+<li><p><code>hourEnd</code> Integer.
 The hour (24 hour time) of the day the recording event ended.</p></li>
-<li><p><code>minute_start</code> Integer.
+<li><p><code>minuteStart</code> Integer.
 The minute of the hour the recording event began.</p></li>
-<li><p><code>minute_end</code> Integer.
+<li><p><code>minuteEnd</code> Integer.
 The minute of the hour the recording event started.</p></li>
-<li><p><code>ordinal_day_start</code> Integer.
+<li><p><code>startDayOfYear</code> Integer.
 The ordinal day of the year the recording event began.</p></li>
-<li><p><code>ordinal_day_end</code> Integer.
+<li><p><code>endDayOfYear</code> Integer.
 The ordinal day of the year the recording event ended</p></li>
-<li><p><code>season_start</code> Integer.
+<li><p><code>seasonStart</code> Integer.
 The day of the year the recording event began. A four digit number
 indicating the day of the year in MMDD (%m%d) format.</p></li>
-<li><p><code>season_end</code> Integer.
+<li><p><code>seasonEnd</code> Integer.
 The day of the year the recording event ended. A four digit number
 indicating the day of the year in MMDD (%m%d) format.</p></li>
 <li><p><code>century</code> Integer.
@@ -254,89 +261,89 @@ the event spans multiple months).</p></li>
 <li><p><code>day</code> Integer.
 The day of the month during which the recording event occurred (<code>NA</code> if the
 event spans multiple days).</p></li>
-<li><p><code>formatted_date_time</code> Character.
+<li><p><code>eventDateTimeDisplay</code> Character.
 Date and time of the recording event formatted for display.</p></li>
-<li><p><code>date_created</code> Character.
+<li><p><code>documentCreatedDate</code> Character.
 The date the original data was created.</p></li>
-<li><p><code>first_load_date</code> Character.
+<li><p><code>available</code> Character.
 The date the record was first loaded into the FinBIF database.</p></li>
 <li><p><code>modified</code> Character.
 The most recent date the original data was modified.</p></li>
-<li><p><code>load_date</code> Character.
+<li><p><code>documentLoadedDate</code> Character.
 The most recent date the record was loaded into the FinBIF database.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="data-restrictions">Data restrictions<a class="anchor" aria-label="anchor" href="#data-restrictions"></a></h2>
 
 
-<p>Variables related to restricted records include:</p><ul><li><p><code>restriction</code> Logical.
+<p>Variables related to restricted records include:</p><ul><li><p><code>informationRestricted</code> Logical.
 Has the record been restricted in some way (e.g., geospatially aggregated).</p></li>
-<li><p><code>restriction_level</code> Character.
+<li><p><code>dataGeneralizations</code> Character.
 What level of restriction has been applied to the record.</p></li>
-<li><p><code>restriction_reason</code> List.
+<li><p><code>informationWithheld</code> List.
 List of reasons restriction has been applied.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="data-quality">Data quality<a class="anchor" aria-label="anchor" href="#data-quality"></a></h2>
 
 
-<p>Variables related to the quality of records include:</p><ul><li><p><code>any_issues</code> Logical.
+<p>Variables related to the quality of records include:</p><ul><li><p><code>hasIssues</code> Logical.
 Are there any data quality issues associated with the record, its event or
 document.</p></li>
-<li><p><code>reported_taxon_confidence</code>
+<li><p><code>identificationQualifer</code>
 Reliability of the record's taxonomic identification as reported by the
 original data author.</p></li>
-<li><p><code>{document|time|location|event|record}_issue</code> Character.
+<li><p><code>{document|time|location|event|occurrence}Issue</code> Character.
 Issues with record associated with its document, time, location, event, or
 the record itself.</p></li>
-<li><p><code>{document|time|location|event|record}_issue_message</code> Character.
+<li><p><code>{document|time|location|event|occurrence}IssueRemarks</code> Character.
 Details about the issue.</p></li>
-<li><p><code>{document|time|location|event|record}_issue_source</code> Character.
+<li><p><code>{document|time|location|event|occurrence}IssueSource</code> Character.
 Source determining the issue.</p></li>
-<li><p><code>requires_verification</code> Logical.
+<li><p><code>requiresVerification</code> Logical.
 Has the record been flagged for expert verification?</p></li>
-<li><p><code>requires_identification</code> Logical.
+<li><p><code>requiresIdentification</code> Logical.
 Has the record been flagged for expert identification?</p></li>
-<li><p><code>record_reliability</code> Character.
+<li><p><code>occurrenceReliability</code> Character.
 Indication of the record's reliability.</p></li>
-<li><p><code>record_quality</code> Character.
+<li><p><code>identificationVerificationStatus</code> Character.
 Indication of the record's quality.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="misc">Misc<a class="anchor" aria-label="anchor" href="#misc"></a></h2>
 
 
-<p>Other variables:</p><ul><li><p><code>collection</code> Character.
-Collection name. All documents, events, and records belong to a collection
-(e.g., a museum collection, or the datasets collected by a specific
-institution). Collections themselves can be part of a larger
+<p>Other variables:</p><ul><li><p><code>datasetName</code> Character.
+Dataset name. All documents, events, and records belong to a
+collection/dataset (e.g., a museum collection, or the datasets collected
+by a specific institution). Collections themselves can be part of a larger
 (super)collection (e.g., all the collections at a specific museum). Only
 the lowest level collection name for a record is returned. Use
-<code><a href="finbif_collections.html">finbif_collections()</a></code> to explore the hierarchy of collections.</p></li>
-<li><p><code>observers_ids</code> List.
+<code><a href="finbif_collections.html">finbif_collections()</a></code> to explore the hierarchy of collections/datasets.</p></li>
+<li><p><code>recordedByIDs</code> List.
 List of observer identifiers for the record.</p></li>
-<li><p><code>determiner</code> Character.
+<li><p><code>identifiedBy</code> Character.
 Person who determined the taxonomic identification of the record.</p></li>
-<li><p><code>record_basis</code> Character.
+<li><p><code>basisOfRecord</code> Character.
 The type of or method used to obtain the record.</p></li>
-<li><p><code>superrecord_basis</code> Character.
+<li><p><code>basisOfSuperRecord</code> Character.
 Higher level type of or method used to obtain the record.</p></li>
-<li><p><code>type_specimen</code> Logical.
+<li><p><code>typeStatus</code> Logical.
 Whether or not the record is of a type specimen.</p></li>
-<li><p><code>is_wild</code> Logical.
+<li><p><code>occurrenceIsWild</code> Logical.
 Whether or not the record is of a "wild" organism.</p></li>
 <li><p><code>license</code> Character.
 The license of the data associated with the record.</p></li>
-<li><p><code>{document|event|record}_notes</code> Character.
+<li><p><code>{document|event|occurrence}Remarks</code> Character.
 Notes associated with the document, event or record itself.</p></li>
-<li><p><code>{document|record}_keywords</code> List.
+<li><p><code>{document|occurrence}Keywords</code> List.
 List of keywords associated with the document or record.</p></li>
-<li><p><code>record_annotation_count</code> Integer.
+<li><p><code>occurrenceAnnotationCount</code> Integer.
 How many annotations are associated with the record.</p></li>
-<li><p><code>sample_count</code> Integer.
+<li><p><code>materialSampleCount</code> Integer.
 How many material samples (DNA extractions, etc., ...) are associated with
 the record.</p></li>
-<li><p><code>{document|event|record}_media_count</code> Integer.
+<li><p><code>{document|event|occurrence}AssociatedMediaCount</code> Integer.
 How many media items (images, audio, video, etc., ...) are associated with
 the record's document, event or the record itself.</p></li>
 </ul></div>

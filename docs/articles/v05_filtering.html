@@ -87,22 +87,22 @@ post-processing time. For the full list of filtering options see
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"Finland"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 44691386</span></span>
+<span><span class="co">#&gt; Records available: 57358090</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
-<span><span class="co">#&gt;                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84</span></span>
-<span><span class="co">#&gt; 1                           …JX.1594385#3 Sciurus vulgaris Li…  1         60.23584  25.05693</span></span>
-<span><span class="co">#&gt; 2  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983</span></span>
-<span><span class="co">#&gt; 3                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111</span></span>
-<span><span class="co">#&gt; 4                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111</span></span>
-<span><span class="co">#&gt; 5                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111</span></span>
-<span><span class="co">#&gt; 6                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111</span></span>
-<span><span class="co">#&gt; 7                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111</span></span>
-<span><span class="co">#&gt; 8                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111</span></span>
-<span><span class="co">#&gt; 9                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111</span></span>
-<span><span class="co">#&gt; 10                         …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111</span></span>
+<span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
+<span><span class="co">#&gt; 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      </span></span>
+<span><span class="co">#&gt; 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      </span></span>
+<span><span class="co">#&gt; 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       </span></span>
+<span><span class="co">#&gt; 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      </span></span>
+<span><span class="co">#&gt; 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      </span></span>
+<span><span class="co">#&gt; 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      </span></span>
+<span><span class="co">#&gt; 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      </span></span>
+<span><span class="co">#&gt; 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      </span></span>
+<span><span class="co">#&gt; 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      </span></span>
+<span><span class="co">#&gt; 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      </span></span>
 <span><span class="co">#&gt; ...with 0 more record and 7 more variables:</span></span>
-<span><span class="co">#&gt; date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,</span></span>
-<span><span class="co">#&gt; record_reliability, record_quality</span></span></code></pre></div>
+<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
+<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
 <p>Or by a set of coordinates.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
@@ -133,7 +133,8 @@ post-processing time. For the full list of filtering options see
 <p>The event or import date of records can be used to filter occurrence
 data from FinBIF. The date filters can be a single year, month or
 date,</p>
-<pre class="details"><code><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>date_range_ym <span class="op">=</span> <span class="st">"2020-12"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>date_range_ym <span class="op">=</span> <span class="st">"2020-12"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <details closed><summary>
 Click to show/hide output.
 </summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
