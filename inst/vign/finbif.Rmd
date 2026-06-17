@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 )
 
 library(finbif)
-options(finbif_tz = "Europe/Helsinki", width = 100)
+options(finbif_tz = "Europe/Helsinki", width = 90)
 ```
 FinBIF aggregates Finnish biodiversity data from multiple sources in a single
 open access portal for researchers, citizen scientists, industry and government.

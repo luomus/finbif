@@ -122,116 +122,106 @@ Click to show/hide output.
 ``` r
 
 
-#> [[1]]
-#> [[1]]$matchingName
+#> $results
+#> $results[[1]]
+#> $results[[1]]$matchingName
 #> [1] "Betula pendula var. pendula"
 #> 
-#> [[1]]$nameType
+#> $results[[1]]$nameType
 #> [1] "MX.scientificName"
 #> 
-#> [[1]]$id
+#> $results[[1]]$id
 #> [1] "MX.37994"
 #> 
-#> [[1]]$scientificName
+#> $results[[1]]$checklist
+#> [1] "MR.1"
+#> 
+#> $results[[1]]$scientificName
 #> [1] "Betula pendula var. pendula"
 #> 
-#> [[1]]$taxonRank
+#> $results[[1]]$taxonRank
 #> [1] "MX.variety"
 #> 
-#> [[1]]$cursiveName
+#> $results[[1]]$cursiveName
 #> [1] TRUE
 #> 
-#> [[1]]$finnish
+#> $results[[1]]$finnish
 #> [1] TRUE
 #> 
-#> [[1]]$species
+#> $results[[1]]$species
 #> [1] TRUE
 #> 
-#> [[1]]$vernacularName
-#> [[1]]$vernacularName$sv
-#> [1] "vanlig vårtbjörk"
-#> 
-#> [[1]]$vernacularName$fi
+#> $results[[1]]$vernacularName
 #> [1] "vihtakoivu"
 #> 
-#> 
-#> [[1]]$informalGroups
-#> [[1]]$informalGroups[[1]]
-#> [[1]]$informalGroups[[1]]$id
+#> $results[[1]]$informalGroups
+#> $results[[1]]$informalGroups[[1]]
+#> $results[[1]]$informalGroups[[1]]$id
 #> [1] "MVL.343"
 #> 
-#> [[1]]$informalGroups[[1]]$name
-#> [[1]]$informalGroups[[1]]$name$fi
-#> [1] "Putkilokasvit"
-#> 
-#> [[1]]$informalGroups[[1]]$name$en
+#> $results[[1]]$informalGroups[[1]]$name
 #> [1] "Vascular plants"
 #> 
-#> [[1]]$informalGroups[[1]]$name$sv
-#> [1] "Kärlväxter"
 #> 
 #> 
-#> 
-#> 
-#> [[1]]$kingdomScientificName
+#> $results[[1]]$kingdomScientificName
 #> [1] "Plantae"
 #> 
-#> [[1]]$type
+#> $results[[1]]$type
 #> [1] "partialMatches"
 #> 
 #> 
-#> [[2]]
-#> [[2]]$matchingName
-#> [1] "Betula nana × pendula"
+#> $results[[2]]
+#> $results[[2]]$matchingName
+#> [1] "Betula pendula × pubescens"
 #> 
-#> [[2]]$nameType
+#> $results[[2]]$nameType
 #> [1] "MX.scientificName"
 #> 
-#> [[2]]$id
-#> [1] "MX.38005"
+#> $results[[2]]$id
+#> [1] "MX.37998"
 #> 
-#> [[2]]$scientificName
-#> [1] "Betula nana × pendula"
+#> $results[[2]]$checklist
+#> [1] "MR.1"
 #> 
-#> [[2]]$taxonRank
+#> $results[[2]]$scientificName
+#> [1] "Betula pendula × pubescens"
+#> 
+#> $results[[2]]$taxonRank
 #> [1] "MX.infragenericHybrid"
 #> 
-#> [[2]]$cursiveName
+#> $results[[2]]$cursiveName
 #> [1] TRUE
 #> 
-#> [[2]]$finnish
+#> $results[[2]]$finnish
 #> [1] TRUE
 #> 
-#> [[2]]$species
+#> $results[[2]]$species
 #> [1] TRUE
 #> 
-#> [[2]]$vernacularName
-#> named list()
+#> $results[[2]]$vernacularName
+#> [1] "hybridikoivu"
 #> 
-#> [[2]]$informalGroups
-#> [[2]]$informalGroups[[1]]
-#> [[2]]$informalGroups[[1]]$id
+#> $results[[2]]$informalGroups
+#> $results[[2]]$informalGroups[[1]]
+#> $results[[2]]$informalGroups[[1]]$id
 #> [1] "MVL.343"
 #> 
-#> [[2]]$informalGroups[[1]]$name
-#> [[2]]$informalGroups[[1]]$name$fi
-#> [1] "Putkilokasvit"
-#> 
-#> [[2]]$informalGroups[[1]]$name$en
+#> $results[[2]]$informalGroups[[1]]$name
 #> [1] "Vascular plants"
 #> 
-#> [[2]]$informalGroups[[1]]$name$sv
-#> [1] "Kärlväxter"
 #> 
 #> 
-#> 
-#> 
-#> [[2]]$kingdomScientificName
+#> $results[[2]]$kingdomScientificName
 #> [1] "Plantae"
 #> 
-#> [[2]]$type
+#> $results[[2]]$type
 #> [1] "partialMatches"
 #> 
+#> 
+#> 
+#> $`@context`
+#> [1] "https://api.laji.fi/context/taxon-search-en"
 #> 
 ```
 
@@ -248,22 +238,22 @@ function.
 
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
-#> Records available: 95730
+#> Records available: 139837
 #> A data.frame [100 x 12]
-#>                   record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1            …JX.1594164#13 Cygnus cygnus (Linn…        NA  64.94473  26.67958 2023-06-13 14:33:00
-#> 2  …HR.4412/6489172c9ddda_U Cygnus cygnus (Linn…        NA  61.74701  23.11493 2023-06-13 12:00:00
-#> 3  …HR.4412/64891730060a4_U Cygnus cygnus (Linn…        NA  61.38348  22.97288 2023-06-13 12:00:00
-#> 4  …HR.4412/648917378a3b6_U Cygnus cygnus (Linn…        NA  62.76028  24.15774 2023-06-13 12:00:00
-#> 5  …HR.4412/6489175adc05f_U Cygnus cygnus (Linn…        NA  60.78752  21.39263 2023-06-13 12:00:00
-#> 6  …HR.4412/6489173a1db9b_U Cygnus cygnus (Linn…        NA  64.31374  26.68643 2023-06-13 12:00:00
-#> 7  …HR.4412/648917456a396_U Cygnus cygnus (Linn…        NA  61.87986  25.19067 2023-06-13 12:00:00
-#> 8  …HR.4412/648917454912b_U Cygnus cygnus (Linn…        NA  60.42215  24.00099 2023-06-13 12:00:00
-#> 9  …HR.4412/64891750e74e7_U Cygnus cygnus (Linn…        NA  63.86383  27.70835 2023-06-13 12:00:00
-#> 10 …HR.4412/64891741330f8_U Cygnus cygnus (Linn…        NA  61.74701  23.11493 2023-06-13 12:00:00
-#> ...with 90 more records and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1      …0745928 Cygnus cygnus (Linn…              NA  66              29.25          
+#> 2      …0745932 Cygnus cygnus (Linn…              NA              NA               NA
+#> 3      …0745937 Cygnus cygnus (Linn…              NA              NA               NA
+#> 4      …0745941 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 5      …0745945 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 6      …0745949 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 7      …5552466 Cygnus cygnus (Linn…  1               67.773235       25.050461      
+#> 8      …5552470 Cygnus cygnus (Linn…  4               69.063377       27.11982       
+#> 9      …5552474 Cygnus cygnus (Linn…  1               68.713901       22.787894      
+#> 10     …5559118 Cygnus cygnus (Linn…  3                           NA               NA
+#> ...with 90 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
 You can search for multiple taxa at once and filter the records with the
@@ -284,22 +274,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 47293
+#> Records available: 87466
 #> A data.frame [10 x 12]
-#>               record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  …HR.3211/167194019-U Cygnus olor (J.F. G…        NA  60.12778  24.69528 2023-06-13 12:00:00
-#> 2        …JX.1593978#37 Cygnus olor (J.F. G…  10        60.428    22.20038 2023-06-13 12:00:00
-#> 3        …JX.1594262#19 Cygnus olor (J.F. G…  5         61.60789  21.51679 2023-06-13 12:00:00
-#> 4        …JX.1594262#17 Cygnus cygnus (Linn…  5         61.60789  21.51679 2023-06-13 12:00:00
-#> 5       …JX.1594053#296 Cygnus cygnus (Linn…  1         63.62644  23.70806 2023-06-13 03:10:00
-#> 6        …JX.1594054#93 Cygnus cygnus (Linn…  1         63.63403  24.21195 2023-06-13 03:08:00
-#> 7       …JX.1593931#255 Cygnus cygnus (Linn…  2         64.5582   27.78468 2023-06-13 05:03:00
-#> 8         …JX.1593916#3 Cygnus cygnus (Linn…  2         66.11897  25.93173 2023-06-13 12:00:00
-#> 9        …JX.1593873#63 Cygnus cygnus (Linn…  2         65.72167  27.94208 2023-06-13 09:27:00
-#> 10 …HR.3211/167071964-U Cygnus olor (J.F. G…        NA  60.18156  24.93153 2023-06-12 12:00:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1        …33947 Cygnus cygnus (Linn…              NA  63.4            33.39          
+#> 2        …33951 Cygnus cygnus (Linn…              NA  63.4            33.39          
+#> 3        …35003 Cygnus cygnus (Linn…              NA  63.4            33.39          
+#> 4        …39895 Cygnus cygnus (Linn…              NA  61.2            22.7           
+#> 5        …40419 Cygnus olor (J.F. G…              NA  60.36           26.77          
+#> 6        …41419 Cygnus cygnus (Linn…              NA  60.33           25.67          
+#> 7        …41535 Cygnus cygnus (Linn…              NA  61.29           25.83          
+#> 8        …43347 Cygnus cygnus (Linn…              NA  60.571967       27.489174      
+#> 9        …43371 Cygnus olor (J.F. G…              NA  60.4517         23.9772        
+#> 10       …43491 Cygnus cygnus (Linn…              NA  60.3249         25.7125        
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -326,22 +316,23 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 21748016
+#> Records available: 29078618
 #> A data.frame [10 x 12]
-#>                      record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1  …HR.3691/OBS1143679721_Unit Aythya marila (Linn…  11        59.9815   24.39929
-#> 2          …KE.67/1662813#Unit Fringilla coelebs L…  1         59.83333  19.93333
-#> 3             …KE.8_1165614#90 Poecile montanus (C…  6         62.44825  29.92951
-#> 4         …KE.67/12308933#Unit Prunella modularis …  1         61.67291  22.25931
-#> 5          …KE.67/9586054#Unit Larus argentatus Po…  1         50.85     6.833333
-#> 6          …KE.67/8576210#Unit Periparus ater (Lin…  1         60.2      19.33333
-#> 7          …KE.67/9862495#Unit Prunella modularis …  1         61.13488  24.39512
-#> 8          …KE.67/4669401#Unit Larus argentatus Po…  1         60.01667  24.61667
-#> 9               …JX.1031300#61 Motacilla alba Linn…        NA  62.12915  30.16957
-#> 10        …KE.67/11492752#Unit Bombycilla garrulus…  1         62.67061  30.93362
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>            occurrenceID       scientificName individualCount decimalLatitude
+#> 1        …JX.1026053#46 Anthus trivialis (L…  1               64.300242     
+#> 2      …KE.8_1044172#41 Turdus merula Linna…  1               60.458446     
+#> 3   …KE.67/2710655#Unit Rallus aquaticus Li…  1               60.197895     
+#> 4    …KE.67/507788#Unit Parus major Linnaeu…  1               60.237614     
+#> 5        …HR.49/41446_U Astur gentilis (Lin…  1               62.229788     
+#> 6    …KE.67/353020#Unit Parus major Linnaeu…  1               60.266667     
+#> 7  …KE.67/12431497#Unit Riparia riparia (Li…  1               61.072328     
+#> 8          …JX.94072#20 Poecile montanus (C…  12              60.788433     
+#> 9       …JX.1247883#256 Grus grus (Linnaeus…  1               64.562534     
+#> 10 …KE.67/14598103#Unit Coloeus monedula (L…  1               62.782648     
+#> ...with 0 more records and 8 more variables:
+#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
+#> requiresVerification, requiresIdentification, occurrenceReliability,
+#> identificationVerificationStatus
 ```
 
   

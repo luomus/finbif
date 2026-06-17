@@ -145,31 +145,28 @@ Click to show/hide output.
 with <code><a href="../reference/finbif_informal_groups.html">finbif_informal_groups()</a></code></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_informal_groups.html">finbif_informal_groups</a></span><span class="op">(</span>limit <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Algae</span></span>
-<span><span class="co">#&gt;   --Macro algae</span></span>
-<span><span class="co">#&gt;       --Brown algae and yellow green algae</span></span>
-<span><span class="co">#&gt;       --Green algae</span></span>
-<span><span class="co">#&gt;       --Red algae</span></span>
-<span><span class="co">#&gt;       --Stoneworts</span></span>
 <span><span class="co">#&gt; Birds</span></span>
 <span><span class="co">#&gt;   --Birds of prey and owls</span></span>
-<span><span class="co">#&gt;       --Birds of prey</span></span>
 <span><span class="co">#&gt;       --Owls</span></span>
+<span><span class="co">#&gt;       --Birds of prey</span></span>
 <span><span class="co">#&gt;   --Waterbirds</span></span>
-<span><span class="co">#&gt; ...137 more groups</span></span></code></pre></div>
+<span><span class="co">#&gt; Mammals</span></span>
+<span><span class="co">#&gt;   --Small mammals</span></span>
+<span><span class="co">#&gt;   --Bats</span></span>
+<span><span class="co">#&gt; ...150 more groups</span></span></code></pre></div>
 <p>You can select a subgroup by specifying a parent informal group as a
 function argument.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_informal_groups.html">finbif_informal_groups</a></span><span class="op">(</span><span class="st">"Crustaceans"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Crustaceans</span></span>
 <span><span class="co">#&gt;   --Macrocrustaceans</span></span>
-<span><span class="co">#&gt;       --Amphipods, isopods, opossum shrimps</span></span>
 <span><span class="co">#&gt;       --Crabs, shrimps and crayfishes</span></span>
-<span><span class="co">#&gt;       --Other macrocrustaceans</span></span>
+<span><span class="co">#&gt;       --Amphipods, isopods, opossum shrimps</span></span>
 <span><span class="co">#&gt;       --Woodlice</span></span>
+<span><span class="co">#&gt;       --Other macrocrustaceans</span></span>
 <span><span class="co">#&gt;   --Microcrustaceans</span></span>
-<span><span class="co">#&gt;       --Branchiopoda</span></span>
 <span><span class="co">#&gt;       --Copepods</span></span>
+<span><span class="co">#&gt;       --Branchiopoda</span></span>
 <span><span class="co">#&gt;       --Seed shrimps</span></span></code></pre></div>
 </div>
 </div>
@@ -184,77 +181,103 @@ and <code>select</code> arguments.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_collections.html">finbif_collections</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="va">geographic_coverage</span> <span class="op">==</span> <span class="st">"Finland"</span>,</span>
-<span>  select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"collection_name"</span>, <span class="st">"taxonomic_coverage"</span>, <span class="st">"count"</span><span class="op">)</span></span>
+<span>  select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"collection_name"</span>, <span class="st">"taxonomic_coverage"</span>, <span class="st">"geographic_coverage"</span>, <span class="st">"count"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <details closed><summary>
 Click to show/hide output.
 </summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co">#&gt;         collection_name                   taxonomic_coverage                count  </span></span>
-<span><span class="co">#&gt; HR.1227 Priv. coll. Mikko Heikkinen       Biota                                  62</span></span>
-<span><span class="co">#&gt; HR.1349 JYV - Fungal collections          &lt;NA&gt;                                13477</span></span>
-<span><span class="co">#&gt; HR.1350 JYV - Lichen collections          &lt;NA&gt;                                  608</span></span>
-<span><span class="co">#&gt; HR.1351 JYV - Bryophyte collections       &lt;NA&gt;                                 8367</span></span>
-<span><span class="co">#&gt; HR.1467 Per-Eric Grankvist´s butterly co… Lepidoptera                             5</span></span>
-<span><span class="co">#&gt; HR.1487 JYV - Fish collections            &lt;NA&gt;                                 1371</span></span>
-<span><span class="co">#&gt; HR.1507 Lingonblad Birger och Hjördis bu… Lepidoptera                          2796</span></span>
-<span><span class="co">#&gt; HR.157  Point counts of breeding terrest… Birds, landbirds                   393361</span></span>
-<span><span class="co">#&gt; HR.1592 Herbarium of The Ark Nature Cent… &lt;NA&gt;                                 7871</span></span>
-<span><span class="co">#&gt; HR.1687 Papilionoidea of Coll. Lauro      Papilionoidea                         550</span></span>
-<span><span class="co">#&gt; HR.1688 Noctuidae I of Coll. Lauro        Noctuidae                             614</span></span>
-<span><span class="co">#&gt; HR.1689 Noctuidae II of Coll. Lauro       Noctuidae                             839</span></span>
-<span><span class="co">#&gt; HR.1690 Noctuidae III, Bombycoidea, Sphi… Noctuidae, Bombycoidea, Geometri…     521</span></span>
-<span><span class="co">#&gt; HR.1691 Drepanidae &amp; Geometridae of Coll… Drepanidae, Geometridae              1408</span></span>
-<span><span class="co">#&gt; HR.175  National Finnish butterfly monit… Lepidoptera                        450525</span></span>
-<span><span class="co">#&gt; HR.1916 Wildlife triangle                 Siberian flying squirrel (Pterom…   18560</span></span>
-<span><span class="co">#&gt; HR.200  Finnish Insect Database           Insecta                           3725381</span></span>
-<span><span class="co">#&gt; HR.2009 Fish observation data from the n… invasive alien fish species - mu…   35582</span></span>
-<span><span class="co">#&gt; HR.2049 Invasive alien species control    Invasive species                     1502</span></span>
-<span><span class="co">#&gt; HR.206  The Finnish Nature League's Spri… biota                              119323</span></span>
-<span><span class="co">#&gt; HR.2089 Håkan Lindberg collection         Hymenoptera                          2435</span></span>
-<span><span class="co">#&gt; HR.209  Atlas of Finnish Macrolepidoptera Macrolepidoptera                  1218555</span></span>
-<span><span class="co">#&gt; HR.2129 Fungal atlas                      fungi                              116519</span></span>
-<span><span class="co">#&gt; HR.2209 KUO Arachnida collection          Arachnida                               3</span></span>
-<span><span class="co">#&gt; HR.2289 Specimens that lack collecting i… &lt;NA&gt;                                  109</span></span>
-<span><span class="co">#&gt; HR.2691 Luomus line transect censuses of… Aves                               628987</span></span>
-<span><span class="co">#&gt; HR.2692 Censuses of breeding birds - Are… Aves                                14963</span></span>
-<span><span class="co">#&gt; HR.3051 VieKas LIFE project invasive spe… &lt;NA&gt;                                 1545</span></span>
-<span><span class="co">#&gt; HR.3071 Observing species on milk farms   &lt;NA&gt;                                  529</span></span>
-<span><span class="co">#&gt; HR.3211 iNaturalist Suomi Finland         biota                              691050</span></span>
-<span><span class="co">#&gt; HR.3491 LajiGIS: Aquatic species survey   Biota                              643837</span></span>
-<span><span class="co">#&gt; HR.3553 LajiGIS: Species monitoring sites Biota                              731965</span></span>
-<span><span class="co">#&gt; HR.3671 Bird of prey nests for protection Aves                                13323</span></span>
-<span><span class="co">#&gt; HR.3691 eBird                             Aves                              1100308</span></span>
-<span><span class="co">#&gt; HR.3791 Invasive species observations     Biota                                3268</span></span>
-<span><span class="co">#&gt; HR.39   Winter Bird Census                Aves, Mammalia                    1483842</span></span>
-<span><span class="co">#&gt; HR.3911 Bumblebee census                  Bumblebees                          29949</span></span>
-<span><span class="co">#&gt; HR.3991 Waterbird counts, Luomus dataset  Aves                                39236</span></span>
-<span><span class="co">#&gt; HR.3992 Waterbird counts, Luke dataset 2… Aves                                30145</span></span>
-<span><span class="co">#&gt; HR.4011 Salmonidae in streams             Salmonidae                          12630</span></span>
-<span><span class="co">#&gt; HR.4051 LajiGIS: Species monitoring site… Aquila chrysaetos; Haliaeetus al…    8669</span></span>
-<span><span class="co">#&gt; HR.4091 Retkikasvio                       &lt;NA&gt;                                   84</span></span>
-<span><span class="co">#&gt; HR.4131 Butterflies in Finnish agricultu… Papilionoidea, Others              356987</span></span>
-<span><span class="co">#&gt; HR.4191 Porvoo Museum / Butterfly Collec… Lepidoptera                         10417</span></span>
-<span><span class="co">#&gt; HR.4251 LajiGIS: Species mapping and sur… Biota                              490816</span></span>
-<span><span class="co">#&gt; HR.435  Löydös Open Invasive Species Obs… Biota                               19232</span></span>
-<span><span class="co">#&gt; HR.4352 NFI rare tree species             &lt;NA&gt;                                  995</span></span>
-<span><span class="co">#&gt; HR.4412 Tiira.fi: The Fourth Breeding Bi… Aves                               329445</span></span>
-<span><span class="co">#&gt; HR.4471 4th Finnish Bird Atlas 2022–2025… Aves                               165551</span></span>
-<span><span class="co">#&gt; HR.4511 Finnish National Moth Monitoring  Bombycoidea, Noctuoidea, Sphingi… 1156373</span></span>
-<span><span class="co">#&gt; HR.4611 Observations by FCG Finnish Cons… &lt;NA&gt;                                  462</span></span>
-<span><span class="co">#&gt; HR.4612 Pollinator monitoring, line tran… Insecta                              7885</span></span>
-<span><span class="co">#&gt; HR.4672 Observations from publications    Biota                                 127</span></span>
-<span><span class="co">#&gt; HR.4711 Flying squirrel monitoring        Pteromys volans                      2509</span></span>
-<span><span class="co">#&gt; HR.4991 Bird atlas observations manually… Aves                                 6620</span></span>
-<span><span class="co">#&gt; HR.5095 Dragonfly complete lists          Odonata                                29</span></span>
-<span><span class="co">#&gt; HR.5155 Observations from electronic sou… Biota                                1372</span></span>
-<span><span class="co">#&gt; HR.5196 Pollinator monitoring, pan traps  Insecta                              5688</span></span>
-<span><span class="co">#&gt; HR.5235 Finnish butterflies - complete l… Lepidoptera, Papilinoidea              21</span></span>
-<span><span class="co">#&gt; HR.5236 Charismatic flowering plants - c… Tracheophyta                          277</span></span>
-<span><span class="co">#&gt; HR.60   Monitoring scheme of birds and m… Aves, Mammalia                     874130</span></span>
-<span><span class="co">#&gt; HR.627  Alien mammal species observation… Invasive alien mammal species – …    3094</span></span>
-<span><span class="co">#&gt; HR.808  E. Sjöholm´s butterfly collection Lepidoptera                          4951</span></span>
-<span><span class="co">#&gt; HR.847  Atlas of amphibians and reptiles… Amphibia, Reptilia                   6690</span></span></code></pre></div>
+<span><span class="co">#&gt;         collection_name        taxonomic_coverage     geographic_coverage count  </span></span>
+<span><span class="co">#&gt; HR.1227 Priv. coll. Mikko Hei… Biota                  Finland                  48</span></span>
+<span><span class="co">#&gt; HR.1349 JYV - Fungal collecti… &lt;NA&gt;                   Finland               14486</span></span>
+<span><span class="co">#&gt; HR.1350 JYV - Lichen collecti… &lt;NA&gt;                   Finland                 825</span></span>
+<span><span class="co">#&gt; HR.1351 JYV - Bryophyte colle… &lt;NA&gt;                   Finland               11214</span></span>
+<span><span class="co">#&gt; HR.1467 Per-Eric Grankvist´s … Lepidoptera            Finland                   5</span></span>
+<span><span class="co">#&gt; HR.1487 JYV - Fish collections &lt;NA&gt;                   Finland                1371</span></span>
+<span><span class="co">#&gt; HR.1507 Lingonblad Birger och… Lepidoptera            Finland                2799</span></span>
+<span><span class="co">#&gt; HR.157  Point counts of breed… Birds, landbirds       Finland              425914</span></span>
+<span><span class="co">#&gt; HR.1592 Main herbarium of The… &lt;NA&gt;                   Finland                7832</span></span>
+<span><span class="co">#&gt; HR.1687 Papilionoidea of Coll… Papilionoidea          Finland                 550</span></span>
+<span><span class="co">#&gt; HR.1688 Noctuidae I of Coll. … Noctuidae              Finland                 614</span></span>
+<span><span class="co">#&gt; HR.1689 Noctuidae II of Coll.… Noctuidae              Finland                 839</span></span>
+<span><span class="co">#&gt; HR.1690 Noctuidae III, Bombyc… Noctuidae, Bombycoide… Finland                 521</span></span>
+<span><span class="co">#&gt; HR.1691 Drepanidae &amp; Geometri… Drepanidae, Geometrid… Finland                1408</span></span>
+<span><span class="co">#&gt; HR.175  National Butterfly Re… Lepidoptera            Finland              549592</span></span>
+<span><span class="co">#&gt; HR.1916 Wildlife triangle      Siberian flying squir… Finland               18560</span></span>
+<span><span class="co">#&gt; HR.200  Finnish Insect Databa… Insecta                Finland             3725313</span></span>
+<span><span class="co">#&gt; HR.2009 Fish observation data… invasive alien fish s… Finland               35854</span></span>
+<span><span class="co">#&gt; HR.2029 LajiGIS: Miscellaneou… Biota                  Finland               44432</span></span>
+<span><span class="co">#&gt; HR.2049 Invasive alien specie… Invasive species       Finland                3908</span></span>
+<span><span class="co">#&gt; HR.206  The Finnish Nature As… biota                  Finland              141107</span></span>
+<span><span class="co">#&gt; HR.2089 Håkan Lindberg collec… Hymenoptera            Finland                2435</span></span>
+<span><span class="co">#&gt; HR.209  Atlas of Finnish Macr… Macrolepidoptera       Finland             1218546</span></span>
+<span><span class="co">#&gt; HR.2129 The Atlas of Finnish … fungi                  Finland              181432</span></span>
+<span><span class="co">#&gt; HR.2209 KUO Arachnida collect… Arachnida              Finland                   3</span></span>
+<span><span class="co">#&gt; HR.2289 Specimens that lack c… &lt;NA&gt;                   Finland                 109</span></span>
+<span><span class="co">#&gt; HR.2691 Luomus line transect … Aves                   Finland              580918</span></span>
+<span><span class="co">#&gt; HR.2692 Censuses of breeding … Aves                   Finland               14996</span></span>
+<span><span class="co">#&gt; HR.3051 Finvasive LIFE projec… &lt;NA&gt;                   Finland                2604</span></span>
+<span><span class="co">#&gt; HR.3071 Biodiversity observat… &lt;NA&gt;                   Finland                 529</span></span>
+<span><span class="co">#&gt; HR.3211 iNaturalist Suomi Fin… biota                  Finland             1670979</span></span>
+<span><span class="co">#&gt; HR.3431 Butterflies in Finnis… Papilionoidea, Others  Finland              732007</span></span>
+<span><span class="co">#&gt; HR.3491 LajiGIS: Species surv… Biota                  Finland              759186</span></span>
+<span><span class="co">#&gt; HR.3553 LajiGIS: Species moni… Biota                  Finland              797208</span></span>
+<span><span class="co">#&gt; HR.3691 eBird                  Aves                   Finland             2417556</span></span>
+<span><span class="co">#&gt; HR.3791 Finnish invasive spec… Biota                  Finland                8099</span></span>
+<span><span class="co">#&gt; HR.39   Winter Bird Census     Aves, Mammalia         Finland             1608783</span></span>
+<span><span class="co">#&gt; HR.3911 Bumblebee census       Bumblebees             Finland               52893</span></span>
+<span><span class="co">#&gt; HR.3991 Waterbird counts, Luo… Aves                   Finland               54931</span></span>
+<span><span class="co">#&gt; HR.3992 Waterbird counts, Luk… Aves                   Finland               54782</span></span>
+<span><span class="co">#&gt; HR.4011 Salmonidae in streams  Salmonoidei            Finland               25263</span></span>
+<span><span class="co">#&gt; HR.4051 LajiGIS: Species moni… Aquila chrysaetos; Ha… Finland                9812</span></span>
+<span><span class="co">#&gt; HR.4091 Retkikasvio            &lt;NA&gt;                   Finland                 220</span></span>
+<span><span class="co">#&gt; HR.4191 Porvoo Museum / Colle… Lepidoptera            Finland               10417</span></span>
+<span><span class="co">#&gt; HR.4251 LajiGIS: Species mapp… Biota                  Finland              638169</span></span>
+<span><span class="co">#&gt; HR.435  Löydös Open Invasive … Biota                  Finland               27935</span></span>
+<span><span class="co">#&gt; HR.4352 NFI rare tree species  &lt;NA&gt;                   Finland                 992</span></span>
+<span><span class="co">#&gt; HR.4374 Porvoo Museum / Pisces &lt;NA&gt;                   Finland                   1</span></span>
+<span><span class="co">#&gt; HR.4379 Porvoo Museum / Amphi… &lt;NA&gt;                   Finland                   5</span></span>
+<span><span class="co">#&gt; HR.4386 Porvoo Museum / Oology &lt;NA&gt;                   Finland                 522</span></span>
+<span><span class="co">#&gt; HR.4412 Tiira.fi: The Fourth … Aves                   Finland              819404</span></span>
+<span><span class="co">#&gt; HR.4471 Fourth Finnish Bird A… Aves                   Finland              365368</span></span>
+<span><span class="co">#&gt; HR.4511 Finnish National Moth… Bombycoidea, Noctuoid… Finland             1224173</span></span>
+<span><span class="co">#&gt; HR.4611 Observations by FCG F… &lt;NA&gt;                   Finland                1591</span></span>
+<span><span class="co">#&gt; HR.4612 Pollinator monitoring… Insecta                Finland               16692</span></span>
+<span><span class="co">#&gt; HR.4672 Observations from pub… Biota                  Finland                 127</span></span>
+<span><span class="co">#&gt; HR.4711 Flying squirrel monit… Pteromys volans        Finland                2509</span></span>
+<span><span class="co">#&gt; HR.49   Finnish birds of prey… Accipitridae, Falconi… Finland              193879</span></span>
+<span><span class="co">#&gt; HR.4991 Bird atlas observatio… Aves                   Finland               15757</span></span>
+<span><span class="co">#&gt; HR.50   White-tailed Sea Eagl… Haliaeetus albicilla   Finland               32090</span></span>
+<span><span class="co">#&gt; HR.5095 Dragonfly - complete … Odonata                Finland                1066</span></span>
+<span><span class="co">#&gt; HR.5155 Observations from ele… Biota                  Finland                1423</span></span>
+<span><span class="co">#&gt; HR.5196 Pollinator monitoring… Insecta                Finland               16571</span></span>
+<span><span class="co">#&gt; HR.5235 Finnish butterflies -… Lepidoptera, Papilino… Finland                 751</span></span>
+<span><span class="co">#&gt; HR.5236 Charismatic flowering… Tracheophyta           Finland               16849</span></span>
+<span><span class="co">#&gt; HR.5255 Diurnal moths - compl… Lepidoptera            Finland                  36</span></span>
+<span><span class="co">#&gt; HR.5256 Bumblebees - complete… Hymenoptera            Finland                 461</span></span>
+<span><span class="co">#&gt; HR.5257 Amphibia and reptilia… Chordata               Finland                  91</span></span>
+<span><span class="co">#&gt; HR.5258 Subarctic plants - co… Tracheophyta           Finland                  66</span></span>
+<span><span class="co">#&gt; HR.5259 Macrolichens - comple… &lt;NA&gt;                   Finland                 286</span></span>
+<span><span class="co">#&gt; HR.5260 Bracket fungi, redlis… &lt;NA&gt;                   Finland                  33</span></span>
+<span><span class="co">#&gt; HR.5535 Observations of invas… &lt;NA&gt;                   Finland                6656</span></span>
+<span><span class="co">#&gt; HR.5555 Observations by the f… &lt;NA&gt;                   Finland                3729</span></span>
+<span><span class="co">#&gt; HR.5575 Noteworthy macrofungi… Fungi                  Finland                 816</span></span>
+<span><span class="co">#&gt; HR.5795 Dataset from Luke to … Aves                   Finland               22536</span></span>
+<span><span class="co">#&gt; HR.5835 Crowdsorsa mapping an… Plantae                Finland               41425</span></span>
+<span><span class="co">#&gt; HR.5895 Oma riista -observati… Aves                   Finland               35965</span></span>
+<span><span class="co">#&gt; HR.5938 Willow grouse countin… Lagopus lagopus        Finland                1067</span></span>
+<span><span class="co">#&gt; HR.60   Monitoring scheme of … Aves, Mammalia         Finland              956964</span></span>
+<span><span class="co">#&gt; HR.6058 Coll. Lilja Insects    &lt;NA&gt;                   Finland                 111</span></span>
+<span><span class="co">#&gt; HR.627  Alien mammal species … Invasive alien mammal… Finland                4255</span></span>
+<span><span class="co">#&gt; HR.64   Finnish bird nest rec… Aves                   Finland              973502</span></span>
+<span><span class="co">#&gt; HR.6678 Finnish Hemiptera Wor… Hemiptera              Finland              142664</span></span>
+<span><span class="co">#&gt; HR.6778 Line transect censuse… Aves                   Finland             1188179</span></span>
+<span><span class="co">#&gt; HR.7080 LajiGIS: Species surv… Biota                  Finland              140389</span></span>
+<span><span class="co">#&gt; HR.808  E. Sjöholm's butterfl… Lepidoptera            Finland                4946</span></span>
+<span><span class="co">#&gt; HR.847  Atlas of amphibians a… Amphibia, Reptilia     Finland                7747</span></span>
+<span><span class="co">#&gt; HR.95   Osprey monitoring      Pandion haliaetus      Finland              102550</span></span></code></pre></div>
 </details><p><br></p>
 <p>By default, <code><a href="../reference/finbif_collections.html">finbif_collections()</a></code> only displays the
 lowest level collections. Higher level, “supercollections” can be viewed
@@ -283,33 +306,39 @@ be supercollections.</p>
 Click to show/hide output.
 </summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co">#&gt;         collection_name abbreviation description online_url has_children is_part_of data_quality</span></span>
-<span><span class="co">#&gt; HR.129  Collections of… H            Herbarium … &lt;NA&gt;        TRUE        HR.128     MY.dataQual…</span></span>
-<span><span class="co">#&gt; HR.160  Zoological col… MZH          The collec… http://ww…  TRUE        HR.128     MY.dataQual…</span></span>
-<span><span class="co">#&gt; HR.173  Zoological mon… &lt;NA&gt;         Monitoring… &lt;NA&gt;        TRUE        HR.128     MY.dataQual…</span></span>
-<span><span class="co">#&gt; HR.1849 Genomic resour… &lt;NA&gt;         Genomic re… &lt;NA&gt;        TRUE        HR.128     MY.dataQual…</span></span>
-<span><span class="co">#&gt; HR.203  Löydös Open Fi… &lt;NA&gt;         A service … https://l… FALSE        HR.128     &lt;NA&gt;        </span></span>
-<span><span class="co">#&gt; HR.435  Löydös Open In… &lt;NA&gt;         A service … https://l… FALSE        HR.128     MY.dataQual…</span></span>
-<span><span class="co">#&gt; HR.447  Hatikka.fi obs… &lt;NA&gt;         Hatikka.fi… http://ha… FALSE        HR.128     MY.dataQual…</span></span>
-<span><span class="co">#&gt; HR.48   Ringing and re… TIPU         Dataset co… &lt;NA&gt;        TRUE        HR.128     MY.dataQual…</span></span>
-<span><span class="co">#&gt;         methods   collection_type taxonomic_coverage geographic_coverage temporal_coverage</span></span>
-<span><span class="co">#&gt; HR.129  &lt;NA&gt;      MY.collectionT… &lt;NA&gt;               &lt;NA&gt;                &lt;NA&gt;             </span></span>
-<span><span class="co">#&gt; HR.160  &lt;NA&gt;      MY.collectionT… Animalia           World               1700 to present  </span></span>
-<span><span class="co">#&gt; HR.173  &lt;NA&gt;      MY.collectionT… &lt;NA&gt;               Finland             1950-            </span></span>
-<span><span class="co">#&gt; HR.1849 Sampling… MY.collectionT… Biota              World               2000-            </span></span>
-<span><span class="co">#&gt; HR.203  &lt;NA&gt;      MY.collectionT… biota              world               2013-            </span></span>
-<span><span class="co">#&gt; HR.435  &lt;NA&gt;      MY.collectionT… Biota              Finland             2015-            </span></span>
-<span><span class="co">#&gt; HR.447  &lt;NA&gt;      MY.collectionT… Biota              World               &lt;NA&gt;             </span></span>
-<span><span class="co">#&gt; HR.48   &lt;NA&gt;      MY.collectionT… Aves               Ringing data: Finl… 1913-            </span></span>
-<span><span class="co">#&gt;         secure_level count   </span></span>
-<span><span class="co">#&gt; HR.129  &lt;NA&gt;                2</span></span>
-<span><span class="co">#&gt; HR.160  MX.secureLe…      742</span></span>
-<span><span class="co">#&gt; HR.173  &lt;NA&gt;          5160221</span></span>
-<span><span class="co">#&gt; HR.1849 &lt;NA&gt;                1</span></span>
-<span><span class="co">#&gt; HR.203  &lt;NA&gt;            39375</span></span>
-<span><span class="co">#&gt; HR.435  &lt;NA&gt;            19232</span></span>
-<span><span class="co">#&gt; HR.447  &lt;NA&gt;          2010032</span></span>
-<span><span class="co">#&gt; HR.48   &lt;NA&gt;         12910437</span></span></code></pre></div>
+<span><span class="co">#&gt;         collection_name abbreviation description online_url has_children is_part_of</span></span>
+<span><span class="co">#&gt; HR.129  Collections of… &lt;NA&gt;         Herbarium … &lt;NA&gt;        TRUE        HR.128    </span></span>
+<span><span class="co">#&gt; HR.160  Zoological col… &lt;NA&gt;         The collec… http://ww…  TRUE        HR.128    </span></span>
+<span><span class="co">#&gt; HR.173  Luomus monitor… &lt;NA&gt;         Monitoring… &lt;NA&gt;        TRUE        HR.128    </span></span>
+<span><span class="co">#&gt; HR.1849 Genomic resour… &lt;NA&gt;         Genomic re… &lt;NA&gt;        TRUE        HR.128    </span></span>
+<span><span class="co">#&gt; HR.203  Löydös Open Fi… &lt;NA&gt;         A service … https://l… FALSE        HR.128    </span></span>
+<span><span class="co">#&gt; HR.2169 Geological col… &lt;NA&gt;         All the ge… &lt;NA&gt;        TRUE        HR.128    </span></span>
+<span><span class="co">#&gt; HR.435  Löydös Open In… &lt;NA&gt;         A service … https://l… FALSE        HR.128    </span></span>
+<span><span class="co">#&gt; HR.447  Hatikka.fi obs… &lt;NA&gt;         Hatikka.fi… http://ha… FALSE        HR.128    </span></span>
+<span><span class="co">#&gt; HR.48   Bird ringing a… TIPU         Dataset co… &lt;NA&gt;       FALSE        HR.128    </span></span>
+<span><span class="co">#&gt; HR.7443 Luomus Botanic… &lt;NA&gt;         Living col… &lt;NA&gt;        TRUE        HR.128    </span></span>
+<span><span class="co">#&gt;         data_quality methods   collection_type taxonomic_coverage geographic_coverage</span></span>
+<span><span class="co">#&gt; HR.129  MY.dataQual… &lt;NA&gt;      MY.collectionT… &lt;NA&gt;               &lt;NA&gt;               </span></span>
+<span><span class="co">#&gt; HR.160  MY.dataQual… &lt;NA&gt;      MY.collectionT… Animalia           World              </span></span>
+<span><span class="co">#&gt; HR.173  MY.dataQual… &lt;NA&gt;      MY.collectionT… &lt;NA&gt;               Finland            </span></span>
+<span><span class="co">#&gt; HR.1849 MY.dataQual… Sampling… MY.collectionT… Biota              World              </span></span>
+<span><span class="co">#&gt; HR.203  &lt;NA&gt;         &lt;NA&gt;      MY.collectionT… biota              world              </span></span>
+<span><span class="co">#&gt; HR.2169 MY.dataQual… &lt;NA&gt;      MY.collectionT… &lt;NA&gt;               &lt;NA&gt;               </span></span>
+<span><span class="co">#&gt; HR.435  MY.dataQual… &lt;NA&gt;      MY.collectionT… Biota              Finland            </span></span>
+<span><span class="co">#&gt; HR.447  MY.dataQual… &lt;NA&gt;      MY.collectionT… Biota              World              </span></span>
+<span><span class="co">#&gt; HR.48   MY.dataQual… &lt;NA&gt;      MY.collectionT… Aves               Ringing data: Finl…</span></span>
+<span><span class="co">#&gt; HR.7443 &lt;NA&gt;         &lt;NA&gt;      MY.collectionT… &lt;NA&gt;               &lt;NA&gt;               </span></span>
+<span><span class="co">#&gt;         temporal_coverage secure_level count   </span></span>
+<span><span class="co">#&gt; HR.129  &lt;NA&gt;              &lt;NA&gt;           679165</span></span>
+<span><span class="co">#&gt; HR.160  1700 to present   MX.secureLe…      632</span></span>
+<span><span class="co">#&gt; HR.173  1950-             &lt;NA&gt;          5898405</span></span>
+<span><span class="co">#&gt; HR.1849 2000-             &lt;NA&gt;                1</span></span>
+<span><span class="co">#&gt; HR.203  2013-             &lt;NA&gt;            71709</span></span>
+<span><span class="co">#&gt; HR.2169 &lt;NA&gt;              &lt;NA&gt;                0</span></span>
+<span><span class="co">#&gt; HR.435  2015-             &lt;NA&gt;            27935</span></span>
+<span><span class="co">#&gt; HR.447  &lt;NA&gt;              &lt;NA&gt;          2011828</span></span>
+<span><span class="co">#&gt; HR.48   1913-             &lt;NA&gt;         15792308</span></span>
+<span><span class="co">#&gt; HR.7443 &lt;NA&gt;              &lt;NA&gt;                0</span></span></code></pre></div>
 </details><p><br></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

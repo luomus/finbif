@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 )
 
 library(finbif)
-options(finbif_tz = "Europe/Helsinki", width = 100)
+options(finbif_tz = "Europe/Helsinki", width = 90)
 ```
 Much of the information in the FinBIF database consists of metadata that helps
 provide context for occurrence records and other information in FinBIF.
@@ -68,7 +68,9 @@ You can subset collection metadata by using the `filter` and `select` arguments.
 ```{details collections-finland}
 finbif_collections(
   filter = geographic_coverage == "Finland",
-  select = c("collection_name", "taxonomic_coverage", "count")
+  select = c(
+    "collection_name", "taxonomic_coverage", "geographic_coverage", "count"
+  )
 )
 ```
 

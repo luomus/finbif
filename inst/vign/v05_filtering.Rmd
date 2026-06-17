@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 )
 
 library(finbif)
-options(finbif_tz = "Europe/Helsinki", width = 100)
+options(finbif_tz = "Europe/Helsinki", width = 90)
 ```
 When getting records from FinBIF there are many options for filtering the data
 before it is downloaded, saving bandwidth and local post-processing time. For
@@ -114,10 +114,10 @@ finbif_occurrence(filter = list(informal_groups = c("Birds", "Mammals")))
 ```
 
 See `finbif_informal_groups()` for the full list of groups you can filter by.
-You can use the same function to see the subgroups that make up a higher
-level informal group:
+You can use the same function to see the subgroups that make up the highest
+level informal groups:
 ```{r informal-subgroups}
-finbif_informal_groups("macrofungi")
+finbif_informal_groups("Birds")
 ```
 
 ## Regulatory 

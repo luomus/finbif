@@ -13,7 +13,7 @@ Records can be filtered by the name of a location.
 
 finbif_occurrence(filter = c(country = "Finland"))
 #> Records downloaded: 10
-#> Records available: 57358090
+#> Records available: 57360604
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
@@ -26,7 +26,7 @@ finbif_occurrence(filter = c(country = "Finland"))
 #> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
 #> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
 #> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
-#> ...with 0 more record and 7 more variables:
+#> ...with 0 more records and 7 more variables:
 #> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
@@ -39,22 +39,22 @@ finbif_occurrence(
   filter = list(coordinates = list(c(60, 68), c(20, 30), "wgs84"))
 )
 #> Records downloaded: 10
-#> Records available: 37318868
+#> Records available: 48564194
 #> A data.frame [10 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1                           …JX.1594385#3 Sciurus vulgaris Li…  1         60.23584  25.05693
-#> 2  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
-#> 3                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
-#> 4                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
-#> 5                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
-#> 6                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
-#> 7                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
-#> 8                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
-#> 9                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
-#> 10                         …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
+#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
+#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
+#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
+#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
+#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
+#> 7           …49 Polytrichum juniper…              NA  66.004079       28.202282      
+#> 8           …57 Polytrichum pilifer…              NA  60.373472       24.993816      
+#> 9           …61 Polytrichum pilifer…              NA  61.599004       21.434943      
+#> 10          …65 Polytrichum pilifer…              NA  61.452593       24.099408      
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
 See
@@ -77,22 +77,23 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 30156
+#> Records available: 30157
 #> A data.frame [10 x 12]
-#>                    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  …herb.oulu.fi/MY.10184972 Orthotrichum anomal…        NA  61.60387  24.2276  2020-12-22 12:00:00
-#> 2  …herb.oulu.fi/MY.10185111 Schistidium submuti…        NA  61.60383  24.22572 2020-12-22 12:00:00
-#> 3  …herb.oulu.fi/MY.10313974 Skeletocutis bigutt…        NA  60.23469  25.18529 2020-12-27 12:00:00
-#> 4  …herb.oulu.fi/MY.10314039 Oxyporus populinus …        NA  61.46728  24.07017 2020-12-24 12:00:00
-#> 5  …herb.oulu.fi/MY.10314043 Stereum hirsutum (W…        NA  61.46728  24.07017 2020-12-24 12:00:00
-#> 6  …herb.oulu.fi/MY.10314116 Stereum sanguinolen…        NA  60.20153  25.18193 2020-12-12 12:00:00
-#> 7  …herb.oulu.fi/MY.10745815 Eurhynchium angusti…        NA  61.46775  24.07106 2020-12-24 12:00:00
-#> 8     …luomus.fi/MY.10204437 Dendrocopos leucoto…        NA  61.6077   29.3269  2020-12-28 12:00:00
-#> 9     …luomus.fi/MY.10221155 Allophylaria macros…        NA  60.37825  25.65115 2020-12-17 12:00:00
-#> 10    …luomus.fi/MY.10221158 Host: Chamaenerion …        NA  60.37825  25.65115 2020-12-17 12:00:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>                 occurrenceID       scientificName individualCount decimalLatitude
+#> 1  …herb.oulu.fi/MY.10184972 Orthotrichum anomal…              NA  61.603872     
+#> 2  …herb.oulu.fi/MY.10185111 Schistidium submuti…              NA  61.603833     
+#> 3  …herb.oulu.fi/MY.10313974 Skeletocutis bigutt…              NA  60.234691     
+#> 4  …herb.oulu.fi/MY.10314039 Oxyporus populinus …              NA  61.467278     
+#> 5  …herb.oulu.fi/MY.10314043 Stereum hirsutum (W…              NA  61.467278     
+#> 6  …herb.oulu.fi/MY.10314116 Stereum sanguinolen…              NA  60.201527     
+#> 7  …herb.oulu.fi/MY.10745815 Eurhynchium angusti…              NA  61.467746     
+#> 8     …luomus.fi/MY.10204437 Dendrocopos leucoto…              NA  61.6077       
+#> 9     …luomus.fi/MY.10221155 Allophylaria macros…              NA  60.378251     
+#> 10    …luomus.fi/MY.10221158 Host: Chamaenerion …              NA  60.378251     
+#> ...with 0 more records and 8 more variables:
+#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
+#> requiresVerification, requiresIdentification, occurrenceReliability,
+#> identificationVerificationStatus
 ```
 
   
@@ -111,33 +112,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 911735
+#> Records available: 1167813
 #> A data.frame [10 x 12]
-#>                     record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1  …KE.921/LGE.627772/1470480 Pteromys volans (Li…        NA  61.81362  25.75756
-#> 2             …JX.1054648#107 Pica pica (Linnaeus…  3         65.30543  25.70355
-#> 3              …JX.1054648#85 Poecile montanus (C…  1         65.30543  25.70355
-#> 4             …JX.1054648#103 Garrulus glandarius…  3         65.30543  25.70355
-#> 5             …JX.1054648#123 Passer montanus (Li…  3         65.30543  25.70355
-#> 6             …JX.1054648#149 Pyrrhula pyrrhula (…  1         65.30543  25.70355
-#> 7              …JX.1054648#93 Cyanistes caeruleus…  9         65.30543  25.70355
-#> 8              …JX.1054648#95 Parus major Linnaeu…  35        65.30543  25.70355
-#> 9             …JX.1054648#137 Carduelis flammea (…  2         65.30543  25.70355
-#> 10            …JX.1056695#107 Pica pica (Linnaeus…  6         62.7154   23.0893 
-#>              date_time
-#> 1  2019-12-31 12:00:00
-#> 2  2019-12-31 10:20:00
-#> 3  2019-12-31 10:20:00
-#> 4  2019-12-31 10:20:00
-#> 5  2019-12-31 10:20:00
-#> 6  2019-12-31 10:20:00
-#> 7  2019-12-31 10:20:00
-#> 8  2019-12-31 10:20:00
-#> 9  2019-12-31 10:20:00
-#> 10 2019-12-31 10:15:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1          …244 Aneura pinguis (L.)…              NA  61.86848        24.042062      
+#> 2          …248 Sphenolobus saxicol…              NA  61.790156       24.739934      
+#> 3          …264 Barbilophozia hatch…              NA  62.172979       23.166974      
+#> 4          …268 Barbilophozia hatch…              NA  61.733229       23.557042      
+#> 5          …276 Barbilophozia hatch…              NA  62.341331       23.821755      
+#> 6          …280 Blepharostoma trich…              NA  61.817804       23.156312      
+#> 7          …288 Calypogeia integris…              NA  61.787466       24.740131      
+#> 8          …296 Calypogeia muelleri…              NA  61.787466       24.740131      
+#> 9          …317 Cephalozia bicuspid…              NA  61.768742       23.877258      
+#> 10         …388 Lophocolea heteroph…              NA  61.4436         24.119939      
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -161,22 +151,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 1486845
+#> Records available: 1793259
 #> A data.frame [10 x 12]
-#>      record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  …433443#318 Accipiter nisus (Li…  1         64.8162   25.32106 2023-02-20 15:00:00
-#> 2  …531663#107 Pica pica (Linnaeus…  10        62.9199   27.71032 2023-02-20 07:40:00
-#> 3  …530610#107 Pica pica (Linnaeus…  21        65.78623  24.49119 2023-02-20 09:15:00
-#> 4  …530449#107 Pica pica (Linnaeus…  4         65.74652  24.62216 2023-02-20 08:20:00
-#> 5  …531663#153 Emberiza citrinella…  12        62.9199   27.71032 2023-02-20 07:40:00
-#> 6   …531663#49 Columba livia domes…  10        62.9199   27.71032 2023-02-20 07:40:00
-#> 7   …530610#49 Columba livia domes…  2         65.78623  24.49119 2023-02-20 09:15:00
-#> 8  …530610#117 Corvus corax Linnae…  1         65.78623  24.49119 2023-02-20 09:15:00
-#> 9   …531663#61 Dendrocopos major (…  6         62.9199   27.71032 2023-02-20 07:40:00
-#> 10 …531663#111 Corvus monedula Lin…  7         62.9199   27.71032 2023-02-20 07:40:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1       …079640 Pohlia nutans (Hedw…              NA  60.321276       24.109857      
+#> 2       …184972 Orthotrichum anomal…              NA  61.603872       24.227601      
+#> 3       …185111 Schistidium submuti…              NA  61.603833       24.225719      
+#> 4       …225336 Fuscocephaloziopsis…              NA  61.510093       24.343093      
+#> 5       …225392 Lophocolea minor Ne…              NA  61.65722        24.658173      
+#> 6       …225400 Obtusifolium obtusu…              NA  61.458209       23.658786      
+#> 7       …225403 Plagiomnium cuspida…              NA  61.458209       23.658786      
+#> 8       …281093 Pseudanomodon atten…              NA  61.374279       24.197437      
+#> 9       …281097 Pseudanomodon atten…              NA  61.571317       24.305839      
+#> 10      …281100 Syntrichia ruralis …              NA  61.571317       24.305839      
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -206,7 +196,7 @@ c(
   permissive = finbif_occurrence(filter = permissive, count_only = TRUE)
 )
 #>     strict permissive 
-#>      52654   51733557
+#>      82631   61265240
 ```
 
 ## Collection
@@ -222,11 +212,11 @@ to see metadata on the FinBIF collections.
 finbif_occurrence(
   filter = c(collection = "iNaturalist Suomi Finland"), count_only = TRUE
 )
-#> [1] 691076
+#> [1] 1673340
 finbif_occurrence(
   filter = c(collection = "Notebook, general observations"), count_only = TRUE
 )
-#> [1] 2110409
+#> [1] 3546019
 ```
 
 ## Informal taxonomic groups
@@ -245,22 +235,23 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 22116048
+#> Records available: 29626954
 #> A data.frame [10 x 12]
-#>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1       …5#3 Sciurus vulgaris Li…  1         60.23584  25.05693 2023-06-14 08:56:00
-#> 2       …2#9 Hirundo rustica Lin…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 3      …2#37 Pica pica (Linnaeus…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 4      …2#49 Muscicapa striata (…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 5      …2#39 Larus canus Linnaeu…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 6       …2#5 Emberiza citrinella…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 7      …2#31 Ficedula hypoleuca …        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 8      …2#41 Alauda arvensis Lin…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 9      …2#21 Numenius arquata (L…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 10     …2#29 Dendrocopos major (…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>                 occurrenceID       scientificName individualCount decimalLatitude
+#> 1  …herb.oulu.fi/MY.17469610 Asio flammeus (Pont…              NA  67.718422     
+#> 2  …herb.oulu.fi/MY.17483993 Picoides tridactylu…              NA  67.47766      
+#> 3     …luomus.fi/MY.10042206 Strix uralensis Pal…              NA  63.811181     
+#> 4     …luomus.fi/MY.10042210 Strix uralensis Pal…              NA  60.360916     
+#> 5     …luomus.fi/MY.10042213 Bubo bubo (Linnaeus…              NA  60.930307     
+#> 6     …luomus.fi/MY.10042218 Bubo bubo (Linnaeus…              NA  63.681831     
+#> 7     …luomus.fi/MY.10042223 Bubo bubo (Linnaeus…              NA  60.135148     
+#> 8     …luomus.fi/MY.10042226 Strix uralensis Pal…              NA  62.250643     
+#> 9     …luomus.fi/MY.10042231 Astur gentilis (Lin…              NA  63.811181     
+#> 10    …luomus.fi/MY.10042238 Accipiter nisus (Li…              NA  60.2522       
+#> ...with 0 more records and 8 more variables:
+#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
+#> requiresVerification, requiresIdentification, occurrenceReliability,
+#> identificationVerificationStatus
 ```
 
   
@@ -268,13 +259,17 @@ Click to show/hide output.
 See
 [`finbif_informal_groups()`](https://finbif-docs-dev.netlify.app/reference/finbif_informal_groups.md)
 for the full list of groups you can filter by. You can use the same
-function to see the subgroups that make up a higher level informal
-group:
+function to see the subgroups that make up the highest level informal
+groups:
 
 ``` r
 
-finbif_informal_groups("macrofungi")
-#> Error in finbif_informal_groups("macrofungi"): Group not found
+finbif_informal_groups("Birds")
+#> Birds
+#>   --Birds of prey and owls
+#>       --Owls
+#>       --Birds of prey
+#>   --Waterbirds
 ```
 
 ## Regulatory
@@ -297,22 +292,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 471
+#> Records available: 507
 #> A data.frame [10 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1                           …JX.1580858#3 Oxyura jamaicensis …  1         60.28687  25.0271 
-#> 2                           …JX.1580860#3 Oxyura jamaicensis …  1         60.28671  25.02713
-#> 3  …KE.176/62b1ad90d5deb0fafdc6212b#Unit1 Oxyura jamaicensis …  7         61.66207  23.57706
-#> 4                          …JX.1045316#34 Alopochen aegyptiac…  3         52.16081  4.485534
-#> 5                          …JX.138840#123 Alopochen aegyptiac…  4         53.36759  6.191796
-#> 6                          …JX.139978#214 Alopochen aegyptiac…  6         53.37574  6.207861
-#> 7                           …JX.139710#17 Alopochen aegyptiac…  30        52.3399   5.069133
-#> 8                           …JX.139645#57 Alopochen aegyptiac…  36        51.74641  4.535283
-#> 9                           …JX.139645#10 Alopochen aegyptiac…  3         51.74641  4.535283
-#> 10                          …JX.139442#16 Alopochen aegyptiac…  2         51.90871  4.53258 
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1      …7350700 Pycnonotus cafer su…  3                           NA               NA
+#> 2      …7351780 Corvus splendens su…  2                           NA               NA
+#> 3      …7351784 Corvus splendens su…  2                           NA               NA
+#> 4      …7351788 Corvus splendens su…  2                           NA               NA
+#> 5      …7351792 Corvus splendens su…  1                           NA               NA
+#> 6      …7352178 Oxyura jamaicensis …  7                           NA               NA
+#> 7      …7352182 Oxyura jamaicensis …  8                           NA               NA
+#> 8      …7355894 Oxyura jamaicensis …  8                           NA               NA
+#> 9      …7430682 Corvus splendens su…  3                           NA               NA
+#> 10     …8449767 Alopochen aegyptiac…              NA              NA               NA
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -337,22 +332,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 42510
+#> Records available: 82019
 #> A data.frame [10 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1                          …JX.1594024#23 Rangifer tarandus f…  15        63.31266  24.43298
-#> 2                        …JX.1588853#1075 Rangifer tarandus f…  1         63.84551  29.8366 
-#> 3                           …JX.1593780#3 Pusa hispida botnic…  1         65.02313  25.40505
-#> 4                    …HR.3211/166639315-U Rangifer tarandus f…        NA  63.7      24.7    
-#> 5                    …HR.3211/166049302-U Rangifer tarandus f…        NA  64.1      26.5    
-#> 6                    …HR.3211/165761924-U Rangifer tarandus f…        NA  63.9      24.9    
-#> 7                         …JX.1589779#105 Rangifer tarandus f…  3         63.7261   23.40827
-#> 8  …KE.176/647ad84dd5de884fa20e25e6#Unit1 Rangifer tarandus f…  1         64.12869  24.73877
-#> 9                    …HR.3211/165005253-U Pusa hispida botnic…        NA  64.2865   23.87402
-#> 10                         …JX.1588052#18 Rangifer tarandus f…  2         64.13286  26.26767
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1       …223201 Microtus arvalis (P…              NA              NA               NA
+#> 2       …223245 Microtus arvalis (P…              NA              NA               NA
+#> 3       …223249 Microtus arvalis (P…              NA              NA               NA
+#> 4       …223253 Microtus arvalis (P…              NA              NA               NA
+#> 5       …223565 Microtus arvalis (P…              NA              NA               NA
+#> 6       …223659 Castor fiber Linnae…              NA              NA               NA
+#> 7       …223878 Castor fiber Linnae…              NA              NA               NA
+#> 8       …580236 Castor fiber Linnae…              NA              NA               NA
+#> 9       …580240 Castor fiber Linnae…              NA              NA               NA
+#> 10      …580398 Ursus arctos Linnae…              NA  67.05           29.25          
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -372,12 +367,12 @@ encompass habitats other than forests).
 ``` r
 
 head(finbif_metadata("habitat_type"))
-#>                code name                                              
-#> MKV.habitatMt  Mt   alpine birch forests (excluding herb-rich alpine …
-#> MKV.habitatTlk Tlk  alpine calcareous rock outcrops and boulder fields
-#> MKV.habitatTlr Tlr  alpine gorges and canyons                         
-#> MKV.habitatT   T    Alpine habitats                                   
-#> MKV.habitatTp  Tp   alpine heath scrubs                               
+#>                code name                                         
+#> MKV.habitatMt  Mt   alpine birch forests                         
+#> MKV.habitatTlk Tlk  alpine calcareous rock outcrops and boulder …
+#> MKV.habitatTlr Tlr  alpine gorges and canyons                    
+#> MKV.habitatT   T    Alpine habitats                              
+#> MKV.habitatTp  Tp   alpine heath scrubs                          
 #> MKV.habitatTk  Tk   alpine heaths
 ```
 
@@ -394,22 +389,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 26362337
+#> Records available: 34008277
 #> A data.frame [10 x 12]
-#>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1       …5#3 Sciurus vulgaris Li…  1         60.23584  25.05693 2023-06-14 08:56:00
-#> 2      …2#37 Pica pica (Linnaeus…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 3      …2#49 Muscicapa striata (…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 4       …2#5 Emberiza citrinella…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 5      …2#31 Ficedula hypoleuca …        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 6      …2#29 Dendrocopos major (…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 7      …2#15 Sylvia borin (Bodda…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 8      …2#11 Anthus trivialis (L…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 9      …2#45 Corvus monedula Lin…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 10      …2#3 Phylloscopus trochi…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
+#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
+#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
+#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
+#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
+#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
+#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
+#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
+#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
+#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -424,10 +419,10 @@ vectors are the qualifier codes.
 ``` r
 
 finbif_metadata("habitat_qualifier")[4:6, ]
-#>                           code name                                              
-#> MKV.habitatSpecificTypeCA CA   calcareous effect                                 
-#> MKV.habitatSpecificTypeH  H    esker forests, also semi-open forests             
-#> MKV.habitatSpecificTypeKE KE   intermediate-basic rock outcrops and boulder fiel…
+#>                           code name                                 
+#> MKV.habitatSpecificTypeCA CA   calcareous effect                    
+#> MKV.habitatSpecificTypeH  H    esker forests, also semi-open forests
+#> MKV.habitatSpecificTypeLK LK   fishless ponds
 ```
 
 ``` r
@@ -443,22 +438,23 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 178
+#> Records available: 218
 #> A data.frame [10 x 12]
-#>      record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  …502812#393 Pammene fasciana (L…        NA  60.45845  22.17811 2022-08-14 12:00:00
-#> 2    …435062#6 Pammene fasciana (L…  1         60.20642  24.66127          2022-08-04
-#> 3    …435050#9 Pammene fasciana (L…  1         60.20642  24.66127          2022-07-25
-#> 4   …501598#39 Pammene fasciana (L…  1         60.08841  22.48629 2022-07-21 12:00:00
-#> 5  …501387#162 Pammene fasciana (L…  1         60.08841  22.48629 2022-07-20 12:00:00
-#> 6  …448030#159 Pammene fasciana (L…  1         60.08841  22.48629 2022-07-18 12:00:00
-#> 7   …447556#78 Pammene fasciana (L…  1         60.08841  22.48629 2022-07-14 12:00:00
-#> 8  …446841#408 Pammene fasciana (L…  1         60.08841  22.48629 2022-07-12 12:00:00
-#> 9   …443339#36 Pammene fasciana (L…  1         60.08841  22.48629 2022-07-10 12:00:00
-#> 10 …440849#159 Pammene fasciana (L…  2         60.08841  22.48629 2022-07-08 12:00:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>                  occurrenceID       scientificName individualCount decimalLatitude
+#> 1   …id.luomus.fi/MY.19077695 Pammene fasciana (L…  1               60.188362     
+#> 2  …tun.fi/HR.3211/53817755-U Pammene fasciana (L…              NA  59.90452      
+#> 3       …tun.fi/JX.1011605#97 Pammene fasciana (L…  1               60.50396      
+#> 4       …tun.fi/JX.1011998#37 Pammene fasciana (L…  1               59.960224     
+#> 5      …tun.fi/JX.1012832#367 Pammene fasciana (L…  1               60.002166     
+#> 6      …tun.fi/JX.1038248#475 Pammene fasciana (L…              NA  59.934164     
+#> 7      …tun.fi/JX.1098381#487 Pammene fasciana (L…              NA  60.045579     
+#> 8       …tun.fi/JX.1103286#13 Pammene fasciana (L…  1               59.90522      
+#> 9        …tun.fi/JX.1134471#4 Pammene fasciana (L…  2               61.549842     
+#> 10     …tun.fi/JX.1143718#265 Pammene fasciana (L…              NA  60.37543      
+#> ...with 0 more records and 8 more variables:
+#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
+#> requiresVerification, requiresIdentification, occurrenceReliability,
+#> identificationVerificationStatus
 ```
 
   
@@ -479,22 +475,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 406005
+#> Records available: 499022
 #> A data.frame [10 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1                    …HR.3211/167313706-U Pygaera timon (Hübn…        NA  62.1281   27.45272
-#> 2                          …JX.1594282#21 Carterocephalus pal…  1         64.65322  24.58941
-#> 3                    …HR.3211/167197097-U Carterocephalus pal…        NA  65.07819  25.55236
-#> 4                    …HR.3211/167183358-U Glaucopsyche alexis…        NA  60.46226  22.76647
-#> 5                           …JX.1594291#3 Glaucopsyche alexis…  1         60.42692  22.20411
-#> 6  …KE.176/6488c111d5de884fa20e295f#Unit1 Panemeria tenebrata…  1         61.16924  25.56036
-#> 7                           …JX.1593930#3 Hemaris tityus (Lin…  1         60.63969  27.29052
-#> 8  …KE.176/64889455d5de884fa20e294f#Unit1 Pseudopanthera macu…  2         62.054    30.352  
-#> 9                         …JX.1594170#199 Glaucopsyche alexis…  1         61.10098  28.68453
-#> 10                          …JX.1594112#3 Hemaris tityus (Lin…  1         61.25511  28.89127
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1      …3990009 Amanita coryli Nevi…              NA  68.058832       24.058368      
+#> 2      …3990121 Amanita flavescens …              NA  64.756355       26.197092      
+#> 3      …3993454 Amanita flavescens …  2               66.65863        27.482198      
+#> 4      …3993458 Amanita coryli Nevi…  3               66.371875       27.409632      
+#> 5      …4018238 Hydnum jussii Niska…              NA  64.368844       28.004874      
+#> 6      …4018310 Lamelloclavaria pet…              NA  64.421905       27.677572      
+#> 7      …4018314 Lamelloclavaria pet…              NA  64.323694       28.044601      
+#> 8      …8016027 Amanita coryli Nevi…  5               66.168299       25.765382      
+#> 9      …8016087 Amanita coryli Nevi…  3               69.007453       20.930394      
+#> 10     …8016091 Amanita coryli Nevi…  2               68.185593       23.992918      
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -517,22 +513,23 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 21725426
+#> Records available: 29048611
 #> A data.frame [10 x 12]
-#>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1         …9 Hirundo rustica Lin…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 2        …37 Pica pica (Linnaeus…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 3        …49 Muscicapa striata (…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 4        …39 Larus canus Linnaeu…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 5         …5 Emberiza citrinella…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 6        …31 Ficedula hypoleuca …        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 7        …41 Alauda arvensis Lin…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 8        …21 Numenius arquata (L…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 9        …29 Dendrocopos major (…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> 10       …15 Sylvia borin (Bodda…        NA  64.12716  23.99111 2023-06-14 08:48:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>                 occurrenceID       scientificName individualCount decimalLatitude
+#> 1  …herb.oulu.fi/MY.17469610 Asio flammeus (Pont…              NA  67.718422     
+#> 2  …herb.oulu.fi/MY.17483993 Picoides tridactylu…              NA  67.47766      
+#> 3     …luomus.fi/MY.10042206 Strix uralensis Pal…              NA  63.811181     
+#> 4     …luomus.fi/MY.10042210 Strix uralensis Pal…              NA  60.360916     
+#> 5     …luomus.fi/MY.10042213 Bubo bubo (Linnaeus…              NA  60.930307     
+#> 6     …luomus.fi/MY.10042218 Bubo bubo (Linnaeus…              NA  63.681831     
+#> 7     …luomus.fi/MY.10042223 Bubo bubo (Linnaeus…              NA  60.135148     
+#> 8     …luomus.fi/MY.10042226 Strix uralensis Pal…              NA  62.250643     
+#> 9     …luomus.fi/MY.10042231 Astur gentilis (Lin…              NA  63.811181     
+#> 10    …luomus.fi/MY.10042238 Accipiter nisus (Li…              NA  60.2522       
+#> ...with 0 more records and 8 more variables:
+#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
+#> requiresVerification, requiresIdentification, occurrenceReliability,
+#> identificationVerificationStatus
 ```
 
   

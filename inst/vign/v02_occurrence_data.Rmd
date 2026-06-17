@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 )
 
 library(finbif)
-options(finbif_tz = "Europe/Helsinki", width = 100)
+options(finbif_tz = "Europe/Helsinki", width = 90)
 ```
 
 The core purpose of `{finbif}` is accessing occurrence data stored in the FinBIF

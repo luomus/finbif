@@ -36,7 +36,7 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 473049
+#> Records available: 473067
 #> A data.frame [10 x 3]
 #>          scientificName lifeStage    sex
 #> 1  Falco rusticolus Li…      <NA> Female
@@ -83,9 +83,10 @@ finbif_occurrence(select = c("default_vars", "lifeStage"))
 #> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
 #> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
 #> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
-#> ...with 0 more record and 8 more variables:
+#> ...with 0 more records and 8 more variables:
 #> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus, lifeStage
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus,
+#> lifeStage
 
 ```
 
@@ -111,7 +112,7 @@ finbif_occurrence("Cygnus cygnus", order_by = "individualCount")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 139829
+#> Records available: 139837
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1      …0745928 Cygnus cygnus (Linn…              NA  66              29.25          
@@ -124,7 +125,7 @@ finbif_occurrence("Cygnus cygnus", order_by = "individualCount")
 #> 8      …5552474 Cygnus cygnus (Linn…  1               68.713901       22.787894      
 #> 9      …6082839 Cygnus cygnus (Linn…  1                           NA               NA
 #> 10     …7079647 Cygnus cygnus (Linn…              NA  61.85           23.5           
-#> ...with 0 more record and 7 more variables:
+#> ...with 0 more records and 7 more variables:
 #> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 
@@ -147,7 +148,7 @@ finbif_occurrence("Cygnus cygnus", order_by = "-individualCount")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 139829
+#> Records available: 139837
 #> A data.frame [10 x 12]
 #>                   occurrenceID       scientificName individualCount decimalLatitude
 #> 1                 …MHU.2981587 Cygnus cygnus (Linn…  6000            64.4          
@@ -160,20 +161,10 @@ finbif_occurrence("Cygnus cygnus", order_by = "-individualCount")
 #> 8                …MHU.28815250 Cygnus cygnus (Linn…  1500                        NA
 #> 9   …HR.3691/OBS671353848_Unit Cygnus cygnus (Linn…  1361            64.71656      
 #> 10 …HR.3691/OBS1686954463_Unit Cygnus cygnus (Linn…  1333            64.50734      
-#>    decimalLongitude
-#> 1  -14.54          
-#> 2   24.27894       
-#> 3   24.27894       
-#> 4   21.45786       
-#> 5   24.27894       
-#> 6   24.06341       
-#> 7   24.27894       
-#> 8                NA
-#> 9   24.531883      
-#> 10  24.278942      
-#> ...with 0 more record and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> ...with 0 more records and 8 more variables:
+#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
+#> requiresVerification, requiresIdentification, occurrenceReliability,
+#> identificationVerificationStatus
 
 ```
 
@@ -197,7 +188,7 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 63244
+#> Records available: 63246
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1     …12015253 Cygnus olor (J.F. G…  2500                        NA               NA
@@ -210,7 +201,7 @@ finbif_occurrence(
 #> 8      …3110953 Cygnus olor (J.F. G…  960                         NA               NA
 #> 9     …26309317 Cygnus olor (J.F. G…  900                         NA               NA
 #> 10     …1260385 Cygnus olor (J.F. G…  800             58.66           23.57          
-#> ...with 0 more record and 7 more variables:
+#> ...with 0 more records and 7 more variables:
 #> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 
@@ -223,7 +214,7 @@ finbif_occurrence(
 You can also request a random sample (random order) of occurrence records by
 setting the `sample` argument to `TRUE`.
 
-```r
+``` r
 finbif_occurrence(sample = TRUE)
 ```
 
@@ -234,22 +225,23 @@ finbif_occurrence(sample = TRUE)
 ```r
 
 #> Records downloaded: 10
-#> Records available: 47159747
+#> Records available: 60182673
 #> A data.frame [10 x 12]
-#>                      record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1          …KE.67/5632630#Unit Ficedula hypoleuca …  1         61.74637  22.77479
-#> 2                   …MHU.40397      Prunus padus L.        NA  60.28016  20.25637
-#> 3                 …JX.775148#3 Yezognophos vittari…  1         60.44245  27.006  
-#> 4         …KE.67/11580538#Unit Cyanistes caeruleus…  1         60.32754  24.64944
-#> 5                …JX.328070#23 Pechipogo strigilat…        NA  61.54883  21.64192
-#> 6   …HR.3691/OBS889952298_Unit Parus major Linnaeu…  5         66.6165   24.68816
-#> 7               …JX.1025818#50 Garrulus glandarius…  1         63.43302  27.74526
-#> 8  …HR.3691/OBS1104249688_Unit Alauda arvensis Lin…        NA  60.05577  24.06798
-#> 9          …KE.67/8616657#Unit Cyanistes caeruleus…  1         61.5      24.83333
-#> 10                …JX.101375#9 Poecile montanus (C…  7         63.09517  23.1341 
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>                                         occurrenceID       scientificName individualCount
+#> 1  …KE.881/ff60ea35-ef67-4380-b3d7-d65bd80068db_Unit Empetrum nigrum ste…  1             
+#> 2                                       …MKC.3874933 Gymnocarpium dryopt…              NA
+#> 3                         …KE.921/LGE.557997/1295765 Chara baltica A.Bru…              NA
+#> 4                                     …JX.1417206#64 Micracanthia margin…  2             
+#> 5                                      …MHU.29367059 Mareca penelope (Li…              NA
+#> 6                                      …MKC.31354972 Ranunculus acris su…              NA
+#> 7                                 …KE.67/120384#Unit Circus cyaneus (Lin…  1             
+#> 8                                      …MHU.14434664 Columba palumbus Li…              NA
+#> 9                               …KE.67/11306334#Unit Erithacus rubecula …  1             
+#> 10                                    …JX.1350290#11 Rhyncolus elongatus…  4             
+#> ...with 0 more records and 9 more variables:
+#> decimalLatitude, decimalLongitude, eventDateTime, coordinateUncertaintyInMeters,
+#> hasIssues, requiresVerification, requiresIdentification, occurrenceReliability,
+#> identificationVerificationStatus
 
 ```
 

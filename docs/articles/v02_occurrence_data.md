@@ -19,22 +19,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 47159747
+#> Records available: 60179988
 #> A data.frame [10 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
-#> 2                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
-#> 3                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
-#> 4                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
-#> 5                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
-#> 6                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
-#> 7                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
-#> 8                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
-#> 9                          …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
-#> 10                         …JX.1594382#29 Dendrocopos major (…        NA  64.12716  23.99111
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
+#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
+#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
+#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
+#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
+#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
+#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
+#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
+#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
+#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -82,22 +82,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 95730
+#> Records available: 139837
 #> A data.frame [10 x 12]
-#>                   record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1            …JX.1594164#13 Cygnus cygnus (Linn…        NA  64.94473  26.67958 2023-06-13 14:33:00
-#> 2  …HR.4412/6489172c9ddda_U Cygnus cygnus (Linn…        NA  61.74701  23.11493 2023-06-13 12:00:00
-#> 3  …HR.4412/64891730060a4_U Cygnus cygnus (Linn…        NA  61.38348  22.97288 2023-06-13 12:00:00
-#> 4  …HR.4412/648917378a3b6_U Cygnus cygnus (Linn…        NA  62.76028  24.15774 2023-06-13 12:00:00
-#> 5  …HR.4412/6489175adc05f_U Cygnus cygnus (Linn…        NA  60.78752  21.39263 2023-06-13 12:00:00
-#> 6  …HR.4412/6489173a1db9b_U Cygnus cygnus (Linn…        NA  64.31374  26.68643 2023-06-13 12:00:00
-#> 7  …HR.4412/648917456a396_U Cygnus cygnus (Linn…        NA  61.87986  25.19067 2023-06-13 12:00:00
-#> 8  …HR.4412/648917454912b_U Cygnus cygnus (Linn…        NA  60.42215  24.00099 2023-06-13 12:00:00
-#> 9  …HR.4412/64891750e74e7_U Cygnus cygnus (Linn…        NA  63.86383  27.70835 2023-06-13 12:00:00
-#> 10 …HR.4412/64891741330f8_U Cygnus cygnus (Linn…        NA  61.74701  23.11493 2023-06-13 12:00:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1      …0745928 Cygnus cygnus (Linn…              NA  66              29.25          
+#> 2      …0745932 Cygnus cygnus (Linn…              NA              NA               NA
+#> 3      …0745937 Cygnus cygnus (Linn…              NA              NA               NA
+#> 4      …0745941 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 5      …0745945 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 6      …0745949 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 7      …5552466 Cygnus cygnus (Linn…  1               67.773235       25.050461      
+#> 8      …5552470 Cygnus cygnus (Linn…  4               69.063377       27.11982       
+#> 9      …5552474 Cygnus cygnus (Linn…  1               68.713901       22.787894      
+#> 10     …5559118 Cygnus cygnus (Linn…  3                           NA               NA
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -115,22 +115,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 138681
+#> Records available: 203083
 #> A data.frame [10 x 12]
-#>                   record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1            …JX.1594164#13 Cygnus cygnus (Linn…        NA  64.94473  26.67958 2023-06-13 14:33:00
-#> 2  …HR.4412/6489172c9ddda_U Cygnus cygnus (Linn…        NA  61.74701  23.11493 2023-06-13 12:00:00
-#> 3  …HR.4412/64891730060a4_U Cygnus cygnus (Linn…        NA  61.38348  22.97288 2023-06-13 12:00:00
-#> 4  …HR.4412/648917378a3b6_U Cygnus cygnus (Linn…        NA  62.76028  24.15774 2023-06-13 12:00:00
-#> 5  …HR.4412/64891759be4c7_U Cygnus olor (J.F. G…        NA  63.40045  21.48901 2023-06-13 12:00:00
-#> 6  …HR.4412/6489175adc05f_U Cygnus cygnus (Linn…        NA  60.78752  21.39263 2023-06-13 12:00:00
-#> 7  …HR.4412/6489173a1db9b_U Cygnus cygnus (Linn…        NA  64.31374  26.68643 2023-06-13 12:00:00
-#> 8  …HR.4412/648917456a396_U Cygnus cygnus (Linn…        NA  61.87986  25.19067 2023-06-13 12:00:00
-#> 9  …HR.4412/648917454912b_U Cygnus cygnus (Linn…        NA  60.42215  24.00099 2023-06-13 12:00:00
-#> 10 …HR.4412/64891750e74e7_U Cygnus cygnus (Linn…        NA  63.86383  27.70835 2023-06-13 12:00:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1      …0745928 Cygnus cygnus (Linn…              NA  66              29.25          
+#> 2      …0745932 Cygnus cygnus (Linn…              NA              NA               NA
+#> 3      …0745937 Cygnus cygnus (Linn…              NA              NA               NA
+#> 4      …0745941 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 5      …0745945 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 6      …0745949 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 7      …0745953 Cygnus olor (J.F. G…              NA  60.1741         24.9439        
+#> 8      …0745957 Cygnus olor (J.F. G…              NA              NA               NA
+#> 9      …0745961 Cygnus olor (J.F. G…              NA              NA               NA
+#> 10     …5552466 Cygnus cygnus (Linn…  1               67.773235       25.050461      
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -171,22 +171,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 1001
-#> Records available: 47159747
+#> Records available: 60182673
 #> A data.frame [1001 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
-#> 2                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
-#> 3                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
-#> 4                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
-#> 5                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
-#> 6                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
-#> 7                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
-#> 8                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
-#> 9                          …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
-#> 10                         …JX.1594382#29 Dendrocopos major (…        NA  64.12716  23.99111
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
+#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
+#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
+#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
+#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
+#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
+#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
+#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
+#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
+#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
 #> ...with 991 more records and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -197,7 +197,7 @@ retrieving any records, by setting `count_only = TRUE`.
 ``` r
 
 finbif_occurrence(count_only = TRUE)
-#> [1] 47159747
+#> [1] 60182646
 ```
 
 ## Checking taxa
@@ -218,22 +218,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 5303
+#> Records available: 8107
 #> A data.frame [10 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1                    …HR.3211/167313561-U Vulpes vulpes (Linn…        NA  60.18049  25.04838
-#> 2                    …HR.3211/167310567-U Vulpes vulpes (Linn…        NA  60.2241   24.89373
-#> 3  …KE.176/64894ccdd5de884fa20e2972#Unit1 Vulpes vulpes (Linn…  1         60.21118  24.90744
-#> 4  …KE.176/6489506dd5de884fa20e2976#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
-#> 5  …KE.176/648802d6d5de884fa20e290d#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
-#> 6  …KE.176/648802c7d5de884fa20e290c#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
-#> 7                    …HR.3211/167167234-U Vulpes vulpes (Linn…        NA  60.20261  24.86879
-#> 8                    …HR.3211/166968734-U Vulpes vulpes (Linn…        NA  60.5      21.9    
-#> 9                    …HR.3211/166944731-U Vulpes vulpes (Linn…        NA  60.17493  24.74123
-#> 10 …KE.176/64869a52d5de884fa20e28ae#Unit1 Vulpes vulpes (Linn…  1         60.23885  25.12012
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1       …223360 Vulpes vulpes var. …              NA  56              160            
+#> 2       …223410 Vulpes vulpes (Linn…              NA  42.87           76.72          
+#> 3       …227292 Vulpes vulpes subsp…              NA              NA               NA
+#> 4       …227296 Vulpes vulpes (Linn…              NA  58.7            13.83          
+#> 5       …579385 Vulpes vulpes (Linn…              NA  61.13           25.77          
+#> 6       …580318 Vulpes vulpes (Linn…              NA  59.931          23.706         
+#> 7       …580322 Vulpes vulpes (Linn…              NA              NA               NA
+#> 8       …580326 Vulpes vulpes (Linn…              NA              NA               NA
+#> 9       …580330 Vulpes vulpes (Linn…              NA              NA               NA
+#> 10      …580334 Vulpes vulpes (Linn…              NA  69              27.5           
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -252,22 +252,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 5303
+#> Records available: 8107
 #> A data.frame [10 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1                    …HR.3211/167313561-U Vulpes vulpes (Linn…        NA  60.18049  25.04838
-#> 2                    …HR.3211/167310567-U Vulpes vulpes (Linn…        NA  60.2241   24.89373
-#> 3  …KE.176/64894ccdd5de884fa20e2972#Unit1 Vulpes vulpes (Linn…  1         60.21118  24.90744
-#> 4  …KE.176/6489506dd5de884fa20e2976#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
-#> 5  …KE.176/648802d6d5de884fa20e290d#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
-#> 6  …KE.176/648802c7d5de884fa20e290c#Unit1 Vulpes vulpes (Linn…  1         60.11016  25.01864
-#> 7                    …HR.3211/167167234-U Vulpes vulpes (Linn…        NA  60.20261  24.86879
-#> 8                    …HR.3211/166968734-U Vulpes vulpes (Linn…        NA  60.5      21.9    
-#> 9                    …HR.3211/166944731-U Vulpes vulpes (Linn…        NA  60.17493  24.74123
-#> 10 …KE.176/64869a52d5de884fa20e28ae#Unit1 Vulpes vulpes (Linn…  1         60.23885  25.12012
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1       …223360 Vulpes vulpes var. …              NA  56              160            
+#> 2       …223410 Vulpes vulpes (Linn…              NA  42.87           76.72          
+#> 3       …227292 Vulpes vulpes subsp…              NA              NA               NA
+#> 4       …227296 Vulpes vulpes (Linn…              NA  58.7            13.83          
+#> 5       …579385 Vulpes vulpes (Linn…              NA  61.13           25.77          
+#> 6       …580318 Vulpes vulpes (Linn…              NA  59.931          23.706         
+#> 7       …580322 Vulpes vulpes (Linn…              NA              NA               NA
+#> 8       …580326 Vulpes vulpes (Linn…              NA              NA               NA
+#> 9       …580330 Vulpes vulpes (Linn…              NA              NA               NA
+#> 10      …580334 Vulpes vulpes (Linn…              NA  69              27.5           
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -279,7 +279,8 @@ fail if any of the taxa are not found in the FinBIF database.
 ``` r
 
 finbif_occurrence("Vulpes vulpes", "Moomin", on_check_fail = "error")
-#> Error: Cannot find the following taxa in the FinBIF taxonomy.
+#> Error:
+#> ! Cannot find the following taxa in the FinBIF taxonomy.
 #> Please check you are using accepted names and not synonyms or
 #> other names for the taxa you are selecting:
 #> 
@@ -374,7 +375,7 @@ Click to show/hide output.
 #> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
 #> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
 #> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
-#> ...with 0 more record and 6 more variables:
+#> ...with 0 more records and 6 more variables:
 #> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
 #> occurrenceReliability, identificationVerificationStatus
 ```
@@ -405,22 +406,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 47159747
+#> Records available: 60179988
 #> A data.frame [10 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
-#> 2                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
-#> 3                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
-#> 4                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
-#> 5                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
-#> 6                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
-#> 7                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
-#> 8                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
-#> 9                          …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
-#> 10                         …JX.1594382#29 Dendrocopos major (…        NA  64.12716  23.99111
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
+#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
+#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
+#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
+#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
+#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
+#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
+#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
+#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
+#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   
@@ -449,22 +450,22 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 47159747
+#> Records available: 60179988
 #> A data.frame [10 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
-#> 2                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
-#> 3                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
-#> 4                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
-#> 5                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
-#> 6                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
-#> 7                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
-#> 8                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
-#> 9                          …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
-#> 10                         …JX.1594382#29 Dendrocopos major (…        NA  64.12716  23.99111
-#> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
+#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
+#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
+#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
+#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
+#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
+#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
+#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
+#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
+#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
+#> ...with 0 more records and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
   

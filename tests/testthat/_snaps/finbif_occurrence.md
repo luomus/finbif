@@ -37,7 +37,7 @@
       A data.frame [1 x 12]
                         occurrenceID       scientificName individualCount
       1 http://mus.utu.fi/MY.2475121 Batrachospermum tur…              NA
-      ...with 0 more record and 9 more variables:
+      ...with 0 more records and 9 more variables:
       decimalLatitude, decimalLongitude, eventDateTime,
       coordinateUncertaintyInMeters, hasIssues, requiresVerification,
       requiresIdentification, occurrenceReliability,
