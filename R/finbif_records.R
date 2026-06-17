@@ -360,12 +360,15 @@ infer_selection <- function(fb_records_obj) {
       select_computed <- select[vars_computed_from_id]
       vars_computed_from_id <- var_names[select_computed, ]
       n_computed <- nrow(vars_computed_from_id)
+      computed_names <- row.names(vars_computed_from_id)
 
       for (i in seq_len(n_computed)) {
-        computed_names <- row.names(vars_computed_from_id)
         computed_var <- vars_computed_from_id[i, var_type]
         suffix <- switch(var_type, translated_var = "_id", dwc = "ID")
-        select_vars[["x"]] <- paste0(computed_var, suffix)
+        select_vars[["x"]] <- paste0(
+          sub("Name", "", computed_var, fixed = TRUE),
+          suffix
+        )
         select[[match(computed_names[[i]], select)]] <- translate(select_vars)
       }
 

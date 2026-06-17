@@ -10,27 +10,27 @@ FinBIF record variables that can be selected in a finbif occurrence search.
 
 All identifiers are returned in the form of a URI. Identifiers include:
 \itemize{
-\item \code{record_id} Character.
+\item \code{occurrenceID} Character.
 The ID of a record of organism's occurrence at a time and place.
-\item \code{individual_id} Character.
+\item \code{organismID} Character.
 ID of an individual organism (e.g., a ringed bird that has been captured
-multiple times will have a single \code{individual_id} and multiple \code{record_id}s
+multiple times will have a single \code{organismID} and multiple \code{occurrenceID}s
 corresponding to each capture).
-\item \code{event_id} Character.
+\item \code{eventID} Character.
 Event ID. An event can contain one or more records (e.g., a survey of
 plants at a particular location and time.)
-\item \code{document_id} Character.
+\item \code{catalogNumber} Character.
 Document ID. A set of events that share common metadata.
-\item \code{form_id} Character.
+\item \code{formID} Character.
 Form ID. The form used to create the document, event, record data.
-\item \code{collection_id} Character.
-Collection ID. All documents, events, and records belong to a collection
-(e.g., a museum collection, or the datasets collected by a specific
-institution). Collections themselves can be part of a larger
+\item \code{datasetID} Character.
+Dataset ID. All documents, events, and records belong to a
+collection/dataset (e.g., a museum collection, or the datasets collected
+by a specific institution). Collections themselves can be part of a larger
 (super)collection (e.g., all the collections at a specific museum). Only
-the lowest level collection ID for a record is returned. Use
-\code{finbif_collections()} to explore the hierarchy of collections.
-\item \code{source_id} Character.
+the lowest level dataset ID for a record is returned. Use
+\code{finbif_collections()} to explore the hierarchy of collections/datasets.
+\item \code{sourceID} Character.
 Source ID. The source of the collection's data.
 }
 }
@@ -39,62 +39,62 @@ Source ID. The source of the collection's data.
 
 Variables related to taxonomy of records include:
 \itemize{
-\item \code{taxon_id} Character.
+\item \code{taxonConceptID} Character.
 The taxon ID in the form of a URI.
-\item \code{orig_taxon_id} Character.
+\item \code{originalTaxonConceptID} Character.
 The taxon ID before (if any) annotation.
-\item \code{annotated_taxon_id} Character.
+\item \code{annotatedTaxonConceptID} Character.
 The new taxon ID if the record has had it's taxonomy annotated.
-\item \code{reported_taxon_id} Character.
+\item \code{verbatimTaxonConceptID} Character.
 The taxon ID as originally reported by the record creator.
-\item \code{scientific_name} Character.
+\item \code{scientificName} Character.
 Scientific name of taxon.
-\item \code{orig_scientific_name} Character.
+\item \code{originalScientificName} Character.
 The scientific name before (if any) annotation.
-\item \code{scientific_display_name} Character.
+\item \code{scientificNameDisplay} Character.
 Scientific name of taxon formatted for display (e.g., taxa with genus only
 will be formatted as \emph{Genus sp.}).
-\item \code{orig_scientific_display_name} Character.
+\item \code{originalScientificNameDisplay} Character.
 Scientific display name before (if any) annotation.
-\item \code{common_name} Character.
+\item \code{vernacularName} Character.
 Common (vernacular) name of taxon.
-\item \code{orig_common_name} Character.
+\item \code{originalVernacularName} Character.
 Common name before (if any) annotation.
-\item \code{reported_name} Character.
+\item \code{verbatimIdentification} Character.
 The name of the taxon as originally reported by the record creator.
-\item \code{scientific_name_italicised} Logical.
+\item \code{scientificNameItalicised} Logical.
 Is the scientific name normally italicised (i.e., is the taxonomic rank
 genus or below.)
-\item \code{orig_scientific_name_italicised} Logical.
+\item \code{originalScientificNameItalicised} Logical.
 Is the original scientific name normally italicised.
-\item \code{scientific_name_author} Character.
+\item \code{scientificNameAuthorship} Character.
 The authority for the taxon scientific name.
-\item \code{orig_scientific_name_author} Character.
+\item \code{originalScientificNameAuthorship} Character.
 The authority for the taxon scientific name before (if any) annotation.
-\item \code{reported_author} Character.
+\item \code{verbatimScientificNameAuthorship} Character.
 The authority of the taxon as originally reported by the record creator.
-\item \code{taxon_rank} Character.
+\item \code{taxonRank} Character.
 The taxonomic rank of the taxon.
-\item \code{orig_taxon_rank} Character.
+\item \code{originalTaxonRank} Character.
 The taxonomic rank of the taxon before (if any) annotation.
-\item \code{informal_groups} List.
+\item \code{informalTaxonGroups} List.
 The informal taxonomic groups that the taxon belongs to (e.g., birds) in
 the form of URIs.
-\item \code{orig_informal_groups} List.
+\item \code{originalInformalTaxonGroups} List.
 The informal taxonomic groups that the taxon belonged to before (if any)
 annotation.
-\item \code{reported_informal_groups} List.
+\item \code{verbatimInformalTaxonGroups} List.
 The informal taxonomic groups that the taxon belongs to as reported by the
 record creator.
-\item \code{taxon_checklist} Character.
+\item \code{taxonChecklist} Character.
 The checklist (as a URI) that that taxon is found in.
-\item \code{orig_taxon_checklist} Character.
+\item \code{originalTaxonChecklist} Character.
 The checklist (as a URI) that that taxon was found in before (if any)
 annotation.
-\item \code{taxon_finnish} Logical.
+\item \code{taxonFinnishStatus} Logical.
 Is the taxon considered Finnish. The definition of a Finnish taxon differs
 by taxonomic group?
-\item \code{orig_taxon_finnish} Logical.
+\item \code{originalFinnishStatus} Logical.
 Was the taxon considered Finnish before (if any) annotation?
 }
 }
@@ -103,21 +103,21 @@ Was the taxon considered Finnish before (if any) annotation?
 
 Variables related to abundance, sex and life history include:
 \itemize{
-\item \code{abundance} Integer.
+\item \code{individualCount} Integer.
 Number of individuals recorded.
-\item \code{abundance_interpreted} Integer.
+\item \code{individualCountInterpreted} Integer.
 Number of individuals recorded or inferred from the record. Note that many
-records with \code{abundance_interpreted == 1L} only indicate the record is of
+records with \code{individualCount == 1L} only indicate the record is of
 one individual and may not necessarily imply that this was the abundance at
 that specified place and time (e.g., a preserved museum specimen consisting
 of a single individual).
-\item \verb{\{female|male\}_abundance} Integer.
+\item \verb{individualCount\{Female|Male\}} Integer.
 Number of female or male individuals recorded.
-\item \code{pair_abundance} Integer.
+\item \code{pairCount} Integer.
 Number of mating pairs recorded.
-\item \code{abundance_verbatim} Character.
+\item \code{organismQuantity} Character.
 The abundance as reported by the record creator.
-\item \code{life_stage} Character.
+\item \code{lifeStage} Character.
 Life stage of individual(s) recorded.
 \item \code{sex} Character.
 Sex of individual(s) recorded.
@@ -128,48 +128,55 @@ Sex of individual(s) recorded.
 
 Variables related to the location of records include:
 \itemize{
-\item \verb{\{lat|lon\}_\{euref|wgs84\}} Numeric.
+\item \verb{decimal\{Latitude|Longitude\}} Numeric.
 Coordinates (in
-\href{https://spatialreference.org/ref/epsg/3067/}{EUREF} or
 \href{https://spatialreference.org/ref/epsg/4326/}{WGS84} coordinate system)
 of the central point of a bounding box encompassing the record's geographic
 coverage.
-\item \verb{\{lat|lon\}_\{min|max\}_\{euref|ykj|wgs84\}}. Numeric.
+\item \verb{decimal\{Latitude|Longitude\}EUREF} Numeric.
+Coordinates (in
+\href{https://spatialreference.org/ref/epsg/3067/}{EUREF} coordinate system)
+of the central point of a bounding box encompassing the record's geographic
+coverage.
+\item \verb{decimal\{Latitude|Longitude\}\{Min|Max\}\{EUREF|YKJ|WGS84\}}. Numeric.
 Vertices of a bounding box encompassing the record's geographic coverage.
 Coordinates are available in
 \href{https://spatialreference.org/ref/epsg/3067/}{EUREF},
 \href{https://spatialreference.org/ref/epsg/2393/}{YKJ}, or
 \href{https://spatialreference.org/ref/epsg/4326/}{WGS84}.
-\item \code{coordinates_uncertainty} Integer.
+\item \code{coordinateUncertaintyInMeters} Integer.
 The horizontal distance (in meters) from the record's given coordinates
 describing the smallest circle containing the whole of the record's
 location.
-\item \code{coordinates_source} Character.
+\item \code{georeferenceSources} Character.
 Source of coordinates.
-\item \verb{footprint_\{euref|ykj|wgs84\}} Character.
+\item \code{footprintWKT} Character.
 Well-Known Text (WKT) representation of the geographic shape defining the
-location of the record in either EUREF, YKJ or WGS84 coordinate systems.
+location of the record in WGS84 coordinate systems.
+\item \verb{footprintWKT\{_EUREF|_YKJ\}} Character.
+Well-Known Text (WKT) representation of the geographic shape defining the
+location of the record in either EUREF or YKJ coordinate systems.
 \item \code{country} Character.
 The country of the record's location.
-\item \code{region} Character.
+\item \code{stateProvince} Character.
 The administrative area directly below the level of country.
-\item \code{bio_province} Character.
+\item \code{bioStateProvince} Character.
 For data from Finland FinBIF uses the concept of
 \href{https://laji.fi/en/theme/emk}{Biogeographical Province}. See link for
 details.
-\item \code{municipality}. Character.
+\item \code{county}. Character.
 Administrative level below region
-\item \code{higher_geography} Character.
+\item \code{higherGeography} Character.
 Geographic place name that is at higher level than country.
-\item \code{line_length_m} Integer.
+\item \code{lineLengthMeters} Integer.
 The length of linear locations (e.g., line transect surveys).
-\item \code{area_m2} Integer.
+\item \code{areaMetersSquared} Integer.
 The size of record's location in meters squared.
-\item \code{is_breeding_location} Logical.
+\item \code{isBreedingSite} Logical.
 Whether or not the occurrence is recorded at a known breeding location.
-\item \code{location_id} Character.
+\item \code{locationID} Character.
 A location ID in the form of a URI.
-\item \code{section} Integer.
+\item \code{eventSection} Integer.
 A numeric identifier for a sub-location of a location (e.g., a specific
 part of a transect that undergoes repeated surveys.)
 }
@@ -179,33 +186,33 @@ part of a transect that undergoes repeated surveys.)
 
 Variables related to time of record include:
 \itemize{
-\item \code{date_time} POSIXct.
+\item \code{eventDateTime} POSIXct.
 The date and time of the recording event. This variable is computed after
 records are downloaded from FinBIF. Its timezone and accuracy can be
 controlled see \code{finbif_occurrence()} for details.
-\item \code{duration} Duration.
+\item \code{samplingEffort} Duration.
 The duration of the recording event. This variable is computed after
 records are downloaded from FinBIF.
-\item \code{date_start} Character.
+\item \code{eventDateStart} Character.
 The date the recording event began.
-\item \code{date_end} Character.
+\item \code{eventDateEnd} Character.
 The date the recording event ended.
-\item \code{hour_start} Integer.
+\item \code{hourStart} Integer.
 The hour (24 hour time) of the day the recording event began.
-\item \code{hour_end} Integer.
+\item \code{hourEnd} Integer.
 The hour (24 hour time) of the day the recording event ended.
-\item \code{minute_start} Integer.
+\item \code{minuteStart} Integer.
 The minute of the hour the recording event began.
-\item \code{minute_end} Integer.
+\item \code{minuteEnd} Integer.
 The minute of the hour the recording event started.
-\item \code{ordinal_day_start} Integer.
+\item \code{startDayOfYear} Integer.
 The ordinal day of the year the recording event began.
-\item \code{ordinal_day_end} Integer.
+\item \code{endDayOfYear} Integer.
 The ordinal day of the year the recording event ended
-\item \code{season_start} Integer.
+\item \code{seasonStart} Integer.
 The day of the year the recording event began. A four digit number
 indicating the day of the year in MMDD (\%m\%d) format.
-\item \code{season_end} Integer.
+\item \code{seasonEnd} Integer.
 The day of the year the recording event ended. A four digit number
 indicating the day of the year in MMDD (\%m\%d) format.
 \item \code{century} Integer.
@@ -223,15 +230,15 @@ the event spans multiple months).
 \item \code{day} Integer.
 The day of the month during which the recording event occurred (\code{NA} if the
 event spans multiple days).
-\item \code{formatted_date_time} Character.
+\item \code{eventDateTimeDisplay} Character.
 Date and time of the recording event formatted for display.
-\item \code{date_created} Character.
+\item \code{documentCreatedDate} Character.
 The date the original data was created.
-\item \code{first_load_date} Character.
+\item \code{available} Character.
 The date the record was first loaded into the FinBIF database.
 \item \code{modified} Character.
 The most recent date the original data was modified.
-\item \code{load_date} Character.
+\item \code{documentLoadedDate} Character.
 The most recent date the record was loaded into the FinBIF database.
 }
 }
@@ -240,11 +247,11 @@ The most recent date the record was loaded into the FinBIF database.
 
 Variables related to restricted records include:
 \itemize{
-\item \code{restriction} Logical.
+\item \code{informationRestricted} Logical.
 Has the record been restricted in some way (e.g., geospatially aggregated).
-\item \code{restriction_level} Character.
+\item \code{dataGeneralizations} Character.
 What level of restriction has been applied to the record.
-\item \code{restriction_reason} List.
+\item \code{informationWithheld} List.
 List of reasons restriction has been applied.
 }
 }
@@ -253,26 +260,26 @@ List of reasons restriction has been applied.
 
 Variables related to the quality of records include:
 \itemize{
-\item \code{any_issues} Logical.
+\item \code{hasIssues} Logical.
 Are there any data quality issues associated with the record, its event or
 document.
-\item \code{reported_taxon_confidence}
+\item \code{identificationQualifer}
 Reliability of the record's taxonomic identification as reported by the
 original data author.
-\item \verb{\{document|time|location|event|record\}_issue} Character.
+\item \verb{\{document|time|location|event|occurrence\}Issue} Character.
 Issues with record associated with its document, time, location, event, or
 the record itself.
-\item \verb{\{document|time|location|event|record\}_issue_message} Character.
+\item \verb{\{document|time|location|event|occurrence\}IssueRemarks} Character.
 Details about the issue.
-\item \verb{\{document|time|location|event|record\}_issue_source} Character.
+\item \verb{\{document|time|location|event|occurrence\}IssueSource} Character.
 Source determining the issue.
-\item \code{requires_verification} Logical.
+\item \code{requiresVerification} Logical.
 Has the record been flagged for expert verification?
-\item \code{requires_identification} Logical.
+\item \code{requiresIdentification} Logical.
 Has the record been flagged for expert identification?
-\item \code{record_reliability} Character.
+\item \code{occurrenceReliability} Character.
 Indication of the record's reliability.
-\item \code{record_quality} Character.
+\item \code{identificationVerificationStatus} Character.
 Indication of the record's quality.
 }
 }
@@ -281,37 +288,37 @@ Indication of the record's quality.
 
 Other variables:
 \itemize{
-\item \code{collection} Character.
-Collection name. All documents, events, and records belong to a collection
-(e.g., a museum collection, or the datasets collected by a specific
-institution). Collections themselves can be part of a larger
+\item \code{datasetName} Character.
+Dataset name. All documents, events, and records belong to a
+collection/dataset (e.g., a museum collection, or the datasets collected
+by a specific institution). Collections themselves can be part of a larger
 (super)collection (e.g., all the collections at a specific museum). Only
 the lowest level collection name for a record is returned. Use
-\code{finbif_collections()} to explore the hierarchy of collections.
-\item \code{observers_ids} List.
+\code{finbif_collections()} to explore the hierarchy of collections/datasets.
+\item \code{recordedByIDs} List.
 List of observer identifiers for the record.
-\item \code{determiner} Character.
+\item \code{identifiedBy} Character.
 Person who determined the taxonomic identification of the record.
-\item \code{record_basis} Character.
+\item \code{basisOfRecord} Character.
 The type of or method used to obtain the record.
-\item \code{superrecord_basis} Character.
+\item \code{basisOfSuperRecord} Character.
 Higher level type of or method used to obtain the record.
-\item \code{type_specimen} Logical.
+\item \code{typeStatus} Logical.
 Whether or not the record is of a type specimen.
-\item \code{is_wild} Logical.
+\item \code{occurrenceIsWild} Logical.
 Whether or not the record is of a "wild" organism.
 \item \code{license} Character.
 The license of the data associated with the record.
-\item \verb{\{document|event|record\}_notes} Character.
+\item \verb{\{document|event|occurrence\}Remarks} Character.
 Notes associated with the document, event or record itself.
-\item \verb{\{document|record\}_keywords} List.
+\item \verb{\{document|occurrence\}Keywords} List.
 List of keywords associated with the document or record.
-\item \code{record_annotation_count} Integer.
+\item \code{occurrenceAnnotationCount} Integer.
 How many annotations are associated with the record.
-\item \code{sample_count} Integer.
+\item \code{materialSampleCount} Integer.
 How many material samples (DNA extractions, etc., ...) are associated with
 the record.
-\item \verb{\{document|event|record\}_media_count} Integer.
+\item \verb{\{document|event|occurrence\}AssociatedMediaCount} Integer.
 How many media items (images, audio, video, etc., ...) are associated with
 the record's document, event or the record itself.
 }

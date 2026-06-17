@@ -649,10 +649,10 @@ compute_vars_from_id <- function(fb_occurrence_df) {
 
   for (i in seq_along(cols)) {
     col_i <- cols[[i]]
-    id_var_name <- paste0(col_i, suffix)
+    id_var_name <- paste0(sub("Name", "", col_i, fixed = TRUE), suffix)
 
     if (add && id_var_name %in% colnames) {
-      if (identical(id_var_name, "collection_id")) {
+      if (id_var_name %in% c("collection_id", "datasetID")) {
 
         ptrn <- "collection_name"
         metadata <- finbif_collections(
@@ -1314,12 +1314,17 @@ finbif_last_mod <- function(
   }
 
   res <- finbif_occurrence(
-    ..., filter = filter, select = "load_date", order_by = "-load_date", n = 1L
+    ...,
+    filter = filter,
+    select = "documentLoadedDate",
+    order_by = "-documentLoadedDate",
+    n = 1L,
+    dwc = TRUE
   )
   ans <- as.Date(character())
 
   if (nrow(res) > 0L) {
-    ans <- as.Date(res[[1L, "load_date"]])
+    ans <- as.Date(res[[1L, "documentLoadedDate"]])
   }
 
   ans
