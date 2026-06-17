@@ -22,10 +22,10 @@ variables are available for all records. See `?variables` for details.
 To retrieve a limited set of variables from FinBIF simply specify the desired
 variables in the `select` argument.
 
-```r
+``` r
 finbif_occurrence(
   genus  = "Falco",
-  select = c("scientific_name", "life_stage", "sex")
+  select = c("scientificName", "lifeStage", "sex")
 )
 ```
 
@@ -36,19 +36,19 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 342668
+#> Records available: 473049
 #> A data.frame [10 x 3]
-#>         scientific_name life_stage sex
-#> 1  Falco columbarius L…         NA  NA
-#> 2  Falco tinnunculus L…         NA  NA
-#> 3  Falco tinnunculus L…         NA  NA
-#> 4  Falco subbuteo Linn…         NA  NA
-#> 5  Falco tinnunculus L…         NA  NA
-#> 6  Falco subbuteo Linn…         NA  NA
-#> 7  Falco tinnunculus L…         NA  NA
-#> 8  Falco tinnunculus L…         NA  NA
-#> 9  Falco tinnunculus L…         NA  NA
-#> 10 Falco subbuteo Linn…         NA  NA
+#>          scientificName lifeStage    sex
+#> 1  Falco rusticolus Li…      <NA> Female
+#> 2  Falco peregrinus Tu…      <NA>   <NA>
+#> 3  Falco subbuteo Linn…      <NA>   <NA>
+#> 4  Falco columbarius L…      <NA>   <NA>
+#> 5  Falco columbarius L…      <NA>   <NA>
+#> 6  Falco tinnunculus L…      <NA>   <NA>
+#> 7  Falco columbarius L…      <NA> Female
+#> 8  Falco tinnunculus L…      <NA> Female
+#> 9  Falco tinnunculus L…      <NA> Female
+#> 10 Falco vespertinus L…  juvenile   <NA>
 
 ```
 
@@ -59,8 +59,8 @@ finbif_occurrence(
 To get extra variables as well as the default set, specify the extra variables
 in addition to the keyword `"default_vars"`.
 
-```r
-finbif_occurrence(select = c("default_vars", "life_stage"))
+``` r
+finbif_occurrence(select = c("default_vars", "lifeStage"))
 ```
 
 
@@ -70,22 +70,22 @@ finbif_occurrence(select = c("default_vars", "life_stage"))
 ```r
 
 #> Records downloaded: 10
-#> Records available: 47159747
+#> Records available: 60179991
 #> A data.frame [10 x 13]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1                           …JX.1594385#3 Sciurus vulgaris Li…  1         60.23584  25.05693
-#> 2  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
-#> 3                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
-#> 4                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
-#> 5                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
-#> 6                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
-#> 7                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
-#> 8                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
-#> 9                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
-#> 10                         …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
+#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
+#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
+#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
+#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
+#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
+#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
+#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
+#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
+#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
 #> ...with 0 more record and 8 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality, life_stage
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus, lifeStage
 
 ```
 
@@ -100,8 +100,8 @@ descending, then `load_date` descending, then `reported_name`.
 ### Ascending order
 By default occurrence records are ordered by variables in ascending order.
 
-```r
-finbif_occurrence("Cygnus cygnus", order_by = "abundance")
+``` r
+finbif_occurrence("Cygnus cygnus", order_by = "individualCount")
 ```
 
 
@@ -111,33 +111,22 @@ finbif_occurrence("Cygnus cygnus", order_by = "abundance")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 95730
+#> Records available: 139829
 #> A data.frame [10 x 12]
-#>                     record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1         …KE.67/9403350#Unit Cygnus cygnus (Linn…  1         60.41667  16      
-#> 2  …HR.3691/OBS810893905_Unit Cygnus cygnus (Linn…        NA  61.56563  29.56771
-#> 3             …JX.1026351#259 Cygnus cygnus (Linn…  1         65.89416  28.90961
-#> 4               …JX.1025175#3 Cygnus cygnus (Linn…  1         61.83248  23.40816
-#> 5         …KE.67/9069501#Unit Cygnus cygnus (Linn…  1         52.71667  1.55    
-#> 6               …JX.1252188#3 Cygnus cygnus (Linn…        NA  60.17258  24.27095
-#> 7         …KE.67/9465507#Unit Cygnus cygnus (Linn…  1         61.8      22.76667
-#> 8         …KE.67/9607357#Unit Cygnus cygnus (Linn…  1         63.13333  22.43333
-#> 9               …MHU.10961285 Cygnus cygnus (Linn…        NA  64.97813  24.74932
-#> 10 …HR.3691/OBS886590077_Unit Cygnus cygnus (Linn…        NA  61.27566  22.557  
-#>              date_time
-#> 1  1997-04-01 13:00:00
-#> 2  2007-05-18 12:00:00
-#> 3  2013-06-24 03:12:00
-#> 4  2014-06-08 03:45:00
-#> 5  1997-01-03 14:00:00
-#> 6  2021-05-23 06:15:00
-#> 7  2000-03-22 12:00:00
-#> 8  2003-06-07 12:00:00
-#> 9  2008-07-12 12:00:00
-#> 10 2020-03-31 12:00:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1      …0745928 Cygnus cygnus (Linn…              NA  66              29.25          
+#> 2      …0745932 Cygnus cygnus (Linn…              NA              NA               NA
+#> 3      …0745937 Cygnus cygnus (Linn…              NA              NA               NA
+#> 4      …0745941 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 5      …0745945 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 6      …0745949 Cygnus cygnus (Linn…              NA  60.17           25             
+#> 7      …5552466 Cygnus cygnus (Linn…  1               67.773235       25.050461      
+#> 8      …5552474 Cygnus cygnus (Linn…  1               68.713901       22.787894      
+#> 9      …6082839 Cygnus cygnus (Linn…  1                           NA               NA
+#> 10     …7079647 Cygnus cygnus (Linn…              NA  61.85           23.5           
+#> ...with 0 more record and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 
 ```
 
@@ -147,8 +136,8 @@ finbif_occurrence("Cygnus cygnus", order_by = "abundance")
 ### Descending order
 You can switch to descending order by prefixing the variable with a dash.
 
-```r
-finbif_occurrence("Cygnus cygnus", order_by = "-abundance")
+``` r
+finbif_occurrence("Cygnus cygnus", order_by = "-individualCount")
 ```
 
 
@@ -158,22 +147,33 @@ finbif_occurrence("Cygnus cygnus", order_by = "-abundance")
 ```r
 
 #> Records downloaded: 10
-#> Records available: 95730
+#> Records available: 139829
 #> A data.frame [10 x 12]
-#>                      record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1                 …MHU.2981587 Cygnus cygnus (Linn…  6000      64.4     -14.54   
-#> 2  …HR.3691/OBS1101526155_Unit Cygnus cygnus (Linn…  1760      62.16389  21.45786
-#> 3   …HR.3691/OBS604642304_Unit Cygnus cygnus (Linn…  1753      64.50736  24.27894
-#> 4   …HR.3691/OBS663568887_Unit Cygnus cygnus (Linn…  1600      65.98787  24.06341
-#> 5                …MHU.28815250 Cygnus cygnus (Linn…  1500            NA        NA
-#> 6   …HR.3691/OBS671353848_Unit Cygnus cygnus (Linn…  1361      64.71656  24.53188
-#> 7                …JX.1357345#5 Cygnus cygnus (Linn…  1300      64.8465   25.2883 
-#> 8                …JX.1398409#3 Cygnus cygnus (Linn…  1280      64.8448   25.2816 
-#> 9                …MHU.28815110 Cygnus cygnus (Linn…  1200            NA        NA
-#> 10 …HR.3691/OBS1119137190_Unit Cygnus cygnus (Linn…  1163      64.71656  24.53188
+#>                   occurrenceID       scientificName individualCount decimalLatitude
+#> 1                 …MHU.2981587 Cygnus cygnus (Linn…  6000            64.4          
+#> 2  …HR.3691/OBS2052501157_Unit Cygnus cygnus (Linn…  2065            64.50736      
+#> 3  …HR.3691/OBS2052518008_Unit Cygnus cygnus (Linn…  2065            64.50736      
+#> 4  …HR.3691/OBS1101526155_Unit Cygnus cygnus (Linn…  1760            62.16389      
+#> 5   …HR.3691/OBS604642304_Unit Cygnus cygnus (Linn…  1753            64.50736      
+#> 6   …HR.3691/OBS663568887_Unit Cygnus cygnus (Linn…  1600            65.98787      
+#> 7  …HR.3691/OBS1399623409_Unit Cygnus cygnus (Linn…  1580            64.50736      
+#> 8                …MHU.28815250 Cygnus cygnus (Linn…  1500                        NA
+#> 9   …HR.3691/OBS671353848_Unit Cygnus cygnus (Linn…  1361            64.71656      
+#> 10 …HR.3691/OBS1686954463_Unit Cygnus cygnus (Linn…  1333            64.50734      
+#>    decimalLongitude
+#> 1  -14.54          
+#> 2   24.27894       
+#> 3   24.27894       
+#> 4   21.45786       
+#> 5   24.27894       
+#> 6   24.06341       
+#> 7   24.27894       
+#> 8                NA
+#> 9   24.531883      
+#> 10  24.278942      
 #> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 
 ```
 
@@ -184,9 +184,9 @@ finbif_occurrence("Cygnus cygnus", order_by = "-abundance")
 You can specify multiple variables to order by. Sorting primacy is from left to
 right.
 
-``` details
+``` r
 finbif_occurrence(
-  "Cygnus olor", order_by = c("finnish_municipality_id", "-abundance")
+  "Cygnus olor", order_by = c("finnishCountyID", "-individualCount")
 )
 ```
 
@@ -197,22 +197,22 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 56359
+#> Records available: 63244
 #> A data.frame [10 x 12]
-#>    record_id      scientific_name abundance lat_wgs84 lon_wgs84           date_time
-#> 1  …12015253 Cygnus olor (J.F. G…  2500            NA        NA 2008-08-17 12:00:00
-#> 2  …13633876 Cygnus olor (J.F. G…  1500            NA        NA 2008-10-03 12:00:00
-#> 3    …780984 Cygnus olor (J.F. G…  1300            NA        NA 2006-02-14 12:00:00
-#> 4    …781416 Cygnus olor (J.F. G…  1300            NA        NA 2006-02-14 12:00:00
-#> 5   …2062563 Cygnus olor (J.F. G…  1200            NA        NA 2006-12-19 12:00:00
-#> 6  …10352894 Cygnus olor (J.F. G…  1100            NA        NA 2008-06-28 12:00:00
-#> 7    …927797 Cygnus olor (J.F. G…  1050            NA        NA 2006-04-05 12:00:00
-#> 8   …3110953 Cygnus olor (J.F. G…  960             NA        NA 2007-10-06 12:00:00
-#> 9  …26309317 Cygnus olor (J.F. G…  900             NA        NA 2009-07-08 12:00:00
-#> 10  …1260385 Cygnus olor (J.F. G…  800       58.66     23.57    2006-04-26 18:00:00
-#> ...with 0 more record and 6 more variables:
-#> coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1     …12015253 Cygnus olor (J.F. G…  2500                        NA               NA
+#> 2     …13633876 Cygnus olor (J.F. G…  1500                        NA               NA
+#> 3       …780984 Cygnus olor (J.F. G…  1300                        NA               NA
+#> 4       …781416 Cygnus olor (J.F. G…  1300                        NA               NA
+#> 5      …2062563 Cygnus olor (J.F. G…  1200                        NA               NA
+#> 6     …10352894 Cygnus olor (J.F. G…  1100                        NA               NA
+#> 7       …927797 Cygnus olor (J.F. G…  1050                        NA               NA
+#> 8      …3110953 Cygnus olor (J.F. G…  960                         NA               NA
+#> 9     …26309317 Cygnus olor (J.F. G…  900                         NA               NA
+#> 10     …1260385 Cygnus olor (J.F. G…  800             58.66           23.57          
+#> ...with 0 more record and 7 more variables:
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 
 ```
 

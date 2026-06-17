@@ -67,7 +67,7 @@ for details).
 ## Working with taxa
 You can check to see if a taxon exists in the FinBIF database.
 
-```r
+``` r
 finbif_check_taxa("Ursus arctos")
 #> [Ursus arctos] ID: MX.47348
 ```

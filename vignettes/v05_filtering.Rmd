@@ -18,25 +18,25 @@ the full list of filtering options see `?filters`.
 ## Location
 Records can be filtered by the name of a location.
 
-```r
+``` r
 finbif_occurrence(filter = c(country = "Finland"))
 #> Records downloaded: 10
-#> Records available: 44691386
+#> Records available: 57358090
 #> A data.frame [10 x 12]
-#>                                 record_id      scientific_name abundance lat_wgs84 lon_wgs84
-#> 1                           …JX.1594385#3 Sciurus vulgaris Li…  1         60.23584  25.05693
-#> 2  …KE.176/64895825d5de884fa20e297d#Unit1 Heracleum persicum …        NA  61.08302  22.38983
-#> 3                           …JX.1594382#9 Hirundo rustica Lin…        NA  64.12716  23.99111
-#> 4                          …JX.1594382#37 Pica pica (Linnaeus…        NA  64.12716  23.99111
-#> 5                          …JX.1594382#49 Muscicapa striata (…        NA  64.12716  23.99111
-#> 6                          …JX.1594382#39 Larus canus Linnaeu…        NA  64.12716  23.99111
-#> 7                           …JX.1594382#5 Emberiza citrinella…        NA  64.12716  23.99111
-#> 8                          …JX.1594382#31 Ficedula hypoleuca …        NA  64.12716  23.99111
-#> 9                          …JX.1594382#41 Alauda arvensis Lin…        NA  64.12716  23.99111
-#> 10                         …JX.1594382#21 Numenius arquata (L…        NA  64.12716  23.99111
+#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
+#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
+#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
+#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
+#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
+#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
+#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
+#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
+#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
+#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
+#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
 #> ...with 0 more record and 7 more variables:
-#> date_time, coordinates_uncertainty, any_issues, requires_verification, requires_identification,
-#> record_reliability, record_quality
+#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
 Or by a set of coordinates.
@@ -70,7 +70,7 @@ See `?filters` section "Location" for more details
 The event or import date of records can be used to filter occurrence data from
 FinBIF. The date filters can be a single year, month or date,
 
-``` details
+``` r
 finbif_occurrence(filter = list(date_range_ym = "2020-12"))
 ```
 

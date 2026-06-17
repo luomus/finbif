@@ -18,7 +18,7 @@ provide context for occurrence records and other information in FinBIF.
 You can see some of the metadata available in `{finbif}` by calling the
 `finbif_metadata` function without any arguments.
 
-```r
+``` r
 finbif_metadata()
 ```
 
@@ -34,7 +34,7 @@ finbif_metadata()
 #> 3                    country
 #> 4                     region
 #> 5               bio_province
-#> 6               municipality
+#> 6       finnish_municipality
 #> 7            bird_assoc_area
 #> 8  finnish_occurrence_status
 #> 9               habitat_type

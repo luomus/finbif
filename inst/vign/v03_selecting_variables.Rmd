@@ -41,7 +41,7 @@ variables in the `select` argument.
 ```{details limiting}
 finbif_occurrence(
   genus  = "Falco",
-  select = c("scientific_name", "life_stage", "sex")
+  select = c("scientificName", "lifeStage", "sex")
 )
 ```
 
@@ -49,7 +49,7 @@ finbif_occurrence(
 To get extra variables as well as the default set, specify the extra variables
 in addition to the keyword `"default_vars"`.
 ```{details extras}
-finbif_occurrence(select = c("default_vars", "life_stage"))
+finbif_occurrence(select = c("default_vars", "lifeStage"))
 ```
 
 ## Ordering
@@ -60,13 +60,13 @@ descending, then `load_date` descending, then `reported_name`.
 ### Ascending order
 By default occurrence records are ordered by variables in ascending order.
 ```{details order-ascend}
-finbif_occurrence("Cygnus cygnus", order_by = "abundance")
+finbif_occurrence("Cygnus cygnus", order_by = "individualCount")
 ```
 
 ### Descending order
 You can switch to descending order by prefixing the variable with a dash.
 ```{details order-descend}
-finbif_occurrence("Cygnus cygnus", order_by = "-abundance")
+finbif_occurrence("Cygnus cygnus", order_by = "-individualCount")
 ```
 
 ### Multiple variables
@@ -74,7 +74,7 @@ You can specify multiple variables to order by. Sorting primacy is from left to
 right.
 ```{details order-multiple}
 finbif_occurrence(
-  "Cygnus olor", order_by = c("finnish_municipality_id", "-abundance")
+  "Cygnus olor", order_by = c("finnishCountyID", "-individualCount")
 )
 ```
 

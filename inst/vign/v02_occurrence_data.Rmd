@@ -43,10 +43,10 @@ number of remaining records and variables, as well as the names of additional
 variables.
 
 ## Darwin Core Variables
-You can switch from the default variable names to [Darwin Core
-](http://rs.tdwg.org/dwc/) style names by setting `dwc = TRUE`.
+You can switch from the default [Darwin Core
+](http://rs.tdwg.org/dwc/) style variable names by setting `dwc = FALSE`.
 ```{r dwc}
-colnames(finbif_occurrence(dwc = TRUE))
+colnames(finbif_occurrence(dwc = FALSE))
 ```
 The functions `to_dwc()` and `to_native()` can be used to translate variable
 names to and from Darwin Core style and `{finbif}`'s native variable names
@@ -130,7 +130,7 @@ To illustrate, you can count the number of moths and butterflies by municipality
 with the following:
 ```{details aggregate}
 finbif_occurrence(
-  "Lepidoptera", select = "finnish_municipality", aggregate = "species"
+  "Lepidoptera", select = "finnishCounty", aggregate = "species"
 )
 ```
 
@@ -140,7 +140,7 @@ data for occurrence recording events into a `date_time` variable. This can be
 turned off (which can speed up data processing time) by deselecting the
 `date_time` variable.
 ```{details date-time-false}
-finbif_occurrence(select = "-date_time")
+finbif_occurrence(select = "-eventDateTime")
 ```
 
 ### Timezone
