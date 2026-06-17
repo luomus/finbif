@@ -309,7 +309,7 @@ print_extras <- function(obj) {
 
   suffix <- ""
 
-  if (extra_rows > 1L) {
+  if (extra_rows != 1L) {
     suffix <- "s"
   }
 
@@ -322,7 +322,7 @@ print_extras <- function(obj) {
 
   suffix <- ""
 
-  if (extra_cols > 1L) {
+  if (extra_cols != 1L) {
     suffix <- "s"
   }
 
