@@ -72,6 +72,7 @@ sentinels/vignettes: $(shell find inst/vign -type f)
 > cd $(PKGSRC)/inst/vign;\
 > ${RSCRIPT} -e "for (i in list.files('.', '.Rmd$$')) knitr::knit(i)";\
 > sed -i 's/```details/```r/g' *.md;\
+> sed -i 's/``` details/``` r/g' *.md;\
 > cp *.md ../../vignettes;\
 > cp ../man/figures/* ../../man/figures;\
 > cd ../../vignettes;\
