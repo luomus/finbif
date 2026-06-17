@@ -104,7 +104,7 @@ schema_only <- setdiff(agg_doc_vars, agg_doc_vars_pkg)
 
 stopifnot(!length(c(in_pkg_only, schema_only)))
 
-doc_vars     <- var_names[var_names[["doc"]], "translated_var"]
+doc_vars     <- var_names[var_names[["doc"]], "dwc"]
 vars_in_docs <- documented_vars("R/variables.R")
 
 doc_vars_only <- setdiff(doc_vars, vars_in_docs)

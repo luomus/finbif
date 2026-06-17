@@ -1,5 +1,5 @@
 finbif_api_var,translated_var,dwc,superseeded,type,localised
-Unit.Interpretations.IndividualCount,abundance_interpreted,individualCount,FALSE,integer,FALSE
+Unit.Interpretations.IndividualCount,abundance_interpreted,individualCountInterpreted,FALSE,integer,FALSE
 Unit.AbundanceUnit,abundance_unit,organismQuantity,FALSE,character,TRUE
 Unit.Abundance,abundance_verbatim,organismQuantityType,FALSE,character,FALSE
 Unit.Interpretations.AnnotatedTaxonId,annotated_taxon_id,annotatedTaxonConceptID,FALSE,character,FALSE
@@ -11,7 +11,7 @@ Taxon.EnglishName,common_name_english,vernacularNameEnglish,FALSE,character,FALS
 Taxon.FinnishName,common_name_finnish,vernacularName,FALSE,character,FALSE
 Taxon.SwedishName,common_name_swedish,vernacularNameSwedish,FALSE,character,FALSE
 Gathering.Interpretations.CoordinateSource,coordinates_source,georeferenceSources,FALSE,character,FALSE
-Gathering.Interpretations.CoordinateAccuracy,coordinates_uncertainty_interpreted,coordinateAccuracy,FALSE,integer,FALSE
+Gathering.Interpretations.CoordinateAccuracy,coordinates_uncertainty_interpreted,coordinateUncertaintyInMetersInterpreted,FALSE,integer,FALSE
 Gathering.Interpretations.Country,country_id,countryID,FALSE,character,FALSE
 Gathering.Interpretations.CountrySource,country_source,countrySource,FALSE,character,FALSE
 Gathering.CountryVerbatim,country_verbatim,verbatimCountry,FALSE,character,FALSE
@@ -111,10 +111,10 @@ Unit.ReportedTaxonConfidence,reported_taxon_confidence,identificationQualifer,FA
 Document.DataSecureLevel,restriction_level,dataGeneralizations,FALSE,character,FALSE
 Document.DataSecureReasons,restriction_reason,informationWithheld,FALSE,character,TRUE
 Unit.SampleCount,sample_count,materialSampleCount,FALSE,integer,FALSE
-Taxon.ScientificName,scientific_name_interpreted,scientificName,FALSE,character,FALSE
+Taxon.ScientificName,scientific_name_interpreted,scientificNameInterpreted,FALSE,character,FALSE
 Gathering.GatheringSection,section,eventSection,FALSE,integer,FALSE
 Unit.Sex,sex,sex,FALSE,character,TRUE
-Document.SourceID,source_id,source,FALSE,character,FALSE
+Document.SourceID,source_id,sourceID,FALSE,character,FALSE
 Unit.RecordBasis,superrecord_basis,basisOfSuperRecord,FALSE,character,TRUE
 Taxon.ID,taxon_id,taxonConceptID,FALSE,character,FALSE
 Taxon.TaxonomicOrder,taxonomic_order,taxonTaxonomicOrder,FALSE,character,FALSE
@@ -130,8 +130,8 @@ Unit.Quality.Taxon.Message,record_quality_message,occurrenceQualityMessage,,char
 Document.Quality.CollectionReliabilityRating,collection_quality,datasetCurationLevelSuperseeded,Document.Linkings.CollectionQuality,character,TRUE
 Unit.InvasiveControl,invasive_control,invasiveControlled,Unit.Interpretations.InvasiveControl,logical,FALSE
 Unit.PlantStatusCode,plant_status_code,plantStatusCode,FALSE,character,FALSE
-Unit.AtlasCode,atlas_code_id,atlasCode,FALSE,character,FALSE
-Unit.AtlasClass,atlas_class_id,atlasClass,FALSE,character,FALSE
+Unit.AtlasCode,atlas_code_id,atlasCodeID,FALSE,character,FALSE
+Unit.AtlasClass,atlas_class_id,atlasClassID,FALSE,character,FALSE
 Gathering.StateLand,state_land,isStateLand,FALSE,logical,FALSE
 Document.OriginalDataSource,data_source,dataSource,FALSE,character,FALSE
 Document.MonitoringSiteType,site_type,siteType,FALSE,character,FALSE
