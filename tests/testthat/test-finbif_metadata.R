@@ -34,6 +34,8 @@ test_that("fetching metadata works", {
 
       restriction_level <- finbif_metadata("restriction_level")
 
+      license <- finbif_metadata("license")
+
     })
 
     expect_snapshot(sources)
@@ -53,6 +55,8 @@ test_that("fetching metadata works", {
     expect_snapshot(finnish_occurrence_status)
 
     expect_snapshot(restriction_level)
+
+    expect_snapshot(license)
 
   }
 

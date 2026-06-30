@@ -37,7 +37,8 @@ finbif_metadata <- function(
     "restriction_reason",
     "sex_category",
     "source",
-    "taxon_rank"
+    "taxon_rank",
+    "license"
   )
   data <- data.frame(metadata_name)
 
