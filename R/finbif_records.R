@@ -161,12 +161,6 @@ process_cols <- function(x) {
     if (aggregated) {
       ans <- vapply(x, getElement, NA_character_, col)
       ans <- ifelse(ans == "", NA_character_, ans)
-
-      if (localised) {
-        labels_obj[["labels"]] <- ans
-        ans <- localise_labels(labels_obj)
-      }
-
       ans <- cast_to_type(ans, type)
 
     } else {

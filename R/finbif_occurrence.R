@@ -286,15 +286,35 @@ records_list_data_frame <- function(x) {
   url <- vapply(df, attr, "", "url", TRUE)
   time <- lapply(df, attr, "time", TRUE)
   df <- do.call(rbind, df)
+  aggregate <- attr(x, "aggregate", TRUE)
+  select <- attr(x, "select", TRUE)
 
-  record_id <- switch(
-    xi[["aggregate"]][[1L]], none = "unit.unitId", xi[["select_query"]]
-  )
-
+  record_id <- switch(aggregate[[1L]], none = "unit.unitId", select)
   record_id <- do.call(paste, df[, record_id, drop = FALSE])
+
   dups <- duplicated(record_id)
   df <- df[!dups, , drop = FALSE]
   record_id <- record_id[!dups]
+
+  if (aggregate[[1L]] != "none") {
+    locale <- attr(x, "locale", TRUE)
+    cache <- attr(x, "cache", TRUE)
+    var_names <- sysdata(list(which = "var_names"))
+
+    for (col in select) {
+      if (var_names[[col, "localised"]]) {
+        labels_obj <- list(
+          col = col,
+          var_names = var_names,
+          locale = locale,
+          cache = cache,
+          labels = df[[col]]
+        )
+        df[[col]] <- localise_labels(labels_obj)
+      }
+    }
+  }
+
   s <- seq_len(attr(x, "nrec_dnld", TRUE))
   cache <- attr(x, "cache", TRUE)
 
