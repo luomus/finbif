@@ -59,7 +59,8 @@ sysdata <- function(obj) {
     ),
     abundance_unit = get_sysdata(
       list(which = "MY.abundanceUnitEnum", cache = obj[["cache"]])
-    )
+    ),
+    license = license()
   )
 }
 
@@ -1021,4 +1022,61 @@ complete_list_type <- function() {
   )
   list_type <- structure(list_type, row.names = r, class = "data.frame")
   set_translations(list_type)
+}
+
+#' @noRd
+license <- function() {
+  licenses <- list(
+    name_en = c(
+      "http://tun.fi/MY.intellectualRightsCC-BY" =
+        "https://creativecommons.org/licenses/by/4.0/",
+      "http://tun.fi/MZ.intellectualRightsCC-BY" =
+        "https://creativecommons.org/licenses/by/4.0/",
+      "http://tun.fi/MY.intellectualRightsCC-BY-4.0" =
+        "https://creativecommons.org/licenses/by/4.0/",
+      "http://tun.fi/MZ.intellectualRightsCC-BY-4.0" =
+        "https://creativecommons.org/licenses/by/4.0/",
+      "http://tun.fi/MY.intellectualRightsCC0" =
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+      "http://tun.fi/MZ.intellectualRightsCC0" =
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+      "http://tun.fi/MY.intellectualRightsCC0-4.0" =
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+      "http://tun.fi/MZ.intellectualRightsCC0-4.0" =
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+      "http://tun.fi/MY.intellectualRightsPD" =
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+      "http://tun.fi/MZ.intellectualRightsPD" =
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+      "http://tun.fi/MY.intellectualRightsARR" =
+        "All Rights Reserved",
+      "http://tun.fi/MZ.intellectualRightsARR" =
+        "All Rights Reserved",
+      "http://tun.fi/MY.intellectualRightsCC-BY-NC-4.0" =
+        "https://creativecommons.org/licenses/by-nc/4.0/",
+      "http://tun.fi/MZ.intellectualRightsCC-BY-NC-4.0" =
+        "https://creativecommons.org/licenses/by-nc/4.0/",
+      "http://tun.fi/MY.intellectualRightsCC-BY-NC-SA-4.0" =
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "http://tun.fi/MZ.intellectualRightsCC-BY-NC-SA-4.0" =
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "http://tun.fi/MY.intellectualRightsCC-BY-SA-4.0" =
+        "https://creativecommons.org/licenses/by-sa/4.0/",
+      "http://tun.fi/MZ.intellectualRightsCC-BY-SA-4.0" =
+        "https://creativecommons.org/licenses/by-sa/4.0/",
+      "http://tun.fi/MY.intellectualRightsCC-BY-NC-ND-4.0" =
+        "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "http://tun.fi/MZ.intellectualRightsCC-BY-NC-ND-4.0" =
+        "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "http://tun.fi/MY.intellectualRightsCC-BY-ND-4.0" =
+        "https://creativecommons.org/licenses/by-nd/4.0/",
+      "http://tun.fi/MZ.intellectualRightsCC-BY-ND-4.0" =
+        "https://creativecommons.org/licenses/by-nd/4.0/"
+    )
+  )
+  licenses <- structure(
+    licenses, row.names = names(licenses[["name_en"]]), class = "data.frame"
+  )
+
+  set_translations(licenses)
 }

@@ -120,7 +120,7 @@ document.facts.value,document_fact_value,documentFactValue,FALSE,FALSE,character
 document.firstLoadDate,first_load_date,available,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.formId,form_id,formID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.keywords,document_keywords,documentKeywords,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.licenseId,license,license,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+document.licenseId,license,license,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE
 document.linkings.editors.fullName,editor_name,documentEditedBy,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.linkings.editors.id,editor_id,documentEditedByID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.linkings.editors.userId,editor_user_id,documentEditedByUserID,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
