@@ -1,6 +1,14 @@
 # News for Package <span class="pkg">finbif</span>
 
+# finbif 0.9.14.9001
+
+## MINOR IMPROVEMENTS
+
+   - New variable `materialEntityType` added.
+
 # finbif 0.9.14.9000
+
+## BREAKING CHANGES
 
    - The default value of `finbif_use_dwc` is now `TRUE`. meaning that
      `finbif_collections()` expects and returns DwC style variable names unless

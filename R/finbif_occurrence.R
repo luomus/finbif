@@ -246,6 +246,7 @@ occurrence <- function(fb_records_obj) {
   fb_occurrence_df <- compute_region(fb_occurrence_df)
   fb_occurrence_df <- compute_municipality(fb_occurrence_df)
   fb_occurrence_df <- compute_local_area(fb_occurrence_df)
+  fb_occurrence_df <- compute_material_entity_type(fb_occurrence_df)
   fb_occurrence_df <- compute_codes(fb_occurrence_df)
   fb_occurrence_df <- extract_facts(fb_occurrence_df)
 
@@ -1115,6 +1116,41 @@ compute_local_area <- function(fb_occurrence_df) {
     fb_occurrence_df[[la_var]] <- ifelse(
       is.na(fb_occurrence_df[[idv]]), fb_occurrence_df[[lav]], NA_character_
     )
+  }
+
+  fb_occurrence_df
+}
+
+#' @noRd
+compute_material_entity_type <- function(fb_occurrence_df) {
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+  vtype <- col_type_string(dwc)
+  var_names <- sysdata(list(which = "var_names"))
+  met_var <- var_names[["computed_var_material_entity_type", vtype]]
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
+
+  if (add && met_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
+    met <- c(
+      SUBFOSSIL_AMBER_INCLUSION_SPECIMEN = "FossilSpecimen",
+      FOSSIL_SPECIMEN = "FossilSpecimen",
+      MATERIAL_SAMPLE = "MaterialSample",
+      MATERIAL_SAMPLE_AIR = "EnvironmentalSample",
+      MATERIAL_SAMPLE_SOIL = "EnvironmentalSample",
+      MATERIAL_SAMPLE_WATER = "EnvironmentalSample",
+      MICROBIAL_SPECIMEN = "MicrobialSpecimen",
+      PRESERVED_SPECIMEN = "PreservedSpecimen",
+      SUBFOSSIL_SPECIMEN = "FossilSpecimen"
+    )
+    rb_terms <- finbif_metadata(
+      "record_basis",
+      attr(fb_occurrence_df, "locale", TRUE),
+      attr(fb_occurrence_df, "cache", TRUE)[[2L]]
+    )
+    rb_terms <- structure(rownames(rb_terms), names = rb_terms[["name"]])
+    rb_var <- var_names[["unit.recordBasis", vtype]]
+    rb <- fb_occurrence_df[[rb_var]]
+    rb <- rb_terms[rb]
+    fb_occurrence_df[[met_var]] <- unname(met[rb])
   }
 
   fb_occurrence_df

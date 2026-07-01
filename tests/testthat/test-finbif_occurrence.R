@@ -91,7 +91,8 @@ test_that("fetching occurrences works", {
         "Plants",
         select = c(
           "threatenedStatus",
-          "originalTaxonRank"
+          "originalTaxonRank",
+          "materialEntityType"
         ),
         filter = list(
           date_range_ymd = 2023,

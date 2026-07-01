@@ -465,6 +465,10 @@ infer_computed_vars <- function(fb_records_obj) {
         "gathering.interpretations.finnishMunicipality",
         "gathering.municipality"
       )
+    ),
+    material_entity_type = list(
+      vars = "computed_var_material_entity_type",
+      select_names = "unit.recordBasis"
     )
   )
 

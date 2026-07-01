@@ -1,6 +1,14 @@
 # Changelog
 
+## finbif 0.9.14.9001
+
+### MINOR IMPROVEMENTS
+
+- New variable `materialEntityType` added.
+
 ## finbif 0.9.14.9000
+
+### BREAKING CHANGES
 
 - The default value of `finbif_use_dwc` is now `TRUE`. meaning that
   [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
