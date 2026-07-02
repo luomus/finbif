@@ -2,6 +2,8 @@
 
 ## finbif 0.10.0
 
+CRAN release: 2026-07-02
+
 ### MINOR IMPROVEMENTS
 
 - New variable `materialEntityType` added.
