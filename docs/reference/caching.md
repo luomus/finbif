@@ -43,9 +43,9 @@ the `cache` function arguments.
 ## Clearing the cache
 
 The cache can be reset
-[`finbif_clear_cache()`](https://luomus.github.io/finbif/reference/finbif_clear_cache.md).
+[`finbif_clear_cache()`](https://finbif-docs-dev.netlify.app/reference/finbif_clear_cache.md).
 
 ## Updating the cache
 
 The cache can be updated using
-[`finbif_update_cache()`](https://luomus.github.io/finbif/reference/finbif_update_cache.md).
+[`finbif_update_cache()`](https://finbif-docs-dev.netlify.app/reference/finbif_update_cache.md).

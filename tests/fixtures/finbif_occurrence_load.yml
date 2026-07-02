@@ -1,15 +1,16 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.laji.fi/warehouse/enumeration-labels
+    uri: https://apitest.laji.fi/warehouse/enumeration-labels
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:44 GMT
+      date: Thu, 02 Jul 2026 12:32:36 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -252,20 +253,21 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2026-07-02 11:38:43
+  recorded_at: 2026-07-02 12:35:52
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.recordBases
+    uri: https://apitest.laji.fi/metadata/alts/MY.recordBases
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:44 GMT
+      date: Thu, 02 Jul 2026 12:32:36 GMT
       content-type: application/json; charset=utf-8
-      content-length: '3355'
+      content-length: '3359'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"d1b-qrQsOLcfSxmABWJm9D3BR27gP3w"
-      cache-control: public
+      etag: W/"d1f-ZV5HqxsKtLxy823UJOVNOoDCJoY"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -293,21 +295,22 @@ http_interactions:
         sample, soil","fi":"Materiaalinäyte: maaperänäyte","sv":"Materialprov, jord"}},{"id":"MY.recordBasisMaterialSampleWater","value":{"fi":"Materiaalinäyte:
         vesinäyte","en":"Material sample, water","sv":"Materialprov, vatten"}},{"id":"MY.recordBasisMicrobialSpecimen","value":{"fi":"Mikrobinäyte","en":"Microbial
         specimen","sv":"Mikrobiella prov"}},{"id":"MY.recordBasisLivingSpecimen","value":{"en":"Living
-        specimen","fi":"Elävä näyte","sv":"Levande prov"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:43
+        specimen","fi":"Elävä näyte","sv":"Levande prov"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:52
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.sexes
+    uri: https://apitest.laji.fi/metadata/alts/MY.sexes
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:44 GMT
+      date: Thu, 02 Jul 2026 12:32:36 GMT
       content-type: application/json; charset=utf-8
-      content-length: '742'
+      content-length: '746'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"2e6-uHLNNq/xA2Up2usGhpo+LipIHXA"
-      cache-control: public
+      etag: W/"2ea-JwmlU8RTXCxY7qGtAq8brQltChI"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -319,21 +322,22 @@ http_interactions:
         - Not applicable","sv":"inte tillämpbar"}},{"id":"MY.sexX","value":{"en":"X
         - Gynandromorph","fi":"gynandromorfi","sv":"gynandromorf"}},{"id":"MY.sexE","value":{"fi":"eri
         sukupuolia","en":"E - multiple","sv":"olika kön"}},{"id":"MY.sexC","value":{"fi":"ristiriitainen","en":"C
-        - Conflicting","sv":"kontroversiell"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:44
+        - Conflicting","sv":"kontroversiell"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:52
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.lifeStages
+    uri: https://apitest.laji.fi/metadata/alts/MY.lifeStages
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:44 GMT
+      date: Thu, 02 Jul 2026 12:32:36 GMT
       content-type: application/json; charset=utf-8
-      content-length: '1965'
+      content-length: '1969'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"7ad-E8s8HjrdZZd6rZVNY7usfrsJ5ms"
-      cache-control: public
+      etag: W/"7b1-VMR5cD1F/uKib7hScpNC9kdr1LY"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -344,21 +348,22 @@ http_interactions:
         (linnut)","sv":"unge (fåglar)"}},{"id":"MY.lifeStageHatchedEgg","value":{"fi":"kuoriutunut
         muna","en":"hatched egg","sv":"kläckt ägg"}},{"id":"MY.lifeStageHatchedPupa","value":{"sv":"kläckt
         ägg","fi":"kuoriutunut kotelo","en":"hatched pupa"}},{"id":"MY.lifeStageGall","value":{"en":"gall","fi":"äkämä","sv":"gallbildning"}},{"id":"MY.lifeStageMarks","value":{"sv":"spår","fi":"jäljet
-        (syömäjäljet tms.)","en":"marks (feeding marks etc.)"}},{"id":"MY.lifeStageTriungulin","value":{"fi":"triunguliini","en":"triungulin","sv":"triunguliini"}},{"id":"MY.lifeStageExuvia","value":{"fi":"toukkanahka","en":"exuvia","sv":"exuvium"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:44
+        (syömäjäljet tms.)","en":"marks (feeding marks etc.)"}},{"id":"MY.lifeStageTriungulin","value":{"fi":"triunguliini","en":"triungulin","sv":"triunguliini"}},{"id":"MY.lifeStageExuvia","value":{"fi":"toukkanahka","en":"exuvia","sv":"exuvium"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:52
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.plantLifeStageEnum
+    uri: https://apitest.laji.fi/metadata/alts/MY.plantLifeStageEnum
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:45 GMT
+      date: Thu, 02 Jul 2026 12:32:37 GMT
       content-type: application/json; charset=utf-8
-      content-length: '1310'
+      content-length: '1314'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"51e-16VujRn+bLmxvBuXMd66a2jJgpI"
-      cache-control: public
+      etag: W/"522-zDQ3Z0xuxdnwVM9yxyA0gB/S/Qc"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -372,21 +377,22 @@ http_interactions:
         siemeniä / hedelmiä / itiöitä","en":"ripe seed / fruit / spore","sv":"mogen
         frö / frukt / spor"}},{"id":"MY.plantLifeStageDeadSprout","value":{"en":"dead
         sprout","fi":"kuollut verso","sv":"död skott"}},{"id":"MY.plantLifeStageSubterranean","value":{"en":"subterranean","fi":"mukula
-        / sipuli / juuri","sv":"knöl / lök / rot"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:44
+        / sipuli / juuri","sv":"knöl / lök / rot"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:52
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MZ.secureReason
+    uri: https://apitest.laji.fi/metadata/alts/MZ.secureReason
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:45 GMT
+      date: Thu, 02 Jul 2026 12:32:37 GMT
       content-type: application/json; charset=utf-8
-      content-length: '2435'
+      content-length: '2439'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"983-Cp0sYnCJxXIDbb6gFCsw6xd4+ZY"
-      cache-control: public
+      etag: W/"987-7tG9tMi57/xTTdnDEU14Nom43MM"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -415,19 +421,20 @@ http_interactions:
         karkeistamat paikkatiedot"}},{"id":"MZ.secureReasonUserHiddenTime","value":{"fi":"Käyttäjän
         karkeistama aika","en":"User has hidden time information","sv":"Användaren
         har dolt tidinformation"}},{"id":"MZ.secureReasonPersonNamesHidden","value":{"en":"Person
-        names hidden","fi":"Henkilönimet piiloitettu","sv":"Personnamn dolda"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:44
+        names hidden","fi":"Henkilönimet piiloitettu","sv":"Personnamn dolda"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:52
 - request:
     method: GET
-    uri: https://api.laji.fi/warehouse/enumeration-labels
+    uri: https://apitest.laji.fi/warehouse/enumeration-labels
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:45 GMT
+      date: Thu, 02 Jul 2026 12:32:37 GMT
       content-type: application/json;charset=utf-8
       access-control-allow-origin: '*'
-      via: 1.0 dw.laji.fi
+      via: 1.0 staging.laji.fi
       cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -670,20 +677,21 @@ http_interactions:
         ei löytynyt","en":"invasive not found","sv":"invasive hittades inte"}},{"enumeration":"AND","property":"MZ.operatorAnd","label":{"fi":"JA
         (AND)","en":"AND","sv":"OCH (AND)"}},{"enumeration":"OR","property":"MZ.operatorOr","label":{"fi":"TAI
         (OR)","en":"OR","sv":"ELLER (OR)"}}]}'
-  recorded_at: 2026-07-02 11:38:44
+  recorded_at: 2026-07-02 12:35:52
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.recordBases
+    uri: https://apitest.laji.fi/metadata/alts/MY.recordBases
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:45 GMT
+      date: Thu, 02 Jul 2026 12:32:37 GMT
       content-type: application/json; charset=utf-8
-      content-length: '3355'
+      content-length: '3359'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"d1b-qrQsOLcfSxmABWJm9D3BR27gP3w"
-      cache-control: public
+      etag: W/"d1f-ZV5HqxsKtLxy823UJOVNOoDCJoY"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -711,21 +719,22 @@ http_interactions:
         sample, soil","fi":"Materiaalinäyte: maaperänäyte","sv":"Materialprov, jord"}},{"id":"MY.recordBasisMaterialSampleWater","value":{"fi":"Materiaalinäyte:
         vesinäyte","en":"Material sample, water","sv":"Materialprov, vatten"}},{"id":"MY.recordBasisMicrobialSpecimen","value":{"fi":"Mikrobinäyte","en":"Microbial
         specimen","sv":"Mikrobiella prov"}},{"id":"MY.recordBasisLivingSpecimen","value":{"en":"Living
-        specimen","fi":"Elävä näyte","sv":"Levande prov"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:44
+        specimen","fi":"Elävä näyte","sv":"Levande prov"}},{"id":"MY.recordBasisLiterature","value":{"fi":"Kirjallisuustieto","en":"Literature","sv":"Litteratur"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:52
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.sexes
+    uri: https://apitest.laji.fi/metadata/alts/MY.sexes
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:45 GMT
+      date: Thu, 02 Jul 2026 12:32:37 GMT
       content-type: application/json; charset=utf-8
-      content-length: '742'
+      content-length: '746'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"2e6-uHLNNq/xA2Up2usGhpo+LipIHXA"
-      cache-control: public
+      etag: W/"2ea-JwmlU8RTXCxY7qGtAq8brQltChI"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -737,21 +746,22 @@ http_interactions:
         - Not applicable","sv":"inte tillämpbar"}},{"id":"MY.sexX","value":{"en":"X
         - Gynandromorph","fi":"gynandromorfi","sv":"gynandromorf"}},{"id":"MY.sexE","value":{"fi":"eri
         sukupuolia","en":"E - multiple","sv":"olika kön"}},{"id":"MY.sexC","value":{"fi":"ristiriitainen","en":"C
-        - Conflicting","sv":"kontroversiell"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:44
+        - Conflicting","sv":"kontroversiell"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:52
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.lifeStages
+    uri: https://apitest.laji.fi/metadata/alts/MY.lifeStages
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:45 GMT
+      date: Thu, 02 Jul 2026 12:32:37 GMT
       content-type: application/json; charset=utf-8
-      content-length: '1965'
+      content-length: '1969'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"7ad-E8s8HjrdZZd6rZVNY7usfrsJ5ms"
-      cache-control: public
+      etag: W/"7b1-VMR5cD1F/uKib7hScpNC9kdr1LY"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -762,21 +772,22 @@ http_interactions:
         (linnut)","sv":"unge (fåglar)"}},{"id":"MY.lifeStageHatchedEgg","value":{"fi":"kuoriutunut
         muna","en":"hatched egg","sv":"kläckt ägg"}},{"id":"MY.lifeStageHatchedPupa","value":{"sv":"kläckt
         ägg","fi":"kuoriutunut kotelo","en":"hatched pupa"}},{"id":"MY.lifeStageGall","value":{"en":"gall","fi":"äkämä","sv":"gallbildning"}},{"id":"MY.lifeStageMarks","value":{"sv":"spår","fi":"jäljet
-        (syömäjäljet tms.)","en":"marks (feeding marks etc.)"}},{"id":"MY.lifeStageTriungulin","value":{"fi":"triunguliini","en":"triungulin","sv":"triunguliini"}},{"id":"MY.lifeStageExuvia","value":{"fi":"toukkanahka","en":"exuvia","sv":"exuvium"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:44
+        (syömäjäljet tms.)","en":"marks (feeding marks etc.)"}},{"id":"MY.lifeStageTriungulin","value":{"fi":"triunguliini","en":"triungulin","sv":"triunguliini"}},{"id":"MY.lifeStageExuvia","value":{"fi":"toukkanahka","en":"exuvia","sv":"exuvium"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:52
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.plantLifeStageEnum
+    uri: https://apitest.laji.fi/metadata/alts/MY.plantLifeStageEnum
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:45 GMT
+      date: Thu, 02 Jul 2026 12:32:37 GMT
       content-type: application/json; charset=utf-8
-      content-length: '1310'
+      content-length: '1314'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"51e-16VujRn+bLmxvBuXMd66a2jJgpI"
-      cache-control: public
+      etag: W/"522-zDQ3Z0xuxdnwVM9yxyA0gB/S/Qc"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -790,21 +801,22 @@ http_interactions:
         siemeniä / hedelmiä / itiöitä","en":"ripe seed / fruit / spore","sv":"mogen
         frö / frukt / spor"}},{"id":"MY.plantLifeStageDeadSprout","value":{"en":"dead
         sprout","fi":"kuollut verso","sv":"död skott"}},{"id":"MY.plantLifeStageSubterranean","value":{"en":"subterranean","fi":"mukula
-        / sipuli / juuri","sv":"knöl / lök / rot"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:44
+        / sipuli / juuri","sv":"knöl / lök / rot"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:53
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MZ.secureReason
+    uri: https://apitest.laji.fi/metadata/alts/MZ.secureReason
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:45 GMT
+      date: Thu, 02 Jul 2026 12:32:37 GMT
       content-type: application/json; charset=utf-8
-      content-length: '2435'
+      content-length: '2439'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"983-Cp0sYnCJxXIDbb6gFCsw6xd4+ZY"
-      cache-control: public
+      etag: W/"987-7tG9tMi57/xTTdnDEU14Nom43MM"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -833,21 +845,22 @@ http_interactions:
         karkeistamat paikkatiedot"}},{"id":"MZ.secureReasonUserHiddenTime","value":{"fi":"Käyttäjän
         karkeistama aika","en":"User has hidden time information","sv":"Användaren
         har dolt tidinformation"}},{"id":"MZ.secureReasonPersonNamesHidden","value":{"en":"Person
-        names hidden","fi":"Henkilönimet piiloitettu","sv":"Personnamn dolda"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:44
+        names hidden","fi":"Henkilönimet piiloitettu","sv":"Personnamn dolda"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:53
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.abundanceUnitEnum
+    uri: https://apitest.laji.fi/metadata/alts/MY.abundanceUnitEnum
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:45 GMT
+      date: Thu, 02 Jul 2026 12:32:37 GMT
       content-type: application/json; charset=utf-8
-      content-length: '2832'
+      content-length: '2836'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"b10-NECVzOco369I/NAU28EehKvmJoM"
-      cache-control: public
+      etag: W/"b14-WjC8jQevmQ9uTeykY5ohL5jqqiU"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -877,21 +890,22 @@ http_interactions:
         (dm^2)","en":"Square decimeter (dm^2)","sv":"Kvadrat decimeter (dm^2)"}},{"id":"MY.abundanceUnitSquareM","value":{"fi":"Neliömetri
         (m^2)","en":"Square meter (m^2)","sv":"Kvadratmeter (m^2)"}},{"id":"MY.abundanceUnitRelativeDensity","value":{"fi":"Suhteellinen
         tiheys","en":"Relative density","sv":"Relativ densitet"}},{"id":"MY.abundanceUnitOccursDoesNotOccur","value":{"fi":"Esiintyy/ei
-        esiinny","en":"Occurs / does not occur","sv":"Forekommer / förekommer inte"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:44
+        esiinny","en":"Occurs / does not occur","sv":"Forekommer / förekommer inte"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:53
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MZ.recordQualityEnum
+    uri: https://apitest.laji.fi/metadata/alts/MZ.recordQualityEnum
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:46 GMT
+      date: Thu, 02 Jul 2026 12:32:37 GMT
       content-type: application/json; charset=utf-8
-      content-length: '623'
+      content-length: '627'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"26f-MRbZzjd+Y0/5VtfL1F8LuUY5AUw"
-      cache-control: public
+      etag: W/"273-sdgU7QwaDdxtNhvMjYnqWqjN15g"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -900,21 +914,22 @@ http_interactions:
       string: '{"results":[{"id":"MZ.recordQualityExpertVerified","value":{"fi":"Asiantuntijan
         varmistama","en":"Expert verified","sv":"Expertkuraterad"}},{"id":"MZ.recordQualityCommunityVerified","value":{"en":"Community
         verified","fi":"Yhteisön varmistama","sv":"Gemenskapskuraterat"}},{"id":"MZ.recordQualityNeutral","value":{"en":"Unassessed","fi":"Ei
-        arvioitu","sv":"Obedömd"}},{"id":"MZ.recordQualityUncertain","value":{"fi":"Epävarma","en":"Uncertain","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:45
+        arvioitu","sv":"Obedömd"}},{"id":"MZ.recordQualityUncertain","value":{"fi":"Epävarma","en":"Uncertain","sv":"Osäker"}},{"id":"MZ.recordQualityErroneous","value":{"fi":"Virheellinen","en":"Erroneous","sv":"Felaktig"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:53
 - request:
     method: GET
-    uri: https://api.laji.fi/metadata/alts/MY.collectionQualityEnum
+    uri: https://apitest.laji.fi/metadata/alts/MY.collectionQualityEnum
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 11:38:46 GMT
+      date: Thu, 02 Jul 2026 12:32:38 GMT
       content-type: application/json; charset=utf-8
-      content-length: '660'
+      content-length: '664'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"294-TXPpaDJSpoCQU0bt+n4epthZXDc"
-      cache-control: public
+      etag: W/"298-Q+BMCfbJxSqWe0vD4a7JiBsrnuQ"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -926,6 +941,6 @@ http_interactions:
         hobbyists / expert curated","fi":"Asiantuntevat harrastajat / asiantuntijoiden
         laadunvarmistama","sv":"Expertentusiaster / expertkuraterad"}},{"id":"MY.collectionQualityEnum1","value":{"en":"Citizen
         science / mostly uncurated","fi":"Kansalaishavaintoja / ei laadunvarmistusta","sv":"Medborgarvetenskap
-        / ingen kvalitetssäkring"}}],"@context":"https://api.laji.fi/context/metadata-alt-multi"}'
-  recorded_at: 2026-07-02 11:38:45
+        / ingen kvalitetssäkring"}}],"@context":"https://apitest.laji.fi/context/metadata-alt-multi"}'
+  recorded_at: 2026-07-02 12:35:53
 recorded_with: VCR-vcr/2.1.0

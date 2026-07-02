@@ -1,5 +1,9 @@
 # News for Package <span class="pkg">finbif</span>
 
+# finbif 0.10.0.9000
+
+   - This is the current development version.
+
 # finbif 0.10.0
 
 ## MINOR IMPROVEMENTS
@@ -9,7 +13,7 @@
 ## BREAKING CHANGES
 
    - The default value of `finbif_use_dwc` is now `TRUE`. meaning that
-     `finbif_collections()` expects and returns DwC style variable names unless
+     `finbif_occurrence()` expects and returns DwC style variable names unless
      otherwise specified by the user.
 
 # finbif 0.9.14
