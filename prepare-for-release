@@ -8,7 +8,8 @@
 7.  Merge changes (`git merge dev`) and resolve conflicts, if any, and commit.
 8.  Restart R to reset environment variables.
 9.  Run data-raw/sysdata.R and commit changes.
-10. Delete cassettes and snapshots, run tests and commit changes to test assets.
+10. Delete cassettes and snapshots, run tests and commit changes to test assets,
+    touch README.Rmd and run make.
 11. Check winbuilder (`devtools::check_win_devel()`).
 12. Update and commit cran-comments.md.
 13. Release (`devtools::release()`) and wait for CRAN response.
