@@ -1,17 +1,15 @@
 # Changelog
 
-## finbif 0.9.14.9001
+## finbif 0.10.0
 
 ### MINOR IMPROVEMENTS
 
 - New variable `materialEntityType` added.
 
-## finbif 0.9.14.9000
-
 ### BREAKING CHANGES
 
 - The default value of `finbif_use_dwc` is now `TRUE`. meaning that
-  [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+  [`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md)
   expects and returns DwC style variable names unless otherwise
   specified by the user.
 
@@ -409,7 +407,7 @@ CRAN release: 2022-01-03
   matching of argument `drop_na`.
 - Data quality description has been appended to description field in
   `data.frame` returned by
-  [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md).
+  [`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md).
 - Occurrence record filtering can now be done using open-ended date
   ranges.
 - New administrative statuses added.
@@ -636,15 +634,15 @@ CRAN release: 2020-04-23
 - Front matter of vignettes is now visible when using the R help
   browser.
 - Retired “quiet” option for `on_check_fail` argument in function
-  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md).
+  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md).
 - Improved error messages when taxa fail checking in
-  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md).
+  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md).
 - Global option to set timezone, `finbif_tz`, as default value for
   “tzone” argument to
-  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md).
+  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md).
   Avoids having to set system environment variable TZ or specify “tzone”
   every time
-  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md)
+  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md)
   is run.
 - Now when a record has no time information the start time is assumed to
   be midday. Previous behaviour was to assume start time was midnight,
@@ -669,7 +667,7 @@ CRAN release: 2020-04-23
 - Fixed bug in handling of duplicates that could result in an infinite
   recursion.
 - Fixed bug that (when `on_check_fail = "warn"`) all taxa failed checks
-  [`finbif_occurrence()`](https://finbif-docs-dev.netlify.app/reference/finbif_occurrence.md)
+  [`finbif_occurrence()`](https://luomus.github.io/finbif/reference/finbif_occurrence.md)
   would proceed as if no taxa had been selected.
 - Fixed bug in print method for `finbif_occ` objects that caused error
   when trying to display a single column objects with a list-col only.

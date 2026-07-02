@@ -1,12 +1,10 @@
 # News for Package <span class="pkg">finbif</span>
 
-# finbif 0.9.14.9001
+# finbif 0.10.0
 
 ## MINOR IMPROVEMENTS
 
    - New variable `materialEntityType` added.
-
-# finbif 0.9.14.9000
 
 ## BREAKING CHANGES
 

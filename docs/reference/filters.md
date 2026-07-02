@@ -7,9 +7,9 @@ Filters available for FinBIF records and occurrence data.
 Filters related to taxa include:
 
 - `taxon_id` Character vector. FinBIF taxon IDs. The functions
-  [`finbif_check_taxa()`](https://finbif-docs-dev.netlify.app/reference/finbif_check_taxa.md)
+  [`finbif_check_taxa()`](https://luomus.github.io/finbif/reference/finbif_check_taxa.md)
   and
-  [`finbif_taxa()`](https://finbif-docs-dev.netlify.app/reference/finbif_taxa.md)
+  [`finbif_taxa()`](https://luomus.github.io/finbif/reference/finbif_taxa.md)
   can be used to search for taxon IDs.
 
 - `taxon_name` Character vector. Filter based on taxon names (scientific
@@ -36,35 +36,35 @@ Filters related to taxa include:
 - `informal_groups` Character vector. Filter by informal taxonomic
   groups. Only including informal groups linked to the recorded taxa in
   the FinBIF database. Use the function
-  [`finbif_informal_groups()`](https://finbif-docs-dev.netlify.app/reference/finbif_informal_groups.md)
+  [`finbif_informal_groups()`](https://luomus.github.io/finbif/reference/finbif_informal_groups.md)
   to see the informal taxonomic groups available in FinBIF.
 
 - `informal_groups_reported` Character vector. Filter by informal
   taxonomic groups including groups reported directly with the record
   and those linked to the recorded taxa in the FinBIF database. Use the
   function
-  [`finbif_informal_groups()`](https://finbif-docs-dev.netlify.app/reference/finbif_informal_groups.md)
+  [`finbif_informal_groups()`](https://luomus.github.io/finbif/reference/finbif_informal_groups.md)
   to see the informal taxonomic groups available in FinBIF.
 
 - `regulatory_status` Character vector. Filter by regulatory status
   code. Use the function
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see regulatory statuses and codes.
 
 - `red_list_status` Character vector. Filter by IUCN red list status
   code. Use the function
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see red list statuses and codes.
 
 - `primary_habitat` Character vector or named list of character vectors.
   Filter by primary habitat code. Use the function
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see habitat (sub)types and codes for taxa in the FinBIF database.
   Habitat type/subtypes can be refined further by indicating habitat
   qualifiers with a named list of character vectors where the names are
   habitat (sub)type codes and the elements of the character vector are
   the habitat qualifier codes. Use the function
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see habitat qualifiers and codes. The records returned will be of
   taxa whose primary habitat is considered to be the
   (sub)habitat/habitat qualifier combination supplied.
@@ -76,7 +76,7 @@ Filters related to taxa include:
 
 - `finnish_occurrence_status` Character vector. Filter by Finnish
   occurrence status of taxa. Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see the possible occurrence statuses of taxa.
 
 - `finnish_occurrence_status_neg` Character vector. Negation of the
@@ -92,7 +92,7 @@ Filters related to taxa include:
   records of invasive and non-invasive taxa.
 
 - `taxon_rank` Character vector. Filter by taxonomic rank. Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see the taxonomic ranks available. Records returned will be limited
   to the specified ranks and not include records of lower taxonomic
   levels.
@@ -108,19 +108,19 @@ Filters related to location of record include:
   in the original records.
 
 - `country` Character vector. Filter by country. Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see country names and ISO codes (2 and 3 character) used in FinBIF.
 
 - `region` Character vector. Filter by region. Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see region names and codes.
 
 - `bio_province` Character vector. Filter by bio-province. Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see bio-province names and codes.
 
 - `finnish_municipality` Character vector. Filter by municipality. Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see Finnish municipality names.
 
 - `location_tag` Character vector Filter by tags associated with a
@@ -128,7 +128,7 @@ Filters related to location of record include:
 
 - `bird_assoc_area` Character vector. Filter by BirdLife Finland
   association area. Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see association names and codes.
 
 - `coordinates` Coordinates. A character vector or list of coordinate
@@ -246,13 +246,13 @@ Other filters:
 - `keywords` Character vector. Filter by keywords.
 
 - `collection` Character vector or
-  [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+  [`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md)
   data.frame. Filter by collection. If a character vector can refer to
   collection ID, collection name (in English) or abbreviated name. Use
-  [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+  [`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md)
   to see list of collections and metadata. Can also use the results of a
   call to
-  [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+  [`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md)
   directly to filter records.
 
 - `subcollections` Logical. If `TRUE` (default) include the
@@ -260,17 +260,17 @@ Other filters:
   subcollections.
 
 - `not_collection` Character vector or
-  [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
+  [`finbif_collections()`](https://luomus.github.io/finbif/reference/finbif_collections.md)
   data.frame. As for `collection`, but result will be the negation of
   the specified collections.
 
 - `source` Character vector. Filter by information system data source.
   Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see data source IDs names and descriptions.
 
 - `record_basis` Character vector. Filter by basis of record. Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see list of record bases.
 
 - `superrecord_basis` Character vector. Filter by superset of record
@@ -278,12 +278,12 @@ Other filters:
   or `"specimen"`.
 
 - `life_stage` Character vector. Filter by organism life stage. Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see list of organism life stages.
 
 - `sex` Character vector. Filter by organism sex and sex-related
   category name or code. Use
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   to see list of organism sexes and sex-related categories and codes. If
   `"male"` or `"female"` is specified then records returned will be
   those with sex specified as male or female respectively and those
@@ -334,12 +334,12 @@ Other filters:
 
 - `restriction_reason` Character vector. Filter by reason data has
   security restrictions. See
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   for a list of reasons data may have security restrictions.
 
 - `restriction_level` Character vector. Filter by data restriction
   level. See
-  [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
+  [`finbif_metadata()`](https://luomus.github.io/finbif/reference/finbif_metadata.md)
   for a list of the levels of data restrictions.
 
 - `restricted` Logical. Filter records by whether any data restrictions
@@ -356,7 +356,7 @@ Other filters:
 - `taxon_census` Character vector. Return records belonging to surveys
   or censuses of a given taxon or taxonomic group. Specify the taxonomic
   group with a FinBIF taxon ID. Use
-  [`finbif_check_taxa()`](https://finbif-docs-dev.netlify.app/reference/finbif_check_taxa.md)
+  [`finbif_check_taxa()`](https://luomus.github.io/finbif/reference/finbif_check_taxa.md)
   to find taxon IDs.
 
 - `{record|event|document}_fact` Character vector. Filter by record,
