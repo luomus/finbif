@@ -1139,18 +1139,49 @@ compute_material_entity_type <- function(fb_occurrence_df) {
       MATERIAL_SAMPLE_WATER = "EnvironmentalSample",
       MICROBIAL_SPECIMEN = "MicrobialSpecimen",
       PRESERVED_SPECIMEN = "PreservedSpecimen",
-      SUBFOSSIL_SPECIMEN = "FossilSpecimen"
+      SUBFOSSIL_SPECIMEN = "FossilSpecimen",
+      `http://tun.fi/MY.preservationPinned` = "PinnedSpecimen",
+      `http://tun.fi/MY.preservationStuffed` = "TaxidermiedSpecimen",
+      `http://tun.fi/MY.preservationSlide` = "MicroscopeSlide",
+      `http://tun.fi/MY.preservationSlideCanadaBalsam` = "MicroscopeSlide",
+      `http://tun.fi/MY.preservationSlideEuparal` = "MicroscopeSlide",
+      `http://tun.fi/MY.preservationSlidePolyviol` = "MicroscopeSlide"
     )
+
     rb_terms <- finbif_metadata(
       "record_basis",
       attr(fb_occurrence_df, "locale", TRUE),
       attr(fb_occurrence_df, "cache", TRUE)[[2L]]
     )
     rb_terms <- structure(rownames(rb_terms), names = rb_terms[["name"]])
+
     rb_var <- var_names[["unit.recordBasis", vtype]]
+
     rb <- fb_occurrence_df[[rb_var]]
     rb <- rb_terms[rb]
-    fb_occurrence_df[[met_var]] <- unname(met[rb])
+
+    fact_names <- var_names[["document.facts.fact", vtype]]
+    fact_values <- var_names[["document.facts.value", vtype]]
+
+    which_preservation <- lapply(
+      fb_occurrence_df[[fact_names]],
+      match,
+      "http://tun.fi/MY.preservation",
+      nomatch = 0
+    )
+
+    preservation <- mapply(
+      extract_fact,
+      fb_occurrence_df[[fact_values]],
+      lapply(which_preservation, as.logical),
+      SIMPLIFY = FALSE,
+      USE.NAMES = FALSE
+    )
+    preservation <- met[unlist(preservation)]
+
+    fb_occurrence_df[[met_var]] <- ifelse(
+      is.na(preservation), unname(met[rb]), preservation
+    )
   }
 
   fb_occurrence_df

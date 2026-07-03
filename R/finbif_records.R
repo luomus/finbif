@@ -468,7 +468,11 @@ infer_computed_vars <- function(fb_records_obj) {
     ),
     material_entity_type = list(
       vars = "computed_var_material_entity_type",
-      select_names = "unit.recordBasis"
+      select_names = c(
+        "unit.recordBasis",
+        "document.facts.fact",
+        "document.facts.value"
+      )
     )
   )
 
