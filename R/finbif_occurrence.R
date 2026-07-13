@@ -1177,6 +1177,7 @@ compute_material_entity_type <- function(fb_occurrence_df) {
       SIMPLIFY = FALSE,
       USE.NAMES = FALSE
     )
+    preservation <- lapply(preservation, function(x) x[[1L]])
     preservation <- met[unlist(preservation)]
 
     fb_occurrence_df[[met_var]] <- ifelse(
