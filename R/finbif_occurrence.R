@@ -646,7 +646,9 @@ compute_iso8601 <- function(fb_occurrence_df) {
     date_intvl <- paste(date_start, date_end, sep = "/")
     date_intvl <- ifelse(dates_equal, date_start, date_intvl)
 
-    fb_occurrence_df[[iso8601_var]] <- ifelse(iso8601_na, date_intvl, iso8601)
+    iso8601 <- ifelse(iso8601_na, date_intvl, iso8601)
+
+    fb_occurrence_df[[iso8601_var]] <- sub("+0000", "Z", iso8601, fixed = TRUE)
   }
 
   fb_occurrence_df
