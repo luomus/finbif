@@ -1,8 +1,8 @@
 #' @noRd
 #' @importFrom secretbase shake256
-#' @importFrom httr2 req_error req_headers req_perform req_retry request
-#' @importFrom httr2 req_url_query req_user_agent resp_body_string
-#' @importFrom httr2 resp_body_json
+#' @importFrom httr2
+#'   req_error req_headers req_perform req_retry request req_url_query
+#'   req_user_agent resp_body_string resp_body_json
 #' @importFrom jsonlite validate
 #' @importFrom utils packageVersion
 api_get <- function(obj) {

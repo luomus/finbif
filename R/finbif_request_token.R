@@ -28,8 +28,9 @@ finbif_request_token <- function(email, quiet = FALSE) {
 fb_request_token <- finbif_request_token
 
 #' @noRd
-#' @importFrom httr2 req_error req_headers req_perform req_retry request
-#' @importFrom httr2 req_url_query req_user_agent
+#' @importFrom httr2
+#'   req_error req_headers req_perform req_retry request req_url_query
+#'   req_user_agent
 token <- function(email, quiet = FALSE, path) {
   fb_access_token <- Sys.getenv("FINBIF_ACCESS_TOKEN")
 
