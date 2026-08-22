@@ -247,6 +247,7 @@ occurrence <- function(fb_records_obj) {
   fb_occurrence_df <- compute_municipality(fb_occurrence_df)
   fb_occurrence_df <- compute_local_area(fb_occurrence_df)
   fb_occurrence_df <- compute_material_entity_type(fb_occurrence_df)
+  fb_occurrence_df <- compute_information_withheld(fb_occurrence_df)
   fb_occurrence_df <- compute_codes(fb_occurrence_df)
   fb_occurrence_df <- extract_facts(fb_occurrence_df)
 
@@ -1189,6 +1190,163 @@ compute_material_entity_type <- function(fb_occurrence_df) {
   }
 
   fb_occurrence_df
+}
+
+#' @noRd
+compute_information_withheld <- function(fb_occurrence_df) {
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+  vtype <- col_type_string(dwc)
+  var_names <- sysdata(list(which = "var_names"))
+  iw_var <- var_names[["computed_var_information_withheld", vtype]]
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
+
+  if (add && iw_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
+    rlv <- var_names[["document.secureLevel", vtype]]
+    restriction_level <- fb_occurrence_df[[rlv]]
+    level_none <- restriction_level == "NONE"
+
+    rrv <- var_names[["document.secureReasons", vtype]]
+    restriction_reasons <- fb_occurrence_df[[rrv]]
+    rr_terms <- finbif_metadata(
+      "restriction_reason",
+      attr(fb_occurrence_df, "locale", TRUE),
+      attr(fb_occurrence_df, "cache", TRUE)[[2L]]
+    )
+    rr_terms <- structure(rownames(rr_terms), names = rr_terms[["name"]])
+    restriction_reasons <- lapply(restriction_reasons, function(x) rr_terms[x])
+
+    reason_custom <- vapply(
+      restriction_reasons, function(x) "CUSTOM" %in% x, NA
+    )
+    reason_user <- vapply(
+      restriction_reasons, function(x) "USER_HIDDEN" %in% x, NA
+    )
+    reason_location <- vapply(
+      restriction_reasons, function(x) "USER_HIDDEN_LOCATION" %in% x, NA
+    )
+    reason_time <- vapply(
+      restriction_reasons, function(x) "USER_HIDDEN_TIME" %in% x, NA
+    )
+    reason_name <- vapply(
+      restriction_reasons, function(x) "USER_PERSON_NAMES_HIDDEN" %in% x, NA
+    )
+    reason_none <- lapply(restriction_reasons, is.na)
+    reason_none <- vapply(reason_none, isTRUE, NA)
+
+    restricted <- !reason_none | !level_none
+
+    pdv <- var_names[["document.partial", vtype]]
+    partial_doc <- fb_occurrence_df[[pdv]]
+
+    conditions <- mapply(
+      list,
+      reason_name = reason_name,
+      reason_time = reason_time,
+      reason_location = reason_location,
+      reason_time_name = reason_time & reason_name,
+      reason_location_name = reason_location & reason_name,
+      reason_location_time = reason_location & reason_time,
+      reason_location_time_name = reason_location & reason_time & reason_name,
+      reason_user = reason_user,
+      reason_custom = reason_custom,
+      restricted = restricted,
+      partial_doc = partial_doc,
+      level_none = level_none,
+      SIMPLIFY = FALSE
+    )
+
+    fb_occurrence_df[[iw_var]] <- vapply(conditions, get_statement, "")
+  }
+  fb_occurrence_df
+}
+
+#' @noRd
+get_statement <- function(conditions) {
+  restricted  <- conditions[["restricted"]]
+  partial_doc <- conditions[["partial_doc"]]
+  level_none  <- conditions[["level_none"]]
+
+  all_withheld <-
+    "Location, time, personally identifiable and other information withheld."
+  other_occurrence_withheld <- paste(
+    "Event and/or parent event of this occurrence has had one or more",
+    "occurrences withheld or disassociated by identifier obsfucation."
+  )
+
+  statement <- NA_character_
+
+  if (restricted) {
+    statement <- get_statement_from_reason(conditions)
+    if (partial_doc) {
+      if (level_none) {
+        statement <- paste(statement, other_occurrence_withheld)
+
+      } else {
+        statement <- paste(
+          all_withheld,
+          "Event and/or parent event identifiers of this occurrence have been",
+          "obsfucated."
+        )
+      }
+    } else {
+      if (!level_none) {
+        statement <- all_withheld
+      }
+    }
+  } else {
+    if (partial_doc) {
+      statement <- other_occurrence_withheld
+    }
+  }
+  statement
+}
+
+#'@noRd
+get_statement_from_reason <- function(conditions) {
+  reason_name <- conditions[["reason_name"]]
+  reason_time <- conditions[["reason_time"]]
+  reason_location <- conditions[["reason_location"]]
+  reason_time_name <- conditions[["reason_time_name"]]
+  reason_location_name <- conditions[["reason_location_name"]]
+  reason_location_time <- conditions[["reason_location_time"]]
+  reason_location_time_name <- conditions[["reason_location_time_name"]]
+  reason_user <- conditions[["reason_user"]]
+  reason_custom <- conditions[["reason_custom"]]
+
+  statement <- NA_character_
+
+  if (reason_name) {
+    statement <- "Personally identifiable information withheld."
+  }
+  if (reason_time) {
+    statement <- "Time information withheld."
+  }
+  if (reason_location) {
+    statement <- "Location information withheld."
+  }
+  if (reason_time_name) {
+    statement <- "Time and personally identifiable information withheld."
+  }
+  if (reason_location_name) {
+    statement <- "Location and personally identifiable information withheld."
+  }
+  if (reason_location_time) {
+    statement <- "Location and time information withheld."
+  }
+  if (reason_location_time_name) {
+    statement <-
+      "Location, time and personally identifiable information withheld."
+  }
+  if (reason_user) {
+    statement <- "Location and/or personally identifiable information withheld."
+  }
+  if (reason_custom) {
+    statement <- paste(
+      "One or more of location, time, personally identifiable and/or other",
+      "information withheld."
+    )
+  }
+  statement
 }
 
 #' @noRd

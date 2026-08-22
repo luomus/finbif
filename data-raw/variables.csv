@@ -143,7 +143,8 @@ document.quality.issue.issue,document_issue,documentIssue,FALSE,TRUE,character,f
 document.quality.issue.message,document_issue_message,documentIssueRemarks,FALSE,TRUE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 document.quality.issue.source,document_issue_source,documentIssueSource,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.secureLevel,restriction_level,dataGeneralizations,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.secureReasons,restriction_reason,informationWithheld,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE
+document.secureReasons,restriction_reason,restrictionReason,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE
+computed_var_information_withheld,information_withheld,informationWithheld,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 document.secured,restriction,informationRestricted,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.sourceId,source_id,sourceID,FALSE,FALSE,character,uri,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 computed_var_from_id_source,source,source,FALSE,FALSE,character,character,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE

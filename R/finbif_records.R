@@ -473,6 +473,14 @@ infer_computed_vars <- function(fb_records_obj) {
         "document.facts.fact",
         "document.facts.value"
       )
+    ),
+    information_withheld = list(
+      vars = "computed_var_information_withheld",
+      select_names = c(
+        "document.secureReasons",
+        "document.secureLevel",
+        "document.partial"
+      )
     )
   )
 
