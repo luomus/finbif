@@ -386,7 +386,7 @@ test_that("fetching local area works", {
 
     })
 
-    expect_type(local_area$municipality, "character")
+    expect_type(local_area[["municipality"]], "character")
 
   }
 
