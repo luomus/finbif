@@ -5,10 +5,10 @@ filter_names <- read.csv(
   row.names = 1L
 )
 
-req <- httr2::request("https://api.laji.fi/warehouse/filters")
+req <- httr2::request("https://laji.fi/api/warehouse/filters")
 
 if (identical(Sys.getenv("BRANCH"), "dev")) {
-  req <- httr2::request("https://apitest.laji.fi/warehouse/filters")
+  req <- httr2::request("https://dev.laji.fi/api/warehouse/filters")
 }
 
 filters <- names(httr2::resp_body_json(httr2::req_perform(req)))
