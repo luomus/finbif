@@ -438,3 +438,47 @@ test_that("can compute a var from id when there are zero records", {
   options(op)
 
 })
+
+test_that("getting statements works", {
+
+  conditions <- list(
+    restricted = TRUE,
+    partial_doc = TRUE,
+    level_none = TRUE,
+    reason_name = TRUE,
+    reason_time = TRUE,
+    reason_location = TRUE,
+    reason_time_name = TRUE,
+    reason_location_name = TRUE,
+    reason_location_time = TRUE,
+    reason_location_time_name = TRUE,
+    reason_user = TRUE,
+    reason_custom = TRUE
+  )
+
+  statement <- get_statement(conditions)
+
+  expect_identical(
+    statement,
+    paste(
+      "One or more of location, time, personally identifiable and/or other",
+      "information withheld. Event and/or parent event of this occurrence",
+      "has had one or more occurrences withheld or disassociated by identifier",
+      "obsfucation."
+    )
+  )
+
+  conditions[["level_none"]] <- FALSE
+
+  statement <- get_statement(conditions)
+
+  expect_identical(
+    statement,
+    paste(
+      "Location, time, personally identifiable and other information withheld.",
+      "Event and/or parent event identifiers of this occurrence have been",
+      "obsfucated."
+    )
+  )
+
+})
