@@ -595,7 +595,7 @@ compute_iso8601 <- function(fb_occurrence_df) {
     iso8601s <- rep_len(NA_integer_, duration_length)
     tzone <- attr(fb_occurrence_df, "tzone", TRUE)
 
-    iso8601s <- as.POSIXct(iso8601s, tzone)
+    iso8601s <- as.POSIXct(iso8601s, tz = tzone)
     iso8601e <- iso8601s
     iso8601s[!duration_na] <- ds[!duration_na]
     iso8601e[!duration_na] <- de[!duration_na]
@@ -624,8 +624,8 @@ compute_iso8601 <- function(fb_occurrence_df) {
     date_end <- var_names["gathering.eventDate.end", vtype]
     date_end <- fb_occurrence_df[[date_end]]
 
-    ds_time <- as.POSIXct(date_start)
-    de_time <- as.POSIXct(date_end)
+    ds_time <- as.POSIXct(date_start, tz = tzone)
+    de_time <- as.POSIXct(date_end, tz = tzone)
     ds_time <- format(ds_time, "%FT%T%z")
     de_time  <- format(de_time, "%FT%T%z")
 
@@ -639,7 +639,7 @@ compute_iso8601 <- function(fb_occurrence_df) {
     format_start <- format(ds, "%FT%T%z")
     iso8601 <- ifelse(use_start, format_start, iso8601)
 
-    fmt_start_ymd <- as.Date(date_start)
+    fmt_start_ymd <- as.Date(date_start, tz = tzone)
     fmt_start_ymd <- format(fmt_start_ymd, "%FT%T%z")
     iso8601 <- ifelse(no_start_time & no_end_date, fmt_start_ymd, iso8601)
 
@@ -648,7 +648,7 @@ compute_iso8601 <- function(fb_occurrence_df) {
     date_intvl <- ifelse(dates_equal, date_start, date_intvl)
 
     iso8601 <- ifelse(iso8601_na, date_intvl, iso8601)
-    iso8601 <- gsub(":00+", "", iso8601, fixed = TRUE)
+    iso8601 <- gsub(":00+", "+", iso8601, fixed = TRUE)
 
     fb_occurrence_df[[iso8601_var]] <- gsub("+0000", "Z", iso8601, fixed = TRUE)
   }
