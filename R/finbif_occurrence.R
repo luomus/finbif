@@ -657,7 +657,6 @@ compute_iso8601 <- function(fb_occurrence_df) {
 }
 
 #' @noRd
-
 compute_vars_from_id <- function(fb_occurrence_df) {
   locale <- attr(fb_occurrence_df, "locale", TRUE)
   cache <- attr(fb_occurrence_df, "cache", TRUE)
