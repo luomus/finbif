@@ -251,8 +251,9 @@ Variables related to restricted records include:
 Has the record been restricted in some way (e.g., geospatially aggregated).
 \item \code{dataGeneralizations} Character.
 What level of restriction has been applied to the record.
-\item \code{informationWithheld} List.
-List of reasons restriction has been applied.
+\item \code{informationWithheld} Character.
+Description of information about a record that is not public available but
+may accessed on request.
 }
 }
 

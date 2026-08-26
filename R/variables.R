@@ -231,8 +231,9 @@
 #'   Has the record been restricted in some way (e.g., geospatially aggregated).
 #' - `dataGeneralizations` Character.
 #'   What level of restriction has been applied to the record.
-#' - `informationWithheld` List.
-#'   List of reasons restriction has been applied.
+#' - `informationWithheld` Character.
+#'   Description of information about a record that is not public available but
+#'   may accessed on request.
 #'
 #' @section Data quality:
 #' Variables related to the quality of records include:

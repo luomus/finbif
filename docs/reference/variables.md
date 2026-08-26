@@ -283,8 +283,8 @@ Variables related to restricted records include:
 - `dataGeneralizations` Character. What level of restriction has been
   applied to the record.
 
-- `informationWithheld` List. List of reasons restriction has been
-  applied.
+- `informationWithheld` Character. Description of information about a
+  record that is not public available but may accessed on request.
 
 ## Data quality
 
