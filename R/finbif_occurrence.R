@@ -1262,7 +1262,6 @@ compute_information_withheld <- function(fb_occurrence_df) {
 
 #' @noRd
 get_statement <- function(conditions) {
-  restricted  <- conditions[["restricted"]]
   partial_doc <- conditions[["partial_doc"]]
   level_none  <- conditions[["level_none"]]
 
@@ -1275,7 +1274,7 @@ get_statement <- function(conditions) {
 
   statement <- NA_character_
 
-  if (restricted) {
+  if (conditions[["restricted"]]) {
     statement <- get_statement_from_reason(conditions)
     if (partial_doc) {
       if (level_none) {
@@ -1303,44 +1302,34 @@ get_statement <- function(conditions) {
 
 #'@noRd
 get_statement_from_reason <- function(conditions) {
-  reason_name <- conditions[["reason_name"]]
-  reason_time <- conditions[["reason_time"]]
-  reason_location <- conditions[["reason_location"]]
-  reason_time_name <- conditions[["reason_time_name"]]
-  reason_location_name <- conditions[["reason_location_name"]]
-  reason_location_time <- conditions[["reason_location_time"]]
-  reason_location_time_name <- conditions[["reason_location_time_name"]]
-  reason_user <- conditions[["reason_user"]]
-  reason_custom <- conditions[["reason_custom"]]
-
   statement <- NA_character_
 
-  if (reason_name) {
+  if (conditions[["reason_name"]]) {
     statement <- "Personally identifiable information withheld."
   }
-  if (reason_time) {
+  if (conditions[["reason_time"]]) {
     statement <- "Time information withheld."
   }
-  if (reason_location) {
+  if (conditions[["reason_location"]]) {
     statement <- "Location information withheld."
   }
-  if (reason_time_name) {
+  if (conditions[["reason_time_name"]]) {
     statement <- "Time and personally identifiable information withheld."
   }
-  if (reason_location_name) {
+  if (conditions[["reason_location_name"]]) {
     statement <- "Location and personally identifiable information withheld."
   }
-  if (reason_location_time) {
+  if (conditions[["reason_location_time"]]) {
     statement <- "Location and time information withheld."
   }
-  if (reason_location_time_name) {
+  if (conditions[["reason_location_time_name"]]) {
     statement <-
       "Location, time and personally identifiable information withheld."
   }
-  if (reason_user) {
+  if ( conditions[["reason_user"]]) {
     statement <- "Location and/or personally identifiable information withheld."
   }
-  if (reason_custom) {
+  if (conditions[["reason_custom"]]) {
     statement <- paste(
       "One or more of location, time, personally identifiable and/or other",
       "information withheld."
