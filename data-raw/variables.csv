@@ -142,7 +142,8 @@ document.partial,is_partial,documentPartialStatus,FALSE,FALSE,logical,logical,TR
 document.quality.issue.issue,document_issue,documentIssue,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.quality.issue.message,document_issue_message,documentIssueRemarks,FALSE,TRUE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 document.quality.issue.source,document_issue_source,documentIssueSource,FALSE,TRUE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.secureLevel,restriction_level,dataGeneralizations,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+document.secureLevel,restriction_level,restrictionLevel,FALSE,FALSE,character,factor,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+computed_var_data_generalizations,data_generalizations,dataGeneralizations,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 document.secureReasons,restriction_reason,restrictionReason,FALSE,FALSE,character,factor,FALSE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE
 computed_var_information_withheld,information_withheld,informationWithheld,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
 document.secured,restriction,informationRestricted,FALSE,FALSE,logical,logical,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
@@ -667,7 +668,7 @@ document.namedPlace.alternativeId,location_alt_id,locationAltID,FALSE,FALSE,char
 document.namedPlace.tags,location_tags,locationTags,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.completeListTaxonId,complete_list_taxon_id,targetTaxonomicScope,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
 document.completeListType,complete_list_type,taxonCompletenessReported,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
-unit.annotations.identification.linkings.taxon.threatenedStatus,record_annotation_threatened_status_id,occurrenceAnnotationThreatenedStatusID,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.identification.linkings.taxon.threatenedStatus,record_annotation_threatened_status_id,occurrenceAnnotationThreatenedStatusID,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.annotations.occurrenceAtTimeOfAnnotation.linkings.taxon.threatenedStatus,record_pre_annotation_threatened_status_id,occurrencePreAnnotationThreatenedStatusID,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.identifications.linkings.taxon.threatenedStatus,record_identifications_threatened_status_id,occurrenceIdentificationsThreatenedStatusID,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.linkings.originalTaxon.threatenedStatus,orig_taxon_threatened_status_id,originalTaxonThreatenedStatusID,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE

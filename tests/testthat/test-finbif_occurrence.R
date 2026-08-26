@@ -44,6 +44,7 @@ test_that("fetching occurrences works", {
               "informalTaxonGroups",
               "vernacularName",
               "informationWithheld",
+              "dataGeneralizations",
               "atlasCode",
               "atlasClass",
               "country"

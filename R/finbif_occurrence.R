@@ -248,6 +248,7 @@ occurrence <- function(fb_records_obj) {
   fb_occurrence_df <- compute_local_area(fb_occurrence_df)
   fb_occurrence_df <- compute_material_entity_type(fb_occurrence_df)
   fb_occurrence_df <- compute_information_withheld(fb_occurrence_df)
+  fb_occurrence_df <- compute_data_generalizations(fb_occurrence_df)
   fb_occurrence_df <- compute_codes(fb_occurrence_df)
   fb_occurrence_df <- extract_facts(fb_occurrence_df)
 
@@ -1344,6 +1345,60 @@ get_statement_from_reason <- function(conditions) {
       "One or more of location, time, personally identifiable and/or other",
       "information withheld."
     )
+  }
+  statement
+}
+
+#' @noRd
+compute_data_generalizations <- function(fb_occurrence_df) {
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+  vtype <- col_type_string(dwc)
+  var_names <- sysdata(list(which = "var_names"))
+  dg_var <- var_names[["computed_var_data_generalizations", vtype]]
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
+
+  if (add && dg_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
+    rlv <- var_names[["document.secureLevel", vtype]]
+    cv <- var_names[["gathering.interpretations.country", vtype]]
+
+    conditions <- mapply(
+      list,
+      country_id = fb_occurrence_df[[cv]],
+      restriction_level = fb_occurrence_df[[rlv]],
+      SIMPLIFY = FALSE
+    )
+
+    fb_occurrence_df[[dg_var]] <- vapply(
+      conditions, get_generalization_statement, ""
+    )
+  }
+  fb_occurrence_df
+}
+
+#' @noRd
+get_generalization_statement <- function(conditions) {
+  restriction_level <- conditions[["restriction_level"]]
+  statement <- NA_character_
+
+  if (grepl("KM", restriction_level, fixed = TRUE)) {
+    restriction_level <- sub("KM", "", restriction_level, fixed = TRUE)
+    restriction_level <- as.integer(restriction_level)
+    type <- " degree"
+    scale <- sub("0.", ".", restriction_level / 100L, fixed = TRUE)
+    epsg <- 4326L
+
+    if (conditions[["country_id"]] == "http://tun.fi/ML.206") {
+      type <- "km"
+      scale <- restriction_level
+      epsg <- 2393L
+    }
+    statement <- paste(
+      "Coordinates generalized from original. Generalized coordinates are the",
+      "centroid of a regular %1$s%2$s grid cell (EPSG:%3$s) closest to the",
+      "centroid of the original location. Original location footprint geometry",
+      "replaced by vertices of the %1$s%2$s grid cell."
+    )
+    statement <- sprintf(statement, scale, type, epsg)
   }
   statement
 }

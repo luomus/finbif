@@ -481,6 +481,13 @@ infer_computed_vars <- function(fb_records_obj) {
         "document.secureLevel",
         "document.partial"
       )
+    ),
+    data_generalizations = list(
+      vars = "computed_var_data_generalizations",
+      select_names = c(
+        "document.secureLevel",
+        "gathering.interpretations.country"
+      )
     )
   )
 
