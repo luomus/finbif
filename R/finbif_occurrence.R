@@ -826,8 +826,8 @@ compute_abundance <- function(fb_occurrence_df) {
       stat <- switch(
         attr(fb_occurrence_df, "locale", TRUE),
         fi = c("paikalla", "poissa"),
-        sv = c("n\u00e4rvarande", "fr\u00e5nvarande"),
-        c("present", "absent")
+        sv = c("N\u00e4rvarande", "Fr\u00e5nvarande"),
+        c("Present", "Absent")
       )
 
       is_p <- is.na(abundance) | abundance > 0L
