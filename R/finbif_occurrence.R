@@ -1376,7 +1376,7 @@ get_generalization_statement <- function(conditions) {
     scale <- sub("0.", ".", restriction_level / 100L, fixed = TRUE)
     epsg <- 4326L
 
-    if (conditions[["country_id"]] == "http://tun.fi/ML.206") {
+    if (identical(conditions[["country_id"]], "http://tun.fi/ML.206")) {
       type <- "km"
       scale <- restriction_level
       epsg <- 2393L
