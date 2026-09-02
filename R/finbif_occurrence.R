@@ -1326,7 +1326,7 @@ get_statement_from_reason <- function(conditions) {
     statement <-
       "Location, time and personally identifiable information withheld."
   }
-  if ( conditions[["reason_user"]]) {
+  if (conditions[["reason_user"]]) {
     statement <- "Location and/or personally identifiable information withheld."
   }
   if (conditions[["reason_custom"]]) {
