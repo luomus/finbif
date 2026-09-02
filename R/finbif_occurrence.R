@@ -587,74 +587,98 @@ compute_iso8601 <- function(fb_occurrence_df) {
   iso8601_var <- var_names["computed_var_date_time_ISO8601", vtype]
 
   if (iso8601_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
-    ds <- attr(fb_occurrence_df, "date_time_start", TRUE)
-    dsna <- is.na(ds)
-    de <- attr(fb_occurrence_df, "date_time_end", TRUE)
-    dena <- is.na(de)
-    duration_na <- dsna | dena
-    duration_length <- length(duration_na)
-    iso8601s <- rep_len(NA_integer_, duration_length)
-    tzone <- attr(fb_occurrence_df, "tzone", TRUE)
-
-    iso8601s <- as.POSIXct(iso8601s, tz = tzone)
-    iso8601e <- iso8601s
-    iso8601s[!duration_na] <- ds[!duration_na]
-    iso8601e[!duration_na] <- de[!duration_na]
-    iso8601s <- format(iso8601s, "%FT%T%z")
-    iso8601e <- format(iso8601e, "%FT%T%z")
-    iso8601 <- paste(iso8601s, iso8601e, sep = "/")
-
-    hour_start <- var_names["gathering.hourBegin", vtype]
-    hour_start <- fb_occurrence_df[[hour_start]]
-
-    minute_start <- var_names["gathering.minutesBegin", vtype]
-    minute_start <- fb_occurrence_df[[minute_start]]
-
+    event_date_start <- var_names["gathering.eventDate.begin", vtype]
+    event_date_end <- var_names["gathering.eventDate.end", vtype]
+    hour_begin <- var_names["gathering.hourBegin", vtype]
     hour_end <- var_names["gathering.hourEnd", vtype]
-    hour_end <- fb_occurrence_df[[hour_end]]
-
+    minute_begin <- var_names["gathering.minutesBegin", vtype]
     minute_end <- var_names["gathering.minutesEnd", vtype]
-    minute_end <- fb_occurrence_df[[minute_end]]
 
-    no_start_time <- is.na(hour_start) & is.na(minute_start)
-    no_end_time <- is.na(hour_end) & is.na(minute_end)
+    times <- mapply(
+      list,
+      event_date_start = as.Date(fb_occurrence_df[[event_date_start]]),
+      event_date_end = as.Date(fb_occurrence_df[[event_date_end]]),
+      hour_begin  = fb_occurrence_df[[hour_begin]],
+      hour_end = fb_occurrence_df[[hour_end]],
+      minute_begin = fb_occurrence_df[[minute_begin]],
+      minute_end = fb_occurrence_df[[minute_end]],
+      SIMPLIFY = FALSE
+    )
 
-    date_start <- var_names["gathering.eventDate.begin", vtype]
-    date_start <- fb_occurrence_df[[date_start]]
-
-    date_end <- var_names["gathering.eventDate.end", vtype]
-    date_end <- fb_occurrence_df[[date_end]]
-
-    ds_time <- as.POSIXct(date_start, tz = tzone)
-    de_time <- as.POSIXct(date_end, tz = tzone)
-    ds_time <- format(ds_time, "%FT%T%z")
-    de_time  <- format(de_time, "%FT%T%z")
-
-    format_interval <- paste(ds_time, de_time, sep = "/")
-    iso8601 <- ifelse(no_start_time | no_end_time, format_interval, iso8601)
-
-    dates_equal <- date_start == date_end
-    no_end_date <-  is.na(date_end) | dates_equal
-    no_end <- no_end_time & no_end_date
-    use_start <- no_end | ds == de
-    format_start <- format(ds, "%FT%T%z")
-    iso8601 <- ifelse(use_start, format_start, iso8601)
-
-    fmt_start_ymd <- as.Date(date_start, tz = tzone)
-    fmt_start_ymd <- format(fmt_start_ymd, "%FT%T%z")
-    iso8601 <- ifelse(no_start_time & no_end_date, fmt_start_ymd, iso8601)
-
-    iso8601_na <- is.na(iso8601)
-    date_intvl <- paste(date_start, date_end, sep = "/")
-    date_intvl <- ifelse(dates_equal, date_start, date_intvl)
-
-    iso8601 <- ifelse(iso8601_na, date_intvl, iso8601)
-    iso8601 <- gsub(":00+", "+", iso8601, fixed = TRUE)
-
-    fb_occurrence_df[[iso8601_var]] <- gsub("+0000", "Z", iso8601, fixed = TRUE)
+    fb_occurrence_df[[iso8601_var]] <- vapply(times, get_iso8061, "")
   }
 
   fb_occurrence_df
+}
+
+#' @noRd
+get_iso8061 <- function(times) {
+  event_date_start <- times[["event_date_start"]]
+  event_date_end <- times[["event_date_end"]]
+  hour_begin <- times[["hour_begin"]]
+  hour_end <- times[["hour_end"]]
+  minute_begin <- times[["minute_begin"]]
+  minute_end <- times[["minute_end"]]
+
+  begin_year <- identical(format(event_date_start, "%m%d"), "0101")
+  end_year <- identical(format(event_date_end, "%m%d"), "1231")
+
+  begin_month <- identical(format(event_date_start, "%d"), "01")
+  end_month <- identical(format(event_date_end + 1L, "%d"), "01")
+
+  begin <- NA_character_
+  end <- NA_integer_
+
+  if (is.finite(minute_begin)) {
+    begin <- sprintf("%sT%02d:%02d", event_date_start, hour_begin, minute_begin)
+
+    if (is.finite(minute_end)) {
+      end <- sprintf("%sT%02d:%02d", event_date_end, hour_end, minute_end)
+    }
+  } else if (is.finite(hour_begin)) {
+    begin <- sprintf("%sT%02d", event_date_start, hour_begin)
+
+    if (is.finite(hour_end)) {
+      end <- sprintf("%sT%02d", event_date_end, hour_end)
+    }
+  } else if (begin_year && end_year) {
+    begin <- substr(event_date_start, 1L, 4L)
+    end <- substr(event_date_end, 1L, 4L)
+
+  } else if (begin_month && end_month) {
+    begin <- substr(event_date_start, 1L, 7L)
+    end <- substr(event_date_end, 1L, 7L)
+    end <- truncate_end(end, begin)
+
+  } else if (is.finite(event_date_start)) {
+    begin <- event_date_start
+    end <- event_date_end
+    end <- truncate_end(end, begin)
+
+  }
+  if (identical(begin, end)) {
+    end <- NA_integer_
+  }
+  if (is.na(end)) {
+    as.character(begin)
+
+  } else {
+    sprintf("%s/%s", begin, end)
+  }
+}
+
+#' @noRd
+truncate_end <- function(end, begin) {
+  same_year <- identical(substr(begin, 1L, 4L), substr(end, 1L, 4L))
+
+  if (same_year && !identical(begin, end)) {
+    end <- substr(end, 6L, 10L)
+
+    if (identical(substr(begin, 6L, 7L), substr(end, 1L, 2L))) {
+      end <- substr(end, 4L, 5L)
+    }
+  }
+  end
 }
 
 #' @noRd
