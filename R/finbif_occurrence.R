@@ -627,7 +627,7 @@ get_iso8061 <- function(times) {
   end_month <- identical(format(event_date_end + 1L, "%d"), "01")
 
   begin <- NA_character_
-  end <- NA_integer_
+  end <- NA_character_
 
   if (is.finite(minute_begin)) {
     begin <- sprintf("%sT%02d:%02d", event_date_start, hour_begin, minute_begin)
@@ -657,7 +657,7 @@ get_iso8061 <- function(times) {
 
   }
   if (identical(begin, end)) {
-    end <- NA_integer_
+    end <- NA_character_
   }
   if (is.na(end)) {
     as.character(begin)
