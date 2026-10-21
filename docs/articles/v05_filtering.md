@@ -96,7 +96,7 @@ Click to show/hide output.
 #> identificationVerificationStatus
 ```
 
-  
+\
 , or for record events, a range as a character vector.
 
 ``` r
@@ -130,7 +130,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 Records for a specific season or time-span across all years can also be
 requested.
@@ -169,7 +169,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 ## Data Quality
 
@@ -254,7 +254,7 @@ Click to show/hide output.
 #> identificationVerificationStatus
 ```
 
-  
+\
 
 See
 [`finbif_informal_groups()`](https://finbif-docs-dev.netlify.app/reference/finbif_informal_groups.md)
@@ -310,7 +310,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 ## IUCN red list
 
@@ -350,7 +350,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 ## Habitat type
 
@@ -407,7 +407,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 You may further refine habitat based searching using a specific habitat
 type qualifier such as “sun-exposed” or “shady”. Use
@@ -457,7 +457,7 @@ Click to show/hide output.
 #> identificationVerificationStatus
 ```
 
-  
+\
 
 ## Status of taxa in Finland
 
@@ -493,7 +493,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 Or, by using the negation of occurrence status, you can request records
 of birds excluding those considered vagrants.
 
@@ -532,7 +532,7 @@ Click to show/hide output.
 #> identificationVerificationStatus
 ```
 
-  
+\
 
 See `finbif_metadata("finnish_occurrence_status")` for a full list of
 statuses and their descriptions.

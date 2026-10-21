@@ -225,7 +225,7 @@ Click to show/hide output.
 #> 
 ```
 
-  
+\
 
 ## Getting occurrence data
 
@@ -292,7 +292,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 See
 [`?filters`](https://finbif-docs-dev.netlify.app/reference/filters.md)
@@ -335,7 +335,7 @@ Click to show/hide output.
 #> identificationVerificationStatus
 ```
 
-  
+\
 
 ## Caching
 

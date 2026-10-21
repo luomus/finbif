@@ -37,7 +37,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 The print method for the resulting `finbif_occ` object will display the
 number of records downloaded, the total number of records available, a
 data summary including up to 10 rows of some core record variables (when
@@ -100,7 +100,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 Multiple taxa can be requested at once.
 
@@ -133,7 +133,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 You can also chose higher taxonomic groups and use common names (in
 English, Finnish and Swedish).
@@ -189,7 +189,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 You can see how many records are available for a given request, without
 retrieving any records, by setting `count_only = TRUE`.
@@ -236,7 +236,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 You can turn off taxon name pre-checking by setting the value of the
 `check_taxa` argument to `FALSE`.
@@ -270,7 +270,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 By setting the argument, `on_check_fail` to `"error"` (the default is
 `"warn"`), you can elevate the warnings to errors and the request will
@@ -342,7 +342,7 @@ Click to show/hide output.
 #> 10         Turku  1827    
 ```
 
-  
+\
 
 ## Time & duration
 
@@ -380,7 +380,7 @@ Click to show/hide output.
 #> occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 ### Timezone
 
@@ -424,7 +424,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 #### Timezone output
 
@@ -468,7 +468,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 Or set the global timezone option to set the timezone for the current
 session.

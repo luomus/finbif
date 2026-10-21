@@ -44,7 +44,7 @@ Click to show/hide output.
 #> 10 Falco vespertinus L…  juvenile   <NA>
 ```
 
-  
+\
 
 ### Extra variables
 
@@ -81,7 +81,7 @@ Click to show/hide output.
 #> lifeStage
 ```
 
-  
+\
 
 ## Ordering
 
@@ -124,7 +124,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 ### Descending order
 
@@ -161,7 +161,7 @@ Click to show/hide output.
 #> identificationVerificationStatus
 ```
 
-  
+\
 
 ### Multiple variables
 
@@ -199,7 +199,7 @@ Click to show/hide output.
 #> requiresIdentification, occurrenceReliability, identificationVerificationStatus
 ```
 
-  
+\
 
 ### Random sample
 
@@ -236,4 +236,4 @@ Click to show/hide output.
 #> identificationVerificationStatus
 ```
 
-  
+\

@@ -40,7 +40,7 @@ Click to show/hide output.
 #> 17                taxon_rank
 ```
 
-  
+\
 
 Calling
 [`finbif_metadata()`](https://finbif-docs-dev.netlify.app/reference/finbif_metadata.md)
@@ -71,7 +71,7 @@ Click to show/hide output.
 #> MX.iucnVU VU   Vulnerable           
 ```
 
-  
+\
 
 ## Special cases
 
@@ -231,7 +231,7 @@ Click to show/hide output.
 #> HR.95   Osprey monitoring      Pandion haliaetus      Finland              102550
 ```
 
-  
+\
 
 By default,
 [`finbif_collections()`](https://finbif-docs-dev.netlify.app/reference/finbif_collections.md)
@@ -263,7 +263,7 @@ Click to show/hide output.
 #> Collections of the Finnish Museum of Natural History Luomus
 ```
 
-  
+\
 
 You can see the child collections of a supercollection by specifying the
 ID as a filter. Note that the children of supercollections may also be
@@ -314,4 +314,4 @@ Click to show/hide output.
 #> HR.7443 <NA>              <NA>                0
 ```
 
-  
+\
