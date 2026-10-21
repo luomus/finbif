@@ -135,7 +135,8 @@ document.media.mediaType,document_media_type,documentAssociatedMediaType,FALSE,F
 document.media.squareThumbnailURL,document_thumbnail_square,documentAssociatedMediaSquareThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.media.thumbnailURL,document_thumbnail,documentAssociatedMediaThumbnail,FALSE,FALSE,character,uri,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 document.mediaCount,document_media_count,documentAssociatedMediaCount,FALSE,FALSE,integer,integer,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-document.modifiedDate,modified,modified,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
+document.modifiedDate,modified_interpreted,modifiedInterpreted,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE
+computed_var_modified,modified,modified,FALSE,FALSE,character,date,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.namedPlaceId,location_id,locationID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 document.notes,document_notes,documentRemarks,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
 document.partial,is_partial,documentPartialStatus,FALSE,FALSE,logical,logical,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
@@ -735,3 +736,8 @@ unit.linkings.originalTaxon.qname,orig_taxon_qname,originalTaxonConceptQname,FAL
 unit.linkings.taxon.qname,taxon_qname,taxonConceptQname,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.types.linkings.taxon.qname,type_specimen_taxon_qname,typeSpecimenTaxonConceptQname,FALSE,FALSE,character,character,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 unit.sequenceText,dna_sequence,DNA_sequence,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.annotations.identification.taxonRank,record_annotation_identification_taxon_rank_id,occurrenceAnnotationIdentificationTaxonRankID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.identifications.taxonRank,record_identifications_taxon_rank_id,occurrenceIdentificationsTaxonRankID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.types.taxonRank,type_specimen_taxon_rank_id,typeSpecimenTaxonRankID,FALSE,FALSE,character,uri,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.reportedKingdom,reported_kingdom,verbatimKingdom,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+unit.reportedTaxonRank,reported_taxon_rank,verbatimTaxonRank,FALSE,FALSE,character,character,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE

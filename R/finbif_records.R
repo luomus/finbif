@@ -488,6 +488,13 @@ infer_computed_vars <- function(fb_records_obj) {
         "document.secureLevel",
         "gathering.interpretations.country"
       )
+    ),
+    modified = list(
+      vars = "computed_var_modified",
+      select_names = c(
+        "document.modifiedDate",
+        "document.firstLoadDate"
+      )
     )
   )
 

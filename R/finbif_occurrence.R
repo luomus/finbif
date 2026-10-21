@@ -250,6 +250,7 @@ occurrence <- function(fb_records_obj) {
   fb_occurrence_df <- compute_information_withheld(fb_occurrence_df)
   fb_occurrence_df <- compute_data_generalizations(fb_occurrence_df)
   fb_occurrence_df <- compute_codes(fb_occurrence_df)
+  fb_occurrence_df <- compute_modified(fb_occurrence_df)
   fb_occurrence_df <- extract_facts(fb_occurrence_df)
 
   class(fb_occurrence_df) <- c("finbif_occ", "data.frame")
@@ -1414,6 +1415,30 @@ get_generalization_statement <- function(conditions) {
     statement <- sprintf(statement, scale, type, epsg)
   }
   statement
+}
+
+#' @noRd
+compute_modified <- function(fb_occurrence_df) {
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+  vtype <- col_type_string(dwc)
+  vn <- sysdata(list(which = "var_names"))
+
+  modified_var <- vn[["computed_var_modified", vtype]]
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
+
+  if (add && modified_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
+    md <- vn[["document.modifiedDate", vtype]]
+    md <- fb_occurrence_df[[md]]
+
+    fld <- vn[["document.firstLoadDate", vtype]]
+    fld <- fb_occurrence_df[[fld]]
+
+    na <- is.na(md)
+
+    fb_occurrence_df[[modified_var]] <- ifelse(na, fld, md)
+  }
+
+  fb_occurrence_df
 }
 
 #' @noRd

@@ -47,7 +47,8 @@ test_that("fetching occurrences works", {
               "dataGeneralizations",
               "atlasCode",
               "atlasClass",
-              "country"
+              "country",
+              "modified"
             ),
             filter = list(
               c(date_range_ymd = 2023),
