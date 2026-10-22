@@ -1,5 +1,9 @@
 # News for Package <span class="pkg">finbif</span>
 
+# finbif 0.10.1.9000
+
+   - This is the current development release.
+
 # finbif 0.10.1
 
 ## MINOR IMPROVEMENTS
