@@ -41,12 +41,7 @@
 #' @param seed Integer. Set a seed for randomly sampling records.
 #' @param exclude_na Logical. Should records where all selected variables have
 #'   non-NA values only be returned.
-#' @param date_time_method Character. Passed to `lutz::tz_lookup_coords()` when
-#'   `date_time` and/or `duration` variables have been selected. Default is
-#'   `"fast"` when  less than 100,000 records are requested and `"none"` when
-#'   more. Using method `"none"` assumes all records are in timezone
-#'    "Europe/Helsinki", Use `date_time_method = "accurate"` (requires package
-#'     `sf`) for greater accuracy at the cost of slower computation.
+#' @param date_time_method Character. Deprecated and no longer used.
 #' @param check_taxa Logical. Check first that taxa are in the FinBIF database.
 #'   If true only records that match known taxa (have a valid taxon ID) are
 #'   returned.
@@ -479,7 +474,6 @@ date_times <- function(fb_occurrence_df) {
 }
 
 #' @noRd
-#' @importFrom lutz tz_lookup_coords
 date_time <- function(date_time_obj) {
   tzone <- date_time_obj[["tzone"]]
 
@@ -514,17 +508,8 @@ date_time <- function(date_time_obj) {
     if (identical(method, "none")) {
       date_time <- as.POSIXct(date_time, "Europe/Helsinki")
     } else {
-      tz_in <- lutz::tz_lookup_coords(
-        date_time_obj[["lat"]],
-        date_time_obj[["lon"]],
-        method,
-        FALSE
-      )
-      tz_in_is_na <- is.na(tz_in)
-      tz_in <- ifelse(tz_in_is_na, "Europe/Helsinki", tz_in)
-
       date_time <- mapply(
-        as.POSIXct, date_time, tz_in, SIMPLIFY = FALSE, USE.NAMES = FALSE
+        as.POSIXct, date_time, "Europe/Helsinki", SIMPLIFY = FALSE, USE.NAMES = FALSE
       )
       date_time <-  do.call(c, date_time)
     }

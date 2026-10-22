@@ -57,12 +57,7 @@ will determine how metadata is cached.}
 
 \item{dwc}{Logical. Use Darwin Core (or Darwin Core style) variable names.}
 
-\item{date_time_method}{Character. Passed to \code{lutz::tz_lookup_coords()} when
-\code{date_time} and/or \code{duration} variables have been selected. Default is
-\code{"fast"} when  less than 100,000 records are requested and \code{"none"} when
-more. Using method \code{"none"} assumes all records are in timezone
-"Europe/Helsinki", Use \code{date_time_method = "accurate"} (requires package
-\code{sf}) for greater accuracy at the cost of slower computation.}
+\item{date_time_method}{Character. Deprecated and no longer used.}
 
 \item{tzone}{Character. If \code{date_time} has been selected the timezone of the
 outputted date-time. Defaults to system timezone.}

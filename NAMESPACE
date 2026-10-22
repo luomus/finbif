@@ -46,7 +46,6 @@ importFrom(httr2,
   resp_body_string
 )
 importFrom(jsonlite,validate)
-importFrom(lutz,tz_lookup_coords)
 importFrom(secretbase,shake256)
 importFrom(utils,
   packageVersion,

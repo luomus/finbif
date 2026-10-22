@@ -38,7 +38,6 @@ Imports:
     secretbase,
     httr2 (>= 1.1.2),
     jsonlite,
-    lutz,
     utils
 Suggests:
     callr,

@@ -81,12 +81,7 @@ will determine how metadata is cached.}
 
 \item{dwc}{Logical. Use Darwin Core (or Darwin Core style) variable names.}
 
-\item{date_time_method}{Character. Passed to \code{lutz::tz_lookup_coords()} when
-\code{date_time} and/or \code{duration} variables have been selected. Default is
-\code{"fast"} when  less than 100,000 records are requested and \code{"none"} when
-more. Using method \code{"none"} assumes all records are in timezone
-"Europe/Helsinki", Use \code{date_time_method = "accurate"} (requires package
-\code{sf}) for greater accuracy at the cost of slower computation.}
+\item{date_time_method}{Character. Deprecated and no longer used.}
 
 \item{check_taxa}{Logical. Check first that taxa are in the FinBIF database.
 If true only records that match known taxa (have a valid taxon ID) are
