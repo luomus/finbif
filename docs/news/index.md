@@ -2,6 +2,8 @@
 
 ## finbif 0.10.1
 
+CRAN release: 2026-10-22
+
 ### MINOR IMPROVEMENTS
 
 - Improvements have been made to the output of properties
