@@ -1,48 +1,46 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://apitest.laji.fi/taxa/search?query=Bubo+bubo&matchType=exact&limit=1&personEmail=noreply%40laji.fi
+    uri: https://api.laji.fi/taxa/search?query=Bubo+bubo&matchType=exact&limit=1&personEmail=noreply%40laji.fi
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 12:33:23 GMT
+      date: Thu, 22 Oct 2026 08:03:23 GMT
       content-type: application/json; charset=utf-8
-      content-length: '736'
+      content-length: '756'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"2e0-QOjeeyjA7CtPk0Z8fV+ukXqo92k"
-      cache-control: no-store
-      x-frame-options: DENY
+      etag: W/"2f4-LRxPcjMGv3sKrQM1JY0FHnZZikw"
+      cache-control: public
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
       string: '{"results":[{"matchingName":"Bubo bubo","nameType":"MX.scientificName","id":"MX.28965","checklist":"MR.1","scientificName":"Bubo
-        bubo","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"en":"Eurasian
+        bubo","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"invasiveSpecies":false,"vernacularName":{"en":"Eurasian
         Eagle-owl","fi":"huuhkaja","se":"lidnu","sv":"berguv"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","fi":"Linnut","sv":"Fåglar"}},{"id":"MVL.1141","name":{"en":"Birds
-        of prey and owls","fi":"Petolinnut ja pöllöt","sv":"Rovfåglar och ugglor"}},{"id":"MVL.1161","name":{"en":"Owls","fi":"Pöllöt","sv":"Ugglor"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://apitest.laji.fi/context/taxon-search-multi"}'
-  recorded_at: 2026-07-02 12:36:39
+        of prey and owls","fi":"Petolinnut ja pöllöt","sv":"Rovfåglar och ugglor"}},{"id":"MVL.1161","name":{"en":"Owls","fi":"Pöllöt","sv":"Ugglor"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://api.laji.fi/context/taxon-search-multi"}'
+  recorded_at: 2026-10-22 08:03:23
 - request:
     method: GET
-    uri: https://apitest.laji.fi/taxa/search?query=Otter&matchType=exact&limit=1&personEmail=noreply%40laji.fi
+    uri: https://api.laji.fi/taxa/search?query=Otter&matchType=exact&limit=1&personEmail=noreply%40laji.fi
   response:
     status: 200
     headers:
-      date: Thu, 02 Jul 2026 12:33:24 GMT
+      date: Thu, 22 Oct 2026 08:03:23 GMT
       content-type: application/json; charset=utf-8
-      content-length: '530'
+      content-length: '550'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"212-PVXbczLd90ZsQeWX/Zp50Z/lhk0"
-      cache-control: no-store
-      x-frame-options: DENY
+      etag: W/"226-E4ieWlLNmkn1jl9gRB82rKyvKQk"
+      cache-control: public
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
       string: '{"results":[{"matchingName":"Otter","nameType":"MX.vernacularName","id":"MX.47169","checklist":"MR.1","scientificName":"Lutra
-        lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"vernacularName":{"en":"Otter","fi":"saukko","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"en":"Mammals","fi":"Nisäkkäät","sv":"Däggdjur"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://apitest.laji.fi/context/taxon-search-multi"}'
-  recorded_at: 2026-07-02 12:36:39
+        lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"invasiveSpecies":false,"vernacularName":{"en":"Otter","fi":"saukko","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"en":"Mammals","fi":"Nisäkkäät","sv":"Däggdjur"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://api.laji.fi/context/taxon-search-multi"}'
+  recorded_at: 2026-10-22 08:03:23
 recorded_with: VCR-vcr/2.1.0
