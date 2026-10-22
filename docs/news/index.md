@@ -2,7 +2,18 @@
 
 ## finbif 0.10.0.9000
 
-- This is the current development version.
+### MINOR IMPROVEMENTS
+
+- Improvements have been made to the output of properties
+  `materialEntityType`, `informationWithheld`, `dataGeneralizations`,
+  `eventDate`, `occurrenceStatus` and `modified`.
+
+### DEPRECATION
+
+- The use of properties `eventDateTime` and `samplingEffort` has been
+  deprecated in favour `eventDate`. The former will be unavailable in
+  the next release. While `eventDateTime` uses `as.POSIXct` class data
+  `eventDate` data are strings in ISO8601 format.
 
 ## finbif 0.10.0
 
