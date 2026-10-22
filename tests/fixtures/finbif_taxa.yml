@@ -1,17 +1,18 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.laji.fi/taxa/search?query=Bubo+bubo&matchType=exact&limit=1&personEmail=noreply%40laji.fi
+    uri: https://apitest.laji.fi/taxa/search?query=Bubo+bubo&matchType=exact&limit=1&personEmail=noreply%40laji.fi
   response:
     status: 200
     headers:
-      date: Thu, 22 Oct 2026 08:03:23 GMT
+      date: Thu, 22 Oct 2026 10:19:39 GMT
       content-type: application/json; charset=utf-8
-      content-length: '756'
+      content-length: '760'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"2f4-LRxPcjMGv3sKrQM1JY0FHnZZikw"
-      cache-control: public
+      etag: W/"2f8-OWUMp7yF7w53SWBuVwoEgSDf9pw"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
@@ -20,27 +21,28 @@ http_interactions:
       string: '{"results":[{"matchingName":"Bubo bubo","nameType":"MX.scientificName","id":"MX.28965","checklist":"MR.1","scientificName":"Bubo
         bubo","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"invasiveSpecies":false,"vernacularName":{"en":"Eurasian
         Eagle-owl","fi":"huuhkaja","se":"lidnu","sv":"berguv"},"informalGroups":[{"id":"MVL.1","name":{"en":"Birds","fi":"Linnut","sv":"Fåglar"}},{"id":"MVL.1141","name":{"en":"Birds
-        of prey and owls","fi":"Petolinnut ja pöllöt","sv":"Rovfåglar och ugglor"}},{"id":"MVL.1161","name":{"en":"Owls","fi":"Pöllöt","sv":"Ugglor"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://api.laji.fi/context/taxon-search-multi"}'
-  recorded_at: 2026-10-22 08:03:23
+        of prey and owls","fi":"Petolinnut ja pöllöt","sv":"Rovfåglar och ugglor"}},{"id":"MVL.1161","name":{"en":"Owls","fi":"Pöllöt","sv":"Ugglor"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://apitest.laji.fi/context/taxon-search-multi"}'
+  recorded_at: 2026-10-22 10:19:42
 - request:
     method: GET
-    uri: https://api.laji.fi/taxa/search?query=Otter&matchType=exact&limit=1&personEmail=noreply%40laji.fi
+    uri: https://apitest.laji.fi/taxa/search?query=Otter&matchType=exact&limit=1&personEmail=noreply%40laji.fi
   response:
     status: 200
     headers:
-      date: Thu, 22 Oct 2026 08:03:23 GMT
+      date: Thu, 22 Oct 2026 10:19:39 GMT
       content-type: application/json; charset=utf-8
-      content-length: '550'
+      content-length: '554'
       x-powered-by: Express
       access-control-allow-origin: '*'
-      etag: W/"226-E4ieWlLNmkn1jl9gRB82rKyvKQk"
-      cache-control: public
+      etag: W/"22a-1mHf3Xw7Us3u0qImrkanvaZvaOo"
+      cache-control: no-store
+      x-frame-options: DENY
       x-xss-protection: 1;mode=block
       x-content-type-options: nosniff
       strict-transport-security: max-age=31536000;includeSubDomains;preload
       referrer-policy: no-referrer-when-downgrade
     body:
       string: '{"results":[{"matchingName":"Otter","nameType":"MX.vernacularName","id":"MX.47169","checklist":"MR.1","scientificName":"Lutra
-        lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"invasiveSpecies":false,"vernacularName":{"en":"Otter","fi":"saukko","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"en":"Mammals","fi":"Nisäkkäät","sv":"Däggdjur"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://api.laji.fi/context/taxon-search-multi"}'
-  recorded_at: 2026-10-22 08:03:23
+        lutra","scientificNameAuthorship":"(Linnaeus, 1758)","taxonRank":"MX.species","cursiveName":true,"finnish":true,"species":true,"invasiveSpecies":false,"vernacularName":{"en":"Otter","fi":"saukko","sv":"utter"},"informalGroups":[{"id":"MVL.2","name":{"en":"Mammals","fi":"Nisäkkäät","sv":"Däggdjur"}}],"kingdomScientificName":"Animalia","type":"exactMatches"}],"@context":"https://apitest.laji.fi/context/taxon-search-multi"}'
+  recorded_at: 2026-10-22 10:19:42
 recorded_with: VCR-vcr/2.1.0
