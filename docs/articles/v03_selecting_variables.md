@@ -5,7 +5,7 @@ you can select from among (or order by) many variables (properties of
 the occurrence records). The default set of variables returned is a
 small subset of those available. Note that not all variables are
 available for all records. See
-[`?variables`](https://finbif-docs-dev.netlify.app/reference/variables.md)
+[`?variables`](https://luomus.github.io/finbif/reference/variables.md)
 for details.
 
 ## Selecting variables

@@ -1,6 +1,6 @@
 # News for Package <span class="pkg">finbif</span>
 
-# finbif 0.10.0.9000
+# finbif 0.10.1
 
 ## MINOR IMPROVEMENTS
 
