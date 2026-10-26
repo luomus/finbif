@@ -18,9 +18,9 @@
       9       …951541 Gloeophyllum sepiar…              NA  64.949322     
       10      …951544 Gloeophyllum sepiar…              NA  64.949322     
       ...with 0 more records and 8 more variables:
-      decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
+      decimalLongitude, coordinateUncertaintyInMeters, hasIssues,
       requiresVerification, requiresIdentification, occurrenceReliability,
-      identificationVerificationStatus
+      identificationVerificationStatus, eventDate
 
 ---
 
@@ -42,9 +42,9 @@
       9       …951541 Gloeophyllum sepiar…              NA  64.949322     
       10      …951544 Gloeophyllum sepiar…              NA  64.949322     
       ...with 0 more records and 8 more variables:
-      decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
+      decimalLongitude, coordinateUncertaintyInMeters, hasIssues,
       requiresVerification, requiresIdentification, occurrenceReliability,
-      identificationVerificationStatus
+      identificationVerificationStatus, eventDate
 
 ---
 
@@ -66,7 +66,7 @@
       9       …951541 Gloeophyllum sepiar…              NA  64.949322     
       10      …951544 Gloeophyllum sepiar…              NA  64.949322     
       ...with 0 more records and 8 more variables:
-      decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
+      decimalLongitude, coordinateUncertaintyInMeters, hasIssues,
       requiresVerification, requiresIdentification, occurrenceReliability,
-      identificationVerificationStatus
+      identificationVerificationStatus, eventDate
 

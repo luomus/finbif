@@ -31,7 +31,6 @@ test_that("fetching occurrences works", {
             select = c(
               "default_vars",
               "-occurrenceID",
-              "samplingEffort",
               "eventDate",
               "datasetName",
               "primaryHabitat",

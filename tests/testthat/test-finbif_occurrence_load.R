@@ -34,6 +34,7 @@ test_that("download imports work", {
 
       hbf_49382_zip_file <- finbif_occurrence_load(
         "HBF.49382.zip",
+        select = "all",
         tzone = "Etc/UTC",
         quiet = TRUE
       )
@@ -41,6 +42,7 @@ test_that("download imports work", {
       hbf_6968_zip_file <- suppressWarnings(
         finbif_occurrence_load(
           "HBF.6968.zip",
+          select = "all",
           facts = list(event = "not_a_fact"),
           tzone = "Etc/UTC",
           quiet = TRUE
@@ -75,12 +77,14 @@ test_that("download imports work", {
 
       hbf_12943_zip_file_dt <- finbif_occurrence_load(
         "HBF.12943.zip",
+        select = "all",
         tzone = "Etc/UTC",
         quiet = TRUE
       )
 
       hbf_12943_zip_file <- finbif_occurrence_load(
         "HBF.12943.zip",
+        select = "all",
         tzone = "Etc/UTC",
         quiet = TRUE,
         dt = FALSE
@@ -198,6 +202,7 @@ test_that("download imports work", {
     expect_warning(
       tun_fi_hbf_49381 <- finbif_occurrence_load(
         "https://tun.fi/HBF.49381",
+        select = "occurrenceID",
         facts = list(
           record = c("imageCount", "imageUrl", "areaInSqMeters", "not_a_fact")
         ),
@@ -217,7 +222,7 @@ test_that("download imports work", {
     options(finbif_cache_path = NULL)
 
     hbf_49381 <- capture.output(
-      finbif_occurrence_load(49381, tzone = "Etc/UTC")
+      finbif_occurrence_load(49381, select = "all", tzone = "Etc/UTC")
     )
 
     expect_snapshot_value(
@@ -229,6 +234,7 @@ test_that("download imports work", {
     expect_snapshot_value(
       finbif_occurrence_load(
         49381,
+        select = "occurrenceID",
         tzone = "Etc/UTC",
         quiet = TRUE
       ),
