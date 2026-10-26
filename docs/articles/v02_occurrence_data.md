@@ -19,7 +19,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 60179988
+#> Records available: 61190469
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
@@ -33,8 +33,8 @@ Click to show/hide output.
 #> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
 #> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 \
@@ -53,9 +53,9 @@ style variable names by setting `dwc = FALSE`.
 
 colnames(finbif_occurrence(dwc = FALSE))
 #>  [1] "record_id"               "scientific_name"         "abundance"              
-#>  [4] "lat_wgs84"               "lon_wgs84"               "date_time"              
-#>  [7] "coordinates_uncertainty" "any_issues"              "requires_verification"  
-#> [10] "requires_identification" "record_reliability"      "record_quality"
+#>  [4] "lat_wgs84"               "lon_wgs84"               "coordinates_uncertainty"
+#>  [7] "any_issues"              "requires_verification"   "requires_identification"
+#> [10] "record_reliability"      "record_quality"          "date_time_ISO8601"
 ```
 
 The functions
@@ -82,7 +82,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 139837
+#> Records available: 141480
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1      …0745928 Cygnus cygnus (Linn…              NA  66              29.25          
@@ -96,8 +96,8 @@ Click to show/hide output.
 #> 9      …5552474 Cygnus cygnus (Linn…  1               68.713901       22.787894      
 #> 10     …5559118 Cygnus cygnus (Linn…  3                           NA               NA
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 \
@@ -115,7 +115,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 203083
+#> Records available: 204896
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1      …0745928 Cygnus cygnus (Linn…              NA  66              29.25          
@@ -129,8 +129,8 @@ Click to show/hide output.
 #> 9      …0745961 Cygnus olor (J.F. G…              NA              NA               NA
 #> 10     …5552466 Cygnus cygnus (Linn…  1               67.773235       25.050461      
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 \
@@ -171,7 +171,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 1001
-#> Records available: 60182673
+#> Records available: 61189680
 #> A data.frame [1001 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
@@ -185,8 +185,8 @@ Click to show/hide output.
 #> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
 #> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
 #> ...with 991 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 \
@@ -197,7 +197,7 @@ retrieving any records, by setting `count_only = TRUE`.
 ``` r
 
 finbif_occurrence(count_only = TRUE)
-#> [1] 60182646
+#> [1] 61198876
 ```
 
 ## Checking taxa
@@ -218,7 +218,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 8107
+#> Records available: 8272
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1       …223360 Vulpes vulpes var. …              NA  56              160            
@@ -232,8 +232,8 @@ Click to show/hide output.
 #> 9       …580330 Vulpes vulpes (Linn…              NA              NA               NA
 #> 10      …580334 Vulpes vulpes (Linn…              NA  69              27.5           
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 \
@@ -252,7 +252,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 8107
+#> Records available: 8272
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1       …223360 Vulpes vulpes var. …              NA  56              160            
@@ -266,8 +266,8 @@ Click to show/hide output.
 #> 9       …580330 Vulpes vulpes (Linn…              NA              NA               NA
 #> 10      …580334 Vulpes vulpes (Linn…              NA  69              27.5           
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 \
@@ -330,153 +330,16 @@ Click to show/hide output.
 #> Records available: 309
 #> A data.frame [10 x 2]
 #>    finnishCounty n_species
-#> 1      Raasepori  2078    
-#> 2      Virolahti  2037    
-#> 3       Rääkkylä  1396    
-#> 4        Kouvola  1578    
-#> 5    Kemiönsaari  2042    
-#> 6          Hanko  1994    
-#> 7       Parainen  1922    
-#> 8       Helsinki  2069    
-#> 9         Kuopio  1445    
-#> 10         Turku  1827    
+#> 1      Raasepori  2086    
+#> 2      Virolahti  2036    
+#> 3       Rääkkylä  1407    
+#> 4        Kouvola  1581    
+#> 5    Kemiönsaari  2045    
+#> 6          Hanko  2004    
+#> 7       Parainen  1921    
+#> 8       Helsinki  2076    
+#> 9         Kuopio  1457    
+#> 10         Turku  1829    
 ```
 
 \
-
-## Time & duration
-
-The default behaviour of `finbif_occurrence` is to consolidate date and
-time data for occurrence recording events into a `date_time` variable.
-This can be turned off (which can speed up data processing time) by
-deselecting the `date_time` variable.
-
-``` r
-
-finbif_occurrence(select = "-eventDateTime")
-```
-
-Click to show/hide output.
-
-``` r
-
-
-#> Records downloaded: 10
-#> Records available: 60179991
-#> A data.frame [10 x 11]
-#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
-#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
-#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
-#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
-#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
-#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
-#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
-#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
-#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
-#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
-#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
-#> ...with 0 more records and 6 more variables:
-#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
-#> occurrenceReliability, identificationVerificationStatus
-```
-
-\
-
-### Timezone
-
-#### Timezone input
-
-The FinBIF database doesn’t currently store timezone information, so
-[finbif](https://github.com/luomus/finbif) makes assumptions about the
-appropriate timezone based on the time and location of the occurrence
-recording events to calculate `date_time` and `duration`. By default, a
-fast heuristic is used to determine the timezones. If you require
-greater accuracy (e.g., you are using data on the Finnish/Swedish border
-and daytime/nighttime hours are important), you can switch to more
-accurate, though slower, timezone calculation method.
-
-``` r
-
-finbif_occurrence(date_time_method = "accurate")
-```
-
-Click to show/hide output.
-
-``` r
-
-
-#> Records downloaded: 10
-#> Records available: 60179988
-#> A data.frame [10 x 12]
-#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
-#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
-#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
-#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
-#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
-#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
-#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
-#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
-#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
-#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
-#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
-#> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
-```
-
-\
-
-#### Timezone output
-
-The timezone of the calculated `date_time` variable is determined by the
-timezone of your operating system.
-
-``` r
-
-Sys.timezone()
-```
-
-You can override this by setting the `tzone` argument to a different
-value.
-
-``` r
-
-finbif_occurrence(tzone = "Etc/UTC")
-```
-
-Click to show/hide output.
-
-``` r
-
-
-#> Records downloaded: 10
-#> Records available: 60179988
-#> A data.frame [10 x 12]
-#>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
-#> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
-#> 2           …25 Polytrichum juniper…              NA  60.373472       24.993816      
-#> 3           …29 Polytrichum juniper…              NA  61.612783       21.44191       
-#> 4           …33 Polytrichum juniper…              NA  61.322069       23.513515      
-#> 5           …37 Polytrichum juniper…              NA  61.249458       25.040691      
-#> 6           …41 Polytrichum juniper…              NA  62.605448       25.925676      
-#> 7           …45 Polytrichum juniper…              NA  62.22789        30.629365      
-#> 8           …49 Polytrichum juniper…              NA  66.004079       28.202282      
-#> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
-#> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
-#> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
-```
-
-\
-
-Or set the global timezone option to set the timezone for the current
-session.
-
-``` r
-
-options(finbif_tz = "Etc/UTC")
-```
-
-This may be advisable for reproducibility or when working with multiple
-systems.

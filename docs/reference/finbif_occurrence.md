@@ -21,7 +21,7 @@ finbif_occurrence(
   date_time_method = NULL,
   check_taxa = TRUE,
   on_check_fail = c("warn", "error"),
-  tzone = getOption("finbif_tz"),
+  tzone = NULL,
   locale = getOption("finbif_locale"),
   seed = NULL,
   drop_na = FALSE,
@@ -109,14 +109,7 @@ finbif_occurrence(
 
 - date_time_method:
 
-  Character. Passed to
-  [`lutz::tz_lookup_coords()`](http://andyteucher.ca/lutz/reference/tz_lookup_coords.md)
-  when `date_time` and/or `duration` variables have been selected.
-  Default is `"fast"` when less than 100,000 records are requested and
-  `"none"` when more. Using method `"none"` assumes all records are in
-  timezone "Europe/Helsinki", Use `date_time_method = "accurate"`
-  (requires package `sf`) for greater accuracy at the cost of slower
-  computation.
+  Character. Deprecated and no longer used.
 
 - check_taxa:
 
@@ -131,8 +124,7 @@ finbif_occurrence(
 
 - tzone:
 
-  Character. If `date_time` has been selected the timezone of the
-  outputted date-time. Defaults to system timezone.
+  Character. Deprecated and no longer used.
 
 - locale:
 

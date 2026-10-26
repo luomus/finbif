@@ -192,6 +192,9 @@ Click to show/hide output.
 <span><span class="co">#&gt; $results[[1]]$species</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
 <span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $results[[1]]$invasiveSpecies</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $results[[1]]$vernacularName</span></span>
 <span><span class="co">#&gt; [1] "vihtakoivu"</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -240,6 +243,9 @@ Click to show/hide output.
 <span><span class="co">#&gt; $results[[2]]$species</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
 <span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $results[[2]]$invasiveSpecies</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $results[[2]]$vernacularName</span></span>
 <span><span class="co">#&gt; [1] "hybridikoivu"</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -275,7 +281,7 @@ function.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span><span class="st">"Cygnus cygnus"</span>, n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Records downloaded: 100</span></span>
-<span><span class="co">#&gt; Records available: 139837</span></span>
+<span><span class="co">#&gt; Records available: 141480</span></span>
 <span><span class="co">#&gt; A data.frame [100 x 12]</span></span>
 <span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
 <span><span class="co">#&gt; 1      …0745928 Cygnus cygnus (Linn…              NA  66              29.25          </span></span>
@@ -289,8 +295,8 @@ function.</p>
 <span><span class="co">#&gt; 9      …5552474 Cygnus cygnus (Linn…  1               68.713901       22.787894      </span></span>
 <span><span class="co">#&gt; 10     …5559118 Cygnus cygnus (Linn…  3                           NA               NA</span></span>
 <span><span class="co">#&gt; ...with 90 more records and 7 more variables:</span></span>
-<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
-<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,</span></span>
+<span><span class="co">#&gt; occurrenceReliability, identificationVerificationStatus, eventDate</span></span></code></pre></div>
 <p>You can search for multiple taxa at once and filter the records with
 the <code>filter</code> argument.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -304,7 +310,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 87466</span></span>
+<span><span class="co">#&gt; Records available: 88719</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
 <span><span class="co">#&gt; 1        …33947 Cygnus cygnus (Linn…              NA  63.4            33.39          </span></span>
@@ -318,8 +324,8 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9        …43371 Cygnus olor (J.F. G…              NA  60.4517         23.9772        </span></span>
 <span><span class="co">#&gt; 10       …43491 Cygnus cygnus (Linn…              NA  60.3249         25.7125        </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 7 more variables:</span></span>
-<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
-<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,</span></span>
+<span><span class="co">#&gt; occurrenceReliability, identificationVerificationStatus, eventDate</span></span></code></pre></div>
 </details><p><br></p>
 <p>See <code><a href="../reference/filters.html">?filters</a></code> and <code><a href="../articles/v05_filtering.html">vignette("v05_filtering")</a></code>
 for more details on filtering FinBIF records.</p>
@@ -336,23 +342,23 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 29078618</span></span>
+<span><span class="co">#&gt; Records available: 29382078</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
-<span><span class="co">#&gt;            occurrenceID       scientificName individualCount decimalLatitude</span></span>
-<span><span class="co">#&gt; 1        …JX.1026053#46 Anthus trivialis (L…  1               64.300242     </span></span>
-<span><span class="co">#&gt; 2      …KE.8_1044172#41 Turdus merula Linna…  1               60.458446     </span></span>
-<span><span class="co">#&gt; 3   …KE.67/2710655#Unit Rallus aquaticus Li…  1               60.197895     </span></span>
-<span><span class="co">#&gt; 4    …KE.67/507788#Unit Parus major Linnaeu…  1               60.237614     </span></span>
-<span><span class="co">#&gt; 5        …HR.49/41446_U Astur gentilis (Lin…  1               62.229788     </span></span>
-<span><span class="co">#&gt; 6    …KE.67/353020#Unit Parus major Linnaeu…  1               60.266667     </span></span>
-<span><span class="co">#&gt; 7  …KE.67/12431497#Unit Riparia riparia (Li…  1               61.072328     </span></span>
-<span><span class="co">#&gt; 8          …JX.94072#20 Poecile montanus (C…  12              60.788433     </span></span>
-<span><span class="co">#&gt; 9       …JX.1247883#256 Grus grus (Linnaeus…  1               64.562534     </span></span>
-<span><span class="co">#&gt; 10 …KE.67/14598103#Unit Coloeus monedula (L…  1               62.782648     </span></span>
+<span><span class="co">#&gt;                  occurrenceID       scientificName individualCount decimalLatitude</span></span>
+<span><span class="co">#&gt; 1             …JX.1024897#580 Motacilla alba Linn…  1               60.965785     </span></span>
+<span><span class="co">#&gt; 2             …JX.1027408#328 Hirundo rustica Lin…              NA  60.445507     </span></span>
+<span><span class="co">#&gt; 3        …KE.67/12998632#Unit Ficedula hypoleuca …  1               65.927511     </span></span>
+<span><span class="co">#&gt; 4  …HR.3691/OBS903076864_Unit Ficedula hypoleuca …  5               66.6165       </span></span>
+<span><span class="co">#&gt; 5             …JX.1025075#124 Cuculus canorus Lin…  1               61.453054     </span></span>
+<span><span class="co">#&gt; 6                …MHU.2005928 Falco tinnunculus L…              NA  68.79735      </span></span>
+<span><span class="co">#&gt; 7         …KE.67/1195796#Unit Muscicapa striata (…  1               59.833333     </span></span>
+<span><span class="co">#&gt; 8         …KE.67/6957830#Unit Acrocephalus schoen…  1               60.15         </span></span>
+<span><span class="co">#&gt; 9         …KE.67/5673192#Unit Chroicocephalus rid…  1               61.15         </span></span>
+<span><span class="co">#&gt; 10       …KE.67/16065298#Unit Turdus philomelos C…  1               59.813927     </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 8 more variables:</span></span>
-<span><span class="co">#&gt; decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,</span></span>
-<span><span class="co">#&gt; requiresVerification, requiresIdentification, occurrenceReliability,</span></span>
-<span><span class="co">#&gt; identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
+<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus,</span></span>
+<span><span class="co">#&gt; eventDate</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 </div>

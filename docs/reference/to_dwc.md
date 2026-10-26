@@ -39,5 +39,5 @@ Character vector.
 ``` r
 
 to_dwc("record_id", "date_time", "scientific_name")
-#> [1] "occurrenceID"   "eventDateTime"  "scientificName"
+#> [1] "occurrenceID"   NA               "scientificName"
 ```

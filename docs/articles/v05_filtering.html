@@ -87,7 +87,7 @@ post-processing time. For the full list of filtering options see
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"Finland"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 57360604</span></span>
+<span><span class="co">#&gt; Records available: 58428203</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
 <span><span class="co">#&gt; 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      </span></span>
@@ -101,15 +101,15 @@ post-processing time. For the full list of filtering options see
 <span><span class="co">#&gt; 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      </span></span>
 <span><span class="co">#&gt; 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 7 more variables:</span></span>
-<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
-<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,</span></span>
+<span><span class="co">#&gt; occurrenceReliability, identificationVerificationStatus, eventDate</span></span></code></pre></div>
 <p>Or by a set of coordinates.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>coordinates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">60</span>, <span class="fl">68</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">30</span><span class="op">)</span>, <span class="st">"wgs84"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 48564194</span></span>
+<span><span class="co">#&gt; Records available: 49433934</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
 <span><span class="co">#&gt; 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      </span></span>
@@ -123,8 +123,8 @@ post-processing time. For the full list of filtering options see
 <span><span class="co">#&gt; 9           …61 Polytrichum pilifer…              NA  61.599004       21.434943      </span></span>
 <span><span class="co">#&gt; 10          …65 Polytrichum pilifer…              NA  61.452593       24.099408      </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 7 more variables:</span></span>
-<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
-<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,</span></span>
+<span><span class="co">#&gt; occurrenceReliability, identificationVerificationStatus, eventDate</span></span></code></pre></div>
 <p>See <code><a href="../reference/filters.html">?filters</a></code> section “Location” for more details</p>
 </div>
 <div class="section level2">
@@ -140,7 +140,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 30157</span></span>
+<span><span class="co">#&gt; Records available: 29986</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;                 occurrenceID       scientificName individualCount decimalLatitude</span></span>
 <span><span class="co">#&gt; 1  …herb.oulu.fi/MY.10184972 Orthotrichum anomal…              NA  61.603872     </span></span>
@@ -154,9 +154,9 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9     …luomus.fi/MY.10221155 Allophylaria macros…              NA  60.378251     </span></span>
 <span><span class="co">#&gt; 10    …luomus.fi/MY.10221158 Host: Chamaenerion …              NA  60.378251     </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 8 more variables:</span></span>
-<span><span class="co">#&gt; decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,</span></span>
-<span><span class="co">#&gt; requiresVerification, requiresIdentification, occurrenceReliability,</span></span>
-<span><span class="co">#&gt; identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
+<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus,</span></span>
+<span><span class="co">#&gt; eventDate</span></span></code></pre></div>
 </details><p><br> , or for record events, a range as a character vector.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
@@ -167,7 +167,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 1167813</span></span>
+<span><span class="co">#&gt; Records available: 1169211</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
 <span><span class="co">#&gt; 1          …244 Aneura pinguis (L.)…              NA  61.86848        24.042062      </span></span>
@@ -181,8 +181,8 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9          …317 Cephalozia bicuspid…              NA  61.768742       23.877258      </span></span>
 <span><span class="co">#&gt; 10         …388 Lophocolea heteroph…              NA  61.4436         24.119939      </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 7 more variables:</span></span>
-<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
-<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,</span></span>
+<span><span class="co">#&gt; occurrenceReliability, identificationVerificationStatus, eventDate</span></span></code></pre></div>
 </details><p><br></p>
 <p>Records for a specific season or time-span across all years can also
 be requested.</p>
@@ -198,7 +198,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 1793259</span></span>
+<span><span class="co">#&gt; Records available: 1793260</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
 <span><span class="co">#&gt; 1       …079640 Pohlia nutans (Hedw…              NA  60.321276       24.109857      </span></span>
@@ -212,8 +212,8 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9       …281097 Pseudanomodon atten…              NA  61.571317       24.305839      </span></span>
 <span><span class="co">#&gt; 10      …281100 Syntrichia ruralis …              NA  61.571317       24.305839      </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 7 more variables:</span></span>
-<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
-<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,</span></span>
+<span><span class="co">#&gt; occurrenceReliability, identificationVerificationStatus, eventDate</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div class="section level2">
@@ -239,7 +239,7 @@ Click to show/hide output.
 <span>  permissive <span class="op">=</span> <span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="va">permissive</span>, count_only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt;     strict permissive </span></span>
-<span><span class="co">#&gt;      82631   61265240</span></span></code></pre></div>
+<span><span class="co">#&gt;      85055   62281278</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="collection">Collection<a class="anchor" aria-label="anchor" href="#collection"></a>
@@ -253,11 +253,11 @@ collections.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>collection <span class="op">=</span> <span class="st">"iNaturalist Suomi Finland"</span><span class="op">)</span>, count_only <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1673340</span></span>
+<span><span class="co">#&gt; [1] 1892409</span></span>
 <span><span class="fu"><a href="../reference/finbif_occurrence.html">finbif_occurrence</a></span><span class="op">(</span></span>
 <span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>collection <span class="op">=</span> <span class="st">"Notebook, general observations"</span><span class="op">)</span>, count_only <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 3546019</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 3764140</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="informal-taxonomic-groups">Informal taxonomic groups<a class="anchor" aria-label="anchor" href="#informal-taxonomic-groups"></a>
@@ -271,7 +271,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 29626954</span></span>
+<span><span class="co">#&gt; Records available: 29935732</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;                 occurrenceID       scientificName individualCount decimalLatitude</span></span>
 <span><span class="co">#&gt; 1  …herb.oulu.fi/MY.17469610 Asio flammeus (Pont…              NA  67.718422     </span></span>
@@ -285,9 +285,9 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9     …luomus.fi/MY.10042231 Astur gentilis (Lin…              NA  63.811181     </span></span>
 <span><span class="co">#&gt; 10    …luomus.fi/MY.10042238 Accipiter nisus (Li…              NA  60.2522       </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 8 more variables:</span></span>
-<span><span class="co">#&gt; decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,</span></span>
-<span><span class="co">#&gt; requiresVerification, requiresIdentification, occurrenceReliability,</span></span>
-<span><span class="co">#&gt; identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
+<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus,</span></span>
+<span><span class="co">#&gt; eventDate</span></span></code></pre></div>
 </details><p><br></p>
 <p>See <code><a href="../reference/finbif_informal_groups.html">finbif_informal_groups()</a></code> for the full list of groups
 you can filter by. You can use the same function to see the subgroups
@@ -317,7 +317,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 507</span></span>
+<span><span class="co">#&gt; Records available: 508</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
 <span><span class="co">#&gt; 1      …7350700 Pycnonotus cafer su…  3                           NA               NA</span></span>
@@ -331,8 +331,8 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9      …7430682 Corvus splendens su…  3                           NA               NA</span></span>
 <span><span class="co">#&gt; 10     …8449767 Alopochen aegyptiac…              NA              NA               NA</span></span>
 <span><span class="co">#&gt; ...with 0 more records and 7 more variables:</span></span>
-<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
-<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,</span></span>
+<span><span class="co">#&gt; occurrenceReliability, identificationVerificationStatus, eventDate</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div class="section level2">
@@ -351,7 +351,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 82019</span></span>
+<span><span class="co">#&gt; Records available: 82195</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
 <span><span class="co">#&gt; 1       …223201 Microtus arvalis (P…              NA              NA               NA</span></span>
@@ -365,8 +365,8 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9       …580240 Castor fiber Linnae…              NA              NA               NA</span></span>
 <span><span class="co">#&gt; 10      …580398 Ursus arctos Linnae…              NA  67.05           29.25          </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 7 more variables:</span></span>
-<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
-<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,</span></span>
+<span><span class="co">#&gt; occurrenceReliability, identificationVerificationStatus, eventDate</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div class="section level2">
@@ -400,7 +400,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 34008277</span></span>
+<span><span class="co">#&gt; Records available: 34589366</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
 <span><span class="co">#&gt; 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      </span></span>
@@ -414,8 +414,8 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      </span></span>
 <span><span class="co">#&gt; 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 7 more variables:</span></span>
-<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
-<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,</span></span>
+<span><span class="co">#&gt; occurrenceReliability, identificationVerificationStatus, eventDate</span></span></code></pre></div>
 </details><p><br></p>
 <p>You may further refine habitat based searching using a specific
 habitat type qualifier such as “sun-exposed” or “shady”. Use
@@ -438,7 +438,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 218</span></span>
+<span><span class="co">#&gt; Records available: 219</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;                  occurrenceID       scientificName individualCount decimalLatitude</span></span>
 <span><span class="co">#&gt; 1   …id.luomus.fi/MY.19077695 Pammene fasciana (L…  1               60.188362     </span></span>
@@ -452,9 +452,9 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9        …tun.fi/JX.1134471#4 Pammene fasciana (L…  2               61.549842     </span></span>
 <span><span class="co">#&gt; 10     …tun.fi/JX.1143718#265 Pammene fasciana (L…              NA  60.37543      </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 8 more variables:</span></span>
-<span><span class="co">#&gt; decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,</span></span>
-<span><span class="co">#&gt; requiresVerification, requiresIdentification, occurrenceReliability,</span></span>
-<span><span class="co">#&gt; identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
+<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus,</span></span>
+<span><span class="co">#&gt; eventDate</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div class="section level2">
@@ -469,7 +469,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 499022</span></span>
+<span><span class="co">#&gt; Records available: 509673</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude</span></span>
 <span><span class="co">#&gt; 1      …3990009 Amanita coryli Nevi…              NA  68.058832       24.058368      </span></span>
@@ -483,8 +483,8 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9      …8016087 Amanita coryli Nevi…  3               69.007453       20.930394      </span></span>
 <span><span class="co">#&gt; 10     …8016091 Amanita coryli Nevi…  2               68.185593       23.992918      </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 7 more variables:</span></span>
-<span><span class="co">#&gt; eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
-<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,</span></span>
+<span><span class="co">#&gt; occurrenceReliability, identificationVerificationStatus, eventDate</span></span></code></pre></div>
 </details><p><br> Or, by using the negation of occurrence status, you can request
 records of birds excluding those considered vagrants.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
@@ -499,7 +499,7 @@ Click to show/hide output.
 </summary><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#&gt; Records downloaded: 10</span></span>
-<span><span class="co">#&gt; Records available: 29048611</span></span>
+<span><span class="co">#&gt; Records available: 29351510</span></span>
 <span><span class="co">#&gt; A data.frame [10 x 12]</span></span>
 <span><span class="co">#&gt;                 occurrenceID       scientificName individualCount decimalLatitude</span></span>
 <span><span class="co">#&gt; 1  …herb.oulu.fi/MY.17469610 Asio flammeus (Pont…              NA  67.718422     </span></span>
@@ -513,9 +513,9 @@ Click to show/hide output.
 <span><span class="co">#&gt; 9     …luomus.fi/MY.10042231 Astur gentilis (Lin…              NA  63.811181     </span></span>
 <span><span class="co">#&gt; 10    …luomus.fi/MY.10042238 Accipiter nisus (Li…              NA  60.2522       </span></span>
 <span><span class="co">#&gt; ...with 0 more records and 8 more variables:</span></span>
-<span><span class="co">#&gt; decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,</span></span>
-<span><span class="co">#&gt; requiresVerification, requiresIdentification, occurrenceReliability,</span></span>
-<span><span class="co">#&gt; identificationVerificationStatus</span></span></code></pre></div>
+<span><span class="co">#&gt; decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,</span></span>
+<span><span class="co">#&gt; requiresIdentification, occurrenceReliability, identificationVerificationStatus,</span></span>
+<span><span class="co">#&gt; eventDate</span></span></code></pre></div>
 </details><p><br></p>
 <p>See <code>finbif_metadata("finnish_occurrence_status")</code> for a
 full list of statuses and their descriptions.</p>

@@ -29,7 +29,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 473067
+#> Records available: 488726
 #> A data.frame [10 x 3]
 #>          scientificName lifeStage    sex
 #> 1  Falco rusticolus Li…      <NA> Female
@@ -62,7 +62,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 60179991
+#> Records available: 61187886
 #> A data.frame [10 x 13]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
@@ -76,9 +76,8 @@ Click to show/hide output.
 #> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
 #> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
 #> ...with 0 more records and 8 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus,
-#> lifeStage
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate, lifeStage
 ```
 
 \
@@ -87,8 +86,8 @@ Click to show/hide output.
 
 You can change the order of occurrence records before they are fetched
 from the server by using the `order_by` argument. The default ordering
-is `date_start` descending, then `load_date` descending, then
-`reported_name`.
+is `eventDateStart` descending, then `documentLoadedDate` descending,
+then `verbatimIdentification`.
 
 ### Ascending order
 
@@ -106,7 +105,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 139837
+#> Records available: 141480
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1      …0745928 Cygnus cygnus (Linn…              NA  66              29.25          
@@ -120,8 +119,8 @@ Click to show/hide output.
 #> 9      …6082839 Cygnus cygnus (Linn…  1                           NA               NA
 #> 10     …7079647 Cygnus cygnus (Linn…              NA  61.85           23.5           
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 \
@@ -142,7 +141,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 139837
+#> Records available: 141480
 #> A data.frame [10 x 12]
 #>                   occurrenceID       scientificName individualCount decimalLatitude
 #> 1                 …MHU.2981587 Cygnus cygnus (Linn…  6000            64.4          
@@ -156,9 +155,9 @@ Click to show/hide output.
 #> 9   …HR.3691/OBS671353848_Unit Cygnus cygnus (Linn…  1361            64.71656      
 #> 10 …HR.3691/OBS1686954463_Unit Cygnus cygnus (Linn…  1333            64.50734      
 #> ...with 0 more records and 8 more variables:
-#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
-#> requiresVerification, requiresIdentification, occurrenceReliability,
-#> identificationVerificationStatus
+#> decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus,
+#> eventDate
 ```
 
 \
@@ -181,7 +180,7 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 63246
+#> Records available: 63416
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1     …12015253 Cygnus olor (J.F. G…  2500                        NA               NA
@@ -195,8 +194,8 @@ Click to show/hide output.
 #> 9     …26309317 Cygnus olor (J.F. G…  900                         NA               NA
 #> 10     …1260385 Cygnus olor (J.F. G…  800             58.66           23.57          
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 \
@@ -217,23 +216,23 @@ Click to show/hide output.
 
 
 #> Records downloaded: 10
-#> Records available: 60182673
+#> Records available: 61186982
 #> A data.frame [10 x 12]
 #>                                         occurrenceID       scientificName individualCount
-#> 1  …KE.881/ff60ea35-ef67-4380-b3d7-d65bd80068db_Unit Empetrum nigrum ste…  1             
-#> 2                                       …MKC.3874933 Gymnocarpium dryopt…              NA
-#> 3                         …KE.921/LGE.557997/1295765 Chara baltica A.Bru…              NA
-#> 4                                     …JX.1417206#64 Micracanthia margin…  2             
-#> 5                                      …MHU.29367059 Mareca penelope (Li…              NA
-#> 6                                      …MKC.31354972 Ranunculus acris su…              NA
-#> 7                                 …KE.67/120384#Unit Circus cyaneus (Lin…  1             
-#> 8                                      …MHU.14434664 Columba palumbus Li…              NA
-#> 9                               …KE.67/11306334#Unit Erithacus rubecula …  1             
-#> 10                                    …JX.1350290#11 Rhyncolus elongatus…  4             
+#> 1                                      …JX.1566601#3 Columba palumbus Li…  2             
+#> 2                                  …MKH.20101025#432 Chroicocephalus rid…  20            
+#> 3                                       …JX.757655#4 Eupithecia icterata…  1             
+#> 4                               …KE.67/13087202#Unit Acrocephalus schoen…  1             
+#> 5                                …KE.67/5980995#Unit Jynx torquilla Linn…  1             
+#> 6                                …HR.3211/49101786-U  Ranunculus acris L.              NA
+#> 7  …KE.881/67582b0a-81fa-4489-ba7d-57710a1ab996_Unit            Betula L.  1             
+#> 8                                …KE.67/2658108#Unit Somateria mollissim…  1             
+#> 9                               …KE.67/15184231#Unit Sylvia atricapilla …  1             
+#> 10                                     …MKC.18447413   Carex canescens L.              NA
 #> ...with 0 more records and 9 more variables:
-#> decimalLatitude, decimalLongitude, eventDateTime, coordinateUncertaintyInMeters,
-#> hasIssues, requiresVerification, requiresIdentification, occurrenceReliability,
-#> identificationVerificationStatus
+#> decimalLatitude, decimalLongitude, coordinateUncertaintyInMeters, hasIssues,
+#> requiresVerification, requiresIdentification, occurrenceReliability,
+#> identificationVerificationStatus, eventDate
 ```
 
 \

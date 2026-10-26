@@ -14,7 +14,7 @@ finbif_occurrence_load(
   cache = getOption("finbif_use_cache"),
   dwc = getOption("finbif_use_dwc"),
   date_time_method = NULL,
-  tzone = getOption("finbif_tz"),
+  tzone = NULL,
   write_file = tempfile(),
   dt = NA,
   keep_tsv = FALSE,
@@ -74,19 +74,11 @@ finbif_occurrence_load(
 
 - date_time_method:
 
-  Character. Passed to
-  [`lutz::tz_lookup_coords()`](http://andyteucher.ca/lutz/reference/tz_lookup_coords.md)
-  when `date_time` and/or `duration` variables have been selected.
-  Default is `"fast"` when less than 100,000 records are requested and
-  `"none"` when more. Using method `"none"` assumes all records are in
-  timezone "Europe/Helsinki", Use `date_time_method = "accurate"`
-  (requires package `sf`) for greater accuracy at the cost of slower
-  computation.
+  Character. Deprecated and no longer used.
 
 - tzone:
 
-  Character. If `date_time` has been selected the timezone of the
-  outputted date-time. Defaults to system timezone.
+  Character. Deprecated and no longer used.
 
 - write_file:
 

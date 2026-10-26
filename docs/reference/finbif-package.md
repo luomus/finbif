@@ -58,9 +58,7 @@ are conveniently preformatted for subsequent analyses.
 
 - `finbif_tz`:
 
-  Character. The timezone used by `finbif` functions that compute dates
-  and times. Default:
-  [`Sys.timezone()`](https://rdrr.io/r/base/timezones.html)
+  Character. Deprecated and no longer used.
 
 - `finbif_locale`:
 

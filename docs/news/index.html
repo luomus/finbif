@@ -41,8 +41,15 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.10.1.9000" id="finbif-01019000">finbif 0.10.1.9000<a class="anchor" aria-label="anchor" href="#finbif-01019000"></a></h2>
-<ul><li>This is the current development release.</li>
+<div class="section level3">
+<h3 id="defunct-0-10-1-9000">DEFUNCT<a class="anchor" aria-label="anchor" href="#defunct-0-10-1-9000"></a></h3>
+<ul><li>Selecting the properties <code>eventDateTime</code> and <code>samplingEffort</code> is now defunct. Users should instead use the <code>eventDate</code> property only.</li>
 </ul></div>
+<div class="section level3">
+<h3 id="deprecation-0-10-1-9000">DEPRECATION<a class="anchor" aria-label="anchor" href="#deprecation-0-10-1-9000"></a></h3>
+<ul><li>The <code>date_time_method</code> and <code>tzone</code> arguments to to <code>finbif_occurrence</code> and <code>finbif_occurrence_load</code> are deprecated and will be removed in the next release.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.10.1" id="finbif-0101">finbif 0.10.1<a class="anchor" aria-label="anchor" href="#finbif-0101"></a></h2><p class="text-muted">CRAN release: 2026-10-22</p>
 <div class="section level3">
@@ -51,7 +58,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="deprecation-0-10-1">DEPRECATION<a class="anchor" aria-label="anchor" href="#deprecation-0-10-1"></a></h3>
-<ul><li>The use of properties <code>eventDateTime</code> and <code>samplingEffort</code> has been deprecated in favour <code>eventDate</code>. The former will be unavailable in the next release. While <code>eventDateTime</code> uses <code>as.POSIXct</code> class data <code>eventDate</code> data are strings in ISO8601 format.</li>
+<ul><li>The use of properties <code>eventDateTime</code> and <code>samplingEffort</code> has been deprecated in favour of <code>eventDate</code>. The former will be unavailable in the next release. While <code>eventDateTime</code> uses <code>as.POSIXct</code> class data <code>eventDate</code> data are strings in ISO8601 format.</li>
 </ul></div>
 </div>
     <div class="section level2">

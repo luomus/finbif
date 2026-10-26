@@ -217,13 +217,9 @@ part of a transect that undergoes repeated surveys.)</p></li>
     <h2 id="time">Time<a class="anchor" aria-label="anchor" href="#time"></a></h2>
 
 
-<p>Variables related to time of record include:</p><ul><li><p><code>eventDateTime</code> POSIXct.
-The date and time of the recording event. This variable is computed after
-records are downloaded from FinBIF. Its timezone and accuracy can be
-controlled see <code><a href="finbif_occurrence.html">finbif_occurrence()</a></code> for details.</p></li>
-<li><p><code>samplingEffort</code> Duration.
-The duration of the recording event. This variable is computed after
-records are downloaded from FinBIF.</p></li>
+<p>Variables related to time of record include:</p><ul><li><p><code>eventDate</code> Character.
+A date-time or time interval during which am occurrence occurred.
+Conforms with ISO 8601-1:2019</p></li>
 <li><p><code>eventDateStart</code> Character.
 The date the recording event began.</p></li>
 <li><p><code>eventDateEnd</code> Character.
