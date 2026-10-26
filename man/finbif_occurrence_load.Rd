@@ -14,7 +14,7 @@ finbif_occurrence_load(
   cache = getOption("finbif_use_cache"),
   dwc = getOption("finbif_use_dwc"),
   date_time_method = NULL,
-  tzone = getOption("finbif_tz"),
+  tzone = NULL,
   write_file = tempfile(),
   dt = NA,
   keep_tsv = FALSE,
@@ -59,8 +59,7 @@ will determine how metadata is cached.}
 
 \item{date_time_method}{Character. Deprecated and no longer used.}
 
-\item{tzone}{Character. If \code{date_time} has been selected the timezone of the
-outputted date-time. Defaults to system timezone.}
+\item{tzone}{Character. Deprecated and no longer used.}
 
 \item{write_file}{Character. Path to write downloaded zip file to if \code{file}
 refers to a URI. Will be ignored if \code{getOption("finbif_cache_path")} is not

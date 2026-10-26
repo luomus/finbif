@@ -37,7 +37,7 @@ Gathering.Notes,event_notes,eventRemarks,FALSE,character,FALSE
 Gathering.GatheringOrder,event_order,eventOrder,FALSE,integer,FALSE
 Document.FirstLoadDate,first_load_date,availableDate,FALSE,character,FALSE
 Gathering.Conversions.WGS84_WKT,footprint_wgs84,footprintWKT,FALSE,character,FALSE
-Gathering.DisplayDateTime,formatted_date_time,eventDate,FALSE,character,FALSE
+Gathering.DisplayDateTime,formatted_date_time,eventDateTimeDisplay,FALSE,character,FALSE
 Gathering.HigherGeographyVerbatim,higher_geography,higherGeography,FALSE,character,FALSE
 Gathering.HourEnd,hour_end,hourEnd,FALSE,integer,FALSE
 Gathering.HourBegin,hour_start,hourStart,FALSE,integer,FALSE

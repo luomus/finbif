@@ -186,13 +186,9 @@ part of a transect that undergoes repeated surveys.)
 
 Variables related to time of record include:
 \itemize{
-\item \code{eventDateTime} POSIXct.
-The date and time of the recording event. This variable is computed after
-records are downloaded from FinBIF. Its timezone and accuracy can be
-controlled see \code{finbif_occurrence()} for details.
-\item \code{samplingEffort} Duration.
-The duration of the recording event. This variable is computed after
-records are downloaded from FinBIF.
+\item \code{eventDate} Character.
+A date-time or time interval during which am occurrence occurred.
+Conforms with ISO 8601-1:2019
 \item \code{eventDateStart} Character.
 The date the recording event began.
 \item \code{eventDateEnd} Character.

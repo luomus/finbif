@@ -21,7 +21,7 @@ finbif_occurrence(
   date_time_method = NULL,
   check_taxa = TRUE,
   on_check_fail = c("warn", "error"),
-  tzone = getOption("finbif_tz"),
+  tzone = NULL,
   locale = getOption("finbif_locale"),
   seed = NULL,
   drop_na = FALSE,
@@ -90,8 +90,7 @@ returned.}
 \item{on_check_fail}{Character. What to do if a taxon is found not valid. One
 of \code{"warn"} (default) or \code{"error"}.}
 
-\item{tzone}{Character. If \code{date_time} has been selected the timezone of the
-outputted date-time. Defaults to system timezone.}
+\item{tzone}{Character. Deprecated and no longer used.}
 
 \item{locale}{Character. One of the supported two-letter ISO 639-1 language
 codes. Current supported languages are English, Finnish and Swedish. For

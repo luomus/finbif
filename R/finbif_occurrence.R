@@ -47,8 +47,7 @@
 #'   returned.
 #' @param on_check_fail Character. What to do if a taxon is found not valid. One
 #'   of `"warn"` (default) or `"error"`.
-#' @param tzone Character. If `date_time` has been selected the timezone of the
-#'   outputted date-time. Defaults to system timezone.
+#' @param tzone Character. Deprecated and no longer used.
 #' @param drop_na Logical. A vector indicating which columns to check for
 #'   missing data. Values recycled to the number of columns. Defaults to all
 #'   columns.
@@ -105,7 +104,7 @@ finbif_occurrence <- function(
   date_time_method = NULL,
   check_taxa = TRUE,
   on_check_fail = c("warn", "error"),
-  tzone = getOption("finbif_tz"),
+  tzone = NULL,
   locale = getOption("finbif_locale"),
   seed = NULL,
   drop_na = FALSE,
@@ -131,10 +130,8 @@ finbif_occurrence <- function(
     quiet = quiet,
     cache = cache,
     dwc = dwc,
-    date_time_method = date_time_method,
     check_taxa = check_taxa,
     on_check_fail = match.arg(on_check_fail),
-    tzone = tzone,
     locale = locale,
     seed = seed,
     drop_na = drop_na,
@@ -156,7 +153,6 @@ fb_occurrence <- finbif_occurrence
 #' @noRd
 occurrence <- function(fb_records_obj) {
   fb_records_obj <- select_taxa(fb_records_obj)
-  fb_records_obj <- det_datetime_method(fb_records_obj)
 
   if (use_multi_req(fb_records_obj)) {
     return(multi_req(fb_records_obj))
@@ -214,8 +210,6 @@ occurrence <- function(fb_records_obj) {
     aggregate = fb_records_obj[["aggregate"]],
     dwc = dwc,
     date_time = attr(records, "date_time", TRUE),
-    date_time_method = fb_records_obj[["date_time_method"]],
-    tzone = fb_records_obj[["tzone"]],
     locale = fb_records_obj[["locale"]],
     include_new_cols = TRUE,
     facts = facts,
@@ -226,9 +220,6 @@ occurrence <- function(fb_records_obj) {
   df_attrs[["names"]] <- colnames
   attributes(fb_occurrence_df) <- df_attrs
 
-  fb_occurrence_df <- date_times(fb_occurrence_df)
-  fb_occurrence_df <- compute_date_time(fb_occurrence_df)
-  fb_occurrence_df <- compute_duration(fb_occurrence_df)
   fb_occurrence_df <- compute_iso8601(fb_occurrence_df)
   fb_occurrence_df <- compute_vars_from_id(fb_occurrence_df)
   fb_occurrence_df <- compute_epsg(fb_occurrence_df)
@@ -344,27 +335,6 @@ records_list_data_frame <- function(x) {
 }
 
 #' @noRd
-det_datetime_method <- function(fb_records_obj) {
-  method <- fb_records_obj[["date_time_method"]]
-
-  if (is.null(method)) {
-    method <- "none"
-    n <- fb_records_obj[["n"]]
-    is_num <- is.numeric(n)
-    n <- ifelse(is_num & n >= 0L, n, Inf)
-    n <- sum(n)
-
-    if (n < 1e5L) {
-      method <- "fast"
-    }
-
-    fb_records_obj[["date_time_method"]] <- method
-  }
-
-  fb_records_obj
-}
-
-#' @noRd
 select_taxa <- function(fb_records_obj) {
   taxa <- fb_records_obj[["taxa"]]
   ntaxa <- length(taxa)
@@ -420,149 +390,6 @@ select_taxa <- function(fb_records_obj) {
   }
 
   fb_records_obj
-}
-
-#' @noRd
-date_times <- function(fb_occurrence_df) {
-  if (attr(fb_occurrence_df, "date_time", TRUE)) {
-    dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-    vtype <- col_type_string(dwc)
-    var_names <- sysdata(list(which = "var_names"))
-    date_start <- var_names["gathering.eventDate.begin", vtype]
-    hour_start <- var_names["gathering.hourBegin", vtype]
-    minute_start <- var_names["gathering.minutesBegin", vtype]
-    date_end <- var_names["gathering.eventDate.end", vtype]
-    hour_end <- var_names["gathering.hourEnd", vtype]
-    minute_end <- var_names["gathering.minutesEnd", vtype]
-    lat <- var_names["gathering.conversions.wgs84CenterPoint.lat", vtype]
-    lon <- var_names["gathering.conversions.wgs84CenterPoint.lon", vtype]
-    tzone <- attr(fb_occurrence_df, "tzone", TRUE)
-    method <- attr(fb_occurrence_df, "date_time_method", TRUE)
-
-    lat <- fb_occurrence_df[[lat]]
-    lon <- fb_occurrence_df[[lon]]
-
-    date_time_start <- list(
-      date = fb_occurrence_df[[date_start]],
-      hour = fb_occurrence_df[[hour_start]],
-      minute = fb_occurrence_df[[minute_start]],
-      lat = lat,
-      lon = lon,
-      tzone = tzone,
-      method = method
-    )
-
-    date_time_end <- list(
-      date = fb_occurrence_df[[date_end]],
-      hour = fb_occurrence_df[[hour_end]],
-      minute = fb_occurrence_df[[minute_end]],
-      lat = lat,
-      lon = lon,
-      tzone = tzone,
-      method = method
-    )
-
-    df_attrs <- attributes(fb_occurrence_df)
-    new_attrs <- list(
-      date_time_start = date_time(date_time_start),
-      date_time_end = date_time(date_time_end)
-    )
-    attributes(fb_occurrence_df) <-  c(df_attrs, new_attrs)
-  }
-
-  fb_occurrence_df
-}
-
-#' @noRd
-date_time <- function(date_time_obj) {
-  tzone <- date_time_obj[["tzone"]]
-
-  date_time <- character()
-  date_time <- as.POSIXct(date_time, tz = tzone)
-
-  date <- date_time_obj[["date"]]
-
-  if (length(date) > 0L) {
-    date_time <- as.Date(date)
-    date_time <- as.POSIXlt(date_time)
-
-    hour <- date_time_obj[["hour"]]
-
-    if (!is.null(hour)) {
-      hour_is_na <- is.na(hour)
-      date_time[, "hour"] <- ifelse(hour_is_na, 12L, hour)
-    }
-
-    minute <- date_time_obj[["minute"]]
-
-    if (!is.null(minute)) {
-      date_time_min <- date_time[, "min"]
-      min_is_na <- is.na(minute)
-      date_time[, "min"] <- ifelse(min_is_na, date_time_min, minute)
-    }
-
-    date_time <- format(date_time, "%F %T")
-
-    method <- date_time_obj[["method"]]
-
-    if (identical(method, "none")) {
-      date_time <- as.POSIXct(date_time, "Europe/Helsinki")
-    } else {
-      date_time <- mapply(
-        as.POSIXct, date_time, "Europe/Helsinki", SIMPLIFY = FALSE, USE.NAMES = FALSE
-      )
-      date_time <-  do.call(c, date_time)
-    }
-
-    date_time <- as.POSIXct(date_time, tzone)
-    na_m <- is.na(date_time_obj[["month"]])
-    na_d <- is.na(date_time_obj[["day"]])
-    date_time[na_m | na_d] <- as.POSIXct(NA_integer_, tz = tzone)
-  }
-
-  date_time
-}
-
-#' @noRd
-compute_date_time <- function(fb_occurrence_df) {
-  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-  var_names <- sysdata(list(which = "var_names"))
-  dtv <- var_names["computed_var_date_time",  col_type_string(dwc)]
-
-  if (dtv %in% attr(fb_occurrence_df, "column_names", TRUE)) {
-    fb_occurrence_df[[dtv]] <- attr(fb_occurrence_df, "date_time_start", TRUE)
-  }
-
-  fb_occurrence_df
-}
-
-#' @noRd
-compute_duration <- function(fb_occurrence_df) {
-  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
-  vtype <- col_type_string(dwc)
-  var_names <- sysdata(list(which = "var_names"))
-  duration_var <- var_names["computed_var_duration", vtype]
-
-  if (duration_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
-    h_start <- var_names["gathering.hourBegin", vtype]
-    h_end <- var_names["gathering.hourEnd", vtype]
-    hna <- is.na(fb_occurrence_df[[h_start]]) | is.na(fb_occurrence_df[[h_end]])
-    datetime_start <- attr(fb_occurrence_df, "date_time_start", TRUE)
-    datetime_end <- attr(fb_occurrence_df, "date_time_end", TRUE)
-    dna <- is.na(datetime_start) | is.na(datetime_end)
-    da <- !hna & !dna
-    duration_length <- length(da)
-
-    intvl <- rep_len(NA_integer_, duration_length)
-    intvl <- as.difftime(intvl, units = "secs")
-    fb_occurrence_df[[duration_var]] <- intvl
-    intvl[da] <- difftime(datetime_end[da], datetime_start[da])
-    has_duration <- da & intvl != 0
-
-    fb_occurrence_df[has_duration, duration_var] <- intvl[has_duration]
-  }
-
-  fb_occurrence_df
 }
 
 #' @noRd
@@ -1447,8 +1274,6 @@ multi_req <- function(fb_records_obj) {
     "page",
     "quiet",
     "cache",
-    "date_time_method",
-    "tzone",
     "locale",
     "exclude_na"
   )

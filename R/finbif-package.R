@@ -22,8 +22,7 @@
 #'   \item{`finbif_cache_path`}{Character. The path to the directory where to
 #'     store cached API queries. If unset (the default) in memory caching is
 #'     used.}
-#'   \item{`finbif_tz`}{Character. The timezone used by `finbif` functions that
-#'     compute dates and times. Default: `Sys.timezone()`}
+#'   \item{`finbif_tz`}{Character. Deprecated and no longer used.}
 #'   \item{`finbif_locale`}{Character. One of the supported two-letter
 #'     ISO 639-1 language codes. Current supported languages are English,
 #'     Finnish and Swedish. By default, the system settings are used to set this

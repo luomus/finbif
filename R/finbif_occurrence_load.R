@@ -57,7 +57,7 @@ finbif_occurrence_load <- function(
   cache = getOption("finbif_use_cache"),
   dwc = getOption("finbif_use_dwc"),
   date_time_method = NULL,
-  tzone = getOption("finbif_tz"),
+  tzone = NULL,
   write_file = tempfile(),
   dt = NA,
   keep_tsv = FALSE,
@@ -168,8 +168,6 @@ finbif_occurrence_load <- function(
     column_names = select_user,
     aggregate = "none",
     dwc = dwc,
-    date_time_method = date_time_method,
-    tzone = tzone,
     locale = locale,
     include_new_cols = !all_cols,
     record_id = record_id_col
@@ -192,25 +190,16 @@ finbif_occurrence_load <- function(
   } else {
     select[["user"]] <- select_user
 
-    datetime_obj <- list(date_time_method = date_time_method, n = n_recs)
-    datetime_obj <- det_datetime_method(datetime_obj)
-
     fb_occurrence_df <- structure(
       fb_occurrence_df,
       select_user = select_user,
       column_names = select_user,
       aggregate = "none",
       dwc = dwc,
-      date_time = select[["date_time_selected"]],
-      date_time_method = datetime_obj[["date_time_method"]],
-      tzone = tzone
+      date_time = select[["date_time_selected"]]
     )
 
-    fb_occurrence_df <- date_times(fb_occurrence_df)
-    fb_occurrence_df <- compute_date_time(fb_occurrence_df)
-    fb_occurrence_df <- compute_duration(fb_occurrence_df)
     fb_occurrence_df <- compute_iso8601(fb_occurrence_df)
-    fb_occurrence_df <- any_issues(fb_occurrence_df)
 
     df_names <- names(fb_occurrence_df)
     nrows <- nrow(fb_occurrence_df)
@@ -591,50 +580,6 @@ add_nas <- function(df) {
       }
 
     }
-  }
-
-  df
-}
-
-#' @noRd
-any_issues <- function(df) {
-  dwc <- attr(df, "dwc", TRUE)
-  vtype <- col_type_string(dwc)
-  vnms <- sysdata(list(which = "var_names"))
-  issues <- vnms[["unit.quality.documentGatheringUnitQualityIssues", vtype]]
-
-  if (issues %in% attr(df, "select_user", TRUE) && !issues %in% names(df)) {
-    issue <- logical()
-
-    if (nrow(df) > 0L) {
-      issue <- FALSE
-      issue_cols <- c(
-        "unit.quality.issue.issue",
-        "gathering.quality.issue.issue",
-        "gathering.quality.timeIssue.issue",
-        "gathering.quality.locationIssue.issue"
-      )
-      has_an_issue_col <- FALSE
-
-      for (i in issue_cols) {
-        issue_col_nm <- vnms[[i, vtype]]
-        issue_col <- df[[issue_col_nm]]
-        has_issue_col <- length(issue_col) > 0L
-
-        if (has_issue_col) {
-          issue <- issue | !is.na(issue_col)
-        }
-
-        has_an_issue_col <- has_an_issue_col || has_issue_col
-      }
-
-      if (!has_an_issue_col) {
-        issue <- NA
-      }
-
-    }
-
-    df[[issues]] <- issue
   }
 
   df

@@ -2,7 +2,16 @@
 
 # finbif 0.10.1.9000
 
-   - This is the current development release.
+## DEFUNCT
+
+  - Selecting the properties `eventDateTime` and `samplingEffort` is now
+    defunct. Users should instead use the `eventDate` property only.
+
+## DEPRECATION
+
+  - The `date_time_method` and `tzone` arguments to to `finbif_occurrence` and
+    `finbif_occurrence_load` are deprecated and will be removed in the next
+    release.
 
 # finbif 0.10.1
 
@@ -15,7 +24,7 @@
 ## DEPRECATION
 
    - The use of properties `eventDateTime` and `samplingEffort` has been
-     deprecated in favour `eventDate`. The former will be unavailable in the
+     deprecated in favour of `eventDate`. The former will be unavailable in the
      next release. While `eventDateTime` uses `as.POSIXct` class data
      `eventDate` data are strings in ISO8601 format.
 

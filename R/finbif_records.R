@@ -257,6 +257,13 @@ infer_selection <- function(fb_records_obj) {
   is_date_time_vars <- var_names[["date"]]
   date_time_vars <- var_names[is_date_time_vars, ]
   is_default_vars <- var_names[["default_var"]]
+
+  if (exists("file", fb_records_obj)) {
+    names(is_default_vars) <- rownames(var_names)
+    is_default_vars["computed_var_date_time_ISO8601"] <- FALSE
+    is_default_vars["gathering.displayDateTime"] <- TRUE
+  }
+
   default_vars <- switch(
     aggregate,
     none = var_names[is_default_vars, ],
@@ -315,12 +322,8 @@ infer_selection <- function(fb_records_obj) {
     }
 
     date_time_var_translations <- c(
-      "date_time",
-      "eventDateTime",
       "date_time_ISO8601",
-      "eventDate",
-      "duration",
-      "samplingEffort"
+      "eventDate"
     )
     date_time_selected <- date_time_var_translations %in% select
     date_time_selected <- any(date_time_selected)
@@ -967,12 +970,10 @@ order_by_computed_var <- function(order_by) {
   lt <- c(
     scientific_name = "unit.linkings.taxon.scientificName",
     abundance = "unit.interpretations.individualCount",
-    date_time = "gathering.eventDate.begin",
     coordinates_uncertainty = "gathering.interpretations.coordinateAccuracy",
     red_list_status = "unit.linkings.taxon.redListStatus",
     citation = "document.documentId",
     occurrence_status = "unit.interpretations.individualCount",
-    duration = "gathering.eventDate.begin",
     region = "gathering.province",
     date_time_ISO8601 = "gathering.eventDate.begin",
     municipality = "gathering.interpretations.finnishMunicipality",
