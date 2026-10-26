@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 )
 
 library(finbif)
-options(finbif_tz = "Europe/Helsinki", width = 90)
+options(width = 90)
 ```
 When getting records from FinBIF there are many options for filtering the data
 before it is downloaded, saving bandwidth and local post-processing time. For

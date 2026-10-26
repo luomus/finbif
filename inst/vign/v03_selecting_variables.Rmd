@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 )
 
 library(finbif)
-options(finbif_tz = "Europe/Helsinki", width = 90)
+options(width = 90)
 ```
 
 When requesting data using `{finbif}` you can select from among (or order by)
@@ -54,8 +54,9 @@ finbif_occurrence(select = c("default_vars", "lifeStage"))
 
 ## Ordering
 You can change the order of occurrence records before they are fetched from the
-server by using the `order_by` argument. The default ordering is `date_start`
-descending, then `load_date` descending, then `reported_name`.
+server by using the `order_by` argument. The default ordering is
+`eventDateStart` descending, then `documentLoadedDate` descending, then
+`verbatimIdentification`.
 
 ### Ascending order
 By default occurrence records are ordered by variables in ascending order.

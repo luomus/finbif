@@ -46,6 +46,7 @@ finbif_metadata()
 #> 15              sex_category
 #> 16                    source
 #> 17                taxon_rank
+#> 18                   license
 
 ```
 
@@ -142,94 +143,128 @@ finbif_collections(
 ```r
 
 #>         collection_name        taxonomic_coverage     geographic_coverage count  
+#> HR.1132 KUO Trichoptera colle… Trichoptera            Finland                1246
+#> HR.122  Veikko Salkio's Natur… Animalia               Finland                1088
 #> HR.1227 Priv. coll. Mikko Hei… Biota                  Finland                  48
-#> HR.1349 JYV - Fungal collecti… <NA>                   Finland               14486
-#> HR.1350 JYV - Lichen collecti… <NA>                   Finland                 825
-#> HR.1351 JYV - Bryophyte colle… <NA>                   Finland               11214
+#> HR.1349 JYV - Fungal collecti… <NA>                   Finland               14490
+#> HR.1350 JYV - Lichen collecti… <NA>                   Finland                 847
+#> HR.1351 JYV - Bryophyte colle… <NA>                   Finland               11412
 #> HR.1467 Per-Eric Grankvist´s … Lepidoptera            Finland                   5
 #> HR.1487 JYV - Fish collections <NA>                   Finland                1371
-#> HR.1507 Lingonblad Birger och… Lepidoptera            Finland                2799
-#> HR.157  Point counts of breed… Birds, landbirds       Finland              425914
+#> HR.1507 Birger and Hjördis Li… Lepidoptera            Finland                2799
+#> HR.155  Fungi indet. (by host) <NA>                   Finland                 122
+#> HR.157  Point counts of breed… Birds, landbirds       Finland              429205
 #> HR.1592 Main herbarium of The… <NA>                   Finland                7832
 #> HR.1687 Papilionoidea of Coll… Papilionoidea          Finland                 550
 #> HR.1688 Noctuidae I of Coll. … Noctuidae              Finland                 614
 #> HR.1689 Noctuidae II of Coll.… Noctuidae              Finland                 839
 #> HR.1690 Noctuidae III, Bombyc… Noctuidae, Bombycoide… Finland                 521
 #> HR.1691 Drepanidae & Geometri… Drepanidae, Geometrid… Finland                1408
-#> HR.175  National Butterfly Re… Lepidoptera            Finland              549592
+#> HR.175  National Butterfly Re… Lepidoptera            Finland              572003
+#> HR.1789 Viruses (H)            <NA>                   Finland                   3
+#> HR.1830 ZMUO Coll. Saalas      Coleoptera             Finland               16288
+#> HR.1870 ZMUO Common vertebrat… <NA>                   Finland               34787
 #> HR.1916 Wildlife triangle      Siberian flying squir… Finland               18560
-#> HR.200  Finnish Insect Databa… Insecta                Finland             3725313
+#> HR.200  Finnish Insect Databa… Insecta                Finland             3725222
 #> HR.2009 Fish observation data… invasive alien fish s… Finland               35854
-#> HR.2029 LajiGIS: Miscellaneou… Biota                  Finland               44432
-#> HR.2049 Invasive alien specie… Invasive species       Finland                3908
-#> HR.206  The Finnish Nature As… biota                  Finland              141107
+#> HR.2029 LajiGIS: Miscellaneou… Biota                  Finland               46532
+#> HR.2049 Invasive alien specie… Invasive species       Finland                4103
+#> HR.206  The Finnish Nature As… biota                  Finland              141160
 #> HR.2089 Håkan Lindberg collec… Hymenoptera            Finland                2435
-#> HR.209  Atlas of Finnish Macr… Macrolepidoptera       Finland             1218546
-#> HR.2129 The Atlas of Finnish … fungi                  Finland              181432
+#> HR.209  Atlas of Finnish Macr… Macrolepidoptera       Finland             1218544
+#> HR.2129 The Atlas of Finnish … fungi                  Finland              195336
+#> HR.2190 Fossils of Finland     <NA>                   Finland                2105
 #> HR.2209 KUO Arachnida collect… Arachnida              Finland                   3
 #> HR.2289 Specimens that lack c… <NA>                   Finland                 109
-#> HR.2691 Luomus line transect … Aves                   Finland              580918
+#> HR.2592 KUO Ordines minores (… Apterygota, Dermapter… Finland                   4
+#> HR.2671 KUO Invertebrata varia Bryozoa, Annelida, Br… Finland                   1
+#> HR.2691 Luomus line transect … Aves                   Finland              590276
 #> HR.2692 Censuses of breeding … Aves                   Finland               14996
-#> HR.3051 Finvasive LIFE projec… <NA>                   Finland                2604
+#> HR.3051 Finvasive LIFE projec… <NA>                   Finland                2888
 #> HR.3071 Biodiversity observat… <NA>                   Finland                 529
-#> HR.3211 iNaturalist Suomi Fin… biota                  Finland             1670979
-#> HR.3431 Butterflies in Finnis… Papilionoidea, Others  Finland              732007
-#> HR.3491 LajiGIS: Species surv… Biota                  Finland              759186
-#> HR.3553 LajiGIS: Species moni… Biota                  Finland              797208
+#> HR.3211 iNaturalist Suomi Fin… biota                  Finland             1891538
+#> HR.3431 Butterflies in Finnis… Papilionoidea, Others  Finland              745157
+#> HR.3491 LajiGIS: Species surv… Biota                  Finland              776645
+#> HR.3553 LajiGIS: Species moni… Biota                  Finland              801392
+#> HR.3671 Bird of prey nests fo… Aves                   Finland               10552
 #> HR.3691 eBird                  Aves                   Finland             2417556
-#> HR.3791 Finnish invasive spec… Biota                  Finland                8099
-#> HR.39   Winter Bird Census     Aves, Mammalia         Finland             1608783
-#> HR.3911 Bumblebee census       Bumblebees             Finland               52893
-#> HR.3991 Waterbird counts, Luo… Aves                   Finland               54931
-#> HR.3992 Waterbird counts, Luk… Aves                   Finland               54782
+#> HR.3791 Finnish invasive spec… Biota                  Finland                8928
+#> HR.3834 Tampere TMPM mammal c… <NA>                   Finland                   4
+#> HR.3835 Tampere TMPM fish col… <NA>                   Finland                   7
+#> HR.39   Winter Bird Census     Aves, Mammalia         Finland             1609602
+#> HR.3911 Bumblebee census       Bumblebees             Finland               59284
+#> HR.3991 Waterbird counts, Luo… Aves                   Finland               55949
+#> HR.3992 Waterbird counts, Luk… Aves                   Finland               56879
 #> HR.4011 Salmonidae in streams  Salmonoidei            Finland               25263
-#> HR.4051 LajiGIS: Species moni… Aquila chrysaetos; Ha… Finland                9812
-#> HR.4091 Retkikasvio            <NA>                   Finland                 220
+#> HR.4051 LajiGIS: Species moni… Aquila chrysaetos; Ha… Finland               10115
+#> HR.4091 Retkikasvio            <NA>                   Finland                 238
 #> HR.4191 Porvoo Museum / Colle… Lepidoptera            Finland               10417
-#> HR.4251 LajiGIS: Species mapp… Biota                  Finland              638169
-#> HR.435  Löydös Open Invasive … Biota                  Finland               27935
+#> HR.4251 LajiGIS: Species mapp… Biota                  Finland              703366
+#> HR.4271 Tampere TMPM bone and… <NA>                   Finland                  20
+#> HR.435  Löydös Open Invasive … Biota                  Finland               30045
 #> HR.4352 NFI rare tree species  <NA>                   Finland                 992
 #> HR.4374 Porvoo Museum / Pisces <NA>                   Finland                   1
 #> HR.4379 Porvoo Museum / Amphi… <NA>                   Finland                   5
-#> HR.4386 Porvoo Museum / Oology <NA>                   Finland                 522
+#> HR.4386 Porvoo Museum / Oology <NA>                   Finland                 523
 #> HR.4412 Tiira.fi: The Fourth … Aves                   Finland              819404
-#> HR.4471 Fourth Finnish Bird A… Aves                   Finland              365368
-#> HR.4511 Finnish National Moth… Bombycoidea, Noctuoid… Finland             1224173
+#> HR.4451 Vascular Plant Herbar… <NA>                   Finland                1505
+#> HR.4471 Fourth Finnish Bird A… Aves                   Finland              365461
+#> HR.4511 Finnish National Moth… Bombycoidea, Noctuoid… Finland             1254256
 #> HR.4611 Observations by FCG F… <NA>                   Finland                1591
-#> HR.4612 Pollinator monitoring… Insecta                Finland               16692
+#> HR.4612 Pollinator monitoring… Insecta                Finland               20298
 #> HR.4672 Observations from pub… Biota                  Finland                 127
 #> HR.4711 Flying squirrel monit… Pteromys volans        Finland                2509
-#> HR.49   Finnish birds of prey… Accipitridae, Falconi… Finland              193879
-#> HR.4991 Bird atlas observatio… Aves                   Finland               15757
-#> HR.50   White-tailed Sea Eagl… Haliaeetus albicilla   Finland               32090
-#> HR.5095 Dragonfly - complete … Odonata                Finland                1066
+#> HR.4874 ZMUT Collembola main … <NA>                   Finland                1217
+#> HR.49   Finnish birds of prey… Accipitridae, Falconi… Finland              198731
+#> HR.4931 Algae collection of I… <NA>                   Finland                   1
+#> HR.4991 Bird atlas observatio… Aves                   Finland               15760
+#> HR.50   White-tailed Sea Eagl… Haliaeetus albicilla   Finland               33609
+#> HR.5016 KUO Mammal Collection… Mammalia               Finland               42735
+#> HR.5095 Dragonfly - complete … Odonata                Finland                1240
 #> HR.5155 Observations from ele… Biota                  Finland                1423
 #> HR.5196 Pollinator monitoring… Insecta                Finland               16571
-#> HR.5235 Finnish butterflies -… Lepidoptera, Papilino… Finland                 751
-#> HR.5236 Charismatic flowering… Tracheophyta           Finland               16849
+#> HR.5235 Finnish butterflies -… Lepidoptera, Papilino… Finland                 896
+#> HR.5236 Charismatic flowering… Tracheophyta           Finland               18406
 #> HR.5255 Diurnal moths - compl… Lepidoptera            Finland                  36
-#> HR.5256 Bumblebees - complete… Hymenoptera            Finland                 461
-#> HR.5257 Amphibia and reptilia… Chordata               Finland                  91
+#> HR.5256 Bumblebees - complete… Hymenoptera            Finland                 468
+#> HR.5257 Amphibia and reptilia… Chordata               Finland                 106
 #> HR.5258 Subarctic plants - co… Tracheophyta           Finland                  66
 #> HR.5259 Macrolichens - comple… <NA>                   Finland                 286
 #> HR.5260 Bracket fungi, redlis… <NA>                   Finland                  33
-#> HR.5535 Observations of invas… <NA>                   Finland                6656
+#> HR.5275 Porvoo Museum / Galls… <NA>                   Finland                  15
 #> HR.5555 Observations by the f… <NA>                   Finland                3729
 #> HR.5575 Noteworthy macrofungi… Fungi                  Finland                 816
 #> HR.5795 Dataset from Luke to … Aves                   Finland               22536
 #> HR.5835 Crowdsorsa mapping an… Plantae                Finland               41425
+#> HR.5875 Mines and galls (ZMUO) <NA>                   Finland                3026
 #> HR.5895 Oma riista -observati… Aves                   Finland               35965
 #> HR.5938 Willow grouse countin… Lagopus lagopus        Finland                1067
-#> HR.60   Monitoring scheme of … Aves, Mammalia         Finland              956964
-#> HR.6058 Coll. Lilja Insects    <NA>                   Finland                 111
+#> HR.60   Monitoring scheme of … Aves, Mammalia         Finland              957039
+#> HR.6058 Coll. Lilja Insects    <NA>                   Finland                 112
+#> HR.6118 ZMUO Egg collections   Aves                   Finland                3127
+#> HR.6138 Porvoo museum / Osteo… vertebrates            Finland                 139
 #> HR.627  Alien mammal species … Invasive alien mammal… Finland                4255
-#> HR.64   Finnish bird nest rec… Aves                   Finland              973502
+#> HR.64   Finnish bird nest rec… Aves                   Finland              975746
 #> HR.6678 Finnish Hemiptera Wor… Hemiptera              Finland              142664
-#> HR.6778 Line transect censuse… Aves                   Finland             1188179
-#> HR.7080 LajiGIS: Species surv… Biota                  Finland              140389
+#> HR.6778 Line transect censuse… Aves                   Finland             1224326
+#> HR.6882 Porvoo Museum / Colle… Arachnida and Myriapo… Finland                  11
+#> HR.7000 ZMUT DNA barcoded Col… <NA>                   Finland                 475
+#> HR.7080 LajiGIS: Species surv… Biota                  Finland              140392
+#> HR.7120 Teaching collection (… Insecta                Finland                  46
+#> HR.7121 Teaching collection (… <NA>                   Finland                1054
+#> HR.7203 Porvoo Museum / Main … <NA>                   Finland                3342
+#> HR.7300 Old-growth forest pol… <NA>                   Finland                   2
+#> HR.7301 Indicator lichens, co… <NA>                   Finland                  16
+#> HR.7380 KUO Odonata collectio… Odonata                Finland                   2
+#> HR.7420 Line transect censuse… Aves                   Finland                7311
+#> HR.7480 Coll. Kanerva Herbari… <NA>                   Finland                 128
+#> HR.7540 Bird collection, Ostr… Birds                  Finland                  15
+#> HR.7562 Coll. Rydman Herbarium <NA>                   Finland                  98
+#> HR.7580 Coll. Anttila Herbari… <NA>                   Finland                  80
 #> HR.808  E. Sjöholm's butterfl… Lepidoptera            Finland                4946
-#> HR.847  Atlas of amphibians a… Amphibia, Reptilia     Finland                7747
-#> HR.95   Osprey monitoring      Pandion haliaetus      Finland              102550
+#> HR.829  KUO Lichen collections <NA>                   Finland                1957
+#> HR.847  Atlas of amphibians a… Amphibia, Reptilia     Finland                7956
+#> HR.95   Osprey monitoring      Pandion haliaetus      Finland              106252
 
 ```
 
@@ -302,15 +337,15 @@ finbif_collections(is_part_of == "HR.128", supercollections = TRUE)
 #> HR.48   MY.dataQual… <NA>      MY.collectionT… Aves               Ringing data: Finl…
 #> HR.7443 <NA>         <NA>      MY.collectionT… <NA>               <NA>               
 #>         temporal_coverage secure_level count   
-#> HR.129  <NA>              <NA>           679165
-#> HR.160  1700 to present   MX.secureLe…      632
-#> HR.173  1950-             <NA>          5898405
+#> HR.129  <NA>              <NA>           157045
+#> HR.160  1700 to present   MX.secureLe…    14866
+#> HR.173  1950-             <NA>          5915207
 #> HR.1849 2000-             <NA>                1
-#> HR.203  2013-             <NA>            71709
+#> HR.203  2013-             <NA>            76763
 #> HR.2169 <NA>              <NA>                0
-#> HR.435  2015-             <NA>            27935
-#> HR.447  <NA>              <NA>          2011828
-#> HR.48   1913-             <NA>         15792308
+#> HR.435  2015-             <NA>            30045
+#> HR.447  <NA>              <NA>          2011842
+#> HR.48   1913-             <NA>         15974888
 #> HR.7443 <NA>              <NA>                0
 
 ```

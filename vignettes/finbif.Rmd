@@ -144,6 +144,9 @@ birch_search$content
 #> $results[[1]]$species
 #> [1] TRUE
 #> 
+#> $results[[1]]$invasiveSpecies
+#> [1] FALSE
+#> 
 #> $results[[1]]$vernacularName
 #> [1] "vihtakoivu"
 #> 
@@ -192,6 +195,9 @@ birch_search$content
 #> $results[[2]]$species
 #> [1] TRUE
 #> 
+#> $results[[2]]$invasiveSpecies
+#> [1] FALSE
+#> 
 #> $results[[2]]$vernacularName
 #> [1] "hybridikoivu"
 #> 
@@ -229,7 +235,7 @@ the `finbif_occurrence()` function.
 ``` r
 finbif_occurrence("Cygnus cygnus", n = 100)
 #> Records downloaded: 100
-#> Records available: 139837
+#> Records available: 141480
 #> A data.frame [100 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1      …0745928 Cygnus cygnus (Linn…              NA  66              29.25          
@@ -243,8 +249,8 @@ finbif_occurrence("Cygnus cygnus", n = 100)
 #> 9      …5552474 Cygnus cygnus (Linn…  1               68.713901       22.787894      
 #> 10     …5559118 Cygnus cygnus (Linn…  3                           NA               NA
 #> ...with 90 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 You can search for multiple taxa at once and filter the records with the
@@ -265,7 +271,7 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 87466
+#> Records available: 88719
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1        …33947 Cygnus cygnus (Linn…              NA  63.4            33.39          
@@ -279,8 +285,8 @@ finbif_occurrence(
 #> 9        …43371 Cygnus olor (J.F. G…              NA  60.4517         23.9772        
 #> 10       …43491 Cygnus cygnus (Linn…              NA  60.3249         25.7125        
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 
 ```
 
@@ -305,23 +311,23 @@ finbif_occurrence("Birds", sample = TRUE)
 ```r
 
 #> Records downloaded: 10
-#> Records available: 29078618
+#> Records available: 29382078
 #> A data.frame [10 x 12]
-#>            occurrenceID       scientificName individualCount decimalLatitude
-#> 1        …JX.1026053#46 Anthus trivialis (L…  1               64.300242     
-#> 2      …KE.8_1044172#41 Turdus merula Linna…  1               60.458446     
-#> 3   …KE.67/2710655#Unit Rallus aquaticus Li…  1               60.197895     
-#> 4    …KE.67/507788#Unit Parus major Linnaeu…  1               60.237614     
-#> 5        …HR.49/41446_U Astur gentilis (Lin…  1               62.229788     
-#> 6    …KE.67/353020#Unit Parus major Linnaeu…  1               60.266667     
-#> 7  …KE.67/12431497#Unit Riparia riparia (Li…  1               61.072328     
-#> 8          …JX.94072#20 Poecile montanus (C…  12              60.788433     
-#> 9       …JX.1247883#256 Grus grus (Linnaeus…  1               64.562534     
-#> 10 …KE.67/14598103#Unit Coloeus monedula (L…  1               62.782648     
+#>                  occurrenceID       scientificName individualCount decimalLatitude
+#> 1             …JX.1024897#580 Motacilla alba Linn…  1               60.965785     
+#> 2             …JX.1027408#328 Hirundo rustica Lin…              NA  60.445507     
+#> 3        …KE.67/12998632#Unit Ficedula hypoleuca …  1               65.927511     
+#> 4  …HR.3691/OBS903076864_Unit Ficedula hypoleuca …  5               66.6165       
+#> 5             …JX.1025075#124 Cuculus canorus Lin…  1               61.453054     
+#> 6                …MHU.2005928 Falco tinnunculus L…              NA  68.79735      
+#> 7         …KE.67/1195796#Unit Muscicapa striata (…  1               59.833333     
+#> 8         …KE.67/6957830#Unit Acrocephalus schoen…  1               60.15         
+#> 9         …KE.67/5673192#Unit Chroicocephalus rid…  1               61.15         
+#> 10       …KE.67/16065298#Unit Turdus philomelos C…  1               59.813927     
 #> ...with 0 more records and 8 more variables:
-#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
-#> requiresVerification, requiresIdentification, occurrenceReliability,
-#> identificationVerificationStatus
+#> decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus,
+#> eventDate
 
 ```
 

@@ -21,7 +21,7 @@ Records can be filtered by the name of a location.
 ``` r
 finbif_occurrence(filter = c(country = "Finland"))
 #> Records downloaded: 10
-#> Records available: 57360604
+#> Records available: 58428203
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
@@ -35,8 +35,8 @@ finbif_occurrence(filter = c(country = "Finland"))
 #> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
 #> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 Or by a set of coordinates.
@@ -46,7 +46,7 @@ finbif_occurrence(
   filter = list(coordinates = list(c(60, 68), c(20, 30), "wgs84"))
 )
 #> Records downloaded: 10
-#> Records available: 48564194
+#> Records available: 49433934
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
@@ -60,8 +60,8 @@ finbif_occurrence(
 #> 9           …61 Polytrichum pilifer…              NA  61.599004       21.434943      
 #> 10          …65 Polytrichum pilifer…              NA  61.452593       24.099408      
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 ```
 
 See `?filters` section "Location" for more details
@@ -81,7 +81,7 @@ finbif_occurrence(filter = list(date_range_ym = "2020-12"))
 ```r
 
 #> Records downloaded: 10
-#> Records available: 30157
+#> Records available: 29986
 #> A data.frame [10 x 12]
 #>                 occurrenceID       scientificName individualCount decimalLatitude
 #> 1  …herb.oulu.fi/MY.10184972 Orthotrichum anomal…              NA  61.603872     
@@ -95,9 +95,9 @@ finbif_occurrence(filter = list(date_range_ym = "2020-12"))
 #> 9     …luomus.fi/MY.10221155 Allophylaria macros…              NA  60.378251     
 #> 10    …luomus.fi/MY.10221158 Host: Chamaenerion …              NA  60.378251     
 #> ...with 0 more records and 8 more variables:
-#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
-#> requiresVerification, requiresIdentification, occurrenceReliability,
-#> identificationVerificationStatus
+#> decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus,
+#> eventDate
 
 ```
 
@@ -118,7 +118,7 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 1167813
+#> Records available: 1169211
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1          …244 Aneura pinguis (L.)…              NA  61.86848        24.042062      
@@ -132,8 +132,8 @@ finbif_occurrence(
 #> 9          …317 Cephalozia bicuspid…              NA  61.768742       23.877258      
 #> 10         …388 Lophocolea heteroph…              NA  61.4436         24.119939      
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 
 ```
 
@@ -159,7 +159,7 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 1793259
+#> Records available: 1793260
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1       …079640 Pohlia nutans (Hedw…              NA  60.321276       24.109857      
@@ -173,8 +173,8 @@ finbif_occurrence(
 #> 9       …281097 Pseudanomodon atten…              NA  61.571317       24.305839      
 #> 10      …281100 Syntrichia ruralis …              NA  61.571317       24.305839      
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 
 ```
 
@@ -203,7 +203,7 @@ c(
   permissive = finbif_occurrence(filter = permissive, count_only = TRUE)
 )
 #>     strict permissive 
-#>      82631   61265240
+#>      85055   62281278
 ```
 
 ## Collection
@@ -215,11 +215,11 @@ Use `finbif_collections()` to see metadata on the FinBIF collections.
 finbif_occurrence(
   filter = c(collection = "iNaturalist Suomi Finland"), count_only = TRUE
 )
-#> [1] 1673340
+#> [1] 1892409
 finbif_occurrence(
   filter = c(collection = "Notebook, general observations"), count_only = TRUE
 )
-#> [1] 3546019
+#> [1] 3764140
 ```
 
 ## Informal taxonomic groups
@@ -237,7 +237,7 @@ finbif_occurrence(filter = list(informal_groups = c("Birds", "Mammals")))
 ```r
 
 #> Records downloaded: 10
-#> Records available: 29626954
+#> Records available: 29935732
 #> A data.frame [10 x 12]
 #>                 occurrenceID       scientificName individualCount decimalLatitude
 #> 1  …herb.oulu.fi/MY.17469610 Asio flammeus (Pont…              NA  67.718422     
@@ -251,9 +251,9 @@ finbif_occurrence(filter = list(informal_groups = c("Birds", "Mammals")))
 #> 9     …luomus.fi/MY.10042231 Astur gentilis (Lin…              NA  63.811181     
 #> 10    …luomus.fi/MY.10042238 Accipiter nisus (Li…              NA  60.2522       
 #> ...with 0 more records and 8 more variables:
-#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
-#> requiresVerification, requiresIdentification, occurrenceReliability,
-#> identificationVerificationStatus
+#> decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus,
+#> eventDate
 
 ```
 
@@ -292,7 +292,7 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 507
+#> Records available: 508
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1      …7350700 Pycnonotus cafer su…  3                           NA               NA
@@ -306,8 +306,8 @@ finbif_occurrence(
 #> 9      …7430682 Corvus splendens su…  3                           NA               NA
 #> 10     …8449767 Alopochen aegyptiac…              NA              NA               NA
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 
 ```
 
@@ -333,7 +333,7 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 82019
+#> Records available: 82195
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1       …223201 Microtus arvalis (P…              NA              NA               NA
@@ -347,8 +347,8 @@ finbif_occurrence(
 #> 9       …580240 Castor fiber Linnae…              NA              NA               NA
 #> 10      …580398 Ursus arctos Linnae…              NA  67.05           29.25          
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 
 ```
 
@@ -389,7 +389,7 @@ finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 ```r
 
 #> Records downloaded: 10
-#> Records available: 34008277
+#> Records available: 34589366
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1           …21 Polytrichum juniper…              NA  60.17967        24.914629      
@@ -403,8 +403,8 @@ finbif_occurrence(filter = c(primary_secondary_habitat = "M"))
 #> 9           …53 Polytrichum juniper…              NA  69.049179       20.812003      
 #> 10          …57 Polytrichum pilifer…              NA  60.373472       24.993816      
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 
 ```
 
@@ -439,7 +439,7 @@ finbif_occurrence(filter = list(primary_habitat = list(M = c("PAK", "J"))))
 ```r
 
 #> Records downloaded: 10
-#> Records available: 218
+#> Records available: 219
 #> A data.frame [10 x 12]
 #>                  occurrenceID       scientificName individualCount decimalLatitude
 #> 1   …id.luomus.fi/MY.19077695 Pammene fasciana (L…  1               60.188362     
@@ -453,9 +453,9 @@ finbif_occurrence(filter = list(primary_habitat = list(M = c("PAK", "J"))))
 #> 9        …tun.fi/JX.1134471#4 Pammene fasciana (L…  2               61.549842     
 #> 10     …tun.fi/JX.1143718#265 Pammene fasciana (L…              NA  60.37543      
 #> ...with 0 more records and 8 more variables:
-#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
-#> requiresVerification, requiresIdentification, occurrenceReliability,
-#> identificationVerificationStatus
+#> decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus,
+#> eventDate
 
 ```
 
@@ -477,7 +477,7 @@ finbif_occurrence(filter = c(finnish_occurrence_status = "rare"))
 ```r
 
 #> Records downloaded: 10
-#> Records available: 499022
+#> Records available: 509673
 #> A data.frame [10 x 12]
 #>    occurrenceID       scientificName individualCount decimalLatitude decimalLongitude
 #> 1      …3990009 Amanita coryli Nevi…              NA  68.058832       24.058368      
@@ -491,8 +491,8 @@ finbif_occurrence(filter = c(finnish_occurrence_status = "rare"))
 #> 9      …8016087 Amanita coryli Nevi…  3               69.007453       20.930394      
 #> 10     …8016091 Amanita coryli Nevi…  2               68.185593       23.992918      
 #> ...with 0 more records and 7 more variables:
-#> eventDateTime, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
-#> requiresIdentification, occurrenceReliability, identificationVerificationStatus
+#> coordinateUncertaintyInMeters, hasIssues, requiresVerification, requiresIdentification,
+#> occurrenceReliability, identificationVerificationStatus, eventDate
 
 ```
 
@@ -517,7 +517,7 @@ finbif_occurrence(
 ```r
 
 #> Records downloaded: 10
-#> Records available: 29048611
+#> Records available: 29351510
 #> A data.frame [10 x 12]
 #>                 occurrenceID       scientificName individualCount decimalLatitude
 #> 1  …herb.oulu.fi/MY.17469610 Asio flammeus (Pont…              NA  67.718422     
@@ -531,9 +531,9 @@ finbif_occurrence(
 #> 9     …luomus.fi/MY.10042231 Astur gentilis (Lin…              NA  63.811181     
 #> 10    …luomus.fi/MY.10042238 Accipiter nisus (Li…              NA  60.2522       
 #> ...with 0 more records and 8 more variables:
-#> decimalLongitude, eventDateTime, coordinateUncertaintyInMeters, hasIssues,
-#> requiresVerification, requiresIdentification, occurrenceReliability,
-#> identificationVerificationStatus
+#> decimalLongitude, coordinateUncertaintyInMeters, hasIssues, requiresVerification,
+#> requiresIdentification, occurrenceReliability, identificationVerificationStatus,
+#> eventDate
 
 ```
 
