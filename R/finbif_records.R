@@ -498,6 +498,13 @@ infer_computed_vars <- function(fb_records_obj) {
         "document.modifiedDate",
         "document.firstLoadDate"
       )
+    ),
+    catalog_number = list(
+      vars = "computed_var_catalog_number",
+      select_names = c(
+        "unit.superRecordBasis",
+        "document.documentId"
+      )
     )
   )
 

@@ -31,6 +31,7 @@ test_that("fetching occurrences works", {
             select = c(
               "default_vars",
               "-occurrenceID",
+              "catalogNumber",
               "eventDate",
               "datasetName",
               "primaryHabitat",

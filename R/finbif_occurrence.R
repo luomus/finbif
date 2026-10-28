@@ -237,6 +237,7 @@ occurrence <- function(fb_records_obj) {
   fb_occurrence_df <- compute_data_generalizations(fb_occurrence_df)
   fb_occurrence_df <- compute_codes(fb_occurrence_df)
   fb_occurrence_df <- compute_modified(fb_occurrence_df)
+  fb_occurrence_df <- compute_catalog_number(fb_occurrence_df)
   fb_occurrence_df <- extract_facts(fb_occurrence_df)
 
   class(fb_occurrence_df) <- c("finbif_occ", "data.frame")
@@ -1248,6 +1249,38 @@ compute_modified <- function(fb_occurrence_df) {
     na <- is.na(md)
 
     fb_occurrence_df[[modified_var]] <- ifelse(na, fld, md)
+  }
+
+  fb_occurrence_df
+}
+
+#' @noRd
+compute_catalog_number <- function(fb_occurrence_df) {
+  dwc <- attr(fb_occurrence_df, "dwc", TRUE)
+  vtype <- col_type_string(dwc)
+  vn <- sysdata(list(which = "var_names"))
+
+  catalog_no_var <- vn[["computed_var_catalog_number", vtype]]
+  add <- attr(fb_occurrence_df, "include_new_cols", TRUE)
+
+  if (add && catalog_no_var %in% attr(fb_occurrence_df, "column_names", TRUE)) {
+    srb <- vn[["unit.superRecordBasis", vtype]]
+    srb <- fb_occurrence_df[[srb]]
+
+    did <- vn[["document.documentId", vtype]]
+    did <- fb_occurrence_df[[did]]
+
+    locale <- attr(fb_occurrence_df, "locale", TRUE)
+
+    record_bases <- superrecord_basis()
+    record_bases <- record_bases[
+      c("PRESERVED_SPECIMEN", "MATERIAL_SAMPLE"), paste0("name_", locale)
+    ]
+    record_bases <- unlist(record_bases)
+
+    fb_occurrence_df[[catalog_no_var]] <- ifelse(
+      srb %in% record_bases, did, NA_character_
+    )
   }
 
   fb_occurrence_df

@@ -19,7 +19,7 @@ corresponding to each capture).
 \item \code{eventID} Character.
 Event ID. An event can contain one or more records (e.g., a survey of
 plants at a particular location and time.)
-\item \code{catalogNumber} Character.
+\item \code{documentID} Character.
 Document ID. A set of events that share common metadata.
 \item \code{formID} Character.
 Form ID. The form used to create the document, event, record data.

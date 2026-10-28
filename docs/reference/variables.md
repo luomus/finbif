@@ -18,8 +18,8 @@ All identifiers are returned in the form of a URI. Identifiers include:
 - `eventID` Character. Event ID. An event can contain one or more
   records (e.g., a survey of plants at a particular location and time.)
 
-- `catalogNumber` Character. Document ID. A set of events that share
-  common metadata.
+- `documentID` Character. Document ID. A set of events that share common
+  metadata.
 
 - `formID` Character. Form ID. The form used to create the document,
   event, record data.
