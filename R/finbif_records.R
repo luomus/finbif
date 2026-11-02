@@ -988,7 +988,12 @@ order_by_computed_var <- function(order_by) {
     collection_code = "document.collectionId",
     institution_code = "document.collectionId",
     country = "gathering.interpretations.country",
-    country_code = "gathering.interpretations.country"
+    country_code = "gathering.interpretations.country",
+    material_entity_type = "unit.recordBasis",
+    information_withheld = "document.secureReasons",
+    data_generalizations = "document.secureLevel",
+    modified = "document.modifiedDate",
+    catalog_number = "document.documentId"
   )
 
   nms <- names(lt)
