@@ -441,36 +441,57 @@ get_iso8061 <- function(times) {
   end_month <- identical(format(event_date_end + 1L, "%d"), "01")
 
   begin <- NA_character_
-  end <- NA_character_
+  end_ <- NA_character_
 
   if (is.finite(minute_begin)) {
     begin <- sprintf("%sT%02d:%02d", event_date_start, hour_begin, minute_begin)
 
     if (is.finite(minute_end)) {
-      end <- sprintf("%sT%02d:%02d", event_date_end, hour_end, minute_end)
+      end_ <- sprintf("%sT%02d:%02d", event_date_end, hour_end, minute_end)
     }
+    end <- end_
+
   } else if (is.finite(hour_begin)) {
-    begin <- sprintf("%sT%02d", event_date_start, hour_begin)
+    begin <- sprintf("%sT%02d:00", event_date_start, hour_begin)
 
     if (is.finite(hour_end)) {
-      end <- sprintf("%sT%02d", event_date_end, hour_end)
+      end_ <- sprintf("%sT%02d:00", event_date_end, hour_end)
+    } else {
+      end_ <- as.POSIXlt(begin, format = "%Y-%m-%dT%H:%M")
+      end_[, "hour"] <- end_[, "hour"] + 1L
+      end_ <- format(end_, format = "%Y-%m-%dT%H:%M")
     }
+    end <- end_
+
   } else if (begin_year && end_year) {
     begin <- substr(event_date_start, 1L, 4L)
-    end <- substr(event_date_end, 1L, 4L)
+    end_ <- substr(event_date_end, 1L, 4L)
+    end <- as.integer(end_) + 1L
+    end <- as.character(end)
 
   } else if (begin_month && end_month) {
     begin <- substr(event_date_start, 1L, 7L)
-    end <- substr(event_date_end, 1L, 7L)
-    end <- truncate_end(end, begin)
+    end_ <- substr(event_date_end, 1L, 7L)
+
+    if (identical(substr(end_, 6L, 7L), "12")) {
+      end <- substr(end_, 1L, 4L)
+      end <- as.integer(end) + 1L
+      end <- paste0(end, "-01")
+
+    } else {
+      end <- substr(end_, 7L, 7L)
+      end <- as.integer(end) + 1L
+      end <- paste0(substr(end_, 1L, 6L), end)
+    }
 
   } else if (is.finite(event_date_start)) {
     begin <- event_date_start
-    end <- event_date_end
-    end <- truncate_end(end, begin)
+    end_ <- event_date_end
+    end <- as.Date(end_) + 1L
+    end <- format(end, "%Y-%m-%d")
 
   }
-  if (identical(begin, end)) {
+  if (identical(begin, end_)) {
     end <- NA_character_
   }
   if (is.na(end)) {
@@ -479,20 +500,6 @@ get_iso8061 <- function(times) {
   } else {
     sprintf("%s/%s", begin, end)
   }
-}
-
-#' @noRd
-truncate_end <- function(end, begin) {
-  same_year <- identical(substr(begin, 1L, 4L), substr(end, 1L, 4L))
-
-  if (same_year && !identical(begin, end)) {
-    end <- substr(end, 6L, 10L)
-
-    if (identical(substr(begin, 6L, 7L), substr(end, 1L, 2L))) {
-      end <- substr(end, 4L, 5L)
-    }
-  }
-  end
 }
 
 #' @noRd

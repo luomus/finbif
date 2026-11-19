@@ -19,7 +19,7 @@ test_that("converting to iso8061 works", {
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966/1967",
+      iso8061 = "1966/1968",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1967-12-31"),
       hour_begin = NA_integer_,
@@ -37,7 +37,7 @@ test_that("converting to iso8061 works", {
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966-01/02",
+      iso8061 = "1966-01/1966-03",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1966-02-28"),
       hour_begin = NA_integer_,
@@ -46,7 +46,7 @@ test_that("converting to iso8061 works", {
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966-01/1967-01",
+      iso8061 = "1966-01/1967-02",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1967-01-31"),
       hour_begin = NA_integer_,
@@ -64,7 +64,7 @@ test_that("converting to iso8061 works", {
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966-01-01/02",
+      iso8061 = "1966-01-01/1966-01-03",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1966-01-02"),
       hour_begin = NA_integer_,
@@ -73,7 +73,7 @@ test_that("converting to iso8061 works", {
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966-01-01/02-01",
+      iso8061 = "1966-01-01/1966-02-02",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1966-02-01"),
       hour_begin = NA_integer_,
@@ -82,7 +82,7 @@ test_that("converting to iso8061 works", {
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966-01-01/1967-01-01",
+      iso8061 = "1966-01-01/1967-01-02",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1967-01-01"),
       hour_begin = NA_integer_,
@@ -91,16 +91,16 @@ test_that("converting to iso8061 works", {
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966-01-01T00",
+      iso8061 = "1966-01-01T03:00/1966-01-01T04:00",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1966-01-01"),
-      hour_begin = 0L,
+      hour_begin = 3L,
       hour_end = NA_integer_,
       minute_begin = NA_integer_,
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966-01-01T00/1966-01-01T01",
+      iso8061 = "1966-01-01T00:00/1966-01-01T01:00",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1966-01-01"),
       hour_begin = 0L,
@@ -109,7 +109,7 @@ test_that("converting to iso8061 works", {
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966-01-01T00/1966-01-02T00",
+      iso8061 = "1966-01-01T00:00/1966-01-02T00:00",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1966-01-02"),
       hour_begin = 0L,
@@ -118,7 +118,7 @@ test_that("converting to iso8061 works", {
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966-01-01T00/1966-02-01T00",
+      iso8061 = "1966-01-01T00:00/1966-02-01T00:00",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1966-02-01"),
       hour_begin = 0L,
@@ -127,7 +127,7 @@ test_that("converting to iso8061 works", {
       minute_end = NA_integer_
     ),
     list(
-      iso8061 = "1966-01-01T00/1967-01-01T00",
+      iso8061 = "1966-01-01T00:00/1967-01-01T00:00",
       event_date_start = as.Date("1966-01-01"),
       event_date_end = as.Date("1967-01-01"),
       hour_begin = 0L,
